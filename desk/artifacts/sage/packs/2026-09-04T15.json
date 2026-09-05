@@ -1,0 +1,201 @@
+{
+  "at": "2026-09-04T15:59:20.592Z",
+  "cycle": "003",
+  "lead_id": "hf-incident",
+  "pack_id": "2026-09-04T15",
+  "plan": [
+    {
+      "id": "hf-swarm",
+      "title": "Eval agents reached Hugging Face production",
+      "file": "hf-incident",
+      "kind": "lead",
+      "confidence": "high",
+      "move": "Keep as lead. Banned nouns stay off the pin.",
+      "evidence": [
+        "METR scope ends 13 Jul. Wave 3 cluster-admin is OpenAI-only.",
+        "02 Sep curation did not add a new incident URL. It added scanners, papers, and Astra commentary."
+      ],
+      "steps": [
+        "Cite METR for waves 1–2. Cite OpenAI for wave 3.",
+        "Do not use AISLE curl CVEs or MIT stigmergy as proof of the HF breach."
+      ],
+      "doneWhen": "Pin 1 still opens the incident file.",
+      "unlockIf": "A new METR/HF/OpenAI primary names a fact not in Cycle 001.",
+      "refs": [
+        {
+          "label": "Dwarkesh 29 Aug thread",
+          "href": "https://x.com/dwarkesh_sp",
+          "role": "wire"
+        }
+      ]
+    },
+    {
+      "id": "astra-depth",
+      "title": "Astra: Critical + recurrent depth",
+      "file": "astra",
+      "kind": "companion",
+      "confidence": "high",
+      "move": "Companion only. Do not promote over HF.",
+      "evidence": [
+        "Palazzolo 2094954680765829533 — recurrent depth.",
+        "Amir 2095274361695731967 — story unchanged; OpenAI limiting loops.",
+        "Curran 2095257682865532970 — 'Astra tomorrow morning' is a wire read.",
+        "Lab wire: Legora reviewed 41 documents in minutes with GPT-6 Astra.",
+        "Lab wire: Playco cut manual fixes 50% prototyping games with GPT-6 Astra.",
+        "Lab wire: Safety overview: GPT-6 Astra."
+      ],
+      "steps": [
+        "Keep ship language rumored.",
+        "If OpenAI posts a dated ship, that is a companion delta, not a lead swap."
+      ],
+      "doneWhen": "Astra is pin 2 or Pulse companion. Not pin 1.",
+      "unlockIf": "OpenAI official dated ship or a new incident attribution.",
+      "refs": [
+        {
+          "label": "Palazzolo",
+          "href": "https://x.com/steph_palazzolo/status/2094954680765829533",
+          "role": "primary"
+        },
+        {
+          "label": "Amir clarification",
+          "href": "https://x.com/amir/status/2095274361695731967",
+          "role": "primary"
+        },
+        {
+          "label": "lab:openai Legora reviewed 41 documents in minu…",
+          "href": "https://openai.com/index/legora-financial-statement-review-with-astra",
+          "role": "wire"
+        },
+        {
+          "label": "lab:openai Playco cut manual fixes 50% prototyp…",
+          "href": "https://openai.com/index/playco-game-prototyping-with-astra",
+          "role": "wire"
+        },
+        {
+          "label": "lab:openai Safety overview: GPT-6 Astra",
+          "href": "https://openai.com/index/safety-overview-gpt-6-astra",
+          "role": "wire"
+        },
+        {
+          "label": "lab:openai Path to Astra: critical capabilities…",
+          "href": "https://openai.com/index/path-to-astra",
+          "role": "wire"
+        }
+      ]
+    },
+    {
+      "id": "aisle-curl",
+      "title": "AISLE found 6 curl CVEs after two labs reported zero",
+      "file": "other",
+      "kind": "rest",
+      "confidence": "high",
+      "move": "Rest-of-board. Use as measurement, not vendor scoreboard lead.",
+      "evidence": [
+        "Primary blog aisle.com + Fort 2095107971433017510 (261 likes / 23k views).",
+        "Lab wire: Introducing WeatherNext 3, our most advanced and accurate globa….",
+        "Lab wire: Daybreak for Frontline Defenders: $1B to protect essential serv….",
+        "Lab wire: NeoMME: an efficient Multimodal-native and Multilingual Encoder."
+      ],
+      "steps": [
+        "Link the blog. Do not write 'labs are unsafe' from one target."
+      ],
+      "doneWhen": "On Pulse with the blog href.",
+      "unlockIf": "curl project disputes the CVEs — then downgrade.",
+      "refs": [
+        {
+          "label": "AISLE blog",
+          "href": "https://aisle.com/blog/aisle-discovered-six-curl-cves-after-openai-and-anthropic-found-zero",
+          "role": "primary"
+        },
+        {
+          "label": "Fort 02 Sep",
+          "href": "https://x.com/stanislavfort/status/2095107971433017510",
+          "role": "wire"
+        },
+        {
+          "label": "lab:deepmind Introducing WeatherNext 3, our mos…",
+          "href": "https://deepmind.google/blog/introducing-weathernext-3-our-most-advanced-and-accurate-global-weather-ai-model/",
+          "role": "wire"
+        },
+        {
+          "label": "lab:openai Daybreak for Frontline Defenders: $1…",
+          "href": "https://openai.com/index/daybreak-for-frontline-defenders",
+          "role": "wire"
+        },
+        {
+          "label": "lab:huggingface NeoMME: an efficient Multimodal…",
+          "href": "https://huggingface.co/blog/Hcompany/neomme",
+          "role": "wire"
+        },
+        {
+          "label": "lab:huggingface Fine-tuning a 350M Model for Be…",
+          "href": "https://huggingface.co/blog/grpo-with-trl-ifstruct",
+          "role": "wire"
+        },
+        {
+          "label": "lab:huggingface Give Your Coding Agents a Memor…",
+          "href": "https://huggingface.co/blog/funes",
+          "role": "wire"
+        }
+      ]
+    },
+    {
+      "id": "harness-papers",
+      "title": "Harness papers: days-long coding + skills that hurt the task",
+      "file": "other",
+      "kind": "rest",
+      "confidence": "medium",
+      "move": "Papers lane + Pulse rest.",
+      "evidence": [
+        "dair_ai 2095172426925801608 Harness-of-Harness.",
+        "dair_ai 2095330956823629995 matched skill-retrieval effect.",
+        "HF live 03 Sep: Repo-To-Skill 2609.02749, 105 up.",
+        "HF keep still ranked 2609.02749: Repo-To-Skill: Distilling GitHub Repositories Into AI4A… (512 up).",
+        "HF keep still ranked 2609.01437: HarnessDev: Can LLMs Create and Evolve Their Own Agent … (234 up).",
+        "HF keep still ranked 2608.31111: Aspire: Can Models Self-Evolve from Vague Goals? (210 up)."
+      ],
+      "steps": [
+        "Keep abstracts on the desk. Do not treat benchmark lift as a ship."
+      ],
+      "doneWhen": "Papers lane lists at least one of these IDs.",
+      "unlockIf": "Never as lead.",
+      "refs": [
+        {
+          "label": "Harness-of-Harness",
+          "href": "https://x.com/dair_ai/status/2095172426925801608",
+          "role": "wire"
+        },
+        {
+          "label": "Skill retrieval paper",
+          "href": "https://x.com/dair_ai/status/2095330956823629995",
+          "role": "wire"
+        },
+        {
+          "label": "Repo-To-Skill: Distilling GitHub Repositories I…",
+          "href": "https://arxiv.org/abs/2609.02749",
+          "role": "support"
+        },
+        {
+          "label": "HarnessDev: Can LLMs Create and Evolve Their Ow…",
+          "href": "https://arxiv.org/abs/2609.01437",
+          "role": "support"
+        },
+        {
+          "label": "Aspire: Can Models Self-Evolve from Vague Goals?",
+          "href": "https://arxiv.org/abs/2608.31111",
+          "role": "support"
+        },
+        {
+          "label": "Terminal-Universe: Turning Agent Trajectories i…",
+          "href": "https://arxiv.org/abs/2609.04148",
+          "role": "support"
+        },
+        {
+          "label": "EarlyEval: Cheaper Agent Evaluation via Early O…",
+          "href": "https://arxiv.org/abs/2609.02783",
+          "role": "support"
+        }
+      ]
+    }
+  ]
+}

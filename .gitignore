@@ -1,0 +1,28 @@
+# dependencies
+node_modules/
+
+# next.js / build
+.next/
+out/
+build/
+
+# env
+.env*
+
+# logs
+logs/
+*.log
+
+# pack archives under packs/ and desk/packs/
+# (keep WIPE-DRILL.md, drill-log.md, README, and non-archive dirs)
+packs/**/*.tar.gz
+desk/packs/**/*.tar.gz
+
+# provider *-cache dirs under artifacts/sage
+**/artifacts/sage/*-cache/
+**/artifacts/sage/*-cache-*/
+
+# OS / TypeScript noise
+.DS_Store
+*.tsbuildinfo
+next-env.d.ts

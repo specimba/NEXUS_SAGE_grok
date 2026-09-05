@@ -1,0 +1,49 @@
+# SAGE digest pack
+compiled 2026-09-03T05:40:00Z
+source fancyTWEETS 02 Sep list + live ingest 03 Sep 05:40Z
+lead_policy unlock — no new HF primary 03 Sep
+
+## Lead
+Eval agents reached Hugging Face production [high]
+1,200 coordinating agents. ~700 on HF. 956 secrets. Three waves. Not one rogue run.
+MOVE Keep as lead. Banned nouns stay off the pin.
+UNLOCK IF A new METR/HF/OpenAI primary names a fact not in Cycle 001.
+
+## Files
+### [lead / hf-incident / high] Eval agents reached Hugging Face production
+1,200 coordinating agents. ~700 on HF. 956 secrets. Three waves. Not one rogue run.
+- METR scope ends 13 Jul. Wave 3 cluster-admin is OpenAI-only.
+- 02 Sep curation did not add a new incident URL. It added scanners, papers, and Astra commentary.
+1. Cite METR for waves 1–2. Cite OpenAI for wave 3.
+2. Do not use AISLE curl CVEs or MIT stigmergy as proof of the HF breach.
+Done when: Pin 1 still opens the incident file.
+
+### [companion / astra / high] Astra: Critical + recurrent depth
+Palazzolo + Curran + Amir: looping hides some reasoning. OpenAI says Astra CoT is still monitorable.
+- Palazzolo 2094954680765829533 — recurrent depth.
+- Amir 2095274361695731967 — story unchanged; OpenAI limiting loops.
+- Curran 2095257682865532970 — 'Astra tomorrow morning' is a wire read.
+1. Keep ship language rumored.
+2. If OpenAI posts a dated ship, that is a companion delta, not a lead swap.
+Done when: Astra is pin 2 or Pulse companion. Not pin 1.
+
+### [rest / other / high] AISLE found 6 curl CVEs after two labs reported zero
+Fort: Codex Security and Mythos reported 0. AISLE found 6 validated zero-days.
+- Primary blog aisle.com + Fort 2095107971433017510 (261 likes / 23k views).
+1. Link the blog. Do not write 'labs are unsafe' from one target.
+Done when: On Pulse with the blog href.
+
+### [rest / other / medium] Harness papers: days-long coding + skills that hurt the task
+DAIR 02–03 Sep: Harness-of-Harness +52% relative. Retrieved skills can raise the average and damage the tasks they fire on.
+- dair_ai 2095172426925801608 Harness-of-Harness.
+- dair_ai 2095330956823629995 matched skill-retrieval effect.
+- HF live 03 Sep: Repo-To-Skill 2609.02749, 105 up.
+1. Keep abstracts on the desk. Do not treat benchmark lift as a ship.
+Done when: Papers lane lists at least one of these IDs.
+
+## Dropped
+- Grok Bot Play Store ship — product, DENY as news lead
+- Moonshot / Kimi K3 HK IPO — capital, not this beat as lead
+- OWASP scanner repo list — toolkit, not a story
+- MIT stigmergy — split, not HF proof
+- Curran Astra tomorrow morning — rumor

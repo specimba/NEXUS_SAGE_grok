@@ -1,0 +1,9 @@
+# NEXUS SAGE — Digest organism every 6h (UTC or CRON_TZ=…)
+# Spec: refs/OPS-HARDEN.md · install: desk/scripts/install-cron.sh
+# From desk/ on this VM. Prefer `command -v bun` over hardcoding when installing.
+
+# Digest cadence (required)
+0 */6 * * * cd /workspace/nexus-sage/desk && /usr/local/bin/bun run digest:tick >> /workspace/nexus-sage/logs/digest-tick.log 2>&1
+
+# Optional companion (off-peak ingest, not required for PASS)
+30 */6 * * * cd /workspace/nexus-sage/desk && /usr/local/bin/bun run ingest >> /workspace/nexus-sage/logs/ingest.log 2>&1

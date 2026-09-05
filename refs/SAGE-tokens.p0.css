@@ -1,0 +1,55 @@
+/* NEXUS SAGE Skin V2 — green phosphor primary (refs/SKIN-V2-PHOSPHOR.md) */
+:root,
+[data-theme='phosphor'] {
+  --phosphor: #33ff66;
+  --phosphor-bright: #7dffa6;
+  --phosphor-dim: #1f6b33;
+  --phosphor-deep: #0a1f12;
+  --phosphor-glow: rgba(51, 255, 102, 0.45);
+
+  /* Status alias — same green family */
+  --signal: #33ff66;
+  --signal-bright: #7dffa6;
+  --signal-dim: #1f6b33;
+  --signal-deep: #12401f;
+  --signal-glow: rgba(51, 255, 102, 0.45);
+
+  --pip-amber: #ffb000;
+  --accent-amber: #ffb000;
+  --accent-dim: #6b4a00;
+  --destructive: #ff2a6d;
+  --destructive-foreground: #1a0008;
+  --cyber: #ff2bd6;
+  --holo: #00e5ff;
+
+  --background: #050a07;
+  --bg-deep: #020403;
+  --card: #0a140f;
+  --border: #1a4d2e;
+  --radius: 0.125rem;
+
+  --foreground: var(--phosphor);
+  --card-foreground: var(--phosphor);
+  --popover: var(--background);
+  --popover-foreground: var(--phosphor);
+  --primary: var(--phosphor);
+  --primary-foreground: #020403;
+  --secondary: var(--phosphor-deep);
+  --secondary-foreground: var(--phosphor-bright);
+  --muted: var(--phosphor-deep);
+  --muted-foreground: var(--phosphor-dim);
+  --accent: var(--phosphor-deep);
+  --accent-foreground: var(--phosphor-bright);
+  --input: var(--border);
+  --ring: var(--phosphor-dim);
+
+  --crt-scanline-opacity: 0.18;
+  color-scheme: dark;
+}
+
+html[data-theme='phosphor'],
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-mono), ui-monospace, monospace;
+}

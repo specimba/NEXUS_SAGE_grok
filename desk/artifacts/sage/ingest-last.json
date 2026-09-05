@@ -1,0 +1,321 @@
+{
+  "schema": 1,
+  "cycle": "003",
+  "lead_id": "hf-incident",
+  "stamped_at": "2026-09-05T18:41:56Z",
+  "stale_hours": 18,
+  "age_check": {
+    "hours": 0.008398055555555556,
+    "stale": false
+  },
+  "hf": {
+    "ok": true,
+    "count": 11,
+    "url": "https://huggingface.co/api/daily_papers"
+  },
+  "arxiv": {
+    "ok": true,
+    "enriched": 8,
+    "shelf": 4,
+    "brief": false,
+    "url": "https://export.arxiv.org/api/query"
+  },
+  "openalex": {
+    "ok": true,
+    "soft_fail": false,
+    "soft_fail_reason": null,
+    "enriched": 4,
+    "secondary": 3,
+    "query": "LLM agent",
+    "mode": "search",
+    "from_cache": false,
+    "searches": 1,
+    "brief": false,
+    "pulse_lead": false,
+    "papers_enrich_only": true,
+    "url": "https://api.openalex.org/works",
+    "sample": [
+      {
+        "id": "2608.26730",
+        "openalexId": "https://openalex.org/W4304195432",
+        "year": 2022,
+        "doi": "https://doi.org/10.48550/arxiv.2210.03629",
+        "enrichOnly": false
+      },
+      {
+        "id": "W4393160747",
+        "openalexId": "https://openalex.org/W4393160747",
+        "year": 2024,
+        "doi": "https://doi.org/10.1609/aaai.v38i17.29936",
+        "enrichOnly": true
+      },
+      {
+        "id": "W4401545735",
+        "openalexId": "https://openalex.org/W4401545735",
+        "year": 2024,
+        "doi": "https://doi.org/10.1145/3688399",
+        "enrichOnly": true
+      }
+    ]
+  },
+  "crossref": {
+    "ok": true,
+    "soft_fail": false,
+    "soft_fail_reason": null,
+    "enriched": 1,
+    "query": "doi:10.1145/3688399",
+    "mode": "filter",
+    "from_cache": false,
+    "searches": 1,
+    "brief": false,
+    "pulse_lead": false,
+    "papers_enrich_only": true,
+    "url": "https://api.crossref.org/works",
+    "merge_notes": [],
+    "sample": [
+      {
+        "id": "W4401545735",
+        "crossrefDoi": "https://doi.org/10.1145/3688399",
+        "issued": "2025-02-10",
+        "type": "journal-article",
+        "openalexId": "https://openalex.org/W4401545735",
+        "doi": "https://doi.org/10.1145/3688399",
+        "enrichOnly": false
+      }
+    ]
+  },
+  "hn": {
+    "ok": true,
+    "count": 47,
+    "brief": false,
+    "pulse_only": true,
+    "url": "https://hn.algolia.com/api/v1/search",
+    "sample": [
+      {
+        "id": "hn:38309611",
+        "tag": "rest",
+        "score": 5710,
+        "text": "OpenAI's board has fired Sam Altman"
+      },
+      {
+        "id": "hn:35813322",
+        "tag": "rest",
+        "score": 2455,
+        "text": "Google “We have no moat, and neither does OpenAI”"
+      },
+      {
+        "id": "hn:46990729",
+        "tag": "rest",
+        "score": 2346,
+        "text": "An AI agent published a hit piece on me"
+      }
+    ]
+  },
+  "rss": {
+    "ok": true,
+    "count": 48,
+    "shelf": 0,
+    "brief": false,
+    "pulse_only": true,
+    "feeds": [
+      {
+        "lab": "openai",
+        "url": "https://openai.com/news/rss.xml",
+        "count": 12
+      },
+      {
+        "lab": "deepmind",
+        "url": "https://deepmind.google/blog/rss.xml",
+        "count": 12
+      },
+      {
+        "lab": "google-ai",
+        "url": "https://blog.google/technology/ai/rss/",
+        "count": 12
+      },
+      {
+        "lab": "huggingface",
+        "url": "https://huggingface.co/blog/feed.xml",
+        "count": 12
+      }
+    ],
+    "sample": [
+      {
+        "id": "rss:deepmind:2b0379511ea05114",
+        "lab": "deepmind",
+        "tag": "rest",
+        "title": "Introducing WeatherNext 3, our most advanced and accurate global weather AI model",
+        "link": "https://deepmind.google/blog/introducing-weathernext-3-our-most-advanced-and-accurate-global-weather-ai-model/"
+      },
+      {
+        "id": "rss:openai:fc40ddafdd41e0cc",
+        "lab": "openai",
+        "tag": "rest",
+        "title": "Daybreak for Frontline Defenders: $1B to protect essential services",
+        "link": "https://openai.com/index/daybreak-for-frontline-defenders"
+      },
+      {
+        "id": "rss:huggingface:fffbcba03b0b217e",
+        "lab": "huggingface",
+        "tag": "rest",
+        "title": "NeoMME: an efficient Multimodal-native and Multilingual Encoder",
+        "link": "https://huggingface.co/blog/Hcompany/neomme"
+      },
+      {
+        "id": "rss:openai:325e9dcd840a97e9",
+        "lab": "openai",
+        "tag": "companion",
+        "title": "Playco cut manual fixes 50% prototyping games with GPT-6 Astra",
+        "link": "https://openai.com/index/playco-game-prototyping-with-astra"
+      }
+    ]
+  },
+  "rss_security": {
+    "ok": true,
+    "count": 25,
+    "shelf": 0,
+    "brief": false,
+    "pulse_only": true,
+    "digest_ref_ok": true,
+    "feeds": [
+      {
+        "lab": "trailofbits",
+        "url": "https://blog.trailofbits.com/feed/",
+        "count": 12
+      },
+      {
+        "lab": "fox-it",
+        "url": "https://blog.fox-it.com/feed/",
+        "count": 10
+      },
+      {
+        "lab": "projectzero",
+        "url": "https://projectzero.google/feed.xml",
+        "count": 3
+      }
+    ],
+    "sample": [
+      {
+        "id": "rss-sec:trailofbits:8061813586c580cf",
+        "lab": "trailofbits",
+        "tag": "rest",
+        "title": "VMs won't contain cyber-capable agents",
+        "link": "https://blog.trailofbits.com/2026/08/26/vms-wont-contain-cyber-capable-agents/"
+      },
+      {
+        "id": "rss-sec:trailofbits:613defb54efdb71f",
+        "lab": "trailofbits",
+        "tag": "rest",
+        "title": "State divergence enables unauthorized access",
+        "link": "https://blog.trailofbits.com/2026/08/25/state-divergence-enables-unauthorized-access/"
+      },
+      {
+        "id": "rss-sec:trailofbits:9c3475e7851dc7c0",
+        "lab": "trailofbits",
+        "tag": "rest",
+        "title": "How Trail of Bits helps verify the integrity of your Signal chats",
+        "link": "https://blog.trailofbits.com/2026/08/11/how-trail-of-bits-helps-verify-the-integrity-of-your-signal-chats/"
+      },
+      {
+        "id": "rss-sec:trailofbits:1f606ef577cecfb8",
+        "lab": "trailofbits",
+        "tag": "rest",
+        "title": "A few notes on AWS Nitro Enclaves: KMS integration",
+        "link": "https://blog.trailofbits.com/2026/08/05/a-few-notes-on-aws-nitro-enclaves-kms-integration/"
+      }
+    ]
+  },
+  "x": {
+    "fetched": 0,
+    "skipped": true,
+    "disabled": true,
+    "handles": 17,
+    "semantic": 6,
+    "plug_in": "Free providers only — no X_BEARER_TOKEN / api.x.com / Zapier. Watchlist is curation (buildHandleQueries + SEMANTIC_CLASSES plan-only). Live ingest: HF daily_papers + arXiv Atom enrich + HN Algolia Pulse + lab RSS + security RSS + GitHub unauth shelf + toolkit shelf. See refs/FREE-PROVIDERS.md."
+  },
+  "github": {
+    "ok": true,
+    "soft_fail": false,
+    "soft_fail_reason": null,
+    "query": "OWASP LLM",
+    "shelf": 2,
+    "from_cache": false,
+    "searches": 1,
+    "brief": false,
+    "pulse_lead": false,
+    "url": "https://api.github.com/search/repositories",
+    "sample": [
+      {
+        "label": "aiagentmackenzie-lang/NeuralGuard-AI-Firewall",
+        "href": "https://github.com/aiagentmackenzie-lang/NeuralGuard-AI-Firewall"
+      },
+      {
+        "label": "vwad.owasp.org",
+        "href": "https://vwad.owasp.org/app/injectarena/"
+      }
+    ]
+  },
+  "shelf": {
+    "count": 18,
+    "brief": false
+  },
+  "wikidata": {
+    "ok": true,
+    "soft_fail": false,
+    "soft_fail_reason": null,
+    "seeds": [
+      "JFrog",
+      "Trail of Bits",
+      "stigmergy"
+    ],
+    "searches": 3,
+    "from_cache": false,
+    "brief": false,
+    "pulse_lead": false,
+    "deny_grounding_only": true,
+    "url": "https://www.wikidata.org/w/api.php",
+    "hints": [
+      {
+        "seed": "JFrog",
+        "qid": "Q98608948",
+        "label": "JFrog Ltd",
+        "description": "Software company",
+        "status": "matched",
+        "source": "wikidata",
+        "briefEligible": false,
+        "pulseLeadEligible": false,
+        "denyGroundingOnly": true
+      },
+      {
+        "seed": "Trail of Bits",
+        "qid": null,
+        "label": null,
+        "description": null,
+        "status": "unresolved",
+        "source": "wikidata",
+        "briefEligible": false,
+        "pulseLeadEligible": false,
+        "denyGroundingOnly": true
+      },
+      {
+        "seed": "stigmergy",
+        "qid": "Q2141158",
+        "label": "stigmergy",
+        "description": "mechanism of indirect coordination, through the environment, between agents or actions",
+        "status": "matched",
+        "source": "wikidata",
+        "briefEligible": false,
+        "pulseLeadEligible": false,
+        "denyGroundingOnly": true
+      }
+    ]
+  },
+  "locks": {
+    "cycle": "003",
+    "lead": "hf-incident",
+    "no_zapier": true,
+    "no_paid_x": true,
+    "green_token": "--phosphor",
+    "stale_class": ".sage-stale"
+  }
+}
