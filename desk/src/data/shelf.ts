@@ -22,6 +22,7 @@ export const SHELF: ShelfItem[] = [
   { href: "https://arxiv.org/abs/2609.04197", label: "arxiv.org/abs/2609.04197", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2609.04194", label: "arxiv.org/abs/2609.04194", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2609.04190", label: "arxiv.org/abs/2609.04190", reason: "arxiv-shelf" as const },
-  { href: "https://github.com/aiagentmackenzie-lang/NeuralGuard-AI-Firewall", label: "aiagentmackenzie-lang/NeuralGuard-AI-Firewall", reason: "github-search-shelf" as const },
-  { href: "https://vwad.owasp.org/app/injectarena/", label: "vwad.owasp.org", reason: "github-search-shelf" as const },
+  { href: "https://github.com/hyperlight-dev/hyperagent", label: "hyperlight-dev/hyperagent", reason: "github-search-shelf" as const },
+  { href: "https://github.com/controlplaneio/sandbox-probe", label: "controlplaneio/sandbox-probe", reason: "github-search-shelf" as const },
+  { href: "https://github.com/jkelly-dev1/agent-sandbox-escape", label: "jkelly-dev1/agent-sandbox-escape", reason: "github-search-shelf" as const },
 ];

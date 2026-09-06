@@ -16,7 +16,7 @@ export type DigestItem = {
   refs: { label: string; href: string; role: "primary" | "support" | "wire" }[];
 };
 
-export const PACK_AT = "2026-09-05T18:37:58.891Z";
+export const PACK_AT = "2026-09-06T18:56:10.743Z";
 export const PACK_SOURCE = "fancyTWEETS 02 Sep list + live ingest 03 Sep 05:40Z";
 
 export const DIGEST_ITEMS: DigestItem[] = [
