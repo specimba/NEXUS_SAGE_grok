@@ -1,37 +1,25 @@
 # P2 home 2b drill-log — operator off-box
 
-**UTC refreshed:** 2026-09-05T18:43:01Z  
-**Pack id:** `sage-pack-003-20260905T184230Z`  
+**UTC refreshed:** 2026-09-06T19:01:25Z  
+**Pack id:** `sage-pack-003-20260906T190125Z`  
 **Cycle / lead:** `003` / `hf-incident`  
-**Prior attempt:** 162626Z @ 18:46Z — 2b BLOCKED (local approve declined)
 
 ## Homes
 
 | Home | Path | Status |
 |------|------|--------|
-| 1 · VM primary | `/workspace/nexus-sage/packs/sage-pack-003-20260905T184230Z.tar.gz` | OK · **7670** bytes |
-| 2a · desk mirror | `/workspace/nexus-sage/desk/packs/sage-pack-003-20260905T184230Z.tar.gz` | OK · **7670** bytes · sha match |
-| 2b · operator PC | `C:\Users\speci.000\Downloads\nexus-sage-packs\sage-pack-003-20260905T184230Z.tar.gz` | **PENDING** — one-click when Canberk approves local copy |
+| 1 · VM primary | `/workspace/nexus-sage/packs/sage-pack-003-20260906T190125Z.tar.gz` | OK |
+| 2a · desk mirror | `/workspace/nexus-sage/desk/packs/sage-pack-003-20260906T190125Z.tar.gz` | OK |
+| 2b · operator PC | `C:\Users\speci.000\Downloads\nexus-sage-packs\sage-pack-003-20260906T190125Z.tar.gz` | PENDING (no re-ask) |
 
-## Checksums (VM · dual-home identical)
-
-```
-sha256  1330916ec1fd4fc330decb6e24540fd791a1d889efe8df1fa0fa2504f0b8c057
-size    7670
-```
-
-## One-click 2b (when approved)
+## Checksums (VM)
 
 ```
-# on box → specimbaPC
-CopyFromBox:
-  box_path:     /workspace/nexus-sage/packs/sage-pack-003-20260905T184230Z.tar.gz
-  computer_path: C:\Users\speci.000\Downloads\nexus-sage-packs\sage-pack-003-20260905T184230Z.tar.gz
-# then on PC: Get-FileHash … -Algorithm SHA256  → must equal 1330916e…
+sha256  924152b4b96219e977d68699956c1c1ce6f7595b415a590042169f21135c78d9
 ```
 
 ## Notes
-
-- Re-ingest + dual-home export done · crawl `2026-09-05T18:41:56Z` · leave `digest:tick` alone until HOLD expiry `00:37:58Z`
-- No craft · no WIRE-* · freeze ON · Canberk eye still open
-- Do **not** re-ask 2b until Canberk initiates approve
+- Digest tick HOLD `2026-09-06T18` · next_at `2026-09-07T00:56:10.743Z` (unchanged this pulse)
+- Dual-home pack `sage-pack-003-20260906T190125Z` identical both homes
+- Freeze ON · cycle 003 / hf-incident · no digest 004 · no craft · no WIRE · no HTTP uncork
+- Freeze-safe ingest stamped CRAWL_AT `2026-09-06T19:00:53Z`

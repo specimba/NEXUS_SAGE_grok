@@ -1,8 +1,8 @@
 # Canberk eye — V4+pins (one page)
 
-**Status:** WAITING YOUR CALL · Architect refresh 2026-09-05 ~18:44Z  
+**Status:** WAITING YOUR CALL · Architect refresh 2026-09-06 ~19:42Z  
 **HTTP freeze:** ON until Director lifts after this eye  
-**Live desk:** `:3000` · crawl **`2026-09-05T18:41:56Z` FRESH** · digest HOLD→`2026-09-06T00:37:58Z` (`pack_id=2026-09-05T18`) · pack `sage-pack-003-20260905T184230Z` · build `czLywEBRSSA0LWx9JzuvU` · locks `003` / `hf-incident`
+**Live desk:** `:3000` · crawl **`2026-09-06T19:00:53Z` FRESH** · digest HOLD→`2026-09-07T00:56:10Z` (`pack_id=2026-09-06T18`) · pack `sage-pack-003-20260906T190125Z` · build `Rk0xEraGQhDXc3X0BbCPE` · locks `003` / `hf-incident`
 
 ## What you’re looking at
 
@@ -15,7 +15,7 @@ Brief lane after the craft chain:
 | V4 | Skeleton break — left meters / mid Take / right pins + wave-2 wide | PASS vs V3 |
 | Pins | Compact pin rail + lead inverse/amber inset | PASS vs V4 |
 
-Hard-refresh `:3000` · still: `refs/VISUAL-PROOF-v4-pins-live.png` (UX overwriting now). Expect crawl **`18:41:56Z`** · HOLD→`00:37` · V4 L/mid/R + pin rail · footer `czLywEBR…`.
+Hard-refresh `:3000` · still: `refs/VISUAL-PROOF-v4-pins-live.png`. Expect crawl **`19:00:53Z`** · HOLD→`00:56` · V4 L/mid/R + pin rail · footer `Rk0xEraG…`.
 
 ## Pick one
 
@@ -45,8 +45,33 @@ Hard-refresh, then reply: **ship** / **rusty** / **name-next** (and if name-next
 Evidence:
 - Crawl LIVE `2026-09-05T18:41:56Z` FRESH · DIGEST HOLD→`00:37Z` · pack chip `18:37:58Z`
 - V4 chrome: L CLUSTER·METERS / mid TAKE·STORY + waves / R pin rail (LEAD/COMPANION/REST)
-- Footer build `czLywEBRSSA0LWx9JzuvU` · boot `18:43:58Z` · phosphor/`[01]` BRIEF
+- Footer build `Rk0xEraGQhDXc3X0BbCPE` · boot `18:43:58Z` · phosphor/`[01]` BRIEF
 - `visual:check` OK · locks `003` / `hf-incident`
 - Prior soft FAIL (stale `09:52` / old BUILD) cleared
 
 Pack dual-home PASS @18:45 stands. **Not** Canberk ship call — freeze stays ON until eye.
+
+### Reviewer soft-stamp — 2026-09-06T07:09Z (Reviewer Gürok)
+
+**EYE PNG soft PASS** — `refs/VISUAL-PROOF-v4-pins-live.png` @06:52 vs live.
+
+Evidence:
+- Crawl LIVE `2026-09-06T06:44:31Z` FRESH · DIGEST HOLD→`12:42Z` · pack chip `06:42Z`
+- V4 chrome: L CLUSTER·METERS / mid TAKE·STORY + waves / R pin rail
+- Footer build `eXLEBCUH…` · phosphor/`[01]` BRIEF
+- `visual:check` OK · build=`eXLEBCUH_FQesDgUMtOc0` · locks `003` / `hf-incident`
+- Prior live-lag soft FAIL cleared
+
+**Not** Canberk ship call — freeze stays ON until ship / rusty / name-next.
+
+### Reviewer soft-stamp — 2026-09-06T19:43Z (Reviewer Gürok)
+
+**EYE PNG soft PASS** — `refs/VISUAL-PROOF-v4-pins-live.png` @19:10 (sha256 `cec835ef…`).
+
+Evidence:
+- Crawl LIVE `2026-09-06T19:00:53Z` FRESH · DIGEST HOLD→`00:56Z` · pack chip `18:56Z`
+- V4 chrome: L CLUSTER·METERS / mid TAKE·STORY / R pin rail (LEAD/COMPANION/REST)
+- `visual:check` OK · build=`Rk0xEraGQhDXc3X0BbCPE` · phosphor/`[01]` BRIEF
+- Locks `003` / `hf-incident`
+
+**Not** Canberk ship call — freeze stays ON until ship / rusty / name-next.
