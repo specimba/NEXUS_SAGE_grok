@@ -1,9 +1,9 @@
-# Scout — HTTP freeze note (age refresh post A1 dry-run)
+# Scout — HTTP freeze note (Track A standing · WIRE HOLD)
 
 **No new candidate wire pack.** Visual truth > more pipes.
 
 **Freeze for WIRE-*:** still ON until Canberk ranks + Architect APPROVES.  
-**Track A:** A1 dry-run **PASS** · weekday Istanbul cron install in flight · A2/A3 next.  
+**Track A:** A1–A3 **standing** (Istanbul Mon–Fri 09–16 · A2 `0 9` catch-up) · Reviewer CRONTAB PASS · first unattended A2 WROTE still open.  
 **Brief:** SHIP-for-now. Paid X **DENY**. Voice/Digest **PARKED**.  
 **X-free:** `SCOUT-X-FREE-DURABILITY.md` locked — skip-X · Bluesky later only.
 
@@ -25,7 +25,7 @@
 | Digest | HOLD → **`2026-09-07T06:58:41Z`** · `pack_id=2026-09-07T00` · ≈ **5.41h** to DUE |
 | Dual-home | `sage-pack-003-20260907T012948Z` · sha256 `22bb3aac…` · A1/PACK PASS |
 | Soft-fail this stamp | **none** (OpenAlex OK this run — prior 429 pattern still real) |
-| A1 | dry-run PASS · standing weekday cron pending Coder install |
+| A1–A3 | standing crontab PASS · overnight firehose gone · first A2 unattended WROTE pending Mon ~09:00 |
 | Eye | soft PASS · Brief ship-for-now |
 
 ## Ingest counts @ `2026-09-07T01:29:12Z`

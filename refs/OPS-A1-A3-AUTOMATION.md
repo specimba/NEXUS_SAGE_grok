@@ -8,7 +8,7 @@
 
 ## Scout lock-in
 
-`SCOUT-X-FREE-DURABILITY.md`: Skip-X default · mirrors HOLD · paid bearer DENY · Bluesky later only (never Brief lead)
+`SCOUT-X-FREE-DURABILITY.md`: Skip-X default · mirrors HOLD · paid bearer DENY · **Bluesky DENY** (Canberk)
 
 ## A1 — STALE auto-ingest
 
@@ -59,10 +59,43 @@ Done-when proof: one unattended DUE→WROTE→dual-home cycle + Reviewer PACK st
 ## Done when
 
 - [x] A1 dry-run Reviewer PASS → weekday standing cron installed
-- [ ] A2 unattended DUE→WROTE→dual-home + Reviewer PACK PASS *(cron installed; await unattended cycle)*
+- [ ] A2 unattended DUE→WROTE→dual-home + Reviewer PACK PASS (standing `*/6 9-16 * * 1-5` a2:tick · first smoke ~Mon 09:58 Istanbul after HOLD 06:58Z) *(cron installed; await unattended cycle)*
 - [x] A3 install script + OPERATOR.md *(remote push separate)*
-- [ ] Canberk ranks 1–4 before any Bluesky/`WIRE-*`
+- [ ] Canberk ranks 1–4 before any new social/`WIRE-*` · **Bluesky DENY**
 
 ## Not approved yet
 
-Bluesky `searchPosts` · HN/HF deepen beyond existing · Voice/Digest parity · any X-shaped path
+Bluesky (DENY) · HN/HF deepen beyond existing · Voice/Digest parity · any X-shaped path
+
+
+## Standing crontab — 2026-09-07 ~01:36Z (Coder)
+
+```
+CRON_TZ=Europe/Istanbul
+*/30 9-16 * * 1-5  … a1-stale-ingest.mjs   # no FORCE
+*/6  9-16 * * 1-5  … bun run a2:tick       # DUE→WROTE→dual-home
+```
+
+Overnight `*/6` removed. A2 first unattended WROTE gates Reviewer when HOLD fires inside window.
+
+### Reviewer stamp — 2026-09-07T01:37Z (Reviewer Gürok)
+
+**A1–A3 CRONTAB PASS** (standing).
+
+Verified `crontab -l`:
+```
+CRON_TZ=Europe/Istanbul
+*/30 9-16 * * 1-5  … a1-stale-ingest.mjs   # no FORCE
+*/6  9-16 * * 1-5  … bun run a2:tick
+0    9    * * 1-5  … bun run a2:tick       # window-open catch-up
+```
+
+Gates:
+- [x] No overnight `*/6 * * * *` firehose
+- [x] Weekday only `1-5` · daytime `9-16` Istanbul
+- [x] A1 no FORCE on standing line
+- [x] A2 window-open `0 9` covers HOLD `06:58Z` unpaid past open
+- [x] `cron` daemon up · scripts + `a2:tick` present
+
+**Still open:** first unattended A2 WROTE → PACK stamp (expect Mon ~09:00 catch-up or ~09:58).
+**WIRE HOLD** until Canberk ranks.
