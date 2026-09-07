@@ -7,7 +7,7 @@
 | **Brief UI** | **SHIPPED** (V4+pins). Soft stills ≈ VM resolution — not a Skin miss. |
 | **Automation** | **A1–A3 STANDING** — Istanbul Mon–Fri 09–16: STALE ingest + digest DUE export + window-open catch-up. Overnight firehose dead. |
 | **Next A2 proof** | First unattended WROTE ~Mon 09:00 Istanbul (HOLD that sat overnight). |
-| **News / X** | Paid X **DENY**. **Bluesky DENY** (Canberk). Free-pulse = HN/HF/RSS/OpenAlex/GitHub only — WAIT rank + `WIRE-*`. |
+| **News / X** | Paid X API **DENY**. **Bluesky DENY**. **X session taste** (VM logged-in bookmarks/likes/feed) = candidate — `WIRE-X-SESSION-TASTE.md`. Free-pulse HN/HF/RSS still waiting rank. |
 | **Voice/Digest craft** | **PARKED** |
 | **Wipe home** | Remote `specimba/NEXUS_SAGE_grok` @ `v0.1.0` / `main` |
 | **Locks** | `003` · `hf-incident` · Sol≠Astra · free only · no `004` |
@@ -111,3 +111,10 @@ Skip: X plugin · Bluesky (DENY) · scrape farms.
 
 ## Free-pulse deepen
 Contract cut: `refs/FREE-PULSE-DEEPEN.md` (waiting Canberk rank 1–4).
+
+
+## Tooling dive — how it ended (2026-09-07)
+
+**Delivered:** live plugin audit + wishlist in this file (Architect/Coder/UX/Scout/Reviewer ×3).  
+**Waiting Canberk clicks:** Mobbin auth · Tavily repair · Notion auth · Playwright install · ImageMagick apt.  
+**Not blocked:** desk runs on bun · Chrome · GitHub · Chrome DevTools already green.

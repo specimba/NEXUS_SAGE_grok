@@ -48,3 +48,8 @@ Voice/Digest L·mid·R · A1–A3 (already standing) · Brief craft
 ## Architect hold
 
 No implement signal. This file is the **pre-APPROVE cut** waiting Canberk rank.
+
+
+## X session taste (Canberk correction 2026-09-07)
+
+Paid API DENY ≠ no X. See `refs/WIRE-X-SESSION-TASTE.md` — **box browser, logged-in profile** (bookmarks/likes/feed) as taste signal. Still never Brief lead. Not ranked into P1–P6 until Director GO.
