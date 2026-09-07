@@ -98,3 +98,18 @@ Evidence:
 Eye PNG soft PASS @19:43Z (`VISUAL-PROOF-v4-pins-live.png` @19:10 · sha `cec835ef…`) vs crawl `19:00:53Z` / build `Rk0xEraG…`.
 
 **Freeze stays ON.**
+
+### Reviewer stamp — 2026-09-07T01:00Z (Reviewer Gürok)
+
+**PACK-DUAL-HOME PASS**
+
+Evidence:
+- Pack `sage-pack-003-20260907T005844Z.tar.gz`
+  - Primary: `/workspace/nexus-sage/packs/sage-pack-003-20260907T005844Z.tar.gz` (7675 B)
+  - Desk: `/workspace/nexus-sage/desk/packs/sage-pack-003-20260907T005844Z.tar.gz` (7675 B)
+  - sha256 (identical): `80c0659a0fb3d2b324c12726531e7f5444792fbb012e611eb10b78122618356d`
+- Digest WROTE `pack_id=2026-09-07T00` · HOLD→`06:58:41Z`
+- `visual:check` OK · brand-check OK · crawl `19:00:53Z` (~6.0h FRESH) · build `Rk0xEraGQhDXc3X0BbCPE`
+- Locks `003` / `hf-incident`
+
+**Freeze stays ON.**
