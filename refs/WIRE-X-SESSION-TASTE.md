@@ -68,3 +68,10 @@ No implement until Director GO. Prefer **after** first A2 unattended WROTE (~09:
 | **Land** | **HOLD until A2 first WROTE PACK PASS** — then Coder `x-session-taste` dry-run |
 
 Director GO order honored: A2 proof first · then this wire.
+
+## Soft-fail skip stamp — Architect GO 2026-09-07 ~07:04Z
+
+**YES** — land `x-taste-last.json` + ingest soft-fail path for `login_wall` / empty → **skipped**, desk boots, `briefEligible:false`.  
+Full scrape still **HOLD** until Canberk X session live + dry-run PASS.  
+No cookie dump · no paid API · no X writes · no Brief lead.  
+`FREE-PULSE-DEEPEN` + HTTP freeze still wait Canberk rank 1–4.

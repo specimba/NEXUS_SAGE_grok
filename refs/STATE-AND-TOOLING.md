@@ -118,3 +118,6 @@ Contract cut: `refs/FREE-PULSE-DEEPEN.md` (waiting Canberk rank 1–4).
 **Delivered:** live plugin audit + wishlist in this file (Architect/Coder/UX/Scout/Reviewer ×3).  
 **Waiting Canberk clicks:** Mobbin auth · Tavily repair · Notion auth · Playwright install · ImageMagick apt.  
 **Not blocked:** desk runs on bun · Chrome · GitHub · Chrome DevTools already green.
+
+## A4 soft-fail meters
+Contract: `refs/OPS-A4-SOFT-FAIL-METERS.md` (APPROVE-ready · no land).

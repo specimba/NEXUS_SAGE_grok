@@ -24,9 +24,9 @@
 
 **Soft-fails:** x-session-taste `login_wall` skip-stamped (taste empty · desk boots · briefEligible:false) — see ingest-last / X-SESSION-TASTE-DRY-RUN.md
 
-### Reviewer stamp — pending
+### Reviewer confirm — 2026-09-07T07:07Z
 
-_(cleared — A2 unattended PASS 2026-09-07T07:00Z · pack `065851Z`; see stamp below)_
+**Header pending CLEARED** — A2 PASS @07:00 (`065851Z`). Soft-fail: x-session-taste `login_wall` skip-stamped (desk boots · Brief false).
 
 
 ### Reviewer confirm — 2026-09-07T02:07Z
