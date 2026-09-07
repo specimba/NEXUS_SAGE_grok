@@ -7,7 +7,7 @@
 | **Brief UI** | **SHIPPED** (V4+pins). Soft stills ≈ VM resolution — not a Skin miss. |
 | **Automation** | **A1–A3 STANDING** — Istanbul Mon–Fri 09–16: STALE ingest + digest DUE export + window-open catch-up. Overnight firehose dead. |
 | **Next A2 proof** | First unattended WROTE ~Mon 09:00 Istanbul (HOLD that sat overnight). |
-| **News / X** | Paid X **DENY**. Free-pulse / Bluesky **WAIT** Canberk rank 1–4 + Architect `WIRE-*`. |
+| **News / X** | Paid X **DENY**. **Bluesky DENY** (Canberk). Free-pulse = HN/HF/RSS/OpenAlex/GitHub only — WAIT rank + `WIRE-*`. |
 | **Voice/Digest craft** | **PARKED** |
 | **Wipe home** | Remote `specimba/NEXUS_SAGE_grok` @ `v0.1.0` / `main` |
 | **Locks** | `003` · `hf-incident` · Sol≠Astra · free only · no `004` |
@@ -68,3 +68,11 @@ GitHub · Chrome DevTools · Context7 · Lovable · Aikido · Azure · Gmail · 
 
 **Skip / later:** X plugin (DENY) · AWS without creds · Prisma-Local until `effect` fixed · Browserbase until path bug fixed.
 
+
+## Architect ×3 must-haves
+
+1. **Notion** auth [`404`](grokbot://app/v1/plugin/add?id=404) — durable specs / freeze notes / WIRE cuts off the wipe path
+2. **Context7** (already green) + keep it — library truth for Next/Tailwind when cutting contracts
+3. **ImageMagick** apt — Architect presentation stills (done/next boards) without guessing
+
+**Veto:** Bluesky (any form) · paid X · TrendsMCP keys as “free”

@@ -71,3 +71,8 @@ Architect: prefer **our stack + Bluesky/Mastodon/HN** over TrendsMCP key or paid
 Director order + Scout verdict accepted.  
 **APPROVED:** `OPS-A1-A3-AUTOMATION.md` (A1 first).  
 **NOT APPROVED:** any new `WIRE-*` until Canberk ranks 1–4.
+
+
+## Architect veto — 2026-09-07
+
+**Bluesky = DENY** (Canberk: not a respected AI-news surface / political). Do not wire. Free pulse = HN · HF · Lab/Sec RSS · OpenAlex · GitHub shelf only. Paid X still DENY.

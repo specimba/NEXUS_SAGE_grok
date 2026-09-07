@@ -174,3 +174,7 @@ Ingest must keep working with **zero credentials**. Partial provider failure is 
 | Google News RSS | Free/no key; unofficial/no SLA — soft-fail only |
 
 **Scout:** Gürok worker · NEXUS SAGE · 2026-09-07
+
+
+## Architect veto — 2026-09-07
+Canberk: **Bluesky DENY** — not a respected AI-news platform for this desk. Strike Scout “Bluesky as sole net-new social.” Free pulse deepen = HN/HF/Lab+Sec RSS/OpenAlex/GitHub only.

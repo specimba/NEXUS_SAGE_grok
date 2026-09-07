@@ -20,13 +20,13 @@
 
 **Commands:** `bun run pack:export` · `bun run pack:import -- <path>` · `bun run digest:tick` · `bun run ingest` · `FORCE=1 bun scripts/a1-stale-ingest.mjs`
 
-**A1 note:** FORCE=1 dry-run · pre-age ~6.47h · Mon–Fri daytime only (~09:00–17:00 VM/local intent) — no overnight @every firehose; standing cron AFTER Reviewer PASS  
+**A1 note:** FORCE=1 dry-run PASS · standing Istanbul weekday cron installed (A1 `*/30 9-16 1-5` no FORCE · A2 `*/6` + `0 9` catch-up) — no overnight firehose  
 
 **Soft-fails:** none
 
 ### Reviewer stamp — pending
 
-(Factual dual-home above from Coder A1 auto-ingest. Reviewer owns PASS/FAIL stamp.)
+_(cleared — see stamp 2026-09-07T01:33Z below)_
 
 
 ### Reviewer stamp — 2026-09-06T06:46Z (Reviewer Gürok)
