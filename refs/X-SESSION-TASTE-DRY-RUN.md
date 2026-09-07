@@ -13,3 +13,24 @@
 6. **PASS** — Allowlist filtering was not bypassed; no posts were available to evaluate.
 7. **PASS** — Exclusion filtering was not bypassed; no posts were available to evaluate.
 8. **PASS** — No Brief pins were invented; `briefEligible` and `pulseLeadEligible` remain false.
+
+### Reviewer stamp — 2026-09-07T07:05Z (Reviewer Gürok)
+
+**X-SESSION TASTE DRY-RUN — SOFT FAIL** (session dead).
+
+| Gate | Result |
+|------|--------|
+| Hygiene 1–4,6–8 (no API / no cookie→token / no writes / no Brief) | **PASS** |
+| Taste capture (bookmarks/likes/feed readable) | **FAIL** — login wall · kept 0 |
+
+Evidence: `x-taste-last.json` scrubbed · `briefEligible:false` · `pulseLeadEligible:false` · `paidApi:false` · `skipped.login_wall=true` · no credential leak strings.
+
+**Land HOLD.** Re-run only after Canberk signs into X on Agent Computer Chrome and says **done**. Then Coder dry-run #2 → Reviewer PASS before land.
+
+
+## Skip stamp land — 2026-09-07 (Architect/Director GO)
+
+- `x-taste-last.json`: `skip_stamp=true` · `soft_fail_reason=login_wall` · `desk_boots=true` · `briefEligible=false`
+- `ingest-last.json`: `x_session_taste` soft-fail block added (crawl stamp untouched)
+- Full scrape: **HOLD** until Canberk X login **done** on Agent Computer Chrome
+- Land taste cards: **HOLD** until dry-run PASS with kept &gt; 0

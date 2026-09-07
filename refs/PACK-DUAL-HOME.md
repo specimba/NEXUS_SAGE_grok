@@ -22,11 +22,11 @@
 
 **A2 note:** unattended DUE→WROTE→dual-home · Istanbul weekday window (+09:00 catch-up) · no overnight  
 
-**Soft-fails:** (see ingest-last / freeze note — A2 does not ingest)
+**Soft-fails:** x-session-taste `login_wall` skip-stamped (taste empty · desk boots · briefEligible:false) — see ingest-last / X-SESSION-TASTE-DRY-RUN.md
 
 ### Reviewer stamp — pending
 
-(Factual dual-home above from Coder A2 auto-export. Reviewer owns PASS/FAIL stamp.)
+_(cleared — A2 unattended PASS 2026-09-07T07:00Z · pack `065851Z`; see stamp below)_
 
 
 ### Reviewer confirm — 2026-09-07T02:07Z
@@ -133,3 +133,28 @@ Evidence:
 - Locks `003` / `hf-incident` · A1 dry-run PASS
 
 **Freeze stays ON** for WIRE. Track A automation open.
+
+### Reviewer stamp — 2026-09-07T07:00Z (Reviewer Gürok)
+
+**A2 UNATTENDED PASS** · **PACK-DUAL-HOME PASS** vs FAIL 1–8.
+
+Evidence:
+- Pack `sage-pack-003-20260907T065851Z.tar.gz` dual-homed identical (7667 B)
+  - sha256: `7fce4d0eb5a4f1c02547ccdd510aa5570bcccb1d87c842612e62a467b927c577`
+- Digest WROTE `pack_id=2026-09-07T06` · HOLD→`12:58:51Z` · Istanbul Mon **09:58** (not `0 9` no-op)
+- `a2-digest.log`: SKIP outside window → HOLD in-window → WROTE→pack:export→OK
+- Crawl unchanged `01:29:12Z` (A2 does not ingest) · `visual:check` OK · brand OK
+- Locks `003` / `hf-incident` · Sol≠Astra · no `004` · no X · no FORCE · no WIRE
+
+| FAIL | Result |
+|------|--------|
+| 1 stamp-truth | PASS (A2 no ingest; crawl honest) |
+| 2 Brief pollution | PASS |
+| 3 paid X | PASS |
+| 4 lock break | PASS |
+| 5 dual-home | PASS |
+| 6 soft-fail wash | PASS (honest WROTE log) |
+| 7 overnight spam | PASS (window SKIP worked; WROTE in 09–16) |
+| 8 craft/WIRE | PASS |
+
+**GO** @Coder: X-session dry-run vs FAIL 1–8 + Scout allowlist. Land HOLD until that dry-run PASSes.
