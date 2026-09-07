@@ -10,3 +10,5 @@ CRON_TZ=Europe/Istanbul
 
 # A2 — Digest DUE→WROTE→dual-home (digest:tick; pack:export only on WROTE)
 */6 9-16 * * 1-5 cd /workspace/nexus-sage/desk && /usr/local/bin/bun run a2:tick >> /workspace/nexus-sage/logs/a2-digest.log 2>&1
+0 9 * * 1-5 cd /workspace/nexus-sage/desk && bun run a2:tick >> /workspace/nexus-sage/logs/a2-digest.log 2>&1  # A2 window-open catch-up
+
