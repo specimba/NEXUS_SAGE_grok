@@ -6,7 +6,7 @@
 - crontab standing (A1/A2/`0 9`) · `cron` daemon up
 - `bun run a2:tick` → in-process **Istanbul window guard** (SKIP outside 09–16 unless `A2_FORCE_WINDOW=1`)
 - On WROTE: `pack:export` dual-home + factual `PACK-DUAL-HOME.md` + `packs/drill-log.md` (+ desk mirror)
-- Digest HOLD `pack_id=2026-09-07T00` → `next_at=2026-09-07T06:58:41Z` → first catch-up **Mon ~09:00 Istanbul** (`0 9` line)
+- Digest HOLD `pack_id=2026-09-07T00` → `next_at=2026-09-07T06:58:41Z` (**09:58 Istanbul**). `0 9` catch-up will **no-op** (still HOLD). First A2 WROTE ≈**09:58–10:00 Istanbul** via `*/6` after `next_at`.
 - No FORCE overnight · no WIRE · Bluesky/X DENY
 
 ## Soft finding (fixed in-script)
@@ -37,3 +37,20 @@ git push origin main
 3. dual-home sha identical  
 4. PACK header pending → Reviewer PASS  
 5. `logs/a2-digest.log` shows WROTE→pack:export→OK  
+
+### Reviewer pre-lock — 2026-09-07T03:14Z (Reviewer Gürok)
+
+**A2 unattended checklist PRE-LOCKED** vs FAIL 1–8. Armed for PACK stamp after first WROTE (≈09:58–10:00 Istanbul via `*/6`; `0 9` catch-up is not the proof).
+
+| # | FAIL gate | A2 unattended PASS iff |
+|---|-----------|-------------------------|
+| 1 | Stamp-truth lag | A2 does **not** ingest — live crawl may stay `01:29:12Z`; FAIL only if PACK/footer invents a false new crawl or digests without WROTE |
+| 2 | Brief pollution | Brief pins / lead `hf-incident` / cycle `003` unchanged; digest body never becomes Brief lead |
+| 3 | Paid X sneak | No X/Bearer path in `a2:tick` · Bluesky DENY |
+| 4 | Lock break | `sol_ne_astra` · no `004` · Astra-as-HF deny intact on pack import |
+| 5 | Dual-home miss | New `sage-pack-003-*` both homes · sha256 identical · PACK + drill-log headers updated |
+| 6 | Soft-fail wash | Log shows honest HOLD/WROTE/SKIP; no silent empty pack |
+| 7 | Overnight spam | `logs/a2-digest.log` after window guard: SKIP outside Mon–Fri 09–16 (unless catch-up `0 9`); FAIL if DUE unpaid past ≈**10:00 Istanbul** (first `*/6` after `next_at`; 09:00 catch-up alone is not proof) |
+| 8 | Craft/WIRE creep | No Voice/Digest land · no new `WIRE-*` bundled with tick |
+
+**Stamp pack when WROTE lands:** bun brand/`visual:check` green · dual-home sha · PACK header PASS · a2 log WROTE→export→OK · Brief locks hold.

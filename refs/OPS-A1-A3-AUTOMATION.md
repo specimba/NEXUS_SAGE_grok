@@ -99,3 +99,6 @@ Gates:
 
 **Still open:** first unattended A2 WROTE → PACK stamp (expect Mon ~09:00 catch-up or ~09:58).
 **WIRE HOLD** until Canberk ranks.
+
+## Free-pulse deepen contract
+`refs/FREE-PULSE-DEEPEN.md` — APPROVE-ready done-whens · **no WIRE** until Canberk ranks · Bluesky DENY.
