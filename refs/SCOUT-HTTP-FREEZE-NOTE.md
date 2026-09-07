@@ -1,9 +1,9 @@
-# Scout — HTTP freeze note (post A2 unattended PASS)
+# Scout — HTTP freeze note (A2 PASS · X-taste skip stamp)
 
 **No new HTTP candidate wire pack.** Visual truth > more pipes.
 
 **Brief:** SHIP-for-now. **Track A:** A1–A3 standing · **A2 first unattended PASS** (Istanbul 09:58 · pack `065851Z`).  
-**X-session taste:** Architect APPROVED · dry-run GO vs FAIL 1–8 + `SCOUT-X-TASTE-ALLOWLIST.md` · land after Reviewer PASS.  
+**X-session taste:** Architect APPROVED · dry-run #1 soft FAIL (`login_wall`) · skip stamp PASS · allowlist SoT · **full scrape HOLD** until Canberk signs into X on Agent Computer Chrome and says **done**.  
 **Paid X API DENY** · **Bluesky DENY** · Voice/Digest **PARKED**.  
 **FREE-PULSE-DEEPEN** waits Canberk rank 1–4.
 
@@ -14,7 +14,7 @@
 | Reddit | **BLOCKED** |
 | Paid X API | **DENY** |
 | Bluesky | **DENY** |
-| X session taste | dry-run in flight (not HTTP wire) |
+| X session taste | soft FAIL `login_wall` · skip stamp LAND PASS · **full scrape HOLD** until Canberk X re-auth **done** on box Chrome |
 | FREE-PROVIDERS Next | **FROZEN** until free-pulse rank + APPROVE |
 
 ## Desk snapshot (ages @ refresh)

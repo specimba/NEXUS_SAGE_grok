@@ -56,3 +56,10 @@ Pulse lane (existing)
 ## Non-goals
 
 Hex churn now · Voice/Digest · inventing Brief pins · cookie jars in UI · overnight taste ticker
+
+## Empty / skip chrome (landed 2026-09-07)
+
+Pulse section **Taste · operator X-session** below Lab RSS:
+- `login_wall` / skipped → quiet `pin-card-quiet` panel · `sage-deny` reason · kept 0 · `briefEligible=false` · land HOLD
+- Items path ready (cap 8) but full scrape still HOLD until Canberk X **done**
+- No hex churn · Skin V2 classes only

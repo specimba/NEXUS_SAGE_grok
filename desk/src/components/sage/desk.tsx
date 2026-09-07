@@ -5,6 +5,7 @@ import { CRAWL, CRAWL_AT } from "@/data/x-crawl";
 import { HN_PULSE, HN_PULSE_AT } from "@/data/hn-pulse";
 import { RSS_LABS, RSS_LABS_AT } from "@/data/rss-labs";
 import { RSS_SECURITY, RSS_SECURITY_AT } from "@/data/rss-security";
+import { X_TASTE } from "@/data/x-taste";
 import { DIGEST_ITEMS, DROPPED, PACK_AT, PACK_SOURCE } from "@/data/digest-pack";
 import { DIGEST_CADENCE } from "@/data/digest-cadence";
 import { PAPERS } from "@/data/papers";
@@ -464,6 +465,64 @@ function Pulse() {
           </ul>
         )}
       </section>
+
+      <section className="mt-4" aria-label="Operator X-session taste">
+        <div className="sage-panel sage-ticks mb-3 flex flex-wrap items-center justify-between gap-2 px-3 py-2">
+          <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
+            Taste · operator X-session · pulse only
+          </p>
+          <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
+            never Brief · never lead · paid API DENY
+          </p>
+        </div>
+        {X_TASTE.skipped || X_TASTE.items.length === 0 ? (
+          <div className="sage-panel sage-ticks pin-card-quiet px-3 py-2.5">
+            <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
+              shelf · skip
+              {X_TASTE.soft_fail && X_TASTE.soft_fail_reason ? (
+                <>
+                  {" "}
+                  · <span className="sage-deny">{X_TASTE.soft_fail_reason}</span>
+                </>
+              ) : null}
+            </p>
+            <p className="mt-1 text-sm text-muted">
+              Session quiet / login wall — taste empty. Sign into X on Agent Computer Chrome, then re-run dry-run.
+              Cards stay below HN/RSS; never Brief lead.
+            </p>
+            <p className="mt-1.5 font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
+              kept {X_TASTE.counts.kept}/{X_TASTE.counts.seen} · briefEligible=false · land {X_TASTE.land}
+              {X_TASTE.stamped_at ? <> · stamp {X_TASTE.stamped_at}</> : null}
+            </p>
+          </div>
+        ) : (
+          <ul className="grid gap-2 md:grid-cols-2">
+            {X_TASTE.items.slice(0, 8).map((it) => (
+              <li key={it.id} className="sage-panel sage-ticks pin-card-quiet px-3 py-2">
+                <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
+                  taste · {it.surface}
+                  {it.handle ? <> · @{it.handle}</> : null}
+                </p>
+                <p className="mt-1 line-clamp-2 text-sm text-phosphor">{it.text}</p>
+                <p className="mt-1 font-mono text-kicker uppercase tracking-kicker text-subtle">
+                  briefEligible=false · pulseLeadEligible=false
+                </p>
+                {it.url ? (
+                  <a
+                    href={it.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-2 inline-flex h-8 items-center font-mono text-kicker uppercase tracking-kicker sage-signal"
+                  >
+                    open
+                  </a>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+
       <section className="mt-4" aria-label="Security lab RSS">
         <div className="sage-panel sage-ticks overflow-hidden mb-2">
           <div className="sage-panel-header">&gt; Security RSS · ToB / Fox-IT / PZ · pulse only</div>

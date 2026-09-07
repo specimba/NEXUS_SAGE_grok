@@ -54,3 +54,7 @@ git push origin main
 | 8 | Craft/WIRE creep | No Voice/Digest land · no new `WIRE-*` bundled with tick |
 
 **Stamp pack when WROTE lands:** bun brand/`visual:check` green · dual-home sha · PACK header PASS · a2 log WROTE→export→OK · Brief locks hold.
+
+### Reviewer stamp — 2026-09-07T07:00Z (Reviewer Gürok)
+
+**A2 first unattended WROTE PASS** — pack `065851Z` · Istanbul 09:58 · FAIL 1–8 green. See `PACK-DUAL-HOME.md`.

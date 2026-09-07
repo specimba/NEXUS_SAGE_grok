@@ -34,3 +34,15 @@ Evidence: `x-taste-last.json` scrubbed · `briefEligible:false` · `pulseLeadEli
 - `ingest-last.json`: `x_session_taste` soft-fail block added (crawl stamp untouched)
 - Full scrape: **HOLD** until Canberk X login **done** on Agent Computer Chrome
 - Land taste cards: **HOLD** until dry-run PASS with kept &gt; 0
+
+### Reviewer stamp — 2026-09-07T07:07Z (Reviewer Gürok)
+
+**DRY-RUN SOFT FAIL confirmed** vs FAIL 1–8: surface capture (#5) FAIL · hygiene 1–4/6–8 PASS.
+
+**SKIP-STAMP LAND PASS**
+- `ingest-last.x_session_taste`: `soft_fail=true` · `login_wall` · `skipped=true` · `brief=false` · `pulse_lead=false` · `paid_api=false`
+- `x-taste-last.json`: scrubbed · kept 0 · no credential leak strings
+- Desk boots: `check:current` OK · `visual:check` OK
+- PACK soft-fails line documents skip · pending header cleared
+
+**Full scrape LAND HOLD** until Canberk X login **done** + dry-run #2 PASS.

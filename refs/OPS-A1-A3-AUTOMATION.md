@@ -59,7 +59,7 @@ Done-when proof: one unattended DUE→WROTE→dual-home cycle + Reviewer PACK st
 ## Done when
 
 - [x] A1 dry-run Reviewer PASS → weekday standing cron installed
-- [ ] A2 unattended DUE→WROTE→dual-home + Reviewer PACK PASS (standing `*/6 9-16 * * 1-5` a2:tick · first smoke ~Mon 09:58 Istanbul after HOLD 06:58Z) *(cron installed; await unattended cycle)*
+- [x] A2 unattended DUE→WROTE→dual-home + Reviewer PACK PASS — `065851Z` @ 2026-09-07T07:00Z (Istanbul 09:58)
 - [x] A3 install script + OPERATOR.md *(remote push separate)*
 - [ ] Canberk ranks 1–4 before any new social/`WIRE-*` · **Bluesky DENY**
 
