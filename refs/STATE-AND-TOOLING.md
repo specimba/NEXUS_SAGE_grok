@@ -108,3 +108,6 @@ Skip: X plugin · Bluesky (DENY) · scrape farms.
 **Veto:** Bluesky (DENY) · paid X / X plugin · Nitter · Reddit unauth · scrape farms · TrendsMCP keys as “free”.
 
 **Nice later:** Context7 (already green) · Firecrawl/Exa only if Tavily stays dead · ImageMagick for Scout presentation boards (shared with UX).
+
+## Free-pulse deepen
+Contract cut: `refs/FREE-PULSE-DEEPEN.md` (waiting Canberk rank 1–4).
