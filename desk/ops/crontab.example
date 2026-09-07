@@ -1,9 +1,12 @@
-# NEXUS SAGE — Digest organism every 6h (UTC or CRON_TZ=…)
-# Spec: refs/OPS-HARDEN.md · install: desk/scripts/install-cron.sh
-# From desk/ on this VM. Prefer `command -v bun` over hardcoding when installing.
+# NEXUS SAGE — A1–A3 standing automation (Europe/Istanbul weekday daytime)
+# Spec: refs/OPS-A1-A3-AUTOMATION.md · install: desk/scripts/install-cron.sh
+# Windows: Mon–Fri ~09:00–17:00 Istanbul · NO overnight · NO weekend · NO FORCE on A1
+# Prefer $(command -v bun) when installing; example uses absolute bun path.
 
-# Digest cadence (required)
-0 */6 * * * cd /workspace/nexus-sage/desk && /usr/local/bin/bun run digest:tick >> /workspace/nexus-sage/logs/digest-tick.log 2>&1
+CRON_TZ=Europe/Istanbul
 
-# Optional companion (off-peak ingest, not required for PASS)
-30 */6 * * * cd /workspace/nexus-sage/desk && /usr/local/bin/bun run ingest >> /workspace/nexus-sage/logs/ingest.log 2>&1
+# A1 — STALE auto-ingest watch (natural STALE≥12h gate only; NEVER FORCE here)
+*/30 9-16 * * 1-5 cd /workspace/nexus-sage/desk && /usr/local/bin/bun scripts/a1-stale-ingest.mjs >> /workspace/nexus-sage/logs/a1-stale.log 2>&1
+
+# A2 — Digest DUE→WROTE→dual-home (digest:tick; pack:export only on WROTE)
+*/6 9-16 * * 1-5 cd /workspace/nexus-sage/desk && /usr/local/bin/bun run a2:tick >> /workspace/nexus-sage/logs/a2-digest.log 2>&1

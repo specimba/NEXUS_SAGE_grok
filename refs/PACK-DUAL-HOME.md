@@ -1,28 +1,33 @@
 # Pack dual-home — latest export
 
-**UTC:** 20260906T190125Z  
-**Pack:** `sage-pack-003-20260906T190125Z.tar.gz`
+**UTC:** 20260907T012948Z  
+**Pack:** `sage-pack-003-20260907T012948Z.tar.gz`
 
 | Home | Path |
 |------|------|
-| Primary (VM) | `/workspace/nexus-sage/packs/sage-pack-003-20260906T190125Z.tar.gz` |
-| Desk mirror | `/workspace/nexus-sage/desk/packs/sage-pack-003-20260906T190125Z.tar.gz` |
+| Primary (VM) | `/workspace/nexus-sage/packs/sage-pack-003-20260907T012948Z.tar.gz` |
+| Desk mirror | `/workspace/nexus-sage/desk/packs/sage-pack-003-20260907T012948Z.tar.gz` |
 | Operator | Windows `Downloads\nexus-sage-packs\` or Drive — see `P2-EXPORT-IMPORT.md` |
 
 **Locks:** cycle `003` · lead `hf-incident` · `sol_ne_astra` · no `004` without primary  
 
-**Digest cadence:** last WROTE `pack_id=2026-09-06T18` · HOLD until `next_at=2026-09-07T00:56:10.743Z` (unchanged this pulse)  
+**Digest cadence:** unchanged by A1 (Brief pins / digest tick not mutated)  
 
-**Crawl / ingest:** `2026-09-06T19:00:53Z`  
+**Crawl / ingest:** `2026-09-07T01:29:12Z`  
 
-**sha256 (archive):** `924152b4b96219e977d68699956c1c1ce6f7595b415a590042169f21135c78d9`  
-**manifest sha256:** `9169929973685b6139a3b11719e2f28debdd26255a3b17cc3e05cb787b6ad3c2`  
+**sha256 (archive):** `22bb3aac6bab79975f55dc53d0ec1fdc329cab2b20b587b325066788c22d9001`  
+**manifest sha256:** `2d9deda0d214cd540a38f05dd41668b83f3db4e794a3af6cf9913a6d34280409`  
 
-**Commands:** `bun run pack:export` · `bun run pack:import -- <path>` · `bun run digest:tick` · `bun run visual:check`
+**Commands:** `bun run pack:export` · `bun run pack:import -- <path>` · `bun run digest:tick` · `bun run ingest` · `FORCE=1 bun scripts/a1-stale-ingest.mjs`
+
+**A1 note:** FORCE=1 dry-run · pre-age ~6.47h · Mon–Fri daytime only (~09:00–17:00 VM/local intent) — no overnight @every firehose; standing cron AFTER Reviewer PASS  
+
+**Soft-fails:** none
 
 ### Reviewer stamp — pending
 
-(Factual dual-home above from Coder export after freeze-safe ingest. Reviewer owns PASS/FAIL stamp.)
+(Factual dual-home above from Coder A1 auto-ingest. Reviewer owns PASS/FAIL stamp.)
+
 
 ### Reviewer stamp — 2026-09-06T06:46Z (Reviewer Gürok)
 
@@ -113,3 +118,13 @@ Evidence:
 - Locks `003` / `hf-incident`
 
 **Freeze stays ON.**
+
+### Reviewer stamp — 2026-09-07T01:33Z (Reviewer Gürok)
+
+**PACK-DUAL-HOME PASS** (A1 dry-run pack).
+
+- Pack `sage-pack-003-20260907T012948Z.tar.gz` · sha256 `22bb3aac6bab79975f55dc53d0ec1fdc329cab2b20b587b325066788c22d9001`
+- Crawl LIVE `2026-09-07T01:29:12Z` · build `ytC06pDObmdfZOy3YLDs0`
+- Locks `003` / `hf-incident` · A1 dry-run PASS
+
+**Freeze stays ON** for WIRE. Track A automation open.
