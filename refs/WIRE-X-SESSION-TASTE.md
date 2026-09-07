@@ -2,7 +2,8 @@
 
 **Architect cut:** 2026-09-07 ~06:08Z  
 **Trigger:** Canberk — paid API DENY does **not** ban X; VM has his logged-in X profile (bookmarks · likes · home feed) for AI-news taste.  
-**Status:** **CONTRACT ONLY** — no land until Director GO + Reviewer FAIL-list + first dry-run  
+**Status:** **Architect APPROVED** 2026-09-07 ~06:16Z · **LAND GATE:** only after A2 first-unattended WROTE Reviewer PASS (≈09:58–10:00 Istanbul)
+**Deps locked:** Scout allowlist `SCOUT-X-TASTE-ALLOWLIST.md` · Reviewer FAIL list 1–8 (in-room) · UX `UX-PULSE-X-TASTE-CARDS.md`  
 **Locks:** `003` · `hf-incident` · Sol≠Astra · free only · `briefEligible: false` · no `004` · Brief pins never from this pipe
 
 ## Distinction (hard)
@@ -52,3 +53,18 @@ Paid API · Bluesky · replacing HN/HF · Voice/Digest land · automated posting
 ## Architect hold
 
 No implement until Director GO. Prefer **after** first A2 unattended WROTE (~09:58 Istanbul) so Track A stays clean.
+
+
+## Architect APPROVE stamp — 2026-09-07 ~06:16Z
+
+**YES** — signed-in VM X session taste (bookmarks · likes · feed), read-only.
+
+| Gate | Status |
+|------|--------|
+| Scout allowlist | LOCKED (`SCOUT-X-TASTE-ALLOWLIST.md`) |
+| Reviewer FAIL 1–8 | LOCKED (in-room) |
+| UX Pulse placement | LOCKED (`UX-PULSE-X-TASTE-CARDS.md`) — shelf below HN/RSS · never lead |
+| Paid API / Bluesky / cookie→token | DENY |
+| **Land** | **HOLD until A2 first WROTE PACK PASS** — then Coder `x-session-taste` dry-run |
+
+Director GO order honored: A2 proof first · then this wire.

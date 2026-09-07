@@ -3,7 +3,7 @@
 **Audience:** Architect · Director · Canberk  
 **Date:** 2026-09-07 · cycle `003` · lead `hf-incident` · Sol≠Astra · no `004`  
 **Locks:** free only · Brief pins never from pulse · paid X **DENY** · Voice/Digest **PARKED**  
-**Status:** Report ready · **Bluesky DENY** (Canberk 2026-09-07) · no `WIRE-*` until Architect APPROVES after Track A + free-pulse rank.
+**Status:** Report ready · **Bluesky DENY** (Canberk 2026-09-07) · paid X API **DENY** · **session taste ≠ banned** (see amendment) · no HTTP `WIRE-*` until Architect APPROVES after Track A + free-pulse rank.
 
 **Veto update:** Bluesky is **not** a wire candidate. Free-pulse deepen = **HN · HF · Lab/Sec RSS · OpenAlex · GitHub shelf** only. Steal patterns from trend-pulse/harken; do not steal Bluesky/X paths.
 
@@ -17,7 +17,18 @@
 | **Allowlisted accounts via free mirrors** | **2 / 5** | zero–low | **HOLD / notes-only** | Nitter-class mirrors: X C&D Aug 2026, instances flapped, RSS often disabled. Not a foundation. |
 | **X bearer later** | **1 / 5** (policy) | paid / DENY | **DENY** | Paid X expensive. Canberk + Director: **DENY**. No `X_BEARER_TOKEN`, no `api.x.com`. |
 
-**Architect lean confirmed by live research:** (1) Skip-X + deepen free stack · (2) allowlist only if a *stable first-party* free surface appears (it has not) · never build desk on scrapers that die weekly.
+**Architect lean confirmed by live research:** (1) Skip-X **HTTP/API** + deepen free stack · (2) allowlist only if a *stable first-party* free surface appears (it has not) · never build desk on scrapers that die weekly.
+
+### Clarification 2026-09-07 (Canberk) — paid API DENY ≠ ban on session taste
+
+| Path | Status |
+|------|--------|
+| Paid X API / bearer / Ads / `api.x.com` | **DENY** (this report unchanged) |
+| Bluesky | **DENY** (unchanged) |
+| Nitter / scrape farms / cookie→token | **DENY** |
+| **Read-only session taste** off Canberk’s logged-in VM X (bookmarks · likes · home) | **Not banned** — separate contract `WIRE-X-SESSION-TASTE.md` · allowlist `SCOUT-X-TASTE-ALLOWLIST.md` · waits **A2 WROTE** + **Architect APPROVE** · never Brief/pulse lead |
+
+“Skip-X” in this durability report means **skip paid/mirror HTTP hydrate**. It does **not** veto the later session-taste shelf.
 
 ---
 
@@ -148,7 +159,7 @@ Ingest must keep working with **zero credentials**. Partial provider failure is 
 
 **Ship order when freeze lifts for Track B:**
 
-1. **Do not wire X.** Path = Skip-X. Paid bearer stays DENY. Nitter mirrors stay notes-only.
+1. **Do not wire paid/mirror X HTTP.** Path = Skip-X API. Paid bearer stays DENY. Nitter mirrors stay notes-only. **Exception (later):** read-only VM session taste per `WIRE-X-SESSION-TASTE.md` — not an HTTP free-provider wire.
 2. **Do not vendor trend-pulse or harken.** Steal: soft-fail merge, free-default source honesty, keyword-allowlist *shape* for respectful watchlists. Skip Bluesky/X paths entirely.
 3. **First pulse deepen (when APPROVED):** **no new social network.** Harden what we have — OpenAlex 429 backoff + health rail · extra first-party lab/HF RSS only · Google News RSS as optional soft spice.  
 4. **Never:** Bluesky · paid X · Nitter · Reddit unauth · scrape farms.  
@@ -156,7 +167,7 @@ Ingest must keep working with **zero credentials**. Partial provider failure is 
 6. **Gates unchanged:** Architect signs each fetcher · Reviewer stamp-truth · no cycle `004` · no Brief pins from trends · Sol≠Astra · lead stays `hf-incident`.
 
 **Top recommendation in one line:**  
-**Skip-X · finish A1–A3 · deepen free pulse only on HN/HF/Lab+Sec RSS/OpenAlex/GitHub — steal harken free-first honesty + trend-pulse soft-fail merge; never Bluesky, never paid X, never scrapers.**
+**Skip paid/mirror X · finish A1–A3 · deepen free pulse on HN/HF/Lab+Sec RSS/OpenAlex/GitHub — steal harken free-first honesty + trend-pulse soft-fail merge; never Bluesky, never paid X, never scrapers; session taste is a separate APPROVE-gated path (not this HTTP deepen).**
 
 ---
 
@@ -176,3 +187,6 @@ Ingest must keep working with **zero credentials**. Partial provider failure is 
 
 ## Architect / Canberk veto — 2026-09-07
 Canberk: **Bluesky DENY** — not a respected AI-news platform for this desk. Strike Scout “Bluesky as sole net-new social.” Free pulse deepen = **HN · HF · Lab+Sec RSS · OpenAlex · GitHub shelf** only. Paid X remains DENY. Scout will not propose Bluesky again.
+
+### Amendment 2026-09-07 (Canberk / Architect cut)
+**Paid X API DENY ≠ ban on read-only session taste.** VM signed-in profile (bookmarks · likes · feed) may inform Pulse taste cards after A2 stamp + Architect APPROVE (`WIRE-X-SESSION-TASTE.md` · `SCOUT-X-TASTE-ALLOWLIST.md` · `UX-PULSE-X-TASTE-CARDS.md`). Still: never Brief lead · never pulse lead · never cookie→token · never write on X · Bluesky still DENY.

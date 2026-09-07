@@ -3,14 +3,15 @@
 **No new candidate wire pack.** Visual truth > more pipes.
 
 **Brief:** SHIP-for-now. **Track A:** A1–A3 standing. First A2 unattended WROTE ≈**09:58–10:00 Istanbul** (`0 9` catch-up = no-op while HOLD).  
-**WIRE HOLD** until Canberk free-pulse rank 1–4. Paid X **DENY** · Bluesky **DENY**. Voice/Digest **PARKED**.
+**WIRE HOLD** until Canberk free-pulse rank 1–4. Paid X API **DENY** · Bluesky **DENY**. Voice/Digest **PARKED**. **Session X taste** (read-only VM) = separate non-HTTP path — not unblocked by this freeze lift; waits A2 WROTE + Architect APPROVE.
 
 | Source | Status |
 |--------|--------|
 | Semantic Scholar | **DEFERRED** |
 | HF `/papers` HTML | **DEFERRED** |
 | Reddit | **BLOCKED** |
-| Paid X | **DENY** |
+| Paid X API / bearer / api.x.com | **DENY** |
+| X session taste (VM read-only) | **HOLD** — not HTTP; see `WIRE-X-SESSION-TASTE.md` · allowlist `SCOUT-X-TASTE-ALLOWLIST.md` |
 | Bluesky | **DENY** |
 | FREE-PROVIDERS Next | **FROZEN** until rank + Architect APPROVE |
 
@@ -30,3 +31,6 @@
 HF **11** · arXiv **8**/shelf **0** · OpenAlex **3** · Crossref **0** · HN **47** · lab RSS **48** · sec RSS **25** · GitHub shelf **3** · toolkit **15** · Wikidata {'matched': 1, 'rejected_false_friend': 2} · X disabled · brief=false all.
 
 Scout lane: ages only · free-pulse waits Canberk rank · **no** new HTTP candidates.
+
+## Clarification 2026-09-07
+**Paid X API DENY ≠ ban on read-only session taste** off Canberk’s logged-in VM. Bluesky still **DENY**. Session path is not a free-HTTP wire under this freeze — it waits **A2 stamp** + **Architect APPROVE** before any land. Taste hits always `briefEligible:false` · `pulseLeadEligible:false`.
