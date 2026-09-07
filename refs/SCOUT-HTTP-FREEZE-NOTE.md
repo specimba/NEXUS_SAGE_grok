@@ -5,7 +5,7 @@
 **Freeze for WIRE-*:** still ON until Canberk ranks + Architect APPROVES.  
 **Track A:** A1–A3 **standing** (Istanbul Mon–Fri 09–16 · A2 `0 9` catch-up) · Reviewer CRONTAB PASS · first unattended A2 WROTE still open.  
 **Brief:** SHIP-for-now. Paid X **DENY**. Voice/Digest **PARKED**.  
-**X-free:** `SCOUT-X-FREE-DURABILITY.md` locked — skip-X · Bluesky later only.
+**X-free:** `SCOUT-X-FREE-DURABILITY.md` locked — skip-X · **Bluesky DENY** · free pulse = HN/HF/RSS/OpenAlex/GitHub only.
 
 | Source | Status |
 |--------|--------|
@@ -13,7 +13,7 @@
 | HF `/papers` HTML | **DEFERRED** |
 | Reddit | **BLOCKED** — 403 |
 | Paid X | **BANNED** / skipped |
-| Bluesky | notes only — after A1–A3 + Architect APPROVED wire |
+| Bluesky | **DENY** (Canberk) — do not wire |
 | FREE-PROVIDERS Next | **FROZEN** for new WIRE until rank + APPROVE |
 
 ## Desk snapshot (ages @ refresh)

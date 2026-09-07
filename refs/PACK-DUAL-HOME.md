@@ -24,9 +24,9 @@
 
 **Soft-fails:** none
 
-### Reviewer stamp — pending
+### Reviewer confirm — 2026-09-07T02:07Z
 
-_(cleared — see stamp 2026-09-07T01:33Z below)_
+**Header pending CLEARED.** Authoritative stamp is **2026-09-07T01:33Z** (A1 pack `012948Z` PASS). Home 2b operator copy remains PENDING (no re-ask) — not a Reviewer stamp block.
 
 
 ### Reviewer stamp — 2026-09-06T06:46Z (Reviewer Gürok)

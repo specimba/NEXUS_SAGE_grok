@@ -76,3 +76,35 @@ GitHub · Chrome DevTools · Context7 · Lovable · Aikido · Azure · Gmail · 
 3. **ImageMagick** apt — Architect presentation stills (done/next boards) without guessing
 
 **Veto:** Bluesky (any form) · paid X · TrendsMCP keys as “free”
+
+## Reviewer ×3 must-haves (2026-09-07)
+
+1. **Playwright** plugin [`48677659`](grokbot://app/v1/plugin/add?id=48677659) — headless stamp-truth stills (FAIL #1 live=disk) without relying on soft VM screenshots
+2. **ImageMagick** (`apt`) — pixel-diff / composite stills for eye PNG vs live chrome
+3. **Tavily** repair [`3165`](grokbot://app/v1/plugin/add?id=3165) — verify Scout free-pulse claims before APPROVED wires (no paid X)
+
+Skip: X plugin · Bluesky (DENY) · scrape farms.
+
+## UX ×3 must-haves (2026-09-07)
+
+| # | Need | Kind | Why |
+|---|------|------|-----|
+| 1 | **Mobbin** auth [`52632771`](grokbot://app/v1/plugin/add?id=52632771) | Unlock (needsAuth) | Real-product ops/dashboard refs for Pulse deepen + phosphor peer patterns — beats guessing from soft VM stills |
+| 2 | **Playwright** plugin [`48677659`](grokbot://app/v1/plugin/add?id=48677659) | Install | Deterministic eye/Pulse stills (viewport fixed) so Reviewer soft FAIL isn’t “VM mush” |
+| 3 | **ImageMagick** (`apt`) + **Magic Patterns** [`33865099`](grokbot://app/v1/plugin/add?id=33865099) *or* **Paper** [`6062`](grokbot://app/v1/plugin/add?id=6062) | VM + plugin | Before/after composites + canvas mocks for free-pulse lane without hex churn |
+
+**Already enough:** Chrome DevTools · Lovable · Context7 · GitHub · Skin V2 locked.
+
+**Veto:** Bluesky (DENY) · paid X · scrape-farm “trend” UIs · Voice/Digest craft until Canberk asks.
+
+## Scout ×3 must-haves (2026-09-07)
+
+| # | Need | Kind | Why |
+|---|------|------|-----|
+| 1 | **Tavily** repair [`3165`](grokbot://app/v1/plugin/add?id=3165) | Unlock / fix | Primary Scout web research for free-pulse claims before any APPROVED wire |
+| 2 | **Parallel** keep [`698`](grokbot://app/v1/plugin/add?id=698) | Already green | Deep research / extract while Tavily is broken — already installed |
+| 3 | **Hugging Face** keep + optional **HF_TOKEN** (secure `.env`) | Already green + secret | Richer free papers/models/datasets path — no paid X |
+
+**Veto:** Bluesky (DENY) · paid X / X plugin · Nitter · Reddit unauth · scrape farms · TrendsMCP keys as “free”.
+
+**Nice later:** Context7 (already green) · Firecrawl/Exa only if Tavily stays dead · ImageMagick for Scout presentation boards (shared with UX).

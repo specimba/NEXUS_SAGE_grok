@@ -3,7 +3,9 @@
 **Audience:** Architect · Director · Canberk  
 **Date:** 2026-09-07 · cycle `003` · lead `hf-incident` · Sol≠Astra · no `004`  
 **Locks:** free only · Brief pins never from pulse · paid X **DENY** · Voice/Digest **PARKED**  
-**Status:** Report ready for wire decisions — no `WIRE-*` until Architect APPROVES after Track A.
+**Status:** Report ready · **Bluesky DENY** (Canberk 2026-09-07) · no `WIRE-*` until Architect APPROVES after Track A + free-pulse rank.
+
+**Veto update:** Bluesky is **not** a wire candidate. Free-pulse deepen = **HN · HF · Lab/Sec RSS · OpenAlex · GitHub shelf** only. Steal patterns from trend-pulse/harken; do not steal Bluesky/X paths.
 
 ---
 
@@ -93,7 +95,7 @@ Director order: **Track A automation first**, then this report, then free pulse 
 | 4 | **HF blog / Spaces changelog RSS** (if not already in lab set) | First-party; fits HF-lead world. | **4** | `brief=false` · shelf/pulse only. |
 | 5 | **Mastodon public trends** (pick 1–2 instances) | Public trending tags/links; zero auth on many instances. | **3** | Instance policy churn; rate ~300/5min; soft-fail; never Brief. |
 | 6 | **Google News RSS** `news.google.com/rss?q=` | Zero key; common free pattern 2026. | **2–3** | Unofficial · no SLA · format can change — soft-fail only, never sole lead. |
-| 7 | **Lobsters / dev.to public JSON** (optional spice) | trend-pulse lists as zero-auth. | **3** | Nice-to-have after Bluesky; not blocking. |
+| 7 | **Lobsters / dev.to public JSON** (optional spice) | trend-pulse lists as zero-auth. | **3** | Nice-to-have after core free stack; not blocking. |
 
 **Not next:** TrendsMCP / paid free-tier SaaS keys · Reddit (BLOCKED) · Semantic Scholar without key (429 deferred) · Nitter / XCancel mirrors as ingest deps.
 
@@ -135,7 +137,7 @@ Ingest must keep working with **zero credentials**. Partial provider failure is 
 |------|------|--------|
 | **(1)** | Track A automation **A1–A3** (cron harden · STALE auto-ingest · Digest DUE dual-home export) | **First** — freeze lift = automation only |
 | **(2)** | This X-free durability report | **DONE** (this file) |
-| **(3)** | Free pulse deepen (Bluesky → OpenAlex backoff → lab RSS → …) | **After** Architect APPROVED wire picks |
+| **(3)** | Free pulse deepen (OpenAlex backoff → lab/HF RSS → … · **no Bluesky**) | **After** Architect APPROVED wire picks |
 | — | Voice / Digest L·mid·R parity | **PARKED** |
 | — | Paid X | **DENY** |
 | — | Brief UI | **SHIP-for-now** (Canberk) |
@@ -147,18 +149,14 @@ Ingest must keep working with **zero credentials**. Partial provider failure is 
 **Ship order when freeze lifts for Track B:**
 
 1. **Do not wire X.** Path = Skip-X. Paid bearer stays DENY. Nitter mirrors stay notes-only.
-2. **Do not vendor trend-pulse or harken.** Steal: soft-fail merge, free-default source honesty, Bluesky pagination gotchas, keyword-allowlist *shape* for respectful watchlists.
-3. **First net-new pulse wire (when APPROVED):** Bluesky `searchPosts` on `api.bsky.app`  
-   - query allowlist (AI / lab / security terms operator-curated)  
-   - time-based pagination only · dedupe `uri` · page cap/tick  
-   - `brief=false` · pulse/shelf only · soft-fail 403/429  
-   - no credentials
-4. **Parallel ops (can ride A4):** OpenAlex 429 backoff + health rail honesty.
-5. **Then:** extra first-party lab/HF RSS only; Mastodon/Google News RSS as optional soft spice.
+2. **Do not vendor trend-pulse or harken.** Steal: soft-fail merge, free-default source honesty, keyword-allowlist *shape* for respectful watchlists. Skip Bluesky/X paths entirely.
+3. **First pulse deepen (when APPROVED):** **no new social network.** Harden what we have — OpenAlex 429 backoff + health rail · extra first-party lab/HF RSS only · Google News RSS as optional soft spice.  
+4. **Never:** Bluesky · paid X · Nitter · Reddit unauth · scrape farms.  
+5. **Optional spice only (APPROVED later):** Mastodon allowlisted instances — not a substitute for HN/HF/RSS.
 6. **Gates unchanged:** Architect signs each fetcher · Reviewer stamp-truth · no cycle `004` · no Brief pins from trends · Sol≠Astra · lead stays `hf-incident`.
 
 **Top recommendation in one line:**  
-**Skip-X · finish A1–A3 · then wire Bluesky public search as the only net-new social pulse — steal harken’s free-first honesty, not its X path; steal trend-pulse’s soft-fail merge, not its scrapers.**
+**Skip-X · finish A1–A3 · deepen free pulse only on HN/HF/Lab+Sec RSS/OpenAlex/GitHub — steal harken free-first honesty + trend-pulse soft-fail merge; never Bluesky, never paid X, never scrapers.**
 
 ---
 
@@ -176,5 +174,5 @@ Ingest must keep working with **zero credentials**. Partial provider failure is 
 **Scout:** Gürok worker · NEXUS SAGE · 2026-09-07
 
 
-## Architect veto — 2026-09-07
-Canberk: **Bluesky DENY** — not a respected AI-news platform for this desk. Strike Scout “Bluesky as sole net-new social.” Free pulse deepen = HN/HF/Lab+Sec RSS/OpenAlex/GitHub only.
+## Architect / Canberk veto — 2026-09-07
+Canberk: **Bluesky DENY** — not a respected AI-news platform for this desk. Strike Scout “Bluesky as sole net-new social.” Free pulse deepen = **HN · HF · Lab+Sec RSS · OpenAlex · GitHub shelf** only. Paid X remains DENY. Scout will not propose Bluesky again.
