@@ -10,7 +10,7 @@ export type RssLabRow = {
   tag: "rest" | "rumor" | "companion" | "incident";
 };
 
-export const RSS_LABS_AT = "2026-09-06T19:00:53Z";
+export const RSS_LABS_AT = "2026-09-07T01:29:12Z";
 
 export const RSS_LABS: RssLabRow[] = [
   { id: "rss:openai:e0f75446731d598c", lab: "openai" as const, title: "An Alien Mind", link: "https://openai.com/index/an-alien-mind", published: "2026-09-06T09:00:00Z", summary: "Jakub Pachocki reflects on increasingly capable AI and the challenge of keeping it aligned. He calls for stronger safeguards and international coordination.", source: "rss-lab" as const, tag: "rest" as const },

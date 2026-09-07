@@ -72,14 +72,10 @@ Source of truth: **`OPS-HARDEN.md`** (Architect APPROVED).
 - **Stale desk chrome:** If UI looks like 90s gray pills / amber frontpage → stale `:3000` server; kill it, `bun run build && bun run start`.
   Guard: `bun run visual:check` (fails amber theme / missing `[01]` lanes).
 
-- **Cron every 6h (VM):**
-  ```cron
-  0 */6 * * * cd /workspace/nexus-sage/desk && /usr/local/bin/bun run digest:tick >> /workspace/nexus-sage/logs/digest-tick.log 2>&1
-  ```
-  Optional companion ingest: `30 */6 * * *` → `bun run ingest` → `logs/ingest.log` (same `cd`).
-- **Install helper:** `desk/scripts/install-cron.sh` **or** `desk/ops/crontab.example` (idempotent; prefer `$(command -v bun)`).
-- **Logs:** `/workspace/nexus-sage/logs/` (create if missing).
-- **Manual proof:** double `bun run digest:tick` → write then HOLD.
+- **Standing cron (A1–A3):** see **§8 A1–A3 automation** below · `refs/OPS-A1-A3-AUTOMATION.md`.
+- **Install helper:** `desk/scripts/install-cron.sh` (idempotent; backups under `logs/cron-backups/`) · example `desk/ops/crontab.example`.
+- **Logs:** `/workspace/nexus-sage/logs/` (`a1-stale.log` · `a2-digest.log`).
+- **Manual proof:** double `bun run digest:tick` → write then HOLD · `bun run a2:tick` for DUE→export path.
 
 **Stale server / build chip:** Footer shows `.next/BUILD_ID` + boot ISO (`data-sage-build` / `data-sage-boot`). If UI looks like gray pills or crawl stamp is stuck → kill `:3000`, `bun run build && bun run start`, then `bun run visual:check`. Dual-home latest: see `PACK-DUAL-HOME.md`.
 - **Wipe-drill (this pulse):** `P2-ACCEPT.md` done-whens → `desk/packs/WIPE-DRILL.md` → append evidence to `P2-ACCEPT-EVIDENCE.md`. Also `P2-EXPORT-IMPORT.md` § restore-drill.
@@ -97,5 +93,46 @@ Source of truth: **`OPS-HARDEN.md`** (Architect APPROVED).
 - Changing Skin tokens / Sol=Astra flatten / civilizations in lead+companion+rest
 
 ---
+
+## 8. A1–A3 standing automation (Europe/Istanbul)
+
+**Source of truth:** `OPS-A1-A3-AUTOMATION.md` · install via `desk/scripts/install-cron.sh`.
+
+| Track | Window | Cron (Istanbul) | Command | Notes |
+|-------|--------|-----------------|---------|-------|
+| **A1** STALE ingest | Mon–Fri ~09–17 | `*/30 9-16 * * 1-5` | `bun scripts/a1-stale-ingest.mjs` | **No FORCE** on standing cron · natural STALE≥12h gate only · dual-home on ingest |
+| **A2** Digest DUE | Mon–Fri ~09–17 | `*/6 9-16 * * 1-5` | `bun run a2:tick` | `digest:tick` then `pack:export` **only if WROTE** |
+| **A3** Harden | — | — | `install-cron.sh` | Idempotent · CRON_TZ · backups · this section |
+
+```cron
+CRON_TZ=Europe/Istanbul
+*/30 9-16 * * 1-5 cd /workspace/nexus-sage/desk && bun scripts/a1-stale-ingest.mjs >> /workspace/nexus-sage/logs/a1-stale.log 2>&1
+*/6 9-16 * * 1-5 cd /workspace/nexus-sage/desk && bun run a2:tick >> /workspace/nexus-sage/logs/a2-digest.log 2>&1
+```
+
+### FORCE dry-run (A1 operator only — never on crontab)
+
+```bash
+cd /workspace/nexus-sage/desk
+DRY_RUN=1 FORCE=1 bun scripts/a1-stale-ingest.mjs   # plan only
+FORCE=1 bun scripts/a1-stale-ingest.mjs             # bypass age gate once
+```
+
+Standing cron must **omit** `FORCE=1` / `--force`.
+
+### Pause / uninstall
+
+```bash
+crontab -l > /workspace/nexus-sage/logs/cron-backups/manual-pause.bak
+# edit out A1/A2 lines, or: crontab -r   # nuclear — removes ALL user cron
+# re-install later: desk/scripts/install-cron.sh
+```
+
+### FAIL bans (Reviewer list = Architect lock)
+
+1 stamp-truth lag · 2 Brief pollution · 3 paid X · 4 lock break · 5 dual-home miss · 6 silent soft-fail · 7 overnight spam · 8 craft/WIRE creep
+
+**Hard bans:** no paid X · no new `WIRE-*` · no Brief pin invent · no overnight `@every` · no weekend standing firehose · no cycle `004`.
+
 
 *Ops desk · phosphor · keep disk truth · free providers only.*

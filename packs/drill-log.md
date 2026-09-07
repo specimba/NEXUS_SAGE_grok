@@ -1,25 +1,28 @@
 # P2 home 2b drill-log — operator off-box
 
-**UTC refreshed:** 2026-09-07T00:58:44Z  
-**Pack id:** `sage-pack-003-20260907T005844Z`  
+**UTC refreshed:** 2026-09-07T01:30:33Z  
+**Pack id:** `sage-pack-003-20260907T012948Z`  
 **Cycle / lead:** `003` / `hf-incident`  
 
 ## Homes
 
 | Home | Path | Status |
 |------|------|--------|
-| 1 · VM primary | `/workspace/nexus-sage/packs/sage-pack-003-20260907T005844Z.tar.gz` | OK |
-| 2a · desk mirror | `/workspace/nexus-sage/desk/packs/sage-pack-003-20260907T005844Z.tar.gz` | OK |
-| 2b · operator PC | `C:\Users\speci.000\Downloads\nexus-sage-packs\sage-pack-003-20260907T005844Z.tar.gz` | PENDING (no re-ask) |
+| 1 · VM primary | `/workspace/nexus-sage/packs/sage-pack-003-20260907T012948Z.tar.gz` | OK |
+| 2a · desk mirror | `/workspace/nexus-sage/desk/packs/sage-pack-003-20260907T012948Z.tar.gz` | OK |
+| 2b · operator PC | `C:\Users\speci.000\Downloads\nexus-sage-packs\sage-pack-003-20260907T012948Z.tar.gz` | PENDING (no re-ask) |
 
 ## Checksums (VM)
 
 ```
-sha256  80c0659a0fb3d2b324c12726531e7f5444792fbb012e611eb10b78122618356d
+sha256  22bb3aac6bab79975f55dc53d0ec1fdc329cab2b20b587b325066788c22d9001
 ```
 
 ## Notes
-- Digest tick WROTE `2026-09-07T00` · next_at `2026-09-07T06:58:41.032Z`
-- Dual-home pack `sage-pack-003-20260907T005844Z` identical both homes
-- Freeze ON · cycle 003 / hf-incident · no digest 004 · no craft · no WIRE · no HTTP uncork
-- Manifest sha256 `83b431438bdd17cd6ac6055d50e0a8a754710bab1e9a3c1ace060b240391ea0a`
+- A1 STALE auto-ingest FORCE=1 dry-run · crawl `2026-09-07T01:29:12Z` · pre-age ~6.47h
+- Dual-home pack `sage-pack-003-20260907T012948Z` identical both homes
+- Freeze ON · cycle 003 / hf-incident · no digest 004 · no craft · no WIRE · no paid X
+- Manifest sha256 `2d9deda0d214cd540a38f05dd41668b83f3db4e794a3af6cf9913a6d34280409`
+- Soft-fails: none
+- Weekday window: Mon–Fri daytime only (~09:00–17:00 VM/local intent) — no overnight @every firehose; standing cron AFTER Reviewer PASS
+- Reviewer stamp pending (Coder factual only)

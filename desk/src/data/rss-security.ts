@@ -10,7 +10,7 @@ export type RssSecurityRow = {
   tag: "rest" | "rumor" | "companion" | "incident";
 };
 
-export const RSS_SECURITY_AT = "2026-09-06T19:00:53Z";
+export const RSS_SECURITY_AT = "2026-09-07T01:29:12Z";
 
 export const RSS_SECURITY: RssSecurityRow[] = [
   { id: "rss-sec:trailofbits:8061813586c580cf", lab: "trailofbits" as const, title: "VMs won't contain cyber-capable agents", link: "https://blog.trailofbits.com/2026/08/26/vms-wont-contain-cyber-capable-agents/", published: "2026-08-26T11:00:00Z", summary: "As part of Patch the Planet , we received preview access to GPT 5.6-Cyber with a simple task: evaluate its cyber capabilities. Recent events inspired me to give it a challenge to work through: escape the VM I’d normally use for sandboxing. The target was a QEMU/KVM VM on my Linux dev machine (Debian Linux 12, AMD Zen3). It escaped the VM three different times. First, it used recently disclosed bu…", source: "rss-security" as const, tag: "rest" as const },

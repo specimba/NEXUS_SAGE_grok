@@ -10,16 +10,16 @@ export type HnPulseRow = {
   tag: "rest" | "rumor" | "companion" | "incident";
 };
 
-export const HN_PULSE_AT = "2026-09-06T19:00:53Z";
+export const HN_PULSE_AT = "2026-09-07T01:29:12Z";
 
 export const HN_PULSE: HnPulseRow[] = [
   { id: "hn:38309611", text: "OpenAI's board has fired Sam Altman", url: "https://openai.com/blog/openai-announces-leadership-transition", source: "hn-algolia" as const, score: 5710, at: "2023-11-17T20:28:50Z", author: "davidbarker", tag: "rest" as const },
   { id: "hn:35813322", text: "Google “We have no moat, and neither does OpenAI”", url: "https://www.semianalysis.com/p/google-we-have-no-moat-and-neither", source: "hn-algolia" as const, score: 2455, at: "2023-05-04T10:19:13Z", author: "klelatti", tag: "rest" as const },
   { id: "hn:46990729", text: "An AI agent published a hit piece on me", url: "https://theshamblog.com/an-ai-agent-published-a-hit-piece-on-me/", source: "hn-algolia" as const, score: 2346, at: "2026-02-12T16:23:24Z", author: "scottshambaugh", tag: "rest" as const },
-  { id: "hn:49563355", text: "Discovery of a new OpenAI agent message board", url: "https://collusion.wiki/", source: "hn-algolia" as const, score: 2253, at: "2026-09-04T11:54:53Z", author: "moultano", tag: "rest" as const },
+  { id: "hn:49563355", text: "Discovery of a new OpenAI agent message board", url: "https://collusion.wiki/", source: "hn-algolia" as const, score: 2265, at: "2026-09-04T11:54:53Z", author: "moultano", tag: "rest" as const },
   { id: "hn:46124267", text: "Anthropic acquires Bun", url: "https://bun.com/blog/bun-joins-anthropic", source: "hn-algolia" as const, score: 2192, at: "2025-12-02T18:05:44Z", author: "ryanvogel", tag: "rest" as const },
   { id: "hn:44800746", text: "Open models by OpenAI", url: "https://openai.com/open-models/", source: "hn-algolia" as const, score: 2124, at: "2025-08-05T17:02:02Z", author: "lackoftactics", tag: "rest" as const },
-  { id: "hn:49458161", text: "Nvidia agrees to acquire Hugging Face for $13B", url: "https://www.businessinsider.com/nvidia-in-talks-to-buy-hugging-face-13-billion-dollars-2026-8", source: "hn-algolia" as const, score: 1986, at: "2026-08-27T01:12:55Z", author: "mfiguiere", tag: "rest" as const },
+  { id: "hn:49458161", text: "Nvidia agrees to acquire Hugging Face for $13B", url: "https://www.businessinsider.com/nvidia-in-talks-to-buy-hugging-face-13-billion-dollars-2026-8", source: "hn-algolia" as const, score: 1987, at: "2026-08-27T01:12:55Z", author: "mfiguiere", tag: "rest" as const },
   { id: "hn:38375239", text: "We have reached an agreement in principle for Sam to return to OpenAI as CEO", url: "https://twitter.com/openai/status/1727206187077370115", source: "hn-algolia" as const, score: 1980, at: "2023-11-22T06:01:45Z", author: "staranjeet", tag: "rest" as const },
   { id: "hn:47193478", text: "OpenAI – How to delete your account", url: "https://help.openai.com/en/articles/6378407-how-to-delete-your-account", source: "hn-algolia" as const, score: 1929, at: "2026-02-28T10:41:55Z", author: "carlosrg", tag: "rest" as const },
   { id: "hn:40447431", text: "Leaked OpenAI documents reveal aggressive tactics toward former employees", url: "https://www.vox.com/future-perfect/351132/openai-vested-equity-nda-sam-altman-documents-employees", source: "hn-algolia" as const, score: 1791, at: "2024-05-22T22:22:30Z", author: "apengwin", tag: "rest" as const },
