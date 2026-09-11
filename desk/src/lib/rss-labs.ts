@@ -323,12 +323,31 @@ async function throttle(): Promise<void> {
   }
 }
 
+/** True when body is HTML (Cloudflare/login wall) rather than RSS/Atom. */
+export function looksLikeHtml(body: string): boolean {
+  if (!body || typeof body !== "string") return false;
+  const head = body.slice(0, 800).toLowerCase();
+  if (head.includes("<rss") || head.includes("<feed") || head.includes("<channel")) {
+    return false;
+  }
+  return (
+    /<!doctype\s+html/i.test(head) ||
+    /<html[\s>]/i.test(head) ||
+    /<head[\s>]/i.test(head) ||
+    /<body[\s>]/i.test(head)
+  );
+}
+
 async function getXml(
   url: string,
-): Promise<{ ok: true; body: string } | { ok: false; status: number }> {
+  fetchImpl: typeof fetch = fetch,
+): Promise<
+  | { ok: true; body: string }
+  | { ok: false; status: number; reason: string }
+> {
   await throttle();
   lastRequestAt = Date.now();
-  const res = await fetch(url, {
+  const res = await fetchImpl(url, {
     method: "GET",
     headers: {
       Accept: "application/rss+xml, application/atom+xml, application/xml, text/xml, */*",
@@ -336,14 +355,20 @@ async function getXml(
     },
   });
   const body = await res.text();
-  if (res.status === 429 || res.status >= 500) {
-    return { ok: false, status: res.status };
-  }
   if (!res.ok) {
-    return { ok: false, status: res.status };
+    return { ok: false, status: res.status, reason: `HTTP ${res.status}` };
+  }
+  if (looksLikeHtml(body)) {
+    return { ok: false, status: res.status, reason: "HTML not RSS" };
   }
   return { ok: true, body };
 }
+
+export type FeedSoftFail = {
+  lab: string;
+  reason: string;
+  soft_fail: true;
+};
 
 export type FetchRssLabsOpts = {
   cacheDir?: string;
@@ -351,6 +376,8 @@ export type FetchRssLabsOpts = {
   maxPerFeed?: number;
   /** Inject XML by lab id (tests / offline). Skips network for that lab. */
   fixtures?: Partial<Record<LabId, string>>;
+  /** Test/offline fetch override (github-shelf pattern). */
+  fetchImpl?: typeof fetch;
   now?: number;
 };
 
@@ -358,13 +385,23 @@ export type FetchRssLabsResult = {
   items: LabRssItem[];
   pulse: LabRssItem[];
   shelf: LabRssItem[];
+  ok: boolean;
+  /** True when ≥1 feed soft-failed (others may still be ok). */
+  soft_fail: boolean;
+  soft_fail_reason?: string;
   feedsOk: { lab: string; url: string; count: number }[];
+  /** Per-feed soft_fail stamps (403/404/HTML/empty/bad XML). */
+  feedsSoftFail: FeedSoftFail[];
+  /** @deprecated alias of feedsSoftFail for older callers */
   feedsSkipped: { lab: string; reason: string }[];
+  brief: false;
+  pulse_only: true;
 };
 
 /**
  * Fetch approved lab feeds sequentially.
- * ≤1 req/2s · cache 6h · fail closed per-feed · never Brief.
+ * ≤1 req/2s · cache 6h · per-feed soft_fail (403/404/HTML/empty) · never Brief.
+ * One dead feed ≠ kill ingest · never displace HF daily_papers · never Brief.
  */
 export async function fetchRssLabs(
   opts: FetchRssLabsOpts = {},
@@ -376,21 +413,46 @@ export async function fetchRssLabs(
   );
   const now = opts.now ?? Date.now();
   const feeds = opts.feeds ?? LAB_FEEDS;
+  const fetchImpl = opts.fetchImpl ?? fetch;
 
   const all: LabRssItem[] = [];
   const feedsOk: FetchRssLabsResult["feedsOk"] = [];
-  const feedsSkipped: FetchRssLabsResult["feedsSkipped"] = [];
+  const feedsSoftFail: FeedSoftFail[] = [];
   const seenIds = new Set<string>();
+
+  const softFailFeed = (lab: string, reason: string) => {
+    console.log(`RSS[${lab}]: soft_fail — ${reason}`);
+    feedsSoftFail.push({ lab, reason, soft_fail: true });
+  };
 
   for (const feed of feeds) {
     // Never fetch anthropic/meta without Scout-pasted mirror URL in wire doc
     if (feed.lab === ("anthropic" as string) || feed.lab === ("meta" as string)) {
-      feedsSkipped.push({ lab: feed.lab, reason: "no first-party RSS / not approved" });
+      softFailFeed(feed.lab, "no first-party RSS / not approved");
       continue;
     }
 
-    if (opts.fixtures?.[feed.lab]) {
-      const entries = parseRssOrAtom(opts.fixtures[feed.lab]!).slice(0, maxPerFeed);
+    if (opts.fixtures && Object.prototype.hasOwnProperty.call(opts.fixtures, feed.lab)) {
+      const raw = opts.fixtures[feed.lab];
+      if (raw == null || raw === "") {
+        softFailFeed(feed.lab, "empty fixture");
+        continue;
+      }
+      if (looksLikeHtml(raw)) {
+        softFailFeed(feed.lab, "HTML not RSS");
+        continue;
+      }
+      let entries: ParsedFeedEntry[];
+      try {
+        entries = parseRssOrAtom(raw).slice(0, maxPerFeed);
+      } catch {
+        softFailFeed(feed.lab, "bad XML");
+        continue;
+      }
+      if (!entries.length) {
+        softFailFeed(feed.lab, "empty parse");
+        continue;
+      }
       const mapped = toLabItems(entries, feed.lab, "rss-lab");
       for (const it of mapped) {
         if (seenIds.has(it.id)) continue;
@@ -406,46 +468,48 @@ export async function fetchRssLabs(
 
     if (!xml) {
       let got: string | null = null;
-      let lastStatus = 0;
+      let lastReason = "network/empty";
       for (const url of feed.urls) {
         try {
-          const res = await getXml(url);
+          const res = await getXml(url, fetchImpl);
           if (!res.ok) {
-            lastStatus = res.status;
-            if (res.status === 404) continue; // try fallback
-            console.log(`RSS[${feed.lab}]: HTTP ${res.status} — skip`);
-            break;
+            lastReason = res.reason;
+            // 403/404/HTML/5xx → try next first-party URL if any; else soft_fail feed
+            console.log(`RSS[${feed.lab}]: ${res.reason} @ ${url}`);
+            continue;
           }
           got = res.body;
           usedUrl = url;
           writeCache(cacheDir, feed.lab, got, now);
           break;
         } catch (err) {
-          lastStatus = -1;
+          lastReason = `network: ${String(err)}`;
           console.log(`RSS[${feed.lab}]: fetch failed — ${String(err)}`);
-          break;
+          continue;
         }
       }
       if (!got) {
-        feedsSkipped.push({
-          lab: feed.lab,
-          reason: lastStatus ? `HTTP ${lastStatus}` : "network/empty",
-        });
+        softFailFeed(feed.lab, lastReason);
         continue;
       }
       xml = got;
+    }
+
+    if (looksLikeHtml(xml)) {
+      softFailFeed(feed.lab, "HTML not RSS");
+      continue;
     }
 
     let entries: ParsedFeedEntry[];
     try {
       entries = parseRssOrAtom(xml).slice(0, maxPerFeed);
     } catch {
-      feedsSkipped.push({ lab: feed.lab, reason: "bad XML" });
+      softFailFeed(feed.lab, "bad XML");
       continue;
     }
 
     if (!entries.length) {
-      feedsSkipped.push({ lab: feed.lab, reason: "empty parse" });
+      softFailFeed(feed.lab, "empty parse");
       continue;
     }
 
@@ -461,8 +525,25 @@ export async function fetchRssLabs(
   all.sort((a, b) => b.published.localeCompare(a.published));
   const pulse = all.filter((i) => i.pulseEligible);
   const shelf = all.filter((i) => i.shelfOnly);
+  const soft_fail = feedsSoftFail.length > 0;
+  const soft_fail_reason = soft_fail
+    ? feedsSoftFail.map((f) => `${f.lab}:${f.reason}`).join(" · ")
+    : undefined;
+  const feedsSkipped = feedsSoftFail.map((f) => ({ lab: f.lab, reason: f.reason }));
 
-  return { items: all, pulse, shelf, feedsOk, feedsSkipped };
+  return {
+    items: all,
+    pulse,
+    shelf,
+    ok: feedsOk.length >= 1,
+    soft_fail,
+    soft_fail_reason,
+    feedsOk,
+    feedsSoftFail,
+    feedsSkipped,
+    brief: false,
+    pulse_only: true,
+  };
 }
 
 /** Shelf rows from lab RSS toolkit / shelfOnly items. */

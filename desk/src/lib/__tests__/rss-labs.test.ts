@@ -5,6 +5,7 @@ import {
   fetchRssLabs,
   isLabBriefEligible,
   LAB_FEEDS,
+  looksLikeHtml,
   parseRssOrAtom,
   toLabItems,
   toShelfItems,
@@ -84,7 +85,12 @@ describe("RSS labs parse → schema", () => {
       huggingface: HF,
     };
     const r = await fetchRssLabs({ fixtures });
+    expect(r.ok).toBe(true);
+    expect(r.soft_fail).toBe(false);
+    expect(r.brief).toBe(false);
+    expect(r.pulse_only).toBe(true);
     expect(r.feedsOk.length).toBe(4);
+    expect(r.feedsSoftFail).toHaveLength(0);
     expect(r.pulse.length).toBeGreaterThanOrEqual(4);
     for (const it of r.items) {
       expect(it.briefEligible).toBe(false);
@@ -207,5 +213,119 @@ describe("never Brief · cycle locks · no Anthropic/Meta required", () => {
   test("bad XML fail-closed → empty parse", () => {
     expect(parseRssOrAtom("<<<not xml")).toEqual([]);
     expect(parseRssOrAtom("")).toEqual([]);
+  });
+});
+
+
+describe("P2 per-feed soft_fail harden", () => {
+  test("looksLikeHtml detects Cloudflare/HTML walls", () => {
+    expect(looksLikeHtml("<!DOCTYPE html><html><body>nope</body></html>")).toBe(true);
+    expect(looksLikeHtml(OPENAI)).toBe(false);
+    expect(looksLikeHtml(HF)).toBe(false);
+  });
+
+  test("one dead feed (403) ≠ kill ingest · HF/other labs keep", async () => {
+    const fixtures: Partial<Record<LabId, string>> = {
+      openai: "", // empty → soft_fail
+      deepmind: DEEPMIND,
+      "google-ai": GOOGLE_AI,
+      huggingface: HF,
+    };
+    const r = await fetchRssLabs({ fixtures });
+    expect(r.ok).toBe(true);
+    expect(r.soft_fail).toBe(true);
+    expect(r.soft_fail_reason).toMatch(/openai:/);
+    expect(r.feedsSoftFail.some((f) => f.lab === "openai" && f.soft_fail)).toBe(true);
+    expect(r.feedsOk.map((f) => f.lab).sort()).toEqual([
+      "deepmind",
+      "google-ai",
+      "huggingface",
+    ]);
+    expect(r.feedsOk.find((f) => f.lab === "huggingface")!.count).toBeGreaterThanOrEqual(1);
+    for (const it of r.items) {
+      expect(it.briefEligible).toBe(false);
+    }
+    expect(r.brief).toBe(false);
+  });
+
+  test("HTML body soft_fails that feed only", async () => {
+    const fixtures: Partial<Record<LabId, string>> = {
+      openai: OPENAI,
+      deepmind: "<!DOCTYPE html><html><head></head><body>login</body></html>",
+      "google-ai": GOOGLE_AI,
+      huggingface: HF,
+    };
+    const r = await fetchRssLabs({ fixtures });
+    expect(r.ok).toBe(true);
+    expect(r.soft_fail).toBe(true);
+    expect(r.feedsSoftFail.some((f) => f.lab === "deepmind" && /HTML/.test(f.reason))).toBe(
+      true,
+    );
+    expect(r.feedsOk.map((f) => f.lab)).toContain("huggingface");
+    expect(r.feedsOk.map((f) => f.lab)).toContain("openai");
+    expect(r.brief).toBe(false);
+  });
+
+  test("empty / bad XML soft_fail · no crash · never Brief", async () => {
+    const fixtures: Partial<Record<LabId, string>> = {
+      openai: "<<<not xml",
+      deepmind: "<rss><channel></channel></rss>",
+      "google-ai": GOOGLE_AI,
+      huggingface: HF,
+    };
+    const r = await fetchRssLabs({ fixtures });
+    expect(r.ok).toBe(true);
+    expect(r.soft_fail).toBe(true);
+    expect(r.feedsSoftFail.length).toBeGreaterThanOrEqual(2);
+    expect(r.feedsOk.some((f) => f.lab === "huggingface")).toBe(true);
+    expect(r.pulse.every((i) => i.briefEligible === false)).toBe(true);
+  });
+
+  test("fetchImpl HTTP 403 soft_fails feed · others via fixtures keep", async () => {
+    const fetchImpl = (async () =>
+      new Response("forbidden", { status: 403 })) as typeof fetch;
+    const r = await fetchRssLabs({
+      feeds: [
+        { lab: "openai", urls: ["https://openai.com/news/rss.xml"] },
+        { lab: "huggingface", urls: ["https://huggingface.co/blog/feed.xml"] },
+      ],
+      fixtures: { huggingface: HF },
+      fetchImpl,
+      cacheDir: "/tmp/sage-rss-p2-softfail-cache",
+      now: Date.now(),
+    });
+    expect(r.ok).toBe(true);
+    expect(r.soft_fail).toBe(true);
+    expect(r.feedsSoftFail.some((f) => f.lab === "openai" && /403/.test(f.reason))).toBe(
+      true,
+    );
+    expect(r.feedsOk.some((f) => f.lab === "huggingface")).toBe(true);
+    // stamp shape mirrors ingest-last.rss
+    const stamp = {
+      ok: r.ok,
+      soft_fail: r.soft_fail,
+      soft_fail_reason: r.soft_fail_reason ?? null,
+      brief: r.brief,
+      pulse_only: r.pulse_only,
+      feeds_soft_fail: r.feedsSoftFail,
+    };
+    expect(stamp.soft_fail).toBe(true);
+    expect(stamp.brief).toBe(false);
+  });
+
+  test("all feeds soft_fail → ok=false · empty items · no throw", async () => {
+    const fixtures: Partial<Record<LabId, string>> = {
+      openai: "",
+      deepmind: "",
+      "google-ai": "",
+      huggingface: "",
+    };
+    const r = await fetchRssLabs({ fixtures });
+    expect(r.ok).toBe(false);
+    expect(r.soft_fail).toBe(true);
+    expect(r.items).toHaveLength(0);
+    expect(r.pulse).toHaveLength(0);
+    expect(r.feedsSoftFail).toHaveLength(4);
+    expect(r.brief).toBe(false);
   });
 });
