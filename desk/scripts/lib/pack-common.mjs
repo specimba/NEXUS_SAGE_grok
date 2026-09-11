@@ -388,6 +388,8 @@ export function isSecretish(relPath, content) {
   if (typeof content === "string") {
     if (/BEGIN (RSA |OPENSSH |EC )?PRIVATE KEY/.test(content)) return true;
     if (/api[_-]?key\s*[:=]\s*['"]?[A-Za-z0-9]{20,}/i.test(content)) return true;
+    if (/bearer\s+[A-Za-z0-9._\-]{20,}/i.test(content)) return true;
+    if (/\b(sk|xoxb|xoxp|ghp|gho)[_-][A-Za-z0-9]{16,}/i.test(content)) return true;
   }
   return false;
 }
