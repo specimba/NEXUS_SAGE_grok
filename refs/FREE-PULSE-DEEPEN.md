@@ -2,7 +2,7 @@
 
 **Architect cut:** 2026-09-07 ~03:11Z  
 **Source:** `SCOUT-X-FREE-DURABILITY.md` §3 (+ veto)  
-**Status:** **P1–P4 PASS** · **P4 LANDED** (`WIRE-GITHUB-TIGHTEN-P4.md`) · **P5–P6 HOLD**
+**Status:** **P1–P5 PASS** · **P5 LANDED** (`WIRE-GOOGLE-NEWS-P5.md`) · **P6 HOLD**
 **Locks:** `003` · `hf-incident` · Sol≠Astra · free only · `briefEligible: false` on all pulse pipes · no `004`  
 **DENY:** paid X · Bluesky · Nitter/mirrors · Reddit unauth · scrape farms · TrendsMCP keys
 
@@ -74,4 +74,7 @@ Paid API DENY ≠ no X. See `refs/WIRE-X-SESSION-TASTE.md` — **box browser, lo
 ## P4 LANDED
 `refs/WIRE-GITHUB-TIGHTEN-P4.md` — **LANDED** 2026-09-11 · ≤1 search/ingest · 24h cache-first · Remaining-0 skip · soft_fail 403/429 · toolkit shelf only · never Brief/Pulse lead.
 
-**P5–P6 HOLD** — spice needs explicit Canberk/Director GO.
+## P5 LANDED
+`refs/WIRE-GOOGLE-NEWS-P5.md` — **LANDED** 2026-09-11 · standing≤6 · rotate≤2/tick · soft_fail format-break · never Brief · never sole lead · Pulse quiet shelf · A4 chip.
+
+**P6 HOLD** — Lobsters/dev.to spice needs explicit Canberk/Director GO.

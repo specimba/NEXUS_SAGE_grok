@@ -28,6 +28,7 @@ export const SOFT_FAIL_METERS: SoftFailMeters = {
     { id: "hn", label: "HN", state: "ok", detail: "ok" },
     { id: "hf", label: "HF", state: "ok", detail: "ok" },
     { id: "rss", label: "RSS", state: "ok", detail: "ok" },
+    { id: "gnews", label: "GNews", state: "ok", detail: "landed" },
     { id: "openalex", label: "OpenAlex", state: "soft", detail: "HTTP 429" },
     { id: "crossref", label: "Crossref", state: "ok", detail: "ok" },
     { id: "github", label: "GitHub", state: "ok", detail: "ok" },

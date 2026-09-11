@@ -4,6 +4,7 @@ import { CYCLE, WAVES, WAVE_TIMELINE } from "@/data/cycle";
 import { CRAWL, CRAWL_AT } from "@/data/x-crawl";
 import { HN_PULSE, HN_PULSE_AT } from "@/data/hn-pulse";
 import { RSS_LABS, RSS_LABS_AT } from "@/data/rss-labs";
+import { GNEWS_RSS, GNEWS_RSS_AT } from "@/data/gnews-rss";
 import { RSS_SECURITY, RSS_SECURITY_AT } from "@/data/rss-security";
 import { X_TASTE } from "@/data/x-taste";
 import { DIGEST_ITEMS, DROPPED, PACK_AT, PACK_SOURCE } from "@/data/digest-pack";
@@ -517,6 +518,54 @@ function Pulse() {
             briefEligible=false
           </p>
         </div>
+      </section>
+
+      <section className="mt-4" aria-label="Google News RSS spice">
+        <div className="sage-panel sage-ticks mb-3 flex flex-wrap items-center justify-between gap-2 px-3 py-2">
+          <p className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
+            news · google rss · pulse only · {GNEWS_RSS_AT || "—"}
+          </p>
+          <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
+            never Brief · never sole lead · {GNEWS_RSS.length} hits
+          </p>
+        </div>
+        {GNEWS_RSS.length === 0 ? (
+          <div className="sage-panel sage-ticks pin-card-quiet px-3 py-2.5">
+            <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
+              shelf · quiet · empty/soft OK
+            </p>
+            <p className="mt-1 text-sm text-muted">
+              No Google News spice yet. Soft-fail empty is honest — run bun run ingest. Never Brief · never sole Pulse lead.
+            </p>
+          </div>
+        ) : (
+          <ul className="grid gap-2 md:grid-cols-2">
+            {GNEWS_RSS.slice(0, 8).map((r) => (
+              <li key={r.id} className="sage-panel sage-ticks pin-card-quiet px-3 py-2">
+                <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
+                  news · google rss · pulse only
+                  {r.publisher ? <> · {r.publisher}</> : null}
+                  <> · {r.tag}</>
+                </p>
+                <p className="mt-1 line-clamp-2 text-sm text-phosphor">{r.title}</p>
+                {r.summary ? (
+                  <p className="mt-1 line-clamp-2 text-sm text-muted">{r.summary.slice(0, 180)}</p>
+                ) : null}
+                <p className="mt-1 font-mono text-kicker uppercase tracking-kicker text-subtle">
+                  never Brief · never sole lead · {r.published}
+                </p>
+                <a
+                  href={r.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-2 inline-flex h-8 items-center font-mono text-kicker uppercase tracking-kicker sage-signal"
+                >
+                  open
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
       </section>
 
       <section className="mt-4" aria-label="Operator X-session taste">

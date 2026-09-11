@@ -71,6 +71,12 @@ import {
   toGithubShelfItems,
 } from "../src/lib/github-shelf";
 import {
+  fetchGnewsRss,
+  resolveGnewsCacheDir,
+  resetGnewsTickState,
+  type GnewsRssItem,
+} from "../src/lib/gnews-rss";
+import {
   fetchWikidataDeny,
   resetWikidataDenyTickState,
   resolveWikidataCacheDir,
@@ -211,6 +217,34 @@ ${body},
 `;
 }
 
+
+function renderGnewsRssTs(rows: GnewsRssItem[], stamp: string): string {
+  const body = rows
+    .map((r) => {
+      return `  { id: ${JSON.stringify(r.id)}, title: ${JSON.stringify(r.title)}, link: ${JSON.stringify(r.link)}, published: ${JSON.stringify(r.published)}, summary: ${JSON.stringify(r.summary)}, publisher: ${JSON.stringify(r.publisher)}, query: ${JSON.stringify(r.query)}, source: "gnews-rss" as const, tag: ${JSON.stringify(r.tag)} as const }`;
+    })
+    .join(",\n");
+  return `/** Google News RSS Pulse spice — generated/refreshed by bun run ingest. Quiet shelf only; never Brief · never sole lead. */
+export type GnewsRssRow = {
+  id: string;
+  title: string;
+  link: string;
+  published: string;
+  summary: string;
+  publisher: string;
+  query: string;
+  source: "gnews-rss";
+  tag: "rest" | "rumor" | "companion" | "incident";
+};
+
+export const GNEWS_RSS_AT = ${JSON.stringify(stamp)};
+
+export const GNEWS_RSS: GnewsRssRow[] = [
+${body},
+];
+`;
+}
+
 function patchCrawlAt(src: string, stamp: string): string {
   if (/export const CRAWL_AT = "[^"]+"/.test(src)) {
     return src.replace(/export const CRAWL_AT = "[^"]+"/, `export const CRAWL_AT = "${stamp}"`);
@@ -226,7 +260,7 @@ function patchCurrentJson(path: string, stamp: string) {
   data.crawled_at = stamp;
   data.compiled_at = data.compiled_at ?? stamp;
   data.ingest_note =
-    "P3 ingest stamp. Lead remains hf-incident. Free providers only (HF daily_papers + arXiv Atom + OpenAlex Papers enrich + Crossref DOI enrich + HN Algolia Pulse + lab RSS + security RSS ToB/Fox-IT/PZ + GitHub unauth shelf + Wikidata DENY grounding + shelf). No paid X. arXiv/OpenAlex/Crossref/HN/RSS/GitHub/Wikidata never Brief pins. HF HTML fallback not wired. NCC RSS skip. S2 deferred.";
+    "P3 ingest stamp + FREE-PULSE P5 Google News RSS spice. Lead remains hf-incident. Free providers only (HF daily_papers + arXiv Atom + OpenAlex Papers enrich + Crossref DOI enrich + HN Algolia Pulse + lab RSS + Google News RSS spice + security RSS ToB/Fox-IT/PZ + GitHub unauth shelf + Wikidata DENY grounding + shelf). No paid X. arXiv/OpenAlex/Crossref/HN/RSS/GNews/GitHub/Wikidata never Brief pins. GNews never sole Pulse lead. HF HTML fallback not wired. NCC RSS skip. S2 deferred.";
   writeText(path, `${JSON.stringify(data, null, 2)}\n`);
 }
 
@@ -533,6 +567,59 @@ async function main() {
     console.log(`RSS labs: soft_fail — continuing (${String(err)})`);
   }
 
+
+  // Google News RSS AFTER lab RSS — Pulse quiet spice only; never Brief · never sole lead · rotate ≤2/tick
+  // FREE-PULSE P5: soft_fail format-break/empty/403/429 · locks 003/hf-incident · no 004 · paid X/Bluesky DENY
+  resetGnewsTickState();
+  let gnewsOk = false;
+  let gnewsSoftFail = false;
+  let gnewsSoftFailReason: string | undefined;
+  let gnewsRows: GnewsRssItem[] = [];
+  let gnewsQueriesRun: string[] = [];
+  let gnewsQueriesOk: string[] = [];
+  let gnewsQueriesSoftFail: { query: string; reason: string; soft_fail: true }[] = [];
+  let gnewsQueriesAttempted = 0;
+  let gnewsQueriesOkCount = 0;
+  let gnewsHttpStatus: number | null = null;
+  let gnewsContentType: string | null = null;
+  let gnewsFormat: string | null = null;
+  let gnewsFromCache = false;
+  try {
+    const gn = await fetchGnewsRss({
+      cacheDir: resolveGnewsCacheDir(root),
+      displayCap: 8,
+    });
+    gnewsRows = gn.items;
+    gnewsOk = gn.ok || gnewsRows.length > 0;
+    gnewsSoftFail = gn.soft_fail;
+    gnewsSoftFailReason = gn.soft_fail_reason;
+    gnewsQueriesRun = gn.queries_run;
+    gnewsQueriesOk = gn.queries_ok_list;
+    gnewsQueriesSoftFail = gn.queries_soft_fail;
+    gnewsQueriesAttempted = gn.queries_attempted;
+    gnewsQueriesOkCount = gn.queries_ok;
+    gnewsHttpStatus = gn.http_status;
+    gnewsContentType = gn.content_type;
+    gnewsFormat = gn.format;
+    gnewsFromCache = gn.from_cache;
+    console.log(
+      `GNews: ${gnewsRows.length} spice cards queries=${gnewsQueriesAttempted} ok=${gnewsQueriesOkCount} soft_fail=${gn.soft_fail} (brief=false · pulse_lead=false · rotate≤2)`,
+    );
+    if (gnewsQueriesRun.length) {
+      console.log(`  gnews queries_run: ${gnewsQueriesRun.join(" · ")}`);
+    }
+    for (const s of gnewsQueriesSoftFail) {
+      console.log(`  gnews soft_fail ${s.query}: ${s.reason}`);
+    }
+    for (const it of gnewsRows.slice(0, 3)) {
+      console.log(`  gnews [${it.tag}] ${it.publisher || "?"} :: ${it.title.slice(0, 72)}`);
+    }
+  } catch (err) {
+    gnewsSoftFail = true;
+    gnewsSoftFailReason = `exception: ${String(err)}`;
+    console.log(`GNews: soft_fail — continuing (${String(err)})`);
+  }
+
   // Security lab RSS AFTER lab RSS — Pulse/shelf/Digest-ref; never Brief lead / never cycle 004
   let secOk = false;
   let secPulse: SecurityRssItem[] = [];
@@ -707,6 +794,9 @@ async function main() {
       renderRssSecurityTs(secPulse, stamp),
     );
   }
+  if (gnewsOk || gnewsSoftFail) {
+    writeText(resolve(root, "src/data/gnews-rss.ts"), renderGnewsRssTs(gnewsRows, stamp));
+  }
 
   const report = {
     schema: 1,
@@ -823,6 +913,35 @@ async function main() {
         tag: r.tag,
         title: r.title,
         link: r.link,
+      })),
+    },
+    google_news: {
+      ok: gnewsOk,
+      soft_fail: gnewsSoftFail,
+      soft_fail_reason: gnewsSoftFailReason ?? null,
+      queries_attempted: gnewsQueriesAttempted,
+      queries_ok: gnewsQueriesOkCount,
+      items: gnewsRows.length,
+      http_status: gnewsHttpStatus,
+      content_type: gnewsContentType,
+      format: gnewsFormat,
+      from_cache: gnewsFromCache,
+      brief: false,
+      pulse_lead: false,
+      briefEligible: false,
+      pulseLeadEligible: false,
+      never_sole_lead: true,
+      pulse_only: true,
+      url_template: "https://news.google.com/rss/search?q={QUERY}&hl=en-US&gl=US&ceid=US:en",
+      queried: gnewsQueriesRun,
+      queries_ok_list: gnewsQueriesOk,
+      queries_soft_fail: gnewsQueriesSoftFail,
+      sample: gnewsRows.slice(0, 3).map((r) => ({
+        id: r.id,
+        title: r.title,
+        publisher: r.publisher,
+        link: r.link,
+        tag: r.tag,
       })),
     },
     x: {
