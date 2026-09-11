@@ -120,4 +120,4 @@ Contract cut: `refs/FREE-PULSE-DEEPEN.md` (waiting Canberk rank 1–4).
 **Not blocked:** desk runs on bun · Chrome · GitHub · Chrome DevTools already green.
 
 ## A4 soft-fail meters
-Contract: `refs/OPS-A4-SOFT-FAIL-METERS.md` (APPROVE-ready · no land).
+Contract: `refs/OPS-A4-SOFT-FAIL-METERS.md` — **LAND GO** · Pulse meters from `ingest-last` soft_fails (OpenAlex 429 live).

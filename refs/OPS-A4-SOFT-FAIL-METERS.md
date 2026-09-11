@@ -2,7 +2,7 @@
 
 **Architect cut:** 2026-09-07 ~07:38Z  
 **Source:** `UX-A4-SOFT-FAIL-METER-MAP.md` (MOCK-A → meters)  
-**Status:** **CONTRACT ONLY** — not to land until Director GO after X-taste dry-run #2 path is clear (or explicit A4 GO)  
+**Status:** **LAND GO** — Director 2026-09-07 ~08:03Z · Architect flip · land now (Pulse meters only)  
 **Owners (when landed):** UX craft · Coder wire to `ingest-last` · Reviewer FAIL gate  
 **Locks:** `003` · `hf-incident` · Sol≠Astra · Skin V2 hexes · `briefEligible:false` · no `004`  
 **DENY:** paid X API · Bluesky · scrape farms · Brief promotion
@@ -43,6 +43,18 @@ FREE-PULSE deepen WIRE (waits Canberk rank 1–4) · full X scrape · Voice/Dige
 | `WIRE-X-SESSION-TASTE` | Skip stamp feeds A4 chip; full scrape separate |
 | `FREE-PULSE-DEEPEN` P1 OpenAlex backoff | Complements A4; not this land |
 
-## Architect hold
+## Architect LAND GO — 2026-09-07 ~08:03Z
 
-No implement signal. APPROVE-ready for Director GO when ops bandwidth allows — **after** Canberk X **done** + dry-run #2 preferred so A4 meters aren’t only `login_wall`.
+**YES — land A4 soft-fail meters now.**
+
+| Hold still | |
+|------------|--|
+| FREE-PULSE deepen / new HTTP WIRE | until Canberk rank 1–4 |
+| X full scrape / dry-run #2 | until Canberk X **done** |
+| Voice/Digest · paid X · Bluesky | DENY / PARKED |
+
+UX crafts chrome · Coder wires `ingest-last` · Reviewer FAIL gate. Never Brief lead.
+
+## Coder land — 2026-09-11
+
+Pulse meters wired to `desk/src/data/ingest-last.ts` ← `artifacts/sage/ingest-last.json` stamp-truth. Soft-fails this stamp: OpenAlex HTTP 429. X-session landed (not skip). Never Brief.

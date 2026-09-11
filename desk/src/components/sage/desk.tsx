@@ -11,6 +11,7 @@ import { DIGEST_CADENCE } from "@/data/digest-cadence";
 import { PAPERS } from "@/data/papers";
 import { SHELF } from "@/data/shelf";
 import { WIKIDATA_DENY_LAST } from "@/data/wikidata-deny-last";
+import { SOFT_FAIL_METERS } from "@/data/soft-fail-meters";
 import { isDigestDue, nextDue, PACK_KEY, renderPlan, renderReport } from "@/lib/digest-pack";
 import { crawlAgeHours } from "@/lib/x-pulse";
 import { cn } from "@/lib/cn";
@@ -464,6 +465,58 @@ function Pulse() {
             ))}
           </ul>
         )}
+      </section>
+
+
+      <section className="mt-4" aria-label="Soft-fail health meters">
+        <div className="sage-panel sage-ticks px-3 py-2.5">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
+              FREE FEEDS · soft-fail meters
+            </p>
+            <p className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
+              snap {SOFT_FAIL_METERS.stamped_at} · never Brief
+            </p>
+          </div>
+          <div className="mt-2 flex flex-wrap gap-1.5" role="list" aria-label="Provider health chips">
+            {SOFT_FAIL_METERS.providers.map((c) => {
+              const chipClass =
+                c.state === "ok"
+                  ? "desk-chip desk-chip-live"
+                  : c.state === "soft"
+                    ? "desk-chip desk-chip-warn"
+                    : "desk-chip desk-chip-quiet";
+              const statusLabel = c.state === "ok" ? "OK" : c.state === "soft" ? "soft" : "DENY";
+              return (
+                <span key={c.id} role="listitem" className={chipClass} title={c.detail}>
+                  {c.label} · {statusLabel}
+                  {c.state !== "ok" ? <> · {c.detail}</> : null}
+                  {c.state === "ok" && c.detail === "landed" ? <> · landed</> : null}
+                </span>
+              );
+            })}
+          </div>
+          <p
+            className={
+              SOFT_FAIL_METERS.soft_count
+                ? "mt-2 font-mono text-kicker uppercase tracking-kicker text-amber"
+                : "mt-2 font-mono text-kicker uppercase tracking-kicker sage-signal"
+            }
+            role="status"
+          >
+            {SOFT_FAIL_METERS.soft_count
+              ? SOFT_FAIL_METERS.aggregate.join(" · ")
+              : "ALL GREEN · 0 soft-fails"}
+          </p>
+          <p className="mt-1.5 font-mono text-kicker uppercase tracking-kicker text-subtle">
+            <span className="sage-deny">DENY</span>
+            {" · "}
+            {SOFT_FAIL_METERS.deny.join(" · ")}
+          </p>
+          <p className="mt-1 font-mono text-kicker uppercase tracking-kicker text-subtle">
+            briefEligible=false
+          </p>
+        </div>
       </section>
 
       <section className="mt-4" aria-label="Operator X-session taste">
