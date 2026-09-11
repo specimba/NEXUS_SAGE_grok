@@ -1,28 +1,38 @@
 # Pack dual-home — latest export
 
-**UTC:** 20260907T065851Z  
-**Pack:** `sage-pack-003-20260907T065851Z.tar.gz`
+**UTC:** 20260911T093002Z  
+**Pack:** `sage-pack-003-20260911T093002Z.tar.gz`
 
 | Home | Path |
 |------|------|
-| Primary (VM) | `/workspace/nexus-sage/packs/sage-pack-003-20260907T065851Z.tar.gz` |
-| Desk mirror | `/workspace/nexus-sage/desk/packs/sage-pack-003-20260907T065851Z.tar.gz` |
-| Operator | Windows `Downloads\\nexus-sage-packs\\` or Drive — see `P2-EXPORT-IMPORT.md` |
+| Primary (VM) | `/workspace/nexus-sage/packs/sage-pack-003-20260911T093002Z.tar.gz` |
+| Desk mirror | `/workspace/nexus-sage/desk/packs/sage-pack-003-20260911T093002Z.tar.gz` |
+| Operator | Windows `Downloads\nexus-sage-packs\` or Drive — see `P2-EXPORT-IMPORT.md` |
 
 **Locks:** cycle `003` · lead `hf-incident` · `sol_ne_astra` · no `004` without primary  
 
-**Digest cadence:** A2 WROTE · pack_id `2026-09-07T06`  
+**Digest cadence:** unchanged by A1 (Brief pins / digest tick not mutated)  
 
-**Crawl / ingest:** `2026-09-07T01:29:12Z`  
+**Crawl / ingest:** `2026-09-11T09:29:29Z`  
 
-**sha256 (archive):** `7fce4d0eb5a4f1c02547ccdd510aa5570bcccb1d87c842612e62a467b927c577`  
-**manifest sha256:** `see archive`  
+**sha256 (archive):** `271313533c19216016bbd9ab6d1e6ddd8e8a4e7b0350b710325eb0f50c410ba2`  
+**manifest sha256:** `3c9a9e75b466ada0803504539020135e032a8205876fd6528fdc1f51db560841`  
 
-**Commands:** `bun run pack:export` · `bun run a2:tick` · `bun run digest:tick` · `bun run ingest`
+**Commands:** `bun run pack:export` · `bun run pack:import -- <path>` · `bun run digest:tick` · `bun run ingest` · `FORCE=1 bun scripts/a1-stale-ingest.mjs`
 
-**A2 note:** unattended DUE→WROTE→dual-home · Istanbul weekday window (+09:00 catch-up) · no overnight  
+**A1 note:** age≥12h path · pre-age ~104.00h · Mon–Fri daytime only (~09:00–17:00 VM/local intent) — no overnight @every firehose; standing cron AFTER Reviewer PASS  
 
-**Soft-fails:** x-session-taste `login_wall` skip-stamped (taste empty · desk boots · briefEligible:false) — see ingest-last / X-SESSION-TASTE-DRY-RUN.md
+**Soft-fails STAMPED:** openalex HTTP 429
+
+### Reviewer stamp — pending
+
+(Factual dual-home above from Coder A1 auto-ingest. Reviewer owns PASS/FAIL stamp.)
+
+
+### Reviewer confirm — pending CLEARED (see 2026-09-11T09:24Z)
+
+(Factual dual-home above from Coder A2 auto-export. Reviewer owns PASS/FAIL stamp.)
+
 
 ### Reviewer confirm — 2026-09-07T07:07Z
 
@@ -158,3 +168,22 @@ Evidence:
 | 8 craft/WIRE | PASS |
 
 **GO** @Coder: X-session dry-run vs FAIL 1–8 + Scout allowlist. Land HOLD until that dry-run PASSes.
+
+### Reviewer stamp — 2026-09-11T09:24Z (Reviewer Gürok)
+
+**A2 PACK-DUAL-HOME PASS** (`092040Z`) vs FAIL 1–8 (archive).
+
+Evidence:
+- Pack `sage-pack-003-20260911T092040Z.tar.gz` dual-homed identical (7673 B)
+  - sha256: `1e3fd8f2a210131f5d7d31928ce5abe4eceb1059cb398b8c910f80823f4e1a0e`
+- Digest WROTE `pack_id=2026-09-11T09` · HOLD→`15:20:40Z`
+- Locks `003` / `hf-incident` · Sol≠Astra · no `004`
+
+**SOFT HOLD (post-boot):**
+- Crawl disk STALE ~104h (`2026-09-07T01:29:12Z`) — A1 natural STALE owed after `:3000` returns
+- `visual:check` / live=disk deferred until Coder `bun install` + start
+- Host `crontab` missing — ops via pulse/Bot until cron returns (`OPS-CRONLESS-DURABILITY`)
+
+**X-session:** Canberk login **done** noted — dry-run #2 after desk green + A1. Full land still HOLD until that PASS.
+
+**FREE-PULSE rank** (not Bluesky): 1 OpenAlex backoff · 2 lab/HF RSS · 3 HN deepen · 4 skip — or say **GO default** 1→2→3.

@@ -18,7 +18,11 @@ export const SHELF: ShelfItem[] = [
   { href: "https://owasp.org/www-project-automated-threats-to-web-applications/", label: "owasp.org/www-project-automated-threats-to-web-applications/", reason: "toolkit" as const },
   { href: "https://owasp.org/www-community/Virtual_Patching_Best_Practices", label: "owasp.org/www-community/Virtual_Patching_Best_Practices", reason: "toolkit" as const },
   { href: "https://cheatsheetseries.owasp.org/cheatsheets/Virtual_Patching_Cheat_Sheet.html", label: "cheatsheetseries.owasp.org/cheatsheets/Virtual_Patching_Cheat_Sheet.html", reason: "toolkit" as const },
-  { href: "https://github.com/achellesheel/llm-red-team-eval", label: "achellesheel/llm-red-team-eval", reason: "github-search-shelf" as const },
-  { href: "https://github.com/balrubaye/llm-red-teaming-toolkit", label: "balrubaye/llm-red-teaming-toolkit", reason: "github-search-shelf" as const },
+  { href: "https://arxiv.org/abs/2609.11923", label: "arxiv.org/abs/2609.11923", reason: "arxiv-shelf" as const },
+  { href: "https://arxiv.org/abs/2609.11918", label: "arxiv.org/abs/2609.11918", reason: "arxiv-shelf" as const },
+  { href: "https://arxiv.org/abs/2609.11917", label: "arxiv.org/abs/2609.11917", reason: "arxiv-shelf" as const },
+  { href: "https://arxiv.org/abs/2609.11916", label: "arxiv.org/abs/2609.11916", reason: "arxiv-shelf" as const },
+  { href: "https://arxiv.org/abs/2609.11915", label: "arxiv.org/abs/2609.11915", reason: "arxiv-shelf" as const },
+  { href: "https://github.com/seikaikyo/ai-red-team", label: "seikaikyo/ai-red-team", reason: "github-search-shelf" as const },
   { href: "https://github.com/monishaclemenceau7-bit/LLM-red-team-toolkit", label: "monishaclemenceau7-bit/LLM-red-team-toolkit", reason: "github-search-shelf" as const },
 ];
