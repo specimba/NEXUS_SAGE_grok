@@ -56,3 +56,19 @@ Cycle `004` · FREE-PULSE WIRE · paid X · overnight firehose · Brief UI reope
 ## Live proof — 2026-09-11 ~09:30Z
 
 Desk revived · A1 natural STALE PASS (Coder) · ImageMagick installed · `crontab` still MISSING → Bot-routine / pulse fallback remains **required**. Next: X dry-run #2 · Reviewer pack stamp · Canberk free-pulse rank or GO default.
+
+## Pulse stamp — 2026-09-11T12:29:52Z (Director Pulse · OPS-CRONLESS)
+
+**Dry `bun run a2:tick` (DESK):**
+
+```
+[2026-09-11T12:29:52.426Z] A2 start — Istanbul Fri 15:29 · weekday=true · hour9-16=true
+[2026-09-11T12:29:52.476Z]   | digest:tick HOLD — next_at=2026-09-11T15:20:40.008Z (within CADENCE_MS)
+[2026-09-11T12:29:52.478Z] A2 HOLD — no pack:export
+```
+
+**HOLD reason:** `next_at≈2026-09-11T15:20:40Z` still within `CADENCE_MS` (no export).
+
+**Fri → Mon catch-up:** When that `next_at` arrives (~18:20 Istanbul Fri), it is **outside** the A2 Istanbul weekday hour window (`9–16` Mon–Fri). Standing A2 will not WROTE Fri evening; **Mon morning catch-up** (pulse or Bot routine at next in-window tick) covers DUE. Bot routines continue to cover A1/A2 while host `crontab` is missing.
+
+P5 Google News land remains **HOLD** — do not implement this pulse.

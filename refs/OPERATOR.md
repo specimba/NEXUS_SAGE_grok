@@ -149,6 +149,8 @@ crontab -l > /workspace/nexus-sage/logs/cron-backups/manual-pause.bak
 
 When `crontab` returns: `desk/scripts/install-cron.sh` · example `desk/ops/crontab.example`.
 
+**Fri afternoon / outside A2 window:** If `next_at` lands after Istanbul 16:00 on a weekday (or weekend), A2 stays HOLD until the next in-window tick — typically **Mon morning catch-up**. Bot routines cover A1/A2 while host cron is missing. Evidence: 2026-09-11T12:29:52Z dry `a2:tick` → HOLD (`next_at=2026-09-11T15:20:40Z` within cadence; due time Fri ~18:20 Istanbul → Mon catch-up). See `OPS-CRONLESS-DURABILITY.md`.
+
 **Tooling note:** ImageMagick is apt (`imagemagick` / `convert`). Playwright screenshot plugin is a **Grok Bot plugin**, not apt.
 
 
