@@ -48,3 +48,18 @@ Unit: persistent 429 → 2 retries then soft_fail · Retry-After recover · sear
 ## Architect HOLD after this wire
 
 P2 lab/HF RSS · P3 HN deepen — still need explicit Canberk step or separate Director GO (GO default = P1 only this pulse unless Canberk says continue 1→2→3).
+
+### Reviewer stamp — 2026-09-11T10:44Z (Reviewer Gürok)
+
+**WIRE-OPENALEX-BACKOFF PASS** (FREE-PULSE P1).
+
+Evidence:
+- Code: Retry-After + jitter 2s→8s · ≤2 retries · soft_fail honesty · ≤1 search/tick
+- Unit: persistent 429 → retries then soft_fail · Retry-After recover · HF keeps / Brief=false (bun **163**)
+- Live `ingest-last.openalex`: `soft_fail=true` · reason `HTTP 429` · `enriched:0` · `brief=false` · `pulse_lead=false` · `papers_enrich_only=true`
+- Locks `003`/`hf-incident` · `visual:check` OK · brand OK · A4 meters stay honest soft
+- Dual-home untouched this land
+
+Soft note: ensure `retries` field is written on next live ingest stamp (Scout stamp-fields SoT) — unit path covers retries; current disk stamp may predate field.
+
+**P2/P3 HOLD** until Canberk continues 1→2→3.

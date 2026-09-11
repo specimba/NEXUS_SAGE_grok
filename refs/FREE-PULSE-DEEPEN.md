@@ -2,7 +2,7 @@
 
 **Architect cut:** 2026-09-07 ~03:11Z  
 **Source:** `SCOUT-X-FREE-DURABILITY.md` §3 (+ veto)  
-**Status:** **P1 LAND GO** (Director GO default 2026-09-11) · `WIRE-OPENALEX-BACKOFF.md` · P2/P3 still HOLD unless Canberk continues  
+**Status:** **P1 PASS** · **P2 LAND GO** (`WIRE-LAB-HF-RSS-P2.md`) · **P3 HOLD** until P2 PASS  
 **Locks:** `003` · `hf-incident` · Sol≠Astra · free only · `briefEligible: false` on all pulse pipes · no `004`  
 **DENY:** paid X · Bluesky · Nitter/mirrors · Reddit unauth · scrape farms · TrendsMCP keys
 
