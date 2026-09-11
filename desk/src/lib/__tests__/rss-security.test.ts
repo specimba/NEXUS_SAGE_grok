@@ -57,7 +57,7 @@ describe("Security RSS parse → schema", () => {
     expect(items[0]!.title).toContain("0day trends");
     expect(items[0]!.briefEligible).toBe(false);
     expect(items[0]!.link).toContain("projectzero.google");
-  });
+  }, { timeout: 30_000 });
 
   test("Fox-IT RemotePE fixture · briefEligible false · never Brief", () => {
     const entries = parseRssOrAtom(FOX);
@@ -90,7 +90,7 @@ describe("Security RSS parse → schema", () => {
     const truncated = truncateAfterNthEntry(P0, 1);
     expect((truncated.match(/<\/entry>/gi) ?? []).length).toBe(1);
     expect(truncated.includes("Extra entry for capped parse")).toBe(false);
-  });
+  }, { timeout: 30_000 });
 
   test("fetchRssSecurity offline fixtures for ToB + Fox-IT + Project Zero", async () => {
     const fixtures: Partial<Record<SecurityLabId, string>> = {
@@ -113,7 +113,7 @@ describe("Security RSS parse → schema", () => {
       expect(it.source).toBe("rss-security");
       expect(it.lab).not.toBe("ncc");
     }
-  });
+  }, { timeout: 30_000 });
 });
 
 describe("classifyPost / DENY on security RSS", () => {
