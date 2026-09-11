@@ -42,3 +42,7 @@ Paid X API **DENY** · Bluesky **DENY** · Voice/Digest **PARKED**. Cron-less Bo
 | X session taste | kept 8 · Pulse shelf | never Brief |
 
 Scout lane: freeze ages refreshed · OpenAlex P1 ready · **no** new HTTP candidates · waiting your free-pulse **1–4** or **GO default**.
+
+## OpenAlex P1 land (Coder 2026-09-11)
+
+`OpenAlex · soft_fail={bool} · enriched={n} · retries={n} · from_cache={bool}` — Retry-After/jitter ≤2 retries landed; stamp fields in `SCOUT-OPENALEX-STAMP-FIELDS.md`. P2/P3 HOLD.

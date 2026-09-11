@@ -1,4 +1,4 @@
-# WIRE — OpenAlex 429 backoff (FREE-PULSE P1 · APPROVED TO LAND)
+# WIRE — OpenAlex 429 backoff (FREE-PULSE P1 · LANDED)
 
 **Architect approve:** YES · **Director ASSIGN** 2026-09-11 ~10:40Z · **GO default** (Canberk may veto/rerank)  
 **Source:** `SCOUT-OPENALEX-429-BACKOFF.md` · `FREE-PULSE-DEEPEN.md` P1  
@@ -26,15 +26,24 @@ Harden existing OpenAlex enrich so intermittent **HTTP 429** soft-fails honestly
 
 ## Done-when (Reviewer)
 
-- [ ] Forced/dry 429 path → exit 0 · soft_fail stamped · HF keeps intact  
-- [ ] Happy path still enriches when not rate-limited  
-- [ ] Freeze note / A4 chip show honest soft-fail (not washed)  
-- [ ] Locks `003` / `hf-incident` · Brief pins unchanged · `visual:check` green  
-- [ ] Dual-home only if pack side-effect from same ops pulse — else untouched  
+- [x] Forced/dry 429 path → exit 0 · soft_fail stamped · HF keeps intact (unit)  
+- [x] Happy path still enriches when not rate-limited (unit + Retry-After recover)  
+- [ ] Freeze note / A4 chip show honest soft-fail (not washed) — Reviewer  
+- [ ] Locks `003` / `hf-incident` · Brief pins unchanged · `visual:check` green — Reviewer  
+- [x] Dual-home only if pack side-effect from same ops pulse — else untouched  
 
 ## Non-goals
 
 New provider · FREE-PULSE P2/P3 · Semantic Scholar key · Brief UI · Voice/Digest · cycle `004`
+
+
+## Coder land — 2026-09-11
+
+**LANDED** — OpenAlex 429 Retry-After/jitter ≤2 retries · soft_fail honesty · `retries` on `ingest-last.openalex` · never Brief · never displace HF · locks `003`/`hf-incident`.
+
+Stamp fields per `SCOUT-OPENALEX-STAMP-FIELDS.md` (`ok`/`soft_fail`/`enriched`/`retries`/`brief=false`/`pulse_lead=false`/`papers_enrich_only=true`).
+
+Unit: persistent 429 → 2 retries then soft_fail · Retry-After recover · search budget still ≤1.
 
 ## Architect HOLD after this wire
 
