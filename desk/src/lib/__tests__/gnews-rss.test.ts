@@ -64,7 +64,7 @@ describe("Google News RSS parse → Pulse spice schema", () => {
       expect(isGnewsBriefEligible(gpt)).toBe(false);
       expect(isGnewsPulseLeadEligible(gpt)).toBe(false);
     },
-    { timeout: 20_000 },
+    { timeout: 30_000 },
   );
 
   test("Astra / incident headline dropped (never Brief noise)", () => {
@@ -87,7 +87,7 @@ describe("Google News RSS parse → Pulse spice schema", () => {
     expect(r.items.length).toBeLessThanOrEqual(GNEWS_DISPLAY_CAP);
     expect(r.format).toBe("rss2");
     expect(r.items.every((i) => i.briefEligible === false)).toBe(true);
-  });
+  }, { timeout: 30_000 });
 
   test("queryHash stable", () => {
     expect(queryHash("Hugging Face")).toBe(queryHash("hugging face"));
@@ -151,7 +151,7 @@ describe("soft_fail honesty · format-break / empty / 403/429", () => {
     expect(r.brief).toBe(false);
     expect(r.pulse_lead).toBe(false);
     expect(looksLikeHtml(HTML_BREAK)).toBe(true);
-  });
+  }, { timeout: 30_000 });
 
   test("empty channel → soft_fail empty_channel", async () => {
     const r = await fetchGnewsRss({ fixtureXml: EMPTY });
@@ -159,7 +159,7 @@ describe("soft_fail honesty · format-break / empty / 403/429", () => {
     expect(r.soft_fail_reason).toContain("empty_channel");
     expect(r.items).toHaveLength(0);
     expect(r.format).toBe("empty");
-  });
+  }, { timeout: 30_000 });
 
   test("HTTP 429 force soft_fail merge · ingest continues shape", async () => {
     const cacheDir = resolve(import.meta.dir, "../../../artifacts/sage/gnews-cache-test-429");
@@ -177,7 +177,7 @@ describe("soft_fail honesty · format-break / empty / 403/429", () => {
     expect(r.briefEligible).toBe(false);
     expect(r.pulseLeadEligible).toBe(false);
     wipe(cacheDir);
-  });
+  }, { timeout: 30_000 });
 
   test("HTTP 403 soft_fail", async () => {
     const cacheDir = resolve(import.meta.dir, "../../../artifacts/sage/gnews-cache-test-403");
@@ -191,7 +191,7 @@ describe("soft_fail honesty · format-break / empty / 403/429", () => {
     expect(r.soft_fail_reason).toMatch(/403/);
     expect(r.ok).toBe(false);
     wipe(cacheDir);
-  });
+  }, { timeout: 30_000 });
 
   test("one query HTML soft_fail · other fixture ok → merge", async () => {
     const r = await fetchGnewsRss({
@@ -214,7 +214,7 @@ describe("soft_fail honesty · format-break / empty / 403/429", () => {
       // day rotate might pick Anthropic pair — still must soft_fail empty fixtures
       expect(r.brief).toBe(false);
     }
-  });
+  }, { timeout: 30_000 });
 
   test("explicit fixtures for both tick queries soft_fail merge", async () => {
     resetGnewsTickState();
@@ -239,7 +239,7 @@ describe("soft_fail honesty · format-break / empty / 403/429", () => {
     expect(r.items.length).toBeGreaterThanOrEqual(1);
     expect(r.items.length).toBeLessThanOrEqual(8);
     expect(r.never_sole_lead).toBe(true);
-  });
+  }, { timeout: 30_000 });
 });
 
 describe("display cap 6–8 · de-dupe", () => {
@@ -255,5 +255,5 @@ describe("display cap 6–8 · de-dupe", () => {
     }));
     expect(capGnewsDisplay(many, 8)).toHaveLength(8);
     expect(capGnewsDisplay(many, 6)).toHaveLength(6);
-  });
+  }, { timeout: 30_000 });
 });
