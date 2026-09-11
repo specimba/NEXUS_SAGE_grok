@@ -9,6 +9,7 @@ import {
   parseRssOrAtom,
   toLabItems,
   toShelfItems,
+  type LabFeedDef,
   type LabId,
 } from "@/lib/rss-labs";
 import { classifyPost } from "@/lib/x-hygiene";
@@ -21,6 +22,21 @@ const OPENAI = FIX("rss-openai-daybreak.xml");
 const GOOGLE_AI = FIX("rss-google-ai-fairwind.xml");
 const DEEPMIND = FIX("rss-deepmind-gemini38.xml");
 const HF = FIX("rss-hf-neomme.xml");
+
+const PHASE_A_IDS = ["openai", "deepmind", "google-ai", "huggingface"] as const;
+const P2B_IDS = [
+  "mistral",
+  "nvidia",
+  "nvidia-dev",
+  "ms-research",
+  "google-research",
+] as const;
+const PHASE_A_FEEDS: readonly LabFeedDef[] = LAB_FEEDS.filter((f) =>
+  (PHASE_A_IDS as readonly string[]).includes(f.lab),
+);
+const P2B_FEEDS: readonly LabFeedDef[] = LAB_FEEDS.filter((f) =>
+  (P2B_IDS as readonly string[]).includes(f.lab),
+);
 
 describe("RSS labs parse → schema", () => {
   test("OpenAI Daybreak fixture maps briefEligible false", () => {
@@ -84,7 +100,7 @@ describe("RSS labs parse → schema", () => {
       deepmind: DEEPMIND,
       huggingface: HF,
     };
-    const r = await fetchRssLabs({ fixtures });
+    const r = await fetchRssLabs({ fixtures, feeds: PHASE_A_FEEDS });
     expect(r.ok).toBe(true);
     expect(r.soft_fail).toBe(false);
     expect(r.brief).toBe(false);
@@ -200,14 +216,20 @@ describe("never Brief · cycle locks · no Anthropic/Meta required", () => {
     ]);
   });
 
-  test("LAB_FEEDS are first-party only — no anthropic/meta", () => {
+  test("LAB_FEEDS are first-party only — no anthropic/meta/cohere/xai", () => {
     const labs = LAB_FEEDS.map((f) => f.lab);
     expect(labs).toContain("openai");
     expect(labs).toContain("deepmind");
     expect(labs).toContain("google-ai");
     expect(labs).toContain("huggingface");
+    for (const id of P2B_IDS) expect(labs).toContain(id);
     expect(labs).not.toContain("anthropic");
     expect(labs).not.toContain("meta");
+    expect(labs).not.toContain("cohere");
+    expect(labs).not.toContain("xai");
+    // DENY: no Reddit / paid X / Bluesky URLs
+    const urls = LAB_FEEDS.flatMap((f) => [...f.urls]).join(" ");
+    expect(urls).not.toMatch(/reddit\.com|api\.x\.com|bluesky/i);
   });
 
   test("bad XML fail-closed → empty parse", () => {
@@ -231,7 +253,7 @@ describe("P2 per-feed soft_fail harden", () => {
       "google-ai": GOOGLE_AI,
       huggingface: HF,
     };
-    const r = await fetchRssLabs({ fixtures });
+    const r = await fetchRssLabs({ fixtures, feeds: PHASE_A_FEEDS });
     expect(r.ok).toBe(true);
     expect(r.soft_fail).toBe(true);
     expect(r.soft_fail_reason).toMatch(/openai:/);
@@ -255,7 +277,7 @@ describe("P2 per-feed soft_fail harden", () => {
       "google-ai": GOOGLE_AI,
       huggingface: HF,
     };
-    const r = await fetchRssLabs({ fixtures });
+    const r = await fetchRssLabs({ fixtures, feeds: PHASE_A_FEEDS });
     expect(r.ok).toBe(true);
     expect(r.soft_fail).toBe(true);
     expect(r.feedsSoftFail.some((f) => f.lab === "deepmind" && /HTML/.test(f.reason))).toBe(
@@ -273,7 +295,7 @@ describe("P2 per-feed soft_fail harden", () => {
       "google-ai": GOOGLE_AI,
       huggingface: HF,
     };
-    const r = await fetchRssLabs({ fixtures });
+    const r = await fetchRssLabs({ fixtures, feeds: PHASE_A_FEEDS });
     expect(r.ok).toBe(true);
     expect(r.soft_fail).toBe(true);
     expect(r.feedsSoftFail.length).toBeGreaterThanOrEqual(2);
@@ -320,12 +342,115 @@ describe("P2 per-feed soft_fail harden", () => {
       "google-ai": "",
       huggingface: "",
     };
-    const r = await fetchRssLabs({ fixtures });
+    const r = await fetchRssLabs({ fixtures, feeds: PHASE_A_FEEDS });
     expect(r.ok).toBe(false);
     expect(r.soft_fail).toBe(true);
     expect(r.items).toHaveLength(0);
     expect(r.pulse).toHaveLength(0);
     expect(r.feedsSoftFail).toHaveLength(4);
+    expect(r.brief).toBe(false);
+  });
+});
+
+describe("P2b first-party Phase B soft_fail", () => {
+  test("LAB_FEEDS wires Scout P2b URLs exactly", () => {
+    const byLab = Object.fromEntries(LAB_FEEDS.map((f) => [f.lab, f.urls[0]]));
+    expect(byLab.mistral).toBe("https://mistral.ai/rss.xml");
+    expect(byLab.nvidia).toBe("https://blogs.nvidia.com/feed/");
+    expect(byLab["nvidia-dev"]).toBe("https://developer.nvidia.com/blog/feed");
+    expect(byLab["ms-research"]).toBe(
+      "https://www.microsoft.com/en-us/research/blog/feed/",
+    );
+    expect(byLab["google-research"]).toBe("https://research.google/blog/rss/");
+    expect(P2B_FEEDS).toHaveLength(5);
+  });
+
+  test("new feed ids soft_fail per-feed · Phase A keep · never Brief", async () => {
+    const fixtures: Partial<Record<LabId, string>> = {
+      openai: OPENAI,
+      deepmind: DEEPMIND,
+      "google-ai": GOOGLE_AI,
+      huggingface: HF,
+      mistral: "",
+      nvidia: "<!DOCTYPE html><html><body>wall</body></html>",
+      "nvidia-dev": "<<<not xml",
+      "ms-research": "<rss><channel></channel></rss>",
+      "google-research": "",
+    };
+    const r = await fetchRssLabs({ fixtures });
+    expect(r.ok).toBe(true);
+    expect(r.soft_fail).toBe(true);
+    expect(r.brief).toBe(false);
+    expect(r.pulse_only).toBe(true);
+    for (const id of P2B_IDS) {
+      expect(
+        r.feedsSoftFail.some((f) => f.lab === id && f.soft_fail === true),
+      ).toBe(true);
+    }
+    expect(r.feedsOk.map((f) => f.lab).sort()).toEqual([
+      "deepmind",
+      "google-ai",
+      "huggingface",
+      "openai",
+    ]);
+    expect(r.feedsOk.find((f) => f.lab === "huggingface")!.count).toBeGreaterThanOrEqual(
+      1,
+    );
+    for (const it of r.items) {
+      expect(it.briefEligible).toBe(false);
+      expect(it.source).toBe("rss-lab");
+    }
+    // ingest stamp shape
+    const stamp = {
+      soft_fail: r.soft_fail,
+      soft_fail_reason: r.soft_fail_reason ?? null,
+      brief: r.brief,
+      feeds_soft_fail: r.feedsSoftFail,
+    };
+    expect(stamp.soft_fail).toBe(true);
+    expect(stamp.brief).toBe(false);
+    expect(stamp.feeds_soft_fail).toHaveLength(5);
+    expect(stamp.soft_fail_reason).toMatch(/mistral:/);
+  });
+
+  test("P2b-only all soft_fail → ok=false · no throw", async () => {
+    const fixtures: Partial<Record<LabId, string>> = {
+      mistral: "",
+      nvidia: "",
+      "nvidia-dev": "",
+      "ms-research": "",
+      "google-research": "",
+    };
+    const r = await fetchRssLabs({ fixtures, feeds: P2B_FEEDS });
+    expect(r.ok).toBe(false);
+    expect(r.soft_fail).toBe(true);
+    expect(r.items).toHaveLength(0);
+    expect(r.feedsSoftFail).toHaveLength(5);
+    for (const id of P2B_IDS) {
+      expect(r.feedsSoftFail.some((f) => f.lab === id)).toBe(true);
+    }
+    expect(r.brief).toBe(false);
+  });
+
+  test("P2b fetchImpl 403 soft_fails that id only", async () => {
+    const fetchImpl = (async () =>
+      new Response("forbidden", { status: 403 })) as typeof fetch;
+    const r = await fetchRssLabs({
+      feeds: [
+        { lab: "mistral", urls: ["https://mistral.ai/rss.xml"] },
+        { lab: "huggingface", urls: ["https://huggingface.co/blog/feed.xml"] },
+      ],
+      fixtures: { huggingface: HF },
+      fetchImpl,
+      cacheDir: "/tmp/sage-rss-p2b-softfail-cache",
+      now: Date.now(),
+    });
+    expect(r.ok).toBe(true);
+    expect(r.soft_fail).toBe(true);
+    expect(
+      r.feedsSoftFail.some((f) => f.lab === "mistral" && /403/.test(f.reason)),
+    ).toBe(true);
+    expect(r.feedsOk.some((f) => f.lab === "huggingface")).toBe(true);
     expect(r.brief).toBe(false);
   });
 });

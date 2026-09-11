@@ -1,8 +1,8 @@
 /**
  * Lab blog RSS — first-party GET only.
- * OpenAI / DeepMind / Google AI / Hugging Face.
+ * OpenAI / DeepMind / Google AI / Hugging Face + P2b Mistral / NVIDIA×2 / MSR / Google Research.
  * Pulse + shelf · never Brief · cycle stays 003 · lead hf-incident.
- * Zero credentials. No Anthropic/Meta HTML scrape. No Reddit.
+ * Zero credentials. No Anthropic/Meta/Cohere/xAI HTML scrape. No Reddit.
  */
 
 import { createHash } from "node:crypto";
@@ -23,6 +23,11 @@ export type LabId =
   | "deepmind"
   | "google-ai"
   | "huggingface"
+  | "mistral"
+  | "nvidia"
+  | "nvidia-dev"
+  | "ms-research"
+  | "google-research"
   | "anthropic"
   | "meta";
 
@@ -72,6 +77,27 @@ export const LAB_FEEDS: readonly LabFeedDef[] = [
     lab: "huggingface",
     urls: ["https://huggingface.co/blog/feed.xml"],
   },
+  // FREE-PULSE P2b — Scout-verified first-party only (WIRE-LAB-HF-RSS-P2 Phase B)
+  {
+    lab: "mistral",
+    urls: ["https://mistral.ai/rss.xml"],
+  },
+  {
+    lab: "nvidia",
+    urls: ["https://blogs.nvidia.com/feed/"],
+  },
+  {
+    lab: "nvidia-dev",
+    urls: ["https://developer.nvidia.com/blog/feed"],
+  },
+  {
+    lab: "ms-research",
+    urls: ["https://www.microsoft.com/en-us/research/blog/feed/"],
+  },
+  {
+    lab: "google-research",
+    urls: ["https://research.google/blog/rss/"],
+  },
 ] as const;
 
 const LAB_HANDLE: Record<Exclude<LabId, "anthropic" | "meta">, string> = {
@@ -79,6 +105,11 @@ const LAB_HANDLE: Record<Exclude<LabId, "anthropic" | "meta">, string> = {
   deepmind: "deepmind",
   "google-ai": "googleai",
   huggingface: "huggingface",
+  mistral: "mistralai",
+  nvidia: "nvidia",
+  "nvidia-dev": "nvidiadeveloper",
+  "ms-research": "msftresearch",
+  "google-research": "googleresearch",
 };
 
 const DEFAULT_CACHE_DIR = resolve(
