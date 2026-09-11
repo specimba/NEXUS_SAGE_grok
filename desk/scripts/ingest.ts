@@ -168,7 +168,7 @@ function renderRssLabsTs(rows: LabRssItem[], stamp: string): string {
   return `/** Lab blog RSS Pulse — generated/refreshed by bun run ingest. Pulse/shelf only; never Brief. */
 export type RssLabRow = {
   id: string;
-  lab: "openai" | "deepmind" | "google-ai" | "huggingface";
+  lab: "openai" | "deepmind" | "google-ai" | "huggingface" | "mistral" | "nvidia" | "nvidia-dev" | "ms-research" | "google-research";
   title: string;
   link: string;
   published: string;
