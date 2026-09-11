@@ -63,3 +63,16 @@ Pulse section **Taste · operator X-session** below Lab RSS:
 - `login_wall` / skipped → quiet `pin-card-quiet` panel · `sage-deny` reason · kept 0 · `briefEligible=false` · land HOLD
 - Items path ready (cap 8) but full scrape still HOLD until Canberk X **done**
 - No hex churn · Skin V2 classes only
+
+### Reviewer stamp — 2026-09-07T07:40Z (Reviewer Gürok)
+
+**Empty/skip taste shelf PASS** — never lead · briefEligible=false · login_wall quiet panel. Full cards HOLD.
+
+## Land (2026-09-11) — dry-run #2 PASS
+
+Synced `src/data/x-taste.ts` from `x-taste-last.json` — kept 8 · skipped false · land GO.
+Pulse shelf renders quiet cards (bookmark|like|feed) · never Brief · never lead.
+
+### Reviewer stamp — 2026-09-11T09:44Z (Reviewer Gürok)
+
+**Taste cards LAND PASS** — 8 kept · Pulse shelf · never lead. Dry-run #2 PASS closed.

@@ -187,3 +187,18 @@ Evidence:
 **X-session:** Canberk login **done** noted — dry-run #2 after desk green + A1. Full land still HOLD until that PASS.
 
 **FREE-PULSE rank** (not Bluesky): 1 OpenAlex backoff · 2 lab/HF RSS · 3 HN deepen · 4 skip — or say **GO default** 1→2→3.
+
+### Reviewer stamp — 2026-09-11T09:33Z (Reviewer Gürok)
+
+**PACK-DUAL-HOME PASS** + **LIVE=DISK PASS** (post-revive A1).
+
+Evidence:
+- Pack `sage-pack-003-20260911T093002Z.tar.gz` dual-homed identical (7665 B)
+  - sha256: `271313533c19216016bbd9ab6d1e6ddd8e8a4e7b0350b710325eb0f50c410ba2`
+- Crawl LIVE `2026-09-11T09:29:29Z` FRESH = CURRENT + `visual:check` + footer (cleared ~104h STALE)
+- `visual:check` OK · brand OK · build=`s2-ECK6b9Hd1O6b_ve6KS` · phosphor/`[01]`
+- Locks `003` / `hf-incident` · OpenAlex 429 soft-fail stamped honest · Brief=false
+- Digest HOLD `pack_id=2026-09-11T09` →`15:20:40Z`
+- Host `crontab` missing — Bot-routine cron-less OK for now
+
+Prior `092040Z` archive PASS stands. **Armed for X dry-run #2** gate (login done).

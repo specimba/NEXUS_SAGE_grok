@@ -2,7 +2,7 @@
 
 **Architect cut:** 2026-09-07 ~03:11Z  
 **Source:** `SCOUT-X-FREE-DURABILITY.md` §3 (+ veto)  
-**Status:** **CONTRACT ONLY** — not APPROVED to land · no `WIRE-*` until Canberk ranks 1–4  
+**Status:** **P1 LAND GO** (Director GO default 2026-09-11) · `WIRE-OPENALEX-BACKOFF.md` · P2/P3 still HOLD unless Canberk continues  
 **Locks:** `003` · `hf-incident` · Sol≠Astra · free only · `briefEligible: false` on all pulse pipes · no `004`  
 **DENY:** paid X · Bluesky · Nitter/mirrors · Reddit unauth · scrape farms · TrendsMCP keys
 
@@ -34,6 +34,20 @@ From Scout: harken free-first honesty + soft-fail/backoff · trend-pulse soft-fa
 ## Hard bans (Reviewer FAIL)
 
 Brief pollution · cycle `004` · paid X / Bluesky · dual-home miss on any pack side-effect · silent soft-fail · stamp-truth lag if rebuild needed
+
+## What Canberk ranks (1–4)
+
+Not “rank Bluesky.” Rank **priority among free-pulse deepen candidates** (or say GO default order):
+
+| You say | Means |
+|---------|--------|
+| **1** | P1 OpenAlex 429 backoff first |
+| **2** | P2 lab/HF RSS extend first |
+| **3** | P3 HN deepen first |
+| **4** | Skip deepen for now — ops/X-taste only |
+| **GO default** | Architect order P1→P2→P3→P4 (P5–P6 optional spice) |
+
+X-session taste is a **separate** wire (APPROVED · dry-run #2 after your login) — not part of this 1–4.
 
 ## Gates before any land
 

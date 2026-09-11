@@ -22,3 +22,7 @@
 ## Non-goals now
 
 Land UI · token churn · Voice/Digest · Bluesky · paid X
+
+## Landed 2026-09-11
+
+Pulse rail `Health · soft-fail meters` from `soft-fail-meters.ts` (ingest-last + x-taste). OpenAlex soft 429 · X-session ok kept 8 · X-API DENY. No hex churn.

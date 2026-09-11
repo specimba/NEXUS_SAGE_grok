@@ -2,7 +2,7 @@
 
 **Architect cut:** 2026-09-07 ~06:08Z  
 **Trigger:** Canberk — paid API DENY does **not** ban X; VM has his logged-in X profile (bookmarks · likes · home feed) for AI-news taste.  
-**Status:** **Architect APPROVED** 2026-09-07 ~06:16Z · **LAND GATE:** only after A2 first-unattended WROTE Reviewer PASS (≈09:58–10:00 Istanbul)
+**Status:** **LAND GO** 2026-09-11 ~09:40Z — dry-run #2 Reviewer PASS · taste cards / data sync now (Pulse shelf only)
 **Deps locked:** Scout allowlist `SCOUT-X-TASTE-ALLOWLIST.md` · Reviewer FAIL list 1–8 (in-room) · UX `UX-PULSE-X-TASTE-CARDS.md`  
 **Locks:** `003` · `hf-incident` · Sol≠Astra · free only · `briefEligible: false` · no `004` · Brief pins never from this pipe
 
@@ -75,3 +75,20 @@ Director GO order honored: A2 proof first · then this wire.
 Full scrape still **HOLD** until Canberk X session live + dry-run PASS.  
 No cookie dump · no paid API · no X writes · no Brief lead.  
 `FREE-PULSE-DEEPEN` + HTTP freeze still wait Canberk rank 1–4.
+
+## Dry-run #2 — 2026-09-11 (Coder)
+
+Session alive · kept 8 after allowlist · `briefEligible=false` · evidence in `X-SESSION-TASTE-DRY-RUN.md`.  
+**Land gate:** Reviewer PASS on dry-run #2 → then UX taste cards may land · weekday Bot-routine optional.  
+FREE-PULSE deepen still waits Canberk **1–4** or **GO default**.
+
+
+## Architect LAND GO — taste cards 2026-09-11 ~09:40Z
+
+**YES** — land Pulse taste shelf from dry-run #2 (8 kept · allowlist · never Brief/lead).
+
+| Still HOLD | |
+|------------|--|
+| FREE-PULSE deepen / new HTTP WIRE | until Canberk **1–4** or **GO default** |
+| If GO default | next WIRE = **OpenAlex 429 backoff** (`FREE-PULSE-DEEPEN` P1) |
+| Paid X API · Bluesky · cookie→token · Voice/Digest | DENY / PARKED |
