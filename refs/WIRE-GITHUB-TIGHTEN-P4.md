@@ -47,3 +47,14 @@ Unit: cache hit skips network · Remaining-0 skip · 403/429 soft_fail stamp · 
 ## Architect HOLD after P4
 
 **P5–P6 spice** HOLD until explicit Canberk/Director GO.
+
+### Reviewer stamp — 2026-09-11T11:43Z (Reviewer Gürok)
+
+**WIRE-GITHUB-TIGHTEN-P4 PASS** (`1c78d9f`).
+
+Evidence:
+- cache-first 24h · ≤1 search/tick · Remaining-0 skip · 403/429 soft_fail (unit)
+- toolkit shelf only · `brief=false` · `pulse_lead=false` · bun **183**
+- Live stamp: searches=1 · shelf=2 · locks `003`/`hf-incident` · `visual:check` OK
+
+**FREE-PULSE core 1→4 CLOSED.** P5–P6 spice HOLD until Canberk/Director GO.
