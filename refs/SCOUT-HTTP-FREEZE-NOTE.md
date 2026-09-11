@@ -1,10 +1,10 @@
-# Scout — HTTP freeze note (WIRE-OPENALEX-BACKOFF PASS · 2026-09-11)
+# Scout — HTTP freeze note (WIRE-LAB-HF-RSS-P2 PASS · 2026-09-11)
 
-**No new HTTP candidates** beyond APPROVED P1. P2/P3 **HOLD**.
+**No new HTTP candidates** beyond APPROVED P1–P2. P3 **HOLD**.
 
 **Brief:** SHIP-for-now. **A4 meters:** PASS. **X-taste:** LANDED (Pulse shelf).  
-**FREE-PULSE P1:** **WIRE-OPENALEX-BACKOFF PASS** — Retry-After/jitter ≤2 · soft_fail honest · never Brief/HF displace.  
-**Next:** Canberk continue **1→2→3** or stop. Paid X API **DENY** · Bluesky **DENY** · Voice/Digest **PARKED**.
+**FREE-PULSE P1:** OpenAlex backoff PASS. **P2:** lab/HF RSS per-feed soft_fail PASS (Phase A; Phase B skipped — no candidates table).  
+**Next:** Canberk continue **→3** (HN deepen) or stop. Paid X API **DENY** · Bluesky **DENY** · Voice/Digest **PARKED**.
 
 | Source | Status |
 |--------|--------|
@@ -15,7 +15,8 @@
 | Paid X API | **DENY** |
 | Bluesky | **DENY** |
 | X session taste | LANDED · kept 8 · never Brief |
-| FREE-PULSE P2/P3 | **HOLD** |
+| FREE-PULSE P2 | **PASS** Phase A · Phase B skipped |
+| FREE-PULSE P3 | **HOLD** |
 
 ## Desk snapshot (ages @ refresh)
 
@@ -26,7 +27,7 @@
 | Digest | HOLD → **`2026-09-11T15:20:40.008Z`** · `pack_id=2026-09-11T09` · ≈ **4.56h** to DUE |
 | Dual-home | `sage-pack-003-20260911T093002Z` · PASS |
 | Soft-fail now | **openalex: HTTP 429** |
-| bun | 163 · `visual:check` OK |
+| bun | 169 · `visual:check` OK |
 
 ## Soft-fail / provider table @ `2026-09-11T09:29:29Z`
 

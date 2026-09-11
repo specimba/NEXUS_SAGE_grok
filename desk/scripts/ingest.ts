@@ -475,11 +475,14 @@ async function main() {
     console.log(`HN: fetch failed — continuing (${String(err)})`);
   }
 
-  // Lab RSS AFTER HN — Pulse/shelf only; never Brief lead / never cycle 004
+  // Lab RSS AFTER HN — Pulse/shelf only; never Brief lead / never cycle 004 / never displace HF
   let rssOk = false;
+  let rssSoftFail = false;
+  let rssSoftFailReason: string | undefined;
   let rssPulse: LabRssItem[] = [];
   let rssShelf: { href: string; label: string; reason: "rss-lab-shelf" }[] = [];
   let rssFeedsOk: { lab: string; url: string; count: number }[] = [];
+  let rssFeedsSoftFail: { lab: string; reason: string; soft_fail: true }[] = [];
   try {
     const rss = await fetchRssLabs({
       cacheDir: resolveRssCacheDir(root),
@@ -488,21 +491,26 @@ async function main() {
     rssPulse = rss.pulse;
     rssShelf = rssToShelfItems(rss.shelf);
     rssFeedsOk = rss.feedsOk;
-    rssOk = rss.feedsOk.length >= 1;
+    rssFeedsSoftFail = rss.feedsSoftFail;
+    rssSoftFail = rss.soft_fail;
+    rssSoftFailReason = rss.soft_fail_reason;
+    rssOk = rss.ok;
     console.log(
-      `RSS labs: ${rss.pulse.length} Pulse + ${rss.shelf.length} shelf from ${rss.feedsOk.length} feeds (brief=false)`,
+      `RSS labs: ${rss.pulse.length} Pulse + ${rss.shelf.length} shelf from ${rss.feedsOk.length} feeds soft_fail=${rss.soft_fail} (brief=false · never HF displace)`,
     );
     for (const f of rss.feedsOk) {
       console.log(`  rss ${f.lab} @ ${f.url} → ${f.count} items`);
     }
-    for (const s of rss.feedsSkipped) {
-      console.log(`  rss skip ${s.lab}: ${s.reason}`);
+    for (const s of rss.feedsSoftFail) {
+      console.log(`  rss soft_fail ${s.lab}: ${s.reason}`);
     }
     for (const it of rss.pulse.slice(0, 3)) {
       console.log(`  rss ${it.lab} [${it.tag}] :: ${it.title.slice(0, 72)}`);
     }
   } catch (err) {
-    console.log(`RSS labs: fetch failed — continuing (${String(err)})`);
+    rssSoftFail = true;
+    rssSoftFailReason = `exception: ${String(err)}`;
+    console.log(`RSS labs: soft_fail — continuing (${String(err)})`);
   }
 
   // Security lab RSS AFTER lab RSS — Pulse/shelf/Digest-ref; never Brief lead / never cycle 004
@@ -756,11 +764,15 @@ async function main() {
     },
     rss: {
       ok: rssOk,
+      soft_fail: rssSoftFail,
+      soft_fail_reason: rssSoftFailReason ?? null,
       count: rssPulse.length,
       shelf: rssShelf.length,
       brief: false,
       pulse_only: true,
+      never_displace_hf: true,
       feeds: rssFeedsOk,
+      feeds_soft_fail: rssFeedsSoftFail,
       sample: rssPulse.slice(0, 4).map((r) => ({
         id: r.id,
         lab: r.lab,
