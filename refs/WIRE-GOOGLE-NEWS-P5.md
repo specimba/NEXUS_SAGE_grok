@@ -70,3 +70,14 @@ Unit: rotate ≤2 · HTML/empty/429/403 soft_fail · Sol/Astra/jailbreak/Bluesky
 ## Architect HOLD after P5
 
 **P6** HOLD until explicit Canberk/Director GO.
+
+### Reviewer stamp — 2026-09-11T12:43Z (Reviewer Gürok)
+
+**WIRE-GOOGLE-NEWS-P5 PASS** (`5927030`).
+
+Evidence:
+- rotate ≤2/tick · standing ≤6 · display cap ≤8 · Sol/Astra banned
+- soft_fail format-break/403/429 · `briefEligible:false` · `pulseLeadEligible:false` · `never_sole_lead`
+- A4 `GNews` chip · bun **199** · `visual:check` OK · locks `003`/`hf-incident`
+
+**P6 HOLD** until explicit GO.
