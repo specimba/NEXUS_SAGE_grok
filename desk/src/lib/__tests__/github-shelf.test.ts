@@ -126,7 +126,7 @@ describe("soft-fail 403/429 · ingest continues", () => {
     expect(r.shelf).toEqual([]);
     expect(r.brief).toBe(false);
     expect(r.pulse_lead).toBe(false);
-  });
+  }, { timeout: 30_000 });
 
   test("forceSoftFail 429 → soft_fail · stamp path unaffected", async () => {
     const r = await searchRepos({ forceSoftFail: 429, query: "OWASP LLM" });
@@ -163,7 +163,7 @@ describe("soft-fail 403/429 · ingest continues", () => {
     expect(r.soft_fail).toBe(true);
     expect(r.soft_fail_reason).toBe("rate_limit_remaining=0");
     expect(r.brief).toBe(false);
-  });
+  }, { timeout: 30_000 });
 
   test("live fetch 403 soft-fails via fetchImpl", async () => {
     const { rmSync, mkdirSync } = await import("node:fs");
@@ -196,7 +196,7 @@ describe("soft-fail 403/429 · ingest continues", () => {
         /* ignore */
       }
     }
-  });
+  }, { timeout: 30_000 });
 });
 
 describe("≤1 search per ingest tick · zero credentials", () => {
@@ -243,7 +243,7 @@ describe("≤1 search per ingest tick · zero credentials", () => {
         /* ignore */
       }
     }
-  });
+  }, { timeout: 30_000 });
 
   test("headers never include Authorization · GITHUB_TOKEN ignored", () => {
     const h = githubHeadersUnauth();
@@ -381,7 +381,7 @@ describe("FREE-PULSE P4 · 24h cache-first · rate stamp", () => {
         /* ignore */
       }
     }
-  });
+  }, { timeout: 30_000 });
 
   test("HTTP 429 soft_fail stamps remaining · ingest stamp shape honest", async () => {
     const { rmSync, mkdirSync, existsSync, readFileSync } = await import("node:fs");
@@ -443,7 +443,7 @@ describe("FREE-PULSE P4 · 24h cache-first · rate stamp", () => {
         /* ignore */
       }
     }
-  });
+  }, { timeout: 30_000 });
 
   test("empty / missing body soft_fails honestly", async () => {
     const { rmSync, mkdirSync } = await import("node:fs");

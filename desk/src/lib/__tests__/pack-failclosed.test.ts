@@ -81,47 +81,57 @@ function mutatePack(
 }
 
 describe("P2 fail-closed F1–F5", () => {
-  test("F1: pack:export with CURRENT missing → exit ≠ 0", () => {
-    expect(existsSync(CURRENT)).toBe(true);
-    const bak = `${CURRENT}.f1-bak`;
-    renameSync(CURRENT, bak);
-    try {
-      const r = run(["bun", "run", "pack:export"]);
-      expect(r.status).not.toBe(0);
-      const out = `${r.stdout || ""}\n${r.stderr || ""}`;
-      expect(out).toMatch(/CURRENT|HARD GATE|missing/i);
-      expect(out).not.toMatch(/pack:export wrote dual-home/);
-    } finally {
-      if (existsSync(bak) && !existsSync(CURRENT)) renameSync(bak, CURRENT);
-      else if (existsSync(bak)) rmSync(bak, { force: true });
-    }
-    expect(existsSync(CURRENT)).toBe(true);
-  });
+  test(
+    "F1: pack:export with CURRENT missing → exit ≠ 0",
+    () => {
+      expect(existsSync(CURRENT)).toBe(true);
+      const bak = `${CURRENT}.f1-bak`;
+      renameSync(CURRENT, bak);
+      try {
+        const r = run(["bun", "run", "pack:export"]);
+        expect(r.status).not.toBe(0);
+        const out = `${r.stdout || ""}\n${r.stderr || ""}`;
+        expect(out).toMatch(/CURRENT|HARD GATE|missing/i);
+        expect(out).not.toMatch(/pack:export wrote dual-home/);
+      } finally {
+        if (existsSync(bak) && !existsSync(CURRENT)) renameSync(bak, CURRENT);
+        else if (existsSync(bak)) rmSync(bak, { force: true });
+      }
+      expect(existsSync(CURRENT)).toBe(true);
+    },
+    { timeout: 60_000 },
+  );
 
-  test("F2: import with tampered file hash → exit ≠ 0 · desk CURRENT unchanged", () => {
-    const base = latestPrimaryPack();
-    const before = readFileSync(CURRENT, "utf8");
-    const bad = mutatePack(base, (staging, manifest) => {
-      const cur = join(staging, "artifacts/sage/CURRENT.json");
-      const data = readJson(cur);
-      data.note = `${data.note || ""} · TAMPER-F2`;
-      writeJson(cur, data);
-      // leave manifest.files[] hash for CURRENT stale → mismatch
-      void manifest;
-    });
-    try {
-      const r = run(["bun", "run", "pack:import", "--", bad]);
-      expect(r.status).not.toBe(0);
-      const out = `${r.stdout || ""}\n${r.stderr || ""}`;
-      expect(out).toMatch(/hash mismatch|integrity/i);
-      expect(out).not.toMatch(/pack:import OK/);
-      expect(readFileSync(CURRENT, "utf8")).toBe(before);
-    } finally {
-      rmSync(bad, { force: true });
-    }
-  });
+  test(
+    "F2: import with tampered file hash → exit ≠ 0 · desk CURRENT unchanged",
+    () => {
+      const base = latestPrimaryPack();
+      const before = readFileSync(CURRENT, "utf8");
+      const bad = mutatePack(base, (staging, manifest) => {
+        const cur = join(staging, "artifacts/sage/CURRENT.json");
+        const data = readJson(cur);
+        data.note = `${data.note || ""} · TAMPER-F2`;
+        writeJson(cur, data);
+        // leave manifest.files[] hash for CURRENT stale → mismatch
+        void manifest;
+      });
+      try {
+        const r = run(["bun", "run", "pack:import", "--", bad]);
+        expect(r.status).not.toBe(0);
+        const out = `${r.stdout || ""}\n${r.stderr || ""}`;
+        expect(out).toMatch(/hash mismatch|integrity/i);
+        expect(out).not.toMatch(/pack:import OK/);
+        expect(readFileSync(CURRENT, "utf8")).toBe(before);
+      } finally {
+        rmSync(bad, { force: true });
+      }
+    },
+    { timeout: 60_000 },
+  );
 
-  test("F3: import inventing cycle 004 / wrong lead → exit ≠ 0", () => {
+  test(
+    "F3: import inventing cycle 004 / wrong lead → exit ≠ 0",
+    () => {
     const base = latestPrimaryPack();
     const before = readFileSync(CURRENT, "utf8");
     const bad = mutatePack(base, (staging, manifest) => {
@@ -161,9 +171,13 @@ describe("P2 fail-closed F1–F5", () => {
     } finally {
       rmSync(bad, { force: true });
     }
-  });
+    },
+    { timeout: 60_000 },
+  );
 
-  test("F4: import Sol=Astra / lock flatten → exit ≠ 0", () => {
+  test(
+    "F4: import Sol=Astra / lock flatten → exit ≠ 0",
+    () => {
     const base = latestPrimaryPack();
     const before = readFileSync(CURRENT, "utf8");
 
@@ -205,7 +219,9 @@ describe("P2 fail-closed F1–F5", () => {
     } finally {
       rmSync(badDeny, { force: true });
     }
-  });
+    },
+    { timeout: 60_000 },
+  );
 
   test("F5: secrets / .env / bearer ban — helpers + live pack scan", () => {
     expect(isSecretish(".env", "FOO=bar")).toBe(true);

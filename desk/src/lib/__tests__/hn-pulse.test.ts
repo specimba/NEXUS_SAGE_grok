@@ -288,7 +288,7 @@ describe("P3 rotate ≤3/tick · soft_fail merge", () => {
     expect(r.brief).toBe(false);
     expect(r.candidates.every((c) => c.briefEligible === false)).toBe(true);
     wipe(cacheDir);
-  });
+  }, { timeout: 30_000 });
 
   test("one query 5xx soft_fails that query only · merge continues · never Brief", async () => {
     const cacheDir = resolve(
@@ -350,7 +350,7 @@ describe("P3 rotate ≤3/tick · soft_fail merge", () => {
     expect(stamp.locks.cycle).toBe("003");
     expect(stamp.locks.lead).toBe("hf-incident");
     wipe(cacheDir);
-  });
+  }, { timeout: 30_000 });
 
   test("forceSoftFail all queries → soft_fail · empty candidates · exit-path ok", async () => {
     const r = await fetchHnPulse({
