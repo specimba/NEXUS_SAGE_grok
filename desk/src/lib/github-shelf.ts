@@ -1,9 +1,10 @@
 /**
- * GitHub unauth search → toolkit shelf only.
+ * GitHub unauth search → toolkit shelf only (FREE-PULSE P4 tighten).
  * GET https://api.github.com/search/repositories — zero credentials.
- * Soft-fail 403/429 / remaining=0 · ≤1 search per ingest tick · 24h cache.
- * Never Brief · never Pulse lead · cycle stays 003 · lead hf-incident.
- * Spec: refs/WIRE-GITHUB-SHELF.md (Fox-IT deferred).
+ * Soft-fail 403/429 / remaining=0 · ≤1 search per ingest tick · 24h cache-first.
+ * Rate remaining stamped under github-cache/_rate-limit.json (1h window).
+ * Never Brief · never Pulse lead · cycle stays 003 · lead hf-incident · no 004.
+ * Spec: refs/WIRE-GITHUB-TIGHTEN-P4.md · baseline refs/WIRE-GITHUB-SHELF.md.
  */
 
 import { createHash } from "node:crypto";
@@ -17,6 +18,10 @@ export const GITHUB_UA =
   "NEXUS-SAGE-desk/0.2 (free-ingest; github-shelf)";
 export const GITHUB_CACHE_TTL_MS = 24 * 60 * 60 * 1000;
 export const GITHUB_PER_PAGE = 5;
+/** Unauth search budget resets ~hourly — remaining=0 skip only within this window. */
+export const GITHUB_RATE_WINDOW_MS = 60 * 60 * 1000;
+/** Persisted last X-RateLimit-Remaining under cache dir (cross-tick preflight). */
+export const GITHUB_RATE_STAMP_FILE = "_rate-limit.json";
 
 /** Curated rotation — not incident-noun standing search. ≤1 pick per tick. */
 export const GITHUB_SHELF_QUERIES = [
@@ -73,6 +78,8 @@ export type FetchGithubResult = {
   brief: false;
   pulse_lead: false;
   searches: number;
+  /** Last known search remaining (scarce ≤10/h) — null if unknown. */
+  rate_limit_remaining: number | null;
 };
 
 const DEFAULT_CACHE_DIR = resolve(
@@ -95,6 +102,59 @@ export function getLastSearchRemaining(): number | null {
 
 export function setLastSearchRemaining(n: number | null) {
   lastSearchRemaining = n;
+}
+
+type GithubRateStamp = {
+  stamped_at?: string;
+  search_remaining?: number | null;
+  resource?: string;
+};
+
+function rateStampPath(cacheDir: string): string {
+  return resolve(cacheDir, GITHUB_RATE_STAMP_FILE);
+}
+
+/** Load remaining from last response stamp if still inside the 1h search window. */
+export function loadRateRemaining(
+  cacheDir: string,
+  now = Date.now(),
+): number | null {
+  const p = rateStampPath(cacheDir);
+  if (!existsSync(p)) return null;
+  try {
+    const raw = JSON.parse(readFileSync(p, "utf8")) as GithubRateStamp;
+    const t = raw.stamped_at ? Date.parse(raw.stamped_at) : NaN;
+    if (!Number.isFinite(t) || now - t > GITHUB_RATE_WINDOW_MS) return null;
+    const n = raw.search_remaining;
+    if (n == null || !Number.isFinite(Number(n))) return null;
+    return Number(n);
+  } catch {
+    return null;
+  }
+}
+
+/** Persist remaining so next ingest tick can preflight without a storm. */
+export function writeRateRemaining(
+  cacheDir: string,
+  remaining: number | null,
+  now = Date.now(),
+) {
+  if (remaining == null || !Number.isFinite(remaining)) return;
+  mkdirSync(cacheDir, { recursive: true });
+  const iso = new Date(now).toISOString().replace(/\.\d{3}Z$/, "Z");
+  writeFileSync(
+    rateStampPath(cacheDir),
+    `${JSON.stringify(
+      {
+        stamped_at: iso,
+        search_remaining: remaining,
+        resource: "search",
+      },
+      null,
+      2,
+    )}\n`,
+  );
+  lastSearchRemaining = remaining;
 }
 
 export function queryHash(query: string): string {
@@ -286,6 +346,7 @@ function softFailResult(
     brief: false,
     pulse_lead: false,
     searches: searchesThisTick,
+    rate_limit_remaining: lastSearchRemaining,
   };
 }
 
@@ -340,8 +401,8 @@ async function getSearchJson(
 }
 
 /**
- * One curated search → shelf URLs via classifyUrl.
- * Prefer 24h cache · soft-fail 403/429/remaining=0 · ≤1 network search per tick.
+ * One curated search → shelf URLs via classifyUrl (FREE-PULSE P4).
+ * Cache-first (24h) · soft-fail 403/429/empty · remaining=0 preflight from stamp · ≤1 network search/tick.
  */
 export async function searchRepos(
   opts: FetchGithubOpts = {},
@@ -377,14 +438,18 @@ export async function searchRepos(
       brief: false,
       pulse_lead: false,
       searches: 0,
+      rate_limit_remaining: lastSearchRemaining,
     };
   }
 
-  // Prefer cache over network
+  // Prefer 24h cache over network (count as success · searches stay 0)
   const cached = readCache(cacheDir, query, now);
   if (cached) {
     const hits = toGithubHits(cached);
     const shelf = toShelfUrls(hits);
+    // Hydrate in-memory remaining from stamp without requiring a call
+    const stampedRem = loadRateRemaining(cacheDir, now);
+    if (stampedRem != null) lastSearchRemaining = stampedRem;
     console.log(
       `GitHub shelf: cache hit query="${query}" → ${hits.length} hits / ${shelf.length} shelf`,
     );
@@ -398,10 +463,14 @@ export async function searchRepos(
       from_cache: true,
       brief: false,
       pulse_lead: false,
-      searches: searchesThisTick,
+      searches: 0,
+      rate_limit_remaining: lastSearchRemaining,
     };
   }
 
+  // Preflight: last response stamp remaining=0 within 1h window → soft_fail, no call
+  const stampedRem = loadRateRemaining(cacheDir, now);
+  if (stampedRem != null) lastSearchRemaining = stampedRem;
   if (lastSearchRemaining === 0) {
     console.log(
       "GitHub shelf: X-RateLimit-Remaining=0 — soft-fail skip (no call)",
@@ -423,6 +492,9 @@ export async function searchRepos(
   searchesThisTick += 1;
   try {
     const res = await getSearchJson(url, fetchImpl);
+    if (res.remaining != null) {
+      writeRateRemaining(cacheDir, res.remaining, now);
+    }
     if (!res.ok) {
       const reason =
         res.status === 403 || res.status === 429
@@ -454,6 +526,7 @@ export async function searchRepos(
       brief: false,
       pulse_lead: false,
       searches: searchesThisTick,
+      rate_limit_remaining: lastSearchRemaining,
     };
   } catch (err) {
     console.log(`GitHub shelf: soft-fail network — ${String(err)}`);

@@ -563,7 +563,7 @@ async function main() {
     console.log(`RSS security: fetch failed — continuing (${String(err)})`);
   }
 
-  // GitHub unauth search AFTER security RSS — shelf only; never Brief / never Pulse lead / never cycle 004
+  // GitHub unauth AFTER security RSS — FREE-PULSE P4: ≤1 search/tick · 24h cache-first · Remaining-0 skip · shelf only
   resetGithubShelfTickState();
   let githubOk = false;
   let githubSoftFail = false;
@@ -572,6 +572,7 @@ async function main() {
   let githubQuery = "";
   let githubFromCache = false;
   let githubSearches = 0;
+  let githubRateRemaining: number | null = null;
   try {
     const gh = await fetchGithubShelf({
       cacheDir: resolveGithubCacheDir(root),
@@ -581,9 +582,10 @@ async function main() {
     githubSearches = gh.searches;
     githubSoftFail = gh.soft_fail;
     githubSoftFailReason = gh.soft_fail_reason;
+    githubRateRemaining = gh.rate_limit_remaining;
     if (gh.soft_fail) {
       console.log(
-        `GitHub shelf: soft-fail (${gh.soft_fail_reason ?? "unknown"}) — continuing stamp`,
+        `GitHub shelf: soft-fail (${gh.soft_fail_reason ?? "unknown"}) searches=${gh.searches} cache=${gh.from_cache} — continuing stamp (shelf only · brief=false)`,
       );
     } else {
       githubShelf = toGithubShelfItems(gh.shelf);
@@ -839,8 +841,10 @@ async function main() {
       shelf: githubShelf.length,
       from_cache: githubFromCache,
       searches: githubSearches,
+      rate_limit_remaining: githubRateRemaining,
       brief: false,
       pulse_lead: false,
+      shelf_only: true,
       url: "https://api.github.com/search/repositories",
       sample: githubShelf.slice(0, 3).map((s) => ({
         label: s.label,
