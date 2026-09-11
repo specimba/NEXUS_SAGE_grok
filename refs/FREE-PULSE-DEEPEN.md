@@ -2,7 +2,7 @@
 
 **Architect cut:** 2026-09-07 ~03:11Z  
 **Source:** `SCOUT-X-FREE-DURABILITY.md` §3 (+ veto)  
-**Status:** **P1 PASS** · **P2 PASS** (`WIRE-LAB-HF-RSS-P2.md` Phase A) · **P3 HOLD** until Canberk continue  
+**Status:** **P1 PASS** · **P2 PASS** · **P2b PASS** · **P3 LANDED** (`WIRE-HN-DEEPEN-P3.md`) · **P4+ HOLD**  
 **Locks:** `003` · `hf-incident` · Sol≠Astra · free only · `briefEligible: false` on all pulse pipes · no `004`  
 **DENY:** paid X · Bluesky · Nitter/mirrors · Reddit unauth · scrape farms · TrendsMCP keys
 
@@ -67,3 +67,8 @@ No implement signal. This file is the **pre-APPROVE cut** waiting Canberk rank.
 ## X session taste (Canberk correction 2026-09-07)
 
 Paid API DENY ≠ no X. See `refs/WIRE-X-SESSION-TASTE.md` — **box browser, logged-in profile** (bookmarks/likes/feed) as taste signal. Still never Brief lead. Not ranked into P1–P6 until Director GO.
+
+## P3 LANDED
+`refs/WIRE-HN-DEEPEN-P3.md` — **LANDED** 2026-09-11 · watchlist≤12 · rotate≤3/tick · soft_fail · never Brief.
+
+**P4+ HOLD** — need explicit next Director/Canberk GO.
