@@ -2,7 +2,7 @@
 
 **Audience:** Architect · Coder · Reviewer  
 **Date:** 2026-09-07 · Scout Gürok  
-**Status:** **NOTES ONLY** — FREE-PULSE **P1** when Canberk ranks + Architect APPROVES. No land now.  
+**Status:** **SUPERSEDED by land** — see `WIRE-OPENALEX-BACKOFF.md` (APPROVED) + `SCOUT-OPENALEX-STAMP-FIELDS.md`. GO default 2026-09-11.  
 **Locks:** `003` · `hf-incident` · Sol≠Astra · free only · `briefEligible:false` · never displace HF keeps · no `004`
 
 Companion to `FREE-PULSE-DEEPEN.md` P1 · `OPS-A4-SOFT-FAIL-METERS.md` (health chips) · live stamps in `ingest-last.json`.
@@ -45,4 +45,4 @@ Paid OpenAlex key as required path · inventing Brief pins · replacing HF lead 
 - [ ] Freeze note / A4 meter (if landed) show honest soft-fail  
 - [ ] Locks `003` / `hf-incident` unchanged  
 
-**Scout:** notes for P1 — wait Canberk free-pulse rank.
+**Scout:** notes kept for history · stamp assist in `SCOUT-OPENALEX-STAMP-FIELDS.md` · freeze ages after land.

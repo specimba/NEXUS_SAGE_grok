@@ -13,8 +13,11 @@ import {
   normalizeDoi,
   normalizeOpenAlexId,
   parseOpenAlexWorks,
+  openAlexBackoffMs,
+  parseRetryAfterMs,
   pickOpenAlexFallbackQuery,
   resetOpenAlexTickState,
+  OPENALEX_MAX_RETRIES,
   type OpenAlexSearchResponse,
 } from "@/lib/openalex-enrich";
 import { mergeDailyPapers, type Paper } from "@/lib/ingest";
@@ -253,7 +256,7 @@ describe("mergeOntoPapers · never displace HF agent keeps", () => {
   });
 });
 
-describe("soft-fail 429 · ingest continues", () => {
+describe("soft-fail 429 · Retry-After/jitter backoff · ingest continues", () => {
   test("forceSoftFail 429 → soft_fail · empty enrichments · brief false", async () => {
     const r = await fetchOpenAlexEnrich({
       forceSoftFail: 429,
@@ -265,32 +268,102 @@ describe("soft-fail 429 · ingest continues", () => {
     expect(r.enrichments).toEqual([]);
     expect(r.brief).toBe(false);
     expect(r.pulse_lead).toBe(false);
+    expect(r.retries).toBe(0);
 
     const report = {
       openalex: {
         ok: r.ok,
         soft_fail: r.soft_fail,
         soft_fail_reason: r.soft_fail_reason,
+        enriched: r.enrichments.length,
         brief: r.brief,
         pulse_lead: r.pulse_lead,
       },
       locks: { cycle: "003", lead: "hf-incident" },
     };
     expect(report.openalex.soft_fail).toBe(true);
+    expect(report.openalex.enriched).toBe(0);
     expect(report.openalex.brief).toBe(false);
     expect(report.locks).toEqual({ cycle: "003", lead: "hf-incident" });
   });
 
-  test("live fetch 429 soft-fails via fetchImpl", async () => {
+  test("parseRetryAfterMs + openAlexBackoffMs helpers", () => {
+    expect(parseRetryAfterMs("3")).toBe(3_000);
+    expect(parseRetryAfterMs("999")).toBe(30_000); // capped
+    expect(parseRetryAfterMs(null)).toBeNull();
+    expect(parseRetryAfterMs("")).toBeNull();
+    const fixed = openAlexBackoffMs(0, () => 0.5); // mid jitter → base
+    expect(fixed).toBe(2_000);
+    const second = openAlexBackoffMs(1, () => 0.5);
+    expect(second).toBe(8_000);
+  });
+
+  test("persistent 429 → ≤2 retries then honest soft_fail (jitter path)", async () => {
+    let calls = 0;
+    const sleeps: number[] = [];
     const r = await fetchOpenAlexEnrich({
       query: "LLM agent sandbox",
-      fetchImpl: (async () =>
-        new Response("rate limit", { status: 429 })) as typeof fetch,
+      fetchImpl: (async () => {
+        calls += 1;
+        return new Response("rate limit", { status: 429 });
+      }) as typeof fetch,
+      sleepImpl: async (ms) => {
+        sleeps.push(ms);
+      },
+      randomImpl: () => 0.5, // exact bases 2s → 8s
       allowMultiSearch: true,
     });
+    expect(calls).toBe(1 + OPENALEX_MAX_RETRIES); // initial + 2 retries
+    expect(sleeps).toEqual([2_000, 8_000]);
     expect(r.soft_fail).toBe(true);
     expect(r.soft_fail_reason).toBe("HTTP 429");
+    expect(r.ok).toBe(false);
+    expect(r.enrichments).toEqual([]);
+    expect(r.retries).toBe(OPENALEX_MAX_RETRIES);
     expect(r.brief).toBe(false);
+    expect(r.pulse_lead).toBe(false);
+    expect(r.searches).toBe(1); // retries do not burn extra search budget
+  });
+
+  test("honors Retry-After header then recovers on next attempt", async () => {
+    let calls = 0;
+    const sleeps: number[] = [];
+    const cacheDir = resolve(
+      import.meta.dir,
+      "../../../artifacts/sage/openalex-cache-test-retry-after",
+    );
+    rmSync(cacheDir, { recursive: true, force: true });
+    mkdirSync(cacheDir, { recursive: true });
+    const r = await fetchOpenAlexEnrich({
+      query: "Hugging Face agent",
+      fetchImpl: (async () => {
+        calls += 1;
+        if (calls === 1) {
+          return new Response("rate limit", {
+            status: 429,
+            headers: { "Retry-After": "1" },
+          });
+        }
+        return new Response(FIX_DOI, {
+          status: 200,
+          headers: { "Content-Type": "application/json" },
+        });
+      }) as typeof fetch,
+      sleepImpl: async (ms) => {
+        sleeps.push(ms);
+      },
+      cacheDir,
+      now: Date.now(),
+      allowMultiSearch: true,
+    });
+    expect(calls).toBe(2);
+    expect(sleeps).toEqual([1_000]);
+    expect(r.ok).toBe(true);
+    expect(r.soft_fail).toBe(false);
+    expect(r.retries).toBe(1);
+    expect(r.enrichments[0]!.id).toBe("https://openalex.org/W4361866031");
+    expect(r.brief).toBe(false);
+    expect(r.pulse_lead).toBe(false);
   });
 
   test("fixture DOI path ok · brief false", async () => {

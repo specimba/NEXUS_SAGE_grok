@@ -352,6 +352,7 @@ async function main() {
   let openalexQuery = "";
   let openalexFromCache = false;
   let openalexSearches = 0;
+  let openalexRetries = 0;
   let openalexMode: string = "search";
   try {
     const oa = await fetchOpenAlexEnrich({
@@ -361,12 +362,13 @@ async function main() {
     openalexQuery = oa.query;
     openalexFromCache = oa.from_cache;
     openalexSearches = oa.searches;
+    openalexRetries = oa.retries;
     openalexSoftFail = oa.soft_fail;
     openalexSoftFailReason = oa.soft_fail_reason;
     openalexMode = oa.mode;
     if (oa.soft_fail) {
       console.log(
-        `OpenAlex: soft-fail (${oa.soft_fail_reason ?? "unknown"}) — continuing stamp (brief=false)`,
+        `OpenAlex: soft-fail (${oa.soft_fail_reason ?? "unknown"}) retries=${oa.retries} enriched=0 — continuing stamp (brief=false)`,
       );
     } else if (oa.enrichments.length) {
       const beforeIds = new Set(papers.map((p) => p.id));
@@ -385,7 +387,7 @@ async function main() {
       openalexCount = papers.filter((p) => p.openalexId).length;
       openalexSecondary = papers.filter((p) => p.openalexEnrichOnly).length;
       console.log(
-        `OpenAlex: enriched=${openalexCount} secondary=${openalexSecondary} mode=${oa.mode} cache=${oa.from_cache} brief=false pulse_lead=false`,
+        `OpenAlex: enriched=${openalexCount} secondary=${openalexSecondary} mode=${oa.mode} cache=${oa.from_cache} retries=${oa.retries} brief=false pulse_lead=false`,
       );
       void beforeIds;
     } else {
@@ -701,6 +703,7 @@ async function main() {
       mode: openalexMode,
       from_cache: openalexFromCache,
       searches: openalexSearches,
+      retries: openalexRetries,
       brief: false,
       pulse_lead: false,
       papers_enrich_only: true,

@@ -1,9 +1,9 @@
 /**
  * OpenAlex Papers enrichment — free/public only.
  * GET https://api.openalex.org/works — Papers metadata (id/year/DOI) only.
- * Soft-fail 429/5xx/parse · ≤1 search per ingest tick · 24h cache.
+ * Soft-fail 429/5xx/parse · Retry-After/jitter ≤2 retries on 429 · ≤1 search/tick · 24h cache.
  * Never Brief · never Pulse lead · never displace HF agent keeps · cycle stays 003.
- * Spec: refs/WIRE-OPENALEX.md (Fox-IT deferred).
+ * Spec: refs/WIRE-OPENALEX-BACKOFF.md · refs/WIRE-OPENALEX.md (Fox-IT deferred).
  */
 
 import { createHash } from "node:crypto";
@@ -19,6 +19,13 @@ export const OPENALEX_CACHE_TTL_MS = 24 * 60 * 60 * 1000;
 export const OPENALEX_PER_PAGE = 5;
 export const OPENALEX_SELECT =
   "id,display_name,title,publication_year,doi,primary_location,authorships";
+
+/** ≤2 retries after first 429 (3 attempts max) per ingest tick. */
+export const OPENALEX_MAX_RETRIES = 2;
+/** Jittered backoff bases when Retry-After absent: attempt1→2s, attempt2→8s. */
+export const OPENALEX_BACKOFF_MS = [2_000, 8_000] as const;
+/** Cap honored Retry-After so ingest tick cannot hang. */
+export const OPENALEX_RETRY_AFTER_CAP_MS = 30_000;
 
 /** Rotating fallback when no DOI/arXiv filter can be built. Cap 5 via per_page. */
 export const OPENALEX_FALLBACK_QUERIES = [
@@ -77,6 +84,8 @@ export type FetchOpenAlexResult = {
   brief: false;
   pulse_lead: false;
   searches: number;
+  /** 429 retry attempts used this tick (0..OPENALEX_MAX_RETRIES). */
+  retries: number;
 };
 
 const DEFAULT_CACHE_DIR = resolve(
@@ -432,12 +441,17 @@ export type FetchOpenAlexOpts = {
   fetchImpl?: typeof fetch;
   /** Allow >1 search in tests only — production always 1. */
   allowMultiSearch?: boolean;
+  /** Injectable sleep (tests) — default real timer. */
+  sleepImpl?: (ms: number) => Promise<void>;
+  /** Injectable RNG for backoff jitter (tests). Returns [0,1). */
+  randomImpl?: () => number;
 };
 
 function softFailResult(
   query: string,
   reason: string,
   mode: FetchOpenAlexResult["mode"] = "soft_fail",
+  retries = 0,
 ): FetchOpenAlexResult {
   return {
     enrichments: [],
@@ -450,6 +464,7 @@ function softFailResult(
     brief: false,
     pulse_lead: false,
     searches: searchesThisTick,
+    retries,
   };
 }
 
@@ -458,6 +473,7 @@ function okResult(
   query: string,
   mode: FetchOpenAlexResult["mode"],
   from_cache: boolean,
+  retries = 0,
 ): FetchOpenAlexResult {
   return {
     enrichments,
@@ -469,7 +485,47 @@ function okResult(
     brief: false,
     pulse_lead: false,
     searches: searchesThisTick,
+    retries,
   };
+}
+
+function sleep(ms: number): Promise<void> {
+  return new Promise((r) => setTimeout(r, ms));
+}
+
+/** Parse Retry-After (delta-seconds or HTTP-date) → ms, capped. */
+export function parseRetryAfterMs(
+  header: string | null | undefined,
+  now = Date.now(),
+  capMs = OPENALEX_RETRY_AFTER_CAP_MS,
+): number | null {
+  if (header == null) return null;
+  const raw = String(header).trim();
+  if (!raw) return null;
+  if (/^\d+$/.test(raw)) {
+    const sec = Number(raw);
+    if (!Number.isFinite(sec) || sec < 0) return null;
+    return Math.min(Math.round(sec * 1000), capMs);
+  }
+  const when = Date.parse(raw);
+  if (!Number.isFinite(when)) return null;
+  const delta = when - now;
+  if (delta <= 0) return 0;
+  return Math.min(delta, capMs);
+}
+
+/** Jittered backoff: bases 2s → 8s for retry index 0..1. */
+export function openAlexBackoffMs(
+  retryIndex: number,
+  randomImpl: () => number = Math.random,
+): number {
+  const base =
+    OPENALEX_BACKOFF_MS[
+      Math.min(Math.max(retryIndex, 0), OPENALEX_BACKOFF_MS.length - 1)
+    ]!;
+  // ±25% jitter around base
+  const jitter = 0.75 + randomImpl() * 0.5;
+  return Math.max(0, Math.round(base * jitter));
 }
 
 /**
@@ -563,9 +619,15 @@ export function buildOpenAlexRequest(
 async function getWorksJson(
   url: string,
   fetchImpl: typeof fetch,
+  now = Date.now(),
 ): Promise<
   | { ok: true; body: OpenAlexSearchResponse }
-  | { ok: false; status: number; parse_error?: boolean }
+  | {
+      ok: false;
+      status: number;
+      parse_error?: boolean;
+      retryAfterMs?: number | null;
+    }
 > {
   const res = await fetchImpl(url, {
     method: "GET",
@@ -575,7 +637,11 @@ async function getWorksJson(
     },
   });
   if (res.status === 429 || res.status >= 500) {
-    return { ok: false, status: res.status };
+    const retryAfterMs =
+      res.status === 429
+        ? parseRetryAfterMs(res.headers?.get?.("Retry-After") ?? null, now)
+        : null;
+    return { ok: false, status: res.status, retryAfterMs };
   }
   if (!res.ok) {
     return { ok: false, status: res.status };
@@ -589,8 +655,9 @@ async function getWorksJson(
 }
 
 /**
- * Fetch OpenAlex enrichments — ≤1 network call per tick; 24h disk cache;
- * soft-fail 429/5xx/parse (continue ingest). Zero credentials.
+ * Fetch OpenAlex enrichments — ≤1 network search per tick; 24h disk cache;
+ * on HTTP 429 honor Retry-After else jitter 2s→8s, ≤2 retries; soft-fail
+ * honestly (continue ingest). Zero credentials. Never Brief / never displace HF.
  */
 export async function fetchOpenAlexEnrich(
   opts: FetchOpenAlexOpts = {},
@@ -598,6 +665,8 @@ export async function fetchOpenAlexEnrich(
   const cacheDir = opts.cacheDir ?? DEFAULT_CACHE_DIR;
   const now = opts.now ?? Date.now();
   const fetchImpl = opts.fetchImpl ?? fetch;
+  const sleepImpl = opts.sleepImpl ?? sleep;
+  const randomImpl = opts.randomImpl ?? Math.random;
 
   if (opts.forceSoftFail) {
     return softFailResult(
@@ -642,28 +711,51 @@ export async function fetchOpenAlexEnrich(
     return softFailResult(built.query, "search_budget_exhausted", built.mode);
   }
 
+  // One search budget slot for this tick — retries of the same URL do not add slots.
   searchesThisTick += 1;
 
+  let retries = 0;
   try {
-    const res = await getWorksJson(built.url, fetchImpl);
-    if (!res.ok) {
-      const reason = res.parse_error
-        ? "parse_error"
-        : `HTTP ${res.status}`;
+    while (true) {
+      const res = await getWorksJson(built.url, fetchImpl, now);
+      if (res.ok) {
+        let enrichments: OpenAlexEnrichment[] = [];
+        try {
+          enrichments = parseOpenAlexWorks(res.body);
+        } catch (err) {
+          console.log(`OpenAlex: parse failed — ${String(err)}`);
+          return softFailResult(
+            built.query,
+            `parse_error:${String(err)}`,
+            built.mode,
+            retries,
+          );
+        }
+        writeCache(cacheDir, built.cacheKey, res.body, now);
+        return okResult(enrichments, built.query, built.mode, false, retries);
+      }
+
+      const reason = res.parse_error ? "parse_error" : `HTTP ${res.status}`;
+
+      // 429 only: Retry-After or jittered 2s→8s, ≤2 retries / tick
+      if (res.status === 429 && retries < OPENALEX_MAX_RETRIES) {
+        const waitMs =
+          res.retryAfterMs != null && res.retryAfterMs >= 0
+            ? res.retryAfterMs
+            : openAlexBackoffMs(retries, randomImpl);
+        console.log(
+          `OpenAlex: HTTP 429 — backoff ${waitMs}ms (retry ${retries + 1}/${OPENALEX_MAX_RETRIES})`,
+        );
+        await sleepImpl(waitMs);
+        retries += 1;
+        continue;
+      }
+
       console.log(`OpenAlex: soft-fail ${reason} — skip enrich`);
-      return softFailResult(built.query, reason, built.mode);
+      return softFailResult(built.query, reason, built.mode, retries);
     }
-    let enrichments: OpenAlexEnrichment[] = [];
-    try {
-      enrichments = parseOpenAlexWorks(res.body);
-    } catch (err) {
-      console.log(`OpenAlex: parse failed — ${String(err)}`);
-      return softFailResult(built.query, `parse_error:${String(err)}`, built.mode);
-    }
-    writeCache(cacheDir, built.cacheKey, res.body, now);
-    return okResult(enrichments, built.query, built.mode, false);
   } catch (err) {
     console.log(`OpenAlex: fetch failed — ${String(err)}`);
-    return softFailResult(built.query, String(err), built.mode);
+    return softFailResult(built.query, String(err), built.mode, retries);
   }
 }
