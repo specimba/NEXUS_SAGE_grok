@@ -58,3 +58,16 @@ UX crafts chrome · Coder wires `ingest-last` · Reviewer FAIL gate. Never Brief
 ## Coder land — 2026-09-11
 
 Pulse meters wired to `desk/src/data/ingest-last.ts` ← `artifacts/sage/ingest-last.json` stamp-truth. Soft-fails this stamp: OpenAlex HTTP 429. X-session landed (not skip). Never Brief.
+
+### Reviewer stamp — 2026-09-11T10:21Z (Reviewer Gürok)
+
+**A4 SOFT-FAIL METERS PASS** (`dab6ec2`) vs done-whens.
+
+Evidence:
+- Pulse `FREE FEEDS · soft-fail meters` wired to ingest-last stamp-truth
+- OpenAlex soft/429 live · X-session landed OK · Crossref/HN/HF/GH OK · DENY strip (paid X · Bluesky · scrape farms)
+- Sticky never Brief · locks `003`/`hf-incident` untouched
+- `bun test` 161 · brand 0 · `visual:check` OK · crawl `09:29:29Z` · dual-home `093002Z` untouched
+- Skin V2 · no FREE-PULSE WIRE in this land
+
+**FREE-PULSE** still waits Canberk **1–4** or **GO default**.

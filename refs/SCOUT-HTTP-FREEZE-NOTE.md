@@ -1,11 +1,10 @@
-# Scout — HTTP freeze note (A2 PASS · X-taste skip stamp)
+# Scout — HTTP freeze note (A4 meters PASS · FREE-PULSE HOLD)
 
-**No new HTTP candidate wire pack.** Visual truth > more pipes.
+**No new HTTP candidates.** Visual truth > more pipes.
 
-**Brief:** SHIP-for-now. **Track A:** A1–A3 standing · **A2 first unattended PASS** (Istanbul 09:58 · pack `065851Z`).  
-**X-session taste:** Architect APPROVED · dry-run #1 soft FAIL (`login_wall`) · skip stamp PASS · allowlist SoT · **full scrape HOLD** until Canberk signs into X on Agent Computer Chrome and says **done**.  
-**Paid X API DENY** · **Bluesky DENY** · Voice/Digest **PARKED**.  
-**FREE-PULSE-DEEPEN** waits Canberk rank 1–4.
+**Brief:** SHIP-for-now. **A2/PACK:** `093002Z` PASS. **X-session taste:** LANDED. **A4 soft-fail meters:** **PASS** (Pulse FREE FEEDS · OpenAlex 429 soft live · DENY strip).  
+**FREE-PULSE deepen:** HOLD for Canberk **1–4** or **GO default** → next WIRE = OpenAlex 429 backoff (`SCOUT-OPENALEX-429-BACKOFF.md` ready).  
+Paid X API **DENY** · Bluesky **DENY** · Voice/Digest **PARKED**. Cron-less Bot routines cover A1/A2.
 
 | Source | Status |
 |--------|--------|
@@ -14,21 +13,32 @@
 | Reddit | **BLOCKED** |
 | Paid X API | **DENY** |
 | Bluesky | **DENY** |
-| X session taste | soft FAIL `login_wall` · skip stamp LAND PASS · **full scrape HOLD** until Canberk X re-auth **done** on box Chrome |
-| FREE-PROVIDERS Next | **FROZEN** until free-pulse rank + APPROVE |
+| X session taste | **LANDED** Pulse shelf · kept **8** · `briefEligible=false` |
+| FREE-PROVIDERS Next | **FROZEN** until rank / GO default + Architect APPROVE |
 
 ## Desk snapshot (ages @ refresh)
 
 | Item | State |
 |------|-------|
 | Locks | `003` · `hf-incident` · Sol≠Astra · free only · no `004` |
-| Crawl | LIVE **`2026-09-07T01:29:12Z`** · age ≈ **5.55h** (re-age after next ingest) |
-| Digest | WROTE `pack_id=2026-09-07T06` · HOLD → **`2026-09-07T12:58:51.473Z`** · ≈ **5.95h** to DUE |
-| Dual-home | `sage-pack-003-20260907T065851Z` · sha256 `7fce4d0e…` · **A2 UNATTENDED PASS** |
-| Soft-fail (last ingest) | **none** · Crossref enrich **0** |
+| Crawl | LIVE **`2026-09-11T09:29:29Z`** · age ≈ **0.9h** FRESH |
+| Digest | HOLD → **`2026-09-11T15:20:40.008Z`** · `pack_id=2026-09-11T09` · ≈ **4.95h** to DUE |
+| Dual-home | `sage-pack-003-20260911T093002Z` · sha256 `27131353…` · PASS |
+| Soft-fail | **openalex: HTTP 429** |
+| X taste | status=`landed` · paidApi=false · pulseLead=false |
 
-## Ingest counts @ `2026-09-07T01:29:12Z` (unchanged — digest-only pulse)
+## Soft-fail / provider table @ `2026-09-11T09:29:29Z`
 
-HF **11** · arXiv **8**/shelf **0** · OpenAlex **3** · Crossref **0** · HN **47** · lab RSS **48** · sec RSS **25** · GitHub shelf **3** · toolkit **15** · Wikidata {'matched': 1, 'rejected_false_friend': 2} · X API disabled.
+| Provider | Stamp | Note |
+|----------|-------|------|
+| HF daily_papers | count=8 ok=True | — |
+| arXiv | enriched=8 shelf=5 | — |
+| OpenAlex | ok=False soft_fail=True enriched=0 | HTTP 429 · P1 backoff notes ready |
+| Crossref | enriched=1 | — |
+| HN / Lab RSS / Sec RSS | 47 / 48 / 26 | — |
+| GitHub shelf / toolkit | 2 / 19 | — |
+| Wikidata DENY | {'rejected_false_friend': 1, 'matched': 2} | — |
+| X API | disabled | DENY |
+| X session taste | kept 8 · Pulse shelf | never Brief |
 
-Scout lane: allowlist SoT for dry-run · ages after next ingest · **no** new HTTP candidates.
+Scout lane: freeze ages refreshed · OpenAlex P1 ready · **no** new HTTP candidates · waiting your free-pulse **1–4** or **GO default**.

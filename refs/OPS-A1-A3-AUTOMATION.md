@@ -102,3 +102,10 @@ Gates:
 
 ## Free-pulse deepen contract
 `refs/FREE-PULSE-DEEPEN.md` — APPROVE-ready done-whens · **no WIRE** until Canberk ranks · Bluesky DENY.
+
+## A1 dry-run evidence (2026-09-11T09:30Z)
+
+- Script: `desk/scripts/a1-stale-ingest.mjs` · FORCE=1 path exercised
+- Crawl `2026-09-07T01:29:12Z` → `2026-09-11T09:29:29Z` · pack `sage-pack-003-20260911T093002Z.tar.gz`
+- Dual-home sha `271313533c19…` · soft-fails: openalex=HTTP 429
+- Checklist: see `refs/A1-DRY-RUN.md` · Reviewer stamp pending · **cron not installed**

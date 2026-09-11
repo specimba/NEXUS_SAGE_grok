@@ -51,3 +51,8 @@ Cycle `004` · FREE-PULSE WIRE · paid X · overnight firehose · Brief UI reope
 - [x] One live A1 natural STALE run (age ≫12h) without FORCE after desk boots
 - [ ] A2 continues to WROTE on DUE via pulse or Bot routine
 - [ ] When `crontab` returns: reinstall from `desk/ops/crontab.example`
+
+
+## Live proof — 2026-09-11 ~09:30Z
+
+Desk revived · A1 natural STALE PASS (Coder) · ImageMagick installed · `crontab` still MISSING → Bot-routine / pulse fallback remains **required**. Next: X dry-run #2 · Reviewer pack stamp · Canberk free-pulse rank or GO default.

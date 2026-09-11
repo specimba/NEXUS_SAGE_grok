@@ -35,3 +35,28 @@ Filtering excluded non-allowlisted material, politics-only content, promotional/
 ### Run stamp — 2026-09-11T09:32Z
 
 **X-SESSION TASTE DRY-RUN #2 — PASS** (session alive · kept 8 · cap respected).
+
+### Reviewer stamp — 2026-09-11T09:38Z (Reviewer Gürok)
+
+**X-SESSION TASTE DRY-RUN #2 PASS** vs FAIL 1–8 + Scout allowlist.
+
+Evidence:
+- Session alive · seen 51 (12 bookmark / 14 like / 25 feed) · kept **8** (cap)
+- `briefEligible:false` · `pulseLeadEligible:false` · `paidApi:false` · scrubbed JSON · no credential leak strings
+- Surfaces read-only · allowlist/exclude applied · Brief pins / cycle `003` / `hf-incident` untouched
+- Soft note: `ingest-last.x_session_taste` not yet refreshed (dry-run artifact only) — land must sync snap + ingest stamp
+
+**GO** taste cards land (Pulse shelf only · never Brief · never lead). Full scrape cron still HOLD until land + UX chrome green.
+**FREE-PULSE** still waits Canberk **1–4** or **GO default**.
+
+### Reviewer stamp — 2026-09-11T09:44Z (Reviewer Gürok)
+
+**TASTE LAND PASS** vs FAIL 1–8 + UX done-whens.
+
+Evidence:
+- `x-taste.ts` synced · 8 items · `land=GO` · `briefEligible/pulseLeadEligible/paidApi=false`
+- `ingest-last.x_session_taste` stamped · session_alive · kept 8 · brief/pulse_lead false
+- Pulse shelf chrome only · never Brief lead · locks `003`/`hf-incident`
+- `visual:check` OK · crawl `09:29:29Z` · brand OK · PACK `093002Z` PASS stands
+
+**FREE-PULSE** still waits Canberk **1–4** or **GO default** (next WIRE = OpenAlex 429 backoff).
