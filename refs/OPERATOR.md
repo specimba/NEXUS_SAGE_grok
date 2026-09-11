@@ -135,4 +135,21 @@ crontab -l > /workspace/nexus-sage/logs/cron-backups/manual-pause.bak
 **Hard bans:** no paid X · no new `WIRE-*` · no Brief pin invent · no overnight `@every` · no weekend standing firehose · no cycle `004`.
 
 
+## 9. Cron-less durability (VM gap · 2026-09-11)
+
+**Host fact:** `crontab` binary **missing** · `cron` package not installed · apt **Candidate: (none)** on this Agent Computer. Standing A1/A2 crontab cannot install.
+
+**Fallback:** Director/Coder **ops pulse** or Grok Bot routine (`CRON_TZ=Europe/Istanbul`, Mon–Fri 09–16, `@every 30m`) — see `OPS-CRONLESS-DURABILITY.md`.
+
+| Job | Pulse action |
+|-----|--------------|
+| A1 | age ≥12h → `bun scripts/a1-stale-ingest.mjs` (**no FORCE**) |
+| A2 | `next_at` ≤ now → `bun run a2:tick` |
+| visual | after rebuild → `bun run visual:check` |
+
+When `crontab` returns: `desk/scripts/install-cron.sh` · example `desk/ops/crontab.example`.
+
+**Tooling note:** ImageMagick is apt (`imagemagick` / `convert`). Playwright screenshot plugin is a **Grok Bot plugin**, not apt.
+
+
 *Ops desk · phosphor · keep disk truth · free providers only.*
