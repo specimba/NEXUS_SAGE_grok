@@ -13,7 +13,7 @@
 
 **Digest cadence:** unchanged by P2 wipe-drill (Brief pins / digest tick not mutated)  
 
-**Crawl / ingest:** `2026-09-11T09:29:29Z`  
+**Crawl / ingest:** `2026-09-11T09:29:29Z` (freeze-safe restore, no re-ingest)  
 
 **sha256 (archive):** `cafe4821fbbbb80bfeed27974a510017a26dc628d239c4071dd6ebe8734de54c`  
 **manifest sha256:** `98954fae7a6091e10368d7763e2762c71e7a117f0d7031a06f43cc9c76867667`  
