@@ -83,3 +83,54 @@ Pack id: `sage-pack-003-20260904T162626Z` · rollback: `rollback-20260904T180832
 ### Locks
 cycle `003` · lead `hf-incident` · free only · no `004` · freeze ON · no craft land · no WIRE-*
 
+
+## Freeze-safe wipe-drill + fail-closed F1–F5 — 2026-09-11T13:08Z (Coder · Pulse 13:02Z · OPS-P2-FAILCLOSED-WIPE)
+
+Pack: `/workspace/nexus-sage/packs/sage-pack-003-20260911T130710Z.tar.gz`  
+Mirror: `/workspace/nexus-sage/desk/packs/sage-pack-003-20260911T130710Z.tar.gz`  
+Pack id: `sage-pack-003-20260911T130710Z` · rollback: `rollback-20260911T130809Z`  
+sha256 both homes: `95d28436ba53ae32e3b5687315637ecdd2d90cd4c35f6eebdec602e14b973712` (bytes identical)  
+manifest sha256: `bbd4f16a66964f24638e21604665d4f52a165ab4101499728d2c7ba8e7cf9dee`
+
+### Fail-closed F1–F5 (must reject — never invent OK)
+
+| # | Case | Result |
+|---|------|--------|
+| F1 | `pack:export` CURRENT missing | exit 1 — `SAGE HARD GATE: missing CURRENT.json` |
+| F2 | import tampered CURRENT hash | exit 1 — `hash mismatch: artifacts/sage/CURRENT.json` · desk CURRENT unchanged |
+| F3 | import invent cycle `004` / wrong lead | exit 1 — lock / incomplete refuse (`pack-failclosed.test.ts`) |
+| F4 | import `sol_ne_astra=false` | exit 1 — `locks.sol_ne_astra must be true` |
+| F4b | import DENY missing Astra-as-HF | exit 1 — DENY / Sol≠Astra lock (`pack-failclosed.test.ts`) |
+| F5 | secrets / `.env` / bearer ban | `assertArchiveComplete` refuses `.env`; live pack scan NO_SECRET_HITS; `isSecretish` hardened |
+
+Automated proofs: `desk/src/lib/__tests__/pack-failclosed.test.ts` (6 pass) + CLI transcripts above.
+
+### Wipe drill (this pulse)
+
+1. [x] `pack:export` dual-home (`sage-pack-003-20260911T130710Z`)
+2. [x] wiped `artifacts/sage`, `artifacts/snapshots`, `src/data/{cycle,digest-pack,x-crawl}.ts`
+3. [x] `check:current` FAIL after wipe (`missing CURRENT.json`, exit 1)
+4. [x] `pack:import -- …T130710Z.tar.gz` OK · rollback `rollback-20260911T130809Z`
+5. [x] restored CYCLE `003` LEAD `hf-incident` · `check:current` OK · crawl `2026-09-11T09:29:29Z`
+6. [x] `bun test src/lib/__tests__` **205 pass / 0 fail**
+7. [x] `visual:check` OK (`:3000` up · theme=phosphor · crawl=2026-09-11T09:29:29Z)
+8. [x] reattached disk-only truth not in pack (provider caches / ingest-last / digest-last / x-taste-last) — no re-ingest
+
+### Reviewer FAIL 1–8 gate (factual)
+
+- [x] 1 Export without CURRENT → exit ≠ 0
+- [x] 2 Manifest / required paths covered (9) + hash verify
+- [x] 3 Tampered file hash → import fail
+- [x] 4 Lock violation (wrong lead / cycle 004 invent / sol_ne_astra) → import fail
+- [x] 5 Wipe drill: delete desk data → import → Brief still `003` / HF lead
+- [x] 6 No secrets in archive
+- [x] 7 Dual-home sha256 match both homes
+- [x] 8 Cron-less — drill does not require host `crontab`
+
+### Locks held
+
+cycle `003` · lead `hf-incident` · Sol≠Astra · free only · no `004` · paid X/Bluesky DENY · P6 HOLD · no new free-pulse WIRE · freeze-safe
+
+### Sign-off request
+
+Reviewer: re-stamp **P2 PASS** (wipe-resilience post-P5) from this evidence when FAIL 1–8 confirmed in-room.
