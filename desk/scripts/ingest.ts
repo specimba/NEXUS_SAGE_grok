@@ -457,22 +457,42 @@ async function main() {
   }
 
   // HN Algolia AFTER Crossref — Pulse chatter only; never Brief lead/companion / never toolkit Brief pins
+  // FREE-PULSE P3: rotate ≤3 queries/tick · soft_fail merge · never Brief · never displace HF
   let hnOk = false;
+  let hnSoftFail = false;
+  let hnSoftFailReason: string | undefined;
   let hnRows: HnPulseCandidate[] = [];
+  let hnQueriesRun: string[] = [];
+  let hnQueriesOk: string[] = [];
+  let hnQueriesSoftFail: { query: string; reason: string; soft_fail: true }[] = [];
   try {
-    hnRows = await fetchHnPulse({
+    const hn = await fetchHnPulse({
       cacheDir: resolveHnCacheDir(root),
       hitsPerPage: 10,
     });
-    hnOk = hnRows.length > 0;
+    hnRows = hn.candidates;
+    hnOk = hn.ok || hnRows.length > 0;
+    hnSoftFail = hn.soft_fail;
+    hnSoftFailReason = hn.soft_fail_reason;
+    hnQueriesRun = hn.queries_run;
+    hnQueriesOk = hn.queries_ok;
+    hnQueriesSoftFail = hn.queries_soft_fail;
     console.log(
-      `HN: ${hnRows.length} Pulse candidates (classifyPost filtered; brief=false)`,
+      `HN: ${hnRows.length} Pulse candidates queries=${hnQueriesRun.length} soft_fail=${hn.soft_fail} (classifyPost filtered; brief=false; rotate≤3)`,
     );
+    if (hnQueriesRun.length) {
+      console.log(`  hn queries_run: ${hnQueriesRun.join(" · ")}`);
+    }
+    for (const s of hnQueriesSoftFail) {
+      console.log(`  hn soft_fail ${s.query}: ${s.reason}`);
+    }
     for (const h of hnRows.slice(0, 3)) {
       console.log(`  hn ${h.id} [${h.tag}] score=${h.score} :: ${h.text.slice(0, 72)}`);
     }
   } catch (err) {
-    console.log(`HN: fetch failed — continuing (${String(err)})`);
+    hnSoftFail = true;
+    hnSoftFailReason = `exception: ${String(err)}`;
+    console.log(`HN: soft_fail — continuing (${String(err)})`);
   }
 
   // Lab RSS AFTER HN — Pulse/shelf only; never Brief lead / never cycle 004 / never displace HF
@@ -756,9 +776,15 @@ async function main() {
     },
     hn: {
       ok: hnOk,
+      soft_fail: hnSoftFail,
+      soft_fail_reason: hnSoftFailReason ?? null,
       count: hnRows.length,
       brief: false,
       pulse_only: true,
+      never_displace_hf: true,
+      queries_run: hnQueriesRun,
+      queries_ok: hnQueriesOk,
+      queries_soft_fail: hnQueriesSoftFail,
       url: "https://hn.algolia.com/api/v1/search",
       sample: hnRows.slice(0, 3).map((h) => ({ id: h.id, tag: h.tag, score: h.score, text: h.text })),
     },
