@@ -11,7 +11,6 @@ export type GnewsRssRow = {
   tag: "rest" | "rumor" | "companion" | "incident";
 };
 
-export const GNEWS_RSS_AT = "";
+export const GNEWS_RSS_AT = "2026-09-18T10:11:30Z";
 
-/** Empty until ingest lands spice cards. Soft-fail empty OK. */
 export const GNEWS_RSS: GnewsRssRow[] = [];

@@ -2,10 +2,10 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-09-12T04:40:16Z",
+  "stamped_at": "2026-09-18T10:11:30Z",
   "stale_hours": 18,
   "age_check": {
-    "hours": 0.026198333333333334,
+    "hours": 0.03129833333333333,
     "stale": false
   },
   "hf": {
@@ -42,10 +42,10 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "enriched": 1,
-    "query": "Scaling Automatic Research Agents via World Models",
+    "query": "LimiX-2: A Contextual Mechanism Network Towards General Structured-Data Intelligence",
     "mode": "bibliographic",
-    "from_cache": true,
-    "searches": 0,
+    "from_cache": false,
+    "searches": 1,
     "brief": false,
     "pulse_lead": false,
     "papers_enrich_only": true,
@@ -53,12 +53,12 @@
     "merge_notes": [],
     "sample": [
       {
-        "id": "2608.12564",
-        "crossrefDoi": "https://doi.org/10.1609/aaai.v40i46.41311",
-        "issued": "2026-03-14",
-        "type": "journal-article",
+        "id": "2609.17488",
+        "crossrefDoi": "https://doi.org/10.5772/36863",
+        "issued": "2012-02-01",
+        "type": "book-chapter",
         "openalexId": null,
-        "doi": "https://doi.org/10.1609/aaai.v40i46.41311",
+        "doi": "https://doi.org/10.5772/36863",
         "enrichOnly": false
       }
     ]
@@ -67,40 +67,40 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 30,
+    "count": 28,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
     "queries_run": [
-      "open weights",
-      "inference",
-      "benchmark"
+      "Hugging Face",
+      "agents",
+      "eval"
     ],
     "queries_ok": [
-      "open weights",
-      "inference",
-      "benchmark"
+      "Hugging Face",
+      "agents",
+      "eval"
     ],
     "queries_soft_fail": [],
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
-        "id": "hn:17824218",
+        "id": "hn:46990729",
         "tag": "rest",
-        "score": 1318,
-        "text": "Intel Publishes Microcode Patches, No Benchmarking or Comparison Allowed"
+        "score": 2346,
+        "text": "An AI agent published a hit piece on me"
       },
       {
-        "id": "hn:48979269",
+        "id": "hn:49563355",
         "tag": "rest",
-        "score": 1243,
-        "text": "China’s open-weights AI strategy is winning"
+        "score": 2301,
+        "text": "Discovery of a new OpenAI agent message board"
       },
       {
-        "id": "hn:48924912",
+        "id": "hn:49458161",
         "tag": "rest",
-        "score": 1227,
-        "text": "Inkling: Our Open-Weights Model"
+        "score": 1988,
+        "text": "Nvidia agrees to acquire Hugging Face for $13B"
       }
     ]
   },
@@ -163,32 +163,32 @@
     "feeds_soft_fail": [],
     "sample": [
       {
-        "id": "rss:openai:968c32634dc2a1cb",
-        "lab": "openai",
-        "tag": "companion",
-        "title": "Perplexity trusts GPT-6 Astra with end-to-end systems",
-        "link": "https://openai.com/index/perplexity-improving-accuracy-with-astra"
-      },
-      {
-        "id": "rss:openai:4aeb82da9975e2f5",
-        "lab": "openai",
-        "tag": "companion",
-        "title": "Cognition helps Devin test its own work with GPT‑6 Astra",
-        "link": "https://openai.com/index/cognition-devin-testing-with-astra"
-      },
-      {
-        "id": "rss:openai:46fcf5bb7b99520f",
-        "lab": "openai",
-        "tag": "rest",
-        "title": "Rapidly scaling online storage to serve over 1 billion ChatGPT users",
-        "link": "https://openai.com/index/scaling-storage-one-billion-users-part-one"
-      },
-      {
-        "id": "rss:google-research:aa8533b1c5b411fc",
+        "id": "rss:google-research:0f83c2d1d5b80343",
         "lab": "google-research",
         "tag": "rest",
-        "title": "ToolGrad: Efficient tool-use dataset generation with textual \"gradients\"",
-        "link": "https://research.google/blog/toolgrad-efficient-tool-use-dataset-generation-with-textual-gradients/"
+        "title": "The future of practice: Enabling teachers to create learning interactives with generative UI",
+        "link": "https://research.google/blog/the-future-of-practice-enabling-teachers-to-create-learning-interactives-with-generative-ui/"
+      },
+      {
+        "id": "rss:google-ai:590df77dc8c3726e",
+        "lab": "google-ai",
+        "tag": "rest",
+        "title": "Making global data easier to explore",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/google-un-data-commons-platform/"
+      },
+      {
+        "id": "rss:nvidia:0955c5f215019918",
+        "lab": "nvidia",
+        "tag": "rest",
+        "title": "Cute Critters Come to the Cloud: ‘Aniimo’ Launches on GeForce NOW",
+        "link": "https://blogs.nvidia.com/blog/geforce-now-thursday-aniimo/"
+      },
+      {
+        "id": "rss:openai:d22acfa5d0cc1d09",
+        "lab": "openai",
+        "tag": "rest",
+        "title": "How Cooley is accelerating IPO work with ChatGPT",
+        "link": "https://openai.com/index/cooley-gopublic"
       }
     ]
   },
@@ -218,6 +218,13 @@
     ],
     "sample": [
       {
+        "id": "rss-sec:trailofbits:71fc2221d1295bd6",
+        "lab": "trailofbits",
+        "tag": "rest",
+        "title": "1Password's AI patching benchmark is misleading",
+        "link": "https://blog.trailofbits.com/2026/09/15/1passwords-ai-patching-benchmark-is-misleading/"
+      },
+      {
         "id": "rss-sec:trailofbits:009d5c98023fba4a",
         "lab": "trailofbits",
         "tag": "rest",
@@ -237,26 +244,19 @@
         "tag": "rest",
         "title": "VMs won't contain cyber-capable agents",
         "link": "https://blog.trailofbits.com/2026/08/26/vms-wont-contain-cyber-capable-agents/"
-      },
-      {
-        "id": "rss-sec:trailofbits:613defb54efdb71f",
-        "lab": "trailofbits",
-        "tag": "rest",
-        "title": "State divergence enables unauthorized access",
-        "link": "https://blog.trailofbits.com/2026/08/25/state-divergence-enables-unauthorized-access/"
       }
     ]
   },
   "google_news": {
-    "ok": true,
-    "soft_fail": false,
-    "soft_fail_reason": null,
+    "ok": false,
+    "soft_fail": true,
+    "soft_fail_reason": "Anthropic:HTTP 503; large language model:HTTP 503",
     "queries_attempted": 2,
-    "queries_ok": 2,
-    "items": 8,
-    "http_status": 200,
-    "content_type": "application/xml; charset=utf-8",
-    "format": "rss2",
+    "queries_ok": 0,
+    "items": 0,
+    "http_status": 503,
+    "content_type": "text/html; charset=UTF-8",
+    "format": "unknown",
     "from_cache": false,
     "brief": false,
     "pulse_lead": false,
@@ -269,34 +269,26 @@
       "Anthropic",
       "large language model"
     ],
-    "queries_ok_list": [
-      "Anthropic",
-      "large language model"
-    ],
-    "queries_soft_fail": [],
-    "sample": [
+    "queries_ok_list": [],
+    "queries_soft_fail": [
       {
-        "id": "gnews:3a4aa70ff7b4bc6d",
-        "title": "Trump touts US appproach to AI, defends government blacklisting Anthropic - Anadolu Ajansı",
-        "publisher": "Anadolu Ajansı",
-        "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQZVU0Q2FEM1Y5TWVWZkhKWmRzS2R4YXV0eDRYUkk2Zk80VEx3cTdDSUYzcXp1LTdrbDNoVGc5S2Z1eko3RkJ1S0EzRUdpNXE5THVkcExhYXF2UFM1Y2J6djQ3V3FkRFlpWTV6aDVpdkdXZGNtSWhLNGh2VVYzdHpYWDAxLXBSX1N4TWJxUFhLb1E1UTJXVVlqa1JnS3F4Q3JGa21HLWxoR1VfblBCVHc3UE5zOXY?oc=5",
-        "tag": "rest"
+        "query": "Anthropic",
+        "reason": "HTTP 503",
+        "soft_fail": true,
+        "http_status": 503,
+        "content_type": "text/html; charset=UTF-8",
+        "format": "unknown"
       },
       {
-        "id": "gnews:558b33987ed7db86",
-        "title": "Ukraine war briefing: Russian developers used AI to build ‘kamikaze’ attack drone software, Anthropic says - The Guardian",
-        "publisher": "The Guardian",
-        "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxNV1pNN1E2LTdmelB4VUxzNkxvRThpTmNFc012M3lyWDBiYXc2c2VvUms2LTg2cjBqZGs0ZFJyN3pGU3doRVdkNnVzWVBFM0s3cWRtYVdHdUhtRS0wWEY3TjlBTG02V2czS2tjOVlsbkRMM0s4TV9heWo4UHh6ZFpjcW9pVlhCdXVmUnJFRWZldE5OWlVFQUFYcEhQcWUwRzdER0NKanB6SlIwLU5nSThMUTBsbDlSSk1JSkR0Y19VeHo4VEthNjZzZi1fVTU3S21FbDdRQWl3UGxXNGlMd3NEdVhB?oc=5",
-        "tag": "rest"
-      },
-      {
-        "id": "gnews:55251c32069e3b00",
-        "title": "AI Agents and Smart Contracts Could Secure and Speed Last-Mile Medicine Delivery - Bioengineer.org",
-        "publisher": "Bioengineer.org",
-        "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPSl9RNVRxVi0yZno2UVRnMmhBSDk5cFpoZG9YUXFVNDlVLWdpUmlyOTZUMXNIOVRSNnhSbVhtTmo0UUtSUElhbHMzdTVHUndGU1BvZGFKc2paYUNVa2pBajFjbHVSS1B3aVNaN1JCSDRYZ3hncElndHozNWgzcldEM2xRaDBxRzBrZm80MkhOR1J5akRlMkZSUmg1ckZSOUdieEZkS2k1ZkE?oc=5",
-        "tag": "rest"
+        "query": "large language model",
+        "reason": "HTTP 503",
+        "soft_fail": true,
+        "http_status": 503,
+        "content_type": "text/html; charset=UTF-8",
+        "format": "unknown"
       }
-    ]
+    ],
+    "sample": []
   },
   "x": {
     "fetched": 0,
@@ -310,8 +302,8 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "query": "LLM agent eval harness",
-    "shelf": 3,
+    "query": "agent sandbox escape",
+    "shelf": 1,
     "from_cache": false,
     "searches": 1,
     "rate_limit_remaining": 9,
@@ -321,21 +313,13 @@
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
-        "label": "SuperSwinkAI/Swink-Agent",
-        "href": "https://github.com/SuperSwinkAI/Swink-Agent"
-      },
-      {
-        "label": "InfernoAnant/americanair-support-agent",
-        "href": "https://github.com/InfernoAnant/americanair-support-agent"
-      },
-      {
-        "label": "arrrrny/zuraffa_agent",
-        "href": "https://github.com/arrrrny/zuraffa_agent"
+        "label": "hyperlight-dev/hyperagent",
+        "href": "https://github.com/hyperlight-dev/hyperagent"
       }
     ]
   },
   "shelf": {
-    "count": 20,
+    "count": 18,
     "brief": false
   },
   "wikidata": {
@@ -343,11 +327,11 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "seeds": [
-      "OpenAI",
-      "DeepMind",
-      "Anthropic"
+      "OWASP",
+      "NIST",
+      "MITRE"
     ],
-    "searches": 1,
+    "searches": 3,
     "from_cache": false,
     "brief": false,
     "pulse_lead": false,
@@ -355,10 +339,10 @@
     "url": "https://www.wikidata.org/w/api.php",
     "hints": [
       {
-        "seed": "OpenAI",
-        "qid": "Q21708200",
-        "label": "OpenAI",
-        "description": "American artificial intelligence research organization",
+        "seed": "OWASP",
+        "qid": "Q379297",
+        "label": "OWASP",
+        "description": "computer security organization",
         "status": "matched",
         "source": "wikidata",
         "briefEligible": false,
@@ -366,10 +350,10 @@
         "denyGroundingOnly": true
       },
       {
-        "seed": "DeepMind",
-        "qid": "Q15733006",
-        "label": "Google DeepMind",
-        "description": "artificial intelligence company owned by Google",
+        "seed": "NIST",
+        "qid": "Q176691",
+        "label": "National Institute of Standards and Technology",
+        "description": "measurement standards laboratory in the United States",
         "status": "matched",
         "source": "wikidata",
         "briefEligible": false,
@@ -377,10 +361,10 @@
         "denyGroundingOnly": true
       },
       {
-        "seed": "Anthropic",
-        "qid": "Q116758847",
-        "label": "Anthropic",
-        "description": "American artificial intelligence corporation",
+        "seed": "MITRE",
+        "qid": "Q627039",
+        "label": "MITRE Corporation",
+        "description": "company",
         "status": "matched",
         "source": "wikidata",
         "briefEligible": false,
