@@ -1,47 +1,32 @@
 # Pack dual-home — latest export
 
-**UTC:** 20260911T130832Z  
-**Pack:** `sage-pack-003-20260911T130832Z.tar.gz`
+**UTC:** 20260918T093848Z  
+**Pack:** `sage-pack-003-20260918T093848Z.tar.gz`
 
 | Home | Path |
 |------|------|
-| Primary (VM) | `/workspace/nexus-sage/packs/sage-pack-003-20260911T130832Z.tar.gz` |
-| Desk mirror | `/workspace/nexus-sage/desk/packs/sage-pack-003-20260911T130832Z.tar.gz` |
-| Operator | Windows `Downloads\nexus-sage-packs\` or Drive — see `P2-EXPORT-IMPORT.md` |
+| Primary (VM) | `/workspace/nexus-sage/packs/sage-pack-003-20260918T093848Z.tar.gz` |
+| Desk mirror | `/workspace/nexus-sage/desk/packs/sage-pack-003-20260918T093848Z.tar.gz` |
+| Operator | Windows `Downloads\\nexus-sage-packs\\` or Drive — see `P2-EXPORT-IMPORT.md` |
 
 **Locks:** cycle `003` · lead `hf-incident` · `sol_ne_astra` · no `004` without primary  
 
-**Digest cadence:** unchanged by P2 wipe-drill (Brief pins / digest tick not mutated)  
+**Digest cadence:** A2 WROTE · pack_id `2026-09-18T09`  
 
-**Crawl / ingest:** `2026-09-11T09:29:29Z` (freeze-safe restore, no re-ingest)  
+**Crawl / ingest:** `2026-09-12T04:40:16Z`  
 
-**sha256 (archive):** `cafe4821fbbbb80bfeed27974a510017a26dc628d239c4071dd6ebe8734de54c`  
-**manifest sha256:** `98954fae7a6091e10368d7763e2762c71e7a117f0d7031a06f43cc9c76867667`  
+**sha256 (archive):** `99b40e9137720780a20adee1c0a35a2a8eeeb760917bf397d3a6d7eb9033af96`  
+**manifest sha256:** `see archive`  
 
-**Commands:** `bun run pack:export` · `bun run pack:import -- <path>` · `bun run digest:tick` · `bun run ingest` · `FORCE=1 bun scripts/a1-stale-ingest.mjs`
+**Commands:** `bun run pack:export` · `bun run a2:tick` · `bun run digest:tick` · `bun run ingest`
 
-**P2 wipe-drill note:** post-P5 freeze-safe wipe→import · dual-home bytes identical · F1–F5 fail-closed proven · prior twin `sage-pack-003-20260911T130710Z` also evidenced · cron-less  
+**A2 note:** unattended DUE→WROTE→dual-home · Istanbul weekday window (+09:00 catch-up) · no overnight  
 
-**Soft-fails STAMPED:** openalex HTTP 429 (pre-existing; not introduced by drill)
+**Soft-fails:** (see ingest-last / freeze note — A2 does not ingest)
 
 ### Reviewer stamp — pending
 
-(Factual dual-home above from Coder A1 auto-ingest. Reviewer owns PASS/FAIL stamp.)
-
-
-### Reviewer confirm — pending CLEARED (see 2026-09-11T09:24Z)
-
 (Factual dual-home above from Coder A2 auto-export. Reviewer owns PASS/FAIL stamp.)
-
-
-### Reviewer confirm — 2026-09-07T07:07Z
-
-**Header pending CLEARED** — A2 PASS @07:00 (`065851Z`). Soft-fail: x-session-taste `login_wall` skip-stamped (desk boots · Brief false).
-
-
-### Reviewer confirm — 2026-09-07T02:07Z
-
-**Header pending CLEARED.** Authoritative stamp is **2026-09-07T01:33Z** (A1 pack `012948Z` PASS). Home 2b operator copy remains PENDING (no re-ask) — not a Reviewer stamp block.
 
 
 ### Reviewer stamp — 2026-09-06T06:46Z (Reviewer Gürok)
@@ -202,3 +187,55 @@ Evidence:
 - Host `crontab` missing — Bot-routine cron-less OK for now
 
 Prior `092040Z` archive PASS stands. **Armed for X dry-run #2** gate (login done).
+
+### Reviewer stamp — 2026-09-11T13:12Z (Reviewer Gürok)
+
+**PACK-DUAL-HOME PASS** — wipe-drill pack `sage-pack-003-20260911T130832Z` · sha256 `cafe4821…` dual-home identical · locks `003`/`hf-incident`.
+
+### Reviewer stamp — 2026-09-11T15:29Z (Reviewer Gürok)
+
+**Fri A2 FORCE-WINDOW PASS** · **PACK-DUAL-HOME PASS** (`152745Z`) vs FAIL 1–8.
+
+Evidence:
+- Log: SKIP outside 09–16 → `A2_FORCE_WINDOW=1` WROTE `pack_id=2026-09-11T15` → dual-home
+- Pack `sage-pack-003-20260911T152745Z.tar.gz` · sha256 `ab73aab0ebe55a3ae48fd136b6070a10e562178c3dbd924d8369846c0293165d` identical both homes
+- Locks `003`/`hf-incident` · crawl unchanged `09:29:29Z` · OpenAlex soft `429` honest
+- `visual:check` OK · brand OK · next_at `21:27:45Z` (Mon catch-up for standing)
+- One-shot only — not overnight firehose
+
+**P6 / new WIRE HOLD.**
+
+### Reviewer stamp — 2026-09-11T16:58Z (Reviewer Gürok)
+
+**Flake-fix RECONFIRM PASS** (`56c7df1`) + **FAIL 1–8 still green on `152745Z`**.
+
+Evidence:
+- Full `bun test` **205/205** after timeout bumps (failclosed 60s · gnews 30s) · timeouts only · no product/WIRE change
+- Pack `sage-pack-003-20260911T152745Z` dual-home sha256 `ab73aab0…` unchanged · locks `003`/`hf-incident`
+- OpenAlex soft `429` honest · `visual:check` OK · brand OK · crawl `09:29:29Z`
+
+**P6 / new WIRE HOLD.** Mon catch-up path stands.
+
+### Reviewer stamp — 2026-09-11T18:02Z (Reviewer Gürok)
+
+**rss-security flake RECONFIRM PASS** (`a978633`) + **FAIL 1–8 still green on `152745Z`**.
+
+Evidence:
+- Tip timeouts-only · Coder prove **205/205** · Project Zero / parseRssOrAtomCapped / fetchRssSecurity @ 30s
+- Pack `152745Z` dual-home sha256 `ab73aab0…` · locks `003`/`hf-incident` · OpenAlex soft `429` honest
+- `visual:check` OK · brand OK · crawl `09:29:29Z`
+
+**P6 / new WIRE HOLD.** Weekend quiet → Mon catch-up.
+
+### Reviewer stamp — 2026-09-12T04:46Z (Reviewer Gürok)
+
+**WEEKEND STALE CATCH-UP PASS** · **PACK-DUAL-HOME PASS** (`044233Z`) vs FAIL 1–8.
+
+Evidence:
+- Pack `sage-pack-003-20260912T044233Z.tar.gz` · sha256 `7c412e6503b8a2bb756a11afc3df9fda901eb299067c27a3e6b60f111584ba66` dual-home identical
+- Crawl LIVE `2026-09-12T04:40:16Z` FRESH = CURRENT + `visual:check` + footer
+- Digest WROTE `pack_id=2026-09-12T04` · next_at `10:40:16Z`
+- Locks `003`/`hf-incident` · OpenAlex soft `429` honest · GNews spice 8 · `brief=false`/`pulse_lead=false`
+- brand OK · further Sat firehose HOLD → Mon window
+
+**P6 / new WIRE / Voice / `004` HOLD.**

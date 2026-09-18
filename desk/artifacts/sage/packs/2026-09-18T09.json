@@ -1,0 +1,201 @@
+{
+  "at": "2026-09-18T09:38:48.380Z",
+  "cycle": "003",
+  "lead_id": "hf-incident",
+  "pack_id": "2026-09-18T09",
+  "plan": [
+    {
+      "id": "hf-swarm",
+      "title": "Eval agents reached Hugging Face production",
+      "file": "hf-incident",
+      "kind": "lead",
+      "confidence": "high",
+      "move": "Keep as lead. Banned nouns stay off the pin.",
+      "evidence": [
+        "METR scope ends 13 Jul. Wave 3 cluster-admin is OpenAI-only.",
+        "02 Sep curation did not add a new incident URL. It added scanners, papers, and Astra commentary."
+      ],
+      "steps": [
+        "Cite METR for waves 1–2. Cite OpenAI for wave 3.",
+        "Do not use AISLE curl CVEs or MIT stigmergy as proof of the HF breach."
+      ],
+      "doneWhen": "Pin 1 still opens the incident file.",
+      "unlockIf": "A new METR/HF/OpenAI primary names a fact not in Cycle 001.",
+      "refs": [
+        {
+          "label": "Dwarkesh 29 Aug thread",
+          "href": "https://x.com/dwarkesh_sp",
+          "role": "wire"
+        }
+      ]
+    },
+    {
+      "id": "astra-depth",
+      "title": "Astra: Critical + recurrent depth",
+      "file": "astra",
+      "kind": "companion",
+      "confidence": "high",
+      "move": "Companion only. Do not promote over HF.",
+      "evidence": [
+        "Palazzolo 2094954680765829533 — recurrent depth.",
+        "Amir 2095274361695731967 — story unchanged; OpenAI limiting loops.",
+        "Curran 2095257682865532970 — 'Astra tomorrow morning' is a wire read.",
+        "Lab wire: Perplexity trusts GPT-6 Astra with end-to-end systems.",
+        "Lab wire: Cognition helps Devin test its own work with GPT‑6 Astra.",
+        "Lab wire: Introducing ChatGPT for Financial Services."
+      ],
+      "steps": [
+        "Keep ship language rumored.",
+        "If OpenAI posts a dated ship, that is a companion delta, not a lead swap."
+      ],
+      "doneWhen": "Astra is pin 2 or Pulse companion. Not pin 1.",
+      "unlockIf": "OpenAI official dated ship or a new incident attribution.",
+      "refs": [
+        {
+          "label": "Palazzolo",
+          "href": "https://x.com/steph_palazzolo/status/2094954680765829533",
+          "role": "primary"
+        },
+        {
+          "label": "Amir clarification",
+          "href": "https://x.com/amir/status/2095274361695731967",
+          "role": "primary"
+        },
+        {
+          "label": "lab:openai Perplexity trusts GPT-6 Astra with e…",
+          "href": "https://openai.com/index/perplexity-improving-accuracy-with-astra",
+          "role": "wire"
+        },
+        {
+          "label": "lab:openai Cognition helps Devin test its own w…",
+          "href": "https://openai.com/index/cognition-devin-testing-with-astra",
+          "role": "wire"
+        },
+        {
+          "label": "lab:openai Introducing ChatGPT for Financial Se…",
+          "href": "https://openai.com/index/introducing-chatgpt-financial-services",
+          "role": "wire"
+        },
+        {
+          "label": "lab:openai GPT-6 Astra: The next generation in …",
+          "href": "https://openai.com/index/gpt-6-astra-next-generation-work",
+          "role": "wire"
+        }
+      ]
+    },
+    {
+      "id": "aisle-curl",
+      "title": "AISLE found 6 curl CVEs after two labs reported zero",
+      "file": "other",
+      "kind": "rest",
+      "confidence": "high",
+      "move": "Rest-of-board. Use as measurement, not vendor scoreboard lead.",
+      "evidence": [
+        "Primary blog aisle.com + Fort 2095107971433017510 (261 likes / 23k views).",
+        "Lab wire: Rapidly scaling online storage to serve over 1 billion ChatGPT ….",
+        "Lab wire: ToolGrad: Efficient tool-use dataset generation with textual \"g….",
+        "Lab wire: How Full-Stack NIM Optimizations Deliver 2.5x More Users on Nem…."
+      ],
+      "steps": [
+        "Link the blog. Do not write 'labs are unsafe' from one target."
+      ],
+      "doneWhen": "On Pulse with the blog href.",
+      "unlockIf": "curl project disputes the CVEs — then downgrade.",
+      "refs": [
+        {
+          "label": "AISLE blog",
+          "href": "https://aisle.com/blog/aisle-discovered-six-curl-cves-after-openai-and-anthropic-found-zero",
+          "role": "primary"
+        },
+        {
+          "label": "Fort 02 Sep",
+          "href": "https://x.com/stanislavfort/status/2095107971433017510",
+          "role": "wire"
+        },
+        {
+          "label": "lab:openai Rapidly scaling online storage to se…",
+          "href": "https://openai.com/index/scaling-storage-one-billion-users-part-one",
+          "role": "wire"
+        },
+        {
+          "label": "lab:google-research ToolGrad: Efficient tool-us…",
+          "href": "https://research.google/blog/toolgrad-efficient-tool-use-dataset-generation-with-textual-gradients/",
+          "role": "wire"
+        },
+        {
+          "label": "lab:nvidia-dev How Full-Stack NIM Optimizations…",
+          "href": "https://developer.nvidia.com/blog/how-full-stack-nim-optimizations-deliver-2-5x-more-users-on-nemotron-3-ultra/",
+          "role": "wire"
+        },
+        {
+          "label": "lab:nvidia Skild AI Taps NVIDIA Physical AI to …",
+          "href": "https://blogs.nvidia.com/blog/skild-ai-s1-physical-ai/",
+          "role": "wire"
+        },
+        {
+          "label": "lab:nvidia Physical AI Takes the Wheel: How the…",
+          "href": "https://blogs.nvidia.com/blog/robotaxi-leaders-full-stack-open-platform/",
+          "role": "wire"
+        }
+      ]
+    },
+    {
+      "id": "harness-papers",
+      "title": "Harness papers: days-long coding + skills that hurt the task",
+      "file": "other",
+      "kind": "rest",
+      "confidence": "medium",
+      "move": "Papers lane + Pulse rest.",
+      "evidence": [
+        "dair_ai 2095172426925801608 Harness-of-Harness.",
+        "dair_ai 2095330956823629995 matched skill-retrieval effect.",
+        "HF live 03 Sep: Repo-To-Skill 2609.02749, 105 up.",
+        "DOI confirm 2608.12564: Scaling Automatic Research Agents via World Models.",
+        "HF keep still ranked 2609.10715: NCP-ArchPreview Technical Report: Moving towards Latent… (177 up).",
+        "HF keep still ranked 2609.11929: SenseNova-U1.5: Towards Native Unified Visual Intellige… (140 up)."
+      ],
+      "steps": [
+        "Keep abstracts on the desk. Do not treat benchmark lift as a ship."
+      ],
+      "doneWhen": "Papers lane lists at least one of these IDs.",
+      "unlockIf": "Never as lead.",
+      "refs": [
+        {
+          "label": "Harness-of-Harness",
+          "href": "https://x.com/dair_ai/status/2095172426925801608",
+          "role": "wire"
+        },
+        {
+          "label": "Skill retrieval paper",
+          "href": "https://x.com/dair_ai/status/2095330956823629995",
+          "role": "wire"
+        },
+        {
+          "label": "Scaling Automatic Research Agents via World Mod…",
+          "href": "https://doi.org/10.1609/aaai.v40i46.41311",
+          "role": "support"
+        },
+        {
+          "label": "NCP-ArchPreview Technical Report: Moving toward…",
+          "href": "https://arxiv.org/abs/2609.10715",
+          "role": "support"
+        },
+        {
+          "label": "SenseNova-U1.5: Towards Native Unified Visual I…",
+          "href": "https://arxiv.org/abs/2609.11929",
+          "role": "support"
+        },
+        {
+          "label": "AgentGrad: Intervention-guided Prompt Optimizat…",
+          "href": "https://arxiv.org/abs/2609.08572",
+          "role": "support"
+        },
+        {
+          "label": "SpatialBlock: Enhancing Spatial Intelligence in…",
+          "href": "https://arxiv.org/abs/2609.07064",
+          "role": "support"
+        }
+      ]
+    }
+  ]
+}
