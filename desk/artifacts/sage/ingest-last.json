@@ -2,10 +2,10 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-09-11T09:29:29Z",
+  "stamped_at": "2026-09-12T04:40:16Z",
   "stale_hours": 18,
   "age_check": {
-    "hours": 0.009209166666666666,
+    "hours": 0.026198333333333334,
     "stale": false
   },
   "hf": {
@@ -26,10 +26,11 @@
     "soft_fail_reason": "HTTP 429",
     "enriched": 0,
     "secondary": 0,
-    "query": "LLM agent",
+    "query": "LLM agent sandbox",
     "mode": "search",
     "from_cache": false,
     "searches": 1,
+    "retries": 2,
     "brief": false,
     "pulse_lead": false,
     "papers_enrich_only": true,
@@ -43,8 +44,8 @@
     "enriched": 1,
     "query": "Scaling Automatic Research Agents via World Models",
     "mode": "bibliographic",
-    "from_cache": false,
-    "searches": 1,
+    "from_cache": true,
+    "searches": 0,
     "brief": false,
     "pulse_lead": false,
     "papers_enrich_only": true,
@@ -64,37 +65,54 @@
   },
   "hn": {
     "ok": true,
-    "count": 47,
+    "soft_fail": false,
+    "soft_fail_reason": null,
+    "count": 30,
     "brief": false,
     "pulse_only": true,
+    "never_displace_hf": true,
+    "queries_run": [
+      "open weights",
+      "inference",
+      "benchmark"
+    ],
+    "queries_ok": [
+      "open weights",
+      "inference",
+      "benchmark"
+    ],
+    "queries_soft_fail": [],
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
-        "id": "hn:38309611",
+        "id": "hn:17824218",
         "tag": "rest",
-        "score": 5710,
-        "text": "OpenAI's board has fired Sam Altman"
+        "score": 1318,
+        "text": "Intel Publishes Microcode Patches, No Benchmarking or Comparison Allowed"
       },
       {
-        "id": "hn:35813322",
+        "id": "hn:48979269",
         "tag": "rest",
-        "score": 2455,
-        "text": "Google \u201cWe have no moat, and neither does OpenAI\u201d"
+        "score": 1243,
+        "text": "China’s open-weights AI strategy is winning"
       },
       {
-        "id": "hn:46990729",
+        "id": "hn:48924912",
         "tag": "rest",
-        "score": 2346,
-        "text": "An AI agent published a hit piece on me"
+        "score": 1227,
+        "text": "Inkling: Our Open-Weights Model"
       }
     ]
   },
   "rss": {
     "ok": true,
-    "count": 48,
+    "soft_fail": false,
+    "soft_fail_reason": null,
+    "count": 106,
     "shelf": 0,
     "brief": false,
     "pulse_only": true,
+    "never_displace_hf": true,
     "feeds": [
       {
         "lab": "openai",
@@ -115,36 +133,62 @@
         "lab": "huggingface",
         "url": "https://huggingface.co/blog/feed.xml",
         "count": 12
+      },
+      {
+        "lab": "mistral",
+        "url": "https://mistral.ai/rss.xml",
+        "count": 12
+      },
+      {
+        "lab": "nvidia",
+        "url": "https://blogs.nvidia.com/feed/",
+        "count": 12
+      },
+      {
+        "lab": "nvidia-dev",
+        "url": "https://developer.nvidia.com/blog/feed",
+        "count": 12
+      },
+      {
+        "lab": "ms-research",
+        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
+        "count": 10
+      },
+      {
+        "lab": "google-research",
+        "url": "https://research.google/blog/rss/",
+        "count": 12
       }
     ],
+    "feeds_soft_fail": [],
     "sample": [
       {
-        "id": "rss:openai:39842fa0b34b37cb",
-        "lab": "openai",
-        "tag": "rest",
-        "title": "How a researcher uses Codex and ChatGPT to search for new antimicrobial molecules",
-        "link": "https://openai.com/index/using-codex-chatgpt-to-search-for-new-antimicrobials"
-      },
-      {
-        "id": "rss:google-ai:ceadd21f5d3a2d65",
-        "lab": "google-ai",
-        "tag": "rest",
-        "title": "3 ways to prep for your next big race with Search",
-        "link": "https://blog.google/products-and-platforms/products/search/running-race-training-tips/"
-      },
-      {
-        "id": "rss:openai:6a886414536a09e3",
-        "lab": "openai",
-        "tag": "rest",
-        "title": "Now everyone can put data to work",
-        "link": "https://openai.com/index/put-data-to-work"
-      },
-      {
-        "id": "rss:openai:0bb946f0c4215389",
+        "id": "rss:openai:968c32634dc2a1cb",
         "lab": "openai",
         "tag": "companion",
-        "title": "Introducing ChatGPT for Financial Services",
-        "link": "https://openai.com/index/introducing-chatgpt-financial-services"
+        "title": "Perplexity trusts GPT-6 Astra with end-to-end systems",
+        "link": "https://openai.com/index/perplexity-improving-accuracy-with-astra"
+      },
+      {
+        "id": "rss:openai:4aeb82da9975e2f5",
+        "lab": "openai",
+        "tag": "companion",
+        "title": "Cognition helps Devin test its own work with GPT‑6 Astra",
+        "link": "https://openai.com/index/cognition-devin-testing-with-astra"
+      },
+      {
+        "id": "rss:openai:46fcf5bb7b99520f",
+        "lab": "openai",
+        "tag": "rest",
+        "title": "Rapidly scaling online storage to serve over 1 billion ChatGPT users",
+        "link": "https://openai.com/index/scaling-storage-one-billion-users-part-one"
+      },
+      {
+        "id": "rss:google-research:aa8533b1c5b411fc",
+        "lab": "google-research",
+        "tag": "rest",
+        "title": "ToolGrad: Efficient tool-use dataset generation with textual \"gradients\"",
+        "link": "https://research.google/blog/toolgrad-efficient-tool-use-dataset-generation-with-textual-gradients/"
       }
     ]
   },
@@ -177,7 +221,7 @@
         "id": "rss-sec:trailofbits:009d5c98023fba4a",
         "lab": "trailofbits",
         "tag": "rest",
-        "title": "A \u201cproof\u201d of Fermat\u2019s Last Theorem that fits the margin",
+        "title": "A “proof” of Fermat’s Last Theorem that fits the margin",
         "link": "https://blog.trailofbits.com/2026/09/09/a-proof-of-fermats-last-theorem-that-fits-the-margin/"
       },
       {
@@ -203,38 +247,95 @@
       }
     ]
   },
+  "google_news": {
+    "ok": true,
+    "soft_fail": false,
+    "soft_fail_reason": null,
+    "queries_attempted": 2,
+    "queries_ok": 2,
+    "items": 8,
+    "http_status": 200,
+    "content_type": "application/xml; charset=utf-8",
+    "format": "rss2",
+    "from_cache": false,
+    "brief": false,
+    "pulse_lead": false,
+    "briefEligible": false,
+    "pulseLeadEligible": false,
+    "never_sole_lead": true,
+    "pulse_only": true,
+    "url_template": "https://news.google.com/rss/search?q={QUERY}&hl=en-US&gl=US&ceid=US:en",
+    "queried": [
+      "Anthropic",
+      "large language model"
+    ],
+    "queries_ok_list": [
+      "Anthropic",
+      "large language model"
+    ],
+    "queries_soft_fail": [],
+    "sample": [
+      {
+        "id": "gnews:3a4aa70ff7b4bc6d",
+        "title": "Trump touts US appproach to AI, defends government blacklisting Anthropic - Anadolu Ajansı",
+        "publisher": "Anadolu Ajansı",
+        "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQZVU0Q2FEM1Y5TWVWZkhKWmRzS2R4YXV0eDRYUkk2Zk80VEx3cTdDSUYzcXp1LTdrbDNoVGc5S2Z1eko3RkJ1S0EzRUdpNXE5THVkcExhYXF2UFM1Y2J6djQ3V3FkRFlpWTV6aDVpdkdXZGNtSWhLNGh2VVYzdHpYWDAxLXBSX1N4TWJxUFhLb1E1UTJXVVlqa1JnS3F4Q3JGa21HLWxoR1VfblBCVHc3UE5zOXY?oc=5",
+        "tag": "rest"
+      },
+      {
+        "id": "gnews:558b33987ed7db86",
+        "title": "Ukraine war briefing: Russian developers used AI to build ‘kamikaze’ attack drone software, Anthropic says - The Guardian",
+        "publisher": "The Guardian",
+        "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxNV1pNN1E2LTdmelB4VUxzNkxvRThpTmNFc012M3lyWDBiYXc2c2VvUms2LTg2cjBqZGs0ZFJyN3pGU3doRVdkNnVzWVBFM0s3cWRtYVdHdUhtRS0wWEY3TjlBTG02V2czS2tjOVlsbkRMM0s4TV9heWo4UHh6ZFpjcW9pVlhCdXVmUnJFRWZldE5OWlVFQUFYcEhQcWUwRzdER0NKanB6SlIwLU5nSThMUTBsbDlSSk1JSkR0Y19VeHo4VEthNjZzZi1fVTU3S21FbDdRQWl3UGxXNGlMd3NEdVhB?oc=5",
+        "tag": "rest"
+      },
+      {
+        "id": "gnews:55251c32069e3b00",
+        "title": "AI Agents and Smart Contracts Could Secure and Speed Last-Mile Medicine Delivery - Bioengineer.org",
+        "publisher": "Bioengineer.org",
+        "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPSl9RNVRxVi0yZno2UVRnMmhBSDk5cFpoZG9YUXFVNDlVLWdpUmlyOTZUMXNIOVRSNnhSbVhtTmo0UUtSUElhbHMzdTVHUndGU1BvZGFKc2paYUNVa2pBajFjbHVSS1B3aVNaN1JCSDRYZ3hncElndHozNWgzcldEM2xRaDBxRzBrZm80MkhOR1J5akRlMkZSUmg1ckZSOUdieEZkS2k1ZkE?oc=5",
+        "tag": "rest"
+      }
+    ]
+  },
   "x": {
     "fetched": 0,
     "skipped": true,
     "disabled": true,
     "handles": 17,
     "semantic": 6,
-    "plug_in": "Free providers only \u2014 no X_BEARER_TOKEN / api.x.com / Zapier. Watchlist is curation (buildHandleQueries + SEMANTIC_CLASSES plan-only). Live ingest: HF daily_papers + arXiv Atom enrich + HN Algolia Pulse + lab RSS + security RSS + GitHub unauth shelf + toolkit shelf. See refs/FREE-PROVIDERS.md."
+    "plug_in": "Free providers only — no X_BEARER_TOKEN / api.x.com / Zapier. Watchlist is curation (buildHandleQueries + SEMANTIC_CLASSES plan-only). Live ingest: HF daily_papers + arXiv Atom enrich + HN Algolia Pulse + lab RSS + security RSS + GitHub unauth shelf + toolkit shelf. See refs/FREE-PROVIDERS.md."
   },
   "github": {
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "query": "LLM red team toolkit",
-    "shelf": 2,
+    "query": "LLM agent eval harness",
+    "shelf": 3,
     "from_cache": false,
     "searches": 1,
+    "rate_limit_remaining": 9,
     "brief": false,
     "pulse_lead": false,
+    "shelf_only": true,
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
-        "label": "seikaikyo/ai-red-team",
-        "href": "https://github.com/seikaikyo/ai-red-team"
+        "label": "SuperSwinkAI/Swink-Agent",
+        "href": "https://github.com/SuperSwinkAI/Swink-Agent"
       },
       {
-        "label": "monishaclemenceau7-bit/LLM-red-team-toolkit",
-        "href": "https://github.com/monishaclemenceau7-bit/LLM-red-team-toolkit"
+        "label": "InfernoAnant/americanair-support-agent",
+        "href": "https://github.com/InfernoAnant/americanair-support-agent"
+      },
+      {
+        "label": "arrrrny/zuraffa_agent",
+        "href": "https://github.com/arrrrny/zuraffa_agent"
       }
     ]
   },
   "shelf": {
-    "count": 19,
+    "count": 20,
     "brief": false
   },
   "wikidata": {
@@ -242,28 +343,17 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "seeds": [
-      "METR",
       "OpenAI",
-      "DeepMind"
+      "DeepMind",
+      "Anthropic"
     ],
-    "searches": 3,
+    "searches": 1,
     "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "deny_grounding_only": true,
     "url": "https://www.wikidata.org/w/api.php",
     "hints": [
-      {
-        "seed": "METR",
-        "qid": "Q11573",
-        "label": "metre",
-        "description": "SI unit of length",
-        "status": "rejected_false_friend",
-        "source": "wikidata",
-        "briefEligible": false,
-        "pulseLeadEligible": false,
-        "denyGroundingOnly": true
-      },
       {
         "seed": "OpenAI",
         "qid": "Q21708200",
@@ -285,6 +375,17 @@
         "briefEligible": false,
         "pulseLeadEligible": false,
         "denyGroundingOnly": true
+      },
+      {
+        "seed": "Anthropic",
+        "qid": "Q116758847",
+        "label": "Anthropic",
+        "description": "American artificial intelligence corporation",
+        "status": "matched",
+        "source": "wikidata",
+        "briefEligible": false,
+        "pulseLeadEligible": false,
+        "denyGroundingOnly": true
       }
     ]
   },
@@ -295,28 +396,5 @@
     "no_paid_x": true,
     "green_token": "--phosphor",
     "stale_class": ".sage-stale"
-  },
-  "x_session_taste": {
-    "ok": true,
-    "soft_fail": false,
-    "soft_fail_reason": null,
-    "skipped": false,
-    "brief": false,
-    "pulse_lead": false,
-    "paid_api": false,
-    "run": 2,
-    "captured_at": "2026-09-11T09:32:00Z",
-    "kept": 8,
-    "seen": 51,
-    "surfaces": {
-      "bookmark": 12,
-      "like": 14,
-      "feed": 25
-    },
-    "filtered": 43,
-    "session_alive": true,
-    "artifact": "artifacts/sage/x-taste-last.json",
-    "evidence": "refs/X-SESSION-TASTE-DRY-RUN.md",
-    "note": "dry-run #2 PASS \u00b7 land GO \u00b7 Pulse shelf only \u00b7 never Brief/lead"
   }
 }
