@@ -2,10 +2,10 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-09-18T10:11:30Z",
+  "stamped_at": "2026-09-21T07:22:47Z",
   "stale_hours": 18,
   "age_check": {
-    "hours": 0.03129833333333333,
+    "hours": 0.03371222222222222,
     "stale": false
   },
   "hf": {
@@ -14,9 +14,9 @@
     "url": "https://huggingface.co/api/daily_papers"
   },
   "arxiv": {
-    "ok": true,
-    "enriched": 8,
-    "shelf": 5,
+    "ok": false,
+    "enriched": 0,
+    "shelf": 0,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
   },
@@ -72,35 +72,35 @@
     "pulse_only": true,
     "never_displace_hf": true,
     "queries_run": [
-      "Hugging Face",
-      "agents",
-      "eval"
+      "LLM",
+      "METR",
+      "ML security"
     ],
     "queries_ok": [
-      "Hugging Face",
-      "agents",
-      "eval"
+      "LLM",
+      "METR",
+      "ML security"
     ],
     "queries_soft_fail": [],
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
-        "id": "hn:46990729",
+        "id": "hn:44567857",
         "tag": "rest",
-        "score": 2346,
-        "text": "An AI agent published a hit piece on me"
+        "score": 1773,
+        "text": "LLM Inevitabilism"
       },
       {
-        "id": "hn:49563355",
+        "id": "hn:41523070",
         "tag": "rest",
-        "score": 2301,
-        "text": "Discovery of a new OpenAI agent message board"
+        "score": 1654,
+        "text": "Learning to Reason with LLMs"
       },
       {
-        "id": "hn:49458161",
+        "id": "hn:38505211",
         "tag": "rest",
-        "score": 1988,
-        "text": "Nvidia agrees to acquire Hugging Face for $13B"
+        "score": 1592,
+        "text": "LLM Visualization"
       }
     ]
   },
@@ -163,32 +163,32 @@
     "feeds_soft_fail": [],
     "sample": [
       {
-        "id": "rss:google-research:0f83c2d1d5b80343",
+        "id": "rss:nvidia-dev:127a999e24da184d",
+        "lab": "nvidia-dev",
+        "tag": "rest",
+        "title": "Benchmarking LLM Inference at Scale with AIPerf",
+        "link": "https://developer.nvidia.com/blog/benchmarking-llm-inference-at-scale-with-aiperf/"
+      },
+      {
+        "id": "rss:google-research:a7f1f0b4928f996b",
         "lab": "google-research",
         "tag": "rest",
-        "title": "The future of practice: Enabling teachers to create learning interactives with generative UI",
-        "link": "https://research.google/blog/the-future-of-practice-enabling-teachers-to-create-learning-interactives-with-generative-ui/"
+        "title": "MilleMiglia: A realistic instance generator for middle-mile logistics",
+        "link": "https://research.google/blog/millemiglia-a-realistic-instance-generator-for-middle-mile-logistics/"
       },
       {
-        "id": "rss:google-ai:590df77dc8c3726e",
+        "id": "rss:google-ai:d92122e53ec9d4f7",
         "lab": "google-ai",
         "tag": "rest",
-        "title": "Making global data easier to explore",
-        "link": "https://blog.google/innovation-and-ai/technology/ai/google-un-data-commons-platform/"
+        "title": "New experts join Google’s AI & Economy team",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/expanding-ai-economy-research-bench/"
       },
       {
-        "id": "rss:nvidia:0955c5f215019918",
-        "lab": "nvidia",
+        "id": "rss:google-ai:44ec3a3d6fdc7de7",
+        "lab": "google-ai",
         "tag": "rest",
-        "title": "Cute Critters Come to the Cloud: ‘Aniimo’ Launches on GeForce NOW",
-        "link": "https://blogs.nvidia.com/blog/geforce-now-thursday-aniimo/"
-      },
-      {
-        "id": "rss:openai:d22acfa5d0cc1d09",
-        "lab": "openai",
-        "tag": "rest",
-        "title": "How Cooley is accelerating IPO work with ChatGPT",
-        "link": "https://openai.com/index/cooley-gopublic"
+        "title": "Co-creating the future of fashion with Google",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/google-flow-fashion-week/"
       }
     ]
   },
@@ -218,6 +218,13 @@
     ],
     "sample": [
       {
+        "id": "rss-sec:trailofbits:827736ff96e4a036",
+        "lab": "trailofbits",
+        "tag": "rest",
+        "title": "Auditing in the age of (good enough) AI",
+        "link": "https://blog.trailofbits.com/2026/09/18/auditing-in-the-age-of-good-enough-ai/"
+      },
+      {
         "id": "rss-sec:trailofbits:71fc2221d1295bd6",
         "lab": "trailofbits",
         "tag": "rest",
@@ -237,26 +244,19 @@
         "tag": "rest",
         "title": "Testing race conditions with memory access tracing and stack-based delay injection",
         "link": "https://projectzero.google/2026/09/maccconc-race-condition.html"
-      },
-      {
-        "id": "rss-sec:trailofbits:8061813586c580cf",
-        "lab": "trailofbits",
-        "tag": "rest",
-        "title": "VMs won't contain cyber-capable agents",
-        "link": "https://blog.trailofbits.com/2026/08/26/vms-wont-contain-cyber-capable-agents/"
       }
     ]
   },
   "google_news": {
-    "ok": false,
-    "soft_fail": true,
-    "soft_fail_reason": "Anthropic:HTTP 503; large language model:HTTP 503",
+    "ok": true,
+    "soft_fail": false,
+    "soft_fail_reason": null,
     "queries_attempted": 2,
-    "queries_ok": 0,
-    "items": 0,
-    "http_status": 503,
-    "content_type": "text/html; charset=UTF-8",
-    "format": "unknown",
+    "queries_ok": 2,
+    "items": 8,
+    "http_status": 200,
+    "content_type": "application/xml; charset=utf-8",
+    "format": "rss2",
     "from_cache": false,
     "brief": false,
     "pulse_lead": false,
@@ -266,29 +266,37 @@
     "pulse_only": true,
     "url_template": "https://news.google.com/rss/search?q={QUERY}&hl=en-US&gl=US&ceid=US:en",
     "queried": [
-      "Anthropic",
-      "large language model"
+      "open weights",
+      "Hugging Face"
     ],
-    "queries_ok_list": [],
-    "queries_soft_fail": [
+    "queries_ok_list": [
+      "open weights",
+      "Hugging Face"
+    ],
+    "queries_soft_fail": [],
+    "sample": [
       {
-        "query": "Anthropic",
-        "reason": "HTTP 503",
-        "soft_fail": true,
-        "http_status": 503,
-        "content_type": "text/html; charset=UTF-8",
-        "format": "unknown"
+        "id": "gnews:669f99cdade26296",
+        "title": "Qwen Image 2.1: 7B Open-Weights Image Model Claims to Beat Nano Banana 2.0 - Intelligent Living",
+        "publisher": "Intelligent Living",
+        "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE42R2xKTTV3cHV5cldiUVpNU2lTc0JoeXhycUVfREN6M082YXRBTjNLc3BDVWhQYThBY1RoQ1FLZFNVa2NoYkZuQTRkY0dCSkNxVGZIMGdjckU3ZlV2QkRBYnZwcDd6R2dJV0VteUY2am8xTzJ3U0k4cQ?oc=5",
+        "tag": "rest"
       },
       {
-        "query": "large language model",
-        "reason": "HTTP 503",
-        "soft_fail": true,
-        "http_status": 503,
-        "content_type": "text/html; charset=UTF-8",
-        "format": "unknown"
+        "id": "gnews:ff5e85e0e047e33e",
+        "title": "Qwen-Image-2.1: Alibaba Ships 7B Open Image Model [2026] - tech-insider.org",
+        "publisher": "tech-insider.org",
+        "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9tMTNiN25IZWdGQzRCcGlXSHdXblBKSF9Fb2pTX0pOS21weEotMGVsM0UyaVVYWFVZMmNyRE1SV3FqUEc2YUNUVEdQcUxvWWtrWFozamhLSFo2TjZ4bFUzUGl1bzR6REpaWTZrbnBjd1hGSjlPdEtJ?oc=5",
+        "tag": "rest"
+      },
+      {
+        "id": "gnews:cbcf7695c6109dfb",
+        "title": "In India, falling in love with Chinese open-weight models is the easy part - the-ken.com",
+        "publisher": "the-ken.com",
+        "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNQXI5T3F2XzYwVGRjN3d5Sk5sNUtHWWZIbjdxYVBTQVFVQk14ZHdEMThMWU9xQ1RIM0ljLVBydkdGeWwxRGNJa0NKMl9CazRrWkFUQk1SYWxtQ2p2TUZDMEp4aVVmcTNzMHYyVV9Qc0h3NnJNcUNXX3d3LWhjSlYxUkJmN09CU2FHRWFiRU1ZSkVwcFNUSjdfeWt4a2dwVFFwZkE?oc=5",
+        "tag": "rest"
       }
-    ],
-    "sample": []
+    ]
   },
   "x": {
     "fetched": 0,
@@ -302,7 +310,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "query": "agent sandbox escape",
+    "query": "OWASP LLM",
     "shelf": 1,
     "from_cache": false,
     "searches": 1,
@@ -313,13 +321,13 @@
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
-        "label": "hyperlight-dev/hyperagent",
-        "href": "https://github.com/hyperlight-dev/hyperagent"
+        "label": "gasbugs/owasp-llm-lab-setup-guide",
+        "href": "https://github.com/gasbugs/owasp-llm-lab-setup-guide"
       }
     ]
   },
   "shelf": {
-    "count": 18,
+    "count": 13,
     "brief": false
   },
   "wikidata": {
@@ -327,9 +335,9 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "seeds": [
-      "OWASP",
-      "NIST",
-      "MITRE"
+      "JFrog",
+      "Trail of Bits",
+      "stigmergy"
     ],
     "searches": 3,
     "from_cache": false,
@@ -339,10 +347,10 @@
     "url": "https://www.wikidata.org/w/api.php",
     "hints": [
       {
-        "seed": "OWASP",
-        "qid": "Q379297",
-        "label": "OWASP",
-        "description": "computer security organization",
+        "seed": "JFrog",
+        "qid": "Q98608948",
+        "label": "JFrog Ltd",
+        "description": "Software company",
         "status": "matched",
         "source": "wikidata",
         "briefEligible": false,
@@ -350,21 +358,21 @@
         "denyGroundingOnly": true
       },
       {
-        "seed": "NIST",
-        "qid": "Q176691",
-        "label": "National Institute of Standards and Technology",
-        "description": "measurement standards laboratory in the United States",
-        "status": "matched",
+        "seed": "Trail of Bits",
+        "qid": null,
+        "label": null,
+        "description": null,
+        "status": "unresolved",
         "source": "wikidata",
         "briefEligible": false,
         "pulseLeadEligible": false,
         "denyGroundingOnly": true
       },
       {
-        "seed": "MITRE",
-        "qid": "Q627039",
-        "label": "MITRE Corporation",
-        "description": "company",
+        "seed": "stigmergy",
+        "qid": "Q2141158",
+        "label": "stigmergy",
+        "description": "mechanism of indirect coordination, through the environment, between agents or actions",
         "status": "matched",
         "source": "wikidata",
         "briefEligible": false,
