@@ -28,3 +28,5 @@ Multi-source clusters (run 2):
 NEW proof: run 1 flagged 75 new keys (all fresh HN); run 2 (HN cache wiped → live refetch) flagged **0** new across 245 seen-index keys.
 
 Caveat: GNews is capped at 8 cards / 2 queries per tick; none of its 8 items had an HN/lab counterpart in-window (the Bloomberg "Anthropic Strikes $12B AI Computing Deal with Akamai" HN post wasn't among the top-40 sweep hits). Top near-misses are in `artifacts/sage/ingest-last.json` → `dedupe.near_misses`.
+
+Reviewer soft note (b8bd279 PASS): identical/near-identical headlines (≥0.9) use the 48h window, not 24h — that is why the Transformers llama.cpp quants HF+HN pair (30.3h apart; HF feed has date-only 00:00 timestamps) merged past 24h. Accepted, documented.
