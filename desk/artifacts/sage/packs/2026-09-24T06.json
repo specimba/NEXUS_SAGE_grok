@@ -1,0 +1,196 @@
+{
+  "at": "2026-09-24T06:10:26.236Z",
+  "cycle": "003",
+  "lead_id": "hf-incident",
+  "pack_id": "2026-09-24T06",
+  "plan": [
+    {
+      "id": "hf-swarm",
+      "title": "Eval agents reached Hugging Face production",
+      "file": "hf-incident",
+      "kind": "lead",
+      "confidence": "high",
+      "move": "Keep as lead. Banned nouns stay off the pin.",
+      "evidence": [
+        "METR scope ends 13 Jul. Wave 3 cluster-admin is OpenAI-only.",
+        "02 Sep curation did not add a new incident URL. It added scanners, papers, and Astra commentary."
+      ],
+      "steps": [
+        "Cite METR for waves 1–2. Cite OpenAI for wave 3.",
+        "Do not use AISLE curl CVEs or MIT stigmergy as proof of the HF breach."
+      ],
+      "doneWhen": "Pin 1 still opens the incident file.",
+      "unlockIf": "A new METR/HF/OpenAI primary names a fact not in Cycle 001.",
+      "refs": [
+        {
+          "label": "Dwarkesh 29 Aug thread",
+          "href": "https://x.com/dwarkesh_sp",
+          "role": "wire"
+        }
+      ]
+    },
+    {
+      "id": "astra-depth",
+      "title": "Astra: Critical + recurrent depth",
+      "file": "astra",
+      "kind": "companion",
+      "confidence": "high",
+      "move": "Companion only. Do not promote over HF.",
+      "evidence": [
+        "Palazzolo 2094954680765829533 — recurrent depth.",
+        "Amir 2095274361695731967 — story unchanged; OpenAI limiting loops.",
+        "Curran 2095257682865532970 — 'Astra tomorrow morning' is a wire read.",
+        "Lab wire: Parallel cut research time and cost in half with GPT‑6 Astra.",
+        "Lab wire: Higgsfield AI ships new video features in a day with GPT-6 Astra.",
+        "Lab wire: Introducing Astra for Law."
+      ],
+      "steps": [
+        "Keep ship language rumored.",
+        "If OpenAI posts a dated ship, that is a companion delta, not a lead swap."
+      ],
+      "doneWhen": "Astra is pin 2 or Pulse companion. Not pin 1.",
+      "unlockIf": "OpenAI official dated ship or a new incident attribution.",
+      "refs": [
+        {
+          "label": "Palazzolo",
+          "href": "https://x.com/steph_palazzolo/status/2094954680765829533",
+          "role": "primary"
+        },
+        {
+          "label": "Amir clarification",
+          "href": "https://x.com/amir/status/2095274361695731967",
+          "role": "primary"
+        },
+        {
+          "label": "lab:openai Parallel cut research time and cost …",
+          "href": "https://openai.com/index/parallel-cuts-time-and-cost-with-astra",
+          "role": "wire"
+        },
+        {
+          "label": "lab:openai Higgsfield AI ships new video featur…",
+          "href": "https://openai.com/index/higgsfield-from-prompt-to-production-with-astra",
+          "role": "wire"
+        },
+        {
+          "label": "lab:openai Introducing Astra for Law",
+          "href": "https://openai.com/index/astra-for-law",
+          "role": "wire"
+        }
+      ]
+    },
+    {
+      "id": "aisle-curl",
+      "title": "AISLE found 6 curl CVEs after two labs reported zero",
+      "file": "other",
+      "kind": "rest",
+      "confidence": "high",
+      "move": "Rest-of-board. Use as measurement, not vendor scoreboard lead.",
+      "evidence": [
+        "Primary blog aisle.com + Fort 2095107971433017510 (261 likes / 23k views).",
+        "Lab wire: At AI Day Singapore, NVIDIA and Partners Showcase AI Advancemen….",
+        "Lab wire: Better prompt caching for GPT-6.",
+        "Lab wire: Introducing GPT-6 Sol and Luna."
+      ],
+      "steps": [
+        "Link the blog. Do not write 'labs are unsafe' from one target."
+      ],
+      "doneWhen": "On Pulse with the blog href.",
+      "unlockIf": "curl project disputes the CVEs — then downgrade.",
+      "refs": [
+        {
+          "label": "AISLE blog",
+          "href": "https://aisle.com/blog/aisle-discovered-six-curl-cves-after-openai-and-anthropic-found-zero",
+          "role": "primary"
+        },
+        {
+          "label": "Fort 02 Sep",
+          "href": "https://x.com/stanislavfort/status/2095107971433017510",
+          "role": "wire"
+        },
+        {
+          "label": "lab:nvidia At AI Day Singapore, NVIDIA and Part…",
+          "href": "https://blogs.nvidia.com/blog/ai-day-singapore/",
+          "role": "wire"
+        },
+        {
+          "label": "lab:openai Better prompt caching for GPT-6",
+          "href": "https://openai.com/index/better-prompt-caching-for-gpt-6",
+          "role": "wire"
+        },
+        {
+          "label": "lab:openai Introducing GPT-6 Sol and Luna",
+          "href": "https://openai.com/index/introducing-gpt-6-sol-and-luna",
+          "role": "wire"
+        },
+        {
+          "label": "lab:nvidia-dev Enabling Private High-Performanc…",
+          "href": "https://developer.nvidia.com/blog/enabling-private-high-performance-production-ai-inference-with-nvidia-confidential-computing/",
+          "role": "wire"
+        },
+        {
+          "label": "lab:nvidia-dev Topology-Aware Workload Scheduli…",
+          "href": "https://developer.nvidia.com/blog/topology-aware-workload-scheduling-with-nvidia-topograph/",
+          "role": "wire"
+        }
+      ]
+    },
+    {
+      "id": "harness-papers",
+      "title": "Harness papers: days-long coding + skills that hurt the task",
+      "file": "other",
+      "kind": "rest",
+      "confidence": "medium",
+      "move": "Papers lane + Pulse rest.",
+      "evidence": [
+        "dair_ai 2095172426925801608 Harness-of-Harness.",
+        "dair_ai 2095330956823629995 matched skill-retrieval effect.",
+        "HF live 03 Sep: Repo-To-Skill 2609.02749, 105 up.",
+        "DOI confirm 2609.24972: RRSI: Regularized Recursive Self-Improvement of Agent H….",
+        "HF keep still ranked 2609.23088: OmniEdu: Open Foundation Models for Learning and Teachi… (139 up).",
+        "HF keep still ranked 2609.24984: WorldCrafter: Consistent Video World Model with Implici… (122 up)."
+      ],
+      "steps": [
+        "Keep abstracts on the desk. Do not treat benchmark lift as a ship."
+      ],
+      "doneWhen": "Papers lane lists at least one of these IDs.",
+      "unlockIf": "Never as lead.",
+      "refs": [
+        {
+          "label": "Harness-of-Harness",
+          "href": "https://x.com/dair_ai/status/2095172426925801608",
+          "role": "wire"
+        },
+        {
+          "label": "Skill retrieval paper",
+          "href": "https://x.com/dair_ai/status/2095330956823629995",
+          "role": "wire"
+        },
+        {
+          "label": "RRSI: Regularized Recursive Self-Improvement of…",
+          "href": "https://doi.org/10.2139/ssrn.6091646",
+          "role": "support"
+        },
+        {
+          "label": "OmniEdu: Open Foundation Models for Learning an…",
+          "href": "https://arxiv.org/abs/2609.23088",
+          "role": "support"
+        },
+        {
+          "label": "WorldCrafter: Consistent Video World Model with…",
+          "href": "https://arxiv.org/abs/2609.24984",
+          "role": "support"
+        },
+        {
+          "label": "GameHorizon Suite: Multi-Horizon Data and Evalu…",
+          "href": "https://arxiv.org/abs/2609.25001",
+          "role": "support"
+        },
+        {
+          "label": "Realtime-Venus: A full-duplex interaction syste…",
+          "href": "https://arxiv.org/abs/2609.13814",
+          "role": "support"
+        }
+      ]
+    }
+  ]
+}
