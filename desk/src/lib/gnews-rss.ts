@@ -26,6 +26,32 @@ export const GNEWS_QUERIES_PER_TICK = 2;
 /** Display / keep cap on Pulse quiet shelf. */
 export const GNEWS_DISPLAY_CAP = 8;
 export const GNEWS_DISPLAY_CAP_MIN = 6;
+/**
+ * Beat 5: matching pool cap when the live ingest widens with lab-name queries.
+ * Items are interleaved round-robin across queries (newest first within each) so one
+ * busy query can't crowd out the lab-name ones. Pulse only · never Brief · never sole lead.
+ */
+export const GNEWS_POOL_CAP = 32;
+/**
+ * Beat 5: free lab-name queries matching the lab RSS feeds we already ingest
+ * (DeepMind/Google, NVIDIA, Mistral, Microsoft Research, Hugging Face via standing list).
+ * Separate ≤6 allowlist · rotate ≤2/tick · same 2s throttle + 6h cache · 429 → stop tick.
+ */
+export const GNEWS_LAB_QUERIES = [
+  "Google DeepMind",
+  "Gemini",
+  "NVIDIA AI",
+  "Mistral AI",
+  "Microsoft Research",
+  "Google Research",
+] as const;
+export const GNEWS_LAB_QUERIES_PER_TICK = 2;
+/** Corroborator search pool bound (Google News returns ≤100 items/query). */
+export const GNEWS_POOL_MAX = 400;
+/** Max GNews corroborators attached per matched HN/lab/security item. */
+export const GNEWS_CORROBORATORS_PER_ITEM = 3;
+/** Google News `when:` recency operator used by the live ingest (days). */
+export const GNEWS_RECENT_DAYS = 2;
 
 /**
  * Scout allowlist — URL-decoded standing forms (encode at fetch).
@@ -49,6 +75,14 @@ export const GNEWS_STANDING_BAN = [
   "jailbreak",
   "bluesky",
 ] as const;
+
+/** Google News appends " - Publisher"; fall back to that suffix when <source> is missing. */
+export function publisherFromTitle(title: string): string {
+  const m = String(title ?? "").match(/\s[-–—]\s([^-–—]{2,60})$/);
+  if (!m) return "";
+  const cand = m[1]!.trim();
+  return cand.split(/\s+/).length <= 6 ? cand : "";
+}
 
 export type GnewsRssItem = {
   id: string;
@@ -80,6 +114,11 @@ export type GnewsQuerySoftFail = {
 
 export type FetchGnewsResult = {
   items: GnewsRssItem[];
+  /**
+   * Beat 5: every de-duplicated item fetched this tick (all queries, newest first, ≤ GNEWS_POOL_MAX).
+   * Used only to find GNews corroborators of HN/lab/security stories; never displayed wholesale.
+   */
+  pool?: GnewsRssItem[];
   ok: boolean;
   soft_fail: boolean;
   soft_fail_reason?: string;
@@ -353,7 +392,7 @@ export function toGnewsItems(
     else if (classified.class === "companion") tag = "companion";
     else if (classified.class === "incident") tag = "incident";
 
-    const publisher = publishers?.get(guid) || publishers?.get(link) || "";
+    const publisher = publishers?.get(guid) || publishers?.get(link) || publisherFromTitle(title);
 
     out.push({
       id,
@@ -416,25 +455,43 @@ export function isGnewsPulseLeadEligible(_item?: GnewsRssItem): false {
   return false;
 }
 
-/** Cap display 6–8 (newest first, already sorted). De-dupe by guid / title+publisher. */
+/**
+ * Cap display (default 8; live ingest may pass up to GNEWS_POOL_CAP). De-dupe by guid /
+ * title+publisher. Multiple queries are interleaved round-robin (newest first within each).
+ */
 export function capGnewsDisplay(
   items: GnewsRssItem[],
   cap = GNEWS_DISPLAY_CAP,
 ): GnewsRssItem[] {
-  const n = Math.min(Math.max(GNEWS_DISPLAY_CAP_MIN, 1), Math.max(1, Math.min(cap, GNEWS_DISPLAY_CAP)));
-  // Allow caller to pass 6–8; clamp into [1, 8] with preferred max 8
-  const limit = Math.min(8, Math.max(1, cap));
-  void n;
+  const limit = Math.min(GNEWS_POOL_CAP, Math.max(1, Math.floor(cap)));
   const seen = new Set<string>();
-  const out: GnewsRssItem[] = [];
+  const unique: GnewsRssItem[] = [];
   for (const it of items) {
     const dedupeKey = `${it.guid || it.link}|${it.title.toLowerCase()}|${it.publisher.toLowerCase()}`;
     if (seen.has(dedupeKey)) continue;
     seen.add(dedupeKey);
-    out.push(it);
-    if (out.length >= limit) break;
+    unique.push(it);
   }
-  return out;
+  const byQuery = new Map<string, GnewsRssItem[]>();
+  for (const it of unique) {
+    const g = byQuery.get(it.query);
+    if (g) g.push(it);
+    else byQuery.set(it.query, [it]);
+  }
+  const lanes = [...byQuery.values()];
+  const out: GnewsRssItem[] = [];
+  for (let i = 0; out.length < limit; i++) {
+    let any = false;
+    for (const lane of lanes) {
+      if (i < lane.length) {
+        any = true;
+        out.push(lane[i]!);
+        if (out.length >= limit) break;
+      }
+    }
+    if (!any) break;
+  }
+  return out.sort((a, b) => b.published.localeCompare(a.published));
 }
 
 export type FetchGnewsOpts = {
@@ -453,9 +510,18 @@ export type FetchGnewsOpts = {
   forceSoftFail?: 403 | 404 | 429 | 500;
   /** Optional fetch override (tests). */
   fetchImpl?: typeof fetch;
-  /** Display cap (default 8). */
+  /** Display cap (default 8; ≤ GNEWS_POOL_CAP). */
   displayCap?: number;
+  /** Beat 5: also rotate lab-name queries (GNEWS_LAB_QUERIES, ≤2/tick). */
+  labQueries?: boolean | readonly string[];
+  /** Beat 5: append Google News `when:Nd` recency operator to live queries. */
+  recentDays?: number;
 };
+
+/** Effective live query string (adds `when:Nd` when recentDays set). */
+export function gnewsLiveQuery(query: string, recentDays?: number): string {
+  return recentDays && recentDays > 0 ? `${query} when:${Math.floor(recentDays)}d` : query;
+}
 
 async function getXml(
   url: string,
@@ -630,6 +696,18 @@ export async function fetchGnewsRss(
   const queries = opts.runAllQueries
     ? standing.slice(0, GNEWS_WATCHLIST_MAX)
     : pickGnewsQueriesForTick(now, opts.maxQueries ?? GNEWS_QUERIES_PER_TICK, standing);
+  if (opts.labQueries) {
+    const labList = gnewsStandingQueries(
+      Array.isArray(opts.labQueries) ? opts.labQueries : GNEWS_LAB_QUERIES,
+    );
+    const day = Math.floor(now / 86_400_000);
+    const n = Math.min(GNEWS_LAB_QUERIES_PER_TICK, labList.length);
+    for (let i = 0; i < n; i++) {
+      const q = labList[(day + queryRotateOffset + i) % labList.length]!;
+      if (!queries.some((x) => x.toLowerCase() === q.toLowerCase())) queries.push(q);
+    }
+  }
+  let rateLimited = false;
 
   const all: GnewsRssItem[] = [];
   const seenIds = new Set<string>();
@@ -712,7 +790,12 @@ export async function fetchGnewsRss(
       continue;
     }
 
-    let xml = readCache(cacheDir, query, now);
+    const liveQuery = gnewsLiveQuery(query, opts.recentDays);
+    let xml = readCache(cacheDir, liveQuery, now);
+    if (!xml && rateLimited) {
+      queries_soft_fail.push({ query, reason: "skipped_after_429", soft_fail: true, format: "unknown" });
+      continue;
+    }
     if (xml) {
       from_cache = true;
       queries_ok_list.push(query);
@@ -721,7 +804,7 @@ export async function fetchGnewsRss(
     } else {
       let url: string;
       try {
-        url = buildGnewsSearchUrl(query);
+        url = buildGnewsSearchUrl(liveQuery);
       } catch (err) {
         queries_soft_fail.push({
           query,
@@ -736,6 +819,7 @@ export async function fetchGnewsRss(
         lastHttp = res.status;
         lastCt = res.contentType;
         if (!res.ok) {
+          if (res.status === 429) rateLimited = true;
           console.log(`GNews: soft_fail query="${query}" — ${res.reason}`);
           queries_soft_fail.push({
             query,
@@ -749,7 +833,7 @@ export async function fetchGnewsRss(
           continue;
         }
         xml = res.body;
-        writeCache(cacheDir, query, xml, now);
+        writeCache(cacheDir, liveQuery, xml, now);
         queries_ok_list.push(query);
         lastFormat = "rss2";
       } catch (err) {
@@ -818,12 +902,22 @@ export async function fetchGnewsRss(
 
   all.sort((a, b) => b.published.localeCompare(a.published));
   const items = capGnewsDisplay(all, displayCap);
+  const poolSeen = new Set<string>();
+  const pool: GnewsRssItem[] = [];
+  for (const it of all) {
+    const k = `${it.guid || it.link}|${it.title.toLowerCase()}`;
+    if (poolSeen.has(k)) continue;
+    poolSeen.add(k);
+    pool.push(it);
+    if (pool.length >= GNEWS_POOL_MAX) break;
+  }
   const soft_fail = queries_soft_fail.length > 0;
   const soft_fail_reason = softFailReasonFromQueries(queries_soft_fail);
   const queries_ok = queries_ok_list.length;
 
   return {
     items,
+    pool,
     ok: items.length > 0 || (queries_ok > 0 && !soft_fail),
     soft_fail,
     soft_fail_reason,

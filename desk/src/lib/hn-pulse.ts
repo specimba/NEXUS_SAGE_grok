@@ -81,6 +81,49 @@ export const HN_STANDING_BAN = [
   "bluesky",
 ] as const;
 
+/**
+ * Beat 5 AI-relevance gate for HN Pulse rows. The OR-entity sweep matches generic company
+ * names (Google/Apple/Nvidia/Meta), letting non-AI stories through (e.g. a Steve Jobs iPhone 4
+ * Antennagate Q&A). A row must carry an AI/ML term or a lab/model name in its title, or come
+ * from an AI lab domain. Generic company names alone never qualify.
+ */
+const HN_AI_TERMS =
+  /(?<!\w)a\.i\.(?!\w)|\b\d+(\.\d+)?b[- ]param\w*|\b(ai|ais|agi|small models?|vector (db|database)s?|artificial intelligence|machine learning|deep learning|ml|neural|transformers?|agents?|agentic|inference|embeddings?|fine-?tun\w*|rag|diffusion|multimodal|text-to-speech|tts|speech-to-text|stt|prompts?|evals?|alignment|reasoning model|quantiz\w*|quants?|gguf|llama\.cpp|open[- ]weights?|foundation models?|frontier models?|language models?|chatbots?|copilot|vibe cod\w*|mcp)\b|(llm|vlm|gpt)s?\b|gpt-/i;
+const HN_AI_NAMES =
+  /\b(openai|anthropic|deepmind|hugging ?face|mistral|deepseek|qwen|claude|gemini|gemma|llama|grok|xai|chatgpt|codex|sora|nemotron|glm|kimi|opus|sonnet|haiku|perplexity|cohere|metr|midjourney|stability ai|whisper|jev|cursor|ollama|vllm|pytorch|tensorflow|jax|nano banana)\b/i;
+const HN_AI_DOMAINS = [
+  "openai.com",
+  "anthropic.com",
+  "claude.dev",
+  "claude.ai",
+  "deepmind.google",
+  "deepmind.com",
+  "huggingface.co",
+  "mistral.ai",
+  "x.ai",
+  "ai.meta.com",
+  "ai.google",
+  "ai.google.dev",
+  "research.google",
+  "artificialanalysis.ai",
+  "developer.nvidia.com",
+  "research.nvidia.com",
+];
+
+export function isHnAiRelevant(title: string, url?: string | null): boolean {
+  const t = String(title ?? "");
+  if (HN_AI_TERMS.test(t) || HN_AI_NAMES.test(t)) return true;
+  try {
+    const u = new URL(String(url ?? ""));
+    const host = u.hostname.toLowerCase().replace(/^www\./, "");
+    if (HN_AI_DOMAINS.some((d) => host === d || host.endsWith(`.${d}`))) return true;
+    if (host === "blog.google" && /innovation-and-ai|\/ai\/|models-and-research/i.test(u.pathname)) return true;
+  } catch {
+    /* no url */
+  }
+  return false;
+}
+
 export type HnAlgoliaHit = {
   objectID: string;
   title?: string | null;
@@ -132,6 +175,9 @@ export type FetchHnResult = {
   /** Recency sweep outcome (null when not requested). */
   recent_sweep?: { ok: boolean; hits: number; reason?: string } | null;
   recent_hours?: number | null;
+  /** Beat 5: hits dropped by the AI-relevance gate (null when gate off). */
+  ai_dropped?: number | null;
+  ai_dropped_titles?: string[];
   brief: false;
   pulse_only: true;
   from_cache: boolean;
@@ -375,6 +421,8 @@ export type FetchHnOpts = {
   recentHours?: number;
   /** Also run one OR-entity recency sweep (requires recentHours). */
   recentSweep?: boolean;
+  /** Beat 5: drop rows failing isHnAiRelevant (ingest passes true). */
+  aiOnly?: boolean;
 };
 
 /** Algolia numericFilters value for "created in the last `hours`". */
@@ -566,7 +614,14 @@ export async function fetchHnPulse(
   }
 
   const freshHits = recentHours ? filterRecentHits(allHits, now, recentHours) : allHits;
-  const candidates = toPulseCandidates(freshHits);
+  const relevantHits = opts.aiOnly
+    ? freshHits.filter((h) => isHnAiRelevant(String(h.title ?? ""), h.url || h.story_url))
+    : freshHits;
+  const ai_dropped = freshHits.length - relevantHits.length;
+  const ai_dropped_titles = opts.aiOnly
+    ? freshHits.filter((h) => !relevantHits.includes(h)).map((h) => String(h.title ?? ""))
+    : [];
+  const candidates = toPulseCandidates(relevantHits);
   const soft_fail = queries_soft_fail.length > 0;
   const soft_fail_reason = softFailReasonFromQueries(queries_soft_fail);
 
@@ -580,6 +635,8 @@ export async function fetchHnPulse(
     queries_soft_fail,
     recent_sweep,
     recent_hours: recentHours || null,
+    ai_dropped: opts.aiOnly ? ai_dropped : null,
+    ai_dropped_titles,
     brief: false,
     pulse_only: true,
     from_cache,

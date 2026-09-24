@@ -5,6 +5,7 @@ import {
   canonicalizeUrl,
   DEDUPE_WINDOW_HOURS,
   idfWeights,
+  pickCorroborators,
   scorePair,
   scoreTokens,
   topCrossSourcePairs,
@@ -278,5 +279,49 @@ describe("dedupe v2 — diagnostics", () => {
     expect(pairs.every((p) => p.a.source !== p.b.source)).toBe(true);
     for (let i = 1; i < pairs.length; i++) expect(pairs[i - 1].score).toBeGreaterThanOrEqual(pairs[i].score);
     expect(pairs.some((p) => p.match)).toBe(true);
+  });
+});
+
+describe("Beat 5 — GNews suffix + corroborators", () => {
+  test("site-brand suffix tied to publisher strips; unrelated dash segments stay", () => {
+    expect(stripPublisherSuffix("Manage Kubernetes Node Fleets with NodeWright | NVIDIA Technical Blog - NVIDIA Developer", "NVIDIA Developer")).toBe(
+      "Manage Kubernetes Node Fleets with NodeWright",
+    );
+    expect(stripPublisherSuffix("Mars partners with Google Cloud | Mars - Mars, Incorporated", "Mars, Incorporated")).toBe("Mars partners with Google Cloud");
+    expect(stripPublisherSuffix("Exclusive | Anthropic Leaders Back Startup - WSJ", "WSJ")).toBe("Anthropic Leaders Back Startup");
+    expect(stripPublisherSuffix("Google launches Gemini 3.8 Live Avatar — lip-synced AI across 97 languages - The Tech Portal", "The Tech Portal")).toBe(
+      "Google launches Gemini 3.8 Live Avatar — lip-synced AI across 97 languages",
+    );
+  });
+  test("identical entity-only headlines merge; different entity-only headlines do not", () => {
+    const a = normalizeTitle("Introducing GPT-6 Sol and Luna");
+    expect(scoreTokens(a, normalizeTitle("Introducing GPT-6 Sol and Luna - OpenAI", "OpenAI")).blocked).toBeUndefined();
+    expect(scoreTokens(a, normalizeTitle("GPT-6 Sol and Luna and Claude Opus 5.5")).blocked).toBeDefined();
+  });
+  test("pickCorroborators: only direct v2 matches, ≤perAnchor, excludes shown", () => {
+    const anchors: PulseInput[] = [
+      { id: "hn:1", source: "hn-algolia", title: "Claude discovers a novel enzyme system with CRISPR-like repeats", url: "https://a.test/1", at: "2026-09-23T18:06:47Z" },
+    ];
+    const pool: PulseInput[] = [
+      { id: "g1", source: "gnews-rss", title: "Claude discovers a novel enzyme system with CRISPR-like repeats - Anthropic", url: "https://g/1", at: "2026-09-23T18:14:17Z", publisher: "Anthropic" },
+      { id: "g2", source: "gnews-rss", title: "AI model Claude discovers CRISPR-like enzyme system, Anthropic says - Al Jazeera", url: "https://g/2", at: "2026-09-24T04:34:53Z", publisher: "Al Jazeera" },
+      { id: "g3", source: "gnews-rss", title: "Anthropic says Claude discovers novel enzyme system with CRISPR-like characteristics in 21 hours - Digital Watch Observatory", url: "https://g/3", at: "2026-09-24T16:11:01Z", publisher: "Digital Watch Observatory" },
+      { id: "g4", source: "gnews-rss", title: "Anthropic signs $11.6 billion cloud deal with Akamai - Reuters", url: "https://g/4", at: "2026-09-24T20:11:00Z", publisher: "Reuters" },
+      { id: "g5", source: "gnews-rss", title: "Claude discovers enzyme, CRISPR-like repeats found by Claude - Old Blog", url: "https://g/5", at: "2026-09-10T00:00:00Z", publisher: "Old Blog" },
+    ];
+    const picks = pickCorroborators(anchors, pool, { perAnchor: 2, exclude: new Set(["g1"]), weights: () => 1 });
+    expect(picks.map((p) => p.item.id).sort()).toEqual(["g2", "g3"]);
+    expect(picks.every((p) => p.anchor_id === "hn:1" && p.score >= DEDUPE_THRESHOLD)).toBe(true);
+    const all = pickCorroborators(anchors, pool, { perAnchor: 5, weights: () => 1 });
+    expect(all.map((p) => p.item.id)).not.toContain("g4");
+    expect(all.map((p) => p.item.id)).not.toContain("g5");
+  });
+  test("GNews never leads a multi-source cluster built from corroborators", () => {
+    const cl = clusterItems([
+      { id: "g", source: "gnews-rss", title: "Anthropic says its biology lab has already found something big - techcrunch.com", url: "https://g/x", at: "2026-09-23T22:17:39Z", publisher: "techcrunch.com" },
+      { id: "hn:9", source: "hn-algolia", title: "Anthropic says it's bio lab has found something big", url: "https://h/x", at: "2026-09-24T12:25:59Z" },
+    ]);
+    expect(cl).toHaveLength(1);
+    expect(cl[0].lead_source).toBe("hn-algolia");
   });
 });

@@ -251,14 +251,34 @@ const SYNONYMS: Record<string, string> = {
 /** Known outlet suffixes (when publisher field is missing / differs). */
 const OUTLET_SUFFIX = /\s+[-–—|:]\s+(the verge|techcrunch|reuters|bloomberg|cnbc|the information|wired|ars technica|engadget|zdnet|venturebeat|axios|the guardian|financial times|ft|bbc( news)?|cnn|forbes|business insider|fortune|the new york times|nyt|wsj|the wall street journal|yahoo( finance)?|benzinga|barron's|marketwatch|the register|tom's hardware|9to5google|9to5mac|siliconangle|the decoder|mashable|gizmodo|slashdot|hacker news|medium|substack|youtube|x|twitter)\s*$/i;
 
-/** Strip " - Publisher" / " | Publisher" suffixes (Google News style) — known publisher or known outlet. */
+const LEADING_LABEL = /^(exclusive|opinion|analysis|breaking|update|watch|live|explainer|commentary|breakingviews)\s*[|:–—-]\s*/i;
+
+/**
+ * Strip " - Publisher" / " | Publisher" suffixes (Google News style) — the `<source>` publisher,
+ * a known outlet, or a trailing site-brand segment tied to the publisher
+ * ("… | NVIDIA Technical Blog" from NVIDIA Developer, "… | Mars" from "Mars, Incorporated").
+ * Also drops leading desk labels ("Exclusive | ", "Opinion | ").
+ */
 export function stripPublisherSuffix(title: string, publisher?: string): string {
   let t = (title || "").trim();
-  if (publisher) {
-    const esc = publisher.trim().replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const pub = (publisher || "").trim();
+  if (pub) {
+    const esc = pub.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     t = t.replace(new RegExp(`\\s+[-–—|]\\s+${esc}\\s*$`, "i"), "");
   }
   t = t.replace(OUTLET_SUFFIX, "");
+  const brand = t.match(/\s+[|｜–—]\s+([^|｜–—]{2,40})$/);
+  if (brand) {
+    const seg = brand[1]!.trim();
+    const segL = seg.toLowerCase();
+    const pubHead = pub.toLowerCase().split(/[\s,.]+/)[0] ?? "";
+    const tied =
+      seg.split(/\s+/).length <= 4 &&
+      (/\bblog\b/i.test(seg) ||
+        (pubHead.length >= 3 && (segL.startsWith(pubHead) || pub.toLowerCase().startsWith(segL))));
+    if (tied) t = t.slice(0, brand.index).trimEnd();
+  }
+  t = t.replace(LEADING_LABEL, "");
   return t.trim();
 }
 
@@ -387,7 +407,10 @@ export function scoreTokens(
     }
   }
   const fullyContained = shared.length === Math.min(A.size, B.size);
-  if (shared_content < 2 && !(fullyContained && shared_content >= 1)) out.blocked = "thin-overlap";
+  // Identical normalized headlines (e.g. "Introducing GPT-6 Sol and Luna" syndicated) are the same
+  // item even when every token is an entity/version.
+  const identical = A.size === B.size && shared.length === A.size && A.size >= MIN_TITLE_TOKENS;
+  if (shared_content < 2 && !(fullyContained && shared_content >= 1) && !identical) out.blocked = "thin-overlap";
   return out;
 }
 
@@ -503,6 +526,44 @@ export function topCrossSourcePairs(
     }
   }
   return out.sort((x, y) => y.score - x.score).slice(0, opts.limit ?? 20);
+}
+
+/**
+ * Beat 5: pick GNews corroborators from a wider pool — pool items whose headline directly
+ * matches (scorePair().match, same threshold/window/guards) a non-GNews anchor item.
+ * Keeps ≤ perAnchor best-scoring corroborators per anchor. IDF is computed over anchors+pool.
+ */
+export function pickCorroborators(
+  anchors: readonly PulseInput[],
+  pool: readonly PulseInput[],
+  opts: ScoreOpts & { perAnchor?: number; exclude?: ReadonlySet<string> } = {},
+): { item: PulseInput; anchor_id: string; score: number }[] {
+  const perAnchor = opts.perAnchor ?? 3;
+  const nonG = anchors.filter((a) => a.source !== "gnews-rss");
+  const cands = pool.filter((p) => !opts.exclude?.has(p.id));
+  const tokA = nonG.map((a) => normalizeTitle(a.title, a.publisher));
+  const tokP = cands.map((p) => normalizeTitle(p.title, p.publisher));
+  const weights = opts.weights ?? idfWeights([...anchors.map((a) => normalizeTitle(a.title, a.publisher)), ...tokP]);
+  const byAnchor = new Map<string, { item: PulseInput; anchor_id: string; score: number }[]>();
+  cands.forEach((p, j) => {
+    let best: { anchor_id: string; score: number } | null = null;
+    nonG.forEach((a, i) => {
+      const s = scorePair(a, p, { ...opts, weights, tokensA: tokA[i], tokensB: tokP[j] });
+      if (s.match && (!best || s.score > best.score)) best = { anchor_id: a.id, score: s.score };
+    });
+    if (best) {
+      const b = best as { anchor_id: string; score: number };
+      const list = byAnchor.get(b.anchor_id) ?? [];
+      list.push({ item: p, anchor_id: b.anchor_id, score: b.score });
+      byAnchor.set(b.anchor_id, list);
+    }
+  });
+  const out: { item: PulseInput; anchor_id: string; score: number }[] = [];
+  for (const list of byAnchor.values()) {
+    list.sort((x, y) => y.score - x.score || (Date.parse(y.item.at) || 0) - (Date.parse(x.item.at) || 0));
+    out.push(...list.slice(0, perAnchor));
+  }
+  return out;
 }
 
 /**

@@ -6,6 +6,12 @@ import {
   capGnewsDisplay,
   fetchGnewsRss,
   GNEWS_DISPLAY_CAP,
+  GNEWS_LAB_QUERIES,
+  GNEWS_LAB_QUERIES_PER_TICK,
+  GNEWS_POOL_CAP,
+  GNEWS_RECENT_DAYS,
+  gnewsLiveQuery,
+  publisherFromTitle,
   GNEWS_QUERIES_PER_TICK,
   GNEWS_STANDING_BAN,
   GNEWS_WATCHLIST_MAX,
@@ -256,4 +262,88 @@ describe("display cap 6–8 · de-dupe", () => {
     expect(capGnewsDisplay(many, 8)).toHaveLength(8);
     expect(capGnewsDisplay(many, 6)).toHaveLength(6);
   }, { timeout: 30_000 });
+});
+
+describe("Beat 5 — publisher, lab queries, pool cap, backoff", () => {
+  test("publisher comes from <source> and the ' — Publisher' suffix strips before matching", async () => {
+    const { stripPublisherSuffix, normalizeTitle } = await import("@/lib/dedupe");
+    const r = await fetchGnewsRss({ fixtureXml: SAMPLE });
+    const it = r.items.find((i) => i.title.startsWith("OpenAI ships GPT-6"))!;
+    expect(it.publisher).toBe("TechCrunch");
+    expect(stripPublisherSuffix(it.title, it.publisher)).toBe("OpenAI ships GPT-6 preview for labs");
+    expect(normalizeTitle(it.title, it.publisher)).not.toContain("techcrunch");
+  });
+  test("publisherFromTitle fallback when <source> missing", () => {
+    expect(publisherFromTitle("Akamai Strikes $11.6 Billion Deal With Anthropic - Barron's")).toBe("Barron's");
+    expect(publisherFromTitle("No suffix here")).toBe("");
+    const items = toGnewsItems(
+      [{ title: "Akamai, Anthropic sign $11.6 billion cloud services deal - Reuters", link: "https://news.google.com/rss/articles/X", guid: "X", published: "2026-09-24T20:11:23Z", summary: "" } as never],
+      "Anthropic",
+      new Map(),
+    );
+    expect(items[0]!.publisher).toBe("Reuters");
+  });
+  test("lab queries: ≤6 allowlist, safe, rotate ≤2 extra per tick with when:2d + distinct cache keys", async () => {
+    expect(GNEWS_LAB_QUERIES.length).toBeLessThanOrEqual(6);
+    expect(gnewsQueriesSafe(GNEWS_LAB_QUERIES)).toBe(true);
+    expect(gnewsLiveQuery("Gemini", GNEWS_RECENT_DAYS)).toBe("Gemini when:2d");
+    const cacheDir = resolve(import.meta.dir, `../../../artifacts/sage/gnews-cache-test-lab-${Date.now()}`);
+    wipe(cacheDir);
+    const urls: string[] = [];
+    const r = await fetchGnewsRss({
+      cacheDir,
+      now: Date.UTC(2026, 8, 24),
+      labQueries: true,
+      recentDays: GNEWS_RECENT_DAYS,
+      displayCap: GNEWS_POOL_CAP,
+      fetchImpl: (async (input: RequestInfo | URL) => {
+        urls.push(String(input));
+        return new Response(SAMPLE, { status: 200, headers: { "Content-Type": "application/xml" } });
+      }) as unknown as typeof fetch,
+    });
+    expect(r.queries_run.length).toBe(GNEWS_QUERIES_PER_TICK + GNEWS_LAB_QUERIES_PER_TICK);
+    expect(r.queries_run.filter((q) => (GNEWS_LAB_QUERIES as readonly string[]).includes(q)).length).toBe(2);
+    expect(urls.length).toBe(4);
+    expect(urls.every((u) => u.includes("when%3A2d"))).toBe(true);
+    expect(r.never_sole_lead).toBe(true);
+    expect(r.items.every((i) => i.pulseLeadEligible === false && i.briefEligible === false)).toBe(true);
+    wipe(cacheDir);
+  }, { timeout: 30_000 });
+  test("429 stops further live requests this tick (polite backoff)", async () => {
+    const cacheDir = resolve(import.meta.dir, `../../../artifacts/sage/gnews-cache-test-429-${Date.now()}`);
+    wipe(cacheDir);
+    let n = 0;
+    const r = await fetchGnewsRss({
+      cacheDir,
+      now: Date.UTC(2026, 8, 24),
+      labQueries: true,
+      recentDays: 2,
+      fetchImpl: (async () => {
+        n += 1;
+        return new Response("slow down", { status: 429 });
+      }) as unknown as typeof fetch,
+    });
+    expect(n).toBe(1);
+    expect(r.queries_soft_fail.filter((f) => f.reason === "skipped_after_429").length).toBe(3);
+    expect(r.soft_fail).toBe(true);
+    wipe(cacheDir);
+  }, { timeout: 30_000 });
+  test("pool cap ≤ GNEWS_POOL_CAP, round-robin across queries", async () => {
+    const r = await fetchGnewsRss({ fixtureXml: SAMPLE });
+    const base = r.items[0]!;
+    const mk = (q: string, i: number) => ({
+      ...base,
+      id: `gnews:${q}${i}`,
+      guid: `${q}-${i}`,
+      title: `${q} headline ${i}`,
+      query: q,
+      published: `2026-09-24T${String(20 - i).padStart(2, "0")}:00:00Z`,
+    });
+    const busy = Array.from({ length: 40 }, (_, i) => mk("busy", i % 20)).map((x, i) => ({ ...x, guid: `b${i}`, published: `2026-09-24T20:${String(59 - i).padStart(2, "0")}:00Z` }));
+    const quiet = Array.from({ length: 3 }, (_, i) => mk("quiet", i));
+    const out = capGnewsDisplay([...busy, ...quiet], 999);
+    expect(out.length).toBe(GNEWS_POOL_CAP);
+    expect(out.filter((x) => x.query === "quiet").length).toBe(3);
+    expect(capGnewsDisplay([...busy, ...quiet], 8)).toHaveLength(8);
+  });
 });

@@ -16,7 +16,7 @@ export type RssSecurityRow = {
   cluster_id?: string;
 };
 
-export const RSS_SECURITY_AT = "2026-09-24T21:29:34Z";
+export const RSS_SECURITY_AT = "2026-09-24T21:43:33Z";
 
 export const RSS_SECURITY: RssSecurityRow[] = [
   { id: "rss-sec:trailofbits:070eb6728548fcc6", lab: "trailofbits" as const, title: "SAML: A fractal of bad design", link: "https://blog.trailofbits.com/2026/09/21/saml-a-fractal-of-bad-design/", published: "2026-09-21T11:00:00Z", summary: "Born out of academia and raised in corporate IT departments, the Security Assertion Markup Language (SAML) authentication protocol continues to be a staple in these organizations. However, it&rsquo;s time for it to retire. With the rise of software-as-a-service (SaaS) companies in the late aughts, IT departments needed a way for users to authenticate to many new web services. SAML and the burgeon…", source: "rss-security" as const, tag: "rest" as const, first_seen: "2026-09-24T21:18:09Z", is_new: false, cluster_id: "cl:rss-sec:trailofbits:070eb6728548fcc6" },
