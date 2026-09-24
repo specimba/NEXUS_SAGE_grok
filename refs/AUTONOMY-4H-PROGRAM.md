@@ -35,3 +35,36 @@ Voice `[01]` solid-fill vs outline tab polish (Reviewer soft note) and Papers la
 
 ## Order
 0 then 1 then 2 then 3. Beat 3 craft (UX mock) may run in parallel with Beat 2 code.
+
+## Reviewer gate — Beat 2 (7fed53c) — FAIL (2026-09-25 00:24 Istanbul)
+- PASS: source-health ledger (10 sources, OpenAlex 429 streak_fail 1 recorded), STALE guard 6h wired (FRESH/STALE chip), locks 003 / hf-incident / free-only hold.
+- FAIL: dedupe multi_source 0 (171 items became 170 clusters). The title rule already exists (Jaccard ≥ 0.6, min-token gate), so it is too strict for real cross-source headlines. Need at least 3 real clusters spanning 2+ sources, with the numbers.
+- FAIL: NEW marker has no UI in desk.tsx, and new_items=171 means everything is "new" on the first seen-index run. Must show NEW only for items first seen after the previous crawl, proven on a second run.
+
+## Reviewer gate — Beat 2 re-land (b8bd279) — PASS (2026-09-25 00:35 Istanbul)
+- Dedupe v2: 218 items became 207 clusters, 3 real multi-source (Private AI Compute DeepMind+HN, Gemini 3.8 TTS DeepMind+HN, Transformers llama.cpp quants HF+HN). All three are genuine same-story pairs. Near-miss guards look right (Gemini 3.8 family launches correctly kept apart).
+- NEW: run 2 gives 0 of 245, so no false flags. bun 271/0 re-run by Reviewer. Locks 003 / hf-incident hold.
+- Soft: the Transformers pair is about 30h apart (HF feed has date-only 00:00 stamps), just past the 24h window, so an identical title seems to override the window. Acceptable, but document it.
+- Soft: the positive NEW case must show on the 02:11 crawl; if it doesn't, re-open.
+
+## Beats 4–6 (added Sep 25 00:35, after Beat 2 PASS b8bd279)
+
+### Beat 4 — Corroboration ranking (Coder; Reviewer gate)
+- Rank below the lead: score = base × (1 + 0.15 × (sources − 1)), capped at ×1.45.
+- Lead is pinned to `hf-incident`; boost applies only to slots below the lead.
+- Brief under-lead rows show a sources count (e.g. `3 SRC`) using existing tokens, no new hex.
+- Digest gains a "Moved since last crawl" block: new entries, rank up/down vs previous pack.
+- GATE (Reviewer): lead unchanged across two crawls; zero `briefEligible:false` items in Brief or Digest; at least one row visibly reordered by corroboration, shown in proof `refs/VISUAL-PROOF-beat4-corroboration.png`.
+
+### Beat 5 — Google News joins clusters (Coder; Reviewer gate)
+- Likely cause of zero matches: GNews titles end in " - Publisher". Strip that suffix before matching and take the publisher from the `<source>` element.
+- Widen GNews from 8 items: add AI topic and lab-name queries (free RSS only).
+- Document the rule that an identical normalised title may override the 24h window (Transformers pair, ~30h, date-only HF feed).
+- GATE: at least 1 real GNews cross-source merge; every multi-source cluster pasted; any wrong merge = FAIL.
+
+### Beat 6 — Voice chip parity + Papers density (UX craft, Coder builds)
+- `[01]` Brief and `[05]` Voice chips share one style.
+- Papers tab density check against Pulse V5 table rhythm.
+- Proof `refs/VISUAL-PROOF-beat6-voice-papers.png`.
+
+Order: 4, 5, 6. Beat 5 matching can be coded while Beat 4 is under gate. Land-or-FAIL messages only.

@@ -2,10 +2,12 @@
 import { useEffect, useMemo, useState } from "react";
 import { CYCLE, WAVES, WAVE_TIMELINE } from "@/data/cycle";
 import { CRAWL, CRAWL_AT } from "@/data/x-crawl";
-import { HN_PULSE, HN_PULSE_AT } from "@/data/hn-pulse";
-import { RSS_LABS, RSS_LABS_AT } from "@/data/rss-labs";
-import { GNEWS_RSS, GNEWS_RSS_AT } from "@/data/gnews-rss";
-import { RSS_SECURITY, RSS_SECURITY_AT } from "@/data/rss-security";
+import { HN_PULSE } from "@/data/hn-pulse";
+import { RSS_LABS } from "@/data/rss-labs";
+import { GNEWS_RSS } from "@/data/gnews-rss";
+import { RSS_SECURITY } from "@/data/rss-security";
+import { PULSE_CLUSTERS, PULSE_CLUSTERS_AT } from "@/data/pulse-clusters";
+import { SOURCE_HEALTH, SOURCE_HEALTH_AT } from "@/data/source-health";
 import { X_TASTE } from "@/data/x-taste";
 import { DIGEST_ITEMS, DROPPED, PACK_AT, PACK_SOURCE } from "@/data/digest-pack";
 import { DIGEST_CADENCE } from "@/data/digest-cadence";
@@ -16,6 +18,18 @@ import { SOFT_FAIL_METERS } from "@/data/soft-fail-meters";
 import { isDigestDue, nextDue, PACK_KEY, renderPlan, renderReport } from "@/lib/digest-pack";
 import { crawlAgeHours } from "@/lib/x-pulse";
 import { crawlFreshness, STALE_GUARD_HOURS } from "@/lib/crawl-staleness";
+import {
+  buildRows,
+  compactAge,
+  healthCellState,
+  healthTicks,
+  HEALTH_TICKS,
+  labBadge,
+  PULSE_V5_MAX_ROWS,
+  sigCell,
+  type ClusterInput,
+  type PulseMemberInfo,
+} from "@/lib/pulse-v5";
 import { cn } from "@/lib/cn";
 
 const LANES = ["brief", "pulse", "digest", "papers", "voice", "governance"] as const;
@@ -342,335 +356,252 @@ function Brief() {
 }
 
 
+const HEALTH_LABEL: Record<string, string> = {
+  hn: "HN",
+  gnews: "GNW",
+  rss_labs: "LAB",
+  rss_security: "SEC",
+  hf: "HF",
+  arxiv: "ARX",
+  crossref: "XREF",
+  openalex: "OALX",
+  github: "GH",
+  wikidata: "WD",
+};
+
+const HEALTH_ORDER = ["hn", "gnews", "rss_labs", "rss_security", "hf", "arxiv", "crossref", "openalex", "github", "wikidata"];
+
+function stripPublisher(title: string, publisher: string): string {
+  const tail = ` - ${publisher}`;
+  return publisher && title.endsWith(tail) ? title.slice(0, -tail.length) : title;
+}
+
+function useMembers(): Record<string, PulseMemberInfo> {
+  return useMemo(() => {
+    const m: Record<string, PulseMemberInfo> = {};
+    for (const h of HN_PULSE) m[h.id] = { badge: "HN", publisher: `hn/${h.author}`, score: h.score, url: h.url };
+    for (const g of GNEWS_RSS) m[g.id] = { badge: "GNW", publisher: g.publisher || "google news", url: g.link };
+    for (const r of RSS_LABS)
+      m[r.id] = { badge: labBadge(r.lab), publisher: r.lab, summary: r.summary || undefined, url: r.link };
+    for (const s of RSS_SECURITY)
+      m[s.id] = { badge: "SEC", publisher: s.lab, summary: s.summary || undefined, url: s.link, security: true };
+    for (const p of CRAWL)
+      m[`x:${p.id}`] = { badge: "X", publisher: `@${p.handle}`, score: p.likes, summary: `${p.take} — ${p.text}`, url: p.href };
+    return m;
+  }, []);
+}
+
+/** Pulse V5 (Beat 3) — spec refs/UX-PULSE-V5.md. Operator X crawl posts join the one table as single-source X rows (not clusters). */
+const X_ROWS: ClusterInput[] = CRAWL.map((p) => ({
+  id: `x:${p.id}`,
+  title: p.take,
+  url: p.href,
+  lead_id: `x:${p.id}`,
+  lead_source: "x",
+  sources: ["x"],
+  member_ids: [`x:${p.id}`],
+  size: 1,
+  at: p.at,
+  first_seen: null,
+  is_new: false,
+}));
+
+const MULTI_SOURCE = PULSE_CLUSTERS.filter((c) => new Set(c.sources).size > 1).length;
+
 function Pulse() {
-  const age = crawlAgeHours(CRAWL_AT);
-  const [openSecId, setOpenSecId] = useState<string | null>(null);
+  // First render = crawl stamp (SSR-stable); then wall clock.
+  const [now, setNow] = useState(() => Date.parse(PULSE_CLUSTERS_AT));
+  useEffect(() => {
+    setNow(Date.now());
+    const t = window.setInterval(() => setNow(Date.now()), 60_000);
+    return () => window.clearInterval(t);
+  }, []);
+  const members = useMembers();
+  const { rows, baseline, newCount } = useMemo(
+    () => buildRows([...PULSE_CLUSTERS, ...X_ROWS], members),
+    [members],
+  );
+  const defaultOpen = rows.find((r) => r.multiSource)?.id ?? null;
+  const [openClusterId, setOpenClusterId] = useState<string | null>(defaultOpen);
+  const [showAll, setShowAll] = useState(false);
+  const [tasteAll, setTasteAll] = useState(false);
+  const visible = showAll ? rows : rows.slice(0, PULSE_V5_MAX_ROWS);
+  const fresh = crawlFreshness(CRAWL_AT, now);
+  const health = [...SOURCE_HEALTH].sort(
+    (a, b) => HEALTH_ORDER.indexOf(a.id) - HEALTH_ORDER.indexOf(b.id),
+  );
+  const tasteItems = tasteAll ? X_TASTE.items : X_TASTE.items.slice(0, 6);
+
   return (
-    <div className="sage-lane-craft lane-pulse">
-      <div className="sage-panel sage-ticks lane-craft-pulse-header mb-3 flex flex-wrap items-center justify-between gap-2 p-3">
-        <p className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
-          Pulse · snap {CRAWL_AT}
-        </p>
-        {age.stale ? (
-          <p className="sage-stale" role="status">
-            STALE · crawl {age.hours.toFixed(1)}h · bun run ingest
-          </p>
-        ) : (
-          <p className="sage-signal font-mono text-kicker uppercase tracking-kicker tabular-nums" role="status">
-            FRESH · {age.hours.toFixed(1)}h
-          </p>
-        )}
+    <div className="pulse-v5" data-baseline={baseline ? "1" : undefined}>
+      {/* 1 · Health strip — ledger truth, one cell per source */}
+      <div className="pulse-v5-health" role="list" aria-label="Source health ledger">
+        {health.map((s) => {
+          const state = healthCellState(s.state);
+          const ticks = healthTicks(s.streak_ok);
+          return (
+            <span
+              key={s.id}
+              role="listitem"
+              className="pulse-v5-health-cell"
+              data-state={state}
+              title={`${s.id} · ${s.state}${s.fail_reason ? ` · ${s.fail_reason}` : ""} · ok ${s.ok_7d}/${s.runs_7d} 7d · ledger ${SOURCE_HEALTH_AT}`}
+            >
+              <span className="pulse-v5-health-label">{HEALTH_LABEL[s.id] ?? s.id}</span>
+              <span className="pulse-v5-ticks" aria-hidden>
+                {Array.from({ length: HEALTH_TICKS }, (_, i) => (i < ticks ? "▮" : "▯")).join("")}
+              </span>
+              <span className="tabular-nums">
+                {state === "ok" ? s.items_last : s.fail_reason?.replace(/^HTTP\s*/, "") || s.state.toUpperCase()}
+              </span>
+            </span>
+          );
+        })}
+        <span className="pulse-v5-health-end">
+          {baseline ? (
+            <span className="pulse-v5-baseline" title={`${newCount}/${rows.length} rows first-seen this crawl — NEW plates suppressed`}>
+              BASELINE · first crawl
+            </span>
+          ) : null}
+          {fresh.stale ? (
+            <span className="sage-stale pulse-v5-stale-plate tabular-nums" role="status" title={`STALE after ${STALE_GUARD_HOURS}h`}>
+              STALE {fresh.hours.toFixed(1)}h
+            </span>
+          ) : (
+            <span className="sage-signal tabular-nums" role="status">
+              FRESH {fresh.hours.toFixed(1)}h
+            </span>
+          )}
+        </span>
       </div>
-      <ul className="grid gap-3 md:grid-cols-2">
-        {CRAWL.map((p) => (
-          <li key={p.id} className="sage-panel sage-ticks overflow-hidden">
-            {p.media ? (
-              <img src={p.media} alt="" className="h-40 w-full object-cover opacity-80" crossOrigin="anonymous" />
-            ) : null}
-            <div className="p-4">
-              <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
-                @{p.handle} · {p.tag} · {p.likes}♥
-              </p>
-              <p className="mt-2 text-sm">{p.take}</p>
-              <p className="mt-2 text-sm text-muted">{p.text}</p>
-              <a href={p.href} target="_blank" rel="noreferrer" className="mt-3 inline-flex h-11 items-center text-sm sage-signal">
-                Open source
-              </a>
-            </div>
-          </li>
-        ))}
-      </ul>
-      <section className="mt-4" aria-label="HN Algolia chatter">
-        <div className="sage-panel sage-ticks mb-3 flex flex-wrap items-center justify-between gap-2 p-3">
-          <p className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
-            HN chatter · {HN_PULSE_AT} · pulse only
-          </p>
-          <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
-            never Brief · {HN_PULSE.length} hits
-          </p>
-        </div>
-        {HN_PULSE.length === 0 ? (
-          <p className="text-sm text-muted">No HN Pulse candidates. Run bun run ingest.</p>
-        ) : (
-          <ul className="grid gap-3 md:grid-cols-2">
-            {HN_PULSE.map((h) => (
-              <li key={h.id} className="sage-panel sage-ticks overflow-hidden">
-                <div className="p-4">
-                  <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
-                    hn/{h.author} · {h.tag} · {h.score}pts · {h.source}
-                  </p>
-                  <p className="mt-2 text-sm text-phosphor-bright">{h.text}</p>
-                  <p className="mt-2 font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
-                    {h.id} · {h.at}
-                  </p>
-                  <a
-                    href={h.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-3 inline-flex h-11 items-center text-sm sage-signal"
-                  >
-                    Open HN / story
-                  </a>
-                </div>
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
-      <section className="mt-4" aria-label="Lab blog RSS">
-        <div className="sage-panel sage-ticks mb-3 flex flex-wrap items-center justify-between gap-2 p-3">
-          <p className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
-            Lab RSS · {RSS_LABS_AT || "—"} · pulse only
-          </p>
-          <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
-            never Brief · {RSS_LABS.length} hits
-          </p>
-        </div>
-        {RSS_LABS.length === 0 ? (
-          <p className="text-sm text-muted">No lab RSS items. Run bun run ingest.</p>
-        ) : (
-          <ul className="grid gap-3 md:grid-cols-2">
-            {RSS_LABS.map((r) => (
-              <li key={r.id} className="sage-panel sage-ticks overflow-hidden">
-                <div className="p-4">
-                  <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
-                    {r.lab} · {r.tag} · {r.source}
-                  </p>
-                  <p className="mt-2 text-sm text-phosphor-bright">{r.title}</p>
-                  {r.summary ? (
-                    <p className="mt-2 text-sm text-muted">{r.summary.slice(0, 220)}</p>
-                  ) : null}
-                  <p className="mt-2 font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
-                    {r.id} · {r.published}
-                  </p>
-                  <a
-                    href={r.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-3 inline-flex h-11 items-center text-sm sage-signal"
-                  >
-                    Open lab post
-                  </a>
-                </div>
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
 
-
-      <section className="mt-4" aria-label="Soft-fail health meters">
-        <div className="sage-panel sage-ticks px-3 py-2.5">
-          <div className="flex flex-wrap items-center justify-between gap-2">
-            <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
-              FREE FEEDS · soft-fail meters
-            </p>
-            <p className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
-              snap {SOFT_FAIL_METERS.stamped_at} · never Brief
-            </p>
+      {/* 2 · Main grid — cluster table | Taste rail */}
+      <div className="pulse-v5-grid">
+        <section className="pulse-v5-table" aria-label="Pulse story clusters">
+          <div className="pulse-v5-head" aria-hidden>
+            <span>#</span>
+            <span>NEW</span>
+            <span className="pulse-v5-age">AGE</span>
+            <span>HEADLINE</span>
+            <span>SRC</span>
+            <span className="pulse-v5-sig">SIG</span>
           </div>
-          <div className="mt-2 flex flex-wrap gap-1.5" role="list" aria-label="Provider health chips">
-            {SOFT_FAIL_METERS.providers.map((c) => {
-              const chipClass =
-                c.state === "ok"
-                  ? "desk-chip desk-chip-live"
-                  : c.state === "soft"
-                    ? "desk-chip desk-chip-warn"
-                    : "desk-chip desk-chip-quiet";
-              const statusLabel = c.state === "ok" ? "OK" : c.state === "soft" ? "soft" : "DENY";
+          <ol>
+            {visible.map((r, i) => {
+              const open = openClusterId === r.id;
+              const lead = members[r.leadId];
+              const overflow = r.alsoBadges.length > 2 ? r.alsoBadges.length - 2 : 0;
+              const sig = sigCell(r);
               return (
-                <span key={c.id} role="listitem" className={chipClass} title={c.detail}>
-                  {c.label} · {statusLabel}
-                  {c.state !== "ok" ? <> · {c.detail}</> : null}
-                  {c.state === "ok" && c.detail === "landed" ? <> · landed</> : null}
-                </span>
+                <li key={r.id} className="pulse-v5-row" data-open={open ? "1" : undefined}>
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    aria-expanded={open}
+                    className="pulse-v5-line focus-phosphor"
+                    onClick={() => setOpenClusterId(open ? null : r.id)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        setOpenClusterId(open ? null : r.id);
+                      }
+                    }}
+                  >
+                    <span className="pulse-v5-idx tabular-nums">{String(i + 1).padStart(2, "0")}</span>
+                    <span>{r.showNew ? <span className="pulse-v5-new">NEW</span> : null}</span>
+                    <span className="pulse-v5-age tabular-nums">{compactAge(r.at, now)}</span>
+                    <span className="pulse-v5-headline">{stripPublisher(r.title, lead?.publisher ?? "")}</span>
+                    <span className="pulse-v5-src">
+                      <span className={cn("pulse-v5-badge", r.multiSource ? "pulse-v5-src-lead" : "pulse-v5-src-solo")}>
+                        {r.leadBadge}
+                      </span>
+                      {r.alsoBadges.slice(0, 2).map((b) => (
+                        <span key={b} className="pulse-v5-badge pulse-v5-also">
+                          {b}
+                        </span>
+                      ))}
+                      {overflow ? <span className="pulse-v5-badge pulse-v5-also">+{overflow}</span> : null}
+                    </span>
+                    <span className={cn("pulse-v5-sig tabular-nums", sig.dim && "pulse-v5-sig-dim")}>
+                      {sig.text}
+                    </span>
+                  </div>
+                  {open ? (
+                    <div className="pulse-v5-exp">
+                      {r.multiSource && r.alsoPublishers.length ? (
+                        <p className="pulse-v5-alsoline">
+                          also covered by · {r.alsoPublishers.join(" · ")}
+                        </p>
+                      ) : null}
+                      {r.summary ? <p className="pulse-v5-summary">{r.summary.slice(0, 280)}</p> : null}
+                      <p className="pulse-v5-meta tabular-nums">
+                        {lead?.publisher ?? r.leadBadge} · {r.at} · {r.size} member{r.size === 1 ? "" : "s"}
+                        {" · "}
+                        <a href={r.url} target="_blank" rel="noreferrer" className="sage-signal focus-phosphor">
+                          open ↗
+                        </a>
+                      </p>
+                    </div>
+                  ) : null}
+                </li>
               );
             })}
-          </div>
-          <p
-            className={
-              SOFT_FAIL_METERS.soft_count
-                ? "mt-2 font-mono text-kicker uppercase tracking-kicker text-amber"
-                : "mt-2 font-mono text-kicker uppercase tracking-kicker sage-signal"
-            }
-            role="status"
-          >
-            {SOFT_FAIL_METERS.soft_count
-              ? SOFT_FAIL_METERS.aggregate.join(" · ")
-              : "ALL GREEN · 0 soft-fails"}
-          </p>
-          <p className="mt-1.5 font-mono text-kicker uppercase tracking-kicker text-subtle">
-            <span className="sage-deny">DENY</span>
-            {" · "}
-            {SOFT_FAIL_METERS.deny.join(" · ")}
-          </p>
-          <p className="mt-1 font-mono text-kicker uppercase tracking-kicker text-subtle">
-            briefEligible=false
-          </p>
-        </div>
-      </section>
+          </ol>
+          {rows.length > PULSE_V5_MAX_ROWS ? (
+            <button type="button" className="pulse-v5-more focus-phosphor" onClick={() => setShowAll((v) => !v)}>
+              {showAll ? `show top ${PULSE_V5_MAX_ROWS}` : `show all ${rows.length}`}
+            </button>
+          ) : null}
+        </section>
 
-      <section className="mt-4" aria-label="Google News RSS spice">
-        <div className="sage-panel sage-ticks mb-3 flex flex-wrap items-center justify-between gap-2 px-3 py-2">
-          <p className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
-            news · google rss · pulse only · {GNEWS_RSS_AT || "—"}
-          </p>
-          <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
-            never Brief · never sole lead · {GNEWS_RSS.length} hits
-          </p>
-        </div>
-        {GNEWS_RSS.length === 0 ? (
-          <div className="sage-panel sage-ticks pin-card-quiet px-3 py-2.5">
-            <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
-              shelf · quiet · empty/soft OK
-            </p>
-            <p className="mt-1 text-sm text-muted">
-              No Google News spice yet. Soft-fail empty is honest — run bun run ingest. Never Brief · never sole Pulse lead.
-            </p>
-          </div>
-        ) : (
-          <ul className="grid gap-2 md:grid-cols-2">
-            {GNEWS_RSS.slice(0, 8).map((r) => (
-              <li key={r.id} className="sage-panel sage-ticks pin-card-quiet px-3 py-2">
-                <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
-                  news · google rss · pulse only
-                  {r.publisher ? <> · {r.publisher}</> : null}
-                  <> · {r.tag}</>
-                </p>
-                <p className="mt-1 line-clamp-2 text-sm text-phosphor">{r.title}</p>
-                {r.summary ? (
-                  <p className="mt-1 line-clamp-2 text-sm text-muted">{r.summary.slice(0, 180)}</p>
-                ) : null}
-                <p className="mt-1 font-mono text-kicker uppercase tracking-kicker text-subtle">
-                  never Brief · never sole lead · {r.published}
-                </p>
-                <a
-                  href={r.link}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-2 inline-flex h-8 items-center font-mono text-kicker uppercase tracking-kicker sage-signal"
-                >
-                  open
-                </a>
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
-
-      <section className="mt-4" aria-label="Operator X-session taste">
-        <div className="sage-panel sage-ticks mb-3 flex flex-wrap items-center justify-between gap-2 px-3 py-2">
-          <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
-            Taste · operator X-session · pulse only
-          </p>
-          <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
-            never Brief · never lead · paid API DENY
-          </p>
-        </div>
-        {X_TASTE.skipped || X_TASTE.items.length === 0 ? (
-          <div className="sage-panel sage-ticks pin-card-quiet px-3 py-2.5">
-            <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
+        <aside className="pulse-v5-taste sage-panel pin-card-quiet" aria-label="Operator X-session taste">
+          <p className="pulse-v5-taste-head">TASTE · X-session · never lead</p>
+          {X_TASTE.skipped || X_TASTE.items.length === 0 ? (
+            <p className="pulse-v5-taste-skip">
               shelf · skip
               {X_TASTE.soft_fail && X_TASTE.soft_fail_reason ? (
                 <>
                   {" "}
                   · <span className="sage-deny">{X_TASTE.soft_fail_reason}</span>
                 </>
-              ) : null}
+              ) : null}{" "}
+              · Session quiet / login wall — taste empty. Sign into X on Agent Computer Chrome, then re-run dry-run.
             </p>
-            <p className="mt-1 text-sm text-muted">
-              Session quiet / login wall — taste empty. Sign into X on Agent Computer Chrome, then re-run dry-run.
-              Cards stay below HN/RSS; never Brief lead.
-            </p>
-            <p className="mt-1.5 font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
-              kept {X_TASTE.counts.kept}/{X_TASTE.counts.seen} · briefEligible=false · land {X_TASTE.land}
-              {X_TASTE.stamped_at ? <> · stamp {X_TASTE.stamped_at}</> : null}
-            </p>
-          </div>
-        ) : (
-          <ul className="grid gap-2 md:grid-cols-2">
-            {X_TASTE.items.slice(0, 8).map((it) => (
-              <li key={it.id} className="sage-panel sage-ticks pin-card-quiet px-3 py-2">
-                <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
-                  taste · {it.surface}
-                  {it.handle ? <> · @{it.handle}</> : null}
-                </p>
-                <p className="mt-1 line-clamp-2 text-sm text-phosphor">{it.text}</p>
-                <p className="mt-1 font-mono text-kicker uppercase tracking-kicker text-subtle">
-                  briefEligible=false · pulseLeadEligible=false
-                </p>
-                {it.url ? (
-                  <a
-                    href={it.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-2 inline-flex h-8 items-center font-mono text-kicker uppercase tracking-kicker sage-signal"
-                  >
-                    open
-                  </a>
-                ) : null}
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
-
-      <section className="mt-4" aria-label="Security lab RSS">
-        <div className="sage-panel sage-ticks overflow-hidden mb-2">
-          <div className="sage-panel-header">&gt; Security RSS · ToB / Fox-IT / PZ · pulse only</div>
-          <div className="flex flex-wrap items-center justify-between gap-2 px-3 py-1.5">
-            <p className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
-              {RSS_SECURITY_AT || "—"} · {RSS_SECURITY.length} hits
-            </p>
-            <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">never Brief</p>
-          </div>
-        </div>
-        {RSS_SECURITY.length === 0 ? (
-          <p className="text-sm text-muted">No security RSS items. Run bun run ingest.</p>
-        ) : (
-          <ul className="mt-3 space-y-1.5">
-            {RSS_SECURITY.map((r, idx) => {
-              const open = openSecId === r.id;
-              return (
-              <li key={r.id} className="sage-panel sage-ticks px-3 py-2">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <div className="min-w-0 flex-1">
-                    <p className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
-                      [{String(idx + 1).padStart(2, "0")}] · {r.lab} · {r.tag}
-                    </p>
-                    <p className="mt-0.5 truncate text-sm text-phosphor-bright">{r.title}</p>
-                  </div>
-                  <div className="flex flex-wrap gap-1">
-                    {r.summary ? (
-                      <button
-                        type="button"
-                        className="term focus-phosphor h-8 px-2 font-mono text-kicker uppercase tracking-kicker"
-                        onClick={() => setOpenSecId(open ? null : r.id)}
-                      >
-                        {open ? "hide" : "exp"}
-                      </button>
-                    ) : null}
-                    <a
-                      href={r.link}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="focus-phosphor inline-flex h-8 items-center px-2 font-mono text-kicker uppercase tracking-kicker sage-signal"
-                    >
-                      open
-                    </a>
-                  </div>
-                </div>
-                {open && r.summary ? (
-                  <p className="mt-2 max-w-prose border-t border-line pt-2 text-sm text-muted">
-                    {r.summary.slice(0, 320)}
+          ) : (
+            <ul>
+              {tasteItems.map((it) => (
+                <li key={it.id}>
+                  <p className="pulse-v5-taste-kicker">
+                    {it.surface}
+                    {it.handle ? <> · @{it.handle}</> : null}
                   </p>
-                ) : null}
-              </li>
-              );
-            })}
-          </ul>
-        )}
-      </section>
+                  {it.url ? (
+                    <a href={it.url} target="_blank" rel="noreferrer" className="pulse-v5-taste-text focus-phosphor">
+                      {it.text}
+                    </a>
+                  ) : (
+                    <p className="pulse-v5-taste-text">{it.text}</p>
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
+          {X_TASTE.items.length > 6 ? (
+            <button type="button" className="pulse-v5-more focus-phosphor" onClick={() => setTasteAll((v) => !v)}>
+              {tasteAll ? "fewer" : `+${X_TASTE.items.length - 6} more`}
+            </button>
+          ) : null}
+          <p className="pulse-v5-taste-kicker tabular-nums">
+            kept {X_TASTE.counts.kept}/{X_TASTE.counts.seen} · land {X_TASTE.land}
+          </p>
+        </aside>
+      </div>
+
+      {/* 3 · Footer ledger line — eligibility copy lives here once */}
+      <p className="pulse-v5-foot tabular-nums">
+        <span className="sage-deny">DENY</span> · {SOFT_FAIL_METERS.deny.join(" · ")} · briefEligible=false · Pulse never
+        Brief · never sole lead · clusters {PULSE_CLUSTERS.length} · multi-source {MULTI_SOURCE} · snap {PULSE_CLUSTERS_AT}
+      </p>
     </div>
   );
 }
