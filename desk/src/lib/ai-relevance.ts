@@ -67,7 +67,7 @@ const NV_GFN_PATH = /\/(blog\/)?(geforce-now|gfn)[-/]/i;
 const NV_CONSUMER_CATEGORY = /^(gaming|cloud gaming|geforce|geforce now|rtx kit|rtx remix|game development|esports)$/i;
 const NV_CONSUMER_PATH = /\/(gaming|geforce|game-ready|rtx-remix)([-/]|$)/i;
 const NV_AI_CATEGORY =
-  /\bai\b|artificial intelligence|generative|agentic|llms?\b|vlms?\b|inference|training|deep learning|machine learning|data (center|science)|research|robotics|physical ai|hpc|scientific computing|nemotron|nemo|cuda|tensorrt|dynamo|ai factory|ai infrastructure/i;
+  /\bai\b|artificial intelligence|generative|agentic|llms?\b|vlms?\b|inference|training|deep learning|machine learning|data (center|science)|research|robotics|physical ai|hpc|scientific computing|nemotron|nemo|cuda|tensorrt|dynamo|ai factory|ai infrastructure|\bdlss\b|neural (rendering|graphics|shading|shaders?)/i;
 
 export type LabRelevanceInput = { lab: string; link?: string | null; categories?: readonly string[] | null };
 

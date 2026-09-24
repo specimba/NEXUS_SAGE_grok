@@ -75,6 +75,18 @@ describe("lab feeds: AI by default; NVIDIA filtered by <category> / path, never 
     ).toBe(true);
   });
 
+  test("must-keep: NVIDIA dev 'DLSS 5 with 3D-Guided Neural Rendering' (DLSS = neural rendering, AI category)", () => {
+    const dlss = {
+      lab: "nvidia-dev",
+      link: "https://developer.nvidia.com/blog/whats-new-for-game-developers-dlss-5-with-3d-guided-neural-rendering-nvidia-ace-updates-and-new-rtx-kit-capabilities/",
+      // real categories from the 2026-09-22 developer.nvidia.com feed entry
+      categories: ["Content Creation / Rendering", "DLSS", "Gaming", "Nsight Tools - Graphics", "RTX Kit", "Unreal Engine"],
+    };
+    expect(labItemDropReason(dlss)).toBeNull();
+    expect(isLabItemRelevant(dlss)).toBe(true);
+    expect(isLabItemRelevant({ lab: "nvidia-dev", link: "https://developer.nvidia.com/blog/x/", categories: ["Gaming", "Neural Rendering"] })).toBe(true);
+  });
+
   test("gaming category + an AI category keeps; gaming-only dev post drops", () => {
     expect(isLabItemRelevant({ lab: "nvidia-dev", link: "https://developer.nvidia.com/blog/ace/", categories: ["Gaming", "Agentic AI / Generative AI"] })).toBe(true);
     expect(isLabItemRelevant({ lab: "nvidia-dev", link: "https://developer.nvidia.com/blog/optix/", categories: ["Developer Tools & Techniques", "Gaming", "Ray Tracing / Path Tracing"] })).toBe(false);
