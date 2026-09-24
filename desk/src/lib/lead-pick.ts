@@ -9,7 +9,7 @@
  * Nothing qualifies ⇒ HELD: yesterday's lead carries over, Brief shows "HELD · no qualifying story".
  * Pure helpers; IO lives in scripts/rank-snapshot.ts (artifacts/sage/lead-history.json).
  */
-import { wireCandidates, type WireCluster, type WireOpts } from "@/lib/wire";
+import { investingNoiseReason, wireCandidates, type WireCluster, type WireOpts } from "@/lib/wire";
 
 
 export const LEAD_PICK_HOUR = 6; // 06:11 crawl → 06:00–06:59 Europe/Istanbul
@@ -112,7 +112,7 @@ export function leadExcludeReason(c: WireCluster, now: number, opts: LeadOpts = 
   const first = groupFirstAt(c, opts.memberAt);
   if (!Number.isFinite(first)) return "no-time";
   if (now - first >= LEAD_MAX_AGE_H * 3_600_000) return "age>=24h";
-  return politicsLeadReason(c.title) ?? opts.exclude?.(c) ?? null;
+  return politicsLeadReason(c.title) ?? investingNoiseReason(c.title) ?? opts.exclude?.(c) ?? null;
 }
 
 /** Ranked qualifying stories: Wire gate + earliest-item age < 24h + ≥2 independent sources; sources → SIG → newer. */
@@ -161,7 +161,7 @@ export function decidePick(
   const now = Date.parse(opts.crawlAt);
   const top = leadCandidates(clusters, now, opts)[0];
   const byId = new Map(clusters.map((c) => [c.id, c]));
-  const excluded = wireCandidates(clusters, opts)
+  const excluded = wireCandidates(clusters, { ...opts, keepNoise: true })
     .filter((c) => c.sources >= LEAD_MIN_SOURCES)
     .map((c) => ({ cluster_id: c.id, headline: c.title, reason: leadExcludeReason(byId.get(c.id)!, now, opts) }))
     .filter((e): e is { cluster_id: string; headline: string; reason: string } => e.reason !== null);
