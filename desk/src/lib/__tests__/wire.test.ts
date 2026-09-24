@@ -129,6 +129,26 @@ describe("Beat 7 wire — prev-snapshot diff", () => {
   });
 });
 
+describe("Beat 7 wire — daily lead exclusion", () => {
+  test("current daily lead is never on the Wire; backfills to 5; no fake ▲ from its removal", () => {
+    const six = Array.from({ length: 6 }, (_, k) => cl(`cl:hn:${k + 1}`, { at: `2026-09-24T1${k}:00:00Z` }));
+    const prev = buildWire(six, null, { at: "t0", crawlAt: "c0" });
+    expect(prev.rows.map((r) => r.id)).toEqual(["cl:hn:6", "cl:hn:5", "cl:hn:4", "cl:hn:3", "cl:hn:2"]);
+    const cur = buildWire(six, prev, { at: "t1", crawlAt: "c1", excludeIds: ["cl:hn:4"] });
+    expect(cur.rows.map((r) => r.id)).toEqual(["cl:hn:6", "cl:hn:5", "cl:hn:3", "cl:hn:2", "cl:hn:1"]);
+    expect(cur.rows.length).toBe(WIRE_MAX);
+    expect(cur.order.some((o) => o.id === "cl:hn:4")).toBe(false);
+    // hn:1 was #6 in prev order → #5 once the lead is dropped from both sides ⇒ same, not ▲
+    expect(cur.rows.map((r) => r.status)).toEqual(["same", "same", "same", "same", "same"]);
+  });
+
+  test("generated WIRE_ROWS never contain today's daily lead", async () => {
+    const { WIRE_ROWS } = await import("@/data/wire");
+    const { LEAD_TODAY } = await import("@/data/lead-pick");
+    if (LEAD_TODAY?.cluster_id) expect(WIRE_ROWS.some((r) => r.id === LEAD_TODAY.cluster_id)).toBe(false);
+  });
+});
+
 describe("Beat 7 wire — generated data + placement", () => {
   test("generated WIRE_ROWS: 1–5 rows, all ≥2 SRC, no X / taste ids", async () => {
     const { WIRE_ROWS } = await import("@/data/wire");
@@ -151,6 +171,12 @@ describe("Beat 7 wire — generated data + placement", () => {
     expect(pins).toBeGreaterThan(wire);
     expect(brief).toContain("LEAD_TODAY");
     expect(brief).toContain("LEAD_YESTERDAY");
+    // right rail: old hf-incident pin demoted to "cycle 003 context", listed after companion/rest, no lead frame
+    expect(brief).toContain("cycle 003 context");
+    expect(brief).not.toContain("cycle pin");
+    expect(brief).toContain("rail · cyc/003 board");
+    expect(brief).toContain("CYC/003 board · three waves");
+    expect(brief.slice(0, brief.indexOf("function Pulse") > 0 ? brief.indexOf("function Pulse") : undefined)).not.toContain("sage-lead-frame");
     const css = readFileSync(resolve(import.meta.dir, "../../app/globals.css"), "utf8");
     const block = css.slice(css.indexOf("/* Beat 7 — Brief Wire strip"));
     expect(block.length).toBeGreaterThan(100);
