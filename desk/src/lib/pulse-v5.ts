@@ -33,7 +33,7 @@ export type ClusterInput = {
   first_seen: string | null;
   is_new: boolean;
   /** Optional per-member detail; `self_repost: true` = a company's own post re-carried (e.g. via GNews) ⇒ 0 sources. */
-  members?: Array<{ id: string; source?: string; self_repost?: boolean }>;
+  members?: Array<{ id: string; source?: string; publisher?: string | null; self_repost?: boolean }>;
   self_repost_ids?: string[];
 };
 
@@ -102,6 +102,39 @@ export function selfRepostIds(c: Pick<ClusterInput, "members" | "self_repost_ids
   return out;
 }
 
+/**
+ * Independent-publisher key for one member (N SRC = distinct keys; self-reposts excluded upstream).
+ * HN counts as one publisher; lab / security feeds by lab (from the id `rss:<lab>:…`); GNews by its
+ * publisher name (deduped case-insensitively); X per handle. Unknown publisher ⇒ the id itself.
+ */
+export function publisherKey(id: string, publisher?: string | null): string {
+  if (id.startsWith("hn:")) return "hn";
+  const pub = (publisher ?? "").trim().toLowerCase();
+  if (id.startsWith("x:")) return `x:${pub || id.slice(2)}`;
+  if (id.startsWith("rss-sec:") || id.startsWith("rss:")) {
+    const lab = id.split(":")[1];
+    return lab ? `lab:${lab}` : pub || id;
+  }
+  if (id.startsWith("gnews:")) return pub ? `pub:${pub}` : id;
+  return pub || id;
+}
+
+/** Distinct independent publishers in a cluster (lead always counts; self-reposts count 0). */
+export function independentPublishers(
+  c: Pick<ClusterInput, "lead_id" | "member_ids" | "members" | "self_repost_ids">,
+  publisherOf: (id: string) => string | null | undefined = () => null,
+): Set<string> {
+  const selfIds = selfRepostIds(c);
+  selfIds.delete(c.lead_id);
+  const memberPub = new Map((c.members ?? []).map((m) => [m.id, (m as { publisher?: string | null }).publisher ?? null]));
+  const out = new Set<string>();
+  for (const id of [c.lead_id, ...c.member_ids]) {
+    if (selfIds.has(id)) continue;
+    out.add(publisherKey(id, publisherOf(id) ?? memberPub.get(id)));
+  }
+  return out;
+}
+
 export function sourceBadge(source: string): string {
   return SOURCE_BADGE[source] ?? source.slice(0, 3).toUpperCase();
 }
@@ -137,14 +170,13 @@ export function buildRows(
     const selfIds = selfRepostIds(c);
     selfIds.delete(c.lead_id);
     const memberSrc = new Map((c.members ?? []).map((m) => [m.id, m.source]));
-    const indep = new Set<string>([c.lead_source]);
-    for (const id of c.member_ids) {
-      if (selfIds.has(id)) continue;
-      const s = memberSrc.get(id) ?? memberSource(id);
-      if (s) indep.add(s);
+    // N SRC = distinct independent publishers (not source classes); self-reposts count 0.
+    const indep = independentPublishers(c, (id) => members[id]?.publisher);
+    // Unrecognised ids with no per-member info ⇒ fall back to cluster-level sources[].
+    if (!c.members && c.member_ids.every((id) => !memberSource(id)) && c.sources.length > indep.size) {
+      indep.clear();
+      for (const s of c.sources) indep.add(s);
     }
-    // No per-member info at all ⇒ trust cluster-level sources[].
-    if (!c.members && c.member_ids.every((id) => !memberSource(id))) for (const s of c.sources) indep.add(s);
     const multiSource = indep.size > 1;
     const selfBadges: string[] = [];
     const alsoBadges: string[] = [];

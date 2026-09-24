@@ -49,6 +49,8 @@ export type WireOpts = {
   tasteIds?: Iterable<string>;
   /** member id → signal (HN points, X likes…). */
   scores?: Record<string, number>;
+  /** member id → publisher name (GNews publisher, lab…) so N SRC counts distinct publishers. */
+  publishers?: Record<string, string>;
   /** Cluster ids kept off the Wire (the current daily lead lives on the Take). */
   excludeIds?: Iterable<string>;
 };
@@ -70,7 +72,8 @@ export function wireCandidates(clusters: WireCluster[], opts: WireOpts = {}): Wi
   const skip = new Set(opts.excludeIds ?? []);
   const kept = clusters.filter((c) => !skip.has(c.id) && wireExcludeReason(c, taste) === null);
   const byId = new Map(kept.map((c) => [c.id, c]));
-  const { rows } = buildRows(kept, {});
+  const info = Object.fromEntries(Object.entries(opts.publishers ?? {}).map(([id, publisher]) => [id, { badge: "", publisher }]));
+  const { rows } = buildRows(kept, info);
   const out: WireCandidate[] = [];
   for (const r of rows) {
     if (r.sourceCount < WIRE_MIN_SOURCES) continue;

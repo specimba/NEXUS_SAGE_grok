@@ -14,6 +14,7 @@ import { DIGEST_ITEMS, DROPPED, PACK_AT, PACK_SOURCE } from "@/data/digest-pack"
 import { DIGEST_CADENCE } from "@/data/digest-cadence";
 import { RANK_CURRENT, RANK_MOVED, RANK_PREV } from "@/data/corroboration-rank";
 import { LEAD_HELD, LEAD_TODAY, LEAD_YESTERDAY } from "@/data/lead-pick";
+import { groupFirstAt } from "@/lib/lead-pick";
 import { WIRE_CRAWL_AT, WIRE_PREV_CRAWL_AT, WIRE_ROWS } from "@/data/wire";
 import { istanbulHHMM, wireHeader, wireMark } from "@/lib/wire";
 import { PAPERS } from "@/data/papers";
@@ -73,6 +74,21 @@ type DeskProps = {
   buildId?: string;
   serverStartedAt?: string;
 };
+
+/** Every member item's own time (HN created_at, GNews / lab / security published). */
+const MEMBER_AT: Record<string, string> = (() => {
+  const m: Record<string, string> = {};
+  for (const h of HN_PULSE) m[h.id] = h.at;
+  for (const g of GNEWS_RSS) m[g.id] = g.published;
+  for (const r of RSS_LABS) m[r.id] = r.published;
+  for (const r of RSS_SECURITY) m[r.id] = r.published;
+  return m;
+})();
+/** Story age = its EARLIEST member item (same rule as the lead pick) — late reposts never make it look fresh. */
+function firstAtIso(c: { at: string; member_ids: readonly string[] }): string {
+  const t = groupFirstAt({ at: c.at, member_ids: [...c.member_ids] }, MEMBER_AT);
+  return Number.isFinite(t) ? new Date(t).toISOString() : c.at;
+}
 
 /** Beat 9 — filter + story hand-off shared with lane tables (one global key handler lives in Desk). */
 type DeskKeys = { q: string; report: (shown: number, total: number) => void; openStory: (id: string) => void };
@@ -249,7 +265,10 @@ export function Desk({ buildId = "dev", serverStartedAt = "" }: DeskProps) {
             </div>
           </div>
           <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
-            ingest · snap {CRAWL_AT} · pack {PACK_AT} · lead {LEAD_TODAY?.cluster_id ?? CYCLE.pins[0]?.id}
+            ingest · snap {CRAWL_AT} · pack {PACK_AT} · lead{" "}
+            <span className="desk-lead-headline" title={`lead ${LEAD_TODAY?.cluster_id ?? CYCLE.pins[0]?.id}`}>
+              {LEAD_TODAY?.headline ?? CYCLE.pins[0]?.title}
+            </span>
           </p>
           <div className="desk-ticker" aria-label="What changed">
             <span className="desk-ticker-label">Δ LIVE</span>
@@ -261,7 +280,11 @@ export function Desk({ buildId = "dev", serverStartedAt = "" }: DeskProps) {
                 <span className="tabular-nums">{DIGEST_CADENCE.last_at.slice(11, 16)}Z</span> digest HOLD→{DIGEST_CADENCE.next_at.slice(11, 16)}Z
               </span>
               <span className="desk-ticker-item">
-                lead {LEAD_TODAY?.cluster_id ?? CYCLE.pins[0]?.id} · Sol≠Astra
+                lead{" "}
+                <span className="desk-lead-headline" title={`lead ${LEAD_TODAY?.cluster_id ?? CYCLE.pins[0]?.id}`}>
+                  {LEAD_TODAY?.headline ?? CYCLE.pins[0]?.title}
+                </span>{" "}
+                · Sol≠Astra
               </span>
               <span className="desk-ticker-item">
                 wikidata {WIKIDATA_DENY_LAST.hints.filter((h) => h.status === "rejected_false_friend").length} reject · {WIKIDATA_DENY_LAST.hints.filter((h) => h.status === "matched").length} match · brief=false
@@ -465,7 +488,7 @@ function BriefWire() {
               <span className="brief-wire-mark tabular-nums">
                 {r.status === "new" ? <span className="pulse-v5-new">NEW</span> : mark}
               </span>
-              <span className="pulse-v5-age tabular-nums">{compactAge(r.at, now)}</span>
+              <span className="pulse-v5-age tabular-nums">{compactAge(firstAtIso(r), now)}</span>
               <a className="brief-wire-headline focus-phosphor" href={r.url} target="_blank" rel="noreferrer">
                 {r.title}
               </a>
@@ -794,7 +817,7 @@ function StoryDrawer({
             </button>
           </div>
           <p className="story-drawer-kicker tabular-nums">
-            {drawerKicker({ sources: row.sourceCount, firstSeen, age: compactAge(row.at, now), mark })}
+            {drawerKicker({ sources: row.sourceCount, firstSeen, age: compactAge(firstAtIso(cluster), now), mark })}
           </p>
         </header>
         <ol className="story-drawer-list" aria-label="Coverage by source">
@@ -987,7 +1010,9 @@ function Pulse() {
                   >
                     <span className="pulse-v5-idx tabular-nums">{String(i + 1).padStart(2, "0")}</span>
                     <span>{r.showNew ? <span className="pulse-v5-new">NEW</span> : null}</span>
-                    <span className="pulse-v5-age tabular-nums">{compactAge(r.at, now)}</span>
+                    <span className="pulse-v5-age tabular-nums">
+                      {compactAge(clusterById.get(r.id) ? firstAtIso(clusterById.get(r.id)!) : r.at, now)}
+                    </span>
                     <span className="pulse-v5-headline">{stripPublisher(r.title, lead?.publisher ?? "")}</span>
                     <span className="pulse-v5-src">
                       <span className={cn("pulse-v5-badge", r.multiSource ? "pulse-v5-src-lead" : "pulse-v5-src-solo")}>

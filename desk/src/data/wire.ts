@@ -3,10 +3,60 @@ import type { WireRow } from "@/lib/wire";
 
 export const WIRE_CRAWL_AT = "2026-09-24T22:13:06Z";
 export const WIRE_PREV_CRAWL_AT: string | null = "2026-09-24T22:09:31Z";
-export const WIRE_NEW = 0;
-export const WIRE_MOVED = 0;
+export const WIRE_NEW = 2;
+export const WIRE_MOVED = 3;
 
 export const WIRE_ROWS: WireRow[] = [
+  {
+    "id": "cl:hn:49820134",
+    "title": "Claude discovers a novel enzyme system with CRISPR-like repeats",
+    "url": "https://www.anthropic.com/news/claude-discovers-novel-enzyme-system",
+    "at": "2026-09-24T16:11:01Z",
+    "sources": 3,
+    "score": 757,
+    "member_ids": [
+      "hn:49820134",
+      "gnews:e4b320b3112a5046",
+      "gnews:51c38d5decfd40fd",
+      "gnews:a99fb206a4eb0c0c"
+    ],
+    "is_new": false,
+    "rank": 1,
+    "prev_rank": 2,
+    "status": "up"
+  },
+  {
+    "id": "cl:gnews:835fba52a991874a",
+    "title": "Alphabet Reportedly Values Its Anthropic Stake at $124 Billion. A $2 Trillion IPO Could Double It -- on Paper.",
+    "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQVVpWNlNvaWZkZU9iSUZvUHBzdEM1cVBNMzFpUl9McmM3ZFZZa2wyRk5zV2FHdmp1c0pPdDAwVFE5WExoZ0tFVXpUeVJWU0VDQzR1bEdTRnRGM1NFWEVLSTFpMnhJQkl2aFRUT1FJU3pLSlViVU5OZHhLRFpjOGNpcWV3TElfNjJSM2Nra0NoTQ?oc=5",
+    "at": "2026-09-24T21:24:01Z",
+    "sources": 2,
+    "score": null,
+    "member_ids": [
+      "gnews:835fba52a991874a",
+      "gnews:614c9a10c763a42e"
+    ],
+    "is_new": false,
+    "rank": 2,
+    "prev_rank": null,
+    "status": "new"
+  },
+  {
+    "id": "cl:gnews:74d072a4a21733de",
+    "title": "5 AI Semiconductor Stocks to Buy and Hold Through 2031",
+    "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNMzRZWGJ1bWVyQTJpVnFJTGxkX01sMWFUZmFSMUxnSU9uMFdLdmhoQjBtdEpmaXdWN0IwQk0xT2hzcHRBTW9TOWZzNG41QndVYnJZRjZhUjVQUFp1bnFKdFpSTWU5NlUxNDkxckNBZmhrRkNwVmowTTlGbUFQTmlWc1dNMTNmd2c3WGs1OWRyTWpGYmVmWG9oYklBcWc4c2RESndlY2Q3T2NSc1JXNG0xaFJkQ2xRckxsMEoxRE5jTk0yNUpFZmpZMmVuX0VwMmFBNzZwYWR3?oc=5",
+    "at": "2026-09-24T19:29:03Z",
+    "sources": 2,
+    "score": null,
+    "member_ids": [
+      "gnews:74d072a4a21733de",
+      "gnews:2c20aab2cba0bb02"
+    ],
+    "is_new": false,
+    "rank": 3,
+    "prev_rank": null,
+    "status": "new"
+  },
   {
     "id": "cl:hn:49835056",
     "title": "OpenAI, Anthropic CEOs urge UN countries to cooperate on AI safety standards",
@@ -19,27 +69,9 @@ export const WIRE_ROWS: WireRow[] = [
       "gnews:49dd3657d5005ed4"
     ],
     "is_new": false,
-    "rank": 1,
+    "rank": 4,
     "prev_rank": 1,
-    "status": "same"
-  },
-  {
-    "id": "cl:hn:49820134",
-    "title": "Claude discovers a novel enzyme system with CRISPR-like repeats",
-    "url": "https://www.anthropic.com/news/claude-discovers-novel-enzyme-system",
-    "at": "2026-09-24T16:11:01Z",
-    "sources": 2,
-    "score": 757,
-    "member_ids": [
-      "hn:49820134",
-      "gnews:e4b320b3112a5046",
-      "gnews:51c38d5decfd40fd",
-      "gnews:a99fb206a4eb0c0c"
-    ],
-    "is_new": false,
-    "rank": 2,
-    "prev_rank": 2,
-    "status": "same"
+    "status": "down"
   },
   {
     "id": "cl:hn:49829312",
@@ -53,40 +85,8 @@ export const WIRE_ROWS: WireRow[] = [
       "gnews:32057d15ae2f9dc0"
     ],
     "is_new": false,
-    "rank": 3,
-    "prev_rank": 3,
-    "status": "same"
-  },
-  {
-    "id": "cl:rss:deepmind:68ead6b6af2b7144",
-    "title": "Advancing Private AI Compute with secure, server-side memory",
-    "url": "https://deepmind.google/blog/advancing-private-ai-compute-with-secure-server-side-memory/",
-    "at": "2026-09-24T07:12:37Z",
-    "sources": 2,
-    "score": 3,
-    "member_ids": [
-      "hn:49827294",
-      "rss:deepmind:68ead6b6af2b7144"
-    ],
-    "is_new": false,
-    "rank": 4,
-    "prev_rank": 4,
-    "status": "same"
-  },
-  {
-    "id": "cl:rss:deepmind:81481aa316e38773",
-    "title": "Gemini 3.8 text-to-speech says hello",
-    "url": "https://deepmind.google/blog/say-hello-to-gemini-38-text-to-speech/",
-    "at": "2026-09-23T15:29:23Z",
-    "sources": 2,
-    "score": 326,
-    "member_ids": [
-      "hn:49817615",
-      "rss:deepmind:81481aa316e38773"
-    ],
-    "is_new": false,
     "rank": 5,
-    "prev_rank": 5,
-    "status": "same"
+    "prev_rank": 3,
+    "status": "down"
   }
 ];

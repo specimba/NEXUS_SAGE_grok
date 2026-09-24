@@ -38,6 +38,10 @@ export type CorroboratingCluster = {
   sources: string[];
   url?: string;
   lead_source?: string;
+  /** Distinct independent publisher keys (pulse-v5 independentPublishers). When present, crawl hits count per publisher. */
+  publishers?: string[];
+  /** Publisher key of the cluster lead (self-repost check). */
+  lead_publisher?: string;
 };
 
 /**
@@ -111,6 +115,14 @@ export function countSources(
   for (const c of hits) {
     // A crawl cluster led by the item's own company (its blog / lab feed) is a self-repost: 0 sources.
     const leadCo = c.url ? companyOfUrl(c.url) : null;
+    if (c.publishers) {
+      // N SRC = distinct independent publishers (same rule as Pulse / Wire / lead pick).
+      for (const p of c.publishers) {
+        if (leadCo && refCompanies.has(leadCo) && (!c.lead_publisher || p === c.lead_publisher)) continue;
+        keys.add(`crawl:${p}`);
+      }
+      continue;
+    }
     for (const s of c.sources) {
       if (leadCo && refCompanies.has(leadCo) && (!c.lead_source || s === c.lead_source)) continue;
       keys.add(CRAWL_CLASS[s] ?? `crawl:${s}`);
