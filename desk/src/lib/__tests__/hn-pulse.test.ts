@@ -6,6 +6,7 @@ import {
   fetchHnPulse,
   filterRecentHits,
   hnSearchUrl,
+  isHnAiRelevant,
   HN_QUERIES_PER_TICK,
   HN_RECENT_SWEEP_TERMS,
   HN_RECENT_WINDOW_HOURS,
@@ -443,6 +444,51 @@ describe("HN freshness (dedupe v2 re-land)", () => {
     expect(r.queries_run).toEqual(["OpenAI"]);
     expect(r.candidates.map((c) => c.id).sort()).toEqual(["hn:fresh-1", "hn:fresh-2"]);
     expect(r.candidates.every((c) => c.briefEligible === false)).toBe(true);
+    wipe(cacheDir);
+  }, { timeout: 30_000 });
+});
+
+describe("HN AI-relevance gate (Beat 5)", () => {
+  test("must-reject: Antennagate + generic company-only titles", () => {
+    expect(isHnAiRelevant("Steve Jobs' Full iPhone 4 Antennagate Press Conference Q&A Session", "https://www.youtube.com/watch?v=BiN5ERktXz0")).toBe(false);
+    expect(isHnAiRelevant("The iPhone 4 'Antennagate' Press Conference Q&A", "https://daringfireball.net/2026/09/iphone_4_antennagate_q_and_a")).toBe(false);
+    expect(isHnAiRelevant("Irish data protection watchdog fines Google €403M over GDPR breaches")).toBe(false);
+    expect(isHnAiRelevant("Virtio-nvgpu: Near-native Nvidia GPU access inside a KVM guest")).toBe(false);
+    expect(isHnAiRelevant("Breaking Up with Google Play: Why Conversations Is Now Free")).toBe(false);
+    expect(isHnAiRelevant("Benchmarking Java Performance of JDK 8 Through OpenJDK 27")).toBe(false);
+  });
+  test("keeps AI terms, lab/model names, AI lab domains", () => {
+    expect(isHnAiRelevant("Gemini 3.8 text-to-speech")).toBe(true);
+    expect(isHnAiRelevant("Google takes the A.I. data center race to outer space")).toBe(true);
+    expect(isHnAiRelevant("Google’s Project Suncatcher to put ML infrastructure in space")).toBe(true);
+    expect(isHnAiRelevant("LensVLM-9B by Apple")).toBe(true);
+    expect(isHnAiRelevant("Transformers now runs llama.cpp quants")).toBe(true);
+    expect(isHnAiRelevant("Our new position paper", "https://www.anthropic.com/news/x")).toBe(true);
+    expect(isHnAiRelevant("Something from Google", "https://blog.google/innovation-and-ai/models-and-research/x/")).toBe(true);
+    expect(isHnAiRelevant("Something from Google", "https://blog.google/products-and-platforms/devices/googlebook/")).toBe(false);
+  });
+  test("fetchHnPulse aiOnly drops non-AI hits and reports count", async () => {
+    const cacheDir = resolve(import.meta.dir, `../../../artifacts/sage/hn-cache-test-ai-${Date.now()}`);
+    wipe(cacheDir);
+    const r = await fetchHnPulse({
+      cacheDir,
+      queries: ["OpenAI"],
+      maxQueries: 1,
+      aiOnly: true,
+      fetchImpl: (async () =>
+        new Response(
+          JSON.stringify({
+            hits: [
+              { objectID: "a1", title: "Steve Jobs' Full iPhone 4 Antennagate Press Conference Q&A Session", url: "https://www.youtube.com/watch?v=BiN5ERktXz0", author: "t", points: 13, created_at: "2026-09-24T06:18:02Z" },
+              { objectID: "a2", title: "OpenAI agent hacked Australian government website, PM says", url: "https://www.bbc.com/news/live/x", author: "t", points: 247, created_at: "2026-09-24T02:44:48Z" },
+            ],
+          }),
+          { status: 200, headers: { "Content-Type": "application/json" } },
+        )) as unknown as typeof fetch,
+    });
+    expect(r.ai_dropped).toBe(1);
+    expect(r.ai_dropped_titles?.[0]).toContain("Antennagate");
+    expect(r.candidates.map((c) => c.id)).toEqual(["hn:a2"]);
     wipe(cacheDir);
   }, { timeout: 30_000 });
 });

@@ -73,6 +73,9 @@ import {
 } from "../src/lib/github-shelf";
 import {
   fetchGnewsRss,
+  GNEWS_CORROBORATORS_PER_ITEM,
+  GNEWS_POOL_CAP,
+  GNEWS_RECENT_DAYS,
   resolveGnewsCacheDir,
   resetGnewsTickState,
   type GnewsRssItem,
@@ -97,6 +100,7 @@ import {
   clusterStats,
   DEDUPE_THRESHOLD,
   DEDUPE_WINDOW_HOURS,
+  pickCorroborators,
   topCrossSourcePairs,
   type PulseCluster,
   type PulseInput,
@@ -626,6 +630,7 @@ async function main() {
   let hnQueriesRun: string[] = [];
   let hnQueriesOk: string[] = [];
   let hnQueriesSoftFail: { query: string; reason: string; soft_fail: true }[] = [];
+  let hnAiDropped: number | null = null;
   try {
     // Dedupe v2 freshness: last-48h window + one OR-entity recency sweep (free Algolia only).
     const hn = await fetchHnPulse({
@@ -633,6 +638,7 @@ async function main() {
       hitsPerPage: 20,
       recentHours: HN_RECENT_WINDOW_HOURS,
       recentSweep: true,
+      aiOnly: true,
     });
     hnRows = hn.candidates;
     hnOk = hn.ok || hnRows.length > 0;
@@ -644,6 +650,8 @@ async function main() {
     console.log(
       `HN: ${hnRows.length} Pulse candidates queries=${hnQueriesRun.length} soft_fail=${hn.soft_fail} (classifyPost filtered; brief=false; rotate≤3)`,
     );
+    hnAiDropped = hn.ai_dropped ?? null;
+    console.log(`  hn ai_relevance dropped=${hn.ai_dropped ?? "off"}${hn.ai_dropped_titles?.length ? ` :: ${hn.ai_dropped_titles.slice(0, 12).map((t) => t.slice(0, 48)).join(" | ")}` : ""}`);
     console.log(
       `  hn recent_hours=${hn.recent_hours ?? "off"} sweep=${hn.recent_sweep ? `${hn.recent_sweep.ok ? "ok" : "fail"}(hits=${hn.recent_sweep.hits}${hn.recent_sweep.reason ? ` ${hn.recent_sweep.reason}` : ""})` : "off"}`,
     );
@@ -708,6 +716,8 @@ async function main() {
   let gnewsSoftFail = false;
   let gnewsSoftFailReason: string | undefined;
   let gnewsRows: GnewsRssItem[] = [];
+  let gnewsPool: GnewsRssItem[] = [];
+  let gnewsCorroborators: { id: string; anchor_id: string; score: number; title: string; publisher: string }[] = [];
   let gnewsQueriesRun: string[] = [];
   let gnewsQueriesOk: string[] = [];
   let gnewsQueriesSoftFail: { query: string; reason: string; soft_fail: true }[] = [];
@@ -718,11 +728,15 @@ async function main() {
   let gnewsFormat: string | null = null;
   let gnewsFromCache = false;
   try {
+    // Beat 5: standing (≤2) + lab-name (≤2) queries, last 2 days, pool ≤32 (round-robin per query).
     const gn = await fetchGnewsRss({
       cacheDir: resolveGnewsCacheDir(root),
-      displayCap: 8,
+      displayCap: GNEWS_POOL_CAP,
+      labQueries: true,
+      recentDays: GNEWS_RECENT_DAYS,
     });
     gnewsRows = gn.items;
+    gnewsPool = gn.pool ?? [];
     gnewsOk = gn.ok || gnewsRows.length > 0;
     gnewsSoftFail = gn.soft_fail;
     gnewsSoftFailReason = gn.soft_fail_reason;
@@ -945,6 +959,37 @@ async function main() {
       publisher: r.publisher,
     })),
   ];
+  // Beat 5: GNews corroborators — pool items (beyond the display cap) whose headline directly
+  // matches an HN/lab/security item under the same v2 rules. ≤3 per anchor. Never Brief · GNews-last lead.
+  if (gnewsPool.length) {
+    const toInput = (r: GnewsRssItem): PulseInput => ({
+      id: r.id,
+      source: "gnews-rss",
+      title: r.title,
+      url: r.link,
+      at: toIso(r.published),
+      publisher: r.publisher,
+    });
+    const shown = new Set(gnewsRows.map((r) => r.id));
+    const picks = pickCorroborators(pulseInputs, gnewsPool.map(toInput), {
+      perAnchor: GNEWS_CORROBORATORS_PER_ITEM,
+      exclude: shown,
+    });
+    const byId = new Map(gnewsPool.map((r) => [r.id, r]));
+    for (const p of picks) {
+      const row = byId.get(p.item.id);
+      if (!row) continue;
+      gnewsRows.push(row);
+      pulseInputs.push(toInput(row));
+      gnewsCorroborators.push({ id: row.id, anchor_id: p.anchor_id, score: p.score, title: row.title, publisher: row.publisher });
+    }
+    console.log(
+      `GNews corroborators: pool=${gnewsPool.length} picked=${picks.length} (≤${GNEWS_CORROBORATORS_PER_ITEM}/anchor, direct v2 match only)`,
+    );
+    for (const c of gnewsCorroborators.slice(0, 12)) {
+      console.log(`  corroborates ${c.anchor_id} score=${c.score} :: ${c.title.slice(0, 80)}`);
+    }
+  }
   const seenPath = resolve(root, "artifacts/sage/seen-index.json");
   const seenKey = (it: PulseInput) => canonicalizeUrl(it.url) || `id:${it.id}`;
   const seenIndex = markSeen(
@@ -978,8 +1023,16 @@ async function main() {
   for (const c of clusters.filter((c) => c.size > 1 && c.sources.length === 1).slice(0, 5)) {
     console.log(`  same-source [${c.sources.join("+")}] x${c.size} score=${c.score} :: ${c.title.slice(0, 72)}`);
   }
-  const topPairs = topCrossSourcePairs(pulseInputs, { limit: 15 });
+  const topPairs = topCrossSourcePairs(pulseInputs, { limit: 400 });
   const nearMisses = topPairs.filter((p) => !p.match).slice(0, 8);
+  const gnewsNearMisses = topPairs
+    .filter((p) => !p.match && (p.a.source === "gnews-rss" || p.b.source === "gnews-rss"))
+    .slice(0, 8);
+  for (const p of gnewsNearMisses) {
+    console.log(
+      `  gnews near-miss ${p.score.toFixed(3)} ${p.blocked ?? "below"} h=${p.hours_apart ?? "?"} [${p.a.source}] ${p.a.title.slice(0, 56)} ‖ [${p.b.source}] ${p.b.title.slice(0, 56)}`,
+    );
+  }
   for (const p of nearMisses) {
     console.log(
       `  near-miss ${p.score.toFixed(3)} ${p.blocked ?? "below"} h=${p.hours_apart ?? "?"} [${p.a.source}] ${p.a.title.slice(0, 56)} ‖ [${p.b.source}] ${p.b.title.slice(0, 56)}`,
@@ -1061,6 +1114,14 @@ async function main() {
         size: c.size,
         score: c.score,
         members: c.members.map((m) => ({ id: m.id, source: m.source, title: m.title, at: m.at })),
+      })),
+      gnews_near_misses: gnewsNearMisses.map((p) => ({
+        score: p.score,
+        blocked: p.blocked ?? "below-threshold",
+        hours_apart: p.hours_apart,
+        a: p.a,
+        b: p.b,
+        shared: p.shared,
       })),
       near_misses: nearMisses.map((p) => ({
         score: p.score,
@@ -1146,6 +1207,8 @@ async function main() {
       queries_ok: hnQueriesOk,
       queries_soft_fail: hnQueriesSoftFail,
       recent_hours: HN_RECENT_WINDOW_HOURS,
+      ai_only: true,
+      ai_dropped: hnAiDropped,
       url: "https://hn.algolia.com/api/v1/search",
       sample: hnRows.slice(0, 3).map((h) => ({ id: h.id, tag: h.tag, score: h.score, text: h.text })),
     },
@@ -1191,6 +1254,8 @@ async function main() {
       queries_attempted: gnewsQueriesAttempted,
       queries_ok: gnewsQueriesOkCount,
       items: gnewsRows.length,
+      pool: gnewsPool.length,
+      corroborators: gnewsCorroborators,
       http_status: gnewsHttpStatus,
       content_type: gnewsContentType,
       format: gnewsFormat,
