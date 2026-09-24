@@ -51,14 +51,48 @@ export function isAiRelevant(title: string, url?: string | null): boolean {
 }
 
 /**
- * Lab feeds whose every post is AI (OpenAI / DeepMind / Google AI blog / HF / Mistral) pass untouched.
- * General-company feeds (NVIDIA blog incl. GeForce NOW, NVIDIA dev, MS Research, Google Research)
- * must pass the title gate — their own domain does not count.
+ * Lab RSS relevance (Director, after 04a31d5): first-party research-lab feeds are AI by
+ * default — no title check (OpenAI, Anthropic, DeepMind, Google AI, MS Research, Google
+ * Research, HF, Mistral, …). Only NVIDIA's company-wide feeds (blogs.nvidia.com, developer
+ * blog) are filtered, by feed <category> / link path — never by title:
+ *  · GeForce NOW (category or /geforce-now path) → always out (weekly cloud-gaming game drops)
+ *  · other consumer categories/paths (Gaming, Cloud Gaming, GeForce, RTX Kit, /gaming, /geforce)
+ *    → out unless the post also carries an AI / data-center / research category
+ * The title-based AI gate stays only for HN and Google News.
  */
-export const AI_ONLY_LAB_FEEDS = new Set(["openai", "anthropic", "deepmind", "google-ai", "huggingface", "mistral"]);
+export const CATEGORY_FILTERED_LAB_FEEDS = new Set(["nvidia", "nvidia-dev"]);
 
-export function isLabItemAiRelevant(lab: string, title: string): boolean {
-  return AI_ONLY_LAB_FEEDS.has(lab) || isAiRelevantTitle(title);
+const NV_GFN_CATEGORY = /^geforce now$/i;
+const NV_GFN_PATH = /\/(blog\/)?(geforce-now|gfn)[-/]/i;
+const NV_CONSUMER_CATEGORY = /^(gaming|cloud gaming|geforce|geforce now|rtx kit|rtx remix|game development|esports)$/i;
+const NV_CONSUMER_PATH = /\/(gaming|geforce|game-ready|rtx-remix)([-/]|$)/i;
+const NV_AI_CATEGORY =
+  /\bai\b|artificial intelligence|generative|agentic|llms?\b|vlms?\b|inference|training|deep learning|machine learning|data (center|science)|research|robotics|physical ai|hpc|scientific computing|nemotron|nemo|cuda|tensorrt|dynamo|ai factory|ai infrastructure/i;
+
+export type LabRelevanceInput = { lab: string; link?: string | null; categories?: readonly string[] | null };
+
+/** Reason string when an NVIDIA post is dropped, null when kept. */
+export function labItemDropReason(it: LabRelevanceInput): string | null {
+  if (!CATEGORY_FILTERED_LAB_FEEDS.has(it.lab)) return null;
+  const cats = (it.categories ?? []).map((c) => c.trim()).filter(Boolean);
+  let path = "";
+  try {
+    path = new URL(String(it.link ?? "")).pathname;
+  } catch {
+    /* no link */
+  }
+  const gfnCat = cats.find((c) => NV_GFN_CATEGORY.test(c));
+  if (gfnCat) return `category:${gfnCat}`;
+  if (NV_GFN_PATH.test(path)) return `path:${path}`;
+  const consumerCat = cats.find((c) => NV_CONSUMER_CATEGORY.test(c));
+  const consumerPath = NV_CONSUMER_PATH.test(path) ? path : null;
+  if (!consumerCat && !consumerPath) return null;
+  if (cats.some((c) => NV_AI_CATEGORY.test(c))) return null;
+  return consumerCat ? `category:${consumerCat}` : `path:${consumerPath}`;
+}
+
+export function isLabItemRelevant(it: LabRelevanceInput): boolean {
+  return labItemDropReason(it) === null;
 }
 
 export function partitionAiRelevant<T>(items: readonly T[], keep: (it: T) => boolean): { kept: T[]; dropped: T[] } {

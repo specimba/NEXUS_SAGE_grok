@@ -92,7 +92,7 @@ import { SHELF as KEPT_SHELF } from "../src/data/shelf";
 import { crawlAgeHours, STALE_HOURS } from "../src/lib/x-pulse";
 import { HN_PULSE } from "../src/data/hn-pulse";
 import { RSS_LABS } from "../src/data/rss-labs";
-import { isAiRelevantTitle, isLabItemAiRelevant, partitionAiRelevant } from "../src/lib/ai-relevance";
+import { isAiRelevantTitle, isLabItemRelevant, labItemDropReason, partitionAiRelevant } from "../src/lib/ai-relevance";
 import { RSS_SECURITY } from "../src/data/rss-security";
 import { GNEWS_RSS } from "../src/data/gnews-rss";
 import {
@@ -688,7 +688,7 @@ async function main() {
   let rssSoftFail = false;
   let rssSoftFailReason: string | undefined;
   let rssPulse: LabRssItem[] = [];
-  let rssAiDropped: { lab: string; title: string }[] = [];
+  let rssAiDropped: { lab: string; title: string; reason: string }[] = [];
   let rssShelf: { href: string; label: string; reason: "rss-lab-shelf" }[] = [];
   let rssFeedsOk: { lab: string; url: string; count: number }[] = [];
   let rssFeedsSoftFail: { lab: string; reason: string; soft_fail: true }[] = [];
@@ -697,13 +697,13 @@ async function main() {
       cacheDir: resolveRssCacheDir(root),
       maxPerFeed: 12,
     });
-    // AI-relevance gate: general-company feeds (NVIDIA blog/dev, MS/Google Research) need an AI
-    // term or lab/model name in the title (GeForce NOW game posts drop). AI-lab-only feeds pass.
-    const rssGate = partitionAiRelevant(rss.pulse, (it) => isLabItemAiRelevant(it.lab, it.title));
+    // Lab relevance: research-lab feeds are AI by default. NVIDIA blog/dev drop consumer posts
+    // (GeForce NOW / gaming) by <category> + link path — never by title.
+    const rssGate = partitionAiRelevant(rss.pulse, (it) => isLabItemRelevant(it));
     rssPulse = rssGate.kept;
-    rssAiDropped = rssGate.dropped.map((it) => ({ lab: it.lab, title: it.title }));
+    rssAiDropped = rssGate.dropped.map((it) => ({ lab: it.lab, title: it.title, reason: labItemDropReason(it) ?? "" }));
     console.log(
-      `  rss ai_relevance dropped=${rssAiDropped.length}${rssAiDropped.length ? ` :: ${rssAiDropped.slice(0, 12).map((d) => `${d.lab}: ${d.title.slice(0, 48)}`).join(" | ")}` : ""}`,
+      `  rss lab_relevance dropped=${rssAiDropped.length}${rssAiDropped.length ? ` :: ${rssAiDropped.slice(0, 12).map((d) => `${d.lab}[${d.reason}]: ${d.title.slice(0, 48)}`).join(" | ")}` : ""}`,
     );
     rssShelf = rssToShelfItems(rss.shelf);
     rssFeedsOk = rss.feedsOk;
@@ -712,7 +712,7 @@ async function main() {
     rssSoftFailReason = rss.soft_fail_reason;
     rssOk = rss.ok;
     console.log(
-      `RSS labs: ${rssPulse.length} Pulse (of ${rss.pulse.length}, ${rssAiDropped.length} AI-gate drops) + ${rss.shelf.length} shelf from ${rss.feedsOk.length} feeds soft_fail=${rss.soft_fail} (brief=false · never HF displace)`,
+      `RSS labs: ${rssPulse.length} Pulse (of ${rss.pulse.length}, ${rssAiDropped.length} consumer drops) + ${rss.shelf.length} shelf from ${rss.feedsOk.length} feeds soft_fail=${rss.soft_fail} (brief=false · never HF displace)`,
     );
     for (const f of rss.feedsOk) {
       console.log(`  rss ${f.lab} @ ${f.url} → ${f.count} items`);
@@ -761,11 +761,14 @@ async function main() {
     // AI-relevance gate (title-only — GNews links are news.google.com redirects).
     const gnGate = partitionAiRelevant(gn.items, (it) => isAiRelevantTitle(it.title));
     gnewsRows = gnGate.kept;
-    gnewsPool = (gn.pool ?? []).filter((it) => isAiRelevantTitle(it.title));
+    // Pool is NOT title-gated: pool items only enter as corroborators of an accepted HN/lab/security
+    // anchor (direct v2 match), so they inherit its relevance — and NVIDIA's own GNews copies of
+    // kept lab posts attach and show as self_repost (0 sources) instead of silently vanishing.
+    gnewsPool = gn.pool ?? [];
     gnewsAiDropped = gnGate.dropped.map((it) => ({ publisher: it.publisher, title: it.title }));
-    gnewsPoolAiDropped = (gn.pool?.length ?? 0) - gnewsPool.length;
+    gnewsPoolAiDropped = 0;
     console.log(
-      `  gnews ai_relevance dropped=${gnewsAiDropped.length} shown · ${gnewsPoolAiDropped} pool${gnewsAiDropped.length ? ` :: ${gnewsAiDropped.slice(0, 12).map((d) => d.title.slice(0, 48)).join(" | ")}` : ""}`,
+      `  gnews ai_relevance dropped=${gnewsAiDropped.length} shown (pool ungated: corroborators inherit anchor relevance)${gnewsAiDropped.length ? ` :: ${gnewsAiDropped.slice(0, 12).map((d) => d.title.slice(0, 48)).join(" | ")}` : ""}`,
     );
     gnewsOk = gn.ok || gnewsRows.length > 0;
     gnewsSoftFail = gn.soft_fail;
@@ -964,7 +967,7 @@ async function main() {
       at: toIso(r.at),
       score: r.score,
     })),
-    ...(rssOk ? rssPulse : RSS_LABS.filter((r) => isLabItemAiRelevant(r.lab, r.title))).map((r) => ({
+    ...(rssOk ? rssPulse : RSS_LABS.filter((r) => isLabItemRelevant({ lab: r.lab, link: r.link }))).map((r) => ({
       id: r.id,
       source: "rss-lab" as const,
       title: r.title,
