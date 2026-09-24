@@ -1768,12 +1768,12 @@ body {
 .desk-lane-btn:not([aria-current="page"])::before {
   content: none;
 }
-/* Inactive tab numbers: var(--muted) on every lane (hover/focus included) — no amber on the tab row;
+/* Inactive tab numbers: var(--muted-foreground) on every lane (hover/focus included) — no amber on the tab row;
    the single filled active tab carries the signal. */
 .desk-lane-btn:not([aria-current="page"]) .lane-prefix,
 .desk-lane-btn:not([aria-current="page"]):hover .lane-prefix,
 .desk-lane-btn:not([aria-current="page"]):focus-visible .lane-prefix {
-  color: var(--muted);
+  color: var(--muted-foreground);
 }
 .desk-lane-btn[aria-current="page"] {
   background: var(--phosphor);
