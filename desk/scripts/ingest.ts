@@ -86,6 +86,27 @@ import {
 import { PAPERS as KEPT_PAPERS } from "../src/data/papers";
 import { SHELF as KEPT_SHELF } from "../src/data/shelf";
 import { crawlAgeHours, STALE_HOURS } from "../src/lib/x-pulse";
+import { HN_PULSE } from "../src/data/hn-pulse";
+import { RSS_LABS } from "../src/data/rss-labs";
+import { RSS_SECURITY } from "../src/data/rss-security";
+import { GNEWS_RSS } from "../src/data/gnews-rss";
+import {
+  canonicalizeUrl,
+  clusterItems,
+  clusterStats,
+  DEDUPE_THRESHOLD,
+  type PulseCluster,
+  type PulseInput,
+} from "../src/lib/dedupe";
+import {
+  parseLedger,
+  summarizeLedger,
+  updateLedger,
+  type SourceHealthRow,
+  type SourceOutcome,
+} from "../src/lib/source-health";
+import { markSeen, parseSeenIndex } from "../src/lib/seen-index";
+import { STALE_GUARD_HOURS } from "../src/lib/crawl-staleness";
 
 const root = resolve(import.meta.dir, "..");
 const dryRun = process.argv.includes("--dry-run");
@@ -102,6 +123,35 @@ function writeText(path: string, body: string) {
   }
   writeFileSync(path, body);
   console.log(`wrote ${path}`);
+}
+
+type RowMeta = { first_seen?: string; is_new?: boolean; cluster_id?: string };
+type MetaMap = Map<string, RowMeta>;
+
+function metaTail(meta: MetaMap | undefined, id: string): string {
+  const m = meta?.get(id);
+  if (!m) return "";
+  const parts: string[] = [];
+  if (m.first_seen) parts.push(`first_seen: ${JSON.stringify(m.first_seen)}`);
+  if (m.is_new != null) parts.push(`is_new: ${m.is_new}`);
+  if (m.cluster_id) parts.push(`cluster_id: ${JSON.stringify(m.cluster_id)}`);
+  return parts.length ? `, ${parts.join(", ")}` : "";
+}
+
+const META_TYPE_FIELDS = `  /** Beat 2 seen-index: first crawl stamp this canonical URL appeared. */
+  first_seen?: string;
+  /** Beat 2: first seen in the current crawl. */
+  is_new?: boolean;
+  /** Beat 2 cross-source dedupe cluster id (see pulse-clusters.ts). */
+  cluster_id?: string;
+`;
+
+function readJson(path: string): unknown {
+  try {
+    return existsSync(path) ? JSON.parse(readFileSync(path, "utf8")) : null;
+  } catch {
+    return null;
+  }
 }
 
 function renderPapersTs(papers: Paper[]): string {
@@ -139,10 +189,10 @@ function renderShelfTs(
   return `/** Operator toolkit + arXiv/RSS shelf — off Brief. Refresh via bun run ingest. */\nexport type ShelfItem = {\n  href: string;\n  label: string;\n  reason: "toolkit" | "toolkit-github" | "arxiv-shelf" | "rss-lab-shelf" | "rss-security-shelf" | "github-search-shelf";\n};\n\nexport const SHELF: ShelfItem[] = [\n${rows},\n];\n`;
 }
 
-function renderHnPulseTs(rows: HnPulseCandidate[], stamp: string): string {
+function renderHnPulseTs(rows: HnPulseCandidate[], stamp: string, meta?: MetaMap): string {
   const body = rows
     .map((r) => {
-      return `  { id: ${JSON.stringify(r.id)}, text: ${JSON.stringify(r.text)}, url: ${JSON.stringify(r.url)}, source: "hn-algolia" as const, score: ${r.score}, at: ${JSON.stringify(r.at)}, author: ${JSON.stringify(r.author)}, tag: ${JSON.stringify(r.tag)} as const }`;
+      return `  { id: ${JSON.stringify(r.id)}, text: ${JSON.stringify(r.text)}, url: ${JSON.stringify(r.url)}, source: "hn-algolia" as const, score: ${r.score}, at: ${JSON.stringify(r.at)}, author: ${JSON.stringify(r.author)}, tag: ${JSON.stringify(r.tag)} as const${metaTail(meta, r.id)} }`;
     })
     .join(",\n");
   return `/** HN Algolia Pulse chatter — generated/refreshed by bun run ingest. Pulse only; never Brief. */
@@ -155,7 +205,7 @@ export type HnPulseRow = {
   at: string;
   author: string;
   tag: "rest" | "rumor" | "companion" | "incident";
-};
+${META_TYPE_FIELDS}};
 
 export const HN_PULSE_AT = ${JSON.stringify(stamp)};
 
@@ -165,10 +215,10 @@ ${body},
 `;
 }
 
-function renderRssLabsTs(rows: LabRssItem[], stamp: string): string {
+function renderRssLabsTs(rows: LabRssItem[], stamp: string, meta?: MetaMap): string {
   const body = rows
     .map((r) => {
-      return `  { id: ${JSON.stringify(r.id)}, lab: ${JSON.stringify(r.lab)} as const, title: ${JSON.stringify(r.title)}, link: ${JSON.stringify(r.link)}, published: ${JSON.stringify(r.published)}, summary: ${JSON.stringify(r.summary)}, source: "rss-lab" as const, tag: ${JSON.stringify(r.tag)} as const }`;
+      return `  { id: ${JSON.stringify(r.id)}, lab: ${JSON.stringify(r.lab)} as const, title: ${JSON.stringify(r.title)}, link: ${JSON.stringify(r.link)}, published: ${JSON.stringify(r.published)}, summary: ${JSON.stringify(r.summary)}, source: "rss-lab" as const, tag: ${JSON.stringify(r.tag)} as const${metaTail(meta, r.id)} }`;
     })
     .join(",\n");
   return `/** Lab blog RSS Pulse — generated/refreshed by bun run ingest. Pulse/shelf only; never Brief. */
@@ -181,7 +231,7 @@ export type RssLabRow = {
   summary: string;
   source: "rss-lab";
   tag: "rest" | "rumor" | "companion" | "incident";
-};
+${META_TYPE_FIELDS}};
 
 export const RSS_LABS_AT = ${JSON.stringify(stamp)};
 
@@ -191,10 +241,10 @@ ${body},
 `;
 }
 
-function renderRssSecurityTs(rows: SecurityRssItem[], stamp: string): string {
+function renderRssSecurityTs(rows: SecurityRssItem[], stamp: string, meta?: MetaMap): string {
   const body = rows
     .map((r) => {
-      return `  { id: ${JSON.stringify(r.id)}, lab: ${JSON.stringify(r.lab)} as const, title: ${JSON.stringify(r.title)}, link: ${JSON.stringify(r.link)}, published: ${JSON.stringify(r.published)}, summary: ${JSON.stringify(r.summary)}, source: "rss-security" as const, tag: ${JSON.stringify(r.tag)} as const }`;
+      return `  { id: ${JSON.stringify(r.id)}, lab: ${JSON.stringify(r.lab)} as const, title: ${JSON.stringify(r.title)}, link: ${JSON.stringify(r.link)}, published: ${JSON.stringify(r.published)}, summary: ${JSON.stringify(r.summary)}, source: "rss-security" as const, tag: ${JSON.stringify(r.tag)} as const${metaTail(meta, r.id)} }`;
     })
     .join(",\n");
   return `/** Security lab RSS Pulse — generated/refreshed by bun run ingest. Pulse/shelf/Digest-ref only; never Brief. */
@@ -207,7 +257,7 @@ export type RssSecurityRow = {
   summary: string;
   source: "rss-security";
   tag: "rest" | "rumor" | "companion" | "incident";
-};
+${META_TYPE_FIELDS}};
 
 export const RSS_SECURITY_AT = ${JSON.stringify(stamp)};
 
@@ -218,10 +268,10 @@ ${body},
 }
 
 
-function renderGnewsRssTs(rows: GnewsRssItem[], stamp: string): string {
+function renderGnewsRssTs(rows: GnewsRssItem[], stamp: string, meta?: MetaMap): string {
   const body = rows
     .map((r) => {
-      return `  { id: ${JSON.stringify(r.id)}, title: ${JSON.stringify(r.title)}, link: ${JSON.stringify(r.link)}, published: ${JSON.stringify(r.published)}, summary: ${JSON.stringify(r.summary)}, publisher: ${JSON.stringify(r.publisher)}, query: ${JSON.stringify(r.query)}, source: "gnews-rss" as const, tag: ${JSON.stringify(r.tag)} as const }`;
+      return `  { id: ${JSON.stringify(r.id)}, title: ${JSON.stringify(r.title)}, link: ${JSON.stringify(r.link)}, published: ${JSON.stringify(r.published)}, summary: ${JSON.stringify(r.summary)}, publisher: ${JSON.stringify(r.publisher)}, query: ${JSON.stringify(r.query)}, source: "gnews-rss" as const, tag: ${JSON.stringify(r.tag)} as const${metaTail(meta, r.id)} }`;
     })
     .join(",\n");
   return `/** Google News RSS Pulse spice — generated/refreshed by bun run ingest. Quiet shelf only; never Brief · never sole lead. */
@@ -235,11 +285,76 @@ export type GnewsRssRow = {
   query: string;
   source: "gnews-rss";
   tag: "rest" | "rumor" | "companion" | "incident";
-};
+${META_TYPE_FIELDS}};
 
 export const GNEWS_RSS_AT = ${JSON.stringify(stamp)};
 
 export const GNEWS_RSS: GnewsRssRow[] = [
+${body},
+];
+`;
+}
+
+function renderPulseClustersTs(
+  clusters: PulseCluster[],
+  stats: ReturnType<typeof clusterStats>,
+  stamp: string,
+): string {
+  const body = clusters
+    .map((c) => {
+      const row = {
+        id: c.id,
+        title: c.title,
+        url: c.url,
+        canonical_url: c.canonical_url,
+        lead_id: c.lead_id,
+        lead_source: c.lead_source,
+        sources: c.sources,
+        member_ids: c.member_ids,
+        size: c.size,
+        at: c.at,
+        first_seen: c.first_seen ?? null,
+        is_new: Boolean(c.is_new),
+      };
+      return `  ${JSON.stringify(row)}`;
+    })
+    .join(",\n");
+  return `/** Cross-source Pulse clusters (Beat 2 dedupe) — generated by bun run ingest. Pulse only; never Brief. */
+import type { PulseSource } from "@/lib/dedupe";
+
+export type PulseClusterRow = {
+  id: string;
+  title: string;
+  url: string;
+  canonical_url: string;
+  lead_id: string;
+  lead_source: PulseSource;
+  sources: PulseSource[];
+  member_ids: string[];
+  size: number;
+  at: string;
+  first_seen: string | null;
+  is_new: boolean;
+};
+
+export const PULSE_CLUSTERS_AT = ${JSON.stringify(stamp)};
+
+export const PULSE_CLUSTER_STATS = ${JSON.stringify({ ...stats, threshold: DEDUPE_THRESHOLD })} as const;
+
+export const PULSE_CLUSTERS: PulseClusterRow[] = [
+${body},
+];
+`;
+}
+
+function renderSourceHealthTs(rows: SourceHealthRow[], stamp: string): string {
+  const body = rows.map((r) => `  ${JSON.stringify(r)}`).join(",\n");
+  return `/** Source health ledger snapshot (Beat 2) — generated by bun run ingest from artifacts/sage/source-health.json. Rail/UI only; never Brief. */
+import type { SourceHealthRow } from "@/lib/source-health";
+
+export const SOURCE_HEALTH_AT = ${JSON.stringify(stamp)};
+
+export const SOURCE_HEALTH: SourceHealthRow[] = [
 ${body},
 ];
 `;
@@ -336,13 +451,17 @@ async function main() {
     };
   });
   let hfOk = false;
+  let hfLiveCount = 0;
+  let hfFailReason: string | undefined;
   try {
     const live = await fetchHfPapers();
+    hfLiveCount = live.length;
     const keptAgent = papers.filter(isAgentPaper);
     papers = mergeDailyPapers(live, { keptAgent, limit: 8 });
     hfOk = true;
     console.log(`HF: ${live.length} live → ${papers.length} kept (displacement rule applied)`);
   } catch (err) {
+    hfFailReason = String(err);
     console.log(`HF: fetch failed — keeping existing papers (${String(err)})`);
   }
 
@@ -350,6 +469,7 @@ async function main() {
   let arxivOk = false;
   let arxivCount = 0;
   let arxivShelf: { href: string; label: string; reason: "arxiv-shelf" }[] = [];
+  let arxivFailReason: string | undefined;
   try {
     const enrichments = await fetchArxivByIds(
       papers.map((p) => p.id),
@@ -373,6 +493,7 @@ async function main() {
       console.log(`arXiv shelf: ${arxivShelf.length} search hits (shelfOnly, off Brief)`);
     }
   } catch (err) {
+    arxivFailReason = String(err);
     console.log(`arXiv: enrich failed — continuing (${String(err)})`);
   }
 
@@ -625,6 +746,7 @@ async function main() {
   let secPulse: SecurityRssItem[] = [];
   let secShelf: { href: string; label: string; reason: "rss-security-shelf" }[] = [];
   let secFeedsOk: { lab: string; url: string; count: number }[] = [];
+  let secFailReason: string | undefined;
   try {
     const sec = await fetchRssSecurity({
       cacheDir: resolveSecRssCacheDir(root),
@@ -634,6 +756,7 @@ async function main() {
     secShelf = toSecShelfItems(sec.shelf);
     secFeedsOk = sec.feedsOk;
     secOk = sec.feedsOk.length >= 1;
+    if (!secOk) secFailReason = `no feeds ok (${sec.feedsSkipped.map((s) => `${s.lab}: ${s.reason}`).join("; ") || "empty"})`;
     console.log(
       `RSS security: ${sec.pulse.length} Pulse + ${sec.shelf.length} shelf from ${sec.feedsOk.length} feeds (brief=false)`,
     );
@@ -647,6 +770,7 @@ async function main() {
       console.log(`  rss-sec ${it.lab} [${it.tag}] :: ${it.title.slice(0, 72)}`);
     }
   } catch (err) {
+    secFailReason = String(err);
     console.log(`RSS security: fetch failed — continuing (${String(err)})`);
   }
 
@@ -770,6 +894,95 @@ async function main() {
     `URL score: shelf=${scored.shelf.length} pulse=${scored.pulse.length} rest=${scored.rest.length} drop=${scored.dropped.length} arxivShelf=${arxivShelf.length} rssShelf=${rssShelf.length} secShelf=${secShelf.length} githubShelf=${githubShelf.length}`,
   );
 
+  // ── Beat 2 crawl reliability: cross-source dedupe + seen-index + source health ledger ──
+  const toIso = (v: string) => {
+    const t = Date.parse(v);
+    return Number.isFinite(t) ? new Date(t).toISOString().replace(/\.\d{3}Z$/, "Z") : v;
+  };
+  const pulseInputs: PulseInput[] = [
+    ...(hnOk ? hnRows : HN_PULSE).map((r) => ({
+      id: r.id,
+      source: "hn-algolia" as const,
+      title: r.text,
+      url: r.url,
+      at: toIso(r.at),
+      score: r.score,
+    })),
+    ...(rssOk ? rssPulse : RSS_LABS).map((r) => ({
+      id: r.id,
+      source: "rss-lab" as const,
+      title: r.title,
+      url: r.link,
+      at: toIso(r.published),
+      publisher: r.lab,
+    })),
+    ...(secOk ? secPulse : RSS_SECURITY).map((r) => ({
+      id: r.id,
+      source: "rss-security" as const,
+      title: r.title,
+      url: r.link,
+      at: toIso(r.published),
+      publisher: r.lab,
+    })),
+    ...(gnewsOk || gnewsSoftFail ? gnewsRows : GNEWS_RSS).map((r) => ({
+      id: r.id,
+      source: "gnews-rss" as const,
+      title: r.title,
+      url: r.link,
+      at: toIso(r.published),
+      publisher: r.publisher,
+    })),
+  ];
+  const seenPath = resolve(root, "artifacts/sage/seen-index.json");
+  const seenKey = (it: PulseInput) => canonicalizeUrl(it.url) || `id:${it.id}`;
+  const seenIndex = markSeen(
+    parseSeenIndex(readJson(seenPath)),
+    pulseInputs.map((it) => ({ key: seenKey(it), title: it.title })),
+    stamp,
+  );
+  for (const it of pulseInputs) it.first_seen = seenIndex.entries[seenKey(it)]?.first_seen;
+  const clusters = clusterItems(pulseInputs, { stamp }).sort(
+    (a, b) => b.sources.length - a.sources.length || (Date.parse(b.at) || 0) - (Date.parse(a.at) || 0),
+  );
+  const cStats = clusterStats(pulseInputs.length, clusters);
+  const rowMeta: MetaMap = new Map();
+  for (const c of clusters) {
+    for (const m of c.members) {
+      rowMeta.set(m.id, {
+        first_seen: m.first_seen,
+        is_new: m.first_seen === stamp,
+        cluster_id: c.id,
+      });
+    }
+  }
+  const newItems = pulseInputs.filter((it) => it.first_seen === stamp).length;
+  console.log(
+    `Dedupe: items_in=${cStats.items_in} clusters_out=${cStats.clusters_out} collapsed=${cStats.collapsed} multi_source=${cStats.multi_source} multi_member=${cStats.multi_member} threshold=${DEDUPE_THRESHOLD}`,
+  );
+  for (const c of clusters.filter((c) => c.size > 1).slice(0, 5)) {
+    console.log(`  cluster [${c.sources.join("+")}] x${c.size} :: ${c.title.slice(0, 72)}`);
+  }
+  console.log(`Seen-index: ${Object.keys(seenIndex.entries).length} keys · new this crawl=${newItems}`);
+
+  const outcomes: SourceOutcome[] = [
+    { id: "hf", ok: hfOk, items: hfLiveCount, reason: hfFailReason },
+    { id: "arxiv", ok: !arxivFailReason, items: arxivCount + arxivShelf.length, reason: arxivFailReason },
+    { id: "openalex", ok: !openalexSoftFail, items: openalexCount, reason: openalexSoftFailReason },
+    { id: "crossref", ok: !crossrefSoftFail, items: crossrefCount, reason: crossrefSoftFailReason },
+    { id: "hn", ok: hnOk, items: hnRows.length, reason: hnSoftFailReason ?? "no candidates" },
+    { id: "rss_labs", ok: rssOk, items: rssPulse.length + rssShelf.length, reason: rssSoftFailReason ?? "no feeds ok" },
+    { id: "rss_security", ok: secOk, items: secPulse.length + secShelf.length, reason: secFailReason },
+    { id: "gnews", ok: gnewsOk, items: gnewsRows.length, reason: gnewsSoftFailReason ?? "empty" },
+    { id: "github", ok: !githubSoftFail, items: githubShelf.length, reason: githubSoftFailReason },
+    { id: "wikidata", ok: wikidataOk && !wikidataSoftFail, items: wikidataHints.length, reason: wikidataSoftFailReason ?? "not ok" },
+  ];
+  const healthPath = resolve(root, "artifacts/sage/source-health.json");
+  const ledger = updateLedger(parseLedger(readJson(healthPath)), outcomes, stamp);
+  const healthRows = summarizeLedger(ledger);
+  console.log(
+    `Source health: ${healthRows.map((r) => `${r.id}=${r.state}(ok${r.streak_ok}/fail${r.streak_fail},n=${r.items_last})`).join(" ")}`,
+  );
+
   // Stamp pulse — job ran
   const crawlPath = resolve(root, "src/data/x-crawl.ts");
   const crawlSrc = readFileSync(crawlPath, "utf8");
@@ -783,20 +996,24 @@ async function main() {
     writeText(resolve(root, "src/data/shelf.ts"), renderShelfTs(shelfItems));
   }
   if (hnOk) {
-    writeText(resolve(root, "src/data/hn-pulse.ts"), renderHnPulseTs(hnRows, stamp));
+    writeText(resolve(root, "src/data/hn-pulse.ts"), renderHnPulseTs(hnRows, stamp, rowMeta));
   }
   if (rssOk) {
-    writeText(resolve(root, "src/data/rss-labs.ts"), renderRssLabsTs(rssPulse, stamp));
+    writeText(resolve(root, "src/data/rss-labs.ts"), renderRssLabsTs(rssPulse, stamp, rowMeta));
   }
   if (secOk) {
     writeText(
       resolve(root, "src/data/rss-security.ts"),
-      renderRssSecurityTs(secPulse, stamp),
+      renderRssSecurityTs(secPulse, stamp, rowMeta),
     );
   }
   if (gnewsOk || gnewsSoftFail) {
-    writeText(resolve(root, "src/data/gnews-rss.ts"), renderGnewsRssTs(gnewsRows, stamp));
+    writeText(resolve(root, "src/data/gnews-rss.ts"), renderGnewsRssTs(gnewsRows, stamp, rowMeta));
   }
+  writeText(seenPath, `${JSON.stringify(seenIndex, null, 2)}\n`);
+  writeText(healthPath, `${JSON.stringify(ledger, null, 2)}\n`);
+  writeText(resolve(root, "src/data/source-health.ts"), renderSourceHealthTs(healthRows, stamp));
+  writeText(resolve(root, "src/data/pulse-clusters.ts"), renderPulseClustersTs(clusters, cStats, stamp));
 
   const report = {
     schema: 1,
@@ -804,6 +1021,9 @@ async function main() {
     lead_id: "hf-incident",
     stamped_at: stamp,
     stale_hours: STALE_HOURS,
+    stale_guard_hours: STALE_GUARD_HOURS,
+    dedupe: { ...cStats, threshold: DEDUPE_THRESHOLD, new_items: newItems },
+    source_health: healthRows.map((r) => ({ id: r.id, state: r.state, streak_ok: r.streak_ok, streak_fail: r.streak_fail, items_last: r.items_last })),
     age_check: crawlAgeHours(stamp),
     hf: { ok: hfOk, count: papers.length, url: HF_DAILY_PAPERS_URL },
     arxiv: {
