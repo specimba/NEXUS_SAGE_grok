@@ -155,3 +155,15 @@ When `crontab` returns: `desk/scripts/install-cron.sh` · example `desk/ops/cron
 
 
 *Ops desk · phosphor · keep disk truth · free providers only.*
+
+## SAGE 4h crawl — Bot routine (2026-09-25, AUTONOMY-4H Beat 1)
+
+**Replaces** the weekday-only A1 window (`*/30 9-16 * * 1-5` / Mon–Fri 09–16 Bot routine) — that routine is **retired** (no double fire).
+
+| Routine | Schedule (Europe/Istanbul, all days) | Each fire |
+|---|---|---|
+| **SAGE 4h crawl** (Grok Bot routine) | 02:11 · 06:11 · 10:11 · 14:11 · 18:11 · 22:11 | `cd desk && FORCE=1 bun scripts/a1-stale-ingest.mjs` (ingest → dual-home pack → rebuild/restart `:3000` only if footer lags) then `A2_FORCE_WINDOW=1 bun run a2:tick` |
+
+- Soft-fail per source (unchanged). Whole-ingest failure → **retry once after 10 min** → still failing → ONE room line to Canberk.
+- **Silent on success** (no room message).
+- First fire proof: crawl `2026-09-24T07:12:29Z` → `2026-09-24T21:12:48Z` · live `:3000` footer `21:12Z crawl FRESH` · pack `sage-pack-003-20260924T211423Z.tar.gz`.

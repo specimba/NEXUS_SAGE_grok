@@ -10,7 +10,7 @@ export type HnPulseRow = {
   tag: "rest" | "rumor" | "companion" | "incident";
 };
 
-export const HN_PULSE_AT = "2026-09-24T07:12:29Z";
+export const HN_PULSE_AT = "2026-09-24T21:12:48Z";
 
 export const HN_PULSE: HnPulseRow[] = [
   { id: "hn:17824218", text: "Intel Publishes Microcode Patches, No Benchmarking or Comparison Allowed", url: "https://perens.com/2018/08/22/new-intel-microcode-license-restriction-is-not-acceptable/", source: "hn-algolia" as const, score: 1318, at: "2018-08-23T03:05:16Z", author: "jeswin", tag: "rest" as const },
