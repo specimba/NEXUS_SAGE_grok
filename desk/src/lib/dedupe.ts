@@ -14,6 +14,8 @@
  * Locks: GNews never sole-leads a multi-source cluster (lead prefers lab RSS > HN > security RSS > GNews).
  */
 
+import { companyOf, isSelfRepost, type Company } from "./publisher-company";
+
 export type PulseSource = "rss-lab" | "hn-algolia" | "rss-security" | "gnews-rss";
 
 export type PulseInput = {
@@ -27,7 +29,11 @@ export type PulseInput = {
   first_seen?: string;
 };
 
-export type PulseMember = PulseInput & { canonical_url: string };
+export type PulseMember = PulseInput & {
+  canonical_url: string;
+  /** GNews item published by the same company as the cluster's original post — counts 0 sources. */
+  self_repost?: true;
+};
 
 export type PulseCluster = {
   id: string;
@@ -36,7 +42,10 @@ export type PulseCluster = {
   canonical_url: string;
   lead_id: string;
   lead_source: PulseSource;
+  /** Independent source classes (self-reposts excluded) — drives multi-source badges. */
   sources: PulseSource[];
+  /** Every source class present, self-reposts included. */
+  all_sources: PulseSource[];
   member_ids: string[];
   members: PulseMember[];
   size: number;
@@ -537,7 +546,7 @@ export function pickCorroborators(
   anchors: readonly PulseInput[],
   pool: readonly PulseInput[],
   opts: ScoreOpts & { perAnchor?: number; exclude?: ReadonlySet<string> } = {},
-): { item: PulseInput; anchor_id: string; score: number }[] {
+): { item: PulseInput; anchor_id: string; score: number; self_repost: boolean }[] {
   const perAnchor = opts.perAnchor ?? 3;
   const nonG = anchors.filter((a) => a.source !== "gnews-rss");
   const cands = pool.filter((p) => !opts.exclude?.has(p.id));
@@ -558,10 +567,16 @@ export function pickCorroborators(
       byAnchor.set(b.anchor_id, list);
     }
   });
-  const out: { item: PulseInput; anchor_id: string; score: number }[] = [];
+  const out: { item: PulseInput; anchor_id: string; score: number; self_repost: boolean }[] = [];
+  const anchorById = new Map(nonG.map((a) => [a.id, a]));
   for (const list of byAnchor.values()) {
     list.sort((x, y) => y.score - x.score || (Date.parse(y.item.at) || 0) - (Date.parse(x.item.at) || 0));
-    out.push(...list.slice(0, perAnchor));
+    for (const c of list.slice(0, perAnchor)) {
+      // Same company as the anchor (e.g. "… - NVIDIA Blog" for a blogs.nvidia.com post): still
+      // attached as a member, but counts 0 corroborating sources.
+      const ac = companyOf(anchorById.get(c.anchor_id) ?? {});
+      out.push({ ...c, self_repost: ac !== null && isSelfRepost(c.item, new Set([ac])) });
+    }
   }
   return out;
 }
@@ -618,9 +633,18 @@ export function clusterItems(
   const clusters: PulseCluster[] = [];
   for (const [root, group] of [...groups.entries()].sort((a, b) => a[0] - b[0])) {
     const lead = pickLead(group);
-    const sources = [...new Set(group.map((g) => g.source))].sort(
-      (a, b) => LEAD_PRIORITY[a] - LEAD_PRIORITY[b],
+    // Self-repost rule: a GNews member whose publisher is the same company as any non-GNews
+    // member (the original post / its lab feed / the story an HN row links to) counts 0 sources.
+    const origin = new Set(
+      group.filter((g) => g.source !== "gnews-rss").map((g) => companyOf(g)).filter((c): c is Company => c !== null),
     );
+    for (const g of group) {
+      if (g.source === "gnews-rss" && origin.size && isSelfRepost(g, origin)) g.self_repost = true;
+      else delete g.self_repost;
+    }
+    const bySrc = (a: PulseSource, b: PulseSource) => LEAD_PRIORITY[a] - LEAD_PRIORITY[b];
+    const all_sources = [...new Set(group.map((g) => g.source))].sort(bySrc);
+    const sources = [...new Set(group.filter((g) => !g.self_repost).map((g) => g.source))].sort(bySrc);
     const first_seen = minIso(group.map((g) => g.first_seen));
     clusters.push({
       id: `cl:${lead.id}`,
@@ -630,6 +654,7 @@ export function clusterItems(
       lead_id: lead.id,
       lead_source: lead.source,
       sources,
+      all_sources,
       member_ids: group.map((g) => g.id),
       members: group,
       size: group.length,
@@ -645,6 +670,11 @@ export function clusterItems(
 export function clusterStats(inCount: number, clusters: readonly PulseCluster[]) {
   const multi = clusters.filter((c) => c.sources.length > 1);
   return {
+    /** Clusters with ≥2 INDEPENDENT source classes (self-reposts count 0). */
+    multi_source_independent: multi.length,
+    /** Clusters with ≥2 source classes counting self-reposts (pre-fix definition). */
+    multi_source_raw: clusters.filter((c) => (c.all_sources ?? c.sources).length > 1).length,
+    self_reposts: clusters.reduce((n, c) => n + c.members.filter((m) => m.self_repost).length, 0),
     items_in: inCount,
     clusters_out: clusters.length,
     collapsed: inCount - clusters.length,
