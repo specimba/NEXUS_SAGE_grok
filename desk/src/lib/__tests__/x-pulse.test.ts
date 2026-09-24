@@ -31,17 +31,17 @@ describe("applyHydrate", () => {
 });
 
 describe("crawlAgeHours", () => {
-  test("STALE when age > 18h", () => {
+  test("STALE when age > 6h", () => {
     const crawledAt = "2026-09-03T05:40:00Z";
     const now = Date.parse(crawledAt) + (STALE_HOURS + 1) * 3_600_000;
     const r = crawlAgeHours(crawledAt, now);
-    expect(r.hours).toBeGreaterThan(18);
+    expect(r.hours).toBeGreaterThan(6);
     expect(r.stale).toBe(true);
   });
 
-  test("not STALE under 18h", () => {
+  test("not STALE under 6h", () => {
     const crawledAt = "2026-09-03T05:40:00Z";
-    const now = Date.parse(crawledAt) + 10 * 3_600_000;
+    const now = Date.parse(crawledAt) + 4 * 3_600_000;
     const r = crawlAgeHours(crawledAt, now);
     expect(r.stale).toBe(false);
   });

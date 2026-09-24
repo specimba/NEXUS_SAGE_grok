@@ -87,15 +87,15 @@ describe("HF paper displacement", () => {
 });
 
 describe("STALE banner logic", () => {
-  test("age > 18h is STALE (Pulse .sage-stale gate)", () => {
+  test("age > 6h is STALE (Pulse .sage-stale gate)", () => {
     const crawledAt = "2026-09-03T05:40:00Z";
     const now = Date.parse(crawledAt) + (STALE_HOURS + 0.5) * 3_600_000;
     const r = crawlAgeHours(crawledAt, now);
     expect(r.stale).toBe(true);
-    expect(r.hours).toBeGreaterThan(18);
+    expect(r.hours).toBeGreaterThan(6);
   });
 
-  test("fresh crawl under 18h is not STALE", () => {
+  test("fresh crawl under 6h is not STALE", () => {
     const crawledAt = "2026-09-04T04:00:00Z";
     const now = Date.parse(crawledAt) + 2 * 3_600_000;
     expect(crawlAgeHours(crawledAt, now).stale).toBe(false);

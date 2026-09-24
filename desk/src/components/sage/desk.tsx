@@ -15,6 +15,7 @@ import { WIKIDATA_DENY_LAST } from "@/data/wikidata-deny-last";
 import { SOFT_FAIL_METERS } from "@/data/soft-fail-meters";
 import { isDigestDue, nextDue, PACK_KEY, renderPlan, renderReport } from "@/lib/digest-pack";
 import { crawlAgeHours } from "@/lib/x-pulse";
+import { crawlFreshness, STALE_GUARD_HOURS } from "@/lib/crawl-staleness";
 import { cn } from "@/lib/cn";
 
 const LANES = ["brief", "pulse", "digest", "papers", "voice", "governance"] as const;
@@ -55,6 +56,7 @@ export function Desk({ buildId = "dev", serverStartedAt = "" }: DeskProps) {
   };
 
   const age = crawlAgeHours(CRAWL_AT);
+  const fresh = crawlFreshness(CRAWL_AT);
   return (
     <div className="desk-shell relative">
       <div className="scanline pointer-events-none absolute inset-0 z-50" aria-hidden />
@@ -72,8 +74,13 @@ export function Desk({ buildId = "dev", serverStartedAt = "" }: DeskProps) {
             </div>
             <div className="flex flex-wrap items-center gap-2">
               <span className="desk-chip desk-chip-quiet">STABLE</span>
-              <span className={cn("desk-chip", age.stale ? "sage-stale" : "desk-chip-live")}>
-                {age.stale ? `STALE ${age.hours.toFixed(1)}H` : "PULSE LIVE"}
+              <span
+                className={cn("desk-chip tabular-nums", age.stale ? "desk-chip-warn sage-stale-chip" : "desk-chip-live")}
+                data-crawl-state={fresh.label}
+                role="status"
+                title={`crawl age ${fresh.hours.toFixed(1)}h · STALE after ${STALE_GUARD_HOURS}h (4h routine)`}
+              >
+                {fresh.label} {fresh.hours.toFixed(1)}H
               </span>
               <span className="desk-chip desk-chip-live tabular-nums" title="crawl snap">
                 crawl {CRAWL_AT}

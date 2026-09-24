@@ -2,10 +2,92 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-09-24T21:12:48Z",
-  "stale_hours": 18,
+  "stamped_at": "2026-09-24T21:18:09Z",
+  "stale_hours": 6,
+  "stale_guard_hours": 6,
+  "dedupe": {
+    "items_in": 171,
+    "clusters_out": 170,
+    "collapsed": 1,
+    "multi_source": 0,
+    "multi_member": 1,
+    "threshold": 0.6,
+    "new_items": 171
+  },
+  "source_health": [
+    {
+      "id": "arxiv",
+      "state": "ok",
+      "streak_ok": 1,
+      "streak_fail": 0,
+      "items_last": 13
+    },
+    {
+      "id": "crossref",
+      "state": "ok",
+      "streak_ok": 1,
+      "streak_fail": 0,
+      "items_last": 1
+    },
+    {
+      "id": "github",
+      "state": "ok",
+      "streak_ok": 1,
+      "streak_fail": 0,
+      "items_last": 2
+    },
+    {
+      "id": "gnews",
+      "state": "ok",
+      "streak_ok": 1,
+      "streak_fail": 0,
+      "items_last": 8
+    },
+    {
+      "id": "hf",
+      "state": "ok",
+      "streak_ok": 1,
+      "streak_fail": 0,
+      "items_last": 50
+    },
+    {
+      "id": "hn",
+      "state": "ok",
+      "streak_ok": 1,
+      "streak_fail": 0,
+      "items_last": 30
+    },
+    {
+      "id": "openalex",
+      "state": "fail",
+      "streak_ok": 0,
+      "streak_fail": 1,
+      "items_last": 0
+    },
+    {
+      "id": "rss_labs",
+      "state": "ok",
+      "streak_ok": 1,
+      "streak_fail": 0,
+      "items_last": 106
+    },
+    {
+      "id": "rss_security",
+      "state": "ok",
+      "streak_ok": 1,
+      "streak_fail": 0,
+      "items_last": 27
+    },
+    {
+      "id": "wikidata",
+      "state": "ok",
+      "streak_ok": 1,
+      "streak_fail": 0,
+      "items_last": 3
+    }
+  ],
   "age_check": {
-    "hours": 0.026533333333333332,
+    "hours": 0.01746027777777778,
     "stale": false
   },
   "hf": {
@@ -44,8 +126,8 @@
     "enriched": 1,
     "query": "The Tasteful Agent: Measuring and Improving Taste in Long-Horizon Tasks",
     "mode": "bibliographic",
-    "from_cache": false,
-    "searches": 1,
+    "from_cache": true,
+    "searches": 0,
     "brief": false,
     "pulse_lead": false,
     "papers_enrich_only": true,
@@ -116,47 +198,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "https://openai.com/news/rss.xml",
+        "url": "(cache:openai)",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "https://deepmind.google/blog/rss.xml",
+        "url": "(cache:deepmind)",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "https://blog.google/technology/ai/rss/",
+        "url": "(cache:google-ai)",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "https://huggingface.co/blog/feed.xml",
+        "url": "(cache:huggingface)",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "https://mistral.ai/rss.xml",
+        "url": "(cache:mistral)",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "https://blogs.nvidia.com/feed/",
+        "url": "(cache:nvidia)",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "https://developer.nvidia.com/blog/feed",
+        "url": "(cache:nvidia-dev)",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
+        "url": "(cache:ms-research)",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "https://research.google/blog/rss/",
+        "url": "(cache:google-research)",
         "count": 12
       }
     ],
@@ -202,17 +284,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "https://blog.trailofbits.com/feed/",
+        "url": "(cache:trailofbits)",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "https://blog.fox-it.com/feed/",
+        "url": "(cache:fox-it)",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "https://projectzero.google/feed.xml",
+        "url": "(cache:projectzero)",
         "count": 5
       }
     ],
@@ -255,9 +337,9 @@
     "queries_ok": 2,
     "items": 8,
     "http_status": 200,
-    "content_type": "application/xml; charset=utf-8",
+    "content_type": null,
     "format": "rss2",
-    "from_cache": false,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,

@@ -5,7 +5,10 @@
 
 import { watchWeight } from "@/data/x-watchlist";
 
-export const STALE_HOURS = 18;
+import { STALE_GUARD_HOURS } from "./crawl-staleness";
+
+/** AUTONOMY-4H Beat 2: crawl fires every 4h → STALE after 6h (was 18h). */
+export const STALE_HOURS = STALE_GUARD_HOURS;
 
 export type Scoreable = {
   handle?: string;
