@@ -1858,3 +1858,95 @@ body {
   .papers-v6-line > :nth-child(6) { grid-area: links; }
   .papers-v6-exp { padding-left: 0.75rem; }
 }
+
+/* Beat 7 — Brief Wire strip (under the Take). Pulse V5 row idiom; Skin V2 vars only. */
+.brief-wire {
+  min-width: 0;
+  background: var(--bg-deep);
+}
+.brief-wire-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.35rem 0.6rem;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--text-kicker);
+  letter-spacing: var(--tracking-kicker);
+  text-transform: uppercase;
+  color: var(--phosphor);
+}
+.brief-wire-prev {
+  color: var(--muted-foreground);
+}
+.brief-wire-row {
+  display: grid;
+  grid-template-columns: 4.5ch 4ch minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 0.6rem;
+  height: 26px;
+  padding: 0 0.6rem 0 0.5rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+  font-size: 0.8125rem;
+}
+.brief-wire-row:last-child {
+  border-bottom: none;
+}
+.brief-wire-row:nth-child(even) {
+  background: var(--card);
+}
+.brief-wire-mark {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--text-kicker);
+  color: var(--muted-foreground);
+}
+.brief-wire-row[data-status="up"] .brief-wire-mark {
+  color: var(--phosphor-bright);
+}
+.brief-wire-row[data-status="down"] .brief-wire-mark {
+  color: var(--phosphor-dim);
+}
+.brief-wire-headline {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--phosphor-bright);
+  text-decoration: none;
+}
+.brief-wire-headline:hover {
+  text-decoration: underline;
+}
+
+/* Beat 7 — daily lead Take: meta line, Yesterday line, HELD plate. Skin V2 vars only. */
+.brief-v5 .sage-take-inverse .sage-take-link {
+  color: inherit;
+  text-decoration: none;
+}
+.brief-v5 .sage-take-inverse .sage-take-link:hover {
+  text-decoration: underline;
+}
+.brief-v5 .sage-take-inverse .sage-take-meta {
+  margin-top: 0.6rem;
+  color: var(--phosphor-bright);
+}
+.brief-v5 .sage-take-inverse .sage-take-yesterday {
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+  margin-top: 0.6rem;
+  padding-top: 0.45rem;
+  border-top: 1px solid color-mix(in srgb, var(--phosphor-bright) 30%, transparent);
+  color: var(--muted-foreground);
+  min-width: 0;
+}
+.brief-v5 .sage-take-inverse .sage-take-yesterday > span:first-child {
+  flex: none;
+  color: var(--phosphor);
+}
+.brief-v5 .sage-lead-held {
+  display: inline-block;
+  margin-top: 0.4rem;
+  padding: 0 0.35rem;
+  border: 1px solid var(--phosphor-bright);
+  color: var(--phosphor-bright);
+}
