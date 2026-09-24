@@ -3,8 +3,8 @@ import type { WireRow } from "@/lib/wire";
 
 export const WIRE_CRAWL_AT = "2026-09-24T22:13:06Z";
 export const WIRE_PREV_CRAWL_AT: string | null = "2026-09-24T22:09:31Z";
-export const WIRE_NEW = 2;
-export const WIRE_MOVED = 3;
+export const WIRE_NEW = 1;
+export const WIRE_MOVED = 4;
 
 export const WIRE_ROWS: WireRow[] = [
   {
@@ -42,22 +42,6 @@ export const WIRE_ROWS: WireRow[] = [
     "status": "new"
   },
   {
-    "id": "cl:gnews:74d072a4a21733de",
-    "title": "5 AI Semiconductor Stocks to Buy and Hold Through 2031",
-    "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNMzRZWGJ1bWVyQTJpVnFJTGxkX01sMWFUZmFSMUxnSU9uMFdLdmhoQjBtdEpmaXdWN0IwQk0xT2hzcHRBTW9TOWZzNG41QndVYnJZRjZhUjVQUFp1bnFKdFpSTWU5NlUxNDkxckNBZmhrRkNwVmowTTlGbUFQTmlWc1dNMTNmd2c3WGs1OWRyTWpGYmVmWG9oYklBcWc4c2RESndlY2Q3T2NSc1JXNG0xaFJkQ2xRckxsMEoxRE5jTk0yNUpFZmpZMmVuX0VwMmFBNzZwYWR3?oc=5",
-    "at": "2026-09-24T19:29:03Z",
-    "sources": 2,
-    "score": null,
-    "member_ids": [
-      "gnews:74d072a4a21733de",
-      "gnews:2c20aab2cba0bb02"
-    ],
-    "is_new": false,
-    "rank": 3,
-    "prev_rank": null,
-    "status": "new"
-  },
-  {
     "id": "cl:hn:49835056",
     "title": "OpenAI, Anthropic CEOs urge UN countries to cooperate on AI safety standards",
     "url": "https://slashdot.org/story/26/09/24/0338213/openai-anthropic-ceos-urge-un-countries-to-cooperate-on-ai-safety-standards",
@@ -69,7 +53,7 @@ export const WIRE_ROWS: WireRow[] = [
       "gnews:49dd3657d5005ed4"
     ],
     "is_new": false,
-    "rank": 4,
+    "rank": 3,
     "prev_rank": 1,
     "status": "down"
   },
@@ -85,8 +69,24 @@ export const WIRE_ROWS: WireRow[] = [
       "gnews:32057d15ae2f9dc0"
     ],
     "is_new": false,
-    "rank": 5,
+    "rank": 4,
     "prev_rank": 3,
+    "status": "down"
+  },
+  {
+    "id": "cl:rss:deepmind:68ead6b6af2b7144",
+    "title": "Advancing Private AI Compute with secure, server-side memory",
+    "url": "https://deepmind.google/blog/advancing-private-ai-compute-with-secure-server-side-memory/",
+    "at": "2026-09-24T07:12:37Z",
+    "sources": 2,
+    "score": 3,
+    "member_ids": [
+      "hn:49827294",
+      "rss:deepmind:68ead6b6af2b7144"
+    ],
+    "is_new": false,
+    "rank": 5,
+    "prev_rank": 4,
     "status": "down"
   }
 ];

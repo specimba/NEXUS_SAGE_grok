@@ -53,11 +53,37 @@ export type WireOpts = {
   publishers?: Record<string, string>;
   /** Cluster ids kept off the Wire (the current daily lead lives on the Take). */
   excludeIds?: Iterable<string>;
+  /** Keep investing-noise rows (only so the lead pick can record them as excluded with a reason). */
+  keepNoise?: boolean;
 };
 
+/**
+ * Investing / listicle noise (Director): such headlines stay in Pulse but never reach the Wire
+ * or the daily lead. Real business news (valuations, funding, IPOs, earnings) is NOT noise.
+ * Edit this one list to widen/narrow it.
+ */
+export const INVESTING_NOISE: readonly RegExp[] = [
+  /\bstocks? to (buy|watch)\b/i,
+  /\bbuy and hold\b/i,
+  /\bprice target\b/i,
+  /\bshares (jump|soar|fall|slide)\b/i,
+  /^\d+ (ai )?stocks\b/i,
+  /\bmotley fool\b/i,
+  /\bshould you buy\b/i,
+];
+
+export function investingNoiseReason(title: string): string | null {
+  const t = String(title ?? "");
+  return INVESTING_NOISE.some((re) => re.test(t)) ? "noise:investing" : null;
+}
+
 /** Why a cluster is kept off the Wire (null = eligible). Source count is checked separately. */
-export function wireExcludeReason(c: WireCluster, tasteIds: Set<string> = new Set()): string | null {
+export function wireExcludeReason(c: WireCluster, tasteIds: Set<string> = new Set(), keepNoise = false): string | null {
   if (c.briefEligible === false) return "briefEligible:false";
+  if (!keepNoise) {
+    const noise = investingNoiseReason(c.title);
+    if (noise) return noise;
+  }
   const ids = [c.id, c.lead_id, ...c.member_ids];
   if (c.lead_source === "x" || ids.some((id) => id.startsWith("x:"))) return "x";
   if (ids.some((id) => tasteIds.has(id) || tasteIds.has(id.replace(/^[a-z-]+:/, "")))) return "taste";
@@ -70,7 +96,7 @@ export function wireExcludeReason(c: WireCluster, tasteIds: Set<string> = new Se
 export function wireCandidates(clusters: WireCluster[], opts: WireOpts = {}): WireCandidate[] {
   const taste = new Set(opts.tasteIds ?? []);
   const skip = new Set(opts.excludeIds ?? []);
-  const kept = clusters.filter((c) => !skip.has(c.id) && wireExcludeReason(c, taste) === null);
+  const kept = clusters.filter((c) => !skip.has(c.id) && wireExcludeReason(c, taste, opts.keepNoise) === null);
   const byId = new Map(kept.map((c) => [c.id, c]));
   const info = Object.fromEntries(Object.entries(opts.publishers ?? {}).map(([id, publisher]) => [id, { badge: "", publisher }]));
   const { rows } = buildRows(kept, info);
