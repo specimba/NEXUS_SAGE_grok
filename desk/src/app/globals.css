@@ -1743,3 +1743,114 @@ body {
 .sage-moved-row[data-corroboration] {
   border-left: 2px solid var(--phosphor);
 }
+
+/* === Beat 6 — lane tab parity: exactly one filled chip = aria-current (Skin V2 vars only) === */
+.desk-lane-btn {
+  transition: color 120ms ease;
+}
+.desk-lane-btn:not([aria-current="page"]),
+.desk-lane-btn:not([aria-current="page"]):hover,
+.desk-lane-btn:not([aria-current="page"]):focus,
+.desk-lane-btn:not([aria-current="page"]):focus-visible,
+.desk-lane-btn:not([aria-current="page"]):active {
+  background: transparent;
+  color: var(--phosphor-dim);
+  box-shadow: inset 0 0 0 1px var(--border);
+  text-shadow: none;
+}
+.desk-lane-btn:not([aria-current="page"]):hover {
+  color: var(--phosphor-bright);
+}
+.desk-lane-btn:not([aria-current="page"]):focus-visible {
+  outline: 2px solid var(--phosphor);
+  outline-offset: -2px;
+}
+.desk-lane-btn:not([aria-current="page"])::before {
+  content: none;
+}
+.desk-lane-btn:not([aria-current="page"]) .lane-prefix {
+  color: var(--pip-amber);
+}
+.desk-lane-btn[aria-current="page"] {
+  background: var(--phosphor);
+  color: var(--bg-deep);
+}
+.desk-lane-btn[aria-current="page"]:focus-visible {
+  outline: 2px solid var(--phosphor-bright);
+  outline-offset: 1px;
+}
+.pulse-v5-self {
+  border-style: dashed;
+  color: var(--phosphor-dim);
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+/* === Beat 6 — Papers table (Pulse V5 instrument family) === */
+.papers-v6-kicker {
+  font-size: var(--text-kicker);
+  letter-spacing: var(--tracking-kicker);
+  text-transform: uppercase;
+  color: var(--phosphor-dim);
+}
+.papers-v6-head,
+.papers-v6-line {
+  display: grid;
+  grid-template-columns: 2.5ch 5ch 4.5ch minmax(0, 1fr) 23ch 8ch;
+  align-items: center;
+  column-gap: 0.6rem;
+  padding: 0 0.6rem 0 0.5rem;
+}
+.papers-v6-head {
+  height: 24px;
+  border-bottom: 1px solid var(--border);
+  font-size: var(--text-kicker);
+  letter-spacing: var(--tracking-kicker);
+  color: var(--phosphor-dim);
+}
+.papers-v6-line {
+  height: 34px;
+  cursor: pointer;
+  font-size: 0.8125rem;
+  color: var(--phosphor);
+  border-left: 2px solid transparent;
+}
+.papers-v6-line:hover,
+.pulse-v5-row[data-open] .papers-v6-line {
+  border-left-color: var(--phosphor);
+}
+.papers-v6-lit {
+  border-color: var(--phosphor);
+  color: var(--phosphor-bright);
+}
+.papers-v6-links {
+  display: inline-flex;
+  gap: 0.6rem;
+  font-size: var(--text-kicker);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.papers-v6-exp {
+  padding-left: calc(0.5rem + 2.5ch + 5ch + 4.5ch + 1.8rem);
+}
+@media (max-width: 767px) {
+  .papers-v6-head { display: none; }
+  .papers-v6-line {
+    height: auto;
+    min-height: 44px;
+    grid-template-columns: auto auto auto 1fr auto;
+    grid-template-areas:
+      "idx up yr src links"
+      "hl hl hl hl hl";
+    row-gap: 0.1rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+  }
+  .papers-v6-line > :nth-child(1) { grid-area: idx; }
+  .papers-v6-line > :nth-child(2) { grid-area: up; }
+  .papers-v6-line > :nth-child(3) { grid-area: yr; }
+  .papers-v6-line > :nth-child(4) { grid-area: hl; white-space: normal; }
+  .papers-v6-line > :nth-child(5) { grid-area: src; }
+  .papers-v6-line > :nth-child(6) { grid-area: links; }
+  .papers-v6-exp { padding-left: 0.75rem; }
+}
