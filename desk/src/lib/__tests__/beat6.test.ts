@@ -30,6 +30,20 @@ describe("lane tabs — exactly one active, always the current lane", () => {
     expect(beat6).toMatch(/\.desk-lane-btn \{\s*transition: color 120ms ease;\s*\}/);
     expect(/#[0-9a-f]{3,8}\b/i.test(beat6)).toBe(false);
   });
+
+  test("CSS: no amber anywhere on the tab row; inactive numbers are var(--muted) on every lane", () => {
+    const css = readFileSync(resolve(import.meta.dir, "../../app/globals.css"), "utf8");
+    const bare = css.replace(/\/\*[\s\S]*?\*\//g, "");
+    const rules = [...bare.matchAll(/([^{}]+)\{([^{}]*)\}/g)].map((m) => ({ sel: m[1].trim(), body: m[2] }));
+    const tabRow = rules.filter((r) => /desk-lane|lane-prefix/.test(r.sel));
+    expect(tabRow.length).toBeGreaterThan(5);
+    for (const r of tabRow) expect(`${r.sel} { ${r.body}`).not.toMatch(/amber/i);
+    const inactive = tabRow.filter((r) => /:not\(\[aria-current="page"\]\)[^,]*\.lane-prefix/.test(r.sel));
+    expect(inactive.length).toBeGreaterThan(0);
+    for (const r of inactive) expect(r.body).toMatch(/color:\s*var\(--muted\)/);
+    // lane-specific overrides would reintroduce the [01]/[02] vs [03]–[06] split
+    expect(tabRow.some((r) => /nth-child|data-lane/.test(r.sel))).toBe(false);
+  });
 });
 
 describe("papers row builder", () => {
