@@ -2,10 +2,10 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-09-23T07:08:38Z",
+  "stamped_at": "2026-09-24T07:12:29Z",
   "stale_hours": 18,
   "age_check": {
-    "hours": 0.035315,
+    "hours": 0.03387222222222222,
     "stale": false
   },
   "hf": {
@@ -14,9 +14,9 @@
     "url": "https://huggingface.co/api/daily_papers"
   },
   "arxiv": {
-    "ok": true,
-    "enriched": 8,
-    "shelf": 5,
+    "ok": false,
+    "enriched": 0,
+    "shelf": 0,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
   },
@@ -26,7 +26,7 @@
     "soft_fail_reason": "HTTP 429",
     "enriched": 0,
     "secondary": 0,
-    "query": "LLM agent",
+    "query": "LLM agent sandbox",
     "mode": "search",
     "from_cache": false,
     "searches": 1,
@@ -42,7 +42,7 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "enriched": 1,
-    "query": "RRSI: Regularized Recursive Self-Improvement of Agent Harnesses",
+    "query": "Realtime-Venus: A full-duplex interaction system with asynchronous delegation",
     "mode": "bibliographic",
     "from_cache": false,
     "searches": 1,
@@ -53,12 +53,12 @@
     "merge_notes": [],
     "sample": [
       {
-        "id": "2609.24972",
-        "crossrefDoi": "https://doi.org/10.2139/ssrn.6091646",
-        "issued": "2026",
-        "type": "posted-content",
+        "id": "2609.13814",
+        "crossrefDoi": "https://doi.org/10.1109/icton.2010.5548967",
+        "issued": "2010-06",
+        "type": "proceedings-article",
         "openalexId": null,
-        "doi": "https://doi.org/10.2139/ssrn.6091646",
+        "doi": "https://doi.org/10.1109/icton.2010.5548967",
         "enrichOnly": false
       }
     ]
@@ -72,18 +72,24 @@
     "pulse_only": true,
     "never_displace_hf": true,
     "queries_run": [
-      "ML security",
       "open weights",
-      "inference"
+      "inference",
+      "benchmark"
     ],
     "queries_ok": [
-      "ML security",
       "open weights",
-      "inference"
+      "inference",
+      "benchmark"
     ],
     "queries_soft_fail": [],
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
+      {
+        "id": "hn:17824218",
+        "tag": "rest",
+        "score": 1318,
+        "text": "Intel Publishes Microcode Patches, No Benchmarking or Comparison Allowed"
+      },
       {
         "id": "hn:48979269",
         "tag": "rest",
@@ -95,12 +101,6 @@
         "tag": "rest",
         "score": 1227,
         "text": "Inkling: Our Open-Weights Model"
-      },
-      {
-        "id": "hn:49076057",
-        "tag": "rest",
-        "score": 1180,
-        "text": "Our position on open-weights models"
       }
     ]
   },
@@ -163,32 +163,32 @@
     "feeds_soft_fail": [],
     "sample": [
       {
-        "id": "rss:nvidia:ab29621a851e53d1",
-        "lab": "nvidia",
-        "tag": "rest",
-        "title": "At AI Day Singapore, NVIDIA and Partners Showcase AI Advancements Across Southeast Asia",
-        "link": "https://blogs.nvidia.com/blog/ai-day-singapore/"
-      },
-      {
-        "id": "rss:openai:f9027d80e820682e",
-        "lab": "openai",
-        "tag": "rest",
-        "title": "Better prompt caching for GPT-6",
-        "link": "https://openai.com/index/better-prompt-caching-for-gpt-6"
-      },
-      {
-        "id": "rss:openai:73461b3e97af0d93",
-        "lab": "openai",
-        "tag": "rest",
-        "title": "Introducing GPT-6 Sol and Luna",
-        "link": "https://openai.com/index/introducing-gpt-6-sol-and-luna"
-      },
-      {
-        "id": "rss:nvidia-dev:414469594f15a132",
+        "id": "rss:nvidia-dev:2e2593ce8f11ae67",
         "lab": "nvidia-dev",
         "tag": "rest",
-        "title": "Enabling Private High-Performance Production AI Inference with NVIDIA Confidential Computing",
-        "link": "https://developer.nvidia.com/blog/enabling-private-high-performance-production-ai-inference-with-nvidia-confidential-computing/"
+        "title": "Introducing NV-Reason-CT Open 3D CT VLM for Radiologist Chain-of-Thought Reasoning",
+        "link": "https://developer.nvidia.com/blog/introducing-nv-reason-ct-open-3d-ct-vlm-for-radiologist-chain-of-thought-reasoning/"
+      },
+      {
+        "id": "rss:nvidia-dev:31cb65780954773f",
+        "lab": "nvidia-dev",
+        "tag": "rest",
+        "title": "Validate GPU Cluster Readiness Before AI Workloads Land",
+        "link": "https://developer.nvidia.com/blog/validate-gpu-cluster-readiness-before-ai-workloads-land/"
+      },
+      {
+        "id": "rss:huggingface:30aa7c0acfe7f380",
+        "lab": "huggingface",
+        "tag": "rest",
+        "title": "How to Use NVIDIA Warp and MjWarp to Accelerate Robotics Simulation and Learning Workflows",
+        "link": "https://huggingface.co/blog/nvidia/how-to-use-nvidia-warp-and-mjwarp"
+      },
+      {
+        "id": "rss:nvidia-dev:87d0de37464be55f",
+        "lab": "nvidia-dev",
+        "tag": "rest",
+        "title": "Manage Kubernetes Node Fleets with NodeWright",
+        "link": "https://developer.nvidia.com/blog/manage-kubernetes-node-fleets-with-nodewright/"
       }
     ]
   },
@@ -266,34 +266,34 @@
     "pulse_only": true,
     "url_template": "https://news.google.com/rss/search?q={QUERY}&hl=en-US&gl=US&ceid=US:en",
     "queried": [
-      "OpenAI",
-      "Anthropic"
+      "Anthropic",
+      "large language model"
     ],
     "queries_ok_list": [
-      "OpenAI",
-      "Anthropic"
+      "Anthropic",
+      "large language model"
     ],
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:2c58dab12e4c31ff",
-        "title": "OpenAI’s search for a chief communications officer hits 9 months after a top candidate turned down the role - fortune.com",
-        "publisher": "fortune.com",
-        "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPTUZKTVE4RDR0RUlMdXlBTm1oREVYRUhxWjJway1waDJtbVdaNzB5cUtFb1lXYUdFMXU4WkI0V0FvMWdwdkswUVJWWmx5aVVQYlF1dlNDbnFOZVoySUZONnM5b1c0alpuMDJsOC1FWGxaYzFtNzJFYTJiSE1GZ0ZOeGtvN1ZwMEM1MVZkUzBFNERuUWM2UVdvSXBmWDhMeDJzR1g4VHFNNHI?oc=5",
+        "id": "gnews:ff3b51802b7550bf",
+        "title": "Anthropic’s IPO is a crucial AI gut-check | Reuters - Breakingviews",
+        "publisher": "Breakingviews",
+        "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOUmk4SzhITXVZV2NWZmJJdzNqUjJKa2V2SzhKYXE1UjV0UDhGZjBxTGVGVXdVVVllcklIUFJPUnJZdDVNOUdERjVmc2hjcGszdzhMcDBKaUpFUk5rOThXal8tVzEwN0x6aUFvcTdMaFF6QmhtU3JsRXkzdjhTZHRpeFdtS05Ub3NUVzlub0JJSXFhd0tXZUFLbU5YZ0pXbjhDLUM2bHVYZw?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:9b71ad79450bcf13",
-        "title": "Anthropic Is Booming. How to Buy in Before the IPO. - Barron's",
-        "publisher": "Barron's",
-        "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQOTNVRlI5V2pqbDFoTXNqSWtMUUp6R2JIWTJ5WW0wUG5JUGZ5c3VkczdCWkE3d0JXNk5zVWpHc2FZMC1MT0FnRFlxSldQNGswS2FDWU9LY3pycG1yb0Z4c3ZYRktRcmFuZjhxWlhGTmJBRTV1VmNwYWE2RFFJSVh1b2ZFbw?oc=5",
+        "id": "gnews:93945eef2408aef7",
+        "title": "Is the Anthropic IPO Racing Against the Next AI Disaster? - CounterPunch.org",
+        "publisher": "CounterPunch.org",
+        "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxOT0lPRWJCV05lWDRHVzdtZl9iRjZWY3FnN00tMk5Qa3JOSGRueXJ3MmxISENEanFSQnZUMWVoeXVzMEtzOWJ3eTdVYmFpemJqMGxST0JLUUtYc29teTY4VEJKNzRDVXRtaXd6a2prNG9JQXV3M29WTGlGc01MbTBRLWlsdjZySVU2S1lyZm8wclpHRDdUWE9ycFJDZXU1dw?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:c2dfdfc9815dc43a",
-        "title": "Measurements for understanding the pace of AI development inside frontier labs - Anthropic",
-        "publisher": "Anthropic",
-        "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1hSlNaZU5CMXdjOERiMTltcEVxMXduUXVrT1UtSExlUGlUUHFCc2huOVM0NEY0cmhCMVF6X0o2QjMwUUZOQkhuSGlHVjFlaWdKelR3ZTEzUV9SRzRIdkxhV3RfQ0N2OUI5U214a0RqZjh3c2MxUktr?oc=5",
+        "id": "gnews:ea0ecf2bdefe8cec",
+        "title": "Claude Discovers CRISPR-Like Enzyme System as Anthropic Expands Into Wet-Lab Biology - analyticsindiamag.com",
+        "publisher": "analyticsindiamag.com",
+        "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNdzhjdUFmTmpndUotdEZHWW9KaWtMbU1PT3JXWVo2U1BGNFJIdDdsLTRRMVgxMXNWckJ0RWRFYTVkb0t2WEdYSVRqUmJYcHhVSXU3a3NEcktvb3NrZ1ZQemJMSEdPaHYwVUJ1eWxVT0x2cFZUOW9wN09RTVdCaVdvdDVoTVc5UGxiNEVYUkhVeFhEMnZJTkxEUG5UZmFWcnVYSmNLU3VrNnZ1T2JfdTlKY3ZETGwzZldEZVVsZk9Ycw?oc=5",
         "tag": "rest"
       }
     ]
@@ -310,7 +310,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "query": "LLM red team toolkit",
+    "query": "LLM agent eval harness",
     "shelf": 2,
     "from_cache": false,
     "searches": 1,
@@ -321,17 +321,17 @@
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
-        "label": "aiagentmackenzie-lang/NeuralStrike",
-        "href": "https://github.com/aiagentmackenzie-lang/NeuralStrike"
+        "label": "devrafaelalvarenga/data-agent-team",
+        "href": "https://github.com/devrafaelalvarenga/data-agent-team"
       },
       {
-        "label": "monishaclemenceau7-bit/LLM-red-team-toolkit",
-        "href": "https://github.com/monishaclemenceau7-bit/LLM-red-team-toolkit"
+        "label": "ShenSeanChen/waku-agent",
+        "href": "https://github.com/ShenSeanChen/waku-agent"
       }
     ]
   },
   "shelf": {
-    "count": 19,
+    "count": 14,
     "brief": false
   },
   "wikidata": {
@@ -339,28 +339,17 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "seeds": [
-      "stigmergy",
       "Sol",
-      "Astra"
+      "Astra",
+      "Hugging Face"
     ],
-    "searches": 2,
+    "searches": 3,
     "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "deny_grounding_only": true,
     "url": "https://www.wikidata.org/w/api.php",
     "hints": [
-      {
-        "seed": "stigmergy",
-        "qid": "Q2141158",
-        "label": "stigmergy",
-        "description": "mechanism of indirect coordination, through the environment, between agents or actions",
-        "status": "matched",
-        "source": "wikidata",
-        "briefEligible": false,
-        "pulseLeadEligible": false,
-        "denyGroundingOnly": true
-      },
       {
         "seed": "Sol",
         "qid": "Q34104679",
@@ -378,6 +367,17 @@
         "label": "AstraZeneca",
         "description": "British-Swedish pharmaceutical company",
         "status": "rejected_false_friend",
+        "source": "wikidata",
+        "briefEligible": false,
+        "pulseLeadEligible": false,
+        "denyGroundingOnly": true
+      },
+      {
+        "seed": "Hugging Face",
+        "qid": "Q108943604",
+        "label": "Hugging Face",
+        "description": "American company",
+        "status": "matched",
         "source": "wikidata",
         "briefEligible": false,
         "pulseLeadEligible": false,
