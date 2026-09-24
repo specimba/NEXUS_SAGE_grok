@@ -2,28 +2,28 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-09-24T21:55:15Z",
-  "multi_source_independent": 6,
+  "stamped_at": "2026-09-24T22:00:34Z",
+  "multi_source_independent": 7,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 6,
-    "multi_source_raw": 7,
-    "self_reposts": 2,
-    "items_in": 216,
-    "clusters_out": 201,
-    "collapsed": 15,
-    "multi_source": 6,
-    "multi_member": 12,
+    "multi_source_independent": 7,
+    "multi_source_raw": 11,
+    "self_reposts": 5,
+    "items_in": 230,
+    "clusters_out": 211,
+    "collapsed": 19,
+    "multi_source": 7,
+    "multi_member": 16,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 0,
+    "new_items": 2,
     "per_source": {
-      "hn-algolia": 60,
-      "rss-lab": 94,
+      "hn-algolia": 61,
+      "rss-lab": 103,
       "rss-security": 27,
-      "gnews-rss": 35
+      "gnews-rss": 39
     },
     "multi_source_clusters": [
       {
@@ -33,7 +33,7 @@
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.712,
+        "score": 0.706,
         "members": [
           {
             "id": "hn:49835056",
@@ -98,7 +98,7 @@
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.726,
+        "score": 0.725,
         "members": [
           {
             "id": "hn:49829670",
@@ -113,6 +113,31 @@
             "title": "Anthropic says its biology lab has already found something big - techcrunch.com",
             "at": "2026-09-23T22:17:39Z",
             "publisher": "techcrunch.com"
+          }
+        ]
+      },
+      {
+        "title": "Scoop: Trump allies open new front against Anthropic CEO over AI \"doomerism\"",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 0.863,
+        "members": [
+          {
+            "id": "hn:49829312",
+            "source": "hn-algolia",
+            "title": "Scoop: Trump allies open new front against Anthropic CEO over AI \"doomerism\"",
+            "at": "2026-09-24T11:45:01Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:32057d15ae2f9dc0",
+            "source": "gnews-rss",
+            "title": "Scoop: Trump allies open new front on Anthropic CEO as face of AI \"doomerism\" - Axios",
+            "at": "2026-09-24T09:35:01Z",
+            "publisher": "Axios"
           }
         ]
       },
@@ -212,6 +237,57 @@
         ]
       },
       {
+        "title": "How Open Science Can Help Researchers Prepare for the Next Pandemic",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:8aee8d6eb8f5e7e4",
+            "publisher": "blogs.nvidia.com",
+            "title": "How Open Science Can Help Researchers Prepare for the Next Pandemic - blogs.nvidia.com"
+          }
+        ]
+      },
+      {
+        "title": "Sakeena Fiza Helps NVIDIA Hardware Succeed at Scale",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:4aecfbe576dfe110",
+            "publisher": "blogs.nvidia.com",
+            "title": "Sakeena Fiza Helps NVIDIA Hardware Succeed at Scale - blogs.nvidia.com"
+          }
+        ]
+      },
+      {
+        "title": "Manage Kubernetes Node Fleets with NodeWright",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:c2afe2b734889f3a",
+            "publisher": "NVIDIA Developer",
+            "title": "Manage Kubernetes Node Fleets with NodeWright | NVIDIA Technical Blog - NVIDIA Developer"
+          }
+        ]
+      },
+      {
         "title": "At AI Day Singapore, NVIDIA and Partners Showcase AI Advancements Across Southeast Asia",
         "sources": [
           "rss-lab"
@@ -233,51 +309,18 @@
       "rss_lab_dropped": [
         {
           "lab": "nvidia",
-          "title": "How Open Science Can Help Researchers Prepare for the Next Pandemic"
-        },
-        {
-          "lab": "nvidia",
-          "title": "Contain the Chaos: ‘CONTROL Resonant’ Launches on GeForce NOW"
+          "title": "Contain the Chaos: ‘CONTROL Resonant’ Launches on GeForce NOW",
+          "reason": "category:GeForce NOW"
         },
         {
           "lab": "nvidia-dev",
-          "title": "Manage Kubernetes Node Fleets with NodeWright"
+          "title": "What’s New for Game Developers: DLSS 5 with 3D-Guided Neural Rendering, NVIDIA ACE Updates, and New RTX Kit Capabilities",
+          "reason": "category:Gaming"
         },
         {
           "lab": "nvidia",
-          "title": "Sakeena Fiza Helps NVIDIA Hardware Succeed at Scale"
-        },
-        {
-          "lab": "nvidia-dev",
-          "title": "Topology-Aware Workload Scheduling with NVIDIA Topograph"
-        },
-        {
-          "lab": "ms-research",
-          "title": "Improving synthesis prediction of small molecules at scale with RetroChimera"
-        },
-        {
-          "lab": "google-research",
-          "title": "MilleMiglia: A realistic instance generator for middle-mile logistics"
-        },
-        {
-          "lab": "nvidia",
-          "title": "Cute Critters Come to the Cloud: ‘Aniimo’ Launches on GeForce NOW"
-        },
-        {
-          "lab": "google-research",
-          "title": "A connectomics milestone: Mapping the complete male fruit fly brain"
-        },
-        {
-          "lab": "ms-research",
-          "title": "Broadening access to Skala creates a faster path to predictive DFT"
-        },
-        {
-          "lab": "ms-research",
-          "title": "EvoLib: Turning experience into evolving knowledge"
-        },
-        {
-          "lab": "ms-research",
-          "title": "Verifying Rust cryptography in SymCrypt, from standards to code"
+          "title": "Cute Critters Come to the Cloud: ‘Aniimo’ Launches on GeForce NOW",
+          "reason": "category:GeForce NOW"
         }
       ],
       "gnews_shown_dropped": [
@@ -294,12 +337,12 @@
           "title": "BNP Paribas to keep sensitive data off public cloud despite Google deal - Global Banking & Finance Review"
         }
       ],
-      "gnews_pool_dropped": 32,
+      "gnews_pool_dropped": 0,
       "hn_dropped": 15
     },
     "gnews_near_misses": [
       {
-        "score": 0.416,
+        "score": 0.415,
         "blocked": "thin-overlap",
         "hours_apart": 36.3,
         "a": {
@@ -321,7 +364,7 @@
         ]
       },
       {
-        "score": 0.388,
+        "score": 0.383,
         "blocked": "below-threshold",
         "hours_apart": 2.9,
         "a": {
@@ -344,7 +387,7 @@
         ]
       },
       {
-        "score": 0.366,
+        "score": 0.368,
         "blocked": "thin-overlap",
         "hours_apart": 37,
         "a": {
@@ -366,7 +409,7 @@
         ]
       },
       {
-        "score": 0.314,
+        "score": 0.312,
         "blocked": "time-window",
         "hours_apart": 81.1,
         "a": {
@@ -388,7 +431,7 @@
         ]
       },
       {
-        "score": 0.276,
+        "score": 0.275,
         "blocked": "thin-overlap",
         "hours_apart": 2.1,
         "a": {
@@ -453,29 +496,31 @@
         ]
       },
       {
-        "score": 0.226,
-        "blocked": "thin-overlap",
-        "hours_apart": 31.5,
+        "score": 0.228,
+        "blocked": "below-threshold",
+        "hours_apart": 7.2,
         "a": {
-          "id": "hn:49815644",
+          "id": "hn:49829312",
           "source": "hn-algolia",
-          "title": "Inference Cost Calculator",
-          "at": "2026-09-23T13:17:31Z"
+          "title": "Scoop: Trump allies open new front against Anthropic CEO over AI \"doomerism\"",
+          "at": "2026-09-24T11:45:01Z"
         },
         "b": {
-          "id": "gnews:fd13ac6e7e9def1c",
+          "id": "gnews:49dd3657d5005ed4",
           "source": "gnews-rss",
-          "title": "Anthropic launches Claude Opus 5.5 with lower costs - IT Brief Asia",
-          "at": "2026-09-24T20:45:00Z"
+          "title": "OpenAI, Anthropic CEOs Urge UN to Establish Global AI Standards - Mexico Business News",
+          "at": "2026-09-24T19:00:00Z"
         },
         "shared": [
-          "cost"
+          "anthropic",
+          "ceo",
+          "ai"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.715,
+        "score": 0.716,
         "blocked": "thin-overlap",
         "hours_apart": 48.9,
         "a": {
@@ -498,7 +543,7 @@
         ]
       },
       {
-        "score": 0.703,
+        "score": 0.704,
         "blocked": "thin-overlap",
         "hours_apart": 13.8,
         "a": {
@@ -521,7 +566,7 @@
         ]
       },
       {
-        "score": 0.475,
+        "score": 0.476,
         "blocked": "thin-overlap",
         "hours_apart": 503.2,
         "a": {
@@ -542,7 +587,7 @@
         ]
       },
       {
-        "score": 0.467,
+        "score": 0.468,
         "blocked": "thin-overlap",
         "hours_apart": 24.9,
         "a": {
@@ -584,7 +629,7 @@
         ]
       },
       {
-        "score": 0.416,
+        "score": 0.415,
         "blocked": "thin-overlap",
         "hours_apart": 36.3,
         "a": {
@@ -606,7 +651,7 @@
         ]
       },
       {
-        "score": 0.388,
+        "score": 0.383,
         "blocked": "below-threshold",
         "hours_apart": 2.9,
         "a": {
@@ -629,7 +674,7 @@
         ]
       },
       {
-        "score": 0.366,
+        "score": 0.368,
         "blocked": "thin-overlap",
         "hours_apart": 37,
         "a": {
@@ -656,76 +701,76 @@
     {
       "id": "arxiv",
       "state": "ok",
-      "streak_ok": 11,
+      "streak_ok": 13,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 11,
+      "streak_ok": 13,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 11,
+      "streak_ok": 13,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 11,
+      "streak_ok": 13,
       "streak_fail": 0,
-      "items_last": 35
+      "items_last": 39
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 11,
+      "streak_ok": 13,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 11,
+      "streak_ok": 13,
       "streak_fail": 0,
-      "items_last": 60
+      "items_last": 61
     },
     {
       "id": "openalex",
       "state": "fail",
       "streak_ok": 0,
-      "streak_fail": 11,
+      "streak_fail": 13,
       "items_last": 0
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 11,
+      "streak_ok": 13,
       "streak_fail": 0,
-      "items_last": 94
+      "items_last": 103
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 11,
+      "streak_ok": 13,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 11,
+      "streak_ok": 13,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.017501944444444445,
+    "hours": 0.01986777777777778,
     "stale": false
   },
   "hf": {
@@ -787,7 +832,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 60,
+    "count": 61,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -810,7 +855,7 @@
       {
         "id": "hn:49820134",
         "tag": "rest",
-        "score": 755,
+        "score": 757,
         "text": "Claude discovers a novel enzyme system with CRISPR-like repeats"
       },
       {
@@ -831,7 +876,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 94,
+    "count": 103,
     "shelf": 0,
     "brief": false,
     "pulse_only": true,
@@ -976,13 +1021,13 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 35,
-    "pool": 302,
+    "items": 39,
+    "pool": 334,
     "corroborators": [
       {
         "id": "gnews:49dd3657d5005ed4",
         "anchor_id": "hn:49835056",
-        "score": 0.679,
+        "score": 0.678,
         "title": "OpenAI, Anthropic CEOs Urge UN to Establish Global AI Standards - Mexico Business News",
         "publisher": "Mexico Business News",
         "self_repost": false
@@ -998,7 +1043,7 @@
       {
         "id": "gnews:51c38d5decfd40fd",
         "anchor_id": "hn:49820134",
-        "score": 0.763,
+        "score": 0.762,
         "title": "AI model Claude discovers CRISPR-like enzyme system, Anthropic says - Al Jazeera",
         "publisher": "Al Jazeera",
         "self_repost": false
@@ -1006,18 +1051,50 @@
       {
         "id": "gnews:a99fb206a4eb0c0c",
         "anchor_id": "hn:49820134",
-        "score": 0.729,
+        "score": 0.73,
         "title": "Anthropic says Claude discovers novel enzyme system with CRISPR-like characteristics in 21 hours - Digital Watch Observatory",
         "publisher": "Digital Watch Observatory",
         "self_repost": false
       },
       {
+        "id": "gnews:8aee8d6eb8f5e7e4",
+        "anchor_id": "rss:nvidia:16eff40b8e2abca5",
+        "score": 1,
+        "title": "How Open Science Can Help Researchers Prepare for the Next Pandemic - blogs.nvidia.com",
+        "publisher": "blogs.nvidia.com",
+        "self_repost": true
+      },
+      {
+        "id": "gnews:32057d15ae2f9dc0",
+        "anchor_id": "hn:49829312",
+        "score": 0.876,
+        "title": "Scoop: Trump allies open new front on Anthropic CEO as face of AI \"doomerism\" - Axios",
+        "publisher": "Axios",
+        "self_repost": false
+      },
+      {
         "id": "gnews:d690cc79da30c266",
         "anchor_id": "hn:49829670",
-        "score": 0.694,
+        "score": 0.695,
         "title": "Anthropic says its biology lab has already found something big - techcrunch.com",
         "publisher": "techcrunch.com",
         "self_repost": false
+      },
+      {
+        "id": "gnews:4aecfbe576dfe110",
+        "anchor_id": "rss:nvidia:11b05c695caf16ff",
+        "score": 1,
+        "title": "Sakeena Fiza Helps NVIDIA Hardware Succeed at Scale - blogs.nvidia.com",
+        "publisher": "blogs.nvidia.com",
+        "self_repost": true
+      },
+      {
+        "id": "gnews:c2afe2b734889f3a",
+        "anchor_id": "rss:nvidia-dev:87d0de37464be55f",
+        "score": 1,
+        "title": "Manage Kubernetes Node Fleets with NodeWright | NVIDIA Technical Blog - NVIDIA Developer",
+        "publisher": "NVIDIA Developer",
+        "self_repost": true
       },
       {
         "id": "gnews:e6586adb1bc0cd2e",

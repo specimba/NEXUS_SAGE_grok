@@ -45,6 +45,8 @@ export type LabRssItem = {
   class: PostClass;
   tag: "rest" | "rumor" | "companion" | "incident";
   reasons: string[];
+  /** Feed `<category>` labels (RSS text / Atom term) — NVIDIA consumer filter. */
+  categories?: string[];
 };
 
 export type LabFeedDef = {
@@ -192,7 +194,19 @@ export type ParsedFeedEntry = {
   guid: string;
   published: string;
   summary: string;
+  categories?: string[];
 };
+
+/** RSS `<category>text</category>` (CDATA ok) and Atom `<category term="…"/>`. */
+export function feedCategories(block: string): string[] {
+  const out: string[] = [];
+  const rssRe = /<category\b[^>]*>(?:\s*<!\[CDATA\[)?([\s\S]*?)(?:\]\]>\s*)?<\/category>/gi;
+  const atomRe = /<category\b[^>]*\bterm="([^"]*)"[^>]*\/?>/gi;
+  let m: RegExpExecArray | null;
+  while ((m = rssRe.exec(block))) if (m[1]?.trim()) out.push(decodeXmlEntities(m[1].trim()));
+  while ((m = atomRe.exec(block))) if (m[1]?.trim()) out.push(decodeXmlEntities(m[1].trim()));
+  return [...new Set(out)];
+}
 
 /** Parse RSS 2.0 `<item>` or Atom `<entry>` blocks. Bad XML → []. */
 export function parseRssOrAtom(xml: string): ParsedFeedEntry[] {
@@ -219,7 +233,8 @@ export function parseRssOrAtom(xml: string): ParsedFeedEntry[] {
         "",
     );
     if (!title && !link) continue;
-    out.push({ title, link, guid, published, summary });
+    const categories = feedCategories(block);
+    out.push({ title, link, guid, published, summary, ...(categories.length ? { categories } : {}) });
   }
 
   if (out.length) return out;
@@ -240,7 +255,8 @@ export function parseRssOrAtom(xml: string): ParsedFeedEntry[] {
       firstTag(block, "summary") || firstTag(block, "content") || "",
     );
     if (!title && !link) continue;
-    out.push({ title, link, guid, published, summary });
+    const categories = feedCategories(block);
+    out.push({ title, link, guid, published, summary, ...(categories.length ? { categories } : {}) });
   }
 
   return out;
@@ -304,6 +320,7 @@ export function toLabItems(
       class: classified.class,
       tag,
       reasons: classified.reasons,
+      ...(e.categories?.length ? { categories: e.categories } : {}),
     });
   }
 
