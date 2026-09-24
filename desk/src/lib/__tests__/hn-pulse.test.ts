@@ -4,7 +4,11 @@ import { resolve } from "node:path";
 import {
   clampHitsPerPage,
   fetchHnPulse,
+  filterRecentHits,
+  hnSearchUrl,
   HN_QUERIES_PER_TICK,
+  HN_RECENT_SWEEP_TERMS,
+  HN_RECENT_WINDOW_HOURS,
   HN_STANDING_BAN,
   HN_WATCHLIST_MAX,
   HN_WATCHLIST_QUERIES,
@@ -372,4 +376,73 @@ describe("P3 rotate ≤3/tick · soft_fail merge", () => {
     expect(() => hnStandingQueries(["Bluesky"])).toThrow();
     expect(hnQueriesSafe(["Bluesky"])).toBe(false);
   });
+});
+
+describe("HN freshness (dedupe v2 re-land)", () => {
+  test("hnSearchUrl adds created_at_i window + points filter + optionalWords", () => {
+    const now = Date.parse("2026-09-24T21:00:00Z");
+    const url = hnSearchUrl("OpenAI Anthropic", 50, { now, recentHours: 48, optionalWords: true, minPoints: 3 });
+    const u = new URL(url);
+    expect(u.searchParams.get("hitsPerPage")).toBe("20");
+    expect(u.searchParams.get("tags")).toBe("story");
+    expect(u.searchParams.get("optionalWords")).toBe("OpenAI Anthropic");
+    expect(u.searchParams.get("numericFilters")).toBe(
+      `created_at_i>${Math.floor(now / 1000) - 48 * 3600},points>=3`,
+    );
+    expect(hnSearchUrl("LLM", 10)).not.toContain("numericFilters");
+  });
+
+  test("filterRecentHits drops months-old stories, keeps undated", () => {
+    const now = Date.parse("2026-09-24T21:00:00Z");
+    const kept = filterRecentHits(
+      [
+        { objectID: "1", title: "fresh", created_at: "2026-09-24T01:00:00Z" },
+        { objectID: "2", title: "stale", created_at: "2018-08-23T03:05:16Z" },
+        { objectID: "3", title: "undated" },
+      ],
+      now,
+      HN_RECENT_WINDOW_HOURS,
+    );
+    expect(kept.map((h) => h.objectID)).toEqual(["1", "3"]);
+  });
+
+  test("recentHours + recentSweep: window on every request, sweep pages, stale hits dropped", async () => {
+    const cacheDir = resolve(import.meta.dir, `../../../artifacts/sage/hn-cache-test-recent-${Date.now()}`);
+    wipe(cacheDir);
+    const now = Date.parse("2026-09-24T21:00:00Z");
+    const urls: string[] = [];
+    let n = 0;
+    const r = await fetchHnPulse({
+      cacheDir,
+      now,
+      queries: ["OpenAI"],
+      maxQueries: 1,
+      recentHours: HN_RECENT_WINDOW_HOURS,
+      recentSweep: true,
+      fetchImpl: (async (input: RequestInfo | URL) => {
+        urls.push(String(input));
+        n += 1;
+        return new Response(
+          JSON.stringify({
+            hits: [
+              { objectID: `fresh-${n}`, title: `OpenAI ships agent update ${n}`, url: `https://example.com/f-${n}`, author: "t", points: 50, created_at: "2026-09-24T10:00:00Z" },
+              { objectID: `stale-${n}`, title: `OpenAI old news ${n}`, url: `https://example.com/s-${n}`, author: "t", points: 900, created_at: "2025-01-01T00:00:00Z" },
+            ],
+          }),
+          { status: 200, headers: { "Content-Type": "application/json" } },
+        );
+      }) as unknown as typeof fetch,
+    });
+    // 1 standing query + sweep page 0 (page 1 skipped: <20 hits)
+    expect(urls).toHaveLength(2);
+    expect(urls.every((u) => decodeURIComponent(u).includes("created_at_i>"))).toBe(true);
+    expect(decodeURIComponent(urls[1]!)).toContain("optionalWords=");
+    for (const t of HN_RECENT_SWEEP_TERMS) expect(decodeURIComponent(urls[1]!.replace(/\+/g, " "))).toContain(t);
+    expect(r.recent_sweep).toEqual({ ok: true, hits: 2 });
+    expect(r.recent_hours).toBe(48);
+    expect(r.queries_run).toEqual(["OpenAI"]);
+    expect(r.candidates.map((c) => c.id).sort()).toEqual(["hn:fresh-1", "hn:fresh-2"]);
+    expect(r.candidates.every((c) => c.briefEligible === false)).toBe(true);
+    wipe(cacheDir);
+  }, { timeout: 30_000 });
 });
