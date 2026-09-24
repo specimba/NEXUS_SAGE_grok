@@ -200,3 +200,15 @@ cycle `003` · lead `hf-incident` · Sol≠Astra · free only · no `004` · pai
 ### Sign-off request
 
 Reviewer: re-stamp **P2 PASS** from this post-P5 evidence. P6 remains HOLD.
+
+### Reviewer stamp — 2026-09-11T13:12Z (Reviewer Gürok)
+
+**P2 FAIL-CLOSED + WIPE-DRILL PASS** (post-P5).
+
+Evidence (`P2-ACCEPT-EVIDENCE.md` · `OPS-P2-FAILCLOSED-WIPE`):
+- F1–F5 fail-closed green (CURRENT miss · hash tamper · `004`/lock · Sol≠Astra · secrets ban)
+- Wipe → `check:current` FAIL → import `sage-pack-003-20260911T130832Z` OK
+- Dual-home sha256 identical: `cafe4821fbbbb80bfeed27974a510017a26dc628d239c4071dd6ebe8734de54c`
+- Post-restore: cycle `003` / lead `hf-incident` · bun **205** · `visual:check` OK · crawl `09:29:29Z`
+
+**P6 / new WIRE HOLD.**
