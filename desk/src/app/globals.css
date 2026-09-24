@@ -407,7 +407,7 @@ body {
     color: var(--primary-foreground);
     background: var(--phosphor);
     text-shadow: none;
-    box-shadow: inset 0 0 0 1px var(--pip-amber);
+    box-shadow: none;
   }
   .desk-lane-btn.block-cursor::after {
     background: var(--phosphor);
@@ -527,7 +527,7 @@ body {
   }
 
   .lane-prefix {
-    color: var(--pip-amber);
+    color: var(--muted);
     margin-right: 0.35rem;
     font-variant-numeric: tabular-nums;
   }
@@ -691,7 +691,7 @@ body {
     border-bottom-color: color-mix(in srgb, var(--phosphor) 20%, var(--border));
   }
 
-  /* Lane segmented control — active = phosphor slab + amber hairline (anti-pill) */
+  /* Lane segmented control — active = phosphor slab (anti-pill); no amber on the tab row */
   .desk-lane {
     box-shadow:
       inset 0 0 0 1px color-mix(in srgb, var(--phosphor-deep) 60%, transparent),
@@ -708,7 +708,7 @@ body {
     right: 0;
     bottom: 0;
     height: 2px;
-    background: linear-gradient(90deg, var(--pip-amber), var(--phosphor-bright), var(--holo));
+    background: linear-gradient(90deg, var(--phosphor-bright), var(--holo));
     opacity: 0.9;
   }
 
@@ -1768,8 +1768,12 @@ body {
 .desk-lane-btn:not([aria-current="page"])::before {
   content: none;
 }
-.desk-lane-btn:not([aria-current="page"]) .lane-prefix {
-  color: var(--pip-amber);
+/* Inactive tab numbers: var(--muted) on every lane (hover/focus included) — no amber on the tab row;
+   the single filled active tab carries the signal. */
+.desk-lane-btn:not([aria-current="page"]) .lane-prefix,
+.desk-lane-btn:not([aria-current="page"]):hover .lane-prefix,
+.desk-lane-btn:not([aria-current="page"]):focus-visible .lane-prefix {
+  color: var(--muted);
 }
 .desk-lane-btn[aria-current="page"] {
   background: var(--phosphor);
