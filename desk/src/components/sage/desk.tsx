@@ -12,6 +12,9 @@ import { X_TASTE } from "@/data/x-taste";
 import { DIGEST_ITEMS, DROPPED, PACK_AT, PACK_SOURCE } from "@/data/digest-pack";
 import { DIGEST_CADENCE } from "@/data/digest-cadence";
 import { RANK_CURRENT, RANK_MOVED, RANK_PREV } from "@/data/corroboration-rank";
+import { LEAD_HELD, LEAD_TODAY, LEAD_YESTERDAY } from "@/data/lead-pick";
+import { WIRE_CRAWL_AT, WIRE_PREV_CRAWL_AT, WIRE_ROWS } from "@/data/wire";
+import { istanbulHHMM, wireHeader, wireMark } from "@/lib/wire";
 import { PAPERS } from "@/data/papers";
 import { SHELF } from "@/data/shelf";
 import { WIKIDATA_DENY_LAST } from "@/data/wikidata-deny-last";
@@ -107,7 +110,7 @@ export function Desk({ buildId = "dev", serverStartedAt = "" }: DeskProps) {
             </div>
           </div>
           <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
-            ingest · snap {CRAWL_AT} · pack {PACK_AT} · lead {CYCLE.pins[0]?.id}
+            ingest · snap {CRAWL_AT} · pack {PACK_AT} · lead {LEAD_TODAY?.cluster_id ?? CYCLE.pins[0]?.id}
           </p>
           <div className="desk-ticker" aria-label="What changed">
             <span className="desk-ticker-label">Δ LIVE</span>
@@ -119,7 +122,7 @@ export function Desk({ buildId = "dev", serverStartedAt = "" }: DeskProps) {
                 <span className="tabular-nums">{DIGEST_CADENCE.last_at.slice(11, 16)}Z</span> digest HOLD→{DIGEST_CADENCE.next_at.slice(11, 16)}Z
               </span>
               <span className="desk-ticker-item">
-                lead {CYCLE.pins[0]?.id} · Sol≠Astra
+                lead {LEAD_TODAY?.cluster_id ?? CYCLE.pins[0]?.id} · Sol≠Astra
               </span>
               <span className="desk-ticker-item">
                 wikidata {WIKIDATA_DENY_LAST.hints.filter((h) => h.status === "rejected_false_friend").length} reject · {WIKIDATA_DENY_LAST.hints.filter((h) => h.status === "matched").length} match · brief=false
@@ -208,7 +211,46 @@ function SrcChip({ id }: { id: string }) {
   );
 }
 
+/** Beat 7 — Brief Wire strip: top 3–5 live clusters with ≥2 independent sources, NEW/▲/▼ vs previous crawl. */
+function BriefWire() {
+  const [now, setNow] = useState(() => Date.parse(WIRE_CRAWL_AT));
+  useEffect(() => {
+    setNow(Date.now());
+    const t = window.setInterval(() => setNow(Date.now()), 60_000);
+    return () => window.clearInterval(t);
+  }, []);
+  if (WIRE_ROWS.length === 0) return null;
+  return (
+    <section className="brief-wire sage-panel sage-ticks lg:col-span-6" aria-label="Wire — live multi-source clusters">
+      <div className="brief-wire-head">
+        <span>{wireHeader(WIRE_CRAWL_AT, WIRE_ROWS)}</span>
+        <span className="brief-wire-prev tabular-nums">
+          {WIRE_PREV_CRAWL_AT ? `vs ${istanbulHHMM(WIRE_PREV_CRAWL_AT)}` : "first crawl"}
+        </span>
+      </div>
+      <ol className="brief-wire-list">
+        {WIRE_ROWS.map((r) => {
+          const mark = wireMark(r);
+          return (
+            <li key={r.id} className="brief-wire-row" data-status={r.status}>
+              <span className="brief-wire-mark tabular-nums">
+                {r.status === "new" ? <span className="pulse-v5-new">NEW</span> : mark}
+              </span>
+              <span className="pulse-v5-age tabular-nums">{compactAge(r.at, now)}</span>
+              <a className="brief-wire-headline focus-phosphor" href={r.url} target="_blank" rel="noreferrer">
+                {r.title}
+              </a>
+              <span className="sage-src-chip sage-src-chip-multi tabular-nums">{r.sources} SRC</span>
+            </li>
+          );
+        })}
+      </ol>
+    </section>
+  );
+}
+
 function Brief() {
+  const lead = LEAD_TODAY;
   const age = crawlAgeHours(CRAWL_AT);
   const waveMax = 956;
   const waveVals: Record<number, number> = { 1: 80, 2: 700, 3: 956 };
@@ -221,7 +263,7 @@ function Brief() {
     <div className="brief-v5 grid gap-2 lg:grid-cols-12 lg:grid-rows-[auto_auto_auto]">
       {/* Left · Pip-Boy needle rail */}
       <aside
-        className="sage-panel sage-ticks sage-instrument sage-pip-rail flex flex-col gap-1 px-2 py-2 lg:col-span-2 lg:row-span-2"
+        className="sage-panel sage-ticks sage-instrument sage-pip-rail flex flex-col gap-1 px-2 py-2 lg:col-span-2 lg:row-span-3"
         aria-label="Pip-Boy instrument rail"
       >
         <p className="font-mono text-kicker uppercase tracking-kicker text-amber">rail · pip</p>
@@ -259,34 +301,57 @@ function Brief() {
         aria-label="Brief take story"
       >
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <p className="lane-kicker font-mono text-kicker uppercase tracking-kicker">Take · inverse</p>
-          <span className="font-mono text-kicker uppercase tracking-kicker text-subtle">
-            lead · hf-incident · V5
+          <p className="lane-kicker font-mono text-kicker uppercase tracking-kicker">Take · lead of the day</p>
+          <span className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
+            {lead ? `${lead.reason === "seed" ? "cycle pin" : "daily pick"} · ${lead.date}` : "no pick yet"}
           </span>
         </div>
+        {LEAD_HELD ? <p className="sage-lead-held font-mono text-kicker uppercase tracking-kicker">HELD · no qualifying story</p> : null}
         <div className="sage-take-plate">
           <h2 className="sage-take-title font-display text-2xl font-bold normal-case tracking-normal md:text-3xl">
-            {CYCLE.exec[0]}
+            {lead?.url ? (
+              <a href={lead.url} target="_blank" rel="noreferrer" className="sage-take-link">
+                {lead.headline}
+              </a>
+            ) : (
+              lead?.headline ?? CYCLE.exec[0]
+            )}
           </h2>
         </div>
-        <ul className="sage-take-body max-w-prose space-y-1.5 text-sm">
-          {CYCLE.exec.slice(1).map((line) => (
-            <li key={line} className="border-l-2 pl-3">
-              {line}
-            </li>
-          ))}
-        </ul>
+        {lead && lead.reason !== "seed" ? (
+          <p className="sage-take-meta font-mono text-kicker uppercase tracking-kicker tabular-nums">
+            <span className="sage-src-chip sage-src-chip-multi">{lead.sources} SRC</span>
+            {" "}· sig {lead.sig ?? "—"} · picked {istanbulHHMM(lead.at)} UTC+3{lead.forced ? " · manual" : ""} · sticky 24h
+          </p>
+        ) : (
+          <ul className="sage-take-body max-w-prose space-y-1.5 text-sm">
+            {CYCLE.exec.slice(1).map((line) => (
+              <li key={line} className="border-l-2 pl-3">
+                {line}
+              </li>
+            ))}
+          </ul>
+        )}
+        {LEAD_YESTERDAY ? (
+          <p className="sage-take-yesterday text-sm">
+            <span className="font-mono text-kicker uppercase tracking-kicker">Yesterday · {LEAD_YESTERDAY.date}</span>{" "}
+            <span className="line-clamp-1">{LEAD_YESTERDAY.headline}</span>
+          </p>
+        ) : null}
       </section>
 
+      {/* Under the Take · Beat 7 Wire — live multi-source clusters; never displaces lead/Take */}
+      <BriefWire />
+
       {/* Pins — dense stack · compact legend rail */}
-      <div className="pin-col flex flex-col gap-1.5 lg:col-span-4 lg:row-span-2">
+      <div className="pin-col flex flex-col gap-1.5 lg:col-span-4 lg:col-start-9 lg:row-start-1 lg:row-span-3">
         <div
           className="pin-legend-rail sage-panel sage-ticks flex flex-wrap items-center gap-x-3 gap-y-1 px-2.5 py-1.5"
           aria-label="Pin legend"
         >
           <span className="font-mono text-kicker uppercase tracking-kicker text-subtle">pins</span>
           <span className="inline-flex items-center gap-1 font-mono text-kicker uppercase tracking-kicker">
-            <span className="sage-lead-badge">lead</span>
+            <span className="sage-lead-badge">cycle pin</span>
           </span>
           <span className="font-mono text-kicker uppercase tracking-kicker text-amber">companion</span>
           <span className="font-mono text-kicker uppercase tracking-kicker text-subtle">rest</span>
@@ -312,7 +377,7 @@ function Brief() {
                     p.kind === "rest" && "text-subtle",
                   )}
                 >
-                  {p.kind}
+                  {p.kind === "lead" ? "cycle pin" : p.kind}
                 </span>{" "}
                 · <span className="tabular-nums">{p.id}</span>
                 {p.kind !== "lead" ? (
@@ -354,7 +419,7 @@ function Brief() {
 
       {/* Under mid · denser wave strip */}
       <section
-        className="sage-panel sage-ticks sage-wave-dense overflow-hidden lg:col-span-6"
+        className="sage-panel sage-ticks sage-wave-dense overflow-hidden lg:col-span-6 lg:col-start-3"
         aria-label="Three waves"
       >
         <div className="sage-panel-header">Three waves · denser · eval board</div>
