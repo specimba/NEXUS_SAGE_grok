@@ -686,7 +686,6 @@ function Pulse() {
 }
 
 function Digest() {
-  const [view, setView] = useState<"plan" | "library" | "report">("plan");
   const [openId, setOpenId] = useState(DIGEST_ITEMS[0].id);
   const [last, setLast] = useState<string | null>(DIGEST_CADENCE.last_at);
   const [previewNote, setPreviewNote] = useState(false);
@@ -716,6 +715,18 @@ function Digest() {
     [last],
   );
   const plan = useMemo(() => renderPlan(), []);
+  const tickAgeH = useMemo(() => {
+    const t = Date.parse(DIGEST_CADENCE.last_at);
+    if (!Number.isFinite(t)) return Infinity;
+    return (Date.now() - t) / 3_600_000;
+  }, []);
+  const windowSpan = useMemo(() => {
+    const a = Date.parse(DIGEST_CADENCE.last_at);
+    const b = Date.parse(nextAt);
+    if (!Number.isFinite(a) || !Number.isFinite(b) || b <= a) return 0;
+    const now = Date.now();
+    return Math.max(0, Math.min(100, Math.round(((now - a) / (b - a)) * 100)));
+  }, [nextAt]);
 
   const runPreview = () => {
     const at = new Date().toISOString();
@@ -726,58 +737,167 @@ function Digest() {
     } catch {
       /* ignore */
     }
-    setView("report");
   };
 
   return (
     <div className="sage-lane-craft lane-digest">
-      <div className="sage-panel sage-ticks overflow-hidden">
-        <div className="sage-panel-header">&gt; Digest · {PACK_SOURCE} · shelf</div>
-        <div className="flex flex-wrap items-baseline justify-between gap-2 px-3 py-2">
-          <h2 className="font-display text-lg tracking-wide text-phosphor-bright">Library and pack</h2>
-          <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">never Brief lead</p>
+      <div className="digest-v4 grid gap-2 lg:grid-cols-12 lg:grid-rows-[auto_auto_auto]">
+        {/* Left · cadence meters */}
+        <aside
+          className="sage-panel sage-ticks sage-instrument flex flex-col gap-2 px-2.5 py-2 lg:col-span-2 lg:row-span-2"
+          aria-label="Digest cadence meters"
+        >
+          <p className="font-mono text-kicker uppercase tracking-kicker text-amber">cadence · meters</p>
+          <div className="sage-kpi sage-kpi-stack px-2 py-1.5">
+            <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">gate</p>
+            <p
+              className={cn(
+                "sage-metric font-display text-xl tabular-nums",
+                due ? "text-phosphor-bright" : "text-phosphor",
+              )}
+            >
+              {due ? "DUE" : "HOLD"}
+            </p>
+          </div>
+          <div className="sage-kpi sage-kpi-stack px-2 py-1.5">
+            <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">next due</p>
+            <p className="sage-metric font-display text-lg tabular-nums text-phosphor">
+              {nextAt.slice(11, 16)}Z
+            </p>
+          </div>
+          <div className="sage-kpi sage-kpi-stack px-2 py-1.5">
+            <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">pack</p>
+            <p className="font-mono text-kicker uppercase tracking-kicker tabular-nums text-phosphor">
+              {DIGEST_CADENCE.pack_id}
+            </p>
+          </div>
+          <div className="mt-auto border-t border-line pt-2">
+            <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">last tick</p>
+            <p
+              className={cn(
+                "font-mono text-kicker uppercase tracking-kicker tabular-nums",
+                tickAgeH > 6 ? "sage-stale" : "sage-signal",
+              )}
+            >
+              {Number.isFinite(tickAgeH) ? `${tickAgeH.toFixed(1)}h ago` : "—"}
+            </p>
+            <p className="mt-1 font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
+              {DIGEST_CADENCE.last_at.slice(11, 19)}Z
+            </p>
+          </div>
+        </aside>
+
+        {/* Mid · report / open item story — brightest */}
+        <section
+          className="sage-panel sage-ticks sage-panel-glow holo-edge sage-bento-hero sage-take px-4 py-3 lg:col-span-6 lg:row-span-1"
+          aria-label="Digest report body"
+        >
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <p className="lane-kicker font-mono text-kicker uppercase tracking-kicker text-amber">
+              Report · story
+            </p>
+            <span className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
+              {item.kind} · {item.id} · {item.confidence}
+            </span>
+          </div>
+          <h2 className="sage-take-title mt-2 font-display text-2xl font-medium normal-case tracking-normal text-phosphor-bright md:text-3xl">
+            {item.title}
+          </h2>
+          <dl className="pin-meta mt-3 max-w-prose">
+            <dt>take</dt>
+            <dd className="text-phosphor-bright">{item.take}</dd>
+            <dt>why</dt>
+            <dd className="text-muted">{item.why}</dd>
+            <dt className="sage-signal">move</dt>
+            <dd className="sage-signal">{item.move}</dd>
+          </dl>
+          {item.evidence.length ? (
+            <ul className="mt-3 max-w-prose space-y-1 border-t border-line pt-2 text-sm text-muted">
+              {item.evidence.slice(0, 3).map((e) => (
+                <li key={e.slice(0, 32)} className="border-l-2 border-phosphor pl-3">
+                  {e}
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </section>
+
+        {/* Right · compact item rail */}
+        <div className="digest-item-rail flex flex-col gap-1.5 lg:col-span-4 lg:row-span-2">
+          <div
+            className="pin-legend-rail sage-panel sage-ticks flex flex-wrap items-center gap-x-3 gap-y-1 px-2.5 py-1.5"
+            aria-label="Digest item rail"
+          >
+            <span className="font-mono text-kicker uppercase tracking-kicker text-subtle">items</span>
+            <span className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
+              {DIGEST_ITEMS.length} · never Brief lead
+            </span>
+          </div>
+          <ul className="flex flex-col gap-1">
+            {DIGEST_ITEMS.map((i, idx) => {
+              const open = i.id === item.id;
+              return (
+                <li key={i.id}>
+                  <button
+                    type="button"
+                    onClick={() => setOpenId(i.id)}
+                    aria-current={open ? "true" : undefined}
+                    className={cn(
+                      "sage-panel sage-ticks focus-phosphor pin-card w-full px-2.5 py-1.5 text-left",
+                      open ? "sage-panel-glow" : "pin-card-quiet",
+                    )}
+                  >
+                    <p className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
+                      [{String(idx + 1).padStart(2, "0")}] · {i.id} · {i.kind}
+                    </p>
+                    <p
+                      className={cn(
+                        "mt-0.5 truncate text-sm",
+                        open ? "text-phosphor-bright" : "text-phosphor",
+                      )}
+                    >
+                      {i.title}
+                    </p>
+                    <p className="mt-0.5 font-mono text-kicker uppercase tracking-kicker text-subtle">
+                      {i.confidence} · {open ? "open" : "ready"}
+                    </p>
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
         </div>
-        <p className="border-t border-line px-3 py-2 text-sm text-muted">
-          02 Sep list scored, not dumped. Lead stays HF. Rest: AISLE curl CVEs + harness papers.
-        </p>
+
+        {/* Under mid · next window / pack span */}
+        <section
+          className="sage-panel sage-ticks overflow-hidden lg:col-span-6"
+          aria-label="Digest next window"
+        >
+          <div className="sage-panel-header">&gt; Next window · pack span</div>
+          <div className="p-2.5">
+            <p className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
+              {DIGEST_CADENCE.last_at.slice(11, 16)}Z → {nextAt.slice(11, 16)}Z · {DIGEST_CADENCE.pack_id}
+            </p>
+            <div
+              className="mt-2 h-1.5 w-full bg-bg-deep"
+              role="img"
+              aria-label={`Pack window progress ${windowSpan}%`}
+            >
+              <div
+                className="h-full bg-phosphor"
+                style={{ width: `${windowSpan}%`, opacity: 0.55 + windowSpan / 200 }}
+              />
+            </div>
+            <p className="mt-2 font-mono text-kicker uppercase tracking-kicker text-subtle">
+              {PACK_SOURCE} · lead hf-incident · Sol≠Astra
+            </p>
+          </div>
+        </section>
       </div>
-      <div className="sage-panel sage-ticks mt-3 overflow-hidden">
-        <div className="sage-panel-header">&gt; Toolkit shelf · classifyUrl · never Brief</div>
-        <p className="border-b border-line px-3 py-1.5 font-mono text-kicker uppercase tracking-kicker text-subtle">
-          {SHELF.length} links · github-search off Pulse lead
-        </p>
-        <ul className="max-h-48 overflow-auto divide-y divide-line">
-          {SHELF.slice(0, 16).map((s) => (
-            <li key={s.href} className="flex flex-wrap items-baseline justify-between gap-2 px-3 py-1.5">
-              <a
-                href={s.href}
-                target="_blank"
-                rel="noreferrer"
-                className="focus-phosphor truncate text-sm sage-signal"
-              >
-                {s.label}
-              </a>
-              <span className="font-mono text-kicker uppercase tracking-kicker text-subtle shrink-0">
-                {s.reason}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>
+
+      {/* Quiet ops chrome — preview browser-only */}
       <div className="sage-panel sage-ticks lane-craft-digest-panel mt-3 overflow-hidden">
-        <div className="sage-panel-header">&gt; Cadence · VM digest:tick · 6h</div>
-        <div className="flex flex-wrap items-center gap-2 border-b border-line px-3 py-2">
-          <span className={cn("desk-chip", due ? "desk-chip-live" : "sage-stale")}>
-            {due ? "DUE" : "HOLD"}
-          </span>
-          <span className="desk-chip tabular-nums">pack {DIGEST_CADENCE.pack_id}</span>
-          <span className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
-            last {DIGEST_CADENCE.last_at.slice(11, 16)}Z · next {nextAt.slice(11, 16)}Z
-          </span>
-          <span className="font-mono text-kicker uppercase tracking-kicker text-subtle">
-            lead hf-incident · never invent pins
-          </span>
-        </div>
+        <div className="sage-panel-header">&gt; Ops · preview browser-only · downloads</div>
         <div className="flex flex-wrap items-center gap-2 p-2">
           <button
             type="button"
@@ -836,80 +956,35 @@ function Digest() {
           {cadence.due !== due ? " · browser mirror may differ from disk" : ""}
         </p>
       </div>
-      <nav className="desk-lane mt-3" aria-label="Digest views">
-        {(["plan", "library", "report"] as const).map((id, i) => (
-          <button
-            key={id}
-            type="button"
-            onClick={() => setView(id)}
-            aria-current={view === id ? "page" : undefined}
-            className={cn("desk-lane-btn focus-phosphor", view === id && "block-cursor")}
-          >
-            <span className="lane-prefix">[{String(i + 1).padStart(2, "0")}]</span>
-            {id}
-          </button>
-        ))}
-      </nav>
-      {view === "plan" ? (
-        <ol className="mt-4 space-y-3">
-          {plan.map((p, i) => (
-            <li key={p.id} className="sage-panel sage-ticks p-3">
-              <p className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
-                [{String(i + 1).padStart(2, "0")}] · {p.kind} · {p.file} · {p.confidence}
-              </p>
-              <h3 className="mt-2 text-base font-medium normal-case">{p.title}</h3>
-              <p className="mt-2 text-sm sage-signal">{p.move}</p>
-              <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-muted">
-                {p.evidence.map((e) => (
-                  <li key={e.slice(0, 24)}>{e}</li>
-                ))}
-              </ul>
-              <ol className="mt-3 list-decimal space-y-1 pl-5 text-sm">
-                {p.steps.map((s) => (
-                  <li key={s.slice(0, 24)}>{s}</li>
-                ))}
-              </ol>
-              <p className="mt-3 text-sm text-subtle">Done when {p.doneWhen}</p>
-              <p className="text-sm text-subtle">Unlock if {p.unlockIf}</p>
+
+      {/* Toolkit shelf — quiet companion, never Brief */}
+      <div className="sage-panel sage-ticks mt-3 overflow-hidden">
+        <div className="sage-panel-header">&gt; Toolkit shelf · classifyUrl · never Brief</div>
+        <p className="border-b border-line px-3 py-1.5 font-mono text-kicker uppercase tracking-kicker text-subtle">
+          {SHELF.length} links · github-search off Pulse lead
+        </p>
+        <ul className="max-h-36 overflow-auto divide-y divide-line">
+          {SHELF.slice(0, 12).map((s) => (
+            <li key={s.href} className="flex flex-wrap items-baseline justify-between gap-2 px-3 py-1.5">
+              <a
+                href={s.href}
+                target="_blank"
+                rel="noreferrer"
+                className="focus-phosphor truncate text-sm sage-signal"
+              >
+                {s.label}
+              </a>
+              <span className="font-mono text-kicker uppercase tracking-kicker text-subtle shrink-0">
+                {s.reason}
+              </span>
             </li>
           ))}
-        </ol>
-      ) : null}
-      {view === "library" ? (
-        <div className="mt-4 grid gap-3 lg:grid-cols-12">
-          <ul className="space-y-2 lg:col-span-4">
-            {DIGEST_ITEMS.map((i) => (
-              <li key={i.id}>
-                <button
-                  type="button"
-                  onClick={() => setOpenId(i.id)}
-                  className={cn(
-                    "sage-panel sage-ticks focus-phosphor w-full p-3 text-left",
-                    i.id === item.id && "sage-panel-glow term-amber",
-                  )}
-                >
-                  <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
-                    {i.kind} · {i.confidence}
-                  </p>
-                  <p className="mt-1 text-sm normal-case">{i.title}</p>
-                </button>
-              </li>
-            ))}
-          </ul>
-          <article className="sage-panel sage-ticks p-4 lg:col-span-8">
-            <div className="sage-panel-header">{item.title}</div>
-            <p className="mt-3 text-sm">{item.take}</p>
-            <p className="mt-3 text-sm text-muted">{item.why}</p>
-            <p className="mt-3 text-sm sage-signal">{item.move}</p>
-          </article>
-        </div>
-      ) : null}
-      {view === "report" ? (
-        <pre className="sage-panel sage-ticks mt-4 max-h-[28rem] overflow-auto p-3 text-sm whitespace-pre-wrap">{report}</pre>
-      ) : null}
+        </ul>
+      </div>
     </div>
   );
 }
+
 
 function Papers() {
   const [openId, setOpenId] = useState<string | null>(null);
@@ -1043,6 +1118,13 @@ function Voice() {
       setLevel(0);
       return;
     }
+    const reduced =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) {
+      setLevel(0.55);
+      return;
+    }
     const id = window.setInterval(() => {
       setLevel(0.25 + Math.random() * 0.75);
     }, 120);
@@ -1096,90 +1178,197 @@ function Voice() {
     next();
   };
 
-  const bars = Array.from({ length: 20 }, (_, i) => i);
+  const bars = Array.from({ length: 16 }, (_, i) => i);
+  const avaHot = beat === "take" || beat === "move";
+  const andrewHot = beat === "why";
+  const avaLevel = playing ? (avaHot ? level : level * 0.28) : 0;
+  const andrewLevel = playing ? (andrewHot ? level : level * 0.28) : 0;
+  const chainPct =
+    beat === "take" ? 33 : beat === "why" ? 66 : beat === "move" ? 100 : playing ? 10 : 0;
+
+  const meterBars = (lvl: number, hotAmber: boolean) =>
+    bars.map((i) => {
+      const threshold = (i + 1) / bars.length;
+      const on = lvl >= threshold;
+      const hot = hotAmber && threshold > 0.85;
+      return (
+        <div
+          key={i}
+          className={cn(
+            "min-w-0 flex-1",
+            on ? (hot ? "bg-amber" : "bg-phosphor") : "bg-phosphor-deep",
+          )}
+          style={{
+            height: `${18 + (i / (bars.length - 1)) * 82}%`,
+            opacity: on ? 0.5 + threshold * 0.5 : 0.28,
+          }}
+        />
+      );
+    });
 
   return (
-    <div className="max-w-2xl space-y-3">
-      <div className="sage-panel sage-ticks overflow-hidden">
-        <div className="sage-panel-header">&gt; Voice · two-speaker ops · browser TTS fallback</div>
-        <div className="flex flex-wrap items-center justify-between gap-2 px-3 py-2">
-          <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
-            Ava TAKE/MOVE · Andrew WHY · cyc/{CYCLE.id}
-          </p>
-          <span
-            className={cn(
-              "desk-chip",
-              playing ? "desk-chip-live" : "text-subtle",
-            )}
-          >
-            {playing ? `LIVE · ${beat}` : "READY"}
-          </span>
-        </div>
-        <p className="border-t border-line px-3 py-2 text-sm text-muted">
-          Podcast mix stays offline until a new primary unlocks. This lane reads the locked lead pin only.
-        </p>
-      </div>
-
-      <div className="sage-panel sage-ticks overflow-hidden">
-        <div className="sage-panel-header">&gt; Script · TAKE → WHY → MOVE</div>
-        <dl className="pin-meta p-3">
-          <dt className={cn(beat === "take" && "sage-signal")}>take</dt>
-          <dd className={cn(beat === "take" && "text-phosphor-bright")}>{script.take}</dd>
-          <dt className={cn(beat === "why" && "text-amber")}>why</dt>
-          <dd className={cn("text-muted", beat === "why" && "text-phosphor-bright")}>{script.why}</dd>
-          <dt className={cn(beat === "move" && "sage-signal")}>move</dt>
-          <dd className={cn("sage-signal", beat === "move" && "text-phosphor-bright")}>{script.move}</dd>
-        </dl>
-      </div>
-
-      <div className="sage-panel sage-ticks overflow-hidden">
-        <div className="sage-panel-header">&gt; Deck · VU</div>
-        <div className="flex flex-wrap items-center gap-2 p-3">
-          <button
-            type="button"
-            className="focus-phosphor h-9 bg-accent px-3 font-mono text-kicker uppercase tracking-kicker text-accent-fg"
-            onClick={playing ? stop : speakChain}
-            aria-pressed={playing}
-          >
-            {playing ? "Stop" : "Play brief"}
-          </button>
-          <span className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
-            lead {lead?.id ?? "hf-incident"}
-          </span>
-        </div>
-        <div className="border-t border-line px-3 pb-3 pt-2">
-          <div
-            className="flex h-14 items-end gap-0.5 border border-line bg-bg-deep p-1.5"
-            role="img"
-            aria-label={playing ? `VU level ${Math.round(level * 100)} percent` : "VU idle"}
-          >
-            {bars.map((i) => {
-              const threshold = (i + 1) / bars.length;
-              const on = playing && level >= threshold;
-              const hot = threshold > 0.85;
-              return (
-                <div
-                  key={i}
-                  className={cn(
-                    "min-w-0 flex-1",
-                    on ? (hot ? "bg-amber" : "bg-phosphor") : "bg-phosphor-deep",
-                  )}
-                  style={{
-                    height: `${14 + (i / (bars.length - 1)) * 86}%`,
-                    opacity: on ? 0.5 + threshold * 0.5 : 0.3,
-                  }}
-                />
-              );
-            })}
+    <div className="sage-lane-craft lane-voice">
+      <div className="voice-v4 grid gap-2 lg:grid-cols-12 lg:grid-rows-[auto_auto_auto]">
+        {/* Left · VU meters Ava / Andrew */}
+        <aside
+          className="sage-panel sage-ticks sage-instrument flex flex-col gap-2 px-2.5 py-2 lg:col-span-2 lg:row-span-2"
+          aria-label="Voice VU meters"
+        >
+          <p className="font-mono text-kicker uppercase tracking-kicker text-amber">VU · meters</p>
+          <div className="sage-kpi sage-kpi-stack flex flex-col gap-1 px-2 py-1.5">
+            <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
+              Ava · {Math.round(avaLevel * 100)}%
+            </p>
+            <div
+              className="flex h-16 items-end gap-0.5 border border-line bg-bg-deep p-1"
+              role="img"
+              aria-label={`Ava level ${Math.round(avaLevel * 100)} percent`}
+            >
+              {meterBars(avaLevel, avaHot)}
+            </div>
           </div>
-          <p className="mt-2 font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
-            VU · phosphor · peak amber · {playing ? `${Math.round(level * 100)}%` : "00%"}
+          <div className="sage-kpi sage-kpi-stack flex flex-col gap-1 px-2 py-1.5">
+            <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
+              Andrew · {Math.round(andrewLevel * 100)}%
+            </p>
+            <div
+              className="flex h-16 items-end gap-0.5 border border-line bg-bg-deep p-1"
+              role="img"
+              aria-label={`Andrew level ${Math.round(andrewLevel * 100)} percent`}
+            >
+              {meterBars(andrewLevel, andrewHot)}
+            </div>
+          </div>
+          <div className="mt-auto border-t border-line pt-2">
+            <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">deck</p>
+            <p
+              className={cn(
+                "font-mono text-kicker uppercase tracking-kicker tabular-nums",
+                playing ? "sage-signal" : "text-subtle",
+              )}
+            >
+              {playing ? `LIVE · ${beat}` : "READY"}
+            </p>
+          </div>
+        </aside>
+
+        {/* Mid · script TAKE → WHY → MOVE — brightest */}
+        <section
+          className="sage-panel sage-ticks sage-panel-glow holo-edge sage-bento-hero sage-take px-4 py-3 lg:col-span-6 lg:row-span-1"
+          aria-label="Voice script"
+        >
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <p className="lane-kicker font-mono text-kicker uppercase tracking-kicker text-amber">
+              Script · story
+            </p>
+            <span className="font-mono text-kicker uppercase tracking-kicker text-subtle">
+              lead · {lead?.id ?? "hf-incident"} · TAKE→WHY→MOVE
+            </span>
+          </div>
+          <dl className="pin-meta mt-3 max-w-prose">
+            <dt className={cn(beat === "take" && "sage-signal")}>take</dt>
+            <dd className={cn("text-phosphor-bright", beat === "take" && "text-phosphor-bright")}>
+              {script.take}
+            </dd>
+            <dt className={cn(beat === "why" && "text-amber")}>why</dt>
+            <dd className={cn("text-muted", beat === "why" && "text-phosphor-bright")}>{script.why}</dd>
+            <dt className={cn(beat === "move" && "sage-signal")}>move</dt>
+            <dd className={cn("sage-signal", beat === "move" && "text-phosphor-bright")}>{script.move}</dd>
+          </dl>
+        </section>
+
+        {/* Right · clip / speaker / TTS chain — quiet */}
+        <div className="voice-ops-rail flex flex-col gap-1.5 lg:col-span-4 lg:row-span-2">
+          <div
+            className="pin-legend-rail sage-panel sage-ticks flex flex-wrap items-center gap-x-3 gap-y-1 px-2.5 py-1.5"
+            aria-label="Voice chain controls"
+          >
+            <span className="font-mono text-kicker uppercase tracking-kicker text-subtle">chain</span>
+            <span className="font-mono text-kicker uppercase tracking-kicker text-subtle">
+              Ava / Andrew · cyc/{CYCLE.id}
+            </span>
+          </div>
+          <div className="sage-panel sage-ticks pin-card-quiet flex flex-col gap-2 px-2.5 py-2">
+            <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">clip · TTS</p>
+            <button
+              type="button"
+              className="focus-phosphor h-9 bg-accent px-3 font-mono text-kicker uppercase tracking-kicker text-accent-fg"
+              onClick={playing ? stop : speakChain}
+              aria-pressed={playing}
+            >
+              {playing ? "Stop" : "Play brief"}
+            </button>
+            <p className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
+              lead {lead?.id ?? "hf-incident"}
+            </p>
+            <ul className="space-y-1 border-t border-line pt-2">
+              <li className="font-mono text-kicker uppercase tracking-kicker text-subtle">
+                Ava · TAKE / MOVE
+              </li>
+              <li className="font-mono text-kicker uppercase tracking-kicker text-subtle">
+                Andrew · WHY
+              </li>
+              <li className="font-mono text-kicker uppercase tracking-kicker text-subtle">
+                browser speechSynthesis · free only
+              </li>
+            </ul>
+          </div>
+          <p className="px-1 font-mono text-kicker uppercase tracking-kicker text-subtle">
+            Podcast mix offline · locked lead only · Sol≠Astra
           </p>
         </div>
+
+        {/* Under mid · waveform / chain progress */}
+        <section
+          className="sage-panel sage-ticks overflow-hidden lg:col-span-6"
+          aria-label="Voice chain progress"
+        >
+          <div className="sage-panel-header">&gt; Waveform · chain progress</div>
+          <div className="p-2.5">
+            <div
+              className="flex h-12 items-end gap-0.5 border border-line bg-bg-deep p-1.5"
+              role="img"
+              aria-label={playing ? `VU level ${Math.round(level * 100)} percent` : "VU idle"}
+            >
+              {Array.from({ length: 28 }, (_, i) => {
+                const threshold = (i + 1) / 28;
+                const on = playing && level >= threshold * 0.85;
+                const hot = threshold > 0.88;
+                return (
+                  <div
+                    key={i}
+                    className={cn(
+                      "min-w-0 flex-1",
+                      on ? (hot ? "bg-amber" : "bg-phosphor") : "bg-phosphor-deep",
+                    )}
+                    style={{
+                      height: `${12 + ((i * 37) % 88)}%`,
+                      opacity: on ? 0.55 + threshold * 0.4 : 0.25,
+                    }}
+                  />
+                );
+              })}
+            </div>
+            <div
+              className="mt-2 h-1.5 w-full bg-bg-deep"
+              role="img"
+              aria-label={`Chain progress ${chainPct}%`}
+            >
+              <div
+                className="h-full bg-phosphor"
+                style={{ width: `${chainPct}%`, opacity: 0.55 + chainPct / 200 }}
+              />
+            </div>
+            <p className="mt-2 font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
+              TAKE → WHY → MOVE · {playing ? `${Math.round(level * 100)}%` : "00%"} · amber filament scarce
+            </p>
+          </div>
+        </section>
       </div>
     </div>
   );
 }
+
 
 function Gov() {
   return (
