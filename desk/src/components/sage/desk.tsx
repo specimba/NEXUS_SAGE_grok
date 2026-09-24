@@ -11,6 +11,7 @@ import { SOURCE_HEALTH, SOURCE_HEALTH_AT } from "@/data/source-health";
 import { X_TASTE } from "@/data/x-taste";
 import { DIGEST_ITEMS, DROPPED, PACK_AT, PACK_SOURCE } from "@/data/digest-pack";
 import { DIGEST_CADENCE } from "@/data/digest-cadence";
+import { RANK_CURRENT, RANK_MOVED, RANK_PREV } from "@/data/corroboration-rank";
 import { PAPERS } from "@/data/papers";
 import { SHELF } from "@/data/shelf";
 import { WIKIDATA_DENY_LAST } from "@/data/wikidata-deny-last";
@@ -174,6 +175,35 @@ export function Desk({ buildId = "dev", serverStartedAt = "" }: DeskProps) {
   );
 }
 
+/** Beat 4 — corroboration rank lookups (lead pinned; hf-incident pin ↔ hf-swarm digest row). */
+const RANK_BY_ID = new Map(RANK_CURRENT.rows.map((r) => [r.id, r]));
+function rankFor(id: string) {
+  return RANK_BY_ID.get(id) ?? (id === "hf-incident" ? RANK_BY_ID.get("hf-swarm") : undefined);
+}
+function byCorroboration<T extends { id: string; kind: string }>(items: T[]): T[] {
+  const lead = items.filter((i) => i.kind === "lead");
+  const rest = items.filter((i) => i.kind !== "lead" && i.kind !== "drop");
+  const drop = items.filter((i) => i.kind === "drop");
+  const idx = new Map(items.map((i, k) => [i.id, k]));
+  rest.sort(
+    (a, b) =>
+      (rankFor(a.id)?.rank ?? 99) - (rankFor(b.id)?.rank ?? 99) || (idx.get(a.id) ?? 0) - (idx.get(b.id) ?? 0),
+  );
+  return [...lead, ...rest, ...drop];
+}
+function SrcChip({ id }: { id: string }) {
+  const r = rankFor(id);
+  if (!r) return null;
+  return (
+    <span
+      className={cn("sage-src-chip tabular-nums", r.sources > 1 && "sage-src-chip-multi")}
+      title={`${r.sources} independent sources · ×${r.mult} · ${r.source_keys.join(" · ")}`}
+    >
+      {r.sources} SRC
+    </span>
+  );
+}
+
 function Brief() {
   const age = crawlAgeHours(CRAWL_AT);
   const waveMax = 956;
@@ -261,7 +291,7 @@ function Brief() {
           </span>
         </div>
         <ol className="flex flex-col gap-1.5">
-          {CYCLE.pins.map((p) => (
+          {byCorroboration(CYCLE.pins).map((p) => (
             <li
               key={p.id}
               className={cn(
@@ -281,6 +311,12 @@ function Brief() {
                   {p.kind}
                 </span>{" "}
                 · <span className="tabular-nums">{p.id}</span>
+                {p.kind !== "lead" ? (
+                  <>
+                    {" "}
+                    <SrcChip id={p.id} />
+                  </>
+                ) : null}
               </p>
               <h3
                 className={cn(
@@ -755,7 +791,7 @@ function Digest() {
             </span>
           </div>
           <ul className="flex flex-col gap-1">
-            {DIGEST_ITEMS.map((i, idx) => {
+            {byCorroboration(DIGEST_ITEMS).map((i, idx) => {
               const open = i.id === item.id;
               return (
                 <li key={i.id}>
@@ -770,6 +806,12 @@ function Digest() {
                   >
                     <p className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
                       [{String(idx + 1).padStart(2, "0")}] · {i.id} · {i.kind}
+                      {i.kind !== "lead" && i.kind !== "drop" ? (
+                        <>
+                          {" "}
+                          <SrcChip id={i.id} />
+                        </>
+                      ) : null}
                     </p>
                     <p
                       className={cn(
@@ -811,6 +853,59 @@ function Digest() {
             </div>
             <p className="mt-2 font-mono text-kicker uppercase tracking-kicker text-subtle">
               {PACK_SOURCE} · lead hf-incident · Sol≠Astra
+            </p>
+          </div>
+        </section>
+
+        {/* Beat 4 · Moved since last crawl — corroboration rank vs previous snapshot */}
+        <section
+          className="sage-panel sage-ticks sage-moved overflow-hidden lg:col-span-12"
+          aria-label="Moved since last crawl"
+        >
+          <div className="sage-panel-header">&gt; Moved since last crawl · corroboration rank below lead</div>
+          <div className="px-2.5 py-2">
+            <p className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
+              crawl {RANK_PREV?.crawl_at ?? "—"} → {RANK_CURRENT.crawl_at} · lead {RANK_CURRENT.lead_id} pinned · ×
+              {"≤"}1.45 · curated items only
+            </p>
+            <ol className="sage-moved-table mt-1.5">
+              <li className="sage-moved-head" aria-hidden>
+                <span>Δ</span>
+                <span>item</span>
+                <span>rank</span>
+                <span>base</span>
+                <span>SRC</span>
+                <span>×</span>
+              </li>
+              {RANK_MOVED.map((m) => {
+                const r = RANK_CURRENT.rows.find((x) => x.id === m.id);
+                const glyph =
+                  m.status === "up" ? "▲" : m.status === "down" ? "▼" : m.status === "new" ? "NEW" : m.status === "gone" ? "OUT" : "=";
+                return (
+                  <li key={m.id} className="sage-moved-row" data-status={m.status} data-corroboration={m.by_corroboration ? "1" : undefined}>
+                    <span className="sage-moved-delta">{glyph}</span>
+                    <span className="truncate">
+                      {m.id}
+                      {r?.lead ? " · lead" : ""}
+                      {m.by_corroboration ? " · moved by SRC" : ""}
+                    </span>
+                    <span className="tabular-nums">
+                      {m.prev_rank ?? "—"}→{m.rank ?? "—"}
+                    </span>
+                    <span className="tabular-nums">{r?.base_rank ?? "—"}</span>
+                    <span className="tabular-nums">
+                      {m.prev_sources ?? "—"}→{m.sources ?? "—"}
+                    </span>
+                    <span className="tabular-nums">{r?.lead ? "pin" : r?.mult ?? "—"}</span>
+                  </li>
+                );
+              })}
+            </ol>
+            <p className="mt-1.5 font-mono text-kicker uppercase tracking-kicker text-subtle">
+              {RANK_MOVED.some((m) => m.status === "up" || m.status === "down" || m.by_corroboration)
+                ? "reorder present"
+                : "no reorder — corroboration agrees with base order this crawl"}
+              {" · "}Taste / Pulse / shelf never ranked here (briefEligible=false)
             </p>
           </div>
         </section>

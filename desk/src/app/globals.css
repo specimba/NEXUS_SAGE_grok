@@ -1682,3 +1682,64 @@ body {
     padding-left: 0.75rem;
   }
 }
+
+/* === Beat 4 — corroboration SRC chip + Digest moved-since-crawl (Skin V2 vars only) === */
+.sage-src-chip {
+  display: inline-block;
+  padding: 0 0.3rem;
+  border: 1px solid var(--border);
+  color: var(--phosphor-dim);
+  font-size: var(--text-kicker);
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+  vertical-align: baseline;
+}
+.sage-src-chip-multi {
+  border-color: var(--phosphor);
+  color: var(--phosphor-bright);
+}
+.sage-lead .sage-src-chip {
+  color: var(--primary-foreground);
+  border-color: var(--primary-foreground);
+}
+.sage-moved-table {
+  font-family: var(--font-mono), var(--font-jetbrains), ui-monospace, monospace;
+  border: 1px solid var(--border);
+  background: var(--bg-deep);
+}
+.sage-moved-head,
+.sage-moved-row {
+  display: grid;
+  grid-template-columns: 5ch minmax(0, 1fr) 14ch 6ch 14ch 6ch;
+  column-gap: 0.6rem;
+  align-items: center;
+  padding: 0 0.6rem;
+  min-height: 28px;
+  font-size: 0.78rem;
+  color: var(--phosphor);
+}
+.sage-moved-head {
+  min-height: 22px;
+  font-size: var(--text-kicker);
+  letter-spacing: var(--tracking-kicker);
+  color: var(--phosphor-dim);
+  border-bottom: 1px solid var(--border);
+}
+.sage-moved-row:nth-child(odd) {
+  background: var(--card);
+}
+.sage-moved-delta {
+  color: var(--phosphor-dim);
+}
+.sage-moved-row[data-status="up"] .sage-moved-delta {
+  color: var(--phosphor-bright);
+}
+.sage-moved-row[data-status="down"] .sage-moved-delta {
+  color: var(--pip-amber);
+}
+.sage-moved-row[data-status="new"] .sage-moved-delta {
+  color: var(--phosphor);
+}
+.sage-moved-row[data-corroboration] {
+  border-left: 2px solid var(--phosphor);
+}
