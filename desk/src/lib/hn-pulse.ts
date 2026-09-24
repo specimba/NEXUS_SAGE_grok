@@ -1,6 +1,6 @@
 /**
  * HN Algolia Pulse chatter — free/public only.
- * GET https://hn.algolia.com/api/v1/search?query=...&tags=story
+ * GET https://hn.algolia.com/api/v1/search?query=...&tags=story[&numericFilters=created_at_i>now-48h]
  * Pulse candidates only · never Brief pins · cycle stays 003 · lead hf-incident.
  * FREE-PULSE P3: watchlist ≤12 · rotate ≤3/tick · soft_fail merge · no Sol/Astra standing.
  */
@@ -22,6 +22,31 @@ export const HN_HITS_PER_PAGE_MAX = 20;
 export const HN_WATCHLIST_MAX = 12;
 /** Rotate ≤3 queries per ingest tick — not all 12 every tick. */
 export const HN_QUERIES_PER_TICK = 3;
+/**
+ * Dedupe v2 freshness: live ingest restricts Algolia hits to the last N hours
+ * (`numericFilters=created_at_i>…`). Relevance-only search returned months/years-old
+ * stories, so HN could never overlap same-day lab/GNews items.
+ */
+export const HN_RECENT_WINDOW_HOURS = 48;
+/**
+ * One extra recency sweep per tick (same free Algolia endpoint, not a standing noun query):
+ * OR-match over the lab/company entities our other Pulse sources cover, last 48h, points ≥ 3.
+ */
+export const HN_RECENT_SWEEP_TERMS = [
+  "OpenAI",
+  "Anthropic",
+  "Claude",
+  "Gemini",
+  "Google",
+  "DeepMind",
+  "Nvidia",
+  "Mistral",
+  "Hugging Face",
+  "GPT",
+] as const;
+export const HN_RECENT_SWEEP_MIN_POINTS = 3;
+/** Sweep pages (each ≤ HN_HITS_PER_PAGE_MAX hits, throttled ≤1 req/2s). */
+export const HN_RECENT_SWEEP_PAGES = 2;
 
 /**
  * Watchlist nouns only — Scout P3 deepen (baseline + deepen).
@@ -104,6 +129,9 @@ export type FetchHnResult = {
   queries_run: string[];
   queries_ok: string[];
   queries_soft_fail: HnQuerySoftFail[];
+  /** Recency sweep outcome (null when not requested). */
+  recent_sweep?: { ok: boolean; hits: number; reason?: string } | null;
+  recent_hours?: number | null;
   brief: false;
   pulse_only: true;
   from_cache: boolean;
@@ -343,7 +371,43 @@ export type FetchHnOpts = {
   forceSoftFail?: 429 | 500 | 503;
   /** Optional fetch override (tests). */
   fetchImpl?: typeof fetch;
+  /** Restrict live hits to the last N hours (ingest passes HN_RECENT_WINDOW_HOURS). */
+  recentHours?: number;
+  /** Also run one OR-entity recency sweep (requires recentHours). */
+  recentSweep?: boolean;
 };
+
+/** Algolia numericFilters value for "created in the last `hours`". */
+export function hnRecentFilter(now: number, hours: number): string {
+  return `created_at_i>${Math.floor(now / 1000) - Math.round(hours * 3600)}`;
+}
+
+export function hnSearchUrl(
+  query: string,
+  hitsPerPage: number,
+  opts: { now?: number; recentHours?: number; optionalWords?: boolean; minPoints?: number } = {},
+): string {
+  let url =
+    `${HN_ALGOLIA_API}?query=${encodeURIComponent(query)}` +
+    `&tags=story&hitsPerPage=${clampHitsPerPage(hitsPerPage)}`;
+  if (opts.optionalWords) url += `&optionalWords=${encodeURIComponent(query)}`;
+  const filters: string[] = [];
+  if (opts.recentHours && opts.recentHours > 0) {
+    filters.push(hnRecentFilter(opts.now ?? Date.now(), opts.recentHours));
+  }
+  if (opts.minPoints && opts.minPoints > 0) filters.push(`points>=${opts.minPoints}`);
+  if (filters.length) url += `&numericFilters=${encodeURIComponent(filters.join(","))}`;
+  return url;
+}
+
+/** Drop hits older than the window (defensive; Algolia already filters). Missing created_at → keep. */
+export function filterRecentHits(hits: HnAlgoliaHit[], now: number, hours: number): HnAlgoliaHit[] {
+  const floor = now - hours * 3_600_000;
+  return hits.filter((h) => {
+    const t = h.created_at ? Date.parse(h.created_at) : NaN;
+    return !Number.isFinite(t) || t >= floor;
+  });
+}
 
 async function getJson(
   url: string,
@@ -382,6 +446,7 @@ export async function fetchHnPulse(
   const hitsPerPage = clampHitsPerPage(opts.hitsPerPage ?? 10);
   const now = opts.now ?? Date.now();
   const fetchImpl = opts.fetchImpl ?? fetch;
+  const recentHours = opts.recentHours && opts.recentHours > 0 ? opts.recentHours : 0;
 
   if (opts.fixtureJson) {
     const payload =
@@ -421,14 +486,13 @@ export async function fetchHnPulse(
       continue;
     }
 
-    let payload = readCache(cacheDir, query, now);
+    const cacheKey = recentHours ? `${query}|recent${recentHours}h` : query;
+    let payload = readCache(cacheDir, cacheKey, now);
     if (payload) {
       from_cache = true;
       queries_ok.push(query);
     } else {
-      const url =
-        `${HN_ALGOLIA_API}?query=${encodeURIComponent(query)}` +
-        `&tags=story&hitsPerPage=${hitsPerPage}`;
+      const url = hnSearchUrl(query, hitsPerPage, { now, recentHours });
       try {
         const res = await getJson(url, fetchImpl);
         if (!res.ok) {
@@ -438,7 +502,7 @@ export async function fetchHnPulse(
           continue;
         }
         payload = res.body;
-        writeCache(cacheDir, query, payload, now);
+        writeCache(cacheDir, cacheKey, payload, now);
         queries_ok.push(query);
       } catch (err) {
         const reason = `network: ${String(err)}`;
@@ -455,7 +519,54 @@ export async function fetchHnPulse(
     }
   }
 
-  const candidates = toPulseCandidates(allHits);
+  let recent_sweep: FetchHnResult["recent_sweep"] = null;
+  if (opts.recentSweep && recentHours && !opts.forceSoftFail) {
+    const q = HN_RECENT_SWEEP_TERMS.join(" ");
+    let hitsTotal = 0;
+    let failReason: string | undefined;
+    for (let page = 0; page < HN_RECENT_SWEEP_PAGES; page++) {
+      const cacheKey = `sweep|${q}|recent${recentHours}h|p${page}`;
+      let payload = readCache(cacheDir, cacheKey, now);
+      try {
+        if (!payload) {
+          const res = await getJson(
+            `${hnSearchUrl(q, HN_HITS_PER_PAGE_MAX, {
+              now,
+              recentHours,
+              optionalWords: true,
+              minPoints: HN_RECENT_SWEEP_MIN_POINTS,
+            })}&page=${page}`,
+            fetchImpl,
+          );
+          if (res.ok) {
+            payload = res.body;
+            writeCache(cacheDir, cacheKey, payload, now);
+          } else {
+            failReason = `HTTP ${res.status}`;
+          }
+        } else {
+          from_cache = true;
+        }
+      } catch (err) {
+        failReason = `network: ${String(err)}`;
+      }
+      if (!payload) break;
+      const hits = parseHnHits(payload);
+      hitsTotal += hits.length;
+      for (const h of hits) {
+        if (seenIds.has(h.objectID)) continue;
+        seenIds.add(h.objectID);
+        allHits.push(h);
+      }
+      if (hits.length < HN_HITS_PER_PAGE_MAX) break;
+    }
+    recent_sweep = failReason && hitsTotal === 0
+      ? { ok: false, hits: 0, reason: failReason }
+      : { ok: true, hits: hitsTotal, ...(failReason ? { reason: failReason } : {}) };
+  }
+
+  const freshHits = recentHours ? filterRecentHits(allHits, now, recentHours) : allHits;
+  const candidates = toPulseCandidates(freshHits);
   const soft_fail = queries_soft_fail.length > 0;
   const soft_fail_reason = softFailReasonFromQueries(queries_soft_fail);
 
@@ -467,6 +578,8 @@ export async function fetchHnPulse(
     queries_run: queries,
     queries_ok,
     queries_soft_fail,
+    recent_sweep,
+    recent_hours: recentHours || null,
     brief: false,
     pulse_only: true,
     from_cache,

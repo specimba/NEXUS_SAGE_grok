@@ -49,6 +49,7 @@ import {
 } from "../src/lib/crossref-enrich";
 import {
   fetchHnPulse,
+  HN_RECENT_WINDOW_HOURS,
   resolveHnCacheDir,
   type HnPulseCandidate,
 } from "../src/lib/hn-pulse";
@@ -95,6 +96,8 @@ import {
   clusterItems,
   clusterStats,
   DEDUPE_THRESHOLD,
+  DEDUPE_WINDOW_HOURS,
+  topCrossSourcePairs,
   type PulseCluster,
   type PulseInput,
 } from "../src/lib/dedupe";
@@ -315,6 +318,7 @@ function renderPulseClustersTs(
         at: c.at,
         first_seen: c.first_seen ?? null,
         is_new: Boolean(c.is_new),
+        score: c.score,
       };
       return `  ${JSON.stringify(row)}`;
     })
@@ -335,11 +339,13 @@ export type PulseClusterRow = {
   at: string;
   first_seen: string | null;
   is_new: boolean;
+  /** Dedupe v2: strongest linking pair score (1 = same canonical URL, 0 = singleton). */
+  score?: number;
 };
 
 export const PULSE_CLUSTERS_AT = ${JSON.stringify(stamp)};
 
-export const PULSE_CLUSTER_STATS = ${JSON.stringify({ ...stats, threshold: DEDUPE_THRESHOLD })} as const;
+export const PULSE_CLUSTER_STATS = ${JSON.stringify({ ...stats, threshold: DEDUPE_THRESHOLD, window_hours: DEDUPE_WINDOW_HOURS })} as const;
 
 export const PULSE_CLUSTERS: PulseClusterRow[] = [
 ${body},
@@ -621,9 +627,12 @@ async function main() {
   let hnQueriesOk: string[] = [];
   let hnQueriesSoftFail: { query: string; reason: string; soft_fail: true }[] = [];
   try {
+    // Dedupe v2 freshness: last-48h window + one OR-entity recency sweep (free Algolia only).
     const hn = await fetchHnPulse({
       cacheDir: resolveHnCacheDir(root),
-      hitsPerPage: 10,
+      hitsPerPage: 20,
+      recentHours: HN_RECENT_WINDOW_HOURS,
+      recentSweep: true,
     });
     hnRows = hn.candidates;
     hnOk = hn.ok || hnRows.length > 0;
@@ -634,6 +643,9 @@ async function main() {
     hnQueriesSoftFail = hn.queries_soft_fail;
     console.log(
       `HN: ${hnRows.length} Pulse candidates queries=${hnQueriesRun.length} soft_fail=${hn.soft_fail} (classifyPost filtered; brief=false; rotate≤3)`,
+    );
+    console.log(
+      `  hn recent_hours=${hn.recent_hours ?? "off"} sweep=${hn.recent_sweep ? `${hn.recent_sweep.ok ? "ok" : "fail"}(hits=${hn.recent_sweep.hits}${hn.recent_sweep.reason ? ` ${hn.recent_sweep.reason}` : ""})` : "off"}`,
     );
     if (hnQueriesRun.length) {
       console.log(`  hn queries_run: ${hnQueriesRun.join(" · ")}`);
@@ -959,8 +971,19 @@ async function main() {
   console.log(
     `Dedupe: items_in=${cStats.items_in} clusters_out=${cStats.clusters_out} collapsed=${cStats.collapsed} multi_source=${cStats.multi_source} multi_member=${cStats.multi_member} threshold=${DEDUPE_THRESHOLD}`,
   );
-  for (const c of clusters.filter((c) => c.size > 1).slice(0, 5)) {
-    console.log(`  cluster [${c.sources.join("+")}] x${c.size} :: ${c.title.slice(0, 72)}`);
+  const multiSource = clusters.filter((c) => c.sources.length > 1);
+  for (const c of multiSource) {
+    console.log(`  multi [${c.sources.join("+")}] x${c.size} score=${c.score} :: ${c.title.slice(0, 80)}`);
+  }
+  for (const c of clusters.filter((c) => c.size > 1 && c.sources.length === 1).slice(0, 5)) {
+    console.log(`  same-source [${c.sources.join("+")}] x${c.size} score=${c.score} :: ${c.title.slice(0, 72)}`);
+  }
+  const topPairs = topCrossSourcePairs(pulseInputs, { limit: 15 });
+  const nearMisses = topPairs.filter((p) => !p.match).slice(0, 8);
+  for (const p of nearMisses) {
+    console.log(
+      `  near-miss ${p.score.toFixed(3)} ${p.blocked ?? "below"} h=${p.hours_apart ?? "?"} [${p.a.source}] ${p.a.title.slice(0, 56)} ‖ [${p.b.source}] ${p.b.title.slice(0, 56)}`,
+    );
   }
   console.log(`Seen-index: ${Object.keys(seenIndex.entries).length} keys · new this crawl=${newItems}`);
 
@@ -1022,7 +1045,32 @@ async function main() {
     stamped_at: stamp,
     stale_hours: STALE_HOURS,
     stale_guard_hours: STALE_GUARD_HOURS,
-    dedupe: { ...cStats, threshold: DEDUPE_THRESHOLD, new_items: newItems },
+    dedupe: {
+      ...cStats,
+      version: 2,
+      threshold: DEDUPE_THRESHOLD,
+      window_hours: DEDUPE_WINDOW_HOURS,
+      new_items: newItems,
+      per_source: pulseInputs.reduce<Record<string, number>>((acc, it) => {
+        acc[it.source] = (acc[it.source] ?? 0) + 1;
+        return acc;
+      }, {}),
+      multi_source_clusters: multiSource.map((c) => ({
+        title: c.title,
+        sources: c.sources,
+        size: c.size,
+        score: c.score,
+        members: c.members.map((m) => ({ id: m.id, source: m.source, title: m.title, at: m.at })),
+      })),
+      near_misses: nearMisses.map((p) => ({
+        score: p.score,
+        blocked: p.blocked ?? "below-threshold",
+        hours_apart: p.hours_apart,
+        a: p.a,
+        b: p.b,
+        shared: p.shared,
+      })),
+    },
     source_health: healthRows.map((r) => ({ id: r.id, state: r.state, streak_ok: r.streak_ok, streak_fail: r.streak_fail, items_last: r.items_last })),
     age_check: crawlAgeHours(stamp),
     hf: { ok: hfOk, count: papers.length, url: HF_DAILY_PAPERS_URL },
@@ -1097,6 +1145,7 @@ async function main() {
       queries_run: hnQueriesRun,
       queries_ok: hnQueriesOk,
       queries_soft_fail: hnQueriesSoftFail,
+      recent_hours: HN_RECENT_WINDOW_HOURS,
       url: "https://hn.algolia.com/api/v1/search",
       sample: hnRows.slice(0, 3).map((h) => ({ id: h.id, tag: h.tag, score: h.score, text: h.text })),
     },
