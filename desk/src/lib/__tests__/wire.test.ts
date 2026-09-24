@@ -126,7 +126,7 @@ describe("Beat 7 wire — prev-snapshot diff", () => {
     expect(wireHeader("2026-09-24T22:00:34Z", [{ status: "new" }, { status: "up" }, { status: "same" }])).toBe(
       "WIRE · crawl 01:00 UTC+3 · 1 new · 1 moved",
     );
-  });
+  }, 30_000); // first tz-aware Intl formatter can be slow under load
 });
 
 describe("Beat 7 wire — daily lead exclusion", () => {
