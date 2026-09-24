@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { CYCLE, WAVES, WAVE_TIMELINE } from "@/data/cycle";
 import { CRAWL, CRAWL_AT } from "@/data/x-crawl";
@@ -49,6 +49,8 @@ import {
   type MemberItem,
 } from "@/lib/story-drawer";
 import { useStoryDrawer } from "@/lib/use-story-drawer";
+import { isTypingTarget, KEY_MAP, matchesFilter, resolveKey, stepSelection } from "@/lib/keys";
+import { writeStoryParam } from "@/lib/story-drawer";
 
 function laneFromHash(): Lane {
   const raw = typeof window === "undefined" ? "" : window.location.hash.replace("#", "");
@@ -72,6 +74,13 @@ type DeskProps = {
   serverStartedAt?: string;
 };
 
+/** Beat 9 — filter + story hand-off shared with lane tables (one global key handler lives in Desk). */
+type DeskKeys = { q: string; report: (shown: number, total: number) => void; openStory: (id: string) => void };
+const DeskKeysCtx = createContext<DeskKeys>({ q: "", report: () => {}, openStory: () => {} });
+const useDeskKeys = () => useContext(DeskKeysCtx);
+
+const NAV_ROWS = ".desk-stage [data-nav-row]";
+
 export function Desk({ buildId = "dev", serverStartedAt = "" }: DeskProps) {
   const [lane, setLane] = useState<Lane>("brief");
   // Tabs light only after the hash is read — SSR default "brief" must never paint as filled on another lane.
@@ -84,10 +93,127 @@ export function Desk({ buildId = "dev", serverStartedAt = "" }: DeskProps) {
     window.addEventListener("hashchange", onHash);
     return () => window.removeEventListener("hashchange", onHash);
   }, []);
-  const go = (id: Lane) => {
+  const go = useCallback((id: Lane) => {
     setLane(id);
     if (typeof window !== "undefined") window.location.hash = id;
-  };
+  }, []);
+
+  // ── Beat 9 · keyboard control ──
+  const [keymapOpen, setKeymapOpen] = useState(false);
+  const [filterOpen, setFilterOpen] = useState(false);
+  const [q, setQ] = useState("");
+  const [counts, setCounts] = useState<{ shown: number; total: number } | null>(null);
+  const filterRef = useRef<HTMLInputElement>(null);
+  const sel = useRef<Partial<Record<Lane, number>>>({});
+  const pendingG = useRef<number | null>(null);
+  const live = useRef({ lane, keymapOpen, filterOpen, q });
+  live.current = { lane, keymapOpen, filterOpen, q };
+
+  const report = useCallback((shown: number, total: number) => setCounts({ shown, total }), []);
+  const openStory = useCallback(
+    (id: string) => {
+      const { pathname, search } = window.location;
+      window.history.replaceState(window.history.state, "", `${pathname}${writeStoryParam(search, id)}#pulse`);
+      go("pulse");
+    },
+    [go],
+  );
+  const keysCtx = useMemo(() => ({ q, report, openStory }), [q, report, openStory]);
+
+  const navRows = () => [...document.querySelectorAll<HTMLElement>(NAV_ROWS)];
+  const select = useCallback((idx: number, focus: boolean) => {
+    const rows = navRows();
+    for (const r of rows) r.removeAttribute("data-nav-selected");
+    const el = rows[idx];
+    if (!el) return;
+    sel.current[live.current.lane] = idx;
+    el.setAttribute("data-nav-selected", "1");
+    if (focus) el.focus({ preventScroll: true });
+    el.scrollIntoView({ block: "nearest" });
+  }, []);
+  const clearFilter = useCallback(() => {
+    setQ("");
+    setFilterOpen(false);
+  }, []);
+
+  // Lane change: drop the filter, re-mark the remembered row for that lane (no focus steal).
+  useEffect(() => {
+    setQ("");
+    setFilterOpen(false);
+    setCounts(null);
+    const id = window.requestAnimationFrame(() => {
+      const i = sel.current[lane];
+      if (i != null && i >= 0) select(Math.min(i, navRows().length - 1), false);
+    });
+    return () => window.cancelAnimationFrame(id);
+  }, [lane, select]);
+
+  useEffect(() => {
+    if (filterOpen) filterRef.current?.focus();
+  }, [filterOpen]);
+
+  // ONE global keydown listener for the whole desk; removed on unmount.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      const t = e.target instanceof HTMLElement ? e.target : null;
+      const L = live.current;
+      const action = resolveKey(e, {
+        typing: isTypingTarget(t),
+        inFilter: t?.dataset.filterPrompt === "1",
+        targetActivates: !!t && t !== document.body && !!t.closest("button, a[href], [role='button'], [data-nav-row]"),
+        keymapOpen: L.keymapOpen,
+        pendingG: pendingG.current != null,
+      });
+      if (!action) return;
+      if (pendingG.current != null) {
+        window.clearTimeout(pendingG.current);
+        pendingG.current = null;
+      }
+      const drawer = document.querySelector<HTMLElement>(".story-drawer");
+      const rows = navRows();
+      const cur = sel.current[L.lane] ?? -1;
+      const click = (sel: string) => document.querySelector<HTMLElement>(sel)?.click();
+      e.preventDefault();
+      switch (action.t) {
+        case "lane":
+          if (drawer) click("[data-drawer-close]");
+          go(action.lane);
+          return;
+        case "next":
+        case "prev":
+          if (drawer) return click(action.t === "next" ? "[data-drawer-next]" : "[data-drawer-prev]");
+          return select(stepSelection(cur, rows.length, action.t === "next" ? 1 : -1), true);
+        case "first":
+          return select(0, true);
+        case "last":
+          return select(rows.length - 1, true);
+        case "g":
+          pendingG.current = window.setTimeout(() => (pendingG.current = null), 700);
+          return;
+        case "enter":
+          return rows[cur]?.click();
+        case "open": {
+          const href = rows[cur]?.dataset.href;
+          if (href) window.open(href, "_blank", "noopener,noreferrer");
+          return;
+        }
+        case "escape":
+          if (L.keymapOpen) return setKeymapOpen(false);
+          if (drawer) return click("[data-drawer-close]");
+          if (L.filterOpen || L.q) {
+            clearFilter();
+            window.requestAnimationFrame(() => navRows()[sel.current[L.lane] ?? -1]?.focus({ preventScroll: true }));
+          }
+          return;
+        case "filter":
+          return setFilterOpen(true);
+        case "keymap":
+          return setKeymapOpen((v) => !v);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [go, select, clearFilter]);
 
   const age = crawlAgeHours(CRAWL_AT);
   const fresh = crawlFreshness(CRAWL_AT);
@@ -169,18 +295,86 @@ export function Desk({ buildId = "dev", serverStartedAt = "" }: DeskProps) {
           <div className="crt-rain" aria-hidden />
           <div className="desk-stage-rail relative z-10">
             <span className="block-cursor">&gt; lane · {lane}</span>
+            {q && !filterOpen ? (
+              <button type="button" className="desk-filter-chip focus-phosphor" onClick={clearFilter} aria-label={`Clear filter ${q}`}>
+                filter: {q} ×
+              </button>
+            ) : null}
             <span className="tabular-nums">policy {CYCLE.leadPolicy} · pins {CYCLE.pins.length}/3</span>
           </div>
           <div className="relative z-10 p-3 md:p-4">
+            <DeskKeysCtx.Provider value={keysCtx}>
             {lane === "brief" ? <Brief /> : null}
             {lane === "pulse" ? <Pulse /> : null}
             {lane === "digest" ? <Digest /> : null}
             {lane === "papers" ? <Papers /> : null}
             {lane === "voice" ? <Voice /> : null}
             {lane === "governance" ? <Gov /> : null}
+            </DeskKeysCtx.Provider>
           </div>
         </div>
       </main>
+      {filterOpen ? (
+        <div className="desk-filter-prompt" role="search">
+          <label className="desk-filter-inner">
+            <span className="desk-filter-prefix">&gt; filter:</span>
+            <input
+              ref={filterRef}
+              data-filter-prompt="1"
+              className="desk-filter-input"
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && !e.ctrlKey && !e.metaKey && !e.altKey) {
+                  e.preventDefault();
+                  setFilterOpen(false);
+                  window.requestAnimationFrame(() => select(0, true));
+                }
+              }}
+              aria-label="Filter rows"
+              spellCheck={false}
+              autoComplete="off"
+            />
+            <span className="desk-filter-count tabular-nums">{counts ? `${counts.shown}/${counts.total}` : "—"}</span>
+          </label>
+        </div>
+      ) : null}
+      {keymapOpen ? (
+        <div className="desk-keymap-scrim" onClick={() => setKeymapOpen(false)}>
+          <div
+            className="desk-keymap"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="desk-keymap-title"
+            tabIndex={-1}
+            ref={(el) => el?.focus()}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <p id="desk-keymap-title" className="desk-keymap-title">
+              keys · desk
+            </p>
+            <dl className="desk-keymap-grid">
+              {KEY_MAP.map(([k, a]) => (
+                <div key={k} className="desk-keymap-row">
+                  <dt>
+                    {k.split(" ").map((part, i) =>
+                      part === "/" && k !== "/" ? (
+                        <span key={i} className="desk-keymap-sep"> / </span>
+                      ) : (
+                        <kbd key={i} className="desk-keycap">
+                          {part}
+                        </kbd>
+                      ),
+                    )}
+                  </dt>
+                  <dd>{a}</dd>
+                </div>
+              ))}
+            </dl>
+            <p className="desk-keymap-foot">Ctrl / Cmd / Alt keys stay with the browser · Esc close</p>
+          </div>
+        </div>
+      ) : null}
       <footer
         className="desk-footer relative z-10 mx-auto max-w-7xl px-4 pb-3 pt-1 md:px-6"
         data-sage-build={buildId}
@@ -189,6 +383,7 @@ export function Desk({ buildId = "dev", serverStartedAt = "" }: DeskProps) {
       >
         <p className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
           {`build ${buildShort}${serverStartedAt ? ` · boot ${serverStartedAt}` : ""}`}
+          <span className="desk-keys-hint"> · ? keys</span>
         </p>
       </footer>
     </div>
@@ -232,6 +427,9 @@ function BriefWire() {
     const t = window.setInterval(() => setNow(Date.now()), 60_000);
     return () => window.clearInterval(t);
   }, []);
+  const { q, report, openStory } = useDeskKeys();
+  const rows = useMemo(() => WIRE_ROWS.filter((r) => matchesFilter(q, [r.title])), [q]);
+  useEffect(() => report(rows.length, WIRE_ROWS.length), [rows.length, report]);
   if (WIRE_ROWS.length === 0) return null;
   return (
     <section className="brief-wire sage-panel sage-ticks lg:col-span-6" aria-label="Wire — live multi-source clusters">
@@ -242,10 +440,28 @@ function BriefWire() {
         </span>
       </div>
       <ol className="brief-wire-list">
-        {WIRE_ROWS.map((r) => {
+        {rows.map((r) => {
           const mark = wireMark(r);
           return (
-            <li key={r.id} className="brief-wire-row" data-status={r.status}>
+            <li
+              key={r.id}
+              className="brief-wire-row"
+              data-status={r.status}
+              data-nav-row
+              data-href={r.url}
+              tabIndex={-1}
+              onClick={(e) => {
+                // Enter (via the desk key handler) or a click on the row body opens the story drawer on Pulse.
+                if ((e.target as HTMLElement).closest("a")) return;
+                openStory(r.id);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && !e.ctrlKey && !e.metaKey && !e.altKey && !e.shiftKey && e.target === e.currentTarget) {
+                  e.preventDefault();
+                  openStory(r.id);
+                }
+              }}
+            >
               <span className="brief-wire-mark tabular-nums">
                 {r.status === "new" ? <span className="pulse-v5-new">NEW</span> : mark}
               </span>
@@ -549,6 +765,7 @@ function StoryDrawer({
         onKeyDown={(e) => {
           if (e.key === "Escape") {
             e.preventDefault();
+            e.stopPropagation(); // the desk's global Esc must not close twice
             onClose();
             return;
           }
@@ -602,10 +819,10 @@ function StoryDrawer({
         <footer className="story-drawer-foot tabular-nums">
           <span>{scoreContribution(row.sourceCount)}</span>
           <span className="story-drawer-nav">
-            <button type="button" className="focus-phosphor" onClick={onPrev} aria-label="Previous story">
+            <button type="button" className="focus-phosphor" data-drawer-prev onClick={onPrev} aria-label="Previous story">
               ‹ prev
             </button>
-            <button type="button" className="focus-phosphor" onClick={onNext} aria-label="Next story">
+            <button type="button" className="focus-phosphor" data-drawer-next onClick={onNext} aria-label="Next story">
               next ›
             </button>
             <span>Esc close</span>
@@ -655,7 +872,13 @@ function Pulse() {
   const drawerCluster = drawer.openId ? clusterById.get(drawer.openId) : undefined;
   const [showAll, setShowAll] = useState(false);
   const [tasteAll, setTasteAll] = useState(false);
-  const visible = showAll ? rows : rows.slice(0, PULSE_V5_MAX_ROWS);
+  const { q, report } = useDeskKeys();
+  const filtered = useMemo(
+    () => rows.filter((r) => matchesFilter(q, [r.title, r.leadBadge, ...r.alsoBadges, ...r.alsoPublishers, members[r.leadId]?.publisher])),
+    [rows, q, members],
+  );
+  useEffect(() => report(filtered.length, rows.length), [filtered.length, rows.length, report]);
+  const visible = showAll || q ? filtered : filtered.slice(0, PULSE_V5_MAX_ROWS);
   const fresh = crawlFreshness(CRAWL_AT, now);
   const health = [...SOURCE_HEALTH].sort(
     (a, b) => HEALTH_ORDER.indexOf(a.id) - HEALTH_ORDER.indexOf(b.id),
@@ -742,6 +965,8 @@ function Pulse() {
                     aria-expanded={open}
                     aria-haspopup={inDrawer ? "dialog" : undefined}
                     data-story-row={inDrawer ? r.id : undefined}
+                    data-nav-row
+                    data-href={r.url}
                     className="pulse-v5-line focus-phosphor"
                     onClick={(e) =>
                       inDrawer
@@ -1229,7 +1454,13 @@ function Digest() {
 
 function Papers() {
   const [openId, setOpenId] = useState<string | null>(null);
-  const rows = useMemo(() => buildPaperRows(PAPERS as unknown as PaperInput[]), []);
+  const allRows = useMemo(() => buildPaperRows(PAPERS as unknown as PaperInput[]), []);
+  const { q, report } = useDeskKeys();
+  const rows = useMemo(
+    () => allRows.filter((p) => matchesFilter(q, [p.title, p.id, ...p.badges.map((b) => b.label)])),
+    [allRows, q],
+  );
+  useEffect(() => report(rows.length, allRows.length), [rows.length, allRows.length, report]);
   const copyId = (id: string) => {
     void navigator.clipboard?.writeText(id);
   };
@@ -1256,6 +1487,8 @@ function Papers() {
                   role="button"
                   tabIndex={0}
                   aria-expanded={open}
+                  data-nav-row
+                  data-href={p.abs}
                   className="papers-v6-line focus-phosphor"
                   onClick={() => setOpenId(open ? null : p.id)}
                   onKeyDown={(e) => {
