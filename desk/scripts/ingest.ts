@@ -92,6 +92,7 @@ import { SHELF as KEPT_SHELF } from "../src/data/shelf";
 import { crawlAgeHours, STALE_HOURS } from "../src/lib/x-pulse";
 import { HN_PULSE } from "../src/data/hn-pulse";
 import { RSS_LABS } from "../src/data/rss-labs";
+import { isAiRelevantTitle, isLabItemAiRelevant, partitionAiRelevant } from "../src/lib/ai-relevance";
 import { RSS_SECURITY } from "../src/data/rss-security";
 import { GNEWS_RSS } from "../src/data/gnews-rss";
 import {
@@ -317,7 +318,11 @@ function renderPulseClustersTs(
         lead_id: c.lead_id,
         lead_source: c.lead_source,
         sources: c.sources,
+        ...(c.all_sources.length !== c.sources.length ? { all_sources: c.all_sources } : {}),
         member_ids: c.member_ids,
+        ...(c.members.some((m) => m.self_repost)
+          ? { members: c.members.map((m) => ({ id: m.id, source: m.source, publisher: m.publisher ?? null, ...(m.self_repost ? { self_repost: true } : {}) })) }
+          : {}),
         size: c.size,
         at: c.at,
         first_seen: c.first_seen ?? null,
@@ -337,8 +342,13 @@ export type PulseClusterRow = {
   canonical_url: string;
   lead_id: string;
   lead_source: PulseSource;
+  /** Independent source classes — GNews self-reposts (same company as the original post) excluded. */
   sources: PulseSource[];
+  /** Every source class incl. self-reposts (only present when it differs from sources). */
+  all_sources?: PulseSource[];
   member_ids: string[];
+  /** Per-member detail, present only when a member is a self-repost. self_repost:true counts 0 sources. */
+  members?: { id: string; source: PulseSource; publisher: string | null; self_repost?: true }[];
   size: number;
   at: string;
   first_seen: string | null;
@@ -678,6 +688,7 @@ async function main() {
   let rssSoftFail = false;
   let rssSoftFailReason: string | undefined;
   let rssPulse: LabRssItem[] = [];
+  let rssAiDropped: { lab: string; title: string }[] = [];
   let rssShelf: { href: string; label: string; reason: "rss-lab-shelf" }[] = [];
   let rssFeedsOk: { lab: string; url: string; count: number }[] = [];
   let rssFeedsSoftFail: { lab: string; reason: string; soft_fail: true }[] = [];
@@ -686,7 +697,14 @@ async function main() {
       cacheDir: resolveRssCacheDir(root),
       maxPerFeed: 12,
     });
-    rssPulse = rss.pulse;
+    // AI-relevance gate: general-company feeds (NVIDIA blog/dev, MS/Google Research) need an AI
+    // term or lab/model name in the title (GeForce NOW game posts drop). AI-lab-only feeds pass.
+    const rssGate = partitionAiRelevant(rss.pulse, (it) => isLabItemAiRelevant(it.lab, it.title));
+    rssPulse = rssGate.kept;
+    rssAiDropped = rssGate.dropped.map((it) => ({ lab: it.lab, title: it.title }));
+    console.log(
+      `  rss ai_relevance dropped=${rssAiDropped.length}${rssAiDropped.length ? ` :: ${rssAiDropped.slice(0, 12).map((d) => `${d.lab}: ${d.title.slice(0, 48)}`).join(" | ")}` : ""}`,
+    );
     rssShelf = rssToShelfItems(rss.shelf);
     rssFeedsOk = rss.feedsOk;
     rssFeedsSoftFail = rss.feedsSoftFail;
@@ -694,7 +712,7 @@ async function main() {
     rssSoftFailReason = rss.soft_fail_reason;
     rssOk = rss.ok;
     console.log(
-      `RSS labs: ${rss.pulse.length} Pulse + ${rss.shelf.length} shelf from ${rss.feedsOk.length} feeds soft_fail=${rss.soft_fail} (brief=false · never HF displace)`,
+      `RSS labs: ${rssPulse.length} Pulse (of ${rss.pulse.length}, ${rssAiDropped.length} AI-gate drops) + ${rss.shelf.length} shelf from ${rss.feedsOk.length} feeds soft_fail=${rss.soft_fail} (brief=false · never HF displace)`,
     );
     for (const f of rss.feedsOk) {
       console.log(`  rss ${f.lab} @ ${f.url} → ${f.count} items`);
@@ -720,7 +738,9 @@ async function main() {
   let gnewsSoftFailReason: string | undefined;
   let gnewsRows: GnewsRssItem[] = [];
   let gnewsPool: GnewsRssItem[] = [];
-  let gnewsCorroborators: { id: string; anchor_id: string; score: number; title: string; publisher: string }[] = [];
+  let gnewsAiDropped: { publisher: string; title: string }[] = [];
+  let gnewsPoolAiDropped = 0;
+  let gnewsCorroborators: { id: string; anchor_id: string; score: number; title: string; publisher: string; self_repost: boolean }[] = [];
   let gnewsQueriesRun: string[] = [];
   let gnewsQueriesOk: string[] = [];
   let gnewsQueriesSoftFail: { query: string; reason: string; soft_fail: true }[] = [];
@@ -738,8 +758,15 @@ async function main() {
       labQueries: true,
       recentDays: GNEWS_RECENT_DAYS,
     });
-    gnewsRows = gn.items;
-    gnewsPool = gn.pool ?? [];
+    // AI-relevance gate (title-only — GNews links are news.google.com redirects).
+    const gnGate = partitionAiRelevant(gn.items, (it) => isAiRelevantTitle(it.title));
+    gnewsRows = gnGate.kept;
+    gnewsPool = (gn.pool ?? []).filter((it) => isAiRelevantTitle(it.title));
+    gnewsAiDropped = gnGate.dropped.map((it) => ({ publisher: it.publisher, title: it.title }));
+    gnewsPoolAiDropped = (gn.pool?.length ?? 0) - gnewsPool.length;
+    console.log(
+      `  gnews ai_relevance dropped=${gnewsAiDropped.length} shown · ${gnewsPoolAiDropped} pool${gnewsAiDropped.length ? ` :: ${gnewsAiDropped.slice(0, 12).map((d) => d.title.slice(0, 48)).join(" | ")}` : ""}`,
+    );
     gnewsOk = gn.ok || gnewsRows.length > 0;
     gnewsSoftFail = gn.soft_fail;
     gnewsSoftFailReason = gn.soft_fail_reason;
@@ -937,7 +964,7 @@ async function main() {
       at: toIso(r.at),
       score: r.score,
     })),
-    ...(rssOk ? rssPulse : RSS_LABS).map((r) => ({
+    ...(rssOk ? rssPulse : RSS_LABS.filter((r) => isLabItemAiRelevant(r.lab, r.title))).map((r) => ({
       id: r.id,
       source: "rss-lab" as const,
       title: r.title,
@@ -953,7 +980,7 @@ async function main() {
       at: toIso(r.published),
       publisher: r.lab,
     })),
-    ...(gnewsOk || gnewsSoftFail ? gnewsRows : GNEWS_RSS).map((r) => ({
+    ...(gnewsOk || gnewsSoftFail ? gnewsRows : GNEWS_RSS.filter((r) => isAiRelevantTitle(r.title))).map((r) => ({
       id: r.id,
       source: "gnews-rss" as const,
       title: r.title,
@@ -984,13 +1011,13 @@ async function main() {
       if (!row) continue;
       gnewsRows.push(row);
       pulseInputs.push(toInput(row));
-      gnewsCorroborators.push({ id: row.id, anchor_id: p.anchor_id, score: p.score, title: row.title, publisher: row.publisher });
+      gnewsCorroborators.push({ id: row.id, anchor_id: p.anchor_id, score: p.score, title: row.title, publisher: row.publisher, self_repost: p.self_repost });
     }
     console.log(
       `GNews corroborators: pool=${gnewsPool.length} picked=${picks.length} (≤${GNEWS_CORROBORATORS_PER_ITEM}/anchor, direct v2 match only)`,
     );
     for (const c of gnewsCorroborators.slice(0, 12)) {
-      console.log(`  corroborates ${c.anchor_id} score=${c.score} :: ${c.title.slice(0, 80)}`);
+      console.log(`  corroborates ${c.anchor_id} score=${c.score}${c.self_repost ? " SELF(0 src)" : ""} :: ${c.title.slice(0, 80)}`);
     }
   }
   const seenPath = resolve(root, "artifacts/sage/seen-index.json");
@@ -1017,11 +1044,14 @@ async function main() {
   }
   const newItems = pulseInputs.filter((it) => it.first_seen === stamp).length;
   console.log(
-    `Dedupe: items_in=${cStats.items_in} clusters_out=${cStats.clusters_out} collapsed=${cStats.collapsed} multi_source=${cStats.multi_source} multi_member=${cStats.multi_member} threshold=${DEDUPE_THRESHOLD}`,
+    `Dedupe: items_in=${cStats.items_in} clusters_out=${cStats.clusters_out} collapsed=${cStats.collapsed} multi_source=${cStats.multi_source} (independent; raw=${cStats.multi_source_raw} self_reposts=${cStats.self_reposts}) multi_member=${cStats.multi_member} threshold=${DEDUPE_THRESHOLD}`,
   );
   const multiSource = clusters.filter((c) => c.sources.length > 1);
   for (const c of multiSource) {
     console.log(`  multi [${c.sources.join("+")}] x${c.size} score=${c.score} :: ${c.title.slice(0, 80)}`);
+  }
+  for (const c of clusters.filter((c) => c.all_sources.length > c.sources.length)) {
+    console.log(`  self-repost only [${c.all_sources.join("+")}→${c.sources.join("+")}] x${c.size} :: ${c.title.slice(0, 80)}`);
   }
   for (const c of clusters.filter((c) => c.size > 1 && c.sources.length === 1).slice(0, 5)) {
     console.log(`  same-source [${c.sources.join("+")}] x${c.size} score=${c.score} :: ${c.title.slice(0, 72)}`);
@@ -1099,6 +1129,8 @@ async function main() {
     cycle: "003",
     lead_id: "hf-incident",
     stamped_at: stamp,
+    /** Headline: Pulse clusters with ≥2 INDEPENDENT sources (company self-reposts count 0). */
+    multi_source_independent: cStats.multi_source_independent,
     stale_hours: STALE_HOURS,
     stale_guard_hours: STALE_GUARD_HOURS,
     dedupe: {
@@ -1116,8 +1148,22 @@ async function main() {
         sources: c.sources,
         size: c.size,
         score: c.score,
-        members: c.members.map((m) => ({ id: m.id, source: m.source, title: m.title, at: m.at })),
+        members: c.members.map((m) => ({ id: m.id, source: m.source, title: m.title, at: m.at, publisher: m.publisher ?? null, ...(m.self_repost ? { self_repost: true } : {}) })),
       })),
+      self_repost_clusters: clusters
+        .filter((c) => c.members.some((m) => m.self_repost))
+        .map((c) => ({
+          title: c.title,
+          sources: c.sources,
+          all_sources: c.all_sources,
+          self_reposts: c.members.filter((m) => m.self_repost).map((m) => ({ id: m.id, publisher: m.publisher ?? null, title: m.title })),
+        })),
+      ai_relevance: {
+        rss_lab_dropped: rssAiDropped,
+        gnews_shown_dropped: gnewsAiDropped,
+        gnews_pool_dropped: gnewsPoolAiDropped,
+        hn_dropped: hnAiDropped,
+      },
       gnews_near_misses: gnewsNearMisses.map((p) => ({
         score: p.score,
         blocked: p.blocked ?? "below-threshold",

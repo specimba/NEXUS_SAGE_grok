@@ -3,8 +3,8 @@ import type { MovedRow, RankSnapshot } from "@/lib/corroboration";
 
 export const RANK_CURRENT: RankSnapshot = {
   "schema": 1,
-  "at": "2026-09-24T21:44:54.717Z",
-  "crawl_at": "2026-09-24T21:43:33Z",
+  "at": "2026-09-24T21:56:18.039Z",
+  "crawl_at": "2026-09-24T21:55:15Z",
   "lead_id": "hf-incident",
   "rows": [
     {
@@ -47,13 +47,12 @@ export const RANK_CURRENT: RankSnapshot = {
       "id": "aisle-curl",
       "rank": 3,
       "base_rank": 3,
-      "sources": 2,
+      "sources": 1,
       "source_keys": [
-        "aisle.com",
-        "x:@stanislavfort"
+        "co:aisle"
       ],
       "crawl_hits": [],
-      "mult": 1.15,
+      "mult": 1,
       "lead": false
     },
     {
@@ -73,8 +72,8 @@ export const RANK_CURRENT: RankSnapshot = {
 
 export const RANK_PREV: RankSnapshot | null = {
   "schema": 1,
-  "at": "2026-09-24T21:43:55.310Z",
-  "crawl_at": "2026-09-24T21:42:52Z",
+  "at": "2026-09-24T21:54:40.972Z",
+  "crawl_at": "2026-09-24T21:53:39Z",
   "lead_id": "hf-incident",
   "rows": [
     {
@@ -117,13 +116,12 @@ export const RANK_PREV: RankSnapshot | null = {
       "id": "aisle-curl",
       "rank": 3,
       "base_rank": 3,
-      "sources": 2,
+      "sources": 1,
       "source_keys": [
-        "aisle.com",
-        "x:@stanislavfort"
+        "co:aisle"
       ],
       "crawl_hits": [],
-      "mult": 1.15,
+      "mult": 1,
       "lead": false
     },
     {
@@ -165,8 +163,8 @@ export const RANK_MOVED: MovedRow[] = [
     "status": "same",
     "prev_rank": 3,
     "rank": 3,
-    "prev_sources": 2,
-    "sources": 2,
+    "prev_sources": 1,
+    "sources": 1,
     "by_corroboration": false
   },
   {

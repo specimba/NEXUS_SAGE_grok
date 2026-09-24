@@ -10,6 +10,8 @@
  *    count) via a strict per-item signature — they are never ranked or shown themselves
  */
 
+import { companyOfUrl, type Company } from "./publisher-company";
+
 export const CORROBORATION_STEP = 0.15;
 export const CORROBORATION_CAP = 1.45;
 export const LEAD_IDS = ["hf-incident", "hf-swarm"] as const;
@@ -32,7 +34,10 @@ export type RankableItem = {
 export type CorroboratingCluster = {
   id: string;
   title: string;
+  /** Independent source classes (dedupe already drops GNews self-reposts). */
   sources: string[];
+  url?: string;
+  lead_source?: string;
 };
 
 /**
@@ -57,8 +62,19 @@ const CRAWL_CLASS: Record<string, string> = {
   "gnews-rss": "crawl:gnews",
 };
 
-/** One key per independent source: host, except x.com/<handle> counts per handle. */
+/**
+ * One key per independent source. Known companies collapse to `co:<company>` (the company's
+ * blog, lab feed, official/founder X handle and Google News reposts are one source); otherwise
+ * host, except x.com/<handle> counts per handle.
+ */
 export function sourceKey(href: string): string | null {
+  const co = companyOfUrl(href);
+  if (co) return `co:${co}`;
+  return rawSourceKey(href);
+}
+
+/** Pre-company key: host, or x:@handle. */
+export function rawSourceKey(href: string): string | null {
   let u: URL;
   try {
     u = new URL(href);
@@ -84,12 +100,22 @@ export function countSources(
   clusters: CorroboratingCluster[] = [],
 ): { n: number; keys: string[]; hits: string[] } {
   const keys = new Set<string>();
+  const refCompanies = new Set<Company>();
   for (const r of item.refs ?? []) {
     const k = sourceKey(r.href);
     if (k) keys.add(k);
+    const co = companyOfUrl(r.href);
+    if (co) refCompanies.add(co);
   }
   const hits = crawlHits(item.id, clusters);
-  for (const c of hits) for (const s of c.sources) keys.add(CRAWL_CLASS[s] ?? `crawl:${s}`);
+  for (const c of hits) {
+    // A crawl cluster led by the item's own company (its blog / lab feed) is a self-repost: 0 sources.
+    const leadCo = c.url ? companyOfUrl(c.url) : null;
+    for (const s of c.sources) {
+      if (leadCo && refCompanies.has(leadCo) && (!c.lead_source || s === c.lead_source)) continue;
+      keys.add(CRAWL_CLASS[s] ?? `crawl:${s}`);
+    }
+  }
   return { n: Math.max(1, keys.size), keys: [...keys].sort(), hits: hits.map((h) => h.id) };
 }
 

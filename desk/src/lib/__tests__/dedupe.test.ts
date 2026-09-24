@@ -155,6 +155,9 @@ describe("clusterItems", () => {
       clusters_out: 3,
       collapsed: 2,
       multi_source: 1,
+      multi_source_independent: 1,
+      multi_source_raw: 1,
+      self_reposts: 0,
       multi_member: 1,
     });
   });
@@ -323,5 +326,101 @@ describe("Beat 5 — GNews suffix + corroborators", () => {
     ]);
     expect(cl).toHaveLength(1);
     expect(cl[0].lead_source).toBe("hn-algolia");
+  });
+});
+
+describe("company self-reposts count 0 independent sources", () => {
+  const at = "2026-09-24T10:00:00Z";
+  const nvLab: PulseInput = {
+    id: "rss:nvidia:1",
+    source: "rss-lab",
+    title: "Manage Kubernetes Node Fleets with NodeWright",
+    url: "https://developer.nvidia.com/blog/manage-kubernetes-node-fleets-with-nodewright/",
+    at,
+    publisher: "nvidia-dev",
+  };
+  const nvRepost: PulseInput = {
+    id: "gnews:nv",
+    source: "gnews-rss",
+    title: "Manage Kubernetes Node Fleets with NodeWright | NVIDIA Technical Blog - NVIDIA Developer",
+    url: "https://news.google.com/rss/articles/CBMiNV?oc=5",
+    at,
+    publisher: "NVIDIA Developer",
+  };
+  const hnBio: PulseInput = {
+    id: "hn:1",
+    source: "hn-algolia",
+    title: "Anthropic says it's bio lab has found something big",
+    url: "https://techcrunch.com/2026/09/23/anthropic-says-its-biology-lab-has-already-found-something-big/",
+    at,
+  };
+  const tc: PulseInput = {
+    id: "gnews:tc",
+    source: "gnews-rss",
+    title: "Anthropic says its biology lab has already found something big - TechCrunch",
+    url: "https://news.google.com/rss/articles/CBMiTC?oc=5",
+    at,
+    publisher: "techcrunch.com",
+  };
+  const hnEnzyme: PulseInput = {
+    id: "hn:2",
+    source: "hn-algolia",
+    title: "Claude discovers a novel enzyme system with CRISPR-like repeats",
+    url: "https://www.anthropic.com/news/claude-discovers-novel-enzyme-system",
+    at,
+  };
+  const gAnthropic: PulseInput = {
+    id: "gnews:an",
+    source: "gnews-rss",
+    title: "Claude discovers a novel enzyme system with CRISPR-like repeats - Anthropic",
+    url: "https://news.google.com/rss/articles/CBMiAN?oc=5",
+    at,
+    publisher: "Anthropic",
+  };
+  const gAlj: PulseInput = {
+    id: "gnews:aj",
+    source: "gnews-rss",
+    title: "Claude discovers a novel enzyme system with CRISPR-like repeats - Al Jazeera",
+    url: "https://news.google.com/rss/articles/CBMiAJ?oc=5",
+    at,
+    publisher: "Al Jazeera",
+  };
+
+  test("NVIDIA repost of NVIDIA's own post: flagged self_repost, counts 0 → not multi-source", () => {
+    const [c] = clusterItems([nvLab, nvRepost]);
+    expect(c.size).toBe(2);
+    expect(c.all_sources).toEqual(["rss-lab", "gnews-rss"]);
+    expect(c.sources).toEqual(["rss-lab"]);
+    expect(c.members.find((m) => m.id === "gnews:nv")?.self_repost).toBe(true);
+    expect(c.members.find((m) => m.id === "rss:nvidia:1")?.self_repost).toBeUndefined();
+    const st = clusterStats(2, [c]);
+    expect(st.multi_source_independent).toBe(0);
+    expect(st.multi_source_raw).toBe(1);
+    expect(st.self_reposts).toBe(1);
+  });
+
+  test("TechCrunch covering an HN story counts 1 → multi-source", () => {
+    const [c] = clusterItems([hnBio, tc]);
+    expect(c.size).toBe(2);
+    expect(c.sources).toEqual(["hn-algolia", "gnews-rss"]);
+    expect(c.members.some((m) => m.self_repost)).toBe(false);
+    expect(clusterStats(2, [c]).multi_source_independent).toBe(1);
+  });
+
+  test("Anthropic's own GNews copy counts 0, Al Jazeera counts 1 in the same cluster", () => {
+    const [c] = clusterItems([hnEnzyme, gAnthropic, gAlj]);
+    expect(c.size).toBe(3);
+    expect(c.members.find((m) => m.id === "gnews:an")?.self_repost).toBe(true);
+    expect(c.members.find((m) => m.id === "gnews:aj")?.self_repost).toBeUndefined();
+    expect(c.sources).toEqual(["hn-algolia", "gnews-rss"]);
+    const [c2] = clusterItems([hnEnzyme, gAnthropic]);
+    expect(c2.sources).toEqual(["hn-algolia"]);
+  });
+
+  test("pickCorroborators marks same-company corroborators self_repost", () => {
+    const picks = pickCorroborators([nvLab, hnBio], [nvRepost, tc], { weights: () => 1 });
+    const byId = new Map(picks.map((p) => [p.item.id, p]));
+    expect(byId.get("gnews:nv")?.self_repost).toBe(true);
+    expect(byId.get("gnews:tc")?.self_repost).toBe(false);
   });
 });

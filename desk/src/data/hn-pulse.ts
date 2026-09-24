@@ -16,7 +16,7 @@ export type HnPulseRow = {
   cluster_id?: string;
 };
 
-export const HN_PULSE_AT = "2026-09-24T21:43:33Z";
+export const HN_PULSE_AT = "2026-09-24T21:55:15Z";
 
 export const HN_PULSE: HnPulseRow[] = [
   { id: "hn:49820134", text: "Claude discovers a novel enzyme system with CRISPR-like repeats", url: "https://www.anthropic.com/news/claude-discovers-novel-enzyme-system", source: "hn-algolia" as const, score: 755, at: "2026-09-23T18:06:47Z", author: "raahelb", tag: "rest" as const, first_seen: "2026-09-24T21:26:40Z", is_new: false, cluster_id: "cl:hn:49820134" },
@@ -57,7 +57,6 @@ export const HN_PULSE: HnPulseRow[] = [
   { id: "hn:49813172", text: "Ask HN: How do GitHub Copilot and Anthropic Claude compare in cost?", url: "https://news.ycombinator.com/item?id=49813172", source: "hn-algolia" as const, score: 3, at: "2026-09-23T08:29:32Z", author: "erwindegroot", tag: "rest" as const, first_seen: "2026-09-24T21:26:40Z", is_new: false, cluster_id: "cl:hn:49813172" },
   { id: "hn:49812887", text: "Claude Opus 5.5, GPT-6 Sol, GPT-6 Luna, and a new price war", url: "https://simonwillison.net/2026/Sep/22/opus-and-sol-and-luna/", source: "hn-algolia" as const, score: 3, at: "2026-09-23T07:46:22Z", author: "theanonymousone", tag: "rest" as const, first_seen: "2026-09-24T21:26:40Z", is_new: false, cluster_id: "cl:hn:49812887" },
   { id: "hn:49809555", text: "Show HN: Livenerf – a benchmark for whether Opus 5.5 gets nerfed", url: "https://github.com/ninjahawk/livenerf", source: "hn-algolia" as const, score: 3, at: "2026-09-22T23:09:46Z", author: "ninjahawk1", tag: "rest" as const, first_seen: "2026-09-24T21:26:40Z", is_new: false, cluster_id: "cl:hn:49809555" },
-  { id: "hn:49808620", text: "Show HN: Jade Email. Unlimited emails for your domain plus AI Agent support", url: "https://jade.email/", source: "hn-algolia" as const, score: 3, at: "2026-09-22T21:46:57Z", author: "piesupplies", tag: "rest" as const, first_seen: "2026-09-24T21:26:40Z", is_new: false, cluster_id: "cl:hn:49808620" },
   { id: "hn:49836150", text: "ZeroDrift – A small model that finds and fixes compliance violations", url: "https://zerodrift.com/model/anchor-3-benchmark", source: "hn-algolia" as const, score: 2, at: "2026-09-24T20:08:00Z", author: "chobberoni", tag: "rest" as const, first_seen: "2026-09-24T21:26:40Z", is_new: false, cluster_id: "cl:hn:49836150" },
   { id: "hn:49827039", text: "Debian Inference Portal (Unofficial)", url: "https://inference.debian.net/", source: "hn-algolia" as const, score: 2, at: "2026-09-24T06:40:17Z", author: "selfhoster1312", tag: "rest" as const, first_seen: "2026-09-24T21:26:40Z", is_new: false, cluster_id: "cl:hn:49822482" },
   { id: "hn:49824306", text: "Jev deserves hype but not the type its getting", url: "https://github.com/YidiDev/jev-benchmark", source: "hn-algolia" as const, score: 2, at: "2026-09-23T23:52:11Z", author: "yididev", tag: "rest" as const, first_seen: "2026-09-24T21:26:40Z", is_new: false, cluster_id: "cl:hn:49824306" },

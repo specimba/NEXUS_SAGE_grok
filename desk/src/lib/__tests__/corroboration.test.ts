@@ -7,6 +7,7 @@ import {
   eligibleForBriefDigest,
   rankBelowLead,
   sourceKey,
+  rawSourceKey,
   toSnapshot,
   type RankableItem,
 } from "@/lib/corroboration";
@@ -42,7 +43,9 @@ describe("corroboration multiplier", () => {
 
   test("source keys: host, X per handle", () => {
     expect(sourceKey("https://x.com/Amir/status/1")).toBe("x:@amir");
-    expect(sourceKey("https://www.aisle.com/blog/a")).toBe("aisle.com");
+    expect(sourceKey("https://www.aisle.com/blog/a")).toBe("co:aisle");
+    expect(rawSourceKey("https://www.aisle.com/blog/a")).toBe("aisle.com");
+    expect(sourceKey("https://techcrunch.com/2026/09/23/x")).toBe("techcrunch.com");
     expect(sourceKey("nope")).toBeNull();
     expect(countSources(item("a", { refs: [x("a"), x("a"), x("b")] })).n).toBe(2);
   });

@@ -5,6 +5,7 @@
  * FREE-PULSE P3: watchlist ≤12 · rotate ≤3/tick · soft_fail merge · no Sol/Astra standing.
  */
 
+import { isAiRelevant } from "./ai-relevance";
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
@@ -87,41 +88,8 @@ export const HN_STANDING_BAN = [
  * Antennagate Q&A). A row must carry an AI/ML term or a lab/model name in its title, or come
  * from an AI lab domain. Generic company names alone never qualify.
  */
-const HN_AI_TERMS =
-  /(?<!\w)a\.i\.(?!\w)|\b\d+(\.\d+)?b[- ]param\w*|\b(ai|ais|agi|small models?|vector (db|database)s?|artificial intelligence|machine learning|deep learning|ml|neural|transformers?|agents?|agentic|inference|embeddings?|fine-?tun\w*|rag|diffusion|multimodal|text-to-speech|tts|speech-to-text|stt|prompts?|evals?|alignment|reasoning model|quantiz\w*|quants?|gguf|llama\.cpp|open[- ]weights?|foundation models?|frontier models?|language models?|chatbots?|copilot|vibe cod\w*|mcp)\b|(llm|vlm|gpt)s?\b|gpt-/i;
-const HN_AI_NAMES =
-  /\b(openai|anthropic|deepmind|hugging ?face|mistral|deepseek|qwen|claude|gemini|gemma|llama|grok|xai|chatgpt|codex|sora|nemotron|glm|kimi|opus|sonnet|haiku|perplexity|cohere|metr|midjourney|stability ai|whisper|jev|cursor|ollama|vllm|pytorch|tensorflow|jax|nano banana)\b/i;
-const HN_AI_DOMAINS = [
-  "openai.com",
-  "anthropic.com",
-  "claude.dev",
-  "claude.ai",
-  "deepmind.google",
-  "deepmind.com",
-  "huggingface.co",
-  "mistral.ai",
-  "x.ai",
-  "ai.meta.com",
-  "ai.google",
-  "ai.google.dev",
-  "research.google",
-  "artificialanalysis.ai",
-  "developer.nvidia.com",
-  "research.nvidia.com",
-];
-
 export function isHnAiRelevant(title: string, url?: string | null): boolean {
-  const t = String(title ?? "");
-  if (HN_AI_TERMS.test(t) || HN_AI_NAMES.test(t)) return true;
-  try {
-    const u = new URL(String(url ?? ""));
-    const host = u.hostname.toLowerCase().replace(/^www\./, "");
-    if (HN_AI_DOMAINS.some((d) => host === d || host.endsWith(`.${d}`))) return true;
-    if (host === "blog.google" && /innovation-and-ai|\/ai\/|models-and-research/i.test(u.pathname)) return true;
-  } catch {
-    /* no url */
-  }
-  return false;
+  return isAiRelevant(title, url);
 }
 
 export type HnAlgoliaHit = {
