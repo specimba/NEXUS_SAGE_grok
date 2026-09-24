@@ -66,12 +66,20 @@ describe("pulse-v5 baseline guard", () => {
 });
 
 describe("pulse-v5 badges", () => {
-  test("single-source row: one badge, no also line", () => {
+  test("single-source row (same publisher twice): one badge, no also line", () => {
     const { rows } = buildRows(
       [cl("c", { lead_source: "gnews-rss", sources: ["gnews-rss"], member_ids: ["c", "c2"], size: 2 })],
-      { ...MEMBERS, c2: { badge: "GNW", publisher: "AP" } },
+      { ...MEMBERS, c2: { badge: "GNW", publisher: "reuters" } },
     );
     expect(rows[0].multiSource).toBe(false);
+    expect(rows[0].sourceCount).toBe(1);
+    // N SRC counts publishers, not source classes: Reuters + AP via Google News = 2 SRC
+    const two = buildRows(
+      [cl("c", { lead_source: "gnews-rss", sources: ["gnews-rss"], member_ids: ["c", "c2"], size: 2 })],
+      { ...MEMBERS, c2: { badge: "GNW", publisher: "AP" } },
+    ).rows[0];
+    expect(two.sourceCount).toBe(2);
+    expect(two.multiSource).toBe(true);
     expect(rows[0].leadBadge).toBe("GNW");
     expect(rows[0].alsoBadges).toEqual([]);
     expect(rows[0].alsoPublishers).toEqual([]);

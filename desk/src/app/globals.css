@@ -2264,3 +2264,15 @@ body {
 .desk-keys-hint {
   color: var(--muted-foreground);
 }
+
+/* Lead headline in the status bar / ticker — truncated; the cluster id lives in the title attribute. */
+.desk-lead-headline {
+  display: inline-block;
+  max-width: 34ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: bottom;
+  text-transform: none;
+  letter-spacing: 0.04em;
+}
