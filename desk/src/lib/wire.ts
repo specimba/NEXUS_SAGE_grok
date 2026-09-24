@@ -49,6 +49,8 @@ export type WireOpts = {
   tasteIds?: Iterable<string>;
   /** member id → signal (HN points, X likes…). */
   scores?: Record<string, number>;
+  /** Cluster ids kept off the Wire (the current daily lead lives on the Take). */
+  excludeIds?: Iterable<string>;
 };
 
 /** Why a cluster is kept off the Wire (null = eligible). Source count is checked separately. */
@@ -65,7 +67,8 @@ export function wireExcludeReason(c: WireCluster, tasteIds: Set<string> = new Se
 /** Eligible candidates, ranked: most independent sources → freshest → highest signal → id. */
 export function wireCandidates(clusters: WireCluster[], opts: WireOpts = {}): WireCandidate[] {
   const taste = new Set(opts.tasteIds ?? []);
-  const kept = clusters.filter((c) => wireExcludeReason(c, taste) === null);
+  const skip = new Set(opts.excludeIds ?? []);
+  const kept = clusters.filter((c) => !skip.has(c.id) && wireExcludeReason(c, taste) === null);
   const byId = new Map(kept.map((c) => [c.id, c]));
   const { rows } = buildRows(kept, {});
   const out: WireCandidate[] = [];
@@ -114,6 +117,9 @@ export function buildWire(
   opts: WireOpts & { at: string; crawlAt: string; max?: number },
 ): WireSnapshot {
   const cands = wireCandidates(clusters, opts);
+  // Rank vs prev on the same footing: drop excluded ids (e.g. today's lead) from prev order too.
+  const skip = new Set(opts.excludeIds ?? []);
+  if (prev && skip.size) prev = { ...prev, order: prev.order.filter((o) => !skip.has(o.id)) };
   const rows = cands.slice(0, opts.max ?? WIRE_MAX).map((c, i): WireRow => {
     const rank = i + 1;
     const prev_rank = prevRankOf(prev, c);

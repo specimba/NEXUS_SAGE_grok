@@ -264,9 +264,9 @@ function Brief() {
       {/* Left · Pip-Boy needle rail */}
       <aside
         className="sage-panel sage-ticks sage-instrument sage-pip-rail flex flex-col gap-1 px-2 py-2 lg:col-span-2 lg:row-span-3"
-        aria-label="Pip-Boy instrument rail"
+        aria-label="Cycle 003 board instrument rail"
       >
-        <p className="font-mono text-kicker uppercase tracking-kicker text-amber">rail · pip</p>
+        <p className="font-mono text-kicker uppercase tracking-kicker text-amber">rail · cyc/003 board</p>
         {pip.map((g) => (
           <div key={g.id} className="sage-pip-gauge">
             <div className="sage-pip-track" role="img" aria-label={`${g.label} ${g.pct}%`}>
@@ -303,7 +303,7 @@ function Brief() {
         <div className="flex flex-wrap items-center justify-between gap-2">
           <p className="lane-kicker font-mono text-kicker uppercase tracking-kicker">Take · lead of the day</p>
           <span className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
-            {lead ? `${lead.reason === "seed" ? "cycle pin" : "daily pick"} · ${lead.date}` : "no pick yet"}
+            {lead ? `${lead.reason === "seed" ? "cycle 003 seed" : "daily pick"} · ${lead.date}` : "no pick yet"}
           </span>
         </div>
         {LEAD_HELD ? <p className="sage-lead-held font-mono text-kicker uppercase tracking-kicker">HELD · no qualifying story</p> : null}
@@ -350,70 +350,53 @@ function Brief() {
           aria-label="Pin legend"
         >
           <span className="font-mono text-kicker uppercase tracking-kicker text-subtle">pins</span>
-          <span className="inline-flex items-center gap-1 font-mono text-kicker uppercase tracking-kicker">
-            <span className="sage-lead-badge">cycle pin</span>
-          </span>
           <span className="font-mono text-kicker uppercase tracking-kicker text-amber">companion</span>
           <span className="font-mono text-kicker uppercase tracking-kicker text-subtle">rest</span>
+          <span className="font-mono text-kicker uppercase tracking-kicker text-subtle">context</span>
           <span className="ml-auto font-mono text-kicker uppercase tracking-kicker text-subtle">
             Sol≠Astra · ≠2nd lead
           </span>
         </div>
         <ol className="flex flex-col gap-1.5">
-          {byCorroboration(CYCLE.pins).map((p) => (
-            <li
-              key={p.id}
-              className={cn(
-                "sage-panel sage-ticks pin-card px-2.5 py-2",
-                p.kind === "lead" && "sage-lead sage-lead-frame",
-                p.kind !== "lead" && "pin-card-quiet",
-              )}
-            >
-              <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
-                <span
-                  className={cn(
-                    p.kind === "lead" && "sage-lead-badge",
-                    p.kind === "companion" && "text-amber",
-                    p.kind === "rest" && "text-subtle",
-                  )}
+          {/* Daily lead lives on the Take; the old cycle-003 lead pin is demoted to context, last. */}
+          {[
+            ...byCorroboration(CYCLE.pins).filter((p) => p.kind !== "lead"),
+            ...CYCLE.pins.filter((p) => p.kind === "lead"),
+          ].map((p) => {
+              const ctx = p.kind === "lead";
+              return (
+                <li
+                  key={p.id}
+                  className={cn("sage-panel sage-ticks pin-card pin-card-quiet px-2.5 py-2", ctx && "pin-card-context")}
                 >
-                  {p.kind === "lead" ? "cycle pin" : p.kind}
-                </span>{" "}
-                · <span className="tabular-nums">{p.id}</span>
-                {p.kind !== "lead" ? (
-                  <>
-                    {" "}
-                    <SrcChip id={p.id} />
-                  </>
-                ) : null}
-              </p>
-              <h3
-                className={cn(
-                  "mt-0.5 font-display font-medium normal-case tracking-wide",
-                  p.kind === "lead" ? "text-base text-phosphor-bright" : "text-sm text-phosphor",
-                )}
-              >
-                {p.title}
-              </h3>
-              <dl className={cn("pin-meta mt-1", p.kind !== "lead" && "pin-meta-dense")}>
-                <dt>take</dt>
-                <dd className={p.kind !== "lead" ? "line-clamp-2" : undefined}>{p.take}</dd>
-                {p.kind === "lead" ? (
-                  <>
-                    <dt>why</dt>
-                    <dd className="text-muted">{p.why}</dd>
-                    <dt className="sage-signal">move</dt>
-                    <dd className="sage-signal">{p.move}</dd>
-                  </>
-                ) : (
-                  <>
-                    <dt className="sage-signal">move</dt>
-                    <dd className="sage-signal line-clamp-2">{p.move}</dd>
-                  </>
-                )}
-              </dl>
-            </li>
-          ))}
+                  <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
+                    <span className={cn(p.kind === "companion" && "text-amber", p.kind === "rest" && "text-subtle")}>
+                      {ctx ? "cycle 003 context" : p.kind}
+                    </span>{" "}
+                    · <span className="tabular-nums">{p.id}</span>
+                    {!ctx ? (
+                      <>
+                        {" "}
+                        <SrcChip id={p.id} />
+                      </>
+                    ) : null}
+                  </p>
+                  <h3 className="mt-0.5 font-display text-sm font-medium normal-case tracking-wide text-phosphor">
+                    {p.title}
+                  </h3>
+                  <dl className="pin-meta pin-meta-dense mt-1">
+                    <dt>take</dt>
+                    <dd className="line-clamp-2">{p.take}</dd>
+                    {!ctx ? (
+                      <>
+                        <dt className="sage-signal">move</dt>
+                        <dd className="sage-signal line-clamp-2">{p.move}</dd>
+                      </>
+                    ) : null}
+                  </dl>
+                </li>
+              );
+            })}
         </ol>
       </div>
 
@@ -422,7 +405,7 @@ function Brief() {
         className="sage-panel sage-ticks sage-wave-dense overflow-hidden lg:col-span-6 lg:col-start-3"
         aria-label="Three waves"
       >
-        <div className="sage-panel-header">Three waves · denser · eval board</div>
+        <div className="sage-panel-header">CYC/003 board · three waves</div>
         <div className="p-2">
           <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
             METR 1–2 · OpenAI 3 · not civilization chart

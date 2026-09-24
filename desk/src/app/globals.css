@@ -1336,7 +1336,7 @@ body {
   font-size: var(--text-kicker, 0.65rem);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--muted-foreground);
 }
 
 .brief-v5 .sage-pip-meta .sage-pip-val {
@@ -1949,4 +1949,13 @@ body {
   padding: 0 0.35rem;
   border: 1px solid var(--phosphor-bright);
   color: var(--phosphor-bright);
+}
+
+/* Beat 7 fix — demoted cycle-003 pin: quiet context card, dashed rule, no lead frame. */
+.brief-v5 .pin-card-context {
+  border-style: dashed;
+  background: color-mix(in srgb, var(--bg-deep) 80%, var(--card));
+}
+.brief-v5 .pin-card-context h3 {
+  color: var(--muted-foreground);
 }

@@ -42,22 +42,6 @@ export const WIRE_ROWS: WireRow[] = [
     "status": "same"
   },
   {
-    "id": "cl:hn:49829670",
-    "title": "Anthropic says it's bio lab has found something big",
-    "url": "https://techcrunch.com/2026/09/23/anthropic-says-its-biology-lab-has-already-found-something-big/",
-    "at": "2026-09-24T12:25:59Z",
-    "sources": 2,
-    "score": 8,
-    "member_ids": [
-      "hn:49829670",
-      "gnews:d690cc79da30c266"
-    ],
-    "is_new": false,
-    "rank": 3,
-    "prev_rank": 3,
-    "status": "same"
-  },
-  {
     "id": "cl:hn:49829312",
     "title": "Scoop: Trump allies open new front against Anthropic CEO over AI \"doomerism\"",
     "url": "https://www.axios.com/2026/09/24/trump-anthropic-ai-doomerism-dario-amodei",
@@ -69,8 +53,8 @@ export const WIRE_ROWS: WireRow[] = [
       "gnews:32057d15ae2f9dc0"
     ],
     "is_new": false,
-    "rank": 4,
-    "prev_rank": 4,
+    "rank": 3,
+    "prev_rank": 3,
     "status": "same"
   },
   {
@@ -83,6 +67,22 @@ export const WIRE_ROWS: WireRow[] = [
     "member_ids": [
       "hn:49827294",
       "rss:deepmind:68ead6b6af2b7144"
+    ],
+    "is_new": false,
+    "rank": 4,
+    "prev_rank": 4,
+    "status": "same"
+  },
+  {
+    "id": "cl:rss:deepmind:81481aa316e38773",
+    "title": "Gemini 3.8 text-to-speech says hello",
+    "url": "https://deepmind.google/blog/say-hello-to-gemini-38-text-to-speech/",
+    "at": "2026-09-23T15:29:23Z",
+    "sources": 2,
+    "score": 326,
+    "member_ids": [
+      "hn:49817615",
+      "rss:deepmind:81481aa316e38773"
     ],
     "is_new": false,
     "rank": 5,
