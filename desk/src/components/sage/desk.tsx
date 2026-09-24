@@ -157,29 +157,39 @@ function Brief() {
   const age = crawlAgeHours(CRAWL_AT);
   const waveMax = 956;
   const waveVals: Record<number, number> = { 1: 80, 2: 700, 3: 956 };
+  const pip = [
+    { id: "board", label: "board", val: "1,200", pct: 100, hot: false },
+    { id: "hf", label: "HF wave", val: "~700", pct: Math.round((700 / 1200) * 100), hot: true },
+    { id: "secrets", label: "secrets", val: "956", pct: Math.round((956 / 1200) * 100), hot: false },
+  ] as const;
   return (
-    <div className="brief-v4 grid gap-2 lg:grid-cols-12 lg:grid-rows-[auto_auto_auto]">
-      {/* Left instrument cluster — katagami break */}
+    <div className="brief-v5 grid gap-2 lg:grid-cols-12 lg:grid-rows-[auto_auto_auto]">
+      {/* Left · Pip-Boy needle rail */}
       <aside
-        className="sage-panel sage-ticks sage-instrument flex flex-col gap-2 px-2.5 py-2 lg:col-span-2 lg:row-span-2"
-        aria-label="Instrument cluster"
+        className="sage-panel sage-ticks sage-instrument sage-pip-rail flex flex-col gap-1 px-2 py-2 lg:col-span-2 lg:row-span-2"
+        aria-label="Pip-Boy instrument rail"
       >
-        <p className="font-mono text-kicker uppercase tracking-kicker text-amber">cluster · meters</p>
-        <div className="sage-kpi sage-kpi-stack px-2 py-1.5">
-          <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">board</p>
-          <p className="sage-metric font-display text-xl tabular-nums text-phosphor">1,200</p>
-        </div>
-        <div className="sage-kpi sage-kpi-stack sage-kpi-hot px-2 py-1.5">
-          <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">HF wave</p>
-          <p className="sage-metric font-display text-xl tabular-nums text-phosphor">~700</p>
-        </div>
-        <div className="sage-kpi sage-kpi-stack px-2 py-1.5">
-          <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">secrets</p>
-          <p className="sage-metric font-display text-xl tabular-nums text-phosphor">956</p>
-        </div>
+        <p className="font-mono text-kicker uppercase tracking-kicker text-amber">rail · pip</p>
+        {pip.map((g) => (
+          <div key={g.id} className="sage-pip-gauge">
+            <div className="sage-pip-track" role="img" aria-label={`${g.label} ${g.pct}%`}>
+              <div className="sage-pip-fill" style={{ height: `${g.pct}%` }} />
+              <div className="sage-pip-needle" style={{ bottom: `calc(${g.pct}% - 1px)` }} />
+            </div>
+            <div className="sage-pip-meta min-w-0">
+              <p className="sage-pip-label">{g.label}</p>
+              <p className={cn("sage-pip-val", g.hot && "sage-pip-val-hot")}>{g.val}</p>
+            </div>
+          </div>
+        ))}
         <div className="mt-auto border-t border-line pt-2">
           <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">crawl</p>
-          <p className={cn("font-mono text-kicker uppercase tracking-kicker tabular-nums", age.stale ? "sage-stale" : "sage-signal")}>
+          <p
+            className={cn(
+              "font-mono text-kicker uppercase tracking-kicker tabular-nums",
+              age.stale ? "sage-stale" : "sage-signal",
+            )}
+          >
             {age.stale ? `STALE ${age.hours.toFixed(1)}h` : `FRESH ${age.hours.toFixed(1)}h`}
           </p>
           <p className="mt-1 font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
@@ -188,18 +198,25 @@ function Brief() {
         </div>
       </aside>
 
-      {/* Take — story break, spans mid */}
-      <section className="sage-panel sage-ticks sage-panel-glow holo-edge sage-bento-hero sage-take px-4 py-3 lg:col-span-6 lg:row-span-1">
+      {/* Mid · inverse story plate — brightest surface */}
+      <section
+        className="sage-panel sage-ticks sage-bento-hero sage-take sage-take-inverse px-3 py-3 lg:col-span-6 lg:row-span-1"
+        aria-label="Brief take story"
+      >
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <p className="lane-kicker font-mono text-kicker uppercase tracking-kicker text-amber">Take · story</p>
-          <span className="font-mono text-kicker uppercase tracking-kicker text-subtle">lead · hf-incident</span>
+          <p className="lane-kicker font-mono text-kicker uppercase tracking-kicker">Take · inverse</p>
+          <span className="font-mono text-kicker uppercase tracking-kicker text-subtle">
+            lead · hf-incident · V5
+          </span>
         </div>
-        <h2 className="sage-take-title mt-2 font-display text-3xl font-medium normal-case tracking-normal text-phosphor-bright md:text-4xl">
-          {CYCLE.exec[0]}
-        </h2>
-        <ul className="mt-3 max-w-prose space-y-1.5 text-sm text-muted">
+        <div className="sage-take-plate">
+          <h2 className="sage-take-title font-display text-2xl font-bold normal-case tracking-normal md:text-3xl">
+            {CYCLE.exec[0]}
+          </h2>
+        </div>
+        <ul className="sage-take-body max-w-prose space-y-1.5 text-sm">
           {CYCLE.exec.slice(1).map((line) => (
-            <li key={line} className="border-l-2 border-phosphor pl-3">
+            <li key={line} className="border-l-2 pl-3">
               {line}
             </li>
           ))}
@@ -274,83 +291,49 @@ function Brief() {
         </ol>
       </div>
 
-      {/* Asymmetric waves under Take */}
-      <section className="sage-panel sage-ticks overflow-hidden lg:col-span-6" aria-label="Three waves">
-        <div className="sage-panel-header">Three waves · eval board cohorts</div>
-        <div className="p-2.5">
-          <p className="text-sm text-muted">
-            Not a civilization chart. Split citation: METR waves 1–2; OpenAI wave 3.
+      {/* Under mid · denser wave strip */}
+      <section
+        className="sage-panel sage-ticks sage-wave-dense overflow-hidden lg:col-span-6"
+        aria-label="Three waves"
+      >
+        <div className="sage-panel-header">Three waves · denser · eval board</div>
+        <div className="p-2">
+          <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
+            METR 1–2 · OpenAI 3 · not civilization chart
           </p>
-          <ul className="mt-2 grid gap-2 md:grid-cols-6">
+          <ul className="mt-1.5 grid gap-1.5 md:grid-cols-6">
             {WAVES.map((w) => {
               const pct = Math.round(((waveVals[w.id] ?? 0) / waveMax) * 100);
               return (
                 <li
                   key={w.id}
                   className={cn(
-                    "sage-panel sage-ticks p-2",
+                    "sage-panel sage-ticks p-1.5",
                     w.id === 2 ? "md:col-span-3 sage-wave-hot" : w.id === 3 ? "md:col-span-2" : "md:col-span-1",
                   )}
                 >
                   <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
-                    Wave {w.id} · {w.label} · {w.cite}
+                    W{w.id} · {w.label} · {w.cite}
                   </p>
-                  <p className="sage-metric mt-1 font-display text-lg tabular-nums text-phosphor-bright">
-                    {w.n}
-                  </p>
+                  <p className="sage-metric mt-0.5 font-display tabular-nums text-phosphor-bright">{w.n}</p>
                   <div
-                    className="mt-2 h-1.5 w-full bg-bg-deep"
+                    className="sage-wave-bar mt-1.5 w-full"
                     role="img"
                     aria-label={`Wave ${w.id} relative size ${pct}%`}
                   >
-                    <div
-                      className="h-full bg-phosphor"
-                      style={{ width: `${pct}%`, opacity: 0.55 + pct / 200 }}
-                    />
+                    <div style={{ width: `${pct}%`, height: "100%", opacity: 0.65 + pct / 200 }} />
                   </div>
-                  <p className={cn("mt-1.5 text-sm text-muted", w.id === 2 && "line-clamp-2")}>{w.scope}</p>
+                  <p className={cn("mt-1 text-xs text-muted", "line-clamp-2")}>{w.scope}</p>
                 </li>
               );
             })}
           </ul>
-          <p className="mt-2 font-mono text-kicker uppercase tracking-kicker text-subtle">
-            {WAVE_TIMELINE.join(" → ")}
-          </p>
-          {age.stale ? (
-            <p className="sage-stale mt-1">STALE · crawl {age.hours.toFixed(1)}h</p>
-          ) : null}
         </div>
       </section>
-
-      <div className="grid gap-2 md:grid-cols-3 lg:col-span-12" aria-label="Brief trust strip">
-        <section className="sage-panel sage-ticks px-3 py-2">
-          <p className="font-mono text-kicker uppercase tracking-kicker sage-signal">ALLOW</p>
-          <ul className="mt-1 space-y-0.5 text-sm">
-            {CYCLE.trust.allow.map((x) => (
-              <li key={x}>{x}</li>
-            ))}
-          </ul>
-        </section>
-        <section className="sage-panel sage-ticks px-3 py-2">
-          <p className="font-mono text-kicker uppercase tracking-kicker sage-deny">DENY</p>
-          <ul className="mt-1 space-y-0.5 text-sm">
-            {CYCLE.trust.deny.map((x) => (
-              <li key={x}>{x}</li>
-            ))}
-          </ul>
-        </section>
-        <section className="sage-panel sage-ticks px-3 py-2">
-          <p className="font-mono text-kicker uppercase tracking-kicker text-muted">Open</p>
-          <ul className="mt-1 space-y-0.5 text-sm">
-            {CYCLE.trust.open.map((x) => (
-              <li key={x}>{x}</li>
-            ))}
-          </ul>
-        </section>
-      </div>
     </div>
   );
 }
+
 
 function Pulse() {
   const age = crawlAgeHours(CRAWL_AT);

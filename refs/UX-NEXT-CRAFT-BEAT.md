@@ -22,11 +22,11 @@ Guard: Take mid stays brighter than `.sage-lead-frame`.
 
 ---
 
-## Parked — Voice / Digest instrument parity (EXPAND vs `DESK-VOICE-DIGEST-PARITY.md`)
+## Voice / Digest instrument parity (EXPAND vs `DESK-VOICE-DIGEST-PARITY.md`)
 
-**Status:** PARKED · checklist only · **no land**  
-**Architect cut:** `refs/DESK-VOICE-DIGEST-PARITY.md` (SPEC QUALITY PASS · plan only)  
-**When uncorked:** UX craft · Coder land · Reviewer craft stamp vs live Digest/Voice stills
+**Status:** LAND GO uncorked 2026-09-24 · L/mid/R in `desk.tsx` (`digest-v4` / `voice-v4`) · proofs on disk  
+**Architect cut:** `refs/DESK-VOICE-DIGEST-PARITY.md`  
+**Owners:** UX zone craft · Coder land · Reviewer craft stamp vs live stills
 
 ### Digest `[03]` — still-readable checklist
 
@@ -68,9 +68,18 @@ More grain-only polish · Brief skeleton rewrite · token hex remaps · inventin
 
 ### UX ready-state
 - [x] Checklist expanded against Architect cut  
-- [ ] Canberk eye (ship / rusty / name-next)  
-- [ ] Director uncork  
-- [ ] Land + proofs  
+- [x] Director uncork (desk-first 2026-09-24)  
+- [x] Land + proofs (`VISUAL-PROOF-digest-parity.png` · `VISUAL-PROOF-voice-parity.png`)  
 - [ ] Reviewer craft PASS vs Digest/Voice stills  
 
-**Do not land. Freeze holds.**
+Mid brightest · L meters · R shelf · no hex. Taste shelf unchanged.
+
+
+---
+
+## Brief V5 depth (LAND GO 2026-09-24)
+
+**Why:** First still = Brief; parity didn’t move arm’s-length eye.  
+**Ship:** inverse Take plate · Pip-Boy left rail · denser under-wave  
+**Proof:** `refs/VISUAL-PROOF-v5-brief-depth.png`  
+**Locks:** no hex · no grain soup · no HTTP · `003` / `hf-incident`

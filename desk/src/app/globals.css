@@ -1074,6 +1074,7 @@ body {
     0 0 20px color-mix(in srgb, var(--phosphor) 12%, transparent);
 }
 .brief-v4,
+.brief-v5,
 .digest-v4,
 .voice-v4 {
   align-items: start;
@@ -1112,4 +1113,272 @@ body {
 .pin-meta-dense dd {
   font-size: 0.8rem;
   line-height: 1.25;
+}
+
+
+/* === Brief V5 — stage depth (WIRE-BRIEF-V5-DEPTH · Option B) === */
+/* Skin V2 tokens only · no hex literals · Take wins over KPI glow */
+
+.brief-v5 .sage-take-inverse,
+.brief-v5 .sage-take.sage-take-inverse {
+  /* Mid plate = brightest surface: dark field + bright type hierarchy */
+  background:
+    linear-gradient(165deg, color-mix(in srgb, var(--phosphor) 14%, transparent), transparent 42%),
+    linear-gradient(0deg, color-mix(in srgb, var(--phosphor-deep) 55%, transparent), transparent 55%),
+    var(--bg-deep);
+  border-color: color-mix(in srgb, var(--phosphor-bright) 62%, var(--border));
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--phosphor) 58%, transparent),
+    0 0 52px color-mix(in srgb, var(--phosphor) 30%, transparent),
+    0 0 18px color-mix(in srgb, var(--phosphor-glow) 70%, transparent),
+    inset 0 0 0 1px color-mix(in srgb, var(--holo) 32%, transparent),
+    inset 0 -3px 0 var(--phosphor),
+    inset 0 0 48px color-mix(in srgb, var(--phosphor) 7%, transparent);
+}
+.brief-v5 .sage-take-kicker {
+  display: inline-block;
+  padding: 0.1rem 0.45rem;
+  background: var(--phosphor);
+  color: var(--primary-foreground);
+  box-shadow: 0 0 10px var(--phosphor-glow);
+  letter-spacing: var(--tracking-kicker);
+}
+.brief-v5 .sage-take-title {
+  color: var(--phosphor-bright);
+  text-shadow:
+    0 0 18px var(--phosphor-glow),
+    0 0 42px color-mix(in srgb, var(--phosphor) 55%, transparent),
+    0 0 2px color-mix(in srgb, var(--phosphor-bright) 80%, transparent);
+  font-weight: 600;
+}
+.brief-v5 .sage-take-exec li {
+  color: color-mix(in srgb, var(--phosphor-bright) 82%, var(--phosphor));
+  border-left-color: var(--phosphor-bright);
+}
+
+/* Pip-Boy rail — open instruments, not three flat boxes */
+.brief-v5 .sage-pip-rail {
+  background: color-mix(in srgb, var(--bg-deep) 70%, var(--card));
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--border) 90%, transparent),
+    inset 2px 0 0 color-mix(in srgb, var(--pip-amber) 75%, transparent);
+}
+.brief-v5 .sage-pip-meter {
+  /* no border race — label + track only */
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+.brief-v5 .sage-pip-meter .sage-metric {
+  font-size: 1rem !important;
+  font-weight: 500;
+  text-shadow: none;
+  line-height: 1.1;
+}
+.brief-v5 .sage-pip-track {
+  position: relative;
+  height: 0.55rem;
+  background: var(--bg-deep);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--border) 85%, transparent);
+  overflow: visible;
+}
+.brief-v5 .sage-pip-fill {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--phosphor-dim) 80%, transparent),
+    var(--phosphor)
+  );
+  box-shadow: 0 0 8px color-mix(in srgb, var(--phosphor-glow) 55%, transparent);
+}
+.brief-v5 .sage-pip-needle {
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  width: 2px;
+  margin-left: -1px;
+  background: var(--pip-amber);
+  box-shadow: 0 0 6px color-mix(in srgb, var(--pip-amber) 70%, transparent);
+  pointer-events: none;
+}
+
+/* Denser under-Take wave strip — wave-2 stays wide; blurbs ≤2 lines */
+.brief-v5 .sage-wave-strip {
+  background: color-mix(in srgb, var(--card) 88%, var(--bg-deep));
+}
+.brief-v5 .sage-wave-cell {
+  background: color-mix(in srgb, var(--bg-deep) 45%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--border) 80%, transparent);
+}
+.brief-v5 .sage-wave-hot {
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--phosphor) 42%, transparent),
+    0 0 16px color-mix(in srgb, var(--phosphor) 14%, transparent);
+  background: color-mix(in srgb, var(--phosphor-deep) 35%, var(--bg-deep));
+}
+.brief-v5 .sage-wave-bar {
+  height: 0.45rem;
+  width: 100%;
+  background: var(--bg-deep);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--border) 70%, transparent);
+}
+.brief-v5 .sage-wave-bar-fill {
+  height: 100%;
+  background: var(--phosphor);
+}
+
+/* ── Brief V5 depth (2026-09-24) · Skin V2 only · no hex churn ──
+   Arm’s-length still ≠ V4: inverse Take plate · Pip-Boy needle rail · denser wave-2 */
+.brief-v5 {
+  align-items: start;
+}
+
+/* Mid · inverse story plate — darkest field, brightest type hierarchy */
+.brief-v5 .sage-take-inverse {
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--phosphor) 12%, transparent), transparent 28%),
+    var(--bg-deep);
+  border-color: var(--phosphor-bright);
+  box-shadow:
+    0 0 0 2px var(--phosphor),
+    0 0 0 3px color-mix(in srgb, var(--pip-amber) 55%, transparent),
+    0 0 48px color-mix(in srgb, var(--phosphor) 28%, transparent),
+    inset 0 0 60px color-mix(in srgb, var(--phosphor) 8%, transparent);
+}
+
+.brief-v5 .sage-take-inverse .lane-kicker {
+  color: var(--pip-amber);
+}
+
+.brief-v5 .sage-take-plate {
+  margin-top: 0.65rem;
+  padding: 0.65rem 0.85rem;
+  background: var(--phosphor-bright);
+  color: var(--primary-foreground);
+  box-shadow:
+    0 0 24px color-mix(in srgb, var(--phosphor) 45%, transparent),
+    inset 0 0 0 1px color-mix(in srgb, var(--pip-amber) 40%, transparent);
+}
+
+.brief-v5 .sage-take-plate .sage-take-title {
+  color: var(--primary-foreground) !important;
+  text-shadow: none;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.brief-v5 .sage-take-inverse .sage-take-body {
+  margin-top: 0.75rem;
+  color: var(--phosphor-bright);
+}
+
+.brief-v5 .sage-take-inverse .sage-take-body li {
+  border-left-color: var(--phosphor-bright);
+  color: color-mix(in srgb, var(--phosphor-bright) 88%, var(--muted));
+}
+
+/* Left · Pip-Boy needle rail — instruments not flat KPI boxes */
+.brief-v5 .sage-pip-rail {
+  background: color-mix(in srgb, var(--bg-deep) 82%, var(--card));
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--border) 80%, transparent),
+    inset 3px 0 0 var(--pip-amber);
+}
+
+.brief-v5 .sage-pip-gauge {
+  display: grid;
+  grid-template-columns: 0.7rem 1fr;
+  gap: 0.45rem 0.55rem;
+  align-items: end;
+  padding: 0.35rem 0.25rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+}
+
+.brief-v5 .sage-pip-gauge:last-of-type {
+  border-bottom: 0;
+}
+
+.brief-v5 .sage-pip-track {
+  position: relative;
+  height: 3.25rem;
+  width: 0.7rem;
+  background: var(--bg-deep);
+  border: 1px solid color-mix(in srgb, var(--phosphor) 35%, var(--border));
+  overflow: hidden;
+}
+
+.brief-v5 .sage-pip-fill {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    var(--phosphor-bright),
+    color-mix(in srgb, var(--phosphor) 70%, var(--bg-deep))
+  );
+  opacity: 0.85;
+}
+
+.brief-v5 .sage-pip-needle {
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  height: 2px;
+  background: var(--pip-amber);
+  box-shadow: 0 0 6px color-mix(in srgb, var(--pip-amber) 70%, transparent);
+  z-index: 1;
+}
+
+.brief-v5 .sage-pip-meta .sage-pip-label {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: var(--text-kicker, 0.65rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.brief-v5 .sage-pip-meta .sage-pip-val {
+  font-family: var(--font-display, ui-sans-serif, system-ui);
+  font-size: 1.15rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--phosphor);
+  line-height: 1.1;
+  text-shadow: 0 0 8px color-mix(in srgb, var(--phosphor-glow) 35%, transparent);
+}
+
+.brief-v5 .sage-pip-meta .sage-pip-val-hot {
+  color: var(--phosphor-bright);
+}
+
+/* Under-Take · denser wave strip */
+.brief-v5 .sage-wave-dense {
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--phosphor) 28%, transparent);
+}
+
+.brief-v5 .sage-wave-dense .sage-panel-header {
+  letter-spacing: 0.1em;
+}
+
+.brief-v5 .sage-wave-dense .sage-wave-hot {
+  box-shadow:
+    inset 0 0 0 2px color-mix(in srgb, var(--phosphor-bright) 55%, transparent),
+    0 0 28px color-mix(in srgb, var(--phosphor) 22%, transparent);
+  background: color-mix(in srgb, var(--phosphor) 10%, var(--card));
+}
+
+.brief-v5 .sage-wave-dense .sage-wave-bar {
+  height: 0.55rem;
+  background: var(--bg-deep);
+}
+
+.brief-v5 .sage-wave-dense .sage-wave-bar > div {
+  background: var(--phosphor-bright);
+}
+
+.brief-v5 .sage-wave-dense .sage-metric {
+  font-size: 1.35rem;
+  font-weight: 600;
 }

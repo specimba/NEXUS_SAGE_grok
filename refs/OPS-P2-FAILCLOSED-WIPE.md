@@ -48,3 +48,7 @@ All F1–F5 + wipe-drill steps evidenced · locks held · **P2 PASS** stamp (or 
 ## Architect HOLD
 
 No FREE-PULSE P6 · no new HTTP WIRE · no cycle `004`
+
+### Reviewer stamp — 2026-09-11T13:12Z (Reviewer Gürok)
+
+**OPS-P2-FAILCLOSED-WIPE PASS** — F1–F5 + wipe-drill. See `P2-ACCEPT-EVIDENCE.md`.

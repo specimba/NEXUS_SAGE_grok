@@ -75,3 +75,34 @@ Proofs on disk:
 
 Chrome: crawl LIVE `13:37:52Z` · DIGEST HOLD→`15:21Z` · `hf-incident` · phosphor · `003`.
 Gap vs plan: both still brochure/stacked vs Brief katagami — parity land justified when Director uncorks. **Freeze holds. No craft PASS.**
+
+
+## Architect uncork — 2026-09-24 (Canberk: continue development)
+
+**LAND GO** — Voice/Digest L/mid/R parity on real desk (`desk/src/components/sage/desk.tsx`).
+
+- Owners: **UX** zone craft tokens/layout · **Coder** implement L/mid/R in Digest + Voice · **Reviewer** still-readable gate + visual:check
+- Locks: `003` · `hf-incident` · no hex churn · no `004` · no new HTTP · Taste shelf stays
+- OSS router (`jev-lab`) = side tooling · **not** this beat
+- Proofs: `VISUAL-PROOF-digest-parity.png` · `VISUAL-PROOF-voice-parity.png`
+- Done when: hard-refresh still shows L/mid/R on `[03]` and `[05]` without hover; mid brightest; visual:check green
+
+### Reviewer stamp — 2026-09-24T12:19Z (Reviewer Gürok)
+
+**VOICE/DIGEST INSTRUMENT PARITY CRAFT PASS** vs stacked-shelf baselines.
+
+Evidence:
+- Commit `dcbd2ec` — `desk.tsx` + `globals.css` only (`.digest-v4` / `.voice-v4` share Brief grammar; Skin V2 tokens · no hex churn)
+- Digest `[03]` still: L cadence meters · mid REPORT·STORY brightest · R item rail · under-mid NEXT WINDOW — `refs/VISUAL-PROOF-digest-parity.png`
+- Voice `[05]` still: L VU Ava/Andrew · mid SCRIPT TAKE→WHY→MOVE · R clip/TTS · under-mid waveform — `refs/VISUAL-PROOF-voice-parity.png`
+- `visual:check` OK · theme=`phosphor` · lanes=`[01]` · crawl=`2026-09-24T07:12:29Z` · build=`PPFcaY34CW2qOTqpMrFks` · boot `12:16:42Z`
+- Locks: cycle `003` · lead `hf-incident` · Taste untouched · no new HTTP · no `004` · jev-lab parked
+
+Soft note: Voice still shows `[01]` BRIEF solid-fill while `[05]` is the active outline — lane body is Voice; chrome active-tab fill vs outline is a follow-up polish, not a FAIL.
+
+**Not** Voice content invent · **not** HTTP freeze lift · Canberk eye still open.
+
+
+## Architect close — 2026-09-24
+
+**LANDED** — Reviewer CRAFT PASS on `dcbd2ec`. Soft note parked: Voice `[01]` solid-fill vs `[05]` outline (polish later, not FAIL). Next land waits Canberk.

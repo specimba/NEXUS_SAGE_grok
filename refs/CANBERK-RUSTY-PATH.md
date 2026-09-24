@@ -58,3 +58,8 @@ Land before eye · auto-lift freeze · new `WIRE-*` · overlay-only polish · cy
 ## Hold
 
 Plan only. No implement signal until Canberk eye + Director uncork the chosen option.
+
+
+## Architect eye — 2026-09-24
+
+Canberk: still looks like 2 weeks ago. **Option A closed as too soft for first still.** **Option B LAND GO** → `WIRE-BRIEF-V5-DEPTH.md`.
