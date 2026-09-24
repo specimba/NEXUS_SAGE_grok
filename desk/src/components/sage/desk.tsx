@@ -28,17 +28,17 @@ import {
   labBadge,
   PULSE_V5_MAX_ROWS,
   sigCell,
+  buildPaperRows,
+  type PaperInput,
   type ClusterInput,
   type PulseMemberInfo,
 } from "@/lib/pulse-v5";
 import { cn } from "@/lib/cn";
-
-const LANES = ["brief", "pulse", "digest", "papers", "voice", "governance"] as const;
-type Lane = (typeof LANES)[number];
+import { isLane, laneTabs, type Lane } from "@/lib/lanes";
 
 function laneFromHash(): Lane {
   const raw = typeof window === "undefined" ? "" : window.location.hash.replace("#", "");
-  return (LANES as readonly string[]).includes(raw) ? (raw as Lane) : "brief";
+  return isLane(raw) ? raw : "brief";
 }
 
 function download(name: string, body: string, type: string) {
@@ -58,9 +58,12 @@ type DeskProps = {
 
 export function Desk({ buildId = "dev", serverStartedAt = "" }: DeskProps) {
   const [lane, setLane] = useState<Lane>("brief");
+  // Tabs light only after the hash is read — SSR default "brief" must never paint as filled on another lane.
+  const [laneReady, setLaneReady] = useState(false);
   const buildShort = buildId.length > 12 ? buildId.slice(0, 12) : buildId;
   useEffect(() => {
     setLane(laneFromHash());
+    setLaneReady(true);
     const onHash = () => setLane(laneFromHash());
     window.addEventListener("hashchange", onHash);
     return () => window.removeEventListener("hashchange", onHash);
@@ -127,18 +130,19 @@ export function Desk({ buildId = "dev", serverStartedAt = "" }: DeskProps) {
             </div>
           </div>
           <nav className="desk-lane" aria-label="Lanes">
-            {LANES.map((id, i) => (
+            {laneTabs(lane, laneReady).map((t) => (
               <button
-                key={id}
+                key={t.id}
                 type="button"
-                onClick={() => go(id)}
-                aria-current={lane === id ? "page" : undefined}
-                className={cn("desk-lane-btn focus-phosphor", lane === id && "block-cursor")}
+                onClick={() => go(t.id)}
+                aria-current={t.active ? "page" : undefined}
+                data-active={t.active ? "1" : "0"}
+                className={cn("desk-lane-btn focus-phosphor", t.active && "block-cursor")}
               >
                 <span className="lane-prefix" aria-hidden>
-                  [{String(i + 1).padStart(2, "0")}]
+                  {t.prefix}
                 </span>
-                {id}
+                {t.id}
               </button>
             ))}
           </nav>
@@ -442,8 +446,6 @@ const X_ROWS: ClusterInput[] = CRAWL.map((p) => ({
   is_new: false,
 }));
 
-const MULTI_SOURCE = PULSE_CLUSTERS.filter((c) => new Set(c.sources).size > 1).length;
-
 function Pulse() {
   // First render = crawl stamp (SSR-stable); then wall clock.
   const [now, setNow] = useState(() => Date.parse(PULSE_CLUSTERS_AT));
@@ -557,6 +559,14 @@ function Pulse() {
                         </span>
                       ))}
                       {overflow ? <span className="pulse-v5-badge pulse-v5-also">+{overflow}</span> : null}
+                      {r.selfBadges.length ? (
+                        <span
+                          className="pulse-v5-badge pulse-v5-self"
+                          title={`self repost (${r.selfBadges.join(", ")}) — company's own post re-carried · 0 sources`}
+                        >
+                          SELF
+                        </span>
+                      ) : null}
                     </span>
                     <span className={cn("pulse-v5-sig tabular-nums", sig.dim && "pulse-v5-sig-dim")}>
                       {sig.text}
@@ -636,7 +646,7 @@ function Pulse() {
       {/* 3 · Footer ledger line — eligibility copy lives here once */}
       <p className="pulse-v5-foot tabular-nums">
         <span className="sage-deny">DENY</span> · {SOFT_FAIL_METERS.deny.join(" · ")} · briefEligible=false · Pulse never
-        Brief · never sole lead · clusters {PULSE_CLUSTERS.length} · multi-source {MULTI_SOURCE} · snap {PULSE_CLUSTERS_AT}
+        Brief · never sole lead · clusters {PULSE_CLUSTERS.length} · multi-source {rows.filter((r) => r.multiSource).length} · snap {PULSE_CLUSTERS_AT}
       </p>
     </div>
   );
@@ -1004,84 +1014,104 @@ function Digest() {
 
 function Papers() {
   const [openId, setOpenId] = useState<string | null>(null);
+  const rows = useMemo(() => buildPaperRows(PAPERS as unknown as PaperInput[]), []);
   const copyId = (id: string) => {
     void navigator.clipboard?.writeText(id);
   };
   return (
-    <div className="sage-lane-craft lane-papers">
-      <div className="sage-panel sage-ticks lane-craft-papers-panel overflow-hidden">
-        <div className="sage-panel-header">&gt; Papers · HF daily + arXiv/OpenAlex/Crossref enrich · shelf</div>
-        <div className="flex flex-wrap items-center justify-between gap-2 px-3 py-2">
-          <p className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
-            {PAPERS.length} rows · abs/pdf · year/DOI when enriched
-          </p>
-          <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">never Brief</p>
+    <div className="sage-lane-craft lane-papers pulse-v5 papers-v6">
+      <p className="papers-v6-kicker tabular-nums">
+        PAPERS · {rows.length} rows · HF daily + arXiv/OpenAlex/Crossref enrich · never Brief
+      </p>
+      <section className="pulse-v5-table" aria-label="Papers table">
+        <div className="papers-v6-head" aria-hidden>
+          <span>#</span>
+          <span className="pulse-v5-sig">UP</span>
+          <span className="pulse-v5-age">YR</span>
+          <span>TITLE</span>
+          <span>SRC</span>
+          <span>LINKS</span>
         </div>
-      </div>
-      <ul className="mt-3 space-y-1.5">
-        {PAPERS.map((p, idx) => {
-          const open = openId === p.id;
-          return (
-            <li key={p.id} className="sage-panel sage-ticks px-3 py-2">
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <div className="min-w-0 flex-1">
-                  <p className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
-                    [{String(idx + 1).padStart(2, "0")}] · {p.id} · {p.up}↑
-                    {"year" in p && (p as { year?: number }).year != null
-                      ? ` · ${(p as { year: number }).year}`
-                      : ""}
-                    {"doi" in p && typeof (p as { doi?: string }).doi === "string"
-                      ? ` · ${(p as { doi: string }).doi.replace(/^https?:\/\/(dx\.)?doi\.org\//, "")}`
-                      : ""}
-                  </p>
-                  <p className="mt-0.5 truncate text-sm text-phosphor-bright">{p.title}</p>
-                </div>
-                <div className="flex flex-wrap gap-1">
-                  <button
-                    type="button"
-                    className="term focus-phosphor h-8 px-2 font-mono text-kicker uppercase tracking-kicker"
-                    onClick={() => setOpenId(open ? null : p.id)}
-                  >
-                    {open ? "hide" : "exp"}
-                  </button>
-                  <button
-                    type="button"
-                    className="term focus-phosphor h-8 px-2 font-mono text-kicker uppercase tracking-kicker"
-                    onClick={() => copyId(p.id)}
-                  >
-                    id
-                  </button>
-                  <a
-                    href={p.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="focus-phosphor inline-flex h-8 items-center px-2 font-mono text-kicker uppercase tracking-kicker sage-signal"
-                  >
-                    abs
-                  </a>
-                  {"pdfUrl" in p && typeof (p as { pdfUrl?: string }).pdfUrl === "string" ? (
+        <ol>
+          {rows.map((p, i) => {
+            const open = openId === p.id;
+            return (
+              <li key={p.id} className="pulse-v5-row" data-open={open ? "1" : undefined}>
+                <div
+                  role="button"
+                  tabIndex={0}
+                  aria-expanded={open}
+                  className="papers-v6-line focus-phosphor"
+                  onClick={() => setOpenId(open ? null : p.id)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      setOpenId(open ? null : p.id);
+                    }
+                  }}
+                >
+                  <span className="pulse-v5-idx tabular-nums">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="pulse-v5-sig tabular-nums">{p.up}</span>
+                  <span className="pulse-v5-age tabular-nums">{p.year ?? "—"}</span>
+                  <span className="pulse-v5-headline">{p.title}</span>
+                  <span className="pulse-v5-src">
+                    {p.badges.map((b) => (
+                      <span key={b.label} className={cn("pulse-v5-badge", b.lit ? "papers-v6-lit" : "pulse-v5-also")}>
+                        {b.label}
+                      </span>
+                    ))}
+                  </span>
+                  <span className="papers-v6-links">
                     <a
-                      href={(p as { pdfUrl: string }).pdfUrl}
+                      href={p.abs}
                       target="_blank"
                       rel="noreferrer"
-                      className="focus-phosphor inline-flex h-8 items-center px-2 font-mono text-kicker uppercase tracking-kicker sage-signal"
+                      className="sage-signal focus-phosphor"
+                      onClick={(e) => e.stopPropagation()}
                     >
-                      pdf
+                      abs
                     </a>
-                  ) : null}
+                    {p.pdf ? (
+                      <a
+                        href={p.pdf}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="sage-signal focus-phosphor"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        pdf
+                      </a>
+                    ) : null}
+                  </span>
                 </div>
-              </div>
-              {open ? (
-                <p className="mt-2 max-w-prose border-t border-line pt-2 text-sm text-muted">
-                  {"abstract" in p && typeof (p as { abstract?: string }).abstract === "string"
-                    ? (p as { abstract: string }).abstract.slice(0, 600)
-                    : "Abstract not mounted on this cycle. Open arXiv for full text."}
-                </p>
-              ) : null}
-            </li>
-          );
-        })}
-      </ul>
+                {open ? (
+                  <div className="pulse-v5-exp papers-v6-exp">
+                    <p className="pulse-v5-summary">
+                      {p.abstract ? p.abstract.slice(0, 600) : "Abstract not mounted on this cycle. Open arXiv for full text."}
+                    </p>
+                    <p className="pulse-v5-meta tabular-nums">
+                      {p.id}
+                      {p.category ? ` · ${p.category}` : ""}
+                      {p.doi ? ` · doi ${p.doi}` : ""}
+                      {" · "}
+                      <button
+                        type="button"
+                        className="sage-signal focus-phosphor"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          copyId(p.id);
+                        }}
+                      >
+                        copy id
+                      </button>
+                    </p>
+                  </div>
+                ) : null}
+              </li>
+            );
+          })}
+        </ol>
+      </section>
     </div>
   );
 }

@@ -32,6 +32,9 @@ export type ClusterInput = {
   at: string;
   first_seen: string | null;
   is_new: boolean;
+  /** Optional per-member detail; `self_repost: true` = a company's own post re-carried (e.g. via GNews) ⇒ 0 sources. */
+  members?: Array<{ id: string; source?: string; self_repost?: boolean }>;
+  self_repost_ids?: string[];
 };
 
 export type PulseV5Row = {
@@ -48,6 +51,10 @@ export type PulseV5Row = {
   leadBadge: string;
   alsoBadges: string[];
   alsoPublishers: string[];
+  /** Badges of self-repost members — rendered dim/struck `SELF`, never counted. */
+  selfBadges: string[];
+  /** Independent sources (self reposts excluded). */
+  sourceCount: number;
   size: number;
   score: number | null;
   security: boolean;
@@ -77,6 +84,22 @@ const LAB_BADGE: Record<string, string> = {
 
 export function labBadge(lab: string): string {
   return LAB_BADGE[lab] ?? lab.slice(0, 3).toUpperCase();
+}
+
+/** Pulse source class from a member id prefix (hn:/gnews:/rss:/rss-sec:/x:). */
+export function memberSource(id: string): string | null {
+  if (id.startsWith("hn:")) return "hn-algolia";
+  if (id.startsWith("gnews:")) return "gnews-rss";
+  if (id.startsWith("rss-sec:")) return "rss-security";
+  if (id.startsWith("rss:")) return "rss-lab";
+  if (id.startsWith("x:")) return "x";
+  return null;
+}
+
+export function selfRepostIds(c: Pick<ClusterInput, "members" | "self_repost_ids">): Set<string> {
+  const out = new Set<string>(c.self_repost_ids ?? []);
+  for (const m of c.members ?? []) if (m && m.self_repost === true) out.add(m.id);
+  return out;
 }
 
 export function sourceBadge(source: string): string {
@@ -111,7 +134,19 @@ export function buildRows(
   const rows = clusters.map((c): PulseV5Row => {
     const lead = members[c.lead_id];
     const leadBadge = lead?.badge ?? sourceBadge(c.lead_source);
-    const multiSource = new Set(c.sources).size > 1;
+    const selfIds = selfRepostIds(c);
+    selfIds.delete(c.lead_id);
+    const memberSrc = new Map((c.members ?? []).map((m) => [m.id, m.source]));
+    const indep = new Set<string>([c.lead_source]);
+    for (const id of c.member_ids) {
+      if (selfIds.has(id)) continue;
+      const s = memberSrc.get(id) ?? memberSource(id);
+      if (s) indep.add(s);
+    }
+    // No per-member info at all ⇒ trust cluster-level sources[].
+    if (!c.members && c.member_ids.every((id) => !memberSource(id))) for (const s of c.sources) indep.add(s);
+    const multiSource = indep.size > 1;
+    const selfBadges: string[] = [];
     const alsoBadges: string[] = [];
     const alsoPublishers: string[] = [];
     let score: number | null = lead?.score ?? null;
@@ -119,6 +154,11 @@ export function buildRows(
     for (const id of c.member_ids) {
       if (id === c.lead_id) continue;
       const m = members[id];
+      if (selfIds.has(id)) {
+        const b = m?.badge ?? sourceBadge(memberSrc.get(id) ?? memberSource(id) ?? "");
+        if (!selfBadges.includes(b)) selfBadges.push(b);
+        continue;
+      }
       if (!m) continue;
       if (m.score != null) score = Math.max(score ?? 0, m.score);
       if (m.security) security = true;
@@ -137,6 +177,8 @@ export function buildRows(
       leadBadge,
       alsoBadges: multiSource ? alsoBadges : [],
       alsoPublishers: multiSource ? alsoPublishers : [],
+      selfBadges,
+      sourceCount: indep.size,
       size: c.size,
       score,
       security,
@@ -176,4 +218,67 @@ export function healthCellState(state: string): HealthCellState {
 /** Filled ticks of 5 = consecutive ok runs (7d ledger), capped. */
 export function healthTicks(streakOk: number, max: number = HEALTH_TICKS): number {
   return Math.max(0, Math.min(max, Math.floor(streakOk)));
+}
+
+/* ---------------- Beat 6 · Papers table (same instrument family as Pulse V5) ---------------- */
+
+export type PaperInput = {
+  id: string;
+  title: string;
+  up: number;
+  href: string;
+  abstract?: string;
+  pdfUrl?: string;
+  authors?: string[];
+  primaryCategory?: string;
+  doi?: string;
+  year?: number;
+  openalexId?: string;
+  crossrefDoi?: string;
+};
+
+export type PaperBadge = { label: "HF" | "ARX" | "OAX" | "XREF"; lit: boolean };
+
+export type PaperRow = {
+  id: string;
+  title: string;
+  up: number;
+  year: number | null;
+  badges: PaperBadge[];
+  abs: string;
+  pdf: string | null;
+  doi: string | null;
+  abstract: string | null;
+  category: string | null;
+};
+
+/** arXiv ids encode YYMM — `2609.25804` ⇒ 2026. Null when not an arXiv-style id. */
+export function arxivYear(id: string): number | null {
+  const m = /^(\d{2})(\d{2})\.\d{4,5}(v\d+)?$/.exec(id);
+  if (!m) return null;
+  const mm = Number(m[2]);
+  return mm >= 1 && mm <= 12 ? 2000 + Number(m[1]) : null;
+}
+
+export function buildPaperRows(papers: PaperInput[]): PaperRow[] {
+  return papers.map((p) => {
+    const doi = p.crossrefDoi ?? p.doi ?? null;
+    return {
+      id: p.id,
+      title: p.title,
+      up: Number.isFinite(p.up) ? p.up : 0,
+      year: p.year ?? arxivYear(p.id),
+      badges: [
+        { label: "HF", lit: true },
+        { label: "ARX", lit: Boolean(p.abstract || p.pdfUrl || p.primaryCategory) },
+        { label: "OAX", lit: Boolean(p.openalexId) },
+        { label: "XREF", lit: Boolean(p.crossrefDoi) },
+      ],
+      abs: p.href,
+      pdf: p.pdfUrl ?? null,
+      doi: doi ? doi.replace(/^https?:\/\/(dx\.)?doi\.org\//, "") : null,
+      abstract: p.abstract ?? null,
+      category: p.primaryCategory ?? null,
+    };
+  });
 }

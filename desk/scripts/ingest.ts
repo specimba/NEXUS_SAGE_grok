@@ -389,6 +389,9 @@ function patchCurrentJson(path: string, stamp: string) {
   writeText(path, `${JSON.stringify(data, null, 2)}\n`);
 }
 
+/** Beat 6: Papers table shows ≥14 rows — keep top 24 of the same single HF daily_papers response (no new requests). */
+const PAPERS_KEEP = 24;
+
 async function fetchHfPapers(): Promise<Paper[]> {
   const res = await fetch(HF_DAILY_PAPERS_URL, {
     headers: { Accept: "application/json" },
@@ -467,7 +470,7 @@ async function main() {
     const live = await fetchHfPapers();
     hfLiveCount = live.length;
     const keptAgent = papers.filter(isAgentPaper);
-    papers = mergeDailyPapers(live, { keptAgent, limit: 8 });
+    papers = mergeDailyPapers(live, { keptAgent, limit: PAPERS_KEEP });
     hfOk = true;
     console.log(`HF: ${live.length} live → ${papers.length} kept (displacement rule applied)`);
   } catch (err) {
