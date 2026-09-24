@@ -1,0 +1,25 @@
+beat9-tour · 2026-09-24T22:39:15.875Z · http://127.0.0.1:3000 · Chrome CDP · 1280x800
+PASS start on Brief (no mouse from here)
+PASS press 2 → Pulse — lane=pulse
+PASS press j j → row 2 selected + focused — selected index 1
+PASS press Enter → story drawer opens on the focused multi-source row — row cl:hn:49835056 · "OpenAI, Anthropic CEOs urge UN countries to cooperate on AI " · ?story=cl%3Ahn%3A49835056
+PASS drawer open: j → next story (drawer next) — "Anthropic says it's bio lab has found so" then back
+PASS press Esc → drawer closes, focus back on the row — focus cl:hn:49835056
+  shot /workspace/nexus-sage/refs/VISUAL-PROOF-beat9-filter.png
+PASS press / and type 'anthropic' → Pip-Boy filter applied — value "anthropic" · count 13/219 · visible 13 (was 24) · 12 with "anthropic" in row text, rest match on publisher
+PASS press Esc → filter cleared, prompt closed — rows back to 24
+PASS press 4 → Papers — lane=papers
+PASS press j → first paper selected + focused — selected index 0
+  shot /workspace/nexus-sage/refs/VISUAL-PROOF-beat9-keymap.png
+PASS press ? → key map overlay — open
+PASS press ? → key map closes — closed
+PASS press 1 → Brief — lane=brief
+PASS full lap 1–6 without the mouse — brief → pulse → digest → papers → voice → governance
+PASS Ctrl+1 does NOT change lane (browser keeps it) — still pulse
+PASS Meta+1 does NOT change lane (browser keeps it) — still pulse
+PASS Alt+1 does NOT change lane (browser keeps it) — still pulse
+PASS Shift+1 ignored — still pulse
+PASS keys ignored while typing in an input (filter prompt: 1 types, lane unchanged) — typed "1", lane pulse
+PASS real mouse click on a multi-source Pulse row opens the drawer — clicked at 342,322
+PASS real mouse click on the dimmed table closes the drawer — closed via scrim click
+ALL PASS · 21 steps passed

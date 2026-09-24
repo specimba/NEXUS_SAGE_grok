@@ -89,14 +89,15 @@ describe("Beat 8 story drawer — Beat 9 key surface + URL", () => {
     expect(writeStoryParam("", null)).toBe("");
   });
 
-  test("dialog a11y + no global key handlers yet; CSS tokens only", () => {
+  test("dialog a11y + hook adds no key handlers; CSS tokens only", () => {
     const tsx = readFileSync(resolve(import.meta.dir, "../../components/sage/desk.tsx"), "utf8");
     expect(tsx).toContain('role="dialog"');
     expect(tsx).toContain('aria-modal="true"');
     expect(tsx).toContain("aria-labelledby={headId}");
     expect(tsx).toContain("company&apos;s own post · counts 0");
     const hook = readFileSync(resolve(import.meta.dir, "../use-story-drawer.ts"), "utf8");
-    for (const src of [tsx, hook]) expect(/(window|document)\.addEventListener\(\s*["']key/.test(src)).toBe(false);
+    // the hook stays key-free; Beat 9's single desk-level listener is asserted in keys.test.ts
+    expect(/(window|document)\.addEventListener\(\s*["']key/.test(hook)).toBe(false);
     const css = readFileSync(resolve(import.meta.dir, "../../app/globals.css"), "utf8");
     const block = css.slice(css.indexOf("/* Beat 8 — Pulse story drawer"));
     expect(block).toContain("width: 440px");

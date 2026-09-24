@@ -2114,3 +2114,153 @@ body {
   color: var(--phosphor);
   text-transform: uppercase;
 }
+
+/* Beat 9 — keyboard control. One "you are here" style: 2px phosphor bar + --card (same as hover). */
+[data-nav-row][data-nav-selected] {
+  background: var(--card);
+  box-shadow: inset 2px 0 0 var(--phosphor);
+}
+[data-nav-row]:focus-visible {
+  outline: 1px solid var(--phosphor);
+  outline-offset: -1px;
+}
+.desk-filter-chip {
+  margin-left: 0.75rem;
+  padding: 0 0.35rem;
+  border: 1px solid var(--phosphor);
+  color: var(--phosphor-bright);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--text-kicker);
+  letter-spacing: 0.06em;
+  text-transform: none;
+}
+.desk-filter-prompt {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 85;
+  padding: 0 1rem 0.75rem;
+  pointer-events: none;
+}
+.desk-filter-inner {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0.45rem 0.75rem;
+  background: var(--bg-deep);
+  border: 1px solid var(--phosphor);
+  box-shadow: 0 -6px 18px color-mix(in srgb, var(--bg-deep) 80%, transparent);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.875rem;
+}
+.desk-filter-prefix {
+  flex: none;
+  color: var(--amber);
+}
+.desk-filter-input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--phosphor-bright);
+  caret-color: transparent;
+  font: inherit;
+}
+.desk-filter-inner::after {
+  /* blinking block cursor (caret hidden above) */
+  content: "";
+  order: 2;
+  width: 0.6em;
+  height: 1.1em;
+  margin-left: -0.6rem;
+  background: var(--phosphor);
+  animation: desk-filter-blink 1s steps(1) infinite;
+}
+.desk-filter-count {
+  order: 3;
+  flex: none;
+  color: var(--muted-foreground);
+  font-size: var(--text-kicker);
+}
+@keyframes desk-filter-blink {
+  50% {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .desk-filter-inner::after {
+    animation: none;
+  }
+}
+.desk-keymap-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 95;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--bg-deep) 70%, transparent);
+}
+.desk-keymap {
+  width: min(720px, calc(100vw - 2rem));
+  padding: 1rem 1.25rem;
+  background: var(--bg-deep);
+  border: 1px solid var(--phosphor);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  outline: none;
+}
+.desk-keymap-title {
+  margin-bottom: 0.75rem;
+  font-size: var(--text-kicker);
+  letter-spacing: var(--tracking-kicker);
+  text-transform: uppercase;
+  color: var(--amber);
+}
+.desk-keymap-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem 1.5rem;
+}
+.desk-keymap-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.desk-keymap-row dt {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  min-width: 5.5rem;
+}
+.desk-keymap-row dd {
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+}
+.desk-keycap {
+  display: inline-block;
+  min-width: 1.5em;
+  padding: 0 0.3rem;
+  border: 1px solid var(--phosphor);
+  color: var(--phosphor-bright);
+  font-family: inherit;
+  font-size: 0.8125rem;
+  text-align: center;
+}
+.desk-keymap-sep {
+  color: var(--muted-foreground);
+}
+.desk-keymap-foot {
+  margin-top: 0.9rem;
+  font-size: var(--text-kicker);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+.desk-keys-hint {
+  color: var(--muted-foreground);
+}
