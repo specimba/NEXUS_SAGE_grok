@@ -1,5 +1,6 @@
 "use client";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { CYCLE, WAVES, WAVE_TIMELINE } from "@/data/cycle";
 import { CRAWL, CRAWL_AT } from "@/data/x-crawl";
 import { HN_PULSE } from "@/data/hn-pulse";
@@ -35,13 +36,25 @@ import {
   type PaperInput,
   type ClusterInput,
   type PulseMemberInfo,
+  type PulseV5Row,
 } from "@/lib/pulse-v5";
 import { cn } from "@/lib/cn";
 import { isLane, laneTabs, type Lane } from "@/lib/lanes";
+import {
+  buildCoverage,
+  drawerKicker,
+  opensDrawer,
+  readStoryParam,
+  scoreContribution,
+  type MemberItem,
+} from "@/lib/story-drawer";
+import { useStoryDrawer } from "@/lib/use-story-drawer";
 
 function laneFromHash(): Lane {
   const raw = typeof window === "undefined" ? "" : window.location.hash.replace("#", "");
-  return isLane(raw) ? raw : "brief";
+  if (isLane(raw)) return raw;
+  // A linked story drawer (?story=<clusterId>) lives on Pulse.
+  return typeof window !== "undefined" && readStoryParam(window.location.search) ? "pulse" : "brief";
 }
 
 function download(name: string, body: string, type: string) {
@@ -479,6 +492,131 @@ function useMembers(): Record<string, PulseMemberInfo> {
   }, []);
 }
 
+/** Beat 8 — every source's own headline + time, keyed by member id (story drawer coverage list). */
+function useMemberItems(): Record<string, MemberItem> {
+  return useMemo(() => {
+    const m: Record<string, MemberItem> = {};
+    for (const h of HN_PULSE) m[h.id] = { title: h.text, publisher: `hn/${h.author}`, badge: "HN", at: h.at, url: h.url };
+    for (const g of GNEWS_RSS)
+      m[g.id] = { title: stripPublisher(g.title, g.publisher), publisher: g.publisher || "google news", badge: "GNW", at: g.published, url: g.link };
+    for (const r of RSS_LABS) m[r.id] = { title: r.title, publisher: r.lab, badge: labBadge(r.lab), at: r.published, url: r.link };
+    for (const r of RSS_SECURITY) m[r.id] = { title: r.title, publisher: r.lab, badge: "SEC", at: r.published, url: r.link };
+    return m;
+  }, []);
+}
+
+const WIRE_BY_ID = new Map(WIRE_ROWS.map((r) => [r.id, r]));
+
+/** Beat 8 — right side story drawer (Techmeme / Ground News). Pulse table stays visible, dimmed. */
+function StoryDrawer({
+  row,
+  cluster,
+  items,
+  now,
+  onClose,
+  onNext,
+  onPrev,
+}: {
+  row: PulseV5Row;
+  cluster: ClusterInput;
+  items: Record<string, MemberItem>;
+  now: number;
+  onClose: () => void;
+  onNext: () => void;
+  onPrev: () => void;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const coverage = useMemo(() => buildCoverage(cluster, items), [cluster, items]);
+  const wire = WIRE_BY_ID.get(row.id);
+  const mark = wire && wire.status !== "same" ? wireMark(wire) : row.showNew ? "NEW" : null;
+  const firstSeen = cluster.first_seen ?? coverage.find((c) => !c.self)?.at ?? row.at;
+  const headId = `story-drawer-title-${row.id.replace(/[^a-z0-9]/gi, "-")}`;
+
+  useEffect(() => {
+    ref.current?.querySelector<HTMLElement>("[data-drawer-close]")?.focus();
+  }, [row.id]);
+
+  // Portal to <body>: the desk stage is its own stacking context (header would paint over the panel).
+  return createPortal(
+    <>
+      <div className="story-drawer-scrim" onClick={onClose} aria-hidden />
+      <div
+        ref={ref}
+        className="story-drawer"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={headId}
+        onKeyDown={(e) => {
+          if (e.key === "Escape") {
+            e.preventDefault();
+            onClose();
+            return;
+          }
+          if (e.key !== "Tab" || !ref.current) return;
+          // focus trap
+          const f = [...ref.current.querySelectorAll<HTMLElement>("a[href],button:not([disabled])")];
+          if (f.length === 0) return;
+          const first = f[0]!;
+          const last = f[f.length - 1]!;
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }}
+      >
+        <header className="story-drawer-head">
+          <div className="story-drawer-headrow">
+            <h2 id={headId} className="story-drawer-title">
+              {row.title}
+            </h2>
+            <button type="button" className="story-drawer-x focus-phosphor" data-drawer-close onClick={onClose} aria-label="Close story">
+              ×
+            </button>
+          </div>
+          <p className="story-drawer-kicker tabular-nums">
+            {drawerKicker({ sources: row.sourceCount, firstSeen, age: compactAge(row.at, now), mark })}
+          </p>
+        </header>
+        <ol className="story-drawer-list" aria-label="Coverage by source">
+          {coverage.map((c) => (
+            <li key={c.id} className="story-drawer-item" data-self={c.self ? "1" : undefined}>
+              <p className="story-drawer-src tabular-nums">
+                <span className={cn("pulse-v5-badge", c.self ? "pulse-v5-self" : c.lead ? "pulse-v5-src-lead" : "pulse-v5-also")}>
+                  {c.badge}
+                </span>{" "}
+                {c.publisher} · {c.at ? `${istanbulHHMM(c.at)} · ${compactAge(c.at, now)}` : "time —"}
+              </p>
+              <p className="story-drawer-headline">{c.title}</p>
+              {c.self ? <p className="story-drawer-selfcap">company&apos;s own post · counts 0</p> : null}
+              {c.url ? (
+                <a className="story-drawer-open sage-signal focus-phosphor" href={c.url} target="_blank" rel="noreferrer">
+                  open ↗
+                </a>
+              ) : null}
+            </li>
+          ))}
+        </ol>
+        <footer className="story-drawer-foot tabular-nums">
+          <span>{scoreContribution(row.sourceCount)}</span>
+          <span className="story-drawer-nav">
+            <button type="button" className="focus-phosphor" onClick={onPrev} aria-label="Previous story">
+              ‹ prev
+            </button>
+            <button type="button" className="focus-phosphor" onClick={onNext} aria-label="Next story">
+              next ›
+            </button>
+            <span>Esc close</span>
+          </span>
+        </footer>
+      </div>
+    </>,
+    document.body,
+  );
+}
+
 /** Pulse V5 (Beat 3) — spec refs/UX-PULSE-V5.md. Operator X crawl posts join the one table as single-source X rows (not clusters). */
 const X_ROWS: ClusterInput[] = CRAWL.map((p) => ({
   id: `x:${p.id}`,
@@ -507,8 +645,14 @@ function Pulse() {
     () => buildRows([...PULSE_CLUSTERS, ...X_ROWS], members),
     [members],
   );
-  const defaultOpen = rows.find((r) => r.multiSource)?.id ?? null;
-  const [openClusterId, setOpenClusterId] = useState<string | null>(defaultOpen);
+  // Beat 8: multi-source rows open the story drawer; single-source rows keep inline expand.
+  const [openClusterId, setOpenClusterId] = useState<string | null>(null);
+  const items = useMemberItems();
+  const drawerIds = useMemo(() => rows.filter(opensDrawer).map((r) => r.id), [rows]);
+  const drawer = useStoryDrawer(drawerIds);
+  const clusterById = useMemo(() => new Map(PULSE_CLUSTERS.map((c) => [c.id, c as ClusterInput])), []);
+  const drawerRow = drawer.openId ? rows.find((r) => r.id === drawer.openId) : undefined;
+  const drawerCluster = drawer.openId ? clusterById.get(drawer.openId) : undefined;
   const [showAll, setShowAll] = useState(false);
   const [tasteAll, setTasteAll] = useState(false);
   const visible = showAll ? rows : rows.slice(0, PULSE_V5_MAX_ROWS);
@@ -519,7 +663,18 @@ function Pulse() {
   const tasteItems = tasteAll ? X_TASTE.items : X_TASTE.items.slice(0, 6);
 
   return (
-    <div className="pulse-v5" data-baseline={baseline ? "1" : undefined}>
+    <div className="pulse-v5" data-baseline={baseline ? "1" : undefined} data-drawer={drawerRow ? "1" : undefined}>
+      {drawerRow && drawerCluster ? (
+        <StoryDrawer
+          row={drawerRow}
+          cluster={drawerCluster}
+          items={items}
+          now={now}
+          onClose={drawer.close}
+          onNext={drawer.next}
+          onPrev={drawer.prev}
+        />
+      ) : null}
       {/* 1 · Health strip — ledger truth, one cell per source */}
       <div className="pulse-v5-health" role="list" aria-label="Source health ledger">
         {health.map((s) => {
@@ -574,7 +729,8 @@ function Pulse() {
           </div>
           <ol>
             {visible.map((r, i) => {
-              const open = openClusterId === r.id;
+              const inDrawer = opensDrawer(r);
+              const open = inDrawer ? drawer.openId === r.id : openClusterId === r.id;
               const lead = members[r.leadId];
               const overflow = r.alsoBadges.length > 2 ? r.alsoBadges.length - 2 : 0;
               const sig = sigCell(r);
@@ -584,12 +740,23 @@ function Pulse() {
                     role="button"
                     tabIndex={0}
                     aria-expanded={open}
+                    aria-haspopup={inDrawer ? "dialog" : undefined}
+                    data-story-row={inDrawer ? r.id : undefined}
                     className="pulse-v5-line focus-phosphor"
-                    onClick={() => setOpenClusterId(open ? null : r.id)}
+                    onClick={(e) =>
+                      inDrawer
+                        ? open
+                          ? drawer.close()
+                          : drawer.open(r.id, e.currentTarget)
+                        : setOpenClusterId(open ? null : r.id)
+                    }
                     onKeyDown={(e) => {
                       if (e.key === "Enter" || e.key === " ") {
                         e.preventDefault();
-                        setOpenClusterId(open ? null : r.id);
+                        if (inDrawer) {
+                          if (open) drawer.close();
+                          else drawer.open(r.id, e.currentTarget);
+                        } else setOpenClusterId(open ? null : r.id);
                       }
                     }}
                   >
@@ -620,7 +787,7 @@ function Pulse() {
                       {sig.text}
                     </span>
                   </div>
-                  {open ? (
+                  {open && !inDrawer ? (
                     <div className="pulse-v5-exp">
                       {r.multiSource && r.alsoPublishers.length ? (
                         <p className="pulse-v5-alsoline">

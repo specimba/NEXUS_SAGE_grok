@@ -1959,3 +1959,158 @@ body {
 .brief-v5 .pin-card-context h3 {
   color: var(--muted-foreground);
 }
+
+/* Beat 8 — Pulse story drawer (refs/UX-BEAT8-9-DRAWER-KEYS.md). Right panel 440px; table stays visible, dimmed. */
+.story-drawer-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: color-mix(in srgb, var(--bg-deep) 40%, transparent);
+  cursor: pointer;
+}
+.story-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 91;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: var(--bg-deep);
+  border-left: 1px solid var(--phosphor);
+  box-shadow: -8px 0 24px color-mix(in srgb, var(--bg-deep) 70%, transparent);
+  animation: story-drawer-in 160ms ease-out;
+}
+@media (min-width: 768px) {
+  .story-drawer {
+    width: 440px;
+  }
+}
+@keyframes story-drawer-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .story-drawer {
+    animation: none;
+  }
+}
+.story-drawer-head {
+  position: sticky;
+  top: 0;
+  padding: 0.75rem 0.9rem 0.6rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-deep);
+}
+.story-drawer-headrow {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.story-drawer-title {
+  flex: 1;
+  min-width: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-family: var(--font-display), ui-serif, serif;
+  font-size: 1.05rem;
+  line-height: 1.3;
+  color: var(--phosphor-bright);
+}
+.story-drawer-x {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  margin: -0.5rem -0.5rem 0 0;
+  border: 1px solid var(--border);
+  color: var(--phosphor);
+  font-size: 1.25rem;
+  line-height: 1;
+}
+.story-drawer-x:hover {
+  border-color: var(--phosphor);
+}
+.story-drawer-kicker {
+  margin-top: 0.35rem;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--text-kicker);
+  letter-spacing: var(--tracking-kicker);
+  text-transform: uppercase;
+  color: var(--phosphor);
+}
+.story-drawer-list {
+  flex: 1;
+  overflow-y: auto;
+}
+.story-drawer-item {
+  padding: 0.6rem 0.9rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+}
+.story-drawer-src {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--text-kicker);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+.story-drawer-headline {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.35;
+  color: var(--phosphor-bright);
+}
+.story-drawer-open {
+  display: inline-block;
+  margin-top: 0.2rem;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--text-kicker);
+}
+.story-drawer-item[data-self] .story-drawer-src,
+.story-drawer-item[data-self] .story-drawer-headline,
+.story-drawer-item[data-self] .story-drawer-open {
+  /* muted tier — muted-foreground (not --muted) so the struck row stays legible on --bg-deep */
+  color: var(--muted-foreground);
+}
+.story-drawer-item[data-self] .story-drawer-headline {
+  text-decoration: line-through;
+}
+.story-drawer-selfcap {
+  margin-top: 0.15rem;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--text-kicker);
+  color: var(--muted-foreground);
+}
+.story-drawer-item[data-self] {
+  opacity: 0.8;
+}
+.story-drawer-foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.5rem 0.9rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--text-kicker);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+.story-drawer-foot > span {
+  white-space: nowrap;
+}
+.story-drawer-nav {
+  display: inline-flex;
+  gap: 0.6rem;
+}
+.story-drawer-nav button {
+  color: var(--phosphor);
+  text-transform: uppercase;
+}

@@ -149,10 +149,13 @@ export function wireMark(r: Pick<WireRow, "status" | "rank" | "prev_rank">): str
 }
 
 /** "HH:MM" in Europe/Istanbul (UTC+3) — deterministic for SSR. */
+let HHMM_FMT: Intl.DateTimeFormat | undefined;
+
 export function istanbulHHMM(iso: string): string {
   const t = Date.parse(iso);
   if (!Number.isFinite(t)) return "--:--";
-  return new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Istanbul", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).format(t);
+  HHMM_FMT ??= new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Istanbul", hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
+  return HHMM_FMT.format(t);
 }
 
 export function wireHeader(crawlAt: string, rows: Pick<WireRow, "status">[]): string {

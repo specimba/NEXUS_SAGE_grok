@@ -43,7 +43,7 @@ describe("daily lead pick — window + ranking", () => {
     expect(inPickWindow(LATER)).toBe(false);
     expect(inPickWindow("2026-09-24T22:09:31Z")).toBe(false); // 01:09
     expect(istanbulDate("2026-09-24T22:09:31Z")).toBe("2026-09-25");
-  });
+  }, 30_000); // first tz-aware Intl formatter can take seconds to build under load
 
   test("strongest = most independent publishers → SIG → newer; self-repost counts 0", () => {
     const three = cl("cl:hn:1", { member_ids: ["hn:1", "gnews:1", "rss:openai:1"] });

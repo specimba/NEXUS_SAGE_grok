@@ -35,9 +35,12 @@ export type LeadEntry = {
 
 export type LeadHistory = { schema: 1; entries: LeadEntry[] };
 
+/** Built once — the first tz-aware Intl formatter is slow to construct (ICU tz data). */
+let IST_FMT: Intl.DateTimeFormat | undefined;
+
 function istanbulParts(iso: string): Record<string, string> {
   const t = Date.parse(iso);
-  const parts = new Intl.DateTimeFormat("en-GB", {
+  IST_FMT ??= new Intl.DateTimeFormat("en-GB", {
     timeZone: "Europe/Istanbul",
     year: "numeric",
     month: "2-digit",
@@ -45,7 +48,8 @@ function istanbulParts(iso: string): Record<string, string> {
     hour: "2-digit",
     minute: "2-digit",
     hourCycle: "h23",
-  }).formatToParts(Number.isFinite(t) ? t : 0);
+  });
+  const parts = IST_FMT.formatToParts(Number.isFinite(t) ? t : 0);
   return Object.fromEntries(parts.map((p) => [p.type, p.value]));
 }
 
