@@ -17,7 +17,7 @@ export type GnewsRssRow = {
   cluster_id?: string;
 };
 
-export const GNEWS_RSS_AT = "2026-09-24T22:13:06Z";
+export const GNEWS_RSS_AT = "2026-09-24T23:15:44Z";
 
 export const GNEWS_RSS: GnewsRssRow[] = [
   { id: "gnews:a35f0a208f7cc451", title: "Google, OpenAI, Anthropic Plan Frontier AI Standards Body - BankInfoSecurity", link: "https://news.google.com/rss/articles/CBMinAFBVV95cUxQU3hSbWFhUmJuLUtWR29rWjZrWklxcUNJVWprZVpueTJGTTRKQXlzbGtXemV2dzJHM3p5blhUVzE1YWJkSWhyZU9Fc0kyXy1qYVVxVWxOZkNWaTNnTzBpWExpeU1iSmVzX1JsMTQwNVBSbGxpYndKeUxsZ0VUMnNrTzJDaWVjQnpLQk9DZ0I0bEdFSEdBdFFGX0FSdXI?oc=5", published: "2026-09-24T21:36:53Z", summary: "Google, OpenAI, Anthropic Plan Frontier AI Standards Body &nbsp;&nbsp; BankInfoSecurity", publisher: "BankInfoSecurity", query: "Anthropic", source: "gnews-rss" as const, tag: "rest" as const, first_seen: "2026-09-24T21:39:07Z", is_new: false, cluster_id: "cl:gnews:a35f0a208f7cc451" },
