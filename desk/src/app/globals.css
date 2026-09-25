@@ -2514,3 +2514,32 @@ a.story-drawer-rowlink:focus-visible .story-drawer-open {
 .desk-build-stamp-link:focus-visible {
   color: var(--phosphor);
 }
+
+/* HELD lead (UX): outlined Take plate — border only, no fill, no glow; carried headline in plain phosphor text.
+   Status-bar / INGEST lead cell reads "HELD · no qualifying story" muted. Skin V2 vars only. */
+.brief-v5 .sage-take.sage-take-held {
+  background: transparent;
+  border: 1px solid var(--phosphor);
+  box-shadow: none;
+}
+.brief-v5 .sage-take-held .lane-kicker {
+  color: var(--pip-amber);
+}
+.brief-v5 .sage-take-held .sage-lead-held {
+  border-color: var(--phosphor);
+  color: var(--phosphor);
+}
+.brief-v5 .sage-take-held .sage-take-held-title {
+  margin-top: 0.5rem;
+  color: var(--phosphor);
+  text-shadow: none;
+  font-weight: 500;
+}
+.brief-v5 .sage-take-held .sage-take-yesterday {
+  margin-top: 0.5rem;
+  color: var(--muted-foreground);
+}
+.desk-lead-headline.desk-lead-held {
+  color: var(--muted-foreground);
+  text-transform: none;
+}
