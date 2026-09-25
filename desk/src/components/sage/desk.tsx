@@ -18,6 +18,7 @@ import { groupFirstAt, leadAgeHours, leadIsStale } from "@/lib/lead-pick";
 import { IST_LABEL, istDateTime, istHHMM, istHHMMSS } from "@/lib/ist-time";
 import { useNow } from "@/lib/use-now";
 import { memberInfo } from "@/lib/member-info";
+import { footerStamp } from "@/lib/build-footer";
 import { isPausedAt, type PauseMap } from "@/lib/source-pause";
 import { WIRE_CRAWL_AT, WIRE_PREV_CRAWL_AT, WIRE_ROWS } from "@/data/wire";
 import { istanbulHHMM, wireHeader, wireMark } from "@/lib/wire";
@@ -85,6 +86,10 @@ type DeskProps = {
   builtAt?: string;
   /** Active source pauses merged at prebuild (artifacts/sage/source-state.json). */
   pauses?: PauseMap;
+  /** B2 footer: source commit, crawl commit, public repo URL (build-time). */
+  commit?: string;
+  crawlCommit?: string;
+  repoUrl?: string;
 };
 
 /** One chip per source type, ×n when that type has >1 independent publisher; Σ n = N SRC (SELF excluded). */
@@ -212,11 +217,12 @@ function SinceDivider({ base, n }: { base: string; n: number }) {
   );
 }
 
-export function Desk({ buildId = "dev", builtAt = "", pauses = {} }: DeskProps) {
+export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", crawlCommit = "", repoUrl = "" }: DeskProps) {
   const [lane, setLane] = useState<Lane>("brief");
   // Tabs light only after the hash is read — SSR default "brief" must never paint as filled on another lane.
   const [laneReady, setLaneReady] = useState(false);
-  const buildShort = buildId.length > 20 ? buildId.slice(0, 20) : buildId;
+  // B2 build stamp footer (Istanbul clock, source + crawl commit links).
+  const stamp = footerStamp({ commit, crawlCommit, builtAt, crawlAt: CRAWL_AT, repoUrl });
   useEffect(() => {
     setLane(laneFromHash());
     setLaneReady(true);
@@ -532,9 +538,33 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {} }: DeskProps) 
         data-sage-built={builtAt || undefined}
         aria-label="Build health"
       >
-        <p className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
-          {`build ${buildShort}${builtAt ? ` · built ${istDateTime(builtAt)} ${IST_LABEL}` : ""}`}
-          <span className="desk-keys-hint"> · ? keys</span>
+        <p className="desk-build-stamp font-mono text-kicker uppercase tracking-kicker tabular-nums">
+          <span className="desk-keys-hint">? keys</span>
+          <span
+            className="desk-build-stamp-text"
+            data-sage-stamp={stamp.text}
+            data-sage-commit={commit || undefined}
+            data-sage-crawl-commit={crawlCommit || undefined}
+            title={`build ${buildId} · built ${builtAt ? `${istDateTime(builtAt)} ${IST_LABEL}` : "—"} · crawl ${istDateTime(CRAWL_AT)} ${IST_LABEL}${stamp.crawlShort ? ` · crawl commit ${stamp.crawlShort}` : ""}`}
+          >
+            build{" "}
+            {stamp.commitHref ? (
+              <a className="desk-build-stamp-link" href={stamp.commitHref} target="_blank" rel="noreferrer">
+                {stamp.short}
+              </a>
+            ) : (
+              stamp.short
+            )}
+            {` · deployed ${stamp.deployed} · `}
+            {stamp.crawlHref ? (
+              <a className="desk-build-stamp-link" href={stamp.crawlHref} target="_blank" rel="noreferrer" title={`crawl commit ${stamp.crawlShort}`}>
+                crawl {stamp.crawl}
+              </a>
+            ) : (
+              `crawl ${stamp.crawl}`
+            )}
+            {` ${IST_LABEL}`}
+          </span>
         </p>
       </footer>
     </div>

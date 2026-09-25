@@ -9,7 +9,12 @@ import type { PauseMap } from "@/lib/source-pause";
 export type BuildMeta = {
   buildId: string;
   builtAt: string;
+  /** Source commit (CF_PAGES_COMMIT_SHA → git rev-parse). */
   commit: string;
+  /** Crawl commit (SAGE_CRAWL_COMMIT → last commit touching artifacts/sage/CURRENT.json). */
+  crawlCommit: string;
+  /** Public repo URL for footer commit links. */
+  repoUrl: string;
   cycleId: string;
   compiledAt: string;
   crawledAt: string;
