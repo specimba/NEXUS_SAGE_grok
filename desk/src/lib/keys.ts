@@ -38,6 +38,7 @@ export type KeyAction =
   | { t: "open" }
   | { t: "escape" }
   | { t: "filter" }
+  | { t: "since" }
   | { t: "keymap" };
 
 /**
@@ -83,6 +84,8 @@ export function resolveKey(e: KeyLike, ctx: KeyCtx = {}): KeyAction | null {
       return { t: "escape" };
     case "/":
       return { t: "filter" };
+    case "u":
+      return { t: "since" };
     case "?":
       return { t: "keymap" };
     default:
@@ -113,4 +116,5 @@ export const KEY_MAP: ReadonlyArray<readonly [string, string]> = [
   ["/", "filter rows"],
   ["?", "toggle this key map"],
   ["g g / G", "first / last row"],
+  ["u", "jump to first row since your last visit"],
 ];

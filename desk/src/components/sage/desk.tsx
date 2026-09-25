@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { createContext, Fragment, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { CYCLE, WAVES, WAVE_TIMELINE } from "@/data/cycle";
 import { CRAWL, CRAWL_AT } from "@/data/x-crawl";
@@ -50,6 +50,9 @@ import {
   type MemberItem,
 } from "@/lib/story-drawer";
 import { useStoryDrawer } from "@/lib/use-story-drawer";
+import { FIRST_VISIT, LAST_SEEN_KEY, SESSION_BASE_KEY, partitionSince, sinceBase } from "@/lib/since";
+import { companyFilterMatch, deltaText, heatCells, heatLabel } from "@/lib/topic-heat";
+import { TOPIC_HEAT_WINDOWS } from "@/data/topic-heat";
 import { isTypingTarget, KEY_MAP, matchesFilter, resolveKey, stepSelection } from "@/lib/keys";
 import { writeStoryParam } from "@/lib/story-drawer";
 
@@ -90,12 +93,75 @@ function firstAtIso(c: { at: string; member_ids: readonly string[] }): string {
   return Number.isFinite(t) ? new Date(t).toISOString() : c.at;
 }
 
-/** Beat 9 — filter + story hand-off shared with lane tables (one global key handler lives in Desk). */
-type DeskKeys = { q: string; report: (shown: number, total: number) => void; openStory: (id: string) => void };
-const DeskKeysCtx = createContext<DeskKeys>({ q: "", report: () => {}, openStory: () => {} });
+/** Beat 9 — filter + story hand-off shared with lane tables (one global key handler lives in Desk). Beat 10 adds setFilter (heat cells) + since baseline. */
+type DeskKeys = {
+  q: string;
+  report: (shown: number, total: number) => void;
+  openStory: (id: string) => void;
+  setFilter: (q: string) => void;
+  since: string | null;
+};
+const DeskKeysCtx = createContext<DeskKeys>({ q: "", report: () => {}, openStory: () => {}, setFilter: () => {}, since: null });
 const useDeskKeys = () => useContext(DeskKeysCtx);
 
 const NAV_ROWS = ".desk-stage [data-nav-row]";
+
+/** Beat 10 — older rows kept visible under the since divider when the since block exceeds the top-N cap. */
+const PULSE_SINCE_TAIL = 5;
+
+/** Beat 10 — first_seen per cluster id (crawl-time truth from the seen-index). */
+const FIRST_SEEN = new Map<string, string | null>(PULSE_CLUSTERS.map((c) => [c.id, c.first_seen]));
+
+/**
+ * Beat 10 — "since you were here" baseline. lastSeenAt is written ONLY on tab leave
+ * (visibilitychange → hidden, pagehide), never on load. The session pins its baseline in
+ * sessionStorage so a reload (which fires pagehide) keeps the same markers. First visit ⇒ null.
+ */
+function useSinceBase(): string | null {
+  const [base, setBase] = useState<string | null>(null);
+  useEffect(() => {
+    let session: string | null = null;
+    let local: string | null = null;
+    try {
+      session = window.sessionStorage.getItem(SESSION_BASE_KEY);
+      local = window.localStorage.getItem(LAST_SEEN_KEY);
+    } catch {}
+    const b = sinceBase(session, local);
+    if (session == null) {
+      try {
+        window.sessionStorage.setItem(SESSION_BASE_KEY, b ?? FIRST_VISIT);
+      } catch {}
+    }
+    setBase(b);
+    const leave = () => {
+      try {
+        window.localStorage.setItem(LAST_SEEN_KEY, new Date().toISOString());
+      } catch {}
+    };
+    const onVis = () => {
+      if (document.visibilityState === "hidden") leave();
+    };
+    document.addEventListener("visibilitychange", onVis);
+    window.addEventListener("pagehide", leave);
+    return () => {
+      document.removeEventListener("visibilitychange", onVis);
+      window.removeEventListener("pagehide", leave);
+    };
+  }, []);
+  return base;
+}
+// end useSinceBase
+
+/** Beat 10 — amber divider under the rows that arrived since the last visit. */
+function SinceDivider({ base, n }: { base: string; n: number }) {
+  return (
+    <li className="since-divider" role="separator" aria-label={`Since your last visit at ${istanbulHHMM(base)}: ${n} new rows above`}>
+      <span className="since-divider-kicker tabular-nums">
+        since your last visit · {istanbulHHMM(base)} · {n} new row{n === 1 ? "" : "s"}
+      </span>
+    </li>
+  );
+}
 
 export function Desk({ buildId = "dev", serverStartedAt = "" }: DeskProps) {
   const [lane, setLane] = useState<Lane>("brief");
@@ -134,7 +200,12 @@ export function Desk({ buildId = "dev", serverStartedAt = "" }: DeskProps) {
     },
     [go],
   );
-  const keysCtx = useMemo(() => ({ q, report, openStory }), [q, report, openStory]);
+  const since = useSinceBase();
+  const setFilter = useCallback((v: string) => {
+    setQ(v);
+    setFilterOpen(false);
+  }, []);
+  const keysCtx = useMemo(() => ({ q, report, openStory, setFilter, since }), [q, report, openStory, setFilter, since]);
 
   const navRows = () => [...document.querySelectorAll<HTMLElement>(NAV_ROWS)];
   const select = useCallback((idx: number, focus: boolean) => {
@@ -223,6 +294,11 @@ export function Desk({ buildId = "dev", serverStartedAt = "" }: DeskProps) {
           return;
         case "filter":
           return setFilterOpen(true);
+        case "since": {
+          if (drawer) return;
+          const i = rows.findIndex((r) => r.hasAttribute("data-since"));
+          return i >= 0 ? select(i, true) : undefined;
+        }
         case "keymap":
           return setKeymapOpen((v) => !v);
       }
@@ -450,8 +526,12 @@ function BriefWire() {
     const t = window.setInterval(() => setNow(Date.now()), 60_000);
     return () => window.clearInterval(t);
   }, []);
-  const { q, report, openStory } = useDeskKeys();
-  const rows = useMemo(() => WIRE_ROWS.filter((r) => matchesFilter(q, [r.title])), [q]);
+  const { q, report, openStory, since } = useDeskKeys();
+  const part = useMemo(
+    () => partitionSince(WIRE_ROWS.filter((r) => matchesFilter(q, [r.title])), (r) => FIRST_SEEN.get(r.id), since),
+    [q, since],
+  );
+  const rows = useMemo(() => [...part.since, ...part.rest], [part]);
   useEffect(() => report(rows.length, WIRE_ROWS.length), [rows.length, report]);
   if (WIRE_ROWS.length === 0) return null;
   return (
@@ -463,13 +543,15 @@ function BriefWire() {
         </span>
       </div>
       <ol className="brief-wire-list">
-        {rows.map((r) => {
+        {rows.map((r, i) => {
           const mark = wireMark(r);
+          const isNewSince = i < part.since.length;
           return (
+            <Fragment key={r.id}>
             <li
-              key={r.id}
               className="brief-wire-row"
               data-status={r.status}
+              data-since={isNewSince ? "1" : undefined}
               data-nav-row
               data-href={r.url}
               tabIndex={-1}
@@ -494,6 +576,8 @@ function BriefWire() {
               </a>
               <span className="sage-src-chip sage-src-chip-multi tabular-nums">{r.sources} SRC</span>
             </li>
+            {since && part.since.length > 0 && i === part.since.length - 1 ? <SinceDivider base={since} n={part.since.length} /> : null}
+            </Fragment>
           );
         })}
       </ol>
@@ -823,19 +907,33 @@ function StoryDrawer({
         <ol className="story-drawer-list" aria-label="Coverage by source">
           {coverage.map((c) => (
             <li key={c.id} className="story-drawer-item" data-self={c.self ? "1" : undefined}>
-              <p className="story-drawer-src tabular-nums">
-                <span className={cn("pulse-v5-badge", c.self ? "pulse-v5-self" : c.lead ? "pulse-v5-src-lead" : "pulse-v5-also")}>
-                  {c.badge}
-                </span>{" "}
-                {c.publisher} · {c.at ? `${istanbulHHMM(c.at)} · ${compactAge(c.at, now)}` : "time —"}
-              </p>
-              <p className="story-drawer-headline">{c.title}</p>
-              {c.self ? <p className="story-drawer-selfcap">company&apos;s own post · counts 0</p> : null}
-              {c.url ? (
-                <a className="story-drawer-open sage-signal focus-phosphor" href={c.url} target="_blank" rel="noreferrer">
-                  open ↗
-                </a>
-              ) : null}
+              {(() => {
+                // Beat 10: the WHOLE source row is the link (≥44px); "open ↗" stays as the visible cue.
+                const body = (
+                  <>
+                    <span className="story-drawer-src tabular-nums">
+                      <span className={cn("pulse-v5-badge", c.self ? "pulse-v5-self" : c.lead ? "pulse-v5-src-lead" : "pulse-v5-also")}>
+                        {c.badge}
+                      </span>{" "}
+                      {c.publisher} · {c.at ? `${istanbulHHMM(c.at)} · ${compactAge(c.at, now)}` : "time —"}
+                    </span>
+                    <span className="story-drawer-headline">{c.title}</span>
+                    {c.self ? <span className="story-drawer-selfcap">company&apos;s own post · counts 0</span> : null}
+                    {c.url ? (
+                      <span className="story-drawer-open sage-signal" aria-hidden>
+                        open ↗
+                      </span>
+                    ) : null}
+                  </>
+                );
+                return c.url ? (
+                  <a className="story-drawer-rowlink focus-phosphor" href={c.url} target="_blank" rel="noreferrer">
+                    {body}
+                  </a>
+                ) : (
+                  <div className="story-drawer-rowlink" data-nolink="1">{body}</div>
+                );
+              })()}
             </li>
           ))}
         </ol>
@@ -872,6 +970,52 @@ const X_ROWS: ClusterInput[] = CRAWL.map((p) => ({
   is_new: false,
 }));
 
+/** Beat 10 — topic heat strip (refs/UX-BEAT10-SINCE-HEAT.md). Bars = 4h routine windows; null = honest gap. */
+function HeatStrip() {
+  const { setFilter, q } = useDeskKeys();
+  const cells = useMemo(() => heatCells(TOPIC_HEAT_WINDOWS), []);
+  const max = Math.max(1, ...cells.flatMap((c) => c.bars.map((b) => b ?? 0)));
+  const labels = TOPIC_HEAT_WINDOWS.map((w) => w.label);
+  return (
+    <div className="heat-strip" role="group" aria-label="Topic heat by company and other labs, last six 4-hour windows">
+      <span className="heat-strip-kicker tabular-nums" title="one crawl per 4h routine window (02/06/10/14/18/22 Istanbul) · last crawl in the window · gaps = no crawl">
+        {heatLabel(TOPIC_HEAT_WINDOWS)}
+      </span>
+      {cells.map((c) => (
+        <button
+          key={c.id}
+          type="button"
+          className="heat-cell focus-phosphor"
+          data-cell={c.id}
+          data-hot={c.hot ? "1" : undefined}
+          aria-pressed={q.trim().toLowerCase() === c.filter}
+          onClick={() => setFilter(c.filter)}
+          aria-label={`${c.label}: ${c.current ?? "no data"} this window${c.drivers ? ` (${c.drivers})` : ""}${c.delta != null ? `, ${deltaText(c.delta)} vs previous` : ""}. Filter to ${c.label}.`}
+          title={c.bars.map((b, i) => `${labels[i]}h ${b == null ? "gap" : b}`).join(" · ")}
+        >
+          <span className="heat-cell-label">{c.label}</span>
+          <span className="heat-spark" aria-hidden>
+            {c.bars.map((b, i) =>
+              b == null ? (
+                <span key={i} className="heat-bar heat-gap" title={`${labels[i]}h window · gap · no crawl`} />
+              ) : (
+                <span key={i} className="heat-bar" style={{ height: `${Math.max(8, Math.round((b / max) * 100))}%` }} />
+              ),
+            )}
+          </span>
+          <span className="heat-cell-num">
+            <span className="heat-cell-count tabular-nums">{c.current ?? "—"}</span>
+            {c.drivers ? <span className="heat-cell-drivers">{c.drivers}</span> : null}
+          </span>
+          <span className="heat-cell-delta tabular-nums" data-dir={c.delta == null ? undefined : c.delta > 0 ? "up" : c.delta < 0 ? "down" : "flat"}>
+            {c.delta == null ? "gap" : deltaText(c.delta)}
+          </span>
+        </button>
+      ))}
+    </div>
+  );
+}
+
 function Pulse() {
   // First render = crawl stamp (SSR-stable); then wall clock.
   const [now, setNow] = useState(() => Date.parse(PULSE_CLUSTERS_AT));
@@ -895,13 +1039,24 @@ function Pulse() {
   const drawerCluster = drawer.openId ? clusterById.get(drawer.openId) : undefined;
   const [showAll, setShowAll] = useState(false);
   const [tasteAll, setTasteAll] = useState(false);
-  const { q, report } = useDeskKeys();
-  const filtered = useMemo(
-    () => rows.filter((r) => matchesFilter(q, [r.title, r.leadBadge, ...r.alsoBadges, ...r.alsoPublishers, members[r.leadId]?.publisher])),
-    [rows, q, members],
+  const { q, report, since } = useDeskKeys();
+  const part = useMemo(
+    () =>
+      partitionSince(
+        rows.filter(
+          (r) =>
+            matchesFilter(q, [r.title, r.leadBadge, ...r.alsoBadges, ...r.alsoPublishers, members[r.leadId]?.publisher]) ||
+            companyFilterMatch(q, clusterById.get(r.id)),
+        ),
+        (r) => FIRST_SEEN.get(r.id),
+        since,
+      ),
+    [rows, q, members, clusterById, since],
   );
+  const filtered = useMemo(() => [...part.since, ...part.rest], [part]);
   useEffect(() => report(filtered.length, rows.length), [filtered.length, rows.length, report]);
-  const visible = showAll || q ? filtered : filtered.slice(0, PULSE_V5_MAX_ROWS);
+  // Beat 10: every since-row stays visible above the divider, even past the top-N cap.
+  const visible = showAll || q ? filtered : filtered.slice(0, Math.max(PULSE_V5_MAX_ROWS, part.since.length + PULSE_SINCE_TAIL));
   const fresh = crawlFreshness(CRAWL_AT, now);
   const health = [...SOURCE_HEALTH].sort(
     (a, b) => HEALTH_ORDER.indexOf(a.id) - HEALTH_ORDER.indexOf(b.id),
@@ -950,6 +1105,9 @@ function Pulse() {
               BASELINE · first crawl
             </span>
           ) : null}
+          {since && part.since.length === 0 ? (
+            <span className="since-nothing tabular-nums">nothing since {istanbulHHMM(since)}</span>
+          ) : null}
           {fresh.stale ? (
             <span className="sage-stale pulse-v5-stale-plate tabular-nums" role="status" title={`STALE after ${STALE_GUARD_HOURS}h`}>
               STALE {fresh.hours.toFixed(1)}h
@@ -961,6 +1119,9 @@ function Pulse() {
           )}
         </span>
       </div>
+
+      {/* 1b · Beat 10 topic heat — 4h routine windows, click a cell = filter to that company */}
+      <HeatStrip />
 
       {/* 2 · Main grid — cluster table | Taste rail */}
       <div className="pulse-v5-grid">
@@ -980,10 +1141,13 @@ function Pulse() {
               const lead = members[r.leadId];
               const overflow = r.alsoBadges.length > 2 ? r.alsoBadges.length - 2 : 0;
               const sig = sigCell(r);
+              const isNewSince = i < part.since.length;
               return (
-                <li key={r.id} className="pulse-v5-row" data-open={open ? "1" : undefined}>
+                <Fragment key={r.id}>
+                <li className="pulse-v5-row" data-open={open ? "1" : undefined}>
                   <div
                     role="button"
+                    data-since={isNewSince ? "1" : undefined}
                     tabIndex={0}
                     aria-expanded={open}
                     aria-haspopup={inDrawer ? "dialog" : undefined}
@@ -1055,6 +1219,10 @@ function Pulse() {
                     </div>
                   ) : null}
                 </li>
+                {since && part.since.length > 0 && i === part.since.length - 1 ? (
+                  <SinceDivider base={since} n={part.since.length} />
+                ) : null}
+                </Fragment>
               );
             })}
           </ol>

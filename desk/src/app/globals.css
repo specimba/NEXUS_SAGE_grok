@@ -2276,3 +2276,177 @@ body {
   text-transform: none;
   letter-spacing: 0.04em;
 }
+
+/* Beat 10 — since-you-were-here + topic heat (refs/UX-BEAT10-SINCE-HEAT.md). Skin V2 vars only. */
+.pulse-v5-line[data-since],
+.brief-wire-row[data-since] {
+  box-shadow: inset 2px 0 0 var(--pip-amber);
+}
+.since-divider {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.15rem 0;
+  list-style: none;
+}
+.since-divider::before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--pip-amber);
+}
+.since-divider-kicker {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--text-kicker);
+  letter-spacing: var(--tracking-kicker);
+  text-transform: uppercase;
+  color: var(--pip-amber);
+  white-space: nowrap;
+}
+.since-nothing {
+  margin-right: 0.5rem;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+}
+.heat-strip {
+  display: flex;
+  align-items: stretch;
+  height: 32px;
+  margin-top: 0.35rem;
+  border: 1px solid var(--border);
+  background: var(--bg-deep);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--text-kicker);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.heat-strip-kicker {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 0.5rem;
+  border-right: 1px solid var(--border);
+  color: var(--muted-foreground);
+  white-space: nowrap;
+}
+.heat-cell {
+  position: relative;
+  flex: 1 1 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-width: 0;
+  padding: 0 0.5rem;
+  border-right: 1px solid var(--border);
+  color: var(--phosphor);
+  background: transparent;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.heat-cell:last-child {
+  border-right: 0;
+}
+.heat-cell[data-cell="other"] {
+  flex-grow: 1.5;
+}
+/* 44px hit area on a 32px strip (30px cell + 7px above/below) */
+.heat-cell::before {
+  content: "";
+  position: absolute;
+  inset: -7px 0;
+}
+.heat-cell:hover,
+.heat-cell[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--phosphor) 10%, transparent);
+}
+.heat-cell-label {
+  color: var(--phosphor-bright);
+  white-space: nowrap;
+}
+.heat-spark {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 18px;
+}
+.heat-bar {
+  display: inline-block;
+  width: 4px;
+  background: var(--phosphor);
+}
+.heat-gap {
+  height: 100%;
+  background: transparent;
+  outline: 1px dotted var(--muted-foreground);
+  outline-offset: -1px;
+}
+.heat-cell-num {
+  margin-left: auto;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 1.05;
+  min-width: 0;
+}
+.heat-cell-count {
+  color: var(--phosphor-bright);
+}
+.heat-cell-drivers {
+  max-width: 9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.85em;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--muted-foreground);
+}
+/* narrow screens: the 6 cells scroll inside the strip (strip grows to the 44px hit height since overflow clips ::before) */
+@media (max-width: 900px) {
+  .heat-strip {
+    height: 44px;
+    overflow-x: auto;
+  }
+  .heat-cell {
+    flex: 1 0 auto;
+  }
+}
+.heat-cell-delta {
+  min-width: 2.2em;
+  color: var(--muted-foreground);
+}
+.heat-cell-delta[data-dir="up"] {
+  color: var(--phosphor);
+}
+/* hottest cell: its latest bar + count in amber (spec §2) — only one amber cell */
+.heat-cell[data-hot] .heat-cell-count {
+  color: var(--pip-amber);
+}
+.heat-cell[data-hot] .heat-bar:last-child:not(.heat-gap) {
+  background: var(--pip-amber);
+}
+/* Drawer: whole source row is the link */
+.story-drawer-item {
+  padding: 0;
+}
+.story-drawer-rowlink {
+  display: block;
+  min-height: 44px;
+  padding: 0.6rem 0.9rem;
+  color: inherit;
+  text-decoration: none;
+}
+.story-drawer-rowlink > span {
+  display: block;
+}
+.story-drawer-rowlink > .story-drawer-open {
+  display: inline-block;
+}
+a.story-drawer-rowlink:hover,
+a.story-drawer-rowlink:focus-visible {
+  background: color-mix(in srgb, var(--phosphor) 8%, transparent);
+}
+a.story-drawer-rowlink:hover .story-drawer-open,
+a.story-drawer-rowlink:focus-visible .story-drawer-open {
+  text-decoration: underline;
+}

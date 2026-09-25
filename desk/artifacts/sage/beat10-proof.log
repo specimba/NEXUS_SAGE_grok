@@ -1,0 +1,14 @@
+beat10-proof · 2026-09-25T12:40:13.854Z · http://127.0.0.1:3000 · Chrome CDP · 1280x800 · simulated lastSeenAt=2026-09-25T10:40:13.854Z
+PASS first visit ever: no since markers, no divider, nothing written on load — rows=0 divider=0 lastSeenAt=null
+PASS heat strip: 6 cells (5 companies + OTHER LABS), one amber (hottest), gaps labelled — HEAT · 3/6 windows · hot=GOOGLE · gap bars=18/36 · other labs drivers "Mistral · Meta +1" · strip 32px
+PASS heat cell click filters the table to that company and shows the filter chip — GOOGLE → chip "filter: google ×" · rows 24→41 · hit area 44px
+  shot /workspace/nexus-sage/refs/VISUAL-PROOF-beat10-heat.png
+PASS Esc clears the heat filter — chip gone
+PASS OTHER LABS cell filters to the whole group (OR-match) — chip "filter: other labs ×" · 16 rows (8 name a lab in the headline, rest via lab feed)
+PASS pagehide writes lastSeenAt (tab leave, not load) — lastSeenAt=2026-09-25T12:40:16.272Z
+PASS previous visit: rows first seen after lastSeenAt get the amber edge, stacked above the divider — 33 since rows · divider "since your last visit · 13:40 · 33 new rows"
+  shot /workspace/nexus-sage/refs/VISUAL-PROOF-beat10-since.png
+PASS u jumps selection to the first since-row — selected #1 (since)
+PASS reload keeps the same markers (session-pinned baseline) — 33 since rows after reload
+PASS drawer: whole source row is the link (≥44px), keyboard o + focus trap intact — 2 row links · min 84px · focus on close · Esc closes
+ALL PASS

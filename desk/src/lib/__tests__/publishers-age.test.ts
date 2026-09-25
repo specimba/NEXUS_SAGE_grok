@@ -1,16 +1,20 @@
 import { describe, expect, test } from "bun:test";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { GNEWS_RSS } from "@/data/gnews-rss";
-import { HN_PULSE } from "@/data/hn-pulse";
-import { PULSE_CLUSTERS, PULSE_CLUSTERS_AT } from "@/data/pulse-clusters";
-import { WIRE_ROWS } from "@/data/wire";
+import type { GnewsRssRow } from "@/data/gnews-rss";
+import type { HnPulseRow } from "@/data/hn-pulse";
+import type { PulseClusterRow } from "@/data/pulse-clusters";
+import fx from "./fixtures/enzyme-2026-09-24T2213Z.json";
 import { corroborationMultiplier, countSources } from "@/lib/corroboration";
 import { groupFirstAt } from "@/lib/lead-pick";
 import { buildRows, compactAge, independentPublishers, publisherKey, type PulseMemberInfo } from "@/lib/pulse-v5";
 import { scoreContribution } from "@/lib/story-drawer";
 
-const enzyme = PULSE_CLUSTERS.find((c) => /enzyme/i.test(c.title))!;
+// Frozen real crawl (22:13Z) — live 4h crawls rotate GNews members out, so tests pin a snapshot.
+const enzyme = fx.cluster as unknown as PulseClusterRow;
+const HN_PULSE = fx.hn as unknown as HnPulseRow[];
+const GNEWS_RSS = fx.gnews as unknown as GnewsRssRow[];
+const PULSE_CLUSTERS_AT = fx.crawl_at;
 const pubOf = (id: string) => GNEWS_RSS.find((g) => g.id === id)?.publisher ?? null;
 
 describe("N SRC = distinct independent publishers", () => {
@@ -60,9 +64,8 @@ describe("N SRC = distinct independent publishers", () => {
     expect(buildRows([c], {}).rows[0]!.multiSource).toBe(false);
   });
 
-  test("generated Wire uses publisher counts (enzyme 3 SRC)", () => {
-    const w = WIRE_ROWS.find((r) => /enzyme/i.test(r.title));
-    expect(w?.sources).toBe(3);
+  test("generated Wire uses publisher counts (enzyme 3 SRC, frozen 2016b72 wire row)", () => {
+    expect(fx.wire_row?.sources).toBe(3);
   });
 
   test("corroboration crawl hits count per publisher when publishers are given", () => {
@@ -77,14 +80,17 @@ describe("N SRC = distinct independent publishers", () => {
 });
 
 describe("story age = earliest member item", () => {
-  test("enzyme group shows ~28h at crawl time, not the 6h of its freshest repost", () => {
+  test("enzyme group shows its first-item age (>24h at crawl time), not the hours of its freshest repost", () => {
     const memberAt: Record<string, string> = {};
     for (const h of HN_PULSE) memberAt[h.id] = h.at;
     for (const g of GNEWS_RSS) memberAt[g.id] = g.published;
     const now = Date.parse(PULSE_CLUSTERS_AT);
     const first = groupFirstAt(enzyme, memberAt);
-    expect(compactAge(new Date(first).toISOString(), now)).toBe("28h");
-    expect(compactAge(enzyme.at, now)).not.toBe("28h");
+    // crawl-stamp independent (the 4h routine moves PULSE_CLUSTERS_AT): first item 2026-09-23T18:06:47Z
+    expect(new Date(first).toISOString()).toBe("2026-09-23T18:06:47.000Z");
+    const ageH = (now - first) / 3_600_000;
+    expect(ageH).toBeGreaterThan(24);
+    expect(compactAge(enzyme.at, now)).not.toBe(compactAge(new Date(first).toISOString(), now));
   });
 
   test("Pulse AGE, drawer kicker and Wire age use firstAtIso; status bar shows the lead headline, id only in title", () => {

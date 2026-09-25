@@ -1,8 +1,6 @@
 import { describe, expect, test } from "bun:test";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { GNEWS_RSS } from "@/data/gnews-rss";
-import { HN_PULSE } from "@/data/hn-pulse";
 import { PULSE_CLUSTERS } from "@/data/pulse-clusters";
 import { buildRows } from "@/lib/pulse-v5";
 import {
@@ -16,19 +14,22 @@ import {
   type MemberItem,
 } from "@/lib/story-drawer";
 
-function realItems(): Record<string, MemberItem> {
+import enzymeFx from "./fixtures/enzyme-2026-09-24T2213Z.json";
+
+/** Frozen real crawl (22:13Z) — live 4h crawls rotate GNews members out of the enzyme cluster. */
+function fxItems(): Record<string, MemberItem> {
   const m: Record<string, MemberItem> = {};
-  for (const h of HN_PULSE) m[h.id] = { title: h.text, publisher: `hn/${h.author}`, badge: "HN", at: h.at, url: h.url };
-  for (const g of GNEWS_RSS) m[g.id] = { title: g.title, publisher: g.publisher, badge: "GNW", at: g.published, url: g.link };
+  for (const h of enzymeFx.hn) m[h.id] = { title: h.text, publisher: `hn/${h.author}`, badge: "HN", at: h.at, url: h.url };
+  for (const g of enzymeFx.gnews) m[g.id] = { title: g.title, publisher: g.publisher, badge: "GNW", at: g.published, url: g.link };
   return m;
 }
 
 describe("Beat 8 story drawer — coverage list", () => {
-  const enzyme = PULSE_CLUSTERS.find((c) => /enzyme/i.test(c.title));
+  const enzyme = enzymeFx.cluster as unknown as (typeof PULSE_CLUSTERS)[number];
 
-  test("real Claude enzyme cluster: HN + Al Jazeera + 1 more, SELF (Anthropic) struck and last", () => {
+  test("real Claude enzyme cluster (frozen 22:13Z crawl): HN + Al Jazeera + 1 more, SELF (Anthropic) struck and last", () => {
     expect(enzyme).toBeDefined();
-    const cov = buildCoverage(enzyme!, realItems());
+    const cov = buildCoverage(enzyme!, fxItems());
     expect(cov.length).toBe(enzyme!.member_ids.length);
     const pubs = cov.map((c) => c.publisher);
     expect(pubs.some((p) => p.startsWith("hn/"))).toBe(true);
