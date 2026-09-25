@@ -3,10 +3,10 @@ import type { LeadEntry } from "@/lib/lead-pick";
 
 export const LEAD_TODAY: LeadEntry | null = {
   "date": "2026-09-25",
-  "at": "2026-09-25T12:47:39.310Z",
+  "at": "2026-09-25T13:41:25.587Z",
   "crawl_at": "2026-09-25T11:16:08Z",
   "forced": true,
-  "supersedes": "cl:hn:49829670",
+  "supersedes": "cl:gnews:9723c65102977408",
   "excluded": [
     {
       "cluster_id": "cl:hn:49825580",
@@ -14,9 +14,9 @@ export const LEAD_TODAY: LeadEntry | null = {
       "reason": "age>=24h"
     },
     {
-      "cluster_id": "cl:gnews:f4f57724bbc69090",
-      "headline": "Jefferies says Meta's AI agent is not a threat to Life Time (LTH:NYSE)",
-      "reason": "noise:investing"
+      "cluster_id": "cl:gnews:9723c65102977408",
+      "headline": "BNP Paribas inks new Google Cloud deal to advance agentic AI deployment",
+      "reason": "noise:customer-deal"
     },
     {
       "cluster_id": "cl:rss:deepmind:68ead6b6af2b7144",
@@ -29,13 +29,13 @@ export const LEAD_TODAY: LeadEntry | null = {
       "reason": "age>=24h"
     }
   ],
-  "cluster_id": "cl:gnews:9723c65102977408",
-  "headline": "BNP Paribas inks new Google Cloud deal to advance agentic AI deployment",
-  "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNeGZGdVliNUJvUXJxRDIxVERodkVaYVowVFhYS1VvSFFhbTNaZWVSTGN4RHNfVnFydVlLUFBYSW5idTF2SEU4cDJVb1pNQWpkTnptNnR0Wm03T2VmdXdNai0zcHlYU2t6SVI5eE5iMWpFaWJDZ3puZ1puVHY5eFdCbnlPWkRjZnljQV9VaHN0bzFIV2JuUEhCNDFxa2oxTjdLZ3YzWi1KY2ptRVdZRS1aTktjb1E?oc=5",
-  "sources": 2,
+  "cluster_id": "hf-incident",
+  "headline": "Eval agents reached Hugging Face production. Three waves. METR covers through 13 Jul. Wave 3 is OpenAI-only.",
+  "url": null,
+  "sources": 0,
   "sig": null,
-  "reason": "picked",
-  "first_at": "2026-09-25T00:01:00.000Z"
+  "reason": "held",
+  "note": "no qualifying story"
 };
 
 export const LEAD_YESTERDAY: LeadEntry | null = {
@@ -51,7 +51,7 @@ export const LEAD_YESTERDAY: LeadEntry | null = {
   "crawl_at": "2026-09-24T22:09:31Z"
 };
 
-export const LEAD_HELD = false;
+export const LEAD_HELD = true;
 
 /** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is ≥24h old. */
-export const LEAD_FIRST_AT: string | null = "2026-09-25T00:01:00.000Z";
+export const LEAD_FIRST_AT: string | null = null;
