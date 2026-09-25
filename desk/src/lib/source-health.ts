@@ -11,6 +11,10 @@ export type SourceOutcome = {
   ok: boolean;
   items: number;
   reason?: string | null;
+  /** Source was skipped this run because of an active pause (no request) — streaks/history untouched. */
+  skipped_paused?: boolean;
+  /** Active pause end (ISO UTC) after this run, if any (source-state.json). */
+  paused_until?: string | null;
 };
 
 export type HealthEvent = {
@@ -29,6 +33,8 @@ export type SourceHealthEntry = {
   streak_fail: number;
   items_last: number;
   history: HealthEvent[];
+  /** ISO UTC pause end (OpenAlex daily-budget 429 etc.); null/absent = not paused. */
+  paused_until?: string | null;
 };
 
 export type SourceHealthLedger = {
@@ -64,6 +70,7 @@ export function parseLedger(raw: unknown): SourceHealthLedger {
         history: Array.isArray(e.history)
           ? e.history.filter((h) => h && typeof h.at === "string" && typeof h.ok === "boolean")
           : [],
+        paused_until: typeof e.paused_until === "string" ? e.paused_until : null,
       };
     }
   }
@@ -93,6 +100,10 @@ export function applyOutcome(
     items_last: 0,
     history: [],
   };
+  if (o.skipped_paused) {
+    // No request was made — not a success, not a failure. Only the pause end moves.
+    return { ...base, id: o.id, paused_until: o.paused_until ?? base.paused_until ?? null };
+  }
   const reason = o.ok ? undefined : (o.reason || "unknown").slice(0, 200);
   const ev: HealthEvent = { at, ok: o.ok, items: Math.max(0, Math.floor(o.items || 0)) };
   if (reason) ev.reason = reason;
@@ -105,6 +116,7 @@ export function applyOutcome(
     streak_fail: o.ok ? 0 : base.streak_fail + 1,
     items_last: ev.items,
     history: pruneHistory([...base.history, ev], at),
+    paused_until: o.paused_until ?? null,
   };
 }
 
@@ -128,9 +140,22 @@ export function healthState(e: SourceHealthEntry): SourceHealthState {
   return fails > 0 ? "flaky" : "ok";
 }
 
+/** Run status for UI cells: paused wins while paused_until is in the future (vs `at`). */
+export type SourceRunStatus = "ok" | "fail" | "paused";
+
+export function runStatus(e: SourceHealthEntry, at: string | null): SourceRunStatus {
+  const until = e.paused_until ? Date.parse(e.paused_until) : NaN;
+  const now = at ? Date.parse(at) : Date.now();
+  if (Number.isFinite(until) && until > now) return "paused";
+  return e.streak_fail > 0 ? "fail" : "ok";
+}
+
 export type SourceHealthRow = {
   id: string;
   state: SourceHealthState;
+  /** ok / fail / paused — render PAUSED · until HH:MM from paused_until. Optional: older snapshots lack it. */
+  status?: SourceRunStatus;
+  paused_until?: string | null;
   last_ok: string | null;
   last_fail: string | null;
   fail_reason: string | null;
@@ -146,6 +171,8 @@ export function summarizeLedger(l: SourceHealthLedger): SourceHealthRow[] {
     .map((e) => ({
       id: e.id,
       state: healthState(e),
+      status: runStatus(e, l.updated_at),
+      paused_until: runStatus(e, l.updated_at) === "paused" ? (e.paused_until ?? null) : null,
       last_ok: e.last_ok,
       last_fail: e.last_fail,
       fail_reason: e.fail_reason,

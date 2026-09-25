@@ -1,7 +1,11 @@
 /**
  * OpenAlex Papers enrichment — free/public only.
  * GET https://api.openalex.org/works — Papers metadata (id/year/DOI) only.
- * Soft-fail 429/5xx/parse · Retry-After/jitter ≤2 retries on 429 · ≤1 search/tick · 24h cache.
+ * Soft-fail 429/5xx/parse · ≤1 search/tick · 24h cache.
+ * 429 = daily budget spent (unauth budget is per IP, resets 00:00 UTC; Retry-After was 40965s
+ * on 2026-09-25) → NO retries: record paused_until (Retry-After, else next midnight UTC) in
+ * artifacts/sage/source-state.json and skip OpenAlex entirely until then. 3 consecutive failures
+ * → pause ≥24h. Optional OPENALEX_API_KEY → `Authorization: Bearer …` (never logged/written).
  * Never Brief · never Pulse lead · never displace HF agent keeps · cycle stays 003.
  * Spec: refs/WIRE-OPENALEX-BACKOFF.md · refs/WIRE-OPENALEX.md (Fox-IT deferred).
  */
@@ -11,6 +15,14 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { isAgentPaper, type Paper } from "./ingest/papers";
+import {
+  activePause,
+  readSourceState,
+  recordSourceOutcome,
+  writeSourceState,
+  type AuthMode,
+  type SourceRunStatus,
+} from "./source-state";
 
 export const OPENALEX_API = "https://api.openalex.org/works";
 export const OPENALEX_UA =
@@ -20,11 +32,11 @@ export const OPENALEX_PER_PAGE = 5;
 export const OPENALEX_SELECT =
   "id,display_name,title,publication_year,doi,primary_location,authorships";
 
-/** ≤2 retries after first 429 (3 attempts max) per ingest tick. */
-export const OPENALEX_MAX_RETRIES = 2;
-/** Jittered backoff bases when Retry-After absent: attempt1→2s, attempt2→8s. */
-export const OPENALEX_BACKOFF_MS = [2_000, 8_000] as const;
-/** Cap honored Retry-After so ingest tick cannot hang. */
+/** Source id in artifacts/sage/source-state.json. */
+export const OPENALEX_SOURCE_ID = "openalex";
+/** Env var holding the optional free OpenAlex API key (10× the keyless budget). */
+export const OPENALEX_API_KEY_ENV = "OPENALEX_API_KEY";
+/** Cap for parseRetryAfterMs (display helper only — 429 never sleeps/retries now). */
 export const OPENALEX_RETRY_AFTER_CAP_MS = 30_000;
 
 /** Rotating fallback when no DOI/arXiv filter can be built. Cap 5 via per_page. */
@@ -84,8 +96,17 @@ export type FetchOpenAlexResult = {
   brief: false;
   pulse_lead: false;
   searches: number;
-  /** 429 retry attempts used this tick (0..OPENALEX_MAX_RETRIES). */
+  /** Always 0 — 429 pauses instead of retrying (kept for ingest-last.json schema). */
   retries: number;
+  /** ok = data (network or cache) · fail = soft-fail · paused = skipped, no request made. */
+  status: SourceRunStatus;
+  /** ISO UTC — set while paused, or when this run's failure started a pause. */
+  paused_until: string | null;
+  pause_reason: string | null;
+  /** Network requests made this call (0 when paused / cache / fixture). */
+  requests: number;
+  /** "key" when OPENALEX_API_KEY is set (the key itself is never exposed). */
+  auth: AuthMode;
 };
 
 const DEFAULT_CACHE_DIR = resolve(
@@ -437,21 +458,33 @@ export type FetchOpenAlexOpts = {
   fixtureJson?: OpenAlexSearchResponse | string;
   /** Test: force soft-fail without network. */
   forceSoftFail?: 429 | 500 | 503;
-  /** Optional fetch override (tests). Never sends credentials. */
+  /** Optional fetch override (tests). Sends Bearer only when OPENALEX_API_KEY is set. */
   fetchImpl?: typeof fetch;
   /** Allow >1 search in tests only — production always 1. */
   allowMultiSearch?: boolean;
-  /** Injectable sleep (tests) — default real timer. */
-  sleepImpl?: (ms: number) => Promise<void>;
-  /** Injectable RNG for backoff jitter (tests). Returns [0,1). */
-  randomImpl?: () => number;
+  /** Pause-state JSON (artifacts/sage/source-state.json). Omit → pause rule computed, not persisted. */
+  statePath?: string;
 };
+
+/** Read the optional key at call time. Never log / return / persist it. */
+function openAlexApiKey(): string | null {
+  const k = process.env[OPENALEX_API_KEY_ENV];
+  return typeof k === "string" && k.trim() ? k.trim() : null;
+}
+
+/** Scrub the key from any string that may reach logs or ingest-last.json. */
+export function redactOpenAlexKey(text: string, key: string | null = openAlexApiKey()): string {
+  if (!key) return text;
+  return text.split(key).join("[redacted]");
+}
+
+type Extra = Partial<Pick<FetchOpenAlexResult, "status" | "paused_until" | "pause_reason" | "requests" | "auth">>;
 
 function softFailResult(
   query: string,
   reason: string,
   mode: FetchOpenAlexResult["mode"] = "soft_fail",
-  retries = 0,
+  extra: Extra = {},
 ): FetchOpenAlexResult {
   return {
     enrichments: [],
@@ -459,12 +492,18 @@ function softFailResult(
     mode,
     ok: false,
     soft_fail: true,
-    soft_fail_reason: reason,
+    soft_fail_reason: redactOpenAlexKey(reason),
     from_cache: false,
     brief: false,
     pulse_lead: false,
     searches: searchesThisTick,
-    retries,
+    retries: 0,
+    status: "fail",
+    paused_until: null,
+    pause_reason: null,
+    requests: 0,
+    auth: openAlexApiKey() ? "key" : "anon",
+    ...extra,
   };
 }
 
@@ -473,7 +512,7 @@ function okResult(
   query: string,
   mode: FetchOpenAlexResult["mode"],
   from_cache: boolean,
-  retries = 0,
+  extra: Extra = {},
 ): FetchOpenAlexResult {
   return {
     enrichments,
@@ -485,12 +524,14 @@ function okResult(
     brief: false,
     pulse_lead: false,
     searches: searchesThisTick,
-    retries,
+    retries: 0,
+    status: "ok",
+    paused_until: null,
+    pause_reason: null,
+    requests: 0,
+    auth: openAlexApiKey() ? "key" : "anon",
+    ...extra,
   };
-}
-
-function sleep(ms: number): Promise<void> {
-  return new Promise((r) => setTimeout(r, ms));
 }
 
 /** Parse Retry-After (delta-seconds or HTTP-date) → ms, capped. */
@@ -512,20 +553,6 @@ export function parseRetryAfterMs(
   const delta = when - now;
   if (delta <= 0) return 0;
   return Math.min(delta, capMs);
-}
-
-/** Jittered backoff: bases 2s → 8s for retry index 0..1. */
-export function openAlexBackoffMs(
-  retryIndex: number,
-  randomImpl: () => number = Math.random,
-): number {
-  const base =
-    OPENALEX_BACKOFF_MS[
-      Math.min(Math.max(retryIndex, 0), OPENALEX_BACKOFF_MS.length - 1)
-    ]!;
-  // ±25% jitter around base
-  const jitter = 0.75 + randomImpl() * 0.5;
-  return Math.max(0, Math.round(base * jitter));
 }
 
 /**
@@ -619,32 +646,23 @@ export function buildOpenAlexRequest(
 async function getWorksJson(
   url: string,
   fetchImpl: typeof fetch,
-  now = Date.now(),
+  apiKey: string | null,
 ): Promise<
   | { ok: true; body: OpenAlexSearchResponse }
-  | {
-      ok: false;
-      status: number;
-      parse_error?: boolean;
-      retryAfterMs?: number | null;
-    }
+  | { ok: false; status: number; parse_error?: boolean; retryAfter?: string | null }
 > {
-  const res = await fetchImpl(url, {
-    method: "GET",
-    headers: {
-      Accept: "application/json",
-      "User-Agent": OPENALEX_UA,
-    },
-  });
-  if (res.status === 429 || res.status >= 500) {
-    const retryAfterMs =
-      res.status === 429
-        ? parseRetryAfterMs(res.headers?.get?.("Retry-After") ?? null, now)
-        : null;
-    return { ok: false, status: res.status, retryAfterMs };
-  }
+  const headers: Record<string, string> = {
+    Accept: "application/json",
+    "User-Agent": OPENALEX_UA,
+  };
+  if (apiKey) headers.Authorization = `Bearer ${apiKey}`;
+  const res = await fetchImpl(url, { method: "GET", headers });
   if (!res.ok) {
-    return { ok: false, status: res.status };
+    return {
+      ok: false,
+      status: res.status,
+      retryAfter: res.status === 429 ? (res.headers?.get?.("Retry-After") ?? null) : null,
+    };
   }
   try {
     const body = (await res.json()) as OpenAlexSearchResponse;
@@ -655,9 +673,10 @@ async function getWorksJson(
 }
 
 /**
- * Fetch OpenAlex enrichments — ≤1 network search per tick; 24h disk cache;
- * on HTTP 429 honor Retry-After else jitter 2s→8s, ≤2 retries; soft-fail
- * honestly (continue ingest). Zero credentials. Never Brief / never displace HF.
+ * Fetch OpenAlex enrichments — ≤1 network request per tick; 24h disk cache.
+ * Paused (source-state.json) → return immediately: no request, no retry.
+ * Any 429 → no retry; pause until Retry-After (else next 00:00 UTC). 3 consecutive failures →
+ * pause ≥24h. Soft-fails honestly (ingest continues). Never Brief / never displace HF.
  */
 export async function fetchOpenAlexEnrich(
   opts: FetchOpenAlexOpts = {},
@@ -665,8 +684,9 @@ export async function fetchOpenAlexEnrich(
   const cacheDir = opts.cacheDir ?? DEFAULT_CACHE_DIR;
   const now = opts.now ?? Date.now();
   const fetchImpl = opts.fetchImpl ?? fetch;
-  const sleepImpl = opts.sleepImpl ?? sleep;
-  const randomImpl = opts.randomImpl ?? Math.random;
+  const apiKey = openAlexApiKey();
+  const auth: AuthMode = apiKey ? "key" : "anon";
+  const log = (msg: string) => console.log(redactOpenAlexKey(msg, apiKey));
 
   if (opts.forceSoftFail) {
     return softFailResult(
@@ -697,6 +717,18 @@ export async function fetchOpenAlexEnrich(
     now,
   });
 
+  // Pause gate FIRST — skip OpenAlex entirely (no cache read, no request, no retry).
+  let state = opts.statePath ? readSourceState(opts.statePath) : null;
+  const pause = state ? activePause(state, OPENALEX_SOURCE_ID, now, auth) : null;
+  if (pause) {
+    log(`OpenAlex: PAUSED until ${pause.until} (${pause.reason ?? "pause"}) — skipped, 0 requests`);
+    return softFailResult(built.query, `paused_until ${pause.until}`, built.mode, {
+      status: "paused",
+      paused_until: pause.until,
+      pause_reason: pause.reason,
+    });
+  }
+
   const cached = readCache(cacheDir, built.cacheKey, now);
   if (cached) {
     try {
@@ -711,51 +743,48 @@ export async function fetchOpenAlexEnrich(
     return softFailResult(built.query, "search_budget_exhausted", built.mode);
   }
 
-  // One search budget slot for this tick — retries of the same URL do not add slots.
+  // One request budget slot for this tick.
   searchesThisTick += 1;
 
-  let retries = 0;
-  try {
-    while (true) {
-      const res = await getWorksJson(built.url, fetchImpl, now);
-      if (res.ok) {
-        let enrichments: OpenAlexEnrichment[] = [];
-        try {
-          enrichments = parseOpenAlexWorks(res.body);
-        } catch (err) {
-          console.log(`OpenAlex: parse failed — ${String(err)}`);
-          return softFailResult(
-            built.query,
-            `parse_error:${String(err)}`,
-            built.mode,
-            retries,
-          );
-        }
-        writeCache(cacheDir, built.cacheKey, res.body, now);
-        return okResult(enrichments, built.query, built.mode, false, retries);
-      }
-
-      const reason = res.parse_error ? "parse_error" : `HTTP ${res.status}`;
-
-      // 429 only: Retry-After or jittered 2s→8s, ≤2 retries / tick
-      if (res.status === 429 && retries < OPENALEX_MAX_RETRIES) {
-        const waitMs =
-          res.retryAfterMs != null && res.retryAfterMs >= 0
-            ? res.retryAfterMs
-            : openAlexBackoffMs(retries, randomImpl);
-        console.log(
-          `OpenAlex: HTTP 429 — backoff ${waitMs}ms (retry ${retries + 1}/${OPENALEX_MAX_RETRIES})`,
-        );
-        await sleepImpl(waitMs);
-        retries += 1;
-        continue;
-      }
-
-      console.log(`OpenAlex: soft-fail ${reason} — skip enrich`);
-      return softFailResult(built.query, reason, built.mode, retries);
+  const persist = (o: Parameters<typeof recordSourceOutcome>[2]) => {
+    const base = state ?? { schema: 1 as const, updated_at: null, note: "", sources: {} };
+    state = recordSourceOutcome(base, OPENALEX_SOURCE_ID, o, now, auth);
+    if (opts.statePath) writeSourceState(opts.statePath, state);
+    return state.sources[OPENALEX_SOURCE_ID]!;
+  };
+  const failWith = (reason: string, status: number | null, retryAfter?: string | null) => {
+    const safe = redactOpenAlexKey(reason, apiKey);
+    const e = persist({ ok: false, status, reason: safe, retryAfter });
+    if (e.paused_until) {
+      log(
+        `OpenAlex: soft-fail ${safe} — no retry · paused_until=${e.paused_until} (${e.pause_reason}) · streak=${e.consecutive_failures}`,
+      );
+    } else {
+      log(`OpenAlex: soft-fail ${safe} — skip enrich · streak=${e.consecutive_failures}`);
     }
+    return softFailResult(built.query, safe, built.mode, {
+      requests: 1,
+      paused_until: e.paused_until,
+      pause_reason: e.pause_reason,
+    });
+  };
+
+  try {
+    const res = await getWorksJson(built.url, fetchImpl, apiKey);
+    if (res.ok) {
+      let enrichments: OpenAlexEnrichment[] = [];
+      try {
+        enrichments = parseOpenAlexWorks(res.body);
+      } catch (err) {
+        return failWith(`parse_error:${String(err)}`, 200);
+      }
+      writeCache(cacheDir, built.cacheKey, res.body, now);
+      persist({ ok: true });
+      return okResult(enrichments, built.query, built.mode, false, { requests: 1 });
+    }
+    const reason = res.parse_error ? "parse_error" : `HTTP ${res.status}`;
+    return failWith(reason, res.status, res.retryAfter ?? null);
   } catch (err) {
-    console.log(`OpenAlex: fetch failed — ${String(err)}`);
-    return softFailResult(built.query, String(err), built.mode, retries);
+    return failWith(`fetch failed: ${String(err)}`, null);
   }
 }
