@@ -14,7 +14,8 @@ import { DIGEST_ITEMS, DROPPED, PACK_AT, PACK_SOURCE } from "@/data/digest-pack"
 import { DIGEST_CADENCE } from "@/data/digest-cadence";
 import { RANK_CURRENT, RANK_MOVED, RANK_PREV } from "@/data/corroboration-rank";
 import { LEAD_FIRST_AT, LEAD_HELD, LEAD_TODAY, LEAD_YESTERDAY } from "@/data/lead-pick";
-import { groupFirstAt, leadAgeHours, leadIsStale } from "@/lib/lead-pick";
+import { groupFirstAt, leadAgeHours } from "@/lib/lead-pick";
+import { LEAD_HELD_TEXT, leadView, nextCrawlSlotHHMM, type LeadView } from "@/lib/lead-view";
 import { IST_LABEL, istDateTime, istHHMM, istHHMMSS } from "@/lib/ist-time";
 import { useNow } from "@/lib/use-now";
 import { memberInfo } from "@/lib/member-info";
@@ -366,6 +367,8 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
   const now = useNow();
   const age = now == null ? null : crawlAgeHours(CRAWL_AT, now);
   const fresh = now == null ? null : crawlFreshness(CRAWL_AT, now);
+  // Same lead source of truth as the Brief plate (HELD flag at build, 24h age after mount).
+  const leadV = leadViewAt(now);
   return (
     <PausesCtx.Provider value={pauses}>
     <div className="desk-shell relative">
@@ -400,9 +403,7 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
           </div>
           <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
             ingest · snap {istDateTime(CRAWL_AT)} · pack {istDateTime(PACK_AT)} {IST_LABEL} · lead{" "}
-            <span className="desk-lead-headline" title={`lead ${LEAD_TODAY?.cluster_id ?? CYCLE.pins[0]?.id}`}>
-              {LEAD_TODAY?.headline ?? CYCLE.pins[0]?.title}
-            </span>
+            <LeadInline view={leadV} />
           </p>
           <div className="desk-ticker" aria-label="What changed">
             <span className="desk-ticker-label">Δ LIVE</span>
@@ -415,9 +416,7 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
               </span>
               <span className="desk-ticker-item">
                 lead{" "}
-                <span className="desk-lead-headline" title={`lead ${LEAD_TODAY?.cluster_id ?? CYCLE.pins[0]?.id}`}>
-                  {LEAD_TODAY?.headline ?? CYCLE.pins[0]?.title}
-                </span>{" "}
+                <LeadInline view={leadV} />{" "}
                 · Sol≠Astra
               </span>
               <span className="desk-ticker-item">
@@ -672,16 +671,38 @@ function BriefWire() {
   );
 }
 
+/** Today's lead for every spot outside the Brief plate too (status bar, INGEST line). `now` = null before mount. */
+function leadViewAt(now: number | null): LeadView {
+  return leadView({ held: LEAD_HELD, today: LEAD_TODAY, firstAt: LEAD_FIRST_AT }, now);
+}
+
+/** Status-bar / INGEST-line lead cell: the real headline only when there's a lead today, else muted HELD. */
+function LeadInline({ view }: { view: LeadView }) {
+  if (view.held)
+    return (
+      <span className="desk-lead-headline desk-lead-held" data-lead-held="1" title={view.carried ? `held · last lead: ${view.carried}` : "held"}>
+        {LEAD_HELD_TEXT}
+      </span>
+    );
+  return (
+    <span className="desk-lead-headline" title={`lead ${view.id ?? ""}`}>
+      {view.headline}
+    </span>
+  );
+}
+
 function Brief() {
   // Lead staleness: crawl stamp on first render (SSR/static-stable), then the wall clock.
   // 24h lead-age HELD check runs in the browser after mount (static HTML ships only LEAD_FIRST_AT).
   const leadNow = useNow();
   const leadAge = leadNow == null ? null : leadAgeHours(LEAD_FIRST_AT, leadNow);
-  const leadStale = leadNow != null && leadIsStale(LEAD_FIRST_AT, leadNow);
   // HELD (no qualifying story at the pick, e.g. every candidate GNW_ONLY) or lead story ≥24h old → HELD plate,
-  // never the carried headline as if it were today's lead.
-  const lead = leadStale || LEAD_HELD ? null : LEAD_TODAY;
-  const staleLead = leadStale || LEAD_HELD ? LEAD_TODAY : null;
+  // never the carried headline as if it were today's lead. Same source of truth as the status bar / INGEST line.
+  const lv = leadViewAt(leadNow);
+  const lead = lv.held ? null : LEAD_TODAY;
+  const staleLead = lv.held ? LEAD_TODAY : null;
+  // Next crawl slot (02/06/10/14/18/22 :11 Istanbul): wall clock after mount, crawl stamp in static HTML.
+  const nextTry = nextCrawlSlotHHMM(leadNow ?? Date.parse(CRAWL_AT));
   const age = leadNow == null ? null : crawlAgeHours(CRAWL_AT, leadNow);
   const waveMax = 956;
   const waveVals: Record<number, number> = { 1: 80, 2: 700, 3: 956 };
@@ -728,8 +749,12 @@ function Brief() {
 
       {/* Mid · inverse story plate — brightest surface */}
       <section
-        className="sage-panel sage-ticks sage-bento-hero sage-take sage-take-inverse px-3 py-3 lg:col-span-6 lg:row-span-1"
+        className={cn(
+          "sage-panel sage-ticks sage-bento-hero sage-take px-3 py-3 lg:col-span-6 lg:row-span-1",
+          lv.held ? "sage-take-held" : "sage-take-inverse",
+        )}
         aria-label="Brief take story"
+        data-lead-state={lv.held ? lv.reason : "lead"}
       >
         <div className="flex flex-wrap items-center justify-between gap-2">
           <p className="lane-kicker font-mono text-kicker uppercase tracking-kicker">Take · lead of the day</p>
@@ -743,22 +768,23 @@ function Brief() {
         </div>
         {staleLead ? (
           <>
-            {LEAD_HELD ? (
-              <p className="sage-lead-held font-mono text-kicker uppercase tracking-kicker" data-lead-held="1">
-                HELD · no qualifying story · a lead needs ≥2 SRC incl. one non-Google-News publisher
+            {lv.reason === "held" ? (
+              <p
+                className="sage-lead-held font-mono text-kicker uppercase tracking-kicker tabular-nums"
+                data-lead-held="1"
+                title="a lead needs ≥2 SRC incl. one non-Google-News publisher · every crawl from 06:00 retries until one qualifies"
+              >
+                {LEAD_HELD_TEXT} · next try {nextTry}
               </p>
             ) : (
               <p className="sage-lead-held font-mono text-kicker uppercase tracking-kicker tabular-nums" data-lead-stale="1">
-                HELD · lead older than 24h ({leadAge != null ? `${Math.floor(leadAge)}h` : "—"}) · next pick: first crawl after 06:00
+                HELD · lead older than 24h ({leadAge != null ? `${Math.floor(leadAge)}h` : "—"}) · next try {nextTry}
               </p>
             )}
-            <div className="sage-take-plate">
-              <h2 className="sage-take-title font-display text-2xl font-bold normal-case tracking-normal md:text-3xl">HELD</h2>
-            </div>
             {staleLead.headline ? (
-              <p className="sage-lead-stale-line font-mono text-kicker uppercase tracking-kicker">
-                last lead · {staleLead.headline}
-              </p>
+              <h2 className="sage-take-held-title font-display text-lg normal-case tracking-normal md:text-xl" data-lead-carried="1">
+                {staleLead.headline}
+              </h2>
             ) : null}
           </>
         ) : (
@@ -790,7 +816,7 @@ function Brief() {
         )}
         </>
         )}
-        {LEAD_YESTERDAY ? (
+        {LEAD_YESTERDAY && !(lv.held && LEAD_YESTERDAY.headline === staleLead?.headline) ? (
           <p className="sage-take-yesterday text-sm">
             <span className="font-mono text-kicker uppercase tracking-kicker">Yesterday · {LEAD_YESTERDAY.date}</span>{" "}
             <span className="line-clamp-1">{LEAD_YESTERDAY.headline}</span>
