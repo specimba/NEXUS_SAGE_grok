@@ -7,6 +7,7 @@ import { describe, expect, test } from "bun:test";
 import { join } from "node:path";
 import { istDateTime, istHHMM, istHHMMSS } from "@/lib/ist-time";
 import { windowLabel } from "@/lib/topic-heat";
+import { CRAWL_AT } from "@/data/x-crawl";
 
 const DESK = join(import.meta.dir, "../../..");
 
@@ -29,6 +30,8 @@ function render(tz: string) {
     ages: { at: string; text: string }[];
     paused: string | null;
     built: string | null;
+    stamp: string | null;
+    stampLinks: string[];
     hasZ: boolean;
     hasRelAge: boolean;
     html: string;
@@ -58,5 +61,11 @@ describe("Istanbul clock times (Intl, host TZ ignored)", () => {
     expect(utc.hasZ).toBe(false); // no raw "HH:MMZ" UTC clock left anywhere
     expect(utc.hasRelAge).toBe(false); // no relative AGE baked into static HTML
     expect(tokyo.html).toBe(utc.html); // host TZ has zero effect on the prerender
+    // B2 build stamp footer: `build <short sha> · deployed HH:MM · crawl HH:MM UTC+3` (Istanbul)
+    expect(utc.stamp).toBe(`build abcdef1 · deployed 15:58 · crawl ${oracleHHMM(CRAWL_AT)} UTC+3`);
+    expect(utc.stampLinks).toEqual([
+      "https://github.com/specimba/NEXUS_SAGE_grok/commit/abcdef1234567890abcdef1234567890abcdef12",
+      "https://github.com/specimba/NEXUS_SAGE_grok/commit/0dffa0c2f1e92cb00260f83f213c7a729f36c5de",
+    ]);
   }, 30_000);
 });

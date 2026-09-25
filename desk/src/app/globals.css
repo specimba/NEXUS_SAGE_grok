@@ -2488,3 +2488,29 @@ a.story-drawer-rowlink:focus-visible .story-drawer-open {
   letter-spacing: 0.08em;
   color: var(--amber);
 }
+
+/* B2 build stamp footer — every lane, right-aligned kicker, --muted-foreground (UX-LIVE-SITE §1). */
+.desk-build-stamp {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  color: var(--muted-foreground);
+}
+.desk-build-stamp-text {
+  margin-left: auto;
+  text-transform: none; /* sha stays quotable as-is (lowercase) */
+  text-align: right;
+  white-space: nowrap;
+  color: var(--muted-foreground);
+}
+.desk-build-stamp-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 2px;
+}
+.desk-build-stamp-link:hover,
+.desk-build-stamp-link:focus-visible {
+  color: var(--phosphor);
+}

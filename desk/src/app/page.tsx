@@ -31,7 +31,14 @@ export default function Home() {
       <span className="sr-only" data-sage-cycle={BUILD_META.cycleId} data-sage-compiled={BUILD_META.compiledAt}>
         cycle {BUILD_META.cycleId}
       </span>
-      <Desk buildId={BUILD_META.buildId} builtAt={BUILD_META.builtAt} pauses={BUILD_META.pauses} />
+      <Desk
+          buildId={BUILD_META.buildId}
+          builtAt={BUILD_META.builtAt}
+          pauses={BUILD_META.pauses}
+          commit={BUILD_META.commit}
+          crawlCommit={BUILD_META.crawlCommit}
+          repoUrl={BUILD_META.repoUrl}
+        />
     </>
   );
 }
