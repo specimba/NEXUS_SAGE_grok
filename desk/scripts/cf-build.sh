@@ -48,7 +48,6 @@ read -r CRAWL_AT AGE_H < <(bun -e '
 ')
 log "CRAWL_AT=$CRAWL_AT age=${AGE_H}h"
 CRAWLED=0
-CRAWL_PATHS=(desk/artifacts/sage desk/src/data desk/packs/drill-log.md packs/drill-log.md refs/PACK-DUAL-HOME.md)
 if awk -v a="$AGE_H" -v s="$STALE_H" 'BEGIN { exit !(a + 0 >= s + 0) }'; then
   log "crawl due (${AGE_H}h >= ${STALE_H}h)"
   export CRAWL_STARTED_AT="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
@@ -59,9 +58,8 @@ if awk -v a="$AGE_H" -v s="$STALE_H" 'BEGIN { exit !(a + 0 >= s + 0) }'; then
       CRAWLED=1
       git -C "$REPO_ROOT" config user.name >/dev/null || git -C "$REPO_ROOT" config user.name "${GIT_AUTHOR_NAME:-sage-cf-build}"
       git -C "$REPO_ROOT" config user.email >/dev/null || git -C "$REPO_ROOT" config user.email "${GIT_AUTHOR_EMAIL:-sage-cf-build@users.noreply.github.com}"
-      existing=()
-      for p in "${CRAWL_PATHS[@]}"; do [ -e "$REPO_ROOT/$p" ] && existing+=("$p"); done
-      git -C "$REPO_ROOT" add -- "${existing[@]}"
+      # Fixed allowlist only (scripts/backup-allowlist.txt) — never a directory, never add -A.
+      bash scripts/backup-stage.sh "$REPO_ROOT"
       git -C "$REPO_ROOT" commit -q -m "[skip ci] chore(sage): 4h crawl $CRAWL_AT" || CRAWLED=0
       [ "$CRAWLED" = 1 ] && export SAGE_CRAWL_COMMIT="$(git -C "$REPO_ROOT" rev-parse HEAD)" && log "crawl committed locally ${SAGE_CRAWL_COMMIT:0:7} · $CRAWL_AT"
     else
