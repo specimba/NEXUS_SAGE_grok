@@ -16,10 +16,10 @@ export type RssLabRow = {
   cluster_id?: string;
 };
 
-export const RSS_LABS_AT = "2026-09-24T23:15:44Z";
+export const RSS_LABS_AT = "2026-09-25T11:16:08Z";
 
 export const RSS_LABS: RssLabRow[] = [
-  { id: "rss:google-research:8451e6726f367367", lab: "google-research" as const, title: "Automating coherent long-form video generation", link: "https://research.google/blog/coherent-long-form-video-generation/", published: "2026-09-24T19:40:29Z", summary: "Generative AI", source: "rss-lab" as const, tag: "rest" as const, first_seen: "2026-09-24T21:18:09Z", is_new: false, cluster_id: "cl:rss:google-research:8451e6726f367367" },
+  { id: "rss:google-research:8451e6726f367367", lab: "google-research" as const, title: "Automating coherent long-form video generation", link: "https://research.google/blog/coherent-long-form-video-generation/", published: "2026-09-24T19:40:00Z", summary: "Generative AI", source: "rss-lab" as const, tag: "rest" as const, first_seen: "2026-09-24T21:18:09Z", is_new: false, cluster_id: "cl:rss:google-research:8451e6726f367367" },
   { id: "rss:deepmind:34692efacd3b982a", lab: "deepmind" as const, title: "Introducing Gemini 3.8 Live with Live Avatar", link: "https://deepmind.google/blog/introducing-gemini-38-live-with-live-avatar/", published: "2026-09-24T16:20:39Z", summary: "", source: "rss-lab" as const, tag: "rest" as const, first_seen: "2026-09-24T21:18:09Z", is_new: false, cluster_id: "cl:rss:deepmind:34692efacd3b982a" },
   { id: "rss:nvidia-dev:d94b389a2f96d9bb", lab: "nvidia-dev" as const, title: "Efficient MoE Training for Biological Foundation Models", link: "https://developer.nvidia.com/blog/efficient-moe-training-for-biological-foundation-models/", published: "2026-09-24T15:00:00Z", summary: "As language models grow, scaling dense architectures becomes increasingly expensive. In a dense transformer, every token passes through every layer, so adding...", source: "rss-lab" as const, tag: "rest" as const, first_seen: "2026-09-24T21:18:09Z", is_new: false, cluster_id: "cl:rss:nvidia-dev:d94b389a2f96d9bb" },
   { id: "rss:huggingface:280bf64dcca75cee", lab: "huggingface" as const, title: "Accelerating vision-language models with LFM2.5-VL-DSpark", link: "https://huggingface.co/blog/LiquidAI/lfm2-5-vl-dspark", published: "2026-09-24T14:08:57Z", summary: "", source: "rss-lab" as const, tag: "rest" as const, first_seen: "2026-09-24T21:18:09Z", is_new: false, cluster_id: "cl:rss:huggingface:280bf64dcca75cee" },

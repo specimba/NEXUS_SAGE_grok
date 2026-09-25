@@ -18,6 +18,6 @@ export const SHELF: ShelfItem[] = [
   { href: "https://owasp.org/www-project-automated-threats-to-web-applications/", label: "owasp.org/www-project-automated-threats-to-web-applications/", reason: "toolkit" as const },
   { href: "https://owasp.org/www-community/Virtual_Patching_Best_Practices", label: "owasp.org/www-community/Virtual_Patching_Best_Practices", reason: "toolkit" as const },
   { href: "https://cheatsheetseries.owasp.org/cheatsheets/Virtual_Patching_Cheat_Sheet.html", label: "cheatsheetseries.owasp.org/cheatsheets/Virtual_Patching_Cheat_Sheet.html", reason: "toolkit" as const },
-  { href: "https://github.com/devrafaelalvarenga/data-agent-team", label: "devrafaelalvarenga/data-agent-team", reason: "github-search-shelf" as const },
-  { href: "https://github.com/ShenSeanChen/waku-agent", label: "ShenSeanChen/waku-agent", reason: "github-search-shelf" as const },
+  { href: "https://github.com/nephritispeepshow717/awesome-agent-security", label: "nephritispeepshow717/awesome-agent-security", reason: "github-search-shelf" as const },
+  { href: "https://github.com/kutta643/llm-sast-scanner", label: "kutta643/llm-sast-scanner", reason: "github-search-shelf" as const },
 ];
