@@ -3,10 +3,9 @@ import type { LeadEntry } from "@/lib/lead-pick";
 
 export const LEAD_TODAY: LeadEntry | null = {
   "date": "2026-09-25",
-  "at": "2026-09-25T13:41:25.587Z",
-  "crawl_at": "2026-09-25T11:16:08Z",
-  "forced": true,
-  "supersedes": "cl:gnews:9723c65102977408",
+  "at": "2026-09-25T19:13:31.041Z",
+  "crawl_at": "2026-09-25T19:12:50Z",
+  "catch_up": true,
   "excluded": [
     {
       "cluster_id": "cl:hn:49825580",
@@ -14,82 +13,18 @@ export const LEAD_TODAY: LeadEntry | null = {
       "reason": "age>=24h"
     },
     {
-      "cluster_id": "cl:gnews:9723c65102977408",
-      "headline": "BNP Paribas inks new Google Cloud deal to advance agentic AI deployment",
-      "reason": "noise:customer-deal"
-    },
-    {
       "cluster_id": "cl:rss:deepmind:68ead6b6af2b7144",
       "headline": "Advancing Private AI Compute with secure, server-side memory",
       "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:rss:deepmind:81481aa316e38773",
-      "headline": "Gemini 3.8 text-to-speech says hello",
-      "reason": "age>=24h"
     }
   ],
-  "cluster_id": "hf-incident",
-  "headline": "Eval agents reached Hugging Face production. Three waves. METR covers through 13 Jul. Wave 3 is OpenAI-only.",
-  "url": null,
-  "sources": 0,
-  "sig": null,
-  "reason": "held",
-  "note": "no qualifying story",
-  "attempts": [
-    {
-      "at": "2026-09-25T13:41:25.587Z",
-      "crawl_at": "2026-09-25T11:16:08Z",
-      "excluded": [
-        {
-          "cluster_id": "cl:hn:49825580",
-          "headline": "OpenAI agent hacked Australian government website, PM says",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:gnews:9723c65102977408",
-          "headline": "BNP Paribas inks new Google Cloud deal to advance agentic AI deployment",
-          "reason": "noise:customer-deal"
-        },
-        {
-          "cluster_id": "cl:rss:deepmind:68ead6b6af2b7144",
-          "headline": "Advancing Private AI Compute with secure, server-side memory",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:rss:deepmind:81481aa316e38773",
-          "headline": "Gemini 3.8 text-to-speech says hello",
-          "reason": "age>=24h"
-        }
-      ]
-    },
-    {
-      "at": "2026-09-25T15:22:58.775Z",
-      "crawl_at": "2026-09-25T15:22:45Z",
-      "excluded": [
-        {
-          "cluster_id": "cl:hn:49825580",
-          "headline": "OpenAI agent hacked Australian government website, PM says",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:gnews:9723c65102977408",
-          "headline": "BNP Paribas inks new Google Cloud deal to advance agentic AI deployment",
-          "reason": "noise:customer-deal"
-        },
-        {
-          "cluster_id": "cl:rss:deepmind:68ead6b6af2b7144",
-          "headline": "Advancing Private AI Compute with secure, server-side memory",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:rss:deepmind:81481aa316e38773",
-          "headline": "Gemini 3.8 text-to-speech says hello",
-          "reason": "age>=24h"
-        }
-      ]
-    }
-  ]
+  "cluster_id": "cl:hn:49847170",
+  "headline": "The cheap new AI model taking aim at OpenAI and Anthropic",
+  "url": "https://www.ft.com/content/456884ea-2558-4648-8036-a77b73733430",
+  "sources": 2,
+  "sig": 10,
+  "reason": "picked",
+  "first_at": "2026-09-25T04:00:30.000Z"
 };
 
 export const LEAD_YESTERDAY: LeadEntry | null = {
@@ -105,7 +40,7 @@ export const LEAD_YESTERDAY: LeadEntry | null = {
   "crawl_at": "2026-09-24T22:09:31Z"
 };
 
-export const LEAD_HELD = true;
+export const LEAD_HELD = false;
 
 /** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is ≥24h old. */
-export const LEAD_FIRST_AT: string | null = null;
+export const LEAD_FIRST_AT: string | null = "2026-09-25T04:00:30.000Z";

@@ -16,7 +16,7 @@ export type RssSecurityRow = {
   cluster_id?: string;
 };
 
-export const RSS_SECURITY_AT = "2026-09-25T15:22:45Z";
+export const RSS_SECURITY_AT = "2026-09-25T19:12:50Z";
 
 export const RSS_SECURITY: RssSecurityRow[] = [
   { id: "rss-sec:trailofbits:3c908d4f959ad715", lab: "trailofbits" as const, title: "Don't let TEEs break your MPC", link: "https://blog.trailofbits.com/2026/09/25/dont-let-tees-break-your-mpc/", published: "2026-09-25T11:00:00Z", summary: "Threshold signature schemes, a form of multi-party computation (MPC) that lets a set of parties sign together without any one of them holding the key, are increasingly deployed inside trusted execution environments (TEEs). The combination is intended to amplify security for sensitive computations: MPC distributes trust across multiple independent parties, while TEEs root trust in the hardware man…", source: "rss-security" as const, tag: "rest" as const, first_seen: "2026-09-25T11:16:08Z", is_new: false, cluster_id: "cl:rss-sec:trailofbits:3c908d4f959ad715" },
