@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-09-25T19:12:50Z",
+  "stamped_at": "2026-09-25T23:12:54Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 639,
+      "duration_ms": 700,
       "paused_until": null,
       "reason": null
     },
@@ -18,7 +18,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 754,
+      "duration_ms": 3301,
       "paused_until": null,
       "reason": null
     },
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 59,
-      "duration_ms": 8469,
+      "rows": 53,
+      "duration_ms": 8359,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 19031,
+      "duration_ms": 69,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 4782,
+      "duration_ms": 27,
       "paused_until": null,
       "reason": null
     },
@@ -72,7 +72,7 @@
       "label": "Google News",
       "status": "ok",
       "rows": 26,
-      "duration_ms": 6430,
+      "duration_ms": 16,
       "paused_until": null,
       "reason": null
     },
@@ -96,10 +96,10 @@
     }
   ],
   "crawl_timing": {
-    "sources_ms": 40110,
-    "wall_ms": 40447,
-    "startup_ms": 33,
-    "main_ms": 40453
+    "sources_ms": 12477,
+    "wall_ms": 12869,
+    "startup_ms": 24,
+    "main_ms": 12875
   },
   "multi_source_independent": 3,
   "stale_hours": 6,
@@ -108,17 +108,17 @@
     "multi_source_independent": 3,
     "multi_source_raw": 4,
     "self_reposts": 1,
-    "items_in": 216,
-    "clusters_out": 208,
-    "collapsed": 8,
+    "items_in": 210,
+    "clusters_out": 204,
+    "collapsed": 6,
     "multi_source": 3,
-    "multi_member": 6,
+    "multi_member": 4,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 28,
+    "new_items": 10,
     "per_source": {
-      "hn-algolia": 59,
+      "hn-algolia": 53,
       "rss-lab": 104,
       "rss-security": 27,
       "gnews-rss": 26
@@ -156,7 +156,7 @@
           "gnews-rss"
         ],
         "size": 4,
-        "score": 0.84,
+        "score": 0.834,
         "members": [
           {
             "id": "hn:49825580",
@@ -285,33 +285,11 @@
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 18
+      "hn_dropped": 15
     },
     "gnews_near_misses": [
       {
-        "score": 0.569,
-        "blocked": "time-window",
-        "hours_apart": 25.7,
-        "a": {
-          "id": "rss:deepmind:34692efacd3b982a",
-          "source": "rss-lab",
-          "title": "Introducing Gemini 3.8 Live with Live Avatar",
-          "at": "2026-09-24T16:20:39Z"
-        },
-        "b": {
-          "id": "gnews:20aa8219cbe697e1",
-          "source": "gnews-rss",
-          "title": "Gemini’s Live Avatar Puts a Face on Its AI Agent. It’s Freaking Me Out - CNET",
-          "at": "2026-09-25T18:02:01Z"
-        },
-        "shared": [
-          "gemini",
-          "live",
-          "avatar"
-        ]
-      },
-      {
-        "score": 0.568,
+        "score": 0.571,
         "blocked": "below-threshold",
         "hours_apart": 13,
         "a": {
@@ -335,7 +313,29 @@
         ]
       },
       {
-        "score": 0.505,
+        "score": 0.568,
+        "blocked": "time-window",
+        "hours_apart": 25.7,
+        "a": {
+          "id": "rss:deepmind:34692efacd3b982a",
+          "source": "rss-lab",
+          "title": "Introducing Gemini 3.8 Live with Live Avatar",
+          "at": "2026-09-24T16:20:39Z"
+        },
+        "b": {
+          "id": "gnews:20aa8219cbe697e1",
+          "source": "gnews-rss",
+          "title": "Gemini’s Live Avatar Puts a Face on Its AI Agent. It’s Freaking Me Out - CNET",
+          "at": "2026-09-25T18:02:01Z"
+        },
+        "shared": [
+          "gemini",
+          "live",
+          "avatar"
+        ]
+      },
+      {
+        "score": 0.498,
         "blocked": "below-threshold",
         "hours_apart": 14.3,
         "a": {
@@ -358,29 +358,7 @@
         ]
       },
       {
-        "score": 0.357,
-        "blocked": "below-threshold",
-        "hours_apart": 18.6,
-        "a": {
-          "id": "hn:49822654",
-          "source": "hn-algolia",
-          "title": "OpenAI agents hacked Australian Medicare system",
-          "at": "2026-09-23T21:08:52Z"
-        },
-        "b": {
-          "id": "gnews:26a31e7a5e419d3d",
-          "source": "gnews-rss",
-          "title": "Rogue OpenAI agent 'infiltrated' Australian government website in world first - bbc.com",
-          "at": "2026-09-24T15:42:07Z"
-        },
-        "shared": [
-          "openai",
-          "agent",
-          "australian"
-        ]
-      },
-      {
-        "score": 0.315,
+        "score": 0.311,
         "blocked": "thin-overlap",
         "hours_apart": 9.3,
         "a": {
@@ -399,27 +377,6 @@
           "openai",
           "anthropic",
           "ai"
-        ]
-      },
-      {
-        "score": 0.29,
-        "blocked": "thin-overlap",
-        "hours_apart": 18.8,
-        "a": {
-          "id": "hn:49822457",
-          "source": "hn-algolia",
-          "title": "OpenAI hacked Australian Medicare portal",
-          "at": "2026-09-23T20:55:51Z"
-        },
-        "b": {
-          "id": "gnews:26a31e7a5e419d3d",
-          "source": "gnews-rss",
-          "title": "Rogue OpenAI agent 'infiltrated' Australian government website in world first - bbc.com",
-          "at": "2026-09-24T15:42:07Z"
-        },
-        "shared": [
-          "openai",
-          "australian"
         ]
       },
       {
@@ -462,34 +419,53 @@
         },
         "shared": [
           "societal"
+        ]
+      },
+      {
+        "score": 0.282,
+        "blocked": "thin-overlap",
+        "hours_apart": 240.9,
+        "a": {
+          "id": "rss:deepmind:947e89eaa83a27ae",
+          "source": "rss-lab",
+          "title": "Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking",
+          "at": "2026-09-15T17:05:57Z"
+        },
+        "b": {
+          "id": "gnews:20aa8219cbe697e1",
+          "source": "gnews-rss",
+          "title": "Gemini’s Live Avatar Puts a Face on Its AI Agent. It’s Freaking Me Out - CNET",
+          "at": "2026-09-25T18:02:01Z"
+        },
+        "shared": [
+          "gemini",
+          "live"
+        ]
+      },
+      {
+        "score": 0.277,
+        "blocked": "thin-overlap",
+        "hours_apart": 251.5,
+        "a": {
+          "id": "rss:google-ai:ac6fab4ebd9f6bc8",
+          "source": "rss-lab",
+          "title": "DevFest is back",
+          "at": "2026-09-14T16:00:00Z"
+        },
+        "b": {
+          "id": "gnews:44a35dd124042160",
+          "source": "gnews-rss",
+          "title": "Clastix Secures €2.9M Seed Round Backed by Mistral - n24.com.tr",
+          "at": "2026-09-25T03:30:18Z"
+        },
+        "shared": [
+          "back"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.569,
-        "blocked": "time-window",
-        "hours_apart": 25.7,
-        "a": {
-          "id": "rss:deepmind:34692efacd3b982a",
-          "source": "rss-lab",
-          "title": "Introducing Gemini 3.8 Live with Live Avatar",
-          "at": "2026-09-24T16:20:39Z"
-        },
-        "b": {
-          "id": "gnews:20aa8219cbe697e1",
-          "source": "gnews-rss",
-          "title": "Gemini’s Live Avatar Puts a Face on Its AI Agent. It’s Freaking Me Out - CNET",
-          "at": "2026-09-25T18:02:01Z"
-        },
-        "shared": [
-          "gemini",
-          "live",
-          "avatar"
-        ]
-      },
-      {
-        "score": 0.568,
+        "score": 0.571,
         "blocked": "below-threshold",
         "hours_apart": 13,
         "a": {
@@ -513,7 +489,29 @@
         ]
       },
       {
-        "score": 0.505,
+        "score": 0.568,
+        "blocked": "time-window",
+        "hours_apart": 25.7,
+        "a": {
+          "id": "rss:deepmind:34692efacd3b982a",
+          "source": "rss-lab",
+          "title": "Introducing Gemini 3.8 Live with Live Avatar",
+          "at": "2026-09-24T16:20:39Z"
+        },
+        "b": {
+          "id": "gnews:20aa8219cbe697e1",
+          "source": "gnews-rss",
+          "title": "Gemini’s Live Avatar Puts a Face on Its AI Agent. It’s Freaking Me Out - CNET",
+          "at": "2026-09-25T18:02:01Z"
+        },
+        "shared": [
+          "gemini",
+          "live",
+          "avatar"
+        ]
+      },
+      {
+        "score": 0.498,
         "blocked": "below-threshold",
         "hours_apart": 14.3,
         "a": {
@@ -536,29 +534,7 @@
         ]
       },
       {
-        "score": 0.357,
-        "blocked": "below-threshold",
-        "hours_apart": 18.6,
-        "a": {
-          "id": "hn:49822654",
-          "source": "hn-algolia",
-          "title": "OpenAI agents hacked Australian Medicare system",
-          "at": "2026-09-23T21:08:52Z"
-        },
-        "b": {
-          "id": "gnews:26a31e7a5e419d3d",
-          "source": "gnews-rss",
-          "title": "Rogue OpenAI agent 'infiltrated' Australian government website in world first - bbc.com",
-          "at": "2026-09-24T15:42:07Z"
-        },
-        "shared": [
-          "openai",
-          "agent",
-          "australian"
-        ]
-      },
-      {
-        "score": 0.315,
+        "score": 0.311,
         "blocked": "thin-overlap",
         "hours_apart": 9.3,
         "a": {
@@ -580,24 +556,23 @@
         ]
       },
       {
-        "score": 0.29,
+        "score": 0.295,
         "blocked": "thin-overlap",
-        "hours_apart": 18.8,
+        "hours_apart": 248.7,
         "a": {
-          "id": "hn:49822457",
+          "id": "hn:49849006",
           "source": "hn-algolia",
-          "title": "OpenAI hacked Australian Medicare portal",
-          "at": "2026-09-23T20:55:51Z"
+          "title": "Jev Benchmarks",
+          "at": "2026-09-25T19:41:14Z"
         },
         "b": {
-          "id": "gnews:26a31e7a5e419d3d",
-          "source": "gnews-rss",
-          "title": "Rogue OpenAI agent 'infiltrated' Australian government website in world first - bbc.com",
-          "at": "2026-09-24T15:42:07Z"
+          "id": "rss-sec:trailofbits:71fc2221d1295bd6",
+          "source": "rss-security",
+          "title": "1Password's AI patching benchmark is misleading",
+          "at": "2026-09-15T11:00:00Z"
         },
         "shared": [
-          "openai",
-          "australian"
+          "benchmark"
         ]
       },
       {
@@ -640,6 +615,27 @@
         },
         "shared": [
           "societal"
+        ]
+      },
+      {
+        "score": 0.282,
+        "blocked": "thin-overlap",
+        "hours_apart": 240.9,
+        "a": {
+          "id": "rss:deepmind:947e89eaa83a27ae",
+          "source": "rss-lab",
+          "title": "Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking",
+          "at": "2026-09-15T17:05:57Z"
+        },
+        "b": {
+          "id": "gnews:20aa8219cbe697e1",
+          "source": "gnews-rss",
+          "title": "Gemini’s Live Avatar Puts a Face on Its AI Agent. It’s Freaking Me Out - CNET",
+          "at": "2026-09-25T18:02:01Z"
+        },
+        "shared": [
+          "gemini",
+          "live"
         ]
       }
     ]
@@ -648,44 +644,44 @@
     {
       "id": "arxiv",
       "state": "ok",
-      "streak_ok": 19,
+      "streak_ok": 20,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 19,
+      "streak_ok": 20,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 19,
+      "streak_ok": 20,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 19,
+      "streak_ok": 20,
       "streak_fail": 0,
       "items_last": 26
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 19,
+      "streak_ok": 20,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 19,
+      "streak_ok": 20,
       "streak_fail": 0,
-      "items_last": 59
+      "items_last": 53
     },
     {
       "id": "openalex",
@@ -697,27 +693,27 @@
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 19,
+      "streak_ok": 20,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 19,
+      "streak_ok": 20,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 19,
+      "streak_ok": 20,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.01139111111111111,
+    "hours": 0.0036133333333333334,
     "stale": false
   },
   "hf": {
@@ -784,7 +780,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 59,
+    "count": 53,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -801,9 +797,15 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 18,
+    "ai_dropped": 15,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
+      {
+        "id": "hn:49845977",
+        "tag": "rest",
+        "score": 346,
+        "text": "U.S. appeals court upholds designation of Anthropic as supply chain risk"
+      },
       {
         "id": "hn:49825580",
         "tag": "rest",
@@ -811,16 +813,10 @@
         "text": "OpenAI agent hacked Australian government website, PM says"
       },
       {
-        "id": "hn:49822556",
+        "id": "hn:49830606",
         "tag": "rest",
-        "score": 253,
-        "text": "OpenAI breaches Medicare, Albanese reveals"
-      },
-      {
-        "id": "hn:49845977",
-        "tag": "rest",
-        "score": 240,
-        "text": "U.S. appeals court upholds designation of Anthropic as supply chain risk"
+        "score": 225,
+        "text": "Google’s Project Suncatcher to put ML infrastructure in space"
       }
     ]
   },
@@ -836,47 +832,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "https://openai.com/news/rss.xml",
+        "url": "(cache:openai)",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "https://deepmind.google/blog/rss.xml",
+        "url": "(cache:deepmind)",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "https://blog.google/technology/ai/rss/",
+        "url": "(cache:google-ai)",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "https://huggingface.co/blog/feed.xml",
+        "url": "(cache:huggingface)",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "https://mistral.ai/rss.xml",
+        "url": "(cache:mistral)",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "https://blogs.nvidia.com/feed/",
+        "url": "(cache:nvidia)",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "https://developer.nvidia.com/blog/feed",
+        "url": "(cache:nvidia-dev)",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
+        "url": "(cache:ms-research)",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "https://research.google/blog/rss/",
+        "url": "(cache:google-research)",
         "count": 12
       }
     ],
@@ -922,17 +918,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "https://blog.trailofbits.com/feed/",
+        "url": "(cache:trailofbits)",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "https://blog.fox-it.com/feed/",
+        "url": "(cache:fox-it)",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "https://projectzero.google/feed.xml",
+        "url": "(cache:projectzero)",
         "count": 5
       }
     ],
@@ -987,7 +983,7 @@
       {
         "id": "gnews:26a31e7a5e419d3d",
         "anchor_id": "hn:49826285",
-        "score": 0.719,
+        "score": 0.724,
         "title": "Rogue OpenAI agent 'infiltrated' Australian government website in world first - bbc.com",
         "publisher": "bbc.com",
         "self_repost": false
@@ -1002,9 +998,9 @@
       }
     ],
     "http_status": 200,
-    "content_type": "application/xml; charset=utf-8",
+    "content_type": null,
     "format": "rss2",
-    "from_cache": false,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
