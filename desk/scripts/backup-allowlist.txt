@@ -1,0 +1,44 @@
+# Backup-commit allowlist — the ONLY files cf-build.sh's [skip ci] crawl commit may stage.
+# Repo-root-relative. Exact paths, or tight globs (bash pattern, one path segment; never a whole directory).
+# Anything else in desk/artifacts/sage or desk/src/data (feedback.json, notes.json, taste-votes.json, …) is never staged.
+# crawl stamp + source health
+desk/artifacts/sage/CURRENT.json
+desk/artifacts/sage/ingest-last.json
+desk/artifacts/sage/source-state.json
+desk/artifacts/sage/source-health.json
+desk/artifacts/sage/seen-index.json
+desk/artifacts/sage/topic-heat.json
+# Wire + rank + lead history
+desk/artifacts/sage/wire-last.json
+desk/artifacts/sage/wire-prev.json
+desk/artifacts/sage/rank-last.json
+desk/artifacts/sage/rank-prev.json
+desk/artifacts/sage/lead-history.json
+# digest tick / A2 packs
+desk/artifacts/sage/digest-last.json
+desk/artifacts/sage/digest-[0-9][0-9][0-9].json
+desk/artifacts/sage/digest-[0-9][0-9][0-9].md
+desk/artifacts/sage/packs/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9].json
+desk/artifacts/sage/packs/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9].md
+# generated desk data modules (crawl output)
+desk/src/data/corroboration-rank.ts
+desk/src/data/digest-cadence.ts
+desk/src/data/digest-pack.ts
+desk/src/data/gnews-rss.ts
+desk/src/data/hn-pulse.ts
+desk/src/data/lead-pick.ts
+desk/src/data/papers.ts
+desk/src/data/pulse-clusters.ts
+desk/src/data/rss-labs.ts
+desk/src/data/rss-security.ts
+desk/src/data/shelf.ts
+desk/src/data/soft-fail-meters.ts
+desk/src/data/source-health.ts
+desk/src/data/topic-heat.ts
+desk/src/data/wikidata-deny-last.ts
+desk/src/data/wire.ts
+desk/src/data/x-crawl.ts
+# drill logs
+desk/packs/drill-log.md
+packs/drill-log.md
+refs/PACK-DUAL-HOME.md
