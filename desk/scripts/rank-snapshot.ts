@@ -16,6 +16,7 @@ import { DIGEST_ITEMS } from "@/data/digest-pack";
 import { PULSE_CLUSTERS, PULSE_CLUSTERS_AT } from "@/data/pulse-clusters";
 import { GNEWS_RSS } from "@/data/gnews-rss";
 import { independentPublishers, publisherKey } from "@/lib/pulse-v5";
+import { memberInfo } from "@/lib/member-info";
 import { HN_PULSE } from "@/data/hn-pulse";
 import { RSS_LABS } from "@/data/rss-labs";
 import { RSS_SECURITY } from "@/data/rss-security";
@@ -47,9 +48,11 @@ const publishers: Record<string, string> = {};
 for (const g of GNEWS_RSS) if (g.publisher) publishers[g.id] = g.publisher;
 for (const r of RSS_LABS) publishers[r.id] = r.lab;
 for (const r of RSS_SECURITY) publishers[r.id] = r.lab;
+const members = memberInfo();
 const pubClusters = PULSE_CLUSTERS.map((c) => ({
   ...c,
-  publishers: [...independentPublishers(c, (id) => publishers[id])].sort(),
+  // N SRC incl. WIRE-copy dedupe (shared member info) → corroboration multiplier.
+  publishers: [...independentPublishers(c, (id) => members[id]?.publisher ?? publishers[id], (id) => members[id])].sort(),
   lead_publisher: publisherKey(c.lead_id, publishers[c.lead_id]),
 }));
 const rows = rankBelowLead(DIGEST_ITEMS, { clusters: pubClusters, leadId: "hf-incident" });
@@ -130,11 +133,12 @@ for (const g of GNEWS_RSS) memberAt[g.id] = g.published;
 for (const r of RSS_LABS) memberAt[r.id] = r.published;
 for (const r of RSS_SECURITY) memberAt[r.id] = r.published;
 const pickNow = Date.parse(PULSE_CLUSTERS_AT);
-for (const c of leadCandidatesAll(PULSE_CLUSTERS, pickNow, { scores, memberAt, publishers, tasteIds: X_TASTE.items.map((t) => t.id) }))
+for (const c of leadCandidatesAll(PULSE_CLUSTERS, pickNow, { scores, memberAt, publishers, members, tasteIds: X_TASTE.items.map((t) => t.id) }))
   console.log(`  lead-cand ${c.id.padEnd(28)} ${c.sources} SRC sig ${c.score ?? "—"} first ${c.first} age ${c.ageH}h ${c.reason ?? "ELIGIBLE"} · ${c.title.slice(0, 60)}`);
 const decision = decidePick(history, PULSE_CLUSTERS, {
   memberAt,
   publishers,
+  members,
   crawlAt: PULSE_CLUSTERS_AT,
   at: cur.at,
   force: process.env.LEAD_PICK_FORCE === "1",
@@ -194,6 +198,7 @@ const wire = buildWire(PULSE_CLUSTERS, wirePrev, {
   crawlAt: PULSE_CLUSTERS_AT,
   scores,
   publishers,
+  members,
   tasteIds: X_TASTE.items.map((t) => t.id),
   // The current daily lead is on the Take — never repeated on the Wire (backfills to 5).
   excludeIds: leadNow?.cluster_id ? [leadNow.cluster_id] : [],
@@ -238,9 +243,9 @@ console.log(`heat OK ${heatLabel(heatWindows)} crawls=${heat.crawls.length} ` + 
 function leadCandidatesAll(
   clusters: typeof PULSE_CLUSTERS,
   now: number,
-  opts: { scores: Record<string, number>; memberAt: Record<string, string>; publishers: Record<string, string>; tasteIds: string[] },
+  opts: { scores: Record<string, number>; memberAt: Record<string, string>; publishers: Record<string, string>; members: typeof members; tasteIds: string[] },
 ) {
-  const wc = buildWire(clusters, null, { at: "", crawlAt: "", scores: opts.scores, publishers: opts.publishers, tasteIds: opts.tasteIds, max: 99 });
+  const wc = buildWire(clusters, null, { at: "", crawlAt: "", scores: opts.scores, publishers: opts.publishers, members: opts.members, tasteIds: opts.tasteIds, max: 99 });
   return wc.rows.map((r) => {
     const c = clusters.find((x) => x.id === r.id)!;
     const first = groupFirstAt(c, opts.memberAt);

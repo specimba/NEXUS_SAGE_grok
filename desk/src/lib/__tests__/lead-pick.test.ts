@@ -12,6 +12,8 @@ import {
   leadIsStale,
   istanbulDate,
   leadCandidates,
+  GNW_ONLY,
+  nonGnewsPublishers,
   yesterdayLead,
   type LeadHistory,
 } from "@/lib/lead-pick";
@@ -254,5 +256,79 @@ describe("daily lead catch-up — keyed off the crawl's own start time", () => {
     expect(Math.floor(leadAgeHours("2026-09-23T22:17:39Z", now)!)).toBe(38);
     expect(leadIsStale("2026-09-25T01:00:00Z", now)).toBe(false);
     expect(leadIsStale(null, now)).toBe(false);
+  });
+});
+
+describe("Beat 5 — Google News confirms, never leads (GNW_ONLY)", () => {
+  const now = Date.parse(PICK);
+  const pubs = { "gnews:a1": "Reuters", "gnews:a2": "Bloomberg", "gnews:b2": "Reuters" };
+  const gnwOnly = cl("cl:gnews:a1", {
+    title: "OpenAI signs cloud deal with bank",
+    lead_id: "gnews:a1",
+    lead_source: "gnews-rss",
+    sources: ["gnews-rss"],
+    member_ids: ["gnews:a1", "gnews:a2"],
+  });
+  const gnwPlusHn = cl("cl:hn:b1", { member_ids: ["hn:b1", "gnews:b2"] });
+  const gnwPlusSelfLab = cl("cl:gnews:c1", {
+    lead_id: "gnews:c1",
+    lead_source: "gnews-rss",
+    member_ids: ["gnews:c1", "gnews:c2", "rss:openai:c3"],
+    members: [
+      { id: "gnews:c1", source: "gnews-rss" },
+      { id: "gnews:c2", source: "gnews-rss" },
+      { id: "rss:openai:c3", source: "rss-lab", self_repost: true },
+    ],
+  });
+
+  test("all-GNW group (2 distinct GNews publishers = 2 SRC) is rejected with GNW_ONLY", () => {
+    expect(nonGnewsPublishers(gnwOnly, pubs)).toEqual([]);
+    expect(wireCandidates([gnwOnly], { publishers: pubs })[0]?.sources).toBe(2); // still 2 SRC on the Wire
+    expect(leadExcludeReason(gnwOnly, now, { publishers: pubs })).toBe(GNW_ONLY);
+    expect(leadCandidates([gnwOnly], now, { publishers: pubs })).toEqual([]);
+  });
+
+  test("GNW + HN group is eligible; GNews publisher still counts toward N SRC", () => {
+    expect(nonGnewsPublishers(gnwPlusHn, pubs)).toEqual(["hn"]);
+    const [c] = leadCandidates([gnwPlusHn], now, { publishers: pubs });
+    expect(c?.id).toBe("cl:hn:b1");
+    expect(c?.sources).toBe(2);
+    // lab / security / paper members qualify too
+    expect(nonGnewsPublishers(cl("cl:gnews:d", { lead_id: "gnews:d", member_ids: ["gnews:d", "rss-sec:krebs:d"] }))).toEqual(["lab:krebs"]);
+  });
+
+  test("a lab SELF-repost does not rescue a GNW-only group", () => {
+    expect(nonGnewsPublishers(gnwPlusSelfLab)).toEqual([]);
+    expect(leadExcludeReason(gnwPlusSelfLab, now)).toBe(GNW_ONLY);
+  });
+
+  test("nothing qualifies → HELD; GNW_ONLY recorded in excluded[] for Beat 11", () => {
+    const d = decidePick(empty, [gnwOnly], { publishers: pubs, crawlAt: PICK, at: PICK });
+    expect(d.action).toBe("held");
+    if (d.action !== "held") throw new Error("expected held");
+    expect(d.entry.reason).toBe("held");
+    expect(d.entry.excluded).toEqual([{ cluster_id: "cl:gnews:a1", headline: "OpenAI signs cloud deal with bank", reason: GNW_ONLY }]);
+  });
+
+  test("catch-up path (14:11, no pick for the date) applies the same rule", () => {
+    const d = decidePick(empty, [gnwOnly, gnwPlusHn], { publishers: pubs, crawlAt: LATER, at: LATER });
+    expect(d.action).toBe("picked");
+    if (d.action !== "picked") throw new Error("expected picked");
+    expect(d.entry.cluster_id).toBe("cl:hn:b1");
+    expect(d.entry.catch_up).toBe(true);
+    expect(d.entry.excluded?.find((e) => e.cluster_id === "cl:gnews:a1")?.reason).toBe(GNW_ONLY);
+  });
+
+  test("REPICK that finds nothing → HELD carrying the previous DAY's lead, never the superseded GNW-only pick", () => {
+    const yday = applyPick(empty, decidePick(empty, [cl("cl:hn:y1", { at: "2026-09-24T01:00:00Z" })], { crawlAt: "2026-09-24T03:11:00Z", at: "2026-09-24T03:11:00Z" }));
+    const badToday: LeadHistory = {
+      schema: 1,
+      entries: [...yday.entries, { date: "2026-09-25", at: PICK, crawl_at: PICK, cluster_id: "cl:gnews:a1", headline: "GNW only", url: null, sources: 2, sig: null, reason: "picked" }],
+    };
+    const d = decidePick(badToday, [gnwOnly], { publishers: pubs, crawlAt: LATER, at: LATER, repick: true });
+    expect(d.action).toBe("held");
+    if (d.action !== "held") throw new Error("expected held");
+    expect(d.entry.cluster_id).toBe("cl:hn:y1");
+    expect(d.entry.supersedes).toBe("cl:gnews:a1");
   });
 });

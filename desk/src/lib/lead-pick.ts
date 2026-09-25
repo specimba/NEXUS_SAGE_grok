@@ -14,6 +14,8 @@
  * Pure helpers; IO lives in scripts/rank-snapshot.ts (artifacts/sage/lead-history.json).
  */
 import { investingNoiseReason, wireCandidates, type WireCluster, type WireOpts } from "@/lib/wire";
+import { publisherKey, selfRepostIds } from "@/lib/pulse-v5";
+import { HEAT_COMPANIES, OTHER_LABS } from "@/lib/topic-heat";
 
 
 export const LEAD_PICK_HOUR = 6; // first crawl starting at/after 06:00 Europe/Istanbul picks
@@ -119,6 +121,54 @@ export function politicsLeadReason(title: string): string | null {
   return m ? `politics:${m[0].toLowerCase()}` : null;
 }
 
+/**
+ * Beat 5 rule: Google News only CONFIRMS, never leads. A lead needs ≥1 independent publisher that did
+ * not come through Google News (HN, lab/first-party RSS, security RSS, HF/arXiv paper…). GNews
+ * publishers still count toward N SRC. Reason code recorded in lead-history `excluded[]`.
+ */
+export const GNW_ONLY = "GNW_ONLY";
+
+/** Independent publisher keys in the group that did NOT arrive via Google News (self-reposts count 0). */
+export function nonGnewsPublishers(
+  c: Pick<WireCluster, "lead_id" | "member_ids" | "members" | "self_repost_ids">,
+  publishers: Record<string, string> = {},
+  members: Record<string, { publisher?: string }> = {},
+): string[] {
+  const selfIds = selfRepostIds(c);
+  selfIds.delete(c.lead_id);
+  const memberPub = new Map((c.members ?? []).map((m) => [m.id, (m as { publisher?: string | null }).publisher ?? null]));
+  const out = new Set<string>();
+  for (const id of [c.lead_id, ...c.member_ids]) {
+    if (selfIds.has(id) || id.startsWith("gnews:")) continue;
+    out.add(publisherKey(id, members[id]?.publisher ?? publishers[id] ?? memberPub.get(id)));
+  }
+  return [...out];
+}
+
+/**
+ * Customer-deal announcements (LEAD only — they stay on the Wire and in Pulse): a deal verb AND a buying-side
+ * subject (text before the verb) that is NOT a tracked lab / AI vendor. "BNP Paribas inks new Google Cloud
+ * deal…" → filtered; "Anthropic signs compute deal with Google" → eligible. Never a plain keyword match.
+ */
+export const CUSTOMER_DEAL = "noise:customer-deal";
+const DEAL_VERB_RE =
+  /\b(?:inks?|inked|signs?|signed|strikes?|struck|forges?|forged|seals?|sealed|clinch(?:es|ed)?)\b(?=[^.;:]{0,80}?\b(?:deal|partnership|agreement|pact|contract)s?\b)|\bselect(?:s|ed)\b|\btaps?\b|\btapped\b|\bexpand(?:s|ed)?\b(?=[^.;:]{0,40}?\bpartnership\b)/i;
+/** Tracked labs / AI vendors (Beat 10 heat set + Other labs + Microsoft). */
+export const AI_VENDOR_RES: readonly RegExp[] = [
+  ...HEAT_COMPANIES.map((c) => c.re),
+  ...Object.values(OTHER_LABS).map((l) => l.re),
+  /\bmicrosoft\b/i,
+];
+
+export function customerDealReason(title: string): string | null {
+  const t = String(title ?? "");
+  const m = DEAL_VERB_RE.exec(t);
+  if (!m) return null;
+  const subject = t.slice(0, m.index).trim();
+  if (!subject) return null; // no named buyer ("Signs of…", "Taps…") → not a customer-deal headline
+  return AI_VENDOR_RES.some((re) => re.test(subject)) ? null : CUSTOMER_DEAL;
+}
+
 export type LeadOpts = WireOpts & {
   /** member id → ISO time of that item (HN created_at, GNews/RSS published). */
   memberAt?: Record<string, string>;
@@ -141,10 +191,18 @@ export function leadExcludeReason(c: WireCluster, now: number, opts: LeadOpts = 
   const first = groupFirstAt(c, opts.memberAt);
   if (!Number.isFinite(first)) return "no-time";
   if (now - first >= LEAD_MAX_AGE_H * 3_600_000) return "age>=24h";
-  return politicsLeadReason(c.title) ?? investingNoiseReason(c.title) ?? opts.exclude?.(c) ?? null;
+  // Title rules first (most specific reason for Beat 11), then the Beat 5 structural rule.
+  return (
+    politicsLeadReason(c.title) ??
+    investingNoiseReason(c.title) ??
+    customerDealReason(c.title) ??
+    (nonGnewsPublishers(c, opts.publishers, opts.members).length === 0 ? GNW_ONLY : null) ??
+    opts.exclude?.(c) ??
+    null
+  );
 }
 
-/** Ranked qualifying stories: Wire gate + earliest-item age < 24h + ≥2 independent sources; sources → SIG → newer. */
+/** Ranked qualifying stories: Wire gate + earliest-item age < 24h + ≥2 independent sources + ≥1 non-GNews publisher; sources → SIG → newer. */
 export function leadCandidates(clusters: WireCluster[], now: number, opts: LeadOpts = {}) {
   const byId = new Map(clusters.map((c) => [c.id, c]));
   return wireCandidates(clusters, opts)
@@ -225,7 +283,8 @@ export function decidePick(
     };
   }
   if (existing?.reason === "held" && !force) return { action: "none", why: "already-picked" }; // still nothing: keep the one HELD entry
-  const prev = currentLead(h);
+  // HELD carries the last pick from an EARLIER date (never a same-date entry a repick just superseded).
+  const prev = [...h.entries].reverse().find((e) => e.date < date) ?? null;
   return {
     action: "held",
     entry: {
