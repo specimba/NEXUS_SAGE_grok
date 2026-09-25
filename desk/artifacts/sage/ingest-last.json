@@ -2,7 +2,105 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-09-25T11:16:08Z",
+  "stamped_at": "2026-09-25T15:22:45Z",
+  "crawl_sources": [
+    {
+      "id": "hf",
+      "label": "HF papers",
+      "status": "ok",
+      "rows": 50,
+      "duration_ms": 607,
+      "paused_until": null,
+      "reason": null
+    },
+    {
+      "id": "arxiv",
+      "label": "arXiv",
+      "status": "ok",
+      "rows": 29,
+      "duration_ms": 3357,
+      "paused_until": null,
+      "reason": null
+    },
+    {
+      "id": "openalex",
+      "label": "OpenAlex",
+      "status": "paused",
+      "rows": 0,
+      "duration_ms": 2,
+      "paused_until": "2026-09-26T00:00:00Z",
+      "reason": "paused_until 2026-09-26T00:00:00Z"
+    },
+    {
+      "id": "crossref",
+      "label": "Crossref",
+      "status": "ok",
+      "rows": 1,
+      "duration_ms": 3,
+      "paused_until": null,
+      "reason": null
+    },
+    {
+      "id": "hn",
+      "label": "HN",
+      "status": "ok",
+      "rows": 59,
+      "duration_ms": 8326,
+      "paused_until": null,
+      "reason": null
+    },
+    {
+      "id": "rss_labs",
+      "label": "lab RSS",
+      "status": "ok",
+      "rows": 104,
+      "duration_ms": 96,
+      "paused_until": null,
+      "reason": null
+    },
+    {
+      "id": "rss_security",
+      "label": "security RSS",
+      "status": "ok",
+      "rows": 27,
+      "duration_ms": 43,
+      "paused_until": null,
+      "reason": null
+    },
+    {
+      "id": "gnews",
+      "label": "Google News",
+      "status": "ok",
+      "rows": 30,
+      "duration_ms": 28,
+      "paused_until": null,
+      "reason": null
+    },
+    {
+      "id": "github",
+      "label": "GitHub",
+      "status": "ok",
+      "rows": 2,
+      "duration_ms": 2,
+      "paused_until": null,
+      "reason": null
+    },
+    {
+      "id": "wikidata",
+      "label": "Wikidata",
+      "status": "ok",
+      "rows": 3,
+      "duration_ms": 3,
+      "paused_until": null,
+      "reason": null
+    }
+  ],
+  "crawl_timing": {
+    "sources_ms": 12467,
+    "wall_ms": 12884,
+    "startup_ms": 44,
+    "main_ms": 12890
+  },
   "multi_source_independent": 3,
   "stale_hours": 6,
   "stale_guard_hours": 6,
@@ -10,17 +108,17 @@
     "multi_source_independent": 3,
     "multi_source_raw": 5,
     "self_reposts": 2,
-    "items_in": 222,
-    "clusters_out": 206,
+    "items_in": 220,
+    "clusters_out": 204,
     "collapsed": 16,
     "multi_source": 3,
     "multi_member": 9,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 42,
+    "new_items": 6,
     "per_source": {
-      "hn-algolia": 61,
+      "hn-algolia": 59,
       "rss-lab": 104,
       "rss-security": 27,
       "gnews-rss": 30
@@ -33,7 +131,7 @@
           "gnews-rss"
         ],
         "size": 9,
-        "score": 0.947,
+        "score": 0.946,
         "members": [
           {
             "id": "hn:49825580",
@@ -239,11 +337,11 @@
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 16
+      "hn_dropped": 19
     },
     "gnews_near_misses": [
       {
-        "score": 0.577,
+        "score": 0.578,
         "blocked": "below-threshold",
         "hours_apart": 2.3,
         "a": {
@@ -266,7 +364,7 @@
         ]
       },
       {
-        "score": 0.567,
+        "score": 0.561,
         "blocked": "below-threshold",
         "hours_apart": 19.8,
         "a": {
@@ -314,7 +412,7 @@
         ]
       },
       {
-        "score": 0.502,
+        "score": 0.501,
         "blocked": "below-threshold",
         "hours_apart": 14.3,
         "a": {
@@ -337,7 +435,7 @@
         ]
       },
       {
-        "score": 0.493,
+        "score": 0.494,
         "blocked": "below-threshold",
         "hours_apart": 16.9,
         "a": {
@@ -357,6 +455,28 @@
           "agent",
           "hack",
           "australia"
+        ]
+      },
+      {
+        "score": 0.484,
+        "blocked": "below-threshold",
+        "hours_apart": 2.5,
+        "a": {
+          "id": "hn:49822457",
+          "source": "hn-algolia",
+          "title": "OpenAI hacked Australian Medicare portal",
+          "at": "2026-09-23T20:55:51Z"
+        },
+        "b": {
+          "id": "gnews:d1656598389765a0",
+          "source": "gnews-rss",
+          "title": "OpenAI Agent Hacked Australian Government Website - WSJ",
+          "at": "2026-09-23T23:24:00Z"
+        },
+        "shared": [
+          "openai",
+          "hack",
+          "australian"
         ]
       },
       {
@@ -383,14 +503,14 @@
         ]
       },
       {
-        "score": 0.478,
+        "score": 0.455,
         "blocked": "below-threshold",
-        "hours_apart": 2.5,
+        "hours_apart": 2.8,
         "a": {
-          "id": "hn:49822457",
+          "id": "hn:49825363",
           "source": "hn-algolia",
-          "title": "OpenAI hacked Australian Medicare portal",
-          "at": "2026-09-23T20:55:51Z"
+          "title": "OpenAI agents plotted to access government health data amid Medicare (AU) hack",
+          "at": "2026-09-24T02:12:42Z"
         },
         "b": {
           "id": "gnews:d1656598389765a0",
@@ -400,37 +520,15 @@
         },
         "shared": [
           "openai",
-          "hack",
-          "australian"
-        ]
-      },
-      {
-        "score": 0.435,
-        "blocked": "below-threshold",
-        "hours_apart": 12,
-        "a": {
-          "id": "hn:49825580",
-          "source": "hn-algolia",
-          "title": "OpenAI agent hacked Australian government website, PM says",
-          "at": "2026-09-24T02:44:48Z"
-        },
-        "b": {
-          "id": "gnews:5a5c6a56a6d5a2f8",
-          "source": "gnews-rss",
-          "title": "OpenAI’s agent hacking Australia is a warning for governments everywhere - Scientific American",
-          "at": "2026-09-24T14:45:00Z"
-        },
-        "shared": [
-          "openai",
           "agent",
-          "hack",
-          "government"
+          "government",
+          "hack"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.721,
+        "score": 0.723,
         "blocked": "thin-overlap",
         "hours_apart": 48.9,
         "a": {
@@ -453,7 +551,7 @@
         ]
       },
       {
-        "score": 0.577,
+        "score": 0.578,
         "blocked": "below-threshold",
         "hours_apart": 2.3,
         "a": {
@@ -476,7 +574,7 @@
         ]
       },
       {
-        "score": 0.567,
+        "score": 0.561,
         "blocked": "below-threshold",
         "hours_apart": 19.8,
         "a": {
@@ -524,7 +622,7 @@
         ]
       },
       {
-        "score": 0.502,
+        "score": 0.501,
         "blocked": "below-threshold",
         "hours_apart": 14.3,
         "a": {
@@ -547,7 +645,7 @@
         ]
       },
       {
-        "score": 0.493,
+        "score": 0.494,
         "blocked": "below-threshold",
         "hours_apart": 16.9,
         "a": {
@@ -567,6 +665,28 @@
           "agent",
           "hack",
           "australia"
+        ]
+      },
+      {
+        "score": 0.484,
+        "blocked": "below-threshold",
+        "hours_apart": 2.5,
+        "a": {
+          "id": "hn:49822457",
+          "source": "hn-algolia",
+          "title": "OpenAI hacked Australian Medicare portal",
+          "at": "2026-09-23T20:55:51Z"
+        },
+        "b": {
+          "id": "gnews:d1656598389765a0",
+          "source": "gnews-rss",
+          "title": "OpenAI Agent Hacked Australian Government Website - WSJ",
+          "at": "2026-09-23T23:24:00Z"
+        },
+        "shared": [
+          "openai",
+          "hack",
+          "australian"
         ]
       },
       {
@@ -591,28 +711,6 @@
           "hack",
           "australia"
         ]
-      },
-      {
-        "score": 0.478,
-        "blocked": "below-threshold",
-        "hours_apart": 2.5,
-        "a": {
-          "id": "hn:49822457",
-          "source": "hn-algolia",
-          "title": "OpenAI hacked Australian Medicare portal",
-          "at": "2026-09-23T20:55:51Z"
-        },
-        "b": {
-          "id": "gnews:d1656598389765a0",
-          "source": "gnews-rss",
-          "title": "OpenAI Agent Hacked Australian Government Website - WSJ",
-          "at": "2026-09-23T23:24:00Z"
-        },
-        "shared": [
-          "openai",
-          "hack",
-          "australian"
-        ]
       }
     ]
   },
@@ -620,44 +718,44 @@
     {
       "id": "arxiv",
       "state": "ok",
-      "streak_ok": 17,
+      "streak_ok": 18,
       "streak_fail": 0,
-      "items_last": 13
+      "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 17,
+      "streak_ok": 18,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 17,
+      "streak_ok": 18,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 17,
+      "streak_ok": 18,
       "streak_fail": 0,
       "items_last": 30
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 17,
+      "streak_ok": 18,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 17,
+      "streak_ok": 18,
       "streak_fail": 0,
-      "items_last": 61
+      "items_last": 59
     },
     {
       "id": "openalex",
@@ -669,27 +767,27 @@
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 17,
+      "streak_ok": 18,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 17,
+      "streak_ok": 18,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 17,
+      "streak_ok": 18,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.03588472222222222,
+    "hours": 0.0038158333333333334,
     "stale": false
   },
   "hf": {
@@ -699,22 +797,27 @@
   },
   "arxiv": {
     "ok": true,
-    "enriched": 13,
-    "shelf": 0,
+    "enriched": 24,
+    "shelf": 5,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
   },
   "openalex": {
     "ok": false,
     "soft_fail": true,
-    "soft_fail_reason": "HTTP 429",
+    "soft_fail_reason": "paused_until 2026-09-26T00:00:00Z",
     "enriched": 0,
     "secondary": 0,
     "query": "Hugging Face agent",
     "mode": "search",
     "from_cache": false,
-    "searches": 1,
-    "retries": 2,
+    "searches": 0,
+    "retries": 0,
+    "status": "paused",
+    "paused_until": "2026-09-26T00:00:00Z",
+    "pause_reason": "HTTP 429 Retry-After 40541",
+    "requests": 0,
+    "auth": "anon",
     "brief": false,
     "pulse_lead": false,
     "papers_enrich_only": true,
@@ -728,8 +831,8 @@
     "enriched": 1,
     "query": "Training Object Permanence in World Models",
     "mode": "bibliographic",
-    "from_cache": false,
-    "searches": 1,
+    "from_cache": true,
+    "searches": 0,
     "brief": false,
     "pulse_lead": false,
     "papers_enrich_only": true,
@@ -751,7 +854,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 61,
+    "count": 59,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -768,26 +871,26 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 16,
+    "ai_dropped": 19,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
         "id": "hn:49820134",
         "tag": "rest",
-        "score": 766,
+        "score": 772,
         "text": "Claude discovers a novel enzyme system with CRISPR-like repeats"
-      },
-      {
-        "id": "hn:49814947",
-        "tag": "rest",
-        "score": 480,
-        "text": "Claude Code reads AGENTS.md only when telemetry is on [fixed]"
       },
       {
         "id": "hn:49817615",
         "tag": "rest",
-        "score": 329,
+        "score": 330,
         "text": "Gemini 3.8 text-to-speech"
+      },
+      {
+        "id": "hn:49825580",
+        "tag": "rest",
+        "score": 253,
+        "text": "OpenAI agent hacked Australian government website, PM says"
       }
     ]
   },
@@ -803,47 +906,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "https://openai.com/news/rss.xml",
+        "url": "(cache:openai)",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "https://deepmind.google/blog/rss.xml",
+        "url": "(cache:deepmind)",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "https://blog.google/technology/ai/rss/",
+        "url": "(cache:google-ai)",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "https://huggingface.co/blog/feed.xml",
+        "url": "(cache:huggingface)",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "https://mistral.ai/rss.xml",
+        "url": "(cache:mistral)",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "https://blogs.nvidia.com/feed/",
+        "url": "(cache:nvidia)",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "https://developer.nvidia.com/blog/feed",
+        "url": "(cache:nvidia-dev)",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
+        "url": "(cache:ms-research)",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "https://research.google/blog/rss/",
+        "url": "(cache:google-research)",
         "count": 12
       }
     ],
@@ -889,17 +992,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "https://blog.trailofbits.com/feed/",
+        "url": "(cache:trailofbits)",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "https://blog.fox-it.com/feed/",
+        "url": "(cache:fox-it)",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "https://projectzero.google/feed.xml",
+        "url": "(cache:projectzero)",
         "count": 5
       }
     ],
@@ -946,7 +1049,7 @@
       {
         "id": "gnews:cc6925575320b1b3",
         "anchor_id": "hn:49825024",
-        "score": 0.874,
+        "score": 0.872,
         "title": "Australia says OpenAI agent hacked government website, checks for more breaches - Yahoo Finance UK",
         "publisher": "Yahoo Finance UK",
         "self_repost": false
@@ -954,7 +1057,7 @@
       {
         "id": "gnews:5a5c6a56a6d5a2f8",
         "anchor_id": "hn:49825024",
-        "score": 0.704,
+        "score": 0.7,
         "title": "OpenAI’s agent hacking Australia is a warning for governments everywhere - Scientific American",
         "publisher": "Scientific American",
         "self_repost": false
@@ -962,7 +1065,7 @@
       {
         "id": "gnews:26a31e7a5e419d3d",
         "anchor_id": "hn:49826285",
-        "score": 0.716,
+        "score": 0.714,
         "title": "Rogue OpenAI agent 'infiltrated' Australian government website in world first - BBC",
         "publisher": "BBC",
         "self_repost": false
@@ -978,7 +1081,7 @@
       {
         "id": "gnews:13b20003373b4374",
         "anchor_id": "hn:49823062",
-        "score": 0.812,
+        "score": 0.811,
         "title": "An OpenAI Agent Hacked Australia’s Health Service. Their Government Found Out Months Later - wired.com",
         "publisher": "wired.com",
         "self_repost": false
@@ -986,7 +1089,7 @@
       {
         "id": "gnews:d1656598389765a0",
         "anchor_id": "hn:49825580",
-        "score": 0.941,
+        "score": 0.94,
         "title": "OpenAI Agent Hacked Australian Government Website - WSJ",
         "publisher": "WSJ",
         "self_repost": false
@@ -1001,9 +1104,9 @@
       }
     ],
     "http_status": 200,
-    "content_type": "application/xml; charset=utf-8",
+    "content_type": null,
     "format": "rss2",
-    "from_cache": false,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1062,9 +1165,9 @@
     "soft_fail_reason": null,
     "query": "OWASP LLM",
     "shelf": 2,
-    "from_cache": false,
-    "searches": 1,
-    "rate_limit_remaining": 9,
+    "from_cache": true,
+    "searches": 0,
+    "rate_limit_remaining": null,
     "brief": false,
     "pulse_lead": false,
     "shelf_only": true,
@@ -1081,7 +1184,7 @@
     ]
   },
   "shelf": {
-    "count": 14,
+    "count": 19,
     "brief": false
   },
   "wikidata": {
@@ -1093,8 +1196,8 @@
       "Hugging Face",
       "METR"
     ],
-    "searches": 3,
-    "from_cache": false,
+    "searches": 0,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "deny_grounding_only": true,

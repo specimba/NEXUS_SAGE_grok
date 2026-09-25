@@ -16,7 +16,7 @@ export type RssLabRow = {
   cluster_id?: string;
 };
 
-export const RSS_LABS_AT = "2026-09-25T11:16:08Z";
+export const RSS_LABS_AT = "2026-09-25T15:22:45Z";
 
 export const RSS_LABS: RssLabRow[] = [
   { id: "rss:google-research:8451e6726f367367", lab: "google-research" as const, title: "Automating coherent long-form video generation", link: "https://research.google/blog/coherent-long-form-video-generation/", published: "2026-09-24T19:40:00Z", summary: "Generative AI", source: "rss-lab" as const, tag: "rest" as const, first_seen: "2026-09-24T21:18:09Z", is_new: false, cluster_id: "cl:rss:google-research:8451e6726f367367" },
