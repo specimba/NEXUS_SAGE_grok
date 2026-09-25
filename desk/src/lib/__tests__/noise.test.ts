@@ -32,9 +32,21 @@ describe("investing / listicle noise", () => {
       "10 AI stocks for the next decade",
       "Should You Buy Nvidia Before Earnings? (Motley Fool)",
       "Is This AI Stock a Buy and Hold Forever Pick?",
+      "Jefferies says Meta's AI agent is not a threat to Life Time (LTH:NYSE)", // real 11:16Z crawl headline
+      "Analyst lifts view on chipmaker (NASDAQ: NVDA)",
     ])
       expect(investingNoiseReason(t)).toBe("noise:investing");
-    expect(INVESTING_NOISE.length).toBe(7);
+    expect(INVESTING_NOISE.length).toBe(8);
+  });
+
+  test("ticker rule does not catch ordinary headlines with colons or acronyms", () => {
+    for (const t of [
+      "BNP Paribas inks new Google Cloud deal to advance agentic AI",
+      "NYSE tests AI surveillance for market abuse",
+      "Show HN: PlaceCall (YC W26) – agentic API to call businesses",
+      "GPT-5: what changed (AI:ML primer)",
+    ])
+      expect(investingNoiseReason(t)).toBeNull();
   });
 
   test("real business news stays eligible: valuations, funding, IPO, deals", () => {

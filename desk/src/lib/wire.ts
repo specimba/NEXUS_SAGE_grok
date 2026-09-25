@@ -70,6 +70,8 @@ export const INVESTING_NOISE: readonly RegExp[] = [
   /^\d+ (ai )?stocks\b/i,
   /\bmotley fool\b/i,
   /\bshould you buy\b/i,
+  // Stock-analyst notes carry an exchange ticker: "(LTH:NYSE)", "(NASDAQ: NVDA)", "NYSE:BNP".
+  /\((?:NYSE|NASDAQ|AMEX|LSE|TSX|ASX|EPA|ETR)\s*:\s*[A-Z][A-Z0-9.]{0,6}\)|\([A-Z][A-Z0-9.]{0,6}\s*:\s*(?:NYSE|NASDAQ|AMEX|LSE|TSX|ASX)\)|\b(?:NYSE|NASDAQ)\s*:\s*[A-Z]{1,6}\b/,
 ];
 
 export function investingNoiseReason(title: string): string | null {

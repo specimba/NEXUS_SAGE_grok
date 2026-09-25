@@ -2450,3 +2450,8 @@ a.story-drawer-rowlink:hover .story-drawer-open,
 a.story-drawer-rowlink:focus-visible .story-drawer-open {
   text-decoration: underline;
 }
+/* Lead catch-up fix — stale lead (>24h) renders as HELD; the old headline is context only. */
+.brief-v5 .sage-lead-stale-line {
+  margin-top: 0.4rem;
+  color: var(--phosphor);
+}

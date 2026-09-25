@@ -13,8 +13,8 @@ import { X_TASTE } from "@/data/x-taste";
 import { DIGEST_ITEMS, DROPPED, PACK_AT, PACK_SOURCE } from "@/data/digest-pack";
 import { DIGEST_CADENCE } from "@/data/digest-cadence";
 import { RANK_CURRENT, RANK_MOVED, RANK_PREV } from "@/data/corroboration-rank";
-import { LEAD_HELD, LEAD_TODAY, LEAD_YESTERDAY } from "@/data/lead-pick";
-import { groupFirstAt } from "@/lib/lead-pick";
+import { LEAD_FIRST_AT, LEAD_HELD, LEAD_TODAY, LEAD_YESTERDAY } from "@/data/lead-pick";
+import { groupFirstAt, leadAgeHours, leadIsStale } from "@/lib/lead-pick";
 import { WIRE_CRAWL_AT, WIRE_PREV_CRAWL_AT, WIRE_ROWS } from "@/data/wire";
 import { istanbulHHMM, wireHeader, wireMark } from "@/lib/wire";
 import { PAPERS } from "@/data/papers";
@@ -586,7 +586,17 @@ function BriefWire() {
 }
 
 function Brief() {
-  const lead = LEAD_TODAY;
+  // Lead staleness: crawl stamp on first render (SSR/static-stable), then the wall clock.
+  const [leadNow, setLeadNow] = useState(() => Date.parse(CRAWL_AT));
+  useEffect(() => {
+    setLeadNow(Date.now());
+    const t = window.setInterval(() => setLeadNow(Date.now()), 60_000);
+    return () => window.clearInterval(t);
+  }, []);
+  const leadAge = leadAgeHours(LEAD_FIRST_AT, leadNow);
+  const leadStale = leadIsStale(LEAD_FIRST_AT, leadNow);
+  const lead = leadStale ? null : LEAD_TODAY;
+  const staleLead = leadStale ? LEAD_TODAY : null;
   const age = crawlAgeHours(CRAWL_AT);
   const waveMax = 956;
   const waveVals: Record<number, number> = { 1: 80, 2: 700, 3: 956 };
@@ -639,10 +649,28 @@ function Brief() {
         <div className="flex flex-wrap items-center justify-between gap-2">
           <p className="lane-kicker font-mono text-kicker uppercase tracking-kicker">Take · lead of the day</p>
           <span className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
-            {lead ? `${lead.reason === "seed" ? "cycle 003 seed" : "daily pick"} · ${lead.date}` : "no pick yet"}
+            {lead
+              ? `${lead.reason === "seed" ? "cycle 003 seed" : "daily pick"} · ${lead.date}`
+              : staleLead
+                ? `held · last pick ${staleLead.date}`
+                : "no pick yet"}
           </span>
         </div>
-        {LEAD_HELD ? <p className="sage-lead-held font-mono text-kicker uppercase tracking-kicker">HELD · no qualifying story</p> : null}
+        {LEAD_HELD && !staleLead ? <p className="sage-lead-held font-mono text-kicker uppercase tracking-kicker">HELD · no qualifying story</p> : null}
+        {staleLead ? (
+          <>
+            <p className="sage-lead-held font-mono text-kicker uppercase tracking-kicker tabular-nums" data-lead-stale="1">
+              HELD · lead older than 24h ({leadAge != null ? `${Math.floor(leadAge)}h` : "—"}) · next pick: first crawl after 06:00
+            </p>
+            <div className="sage-take-plate">
+              <h2 className="sage-take-title font-display text-2xl font-bold normal-case tracking-normal md:text-3xl">HELD</h2>
+            </div>
+            <p className="sage-lead-stale-line font-mono text-kicker uppercase tracking-kicker">
+              last lead · {staleLead.headline}
+            </p>
+          </>
+        ) : (
+        <>
         <div className="sage-take-plate">
           <h2 className="sage-take-title font-display text-2xl font-bold normal-case tracking-normal md:text-3xl">
             {lead?.url ? (
@@ -667,6 +695,8 @@ function Brief() {
               </li>
             ))}
           </ul>
+        )}
+        </>
         )}
         {LEAD_YESTERDAY ? (
           <p className="sage-take-yesterday text-sm">
