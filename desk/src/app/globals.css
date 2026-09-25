@@ -1881,7 +1881,7 @@ body {
 }
 .brief-wire-row {
   display: grid;
-  grid-template-columns: 4.5ch 4ch minmax(0, 1fr) auto;
+  grid-template-columns: 4.5ch 5ch minmax(0, 1fr) auto;
   align-items: center;
   column-gap: 0.6rem;
   height: 26px;
@@ -2454,4 +2454,16 @@ a.story-drawer-rowlink:focus-visible .story-drawer-open {
 .brief-v5 .sage-lead-stale-line {
   margin-top: 0.4rem;
   color: var(--phosphor);
+}
+
+/* B1 static export — AGE: absolute Istanbul "14:11" in static HTML, relative "2h" after mount; fixed 5ch, no shift. */
+.pulse-v5-age {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+/* PAUSED source (crawl skips it until then): dim, legible, NOT the struck-through fail style. */
+.pulse-v5-health-cell[data-state="paused"],
+.pulse-v5-health-cell[data-state="paused"] .pulse-v5-health-label {
+  color: var(--muted-foreground);
+  text-decoration: none;
 }
