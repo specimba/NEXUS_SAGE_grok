@@ -62,7 +62,7 @@ describe("investing / listicle noise", () => {
 
   test("noise rows stay out of the Wire (backfilled) and never lead; Alphabet stake story stays eligible", () => {
     const noise = cl("cl:gnews:stocks", "5 AI Semiconductor Stocks to Buy and Hold Through 2031", { at: "2026-09-25T02:30:00Z" });
-    const biz = cl("cl:gnews:alphabet", "Alphabet Reportedly Values Its Anthropic Stake at $124 Billion", { at: "2026-09-25T02:00:00Z" });
+    const biz = cl("cl:gnews:alphabet", "Alphabet Reportedly Values Its Anthropic Stake at $124 Billion", { at: "2026-09-25T02:00:00Z", member_ids: ["gnews:alphabet", "hn:alpha"] });
     expect(wireExcludeReason(noise)).toBe("noise:investing");
     expect(wireExcludeReason(biz)).toBeNull();
     expect(buildWire([noise, biz], null, { at: "t", crawlAt: "c" }).rows.map((r) => r.id)).toEqual(["cl:gnews:alphabet"]);
@@ -75,7 +75,7 @@ describe("investing / listicle noise", () => {
 
   test("pick records noise:investing for excluded candidates", () => {
     const noise = cl("cl:gnews:stocks", "3 AI Stocks to Watch", { at: "2026-09-25T02:30:00Z" });
-    const biz = cl("cl:gnews:alphabet", "Alphabet values Anthropic stake", { at: "2026-09-25T02:00:00Z" });
+    const biz = cl("cl:gnews:alphabet", "Alphabet values Anthropic stake", { at: "2026-09-25T02:00:00Z", member_ids: ["gnews:alphabet", "hn:alpha"] });
     const d = decidePick({ schema: 1, entries: [] }, [noise, biz], { crawlAt: PICK, at: PICK });
     expect(d.action).toBe("picked");
     if (d.action !== "picked") return;

@@ -6,7 +6,7 @@
  * The Wire never displaces the lead (hf-incident) or the Take — it renders under them.
  */
 import { isAiRelevant } from "@/lib/ai-relevance";
-import { buildRows, type ClusterInput } from "@/lib/pulse-v5";
+import { buildRows, type ClusterInput, type PulseMemberInfo } from "@/lib/pulse-v5";
 
 export const WIRE_MIN = 3;
 export const WIRE_MAX = 5;
@@ -51,6 +51,8 @@ export type WireOpts = {
   scores?: Record<string, number>;
   /** member id → publisher name (GNews publisher, lab…) so N SRC counts distinct publishers. */
   publishers?: Record<string, string>;
+  /** Full member info (publisher + own headline/time) — enables WIRE-copy dedupe; wins over `publishers`. */
+  members?: Record<string, PulseMemberInfo>;
   /** Cluster ids kept off the Wire (the current daily lead lives on the Take). */
   excludeIds?: Iterable<string>;
   /** Keep investing-noise rows (only so the lead pick can record them as excluded with a reason). */
@@ -100,7 +102,7 @@ export function wireCandidates(clusters: WireCluster[], opts: WireOpts = {}): Wi
   const skip = new Set(opts.excludeIds ?? []);
   const kept = clusters.filter((c) => !skip.has(c.id) && wireExcludeReason(c, taste, opts.keepNoise) === null);
   const byId = new Map(kept.map((c) => [c.id, c]));
-  const info = Object.fromEntries(Object.entries(opts.publishers ?? {}).map(([id, publisher]) => [id, { badge: "", publisher }]));
+  const info: Record<string, PulseMemberInfo> = opts.members ?? Object.fromEntries(Object.entries(opts.publishers ?? {}).map(([id, publisher]) => [id, { badge: "", publisher }]));
   const { rows } = buildRows(kept, info);
   const out: WireCandidate[] = [];
   for (const r of rows) {

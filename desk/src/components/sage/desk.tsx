@@ -17,6 +17,7 @@ import { LEAD_FIRST_AT, LEAD_HELD, LEAD_TODAY, LEAD_YESTERDAY } from "@/data/lea
 import { groupFirstAt, leadAgeHours, leadIsStale } from "@/lib/lead-pick";
 import { IST_LABEL, istDateTime, istHHMM, istHHMMSS } from "@/lib/ist-time";
 import { useNow } from "@/lib/use-now";
+import { memberInfo } from "@/lib/member-info";
 import { isPausedAt, type PauseMap } from "@/lib/source-pause";
 import { WIRE_CRAWL_AT, WIRE_PREV_CRAWL_AT, WIRE_ROWS } from "@/data/wire";
 import { istanbulHHMM, wireHeader, wireMark } from "@/lib/wire";
@@ -40,6 +41,8 @@ import {
   type PaperInput,
   type ClusterInput,
   type PulseMemberInfo,
+  type SrcChip,
+  chipLabel,
   type PulseV5Row,
 } from "@/lib/pulse-v5";
 import { cn } from "@/lib/cn";
@@ -83,6 +86,31 @@ type DeskProps = {
   /** Active source pauses merged at prebuild (artifacts/sage/source-state.json). */
   pauses?: PauseMap;
 };
+
+/** One chip per source type, ×n when that type has >1 independent publisher; Σ n = N SRC (SELF excluded). */
+function SrcChips({ chips, multi, max }: { chips: SrcChip[]; multi: boolean; max: number }) {
+  const shown = chips.slice(0, max);
+  const rest = chips.slice(max).reduce((a, c) => a + c.n, 0);
+  return (
+    <>
+      {shown.map((ch, i) => (
+        <span
+          key={ch.badge}
+          className={cn("pulse-v5-badge", i === 0 ? (multi ? "pulse-v5-src-lead" : "pulse-v5-src-solo") : "pulse-v5-also")}
+          data-chip={ch.badge}
+          data-chip-n={ch.n}
+        >
+          {chipLabel(ch)}
+        </span>
+      ))}
+      {rest ? (
+        <span className="pulse-v5-badge pulse-v5-also" data-chip="+" data-chip-n={rest}>
+          +{rest}
+        </span>
+      ) : null}
+    </>
+  );
+}
 
 /** Beat B1 · pauses reach the Pulse health strip without prop-drilling through lanes. */
 export const PausesCtx = createContext<PauseMap>({});
@@ -546,6 +574,12 @@ function SrcChip({ id }: { id: string }) {
 /** Beat 7 — Brief Wire strip: top 3–5 live clusters with ≥2 independent sources, NEW/▲/▼ vs previous crawl. */
 function BriefWire() {
   const now = useNow();
+  const members = useMembers();
+  // Chips from the same shared unit logic as Pulse (Σ chips = N SRC, WIRE copies once).
+  const wireRowById = useMemo(() => {
+    const ids = new Set(WIRE_ROWS.map((r) => r.id));
+    return new Map(buildRows(PULSE_CLUSTERS.filter((c) => ids.has(c.id)), members).rows.map((r) => [r.id, r]));
+  }, [members]);
   const { q, report, openStory, since } = useDeskKeys();
   const part = useMemo(
     () => partitionSince(WIRE_ROWS.filter((r) => matchesFilter(q, [r.title])), (r) => FIRST_SEEN.get(r.id), since),
@@ -594,7 +628,10 @@ function BriefWire() {
               <a className="brief-wire-headline focus-phosphor" href={r.url} target="_blank" rel="noreferrer">
                 {r.title}
               </a>
-              <span className="sage-src-chip sage-src-chip-multi tabular-nums">{r.sources} SRC</span>
+              <span className="brief-wire-src" data-src-n={r.sources}>
+                {wireRowById.get(r.id) ? <SrcChips chips={wireRowById.get(r.id)!.chips} multi max={3} /> : null}
+                <span className="sage-src-chip sage-src-chip-multi tabular-nums">{r.sources} SRC</span>
+              </span>
             </li>
             {since && part.since.length > 0 && i === part.since.length - 1 ? <SinceDivider base={since} n={part.since.length} /> : null}
             </Fragment>
@@ -611,8 +648,10 @@ function Brief() {
   const leadNow = useNow();
   const leadAge = leadNow == null ? null : leadAgeHours(LEAD_FIRST_AT, leadNow);
   const leadStale = leadNow != null && leadIsStale(LEAD_FIRST_AT, leadNow);
-  const lead = leadStale ? null : LEAD_TODAY;
-  const staleLead = leadStale ? LEAD_TODAY : null;
+  // HELD (no qualifying story at the pick, e.g. every candidate GNW_ONLY) or lead story ≥24h old → HELD plate,
+  // never the carried headline as if it were today's lead.
+  const lead = leadStale || LEAD_HELD ? null : LEAD_TODAY;
+  const staleLead = leadStale || LEAD_HELD ? LEAD_TODAY : null;
   const age = leadNow == null ? null : crawlAgeHours(CRAWL_AT, leadNow);
   const waveMax = 956;
   const waveVals: Record<number, number> = { 1: 80, 2: 700, 3: 956 };
@@ -668,22 +707,29 @@ function Brief() {
             {lead
               ? `${lead.reason === "seed" ? "cycle 003 seed" : "daily pick"} · ${lead.date}`
               : staleLead
-                ? `held · last pick ${staleLead.date}`
+                ? `held · last pick ${LEAD_YESTERDAY?.date ?? staleLead.date}`
                 : "no pick yet"}
           </span>
         </div>
-        {LEAD_HELD && !staleLead ? <p className="sage-lead-held font-mono text-kicker uppercase tracking-kicker">HELD · no qualifying story</p> : null}
         {staleLead ? (
           <>
-            <p className="sage-lead-held font-mono text-kicker uppercase tracking-kicker tabular-nums" data-lead-stale="1">
-              HELD · lead older than 24h ({leadAge != null ? `${Math.floor(leadAge)}h` : "—"}) · next pick: first crawl after 06:00
-            </p>
+            {LEAD_HELD ? (
+              <p className="sage-lead-held font-mono text-kicker uppercase tracking-kicker" data-lead-held="1">
+                HELD · no qualifying story · a lead needs ≥2 SRC incl. one non-Google-News publisher
+              </p>
+            ) : (
+              <p className="sage-lead-held font-mono text-kicker uppercase tracking-kicker tabular-nums" data-lead-stale="1">
+                HELD · lead older than 24h ({leadAge != null ? `${Math.floor(leadAge)}h` : "—"}) · next pick: first crawl after 06:00
+              </p>
+            )}
             <div className="sage-take-plate">
               <h2 className="sage-take-title font-display text-2xl font-bold normal-case tracking-normal md:text-3xl">HELD</h2>
             </div>
-            <p className="sage-lead-stale-line font-mono text-kicker uppercase tracking-kicker">
-              last lead · {staleLead.headline}
-            </p>
+            {staleLead.headline ? (
+              <p className="sage-lead-stale-line font-mono text-kicker uppercase tracking-kicker">
+                last lead · {staleLead.headline}
+              </p>
+            ) : null}
           </>
         ) : (
         <>
@@ -847,18 +893,7 @@ function stripPublisher(title: string, publisher: string): string {
 }
 
 function useMembers(): Record<string, PulseMemberInfo> {
-  return useMemo(() => {
-    const m: Record<string, PulseMemberInfo> = {};
-    for (const h of HN_PULSE) m[h.id] = { badge: "HN", publisher: `hn/${h.author}`, score: h.score, url: h.url };
-    for (const g of GNEWS_RSS) m[g.id] = { badge: "GNW", publisher: g.publisher || "google news", url: g.link };
-    for (const r of RSS_LABS)
-      m[r.id] = { badge: labBadge(r.lab), publisher: r.lab, summary: r.summary || undefined, url: r.link };
-    for (const s of RSS_SECURITY)
-      m[s.id] = { badge: "SEC", publisher: s.lab, summary: s.summary || undefined, url: s.link, security: true };
-    for (const p of CRAWL)
-      m[`x:${p.id}`] = { badge: "X", publisher: `@${p.handle}`, score: p.likes, summary: `${p.take} — ${p.text}`, url: p.href };
-    return m;
-  }, []);
+  return useMemo(() => memberInfo(), []);
 }
 
 /** Beat 8 — every source's own headline + time, keyed by member id (story drawer coverage list). */
@@ -949,6 +984,9 @@ function StoryDrawer({
           <p className="story-drawer-kicker tabular-nums">
             {drawerKicker({ sources: row.sourceCount, firstSeen, age: now == null ? istHHMM(firstAtIso(cluster)) : compactAge(firstAtIso(cluster), now), mark })}
           </p>
+          <p className="story-drawer-chips" data-src-n={row.sourceCount}>
+            <SrcChips chips={row.chips} multi={row.multiSource} max={9} />
+          </p>
         </header>
         <ol className="story-drawer-list" aria-label="Coverage by source">
           {coverage.map((c) => (
@@ -965,6 +1003,11 @@ function StoryDrawer({
                     </span>
                     <span className="story-drawer-headline">{c.title}</span>
                     {c.self ? <span className="story-drawer-selfcap">company&apos;s own post · counts 0</span> : null}
+                    {row.wireCopyIds.includes(c.id) ? (
+                      <span className="story-drawer-wirecap" data-wire-copy="1" title="press-release / wire copy — near-identical headline within 2h · counted once">
+                        WIRE · same copy · counts once
+                      </span>
+                    ) : null}
                     {c.url ? (
                       <span className="story-drawer-open sage-signal" aria-hidden>
                         open ↗
@@ -1204,7 +1247,6 @@ export function Pulse() {
               const inDrawer = opensDrawer(r);
               const open = inDrawer ? drawer.openId === r.id : openClusterId === r.id;
               const lead = members[r.leadId];
-              const overflow = r.alsoBadges.length > 2 ? r.alsoBadges.length - 2 : 0;
               const sig = sigCell(r);
               const isNewSince = i < part.since.length;
               return (
@@ -1241,16 +1283,8 @@ export function Pulse() {
                     <span>{r.showNew ? <span className="pulse-v5-new">NEW</span> : null}</span>
                     <AgeCell iso={clusterById.get(r.id) ? firstAtIso(clusterById.get(r.id)!) : r.at} now={now} />
                     <span className="pulse-v5-headline">{stripPublisher(r.title, lead?.publisher ?? "")}</span>
-                    <span className="pulse-v5-src">
-                      <span className={cn("pulse-v5-badge", r.multiSource ? "pulse-v5-src-lead" : "pulse-v5-src-solo")}>
-                        {r.leadBadge}
-                      </span>
-                      {r.alsoBadges.slice(0, 2).map((b) => (
-                        <span key={b} className="pulse-v5-badge pulse-v5-also">
-                          {b}
-                        </span>
-                      ))}
-                      {overflow ? <span className="pulse-v5-badge pulse-v5-also">+{overflow}</span> : null}
+                    <span className="pulse-v5-src" data-src-n={r.sourceCount} title={`${r.sourceCount} SRC · ${r.chips.map(chipLabel).join(" ")}`}>
+                      <SrcChips chips={r.chips} multi={r.multiSource} max={2} />
                       {r.selfBadges.length ? (
                         <span
                           className="pulse-v5-badge pulse-v5-self"

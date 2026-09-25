@@ -18,6 +18,9 @@ export type PulseMemberInfo = {
   summary?: string;
   url?: string;
   security?: boolean;
+  /** The member's own headline + publish time (WIRE-copy dedupe between news outlets). */
+  title?: string;
+  at?: string;
 };
 
 export type ClusterInput = {
@@ -53,8 +56,12 @@ export type PulseV5Row = {
   alsoPublishers: string[];
   /** Badges of self-repost members — rendered dim/struck `SELF`, never counted. */
   selfBadges: string[];
-  /** Independent sources (self reposts excluded). */
+  /** Independent sources (self reposts excluded; WIRE copies between outlets count once). */
   sourceCount: number;
+  /** One chip per source type, ×n = independent sources of that type; Σ n === sourceCount (SELF excluded). */
+  chips: SrcChip[];
+  /** Outlet members folded together as press-release / wire copies (drawer marks them WIRE). */
+  wireCopyIds: string[];
   size: number;
   score: number | null;
   security: boolean;
@@ -119,20 +126,127 @@ export function publisherKey(id: string, publisher?: string | null): string {
   return pub || id;
 }
 
-/** Distinct independent publishers in a cluster (lead always counts; self-reposts count 0). */
-export function independentPublishers(
+export type SrcChip = { badge: string; n: number };
+export type MemberMeta = { title?: string | null; at?: string | null };
+
+/**
+ * WIRE copies (Scout): two NEWS OUTLETS carrying the same press release / wire story — near-identical
+ * headline (token Dice ≥ WIRE_COPY_SIM) published within WIRE_COPY_WINDOW_MS — count as ONE source.
+ * Outlets only: Google News publishers and security/news RSS. NEVER HN (it copies the original headline
+ * within minutes by design), lab / first-party feeds, papers or X.
+ */
+export const WIRE_COPY_SIM = 0.8;
+export const WIRE_COPY_WINDOW_MS = 2 * 60 * 60 * 1000;
+
+export function isOutletMember(id: string): boolean {
+  return id.startsWith("gnews:") || id.startsWith("rss-sec:");
+}
+
+const HEADLINE_STOP = new Set(["a", "an", "the", "to", "of", "in", "on", "for", "and", "with", "as", "at", "by", "is", "its"]);
+
+/** Normalized headline tokens: publisher suffix (" - Reuters") dropped, lowercase, accents folded, stopwords out. */
+export function headlineTokens(title: string): Set<string> {
+  const t = String(title ?? "")
+    .replace(/\s+[-–—|]\s+[^-–—|]{2,60}$/, "")
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+  return new Set(t.split(/[^a-z0-9]+/).filter((w) => w && !HEADLINE_STOP.has(w)));
+}
+
+/** Dice coefficient of the two token sets (0…1). */
+export function headlineSimilarity(a: string, b: string): number {
+  const A = headlineTokens(a);
+  const B = headlineTokens(b);
+  if (!A.size || !B.size) return 0;
+  let both = 0;
+  for (const w of A) if (B.has(w)) both++;
+  return (2 * both) / (A.size + B.size);
+}
+
+export function isWireCopy(a: MemberMeta | undefined, b: MemberMeta | undefined): boolean {
+  const ta = Date.parse(a?.at ?? "");
+  const tb = Date.parse(b?.at ?? "");
+  if (!a?.title || !b?.title || !Number.isFinite(ta) || !Number.isFinite(tb)) return false;
+  return Math.abs(ta - tb) <= WIRE_COPY_WINDOW_MS && headlineSimilarity(a.title, b.title) >= WIRE_COPY_SIM;
+}
+
+export type SourceUnit = { key: string; ids: string[]; wireCopyIds: string[] };
+
+/**
+ * Independent source units of a cluster: distinct publisher keys (self-reposts count 0), then outlet-only
+ * keys joined when any of their members are WIRE copies of each other. N SRC = units.length.
+ */
+export function sourceUnits(
   c: Pick<ClusterInput, "lead_id" | "member_ids" | "members" | "self_repost_ids">,
   publisherOf: (id: string) => string | null | undefined = () => null,
-): Set<string> {
+  metaOf: (id: string) => MemberMeta | undefined = () => undefined,
+): SourceUnit[] {
   const selfIds = selfRepostIds(c);
   selfIds.delete(c.lead_id);
   const memberPub = new Map((c.members ?? []).map((m) => [m.id, (m as { publisher?: string | null }).publisher ?? null]));
-  const out = new Set<string>();
+  const byKey = new Map<string, string[]>();
   for (const id of [c.lead_id, ...c.member_ids]) {
     if (selfIds.has(id)) continue;
-    out.add(publisherKey(id, publisherOf(id) ?? memberPub.get(id)));
+    const k = publisherKey(id, publisherOf(id) ?? memberPub.get(id));
+    const ids = byKey.get(k) ?? [];
+    if (!ids.includes(id)) ids.push(id);
+    byKey.set(k, ids);
+  }
+  const keys = [...byKey.keys()];
+  const parent = keys.map((_, i) => i);
+  const find = (i: number): number => (parent[i] === i ? i : (parent[i] = find(parent[i]!)));
+  const copies = new Set<string>();
+  for (let i = 0; i < keys.length; i++) {
+    const a = byKey.get(keys[i]!)!;
+    if (!a.every(isOutletMember)) continue;
+    for (let j = i + 1; j < keys.length; j++) {
+      const b = byKey.get(keys[j]!)!;
+      if (!b.every(isOutletMember)) continue;
+      for (const x of a)
+        for (const y of b)
+          if (isWireCopy(metaOf(x), metaOf(y))) {
+            parent[find(j)] = find(i);
+            copies.add(x).add(y);
+          }
+    }
+  }
+  const groups = new Map<number, SourceUnit>();
+  keys.forEach((k, i) => {
+    const r = find(i);
+    const u = groups.get(r) ?? { key: keys[r]!, ids: [], wireCopyIds: [] };
+    for (const id of byKey.get(k)!) {
+      u.ids.push(id);
+      if (copies.has(id)) u.wireCopyIds.push(id);
+    }
+    groups.set(r, u);
+  });
+  return [...groups.values()];
+}
+
+/** Distinct independent publishers in a cluster (lead always counts; self-reposts count 0; WIRE copies once). */
+export function independentPublishers(
+  c: Pick<ClusterInput, "lead_id" | "member_ids" | "members" | "self_repost_ids">,
+  publisherOf: (id: string) => string | null | undefined = () => null,
+  metaOf: (id: string) => MemberMeta | undefined = () => undefined,
+): Set<string> {
+  return new Set(sourceUnits(c, publisherOf, metaOf).map((u) => u.key));
+}
+
+/** Chips from units: one per source type (badge of the unit's first member), lead's type first. */
+export function chipsFromUnits(units: SourceUnit[], badgeOf: (id: string) => string): SrcChip[] {
+  const out: SrcChip[] = [];
+  for (const u of units) {
+    const b = badgeOf(u.ids[0]!);
+    const hit = out.find((x) => x.badge === b);
+    if (hit) hit.n++;
+    else out.push({ badge: b, n: 1 });
   }
   return out;
+}
+
+export function chipLabel(ch: SrcChip): string {
+  return ch.n > 1 ? `${ch.badge}×${ch.n}` : ch.badge;
 }
 
 export function sourceBadge(source: string): string {
@@ -170,12 +284,16 @@ export function buildRows(
     const selfIds = selfRepostIds(c);
     selfIds.delete(c.lead_id);
     const memberSrc = new Map((c.members ?? []).map((m) => [m.id, m.source]));
-    // N SRC = distinct independent publishers (not source classes); self-reposts count 0.
-    const indep = independentPublishers(c, (id) => members[id]?.publisher);
+    // N SRC = distinct independent publishers (not source classes); self-reposts count 0; WIRE copies once.
+    const units = sourceUnits(c, (id) => members[id]?.publisher, (id) => members[id]);
+    const badgeOf = (id: string) => members[id]?.badge ?? sourceBadge(memberSrc.get(id) ?? memberSource(id) ?? c.lead_source);
+    const indep = new Set(units.map((u) => u.key));
+    let chips = chipsFromUnits(units, badgeOf);
     // Unrecognised ids with no per-member info ⇒ fall back to cluster-level sources[].
     if (!c.members && c.member_ids.every((id) => !memberSource(id)) && c.sources.length > indep.size) {
       indep.clear();
       for (const s of c.sources) indep.add(s);
+      chips = chipsFromUnits(c.sources.map((s) => ({ key: s, ids: [s], wireCopyIds: [] })), (s) => sourceBadge(s));
     }
     const multiSource = indep.size > 1;
     const selfBadges: string[] = [];
@@ -211,6 +329,8 @@ export function buildRows(
       alsoPublishers: multiSource ? alsoPublishers : [],
       selfBadges,
       sourceCount: indep.size,
+      chips,
+      wireCopyIds: units.flatMap((u) => u.wireCopyIds),
       size: c.size,
       score,
       security,

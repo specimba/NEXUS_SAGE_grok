@@ -2467,3 +2467,24 @@ a.story-drawer-rowlink:focus-visible .story-drawer-open {
   color: var(--muted-foreground);
   text-decoration: none;
 }
+
+/* SRC chips (type ×N, Σ = N SRC) on the Wire row and in the drawer head; WIRE-copy caption. */
+.brief-wire-src {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  white-space: nowrap;
+}
+.story-drawer-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+  margin-top: 0.3rem;
+}
+.story-drawer-wirecap {
+  margin-top: 0.15rem;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--text-kicker);
+  letter-spacing: 0.08em;
+  color: var(--amber);
+}
