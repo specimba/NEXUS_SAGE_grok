@@ -99,6 +99,8 @@ describe("story age = earliest member item", () => {
     expect(tsx).toContain("compactAge(firstAtIso(cluster), now)");
     expect(tsx).toContain("<AgeCell iso={firstAtIso(r)} now={now} />"); // Wire: absolute until mount, then relative
     expect(tsx).not.toContain("lead {LEAD_TODAY?.cluster_id");
-    expect(tsx.match(/className="desk-lead-headline" title=\{`lead \$\{LEAD_TODAY\?\.cluster_id/g)?.length).toBe(2);
+    // Both spots (INGEST line + status-bar ticker) render through LeadInline: headline, id only in title (HELD → muted HELD text).
+    expect(tsx.match(/className="desk-lead-headline" title=\{`lead \$\{view\.id/g)?.length).toBe(1);
+    expect(tsx.match(/<LeadInline view=\{leadV\} \/>/g)?.length).toBe(2);
   });
 });
