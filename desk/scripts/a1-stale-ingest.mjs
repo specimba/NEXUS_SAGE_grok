@@ -201,6 +201,22 @@ function collectSoftFails(ingestLast) {
   return soft;
 }
 
+/** Per-source crawl rows (ingest-last.json → crawl_sources[]) → log lines. */
+function crawlSourceLines(ingestLast) {
+  const rows = Array.isArray(ingestLast?.crawl_sources) ? ingestLast.crawl_sources : [];
+  if (!rows.length) return ["crawl sources: (none recorded)"];
+  const total = rows.reduce((n, r) => n + (Number(r.duration_ms) || 0), 0);
+  return [
+    `crawl sources: ${rows.length} · sources_ms=${total} · wall_ms=${ingestLast?.crawl_timing?.wall_ms ?? "?"}`,
+    ...rows.map(
+      (r) =>
+        `  ${String(r.label ?? r.id).padEnd(13)} ${String(r.status).padEnd(6)} rows=${r.rows} ms=${r.duration_ms}${
+          r.status === "paused" ? ` PAUSED until ${r.paused_until}` : r.paused_until ? ` paused_until=${r.paused_until}` : ""
+        }`,
+    ),
+  ];
+}
+
 function assertLocks(ingestLast) {
   const cyclePath = join(desk, "src/data/cycle.ts");
   const cycleSrc = readFileSync(cyclePath, "utf8");
@@ -499,6 +515,7 @@ async function main() {
   } else {
     log("soft-fails: none");
   }
+  for (const line of crawlSourceLines(ingestLast)) log(line);
   assertLocks(ingestLast);
 
   const { at: crawlAfter } = readCrawlAt();

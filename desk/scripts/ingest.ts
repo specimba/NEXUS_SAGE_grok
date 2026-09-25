@@ -40,6 +40,7 @@ import {
   resetOpenAlexTickState,
   resolveOpenAlexCacheDir,
 } from "../src/lib/openalex-enrich";
+import { activePause, readSourceState } from "../src/lib/source-state";
 import {
   fetchCrossrefEnrich,
   mergeOntoPapers as mergeCrossrefOntoPapers,
@@ -113,6 +114,7 @@ import {
   type SourceHealthRow,
   type SourceOutcome,
 } from "../src/lib/source-health";
+import { crawlSourceRow, renderCrawlSourceTable, stopwatch, totalMs, type CrawlSourceRow } from "../src/lib/crawl-timings";
 import { markSeen, parseSeenIndex } from "../src/lib/seen-index";
 import { STALE_GUARD_HOURS } from "../src/lib/crawl-staleness";
 
@@ -437,6 +439,10 @@ function loadUrlList(): string[] {
 
 async function main() {
   const stamp = isoNow();
+  // performance.now() is ms since process start → module-load/startup cost before main().
+  const startupMs = Math.round(performance.now());
+  const swWall = stopwatch();
+  const ms: Record<string, number> = {};
   console.log(`SAGE ingest P3 · stamp ${stamp} · STALE_HOURS=${STALE_HOURS}`);
 
   const since = buildHandleQueries()[0]?.query.match(/since:(\d{4}-\d{2}-\d{2})/)?.[1] ?? "";
@@ -476,6 +482,7 @@ async function main() {
   let hfOk = false;
   let hfLiveCount = 0;
   let hfFailReason: string | undefined;
+  const sw_hf = stopwatch();
   try {
     const live = await fetchHfPapers();
     hfLiveCount = live.length;
@@ -488,11 +495,13 @@ async function main() {
     console.log(`HF: fetch failed — keeping existing papers (${String(err)})`);
   }
 
+  ms.hf = sw_hf.lap();
   // arXiv Atom enrich AFTER HF merge — Papers abstracts/links only; never Brief pins / never cycle 004
   let arxivOk = false;
   let arxivCount = 0;
   let arxivShelf: { href: string; label: string; reason: "arxiv-shelf" }[] = [];
   let arxivFailReason: string | undefined;
+  const sw_arxiv = stopwatch();
   try {
     const enrichments = await fetchArxivByIds(
       papers.map((p) => p.id),
@@ -520,6 +529,7 @@ async function main() {
     console.log(`arXiv: enrich failed — continuing (${String(err)})`);
   }
 
+  ms.arxiv = sw_arxiv.lap();
   // OpenAlex Papers enrich AFTER arXiv — id/year/DOI metadata only; never Brief / never Pulse lead / never displace HF keeps
   resetOpenAlexTickState();
   let openalexOk = false;
@@ -532,11 +542,25 @@ async function main() {
   let openalexSearches = 0;
   let openalexRetries = 0;
   let openalexMode: string = "search";
+  let openalexStatus: "ok" | "fail" | "paused" = "fail";
+  let openalexPausedUntil: string | null = null;
+  let openalexPauseReason: string | null = null;
+  let openalexRequests = 0;
+  let openalexAuth: "anon" | "key" = "anon";
+  const sourceStatePath = resolve(root, "artifacts/sage/source-state.json");
+  const sw_openalex = stopwatch();
   try {
     const oa = await fetchOpenAlexEnrich({
       papers,
       cacheDir: resolveOpenAlexCacheDir(root),
+      // Pause state (Retry-After / 3-strike). Written even on --dry-run: a real request was made.
+      statePath: sourceStatePath,
     });
+    openalexStatus = oa.status;
+    openalexPausedUntil = oa.paused_until;
+    openalexPauseReason = oa.pause_reason;
+    openalexRequests = oa.requests;
+    openalexAuth = oa.auth;
     openalexQuery = oa.query;
     openalexFromCache = oa.from_cache;
     openalexSearches = oa.searches;
@@ -544,9 +568,11 @@ async function main() {
     openalexSoftFail = oa.soft_fail;
     openalexSoftFailReason = oa.soft_fail_reason;
     openalexMode = oa.mode;
-    if (oa.soft_fail) {
+    if (oa.status === "paused") {
+      console.log(`OpenAlex: PAUSED until ${oa.paused_until} — 0 requests, enriched=0 — continuing stamp (brief=false)`);
+    } else if (oa.soft_fail) {
       console.log(
-        `OpenAlex: soft-fail (${oa.soft_fail_reason ?? "unknown"}) retries=${oa.retries} enriched=0 — continuing stamp (brief=false)`,
+        `OpenAlex: soft-fail (${oa.soft_fail_reason ?? "unknown"}) requests=${oa.requests} auth=${oa.auth}${oa.paused_until ? ` paused_until=${oa.paused_until}` : ""} enriched=0 — continuing stamp (brief=false)`,
       );
     } else if (oa.enrichments.length) {
       const beforeIds = new Set(papers.map((p) => p.id));
@@ -577,6 +603,7 @@ async function main() {
     console.log(`OpenAlex: soft-fail exception — continuing (${String(err)})`);
   }
 
+  ms.openalex = sw_openalex.lap();
   // Crossref Papers DOI enrich AFTER OpenAlex — filter=doi:/bibliographic only; never Brief / never Pulse lead / never displace HF keeps
   resetCrossrefTickState();
   let crossrefOk = false;
@@ -588,6 +615,7 @@ async function main() {
   let crossrefSearches = 0;
   let crossrefMode: string = "bibliographic";
   let crossrefMergeNotes: string[] = [];
+  const sw_crossref = stopwatch();
   try {
     const cr = await fetchCrossrefEnrich({
       papers,
@@ -634,6 +662,7 @@ async function main() {
     console.log(`Crossref: soft-fail exception — continuing (${String(err)})`);
   }
 
+  ms.crossref = sw_crossref.lap();
   // HN Algolia AFTER Crossref — Pulse chatter only; never Brief lead/companion / never toolkit Brief pins
   // FREE-PULSE P3: rotate ≤3 queries/tick · soft_fail merge · never Brief · never displace HF
   let hnOk = false;
@@ -644,6 +673,7 @@ async function main() {
   let hnQueriesOk: string[] = [];
   let hnQueriesSoftFail: { query: string; reason: string; soft_fail: true }[] = [];
   let hnAiDropped: number | null = null;
+  const sw_hn = stopwatch();
   try {
     // Dedupe v2 freshness: last-48h window + one OR-entity recency sweep (free Algolia only).
     const hn = await fetchHnPulse({
@@ -683,6 +713,7 @@ async function main() {
     console.log(`HN: soft_fail — continuing (${String(err)})`);
   }
 
+  ms.hn = sw_hn.lap();
   // Lab RSS AFTER HN — Pulse/shelf only; never Brief lead / never cycle 004 / never displace HF
   let rssOk = false;
   let rssSoftFail = false;
@@ -692,6 +723,7 @@ async function main() {
   let rssShelf: { href: string; label: string; reason: "rss-lab-shelf" }[] = [];
   let rssFeedsOk: { lab: string; url: string; count: number }[] = [];
   let rssFeedsSoftFail: { lab: string; reason: string; soft_fail: true }[] = [];
+  const sw_rss_labs = stopwatch();
   try {
     const rss = await fetchRssLabs({
       cacheDir: resolveRssCacheDir(root),
@@ -729,6 +761,7 @@ async function main() {
     console.log(`RSS labs: soft_fail — continuing (${String(err)})`);
   }
 
+  ms.rss_labs = sw_rss_labs.lap();
 
   // Google News RSS AFTER lab RSS — Pulse quiet spice only; never Brief · never sole lead · rotate ≤2/tick
   // FREE-PULSE P5: soft_fail format-break/empty/403/429 · locks 003/hf-incident · no 004 · paid X/Bluesky DENY
@@ -750,6 +783,7 @@ async function main() {
   let gnewsContentType: string | null = null;
   let gnewsFormat: string | null = null;
   let gnewsFromCache = false;
+  const sw_gnews = stopwatch();
   try {
     // Beat 5: standing (≤2) + lab-name (≤2) queries, last 2 days, pool ≤32 (round-robin per query).
     const gn = await fetchGnewsRss({
@@ -800,12 +834,14 @@ async function main() {
     console.log(`GNews: soft_fail — continuing (${String(err)})`);
   }
 
+  ms.gnews = sw_gnews.lap();
   // Security lab RSS AFTER lab RSS — Pulse/shelf/Digest-ref; never Brief lead / never cycle 004
   let secOk = false;
   let secPulse: SecurityRssItem[] = [];
   let secShelf: { href: string; label: string; reason: "rss-security-shelf" }[] = [];
   let secFeedsOk: { lab: string; url: string; count: number }[] = [];
   let secFailReason: string | undefined;
+  const sw_rss_security = stopwatch();
   try {
     const sec = await fetchRssSecurity({
       cacheDir: resolveSecRssCacheDir(root),
@@ -833,6 +869,7 @@ async function main() {
     console.log(`RSS security: fetch failed — continuing (${String(err)})`);
   }
 
+  ms.rss_security = sw_rss_security.lap();
   // GitHub unauth AFTER security RSS — FREE-PULSE P4: ≤1 search/tick · 24h cache-first · Remaining-0 skip · shelf only
   resetGithubShelfTickState();
   let githubOk = false;
@@ -843,6 +880,7 @@ async function main() {
   let githubFromCache = false;
   let githubSearches = 0;
   let githubRateRemaining: number | null = null;
+  const sw_github = stopwatch();
   try {
     const gh = await fetchGithubShelf({
       cacheDir: resolveGithubCacheDir(root),
@@ -874,6 +912,7 @@ async function main() {
   }
 
 
+  ms.github = sw_github.lap();
   // Wikidata DENY grounding AFTER GitHub — hygiene only; never Brief / never Pulse lead / never invent pins
   resetWikidataDenyTickState();
   let wikidataOk = false;
@@ -883,6 +922,7 @@ async function main() {
   let wikidataFromCache = false;
   let wikidataSearches = 0;
   let wikidataSeedsTried: string[] = [];
+  const sw_wikidata = stopwatch();
   try {
     const wd = await fetchWikidataDeny({
       cacheDir: resolveWikidataCacheDir(root),
@@ -914,6 +954,7 @@ async function main() {
     console.log(`Wikidata DENY: soft-fail exception — continuing (${String(err)})`);
   }
 
+  ms.wikidata = sw_wikidata.lap();
   const urls = loadUrlList();
   const scored = scoreUrlList(urls);
   const toolkitShelf = scored.shelf.length
@@ -1079,7 +1120,14 @@ async function main() {
   const outcomes: SourceOutcome[] = [
     { id: "hf", ok: hfOk, items: hfLiveCount, reason: hfFailReason },
     { id: "arxiv", ok: !arxivFailReason, items: arxivCount + arxivShelf.length, reason: arxivFailReason },
-    { id: "openalex", ok: !openalexSoftFail, items: openalexCount, reason: openalexSoftFailReason },
+    {
+      id: "openalex",
+      ok: !openalexSoftFail,
+      items: openalexCount,
+      reason: openalexSoftFailReason,
+      skipped_paused: openalexStatus === "paused",
+      paused_until: openalexPausedUntil,
+    },
     { id: "crossref", ok: !crossrefSoftFail, items: crossrefCount, reason: crossrefSoftFailReason },
     { id: "hn", ok: hnOk, items: hnRows.length, reason: hnSoftFailReason ?? "no candidates" },
     { id: "rss_labs", ok: rssOk, items: rssPulse.length + rssShelf.length, reason: rssSoftFailReason ?? "no feeds ok" },
@@ -1090,6 +1138,36 @@ async function main() {
   ];
   const healthPath = resolve(root, "artifacts/sage/source-health.json");
   const ledger = updateLedger(parseLedger(readJson(healthPath)), outcomes, stamp);
+
+  // Per-source crawl log: rows fetched · wall ms · ok/fail/paused (ingest-last.json → crawl_sources[]).
+  const SOURCE_LABELS: Record<string, string> = {
+    hf: "HF papers",
+    arxiv: "arXiv",
+    openalex: "OpenAlex",
+    crossref: "Crossref",
+    hn: "HN",
+    rss_labs: "lab RSS",
+    gnews: "Google News",
+    rss_security: "security RSS",
+    github: "GitHub",
+    wikidata: "Wikidata",
+  };
+  const crawlSources: CrawlSourceRow[] = outcomes.map((o) =>
+    crawlSourceRow({
+      id: o.id,
+      label: SOURCE_LABELS[o.id] ?? o.id,
+      ok: o.ok,
+      rows: o.items,
+      duration_ms: ms[o.id] ?? 0,
+      skipped_paused: o.skipped_paused,
+      paused_until: o.paused_until ?? null,
+      reason: o.reason ?? null,
+    }),
+  );
+  const wallMs = swWall.lap();
+  console.log(`Crawl sources (per-source rows · ms · status):\n${renderCrawlSourceTable(crawlSources, wallMs)}`);
+  const pauseNow = activePause(readSourceState(sourceStatePath), "openalex", Date.now(), openalexAuth);
+  if (pauseNow) console.log(`  openalex paused_until=${pauseNow.until} (${pauseNow.reason ?? ""})`);
   const healthRows = summarizeLedger(ledger);
   console.log(
     `Source health: ${healthRows.map((r) => `${r.id}=${r.state}(ok${r.streak_ok}/fail${r.streak_fail},n=${r.items_last})`).join(" ")}`,
@@ -1132,6 +1210,18 @@ async function main() {
     cycle: "003",
     lead_id: "hf-incident",
     stamped_at: stamp,
+    /** One row per source: rows fetched · duration_ms · status ok|fail|paused · paused_until (ISO UTC). */
+    crawl_sources: crawlSources,
+    crawl_timing: {
+      /** Σ per-source fetch blocks. */
+      sources_ms: totalMs(crawlSources),
+      /** main() start → all sources + dedupe + health ledger done. */
+      wall_ms: wallMs,
+      /** process start → main() start (bun startup + module load). */
+      startup_ms: startupMs,
+      /** main() start → report build (after data writes). Process exit happens after this. */
+      main_ms: swWall.lap(),
+    },
     /** Headline: Pulse clusters with ≥2 INDEPENDENT sources (company self-reposts count 0). */
     multi_source_independent: cStats.multi_source_independent,
     stale_hours: STALE_HOURS,
@@ -1205,6 +1295,11 @@ async function main() {
       from_cache: openalexFromCache,
       searches: openalexSearches,
       retries: openalexRetries,
+      status: openalexStatus,
+      paused_until: openalexPausedUntil,
+      pause_reason: openalexPauseReason,
+      requests: openalexRequests,
+      auth: openalexAuth,
       brief: false,
       pulse_lead: false,
       papers_enrich_only: true,
@@ -1394,6 +1489,9 @@ async function main() {
     `${JSON.stringify(report, null, 2)}\n`,
   );
 
+  console.log(
+    `Timing: startup=${report.crawl_timing.startup_ms}ms · sources=${report.crawl_timing.sources_ms}ms · main=${report.crawl_timing.main_ms}ms · process_up=${Math.round(performance.now())}ms`,
+  );
   const proof = crawlAgeHours(stamp);
   console.log(
     proof.stale
