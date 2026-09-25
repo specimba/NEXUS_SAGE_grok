@@ -1,7 +1,11 @@
 /**
  * Beat 7 scope add — daily Brief lead pick (replaces the static hf-incident Brief pin).
- * Picked once per day at the 06:11 Istanbul crawl (06:00–06:59 UTC+3 window) or with
- * LEAD_PICK_FORCE=1; sticky until the next day's pick. Other crawls only change the Wire below it.
+ * Picked once per Istanbul day by the FIRST crawl whose own start time is at/after 06:00
+ * Europe/Istanbul on a date that has no pick yet (catch-up: a late-starting cron, e.g. 06:40, or a
+ * missed 06 crawl followed by the 10/14 crawl still picks). A HELD date (nothing qualified) retries
+ * on the next crawl that day. Never a second pick on a picked date (LEAD_PICK_FORCE=1 only lifts
+ * the 06:00 gate); an explicit LEAD_PICK_REPICK=1 appends a superseding entry for the date. Sticky until the next day's pick. A lead whose story is
+ * older than 24h renders as HELD on the Brief (leadIsStale), never as a stale lead.
  * Strongest = most independent publishers (self-repost counts 0) → higher SIG → newer.
  * Must pass the Wire gate (AI filter, never Taste/X, never briefEligible:false), age < 24h, ≥2 SRC.
  * Age = age of the group's EARLIEST member item (not the newest) — a late repost never refreshes
@@ -12,7 +16,7 @@
 import { investingNoiseReason, wireCandidates, type WireCluster, type WireOpts } from "@/lib/wire";
 
 
-export const LEAD_PICK_HOUR = 6; // 06:11 crawl → 06:00–06:59 Europe/Istanbul
+export const LEAD_PICK_HOUR = 6; // first crawl starting at/after 06:00 Europe/Istanbul picks
 export const LEAD_MAX_AGE_H = 24;
 export const LEAD_MIN_SOURCES = 2;
 
@@ -29,6 +33,14 @@ export type LeadEntry = {
   at: string;
   crawl_at: string;
   forced?: true;
+  /** Picked by a crawl that started after the 06 slot (06:00–06:59) — the 06 crawl missed. */
+  catch_up?: true;
+  /** Crawl start time used for the pick decision (falls back to the crawl stamp). */
+  crawl_started_at?: string;
+  /** Earliest member item of the picked story — drives the Brief's 24h stale → HELD rule. */
+  first_at?: string;
+  /** Forced re-pick on a date that already had one: the cluster it replaced. */
+  supersedes?: string | null;
   /** Wire-eligible (≥2 SRC) groups ruled out as lead at this pick, with the reason (age>=24h, politics:…). */
   excluded?: { cluster_id: string; headline: string; reason: string }[];
 };
@@ -58,8 +70,25 @@ export function istanbulDate(iso: string): string {
   return `${p.year}-${p.month}-${p.day}`;
 }
 
-export function inPickWindow(crawlAt: string): boolean {
-  return Number(istanbulParts(crawlAt).hour) === LEAD_PICK_HOUR;
+export function istanbulHour(iso: string): number {
+  return Number(istanbulParts(iso).hour);
+}
+
+/** Crawl START time is at/after 06:00 on its Istanbul date (no upper bound — catch-up). */
+export function inPickWindow(crawlStartAt: string): boolean {
+  return istanbulHour(crawlStartAt) >= LEAD_PICK_HOUR;
+}
+
+/** Lead story age in hours at `now` (earliest member item); null when unknown. */
+export function leadAgeHours(firstAt: string | null | undefined, now: number): number | null {
+  const t = Date.parse(firstAt ?? "");
+  return Number.isFinite(t) ? (now - t) / 3_600_000 : null;
+}
+
+/** Brief rule: a lead older than 24h shows HELD instead of the stale story. */
+export function leadIsStale(firstAt: string | null | undefined, now: number): boolean {
+  const h = leadAgeHours(firstAt, now);
+  return h != null && h >= LEAD_MAX_AGE_H;
 }
 
 /**
@@ -153,11 +182,15 @@ export type PickDecision =
 export function decidePick(
   h: LeadHistory,
   clusters: WireCluster[],
-  opts: LeadOpts & { crawlAt: string; at: string; force?: boolean },
+  opts: LeadOpts & { crawlAt: string; at: string; force?: boolean; repick?: boolean; crawlStartedAt?: string },
 ): PickDecision {
-  const date = istanbulDate(opts.crawlAt);
-  if (entryFor(h, date)) return { action: "none", why: "already-picked" };
-  if (!opts.force && !inPickWindow(opts.crawlAt)) return { action: "none", why: "outside-window" };
+  const startAt = opts.crawlStartedAt && Number.isFinite(Date.parse(opts.crawlStartedAt)) ? opts.crawlStartedAt : opts.crawlAt;
+  const date = istanbulDate(startAt);
+  const existing = entryFor(h, date);
+  // A picked (or seeded) date never picks twice; a HELD date retries on the next crawl that day.
+  if (existing && existing.reason !== "held" && !opts.repick) return { action: "none", why: "already-picked" };
+  const force = !!(opts.force || opts.repick);
+  if (!force && !inPickWindow(startAt)) return { action: "none", why: "outside-window" };
   const now = Date.parse(opts.crawlAt);
   const top = leadCandidates(clusters, now, opts)[0];
   const byId = new Map(clusters.map((c) => [c.id, c]));
@@ -169,15 +202,29 @@ export function decidePick(
     date,
     at: opts.at,
     crawl_at: opts.crawlAt,
-    ...(opts.force ? { forced: true as const } : {}),
+    ...(force ? { forced: true as const } : {}),
+    ...(!force && istanbulHour(startAt) > LEAD_PICK_HOUR ? { catch_up: true as const } : {}),
+    ...(opts.crawlStartedAt && startAt !== opts.crawlAt ? { crawl_started_at: startAt } : {}),
+    ...(existing && opts.repick ? { supersedes: existing.cluster_id } : {}),
     ...(excluded.length ? { excluded } : {}),
   };
   if (top) {
+    const first = groupFirstAt(byId.get(top.id)!, opts.memberAt);
     return {
       action: "picked",
-      entry: { ...base, cluster_id: top.id, headline: top.title, url: top.url, sources: top.sources, sig: top.score, reason: "picked" },
+      entry: {
+        ...base,
+        cluster_id: top.id,
+        headline: top.title,
+        url: top.url,
+        sources: top.sources,
+        sig: top.score,
+        reason: "picked",
+        ...(Number.isFinite(first) ? { first_at: new Date(first).toISOString() } : {}),
+      },
     };
   }
+  if (existing?.reason === "held" && !force) return { action: "none", why: "already-picked" }; // still nothing: keep the one HELD entry
   const prev = currentLead(h);
   return {
     action: "held",
@@ -188,6 +235,7 @@ export function decidePick(
       url: prev?.url ?? null,
       sources: prev?.sources ?? 0,
       sig: prev?.sig ?? null,
+      ...(prev?.first_at ? { first_at: prev.first_at } : {}),
       reason: "held",
       note: "no qualifying story",
     },

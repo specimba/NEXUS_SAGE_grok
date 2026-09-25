@@ -3,7 +3,7 @@ import type { WireRow } from "@/lib/wire";
 
 export const WIRE_CRAWL_AT = "2026-09-25T11:16:08Z";
 export const WIRE_PREV_CRAWL_AT: string | null = "2026-09-24T23:15:44Z";
-export const WIRE_NEW = 3;
+export const WIRE_NEW = 2;
 export const WIRE_MOVED = 2;
 
 export const WIRE_ROWS: WireRow[] = [
@@ -31,22 +31,6 @@ export const WIRE_ROWS: WireRow[] = [
     "status": "new"
   },
   {
-    "id": "cl:gnews:f4f57724bbc69090",
-    "title": "Jefferies says Meta's AI agent is not a threat to Life Time (LTH:NYSE)",
-    "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPSEJ1TUdwRlp1WkhEb3F6d0NCV0duTG9tazl4WF80ZzRwZkdaS2VNR0Vkb3ZoOVdWaklXaXg0R0tLcnZEcy1WV1lfYUM1TnE3MmdvM1RsYm5kbnFCNzZJSUpRQkxBVlVqV19nTEhmbl9EZ0tKVnN3WlFoSUNsbWVSVTBYUjA4M1hCT0ZMTlU1cW1MMTZfQ2hMTjhHVDg?oc=5",
-    "at": "2026-09-25T10:39:51Z",
-    "sources": 2,
-    "score": null,
-    "member_ids": [
-      "gnews:f4f57724bbc69090",
-      "gnews:3953dc5709e14fd3"
-    ],
-    "is_new": true,
-    "rank": 2,
-    "prev_rank": null,
-    "status": "new"
-  },
-  {
     "id": "cl:gnews:9723c65102977408",
     "title": "BNP Paribas inks new Google Cloud deal to advance agentic AI deployment",
     "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNeGZGdVliNUJvUXJxRDIxVERodkVaYVowVFhYS1VvSFFhbTNaZWVSTGN4RHNfVnFydVlLUFBYSW5idTF2SEU4cDJVb1pNQWpkTnptNnR0Wm03T2VmdXdNai0zcHlYU2t6SVI5eE5iMWpFaWJDZ3puZ1puVHY5eFdCbnlPWkRjZnljQV9VaHN0bzFIV2JuUEhCNDFxa2oxTjdLZ3YzWi1KY2ptRVdZRS1aTktjb1E?oc=5",
@@ -58,7 +42,7 @@ export const WIRE_ROWS: WireRow[] = [
       "gnews:6d75fd9992adfc72"
     ],
     "is_new": true,
-    "rank": 3,
+    "rank": 2,
     "prev_rank": null,
     "status": "new"
   },
@@ -74,7 +58,7 @@ export const WIRE_ROWS: WireRow[] = [
       "rss:deepmind:68ead6b6af2b7144"
     ],
     "is_new": false,
-    "rank": 4,
+    "rank": 3,
     "prev_rank": 5,
     "status": "up"
   },
@@ -90,7 +74,7 @@ export const WIRE_ROWS: WireRow[] = [
       "rss:deepmind:81481aa316e38773"
     ],
     "is_new": false,
-    "rank": 5,
+    "rank": 4,
     "prev_rank": 6,
     "status": "up"
   }
