@@ -13,6 +13,8 @@
  *   - Crawl stamp always updates when the job completes (clears STALE)
  */
 
+import { tasteUrls } from "@/lib/taste-input";
+import { X_TASTE } from "@/data/x-taste";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import {
@@ -418,23 +420,11 @@ async function fetchHfPapers(): Promise<Paper[]> {
   return papers;
 }
 
+/** Taste URL list = committed src/data/x-taste.ts (same on box and cloud; never a box-only attachment). */
 function loadUrlList(): string[] {
-  const candidates = [
-    resolve(root, "../sage-handoff/attachments/fancyTWEETScuration0209.txt"),
-    resolve(root, "../../attachments/fancyTWEETScuration0209.txt"),
-    resolve("/workspace/attachments/fancyTWEETScuration0209.txt"),
-  ];
-  for (const p of candidates) {
-    if (existsSync(p)) {
-      console.log(`URL list: ${p}`);
-      return readFileSync(p, "utf8")
-        .split(/\r?\n/)
-        .map((l) => l.trim())
-        .filter(Boolean);
-    }
-  }
-  console.log("URL list: not found — shelf kept as-is / empty score");
-  return [];
+  const urls = tasteUrls();
+  console.log(`URL list: src/data/x-taste.ts (${urls.length} taste urls, captured ${X_TASTE.captured_at})`);
+  return urls;
 }
 
 async function main() {
