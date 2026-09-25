@@ -3,7 +3,7 @@ import type { WireRow } from "@/lib/wire";
 
 export const WIRE_CRAWL_AT = "2026-09-25T11:16:08Z";
 export const WIRE_PREV_CRAWL_AT: string | null = "2026-09-24T23:15:44Z";
-export const WIRE_NEW = 2;
+export const WIRE_NEW = 1;
 export const WIRE_MOVED = 2;
 
 export const WIRE_ROWS: WireRow[] = [
@@ -31,22 +31,6 @@ export const WIRE_ROWS: WireRow[] = [
     "status": "new"
   },
   {
-    "id": "cl:gnews:9723c65102977408",
-    "title": "BNP Paribas inks new Google Cloud deal to advance agentic AI deployment",
-    "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNeGZGdVliNUJvUXJxRDIxVERodkVaYVowVFhYS1VvSFFhbTNaZWVSTGN4RHNfVnFydVlLUFBYSW5idTF2SEU4cDJVb1pNQWpkTnptNnR0Wm03T2VmdXdNai0zcHlYU2t6SVI5eE5iMWpFaWJDZ3puZ1puVHY5eFdCbnlPWkRjZnljQV9VaHN0bzFIV2JuUEhCNDFxa2oxTjdLZ3YzWi1KY2ptRVdZRS1aTktjb1E?oc=5",
-    "at": "2026-09-25T10:31:52Z",
-    "sources": 2,
-    "score": null,
-    "member_ids": [
-      "gnews:9723c65102977408",
-      "gnews:6d75fd9992adfc72"
-    ],
-    "is_new": true,
-    "rank": 2,
-    "prev_rank": null,
-    "status": "new"
-  },
-  {
     "id": "cl:rss:deepmind:68ead6b6af2b7144",
     "title": "Advancing Private AI Compute with secure, server-side memory",
     "url": "https://deepmind.google/blog/advancing-private-ai-compute-with-secure-server-side-memory/",
@@ -58,7 +42,7 @@ export const WIRE_ROWS: WireRow[] = [
       "rss:deepmind:68ead6b6af2b7144"
     ],
     "is_new": false,
-    "rank": 3,
+    "rank": 2,
     "prev_rank": 5,
     "status": "up"
   },
@@ -74,7 +58,7 @@ export const WIRE_ROWS: WireRow[] = [
       "rss:deepmind:81481aa316e38773"
     ],
     "is_new": false,
-    "rank": 4,
+    "rank": 3,
     "prev_rank": 6,
     "status": "up"
   }

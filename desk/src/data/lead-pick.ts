@@ -3,19 +3,20 @@ import type { LeadEntry } from "@/lib/lead-pick";
 
 export const LEAD_TODAY: LeadEntry | null = {
   "date": "2026-09-25",
-  "at": "2026-09-24T22:14:29.383Z",
-  "crawl_at": "2026-09-24T22:13:06Z",
+  "at": "2026-09-25T12:47:39.310Z",
+  "crawl_at": "2026-09-25T11:16:08Z",
   "forced": true,
+  "supersedes": "cl:hn:49829670",
   "excluded": [
     {
-      "cluster_id": "cl:hn:49820134",
-      "headline": "Claude discovers a novel enzyme system with CRISPR-like repeats",
+      "cluster_id": "cl:hn:49825580",
+      "headline": "OpenAI agent hacked Australian government website, PM says",
       "reason": "age>=24h"
     },
     {
-      "cluster_id": "cl:hn:49829312",
-      "headline": "Scoop: Trump allies open new front against Anthropic CEO over AI \"doomerism\"",
-      "reason": "politics:trump"
+      "cluster_id": "cl:gnews:f4f57724bbc69090",
+      "headline": "Jefferies says Meta's AI agent is not a threat to Life Time (LTH:NYSE)",
+      "reason": "noise:investing"
     },
     {
       "cluster_id": "cl:rss:deepmind:68ead6b6af2b7144",
@@ -26,19 +27,15 @@ export const LEAD_TODAY: LeadEntry | null = {
       "cluster_id": "cl:rss:deepmind:81481aa316e38773",
       "headline": "Gemini 3.8 text-to-speech says hello",
       "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:rss:huggingface:689d78c6e007ab8e",
-      "headline": "Transformers now runs llama.cpp quants",
-      "reason": "age>=24h"
     }
   ],
-  "cluster_id": "cl:hn:49829670",
-  "headline": "Anthropic says it's bio lab has found something big",
-  "url": "https://techcrunch.com/2026/09/23/anthropic-says-its-biology-lab-has-already-found-something-big/",
+  "cluster_id": "cl:gnews:9723c65102977408",
+  "headline": "BNP Paribas inks new Google Cloud deal to advance agentic AI deployment",
+  "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNeGZGdVliNUJvUXJxRDIxVERodkVaYVowVFhYS1VvSFFhbTNaZWVSTGN4RHNfVnFydVlLUFBYSW5idTF2SEU4cDJVb1pNQWpkTnptNnR0Wm03T2VmdXdNai0zcHlYU2t6SVI5eE5iMWpFaWJDZ3puZ1puVHY5eFdCbnlPWkRjZnljQV9VaHN0bzFIV2JuUEhCNDFxa2oxTjdLZ3YzWi1KY2ptRVdZRS1aTktjb1E?oc=5",
   "sources": 2,
-  "sig": 8,
-  "reason": "picked"
+  "sig": null,
+  "reason": "picked",
+  "first_at": "2026-09-25T00:01:00.000Z"
 };
 
 export const LEAD_YESTERDAY: LeadEntry | null = {
@@ -57,4 +54,4 @@ export const LEAD_YESTERDAY: LeadEntry | null = {
 export const LEAD_HELD = false;
 
 /** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is ≥24h old. */
-export const LEAD_FIRST_AT: string | null = "2026-09-24T12:25:59.000Z";
+export const LEAD_FIRST_AT: string | null = "2026-09-25T00:01:00.000Z";
