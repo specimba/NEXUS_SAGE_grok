@@ -35,7 +35,61 @@ export const LEAD_TODAY: LeadEntry | null = {
   "sources": 0,
   "sig": null,
   "reason": "held",
-  "note": "no qualifying story"
+  "note": "no qualifying story",
+  "attempts": [
+    {
+      "at": "2026-09-25T13:41:25.587Z",
+      "crawl_at": "2026-09-25T11:16:08Z",
+      "excluded": [
+        {
+          "cluster_id": "cl:hn:49825580",
+          "headline": "OpenAI agent hacked Australian government website, PM says",
+          "reason": "age>=24h"
+        },
+        {
+          "cluster_id": "cl:gnews:9723c65102977408",
+          "headline": "BNP Paribas inks new Google Cloud deal to advance agentic AI deployment",
+          "reason": "noise:customer-deal"
+        },
+        {
+          "cluster_id": "cl:rss:deepmind:68ead6b6af2b7144",
+          "headline": "Advancing Private AI Compute with secure, server-side memory",
+          "reason": "age>=24h"
+        },
+        {
+          "cluster_id": "cl:rss:deepmind:81481aa316e38773",
+          "headline": "Gemini 3.8 text-to-speech says hello",
+          "reason": "age>=24h"
+        }
+      ]
+    },
+    {
+      "at": "2026-09-25T15:22:58.775Z",
+      "crawl_at": "2026-09-25T15:22:45Z",
+      "excluded": [
+        {
+          "cluster_id": "cl:hn:49825580",
+          "headline": "OpenAI agent hacked Australian government website, PM says",
+          "reason": "age>=24h"
+        },
+        {
+          "cluster_id": "cl:gnews:9723c65102977408",
+          "headline": "BNP Paribas inks new Google Cloud deal to advance agentic AI deployment",
+          "reason": "noise:customer-deal"
+        },
+        {
+          "cluster_id": "cl:rss:deepmind:68ead6b6af2b7144",
+          "headline": "Advancing Private AI Compute with secure, server-side memory",
+          "reason": "age>=24h"
+        },
+        {
+          "cluster_id": "cl:rss:deepmind:81481aa316e38773",
+          "headline": "Gemini 3.8 text-to-speech says hello",
+          "reason": "age>=24h"
+        }
+      ]
+    }
+  ]
 };
 
 export const LEAD_YESTERDAY: LeadEntry | null = {
