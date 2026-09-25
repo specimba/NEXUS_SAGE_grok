@@ -96,9 +96,11 @@ const H = 3_600_000;
 export function windowStart(ms: number): number {
   return Math.floor((ms + H) / (4 * H)) * 4 * H - H;
 }
-/** Istanbul hour label of a window start, "02" … "22". */
+let HOUR_FMT: Intl.DateTimeFormat | undefined;
+/** Istanbul hour label of a window start, "02" … "22" (Intl, explicit Europe/Istanbul — host TZ never used). */
 export function windowLabel(start: number): string {
-  return String(new Date(start + 3 * H).getUTCHours()).padStart(2, "0");
+  HOUR_FMT ??= new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Istanbul", hour: "2-digit", hourCycle: "h23" });
+  return HOUR_FMT.format(start).padStart(2, "0");
 }
 
 export type HeatWindow = { start: number; label: string; crawl_at: string | null; counts: HeatCounts | null; labs?: LabCounts | null };

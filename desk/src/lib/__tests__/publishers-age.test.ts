@@ -96,8 +96,8 @@ describe("story age = earliest member item", () => {
   test("Pulse AGE, drawer kicker and Wire age use firstAtIso; status bar shows the lead headline, id only in title", () => {
     const tsx = readFileSync(resolve(import.meta.dir, "../../components/sage/desk.tsx"), "utf8");
     expect(tsx).toContain("firstAtIso(clusterById.get(r.id)!)");
-    expect(tsx).toContain("age: compactAge(firstAtIso(cluster), now)");
-    expect(tsx).toContain("compactAge(firstAtIso(r), now)");
+    expect(tsx).toContain("compactAge(firstAtIso(cluster), now)");
+    expect(tsx).toContain("<AgeCell iso={firstAtIso(r)} now={now} />"); // Wire: absolute until mount, then relative
     expect(tsx).not.toContain("lead {LEAD_TODAY?.cluster_id");
     expect(tsx.match(/className="desk-lead-headline" title=\{`lead \$\{LEAD_TODAY\?\.cluster_id/g)?.length).toBe(2);
   });

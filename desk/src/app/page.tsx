@@ -1,8 +1,7 @@
 import { Desk } from "@/components/sage/desk";
-import { MissingCurrentError, requireCurrent } from "@/lib/require-current";
-import { readBuildId, SERVER_STARTED_AT } from "@/lib/server-boot";
+import { BUILD_META } from "@/lib/build-meta";
 
-export const dynamic = "force-dynamic";
+// Static export (B1): CURRENT lock + build id are baked in at build (src/data/build-stamp.ts); no request-time fs.
 
 function HardGate({ path, message }: { path: string; message: string }) {
   return (
@@ -14,7 +13,7 @@ function HardGate({ path, message }: { path: string; message: string }) {
         <p className="mt-3 text-sm text-muted">{message}</p>
         <p className="mt-4 font-mono text-kicker text-subtle">{path}</p>
         <p className="mt-4 text-sm text-muted">
-          Restore <code className="text-amber">artifacts/sage/CURRENT.json</code> and reload. No soft-fallback.
+          Restore <code className="text-amber">artifacts/sage/CURRENT.json</code> and rebuild. No soft-fallback.
         </p>
       </div>
     </main>
@@ -22,22 +21,17 @@ function HardGate({ path, message }: { path: string; message: string }) {
 }
 
 export default function Home() {
-  try {
-    const lock = requireCurrent();
-    const buildId = readBuildId();
-    return (
-      <>
-        {/* cycle lock stamp for gate verification */}
-        <span className="sr-only" data-sage-cycle={lock.id} data-sage-compiled={lock.compiled_at ?? ""}>
-          cycle {lock.id}
-        </span>
-        <Desk buildId={buildId} serverStartedAt={SERVER_STARTED_AT} />
-      </>
-    );
-  } catch (err) {
-    if (err instanceof MissingCurrentError) {
-      return <HardGate path={err.path} message={err.message} />;
-    }
-    throw err;
+  // prebuild + next.config.ts already refuse a bad lock; this only guards a hand-edited stamp.
+  if (!BUILD_META.cycleId) {
+    return <HardGate path="desk/artifacts/sage/CURRENT.json" message="SAGE HARD GATE: no cycle lock baked into this build" />;
   }
+  return (
+    <>
+      {/* cycle lock stamp for gate verification */}
+      <span className="sr-only" data-sage-cycle={BUILD_META.cycleId} data-sage-compiled={BUILD_META.compiledAt}>
+        cycle {BUILD_META.cycleId}
+      </span>
+      <Desk buildId={BUILD_META.buildId} builtAt={BUILD_META.builtAt} pauses={BUILD_META.pauses} />
+    </>
+  );
 }

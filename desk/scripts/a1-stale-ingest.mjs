@@ -136,7 +136,11 @@ function curlLiveCrawl() {
   }
   const html = curl.stdout;
   const plain = html.replace(/<!--[\s\S]*?-->/g, "");
-  const crawlChip = plain.match(/\bcrawl\s+(\d{4}-\d{2}-\d{2}T[\d:.]+Z)\b/i);
+  // B1 static export: chip text is Istanbul time ("crawl 2026-09-25 14:16 UTC+3"); the ISO crawl stamp
+  // rides on data-crawl-at. Legacy raw-ISO chip text kept as fallback.
+  const crawlChip =
+    html.match(/\bdata-crawl-at\s*=\s*["'](\d{4}-\d{2}-\d{2}T[\d:.]+Z)["']/i) ??
+    plain.match(/\bcrawl\s+(\d{4}-\d{2}-\d{2}T[\d:.]+Z)\b/i);
   const buildAttr = html.match(/\bdata-sage-build\s*=\s*["']([^"']*)["']/i);
   return {
     ok: true,
@@ -147,7 +151,7 @@ function curlLiveCrawl() {
 }
 
 function killPort3000() {
-  log("live lag → kill next on :3000");
+  log("live lag → kill :3000 server (serve-out static, or legacy next start)");
   spawnSync("fuser", ["-k", "3000/tcp"], { encoding: "utf8" });
   const ss = spawnSync("ss", ["-tlnp"], { encoding: "utf8" });
   const out = ss.stdout || "";

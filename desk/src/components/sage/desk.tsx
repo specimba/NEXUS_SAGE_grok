@@ -15,6 +15,9 @@ import { DIGEST_CADENCE } from "@/data/digest-cadence";
 import { RANK_CURRENT, RANK_MOVED, RANK_PREV } from "@/data/corroboration-rank";
 import { LEAD_FIRST_AT, LEAD_HELD, LEAD_TODAY, LEAD_YESTERDAY } from "@/data/lead-pick";
 import { groupFirstAt, leadAgeHours, leadIsStale } from "@/lib/lead-pick";
+import { IST_LABEL, istDateTime, istHHMM, istHHMMSS } from "@/lib/ist-time";
+import { useNow } from "@/lib/use-now";
+import { isPausedAt, type PauseMap } from "@/lib/source-pause";
 import { WIRE_CRAWL_AT, WIRE_PREV_CRAWL_AT, WIRE_ROWS } from "@/data/wire";
 import { istanbulHHMM, wireHeader, wireMark } from "@/lib/wire";
 import { PAPERS } from "@/data/papers";
@@ -75,8 +78,26 @@ function download(name: string, body: string, type: string) {
 
 type DeskProps = {
   buildId?: string;
-  serverStartedAt?: string;
+  /** Build-time stamp (static page: there is no per-request server boot). */
+  builtAt?: string;
+  /** Active source pauses merged at prebuild (artifacts/sage/source-state.json). */
+  pauses?: PauseMap;
 };
+
+/** Beat B1 · pauses reach the Pulse health strip without prop-drilling through lanes. */
+export const PausesCtx = createContext<PauseMap>({});
+
+/**
+ * AGE cell: server/static HTML shows the absolute Istanbul time (e.g. "14:11"); after mount it swaps
+ * to the relative value ("2h"). Fixed 5ch column, tabular numerals — no layout shift, no hydration mismatch.
+ */
+function AgeCell({ iso, now, className }: { iso: string; now: number | null; className?: string }) {
+  return (
+    <span className={cn("pulse-v5-age tabular-nums", className)} data-age-at={iso} data-age-rel={now == null ? undefined : "1"} title={`${istDateTime(iso)} ${IST_LABEL}`}>
+      {now == null ? istHHMM(iso) : compactAge(iso, now)}
+    </span>
+  );
+}
 
 /** Every member item's own time (HN created_at, GNews / lab / security published). */
 const MEMBER_AT: Record<string, string> = (() => {
@@ -163,11 +184,11 @@ function SinceDivider({ base, n }: { base: string; n: number }) {
   );
 }
 
-export function Desk({ buildId = "dev", serverStartedAt = "" }: DeskProps) {
+export function Desk({ buildId = "dev", builtAt = "", pauses = {} }: DeskProps) {
   const [lane, setLane] = useState<Lane>("brief");
   // Tabs light only after the hash is read — SSR default "brief" must never paint as filled on another lane.
   const [laneReady, setLaneReady] = useState(false);
-  const buildShort = buildId.length > 12 ? buildId.slice(0, 12) : buildId;
+  const buildShort = buildId.length > 20 ? buildId.slice(0, 20) : buildId;
   useEffect(() => {
     setLane(laneFromHash());
     setLaneReady(true);
@@ -307,9 +328,12 @@ export function Desk({ buildId = "dev", serverStartedAt = "" }: DeskProps) {
     return () => window.removeEventListener("keydown", onKey);
   }, [go, select, clearFilter]);
 
-  const age = crawlAgeHours(CRAWL_AT);
-  const fresh = crawlFreshness(CRAWL_AT);
+  // Relative crawl age only after mount (static HTML shows the absolute Istanbul crawl time).
+  const now = useNow();
+  const age = now == null ? null : crawlAgeHours(CRAWL_AT, now);
+  const fresh = now == null ? null : crawlFreshness(CRAWL_AT, now);
   return (
+    <PausesCtx.Provider value={pauses}>
     <div className="desk-shell relative">
       <div className="scanline pointer-events-none absolute inset-0 z-50" aria-hidden />
       <header className="desk-topbar px-4 py-2 md:px-6">
@@ -327,21 +351,21 @@ export function Desk({ buildId = "dev", serverStartedAt = "" }: DeskProps) {
             <div className="flex flex-wrap items-center gap-2">
               <span className="desk-chip desk-chip-quiet">STABLE</span>
               <span
-                className={cn("desk-chip tabular-nums", age.stale ? "desk-chip-warn sage-stale-chip" : "desk-chip-live")}
-                data-crawl-state={fresh.label}
+                className={cn("desk-chip tabular-nums", age?.stale ? "desk-chip-warn sage-stale-chip" : "desk-chip-live")}
+                data-crawl-state={fresh?.label}
                 role="status"
-                title={`crawl age ${fresh.hours.toFixed(1)}h · STALE after ${STALE_GUARD_HOURS}h (4h routine)`}
+                title={`crawl ${istDateTime(CRAWL_AT)} ${IST_LABEL}${fresh ? ` · age ${fresh.hours.toFixed(1)}h` : ""} · STALE after ${STALE_GUARD_HOURS}h (4h routine)`}
               >
-                {fresh.label} {fresh.hours.toFixed(1)}H
+                {fresh ? `${fresh.label} ${fresh.hours.toFixed(1)}H` : `CRAWL ${istHHMM(CRAWL_AT)}`}
               </span>
-              <span className="desk-chip desk-chip-live tabular-nums" title="crawl snap">
-                crawl {CRAWL_AT}
+              <span className="desk-chip desk-chip-live tabular-nums" title="crawl snap" data-crawl-at={CRAWL_AT}>
+                crawl {istDateTime(CRAWL_AT)} {IST_LABEL}
               </span>
-              <span className="desk-chip desk-chip-quiet tabular-nums" title="cycle compile">cyc {CYCLE.compiledAt}</span>
+              <span className="desk-chip desk-chip-quiet tabular-nums" title="cycle compile">cyc {istDateTime(CYCLE.compiledAt)}</span>
             </div>
           </div>
           <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
-            ingest · snap {CRAWL_AT} · pack {PACK_AT} · lead{" "}
+            ingest · snap {istDateTime(CRAWL_AT)} · pack {istDateTime(PACK_AT)} {IST_LABEL} · lead{" "}
             <span className="desk-lead-headline" title={`lead ${LEAD_TODAY?.cluster_id ?? CYCLE.pins[0]?.id}`}>
               {LEAD_TODAY?.headline ?? CYCLE.pins[0]?.title}
             </span>
@@ -350,10 +374,10 @@ export function Desk({ buildId = "dev", serverStartedAt = "" }: DeskProps) {
             <span className="desk-ticker-label">Δ LIVE</span>
             <div className="desk-ticker-track">
               <span className="desk-ticker-item">
-                <span className="tabular-nums">{CRAWL_AT.slice(11, 16)}Z</span> crawl {age.stale ? "STALE" : "FRESH"}
+                <span className="tabular-nums">{istHHMM(CRAWL_AT)} {IST_LABEL}</span> crawl{age ? (age.stale ? " STALE" : " FRESH") : ""}
               </span>
               <span className="desk-ticker-item">
-                <span className="tabular-nums">{DIGEST_CADENCE.last_at.slice(11, 16)}Z</span> digest HOLD→{DIGEST_CADENCE.next_at.slice(11, 16)}Z
+                <span className="tabular-nums">{istHHMM(DIGEST_CADENCE.last_at)} {IST_LABEL}</span> digest HOLD→{istHHMM(DIGEST_CADENCE.next_at)}
               </span>
               <span className="desk-ticker-item">
                 lead{" "}
@@ -477,15 +501,16 @@ export function Desk({ buildId = "dev", serverStartedAt = "" }: DeskProps) {
       <footer
         className="desk-footer relative z-10 mx-auto max-w-7xl px-4 pb-3 pt-1 md:px-6"
         data-sage-build={buildId}
-        data-sage-boot={serverStartedAt || undefined}
+        data-sage-built={builtAt || undefined}
         aria-label="Build health"
       >
         <p className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
-          {`build ${buildShort}${serverStartedAt ? ` · boot ${serverStartedAt}` : ""}`}
+          {`build ${buildShort}${builtAt ? ` · built ${istDateTime(builtAt)} ${IST_LABEL}` : ""}`}
           <span className="desk-keys-hint"> · ? keys</span>
         </p>
       </footer>
     </div>
+    </PausesCtx.Provider>
   );
 }
 
@@ -520,12 +545,7 @@ function SrcChip({ id }: { id: string }) {
 
 /** Beat 7 — Brief Wire strip: top 3–5 live clusters with ≥2 independent sources, NEW/▲/▼ vs previous crawl. */
 function BriefWire() {
-  const [now, setNow] = useState(() => Date.parse(WIRE_CRAWL_AT));
-  useEffect(() => {
-    setNow(Date.now());
-    const t = window.setInterval(() => setNow(Date.now()), 60_000);
-    return () => window.clearInterval(t);
-  }, []);
+  const now = useNow();
   const { q, report, openStory, since } = useDeskKeys();
   const part = useMemo(
     () => partitionSince(WIRE_ROWS.filter((r) => matchesFilter(q, [r.title])), (r) => FIRST_SEEN.get(r.id), since),
@@ -570,7 +590,7 @@ function BriefWire() {
               <span className="brief-wire-mark tabular-nums">
                 {r.status === "new" ? <span className="pulse-v5-new">NEW</span> : mark}
               </span>
-              <span className="pulse-v5-age tabular-nums">{compactAge(firstAtIso(r), now)}</span>
+              <AgeCell iso={firstAtIso(r)} now={now} />
               <a className="brief-wire-headline focus-phosphor" href={r.url} target="_blank" rel="noreferrer">
                 {r.title}
               </a>
@@ -587,17 +607,13 @@ function BriefWire() {
 
 function Brief() {
   // Lead staleness: crawl stamp on first render (SSR/static-stable), then the wall clock.
-  const [leadNow, setLeadNow] = useState(() => Date.parse(CRAWL_AT));
-  useEffect(() => {
-    setLeadNow(Date.now());
-    const t = window.setInterval(() => setLeadNow(Date.now()), 60_000);
-    return () => window.clearInterval(t);
-  }, []);
-  const leadAge = leadAgeHours(LEAD_FIRST_AT, leadNow);
-  const leadStale = leadIsStale(LEAD_FIRST_AT, leadNow);
+  // 24h lead-age HELD check runs in the browser after mount (static HTML ships only LEAD_FIRST_AT).
+  const leadNow = useNow();
+  const leadAge = leadNow == null ? null : leadAgeHours(LEAD_FIRST_AT, leadNow);
+  const leadStale = leadNow != null && leadIsStale(LEAD_FIRST_AT, leadNow);
   const lead = leadStale ? null : LEAD_TODAY;
   const staleLead = leadStale ? LEAD_TODAY : null;
-  const age = crawlAgeHours(CRAWL_AT);
+  const age = leadNow == null ? null : crawlAgeHours(CRAWL_AT, leadNow);
   const waveMax = 956;
   const waveVals: Record<number, number> = { 1: 80, 2: 700, 3: 956 };
   const pip = [
@@ -630,13 +646,13 @@ function Brief() {
           <p
             className={cn(
               "font-mono text-kicker uppercase tracking-kicker tabular-nums",
-              age.stale ? "sage-stale" : "sage-signal",
+              age?.stale ? "sage-stale" : "sage-signal",
             )}
           >
-            {age.stale ? `STALE ${age.hours.toFixed(1)}h` : `FRESH ${age.hours.toFixed(1)}h`}
+            {age ? (age.stale ? `STALE ${age.hours.toFixed(1)}h` : `FRESH ${age.hours.toFixed(1)}h`) : `crawl ${istHHMM(CRAWL_AT)}`}
           </p>
           <p className="mt-1 font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
-            {CRAWL_AT.slice(11, 19)}Z
+            {istHHMMSS(CRAWL_AT)} {IST_LABEL}
           </p>
         </div>
       </aside>
@@ -873,7 +889,7 @@ function StoryDrawer({
   row: PulseV5Row;
   cluster: ClusterInput;
   items: Record<string, MemberItem>;
-  now: number;
+  now: number | null;
   onClose: () => void;
   onNext: () => void;
   onPrev: () => void;
@@ -931,7 +947,7 @@ function StoryDrawer({
             </button>
           </div>
           <p className="story-drawer-kicker tabular-nums">
-            {drawerKicker({ sources: row.sourceCount, firstSeen, age: compactAge(firstAtIso(cluster), now), mark })}
+            {drawerKicker({ sources: row.sourceCount, firstSeen, age: now == null ? istHHMM(firstAtIso(cluster)) : compactAge(firstAtIso(cluster), now), mark })}
           </p>
         </header>
         <ol className="story-drawer-list" aria-label="Coverage by source">
@@ -945,7 +961,7 @@ function StoryDrawer({
                       <span className={cn("pulse-v5-badge", c.self ? "pulse-v5-self" : c.lead ? "pulse-v5-src-lead" : "pulse-v5-also")}>
                         {c.badge}
                       </span>{" "}
-                      {c.publisher} · {c.at ? `${istanbulHHMM(c.at)} · ${compactAge(c.at, now)}` : "time —"}
+                      {c.publisher} · {c.at ? `${istanbulHHMM(c.at)}${now == null ? "" : ` · ${compactAge(c.at, now)}`}` : "time —"}
                     </span>
                     <span className="story-drawer-headline">{c.title}</span>
                     {c.self ? <span className="story-drawer-selfcap">company&apos;s own post · counts 0</span> : null}
@@ -1046,14 +1062,11 @@ function HeatStrip() {
   );
 }
 
-function Pulse() {
+export function Pulse() {
   // First render = crawl stamp (SSR-stable); then wall clock.
-  const [now, setNow] = useState(() => Date.parse(PULSE_CLUSTERS_AT));
-  useEffect(() => {
-    setNow(Date.now());
-    const t = window.setInterval(() => setNow(Date.now()), 60_000);
-    return () => window.clearInterval(t);
-  }, []);
+  // Relative times after mount only (static HTML: absolute Istanbul times).
+  const now = useNow();
+  const pauses = useContext(PausesCtx);
   const members = useMembers();
   const { rows, baseline, newCount } = useMemo(
     () => buildRows([...PULSE_CLUSTERS, ...X_ROWS], members),
@@ -1087,7 +1100,7 @@ function Pulse() {
   useEffect(() => report(filtered.length, rows.length), [filtered.length, rows.length, report]);
   // Beat 10: every since-row stays visible above the divider, even past the top-N cap.
   const visible = showAll || q ? filtered : filtered.slice(0, Math.max(PULSE_V5_MAX_ROWS, part.since.length + PULSE_SINCE_TAIL));
-  const fresh = crawlFreshness(CRAWL_AT, now);
+  const fresh = now == null ? null : crawlFreshness(CRAWL_AT, now);
   const health = [...SOURCE_HEALTH].sort(
     (a, b) => HEALTH_ORDER.indexOf(a.id) - HEALTH_ORDER.indexOf(b.id),
   );
@@ -1109,6 +1122,24 @@ function Pulse() {
       {/* 1 · Health strip — ledger truth, one cell per source */}
       <div className="pulse-v5-health" role="list" aria-label="Source health ledger">
         {health.map((s) => {
+          // Build-time merge from source-state.json first; a crawl-written paused_until on the row also counts.
+          const rowUntil = (s as { paused_until?: string | null }).paused_until;
+          const pause = pauses[s.id] ?? (rowUntil ? { until: rowUntil, reason: s.fail_reason } : undefined);
+          if (isPausedAt(pause, now)) {
+            // PAUSED (crawl skips the source until then) — dim, not the struck-through fail style.
+            return (
+              <span
+                key={s.id}
+                role="listitem"
+                className="pulse-v5-health-cell"
+                data-state="paused"
+                title={`${s.id} · paused until ${istDateTime(pause!.until)} ${IST_LABEL}${pause!.reason ? ` · ${pause!.reason}` : ""}`}
+              >
+                <span className="pulse-v5-health-label">{HEALTH_LABEL[s.id] ?? s.id}</span>
+                <span className="tabular-nums">PAUSED · until {istHHMM(pause!.until)}</span>
+              </span>
+            );
+          }
           const state = healthCellState(s.state);
           const ticks = healthTicks(s.streak_ok);
           return (
@@ -1117,7 +1148,7 @@ function Pulse() {
               role="listitem"
               className="pulse-v5-health-cell"
               data-state={state}
-              title={`${s.id} · ${s.state}${s.fail_reason ? ` · ${s.fail_reason}` : ""} · ok ${s.ok_7d}/${s.runs_7d} 7d · ledger ${SOURCE_HEALTH_AT}`}
+              title={`${s.id} · ${s.state}${s.fail_reason ? ` · ${s.fail_reason}` : ""} · ok ${s.ok_7d}/${s.runs_7d} 7d · ledger ${istDateTime(SOURCE_HEALTH_AT)} ${IST_LABEL}`}
             >
               <span className="pulse-v5-health-label">{HEALTH_LABEL[s.id] ?? s.id}</span>
               <span className="pulse-v5-ticks" aria-hidden>
@@ -1138,7 +1169,11 @@ function Pulse() {
           {since && part.since.length === 0 ? (
             <span className="since-nothing tabular-nums">nothing since {istanbulHHMM(since)}</span>
           ) : null}
-          {fresh.stale ? (
+          {fresh == null ? (
+            <span className="sage-signal tabular-nums" role="status" title={`crawl ${istDateTime(CRAWL_AT)} ${IST_LABEL}`}>
+              CRAWL {istHHMM(CRAWL_AT)}
+            </span>
+          ) : fresh.stale ? (
             <span className="sage-stale pulse-v5-stale-plate tabular-nums" role="status" title={`STALE after ${STALE_GUARD_HOURS}h`}>
               STALE {fresh.hours.toFixed(1)}h
             </span>
@@ -1204,9 +1239,7 @@ function Pulse() {
                   >
                     <span className="pulse-v5-idx tabular-nums">{String(i + 1).padStart(2, "0")}</span>
                     <span>{r.showNew ? <span className="pulse-v5-new">NEW</span> : null}</span>
-                    <span className="pulse-v5-age tabular-nums">
-                      {compactAge(clusterById.get(r.id) ? firstAtIso(clusterById.get(r.id)!) : r.at, now)}
-                    </span>
+                    <AgeCell iso={clusterById.get(r.id) ? firstAtIso(clusterById.get(r.id)!) : r.at} now={now} />
                     <span className="pulse-v5-headline">{stripPublisher(r.title, lead?.publisher ?? "")}</span>
                     <span className="pulse-v5-src">
                       <span className={cn("pulse-v5-badge", r.multiSource ? "pulse-v5-src-lead" : "pulse-v5-src-solo")}>
@@ -1309,7 +1342,7 @@ function Pulse() {
       {/* 3 · Footer ledger line — eligibility copy lives here once */}
       <p className="pulse-v5-foot tabular-nums">
         <span className="sage-deny">DENY</span> · {SOFT_FAIL_METERS.deny.join(" · ")} · briefEligible=false · Pulse never
-        Brief · never sole lead · clusters {PULSE_CLUSTERS.length} · multi-source {rows.filter((r) => r.multiSource).length} · snap {PULSE_CLUSTERS_AT}
+        Brief · never sole lead · clusters {PULSE_CLUSTERS.length} · multi-source {rows.filter((r) => r.multiSource).length} · snap {istDateTime(PULSE_CLUSTERS_AT)} {IST_LABEL}
       </p>
     </div>
   );
@@ -1327,16 +1360,22 @@ function Digest() {
       /* ignore */
     }
   }, []);
+  // Relative values after mount only; before mount (static HTML) evaluate at the last tick — deterministic.
+  const now = useNow();
+  const cadenceNow = now ?? Date.parse(DIGEST_CADENCE.last_at);
   const diskCadence = useMemo(
     () =>
-      isDigestDue({
-        last_at: DIGEST_CADENCE.last_at,
-        next_at: DIGEST_CADENCE.next_at,
-        pack_id: DIGEST_CADENCE.pack_id,
-      }),
-    [],
+      isDigestDue(
+        {
+          last_at: DIGEST_CADENCE.last_at,
+          next_at: DIGEST_CADENCE.next_at,
+          pack_id: DIGEST_CADENCE.pack_id,
+        },
+        cadenceNow,
+      ),
+    [cadenceNow],
   );
-  const cadence = useMemo(() => nextDue(last ?? DIGEST_CADENCE.last_at), [last]);
+  const cadence = useMemo(() => nextDue(last ?? DIGEST_CADENCE.last_at, cadenceNow), [last, cadenceNow]);
   const due = diskCadence.due;
   const nextAt = diskCadence.nextAt;
   const item = DIGEST_ITEMS.find((i) => i.id === openId) ?? DIGEST_ITEMS[0];
@@ -1347,16 +1386,15 @@ function Digest() {
   const plan = useMemo(() => renderPlan(), []);
   const tickAgeH = useMemo(() => {
     const t = Date.parse(DIGEST_CADENCE.last_at);
-    if (!Number.isFinite(t)) return Infinity;
-    return (Date.now() - t) / 3_600_000;
-  }, []);
+    if (now == null || !Number.isFinite(t)) return null;
+    return (now - t) / 3_600_000;
+  }, [now]);
   const windowSpan = useMemo(() => {
     const a = Date.parse(DIGEST_CADENCE.last_at);
     const b = Date.parse(nextAt);
-    if (!Number.isFinite(a) || !Number.isFinite(b) || b <= a) return 0;
-    const now = Date.now();
+    if (now == null || !Number.isFinite(a) || !Number.isFinite(b) || b <= a) return 0;
     return Math.max(0, Math.min(100, Math.round(((now - a) / (b - a)) * 100)));
-  }, [nextAt]);
+  }, [nextAt, now]);
 
   const runPreview = () => {
     const at = new Date().toISOString();
@@ -1392,7 +1430,7 @@ function Digest() {
           <div className="sage-kpi sage-kpi-stack px-2 py-1.5">
             <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">next due</p>
             <p className="sage-metric font-display text-lg tabular-nums text-phosphor">
-              {nextAt.slice(11, 16)}Z
+              {istHHMM(nextAt)}
             </p>
           </div>
           <div className="sage-kpi sage-kpi-stack px-2 py-1.5">
@@ -1406,13 +1444,13 @@ function Digest() {
             <p
               className={cn(
                 "font-mono text-kicker uppercase tracking-kicker tabular-nums",
-                tickAgeH > 6 ? "sage-stale" : "sage-signal",
+                tickAgeH != null && tickAgeH > 6 ? "sage-stale" : "sage-signal",
               )}
             >
-              {Number.isFinite(tickAgeH) ? `${tickAgeH.toFixed(1)}h ago` : "—"}
+              {tickAgeH != null && Number.isFinite(tickAgeH) ? `${tickAgeH.toFixed(1)}h ago` : istHHMM(DIGEST_CADENCE.last_at)}
             </p>
             <p className="mt-1 font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
-              {DIGEST_CADENCE.last_at.slice(11, 19)}Z
+              {istHHMMSS(DIGEST_CADENCE.last_at)} {IST_LABEL}
             </p>
           </div>
         </aside>
@@ -1512,7 +1550,7 @@ function Digest() {
           <div className="sage-panel-header">&gt; Next window · pack span</div>
           <div className="p-2.5">
             <p className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
-              {DIGEST_CADENCE.last_at.slice(11, 16)}Z → {nextAt.slice(11, 16)}Z · {DIGEST_CADENCE.pack_id}
+              {istHHMM(DIGEST_CADENCE.last_at)} → {istHHMM(nextAt)} {IST_LABEL} · {DIGEST_CADENCE.pack_id}
             </p>
             <div
               className="mt-2 h-1.5 w-full bg-bg-deep"
@@ -1538,7 +1576,7 @@ function Digest() {
           <div className="sage-panel-header">&gt; Moved since last crawl · corroboration rank below lead</div>
           <div className="px-2.5 py-2">
             <p className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
-              crawl {RANK_PREV?.crawl_at ?? "—"} → {RANK_CURRENT.crawl_at} · lead {RANK_CURRENT.lead_id} pinned · ×
+              crawl {RANK_PREV?.crawl_at ? istDateTime(RANK_PREV.crawl_at) : "—"} → {istDateTime(RANK_CURRENT.crawl_at)} {IST_LABEL} · lead {RANK_CURRENT.lead_id} pinned · ×
               {"≤"}1.45 · curated items only
             </p>
             <ol className="sage-moved-table mt-1.5">

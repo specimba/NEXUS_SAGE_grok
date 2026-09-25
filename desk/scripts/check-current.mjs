@@ -1,32 +1,17 @@
 #!/usr/bin/env bun
 /**
- * Hard gate: refuse boot/build without artifacts/sage/CURRENT.json.
- * No soft-fallback. Exit 1 if missing or unreadable.
+ * Hard gate: refuse dev/build/start without a valid, fresh, consistent artifacts/sage/CURRENT.json.
+ * Works on a clean CI checkout (repo contents only). No soft-fallback. Exit 1 on any failure.
+ * Rules live in scripts/lib/current-gate.mjs (also enforced by next.config.ts at build).
  */
-import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { checkCurrent } from "./lib/current-gate.mjs";
 
-const root = process.cwd();
-const path = process.env.SAGE_CURRENT_PATH
-  ? resolve(process.env.SAGE_CURRENT_PATH)
-  : resolve(root, "artifacts/sage/CURRENT.json");
-
-if (!existsSync(path)) {
-  console.error(`SAGE HARD GATE: missing CURRENT.json at ${path}`);
-  console.error("Refuse to start. Restore artifacts/sage/CURRENT.json (cycle lock).");
+const deskRoot = resolve(import.meta.dirname ?? new URL(".", import.meta.url).pathname, "..");
+const r = checkCurrent({ deskRoot });
+if (!r.ok) {
+  for (const e of r.errors) console.error(`SAGE HARD GATE: ${e}`);
+  console.error("Refuse to start. Restore/refresh artifacts/sage/CURRENT.json + generated data (bun run ingest).");
   process.exit(1);
 }
-
-try {
-  const raw = readFileSync(path, "utf8");
-  const data = JSON.parse(raw);
-  if (!data || typeof data.id !== "string" || !data.id) {
-    console.error(`SAGE HARD GATE: CURRENT.json at ${path} has no cycle id`);
-    process.exit(1);
-  }
-  console.log(`SAGE gate OK — cycle ${data.id} @ ${path}`);
-} catch (err) {
-  console.error(`SAGE HARD GATE: cannot read/parse CURRENT.json at ${path}`);
-  console.error(err);
-  process.exit(1);
-}
+console.log(`SAGE gate OK — cycle ${r.lock.id} · crawl ${r.lock.crawled_at} (${r.ageH.toFixed(1)}h) @ ${r.path}`);

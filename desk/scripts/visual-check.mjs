@@ -80,7 +80,10 @@ if (!has01 && !(hasLanePrefix && hasBriefLane)) {
 
 // Optional crawl freshness: if HTML exposes a crawl chip, LIVE must not be
 // only the frozen compile stamp without a fresher crawl time.
-const crawlChip = plain.match(/\bcrawl\s+(\d{4}-\d{2}-\d{2}T[\d:.]+Z)\b/i);
+// B1: chip text is Istanbul time now ("crawl 2026-09-25 14:16 UTC+3"); the ISO rides on data-crawl-at.
+const crawlChip =
+  html.match(/\bdata-crawl-at="(\d{4}-\d{2}-\d{2}T[\d:.]+Z)"/) ??
+  plain.match(/\bcrawl\s+(\d{4}-\d{2}-\d{2}T[\d:.]+Z)\b/i);
 const pulseLive = /\bPULSE\s+LIVE\b/i.test(plain) || /\bSTALE\s+[\d.]+H\b/i.test(plain);
 if (crawlChip) {
   const crawlAt = crawlChip[1];
@@ -89,7 +92,7 @@ if (crawlChip) {
       `crawl chip is frozen compile-only ${FROZEN_COMPILE} — want CRAWL_AT / ingest fresher than CYCLE.compiledAt`,
     );
   }
-} else if (pulseLive && plain.includes(FROZEN_COMPILE) && !/\bcrawl\s+20\d{2}-/.test(plain)) {
+} else if (pulseLive && plain.includes(FROZEN_COMPILE) && !crawlChip && !/\bcrawl\s+20\d{2}-/.test(plain)) {
   // LIVE/PULSE present but only the old compile stamp exposed as time truth
   const times = [...plain.matchAll(/\b(20\d{2}-\d{2}-\d{2}T[\d:.]+Z)\b/g)].map((m) => m[1]);
   const onlyFrozen = times.length > 0 && times.every((t) => t === FROZEN_COMPILE);
