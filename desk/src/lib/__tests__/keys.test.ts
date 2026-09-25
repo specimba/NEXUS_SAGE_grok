@@ -106,8 +106,13 @@ describe("Beat 9 keys — helpers + wiring", () => {
     expect(matchesFilter("nvidia", ["Claude", null, undefined])).toBe(false);
     expect(matchesFilter("  ", ["x"])).toBe(true);
   });
+  test("Beat 10: u jumps to the first since-row (plain key only)", () => {
+    expect(resolveKey(k("u"))).toEqual({ t: "since" });
+    expect(resolveKey(k("u", { ctrlKey: true }))).toBeNull();
+    expect(resolveKey(k("u"), { typing: true })).toBeNull();
+  });
   test("key map lists every binding", () => {
-    expect(KEY_MAP.map(([key]) => key)).toEqual(["1–6", "j / k", "Enter", "o", "Esc", "/", "?", "g g / G"]);
+    expect(KEY_MAP.map(([key]) => key)).toEqual(["1–6", "j / k", "Enter", "o", "Esc", "/", "?", "g g / G", "u"]);
   });
   test("exactly one global keydown listener, removed on unmount; drawer Esc does not double-fire", () => {
     const tsx = readFileSync(resolve(import.meta.dir, "../../components/sage/desk.tsx"), "utf8");
