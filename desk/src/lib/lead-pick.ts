@@ -2,8 +2,10 @@
  * Beat 7 scope add — daily Brief lead pick (replaces the static hf-incident Brief pin).
  * Picked once per Istanbul day by the FIRST crawl whose own start time is at/after 06:00
  * Europe/Istanbul on a date that has no pick yet (catch-up: a late-starting cron, e.g. 06:40, or a
- * missed 06 crawl followed by the 10/14 crawl still picks). A HELD date (nothing qualified) retries
- * on the next crawl that day. Never a second pick on a picked date (LEAD_PICK_FORCE=1 only lifts
+ * missed 06 crawl followed by the 10/14 crawl still picks). HELD never locks the date: while the
+ * date's entry is HELD, EVERY crawl starting at/after 06:00 retries (no LEAD_PICK_REPICK); a retry that
+ * still finds nothing updates the one HELD entry (attempts[] keeps each crawl's candidates + reasons).
+ * The date locks only once a real lead is picked. Never a second pick on a picked date (LEAD_PICK_FORCE=1 only lifts
  * the 06:00 gate); an explicit LEAD_PICK_REPICK=1 appends a superseding entry for the date. Sticky until the next day's pick. A lead whose story is
  * older than 24h renders as HELD on the Brief (leadIsStale), never as a stale lead.
  * Strongest = most independent publishers (self-repost counts 0) → higher SIG → newer.
@@ -45,7 +47,11 @@ export type LeadEntry = {
   supersedes?: string | null;
   /** Wire-eligible (≥2 SRC) groups ruled out as lead at this pick, with the reason (age>=24h, politics:…). */
   excluded?: { cluster_id: string; headline: string; reason: string }[];
+  /** HELD entries only: every pick attempt on this date (first HELD + each ≥06:00 retry), with its ruled-out candidates. Beat 11 reads these. */
+  attempts?: HeldAttempt[];
 };
+
+export type HeldAttempt = { at: string; crawl_at: string; crawl_started_at?: string; excluded: { cluster_id: string; headline: string; reason: string }[] };
 
 export type LeadHistory = { schema: 1; entries: LeadEntry[] };
 
@@ -235,7 +241,9 @@ export function yesterdayLead(h: LeadHistory): LeadEntry | null {
 
 export type PickDecision =
   | { action: "none"; why: "already-picked" | "outside-window" }
-  | { action: "picked" | "held"; entry: LeadEntry };
+  | { action: "picked"; entry: LeadEntry }
+  /** `replace` = update the date's existing HELD entry in place (retry that still found nothing). */
+  | { action: "held"; entry: LeadEntry; replace?: true };
 
 export function decidePick(
   h: LeadHistory,
@@ -245,7 +253,8 @@ export function decidePick(
   const startAt = opts.crawlStartedAt && Number.isFinite(Date.parse(opts.crawlStartedAt)) ? opts.crawlStartedAt : opts.crawlAt;
   const date = istanbulDate(startAt);
   const existing = entryFor(h, date);
-  // A picked (or seeded) date never picks twice; a HELD date retries on the next crawl that day.
+  // A picked (or seeded) date never picks twice — the date locks only on a real lead. A HELD date is NOT locked:
+  // every crawl starting at/after 06:00 that day retries the pick (no LEAD_PICK_REPICK needed).
   if (existing && existing.reason !== "held" && !opts.repick) return { action: "none", why: "already-picked" };
   const force = !!(opts.force || opts.repick);
   if (!force && !inPickWindow(startAt)) return { action: "none", why: "outside-window" };
@@ -282,7 +291,23 @@ export function decidePick(
       },
     };
   }
-  if (existing?.reason === "held" && !force) return { action: "none", why: "already-picked" }; // still nothing: keep the one HELD entry
+  const attempt: HeldAttempt = {
+    at: opts.at,
+    crawl_at: opts.crawlAt,
+    ...(opts.crawlStartedAt && startAt !== opts.crawlAt ? { crawl_started_at: startAt } : {}),
+    excluded,
+  };
+  if (existing?.reason === "held") {
+    // Still nothing: keep ONE HELD entry for the date, append this attempt (candidate + reason records kept).
+    const prior: HeldAttempt[] = existing.attempts ?? [
+      { at: existing.at, crawl_at: existing.crawl_at, ...(existing.crawl_started_at ? { crawl_started_at: existing.crawl_started_at } : {}), excluded: existing.excluded ?? [] },
+    ];
+    return {
+      action: "held",
+      replace: true,
+      entry: { ...existing, ...(excluded.length ? { excluded } : {}), attempts: [...prior, attempt] },
+    };
+  }
   // HELD carries the last pick from an EARLIER date (never a same-date entry a repick just superseded).
   const prev = [...h.entries].reverse().find((e) => e.date < date) ?? null;
   return {
@@ -297,12 +322,18 @@ export function decidePick(
       ...(prev?.first_at ? { first_at: prev.first_at } : {}),
       reason: "held",
       note: "no qualifying story",
+      attempts: [attempt],
     },
   };
 }
 
 export function applyPick(h: LeadHistory, d: PickDecision): LeadHistory {
-  return d.action === "none" ? h : { schema: 1, entries: [...h.entries, d.entry] };
+  if (d.action === "none") return h;
+  if (d.action === "held" && d.replace) {
+    const i = h.entries.map((e) => e.date === d.entry.date && e.reason === "held").lastIndexOf(true);
+    if (i >= 0) return { schema: 1, entries: h.entries.map((e, j) => (j === i ? d.entry : e)) };
+  }
+  return { schema: 1, entries: [...h.entries, d.entry] };
 }
 
 export function readLeadHistory(raw: unknown): LeadHistory {

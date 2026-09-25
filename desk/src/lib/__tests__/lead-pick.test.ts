@@ -234,7 +234,10 @@ describe("daily lead catch-up — keyed off the crawl's own start time", () => {
     let h = applyPick(seed, decidePick(seed, [], { crawlAt: PICK, at: PICK }));
     expect(currentLead(h)).toMatchObject({ reason: "held", date: "2026-09-25", first_at: "2026-09-24T01:00:00.000Z" });
     const again = decidePick(h, [], { crawlAt: "2026-09-25T07:16:00Z", at: "2026-09-25T07:16:00Z" });
-    expect(again).toEqual({ action: "none", why: "already-picked" });
+    expect(again).toMatchObject({ action: "held", replace: true });
+    h = applyPick(h, again);
+    expect(h.entries.filter((e) => e.date === "2026-09-25").length).toBe(1); // updated in place, not appended
+    expect(currentLead(h)?.attempts?.length).toBe(2);
     h = applyPick(h, decidePick(h, [story("2026-09-25T05:00:00Z")], { crawlAt: LATER, at: LATER }));
     expect(currentLead(h)).toMatchObject({ reason: "picked", date: "2026-09-25", catch_up: true });
     expect(h.entries.filter((e) => e.date === "2026-09-25").length).toBe(2);
@@ -330,5 +333,65 @@ describe("Beat 5 — Google News confirms, never leads (GNW_ONLY)", () => {
     if (d.action !== "held") throw new Error("expected held");
     expect(d.entry.cluster_id).toBe("cl:hn:y1");
     expect(d.entry.supersedes).toBe("cl:gnews:a1");
+  });
+});
+
+describe("HELD never locks the date — retries each ≥06:00 crawl, locks only on a real lead", () => {
+  const seedDay = () =>
+    applyPick(empty, decidePick(empty, [cl("cl:hn:1", { at: "2026-09-24T01:00:00Z" })], { crawlAt: "2026-09-24T03:11:00Z", at: "2026-09-24T03:11:00Z" }));
+  const gnwOnly = cl("cl:gnews:5", { title: "OpenAI model story wire", member_ids: ["gnews:5", "gnews:6"], lead_id: "gnews:5", lead_source: "gnews-rss", sources: ["gnews-rss"], at: "2026-09-25T09:00:00Z" });
+  const pubs = { "gnews:5": "Reuters", "gnews:6": "Bloomberg" };
+  const T1416 = "2026-09-25T11:16:08Z";
+  const T1811 = "2026-09-25T15:11:00Z";
+  const T2211 = "2026-09-25T19:11:00Z";
+  const real = cl("cl:hn:30", { at: "2026-09-25T14:00:00Z", member_ids: ["hn:30", "gnews:30"] });
+  const stronger = cl("cl:hn:31", { at: "2026-09-25T18:30:00Z", member_ids: ["hn:31", "gnews:31", "rss:openai:31"] });
+
+  test("HELD at 14:16 → lead picked at 18:11 (no REPICK) → no change at 22:11", () => {
+    let h = seedDay();
+    const d1 = decidePick(h, [], { crawlAt: T1416, at: T1416 });
+    expect(d1.action).toBe("held");
+    h = applyPick(h, d1);
+    expect(currentLead(h)).toMatchObject({ date: "2026-09-25", reason: "held", note: "no qualifying story" });
+    expect(currentLead(h)?.attempts).toEqual([{ at: T1416, crawl_at: T1416, excluded: [] }]);
+
+    const d2 = decidePick(h, [real], { crawlAt: T1811, at: T1811 });
+    expect(d2.action).toBe("picked");
+    h = applyPick(h, d2);
+    expect(currentLead(h)).toMatchObject({ date: "2026-09-25", reason: "picked", cluster_id: "cl:hn:30", catch_up: true });
+    expect(currentLead(h)?.forced).toBeUndefined();
+    // the HELD record (candidates + reasons) stays in the history for Beat 11
+    expect(h.entries.filter((e) => e.date === "2026-09-25").map((e) => e.reason)).toEqual(["held", "picked"]);
+
+    const d3 = decidePick(h, [real, stronger], { crawlAt: T2211, at: T2211 });
+    expect(d3).toEqual({ action: "none", why: "already-picked" });
+    h = applyPick(h, d3);
+    expect(currentLead(h)?.cluster_id).toBe("cl:hn:30");
+    expect(h.entries.length).toBe(3);
+  });
+
+  test("a HELD retry that still finds nothing updates the one HELD entry with its candidate/reason record", () => {
+    let h = applyPick(seedDay(), decidePick(seedDay(), [], { crawlAt: T1416, at: T1416 }));
+    const d = decidePick(h, [gnwOnly], { crawlAt: T1811, at: T1811, publishers: pubs });
+    expect(d).toMatchObject({ action: "held", replace: true });
+    h = applyPick(h, d);
+    const held = h.entries.filter((e) => e.date === "2026-09-25");
+    expect(held.length).toBe(1);
+    expect(held[0]!.attempts!.map((a) => a.crawl_at)).toEqual([T1416, T1811]);
+    expect(held[0]!.attempts![1]!.excluded).toEqual([{ cluster_id: "cl:gnews:5", headline: gnwOnly.title, reason: GNW_ONLY }]);
+    expect(held[0]!.excluded).toEqual(held[0]!.attempts![1]!.excluded);
+    expect(held[0]!.cluster_id).toBe("cl:hn:1"); // still carries yesterday's lead
+  });
+
+  test("before 06:00 a crawl neither picks nor retries (HELD stays, no attempt logged)", () => {
+    const EARLY = "2026-09-24T23:11:00Z"; // 02:11 Istanbul, 2026-09-25
+    const h0 = seedDay();
+    expect(decidePick(h0, [real], { crawlAt: EARLY, at: EARLY })).toEqual({ action: "none", why: "outside-window" });
+    // a HELD entry already on the date (e.g. a forced pick) is not retried before 06:00 either
+    const h1 = applyPick(h0, decidePick(h0, [], { crawlAt: EARLY, at: EARLY, force: true }));
+    expect(currentLead(h1)).toMatchObject({ date: "2026-09-25", reason: "held" });
+    const EARLY2 = "2026-09-25T01:11:00Z"; // 04:11 Istanbul
+    expect(decidePick(h1, [real], { crawlAt: EARLY2, at: EARLY2 })).toEqual({ action: "none", why: "outside-window" });
+    expect(currentLead(h1)?.attempts?.length).toBe(1);
   });
 });
