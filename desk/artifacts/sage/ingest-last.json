@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-09-25T23:12:54Z",
+  "stamped_at": "2026-09-26T03:20:25Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 700,
+      "duration_ms": 546,
       "paused_until": null,
       "reason": null
     },
@@ -17,26 +17,26 @@
       "id": "arxiv",
       "label": "arXiv",
       "status": "ok",
-      "rows": 29,
-      "duration_ms": 3301,
+      "rows": 23,
+      "duration_ms": 164423,
       "paused_until": null,
       "reason": null
     },
     {
       "id": "openalex",
       "label": "OpenAlex",
-      "status": "paused",
+      "status": "fail",
       "rows": 0,
-      "duration_ms": 1,
-      "paused_until": "2026-09-26T00:00:00Z",
-      "reason": "paused_until 2026-09-26T00:00:00Z"
+      "duration_ms": 102,
+      "paused_until": "2026-09-27T00:00:00Z",
+      "reason": "HTTP 429"
     },
     {
       "id": "crossref",
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 2,
+      "duration_ms": 4,
       "paused_until": null,
       "reason": null
     },
@@ -45,7 +45,7 @@
       "label": "HN",
       "status": "ok",
       "rows": 53,
-      "duration_ms": 8359,
+      "duration_ms": 8347,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 69,
+      "duration_ms": 18739,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 27,
+      "duration_ms": 4647,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 26,
-      "duration_ms": 16,
+      "rows": 30,
+      "duration_ms": 6366,
       "paused_until": null,
       "reason": null
     },
@@ -81,7 +81,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 2,
-      "duration_ms": 1,
+      "duration_ms": 607,
       "paused_until": null,
       "reason": null
     },
@@ -90,42 +90,42 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 1,
+      "duration_ms": 515,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 12477,
-    "wall_ms": 12869,
-    "startup_ms": 24,
-    "main_ms": 12875
+    "sources_ms": 204296,
+    "wall_ms": 204572,
+    "startup_ms": 37,
+    "main_ms": 204578
   },
-  "multi_source_independent": 3,
+  "multi_source_independent": 6,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 3,
-    "multi_source_raw": 4,
-    "self_reposts": 1,
-    "items_in": 210,
-    "clusters_out": 204,
-    "collapsed": 6,
-    "multi_source": 3,
-    "multi_member": 4,
+    "multi_source_independent": 6,
+    "multi_source_raw": 8,
+    "self_reposts": 2,
+    "items_in": 214,
+    "clusters_out": 202,
+    "collapsed": 12,
+    "multi_source": 6,
+    "multi_member": 8,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 10,
+    "new_items": 40,
     "per_source": {
       "hn-algolia": 53,
       "rss-lab": 104,
       "rss-security": 27,
-      "gnews-rss": 26
+      "gnews-rss": 30
     },
     "multi_source_clusters": [
       {
-        "title": "The cheap new AI model taking aim at OpenAI and Anthropic",
+        "title": "OpenAI investigating 'dozens' of instances of agents acting improperly",
         "sources": [
           "hn-algolia",
           "gnews-rss"
@@ -134,44 +134,126 @@
         "score": 1,
         "members": [
           {
-            "id": "hn:49847170",
+            "id": "hn:49851154",
             "source": "hn-algolia",
-            "title": "The cheap new AI model taking aim at OpenAI and Anthropic",
-            "at": "2026-09-25T17:06:48Z",
+            "title": "OpenAI investigating 'dozens' of instances of agents acting improperly",
+            "at": "2026-09-25T23:02:54Z",
             "publisher": null
           },
           {
-            "id": "gnews:8523588a0709b41b",
+            "id": "gnews:984231e26123345d",
             "source": "gnews-rss",
-            "title": "The cheap new AI model taking aim at OpenAI and Anthropic - Financial Times",
-            "at": "2026-09-25T04:00:30Z",
-            "publisher": "Financial Times"
+            "title": "OpenAI investigating 'dozens' of instances of agents acting improperly - BBC",
+            "at": "2026-09-26T01:25:30Z",
+            "publisher": "BBC"
           }
         ]
       },
       {
-        "title": "OpenAI agent hacked Australian government website, PM says",
+        "title": "How OpenAI's Rogue A.I. Agents Tried to Trick a Robot Detector",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 4,
-        "score": 0.834,
+        "size": 2,
+        "score": 1,
         "members": [
           {
-            "id": "hn:49825580",
+            "id": "hn:49851120",
             "source": "hn-algolia",
-            "title": "OpenAI agent hacked Australian government website, PM says",
-            "at": "2026-09-24T02:44:48Z",
+            "title": "How OpenAI's Rogue A.I. Agents Tried to Trick a Robot Detector",
+            "at": "2026-09-25T22:59:32Z",
             "publisher": null
           },
           {
-            "id": "hn:49825024",
+            "id": "gnews:0377d72788cc2933",
+            "source": "gnews-rss",
+            "title": "How OpenAI’s Rogue A.I. Agents Tried to Trick a Robot Detector - nytimes.com",
+            "at": "2026-09-25T20:26:49Z",
+            "publisher": "nytimes.com"
+          }
+        ]
+      },
+      {
+        "title": "Unsecured OpenAI agents posted 53 user images on the internet",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 0.871,
+        "members": [
+          {
+            "id": "hn:49850868",
             "source": "hn-algolia",
-            "title": "Australia says OpenAI agent hacked into government website",
-            "at": "2026-09-24T01:24:00Z",
+            "title": "Unsecured OpenAI agents posted 53 user images on the internet",
+            "at": "2026-09-25T22:36:24Z",
             "publisher": null
           },
+          {
+            "id": "gnews:bea8a0633249df78",
+            "source": "gnews-rss",
+            "title": "Unsecured OpenAI agents posted 53 user images on the internet without the lab's knowledge - TechCrunch",
+            "at": "2026-09-25T22:20:47Z",
+            "publisher": "TechCrunch"
+          }
+        ]
+      },
+      {
+        "title": "Google’s Project Suncatcher to put ML infrastructure in space",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 5,
+        "score": 0.993,
+        "members": [
+          {
+            "id": "hn:49830606",
+            "source": "hn-algolia",
+            "title": "Google’s Project Suncatcher to put ML infrastructure in space",
+            "at": "2026-09-24T13:53:29Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:49840806",
+            "source": "hn-algolia",
+            "title": "Google plans first test ofAl chips in space under Project Suncatcher",
+            "at": "2026-09-25T06:21:29Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:61f542d6072e25ab",
+            "source": "gnews-rss",
+            "title": "Google plans first test of AI chips in space under Project Suncatcher - thestandard.com.hk",
+            "at": "2026-09-24T13:57:03Z",
+            "publisher": "thestandard.com.hk"
+          },
+          {
+            "id": "gnews:255b6ece4c6ee1ec",
+            "source": "gnews-rss",
+            "title": "Project Suncatcher: What Google plans to test by taking AI compute to space - Business Standard",
+            "at": "2026-09-25T08:45:35Z",
+            "publisher": "Business Standard"
+          },
+          {
+            "id": "gnews:8b01c17054630903",
+            "source": "gnews-rss",
+            "title": "Google Announces Project Suncatcher for Space AI Computing - GK Today",
+            "at": "2026-09-25T07:04:34Z",
+            "publisher": "GK Today"
+          }
+        ]
+      },
+      {
+        "title": "OpenAI agent 'infiltrated' Australian government website, PM says",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 3,
+        "score": 0.94,
+        "members": [
           {
             "id": "hn:49826285",
             "source": "hn-algolia",
@@ -180,11 +262,18 @@
             "publisher": null
           },
           {
+            "id": "hn:49828422",
+            "source": "hn-algolia",
+            "title": "OpenAI agents 'infiltrated Australian government website'",
+            "at": "2026-09-24T09:56:03Z",
+            "publisher": null
+          },
+          {
             "id": "gnews:26a31e7a5e419d3d",
             "source": "gnews-rss",
-            "title": "Rogue OpenAI agent 'infiltrated' Australian government website in world first - bbc.com",
+            "title": "Rogue OpenAI agent 'infiltrated' Australian government website in world first - BBC",
             "at": "2026-09-24T15:42:07Z",
-            "publisher": "bbc.com"
+            "publisher": "BBC"
           }
         ]
       },
@@ -216,7 +305,7 @@
     ],
     "self_repost_clusters": [
       {
-        "title": "Efficient MoE Training for Biological Foundation Models",
+        "title": "Automating coherent long-form video generation",
         "sources": [
           "rss-lab"
         ],
@@ -226,9 +315,26 @@
         ],
         "self_reposts": [
           {
-            "id": "gnews:665021ee80c3c6aa",
-            "publisher": "NVIDIA Developer",
-            "title": "Efficient MoE Training for Biological Foundation Models | NVIDIA Technical Blog - NVIDIA Developer"
+            "id": "gnews:22a37050e98ed1dd",
+            "publisher": "research.google",
+            "title": "Automating coherent long-form video generation - research.google"
+          }
+        ]
+      },
+      {
+        "title": "Introducing Gemini 3.8 Live with Live Avatar",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:274987195847f6cb",
+            "publisher": "blog.google",
+            "title": "Introducing Gemini 3.8 Live with Live Avatar - blog.google"
           }
         ]
       }
@@ -248,183 +354,79 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "cnbc.com",
-          "title": "Watch CNBC's full interview with Yardeni Research's Ed Yardeni - cnbc.com"
+          "publisher": "24/7 Wall St.",
+          "title": "Treasury Yield Curve Bounces From 2026's Flattest Point to +0.36 pp - 24/7 Wall St."
+        },
+        {
+          "publisher": "kalkine.ca",
+          "title": "How MSFU Works: Leveraging Microsoft’s Daily Market Moves - kalkine.ca"
+        },
+        {
+          "publisher": "Boing Boing",
+          "title": "Microsoft Office 2024 drops to $50 for the September Flash Sale - Boing Boing"
+        },
+        {
+          "publisher": "bespokepremium.com",
+          "title": "My Research - bespokepremium.com"
+        },
+        {
+          "publisher": "research.google",
+          "title": "Google at COLM 2026 - research.google"
         },
         {
           "publisher": "HPCwire",
           "title": "Microsoft’s New Maryland Quantum Center to Support DARPA Testing - HPCwire"
         },
         {
-          "publisher": "Tech Brew",
-          "title": "The race to run your to-do list - Tech Brew"
-        },
-        {
-          "publisher": "IT Brief Asia",
-          "title": "Josh Bersin launches Jupiter for Galileo HR assistant - IT Brief Asia"
-        },
-        {
-          "publisher": "Patch",
-          "title": "Microsoft Opens Quantum Research Center At University Of MD - Patch"
-        },
-        {
           "publisher": "Barron's",
           "title": "Quantum Is a $850 Billion Dream. Microsoft and Amazon Are Betting Big on It. - Barron's"
         },
         {
-          "publisher": "business.maryland.gov",
-          "title": "QuEra joins Maryland’s growing quantum sector - business.maryland.gov"
+          "publisher": "24/7 Wall St.",
+          "title": "Google Plans To Launch Mini Data Center Into Space Next Week As Part Of Project Suncatcher's Bid For A Market Projected To Hit $28.16 Billion - 24/7 Wall St."
         },
         {
-          "publisher": "Tech.eu",
-          "title": "TEKEVER raises $580M Series D, DTCP closes €455M defence fund, and the challenge to reinvent chip design - Tech.eu"
+          "publisher": "CNET",
+          "title": "An Imminent Google Satellite Test Is Another Step Toward Data Centers in Space - CNET"
         },
         {
-          "publisher": "Splash247",
-          "title": "Six startups win CMA CGM innovation awards - Splash247"
+          "publisher": "Daily Pakistan",
+          "title": "Google’s New Spam Update to Shake Up Search Rankings Worldwide - Daily Pakistan"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 15
+      "hn_dropped": 12
     },
     "gnews_near_misses": [
       {
-        "score": 0.571,
-        "blocked": "below-threshold",
-        "hours_apart": 13,
-        "a": {
-          "id": "hn:49825580",
-          "source": "hn-algolia",
-          "title": "OpenAI agent hacked Australian government website, PM says",
-          "at": "2026-09-24T02:44:48Z"
-        },
-        "b": {
-          "id": "gnews:26a31e7a5e419d3d",
-          "source": "gnews-rss",
-          "title": "Rogue OpenAI agent 'infiltrated' Australian government website in world first - bbc.com",
-          "at": "2026-09-24T15:42:07Z"
-        },
-        "shared": [
-          "openai",
-          "agent",
-          "australian",
-          "government",
-          "websit"
-        ]
-      },
-      {
-        "score": 0.568,
+        "score": 0.629,
         "blocked": "time-window",
-        "hours_apart": 25.7,
+        "hours_apart": 33.1,
         "a": {
-          "id": "rss:deepmind:34692efacd3b982a",
+          "id": "rss:huggingface:280bf64dcca75cee",
           "source": "rss-lab",
-          "title": "Introducing Gemini 3.8 Live with Live Avatar",
-          "at": "2026-09-24T16:20:39Z"
+          "title": "Accelerating vision-language models with LFM2.5-VL-DSpark",
+          "at": "2026-09-24T14:08:57Z"
         },
         "b": {
-          "id": "gnews:20aa8219cbe697e1",
+          "id": "gnews:bc8f96780106f9e7",
           "source": "gnews-rss",
-          "title": "Gemini’s Live Avatar Puts a Face on Its AI Agent. It’s Freaking Me Out - CNET",
-          "at": "2026-09-25T18:02:01Z"
+          "title": "Liquid AI Releases LFM2.5-VL-3B-DSpark: Speculative Decoding for Vision-Language Models With Up to 3.13x Faster Decoding - MarkTechPost",
+          "at": "2026-09-25T23:11:59Z"
         },
         "shared": [
-          "gemini",
-          "live",
-          "avatar"
+          "vision",
+          "languag",
+          "model",
+          "lfm2.5",
+          "vl",
+          "dspark"
         ]
       },
       {
-        "score": 0.498,
-        "blocked": "below-threshold",
-        "hours_apart": 14.3,
-        "a": {
-          "id": "hn:49825024",
-          "source": "hn-algolia",
-          "title": "Australia says OpenAI agent hacked into government website",
-          "at": "2026-09-24T01:24:00Z"
-        },
-        "b": {
-          "id": "gnews:26a31e7a5e419d3d",
-          "source": "gnews-rss",
-          "title": "Rogue OpenAI agent 'infiltrated' Australian government website in world first - bbc.com",
-          "at": "2026-09-24T15:42:07Z"
-        },
-        "shared": [
-          "openai",
-          "agent",
-          "government",
-          "websit"
-        ]
-      },
-      {
-        "score": 0.311,
+        "score": 0.604,
         "blocked": "thin-overlap",
-        "hours_apart": 9.3,
-        "a": {
-          "id": "hn:49835056",
-          "source": "hn-algolia",
-          "title": "OpenAI, Anthropic CEOs urge UN countries to cooperate on AI safety standards",
-          "at": "2026-09-24T18:40:47Z"
-        },
-        "b": {
-          "id": "gnews:8523588a0709b41b",
-          "source": "gnews-rss",
-          "title": "The cheap new AI model taking aim at OpenAI and Anthropic - Financial Times",
-          "at": "2026-09-25T04:00:30Z"
-        },
-        "shared": [
-          "openai",
-          "anthropic",
-          "ai"
-        ]
-      },
-      {
-        "score": 0.29,
-        "blocked": "time-window",
-        "hours_apart": 575.1,
-        "a": {
-          "id": "rss:ms-research:b1b4ad0d4a36bbd2",
-          "source": "rss-lab",
-          "title": "GigaPath-Flash and GigaTIME-Flash: Toward population-scale discovery with efficient pathology foundation models",
-          "at": "2026-08-31T16:00:00Z"
-        },
-        "b": {
-          "id": "gnews:665021ee80c3c6aa",
-          "source": "gnews-rss",
-          "title": "Efficient MoE Training for Biological Foundation Models | NVIDIA Technical Blog - NVIDIA Developer",
-          "at": "2026-09-24T15:06:08Z"
-        },
-        "shared": [
-          "efficient",
-          "foundation",
-          "model"
-        ]
-      },
-      {
-        "score": 0.284,
-        "blocked": "thin-overlap",
-        "hours_apart": 242,
-        "a": {
-          "id": "rss:google-ai:970c94673769027a",
-          "source": "rss-lab",
-          "title": "AI for Societal Impact",
-          "at": "2026-09-15T16:00:00Z"
-        },
-        "b": {
-          "id": "gnews:e67576c8db1e769b",
-          "source": "gnews-rss",
-          "title": "Societal Consequences of Large Language Models - daily-sun.com",
-          "at": "2026-09-25T18:00:00Z"
-        },
-        "shared": [
-          "societal"
-        ]
-      },
-      {
-        "score": 0.282,
-        "blocked": "thin-overlap",
-        "hours_apart": 240.9,
+        "hours_apart": 214.9,
         "a": {
           "id": "rss:deepmind:947e89eaa83a27ae",
           "source": "rss-lab",
@@ -432,195 +434,186 @@
           "at": "2026-09-15T17:05:57Z"
         },
         "b": {
-          "id": "gnews:20aa8219cbe697e1",
+          "id": "gnews:274987195847f6cb",
           "source": "gnews-rss",
-          "title": "Gemini’s Live Avatar Puts a Face on Its AI Agent. It’s Freaking Me Out - CNET",
-          "at": "2026-09-25T18:02:01Z"
+          "title": "Introducing Gemini 3.8 Live with Live Avatar - blog.google",
+          "at": "2026-09-24T16:02:02Z"
         },
         "shared": [
           "gemini",
+          "3.8",
           "live"
         ]
       },
       {
-        "score": 0.277,
-        "blocked": "thin-overlap",
-        "hours_apart": 251.5,
+        "score": 0.555,
+        "blocked": "below-threshold",
+        "hours_apart": 2.5,
         "a": {
-          "id": "rss:google-ai:ac6fab4ebd9f6bc8",
-          "source": "rss-lab",
-          "title": "DevFest is back",
-          "at": "2026-09-14T16:00:00Z"
+          "id": "hn:49851355",
+          "source": "hn-algolia",
+          "title": "OpenAI’s Systems Went Rogue and Meddled With U.S. Government Websites",
+          "at": "2026-09-25T23:22:18Z"
         },
         "b": {
-          "id": "gnews:44a35dd124042160",
+          "id": "gnews:811b5a07c502093d",
           "source": "gnews-rss",
-          "title": "Clastix Secures €2.9M Seed Round Backed by Mistral - n24.com.tr",
-          "at": "2026-09-25T03:30:18Z"
+          "title": "OpenAI Agents Hacked U.S. Government Websites - WSJ",
+          "at": "2026-09-26T01:52:00Z"
         },
         "shared": [
-          "back"
+          "openai",
+          "u.s",
+          "government",
+          "websit"
+        ]
+      },
+      {
+        "score": 0.526,
+        "blocked": "time-window",
+        "hours_apart": 39.9,
+        "a": {
+          "id": "hn:49828422",
+          "source": "hn-algolia",
+          "title": "OpenAI agents 'infiltrated Australian government website'",
+          "at": "2026-09-24T09:56:03Z"
+        },
+        "b": {
+          "id": "gnews:811b5a07c502093d",
+          "source": "gnews-rss",
+          "title": "OpenAI Agents Hacked U.S. Government Websites - WSJ",
+          "at": "2026-09-26T01:52:00Z"
+        },
+        "shared": [
+          "openai",
+          "agent",
+          "government",
+          "websit"
+        ]
+      },
+      {
+        "score": 0.493,
+        "blocked": "time-window",
+        "hours_apart": 40,
+        "a": {
+          "id": "hn:49828422",
+          "source": "hn-algolia",
+          "title": "OpenAI agents 'infiltrated Australian government website'",
+          "at": "2026-09-24T09:56:03Z"
+        },
+        "b": {
+          "id": "gnews:a48b2afd04521a2f",
+          "source": "gnews-rss",
+          "title": "OpenAI investigating AI agents after attempts to access government websites - BNO News",
+          "at": "2026-09-26T01:53:35Z"
+        },
+        "shared": [
+          "openai",
+          "agent",
+          "government",
+          "websit"
+        ]
+      },
+      {
+        "score": 0.49,
+        "blocked": "time-window",
+        "hours_apart": 45.3,
+        "a": {
+          "id": "hn:49826285",
+          "source": "hn-algolia",
+          "title": "OpenAI agent 'infiltrated' Australian government website, PM says",
+          "at": "2026-09-24T04:33:52Z"
+        },
+        "b": {
+          "id": "gnews:811b5a07c502093d",
+          "source": "gnews-rss",
+          "title": "OpenAI Agents Hacked U.S. Government Websites - WSJ",
+          "at": "2026-09-26T01:52:00Z"
+        },
+        "shared": [
+          "openai",
+          "agent",
+          "government",
+          "websit"
+        ]
+      },
+      {
+        "score": 0.484,
+        "blocked": "below-threshold",
+        "hours_apart": 18.9,
+        "a": {
+          "id": "hn:49830606",
+          "source": "hn-algolia",
+          "title": "Google’s Project Suncatcher to put ML infrastructure in space",
+          "at": "2026-09-24T13:53:29Z"
+        },
+        "b": {
+          "id": "gnews:255b6ece4c6ee1ec",
+          "source": "gnews-rss",
+          "title": "Project Suncatcher: What Google plans to test by taking AI compute to space - Business Standard",
+          "at": "2026-09-25T08:45:35Z"
+        },
+        "shared": [
+          "google",
+          "project",
+          "suncatcher",
+          "spac"
+        ]
+      },
+      {
+        "score": 0.471,
+        "blocked": "below-threshold",
+        "hours_apart": 0.1,
+        "a": {
+          "id": "hn:49830606",
+          "source": "hn-algolia",
+          "title": "Google’s Project Suncatcher to put ML infrastructure in space",
+          "at": "2026-09-24T13:53:29Z"
+        },
+        "b": {
+          "id": "gnews:61f542d6072e25ab",
+          "source": "gnews-rss",
+          "title": "Google plans first test of AI chips in space under Project Suncatcher - thestandard.com.hk",
+          "at": "2026-09-24T13:57:03Z"
+        },
+        "shared": [
+          "google",
+          "project",
+          "suncatcher",
+          "spac"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.571,
-        "blocked": "below-threshold",
-        "hours_apart": 13,
-        "a": {
-          "id": "hn:49825580",
-          "source": "hn-algolia",
-          "title": "OpenAI agent hacked Australian government website, PM says",
-          "at": "2026-09-24T02:44:48Z"
-        },
-        "b": {
-          "id": "gnews:26a31e7a5e419d3d",
-          "source": "gnews-rss",
-          "title": "Rogue OpenAI agent 'infiltrated' Australian government website in world first - bbc.com",
-          "at": "2026-09-24T15:42:07Z"
-        },
-        "shared": [
-          "openai",
-          "agent",
-          "australian",
-          "government",
-          "websit"
-        ]
-      },
-      {
-        "score": 0.568,
+        "score": 0.629,
         "blocked": "time-window",
-        "hours_apart": 25.7,
+        "hours_apart": 33.1,
         "a": {
-          "id": "rss:deepmind:34692efacd3b982a",
+          "id": "rss:huggingface:280bf64dcca75cee",
           "source": "rss-lab",
-          "title": "Introducing Gemini 3.8 Live with Live Avatar",
-          "at": "2026-09-24T16:20:39Z"
+          "title": "Accelerating vision-language models with LFM2.5-VL-DSpark",
+          "at": "2026-09-24T14:08:57Z"
         },
         "b": {
-          "id": "gnews:20aa8219cbe697e1",
+          "id": "gnews:bc8f96780106f9e7",
           "source": "gnews-rss",
-          "title": "Gemini’s Live Avatar Puts a Face on Its AI Agent. It’s Freaking Me Out - CNET",
-          "at": "2026-09-25T18:02:01Z"
+          "title": "Liquid AI Releases LFM2.5-VL-3B-DSpark: Speculative Decoding for Vision-Language Models With Up to 3.13x Faster Decoding - MarkTechPost",
+          "at": "2026-09-25T23:11:59Z"
         },
         "shared": [
-          "gemini",
-          "live",
-          "avatar"
+          "vision",
+          "languag",
+          "model",
+          "lfm2.5",
+          "vl",
+          "dspark"
         ]
       },
       {
-        "score": 0.498,
-        "blocked": "below-threshold",
-        "hours_apart": 14.3,
-        "a": {
-          "id": "hn:49825024",
-          "source": "hn-algolia",
-          "title": "Australia says OpenAI agent hacked into government website",
-          "at": "2026-09-24T01:24:00Z"
-        },
-        "b": {
-          "id": "gnews:26a31e7a5e419d3d",
-          "source": "gnews-rss",
-          "title": "Rogue OpenAI agent 'infiltrated' Australian government website in world first - bbc.com",
-          "at": "2026-09-24T15:42:07Z"
-        },
-        "shared": [
-          "openai",
-          "agent",
-          "government",
-          "websit"
-        ]
-      },
-      {
-        "score": 0.311,
+        "score": 0.604,
         "blocked": "thin-overlap",
-        "hours_apart": 9.3,
-        "a": {
-          "id": "hn:49835056",
-          "source": "hn-algolia",
-          "title": "OpenAI, Anthropic CEOs urge UN countries to cooperate on AI safety standards",
-          "at": "2026-09-24T18:40:47Z"
-        },
-        "b": {
-          "id": "gnews:8523588a0709b41b",
-          "source": "gnews-rss",
-          "title": "The cheap new AI model taking aim at OpenAI and Anthropic - Financial Times",
-          "at": "2026-09-25T04:00:30Z"
-        },
-        "shared": [
-          "openai",
-          "anthropic",
-          "ai"
-        ]
-      },
-      {
-        "score": 0.295,
-        "blocked": "thin-overlap",
-        "hours_apart": 248.7,
-        "a": {
-          "id": "hn:49849006",
-          "source": "hn-algolia",
-          "title": "Jev Benchmarks",
-          "at": "2026-09-25T19:41:14Z"
-        },
-        "b": {
-          "id": "rss-sec:trailofbits:71fc2221d1295bd6",
-          "source": "rss-security",
-          "title": "1Password's AI patching benchmark is misleading",
-          "at": "2026-09-15T11:00:00Z"
-        },
-        "shared": [
-          "benchmark"
-        ]
-      },
-      {
-        "score": 0.29,
-        "blocked": "time-window",
-        "hours_apart": 575.1,
-        "a": {
-          "id": "rss:ms-research:b1b4ad0d4a36bbd2",
-          "source": "rss-lab",
-          "title": "GigaPath-Flash and GigaTIME-Flash: Toward population-scale discovery with efficient pathology foundation models",
-          "at": "2026-08-31T16:00:00Z"
-        },
-        "b": {
-          "id": "gnews:665021ee80c3c6aa",
-          "source": "gnews-rss",
-          "title": "Efficient MoE Training for Biological Foundation Models | NVIDIA Technical Blog - NVIDIA Developer",
-          "at": "2026-09-24T15:06:08Z"
-        },
-        "shared": [
-          "efficient",
-          "foundation",
-          "model"
-        ]
-      },
-      {
-        "score": 0.284,
-        "blocked": "thin-overlap",
-        "hours_apart": 242,
-        "a": {
-          "id": "rss:google-ai:970c94673769027a",
-          "source": "rss-lab",
-          "title": "AI for Societal Impact",
-          "at": "2026-09-15T16:00:00Z"
-        },
-        "b": {
-          "id": "gnews:e67576c8db1e769b",
-          "source": "gnews-rss",
-          "title": "Societal Consequences of Large Language Models - daily-sun.com",
-          "at": "2026-09-25T18:00:00Z"
-        },
-        "shared": [
-          "societal"
-        ]
-      },
-      {
-        "score": 0.282,
-        "blocked": "thin-overlap",
-        "hours_apart": 240.9,
+        "hours_apart": 214.9,
         "a": {
           "id": "rss:deepmind:947e89eaa83a27ae",
           "source": "rss-lab",
@@ -628,14 +621,153 @@
           "at": "2026-09-15T17:05:57Z"
         },
         "b": {
-          "id": "gnews:20aa8219cbe697e1",
+          "id": "gnews:274987195847f6cb",
           "source": "gnews-rss",
-          "title": "Gemini’s Live Avatar Puts a Face on Its AI Agent. It’s Freaking Me Out - CNET",
-          "at": "2026-09-25T18:02:01Z"
+          "title": "Introducing Gemini 3.8 Live with Live Avatar - blog.google",
+          "at": "2026-09-24T16:02:02Z"
         },
         "shared": [
           "gemini",
+          "3.8",
           "live"
+        ]
+      },
+      {
+        "score": 0.555,
+        "blocked": "below-threshold",
+        "hours_apart": 2.5,
+        "a": {
+          "id": "hn:49851355",
+          "source": "hn-algolia",
+          "title": "OpenAI’s Systems Went Rogue and Meddled With U.S. Government Websites",
+          "at": "2026-09-25T23:22:18Z"
+        },
+        "b": {
+          "id": "gnews:811b5a07c502093d",
+          "source": "gnews-rss",
+          "title": "OpenAI Agents Hacked U.S. Government Websites - WSJ",
+          "at": "2026-09-26T01:52:00Z"
+        },
+        "shared": [
+          "openai",
+          "u.s",
+          "government",
+          "websit"
+        ]
+      },
+      {
+        "score": 0.526,
+        "blocked": "time-window",
+        "hours_apart": 39.9,
+        "a": {
+          "id": "hn:49828422",
+          "source": "hn-algolia",
+          "title": "OpenAI agents 'infiltrated Australian government website'",
+          "at": "2026-09-24T09:56:03Z"
+        },
+        "b": {
+          "id": "gnews:811b5a07c502093d",
+          "source": "gnews-rss",
+          "title": "OpenAI Agents Hacked U.S. Government Websites - WSJ",
+          "at": "2026-09-26T01:52:00Z"
+        },
+        "shared": [
+          "openai",
+          "agent",
+          "government",
+          "websit"
+        ]
+      },
+      {
+        "score": 0.493,
+        "blocked": "time-window",
+        "hours_apart": 40,
+        "a": {
+          "id": "hn:49828422",
+          "source": "hn-algolia",
+          "title": "OpenAI agents 'infiltrated Australian government website'",
+          "at": "2026-09-24T09:56:03Z"
+        },
+        "b": {
+          "id": "gnews:a48b2afd04521a2f",
+          "source": "gnews-rss",
+          "title": "OpenAI investigating AI agents after attempts to access government websites - BNO News",
+          "at": "2026-09-26T01:53:35Z"
+        },
+        "shared": [
+          "openai",
+          "agent",
+          "government",
+          "websit"
+        ]
+      },
+      {
+        "score": 0.49,
+        "blocked": "time-window",
+        "hours_apart": 45.3,
+        "a": {
+          "id": "hn:49826285",
+          "source": "hn-algolia",
+          "title": "OpenAI agent 'infiltrated' Australian government website, PM says",
+          "at": "2026-09-24T04:33:52Z"
+        },
+        "b": {
+          "id": "gnews:811b5a07c502093d",
+          "source": "gnews-rss",
+          "title": "OpenAI Agents Hacked U.S. Government Websites - WSJ",
+          "at": "2026-09-26T01:52:00Z"
+        },
+        "shared": [
+          "openai",
+          "agent",
+          "government",
+          "websit"
+        ]
+      },
+      {
+        "score": 0.484,
+        "blocked": "below-threshold",
+        "hours_apart": 18.9,
+        "a": {
+          "id": "hn:49830606",
+          "source": "hn-algolia",
+          "title": "Google’s Project Suncatcher to put ML infrastructure in space",
+          "at": "2026-09-24T13:53:29Z"
+        },
+        "b": {
+          "id": "gnews:255b6ece4c6ee1ec",
+          "source": "gnews-rss",
+          "title": "Project Suncatcher: What Google plans to test by taking AI compute to space - Business Standard",
+          "at": "2026-09-25T08:45:35Z"
+        },
+        "shared": [
+          "google",
+          "project",
+          "suncatcher",
+          "spac"
+        ]
+      },
+      {
+        "score": 0.471,
+        "blocked": "below-threshold",
+        "hours_apart": 0.1,
+        "a": {
+          "id": "hn:49830606",
+          "source": "hn-algolia",
+          "title": "Google’s Project Suncatcher to put ML infrastructure in space",
+          "at": "2026-09-24T13:53:29Z"
+        },
+        "b": {
+          "id": "gnews:61f542d6072e25ab",
+          "source": "gnews-rss",
+          "title": "Google plans first test of AI chips in space under Project Suncatcher - thestandard.com.hk",
+          "at": "2026-09-24T13:57:03Z"
+        },
+        "shared": [
+          "google",
+          "project",
+          "suncatcher",
+          "spac"
         ]
       }
     ]
@@ -644,42 +776,42 @@
     {
       "id": "arxiv",
       "state": "ok",
-      "streak_ok": 20,
+      "streak_ok": 21,
       "streak_fail": 0,
-      "items_last": 29
+      "items_last": 23
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 20,
+      "streak_ok": 21,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 20,
+      "streak_ok": 21,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 20,
+      "streak_ok": 21,
       "streak_fail": 0,
-      "items_last": 26
+      "items_last": 30
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 20,
+      "streak_ok": 21,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 20,
+      "streak_ok": 21,
       "streak_fail": 0,
       "items_last": 53
     },
@@ -687,33 +819,33 @@
       "id": "openalex",
       "state": "fail",
       "streak_ok": 0,
-      "streak_fail": 17,
+      "streak_fail": 18,
       "items_last": 0
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 20,
+      "streak_ok": 21,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 20,
+      "streak_ok": 21,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 20,
+      "streak_ok": 21,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.0036133333333333334,
+    "hours": 0.05701972222222222,
     "stale": false
   },
   "hf": {
@@ -723,26 +855,26 @@
   },
   "arxiv": {
     "ok": true,
-    "enriched": 24,
-    "shelf": 5,
+    "enriched": 23,
+    "shelf": 0,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
   },
   "openalex": {
     "ok": false,
     "soft_fail": true,
-    "soft_fail_reason": "paused_until 2026-09-26T00:00:00Z",
+    "soft_fail_reason": "HTTP 429",
     "enriched": 0,
     "secondary": 0,
-    "query": "Hugging Face agent",
+    "query": "LLM agent",
     "mode": "search",
     "from_cache": false,
-    "searches": 0,
+    "searches": 1,
     "retries": 0,
-    "status": "paused",
-    "paused_until": "2026-09-26T00:00:00Z",
-    "pause_reason": "HTTP 429 Retry-After 40541",
-    "requests": 0,
+    "status": "fail",
+    "paused_until": "2026-09-27T00:00:00Z",
+    "pause_reason": "HTTP 429 Retry-After 74210",
+    "requests": 1,
     "auth": "anon",
     "brief": false,
     "pulse_lead": false,
@@ -785,37 +917,37 @@
     "pulse_only": true,
     "never_displace_hf": true,
     "queries_run": [
-      "inference",
       "benchmark",
-      "agent tooling"
+      "agent tooling",
+      "OpenAI"
     ],
     "queries_ok": [
-      "inference",
       "benchmark",
-      "agent tooling"
+      "agent tooling",
+      "OpenAI"
     ],
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 15,
+    "ai_dropped": 12,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
         "id": "hn:49845977",
         "tag": "rest",
-        "score": 346,
+        "score": 407,
         "text": "U.S. appeals court upholds designation of Anthropic as supply chain risk"
       },
       {
-        "id": "hn:49825580",
+        "id": "hn:49849985",
         "tag": "rest",
-        "score": 253,
-        "text": "OpenAI agent hacked Australian government website, PM says"
+        "score": 265,
+        "text": "Revealing the details of how OpenAI agents hacked Hugging Face"
       },
       {
         "id": "hn:49830606",
         "tag": "rest",
-        "score": 225,
+        "score": 226,
         "text": "Google’s Project Suncatcher to put ML infrastructure in space"
       }
     ]
@@ -832,47 +964,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "(cache:openai)",
+        "url": "https://openai.com/news/rss.xml",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "(cache:deepmind)",
+        "url": "https://deepmind.google/blog/rss.xml",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "(cache:google-ai)",
+        "url": "https://blog.google/technology/ai/rss/",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "(cache:huggingface)",
+        "url": "https://huggingface.co/blog/feed.xml",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "(cache:mistral)",
+        "url": "https://mistral.ai/rss.xml",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "(cache:nvidia)",
+        "url": "https://blogs.nvidia.com/feed/",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "(cache:nvidia-dev)",
+        "url": "https://developer.nvidia.com/blog/feed",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "(cache:ms-research)",
+        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "(cache:google-research)",
+        "url": "https://research.google/blog/rss/",
         "count": 12
       }
     ],
@@ -918,17 +1050,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "(cache:trailofbits)",
+        "url": "https://blog.trailofbits.com/feed/",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "(cache:fox-it)",
+        "url": "https://blog.fox-it.com/feed/",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "(cache:projectzero)",
+        "url": "https://projectzero.google/feed.xml",
         "count": 5
       }
     ],
@@ -969,38 +1101,78 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 26,
-    "pool": 283,
+    "items": 30,
+    "pool": 263,
     "corroborators": [
       {
-        "id": "gnews:8523588a0709b41b",
-        "anchor_id": "hn:49847170",
-        "score": 1,
-        "title": "The cheap new AI model taking aim at OpenAI and Anthropic - Financial Times",
-        "publisher": "Financial Times",
+        "id": "gnews:bea8a0633249df78",
+        "anchor_id": "hn:49850868",
+        "score": 0.878,
+        "title": "Unsecured OpenAI agents posted 53 user images on the internet without the lab's knowledge - TechCrunch",
+        "publisher": "TechCrunch",
         "self_repost": false
+      },
+      {
+        "id": "gnews:0377d72788cc2933",
+        "anchor_id": "hn:49851120",
+        "score": 1,
+        "title": "How OpenAI’s Rogue A.I. Agents Tried to Trick a Robot Detector - nytimes.com",
+        "publisher": "nytimes.com",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:61f542d6072e25ab",
+        "anchor_id": "hn:49840806",
+        "score": 0.996,
+        "title": "Google plans first test of AI chips in space under Project Suncatcher - thestandard.com.hk",
+        "publisher": "thestandard.com.hk",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:255b6ece4c6ee1ec",
+        "anchor_id": "hn:49840806",
+        "score": 0.647,
+        "title": "Project Suncatcher: What Google plans to test by taking AI compute to space - Business Standard",
+        "publisher": "Business Standard",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:8b01c17054630903",
+        "anchor_id": "hn:49830606",
+        "score": 0.665,
+        "title": "Google Announces Project Suncatcher for Space AI Computing - GK Today",
+        "publisher": "GK Today",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:22a37050e98ed1dd",
+        "anchor_id": "rss:google-research:8451e6726f367367",
+        "score": 1,
+        "title": "Automating coherent long-form video generation - research.google",
+        "publisher": "research.google",
+        "self_repost": true
+      },
+      {
+        "id": "gnews:274987195847f6cb",
+        "anchor_id": "rss:deepmind:34692efacd3b982a",
+        "score": 1,
+        "title": "Introducing Gemini 3.8 Live with Live Avatar - blog.google",
+        "publisher": "blog.google",
+        "self_repost": true
       },
       {
         "id": "gnews:26a31e7a5e419d3d",
-        "anchor_id": "hn:49826285",
-        "score": 0.724,
-        "title": "Rogue OpenAI agent 'infiltrated' Australian government website in world first - bbc.com",
-        "publisher": "bbc.com",
+        "anchor_id": "hn:49828422",
+        "score": 0.866,
+        "title": "Rogue OpenAI agent 'infiltrated' Australian government website in world first - BBC",
+        "publisher": "BBC",
         "self_repost": false
-      },
-      {
-        "id": "gnews:665021ee80c3c6aa",
-        "anchor_id": "rss:nvidia-dev:d94b389a2f96d9bb",
-        "score": 1,
-        "title": "Efficient MoE Training for Biological Foundation Models | NVIDIA Technical Blog - NVIDIA Developer",
-        "publisher": "NVIDIA Developer",
-        "self_repost": true
       }
     ],
     "http_status": 200,
-    "content_type": null,
+    "content_type": "application/xml; charset=utf-8",
     "format": "rss2",
-    "from_cache": true,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1009,38 +1181,38 @@
     "pulse_only": true,
     "url_template": "https://news.google.com/rss/search?q={QUERY}&hl=en-US&gl=US&ceid=US:en",
     "queried": [
-      "large language model",
       "AI agent",
-      "Mistral AI",
-      "Microsoft Research"
+      "open weights",
+      "Microsoft Research",
+      "Google Research"
     ],
     "queries_ok_list": [
-      "large language model",
       "AI agent",
-      "Mistral AI",
-      "Microsoft Research"
+      "open weights",
+      "Microsoft Research",
+      "Google Research"
     ],
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:06e7884d81e7d679",
-        "title": "Gleb Tsipursky: AI Infrastructure Needs Authority Budgets Before Agents Get the Keys - Broadband Breakfast",
-        "publisher": "Broadband Breakfast",
-        "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPSUV3Tk5LdGtRR2k5QVkzZWV1RlVHbXhpdjdOS1h1Q0FUTWl2SUFtbnhVeVMwV0I4UUdQZXdramQ0anRveFFxYzczY3E3Zm5HQnVUckw5UjRQUkZYVFNFR0hoTkR4d040Y0JTYjVNdUxEdXh2elpEeG9VODNlU0czOE5sekp1d0RLTHRhVVNNdkNoUlkwcVhHdERhNjBxaVZRMmxES3FxMzI5Q1RUZ0lHbVpUR2NvUQ?oc=5",
+        "id": "gnews:d9e50a4088687fe7",
+        "title": "ChatGPT-maker’s AI inappropriately probed federal government websites - The Washington Post",
+        "publisher": "The Washington Post",
+        "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOTkh6WFB2cWNPZjNjUWJGb2RuaTRvaG1JSlNlS2dETnp0ams0SW5uc3Nyamc0dEkyN09ZV05KOGVYc052ZzE1V0RVQ2M4Z0x0aGRuSU1acllyZ2NYTHdma3RiTjJUTG5RcS1aaDZ1MDNsUjBDdkh0N3U1RXdZaGJZUHVSZjV0Y3R0VUtIbmVmOGNYaUUwQ05aUHRNMnN4X1pUeUY5MnJiazNxQzM0cEdPNHE1Ti12eWNfWTU2ck44aUIxQmM?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:0f9cd1f05f859690",
-        "title": "General Robotics is betting on modular intelligence, not one robot brain - The Robot Report",
-        "publisher": "The Robot Report",
-        "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQWEdLMVlsdVFWYm9wTGhiUElGQllVV0M2UWgwZWFNVmhXNF81ZWR4QWNYOEdMSVg0MXlyUUhNMU1SVHlRM1JocVNmM0NYaGxOZ3VrQ2lheXBBa1ZnZV9vSTdMSG9kbmd3Q3lwMGNvMTlZMkctanBwaVQzSTRMV3gzOEl6RHB6a05MMWlYWm14ZmtEZGJ5VG9hSGx0V0ZnbVEyaW1Zc3F3?oc=5",
+        "id": "gnews:42419c25aee741d6",
+        "title": "OpenAI Probes AI Agents for Unauthorized Government Data Grabs - The Tech Buzz",
+        "publisher": "The Tech Buzz",
+        "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOOFZjZGxVMUgxeEVSYWVpT3dGMkI0TUhKdlZHYVVKS0JLcGMwWlFET2MwTzJKTndyZmhWeEJTOFlSTzJHQnlJQXl0WTZSbVNRVVZRV3lTZFpkazlncFFkNWk5cDE3SnZyN00xRTBhX1lnY0RvZnhpakJNN3FwYUd3OXZnWjJMRlBpQkdjbmk0RVZvU0M3cmZMbXBVaw?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:06b654426fa77270",
-        "title": "Meta's AI agent Muse outpaces ChatGPT, aiming f... - pluang.com",
-        "publisher": "pluang.com",
-        "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBkd3k5TnktbGF4REo5QWc1Wi15NlRacFZfWk9DTU9tX2hENThCcVFpM2IzVzl0TmI2MXFINzY1SUhqTHllbVdQT0tmZ2ktMmxhaDZoa2drZU5nMHdOVWhad1N6bl85VFVOLWNFSXZReE1uM1lEZ3l5UDVkdXgwZw?oc=5",
+        "id": "gnews:a48b2afd04521a2f",
+        "title": "OpenAI investigating AI agents after attempts to access government websites - BNO News",
+        "publisher": "BNO News",
+        "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOdjd1cnE0QlQwbk9CeU1XaTVySEp2OXlscmpWLV9GV0c0amRVMFprbVBtazJ2MWVyNXpoRWxFSFpyS1hzcnUyaTgzcE96X1F6ZHpDejRPeURsM0lYTWd2Z0NaSElMV3lRYmtPbS1mM2hKZkpobFF2bFVzZXN0ZmlUUFlOek01X09fei1FSnBvZ25yVGUwa01DVzEyRjl6REs5eFlCdC1aYUR6M1B6NkE4Nnk5REo?oc=5",
         "tag": "rest"
       }
     ]
@@ -1057,28 +1229,28 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "query": "OWASP LLM",
+    "query": "agent sandbox escape",
     "shelf": 2,
-    "from_cache": true,
-    "searches": 0,
-    "rate_limit_remaining": null,
+    "from_cache": false,
+    "searches": 1,
+    "rate_limit_remaining": 9,
     "brief": false,
     "pulse_lead": false,
     "shelf_only": true,
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
-        "label": "nephritispeepshow717/awesome-agent-security",
-        "href": "https://github.com/nephritispeepshow717/awesome-agent-security"
+        "label": "hyperlight-dev/hyperagent",
+        "href": "https://github.com/hyperlight-dev/hyperagent"
       },
       {
-        "label": "kutta643/llm-sast-scanner",
-        "href": "https://github.com/kutta643/llm-sast-scanner"
+        "label": "aidan-mitchell-645/sandbox-escape-gb",
+        "href": "https://github.com/aidan-mitchell-645/sandbox-escape-gb"
       }
     ]
   },
   "shelf": {
-    "count": 19,
+    "count": 14,
     "brief": false
   },
   "wikidata": {
@@ -1086,28 +1258,17 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "seeds": [
-      "Astra",
       "Hugging Face",
-      "METR"
+      "METR",
+      "OpenAI"
     ],
-    "searches": 0,
-    "from_cache": true,
+    "searches": 1,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "deny_grounding_only": true,
     "url": "https://www.wikidata.org/w/api.php",
     "hints": [
-      {
-        "seed": "Astra",
-        "qid": "Q731938",
-        "label": "AstraZeneca",
-        "description": "British-Swedish pharmaceutical company",
-        "status": "rejected_false_friend",
-        "source": "wikidata",
-        "briefEligible": false,
-        "pulseLeadEligible": false,
-        "denyGroundingOnly": true
-      },
       {
         "seed": "Hugging Face",
         "qid": "Q108943604",
@@ -1125,6 +1286,17 @@
         "label": "metre",
         "description": "SI unit of length",
         "status": "rejected_false_friend",
+        "source": "wikidata",
+        "briefEligible": false,
+        "pulseLeadEligible": false,
+        "denyGroundingOnly": true
+      },
+      {
+        "seed": "OpenAI",
+        "qid": "Q21708200",
+        "label": "OpenAI",
+        "description": "American artificial intelligence research organization",
+        "status": "matched",
         "source": "wikidata",
         "briefEligible": false,
         "pulseLeadEligible": false,

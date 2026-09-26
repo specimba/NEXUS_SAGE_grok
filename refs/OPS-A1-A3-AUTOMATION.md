@@ -137,3 +137,38 @@ Gates:
 - Crawl `2026-09-24T22:13:06Z` → `2026-09-24T23:15:44Z` · pack `sage-pack-003-20260924T231725Z.tar.gz`
 - Dual-home sha `27a6d7c7672a…` · soft-fails: openalex=HTTP 429
 - Checklist: see `refs/A1-DRY-RUN.md` · Reviewer stamp pending · **cron not installed**
+
+## A1 dry-run evidence (2026-09-25T11:18Z)
+
+- Script: `desk/scripts/a1-stale-ingest.mjs` · FORCE=1 path exercised
+- Crawl `2026-09-24T23:15:44Z` → `2026-09-25T11:16:08Z` · pack `sage-pack-003-20260925T111817Z.tar.gz`
+- Dual-home sha `fedaf96926f4…` · soft-fails: openalex=HTTP 429
+- Checklist: see `refs/A1-DRY-RUN.md` · Reviewer stamp pending · **cron not installed**
+
+## A1 dry-run evidence (2026-09-25T15:23Z)
+
+- Script: `desk/scripts/a1-stale-ingest.mjs` · FORCE=1 path exercised
+- Crawl `2026-09-25T11:16:08Z` → `2026-09-25T15:22:45Z` · pack `sage-pack-003-20260925T152258Z.tar.gz`
+- Dual-home sha `76e84a607c11…` · soft-fails: openalex=paused_until 2026-09-26T00:00:00Z
+- Checklist: see `refs/A1-DRY-RUN.md` · Reviewer stamp pending · **cron not installed**
+
+## A1 dry-run evidence (2026-09-25T19:13Z)
+
+- Script: `desk/scripts/a1-stale-ingest.mjs` · FORCE=1 path exercised
+- Crawl `2026-09-25T15:22:45Z` → `2026-09-25T19:12:50Z` · pack `sage-pack-003-20260925T191331Z.tar.gz`
+- Dual-home sha `8f016b577b82…` · soft-fails: openalex=paused_until 2026-09-26T00:00:00Z
+- Checklist: see `refs/A1-DRY-RUN.md` · Reviewer stamp pending · **cron not installed**
+
+## A1 dry-run evidence (2026-09-25T23:13Z)
+
+- Script: `desk/scripts/a1-stale-ingest.mjs` · FORCE=1 path exercised
+- Crawl `2026-09-25T19:12:50Z` → `2026-09-25T23:12:54Z` · pack `sage-pack-003-20260925T231307Z.tar.gz`
+- Dual-home sha `6898ecbe5077…` · soft-fails: openalex=paused_until 2026-09-26T00:00:00Z
+- Checklist: see `refs/A1-DRY-RUN.md` · Reviewer stamp pending · **cron not installed**
+
+## A1 dry-run evidence (2026-09-26T03:24Z)
+
+- Script: `desk/scripts/a1-stale-ingest.mjs` · FORCE=1 path exercised
+- Crawl `2026-09-25T23:12:54Z` → `2026-09-26T03:20:25Z` · pack `sage-pack-003-20260926T032350Z.tar.gz`
+- Dual-home sha `a3750f10311b…` · soft-fails: openalex=HTTP 429
+- Checklist: see `refs/A1-DRY-RUN.md` · Reviewer stamp pending · **cron not installed**
