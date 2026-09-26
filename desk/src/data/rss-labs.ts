@@ -16,7 +16,7 @@ export type RssLabRow = {
   cluster_id?: string;
 };
 
-export const RSS_LABS_AT = "2026-09-26T07:20:20Z";
+export const RSS_LABS_AT = "2026-09-26T11:20:04Z";
 
 export const RSS_LABS: RssLabRow[] = [
   { id: "rss:openai:9de028fbe46cac8b", lab: "openai" as const, title: "Proaction boosts sales 60% and saves 75+ hours with Codex", link: "https://openai.com/index/proaction", published: "2026-09-25T19:00:00Z", summary: "With Codex, GPT-Live-1, and GPT-6 Astra, Proaction builds, operates, and sells modern fleet management faster.", source: "rss-lab" as const, tag: "companion" as const, first_seen: "2026-09-25T19:12:50Z", is_new: false, cluster_id: "cl:rss:openai:9de028fbe46cac8b" },
