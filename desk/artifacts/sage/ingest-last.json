@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-09-26T03:20:25Z",
+  "stamped_at": "2026-09-26T07:20:20Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 546,
+      "duration_ms": 595,
       "paused_until": null,
       "reason": null
     },
@@ -17,26 +17,26 @@
       "id": "arxiv",
       "label": "arXiv",
       "status": "ok",
-      "rows": 23,
-      "duration_ms": 164423,
+      "rows": 29,
+      "duration_ms": 3294,
       "paused_until": null,
       "reason": null
     },
     {
       "id": "openalex",
       "label": "OpenAlex",
-      "status": "fail",
+      "status": "paused",
       "rows": 0,
-      "duration_ms": 102,
+      "duration_ms": 2,
       "paused_until": "2026-09-27T00:00:00Z",
-      "reason": "HTTP 429"
+      "reason": "paused_until 2026-09-27T00:00:00Z"
     },
     {
       "id": "crossref",
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 4,
+      "duration_ms": 5,
       "paused_until": null,
       "reason": null
     },
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 53,
-      "duration_ms": 8347,
+      "rows": 51,
+      "duration_ms": 8424,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 18739,
+      "duration_ms": 76,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 4647,
+      "duration_ms": 29,
       "paused_until": null,
       "reason": null
     },
@@ -72,7 +72,7 @@
       "label": "Google News",
       "status": "ok",
       "rows": 30,
-      "duration_ms": 6366,
+      "duration_ms": 17,
       "paused_until": null,
       "reason": null
     },
@@ -81,7 +81,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 2,
-      "duration_ms": 607,
+      "duration_ms": 3,
       "paused_until": null,
       "reason": null
     },
@@ -90,35 +90,35 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 515,
+      "duration_ms": 1,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 204296,
-    "wall_ms": 204572,
-    "startup_ms": 37,
-    "main_ms": 204578
+    "sources_ms": 12446,
+    "wall_ms": 12803,
+    "startup_ms": 35,
+    "main_ms": 12809
   },
-  "multi_source_independent": 6,
+  "multi_source_independent": 5,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 6,
-    "multi_source_raw": 8,
+    "multi_source_independent": 5,
+    "multi_source_raw": 7,
     "self_reposts": 2,
-    "items_in": 214,
+    "items_in": 212,
     "clusters_out": 202,
-    "collapsed": 12,
-    "multi_source": 6,
-    "multi_member": 8,
+    "collapsed": 10,
+    "multi_source": 5,
+    "multi_member": 7,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 40,
+    "new_items": 4,
     "per_source": {
-      "hn-algolia": 53,
+      "hn-algolia": 51,
       "rss-lab": 104,
       "rss-security": 27,
       "gnews-rss": 30
@@ -246,21 +246,14 @@
         ]
       },
       {
-        "title": "OpenAI agent 'infiltrated' Australian government website, PM says",
+        "title": "OpenAI agents 'infiltrated Australian government website'",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 3,
-        "score": 0.94,
+        "size": 2,
+        "score": 0.863,
         "members": [
-          {
-            "id": "hn:49826285",
-            "source": "hn-algolia",
-            "title": "OpenAI agent 'infiltrated' Australian government website, PM says",
-            "at": "2026-09-24T04:33:52Z",
-            "publisher": null
-          },
           {
             "id": "hn:49828422",
             "source": "hn-algolia",
@@ -274,31 +267,6 @@
             "title": "Rogue OpenAI agent 'infiltrated' Australian government website in world first - BBC",
             "at": "2026-09-24T15:42:07Z",
             "publisher": "BBC"
-          }
-        ]
-      },
-      {
-        "title": "Advancing Private AI Compute with secure, server-side memory",
-        "sources": [
-          "rss-lab",
-          "hn-algolia"
-        ],
-        "size": 2,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:49827294",
-            "source": "hn-algolia",
-            "title": "Google Private AI Compute with server-side memory",
-            "at": "2026-09-24T07:12:37Z",
-            "publisher": null
-          },
-          {
-            "id": "rss:deepmind:68ead6b6af2b7144",
-            "source": "rss-lab",
-            "title": "Advancing Private AI Compute with secure, server-side memory",
-            "at": "2026-09-23T16:00:57Z",
-            "publisher": "deepmind"
           }
         ]
       }
@@ -395,7 +363,7 @@
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 12
+      "hn_dropped": 13
     },
     "gnews_near_misses": [
       {
@@ -424,7 +392,7 @@
         ]
       },
       {
-        "score": 0.604,
+        "score": 0.603,
         "blocked": "thin-overlap",
         "hours_apart": 214.9,
         "a": {
@@ -446,7 +414,7 @@
         ]
       },
       {
-        "score": 0.555,
+        "score": 0.562,
         "blocked": "below-threshold",
         "hours_apart": 2.5,
         "a": {
@@ -469,7 +437,30 @@
         ]
       },
       {
-        "score": 0.526,
+        "score": 0.527,
+        "blocked": "time-window",
+        "hours_apart": 35.7,
+        "a": {
+          "id": "hn:49830830",
+          "source": "hn-algolia",
+          "title": "Australia to investigate if OpenAI hack of government health website broke",
+          "at": "2026-09-24T14:07:08Z"
+        },
+        "b": {
+          "id": "gnews:811b5a07c502093d",
+          "source": "gnews-rss",
+          "title": "OpenAI Agents Hacked U.S. Government Websites - WSJ",
+          "at": "2026-09-26T01:52:00Z"
+        },
+        "shared": [
+          "openai",
+          "hack",
+          "government",
+          "websit"
+        ]
+      },
+      {
+        "score": 0.523,
         "blocked": "time-window",
         "hours_apart": 39.9,
         "a": {
@@ -492,53 +483,7 @@
         ]
       },
       {
-        "score": 0.493,
-        "blocked": "time-window",
-        "hours_apart": 40,
-        "a": {
-          "id": "hn:49828422",
-          "source": "hn-algolia",
-          "title": "OpenAI agents 'infiltrated Australian government website'",
-          "at": "2026-09-24T09:56:03Z"
-        },
-        "b": {
-          "id": "gnews:a48b2afd04521a2f",
-          "source": "gnews-rss",
-          "title": "OpenAI investigating AI agents after attempts to access government websites - BNO News",
-          "at": "2026-09-26T01:53:35Z"
-        },
-        "shared": [
-          "openai",
-          "agent",
-          "government",
-          "websit"
-        ]
-      },
-      {
-        "score": 0.49,
-        "blocked": "time-window",
-        "hours_apart": 45.3,
-        "a": {
-          "id": "hn:49826285",
-          "source": "hn-algolia",
-          "title": "OpenAI agent 'infiltrated' Australian government website, PM says",
-          "at": "2026-09-24T04:33:52Z"
-        },
-        "b": {
-          "id": "gnews:811b5a07c502093d",
-          "source": "gnews-rss",
-          "title": "OpenAI Agents Hacked U.S. Government Websites - WSJ",
-          "at": "2026-09-26T01:52:00Z"
-        },
-        "shared": [
-          "openai",
-          "agent",
-          "government",
-          "websit"
-        ]
-      },
-      {
-        "score": 0.484,
+        "score": 0.485,
         "blocked": "below-threshold",
         "hours_apart": 18.9,
         "a": {
@@ -558,6 +503,29 @@
           "project",
           "suncatcher",
           "spac"
+        ]
+      },
+      {
+        "score": 0.48,
+        "blocked": "time-window",
+        "hours_apart": 40,
+        "a": {
+          "id": "hn:49828422",
+          "source": "hn-algolia",
+          "title": "OpenAI agents 'infiltrated Australian government website'",
+          "at": "2026-09-24T09:56:03Z"
+        },
+        "b": {
+          "id": "gnews:a48b2afd04521a2f",
+          "source": "gnews-rss",
+          "title": "OpenAI investigating AI agents after attempts to access government websites - BNO News",
+          "at": "2026-09-26T01:53:35Z"
+        },
+        "shared": [
+          "openai",
+          "agent",
+          "government",
+          "websit"
         ]
       },
       {
@@ -611,7 +579,7 @@
         ]
       },
       {
-        "score": 0.604,
+        "score": 0.603,
         "blocked": "thin-overlap",
         "hours_apart": 214.9,
         "a": {
@@ -633,7 +601,7 @@
         ]
       },
       {
-        "score": 0.555,
+        "score": 0.562,
         "blocked": "below-threshold",
         "hours_apart": 2.5,
         "a": {
@@ -656,7 +624,30 @@
         ]
       },
       {
-        "score": 0.526,
+        "score": 0.527,
+        "blocked": "time-window",
+        "hours_apart": 35.7,
+        "a": {
+          "id": "hn:49830830",
+          "source": "hn-algolia",
+          "title": "Australia to investigate if OpenAI hack of government health website broke",
+          "at": "2026-09-24T14:07:08Z"
+        },
+        "b": {
+          "id": "gnews:811b5a07c502093d",
+          "source": "gnews-rss",
+          "title": "OpenAI Agents Hacked U.S. Government Websites - WSJ",
+          "at": "2026-09-26T01:52:00Z"
+        },
+        "shared": [
+          "openai",
+          "hack",
+          "government",
+          "websit"
+        ]
+      },
+      {
+        "score": 0.523,
         "blocked": "time-window",
         "hours_apart": 39.9,
         "a": {
@@ -679,53 +670,7 @@
         ]
       },
       {
-        "score": 0.493,
-        "blocked": "time-window",
-        "hours_apart": 40,
-        "a": {
-          "id": "hn:49828422",
-          "source": "hn-algolia",
-          "title": "OpenAI agents 'infiltrated Australian government website'",
-          "at": "2026-09-24T09:56:03Z"
-        },
-        "b": {
-          "id": "gnews:a48b2afd04521a2f",
-          "source": "gnews-rss",
-          "title": "OpenAI investigating AI agents after attempts to access government websites - BNO News",
-          "at": "2026-09-26T01:53:35Z"
-        },
-        "shared": [
-          "openai",
-          "agent",
-          "government",
-          "websit"
-        ]
-      },
-      {
-        "score": 0.49,
-        "blocked": "time-window",
-        "hours_apart": 45.3,
-        "a": {
-          "id": "hn:49826285",
-          "source": "hn-algolia",
-          "title": "OpenAI agent 'infiltrated' Australian government website, PM says",
-          "at": "2026-09-24T04:33:52Z"
-        },
-        "b": {
-          "id": "gnews:811b5a07c502093d",
-          "source": "gnews-rss",
-          "title": "OpenAI Agents Hacked U.S. Government Websites - WSJ",
-          "at": "2026-09-26T01:52:00Z"
-        },
-        "shared": [
-          "openai",
-          "agent",
-          "government",
-          "websit"
-        ]
-      },
-      {
-        "score": 0.484,
+        "score": 0.485,
         "blocked": "below-threshold",
         "hours_apart": 18.9,
         "a": {
@@ -745,6 +690,29 @@
           "project",
           "suncatcher",
           "spac"
+        ]
+      },
+      {
+        "score": 0.48,
+        "blocked": "time-window",
+        "hours_apart": 40,
+        "a": {
+          "id": "hn:49828422",
+          "source": "hn-algolia",
+          "title": "OpenAI agents 'infiltrated Australian government website'",
+          "at": "2026-09-24T09:56:03Z"
+        },
+        "b": {
+          "id": "gnews:a48b2afd04521a2f",
+          "source": "gnews-rss",
+          "title": "OpenAI investigating AI agents after attempts to access government websites - BNO News",
+          "at": "2026-09-26T01:53:35Z"
+        },
+        "shared": [
+          "openai",
+          "agent",
+          "government",
+          "websit"
         ]
       },
       {
@@ -776,44 +744,44 @@
     {
       "id": "arxiv",
       "state": "ok",
-      "streak_ok": 21,
+      "streak_ok": 22,
       "streak_fail": 0,
-      "items_last": 23
+      "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 21,
+      "streak_ok": 22,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 21,
+      "streak_ok": 22,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 21,
+      "streak_ok": 22,
       "streak_fail": 0,
       "items_last": 30
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 21,
+      "streak_ok": 22,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 21,
+      "streak_ok": 22,
       "streak_fail": 0,
-      "items_last": 53
+      "items_last": 51
     },
     {
       "id": "openalex",
@@ -825,27 +793,27 @@
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 21,
+      "streak_ok": 22,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 21,
+      "streak_ok": 22,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 21,
+      "streak_ok": 22,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.05701972222222222,
+    "hours": 0.0037222222222222223,
     "stale": false
   },
   "hf": {
@@ -855,26 +823,26 @@
   },
   "arxiv": {
     "ok": true,
-    "enriched": 23,
-    "shelf": 0,
+    "enriched": 24,
+    "shelf": 5,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
   },
   "openalex": {
     "ok": false,
     "soft_fail": true,
-    "soft_fail_reason": "HTTP 429",
+    "soft_fail_reason": "paused_until 2026-09-27T00:00:00Z",
     "enriched": 0,
     "secondary": 0,
     "query": "LLM agent",
     "mode": "search",
     "from_cache": false,
-    "searches": 1,
+    "searches": 0,
     "retries": 0,
-    "status": "fail",
+    "status": "paused",
     "paused_until": "2026-09-27T00:00:00Z",
     "pause_reason": "HTTP 429 Retry-After 74210",
-    "requests": 1,
+    "requests": 0,
     "auth": "anon",
     "brief": false,
     "pulse_lead": false,
@@ -912,7 +880,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 53,
+    "count": 51,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -929,25 +897,25 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 12,
+    "ai_dropped": 13,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
         "id": "hn:49845977",
         "tag": "rest",
-        "score": 407,
+        "score": 436,
         "text": "U.S. appeals court upholds designation of Anthropic as supply chain risk"
       },
       {
         "id": "hn:49849985",
         "tag": "rest",
-        "score": 265,
+        "score": 414,
         "text": "Revealing the details of how OpenAI agents hacked Hugging Face"
       },
       {
         "id": "hn:49830606",
         "tag": "rest",
-        "score": 226,
+        "score": 227,
         "text": "Google’s Project Suncatcher to put ML infrastructure in space"
       }
     ]
@@ -964,47 +932,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "https://openai.com/news/rss.xml",
+        "url": "(cache:openai)",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "https://deepmind.google/blog/rss.xml",
+        "url": "(cache:deepmind)",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "https://blog.google/technology/ai/rss/",
+        "url": "(cache:google-ai)",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "https://huggingface.co/blog/feed.xml",
+        "url": "(cache:huggingface)",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "https://mistral.ai/rss.xml",
+        "url": "(cache:mistral)",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "https://blogs.nvidia.com/feed/",
+        "url": "(cache:nvidia)",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "https://developer.nvidia.com/blog/feed",
+        "url": "(cache:nvidia-dev)",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
+        "url": "(cache:ms-research)",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "https://research.google/blog/rss/",
+        "url": "(cache:google-research)",
         "count": 12
       }
     ],
@@ -1050,17 +1018,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "https://blog.trailofbits.com/feed/",
+        "url": "(cache:trailofbits)",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "https://blog.fox-it.com/feed/",
+        "url": "(cache:fox-it)",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "https://projectzero.google/feed.xml",
+        "url": "(cache:projectzero)",
         "count": 5
       }
     ],
@@ -1131,7 +1099,7 @@
       {
         "id": "gnews:255b6ece4c6ee1ec",
         "anchor_id": "hn:49840806",
-        "score": 0.647,
+        "score": 0.646,
         "title": "Project Suncatcher: What Google plans to test by taking AI compute to space - Business Standard",
         "publisher": "Business Standard",
         "self_repost": false
@@ -1139,7 +1107,7 @@
       {
         "id": "gnews:8b01c17054630903",
         "anchor_id": "hn:49830606",
-        "score": 0.665,
+        "score": 0.662,
         "title": "Google Announces Project Suncatcher for Space AI Computing - GK Today",
         "publisher": "GK Today",
         "self_repost": false
@@ -1163,16 +1131,16 @@
       {
         "id": "gnews:26a31e7a5e419d3d",
         "anchor_id": "hn:49828422",
-        "score": 0.866,
+        "score": 0.871,
         "title": "Rogue OpenAI agent 'infiltrated' Australian government website in world first - BBC",
         "publisher": "BBC",
         "self_repost": false
       }
     ],
     "http_status": 200,
-    "content_type": "application/xml; charset=utf-8",
+    "content_type": null,
     "format": "rss2",
-    "from_cache": false,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1231,9 +1199,9 @@
     "soft_fail_reason": null,
     "query": "agent sandbox escape",
     "shelf": 2,
-    "from_cache": false,
-    "searches": 1,
-    "rate_limit_remaining": 9,
+    "from_cache": true,
+    "searches": 0,
+    "rate_limit_remaining": null,
     "brief": false,
     "pulse_lead": false,
     "shelf_only": true,
@@ -1250,7 +1218,7 @@
     ]
   },
   "shelf": {
-    "count": 14,
+    "count": 19,
     "brief": false
   },
   "wikidata": {
@@ -1262,8 +1230,8 @@
       "METR",
       "OpenAI"
     ],
-    "searches": 1,
-    "from_cache": false,
+    "searches": 0,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "deny_grounding_only": true,
