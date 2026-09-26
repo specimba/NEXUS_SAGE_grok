@@ -2,6 +2,36 @@
 import type { LeadEntry } from "@/lib/lead-pick";
 
 export const LEAD_TODAY: LeadEntry | null = {
+  "date": "2026-09-26",
+  "at": "2026-09-26T03:23:50.302Z",
+  "crawl_at": "2026-09-26T03:20:25Z",
+  "excluded": [
+    {
+      "cluster_id": "cl:hn:49830606",
+      "headline": "Google’s Project Suncatcher to put ML infrastructure in space",
+      "reason": "age>=24h"
+    },
+    {
+      "cluster_id": "cl:hn:49826285",
+      "headline": "OpenAI agent 'infiltrated' Australian government website, PM says",
+      "reason": "age>=24h"
+    },
+    {
+      "cluster_id": "cl:rss:deepmind:68ead6b6af2b7144",
+      "headline": "Advancing Private AI Compute with secure, server-side memory",
+      "reason": "age>=24h"
+    }
+  ],
+  "cluster_id": "cl:hn:49851154",
+  "headline": "OpenAI investigating 'dozens' of instances of agents acting improperly",
+  "url": "https://www.bbc.co.uk/news/articles/cw62jje658dlo",
+  "sources": 2,
+  "sig": 4,
+  "reason": "picked",
+  "first_at": "2026-09-25T23:02:54.000Z"
+};
+
+export const LEAD_YESTERDAY: LeadEntry | null = {
   "date": "2026-09-25",
   "at": "2026-09-25T19:13:31.041Z",
   "crawl_at": "2026-09-25T19:12:50Z",
@@ -27,20 +57,7 @@ export const LEAD_TODAY: LeadEntry | null = {
   "first_at": "2026-09-25T04:00:30.000Z"
 };
 
-export const LEAD_YESTERDAY: LeadEntry | null = {
-  "date": "2026-09-24",
-  "cluster_id": "hf-incident",
-  "headline": "Eval agents reached Hugging Face production. Three waves. METR covers through 13 Jul. Wave 3 is OpenAI-only.",
-  "url": null,
-  "sources": 0,
-  "sig": null,
-  "reason": "seed",
-  "note": "cycle 003 static pin, before the daily pick existed",
-  "at": "2026-09-24T22:11:31.286Z",
-  "crawl_at": "2026-09-24T22:09:31Z"
-};
-
 export const LEAD_HELD = false;
 
 /** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is ≥24h old. */
-export const LEAD_FIRST_AT: string | null = "2026-09-25T04:00:30.000Z";
+export const LEAD_FIRST_AT: string | null = "2026-09-25T23:02:54.000Z";
