@@ -128,10 +128,25 @@ describe("Beat 10 heat — company matching", () => {
     expect(companyFilterMatch("goo", { title: "DeepMind ships", member_ids: [] })).toBe(false);
   });
   test("generated data file is bucketed and never pads gaps with zeros", () => {
+    // Contract only: the generator writes the file and export. Window contents change every crawl, so the
+    // gap rule is asserted below against a frozen fixture, not today's topic-heat.ts.
     const p = resolve(import.meta.dir, "../../data/topic-heat.ts");
     expect(existsSync(p)).toBe(true);
-    const src = readFileSync(p, "utf8");
-    expect(src).toContain("TOPIC_HEAT_WINDOWS");
-    expect(src).toMatch(/"counts": null/); // < 6 real windows so far ⇒ explicit gaps
+    expect(readFileSync(p, "utf8")).toContain("export const TOPIC_HEAT_WINDOWS: HeatWindow[] = ");
+    // Frozen fixture: 3 real crawls (02:11, 10:14 and 14:20 IST on 26 Sep), so the 18/22/06 windows are gaps.
+    const frozen = [
+      crawl("2026-09-25T23:11:43Z", C(3)),
+      crawl("2026-09-26T07:14:40Z", C(5)),
+      crawl("2026-09-26T11:20:47Z", C(7, { hf: 0 })),
+    ];
+    const w = bucketWindows(frozen, "2026-09-26T11:20:47Z");
+    expect(w.map((x) => x.label)).toEqual(["18", "22", "02", "06", "10", "14"]);
+    expect(realWindows(w)).toBe(3);
+    // Serialized exactly as scripts/rank-snapshot.ts writes topic-heat.ts.
+    const src = `export const TOPIC_HEAT_WINDOWS: HeatWindow[] = ${JSON.stringify(w, null, 2)};\n`;
+    expect(src.match(/"counts": null/g)).toHaveLength(3); // every gap is an explicit null
+    expect(src).not.toMatch(/"counts": \{\s*"anthropic": 0,\s*"openai": 0,\s*"google": 0,\s*"nvidia": 0,\s*"hf": 0,\s*"other": 0\s*\}/);
+    expect(w.filter((x) => !x.counts).every((x) => x.crawl_at === null && x.labs === null)).toBe(true);
+    expect(w[5]!.counts!.hf).toBe(0); // a real zero in a real window stays a zero
   });
 });

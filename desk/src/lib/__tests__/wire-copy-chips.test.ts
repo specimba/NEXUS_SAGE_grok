@@ -88,9 +88,46 @@ describe("WIRE copies — news outlets only", () => {
     const lab = cluster(["rss:openai:1", "gnews:1"], { lead_source: "rss-lab" });
     const lm = info({ "rss:openai:1": { publisher: "openai", title: near.a, at: T0 }, "gnews:1": { publisher: "Reuters", title: near.a, at: T0 } });
     expect(count(lab, lm)).toBe(2);
-    // the real cluster on current data
-    const real = PULSE_CLUSTERS.find((x) => x.id === "cl:rss:deepmind:81481aa316e38773");
-    if (real) expect(count(real, memberInfo())).toBe(2);
+  });
+
+  test("Gemini 3.8 TTS real case, frozen from the 2026-09-25 crawl: lab post + HN repost stay 2 SRC, no WIRE copy", () => {
+    // Rows copied from src/data/pulse-clusters.ts and hn-pulse.ts at 36b7467^ (before the HN item aged out of
+    // the crawl window). Member info is built the way memberInfo() builds it (HN publisher = hn/<author>).
+    const frozen: ClusterInput = {
+      id: "cl:rss:deepmind:81481aa316e38773",
+      title: "Gemini 3.8 text-to-speech says hello",
+      url: "https://deepmind.google/blog/say-hello-to-gemini-38-text-to-speech/",
+      lead_id: "rss:deepmind:81481aa316e38773",
+      lead_source: "rss-lab",
+      sources: ["rss-lab", "hn-algolia"],
+      member_ids: ["hn:49817615", "rss:deepmind:81481aa316e38773"],
+      size: 2,
+      at: "2026-09-23T15:29:23Z",
+      first_seen: "2026-09-24T21:18:09Z",
+      is_new: false,
+    };
+    const m = info({
+      "rss:deepmind:81481aa316e38773": { publisher: "deepmind", title: "Gemini 3.8 text-to-speech says hello", at: "2026-09-23T15:25:14Z" },
+      "hn:49817615": { publisher: "hn/swolpers", title: "Gemini 3.8 text-to-speech", at: "2026-09-23T15:29:23Z", score: 330 },
+    });
+    const r = buildRows([frozen], m).rows[0]!;
+    expect(r.sourceCount).toBe(2);
+    expect(r.wireCopyIds).toEqual([]);
+    expect(r.chips.reduce((a, c) => a + c.n, 0)).toBe(2);
+  });
+
+  test("HN + news outlet pair with the same headline minutes apart is never deduped (HN is not an outlet)", () => {
+    const title = "Gemini 3.8 text-to-speech";
+    const c = cluster(["hn:49817615", "gnews:tts1"], { lead_source: "hn-algolia", sources: ["hn-algolia", "gnews-rss"], title });
+    const m = info({
+      "hn:49817615": { publisher: "hn/swolpers", title, at: "2026-09-23T15:29:23Z" },
+      "gnews:tts1": { publisher: "The Verge", title: `${title} - The Verge`, at: "2026-09-23T15:33:23Z" },
+    });
+    expect(isWireCopy(m["hn:49817615"], m["gnews:tts1"])).toBe(true); // headline + time alone would fold them…
+    const r = buildRows([c], m).rows[0]!;
+    expect(r.sourceCount).toBe(2); // …but only outlet↔outlet pairs are WIRE copies
+    expect(r.wireCopyIds).toEqual([]);
+    expect(r.chips.map(chipLabel).sort()).toEqual(["GNW", "HN"]);
   });
 
   test("dedupe reaches every N SRC consumer: Wire gate, corroboration keys, lead eligibility", () => {
