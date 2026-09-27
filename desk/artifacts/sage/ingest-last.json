@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-09-27T19:20:38Z",
+  "stamped_at": "2026-09-27T23:19:29Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 560,
+      "duration_ms": 608,
       "paused_until": null,
       "reason": null
     },
@@ -17,8 +17,8 @@
       "id": "arxiv",
       "label": "arXiv",
       "status": "ok",
-      "rows": 17,
-      "duration_ms": 24035,
+      "rows": 11,
+      "duration_ms": 24046,
       "paused_until": null,
       "reason": null
     },
@@ -27,7 +27,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 58,
+      "duration_ms": 6,
       "paused_until": null,
       "reason": null
     },
@@ -36,7 +36,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 74,
+      "duration_ms": 2,
       "paused_until": null,
       "reason": null
     },
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 52,
-      "duration_ms": 25755,
+      "rows": 47,
+      "duration_ms": 8410,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 334596,
+      "duration_ms": 54,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 4562,
+      "duration_ms": 33,
       "paused_until": null,
       "reason": null
     },
@@ -72,7 +72,7 @@
       "label": "Google News",
       "status": "ok",
       "rows": 32,
-      "duration_ms": 6486,
+      "duration_ms": 14,
       "paused_until": null,
       "reason": null
     },
@@ -81,7 +81,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 2,
-      "duration_ms": 4,
+      "duration_ms": 2,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4,
+      "duration_ms": 1,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 396134,
-    "wall_ms": 396370,
-    "startup_ms": 42,
-    "main_ms": 396378
+    "sources_ms": 33176,
+    "wall_ms": 33420,
+    "startup_ms": 27,
+    "main_ms": 33426
   },
   "multi_source_independent": 4,
   "stale_hours": 6,
@@ -108,17 +108,17 @@
     "multi_source_independent": 4,
     "multi_source_raw": 4,
     "self_reposts": 0,
-    "items_in": 215,
-    "clusters_out": 205,
-    "collapsed": 10,
+    "items_in": 210,
+    "clusters_out": 198,
+    "collapsed": 12,
     "multi_source": 4,
-    "multi_member": 6,
+    "multi_member": 8,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 27,
+    "new_items": 5,
     "per_source": {
-      "hn-algolia": 52,
+      "hn-algolia": 47,
       "rss-lab": 104,
       "rss-security": 27,
       "gnews-rss": 32
@@ -130,7 +130,7 @@
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 3,
+        "size": 2,
         "score": 1,
         "members": [
           {
@@ -138,13 +138,6 @@
             "source": "hn-algolia",
             "title": "OpenAI's Rogue A.I. Agents Tried to Trick a Robot Detector",
             "at": "2026-09-26T16:55:43Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:49851120",
-            "source": "hn-algolia",
-            "title": "How OpenAI's Rogue A.I. Agents Tried to Trick a Robot Detector",
-            "at": "2026-09-25T22:59:32Z",
             "publisher": null
           },
           {
@@ -209,7 +202,7 @@
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.603,
+        "score": 0.604,
         "members": [
           {
             "id": "hn:49856665",
@@ -234,7 +227,7 @@
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.865,
+        "score": 0.866,
         "members": [
           {
             "id": "hn:49851355",
@@ -294,7 +287,7 @@
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 5
+      "hn_dropped": 4
     },
     "gnews_near_misses": [
       {
@@ -320,7 +313,7 @@
         ]
       },
       {
-        "score": 0.528,
+        "score": 0.534,
         "blocked": "below-threshold",
         "hours_apart": 0.5,
         "a": {
@@ -344,7 +337,7 @@
         ]
       },
       {
-        "score": 0.512,
+        "score": 0.518,
         "blocked": "below-threshold",
         "hours_apart": 12.2,
         "a": {
@@ -368,7 +361,7 @@
         ]
       },
       {
-        "score": 0.508,
+        "score": 0.509,
         "blocked": "below-threshold",
         "hours_apart": 4.2,
         "a": {
@@ -392,7 +385,7 @@
         ]
       },
       {
-        "score": 0.482,
+        "score": 0.487,
         "blocked": "below-threshold",
         "hours_apart": 15.5,
         "a": {
@@ -416,7 +409,7 @@
         ]
       },
       {
-        "score": 0.469,
+        "score": 0.474,
         "blocked": "time-window",
         "hours_apart": 30.7,
         "a": {
@@ -441,7 +434,7 @@
         ]
       },
       {
-        "score": 0.468,
+        "score": 0.473,
         "blocked": "below-threshold",
         "hours_apart": 15.7,
         "a": {
@@ -465,7 +458,7 @@
         ]
       },
       {
-        "score": 0.465,
+        "score": 0.472,
         "blocked": "below-threshold",
         "hours_apart": 4.6,
         "a": {
@@ -512,7 +505,7 @@
         ]
       },
       {
-        "score": 0.528,
+        "score": 0.534,
         "blocked": "below-threshold",
         "hours_apart": 0.5,
         "a": {
@@ -536,7 +529,7 @@
         ]
       },
       {
-        "score": 0.512,
+        "score": 0.518,
         "blocked": "below-threshold",
         "hours_apart": 12.2,
         "a": {
@@ -560,7 +553,7 @@
         ]
       },
       {
-        "score": 0.508,
+        "score": 0.509,
         "blocked": "below-threshold",
         "hours_apart": 4.2,
         "a": {
@@ -584,7 +577,7 @@
         ]
       },
       {
-        "score": 0.482,
+        "score": 0.487,
         "blocked": "below-threshold",
         "hours_apart": 15.5,
         "a": {
@@ -608,7 +601,7 @@
         ]
       },
       {
-        "score": 0.469,
+        "score": 0.474,
         "blocked": "time-window",
         "hours_apart": 30.7,
         "a": {
@@ -633,7 +626,7 @@
         ]
       },
       {
-        "score": 0.468,
+        "score": 0.473,
         "blocked": "below-threshold",
         "hours_apart": 15.7,
         "a": {
@@ -657,7 +650,7 @@
         ]
       },
       {
-        "score": 0.465,
+        "score": 0.472,
         "blocked": "below-threshold",
         "hours_apart": 4.6,
         "a": {
@@ -685,76 +678,76 @@
     {
       "id": "arxiv",
       "state": "ok",
-      "streak_ok": 31,
+      "streak_ok": 32,
       "streak_fail": 0,
-      "items_last": 17
+      "items_last": 11
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 31,
+      "streak_ok": 32,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 31,
+      "streak_ok": 32,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 31,
+      "streak_ok": 32,
       "streak_fail": 0,
       "items_last": 32
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 31,
+      "streak_ok": 32,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 31,
+      "streak_ok": 32,
       "streak_fail": 0,
-      "items_last": 52
+      "items_last": 47
     },
     {
       "id": "openalex",
       "state": "flaky",
-      "streak_ok": 5,
+      "streak_ok": 6,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 31,
+      "streak_ok": 32,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 31,
+      "streak_ok": 32,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 31,
+      "streak_ok": 32,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.11011027777777778,
+    "hours": 0.00937,
     "stale": false
   },
   "hf": {
@@ -764,8 +757,8 @@
   },
   "arxiv": {
     "ok": true,
-    "enriched": 12,
-    "shelf": 5,
+    "enriched": 11,
+    "shelf": 0,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
   },
@@ -843,7 +836,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 52,
+    "count": 47,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -860,26 +853,26 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 5,
+    "ai_dropped": 4,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
-        "id": "hn:49849985",
-        "tag": "rest",
-        "score": 735,
-        "text": "Revealing the details of how OpenAI agents hacked Hugging Face"
-      },
-      {
         "id": "hn:49863864",
         "tag": "rest",
-        "score": 578,
+        "score": 596,
         "text": "Unsealed Briefs in Authors’ Case v. Microsoft/OpenAI"
       },
       {
         "id": "hn:49868831",
         "tag": "rest",
-        "score": 141,
+        "score": 173,
         "text": "SNL Weekend Update: Anthropic CEO Dario Amodei on A.I.'S Threat to Humanity [video]"
+      },
+      {
+        "id": "hn:49856665",
+        "tag": "rest",
+        "score": 126,
+        "text": "OpenAI bots meddled with multiple US Government agency sites"
       }
     ]
   },
@@ -895,47 +888,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "https://openai.com/news/rss.xml",
+        "url": "(cache:openai)",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "https://deepmind.google/blog/rss.xml",
+        "url": "(cache:deepmind)",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "https://blog.google/technology/ai/rss/",
+        "url": "(cache:google-ai)",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "https://huggingface.co/blog/feed.xml",
+        "url": "(cache:huggingface)",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "https://mistral.ai/rss.xml",
+        "url": "(cache:mistral)",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "https://blogs.nvidia.com/feed/",
+        "url": "(cache:nvidia)",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "https://developer.nvidia.com/blog/feed",
+        "url": "(cache:nvidia-dev)",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
+        "url": "(cache:ms-research)",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "https://research.google/blog/rss/",
+        "url": "(cache:google-research)",
         "count": 12
       }
     ],
@@ -981,17 +974,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "https://blog.trailofbits.com/feed/",
+        "url": "(cache:trailofbits)",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "https://blog.fox-it.com/feed/",
+        "url": "(cache:fox-it)",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "https://projectzero.google/feed.xml",
+        "url": "(cache:projectzero)",
         "count": 5
       }
     ],
@@ -1046,7 +1039,7 @@
       {
         "id": "gnews:2c0d09d56578d9b0",
         "anchor_id": "hn:49853688",
-        "score": 0.957,
+        "score": 0.958,
         "title": "OpenAI Confirms Agents Accessed and Leaked 53 User Images From ChatGPT - LatestLY",
         "publisher": "LatestLY",
         "self_repost": false
@@ -1054,7 +1047,7 @@
       {
         "id": "gnews:398ff46d590d9294",
         "anchor_id": "hn:49853688",
-        "score": 0.881,
+        "score": 0.882,
         "title": "OpenAI says agents leaked 53 images from ChatGPT users in latest example of rogue activity - The Guardian",
         "publisher": "The Guardian",
         "self_repost": false
@@ -1070,7 +1063,7 @@
       {
         "id": "gnews:24f0e4b4a185642e",
         "anchor_id": "hn:49851355",
-        "score": 0.848,
+        "score": 0.849,
         "title": "OpenAI’s A.I. Went Rogue and Meddled With U.S. Government Websites - The New York Times",
         "publisher": "The New York Times",
         "self_repost": false
@@ -1085,9 +1078,9 @@
       }
     ],
     "http_status": 200,
-    "content_type": "application/xml; charset=utf-8",
+    "content_type": null,
     "format": "rss2",
-    "from_cache": false,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1165,7 +1158,7 @@
     ]
   },
   "shelf": {
-    "count": 19,
+    "count": 14,
     "brief": false
   },
   "wikidata": {
