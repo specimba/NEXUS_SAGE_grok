@@ -235,3 +235,10 @@ Gates:
 - Crawl `2026-09-27T11:19:55Z` → `2026-09-27T15:21:10Z` · pack `sage-pack-003-20260927T152144Z.tar.gz`
 - Dual-home sha `888c461b7a07…` · soft-fails: none
 - Checklist: see `refs/A1-DRY-RUN.md` · Reviewer stamp pending · **cron not installed**
+
+## A1 dry-run evidence (2026-09-27T19:27Z)
+
+- Script: `desk/scripts/a1-stale-ingest.mjs` · FORCE=1 path exercised
+- Crawl `2026-09-27T15:21:10Z` → `2026-09-27T19:20:38Z` · pack `sage-pack-003-20260927T192714Z.tar.gz`
+- Dual-home sha `d81e88019d47…` · soft-fails: none
+- Checklist: see `refs/A1-DRY-RUN.md` · Reviewer stamp pending · **cron not installed**

@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-09-27T15:21:10Z",
+  "stamped_at": "2026-09-27T19:20:38Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 649,
+      "duration_ms": 560,
       "paused_until": null,
       "reason": null
     },
@@ -17,8 +17,8 @@
       "id": "arxiv",
       "label": "arXiv",
       "status": "ok",
-      "rows": 14,
-      "duration_ms": 23808,
+      "rows": 17,
+      "duration_ms": 24035,
       "paused_until": null,
       "reason": null
     },
@@ -27,7 +27,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 8,
+      "duration_ms": 58,
       "paused_until": null,
       "reason": null
     },
@@ -36,7 +36,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 3,
+      "duration_ms": 74,
       "paused_until": null,
       "reason": null
     },
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 49,
-      "duration_ms": 8335,
+      "rows": 52,
+      "duration_ms": 25755,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 66,
+      "duration_ms": 334596,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 37,
+      "duration_ms": 4562,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 28,
-      "duration_ms": 15,
+      "rows": 32,
+      "duration_ms": 6486,
       "paused_until": null,
       "reason": null
     },
@@ -81,7 +81,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 2,
-      "duration_ms": 1,
+      "duration_ms": 4,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 1,
+      "duration_ms": 4,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 32923,
-    "wall_ms": 33174,
-    "startup_ms": 28,
-    "main_ms": 33179
+    "sources_ms": 396134,
+    "wall_ms": 396370,
+    "startup_ms": 42,
+    "main_ms": 396378
   },
   "multi_source_independent": 4,
   "stale_hours": 6,
@@ -108,20 +108,20 @@
     "multi_source_independent": 4,
     "multi_source_raw": 4,
     "self_reposts": 0,
-    "items_in": 208,
-    "clusters_out": 197,
-    "collapsed": 11,
+    "items_in": 215,
+    "clusters_out": 205,
+    "collapsed": 10,
     "multi_source": 4,
-    "multi_member": 7,
+    "multi_member": 6,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 1,
+    "new_items": 27,
     "per_source": {
-      "hn-algolia": 49,
+      "hn-algolia": 52,
       "rss-lab": 104,
       "rss-security": 27,
-      "gnews-rss": 28
+      "gnews-rss": 32
     },
     "multi_source_clusters": [
       {
@@ -203,52 +203,52 @@
         ]
       },
       {
-        "title": "One company is at the center of a wave of rogue AI attacks",
+        "title": "OpenAI bots meddled with multiple US Government agency sites",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
         "size": 2,
-        "score": 1,
+        "score": 0.603,
         "members": [
           {
-            "id": "hn:49853692",
+            "id": "hn:49856665",
             "source": "hn-algolia",
-            "title": "One company is at the center of a wave of rogue AI attacks",
-            "at": "2026-09-26T06:08:44Z",
+            "title": "OpenAI bots meddled with multiple US Government agency sites",
+            "at": "2026-09-26T14:03:54Z",
             "publisher": null
           },
           {
-            "id": "gnews:0d87958a38174e1e",
+            "id": "gnews:984231e26123345d",
             "source": "gnews-rss",
-            "title": "One company is at the center of a wave of rogue AI attacks - Bundle",
-            "at": "2026-09-25T17:35:58Z",
-            "publisher": "Bundle"
+            "title": "OpenAI bots meddled with US government agencies, including SEC and Census - BBC",
+            "at": "2026-09-26T02:50:56Z",
+            "publisher": "BBC"
           }
         ]
       },
       {
-        "title": "Revealing the details of how OpenAI agents hacked Hugging Face",
+        "title": "OpenAI’s Systems Went Rogue and Meddled With U.S. Government Websites",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.671,
+        "score": 0.865,
         "members": [
           {
-            "id": "hn:49849985",
+            "id": "hn:49851355",
             "source": "hn-algolia",
-            "title": "Revealing the details of how OpenAI agents hacked Hugging Face",
-            "at": "2026-09-25T21:09:27Z",
+            "title": "OpenAI’s Systems Went Rogue and Meddled With U.S. Government Websites",
+            "at": "2026-09-25T23:22:18Z",
             "publisher": null
           },
           {
-            "id": "gnews:d41440fc1cd59ab9",
+            "id": "gnews:24f0e4b4a185642e",
             "source": "gnews-rss",
-            "title": "OpenAI AI Agents hacked 4 websites before Hugging Face, researchers reveal - WION",
-            "at": "2026-09-25T18:33:00Z",
-            "publisher": "WION"
+            "title": "OpenAI’s A.I. Went Rogue and Meddled With U.S. Government Websites - The New York Times",
+            "at": "2026-09-25T23:16:40Z",
+            "publisher": "The New York Times"
           }
         ]
       }
@@ -269,44 +269,28 @@
       ],
       "gnews_shown_dropped": [
         {
+          "publisher": "MARCA",
+          "title": "Google turns 28: the story behind the search engine that revolutionized the Internet - MARCA"
+        },
+        {
+          "publisher": "FourWeekMBA",
+          "title": "Radical Numerics and the 98% Problem: How Context Length Became the Ceiling in Genomic Analysis - FourWeekMBA"
+        },
+        {
+          "publisher": "PPC Land",
+          "title": "Explaining Google-Extended - PPC Land"
+        },
+        {
+          "publisher": "CNN",
+          "title": "How to make – and keep – friends as a grownup, according to science - CNN"
+        },
+        {
           "publisher": "Business Upturn",
           "title": "From Google Search to Gmail, YouTube and Android: 10 products that changed Google forever - Business Upturn"
         },
         {
           "publisher": "The Times of India",
           "title": "As Google turns 28, here are 25 fun facts about the company's offices and data centers around the world - The Times of India"
-        },
-        {
-          "publisher": "Android Authority",
-          "title": "7 surprisingly useful ways to use Google Lens beyond basic search - Android Authority"
-        },
-        {
-          "publisher": "jagranjosh.com",
-          "title": "Google’s 28th Birthday: Untold Story From a College Startup From Garage, $100,000 Cheque to a Global Tech Giant Worth Over $4 trillion - jagranjosh.com"
-        },
-        {
-          "publisher": "London Evening Standard",
-          "title": "Google celebrates its 28th birthday with nostalgic doodle - how did the search engine mark earlier milestones? - London Evening Standard"
-        },
-        {
-          "publisher": "The Sunday Guardian",
-          "title": "Google Birthday 2026: Why September 27 Is Celebrated as Google’s Birthday When the Tech Giant Was Founded on September 4, 1998? - The Sunday Guardian"
-        },
-        {
-          "publisher": "Aktualita.co",
-          "title": "Google Celebrates 28th Birthday: From a Garage to a Tech Giant - Aktualita.co"
-        },
-        {
-          "publisher": "Military.com",
-          "title": "No Running Track, No Fresh Air: How Sailors Stay Fit for Months Aboard a Submarine - Military.com"
-        },
-        {
-          "publisher": "Jamaica Gleaner",
-          "title": "A strategy with one future has no backup - Jamaica Gleaner"
-        },
-        {
-          "publisher": "Stocktwits",
-          "title": "SMMT Stock Heads For Third Straight Weekly Drop – Analyst Tempers Expectations From Initial Lung Cancer Trial Survival Data - Stocktwits"
         }
       ],
       "gnews_pool_dropped": 0,
@@ -314,7 +298,29 @@
     },
     "gnews_near_misses": [
       {
-        "score": 0.547,
+        "score": 0.561,
+        "blocked": "version-conflict",
+        "hours_apart": 599.3,
+        "a": {
+          "id": "rss:deepmind:63b19b50b4021cb5",
+          "source": "rss-lab",
+          "title": "Introducing Gemini 3.8 Flash and 3.8 Flash Cyber",
+          "at": "2026-09-02T16:18:31Z"
+        },
+        "b": {
+          "id": "gnews:48a23e46778615f4",
+          "source": "gnews-rss",
+          "title": "Gemini 4 Pro leaks on Arena disguised as Gemini 3.8 Flash - Pasquale Pillitteri",
+          "at": "2026-09-27T15:38:57Z"
+        },
+        "shared": [
+          "gemini",
+          "3.8",
+          "flash"
+        ]
+      },
+      {
+        "score": 0.528,
         "blocked": "below-threshold",
         "hours_apart": 0.5,
         "a": {
@@ -338,7 +344,7 @@
         ]
       },
       {
-        "score": 0.534,
+        "score": 0.512,
         "blocked": "below-threshold",
         "hours_apart": 12.2,
         "a": {
@@ -362,30 +368,31 @@
         ]
       },
       {
-        "score": 0.521,
+        "score": 0.508,
         "blocked": "below-threshold",
-        "hours_apart": 23.8,
+        "hours_apart": 4.2,
         "a": {
-          "id": "hn:49853458",
+          "id": "hn:49868202",
           "source": "hn-algolia",
-          "title": "OpenAI pauses RL due to model escaping sandbox",
-          "at": "2026-09-26T05:23:19Z"
+          "title": "OpenAI halts training of latest models as reports mount of AI agents going rogue",
+          "at": "2026-09-27T16:29:38Z"
         },
         "b": {
-          "id": "gnews:ffc049e46257cadf",
+          "id": "gnews:4b2a71a9c4751f0f",
           "source": "gnews-rss",
-          "title": "OpenAI Pauses AI Training After Sandbox Escape: What to Know - Online Tech Tips",
-          "at": "2026-09-27T05:12:31Z"
+          "title": "OpenAI halts training of AI models after another escape - Techzine Global",
+          "at": "2026-09-27T12:20:35Z"
         },
         "shared": [
           "openai",
-          "paus",
-          "escap",
-          "sandbox"
+          "halt",
+          "train",
+          "model",
+          "ai"
         ]
       },
       {
-        "score": 0.498,
+        "score": 0.482,
         "blocked": "below-threshold",
         "hours_apart": 15.5,
         "a": {
@@ -409,53 +416,7 @@
         ]
       },
       {
-        "score": 0.476,
-        "blocked": "below-threshold",
-        "hours_apart": 8.1,
-        "a": {
-          "id": "hn:49860545",
-          "source": "hn-algolia",
-          "title": "OpenAI pauses training of its 'most capable models'",
-          "at": "2026-09-26T21:07:08Z"
-        },
-        "b": {
-          "id": "gnews:ffc049e46257cadf",
-          "source": "gnews-rss",
-          "title": "OpenAI Pauses AI Training After Sandbox Escape: What to Know - Online Tech Tips",
-          "at": "2026-09-27T05:12:31Z"
-        },
-        "shared": [
-          "openai",
-          "paus",
-          "train"
-        ]
-      },
-      {
-        "score": 0.471,
-        "blocked": "below-threshold",
-        "hours_apart": 15.7,
-        "a": {
-          "id": "hn:49863653",
-          "source": "hn-algolia",
-          "title": "OpenAI Freezes Development of Top Models After Rogue Agents Leak User Images",
-          "at": "2026-09-27T05:39:46Z"
-        },
-        "b": {
-          "id": "gnews:4a1339fdecd76692",
-          "source": "gnews-rss",
-          "title": "OpenAI’s AI Agents Leaked 53 Private ChatGPT User Images - ProPakistani",
-          "at": "2026-09-26T13:57:10Z"
-        },
-        "shared": [
-          "openai",
-          "agent",
-          "leak",
-          "user",
-          "imag"
-        ]
-      },
-      {
-        "score": 0.468,
+        "score": 0.469,
         "blocked": "time-window",
         "hours_apart": 30.7,
         "a": {
@@ -480,9 +441,9 @@
         ]
       },
       {
-        "score": 0.44,
-        "blocked": "time-window",
-        "hours_apart": 27.4,
+        "score": 0.468,
+        "blocked": "below-threshold",
+        "hours_apart": 15.7,
         "a": {
           "id": "hn:49863653",
           "source": "hn-algolia",
@@ -490,10 +451,10 @@
           "at": "2026-09-27T05:39:46Z"
         },
         "b": {
-          "id": "gnews:2c0d09d56578d9b0",
+          "id": "gnews:4a1339fdecd76692",
           "source": "gnews-rss",
-          "title": "OpenAI Confirms Agents Accessed and Leaked 53 User Images From ChatGPT - LatestLY",
-          "at": "2026-09-26T02:13:08Z"
+          "title": "OpenAI’s AI Agents Leaked 53 Private ChatGPT User Images - ProPakistani",
+          "at": "2026-09-26T13:57:10Z"
         },
         "shared": [
           "openai",
@@ -501,12 +462,57 @@
           "leak",
           "user",
           "imag"
+        ]
+      },
+      {
+        "score": 0.465,
+        "blocked": "below-threshold",
+        "hours_apart": 4.6,
+        "a": {
+          "id": "hn:49864142",
+          "source": "hn-algolia",
+          "title": "OpenAI and Anthropic are investigating cases of AI misbehaving, report says",
+          "at": "2026-09-27T07:11:55Z"
+        },
+        "b": {
+          "id": "gnews:692a041ea81e8556",
+          "source": "gnews-rss",
+          "title": "OpenAI, Anthropic Investigate Tens Of Thousands Of AI Incidents As Frontier Models Bypass Guardrails: Report - TradingView",
+          "at": "2026-09-27T11:49:55Z"
+        },
+        "shared": [
+          "openai",
+          "anthropic",
+          "investigat",
+          "ai"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.547,
+        "score": 0.561,
+        "blocked": "version-conflict",
+        "hours_apart": 599.3,
+        "a": {
+          "id": "rss:deepmind:63b19b50b4021cb5",
+          "source": "rss-lab",
+          "title": "Introducing Gemini 3.8 Flash and 3.8 Flash Cyber",
+          "at": "2026-09-02T16:18:31Z"
+        },
+        "b": {
+          "id": "gnews:48a23e46778615f4",
+          "source": "gnews-rss",
+          "title": "Gemini 4 Pro leaks on Arena disguised as Gemini 3.8 Flash - Pasquale Pillitteri",
+          "at": "2026-09-27T15:38:57Z"
+        },
+        "shared": [
+          "gemini",
+          "3.8",
+          "flash"
+        ]
+      },
+      {
+        "score": 0.528,
         "blocked": "below-threshold",
         "hours_apart": 0.5,
         "a": {
@@ -530,7 +536,7 @@
         ]
       },
       {
-        "score": 0.534,
+        "score": 0.512,
         "blocked": "below-threshold",
         "hours_apart": 12.2,
         "a": {
@@ -554,30 +560,31 @@
         ]
       },
       {
-        "score": 0.521,
+        "score": 0.508,
         "blocked": "below-threshold",
-        "hours_apart": 23.8,
+        "hours_apart": 4.2,
         "a": {
-          "id": "hn:49853458",
+          "id": "hn:49868202",
           "source": "hn-algolia",
-          "title": "OpenAI pauses RL due to model escaping sandbox",
-          "at": "2026-09-26T05:23:19Z"
+          "title": "OpenAI halts training of latest models as reports mount of AI agents going rogue",
+          "at": "2026-09-27T16:29:38Z"
         },
         "b": {
-          "id": "gnews:ffc049e46257cadf",
+          "id": "gnews:4b2a71a9c4751f0f",
           "source": "gnews-rss",
-          "title": "OpenAI Pauses AI Training After Sandbox Escape: What to Know - Online Tech Tips",
-          "at": "2026-09-27T05:12:31Z"
+          "title": "OpenAI halts training of AI models after another escape - Techzine Global",
+          "at": "2026-09-27T12:20:35Z"
         },
         "shared": [
           "openai",
-          "paus",
-          "escap",
-          "sandbox"
+          "halt",
+          "train",
+          "model",
+          "ai"
         ]
       },
       {
-        "score": 0.498,
+        "score": 0.482,
         "blocked": "below-threshold",
         "hours_apart": 15.5,
         "a": {
@@ -601,53 +608,7 @@
         ]
       },
       {
-        "score": 0.476,
-        "blocked": "below-threshold",
-        "hours_apart": 8.1,
-        "a": {
-          "id": "hn:49860545",
-          "source": "hn-algolia",
-          "title": "OpenAI pauses training of its 'most capable models'",
-          "at": "2026-09-26T21:07:08Z"
-        },
-        "b": {
-          "id": "gnews:ffc049e46257cadf",
-          "source": "gnews-rss",
-          "title": "OpenAI Pauses AI Training After Sandbox Escape: What to Know - Online Tech Tips",
-          "at": "2026-09-27T05:12:31Z"
-        },
-        "shared": [
-          "openai",
-          "paus",
-          "train"
-        ]
-      },
-      {
-        "score": 0.471,
-        "blocked": "below-threshold",
-        "hours_apart": 15.7,
-        "a": {
-          "id": "hn:49863653",
-          "source": "hn-algolia",
-          "title": "OpenAI Freezes Development of Top Models After Rogue Agents Leak User Images",
-          "at": "2026-09-27T05:39:46Z"
-        },
-        "b": {
-          "id": "gnews:4a1339fdecd76692",
-          "source": "gnews-rss",
-          "title": "OpenAI’s AI Agents Leaked 53 Private ChatGPT User Images - ProPakistani",
-          "at": "2026-09-26T13:57:10Z"
-        },
-        "shared": [
-          "openai",
-          "agent",
-          "leak",
-          "user",
-          "imag"
-        ]
-      },
-      {
-        "score": 0.468,
+        "score": 0.469,
         "blocked": "time-window",
         "hours_apart": 30.7,
         "a": {
@@ -672,9 +633,9 @@
         ]
       },
       {
-        "score": 0.44,
-        "blocked": "time-window",
-        "hours_apart": 27.4,
+        "score": 0.468,
+        "blocked": "below-threshold",
+        "hours_apart": 15.7,
         "a": {
           "id": "hn:49863653",
           "source": "hn-algolia",
@@ -682,10 +643,10 @@
           "at": "2026-09-27T05:39:46Z"
         },
         "b": {
-          "id": "gnews:2c0d09d56578d9b0",
+          "id": "gnews:4a1339fdecd76692",
           "source": "gnews-rss",
-          "title": "OpenAI Confirms Agents Accessed and Leaked 53 User Images From ChatGPT - LatestLY",
-          "at": "2026-09-26T02:13:08Z"
+          "title": "OpenAI’s AI Agents Leaked 53 Private ChatGPT User Images - ProPakistani",
+          "at": "2026-09-26T13:57:10Z"
         },
         "shared": [
           "openai",
@@ -693,6 +654,29 @@
           "leak",
           "user",
           "imag"
+        ]
+      },
+      {
+        "score": 0.465,
+        "blocked": "below-threshold",
+        "hours_apart": 4.6,
+        "a": {
+          "id": "hn:49864142",
+          "source": "hn-algolia",
+          "title": "OpenAI and Anthropic are investigating cases of AI misbehaving, report says",
+          "at": "2026-09-27T07:11:55Z"
+        },
+        "b": {
+          "id": "gnews:692a041ea81e8556",
+          "source": "gnews-rss",
+          "title": "OpenAI, Anthropic Investigate Tens Of Thousands Of AI Incidents As Frontier Models Bypass Guardrails: Report - TradingView",
+          "at": "2026-09-27T11:49:55Z"
+        },
+        "shared": [
+          "openai",
+          "anthropic",
+          "investigat",
+          "ai"
         ]
       }
     ]
@@ -701,76 +685,76 @@
     {
       "id": "arxiv",
       "state": "ok",
-      "streak_ok": 30,
+      "streak_ok": 31,
       "streak_fail": 0,
-      "items_last": 14
+      "items_last": 17
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 30,
+      "streak_ok": 31,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 30,
+      "streak_ok": 31,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 30,
+      "streak_ok": 31,
       "streak_fail": 0,
-      "items_last": 28
+      "items_last": 32
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 30,
+      "streak_ok": 31,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 30,
+      "streak_ok": 31,
       "streak_fail": 0,
-      "items_last": 49
+      "items_last": 52
     },
     {
       "id": "openalex",
       "state": "flaky",
-      "streak_ok": 4,
+      "streak_ok": 5,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 30,
+      "streak_ok": 31,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 30,
+      "streak_ok": 31,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 30,
+      "streak_ok": 31,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.009461388888888889,
+    "hours": 0.11011027777777778,
     "stale": false
   },
   "hf": {
@@ -780,8 +764,8 @@
   },
   "arxiv": {
     "ok": true,
-    "enriched": 14,
-    "shelf": 0,
+    "enriched": 12,
+    "shelf": 5,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
   },
@@ -859,7 +843,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 49,
+    "count": 52,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -882,20 +866,20 @@
       {
         "id": "hn:49849985",
         "tag": "rest",
-        "score": 728,
+        "score": 735,
         "text": "Revealing the details of how OpenAI agents hacked Hugging Face"
       },
       {
         "id": "hn:49863864",
         "tag": "rest",
-        "score": 524,
+        "score": 578,
         "text": "Unsealed Briefs in Authors’ Case v. Microsoft/OpenAI"
       },
       {
-        "id": "hn:49845977",
+        "id": "hn:49868831",
         "tag": "rest",
-        "score": 492,
-        "text": "U.S. appeals court upholds designation of Anthropic as supply chain risk"
+        "score": 141,
+        "text": "SNL Weekend Update: Anthropic CEO Dario Amodei on A.I.'S Threat to Humanity [video]"
       }
     ]
   },
@@ -911,47 +895,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "(cache:openai)",
+        "url": "https://openai.com/news/rss.xml",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "(cache:deepmind)",
+        "url": "https://deepmind.google/blog/rss.xml",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "(cache:google-ai)",
+        "url": "https://blog.google/technology/ai/rss/",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "(cache:huggingface)",
+        "url": "https://huggingface.co/blog/feed.xml",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "(cache:mistral)",
+        "url": "https://mistral.ai/rss.xml",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "(cache:nvidia)",
+        "url": "https://blogs.nvidia.com/feed/",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "(cache:nvidia-dev)",
+        "url": "https://developer.nvidia.com/blog/feed",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "(cache:ms-research)",
+        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "(cache:google-research)",
+        "url": "https://research.google/blog/rss/",
         "count": 12
       }
     ],
@@ -997,17 +981,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "(cache:trailofbits)",
+        "url": "https://blog.trailofbits.com/feed/",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "(cache:fox-it)",
+        "url": "https://blog.fox-it.com/feed/",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "(cache:projectzero)",
+        "url": "https://projectzero.google/feed.xml",
         "count": 5
       }
     ],
@@ -1048,13 +1032,13 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 28,
-    "pool": 205,
+    "items": 32,
+    "pool": 185,
     "corroborators": [
       {
         "id": "gnews:4a1339fdecd76692",
         "anchor_id": "hn:49853688",
-        "score": 0.995,
+        "score": 0.994,
         "title": "OpenAI’s AI Agents Leaked 53 Private ChatGPT User Images - ProPakistani",
         "publisher": "ProPakistani",
         "self_repost": false
@@ -1062,7 +1046,7 @@
       {
         "id": "gnews:2c0d09d56578d9b0",
         "anchor_id": "hn:49853688",
-        "score": 0.958,
+        "score": 0.957,
         "title": "OpenAI Confirms Agents Accessed and Leaked 53 User Images From ChatGPT - LatestLY",
         "publisher": "LatestLY",
         "self_repost": false
@@ -1076,34 +1060,34 @@
         "self_repost": false
       },
       {
+        "id": "gnews:984231e26123345d",
+        "anchor_id": "hn:49856665",
+        "score": 0.601,
+        "title": "OpenAI bots meddled with US government agencies, including SEC and Census - BBC",
+        "publisher": "BBC",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:24f0e4b4a185642e",
+        "anchor_id": "hn:49851355",
+        "score": 0.848,
+        "title": "OpenAI’s A.I. Went Rogue and Meddled With U.S. Government Websites - The New York Times",
+        "publisher": "The New York Times",
+        "self_repost": false
+      },
+      {
         "id": "gnews:0377d72788cc2933",
         "anchor_id": "hn:49858360",
         "score": 1,
         "title": "How OpenAI’s Rogue A.I. Agents Tried to Trick a Robot Detector - The New York Times",
         "publisher": "The New York Times",
         "self_repost": false
-      },
-      {
-        "id": "gnews:d41440fc1cd59ab9",
-        "anchor_id": "hn:49849985",
-        "score": 0.666,
-        "title": "OpenAI AI Agents hacked 4 websites before Hugging Face, researchers reveal - WION",
-        "publisher": "WION",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:0d87958a38174e1e",
-        "anchor_id": "hn:49853692",
-        "score": 1,
-        "title": "One company is at the center of a wave of rogue AI attacks - Bundle",
-        "publisher": "Bundle",
-        "self_repost": false
       }
     ],
     "http_status": 200,
-    "content_type": null,
+    "content_type": "application/xml; charset=utf-8",
     "format": "rss2",
-    "from_cache": true,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1126,24 +1110,24 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:cbc8e1cad6c96077",
-        "title": "Google then vs now: How a 1998 search engine became an AI-era technology giant - Business Upturn",
-        "publisher": "Business Upturn",
-        "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOQ29rcDRsdFpOV3JjekEtaDJYc2dTQW9OX0F6TlBKVG5ncTBOWFY0V1pWSV9MYldMaWJqVmZxMnlNa1hIdlBWTHJWdTF1LUtJSE15dzJXLWI3NjRKLTFPM0xKYUdGaUNDNWVYTkUzMnFhZEdfcUtXX2R6a0wwZzUtNFpJWXVLQ2ZtanRISTFGRmhMX3drWENtRDVkWFBOenhWRXpaenJBeUgxUlJhcVdadVlHRDc0cFN1MURrZ3Q1MFBlbWVMTWFEX09tU2MwNFR3ckE?oc=5",
+        "id": "gnews:2786fffddd783d99",
+        "title": "OpenAI Calls CAPTCHA-Beating Agents Worst Case [2026] - tech-insider.org",
+        "publisher": "tech-insider.org",
+        "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNeUdTQnVZRFlFN2F6STZyYnl1YVp2ZGpwUlBBSEd2X1JDTW5HUGZBYURoVE1JeUI4cW9JTmQ4UXgyUFp0TUVoenFCc0s2dF9XcGxpb3VDX0d5ZDBCc1dpSTJMdjZIT3JLeVZNZENLTHNxS0JGTjRxdk13WnlaRXlhTA?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:bb66b556284bfa91",
-        "title": "OpenAI Alerts Dozens of Organizations Over Rogue AI Agent Behavior - mb.ntd.com",
-        "publisher": "mb.ntd.com",
-        "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOS0RUbW5BMXFtZWltaHNmRDY3SExrRjNGVDZ0LTRPX01KT3FzQ1lycmV2cS1LSHBmajFpb2xkQ1pKZmNTTTFpT1ZwWkhGc0tyMldHR0NxNWdzRmdJN2hOZ3p4NVVpMTdrU2xIWk9YY2xlX3ZkYzd1czVaUGczYmdXd19iXzFQcHc0M1hzZGp4NS1Ma0hfVWhCUTN0em5aaU0?oc=5",
+        "id": "gnews:79840c7803f1879e",
+        "title": "Bill Gates warns of AI risks, calls for Congress to step in: 'It's not a hoax at all' - Livemint",
+        "publisher": "Livemint",
+        "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPM0JJS3YtMThXNC1CU0d4NHZncl9Fb1JYWnBvR1BKWHY5dWNLaWo0RGtzMGNiWkphdDdrOUdNRF9GdHNiVGJUR0VrZjhvUjdUS2NmTXBSQ0JDWlpxOThhSF9XeGxmSHFSQzRRcUZwT0NFckp4Q0hGTnlCQ3d3MTBwbnBOMmYwTWRpcXRQWWhwY2dwYm9vWnBNYk1mc2E0QVk0aDdxNjJEa0lIT2JDYk1qbzdZUUZldHlhQ3BXZkJWejgtSmRyNHYw0gHMAUFVX3lxTFBvUXlFVHRWeldzOExwZDdhVDJGREtDTDZuREhFd1dBOGdnTmtWZmFwcFp0QXVxY3JxWG9XY3JDTFV0RHZiSHJ3OGtjUDQxc0YyOS03TUdOZ3BXN0dfdzVBSURXXzdIWWU4LXhUMkNDYWtRMVBnMy1pVVBMWnlySklsLTZQd081V01pWnlPd2pqc1hzcDFCa0JudWRTSVYxRFI1eGZQV1RPdWUyQ0VfMVFOTmk2LUh3aXlhQ0lNbENaVTFpZ2pabXFSLTZSWA?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:1a74e29749cfdc9d",
-        "title": "OpenAI Alerts Dozens of Organizations Over Rogue AI Agent Behavior - NTD News",
-        "publisher": "NTD News",
-        "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNbk9XLXFWUzdiSU5STzQ4MjFsa3ZFQXdMcGhkTVRBYVQtanN6Ry1BbmQtdG9sZEQzU0RCSVg5R2NuSHpoWnVOVzROMGlGaGRzcTZrS21oeS1RbVY0NGwzMGZYQmVtcFdKa3B5QU0yeWw5Nm9xU3hLLU9oQjNBR1V6Y0lKX2MweHVRWlhnOGliMmtLNndxNFBYVzRac1gwZlY2?oc=5",
+        "id": "gnews:656956fc28623e94",
+        "title": "AI Researchers Resign Citing Safety Risks, Gates Warns of Billion Deaths - 조선일보",
+        "publisher": "조선일보",
+        "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNN0haSGNjLWYxekowM1ZBMU5VZkpsR3dqV1FaZ2ctOUFLNUFEUHJnaVhlOGhJMlRtVXJrbVlYRDhkZ09kdjRSMEZYd2pRNDJ2T29OeENRQ1JsUExpNURFWjRselR2OHNMLWx4SHdYUkJicnlZX29DbmhHeVYzci1DcnQ2NDJRM2do?oc=5",
         "tag": "rest"
       }
     ]
@@ -1181,7 +1165,7 @@
     ]
   },
   "shelf": {
-    "count": 14,
+    "count": 19,
     "brief": false
   },
   "wikidata": {
