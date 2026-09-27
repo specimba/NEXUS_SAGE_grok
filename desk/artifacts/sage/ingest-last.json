@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-09-27T07:14:27Z",
+  "stamped_at": "2026-09-27T11:19:55Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 625,
+      "duration_ms": 790,
       "paused_until": null,
       "reason": null
     },
@@ -17,8 +17,8 @@
       "id": "arxiv",
       "label": "arXiv",
       "status": "ok",
-      "rows": 29,
-      "duration_ms": 3319,
+      "rows": 23,
+      "duration_ms": 23866,
       "paused_until": null,
       "reason": null
     },
@@ -27,7 +27,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4,
+      "duration_ms": 11,
       "paused_until": null,
       "reason": null
     },
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 48,
-      "duration_ms": 8391,
+      "rows": 51,
+      "duration_ms": 8413,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 57,
+      "duration_ms": 16869,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 31,
+      "duration_ms": 4611,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 34,
-      "duration_ms": 14,
+      "rows": 28,
+      "duration_ms": 6360,
       "paused_until": null,
       "reason": null
     },
@@ -90,38 +90,38 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 641,
+      "duration_ms": 592,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 13085,
-    "wall_ms": 13335,
-    "startup_ms": 31,
-    "main_ms": 13340
+    "sources_ms": 61515,
+    "wall_ms": 61842,
+    "startup_ms": 32,
+    "main_ms": 61849
   },
-  "multi_source_independent": 5,
+  "multi_source_independent": 4,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 5,
-    "multi_source_raw": 5,
+    "multi_source_independent": 4,
+    "multi_source_raw": 4,
     "self_reposts": 0,
-    "items_in": 213,
-    "clusters_out": 204,
-    "collapsed": 9,
-    "multi_source": 5,
-    "multi_member": 5,
+    "items_in": 210,
+    "clusters_out": 199,
+    "collapsed": 11,
+    "multi_source": 4,
+    "multi_member": 7,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 4,
+    "new_items": 26,
     "per_source": {
-      "hn-algolia": 48,
+      "hn-algolia": 51,
       "rss-lab": 104,
       "rss-security": 27,
-      "gnews-rss": 34
+      "gnews-rss": 28
     },
     "multi_source_clusters": [
       {
@@ -157,21 +157,14 @@
         ]
       },
       {
-        "title": "OpenAI says agents leaked 53 images from ChatGPT users",
+        "title": "Unsecured OpenAI agents posted 53 user images on the internet",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
         "size": 5,
-        "score": 0.996,
+        "score": 1,
         "members": [
-          {
-            "id": "hn:49853688",
-            "source": "hn-algolia",
-            "title": "OpenAI says agents leaked 53 images from ChatGPT users",
-            "at": "2026-09-26T06:07:54Z",
-            "publisher": null
-          },
           {
             "id": "hn:49856913",
             "source": "hn-algolia",
@@ -180,11 +173,25 @@
             "publisher": null
           },
           {
+            "id": "hn:49853688",
+            "source": "hn-algolia",
+            "title": "OpenAI says agents leaked 53 images from ChatGPT users",
+            "at": "2026-09-26T06:07:54Z",
+            "publisher": null
+          },
+          {
             "id": "gnews:4a1339fdecd76692",
             "source": "gnews-rss",
-            "title": "OpenAI’s AI Agents Leaked 53 Private ChatGPT User Images - propakistani.pk",
+            "title": "OpenAI’s AI Agents Leaked 53 Private ChatGPT User Images - ProPakistani",
             "at": "2026-09-26T13:57:10Z",
-            "publisher": "propakistani.pk"
+            "publisher": "ProPakistani"
+          },
+          {
+            "id": "gnews:2c0d09d56578d9b0",
+            "source": "gnews-rss",
+            "title": "OpenAI Confirms Agents Accessed and Leaked 53 User Images From ChatGPT - LatestLY",
+            "at": "2026-09-26T02:13:08Z",
+            "publisher": "LatestLY"
           },
           {
             "id": "gnews:398ff46d590d9294",
@@ -192,13 +199,6 @@
             "title": "OpenAI says agents leaked 53 images from ChatGPT users in latest example of rogue activity - The Guardian",
             "at": "2026-09-25T22:55:00Z",
             "publisher": "The Guardian"
-          },
-          {
-            "id": "gnews:d1f1bf5dd4d598ab",
-            "source": "gnews-rss",
-            "title": "OpenAI rogue agents leaked 53 ChatGPT user images, reportedly created nearly 1M links with encoded info - Fortune",
-            "at": "2026-09-26T01:16:00Z",
-            "publisher": "Fortune"
           }
         ]
       },
@@ -228,38 +228,13 @@
         ]
       },
       {
-        "title": "OpenAI’s Systems Went Rogue and Meddled With U.S. Government Websites",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 0.848,
-        "members": [
-          {
-            "id": "hn:49851355",
-            "source": "hn-algolia",
-            "title": "OpenAI’s Systems Went Rogue and Meddled With U.S. Government Websites",
-            "at": "2026-09-25T23:22:18Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:24f0e4b4a185642e",
-            "source": "gnews-rss",
-            "title": "OpenAI’s A.I. Went Rogue and Meddled With U.S. Government Websites - The New York Times",
-            "at": "2026-09-25T23:16:40Z",
-            "publisher": "The New York Times"
-          }
-        ]
-      },
-      {
         "title": "Revealing the details of how OpenAI agents hacked Hugging Face",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.665,
+        "score": 0.671,
         "members": [
           {
             "id": "hn:49849985",
@@ -294,80 +269,52 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "LatestLY",
-          "title": "Google's Birthday 2026 Doodle: Search Engine Giant Celebrates 28th Birthday With Nostalgic 1st Logo - LatestLY"
+          "publisher": "Business Upturn",
+          "title": "From Google Search to Gmail, YouTube and Android: 10 products that changed Google forever - Business Upturn"
         },
         {
-          "publisher": "The Motley Fool",
-          "title": "History Says Alphabet Stock's 15% Pullbacks Have Usually Paid Off Within a Year - The Motley Fool"
+          "publisher": "The Times of India",
+          "title": "As Google turns 28, here are 25 fun facts about the company's offices and data centers around the world - The Times of India"
         },
         {
-          "publisher": "Bhaskar English",
-          "title": "Know 11 little-known facts about Google on its 28th birthday: From Jennifer Lopez's dress inspiring ‘Google... - Bhaskar English"
+          "publisher": "Android Authority",
+          "title": "7 surprisingly useful ways to use Google Lens beyond basic search - Android Authority"
         },
         {
-          "publisher": "MarkTechPost",
-          "title": "Supersonic Labs Releases Julia 1: A 144.3M-Parameter Open Decision Model That Runs on a CPU - MarkTechPost"
+          "publisher": "jagranjosh.com",
+          "title": "Google’s 28th Birthday: Untold Story From a College Startup From Garage, $100,000 Cheque to a Global Tech Giant Worth Over $4 trillion - jagranjosh.com"
         },
         {
-          "publisher": "startupfortune.com",
-          "title": "ElevenLabs hits a $22 billion valuation as rivals give away the same tech for free - startupfortune.com"
+          "publisher": "London Evening Standard",
+          "title": "Google celebrates its 28th birthday with nostalgic doodle - how did the search engine mark earlier milestones? - London Evening Standard"
+        },
+        {
+          "publisher": "The Sunday Guardian",
+          "title": "Google Birthday 2026: Why September 27 Is Celebrated as Google’s Birthday When the Tech Giant Was Founded on September 4, 1998? - The Sunday Guardian"
+        },
+        {
+          "publisher": "Aktualita.co",
+          "title": "Google Celebrates 28th Birthday: From a Garage to a Tech Giant - Aktualita.co"
+        },
+        {
+          "publisher": "Military.com",
+          "title": "No Running Track, No Fresh Air: How Sailors Stay Fit for Months Aboard a Submarine - Military.com"
+        },
+        {
+          "publisher": "Jamaica Gleaner",
+          "title": "A strategy with one future has no backup - Jamaica Gleaner"
+        },
+        {
+          "publisher": "Stocktwits",
+          "title": "SMMT Stock Heads For Third Straight Weekly Drop – Analyst Tempers Expectations From Initial Lung Cancer Trial Survival Data - Stocktwits"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 3
+      "hn_dropped": 5
     },
     "gnews_near_misses": [
       {
-        "score": 0.583,
-        "blocked": "below-threshold",
-        "hours_apart": 5.5,
-        "a": {
-          "id": "hn:49856665",
-          "source": "hn-algolia",
-          "title": "OpenAI bots meddled with multiple US Government agency sites",
-          "at": "2026-09-26T14:03:54Z"
-        },
-        "b": {
-          "id": "gnews:06956a2068bc1f94",
-          "source": "gnews-rss",
-          "title": "OpenAI says its bots have interacted with multiple U.S. government sites in unexpected AI activity - CBC",
-          "at": "2026-09-26T19:31:56Z"
-        },
-        "shared": [
-          "openai",
-          "bot",
-          "multipl",
-          "government",
-          "site"
-        ]
-      },
-      {
-        "score": 0.554,
-        "blocked": "below-threshold",
-        "hours_apart": 12.9,
-        "a": {
-          "id": "hn:49853688",
-          "source": "hn-algolia",
-          "title": "OpenAI says agents leaked 53 images from ChatGPT users",
-          "at": "2026-09-26T06:07:54Z"
-        },
-        "b": {
-          "id": "gnews:05345f58e5543e8b",
-          "source": "gnews-rss",
-          "title": "OpenAI Says Research Agents Posted 53 User Images Online Without Permission - the420.in",
-          "at": "2026-09-26T18:59:47Z"
-        },
-        "shared": [
-          "openai",
-          "agent",
-          "53",
-          "imag",
-          "user"
-        ]
-      },
-      {
-        "score": 0.522,
+        "score": 0.547,
         "blocked": "below-threshold",
         "hours_apart": 0.5,
         "a": {
@@ -379,7 +326,7 @@
         "b": {
           "id": "gnews:4a1339fdecd76692",
           "source": "gnews-rss",
-          "title": "OpenAI’s AI Agents Leaked 53 Private ChatGPT User Images - propakistani.pk",
+          "title": "OpenAI’s AI Agents Leaked 53 Private ChatGPT User Images - ProPakistani",
           "at": "2026-09-26T13:57:10Z"
         },
         "shared": [
@@ -391,32 +338,9 @@
         ]
       },
       {
-        "score": 0.515,
-        "blocked": "time-window",
-        "hours_apart": 24.8,
-        "a": {
-          "id": "hn:49849985",
-          "source": "hn-algolia",
-          "title": "Revealing the details of how OpenAI agents hacked Hugging Face",
-          "at": "2026-09-25T21:09:27Z"
-        },
-        "b": {
-          "id": "gnews:b59aade331c11aea",
-          "source": "gnews-rss",
-          "title": "OpenAI Still Probing Rogue AI Agent Activity Months After Hugging Face Hack - Brand Icon Image",
-          "at": "2026-09-26T21:57:00Z"
-        },
-        "shared": [
-          "openai",
-          "agent",
-          "hack",
-          "huggingface"
-        ]
-      },
-      {
-        "score": 0.491,
+        "score": 0.534,
         "blocked": "below-threshold",
-        "hours_apart": 4.5,
+        "hours_apart": 12.2,
         "a": {
           "id": "hn:49856913",
           "source": "hn-algolia",
@@ -424,10 +348,10 @@
           "at": "2026-09-26T14:27:27Z"
         },
         "b": {
-          "id": "gnews:05345f58e5543e8b",
+          "id": "gnews:2c0d09d56578d9b0",
           "source": "gnews-rss",
-          "title": "OpenAI Says Research Agents Posted 53 User Images Online Without Permission - the420.in",
-          "at": "2026-09-26T18:59:47Z"
+          "title": "OpenAI Confirms Agents Accessed and Leaked 53 User Images From ChatGPT - LatestLY",
+          "at": "2026-09-26T02:13:08Z"
         },
         "shared": [
           "openai",
@@ -438,7 +362,30 @@
         ]
       },
       {
-        "score": 0.478,
+        "score": 0.522,
+        "blocked": "below-threshold",
+        "hours_apart": 23.8,
+        "a": {
+          "id": "hn:49853458",
+          "source": "hn-algolia",
+          "title": "OpenAI pauses RL due to model escaping sandbox",
+          "at": "2026-09-26T05:23:19Z"
+        },
+        "b": {
+          "id": "gnews:ffc049e46257cadf",
+          "source": "gnews-rss",
+          "title": "OpenAI Pauses AI Training After Sandbox Escape: What to Know - Online Tech Tips",
+          "at": "2026-09-27T05:12:31Z"
+        },
+        "shared": [
+          "openai",
+          "paus",
+          "escap",
+          "sandbox"
+        ]
+      },
+      {
+        "score": 0.498,
         "blocked": "below-threshold",
         "hours_apart": 15.5,
         "a": {
@@ -462,7 +409,29 @@
         ]
       },
       {
-        "score": 0.469,
+        "score": 0.477,
+        "blocked": "below-threshold",
+        "hours_apart": 8.1,
+        "a": {
+          "id": "hn:49860545",
+          "source": "hn-algolia",
+          "title": "OpenAI pauses training of its 'most capable models'",
+          "at": "2026-09-26T21:07:08Z"
+        },
+        "b": {
+          "id": "gnews:ffc049e46257cadf",
+          "source": "gnews-rss",
+          "title": "OpenAI Pauses AI Training After Sandbox Escape: What to Know - Online Tech Tips",
+          "at": "2026-09-27T05:12:31Z"
+        },
+        "shared": [
+          "openai",
+          "paus",
+          "train"
+        ]
+      },
+      {
+        "score": 0.471,
         "blocked": "below-threshold",
         "hours_apart": 15.7,
         "a": {
@@ -474,7 +443,7 @@
         "b": {
           "id": "gnews:4a1339fdecd76692",
           "source": "gnews-rss",
-          "title": "OpenAI’s AI Agents Leaked 53 Private ChatGPT User Images - propakistani.pk",
+          "title": "OpenAI’s AI Agents Leaked 53 Private ChatGPT User Images - ProPakistani",
           "at": "2026-09-26T13:57:10Z"
         },
         "shared": [
@@ -486,81 +455,58 @@
         ]
       },
       {
-        "score": 0.466,
-        "blocked": "below-threshold",
-        "hours_apart": 16.9,
+        "score": 0.468,
+        "blocked": "time-window",
+        "hours_apart": 30.7,
         "a": {
-          "id": "hn:49851355",
+          "id": "hn:49863653",
           "source": "hn-algolia",
-          "title": "OpenAI’s Systems Went Rogue and Meddled With U.S. Government Websites",
-          "at": "2026-09-25T23:22:18Z"
+          "title": "OpenAI Freezes Development of Top Models After Rogue Agents Leak User Images",
+          "at": "2026-09-27T05:39:46Z"
         },
         "b": {
-          "id": "gnews:b0c2a3d4cc167c36",
+          "id": "gnews:398ff46d590d9294",
           "source": "gnews-rss",
-          "title": "OpenAI reveals its agents accessed some U.S. government website data after going rogue - WINK News",
-          "at": "2026-09-26T16:17:00Z"
+          "title": "OpenAI says agents leaked 53 images from ChatGPT users in latest example of rogue activity - The Guardian",
+          "at": "2026-09-25T22:55:00Z"
         },
         "shared": [
           "openai",
           "rogu",
-          "u.s",
-          "government",
-          "websit"
+          "agent",
+          "leak",
+          "user",
+          "imag"
+        ]
+      },
+      {
+        "score": 0.44,
+        "blocked": "time-window",
+        "hours_apart": 27.4,
+        "a": {
+          "id": "hn:49863653",
+          "source": "hn-algolia",
+          "title": "OpenAI Freezes Development of Top Models After Rogue Agents Leak User Images",
+          "at": "2026-09-27T05:39:46Z"
+        },
+        "b": {
+          "id": "gnews:2c0d09d56578d9b0",
+          "source": "gnews-rss",
+          "title": "OpenAI Confirms Agents Accessed and Leaked 53 User Images From ChatGPT - LatestLY",
+          "at": "2026-09-26T02:13:08Z"
+        },
+        "shared": [
+          "openai",
+          "agent",
+          "leak",
+          "user",
+          "imag"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.583,
-        "blocked": "below-threshold",
-        "hours_apart": 5.5,
-        "a": {
-          "id": "hn:49856665",
-          "source": "hn-algolia",
-          "title": "OpenAI bots meddled with multiple US Government agency sites",
-          "at": "2026-09-26T14:03:54Z"
-        },
-        "b": {
-          "id": "gnews:06956a2068bc1f94",
-          "source": "gnews-rss",
-          "title": "OpenAI says its bots have interacted with multiple U.S. government sites in unexpected AI activity - CBC",
-          "at": "2026-09-26T19:31:56Z"
-        },
-        "shared": [
-          "openai",
-          "bot",
-          "multipl",
-          "government",
-          "site"
-        ]
-      },
-      {
-        "score": 0.554,
-        "blocked": "below-threshold",
-        "hours_apart": 12.9,
-        "a": {
-          "id": "hn:49853688",
-          "source": "hn-algolia",
-          "title": "OpenAI says agents leaked 53 images from ChatGPT users",
-          "at": "2026-09-26T06:07:54Z"
-        },
-        "b": {
-          "id": "gnews:05345f58e5543e8b",
-          "source": "gnews-rss",
-          "title": "OpenAI Says Research Agents Posted 53 User Images Online Without Permission - the420.in",
-          "at": "2026-09-26T18:59:47Z"
-        },
-        "shared": [
-          "openai",
-          "agent",
-          "53",
-          "imag",
-          "user"
-        ]
-      },
-      {
-        "score": 0.522,
+        "score": 0.547,
         "blocked": "below-threshold",
         "hours_apart": 0.5,
         "a": {
@@ -572,7 +518,7 @@
         "b": {
           "id": "gnews:4a1339fdecd76692",
           "source": "gnews-rss",
-          "title": "OpenAI’s AI Agents Leaked 53 Private ChatGPT User Images - propakistani.pk",
+          "title": "OpenAI’s AI Agents Leaked 53 Private ChatGPT User Images - ProPakistani",
           "at": "2026-09-26T13:57:10Z"
         },
         "shared": [
@@ -584,32 +530,9 @@
         ]
       },
       {
-        "score": 0.515,
-        "blocked": "time-window",
-        "hours_apart": 24.8,
-        "a": {
-          "id": "hn:49849985",
-          "source": "hn-algolia",
-          "title": "Revealing the details of how OpenAI agents hacked Hugging Face",
-          "at": "2026-09-25T21:09:27Z"
-        },
-        "b": {
-          "id": "gnews:b59aade331c11aea",
-          "source": "gnews-rss",
-          "title": "OpenAI Still Probing Rogue AI Agent Activity Months After Hugging Face Hack - Brand Icon Image",
-          "at": "2026-09-26T21:57:00Z"
-        },
-        "shared": [
-          "openai",
-          "agent",
-          "hack",
-          "huggingface"
-        ]
-      },
-      {
-        "score": 0.491,
+        "score": 0.534,
         "blocked": "below-threshold",
-        "hours_apart": 4.5,
+        "hours_apart": 12.2,
         "a": {
           "id": "hn:49856913",
           "source": "hn-algolia",
@@ -617,10 +540,10 @@
           "at": "2026-09-26T14:27:27Z"
         },
         "b": {
-          "id": "gnews:05345f58e5543e8b",
+          "id": "gnews:2c0d09d56578d9b0",
           "source": "gnews-rss",
-          "title": "OpenAI Says Research Agents Posted 53 User Images Online Without Permission - the420.in",
-          "at": "2026-09-26T18:59:47Z"
+          "title": "OpenAI Confirms Agents Accessed and Leaked 53 User Images From ChatGPT - LatestLY",
+          "at": "2026-09-26T02:13:08Z"
         },
         "shared": [
           "openai",
@@ -631,7 +554,30 @@
         ]
       },
       {
-        "score": 0.478,
+        "score": 0.522,
+        "blocked": "below-threshold",
+        "hours_apart": 23.8,
+        "a": {
+          "id": "hn:49853458",
+          "source": "hn-algolia",
+          "title": "OpenAI pauses RL due to model escaping sandbox",
+          "at": "2026-09-26T05:23:19Z"
+        },
+        "b": {
+          "id": "gnews:ffc049e46257cadf",
+          "source": "gnews-rss",
+          "title": "OpenAI Pauses AI Training After Sandbox Escape: What to Know - Online Tech Tips",
+          "at": "2026-09-27T05:12:31Z"
+        },
+        "shared": [
+          "openai",
+          "paus",
+          "escap",
+          "sandbox"
+        ]
+      },
+      {
+        "score": 0.498,
         "blocked": "below-threshold",
         "hours_apart": 15.5,
         "a": {
@@ -655,7 +601,29 @@
         ]
       },
       {
-        "score": 0.469,
+        "score": 0.477,
+        "blocked": "below-threshold",
+        "hours_apart": 8.1,
+        "a": {
+          "id": "hn:49860545",
+          "source": "hn-algolia",
+          "title": "OpenAI pauses training of its 'most capable models'",
+          "at": "2026-09-26T21:07:08Z"
+        },
+        "b": {
+          "id": "gnews:ffc049e46257cadf",
+          "source": "gnews-rss",
+          "title": "OpenAI Pauses AI Training After Sandbox Escape: What to Know - Online Tech Tips",
+          "at": "2026-09-27T05:12:31Z"
+        },
+        "shared": [
+          "openai",
+          "paus",
+          "train"
+        ]
+      },
+      {
+        "score": 0.471,
         "blocked": "below-threshold",
         "hours_apart": 15.7,
         "a": {
@@ -667,7 +635,7 @@
         "b": {
           "id": "gnews:4a1339fdecd76692",
           "source": "gnews-rss",
-          "title": "OpenAI’s AI Agents Leaked 53 Private ChatGPT User Images - propakistani.pk",
+          "title": "OpenAI’s AI Agents Leaked 53 Private ChatGPT User Images - ProPakistani",
           "at": "2026-09-26T13:57:10Z"
         },
         "shared": [
@@ -679,27 +647,52 @@
         ]
       },
       {
-        "score": 0.466,
-        "blocked": "below-threshold",
-        "hours_apart": 16.9,
+        "score": 0.468,
+        "blocked": "time-window",
+        "hours_apart": 30.7,
         "a": {
-          "id": "hn:49851355",
+          "id": "hn:49863653",
           "source": "hn-algolia",
-          "title": "OpenAI’s Systems Went Rogue and Meddled With U.S. Government Websites",
-          "at": "2026-09-25T23:22:18Z"
+          "title": "OpenAI Freezes Development of Top Models After Rogue Agents Leak User Images",
+          "at": "2026-09-27T05:39:46Z"
         },
         "b": {
-          "id": "gnews:b0c2a3d4cc167c36",
+          "id": "gnews:398ff46d590d9294",
           "source": "gnews-rss",
-          "title": "OpenAI reveals its agents accessed some U.S. government website data after going rogue - WINK News",
-          "at": "2026-09-26T16:17:00Z"
+          "title": "OpenAI says agents leaked 53 images from ChatGPT users in latest example of rogue activity - The Guardian",
+          "at": "2026-09-25T22:55:00Z"
         },
         "shared": [
           "openai",
           "rogu",
-          "u.s",
-          "government",
-          "websit"
+          "agent",
+          "leak",
+          "user",
+          "imag"
+        ]
+      },
+      {
+        "score": 0.44,
+        "blocked": "time-window",
+        "hours_apart": 27.4,
+        "a": {
+          "id": "hn:49863653",
+          "source": "hn-algolia",
+          "title": "OpenAI Freezes Development of Top Models After Rogue Agents Leak User Images",
+          "at": "2026-09-27T05:39:46Z"
+        },
+        "b": {
+          "id": "gnews:2c0d09d56578d9b0",
+          "source": "gnews-rss",
+          "title": "OpenAI Confirms Agents Accessed and Leaked 53 User Images From ChatGPT - LatestLY",
+          "at": "2026-09-26T02:13:08Z"
+        },
+        "shared": [
+          "openai",
+          "agent",
+          "leak",
+          "user",
+          "imag"
         ]
       }
     ]
@@ -708,76 +701,76 @@
     {
       "id": "arxiv",
       "state": "ok",
-      "streak_ok": 28,
+      "streak_ok": 29,
       "streak_fail": 0,
-      "items_last": 29
+      "items_last": 23
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 28,
+      "streak_ok": 29,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 28,
+      "streak_ok": 29,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 28,
+      "streak_ok": 29,
       "streak_fail": 0,
-      "items_last": 34
+      "items_last": 28
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 28,
+      "streak_ok": 29,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 28,
+      "streak_ok": 29,
       "streak_fail": 0,
-      "items_last": 48
+      "items_last": 51
     },
     {
       "id": "openalex",
       "state": "flaky",
-      "streak_ok": 2,
+      "streak_ok": 3,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 28,
+      "streak_ok": 29,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 28,
+      "streak_ok": 29,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 28,
+      "streak_ok": 29,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.0037705555555555556,
+    "hours": 0.01732777777777778,
     "stale": false
   },
   "hf": {
@@ -787,8 +780,8 @@
   },
   "arxiv": {
     "ok": true,
-    "enriched": 24,
-    "shelf": 5,
+    "enriched": 23,
+    "shelf": 0,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
   },
@@ -866,7 +859,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 48,
+    "count": 51,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -883,13 +876,13 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 3,
+    "ai_dropped": 5,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
         "id": "hn:49849985",
         "tag": "rest",
-        "score": 710,
+        "score": 720,
         "text": "Revealing the details of how OpenAI agents hacked Hugging Face"
       },
       {
@@ -899,10 +892,10 @@
         "text": "U.S. appeals court upholds designation of Anthropic as supply chain risk"
       },
       {
-        "id": "hn:49848095",
+        "id": "hn:49863864",
         "tag": "rest",
-        "score": 142,
-        "text": "Meta's Muse appears to use an OpenAI model labeled muse-special"
+        "score": 251,
+        "text": "OpenAI Feared \"Optics\" of what might appear on Hacker News"
       }
     ]
   },
@@ -918,47 +911,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "(cache:openai)",
+        "url": "https://openai.com/news/rss.xml",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "(cache:deepmind)",
+        "url": "https://deepmind.google/blog/rss.xml",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "(cache:google-ai)",
+        "url": "https://blog.google/technology/ai/rss/",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "(cache:huggingface)",
+        "url": "https://huggingface.co/blog/feed.xml",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "(cache:mistral)",
+        "url": "https://mistral.ai/rss.xml",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "(cache:nvidia)",
+        "url": "https://blogs.nvidia.com/feed/",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "(cache:nvidia-dev)",
+        "url": "https://developer.nvidia.com/blog/feed",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "(cache:ms-research)",
+        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "(cache:google-research)",
+        "url": "https://research.google/blog/rss/",
         "count": 12
       }
     ],
@@ -1004,17 +997,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "(cache:trailofbits)",
+        "url": "https://blog.trailofbits.com/feed/",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "(cache:fox-it)",
+        "url": "https://blog.fox-it.com/feed/",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "(cache:projectzero)",
+        "url": "https://projectzero.google/feed.xml",
         "count": 5
       }
     ],
@@ -1055,39 +1048,31 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 34,
-    "pool": 194,
+    "items": 28,
+    "pool": 205,
     "corroborators": [
       {
         "id": "gnews:4a1339fdecd76692",
         "anchor_id": "hn:49853688",
-        "score": 0.997,
-        "title": "OpenAI’s AI Agents Leaked 53 Private ChatGPT User Images - propakistani.pk",
-        "publisher": "propakistani.pk",
+        "score": 0.995,
+        "title": "OpenAI’s AI Agents Leaked 53 Private ChatGPT User Images - ProPakistani",
+        "publisher": "ProPakistani",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:2c0d09d56578d9b0",
+        "anchor_id": "hn:49853688",
+        "score": 0.958,
+        "title": "OpenAI Confirms Agents Accessed and Leaked 53 User Images From ChatGPT - LatestLY",
+        "publisher": "LatestLY",
         "self_repost": false
       },
       {
         "id": "gnews:398ff46d590d9294",
         "anchor_id": "hn:49853688",
-        "score": 0.878,
+        "score": 0.881,
         "title": "OpenAI says agents leaked 53 images from ChatGPT users in latest example of rogue activity - The Guardian",
         "publisher": "The Guardian",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:d1f1bf5dd4d598ab",
-        "anchor_id": "hn:49853688",
-        "score": 0.792,
-        "title": "OpenAI rogue agents leaked 53 ChatGPT user images, reportedly created nearly 1M links with encoded info - Fortune",
-        "publisher": "Fortune",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:24f0e4b4a185642e",
-        "anchor_id": "hn:49851355",
-        "score": 0.845,
-        "title": "OpenAI’s A.I. Went Rogue and Meddled With U.S. Government Websites - The New York Times",
-        "publisher": "The New York Times",
         "self_repost": false
       },
       {
@@ -1101,7 +1086,7 @@
       {
         "id": "gnews:d41440fc1cd59ab9",
         "anchor_id": "hn:49849985",
-        "score": 0.675,
+        "score": 0.666,
         "title": "OpenAI AI Agents hacked 4 websites before Hugging Face, researchers reveal - WION",
         "publisher": "WION",
         "self_repost": false
@@ -1116,9 +1101,9 @@
       }
     ],
     "http_status": 200,
-    "content_type": null,
+    "content_type": "application/xml; charset=utf-8",
     "format": "rss2",
-    "from_cache": true,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1141,24 +1126,24 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:8d21aa553c982462",
-        "title": "Tens of Thousands of AI Security Incidents? What the Evidence Actually Shows - Kingy AI",
-        "publisher": "Kingy AI",
-        "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTFBGOXdzMG43MWkwdmNqY2RoMnRFWVJ6djJkZzV1MzYwQm9IaV9FT3FuaE9LQWhjblVBQ0xrY3VnWXlrT1kxWDV0R1FqZ045YjFMRnc3dDkyNTMwU2JfSm9BdldCU1JwTWgwMDJfc2M0VFI4ME9QZE1oQUFmblQ?oc=5",
+        "id": "gnews:cbc8e1cad6c96077",
+        "title": "Google then vs now: How a 1998 search engine became an AI-era technology giant - Business Upturn",
+        "publisher": "Business Upturn",
+        "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxOQ29rcDRsdFpOV3JjekEtaDJYc2dTQW9OX0F6TlBKVG5ncTBOWFY0V1pWSV9MYldMaWJqVmZxMnlNa1hIdlBWTHJWdTF1LUtJSE15dzJXLWI3NjRKLTFPM0xKYUdGaUNDNWVYTkUzMnFhZEdfcUtXX2R6a0wwZzUtNFpJWXVLQ2ZtanRISTFGRmhMX3drWENtRDVkWFBOenhWRXpaenJBeUgxUlJhcVdadVlHRDc0cFN1MURrZ3Q1MFBlbWVMTWFEX09tU2MwNFR3ckE?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:94d0c9e2a2f38486",
-        "title": "\"Resigned Because AI Is Developing Too Fast,\" Google Researcher Steps Down, But... - news.sbs.co.kr",
-        "publisher": "news.sbs.co.kr",
-        "link": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5lakU4bUlGb2ZLaFJyZDkyWkM5N2NxeExJSGpqTVVITDZYS1FySGF2aGllUnJxNVE3MXVMbjAxVUlybmpUbWJndzByOG95QVFER0xtakpCTWxRR3NkNi1yT0J2RDVMdw?oc=5",
+        "id": "gnews:bb66b556284bfa91",
+        "title": "OpenAI Alerts Dozens of Organizations Over Rogue AI Agent Behavior - mb.ntd.com",
+        "publisher": "mb.ntd.com",
+        "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOS0RUbW5BMXFtZWltaHNmRDY3SExrRjNGVDZ0LTRPX01KT3FzQ1lycmV2cS1LSHBmajFpb2xkQ1pKZmNTTTFpT1ZwWkhGc0tyMldHR0NxNWdzRmdJN2hOZ3p4NVVpMTdrU2xIWk9YY2xlX3ZkYzd1czVaUGczYmdXd19iXzFQcHc0M1hzZGp4NS1Ma0hfVWhCUTN0em5aaU0?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:b59aade331c11aea",
-        "title": "OpenAI Still Probing Rogue AI Agent Activity Months After Hugging Face Hack - Brand Icon Image",
-        "publisher": "Brand Icon Image",
-        "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNZUpac0p6aDI3NFV0UnNBUU5YMVhlXzJqaTM4b2kyUnRjMjUtODdxQkZLYmpSV3FwNmtyeUNXSDYxN0VrOWZvX2ZoaEdObGdaR1VtYlR5S1Q4dDdwamNqRzRFYkhZNGpYNEd4LXloTTN2R2ZrMWI1RHdsTFIyU0RtX2IzaUpDdw?oc=5",
+        "id": "gnews:1a74e29749cfdc9d",
+        "title": "OpenAI Alerts Dozens of Organizations Over Rogue AI Agent Behavior - NTD News",
+        "publisher": "NTD News",
+        "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNbk9XLXFWUzdiSU5STzQ4MjFsa3ZFQXdMcGhkTVRBYVQtanN6Ry1BbmQtdG9sZEQzU0RCSVg5R2NuSHpoWnVOVzROMGlGaGRzcTZrS21oeS1RbVY0NGwzMGZYQmVtcFdKa3B5QU0yeWw5Nm9xU3hLLU9oQjNBR1V6Y0lKX2MweHVRWlhnOGliMmtLNndxNFBYVzRac1gwZlY2?oc=5",
         "tag": "rest"
       }
     ]
@@ -1196,7 +1181,7 @@
     ]
   },
   "shelf": {
-    "count": 19,
+    "count": 14,
     "brief": false
   },
   "wikidata": {
@@ -1217,10 +1202,10 @@
     "hints": [
       {
         "seed": "METR",
-        "qid": "Q135185153",
-        "label": "Model Evaluation and Threat Research",
-        "description": "AI model evaluation nonprofit",
-        "status": "matched",
+        "qid": "Q11573",
+        "label": "metre",
+        "description": "SI unit of length",
+        "status": "rejected_false_friend",
         "source": "wikidata",
         "briefEligible": false,
         "pulseLeadEligible": false,
