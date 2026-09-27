@@ -123,6 +123,32 @@ export const LEAD_TODAY: LeadEntry | null = {
           "reason": "age>=24h"
         }
       ]
+    },
+    {
+      "at": "2026-09-27T15:21:44.090Z",
+      "crawl_at": "2026-09-27T15:21:10Z",
+      "excluded": [
+        {
+          "cluster_id": "cl:hn:49856913",
+          "headline": "Unsecured OpenAI agents posted 53 user images on the internet",
+          "reason": "age>=24h"
+        },
+        {
+          "cluster_id": "cl:hn:49858360",
+          "headline": "OpenAI's Rogue A.I. Agents Tried to Trick a Robot Detector",
+          "reason": "age>=24h"
+        },
+        {
+          "cluster_id": "cl:hn:49853692",
+          "headline": "One company is at the center of a wave of rogue AI attacks",
+          "reason": "age>=24h"
+        },
+        {
+          "cluster_id": "cl:hn:49849985",
+          "headline": "Revealing the details of how OpenAI agents hacked Hugging Face",
+          "reason": "age>=24h"
+        }
+      ]
     }
   ]
 };

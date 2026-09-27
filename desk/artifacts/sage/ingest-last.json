@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-09-27T11:19:55Z",
+  "stamped_at": "2026-09-27T15:21:10Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 790,
+      "duration_ms": 649,
       "paused_until": null,
       "reason": null
     },
@@ -17,8 +17,8 @@
       "id": "arxiv",
       "label": "arXiv",
       "status": "ok",
-      "rows": 23,
-      "duration_ms": 23866,
+      "rows": 14,
+      "duration_ms": 23808,
       "paused_until": null,
       "reason": null
     },
@@ -27,7 +27,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 11,
+      "duration_ms": 8,
       "paused_until": null,
       "reason": null
     },
@@ -36,7 +36,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 2,
+      "duration_ms": 3,
       "paused_until": null,
       "reason": null
     },
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 51,
-      "duration_ms": 8413,
+      "rows": 49,
+      "duration_ms": 8335,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 16869,
+      "duration_ms": 66,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 4611,
+      "duration_ms": 37,
       "paused_until": null,
       "reason": null
     },
@@ -72,7 +72,7 @@
       "label": "Google News",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 6360,
+      "duration_ms": 15,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 592,
+      "duration_ms": 1,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 61515,
-    "wall_ms": 61842,
-    "startup_ms": 32,
-    "main_ms": 61849
+    "sources_ms": 32923,
+    "wall_ms": 33174,
+    "startup_ms": 28,
+    "main_ms": 33179
   },
   "multi_source_independent": 4,
   "stale_hours": 6,
@@ -108,17 +108,17 @@
     "multi_source_independent": 4,
     "multi_source_raw": 4,
     "self_reposts": 0,
-    "items_in": 210,
-    "clusters_out": 199,
+    "items_in": 208,
+    "clusters_out": 197,
     "collapsed": 11,
     "multi_source": 4,
     "multi_member": 7,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 26,
+    "new_items": 1,
     "per_source": {
-      "hn-algolia": 51,
+      "hn-algolia": 49,
       "rss-lab": 104,
       "rss-security": 27,
       "gnews-rss": 28
@@ -362,7 +362,7 @@
         ]
       },
       {
-        "score": 0.522,
+        "score": 0.521,
         "blocked": "below-threshold",
         "hours_apart": 23.8,
         "a": {
@@ -409,7 +409,7 @@
         ]
       },
       {
-        "score": 0.477,
+        "score": 0.476,
         "blocked": "below-threshold",
         "hours_apart": 8.1,
         "a": {
@@ -554,7 +554,7 @@
         ]
       },
       {
-        "score": 0.522,
+        "score": 0.521,
         "blocked": "below-threshold",
         "hours_apart": 23.8,
         "a": {
@@ -601,7 +601,7 @@
         ]
       },
       {
-        "score": 0.477,
+        "score": 0.476,
         "blocked": "below-threshold",
         "hours_apart": 8.1,
         "a": {
@@ -701,76 +701,76 @@
     {
       "id": "arxiv",
       "state": "ok",
-      "streak_ok": 29,
+      "streak_ok": 30,
       "streak_fail": 0,
-      "items_last": 23
+      "items_last": 14
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 29,
+      "streak_ok": 30,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 29,
+      "streak_ok": 30,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 29,
+      "streak_ok": 30,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 29,
+      "streak_ok": 30,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 29,
+      "streak_ok": 30,
       "streak_fail": 0,
-      "items_last": 51
+      "items_last": 49
     },
     {
       "id": "openalex",
       "state": "flaky",
-      "streak_ok": 3,
+      "streak_ok": 4,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 29,
+      "streak_ok": 30,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 29,
+      "streak_ok": 30,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 29,
+      "streak_ok": 30,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.01732777777777778,
+    "hours": 0.009461388888888889,
     "stale": false
   },
   "hf": {
@@ -780,7 +780,7 @@
   },
   "arxiv": {
     "ok": true,
-    "enriched": 23,
+    "enriched": 14,
     "shelf": 0,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
@@ -859,7 +859,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 51,
+    "count": 49,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -882,20 +882,20 @@
       {
         "id": "hn:49849985",
         "tag": "rest",
-        "score": 720,
+        "score": 728,
         "text": "Revealing the details of how OpenAI agents hacked Hugging Face"
-      },
-      {
-        "id": "hn:49845977",
-        "tag": "rest",
-        "score": 491,
-        "text": "U.S. appeals court upholds designation of Anthropic as supply chain risk"
       },
       {
         "id": "hn:49863864",
         "tag": "rest",
-        "score": 251,
-        "text": "OpenAI Feared \"Optics\" of what might appear on Hacker News"
+        "score": 524,
+        "text": "Unsealed Briefs in Authors’ Case v. Microsoft/OpenAI"
+      },
+      {
+        "id": "hn:49845977",
+        "tag": "rest",
+        "score": 492,
+        "text": "U.S. appeals court upholds designation of Anthropic as supply chain risk"
       }
     ]
   },
@@ -911,47 +911,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "https://openai.com/news/rss.xml",
+        "url": "(cache:openai)",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "https://deepmind.google/blog/rss.xml",
+        "url": "(cache:deepmind)",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "https://blog.google/technology/ai/rss/",
+        "url": "(cache:google-ai)",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "https://huggingface.co/blog/feed.xml",
+        "url": "(cache:huggingface)",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "https://mistral.ai/rss.xml",
+        "url": "(cache:mistral)",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "https://blogs.nvidia.com/feed/",
+        "url": "(cache:nvidia)",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "https://developer.nvidia.com/blog/feed",
+        "url": "(cache:nvidia-dev)",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
+        "url": "(cache:ms-research)",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "https://research.google/blog/rss/",
+        "url": "(cache:google-research)",
         "count": 12
       }
     ],
@@ -997,17 +997,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "https://blog.trailofbits.com/feed/",
+        "url": "(cache:trailofbits)",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "https://blog.fox-it.com/feed/",
+        "url": "(cache:fox-it)",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "https://projectzero.google/feed.xml",
+        "url": "(cache:projectzero)",
         "count": 5
       }
     ],
@@ -1101,9 +1101,9 @@
       }
     ],
     "http_status": 200,
-    "content_type": "application/xml; charset=utf-8",
+    "content_type": null,
     "format": "rss2",
-    "from_cache": false,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1193,8 +1193,8 @@
       "OpenAI",
       "DeepMind"
     ],
-    "searches": 1,
-    "from_cache": false,
+    "searches": 0,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "deny_grounding_only": true,
