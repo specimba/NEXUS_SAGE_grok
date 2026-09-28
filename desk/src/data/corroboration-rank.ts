@@ -3,8 +3,8 @@ import type { MovedRow, RankSnapshot } from "@/lib/corroboration";
 
 export const RANK_CURRENT: RankSnapshot = {
   "schema": 1,
-  "at": "2026-09-28T03:23:38.381Z",
-  "crawl_at": "2026-09-28T03:21:34Z",
+  "at": "2026-09-28T07:23:27.070Z",
+  "crawl_at": "2026-09-28T07:23:25Z",
   "lead_id": "hf-incident",
   "rows": [
     {
@@ -32,6 +32,7 @@ export const RANK_CURRENT: RankSnapshot = {
       ],
       "crawl_hits": [
         "cl:hn:49862460",
+        "cl:hn:49856405",
         "cl:rss:openai:52b80abd4e046c04",
         "cl:rss:openai:f2ff7f7605612041",
         "cl:rss:openai:0765deb144589280"
@@ -68,8 +69,8 @@ export const RANK_CURRENT: RankSnapshot = {
 
 export const RANK_PREV: RankSnapshot | null = {
   "schema": 1,
-  "at": "2026-09-27T23:20:02.756Z",
-  "crawl_at": "2026-09-27T23:19:29Z",
+  "at": "2026-09-28T07:22:05.792Z",
+  "crawl_at": "2026-09-28T07:21:52Z",
   "lead_id": "hf-incident",
   "rows": [
     {
@@ -97,6 +98,7 @@ export const RANK_PREV: RankSnapshot | null = {
       ],
       "crawl_hits": [
         "cl:hn:49862460",
+        "cl:hn:49856405",
         "cl:rss:openai:52b80abd4e046c04",
         "cl:rss:openai:f2ff7f7605612041",
         "cl:rss:openai:0765deb144589280"
