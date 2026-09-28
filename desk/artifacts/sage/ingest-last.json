@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-09-28T19:23:07Z",
+  "stamped_at": "2026-09-28T23:18:02Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 809,
+      "duration_ms": 619,
       "paused_until": null,
       "reason": null
     },
@@ -17,8 +17,8 @@
       "id": "arxiv",
       "label": "arXiv",
       "status": "ok",
-      "rows": 29,
-      "duration_ms": 3365,
+      "rows": 23,
+      "duration_ms": 23917,
       "paused_until": null,
       "reason": null
     },
@@ -27,7 +27,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4,
+      "duration_ms": 7,
       "paused_until": null,
       "reason": null
     },
@@ -36,7 +36,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 1,
+      "duration_ms": 2,
       "paused_until": null,
       "reason": null
     },
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 54,
-      "duration_ms": 8356,
+      "rows": 56,
+      "duration_ms": 8390,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 17797,
+      "duration_ms": 105,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 4696,
+      "duration_ms": 52,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 44,
-      "duration_ms": 6509,
+      "rows": 45,
+      "duration_ms": 26,
       "paused_until": null,
       "reason": null
     },
@@ -81,7 +81,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 2,
-      "duration_ms": 2,
+      "duration_ms": 16,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 2,
+      "duration_ms": 4,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 41541,
-    "wall_ms": 41858,
-    "startup_ms": 29,
-    "main_ms": 41866
+    "sources_ms": 33138,
+    "wall_ms": 33792,
+    "startup_ms": 48,
+    "main_ms": 33873
   },
   "multi_source_independent": 6,
   "stale_hours": 6,
@@ -108,20 +108,20 @@
     "multi_source_independent": 6,
     "multi_source_raw": 7,
     "self_reposts": 1,
-    "items_in": 229,
-    "clusters_out": 204,
-    "collapsed": 25,
+    "items_in": 232,
+    "clusters_out": 203,
+    "collapsed": 29,
     "multi_source": 6,
-    "multi_member": 12,
+    "multi_member": 10,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 46,
+    "new_items": 11,
     "per_source": {
-      "hn-algolia": 54,
+      "hn-algolia": 56,
       "rss-lab": 104,
       "rss-security": 27,
-      "gnews-rss": 44
+      "gnews-rss": 45
     },
     "multi_source_clusters": [
       {
@@ -192,7 +192,7 @@
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.768,
+        "score": 0.77,
         "members": [
           {
             "id": "hn:49881899",
@@ -211,14 +211,60 @@
         ]
       },
       {
-        "title": "OpenAI pauses training of latest models after agents probed US Government sites",
+        "title": "Florida asks court to bar OpenAI from new models as part of child harm lawsuit",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 6,
+        "size": 4,
         "score": 1,
         "members": [
+          {
+            "id": "hn:49880973",
+            "source": "hn-algolia",
+            "title": "Florida asks court to bar OpenAI from new models as part of child harm lawsuit",
+            "at": "2026-09-28T16:56:12Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:db5ec7b2682e38e4",
+            "source": "gnews-rss",
+            "title": "Florida asks court to pause OpenAI development as part of child harm lawsuit - independent.co.uk",
+            "at": "2026-09-28T19:09:00Z",
+            "publisher": "independent.co.uk"
+          },
+          {
+            "id": "gnews:f91a1e8c9f666fd0",
+            "source": "gnews-rss",
+            "title": "Florida asks court to bar OpenAI from developing new models as part of child harm lawsuit - Reuters",
+            "at": "2026-09-28T17:13:17Z",
+            "publisher": "Reuters"
+          },
+          {
+            "id": "gnews:f2dc220307c69f92",
+            "source": "gnews-rss",
+            "title": "Florida asks court to bar OpenAI from developing new models as part of child harm lawsuit - srnnews.com",
+            "at": "2026-09-28T16:00:31Z",
+            "publisher": "srnnews.com"
+          }
+        ]
+      },
+      {
+        "title": "OpenAI halts training of latest models as reports mount of AI agents going rogue",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 10,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:49868202",
+            "source": "hn-algolia",
+            "title": "OpenAI halts training of latest models as reports mount of AI agents going rogue",
+            "at": "2026-09-27T16:29:38Z",
+            "publisher": null
+          },
           {
             "id": "hn:49872468",
             "source": "hn-algolia",
@@ -238,6 +284,27 @@
             "source": "hn-algolia",
             "title": "OpenAI Pauses Training Its Most Powerful Models After Agents Target Government",
             "at": "2026-09-28T13:09:38Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:49871351",
+            "source": "hn-algolia",
+            "title": "OpenAI to Halt Training of Some Models",
+            "at": "2026-09-27T22:09:43Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:49864306",
+            "source": "hn-algolia",
+            "title": "OpenAI halts training of latest models",
+            "at": "2026-09-27T07:40:36Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:49873289",
+            "source": "hn-algolia",
+            "title": "OpenAI pauses training of latest models",
+            "at": "2026-09-28T03:33:26Z",
             "publisher": null
           },
           {
@@ -285,31 +352,6 @@
             "title": "OpenAI still doesn’t seem to have a handle on all of its rogue AI activity - TechCrunch",
             "at": "2026-09-28T17:09:02Z",
             "publisher": "TechCrunch"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI, Anthropic CEOs called to appear at Australian AI probe",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 0.795,
-        "members": [
-          {
-            "id": "hn:49876338",
-            "source": "hn-algolia",
-            "title": "OpenAI, Anthropic CEOs called to appear at Australian AI probe",
-            "at": "2026-09-28T11:21:57Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:3e0dcd5c918b33eb",
-            "source": "gnews-rss",
-            "title": "OpenAI, Anthropic CEOs Asked to Appear at Australian AI Inquiry - Yahoo Finance",
-            "at": "2026-09-28T12:54:34Z",
-            "publisher": "Yahoo Finance"
           }
         ]
       },
@@ -387,7 +429,7 @@
       ],
       "gnews_shown_dropped": [],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 7
+      "hn_dropped": 8
     },
     "gnews_near_misses": [
       {
@@ -414,7 +456,7 @@
         ]
       },
       {
-        "score": 0.647,
+        "score": 0.639,
         "blocked": "time-window",
         "hours_apart": 32.8,
         "a": {
@@ -440,7 +482,30 @@
         ]
       },
       {
-        "score": 0.571,
+        "score": 0.581,
+        "blocked": "below-threshold",
+        "hours_apart": 8,
+        "a": {
+          "id": "hn:49873289",
+          "source": "hn-algolia",
+          "title": "OpenAI pauses training of latest models",
+          "at": "2026-09-28T03:33:26Z"
+        },
+        "b": {
+          "id": "gnews:5db2505c3b4202e6",
+          "source": "gnews-rss",
+          "title": "OpenAI Pauses Training Its Most Powerful Models After Rogue Agents Target Government - WIRED",
+          "at": "2026-09-28T11:32:00Z"
+        },
+        "shared": [
+          "openai",
+          "paus",
+          "train",
+          "model"
+        ]
+      },
+      {
+        "score": 0.572,
         "blocked": "below-threshold",
         "hours_apart": 0.3,
         "a": {
@@ -464,44 +529,20 @@
         ]
       },
       {
-        "score": 0.556,
+        "score": 0.554,
         "blocked": "below-threshold",
-        "hours_apart": 9.5,
+        "hours_apart": 14.4,
         "a": {
-          "id": "hn:49873255",
+          "id": "hn:49873289",
           "source": "hn-algolia",
-          "title": "Australia Senate Requests OpenAI, Anthropic CEOs Face AI Inquiry",
-          "at": "2026-09-28T03:26:57Z"
+          "title": "OpenAI pauses training of latest models",
+          "at": "2026-09-28T03:33:26Z"
         },
         "b": {
-          "id": "gnews:3e0dcd5c918b33eb",
+          "id": "gnews:261c45a20a946fc9",
           "source": "gnews-rss",
-          "title": "OpenAI, Anthropic CEOs Asked to Appear at Australian AI Inquiry - Yahoo Finance",
-          "at": "2026-09-28T12:54:34Z"
-        },
-        "shared": [
-          "openai",
-          "anthropic",
-          "ceo",
-          "ai",
-          "inquiry"
-        ]
-      },
-      {
-        "score": 0.548,
-        "blocked": "time-window",
-        "hours_apart": 38.4,
-        "a": {
-          "id": "hn:49860545",
-          "source": "hn-algolia",
-          "title": "OpenAI pauses training of its 'most capable models'",
-          "at": "2026-09-26T21:07:08Z"
-        },
-        "b": {
-          "id": "gnews:5db2505c3b4202e6",
-          "source": "gnews-rss",
-          "title": "OpenAI Pauses Training Its Most Powerful Models After Rogue Agents Target Government - WIRED",
-          "at": "2026-09-28T11:32:00Z"
+          "title": "OpenAI is pausing training of its most powerful AI models after rogue agents hit government sites - qz.com",
+          "at": "2026-09-28T17:57:48Z"
         },
         "shared": [
           "openai",
@@ -511,7 +552,7 @@
         ]
       },
       {
-        "score": 0.533,
+        "score": 0.526,
         "blocked": "below-threshold",
         "hours_apart": 10.2,
         "a": {
@@ -536,7 +577,7 @@
         ]
       },
       {
-        "score": 0.533,
+        "score": 0.526,
         "blocked": "time-window",
         "hours_apart": 26.4,
         "a": {
@@ -561,26 +602,28 @@
         ]
       },
       {
-        "score": 0.522,
-        "blocked": "time-window",
-        "hours_apart": 44.8,
+        "score": 0.515,
+        "blocked": "below-threshold",
+        "hours_apart": 15.2,
         "a": {
-          "id": "hn:49860545",
+          "id": "hn:49877374",
           "source": "hn-algolia",
-          "title": "OpenAI pauses training of its 'most capable models'",
-          "at": "2026-09-26T21:07:08Z"
+          "title": "OpenAI Pauses Training Its Most Powerful Models After Agents Target Government",
+          "at": "2026-09-28T13:09:38Z"
         },
         "b": {
-          "id": "gnews:261c45a20a946fc9",
+          "id": "gnews:a6b217432423fa3d",
           "source": "gnews-rss",
-          "title": "OpenAI is pausing training of its most powerful AI models after rogue agents hit government sites - qz.com",
-          "at": "2026-09-28T17:57:48Z"
+          "title": "OpenAI pauses training of latest models after agents searched U.S. government sites in unexpected ways - NBC News",
+          "at": "2026-09-27T21:57:53Z"
         },
         "shared": [
           "openai",
           "paus",
           "train",
-          "model"
+          "model",
+          "agent",
+          "government"
         ]
       }
     ],
@@ -609,7 +652,7 @@
         ]
       },
       {
-        "score": 0.647,
+        "score": 0.639,
         "blocked": "time-window",
         "hours_apart": 32.8,
         "a": {
@@ -635,7 +678,30 @@
         ]
       },
       {
-        "score": 0.571,
+        "score": 0.581,
+        "blocked": "below-threshold",
+        "hours_apart": 8,
+        "a": {
+          "id": "hn:49873289",
+          "source": "hn-algolia",
+          "title": "OpenAI pauses training of latest models",
+          "at": "2026-09-28T03:33:26Z"
+        },
+        "b": {
+          "id": "gnews:5db2505c3b4202e6",
+          "source": "gnews-rss",
+          "title": "OpenAI Pauses Training Its Most Powerful Models After Rogue Agents Target Government - WIRED",
+          "at": "2026-09-28T11:32:00Z"
+        },
+        "shared": [
+          "openai",
+          "paus",
+          "train",
+          "model"
+        ]
+      },
+      {
+        "score": 0.572,
         "blocked": "below-threshold",
         "hours_apart": 0.3,
         "a": {
@@ -659,44 +725,20 @@
         ]
       },
       {
-        "score": 0.556,
+        "score": 0.554,
         "blocked": "below-threshold",
-        "hours_apart": 9.5,
+        "hours_apart": 14.4,
         "a": {
-          "id": "hn:49873255",
+          "id": "hn:49873289",
           "source": "hn-algolia",
-          "title": "Australia Senate Requests OpenAI, Anthropic CEOs Face AI Inquiry",
-          "at": "2026-09-28T03:26:57Z"
+          "title": "OpenAI pauses training of latest models",
+          "at": "2026-09-28T03:33:26Z"
         },
         "b": {
-          "id": "gnews:3e0dcd5c918b33eb",
+          "id": "gnews:261c45a20a946fc9",
           "source": "gnews-rss",
-          "title": "OpenAI, Anthropic CEOs Asked to Appear at Australian AI Inquiry - Yahoo Finance",
-          "at": "2026-09-28T12:54:34Z"
-        },
-        "shared": [
-          "openai",
-          "anthropic",
-          "ceo",
-          "ai",
-          "inquiry"
-        ]
-      },
-      {
-        "score": 0.548,
-        "blocked": "time-window",
-        "hours_apart": 38.4,
-        "a": {
-          "id": "hn:49860545",
-          "source": "hn-algolia",
-          "title": "OpenAI pauses training of its 'most capable models'",
-          "at": "2026-09-26T21:07:08Z"
-        },
-        "b": {
-          "id": "gnews:5db2505c3b4202e6",
-          "source": "gnews-rss",
-          "title": "OpenAI Pauses Training Its Most Powerful Models After Rogue Agents Target Government - WIRED",
-          "at": "2026-09-28T11:32:00Z"
+          "title": "OpenAI is pausing training of its most powerful AI models after rogue agents hit government sites - qz.com",
+          "at": "2026-09-28T17:57:48Z"
         },
         "shared": [
           "openai",
@@ -706,7 +748,7 @@
         ]
       },
       {
-        "score": 0.533,
+        "score": 0.526,
         "blocked": "below-threshold",
         "hours_apart": 10.2,
         "a": {
@@ -731,7 +773,7 @@
         ]
       },
       {
-        "score": 0.533,
+        "score": 0.526,
         "blocked": "time-window",
         "hours_apart": 26.4,
         "a": {
@@ -756,26 +798,28 @@
         ]
       },
       {
-        "score": 0.522,
-        "blocked": "time-window",
-        "hours_apart": 44.8,
+        "score": 0.515,
+        "blocked": "below-threshold",
+        "hours_apart": 15.2,
         "a": {
-          "id": "hn:49860545",
+          "id": "hn:49877374",
           "source": "hn-algolia",
-          "title": "OpenAI pauses training of its 'most capable models'",
-          "at": "2026-09-26T21:07:08Z"
+          "title": "OpenAI Pauses Training Its Most Powerful Models After Agents Target Government",
+          "at": "2026-09-28T13:09:38Z"
         },
         "b": {
-          "id": "gnews:261c45a20a946fc9",
+          "id": "gnews:a6b217432423fa3d",
           "source": "gnews-rss",
-          "title": "OpenAI is pausing training of its most powerful AI models after rogue agents hit government sites - qz.com",
-          "at": "2026-09-28T17:57:48Z"
+          "title": "OpenAI pauses training of latest models after agents searched U.S. government sites in unexpected ways - NBC News",
+          "at": "2026-09-27T21:57:53Z"
         },
         "shared": [
           "openai",
           "paus",
           "train",
-          "model"
+          "model",
+          "agent",
+          "government"
         ]
       }
     ]
@@ -784,76 +828,76 @@
     {
       "id": "arxiv",
       "state": "ok",
-      "streak_ok": 38,
+      "streak_ok": 39,
       "streak_fail": 0,
-      "items_last": 29
+      "items_last": 23
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 38,
+      "streak_ok": 39,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 38,
+      "streak_ok": 39,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 38,
+      "streak_ok": 39,
       "streak_fail": 0,
-      "items_last": 44
+      "items_last": 45
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 38,
+      "streak_ok": 39,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 38,
+      "streak_ok": 39,
       "streak_fail": 0,
-      "items_last": 54
+      "items_last": 56
     },
     {
       "id": "openalex",
       "state": "flaky",
-      "streak_ok": 12,
+      "streak_ok": 13,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 38,
+      "streak_ok": 39,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 38,
+      "streak_ok": 39,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 38,
+      "streak_ok": 39,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.011629722222222222,
+    "hours": 0.009538055555555555,
     "stale": false
   },
   "hf": {
@@ -863,8 +907,8 @@
   },
   "arxiv": {
     "ok": true,
-    "enriched": 24,
-    "shelf": 5,
+    "enriched": 23,
+    "shelf": 0,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
   },
@@ -932,7 +976,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 54,
+    "count": 56,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -949,25 +993,25 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 7,
+    "ai_dropped": 8,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
         "id": "hn:49863864",
         "tag": "rest",
-        "score": 625,
+        "score": 626,
         "text": "Unsealed Briefs in Authors’ Case v. Microsoft/OpenAI"
       },
       {
         "id": "hn:49881850",
         "tag": "rest",
-        "score": 241,
+        "score": 513,
         "text": "Sonnet 5.5"
       },
       {
         "id": "hn:49874728",
         "tag": "rest",
-        "score": 189,
+        "score": 194,
         "text": "Prompting Claude Opus 5.5"
       }
     ]
@@ -984,47 +1028,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "https://openai.com/news/rss.xml",
+        "url": "(cache:openai)",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "https://deepmind.google/blog/rss.xml",
+        "url": "(cache:deepmind)",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "https://blog.google/technology/ai/rss/",
+        "url": "(cache:google-ai)",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "https://huggingface.co/blog/feed.xml",
+        "url": "(cache:huggingface)",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "https://mistral.ai/rss.xml",
+        "url": "(cache:mistral)",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "https://blogs.nvidia.com/feed/",
+        "url": "(cache:nvidia)",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "https://developer.nvidia.com/blog/feed",
+        "url": "(cache:nvidia-dev)",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
+        "url": "(cache:ms-research)",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "https://research.google/blog/rss/",
+        "url": "(cache:google-research)",
         "count": 12
       }
     ],
@@ -1070,17 +1114,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "https://blog.trailofbits.com/feed/",
+        "url": "(cache:trailofbits)",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "https://blog.fox-it.com/feed/",
+        "url": "(cache:fox-it)",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "https://projectzero.google/feed.xml",
+        "url": "(cache:projectzero)",
         "count": 5
       }
     ],
@@ -1121,13 +1165,13 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 44,
+    "items": 45,
     "pool": 321,
     "corroborators": [
       {
         "id": "gnews:5db2505c3b4202e6",
         "anchor_id": "hn:49877374",
-        "score": 1,
+        "score": 0.999,
         "title": "OpenAI Pauses Training Its Most Powerful Models After Rogue Agents Target Government - WIRED",
         "publisher": "WIRED",
         "self_repost": false
@@ -1149,19 +1193,27 @@
         "self_repost": true
       },
       {
+        "id": "gnews:f91a1e8c9f666fd0",
+        "anchor_id": "hn:49880973",
+        "score": 0.991,
+        "title": "Florida asks court to bar OpenAI from developing new models as part of child harm lawsuit - Reuters",
+        "publisher": "Reuters",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:f2dc220307c69f92",
+        "anchor_id": "hn:49880973",
+        "score": 0.991,
+        "title": "Florida asks court to bar OpenAI from developing new models as part of child harm lawsuit - srnnews.com",
+        "publisher": "srnnews.com",
+        "self_repost": false
+      },
+      {
         "id": "gnews:27ce699db6f1b997",
         "anchor_id": "hn:49881484",
         "score": 1,
         "title": "OpenAI still doesn’t seem to have a handle on all of its rogue AI activity - TechCrunch",
         "publisher": "TechCrunch",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:3e0dcd5c918b33eb",
-        "anchor_id": "hn:49876338",
-        "score": 0.794,
-        "title": "OpenAI, Anthropic CEOs Asked to Appear at Australian AI Inquiry - Yahoo Finance",
-        "publisher": "Yahoo Finance",
         "self_repost": false
       },
       {
@@ -1183,7 +1235,7 @@
       {
         "id": "gnews:3cc54b7976d30ca0",
         "anchor_id": "hn:49875500",
-        "score": 0.745,
+        "score": 0.746,
         "title": "Nvidia's Open Agent Safety Platform could stop Hugging Face-style AI hacks: What it is and how it works - Livemint",
         "publisher": "Livemint",
         "self_repost": false
@@ -1215,16 +1267,16 @@
       {
         "id": "gnews:a6b217432423fa3d",
         "anchor_id": "hn:49872468",
-        "score": 0.721,
+        "score": 0.714,
         "title": "OpenAI pauses training of latest models after agents searched U.S. government sites in unexpected ways - NBC News",
         "publisher": "NBC News",
         "self_repost": false
       }
     ],
     "http_status": 200,
-    "content_type": "application/xml; charset=utf-8",
+    "content_type": null,
     "format": "rss2",
-    "from_cache": false,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1302,7 +1354,7 @@
     ]
   },
   "shelf": {
-    "count": 19,
+    "count": 14,
     "brief": false
   },
   "wikidata": {

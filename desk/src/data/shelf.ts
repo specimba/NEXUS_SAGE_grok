@@ -18,11 +18,6 @@ export const SHELF: ShelfItem[] = [
   { href: "https://owasp.org/www-project-automated-threats-to-web-applications/", label: "owasp.org/www-project-automated-threats-to-web-applications/", reason: "toolkit" as const },
   { href: "https://owasp.org/www-community/Virtual_Patching_Best_Practices", label: "owasp.org/www-community/Virtual_Patching_Best_Practices", reason: "toolkit" as const },
   { href: "https://cheatsheetseries.owasp.org/cheatsheets/Virtual_Patching_Cheat_Sheet.html", label: "cheatsheetseries.owasp.org/cheatsheets/Virtual_Patching_Cheat_Sheet.html", reason: "toolkit" as const },
-  { href: "https://arxiv.org/abs/2609.31619", label: "arxiv.org/abs/2609.31619", reason: "arxiv-shelf" as const },
-  { href: "https://arxiv.org/abs/2609.31614", label: "arxiv.org/abs/2609.31614", reason: "arxiv-shelf" as const },
-  { href: "https://arxiv.org/abs/2609.31612", label: "arxiv.org/abs/2609.31612", reason: "arxiv-shelf" as const },
-  { href: "https://arxiv.org/abs/2609.31607", label: "arxiv.org/abs/2609.31607", reason: "arxiv-shelf" as const },
-  { href: "https://arxiv.org/abs/2609.31603", label: "arxiv.org/abs/2609.31603", reason: "arxiv-shelf" as const },
   { href: "https://github.com/ShenSeanChen/waku-agent", label: "ShenSeanChen/waku-agent", reason: "github-search-shelf" as const },
   { href: "https://github.com/ne-he/agentic_class", label: "ne-he/agentic_class", reason: "github-search-shelf" as const },
 ];
