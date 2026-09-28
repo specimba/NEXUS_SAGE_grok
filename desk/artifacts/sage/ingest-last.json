@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-09-28T07:23:25Z",
+  "stamped_at": "2026-09-28T11:19:15Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 548,
+      "duration_ms": 595,
       "paused_until": null,
       "reason": null
     },
@@ -17,8 +17,8 @@
       "id": "arxiv",
       "label": "arXiv",
       "status": "ok",
-      "rows": 29,
-      "duration_ms": 423,
+      "rows": 21,
+      "duration_ms": 23847,
       "paused_until": null,
       "reason": null
     },
@@ -27,7 +27,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4,
+      "duration_ms": 6,
       "paused_until": null,
       "reason": null
     },
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 55,
-      "duration_ms": 6,
+      "rows": 56,
+      "duration_ms": 8372,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 71,
+      "duration_ms": 16755,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 26,
+      "duration_ms": 4605,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 46,
-      "duration_ms": 25,
+      "rows": 42,
+      "duration_ms": 6400,
       "paused_until": null,
       "reason": null
     },
@@ -81,7 +81,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 2,
-      "duration_ms": 1,
+      "duration_ms": 2,
       "paused_until": null,
       "reason": null
     },
@@ -90,161 +90,62 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 1,
+      "duration_ms": 2,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 1106,
-    "wall_ms": 1396,
-    "startup_ms": 27,
-    "main_ms": 1402
+    "sources_ms": 60585,
+    "wall_ms": 60923,
+    "startup_ms": 25,
+    "main_ms": 60931
   },
-  "multi_source_independent": 11,
+  "multi_source_independent": 9,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 11,
-    "multi_source_raw": 11,
+    "multi_source_independent": 9,
+    "multi_source_raw": 9,
     "self_reposts": 0,
-    "items_in": 232,
-    "clusters_out": 201,
-    "collapsed": 31,
-    "multi_source": 11,
+    "items_in": 229,
+    "clusters_out": 200,
+    "collapsed": 29,
+    "multi_source": 9,
     "multi_member": 16,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 0,
+    "new_items": 40,
     "per_source": {
-      "hn-algolia": 55,
+      "hn-algolia": 56,
       "rss-lab": 104,
       "rss-security": 27,
-      "gnews-rss": 46
+      "gnews-rss": 42
     },
     "multi_source_clusters": [
       {
-        "title": "Australia Senate Requests OpenAI, Anthropic CEOs Face AI Inquiry",
+        "title": "OpenAI bots meddled with multiple US Government agency sites",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 4,
+        "size": 2,
         "score": 1,
         "members": [
           {
-            "id": "hn:49873255",
+            "id": "hn:49856665",
             "source": "hn-algolia",
-            "title": "Australia Senate Requests OpenAI, Anthropic CEOs Face AI Inquiry",
-            "at": "2026-09-28T03:26:57Z",
+            "title": "OpenAI bots meddled with multiple US Government agency sites",
+            "at": "2026-09-26T14:03:54Z",
             "publisher": null
           },
           {
-            "id": "gnews:eee32c86207454c6",
+            "id": "gnews:1ce48e189ce83fba",
             "source": "gnews-rss",
-            "title": "Australia Senate Requests OpenAI, Anthropic CEOs Face AI Inquiry - Bloomberg",
-            "at": "2026-09-27T11:17:56Z",
-            "publisher": "Bloomberg"
-          },
-          {
-            "id": "gnews:51b4482ca64d7af3",
-            "source": "gnews-rss",
-            "title": "Australia Senate Requests OpenAI, Anthropic CEOs Face AI Inquiry - Yahoo Finance",
-            "at": "2026-09-27T11:17:56Z",
-            "publisher": "Yahoo Finance"
-          },
-          {
-            "id": "gnews:f9c3d6e3b4f0e8ca",
-            "source": "gnews-rss",
-            "title": "Australia Senate Requests OpenAI, Anthropic CEOs Face AI Inquiry - Yahoo! Finance Canada",
-            "at": "2026-09-27T11:17:56Z",
-            "publisher": "Yahoo! Finance Canada"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI pauses training of latest models after agents probed US Government sites",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 4,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:49872468",
-            "source": "hn-algolia",
-            "title": "OpenAI pauses training of latest models after agents probed US Government sites",
-            "at": "2026-09-28T01:20:50Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:49864790",
-            "source": "hn-algolia",
-            "title": "OpenAI pauses training of latest models after agents probed US Government sites",
-            "at": "2026-09-27T09:07:03Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:a6b217432423fa3d",
-            "source": "gnews-rss",
-            "title": "OpenAI pauses training of latest models after agents searched U.S. government sites in unexpected ways - NBC News",
-            "at": "2026-09-27T21:57:53Z",
-            "publisher": "NBC News"
-          },
-          {
-            "id": "gnews:efe4ef133b9cadad",
-            "source": "gnews-rss",
-            "title": "OpenAI pauses training on recent models, says agents targeted government sites - san.com",
-            "at": "2026-09-28T00:00:34Z",
-            "publisher": "san.com"
-          }
-        ]
-      },
-      {
-        "title": "Anthropic/OpenAI sound alarm on AI safety and seek to shape how to control it",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 5,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:49869486",
-            "source": "hn-algolia",
-            "title": "Anthropic/OpenAI sound alarm on AI safety and seek to shape how to control it",
-            "at": "2026-09-27T18:34:38Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:1a3624f783897d0e",
-            "source": "gnews-rss",
-            "title": "Anthropic and OpenAI sound the alarm on AI safety — and seek to shape how it’s controlled - live5news.com",
-            "at": "2026-09-27T20:39:00Z",
-            "publisher": "live5news.com"
-          },
-          {
-            "id": "gnews:ccb1ac08533c5e6c",
-            "source": "gnews-rss",
-            "title": "Anthropic and OpenAI sound the alarm on AI safety — and seek to shape how it’s controlled - AP News",
-            "at": "2026-09-27T23:51:00Z",
-            "publisher": "AP News"
-          },
-          {
-            "id": "gnews:f1db0e790aa73245",
-            "source": "gnews-rss",
-            "title": "Anthropic and OpenAI sound alarm on AI safety, seek to shape how it's controlled - Prescott Daily Courier",
-            "at": "2026-09-27T23:51:00Z",
-            "publisher": "Prescott Daily Courier"
-          },
-          {
-            "id": "gnews:e095ac89021fda7b",
-            "source": "gnews-rss",
-            "title": "Anthropic and OpenAI sound the alarm on AI safety — and seek to shape how it’s controlled - myMotherLode.com",
-            "at": "2026-09-27T12:12:34Z",
-            "publisher": "myMotherLode.com"
+            "title": "OpenAI bots meddled with multiple US government agency sites - twaslnews1.twaslnews.com",
+            "at": "2026-09-28T10:18:51Z",
+            "publisher": "twaslnews1.twaslnews.com"
           }
         ]
       },
@@ -254,7 +155,7 @@
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 6,
+        "size": 5,
         "score": 1,
         "members": [
           {
@@ -279,50 +180,153 @@
             "publisher": null
           },
           {
+            "id": "gnews:1870db4c4bb7e7e8",
+            "source": "gnews-rss",
+            "title": "Are OpenAI Agents Going Rogue, or Is OpenAI? - New York Magazine",
+            "at": "2026-09-28T09:00:26Z",
+            "publisher": "New York Magazine"
+          },
+          {
             "id": "gnews:04f6c24e46faeea6",
             "source": "gnews-rss",
             "title": "OpenAI to Halt Training of Some Models - Gizmodo",
             "at": "2026-09-27T21:21:27Z",
             "publisher": "Gizmodo"
-          },
-          {
-            "id": "gnews:4b2a71a9c4751f0f",
-            "source": "gnews-rss",
-            "title": "OpenAI halts training of AI models after another escape - Techzine Global",
-            "at": "2026-09-27T12:20:35Z",
-            "publisher": "Techzine Global"
-          },
-          {
-            "id": "gnews:8ca5b415938fcd61",
-            "source": "gnews-rss",
-            "title": "OpenAI halts AI training after rogue agent reports - www.israelhayom.com",
-            "at": "2026-09-27T11:08:44Z",
-            "publisher": "www.israelhayom.com"
           }
         ]
       },
       {
-        "title": "An OpenAI agent escaped its sandbox by hiding questions in DNS lookups",
+        "title": "OpenAI's Rogue A.I. Agents Tried to Trick a Robot Detector",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.732,
+        "score": 0.933,
         "members": [
           {
-            "id": "hn:49860279",
+            "id": "hn:49858360",
             "source": "hn-algolia",
-            "title": "An OpenAI agent escaped its sandbox by hiding questions in DNS lookups",
-            "at": "2026-09-26T20:34:07Z",
+            "title": "OpenAI's Rogue A.I. Agents Tried to Trick a Robot Detector",
+            "at": "2026-09-26T16:55:43Z",
             "publisher": null
           },
           {
-            "id": "gnews:af0130411b9e12f7",
+            "id": "gnews:feb98a81163152fb",
             "source": "gnews-rss",
-            "title": "An OpenAI agent escaped its locked test cage again, by hiding questions in DNS lookups - WION",
-            "at": "2026-09-27T20:09:00Z",
-            "publisher": "WION"
+            "title": "How OpenAI’s Rogue AI Agents Tried to Trick a Robot Detector - DT Next",
+            "at": "2026-09-28T08:59:39Z",
+            "publisher": "DT Next"
+          }
+        ]
+      },
+      {
+        "title": "Australia Senate Requests OpenAI, Anthropic CEOs Face AI Inquiry",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 0.625,
+        "members": [
+          {
+            "id": "hn:49873255",
+            "source": "hn-algolia",
+            "title": "Australia Senate Requests OpenAI, Anthropic CEOs Face AI Inquiry",
+            "at": "2026-09-28T03:26:57Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:732502937855e6d0",
+            "source": "gnews-rss",
+            "title": "Australia summons OpenAI and Anthropic CEOs to appear at AI inquiry - Al Jazeera",
+            "at": "2026-09-27T07:15:43Z",
+            "publisher": "Al Jazeera"
+          }
+        ]
+      },
+      {
+        "title": "OpenAI pauses training of latest models after agents probed US Government sites",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 5,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:49872468",
+            "source": "hn-algolia",
+            "title": "OpenAI pauses training of latest models after agents probed US Government sites",
+            "at": "2026-09-28T01:20:50Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:49864790",
+            "source": "hn-algolia",
+            "title": "OpenAI pauses training of latest models after agents probed US Government sites",
+            "at": "2026-09-27T09:07:03Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:9648343e08a2f950",
+            "source": "gnews-rss",
+            "title": "OpenAI pauses training of latest models after agents probed US government sites in unexpected ways - AP News",
+            "at": "2026-09-26T23:18:00Z",
+            "publisher": "AP News"
+          },
+          {
+            "id": "gnews:a6b217432423fa3d",
+            "source": "gnews-rss",
+            "title": "OpenAI pauses training of latest models after agents searched U.S. government sites in unexpected ways - NBC News",
+            "at": "2026-09-27T21:57:53Z",
+            "publisher": "NBC News"
+          },
+          {
+            "id": "gnews:efe4ef133b9cadad",
+            "source": "gnews-rss",
+            "title": "OpenAI pauses training on some models, says agents targeted government sites - Straight Arrow",
+            "at": "2026-09-28T00:00:34Z",
+            "publisher": "Straight Arrow"
+          }
+        ]
+      },
+      {
+        "title": "Anthropic/OpenAI sound alarm on AI safety and seek to shape how to control it",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 4,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:49869486",
+            "source": "hn-algolia",
+            "title": "Anthropic/OpenAI sound alarm on AI safety and seek to shape how to control it",
+            "at": "2026-09-27T18:34:38Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:e9bc820abfa5b42e",
+            "source": "gnews-rss",
+            "title": "Anthropic and OpenAI sound the alarm on AI safety — and seek to shape how it's controlled - expressnews.com",
+            "at": "2026-09-28T00:07:35Z",
+            "publisher": "expressnews.com"
+          },
+          {
+            "id": "gnews:ccb1ac08533c5e6c",
+            "source": "gnews-rss",
+            "title": "Anthropic and OpenAI sound the alarm on AI safety — and seek to shape how it’s controlled - AP News",
+            "at": "2026-09-27T23:51:00Z",
+            "publisher": "AP News"
+          },
+          {
+            "id": "gnews:faaa0baccb8731bd",
+            "source": "gnews-rss",
+            "title": "Anthropic and OpenAI sound the alarm on AI safety — and seek to shape how it’s controlled - FOX Carolina News",
+            "at": "2026-09-27T20:39:00Z",
+            "publisher": "FOX Carolina News"
           }
         ]
       },
@@ -359,45 +363,13 @@
         ]
       },
       {
-        "title": "OpenAI pauses training of its 'most capable models'",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 3,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:49860545",
-            "source": "hn-algolia",
-            "title": "OpenAI pauses training of its 'most capable models'",
-            "at": "2026-09-26T21:07:08Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:8b1b13fe5bc4840a",
-            "source": "gnews-rss",
-            "title": "OpenAI pauses training of its ‘most capable models’ - The Verge",
-            "at": "2026-09-26T16:34:59Z",
-            "publisher": "The Verge"
-          },
-          {
-            "id": "gnews:ae4f24eb9b507ffe",
-            "source": "gnews-rss",
-            "title": "The Incident That Made OpenAI Pause Training Its Most Capable Models - Medium",
-            "at": "2026-09-27T17:34:50Z",
-            "publisher": "Medium"
-          }
-        ]
-      },
-      {
         "title": "OpenAI agents tried to bruteforce a UN website's API fields",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.886,
+        "score": 0.89,
         "members": [
           {
             "id": "hn:49862299",
@@ -421,8 +393,8 @@
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 3,
-        "score": 0.754,
+        "size": 2,
+        "score": 0.725,
         "members": [
           {
             "id": "hn:49864535",
@@ -432,68 +404,11 @@
             "publisher": null
           },
           {
-            "id": "gnews:7adda2e25007386f",
-            "source": "gnews-rss",
-            "title": "OpenAI pauses training a second time as rogue agents hit U.S. government websites - Investing.com",
-            "at": "2026-09-27T11:33:29Z",
-            "publisher": "Investing.com"
-          },
-          {
             "id": "gnews:cfa1590cfcd5a69a",
             "source": "gnews-rss",
             "title": "OpenAI says its AI agents escaped a secure ‘sandbox’ again last weekend and it is pausing training for a second time - Fortune",
             "at": "2026-09-26T15:25:00Z",
             "publisher": "Fortune"
-          }
-        ]
-      },
-      {
-        "title": "Oxford University lets OpenAI train its AI models on Bodleian Library",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 0.962,
-        "members": [
-          {
-            "id": "hn:49856677",
-            "source": "hn-algolia",
-            "title": "Oxford University lets OpenAI train its AI models on Bodleian Library",
-            "at": "2026-09-26T14:04:55Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:ee3e3a8156190091",
-            "source": "gnews-rss",
-            "title": "Oxford lets OpenAI train its AI models on Bodleian Library - theguardian.com",
-            "at": "2026-09-26T11:23:00Z",
-            "publisher": "theguardian.com"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI Says Its Models Engaged with US Government Websites in New Disclosure",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 0.941,
-        "members": [
-          {
-            "id": "hn:49855278",
-            "source": "hn-algolia",
-            "title": "OpenAI Says Its Models Engaged with US Government Websites in New Disclosure",
-            "at": "2026-09-26T10:49:03Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:34027e90daa0e396",
-            "source": "gnews-rss",
-            "title": "OpenAI says its models engaged with US government websites in new model misbehavior disclosure - AP News",
-            "at": "2026-09-26T03:42:00Z",
-            "publisher": "AP News"
           }
         ]
       }
@@ -514,62 +429,53 @@
       ],
       "gnews_shown_dropped": [
         {
+          "publisher": "Android Authority",
+          "title": "I turned off these 8 Google Messages features, and the app is so much better now - Android Authority"
+        },
+        {
           "publisher": "semivision",
           "title": "When Machines Can Do Everything, What Is Left for Humans? - semivision"
         },
         {
-          "publisher": "TradingView",
-          "title": "META, GOOGL, NVDA, BB, SPCX: Why Retail Traders Couldn’t Take Their Eyes Off These Stocks Last Week - TradingView"
+          "publisher": "tradingview.com",
+          "title": "META, GOOGL, NVDA, BB, SPCX: Why Retail Traders Couldn’t Take Their Eyes Off These Stocks Last Week - tradingview.com"
         },
         {
-          "publisher": "YourTango",
-          "title": "Your Love Horoscope Is Here For Monday, September 28: The Pressure Is Finally Off Today - YourTango"
-        },
-        {
-          "publisher": "fashion headline",
-          "title": "Moon Lee’s 12 Zodiac Horoscope: This Week’s Star Messages (September 28–October 4) - fashion headline"
-        },
-        {
-          "publisher": "36Kr",
-          "title": "RSI Concept Overheated: Leading Scholars Highlight Hype Elements in the Popular Indicator - 36Kr"
-        },
-        {
-          "publisher": "How-To Geek",
-          "title": "4 powerful Android Auto features I never drive without - How-To Geek"
+          "publisher": "eu.36kr.com",
+          "title": "RSI Concept Overheated: Leading Scholars Highlight Hype Elements in the Popular Indicator - eu.36kr.com"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 4
+      "hn_dropped": 5
     },
     "gnews_near_misses": [
       {
-        "score": 0.617,
+        "score": 0.759,
         "blocked": "time-window",
-        "hours_apart": 25.3,
+        "hours_apart": 89.1,
         "a": {
-          "id": "hn:49858360",
-          "source": "hn-algolia",
-          "title": "OpenAI's Rogue A.I. Agents Tried to Trick a Robot Detector",
-          "at": "2026-09-26T16:55:43Z"
+          "id": "rss:deepmind:34692efacd3b982a",
+          "source": "rss-lab",
+          "title": "Introducing Gemini 3.8 Live with Live Avatar",
+          "at": "2026-09-24T16:20:39Z"
         },
         "b": {
-          "id": "gnews:e6a7bc17a29e4ed2",
+          "id": "gnews:f2a50e4b46a52506",
           "source": "gnews-rss",
-          "title": "OpenAI Rogue AI Agents Tried to Trick a CAPTCHA - tech-insider.org",
-          "at": "2026-09-27T18:13:11Z"
+          "title": "Google Gemini 3.8 Live Adds Real-Time Animated Live Avatar - Ubergizmo",
+          "at": "2026-09-28T09:27:53Z"
         },
         "shared": [
-          "openai",
-          "rogu",
-          "agent",
-          "tri",
-          "trick"
+          "gemini",
+          "3.8",
+          "live",
+          "avatar"
         ]
       },
       {
-        "score": 0.589,
+        "score": 0.579,
         "blocked": "below-threshold",
-        "hours_apart": 9.8,
+        "hours_apart": 1.8,
         "a": {
           "id": "hn:49871351",
           "source": "hn-algolia",
@@ -577,89 +483,20 @@
           "at": "2026-09-27T22:09:43Z"
         },
         "b": {
-          "id": "gnews:4b2a71a9c4751f0f",
-          "source": "gnews-rss",
-          "title": "OpenAI halts training of AI models after another escape - Techzine Global",
-          "at": "2026-09-27T12:20:35Z"
-        },
-        "shared": [
-          "openai",
-          "halt",
-          "train",
-          "model"
-        ]
-      },
-      {
-        "score": 0.55,
-        "blocked": "time-window",
-        "hours_apart": 32.8,
-        "a": {
-          "id": "hn:49872468",
-          "source": "hn-algolia",
-          "title": "OpenAI pauses training of latest models after agents probed US Government sites",
-          "at": "2026-09-28T01:20:50Z"
-        },
-        "b": {
-          "id": "gnews:8b1b13fe5bc4840a",
-          "source": "gnews-rss",
-          "title": "OpenAI pauses training of its ‘most capable models’ - The Verge",
-          "at": "2026-09-26T16:34:59Z"
-        },
-        "shared": [
-          "openai",
-          "paus",
-          "train",
-          "model"
-        ]
-      },
-      {
-        "score": 0.55,
-        "blocked": "below-threshold",
-        "hours_apart": 16.5,
-        "a": {
-          "id": "hn:49864790",
-          "source": "hn-algolia",
-          "title": "OpenAI pauses training of latest models after agents probed US Government sites",
-          "at": "2026-09-27T09:07:03Z"
-        },
-        "b": {
-          "id": "gnews:8b1b13fe5bc4840a",
-          "source": "gnews-rss",
-          "title": "OpenAI pauses training of its ‘most capable models’ - The Verge",
-          "at": "2026-09-26T16:34:59Z"
-        },
-        "shared": [
-          "openai",
-          "paus",
-          "train",
-          "model"
-        ]
-      },
-      {
-        "score": 0.538,
-        "blocked": "time-window",
-        "hours_apart": 26.9,
-        "a": {
-          "id": "hn:49860545",
-          "source": "hn-algolia",
-          "title": "OpenAI pauses training of its 'most capable models'",
-          "at": "2026-09-26T21:07:08Z"
-        },
-        "b": {
           "id": "gnews:efe4ef133b9cadad",
           "source": "gnews-rss",
-          "title": "OpenAI pauses training on recent models, says agents targeted government sites - san.com",
+          "title": "OpenAI pauses training on some models, says agents targeted government sites - Straight Arrow",
           "at": "2026-09-28T00:00:34Z"
         },
         "shared": [
           "openai",
-          "paus",
           "train",
+          "some",
           "model"
         ]
       },
       {
-        "score": 0.53,
+        "score": 0.564,
         "blocked": "below-threshold",
         "hours_apart": 4.9,
         "a": {
@@ -682,7 +519,77 @@
         ]
       },
       {
-        "score": 0.528,
+        "score": 0.543,
+        "blocked": "time-window",
+        "hours_apart": 26.9,
+        "a": {
+          "id": "hn:49860545",
+          "source": "hn-algolia",
+          "title": "OpenAI pauses training of its 'most capable models'",
+          "at": "2026-09-26T21:07:08Z"
+        },
+        "b": {
+          "id": "gnews:efe4ef133b9cadad",
+          "source": "gnews-rss",
+          "title": "OpenAI pauses training on some models, says agents targeted government sites - Straight Arrow",
+          "at": "2026-09-28T00:00:34Z"
+        },
+        "shared": [
+          "openai",
+          "paus",
+          "train",
+          "model"
+        ]
+      },
+      {
+        "score": 0.543,
+        "blocked": "below-threshold",
+        "hours_apart": 7,
+        "a": {
+          "id": "hn:49873255",
+          "source": "hn-algolia",
+          "title": "Australia Senate Requests OpenAI, Anthropic CEOs Face AI Inquiry",
+          "at": "2026-09-28T03:26:57Z"
+        },
+        "b": {
+          "id": "gnews:e8af5eb78d501ca4",
+          "source": "gnews-rss",
+          "title": "OpenAI, Anthropic CEOs Asked to Appear at Australian AI Inquiry - marketscreener.com",
+          "at": "2026-09-28T10:28:36Z"
+        },
+        "shared": [
+          "openai",
+          "anthropic",
+          "ceo",
+          "ai",
+          "inquiry"
+        ]
+      },
+      {
+        "score": 0.541,
+        "blocked": "below-threshold",
+        "hours_apart": 8.4,
+        "a": {
+          "id": "hn:49864306",
+          "source": "hn-algolia",
+          "title": "OpenAI halts training of latest models",
+          "at": "2026-09-27T07:40:36Z"
+        },
+        "b": {
+          "id": "gnews:9648343e08a2f950",
+          "source": "gnews-rss",
+          "title": "OpenAI pauses training of latest models after agents probed US government sites in unexpected ways - AP News",
+          "at": "2026-09-26T23:18:00Z"
+        },
+        "shared": [
+          "openai",
+          "train",
+          "latest",
+          "model"
+        ]
+      },
+      {
+        "score": 0.525,
         "blocked": "below-threshold",
         "hours_apart": 14.3,
         "a": {
@@ -705,57 +612,57 @@
         ]
       },
       {
-        "score": 0.52,
+        "score": 0.516,
         "blocked": "below-threshold",
-        "hours_apart": 3.5,
+        "hours_apart": 2.2,
         "a": {
-          "id": "hn:49864306",
+          "id": "hn:49860545",
           "source": "hn-algolia",
-          "title": "OpenAI halts training of latest models",
-          "at": "2026-09-27T07:40:36Z"
+          "title": "OpenAI pauses training of its 'most capable models'",
+          "at": "2026-09-26T21:07:08Z"
         },
         "b": {
-          "id": "gnews:8ca5b415938fcd61",
+          "id": "gnews:9648343e08a2f950",
           "source": "gnews-rss",
-          "title": "OpenAI halts AI training after rogue agent reports - www.israelhayom.com",
-          "at": "2026-09-27T11:08:44Z"
+          "title": "OpenAI pauses training of latest models after agents probed US government sites in unexpected ways - AP News",
+          "at": "2026-09-26T23:18:00Z"
         },
         "shared": [
           "openai",
-          "halt",
-          "train"
+          "paus",
+          "train",
+          "model"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.617,
+        "score": 0.759,
         "blocked": "time-window",
-        "hours_apart": 25.3,
+        "hours_apart": 89.1,
         "a": {
-          "id": "hn:49858360",
-          "source": "hn-algolia",
-          "title": "OpenAI's Rogue A.I. Agents Tried to Trick a Robot Detector",
-          "at": "2026-09-26T16:55:43Z"
+          "id": "rss:deepmind:34692efacd3b982a",
+          "source": "rss-lab",
+          "title": "Introducing Gemini 3.8 Live with Live Avatar",
+          "at": "2026-09-24T16:20:39Z"
         },
         "b": {
-          "id": "gnews:e6a7bc17a29e4ed2",
+          "id": "gnews:f2a50e4b46a52506",
           "source": "gnews-rss",
-          "title": "OpenAI Rogue AI Agents Tried to Trick a CAPTCHA - tech-insider.org",
-          "at": "2026-09-27T18:13:11Z"
+          "title": "Google Gemini 3.8 Live Adds Real-Time Animated Live Avatar - Ubergizmo",
+          "at": "2026-09-28T09:27:53Z"
         },
         "shared": [
-          "openai",
-          "rogu",
-          "agent",
-          "tri",
-          "trick"
+          "gemini",
+          "3.8",
+          "live",
+          "avatar"
         ]
       },
       {
-        "score": 0.589,
+        "score": 0.579,
         "blocked": "below-threshold",
-        "hours_apart": 9.8,
+        "hours_apart": 1.8,
         "a": {
           "id": "hn:49871351",
           "source": "hn-algolia",
@@ -763,89 +670,20 @@
           "at": "2026-09-27T22:09:43Z"
         },
         "b": {
-          "id": "gnews:4b2a71a9c4751f0f",
-          "source": "gnews-rss",
-          "title": "OpenAI halts training of AI models after another escape - Techzine Global",
-          "at": "2026-09-27T12:20:35Z"
-        },
-        "shared": [
-          "openai",
-          "halt",
-          "train",
-          "model"
-        ]
-      },
-      {
-        "score": 0.55,
-        "blocked": "time-window",
-        "hours_apart": 32.8,
-        "a": {
-          "id": "hn:49872468",
-          "source": "hn-algolia",
-          "title": "OpenAI pauses training of latest models after agents probed US Government sites",
-          "at": "2026-09-28T01:20:50Z"
-        },
-        "b": {
-          "id": "gnews:8b1b13fe5bc4840a",
-          "source": "gnews-rss",
-          "title": "OpenAI pauses training of its ‘most capable models’ - The Verge",
-          "at": "2026-09-26T16:34:59Z"
-        },
-        "shared": [
-          "openai",
-          "paus",
-          "train",
-          "model"
-        ]
-      },
-      {
-        "score": 0.55,
-        "blocked": "below-threshold",
-        "hours_apart": 16.5,
-        "a": {
-          "id": "hn:49864790",
-          "source": "hn-algolia",
-          "title": "OpenAI pauses training of latest models after agents probed US Government sites",
-          "at": "2026-09-27T09:07:03Z"
-        },
-        "b": {
-          "id": "gnews:8b1b13fe5bc4840a",
-          "source": "gnews-rss",
-          "title": "OpenAI pauses training of its ‘most capable models’ - The Verge",
-          "at": "2026-09-26T16:34:59Z"
-        },
-        "shared": [
-          "openai",
-          "paus",
-          "train",
-          "model"
-        ]
-      },
-      {
-        "score": 0.538,
-        "blocked": "time-window",
-        "hours_apart": 26.9,
-        "a": {
-          "id": "hn:49860545",
-          "source": "hn-algolia",
-          "title": "OpenAI pauses training of its 'most capable models'",
-          "at": "2026-09-26T21:07:08Z"
-        },
-        "b": {
           "id": "gnews:efe4ef133b9cadad",
           "source": "gnews-rss",
-          "title": "OpenAI pauses training on recent models, says agents targeted government sites - san.com",
+          "title": "OpenAI pauses training on some models, says agents targeted government sites - Straight Arrow",
           "at": "2026-09-28T00:00:34Z"
         },
         "shared": [
           "openai",
-          "paus",
           "train",
+          "some",
           "model"
         ]
       },
       {
-        "score": 0.53,
+        "score": 0.564,
         "blocked": "below-threshold",
         "hours_apart": 4.9,
         "a": {
@@ -868,7 +706,77 @@
         ]
       },
       {
-        "score": 0.528,
+        "score": 0.543,
+        "blocked": "time-window",
+        "hours_apart": 26.9,
+        "a": {
+          "id": "hn:49860545",
+          "source": "hn-algolia",
+          "title": "OpenAI pauses training of its 'most capable models'",
+          "at": "2026-09-26T21:07:08Z"
+        },
+        "b": {
+          "id": "gnews:efe4ef133b9cadad",
+          "source": "gnews-rss",
+          "title": "OpenAI pauses training on some models, says agents targeted government sites - Straight Arrow",
+          "at": "2026-09-28T00:00:34Z"
+        },
+        "shared": [
+          "openai",
+          "paus",
+          "train",
+          "model"
+        ]
+      },
+      {
+        "score": 0.543,
+        "blocked": "below-threshold",
+        "hours_apart": 7,
+        "a": {
+          "id": "hn:49873255",
+          "source": "hn-algolia",
+          "title": "Australia Senate Requests OpenAI, Anthropic CEOs Face AI Inquiry",
+          "at": "2026-09-28T03:26:57Z"
+        },
+        "b": {
+          "id": "gnews:e8af5eb78d501ca4",
+          "source": "gnews-rss",
+          "title": "OpenAI, Anthropic CEOs Asked to Appear at Australian AI Inquiry - marketscreener.com",
+          "at": "2026-09-28T10:28:36Z"
+        },
+        "shared": [
+          "openai",
+          "anthropic",
+          "ceo",
+          "ai",
+          "inquiry"
+        ]
+      },
+      {
+        "score": 0.541,
+        "blocked": "below-threshold",
+        "hours_apart": 8.4,
+        "a": {
+          "id": "hn:49864306",
+          "source": "hn-algolia",
+          "title": "OpenAI halts training of latest models",
+          "at": "2026-09-27T07:40:36Z"
+        },
+        "b": {
+          "id": "gnews:9648343e08a2f950",
+          "source": "gnews-rss",
+          "title": "OpenAI pauses training of latest models after agents probed US government sites in unexpected ways - AP News",
+          "at": "2026-09-26T23:18:00Z"
+        },
+        "shared": [
+          "openai",
+          "train",
+          "latest",
+          "model"
+        ]
+      },
+      {
+        "score": 0.525,
         "blocked": "below-threshold",
         "hours_apart": 14.3,
         "a": {
@@ -891,25 +799,26 @@
         ]
       },
       {
-        "score": 0.52,
+        "score": 0.516,
         "blocked": "below-threshold",
-        "hours_apart": 3.5,
+        "hours_apart": 2.2,
         "a": {
-          "id": "hn:49864306",
+          "id": "hn:49860545",
           "source": "hn-algolia",
-          "title": "OpenAI halts training of latest models",
-          "at": "2026-09-27T07:40:36Z"
+          "title": "OpenAI pauses training of its 'most capable models'",
+          "at": "2026-09-26T21:07:08Z"
         },
         "b": {
-          "id": "gnews:8ca5b415938fcd61",
+          "id": "gnews:9648343e08a2f950",
           "source": "gnews-rss",
-          "title": "OpenAI halts AI training after rogue agent reports - www.israelhayom.com",
-          "at": "2026-09-27T11:08:44Z"
+          "title": "OpenAI pauses training of latest models after agents probed US government sites in unexpected ways - AP News",
+          "at": "2026-09-26T23:18:00Z"
         },
         "shared": [
           "openai",
-          "halt",
-          "train"
+          "paus",
+          "train",
+          "model"
         ]
       }
     ]
@@ -918,76 +827,76 @@
     {
       "id": "arxiv",
       "state": "ok",
-      "streak_ok": 35,
+      "streak_ok": 36,
       "streak_fail": 0,
-      "items_last": 29
+      "items_last": 21
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 35,
+      "streak_ok": 36,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 35,
+      "streak_ok": 36,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 35,
+      "streak_ok": 36,
       "streak_fail": 0,
-      "items_last": 46
+      "items_last": 42
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 35,
+      "streak_ok": 36,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 35,
+      "streak_ok": 36,
       "streak_fail": 0,
-      "items_last": 55
+      "items_last": 56
     },
     {
       "id": "openalex",
       "state": "flaky",
-      "streak_ok": 9,
+      "streak_ok": 10,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 35,
+      "streak_ok": 36,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 35,
+      "streak_ok": 36,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 35,
+      "streak_ok": 36,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.0005680555555555556,
+    "hours": 0.017107777777777777,
     "stale": false
   },
   "hf": {
@@ -997,8 +906,8 @@
   },
   "arxiv": {
     "ok": true,
-    "enriched": 24,
-    "shelf": 5,
+    "enriched": 21,
+    "shelf": 0,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
   },
@@ -1066,7 +975,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 55,
+    "count": 56,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -1083,25 +992,25 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 4,
+    "ai_dropped": 5,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
         "id": "hn:49863864",
         "tag": "rest",
-        "score": 611,
+        "score": 616,
         "text": "Unsealed Briefs in Authors’ Case v. Microsoft/OpenAI"
       },
       {
         "id": "hn:49868831",
         "tag": "rest",
-        "score": 183,
+        "score": 184,
         "text": "SNL Weekend Update: Anthropic CEO Dario Amodei on A.I.'S Threat to Humanity [video]"
       },
       {
         "id": "hn:49856665",
         "tag": "rest",
-        "score": 129,
+        "score": 130,
         "text": "OpenAI bots meddled with multiple US Government agency sites"
       }
     ]
@@ -1118,79 +1027,79 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "(cache:openai)",
+        "url": "https://openai.com/news/rss.xml",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "(cache:deepmind)",
+        "url": "https://deepmind.google/blog/rss.xml",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "(cache:google-ai)",
+        "url": "https://blog.google/technology/ai/rss/",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "(cache:huggingface)",
+        "url": "https://huggingface.co/blog/feed.xml",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "(cache:mistral)",
+        "url": "https://mistral.ai/rss.xml",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "(cache:nvidia)",
+        "url": "https://blogs.nvidia.com/feed/",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "(cache:nvidia-dev)",
+        "url": "https://developer.nvidia.com/blog/feed",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "(cache:ms-research)",
+        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "(cache:google-research)",
+        "url": "https://research.google/blog/rss/",
         "count": 12
       }
     ],
     "feeds_soft_fail": [],
     "sample": [
       {
+        "id": "rss:huggingface:09d1d26fa19dd694",
+        "lab": "huggingface",
+        "tag": "rest",
+        "title": "Holo4: powering generalist computer-use agents",
+        "link": "https://huggingface.co/blog/Hcompany/holo4"
+      },
+      {
+        "id": "rss:nvidia-dev:b2492ef6a6d58b24",
+        "lab": "nvidia-dev",
+        "tag": "rest",
+        "title": "NVIDIA Open Agent Safety Platform: A Reference for Continuous In-Silicon Agent Monitoring",
+        "link": "https://developer.nvidia.com/blog/nvidia-open-agent-safety-platform-a-reference-for-continuous-in-silicon-agent-monitoring/"
+      },
+      {
+        "id": "rss:nvidia-dev:fd7ac71c1dc39408",
+        "lab": "nvidia-dev",
+        "tag": "rest",
+        "title": "Add Runtime Controls to AI Agents with NVIDIA OpenShell",
+        "link": "https://developer.nvidia.com/blog/add-runtime-controls-to-ai-agents-with-nvidia-openshell/"
+      },
+      {
         "id": "rss:nvidia-dev:55fee9238304d3bf",
         "lab": "nvidia-dev",
         "tag": "rest",
         "title": "How NVIDIA DSX MaxLPS Maximizes AI Factory Throughput and Efficiency",
         "link": "https://developer.nvidia.com/blog/how-nvidia-dsx-maxlps-maximizes-ai-factory-throughput-and-efficiency/"
-      },
-      {
-        "id": "rss:openai:9de028fbe46cac8b",
-        "lab": "openai",
-        "tag": "companion",
-        "title": "Proaction boosts sales 60% and saves 75+ hours with Codex",
-        "link": "https://openai.com/index/proaction"
-      },
-      {
-        "id": "rss:google-research:8451e6726f367367",
-        "lab": "google-research",
-        "tag": "rest",
-        "title": "Automating coherent long-form video generation",
-        "link": "https://research.google/blog/coherent-long-form-video-generation/"
-      },
-      {
-        "id": "rss:deepmind:34692efacd3b982a",
-        "lab": "deepmind",
-        "tag": "rest",
-        "title": "Introducing Gemini 3.8 Live with Live Avatar",
-        "link": "https://deepmind.google/blog/introducing-gemini-38-live-with-live-avatar/"
       }
     ]
   },
@@ -1204,17 +1113,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "(cache:trailofbits)",
+        "url": "https://blog.trailofbits.com/feed/",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "(cache:fox-it)",
+        "url": "https://blog.fox-it.com/feed/",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "(cache:projectzero)",
+        "url": "https://projectzero.google/feed.xml",
         "count": 5
       }
     ],
@@ -1255,13 +1164,69 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 46,
-    "pool": 274,
+    "items": 42,
+    "pool": 284,
     "corroborators": [
+      {
+        "id": "gnews:1ce48e189ce83fba",
+        "anchor_id": "hn:49856665",
+        "score": 1,
+        "title": "OpenAI bots meddled with multiple US government agency sites - twaslnews1.twaslnews.com",
+        "publisher": "twaslnews1.twaslnews.com",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:1870db4c4bb7e7e8",
+        "anchor_id": "hn:49868202",
+        "score": 0.718,
+        "title": "Are OpenAI Agents Going Rogue, or Is OpenAI? - New York Magazine",
+        "publisher": "New York Magazine",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:feb98a81163152fb",
+        "anchor_id": "hn:49858360",
+        "score": 0.929,
+        "title": "How OpenAI’s Rogue AI Agents Tried to Trick a Robot Detector - DT Next",
+        "publisher": "DT Next",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:e9bc820abfa5b42e",
+        "anchor_id": "hn:49869486",
+        "score": 0.898,
+        "title": "Anthropic and OpenAI sound the alarm on AI safety — and seek to shape how it's controlled - expressnews.com",
+        "publisher": "expressnews.com",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:ccb1ac08533c5e6c",
+        "anchor_id": "hn:49869486",
+        "score": 0.898,
+        "title": "Anthropic and OpenAI sound the alarm on AI safety — and seek to shape how it’s controlled - AP News",
+        "publisher": "AP News",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:faaa0baccb8731bd",
+        "anchor_id": "hn:49869486",
+        "score": 0.898,
+        "title": "Anthropic and OpenAI sound the alarm on AI safety — and seek to shape how it’s controlled - FOX Carolina News",
+        "publisher": "FOX Carolina News",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:9648343e08a2f950",
+        "anchor_id": "hn:49872468",
+        "score": 0.911,
+        "title": "OpenAI pauses training of latest models after agents probed US government sites in unexpected ways - AP News",
+        "publisher": "AP News",
+        "self_repost": false
+      },
       {
         "id": "gnews:a6b217432423fa3d",
         "anchor_id": "hn:49872468",
-        "score": 0.745,
+        "score": 0.728,
         "title": "OpenAI pauses training of latest models after agents searched U.S. government sites in unexpected ways - NBC News",
         "publisher": "NBC News",
         "self_repost": false
@@ -1269,33 +1234,9 @@
       {
         "id": "gnews:efe4ef133b9cadad",
         "anchor_id": "hn:49872468",
-        "score": 0.663,
-        "title": "OpenAI pauses training on recent models, says agents targeted government sites - san.com",
-        "publisher": "san.com",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:ccb1ac08533c5e6c",
-        "anchor_id": "hn:49869486",
-        "score": 0.897,
-        "title": "Anthropic and OpenAI sound the alarm on AI safety — and seek to shape how it’s controlled - AP News",
-        "publisher": "AP News",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:f1db0e790aa73245",
-        "anchor_id": "hn:49869486",
-        "score": 0.897,
-        "title": "Anthropic and OpenAI sound alarm on AI safety, seek to shape how it's controlled - Prescott Daily Courier",
-        "publisher": "Prescott Daily Courier",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:e095ac89021fda7b",
-        "anchor_id": "hn:49869486",
-        "score": 0.897,
-        "title": "Anthropic and OpenAI sound the alarm on AI safety — and seek to shape how it’s controlled - myMotherLode.com",
-        "publisher": "myMotherLode.com",
+        "score": 0.662,
+        "title": "OpenAI pauses training on some models, says agents targeted government sites - Straight Arrow",
+        "publisher": "Straight Arrow",
         "self_repost": false
       },
       {
@@ -1307,30 +1248,6 @@
         "self_repost": false
       },
       {
-        "id": "gnews:af0130411b9e12f7",
-        "anchor_id": "hn:49860279",
-        "score": 0.757,
-        "title": "An OpenAI agent escaped its locked test cage again, by hiding questions in DNS lookups - WION",
-        "publisher": "WION",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:8b1b13fe5bc4840a",
-        "anchor_id": "hn:49860545",
-        "score": 1,
-        "title": "OpenAI pauses training of its ‘most capable models’ - The Verge",
-        "publisher": "The Verge",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:ae4f24eb9b507ffe",
-        "anchor_id": "hn:49860545",
-        "score": 0.875,
-        "title": "The Incident That Made OpenAI Pause Training Its Most Capable Models - Medium",
-        "publisher": "Medium",
-        "self_repost": false
-      },
-      {
         "id": "gnews:6266c5506cbcf7da",
         "anchor_id": "hn:49862299",
         "score": 0.874,
@@ -1339,59 +1256,11 @@
         "self_repost": false
       },
       {
-        "id": "gnews:4b2a71a9c4751f0f",
-        "anchor_id": "hn:49864306",
-        "score": 0.607,
-        "title": "OpenAI halts training of AI models after another escape - Techzine Global",
-        "publisher": "Techzine Global",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:7adda2e25007386f",
-        "anchor_id": "hn:49864535",
-        "score": 0.767,
-        "title": "OpenAI pauses training a second time as rogue agents hit U.S. government websites - Investing.com",
-        "publisher": "Investing.com",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:cfa1590cfcd5a69a",
-        "anchor_id": "hn:49864535",
-        "score": 0.719,
-        "title": "OpenAI says its AI agents escaped a secure ‘sandbox’ again last weekend and it is pausing training for a second time - Fortune",
-        "publisher": "Fortune",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:eee32c86207454c6",
+        "id": "gnews:732502937855e6d0",
         "anchor_id": "hn:49873255",
-        "score": 1,
-        "title": "Australia Senate Requests OpenAI, Anthropic CEOs Face AI Inquiry - Bloomberg",
-        "publisher": "Bloomberg",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:51b4482ca64d7af3",
-        "anchor_id": "hn:49873255",
-        "score": 1,
-        "title": "Australia Senate Requests OpenAI, Anthropic CEOs Face AI Inquiry - Yahoo Finance",
-        "publisher": "Yahoo Finance",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:f9c3d6e3b4f0e8ca",
-        "anchor_id": "hn:49873255",
-        "score": 1,
-        "title": "Australia Senate Requests OpenAI, Anthropic CEOs Face AI Inquiry - Yahoo! Finance Canada",
-        "publisher": "Yahoo! Finance Canada",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:8ca5b415938fcd61",
-        "anchor_id": "hn:49868202",
-        "score": 0.77,
-        "title": "OpenAI halts AI training after rogue agent reports - www.israelhayom.com",
-        "publisher": "www.israelhayom.com",
+        "score": 0.614,
+        "title": "Australia summons OpenAI and Anthropic CEOs to appear at AI inquiry - Al Jazeera",
+        "publisher": "Al Jazeera",
         "self_repost": false
       },
       {
@@ -1403,26 +1272,18 @@
         "self_repost": false
       },
       {
-        "id": "gnews:ee3e3a8156190091",
-        "anchor_id": "hn:49856677",
-        "score": 0.96,
-        "title": "Oxford lets OpenAI train its AI models on Bodleian Library - theguardian.com",
-        "publisher": "theguardian.com",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:34027e90daa0e396",
-        "anchor_id": "hn:49855278",
-        "score": 0.936,
-        "title": "OpenAI says its models engaged with US government websites in new model misbehavior disclosure - AP News",
-        "publisher": "AP News",
+        "id": "gnews:cfa1590cfcd5a69a",
+        "anchor_id": "hn:49864535",
+        "score": 0.722,
+        "title": "OpenAI says its AI agents escaped a secure ‘sandbox’ again last weekend and it is pausing training for a second time - Fortune",
+        "publisher": "Fortune",
         "self_repost": false
       }
     ],
     "http_status": 200,
-    "content_type": null,
+    "content_type": "application/xml; charset=utf-8",
     "format": "rss2",
-    "from_cache": true,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1445,24 +1306,24 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:88bf9d808035897b",
-        "title": "Asia chip stocks slide as OpenAI pause revives AI slowdown fears - Investing.com",
-        "publisher": "Investing.com",
-        "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQLWlBMnBENW5SSEpFQlpLcVBNY09pM2M5c0Zia2RSZW05UFRVTk9jTlQ2dkx4S1M2N3pyb3F4blVnVWFHUDdxZjJJUTEzaWNKWXlMR1JTSGc1ajRmbldBZTEtMThuemhORmdxNG5Dc1NuVFN5Z3AybVBTaTQweExObVUweGpTUTczcmtiYjB2cm9qdHliaDR3S215cTJQRFZJLURlNXJteGVQcFM3RzBYSmpHLWtVcTZGQ09hd3NB?oc=5",
+        "id": "gnews:687e91485ab2275d",
+        "title": "Leaked Gemini 4 Pro Reportedly Defeats Opus 5.5 and GPT6 Astra - Geeky Gadgets",
+        "publisher": "Geeky Gadgets",
+        "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1ITnJuLWJYTW1hNXhacmtvY2dwLU5wTG1DU1I3RDcwWDFEMVdrYzUxOFBJV2VQcW05andfd3RNbmhMTkI1NmY0MFFtNnJZdVJSNHlvcHdyUUhwTzNvR1E?oc=5",
+        "tag": "companion"
+      },
+      {
+        "id": "gnews:b0077b2ce39f6d30",
+        "title": "Google DeepMind’s Hurricane Forecast Model Provides a Whole Extra Day of Warning - Gizmodo",
+        "publisher": "Gizmodo",
+        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOdUhNRmV2enA5VXJhRDA3RkdhRmRoWDZSal9VbUkzT1JmV2FCZnlaTGpTQVl1cXlycFBfbS1RM0gzMUlnY2xKQzhvLXZETnZ6T3kwNE5uR01iQmxIYVVyR1FuVHlTT0ZZc2pWSFZrMmtZcG5tRUFBdzlPWTBiQnFPajBJVDJCMWIwS1pMYW5oM3FyVVd1RTlIbm9ySXpFRldDUm42UVQ5VnJ4MTM3TnpB?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:40e0c395406a2490",
-        "title": "OpenAI Confirms AI Inadvertently Leaked Users' Private Images Online – 53 Related Public Cases Disclosed - 36Kr",
-        "publisher": "36Kr",
-        "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5PU3FjLU5JZWZuUHBMbW85ZnJJQkRGbDc2ZFVpTzIyTHFIMjlEZTB5WkRIQUprNDZEbzg5Wk42UGZvRldTR1NGU2ZVM0ZNN1FwTFlz?oc=5",
-        "tag": "rest"
-      },
-      {
-        "id": "gnews:d2a49de04a3c3c8b",
-        "title": "Rogue tech: Editorial on AI agents, weak safeguards and need for tighter oversight - Telegraph India",
-        "publisher": "Telegraph India",
-        "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOZEJPRjlhT2g0azc3T0JHMEpoWUtYd1lNT0sybUpfQ2RMZkg2N3hia19UaHM3U050V0JJaWI2aDEzeDFsc2JCby1SbU56LUZnbm03QTNmUTRUdFk0WUdSbUpiWWNzaURrTXpMLV9LQnlTVkhhYm9qb2dxb3E2Ulg0YjloSTRIQUZFX2FBOGJkSDAwSVhHaS1pVW9CLTBiM1NuOUtSWUdpS0RCYkltelhzdW9ZX1JTNUUtT2ZmM1lOUVR1YV84Qi1qX2ZYcWl2dVJLczd3ctIB2gFBVV95cUxNSTc3UnZaRWNtQXhLVk5jVU00NVNySmJ2ZHUzUE54aU0xX1pLdUdHek82RDlvQjVRcGdyTnpqcHFrUHhyeExkVWpCZlhCQWhjb1Q1Q0tXUV9hWTJWaVRvRU9nNWVGTmo0Ym9ZUjlrTmJRdEI3WVBCYUtlaVNPak13NF93TTZndmVRdFpaZkY1Q2MxTS1MSFl1cFpVenZxUmNwNlVwSDNTT3NUTF9NS3lTWWtvbWJfN0F2ZVloRVFxTF9oa2N4WGRKVmNFV2R0U3N5Z0hlS3pKcjNSZw?oc=5",
+        "id": "gnews:ea2139b93c9a2f69",
+        "title": "OpenAI Says Agents Leaked 53 Private Images From ChatGPT Users and Shared Them Online - petapixel.com",
+        "publisher": "petapixel.com",
+        "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPTlB4REk1R0x2TXdfdTl5R2I5M2lYMVZMYUxQUXI5eVBaSmZ3OTZ4b0hDUk1WVXFtb3FvRmI1Wm1oN3o3Q3U1LWxZakFwUjlIaURiZGNVQjhzZGNMTkdDa2RuemdEd2ZwWnpJR2ItUllyam1KMk4xY0FCRl8ySEVQN2VhQ3ZKX0JKY1lOXzdFc0JNWGxLd2RrcmtPckxpdXF3UTFjS2xSb0ttZkZGblE1LWxaWnVFRVo0ZFV3?oc=5",
         "tag": "rest"
       }
     ]
@@ -1500,7 +1361,7 @@
     ]
   },
   "shelf": {
-    "count": 19,
+    "count": 14,
     "brief": false
   },
   "wikidata": {
