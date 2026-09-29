@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-09-29T07:19:33Z",
+  "stamped_at": "2026-09-29T11:14:40Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 540,
+      "duration_ms": 726,
       "paused_until": null,
       "reason": null
     },
@@ -18,7 +18,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 3287,
+      "duration_ms": 3569,
       "paused_until": null,
       "reason": null
     },
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 65,
-      "duration_ms": 8424,
+      "rows": 67,
+      "duration_ms": 8379,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 64,
+      "duration_ms": 18281,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 36,
+      "duration_ms": 4546,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 74,
-      "duration_ms": 50,
+      "rows": 70,
+      "duration_ms": 6465,
       "paused_until": null,
       "reason": null
     },
@@ -81,7 +81,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 3,
+      "duration_ms": 4,
       "paused_until": null,
       "reason": null
     },
@@ -90,38 +90,38 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 2750,
+      "duration_ms": 3,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 15161,
-    "wall_ms": 15625,
-    "startup_ms": 35,
-    "main_ms": 15632
+    "sources_ms": 41980,
+    "wall_ms": 42496,
+    "startup_ms": 32,
+    "main_ms": 42525
   },
-  "multi_source_independent": 16,
+  "multi_source_independent": 14,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 16,
-    "multi_source_raw": 18,
+    "multi_source_independent": 14,
+    "multi_source_raw": 17,
     "self_reposts": 5,
-    "items_in": 270,
-    "clusters_out": 197,
-    "collapsed": 73,
-    "multi_source": 16,
-    "multi_member": 20,
+    "items_in": 268,
+    "clusters_out": 210,
+    "collapsed": 58,
+    "multi_source": 14,
+    "multi_member": 18,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 11,
+    "new_items": 53,
     "per_source": {
-      "hn-algolia": 65,
+      "hn-algolia": 67,
       "rss-lab": 104,
       "rss-security": 27,
-      "gnews-rss": 74
+      "gnews-rss": 70
     },
     "multi_source_clusters": [
       {
@@ -131,28 +131,14 @@
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 17,
+        "size": 8,
         "score": 1,
         "members": [
-          {
-            "id": "hn:49868083",
-            "source": "hn-algolia",
-            "title": "There are no \"rogue\" AI agents",
-            "at": "2026-09-27T16:19:46Z",
-            "publisher": null
-          },
           {
             "id": "hn:49875500",
             "source": "hn-algolia",
             "title": "Nvidia Open Agent Safety Platform",
             "at": "2026-09-28T09:27:59Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:49881899",
-            "source": "hn-algolia",
-            "title": "Nvidia launches platform to quarantine rogue AI agents in 'milliseconds'",
-            "at": "2026-09-28T18:01:19Z",
             "publisher": null
           },
           {
@@ -170,18 +156,11 @@
             "publisher": "nvidia-dev"
           },
           {
-            "id": "gnews:f9cd6f73fea7450d",
+            "id": "gnews:4004285c68b55d03",
             "source": "gnews-rss",
-            "title": "Nvidia unveils AI safety platform to rein in ‘rogue’ AI agents - TradingView",
-            "at": "2026-09-29T02:32:36Z",
-            "publisher": "TradingView"
-          },
-          {
-            "id": "gnews:35f1c1ccec74f3c7",
-            "source": "gnews-rss",
-            "title": "Nvidia unveils platform to prevent AI agents from going rogue - hcamag.com",
-            "at": "2026-09-29T01:27:24Z",
-            "publisher": "hcamag.com"
+            "title": "NVIDIA Unveils an Open Platform for AI Agent Safety - 80 Level",
+            "at": "2026-09-29T07:01:30Z",
+            "publisher": "80 Level"
           },
           {
             "id": "gnews:0547a7bae01c9064",
@@ -191,101 +170,52 @@
             "publisher": "csoonline.com"
           },
           {
-            "id": "gnews:e28d6b8d3bef4f29",
+            "id": "gnews:ad3549e2ac66905d",
             "source": "gnews-rss",
-            "title": "Nvidia Unveils Open Agent Safety Platform To Stop AI Agents Going Rogue: 29 outlets compared - NewsCord",
-            "at": "2026-09-28T23:43:31Z",
-            "publisher": "NewsCord"
-          },
-          {
-            "id": "gnews:708f60475d06bfb1",
-            "source": "gnews-rss",
-            "title": "Nvidia Launches Open Software Platform to Help Strengthen Governance of AI Agents - Yahoo Finance",
-            "at": "2026-09-28T17:35:00Z",
-            "publisher": "Yahoo Finance"
-          },
-          {
-            "id": "gnews:b8a296608c1c8adb",
-            "source": "gnews-rss",
-            "title": "Nvidia launches AI safety platform after agent security breaches - TechTarget",
-            "at": "2026-09-28T21:18:12Z",
-            "publisher": "TechTarget"
-          },
-          {
-            "id": "gnews:b13d03326bb496bd",
-            "source": "gnews-rss",
-            "title": "Nvidia says its new AI safety platform can contain rogue agents within ‘milliseconds’ - The Verge",
-            "at": "2026-09-28T13:36:06Z",
-            "publisher": "The Verge"
-          },
-          {
-            "id": "gnews:3985e57e6dbff78c",
-            "source": "gnews-rss",
-            "title": "Nvidia launches new tool to keep AI agents from going rogue - CNN",
-            "at": "2026-09-28T12:07:52Z",
-            "publisher": "CNN"
-          },
-          {
-            "id": "gnews:f7d288586d27eedf",
-            "source": "gnews-rss",
-            "title": "Nvidia Releases Software It Says Can Prevent AI Agents From Going Rogue - WSJ",
-            "at": "2026-09-28T12:00:00Z",
-            "publisher": "WSJ"
-          },
-          {
-            "id": "gnews:e291df6415c046db",
-            "source": "gnews-rss",
-            "title": "Nvidia says its new OpenShell platform can stop AI agents from going rogue - CBS News",
-            "at": "2026-09-28T12:36:24Z",
-            "publisher": "CBS News"
-          },
-          {
-            "id": "gnews:e8fb2dc5bc5e0e45",
-            "source": "gnews-rss",
-            "title": "NVIDIA Open Agent Safety Platform: A Reference for Continuous In-Silicon Agent Monitoring | NVIDIA Technical Blog - NVIDIA Developer",
-            "at": "2026-09-28T09:16:18Z",
-            "publisher": "NVIDIA Developer",
-            "self_repost": true
+            "title": "Nvidia’s OpenShell and Sentry Aim to Keep AI Agents Inside Their Boundaries, with Open Agent Safety Platform - Technology Org",
+            "at": "2026-09-29T06:52:00Z",
+            "publisher": "Technology Org"
           },
           {
             "id": "gnews:5a0cdfa8f9e777fc",
             "source": "gnews-rss",
-            "title": "NVIDIA Launches Open Agent Safety Platform to Secure Agents From Testing to Deployment - NVIDIA Newsroom",
-            "at": "2026-09-28T09:07:51Z",
-            "publisher": "NVIDIA Newsroom",
+            "title": "NVIDIA Launches Open Agent Safety Platform to Secure Agents From Testing to Deployment - nvidianews.nvidia.com",
+            "at": "2026-09-28T22:54:06Z",
+            "publisher": "nvidianews.nvidia.com",
+            "self_repost": true
+          },
+          {
+            "id": "gnews:e8fb2dc5bc5e0e45",
+            "source": "gnews-rss",
+            "title": "NVIDIA Open Agent Safety Platform: A Reference for Continuous In-Silicon Agent Monitoring | NVIDIA Technical Blog - developer.nvidia.com",
+            "at": "2026-09-28T09:16:18Z",
+            "publisher": "developer.nvidia.com",
             "self_repost": true
           }
         ]
       },
       {
-        "title": "OpenAI axes next model citing safety issues",
+        "title": "Nvidia launches platform to quarantine rogue AI agents in 'milliseconds'",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 3,
-        "score": 1,
+        "size": 2,
+        "score": 0.638,
         "members": [
           {
-            "id": "hn:49888653",
+            "id": "hn:49881899",
             "source": "hn-algolia",
-            "title": "OpenAI axes next model citing safety issues",
-            "at": "2026-09-29T05:27:12Z",
+            "title": "Nvidia launches platform to quarantine rogue AI agents in 'milliseconds'",
+            "at": "2026-09-28T18:01:19Z",
             "publisher": null
           },
           {
-            "id": "gnews:72f4f768db81be16",
+            "id": "gnews:3636106127388976",
             "source": "gnews-rss",
-            "title": "OpenAI cancels new AI launch, citing safety issues - The Washington Post",
-            "at": "2026-09-29T03:11:00Z",
-            "publisher": "The Washington Post"
-          },
-          {
-            "id": "gnews:31bf0f54b491e0e5",
-            "source": "gnews-rss",
-            "title": "OpenAI axes next model citing safety issues - Financial Times",
-            "at": "2026-09-29T00:52:06Z",
-            "publisher": "Financial Times"
+            "title": "Nvidia Says It Can Stop Rogue AI in 'Milliseconds' - Newser",
+            "at": "2026-09-29T11:11:00Z",
+            "publisher": "Newser"
           }
         ]
       },
@@ -295,7 +225,7 @@
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 8,
+        "size": 11,
         "score": 1,
         "members": [
           {
@@ -313,6 +243,13 @@
             "publisher": null
           },
           {
+            "id": "hn:49891070",
+            "source": "hn-algolia",
+            "title": "Anthropic warns of 'existential risks to humanity' in IPO prospectus",
+            "at": "2026-09-29T10:53:11Z",
+            "publisher": null
+          },
+          {
             "id": "hn:49887955",
             "source": "hn-algolia",
             "title": "Anthropic warns AI may pose 'existential risks to humanity' in IPO filing",
@@ -320,39 +257,53 @@
             "publisher": null
           },
           {
+            "id": "gnews:51b77893838bcecf",
+            "source": "gnews-rss",
+            "title": "Anthropic prospectus shows $2T IPO ambition, warns of AI ’existential risk’ - Investing.com",
+            "at": "2026-09-29T10:34:43Z",
+            "publisher": "Investing.com"
+          },
+          {
+            "id": "gnews:f0c39178329057d8",
+            "source": "gnews-rss",
+            "title": "Anthropic IPO filing warns AI may pose 'existential risks to humanity' - Euronews.com",
+            "at": "2026-09-29T09:44:13Z",
+            "publisher": "Euronews.com"
+          },
+          {
+            "id": "gnews:527d2bc9b63c4711",
+            "source": "gnews-rss",
+            "title": "EXCLUSIVE: Anthropic warns AI may pose 'existential risks to humanity' in IPO filing - Reuters",
+            "at": "2026-09-29T00:17:00Z",
+            "publisher": "Reuters"
+          },
+          {
+            "id": "gnews:a50157c2c55126c2",
+            "source": "gnews-rss",
+            "title": "Anthropic warns AI may pose 'existential risks to humanity' in IPO filing - CNA",
+            "at": "2026-09-29T00:17:00Z",
+            "publisher": "CNA"
+          },
+          {
+            "id": "gnews:2aa98b36345d08c4",
+            "source": "gnews-rss",
+            "title": "Anthropic warns of AI's 'existential risks to humanity' in IPO prospectus - Daily Sabah",
+            "at": "2026-09-29T08:12:36Z",
+            "publisher": "Daily Sabah"
+          },
+          {
+            "id": "gnews:0a58136d338175f0",
+            "source": "gnews-rss",
+            "title": "Anthropic Warns of ‘Existential Risks to Humanity’ in IPO Prospectus - trendingtopics.eu",
+            "at": "2026-09-29T05:22:23Z",
+            "publisher": "trendingtopics.eu"
+          },
+          {
             "id": "gnews:8a9f5bd8aab26035",
             "source": "gnews-rss",
             "title": "Anthropic warns of ‘existential risks to humanity’ in IPO prospectus - Financial Times",
-            "at": "2026-09-29T01:06:35Z",
+            "at": "2026-09-29T02:36:38Z",
             "publisher": "Financial Times"
-          },
-          {
-            "id": "gnews:3602ce66663bf124",
-            "source": "gnews-rss",
-            "title": "Anthropic IPO prospectus states AI could pose 'existential risks to humanity': report - Seeking Alpha",
-            "at": "2026-09-29T01:50:49Z",
-            "publisher": "Seeking Alpha"
-          },
-          {
-            "id": "gnews:4fdec73affc26f09",
-            "source": "gnews-rss",
-            "title": "Anthropic IPO Prospectus Spends 80 Of 261 Pages On Risk, Warns AI Could Pose ‘Catastrophic or Existential - Benzinga",
-            "at": "2026-09-29T02:22:05Z",
-            "publisher": "Benzinga"
-          },
-          {
-            "id": "gnews:7186d759fcecf0c2",
-            "source": "gnews-rss",
-            "title": "Anthropic warns AI may pose 'existential risks to humanity' in IPO filing: Reuters - CNBC",
-            "at": "2026-09-29T01:23:00Z",
-            "publisher": "CNBC"
-          },
-          {
-            "id": "gnews:47c81fbde0f4ff23",
-            "source": "gnews-rss",
-            "title": "Anthropic warns AI may pose ‘existential risks to humanity’ in IPO filing: Reuters exclusive - CTV News",
-            "at": "2026-09-29T00:46:00Z",
-            "publisher": "CTV News"
           }
         ]
       },
@@ -394,6 +345,13 @@
             "publisher": null
           },
           {
+            "id": "hn:49888653",
+            "source": "hn-algolia",
+            "title": "OpenAI axes next model citing safety issues",
+            "at": "2026-09-29T05:27:12Z",
+            "publisher": null
+          },
+          {
             "id": "hn:49885916",
             "source": "hn-algolia",
             "title": "WSJ reports OpenAI scrapped GPT-6.1 Astra over safety concerns",
@@ -401,60 +359,25 @@
             "publisher": null
           },
           {
-            "id": "gnews:080789ad7b9ea276",
+            "id": "gnews:c82c50dab733b3a4",
             "source": "gnews-rss",
-            "title": "OpenAI abandons release of next-generation AI model over safety concerns - AOL.com",
-            "at": "2026-09-29T03:02:00Z",
-            "publisher": "AOL.com"
+            "title": "OpenAI scraps new model release amid growing concerns over AI safety - CNN",
+            "at": "2026-09-29T10:50:50Z",
+            "publisher": "CNN"
           },
           {
-            "id": "gnews:a5d91e9e250f8213",
+            "id": "gnews:00b1d9400fb679cd",
             "source": "gnews-rss",
-            "title": "OpenAI cancels release of new AI model over safety concerns - France 24",
-            "at": "2026-09-29T02:54:49Z",
-            "publisher": "France 24"
+            "title": "OpenAI Delays Release of Latest Model Over Safety Concerns - wired.com",
+            "at": "2026-09-29T10:36:00Z",
+            "publisher": "wired.com"
           },
           {
-            "id": "gnews:c050c4f40e8f74c1",
+            "id": "gnews:60063ebb47b7315d",
             "source": "gnews-rss",
-            "title": "OpenAI Halts GPT-6.1 Astra Release After Internal Testing Flags Safety Risks: 23 outlets compared - NewsCord",
-            "at": "2026-09-29T02:40:05Z",
-            "publisher": "NewsCord"
-          },
-          {
-            "id": "gnews:63336d049a81c303",
-            "source": "gnews-rss",
-            "title": "OpenAI cancels release of GPT-6.1 Astra AI model, citing safety worries: WSJ - TradingView",
-            "at": "2026-09-29T02:13:00Z",
-            "publisher": "TradingView"
-          },
-          {
-            "id": "gnews:1e3a9bc2fca1092e",
-            "source": "gnews-rss",
-            "title": "OpenAI cancels GPT-6.1 Astra release over safety concerns - qz.com",
-            "at": "2026-09-29T02:12:46Z",
-            "publisher": "qz.com"
-          },
-          {
-            "id": "gnews:b5cb826b7c86a98c",
-            "source": "gnews-rss",
-            "title": "OpenAI Will Not Ship GPT-6.1 Astra Due to Safety Concerns - The Information",
-            "at": "2026-09-28T23:55:51Z",
-            "publisher": "The Information"
-          },
-          {
-            "id": "gnews:c336e3a98b9fb615",
-            "source": "gnews-rss",
-            "title": "OpenAI cancels GPT-6.1 Astra release over misbehavior & safety concerns - 9to5Google",
-            "at": "2026-09-28T23:00:00Z",
-            "publisher": "9to5Google"
-          },
-          {
-            "id": "gnews:fec1d0a55aac7dec",
-            "source": "gnews-rss",
-            "title": "OpenAI scraps release of new AI model over safety concerns - CBC",
-            "at": "2026-09-29T01:35:00Z",
-            "publisher": "CBC"
+            "title": "OpenAI scraps release of new model over safety concerns - Yahoo",
+            "at": "2026-09-29T05:48:00Z",
+            "publisher": "Yahoo"
           },
           {
             "id": "gnews:b7d033421bafaea5",
@@ -464,103 +387,131 @@
             "publisher": "WSJ"
           },
           {
+            "id": "gnews:255c9447fbdeb803",
+            "source": "gnews-rss",
+            "title": "OpenAI scraps release of newest AI model over safety concerns - Anadolu Ajansı",
+            "at": "2026-09-29T05:29:35Z",
+            "publisher": "Anadolu Ajansı"
+          },
+          {
+            "id": "gnews:1e3a9bc2fca1092e",
+            "source": "gnews-rss",
+            "title": "OpenAI cancels GPT-6.1 Astra release over safety concerns - qz.com",
+            "at": "2026-09-29T02:12:46Z",
+            "publisher": "qz.com"
+          },
+          {
             "id": "gnews:68ac0c1942cce6d9",
             "source": "gnews-rss",
-            "title": "OpenAI scraps release of latest AI model over safety concerns - aljazeera.com",
-            "at": "2026-09-29T01:41:15Z",
-            "publisher": "aljazeera.com"
+            "title": "OpenAI cancels release of AI model GPT-6.1 Astra, citing safety concerns - Al Jazeera",
+            "at": "2026-09-29T03:43:46Z",
+            "publisher": "Al Jazeera"
+          },
+          {
+            "id": "gnews:31bf0f54b491e0e5",
+            "source": "gnews-rss",
+            "title": "OpenAI axes next model citing safety issues - Financial Times",
+            "at": "2026-09-29T00:52:06Z",
+            "publisher": "Financial Times"
+          },
+          {
+            "id": "gnews:72f4f768db81be16",
+            "source": "gnews-rss",
+            "title": "OpenAI cancels new AI launch, citing safety issues - The Washington Post",
+            "at": "2026-09-29T03:11:00Z",
+            "publisher": "The Washington Post"
+          },
+          {
+            "id": "gnews:ebffb8011f997903",
+            "source": "gnews-rss",
+            "title": "OpenAI scraps rollout of new model over safety concerns - BBC",
+            "at": "2026-09-29T01:18:24Z",
+            "publisher": "BBC"
           },
           {
             "id": "gnews:19886814d5000841",
             "source": "gnews-rss",
-            "title": "OpenAI Says It Will Not Release Newest Astra A.I. Model Over Safety Concerns - The New York Times",
+            "title": "OpenAI Says It Will Not Release Newest Astra A.I. Model Over Safety Concerns - nytimes.com",
             "at": "2026-09-29T00:19:42Z",
-            "publisher": "The New York Times"
-          },
-          {
-            "id": "gnews:66cfbfc724cc7d3e",
-            "source": "gnews-rss",
-            "title": "OpenAI scraps the GPT-6.1 Astra launch after the model fell short of its safety bar - Business Insider",
-            "at": "2026-09-29T00:07:31Z",
-            "publisher": "Business Insider"
+            "publisher": "nytimes.com"
           }
         ]
       },
       {
-        "title": "OpenAI apologises for Medicare hack and reveals extent of attack",
+        "title": "As AI models go rogue, do you still trust OpenAI and Anthropic to stop them?",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.887,
+        "score": 0.931,
         "members": [
           {
-            "id": "hn:49887703",
+            "id": "hn:49889147",
             "source": "hn-algolia",
-            "title": "OpenAI apologises for Medicare hack and reveals extent of attack",
-            "at": "2026-09-29T03:18:44Z",
+            "title": "As AI models go rogue, do you still trust OpenAI and Anthropic to stop them?",
+            "at": "2026-09-29T06:46:39Z",
             "publisher": null
           },
           {
-            "id": "gnews:993660d21b8a2749",
+            "id": "gnews:b9999ba84d25ea40",
             "source": "gnews-rss",
-            "title": "‘New kind of cyber incident’: OpenAI apologises for Medicare hack and reveals extent of attack - The Guardian",
-            "at": "2026-09-29T02:10:00Z",
-            "publisher": "The Guardian"
+            "title": "As AI models go rogue, do you still trust OpenAI and Anthropic to stop them? I don’t and neither should you - theguardian.com",
+            "at": "2026-09-29T08:27:00Z",
+            "publisher": "theguardian.com"
           }
         ]
       },
       {
-        "title": "Anthropic CEO Amodei set to meet with Trump",
+        "title": "Anthropic's IPO prospectus shows AI vision, surging costs",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
         "size": 6,
-        "score": 0.918,
+        "score": 1,
         "members": [
           {
-            "id": "hn:49870423",
+            "id": "hn:49886005",
             "source": "hn-algolia",
-            "title": "Anthropic CEO Amodei set to meet with Trump",
-            "at": "2026-09-27T20:18:31Z",
+            "title": "Anthropic's IPO prospectus shows AI vision, surging costs",
+            "at": "2026-09-28T23:40:59Z",
             "publisher": null
           },
           {
-            "id": "hn:49870436",
+            "id": "hn:49889896",
             "source": "hn-algolia",
-            "title": "Trump and Anthropic CEO Dario Amodei Set for White House Dinner",
-            "at": "2026-09-27T20:20:05Z",
+            "title": "Anthropic IPO prospectus reveals surging costs, $42B 2025 net loss",
+            "at": "2026-09-29T08:21:16Z",
             "publisher": null
           },
           {
-            "id": "gnews:303480b638a94315",
+            "id": "gnews:dc595947a22b3a7c",
             "source": "gnews-rss",
-            "title": "Tracking Trump: Latest on Iran talks; Trump’s dinner with Anthropic CEO; White House puts out more taxpayer-funded ads; and more - The Washington Post",
-            "at": "2026-09-29T02:24:12Z",
-            "publisher": "The Washington Post"
+            "title": "Anthropic IPO prospectus reveals surging costs, $42B 2025 net loss: report (ANTHRO:Private) - Seeking Alpha",
+            "at": "2026-09-29T05:57:39Z",
+            "publisher": "Seeking Alpha"
           },
           {
-            "id": "gnews:f6a0a26897e9264e",
+            "id": "gnews:c0dfddef530eccba",
             "source": "gnews-rss",
-            "title": "Anthropic CEO Amodei to have dinner with Trump at White House - aljazeera.com",
-            "at": "2026-09-28T03:26:06Z",
-            "publisher": "aljazeera.com"
+            "title": "Anthropic IPO prospectus reveals surging costs, $42B 2025 net loss: report (ANTHRO:Private) - Seeking Alpha",
+            "at": "2026-09-29T05:57:39Z",
+            "publisher": "Seeking Alpha"
           },
           {
-            "id": "gnews:37b35cd7988791f7",
+            "id": "gnews:438dbae3c206eeff",
             "source": "gnews-rss",
-            "title": "Trump had private dinner with Anthropic CEO Dario Amodei - CBS News",
-            "at": "2026-09-28T16:13:00Z",
-            "publisher": "CBS News"
+            "title": "EXCLUSIVE: Anthropic's IPO prospectus shows sweeping AI vision, surging costs - Reuters",
+            "at": "2026-09-28T23:17:00Z",
+            "publisher": "Reuters"
           },
           {
-            "id": "gnews:fe70ec6d344529c7",
+            "id": "gnews:288499c961111f90",
             "source": "gnews-rss",
-            "title": "Memo smearing Anthropic’s Amodei circulated in White House before CEO’s dinner with President Trump - Fortune",
-            "at": "2026-09-28T10:33:00Z",
-            "publisher": "Fortune"
+            "title": "Anthropic's IPO prospectus shows sweeping AI vision, surging costs: Reuters - CNBC",
+            "at": "2026-09-28T23:55:07Z",
+            "publisher": "CNBC"
           }
         ]
       },
@@ -571,7 +522,7 @@
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.732,
+        "score": 0.723,
         "members": [
           {
             "id": "rss:openai:50d71cd52400f551",
@@ -586,45 +537,6 @@
             "title": "‘Do better for Australia': OpenAI apologizes for unauthorized access - Politico",
             "at": "2026-09-29T01:55:00Z",
             "publisher": "Politico"
-          }
-        ]
-      },
-      {
-        "title": "Anthropic's IPO prospectus shows AI vision, surging costs",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 4,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:49886005",
-            "source": "hn-algolia",
-            "title": "Anthropic's IPO prospectus shows AI vision, surging costs",
-            "at": "2026-09-28T23:40:59Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:7189de656e2548e3",
-            "source": "gnews-rss",
-            "title": "Anthropic's IPO prospectus shows sweeping AI vision, surging costs - The Korea Times",
-            "at": "2026-09-28T23:53:03Z",
-            "publisher": "The Korea Times"
-          },
-          {
-            "id": "gnews:da206bc48287b6c5",
-            "source": "gnews-rss",
-            "title": "Anthropic's IPO prospectus shows sweeping AI vision, surging costs - marketscreener.com",
-            "at": "2026-09-28T23:17:20Z",
-            "publisher": "marketscreener.com"
-          },
-          {
-            "id": "gnews:438dbae3c206eeff",
-            "source": "gnews-rss",
-            "title": "EXCLUSIVE: Anthropic's IPO prospectus shows sweeping AI vision, surging costs - Reuters",
-            "at": "2026-09-28T23:17:00Z",
-            "publisher": "Reuters"
           }
         ]
       },
@@ -650,64 +562,6 @@
             "title": "Holo4: powering generalist computer-use agents",
             "at": "2026-09-28T09:44:05Z",
             "publisher": "huggingface"
-          }
-        ]
-      },
-      {
-        "title": "Authors Guild calls on publishers to share Anthropic wealth",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:49884458",
-            "source": "hn-algolia",
-            "title": "Authors Guild calls on publishers to share Anthropic wealth",
-            "at": "2026-09-28T21:14:24Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:079fbdedf1ff53fa",
-            "source": "gnews-rss",
-            "title": "Authors Guild Calls on Publishers to Share Anthropic Wealth - Publishers Weekly",
-            "at": "2026-09-28T15:20:17Z",
-            "publisher": "Publishers Weekly"
-          }
-        ]
-      },
-      {
-        "title": "Add Runtime Controls to AI Agents with NVIDIA OpenShell",
-        "sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "size": 3,
-        "score": 1,
-        "members": [
-          {
-            "id": "rss:nvidia-dev:fd7ac71c1dc39408",
-            "source": "rss-lab",
-            "title": "Add Runtime Controls to AI Agents with NVIDIA OpenShell",
-            "at": "2026-09-28T08:55:00Z",
-            "publisher": "nvidia-dev"
-          },
-          {
-            "id": "gnews:ec94b1aff60d8c6b",
-            "source": "gnews-rss",
-            "title": "Add Runtime Controls to AI Agents with NVIDIA OpenShell | NVIDIA Technical Blog - NVIDIA Developer",
-            "at": "2026-09-28T09:01:31Z",
-            "publisher": "NVIDIA Developer",
-            "self_repost": true
-          },
-          {
-            "id": "gnews:8d606a340da6d318",
-            "source": "gnews-rss",
-            "title": "Anthropic Adds NVIDIA OpenShell Controls to Claude Managed Agents - Unite.AI",
-            "at": "2026-09-28T21:08:01Z",
-            "publisher": "Unite.AI"
           }
         ]
       },
@@ -744,87 +598,9 @@
           {
             "id": "gnews:1fa0bd194d0ef6a9",
             "source": "gnews-rss",
-            "title": "Did Anthropic’s A.I. Really Make a Scientific Discovery on Its Own? - The New York Times",
+            "title": "Did Anthropic’s A.I. Really Make a Scientific Discovery on Its Own? - nytimes.com",
             "at": "2026-09-28T18:15:00Z",
-            "publisher": "The New York Times"
-          }
-        ]
-      },
-      {
-        "title": "Anthropic is a supply chain risk for all of us",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 0.718,
-        "members": [
-          {
-            "id": "hn:49870695",
-            "source": "hn-algolia",
-            "title": "Anthropic is a supply chain risk for all of us",
-            "at": "2026-09-27T20:50:55Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:435aea0b52f43e7b",
-            "source": "gnews-rss",
-            "title": "DC Circuit Upholds Pentagon’s Anthropic Supply Chain Risk Designation - MeriTalk",
-            "at": "2026-09-28T20:00:33Z",
-            "publisher": "MeriTalk"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI pauses training of latest models after agents probed US Government sites",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 6,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:49872468",
-            "source": "hn-algolia",
-            "title": "OpenAI pauses training of latest models after agents probed US Government sites",
-            "at": "2026-09-28T01:20:50Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:49864790",
-            "source": "hn-algolia",
-            "title": "OpenAI pauses training of latest models after agents probed US Government sites",
-            "at": "2026-09-27T09:07:03Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:49877374",
-            "source": "hn-algolia",
-            "title": "OpenAI Pauses Training Its Most Powerful Models After Agents Target Government",
-            "at": "2026-09-28T13:09:38Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:5db2505c3b4202e6",
-            "source": "gnews-rss",
-            "title": "OpenAI Pauses Training Its Most Powerful Models After Rogue Agents Target Government - WIRED",
-            "at": "2026-09-28T11:32:00Z",
-            "publisher": "WIRED"
-          },
-          {
-            "id": "gnews:49bd2d484c336e6e",
-            "source": "gnews-rss",
-            "title": "OpenAI Pauses Models Training After Agents Access US Government - mexicobusiness.news",
-            "at": "2026-09-28T19:51:04Z",
-            "publisher": "mexicobusiness.news"
-          },
-          {
-            "id": "gnews:261c45a20a946fc9",
-            "source": "gnews-rss",
-            "title": "OpenAI is pausing training of its most powerful AI models after rogue agents hit government sites - qz.com",
-            "at": "2026-09-28T17:57:48Z",
-            "publisher": "qz.com"
+            "publisher": "nytimes.com"
           }
         ]
       },
@@ -860,7 +636,7 @@
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.986,
+        "score": 0.985,
         "members": [
           {
             "id": "hn:49880973",
@@ -875,6 +651,109 @@
             "title": "Florida asks court to bar OpenAI from developing new models as part of child harm lawsuit - Reuters",
             "at": "2026-09-28T17:13:17Z",
             "publisher": "Reuters"
+          }
+        ]
+      },
+      {
+        "title": "Anthropic CEO Amodei set to meet with Trump",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 4,
+        "score": 0.924,
+        "members": [
+          {
+            "id": "hn:49870423",
+            "source": "hn-algolia",
+            "title": "Anthropic CEO Amodei set to meet with Trump",
+            "at": "2026-09-27T20:18:31Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:49870436",
+            "source": "hn-algolia",
+            "title": "Trump and Anthropic CEO Dario Amodei Set for White House Dinner",
+            "at": "2026-09-27T20:20:05Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:f6a0a26897e9264e",
+            "source": "gnews-rss",
+            "title": "Anthropic CEO Amodei to have dinner with Trump at White House - Al Jazeera",
+            "at": "2026-09-28T03:26:06Z",
+            "publisher": "Al Jazeera"
+          },
+          {
+            "id": "gnews:37b35cd7988791f7",
+            "source": "gnews-rss",
+            "title": "Trump had private dinner with Anthropic CEO Dario Amodei - CBS News",
+            "at": "2026-09-28T16:13:00Z",
+            "publisher": "CBS News"
+          }
+        ]
+      },
+      {
+        "title": "OpenAI Pauses Training Its Most Powerful Models After Agents Target Government",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:49877374",
+            "source": "hn-algolia",
+            "title": "OpenAI Pauses Training Its Most Powerful Models After Agents Target Government",
+            "at": "2026-09-28T13:09:38Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:5db2505c3b4202e6",
+            "source": "gnews-rss",
+            "title": "OpenAI Pauses Training Its Most Powerful Models After Rogue Agents Target Government - wired.com",
+            "at": "2026-09-28T11:32:00Z",
+            "publisher": "wired.com"
+          }
+        ]
+      },
+      {
+        "title": "There are no \"rogue\" AI agents",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 4,
+        "score": 0.644,
+        "members": [
+          {
+            "id": "hn:49868083",
+            "source": "hn-algolia",
+            "title": "There are no \"rogue\" AI agents",
+            "at": "2026-09-27T16:19:46Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:3985e57e6dbff78c",
+            "source": "gnews-rss",
+            "title": "Nvidia launches new tool to keep AI agents from going rogue - CNN",
+            "at": "2026-09-28T12:07:52Z",
+            "publisher": "CNN"
+          },
+          {
+            "id": "gnews:e291df6415c046db",
+            "source": "gnews-rss",
+            "title": "Nvidia says its new OpenShell platform can stop AI agents from going rogue - CBS News",
+            "at": "2026-09-28T12:36:24Z",
+            "publisher": "CBS News"
+          },
+          {
+            "id": "gnews:f7d288586d27eedf",
+            "source": "gnews-rss",
+            "title": "Nvidia Releases Software It Says Can Prevent AI Agents From Going Rogue - WSJ",
+            "at": "2026-09-28T12:00:08Z",
+            "publisher": "WSJ"
           }
         ]
       }
@@ -894,37 +773,19 @@
         ],
         "self_reposts": [
           {
-            "id": "gnews:e8fb2dc5bc5e0e45",
-            "publisher": "NVIDIA Developer",
-            "title": "NVIDIA Open Agent Safety Platform: A Reference for Continuous In-Silicon Agent Monitoring | NVIDIA Technical Blog - NVIDIA Developer"
+            "id": "gnews:5a0cdfa8f9e777fc",
+            "publisher": "nvidianews.nvidia.com",
+            "title": "NVIDIA Launches Open Agent Safety Platform to Secure Agents From Testing to Deployment - nvidianews.nvidia.com"
           },
           {
-            "id": "gnews:5a0cdfa8f9e777fc",
-            "publisher": "NVIDIA Newsroom",
-            "title": "NVIDIA Launches Open Agent Safety Platform to Secure Agents From Testing to Deployment - NVIDIA Newsroom"
+            "id": "gnews:e8fb2dc5bc5e0e45",
+            "publisher": "developer.nvidia.com",
+            "title": "NVIDIA Open Agent Safety Platform: A Reference for Continuous In-Silicon Agent Monitoring | NVIDIA Technical Blog - developer.nvidia.com"
           }
         ]
       },
       {
-        "title": "Add Runtime Controls to AI Agents with NVIDIA OpenShell",
-        "sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:ec94b1aff60d8c6b",
-            "publisher": "NVIDIA Developer",
-            "title": "Add Runtime Controls to AI Agents with NVIDIA OpenShell | NVIDIA Technical Blog - NVIDIA Developer"
-          }
-        ]
-      },
-      {
-        "title": "Basis completes a tax workbook 2x faster with GPT-6 Astra",
+        "title": "Towards safety cases for frontier AI training",
         "sources": [
           "rss-lab"
         ],
@@ -934,9 +795,9 @@
         ],
         "self_reposts": [
           {
-            "id": "gnews:7e3831dce8b42782",
+            "id": "gnews:c3ce37ff107d6fcb",
             "publisher": "OpenAI",
-            "title": "Basis completes a tax workbook 2x faster with GPT-6 Astra - OpenAI"
+            "title": "Towards safety cases for frontier AI training - OpenAI"
           }
         ]
       },
@@ -956,6 +817,23 @@
             "title": "The Lenfest Institute grows landmark program with expanded OpenAI support - OpenAI"
           }
         ]
+      },
+      {
+        "title": "Add Runtime Controls to AI Agents with NVIDIA OpenShell",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:ec94b1aff60d8c6b",
+            "publisher": "developer.nvidia.com",
+            "title": "Add Runtime Controls to AI Agents with NVIDIA OpenShell | NVIDIA Technical Blog - developer.nvidia.com"
+          }
+        ]
       }
     ],
     "ai_relevance": {
@@ -971,158 +849,132 @@
           "reason": "category:GeForce NOW"
         }
       ],
-      "gnews_shown_dropped": [
-        {
-          "publisher": "deccanherald.com",
-          "title": "Today's Horoscope - September 29, 2026: Check horoscope for all sun signs - deccanherald.com"
-        }
-      ],
+      "gnews_shown_dropped": [],
       "gnews_pool_dropped": 0,
       "hn_dropped": 7
     },
     "gnews_near_misses": [
       {
-        "score": 0.705,
+        "score": 0.668,
         "blocked": "time-window",
-        "hours_apart": 34.7,
+        "hours_apart": 42.3,
         "a": {
-          "id": "hn:49864790",
+          "id": "hn:49868083",
           "source": "hn-algolia",
-          "title": "OpenAI pauses training of latest models after agents probed US Government sites",
-          "at": "2026-09-27T09:07:03Z"
+          "title": "There are no \"rogue\" AI agents",
+          "at": "2026-09-27T16:19:46Z"
         },
         "b": {
-          "id": "gnews:49bd2d484c336e6e",
+          "id": "gnews:10e97395d692337d",
           "source": "gnews-rss",
-          "title": "OpenAI Pauses Models Training After Agents Access US Government - mexicobusiness.news",
-          "at": "2026-09-28T19:51:04Z"
+          "title": "Nvidia launches safeguards against rogue AI agents - Qazinform",
+          "at": "2026-09-29T10:37:51Z"
+        },
+        "shared": [
+          "rogu",
+          "ai",
+          "agent"
+        ]
+      },
+      {
+        "score": 0.572,
+        "blocked": "below-threshold",
+        "hours_apart": 6.3,
+        "a": {
+          "id": "hn:49886005",
+          "source": "hn-algolia",
+          "title": "Anthropic's IPO prospectus shows AI vision, surging costs",
+          "at": "2026-09-28T23:40:59Z"
+        },
+        "b": {
+          "id": "gnews:dc595947a22b3a7c",
+          "source": "gnews-rss",
+          "title": "Anthropic IPO prospectus reveals surging costs, $42B 2025 net loss: report (ANTHRO:Private) - Seeking Alpha",
+          "at": "2026-09-29T05:57:39Z"
+        },
+        "shared": [
+          "anthropic",
+          "ipo",
+          "prospectus",
+          "surg",
+          "cost"
+        ]
+      },
+      {
+        "score": 0.572,
+        "blocked": "below-threshold",
+        "hours_apart": 6.3,
+        "a": {
+          "id": "hn:49886005",
+          "source": "hn-algolia",
+          "title": "Anthropic's IPO prospectus shows AI vision, surging costs",
+          "at": "2026-09-28T23:40:59Z"
+        },
+        "b": {
+          "id": "gnews:c0dfddef530eccba",
+          "source": "gnews-rss",
+          "title": "Anthropic IPO prospectus reveals surging costs, $42B 2025 net loss: report (ANTHRO:Private) - Seeking Alpha",
+          "at": "2026-09-29T05:57:39Z"
+        },
+        "shared": [
+          "anthropic",
+          "ipo",
+          "prospectus",
+          "surg",
+          "cost"
+        ]
+      },
+      {
+        "score": 0.57,
+        "blocked": "below-threshold",
+        "hours_apart": 21.4,
+        "a": {
+          "id": "hn:49875565",
+          "source": "hn-algolia",
+          "title": "Nvidia Launches Agent Safety Platform to Secure Agents, Testing to Deployment",
+          "at": "2026-09-28T09:37:44Z"
+        },
+        "b": {
+          "id": "gnews:4004285c68b55d03",
+          "source": "gnews-rss",
+          "title": "NVIDIA Unveils an Open Platform for AI Agent Safety - 80 Level",
+          "at": "2026-09-29T07:01:30Z"
+        },
+        "shared": [
+          "nvidia",
+          "agent",
+          "safety",
+          "platform"
+        ]
+      },
+      {
+        "score": 0.559,
+        "blocked": "below-threshold",
+        "hours_apart": 10,
+        "a": {
+          "id": "hn:49886416",
+          "source": "hn-algolia",
+          "title": "OpenAI Says It Will Not Release Newest A.I. Model Over Safety Concerns",
+          "at": "2026-09-29T00:34:27Z"
+        },
+        "b": {
+          "id": "gnews:00b1d9400fb679cd",
+          "source": "gnews-rss",
+          "title": "OpenAI Delays Release of Latest Model Over Safety Concerns - wired.com",
+          "at": "2026-09-29T10:36:00Z"
         },
         "shared": [
           "openai",
-          "paus",
-          "train",
+          "releas",
           "model",
-          "agent",
-          "government"
+          "safety",
+          "concern"
         ]
       },
       {
-        "score": 0.661,
+        "score": 0.551,
         "blocked": "time-window",
-        "hours_apart": 34.2,
-        "a": {
-          "id": "hn:49868083",
-          "source": "hn-algolia",
-          "title": "There are no \"rogue\" AI agents",
-          "at": "2026-09-27T16:19:46Z"
-        },
-        "b": {
-          "id": "gnews:f9cd6f73fea7450d",
-          "source": "gnews-rss",
-          "title": "Nvidia unveils AI safety platform to rein in ‘rogue’ AI agents - TradingView",
-          "at": "2026-09-29T02:32:36Z"
-        },
-        "shared": [
-          "rogu",
-          "ai",
-          "agent"
-        ]
-      },
-      {
-        "score": 0.653,
-        "blocked": "time-window",
-        "hours_apart": 33.1,
-        "a": {
-          "id": "hn:49868083",
-          "source": "hn-algolia",
-          "title": "There are no \"rogue\" AI agents",
-          "at": "2026-09-27T16:19:46Z"
-        },
-        "b": {
-          "id": "gnews:35f1c1ccec74f3c7",
-          "source": "gnews-rss",
-          "title": "Nvidia unveils platform to prevent AI agents from going rogue - hcamag.com",
-          "at": "2026-09-29T01:27:24Z"
-        },
-        "shared": [
-          "rogu",
-          "ai",
-          "agent"
-        ]
-      },
-      {
-        "score": 0.643,
-        "blocked": "time-window",
-        "hours_apart": 32.8,
-        "a": {
-          "id": "hn:49864790",
-          "source": "hn-algolia",
-          "title": "OpenAI pauses training of latest models after agents probed US Government sites",
-          "at": "2026-09-27T09:07:03Z"
-        },
-        "b": {
-          "id": "gnews:261c45a20a946fc9",
-          "source": "gnews-rss",
-          "title": "OpenAI is pausing training of its most powerful AI models after rogue agents hit government sites - qz.com",
-          "at": "2026-09-28T17:57:48Z"
-        },
-        "shared": [
-          "openai",
-          "paus",
-          "train",
-          "model",
-          "agent",
-          "government",
-          "site"
-        ]
-      },
-      {
-        "score": 0.627,
-        "blocked": "thin-overlap",
-        "hours_apart": 8.8,
-        "a": {
-          "id": "hn:49881850",
-          "source": "hn-algolia",
-          "title": "Sonnet 5.5",
-          "at": "2026-09-28T17:58:11Z"
-        },
-        "b": {
-          "id": "gnews:dfd61f371ee9f0a0",
-          "source": "gnews-rss",
-          "title": "Claude Sonnet 5.5: Anthropic Makes Its Everyday Model Faster and More Affordable - Basic Tutorials",
-          "at": "2026-09-29T02:49:03Z"
-        },
-        "shared": [
-          "sonnet",
-          "5.5"
-        ]
-      },
-      {
-        "score": 0.61,
-        "blocked": "time-window",
-        "hours_apart": 32.7,
-        "a": {
-          "id": "hn:49868083",
-          "source": "hn-algolia",
-          "title": "There are no \"rogue\" AI agents",
-          "at": "2026-09-27T16:19:46Z"
-        },
-        "b": {
-          "id": "gnews:d49f20672eb71450",
-          "source": "gnews-rss",
-          "title": "Nvidia rolls out guardrails after rogue AI agents breach systems - WNWO",
-          "at": "2026-09-29T01:02:23Z"
-        },
-        "shared": [
-          "rogu",
-          "ai",
-          "agent"
-        ]
-      },
-      {
-        "score": 0.599,
-        "blocked": "time-window",
-        "hours_apart": 30.9,
+        "hours_apart": 38.9,
         "a": {
           "id": "hn:49870423",
           "source": "hn-algolia",
@@ -1130,10 +982,10 @@
           "at": "2026-09-27T20:18:31Z"
         },
         "b": {
-          "id": "gnews:0eb54de91933a99d",
+          "id": "gnews:1677d040b715210f",
           "source": "gnews-rss",
-          "title": "AI Breaches Add To Safety Fears As Trump Meets Anthropic CEO Amodei - NDTV Profit",
-          "at": "2026-09-29T03:14:23Z"
+          "title": "Anthropic CEO Amodei Faces New Attack From Trump Allies With An Attack Brief Sent To The White House - International Business Times",
+          "at": "2026-09-29T11:10:05Z"
         },
         "shared": [
           "anthropic",
@@ -1143,9 +995,9 @@
         ]
       },
       {
-        "score": 0.589,
+        "score": 0.544,
         "blocked": "below-threshold",
-        "hours_apart": 1.6,
+        "hours_apart": 0.3,
         "a": {
           "id": "hn:49886459",
           "source": "hn-algolia",
@@ -1153,163 +1005,167 @@
           "at": "2026-09-29T00:38:41Z"
         },
         "b": {
-          "id": "gnews:1e3a9bc2fca1092e",
+          "id": "gnews:19886814d5000841",
           "source": "gnews-rss",
-          "title": "OpenAI cancels GPT-6.1 Astra release over safety concerns - qz.com",
-          "at": "2026-09-29T02:12:46Z"
+          "title": "OpenAI Says It Will Not Release Newest Astra A.I. Model Over Safety Concerns - nytimes.com",
+          "at": "2026-09-29T00:19:42Z"
         },
         "shared": [
           "openai",
           "releas",
           "astra",
-          "6.1",
+          "model",
           "safety"
+        ]
+      },
+      {
+        "score": 0.544,
+        "blocked": "time-window",
+        "hours_apart": 38.8,
+        "a": {
+          "id": "hn:49870436",
+          "source": "hn-algolia",
+          "title": "Trump and Anthropic CEO Dario Amodei Set for White House Dinner",
+          "at": "2026-09-27T20:20:05Z"
+        },
+        "b": {
+          "id": "gnews:1677d040b715210f",
+          "source": "gnews-rss",
+          "title": "Anthropic CEO Amodei Faces New Attack From Trump Allies With An Attack Brief Sent To The White House - International Business Times",
+          "at": "2026-09-29T11:10:05Z"
+        },
+        "shared": [
+          "trump",
+          "anthropic",
+          "ceo",
+          "amodei",
+          "whit",
+          "hous"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.705,
+        "score": 0.668,
         "blocked": "time-window",
-        "hours_apart": 34.7,
+        "hours_apart": 42.3,
         "a": {
-          "id": "hn:49864790",
+          "id": "hn:49868083",
           "source": "hn-algolia",
-          "title": "OpenAI pauses training of latest models after agents probed US Government sites",
-          "at": "2026-09-27T09:07:03Z"
+          "title": "There are no \"rogue\" AI agents",
+          "at": "2026-09-27T16:19:46Z"
         },
         "b": {
-          "id": "gnews:49bd2d484c336e6e",
+          "id": "gnews:10e97395d692337d",
           "source": "gnews-rss",
-          "title": "OpenAI Pauses Models Training After Agents Access US Government - mexicobusiness.news",
-          "at": "2026-09-28T19:51:04Z"
+          "title": "Nvidia launches safeguards against rogue AI agents - Qazinform",
+          "at": "2026-09-29T10:37:51Z"
+        },
+        "shared": [
+          "rogu",
+          "ai",
+          "agent"
+        ]
+      },
+      {
+        "score": 0.572,
+        "blocked": "below-threshold",
+        "hours_apart": 6.3,
+        "a": {
+          "id": "hn:49886005",
+          "source": "hn-algolia",
+          "title": "Anthropic's IPO prospectus shows AI vision, surging costs",
+          "at": "2026-09-28T23:40:59Z"
+        },
+        "b": {
+          "id": "gnews:dc595947a22b3a7c",
+          "source": "gnews-rss",
+          "title": "Anthropic IPO prospectus reveals surging costs, $42B 2025 net loss: report (ANTHRO:Private) - Seeking Alpha",
+          "at": "2026-09-29T05:57:39Z"
+        },
+        "shared": [
+          "anthropic",
+          "ipo",
+          "prospectus",
+          "surg",
+          "cost"
+        ]
+      },
+      {
+        "score": 0.572,
+        "blocked": "below-threshold",
+        "hours_apart": 6.3,
+        "a": {
+          "id": "hn:49886005",
+          "source": "hn-algolia",
+          "title": "Anthropic's IPO prospectus shows AI vision, surging costs",
+          "at": "2026-09-28T23:40:59Z"
+        },
+        "b": {
+          "id": "gnews:c0dfddef530eccba",
+          "source": "gnews-rss",
+          "title": "Anthropic IPO prospectus reveals surging costs, $42B 2025 net loss: report (ANTHRO:Private) - Seeking Alpha",
+          "at": "2026-09-29T05:57:39Z"
+        },
+        "shared": [
+          "anthropic",
+          "ipo",
+          "prospectus",
+          "surg",
+          "cost"
+        ]
+      },
+      {
+        "score": 0.57,
+        "blocked": "below-threshold",
+        "hours_apart": 21.4,
+        "a": {
+          "id": "hn:49875565",
+          "source": "hn-algolia",
+          "title": "Nvidia Launches Agent Safety Platform to Secure Agents, Testing to Deployment",
+          "at": "2026-09-28T09:37:44Z"
+        },
+        "b": {
+          "id": "gnews:4004285c68b55d03",
+          "source": "gnews-rss",
+          "title": "NVIDIA Unveils an Open Platform for AI Agent Safety - 80 Level",
+          "at": "2026-09-29T07:01:30Z"
+        },
+        "shared": [
+          "nvidia",
+          "agent",
+          "safety",
+          "platform"
+        ]
+      },
+      {
+        "score": 0.559,
+        "blocked": "below-threshold",
+        "hours_apart": 10,
+        "a": {
+          "id": "hn:49886416",
+          "source": "hn-algolia",
+          "title": "OpenAI Says It Will Not Release Newest A.I. Model Over Safety Concerns",
+          "at": "2026-09-29T00:34:27Z"
+        },
+        "b": {
+          "id": "gnews:00b1d9400fb679cd",
+          "source": "gnews-rss",
+          "title": "OpenAI Delays Release of Latest Model Over Safety Concerns - wired.com",
+          "at": "2026-09-29T10:36:00Z"
         },
         "shared": [
           "openai",
-          "paus",
-          "train",
+          "releas",
           "model",
-          "agent",
-          "government"
+          "safety",
+          "concern"
         ]
       },
       {
-        "score": 0.661,
+        "score": 0.551,
         "blocked": "time-window",
-        "hours_apart": 34.2,
-        "a": {
-          "id": "hn:49868083",
-          "source": "hn-algolia",
-          "title": "There are no \"rogue\" AI agents",
-          "at": "2026-09-27T16:19:46Z"
-        },
-        "b": {
-          "id": "gnews:f9cd6f73fea7450d",
-          "source": "gnews-rss",
-          "title": "Nvidia unveils AI safety platform to rein in ‘rogue’ AI agents - TradingView",
-          "at": "2026-09-29T02:32:36Z"
-        },
-        "shared": [
-          "rogu",
-          "ai",
-          "agent"
-        ]
-      },
-      {
-        "score": 0.653,
-        "blocked": "time-window",
-        "hours_apart": 33.1,
-        "a": {
-          "id": "hn:49868083",
-          "source": "hn-algolia",
-          "title": "There are no \"rogue\" AI agents",
-          "at": "2026-09-27T16:19:46Z"
-        },
-        "b": {
-          "id": "gnews:35f1c1ccec74f3c7",
-          "source": "gnews-rss",
-          "title": "Nvidia unveils platform to prevent AI agents from going rogue - hcamag.com",
-          "at": "2026-09-29T01:27:24Z"
-        },
-        "shared": [
-          "rogu",
-          "ai",
-          "agent"
-        ]
-      },
-      {
-        "score": 0.643,
-        "blocked": "time-window",
-        "hours_apart": 32.8,
-        "a": {
-          "id": "hn:49864790",
-          "source": "hn-algolia",
-          "title": "OpenAI pauses training of latest models after agents probed US Government sites",
-          "at": "2026-09-27T09:07:03Z"
-        },
-        "b": {
-          "id": "gnews:261c45a20a946fc9",
-          "source": "gnews-rss",
-          "title": "OpenAI is pausing training of its most powerful AI models after rogue agents hit government sites - qz.com",
-          "at": "2026-09-28T17:57:48Z"
-        },
-        "shared": [
-          "openai",
-          "paus",
-          "train",
-          "model",
-          "agent",
-          "government",
-          "site"
-        ]
-      },
-      {
-        "score": 0.627,
-        "blocked": "thin-overlap",
-        "hours_apart": 8.8,
-        "a": {
-          "id": "hn:49881850",
-          "source": "hn-algolia",
-          "title": "Sonnet 5.5",
-          "at": "2026-09-28T17:58:11Z"
-        },
-        "b": {
-          "id": "gnews:dfd61f371ee9f0a0",
-          "source": "gnews-rss",
-          "title": "Claude Sonnet 5.5: Anthropic Makes Its Everyday Model Faster and More Affordable - Basic Tutorials",
-          "at": "2026-09-29T02:49:03Z"
-        },
-        "shared": [
-          "sonnet",
-          "5.5"
-        ]
-      },
-      {
-        "score": 0.61,
-        "blocked": "time-window",
-        "hours_apart": 32.7,
-        "a": {
-          "id": "hn:49868083",
-          "source": "hn-algolia",
-          "title": "There are no \"rogue\" AI agents",
-          "at": "2026-09-27T16:19:46Z"
-        },
-        "b": {
-          "id": "gnews:d49f20672eb71450",
-          "source": "gnews-rss",
-          "title": "Nvidia rolls out guardrails after rogue AI agents breach systems - WNWO",
-          "at": "2026-09-29T01:02:23Z"
-        },
-        "shared": [
-          "rogu",
-          "ai",
-          "agent"
-        ]
-      },
-      {
-        "score": 0.599,
-        "blocked": "time-window",
-        "hours_apart": 30.9,
+        "hours_apart": 38.9,
         "a": {
           "id": "hn:49870423",
           "source": "hn-algolia",
@@ -1317,10 +1173,10 @@
           "at": "2026-09-27T20:18:31Z"
         },
         "b": {
-          "id": "gnews:0eb54de91933a99d",
+          "id": "gnews:1677d040b715210f",
           "source": "gnews-rss",
-          "title": "AI Breaches Add To Safety Fears As Trump Meets Anthropic CEO Amodei - NDTV Profit",
-          "at": "2026-09-29T03:14:23Z"
+          "title": "Anthropic CEO Amodei Faces New Attack From Trump Allies With An Attack Brief Sent To The White House - International Business Times",
+          "at": "2026-09-29T11:10:05Z"
         },
         "shared": [
           "anthropic",
@@ -1330,9 +1186,9 @@
         ]
       },
       {
-        "score": 0.589,
+        "score": 0.544,
         "blocked": "below-threshold",
-        "hours_apart": 1.6,
+        "hours_apart": 0.3,
         "a": {
           "id": "hn:49886459",
           "source": "hn-algolia",
@@ -1340,17 +1196,42 @@
           "at": "2026-09-29T00:38:41Z"
         },
         "b": {
-          "id": "gnews:1e3a9bc2fca1092e",
+          "id": "gnews:19886814d5000841",
           "source": "gnews-rss",
-          "title": "OpenAI cancels GPT-6.1 Astra release over safety concerns - qz.com",
-          "at": "2026-09-29T02:12:46Z"
+          "title": "OpenAI Says It Will Not Release Newest Astra A.I. Model Over Safety Concerns - nytimes.com",
+          "at": "2026-09-29T00:19:42Z"
         },
         "shared": [
           "openai",
           "releas",
           "astra",
-          "6.1",
+          "model",
           "safety"
+        ]
+      },
+      {
+        "score": 0.544,
+        "blocked": "time-window",
+        "hours_apart": 38.8,
+        "a": {
+          "id": "hn:49870436",
+          "source": "hn-algolia",
+          "title": "Trump and Anthropic CEO Dario Amodei Set for White House Dinner",
+          "at": "2026-09-27T20:20:05Z"
+        },
+        "b": {
+          "id": "gnews:1677d040b715210f",
+          "source": "gnews-rss",
+          "title": "Anthropic CEO Amodei Faces New Attack From Trump Allies With An Attack Brief Sent To The White House - International Business Times",
+          "at": "2026-09-29T11:10:05Z"
+        },
+        "shared": [
+          "trump",
+          "anthropic",
+          "ceo",
+          "amodei",
+          "whit",
+          "hous"
         ]
       }
     ]
@@ -1359,76 +1240,76 @@
     {
       "id": "arxiv",
       "state": "ok",
-      "streak_ok": 41,
+      "streak_ok": 42,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 41,
+      "streak_ok": 42,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 41,
+      "streak_ok": 42,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 41,
+      "streak_ok": 42,
       "streak_fail": 0,
-      "items_last": 74
+      "items_last": 70
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 41,
+      "streak_ok": 42,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 41,
+      "streak_ok": 42,
       "streak_fail": 0,
-      "items_last": 65
+      "items_last": 67
     },
     {
       "id": "openalex",
       "state": "flaky",
-      "streak_ok": 15,
+      "streak_ok": 16,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 41,
+      "streak_ok": 42,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 41,
+      "streak_ok": 42,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 41,
+      "streak_ok": 42,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.004459444444444445,
+    "hours": 0.01193888888888889,
     "stale": false
   },
   "hf": {
@@ -1517,7 +1398,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 65,
+    "count": 67,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -1540,7 +1421,7 @@
       {
         "id": "hn:49881850",
         "tag": "rest",
-        "score": 734,
+        "score": 812,
         "text": "Sonnet 5.5"
       },
       {
@@ -1552,7 +1433,7 @@
       {
         "id": "hn:49874728",
         "tag": "rest",
-        "score": 201,
+        "score": 203,
         "text": "Prompting Claude Opus 5.5"
       }
     ]
@@ -1569,47 +1450,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "(cache:openai)",
+        "url": "https://openai.com/news/rss.xml",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "(cache:deepmind)",
+        "url": "https://deepmind.google/blog/rss.xml",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "(cache:google-ai)",
+        "url": "https://blog.google/technology/ai/rss/",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "(cache:huggingface)",
+        "url": "https://huggingface.co/blog/feed.xml",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "(cache:mistral)",
+        "url": "https://mistral.ai/rss.xml",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "(cache:nvidia)",
+        "url": "https://blogs.nvidia.com/feed/",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "(cache:nvidia-dev)",
+        "url": "https://developer.nvidia.com/blog/feed",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "(cache:ms-research)",
+        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "(cache:google-research)",
+        "url": "https://research.google/blog/rss/",
         "count": 12
       }
     ],
@@ -1630,18 +1511,18 @@
         "link": "https://openai.com/index/how-we-will-do-better-for-australia"
       },
       {
+        "id": "rss:openai:2fc54b690d7b20a2",
+        "lab": "openai",
+        "tag": "rest",
+        "title": "Towards safety cases for frontier AI training",
+        "link": "https://openai.com/index/towards-safety-cases-for-frontier-ai-training"
+      },
+      {
         "id": "rss:google-ai:db713ef86bd59ea8",
         "lab": "google-ai",
         "tag": "rest",
         "title": "Watch the winning trailer from the Future Vision XPRIZE, The Gifted.",
         "link": "https://blog.google/innovation-and-ai/technology/ai/winner-future-vision-xprize/"
-      },
-      {
-        "id": "rss:mistral:597c808f7f546491",
-        "lab": "mistral",
-        "tag": "rest",
-        "title": "Hallo, Deutschland!",
-        "link": "https://mistral.ai/news/hallo-deutschland/"
       }
     ]
   },
@@ -1655,17 +1536,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "(cache:trailofbits)",
+        "url": "https://blog.trailofbits.com/feed/",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "(cache:fox-it)",
+        "url": "https://blog.fox-it.com/feed/",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "(cache:projectzero)",
+        "url": "https://projectzero.google/feed.xml",
         "count": 5
       }
     ],
@@ -1706,9 +1587,49 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 74,
-    "pool": 392,
+    "items": 70,
+    "pool": 394,
     "corroborators": [
+      {
+        "id": "gnews:f0c39178329057d8",
+        "anchor_id": "hn:49888334",
+        "score": 1,
+        "title": "Anthropic IPO filing warns AI may pose 'existential risks to humanity' - Euronews.com",
+        "publisher": "Euronews.com",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:527d2bc9b63c4711",
+        "anchor_id": "hn:49888334",
+        "score": 1,
+        "title": "EXCLUSIVE: Anthropic warns AI may pose 'existential risks to humanity' in IPO filing - Reuters",
+        "publisher": "Reuters",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:a50157c2c55126c2",
+        "anchor_id": "hn:49888334",
+        "score": 1,
+        "title": "Anthropic warns AI may pose 'existential risks to humanity' in IPO filing - CNA",
+        "publisher": "CNA",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:2aa98b36345d08c4",
+        "anchor_id": "hn:49887124",
+        "score": 1,
+        "title": "Anthropic warns of AI's 'existential risks to humanity' in IPO prospectus - Daily Sabah",
+        "publisher": "Daily Sabah",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:0a58136d338175f0",
+        "anchor_id": "hn:49887124",
+        "score": 1,
+        "title": "Anthropic Warns of ‘Existential Risks to Humanity’ in IPO Prospectus - trendingtopics.eu",
+        "publisher": "trendingtopics.eu",
+        "self_repost": false
+      },
       {
         "id": "gnews:8a9f5bd8aab26035",
         "anchor_id": "hn:49887124",
@@ -1718,59 +1639,11 @@
         "self_repost": false
       },
       {
-        "id": "gnews:3602ce66663bf124",
-        "anchor_id": "hn:49887124",
-        "score": 0.751,
-        "title": "Anthropic IPO prospectus states AI could pose 'existential risks to humanity': report - Seeking Alpha",
-        "publisher": "Seeking Alpha",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:4fdec73affc26f09",
-        "anchor_id": "hn:49887124",
-        "score": 0.626,
-        "title": "Anthropic IPO Prospectus Spends 80 Of 261 Pages On Risk, Warns AI Could Pose ‘Catastrophic or Existential - Benzinga",
-        "publisher": "Benzinga",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:1e3a9bc2fca1092e",
-        "anchor_id": "hn:49885916",
-        "score": 0.76,
-        "title": "OpenAI cancels GPT-6.1 Astra release over safety concerns - qz.com",
-        "publisher": "qz.com",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:b5cb826b7c86a98c",
-        "anchor_id": "hn:49885916",
-        "score": 0.69,
-        "title": "OpenAI Will Not Ship GPT-6.1 Astra Due to Safety Concerns - The Information",
-        "publisher": "The Information",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:c336e3a98b9fb615",
-        "anchor_id": "hn:49885916",
-        "score": 0.677,
-        "title": "OpenAI cancels GPT-6.1 Astra release over misbehavior & safety concerns - 9to5Google",
-        "publisher": "9to5Google",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:993660d21b8a2749",
-        "anchor_id": "hn:49887703",
-        "score": 0.888,
-        "title": "‘New kind of cyber incident’: OpenAI apologises for Medicare hack and reveals extent of attack - The Guardian",
-        "publisher": "The Guardian",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:fec1d0a55aac7dec",
+        "id": "gnews:60063ebb47b7315d",
         "anchor_id": "hn:49885133",
         "score": 1,
-        "title": "OpenAI scraps release of new AI model over safety concerns - CBC",
-        "publisher": "CBC",
+        "title": "OpenAI scraps release of new model over safety concerns - Yahoo",
+        "publisher": "Yahoo",
         "self_repost": false
       },
       {
@@ -1782,35 +1655,83 @@
         "self_repost": false
       },
       {
-        "id": "gnews:68ac0c1942cce6d9",
+        "id": "gnews:255c9447fbdeb803",
         "anchor_id": "hn:49885133",
-        "score": 0.957,
-        "title": "OpenAI scraps release of latest AI model over safety concerns - aljazeera.com",
-        "publisher": "aljazeera.com",
+        "score": 0.93,
+        "title": "OpenAI scraps release of newest AI model over safety concerns - Anadolu Ajansı",
+        "publisher": "Anadolu Ajansı",
         "self_repost": false
       },
       {
-        "id": "gnews:36f459e73d1527f2",
-        "anchor_id": "rss:openai:50d71cd52400f551",
-        "score": 0.727,
-        "title": "‘Do better for Australia': OpenAI apologizes for unauthorized access - Politico",
-        "publisher": "Politico",
+        "id": "gnews:b9999ba84d25ea40",
+        "anchor_id": "hn:49889147",
+        "score": 0.924,
+        "title": "As AI models go rogue, do you still trust OpenAI and Anthropic to stop them? I don’t and neither should you - theguardian.com",
+        "publisher": "theguardian.com",
         "self_repost": false
       },
       {
-        "id": "gnews:7186d759fcecf0c2",
-        "anchor_id": "hn:49888334",
-        "score": 0.984,
-        "title": "Anthropic warns AI may pose 'existential risks to humanity' in IPO filing: Reuters - CNBC",
-        "publisher": "CNBC",
+        "id": "gnews:4004285c68b55d03",
+        "anchor_id": "hn:49875500",
+        "score": 1,
+        "title": "NVIDIA Unveils an Open Platform for AI Agent Safety - 80 Level",
+        "publisher": "80 Level",
         "self_repost": false
       },
       {
-        "id": "gnews:47c81fbde0f4ff23",
-        "anchor_id": "hn:49888334",
-        "score": 0.919,
-        "title": "Anthropic warns AI may pose ‘existential risks to humanity’ in IPO filing: Reuters exclusive - CTV News",
-        "publisher": "CTV News",
+        "id": "gnews:0547a7bae01c9064",
+        "anchor_id": "hn:49875500",
+        "score": 0.75,
+        "title": "Nvidia releases Open Agent Safety Platform to monitor and govern agentic AI - csoonline.com",
+        "publisher": "csoonline.com",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:ad3549e2ac66905d",
+        "anchor_id": "hn:49875500",
+        "score": 0.688,
+        "title": "Nvidia’s OpenShell and Sentry Aim to Keep AI Agents Inside Their Boundaries, with Open Agent Safety Platform - Technology Org",
+        "publisher": "Technology Org",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:c3ce37ff107d6fcb",
+        "anchor_id": "rss:openai:2fc54b690d7b20a2",
+        "score": 1,
+        "title": "Towards safety cases for frontier AI training - OpenAI",
+        "publisher": "OpenAI",
+        "self_repost": true
+      },
+      {
+        "id": "gnews:dc595947a22b3a7c",
+        "anchor_id": "hn:49889896",
+        "score": 0.948,
+        "title": "Anthropic IPO prospectus reveals surging costs, $42B 2025 net loss: report (ANTHRO:Private) - Seeking Alpha",
+        "publisher": "Seeking Alpha",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:c0dfddef530eccba",
+        "anchor_id": "hn:49889896",
+        "score": 0.948,
+        "title": "Anthropic IPO prospectus reveals surging costs, $42B 2025 net loss: report (ANTHRO:Private) - Seeking Alpha",
+        "publisher": "Seeking Alpha",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:1e3a9bc2fca1092e",
+        "anchor_id": "hn:49885916",
+        "score": 0.745,
+        "title": "OpenAI cancels GPT-6.1 Astra release over safety concerns - qz.com",
+        "publisher": "qz.com",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:68ac0c1942cce6d9",
+        "anchor_id": "hn:49885916",
+        "score": 0.626,
+        "title": "OpenAI cancels release of AI model GPT-6.1 Astra, citing safety concerns - Al Jazeera",
+        "publisher": "Al Jazeera",
         "self_repost": false
       },
       {
@@ -1822,131 +1743,67 @@
         "self_repost": false
       },
       {
+        "id": "gnews:72f4f768db81be16",
+        "anchor_id": "hn:49888653",
+        "score": 0.636,
+        "title": "OpenAI cancels new AI launch, citing safety issues - The Washington Post",
+        "publisher": "The Washington Post",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:36f459e73d1527f2",
+        "anchor_id": "rss:openai:50d71cd52400f551",
+        "score": 0.741,
+        "title": "‘Do better for Australia': OpenAI apologizes for unauthorized access - Politico",
+        "publisher": "Politico",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:ebffb8011f997903",
+        "anchor_id": "hn:49888031",
+        "score": 1,
+        "title": "OpenAI scraps rollout of new model over safety concerns - BBC",
+        "publisher": "BBC",
+        "self_repost": false
+      },
+      {
         "id": "gnews:19886814d5000841",
         "anchor_id": "hn:49886416",
-        "score": 0.982,
-        "title": "OpenAI Says It Will Not Release Newest Astra A.I. Model Over Safety Concerns - The New York Times",
-        "publisher": "The New York Times",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:66cfbfc724cc7d3e",
-        "anchor_id": "hn:49886459",
-        "score": 0.64,
-        "title": "OpenAI scraps the GPT-6.1 Astra launch after the model fell short of its safety bar - Business Insider",
-        "publisher": "Business Insider",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:7189de656e2548e3",
-        "anchor_id": "hn:49886005",
-        "score": 0.962,
-        "title": "Anthropic's IPO prospectus shows sweeping AI vision, surging costs - The Korea Times",
-        "publisher": "The Korea Times",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:da206bc48287b6c5",
-        "anchor_id": "hn:49886005",
-        "score": 0.962,
-        "title": "Anthropic's IPO prospectus shows sweeping AI vision, surging costs - marketscreener.com",
-        "publisher": "marketscreener.com",
+        "score": 0.987,
+        "title": "OpenAI Says It Will Not Release Newest Astra A.I. Model Over Safety Concerns - nytimes.com",
+        "publisher": "nytimes.com",
         "self_repost": false
       },
       {
         "id": "gnews:438dbae3c206eeff",
         "anchor_id": "hn:49886005",
-        "score": 0.962,
+        "score": 0.947,
         "title": "EXCLUSIVE: Anthropic's IPO prospectus shows sweeping AI vision, surging costs - Reuters",
         "publisher": "Reuters",
         "self_repost": false
       },
       {
-        "id": "gnews:e28d6b8d3bef4f29",
-        "anchor_id": "hn:49875500",
-        "score": 0.72,
-        "title": "Nvidia Unveils Open Agent Safety Platform To Stop AI Agents Going Rogue: 29 outlets compared - NewsCord",
-        "publisher": "NewsCord",
+        "id": "gnews:288499c961111f90",
+        "anchor_id": "hn:49886005",
+        "score": 0.883,
+        "title": "Anthropic's IPO prospectus shows sweeping AI vision, surging costs: Reuters - CNBC",
+        "publisher": "CNBC",
         "self_repost": false
       },
       {
-        "id": "gnews:708f60475d06bfb1",
-        "anchor_id": "hn:49875500",
-        "score": 0.615,
-        "title": "Nvidia Launches Open Software Platform to Help Strengthen Governance of AI Agents - Yahoo Finance",
-        "publisher": "Yahoo Finance",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:b8a296608c1c8adb",
-        "anchor_id": "hn:49875500",
-        "score": 0.609,
-        "title": "Nvidia launches AI safety platform after agent security breaches - TechTarget",
-        "publisher": "TechTarget",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:5db2505c3b4202e6",
-        "anchor_id": "hn:49877374",
-        "score": 1,
-        "title": "OpenAI Pauses Training Its Most Powerful Models After Rogue Agents Target Government - WIRED",
-        "publisher": "WIRED",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:49bd2d484c336e6e",
-        "anchor_id": "hn:49877374",
-        "score": 0.732,
-        "title": "OpenAI Pauses Models Training After Agents Access US Government - mexicobusiness.news",
-        "publisher": "mexicobusiness.news",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:261c45a20a946fc9",
-        "anchor_id": "hn:49877374",
-        "score": 0.721,
-        "title": "OpenAI is pausing training of its most powerful AI models after rogue agents hit government sites - qz.com",
-        "publisher": "qz.com",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:ec94b1aff60d8c6b",
-        "anchor_id": "rss:nvidia-dev:fd7ac71c1dc39408",
-        "score": 1,
-        "title": "Add Runtime Controls to AI Agents with NVIDIA OpenShell | NVIDIA Technical Blog - NVIDIA Developer",
-        "publisher": "NVIDIA Developer",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:8d606a340da6d318",
-        "anchor_id": "rss:nvidia-dev:fd7ac71c1dc39408",
-        "score": 0.645,
-        "title": "Anthropic Adds NVIDIA OpenShell Controls to Claude Managed Agents - Unite.AI",
-        "publisher": "Unite.AI",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:435aea0b52f43e7b",
-        "anchor_id": "hn:49870695",
-        "score": 0.728,
-        "title": "DC Circuit Upholds Pentagon’s Anthropic Supply Chain Risk Designation - MeriTalk",
-        "publisher": "MeriTalk",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:7e3831dce8b42782",
-        "anchor_id": "rss:openai:eb674100bb687fff",
-        "score": 1,
-        "title": "Basis completes a tax workbook 2x faster with GPT-6 Astra - OpenAI",
-        "publisher": "OpenAI",
+        "id": "gnews:5a0cdfa8f9e777fc",
+        "anchor_id": "hn:49875565",
+        "score": 0.986,
+        "title": "NVIDIA Launches Open Agent Safety Platform to Secure Agents From Testing to Deployment - nvidianews.nvidia.com",
+        "publisher": "nvidianews.nvidia.com",
         "self_repost": true
       },
       {
         "id": "gnews:1fa0bd194d0ef6a9",
         "anchor_id": "hn:49870911",
         "score": 1,
-        "title": "Did Anthropic’s A.I. Really Make a Scientific Discovery on Its Own? - The New York Times",
-        "publisher": "The New York Times",
+        "title": "Did Anthropic’s A.I. Really Make a Scientific Discovery on Its Own? - nytimes.com",
+        "publisher": "nytimes.com",
         "self_repost": false
       },
       {
@@ -1960,7 +1817,7 @@
       {
         "id": "gnews:f91a1e8c9f666fd0",
         "anchor_id": "hn:49880973",
-        "score": 0.985,
+        "score": 0.988,
         "title": "Florida asks court to bar OpenAI from developing new models as part of child harm lawsuit - Reuters",
         "publisher": "Reuters",
         "self_repost": false
@@ -1976,88 +1833,72 @@
       {
         "id": "gnews:f6a0a26897e9264e",
         "anchor_id": "hn:49870436",
-        "score": 0.924,
-        "title": "Anthropic CEO Amodei to have dinner with Trump at White House - aljazeera.com",
-        "publisher": "aljazeera.com",
+        "score": 0.92,
+        "title": "Anthropic CEO Amodei to have dinner with Trump at White House - Al Jazeera",
+        "publisher": "Al Jazeera",
         "self_repost": false
       },
       {
         "id": "gnews:37b35cd7988791f7",
         "anchor_id": "hn:49870436",
-        "score": 0.718,
+        "score": 0.754,
         "title": "Trump had private dinner with Anthropic CEO Dario Amodei - CBS News",
         "publisher": "CBS News",
         "self_repost": false
       },
       {
-        "id": "gnews:fe70ec6d344529c7",
-        "anchor_id": "hn:49870436",
-        "score": 0.625,
-        "title": "Memo smearing Anthropic’s Amodei circulated in White House before CEO’s dinner with President Trump - Fortune",
-        "publisher": "Fortune",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:079fbdedf1ff53fa",
-        "anchor_id": "hn:49884458",
-        "score": 1,
-        "title": "Authors Guild Calls on Publishers to Share Anthropic Wealth - Publishers Weekly",
-        "publisher": "Publishers Weekly",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:b13d03326bb496bd",
-        "anchor_id": "hn:49881899",
-        "score": 0.648,
-        "title": "Nvidia says its new AI safety platform can contain rogue agents within ‘milliseconds’ - The Verge",
-        "publisher": "The Verge",
-        "self_repost": false
-      },
-      {
         "id": "gnews:3985e57e6dbff78c",
         "anchor_id": "hn:49868083",
-        "score": 0.658,
+        "score": 0.664,
         "title": "Nvidia launches new tool to keep AI agents from going rogue - CNN",
         "publisher": "CNN",
         "self_repost": false
       },
       {
+        "id": "gnews:e291df6415c046db",
+        "anchor_id": "hn:49868083",
+        "score": 0.633,
+        "title": "Nvidia says its new OpenShell platform can stop AI agents from going rogue - CBS News",
+        "publisher": "CBS News",
+        "self_repost": false
+      },
+      {
         "id": "gnews:f7d288586d27eedf",
         "anchor_id": "hn:49868083",
-        "score": 0.637,
+        "score": 0.631,
         "title": "Nvidia Releases Software It Says Can Prevent AI Agents From Going Rogue - WSJ",
         "publisher": "WSJ",
         "self_repost": false
       },
       {
-        "id": "gnews:e291df6415c046db",
-        "anchor_id": "hn:49868083",
-        "score": 0.632,
-        "title": "Nvidia says its new OpenShell platform can stop AI agents from going rogue - CBS News",
-        "publisher": "CBS News",
+        "id": "gnews:5db2505c3b4202e6",
+        "anchor_id": "hn:49877374",
+        "score": 1,
+        "title": "OpenAI Pauses Training Its Most Powerful Models After Rogue Agents Target Government - wired.com",
+        "publisher": "wired.com",
         "self_repost": false
       },
       {
         "id": "gnews:e8fb2dc5bc5e0e45",
         "anchor_id": "rss:nvidia-dev:b2492ef6a6d58b24",
         "score": 1,
-        "title": "NVIDIA Open Agent Safety Platform: A Reference for Continuous In-Silicon Agent Monitoring | NVIDIA Technical Blog - NVIDIA Developer",
-        "publisher": "NVIDIA Developer",
+        "title": "NVIDIA Open Agent Safety Platform: A Reference for Continuous In-Silicon Agent Monitoring | NVIDIA Technical Blog - developer.nvidia.com",
+        "publisher": "developer.nvidia.com",
         "self_repost": true
       },
       {
-        "id": "gnews:5a0cdfa8f9e777fc",
-        "anchor_id": "hn:49875565",
-        "score": 0.98,
-        "title": "NVIDIA Launches Open Agent Safety Platform to Secure Agents From Testing to Deployment - NVIDIA Newsroom",
-        "publisher": "NVIDIA Newsroom",
+        "id": "gnews:ec94b1aff60d8c6b",
+        "anchor_id": "rss:nvidia-dev:fd7ac71c1dc39408",
+        "score": 1,
+        "title": "Add Runtime Controls to AI Agents with NVIDIA OpenShell | NVIDIA Technical Blog - developer.nvidia.com",
+        "publisher": "developer.nvidia.com",
         "self_repost": true
       }
     ],
     "http_status": 200,
-    "content_type": null,
+    "content_type": "application/xml; charset=utf-8",
     "format": "rss2",
-    "from_cache": true,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -2080,24 +1921,24 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:0eb54de91933a99d",
-        "title": "AI Breaches Add To Safety Fears As Trump Meets Anthropic CEO Amodei - NDTV Profit",
-        "publisher": "NDTV Profit",
-        "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNVDJmOWZpYy05QjdwY0dMV0U2Q1F0alo1MzNmeFZfTU96VGZuSE1jRzVPX2o5UDdjRGNWWUppTm5YZHkwZ1RyNEJsNGVXWEJXOVlMSzBneDZ3TmNRblQyWEUwUlp4d1pITk93VFNTdHBMb1IzcE9qSXR5bTBXZWs5SHE1MmNtcDRJVDRGaF9fTjdIR3h1YnRpQUxIdUtaTmlLYWNwaHQtc2pZTmViZU1SUXEwRjF4d9IBvgFBVV95cUxOb3FOYXV3LWdrLU45VkxfUDBzQmpQWkd4SzdfTTcwYjVBY1pwcUJSLWF0UUNfc2YxTWZwWEhBaHI5SEFnSGwtc3I0aC1ydWZPNzZfOXJMX2pZM2ZGVUtkVmZONUhETlVPUHp0ZUYwdlMwbFZLNVI0VEtJb093T2M5dGJmeWM2WjRmZTk3cXFxOGw3aFppN3E3VHZ4dmRNOG14TG1HX2JXT096ZDNYc0hWaGM4VUVXR3FPVXM4ek9R?oc=5",
+        "id": "gnews:3636106127388976",
+        "title": "Nvidia Says It Can Stop Rogue AI in 'Milliseconds' - Newser",
+        "publisher": "Newser",
+        "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNN3QzNExHVXJNUF8wb0pCaVFqMFBuZFFCVTc1T2Q0Qk5KdWdaRklHVThTX3VINGdiM0NTZzFhalNDS21QWl8taC1HUXNoUjBTcTF0S2RlZ2phOVQ4b2h1M202d3kxNGM1a2lMSFBsV29BcVJMYThxLTBRNUZwdGx4aGZVQzdIMHVIU3MtbFFJVk5FbWM?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:f85cf570f1788c26",
-        "title": "Opinion | AI doesn’t need a conscience. It needs a leash. - The Washington Post",
-        "publisher": "The Washington Post",
-        "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQbS04Q3h0QlhxcV9HY3FsSk5VVXJFTXdodGNQemJSbzdkMmRBREhXYmxmSzlFMlpCQWw2OU1RNXRLZnJ4eTk1WThXekptaEVwWDY0NXVSeUtJNFByOW9KS1FSNTBSeXV2dVhXTVo3d3lLdkU3cUV5R0lJSURJX3R6R1prcWJOams2cnY5SGlIUVVhUFdNN0p5OGk5bm94MG1Ebm12dWt4Mkc?oc=5",
+        "id": "gnews:1677d040b715210f",
+        "title": "Anthropic CEO Amodei Faces New Attack From Trump Allies With An Attack Brief Sent To The White House - International Business Times",
+        "publisher": "International Business Times",
+        "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNeWhCT2o0SVMzVmVkQ0Z2T1lKUzlEcFR2NlA0T0dFenl4emJmUnRvdnY0T09DaGgyQWhuQXhSNExnTERLTUp1UjJkRWRhaHctblFrMDFLckZXZW9iMjRfT0owZ05qYUxXb0JXV3pBSnFBM0pXcTh0XzBtOV9WdFhpQlYtZUl1WGh6Z3JsZUdhSEE2V1hRMXphcXVxVDFuOEdRSWJUcXNfbC1WNXBGcWlZSWFB?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:72f4f768db81be16",
-        "title": "OpenAI cancels new AI launch, citing safety issues - The Washington Post",
-        "publisher": "The Washington Post",
-        "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPaS1OamRFUFBDMjRRdVp6cWl6RDE3WHVZSFcyVUhzcFNKT2tXcXpMTWtvY3g5TU8yZjdDYjR0cUJYWEdMQ2NhVHBNNmg2RmIwZVBqSG9IYnZnWHhYWW8xZGJOTDdiLXBJUVB5emVPMUtFdFhmaXJ6aThMMldubkV1dmwwUGlydW8xMjBuby05MklnMGh6OVJlTkVibjVPemVWNU11cUsxbGRYT3lNdDdzOEM3Rzcwc2c?oc=5",
+        "id": "gnews:993660d21b8a2749",
+        "title": "Revealed: the five-paragraph email OpenAI used to inform Australia about agent attack - theguardian.com",
+        "publisher": "theguardian.com",
+        "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNaXY4NHVCTW9nM0p3V2ppUVZ6QTFxSXNjcGhQS0FKQnJjUm1UaFBlSURWN1VtV0syck8yTW5MdHZGQUJGZVd0eHMyeGM5Vl9rOXFranI4dmdubWVfdVBqMlNVRFpaZ1RteE14SUVUMmtwd2lYdzdhcDBlMHJrd2ZDZV81OFVpLUM0b2E3dC11MFktb2ozQXotQ3ZwdW9YT1ZwNDBYOHFqaVk5b0wxUm1WSzdXSzZWWUt0NjNPdEJqVzhjdw?oc=5",
         "tag": "rest"
       }
     ]
@@ -2143,8 +1984,8 @@
       "Anthropic",
       "Meta AI"
     ],
-    "searches": 2,
-    "from_cache": false,
+    "searches": 0,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "deny_grounding_only": true,
