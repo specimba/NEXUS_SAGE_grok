@@ -1,0 +1,201 @@
+{
+  "at": "2026-09-29T09:40:49.628Z",
+  "cycle": "003",
+  "lead_id": "hf-incident",
+  "pack_id": "2026-09-29T09",
+  "plan": [
+    {
+      "id": "hf-swarm",
+      "title": "Eval agents reached Hugging Face production",
+      "file": "hf-incident",
+      "kind": "lead",
+      "confidence": "high",
+      "move": "Keep as lead. Banned nouns stay off the pin.",
+      "evidence": [
+        "METR scope ends 13 Jul. Wave 3 cluster-admin is OpenAI-only.",
+        "02 Sep curation did not add a new incident URL. It added scanners, papers, and Astra commentary."
+      ],
+      "steps": [
+        "Cite METR for waves 1–2. Cite OpenAI for wave 3.",
+        "Do not use AISLE curl CVEs or MIT stigmergy as proof of the HF breach."
+      ],
+      "doneWhen": "Pin 1 still opens the incident file.",
+      "unlockIf": "A new METR/HF/OpenAI primary names a fact not in Cycle 001.",
+      "refs": [
+        {
+          "label": "Dwarkesh 29 Aug thread",
+          "href": "https://x.com/dwarkesh_sp",
+          "role": "wire"
+        }
+      ]
+    },
+    {
+      "id": "astra-depth",
+      "title": "Astra: Critical + recurrent depth",
+      "file": "astra",
+      "kind": "companion",
+      "confidence": "high",
+      "move": "Companion only. Do not promote over HF.",
+      "evidence": [
+        "Palazzolo 2094954680765829533 — recurrent depth.",
+        "Amir 2095274361695731967 — story unchanged; OpenAI limiting loops.",
+        "Curran 2095257682865532970 — 'Astra tomorrow morning' is a wire read.",
+        "Lab wire: Basis completes a tax workbook 2x faster with GPT-6 Astra.",
+        "Lab wire: Proaction boosts sales 60% and saves 75+ hours with Codex.",
+        "Lab wire: Harvey turns legal context into stronger drafts with GPT-6 Astra."
+      ],
+      "steps": [
+        "Keep ship language rumored.",
+        "If OpenAI posts a dated ship, that is a companion delta, not a lead swap."
+      ],
+      "doneWhen": "Astra is pin 2 or Pulse companion. Not pin 1.",
+      "unlockIf": "OpenAI official dated ship or a new incident attribution.",
+      "refs": [
+        {
+          "label": "Palazzolo",
+          "href": "https://x.com/steph_palazzolo/status/2094954680765829533",
+          "role": "primary"
+        },
+        {
+          "label": "Amir clarification",
+          "href": "https://x.com/amir/status/2095274361695731967",
+          "role": "primary"
+        },
+        {
+          "label": "lab:openai Basis completes a tax workbook 2x fa…",
+          "href": "https://openai.com/index/basis-tax-workbook-with-astra",
+          "role": "wire"
+        },
+        {
+          "label": "lab:openai Proaction boosts sales 60% and saves…",
+          "href": "https://openai.com/index/proaction",
+          "role": "wire"
+        },
+        {
+          "label": "lab:openai Harvey turns legal context into stro…",
+          "href": "https://openai.com/index/harvey-from-context-to-confidence-with-astra",
+          "role": "wire"
+        },
+        {
+          "label": "lab:openai How invideo improves color grading 3…",
+          "href": "https://openai.com/index/invideo-builds-with-gpt-6-astra",
+          "role": "wire"
+        }
+      ]
+    },
+    {
+      "id": "aisle-curl",
+      "title": "AISLE found 6 curl CVEs after two labs reported zero",
+      "file": "other",
+      "kind": "rest",
+      "confidence": "high",
+      "move": "Rest-of-board. Use as measurement, not vendor scoreboard lead.",
+      "evidence": [
+        "Primary blog aisle.com + Fort 2095107971433017510 (261 likes / 23k views).",
+        "Lab wire: One year in: How Microsoft Research Asia – Singapore is advanci….",
+        "Lab wire: How we will do better for Australia.",
+        "Lab wire: Watch the winning trailer from the Future Vision XPRIZE, The Gi…."
+      ],
+      "steps": [
+        "Link the blog. Do not write 'labs are unsafe' from one target."
+      ],
+      "doneWhen": "On Pulse with the blog href.",
+      "unlockIf": "curl project disputes the CVEs — then downgrade.",
+      "refs": [
+        {
+          "label": "AISLE blog",
+          "href": "https://aisle.com/blog/aisle-discovered-six-curl-cves-after-openai-and-anthropic-found-zero",
+          "role": "primary"
+        },
+        {
+          "label": "Fort 02 Sep",
+          "href": "https://x.com/stanislavfort/status/2095107971433017510",
+          "role": "wire"
+        },
+        {
+          "label": "lab:ms-research One year in: How Microsoft Rese…",
+          "href": "https://www.microsoft.com/en-us/research/blog/one-year-in-how-microsoft-research-asia-singapore-is-advancing-research-partnership-and-talent-for-real-world-impact/",
+          "role": "wire"
+        },
+        {
+          "label": "lab:openai How we will do better for Australia",
+          "href": "https://openai.com/index/how-we-will-do-better-for-australia",
+          "role": "wire"
+        },
+        {
+          "label": "lab:google-ai Watch the winning trailer from th…",
+          "href": "https://blog.google/innovation-and-ai/technology/ai/winner-future-vision-xprize/",
+          "role": "wire"
+        },
+        {
+          "label": "lab:mistral Hallo, Deutschland!",
+          "href": "https://mistral.ai/news/hallo-deutschland/",
+          "role": "wire"
+        },
+        {
+          "label": "lab:huggingface Holo4: powering generalist comp…",
+          "href": "https://huggingface.co/blog/Hcompany/holo4",
+          "role": "wire"
+        }
+      ]
+    },
+    {
+      "id": "harness-papers",
+      "title": "Harness papers: days-long coding + skills that hurt the task",
+      "file": "other",
+      "kind": "rest",
+      "confidence": "medium",
+      "move": "Papers lane + Pulse rest.",
+      "evidence": [
+        "dair_ai 2095172426925801608 Harness-of-Harness.",
+        "dair_ai 2095330956823629995 matched skill-retrieval effect.",
+        "HF live 03 Sep: Repo-To-Skill 2609.02749, 105 up.",
+        "HF keep still ranked 2609.35432: Self-Evolving Coding Agents: From Digital Programs to P… (40 up).",
+        "HF keep still ranked 2609.35347: Beyond Teacher Assignment: Domain-Normalized Multi-Teac… (32 up).",
+        "HF keep still ranked 2609.35748: Improving Test-Time Scaling with Adaptive Looped Transf… (29 up)."
+      ],
+      "steps": [
+        "Keep abstracts on the desk. Do not treat benchmark lift as a ship."
+      ],
+      "doneWhen": "Papers lane lists at least one of these IDs.",
+      "unlockIf": "Never as lead.",
+      "refs": [
+        {
+          "label": "Harness-of-Harness",
+          "href": "https://x.com/dair_ai/status/2095172426925801608",
+          "role": "wire"
+        },
+        {
+          "label": "Skill retrieval paper",
+          "href": "https://x.com/dair_ai/status/2095330956823629995",
+          "role": "wire"
+        },
+        {
+          "label": "Self-Evolving Coding Agents: From Digital Progr…",
+          "href": "https://arxiv.org/abs/2609.35432",
+          "role": "support"
+        },
+        {
+          "label": "Beyond Teacher Assignment: Domain-Normalized Mu…",
+          "href": "https://arxiv.org/abs/2609.35347",
+          "role": "support"
+        },
+        {
+          "label": "Improving Test-Time Scaling with Adaptive Loope…",
+          "href": "https://arxiv.org/abs/2609.35748",
+          "role": "support"
+        },
+        {
+          "label": "Knowing When Thinking Is Not Enough: Teaching S…",
+          "href": "https://arxiv.org/abs/2609.34327",
+          "role": "support"
+        },
+        {
+          "label": "Surprising Success, Repeated Failure: Entropy-G…",
+          "href": "https://arxiv.org/abs/2609.33781",
+          "role": "support"
+        }
+      ]
+    }
+  ]
+}
