@@ -2,6 +2,51 @@
 import type { LeadEntry } from "@/lib/lead-pick";
 
 export const LEAD_TODAY: LeadEntry | null = {
+  "date": "2026-09-29",
+  "at": "2026-09-29T03:21:05.067Z",
+  "crawl_at": "2026-09-29T03:20:19Z",
+  "excluded": [
+    {
+      "cluster_id": "cl:rss:nvidia-dev:b2492ef6a6d58b24",
+      "headline": "NVIDIA Open Agent Safety Platform: A Reference for Continuous In-Silicon Agent Monitoring",
+      "reason": "age>=24h"
+    },
+    {
+      "cluster_id": "cl:hn:49870423",
+      "headline": "Anthropic CEO Amodei set to meet with Trump",
+      "reason": "age>=24h"
+    },
+    {
+      "cluster_id": "cl:hn:49872468",
+      "headline": "OpenAI pauses training of latest models after agents probed US Government sites",
+      "reason": "age>=24h"
+    },
+    {
+      "cluster_id": "cl:gnews:7e6aefa3a9071531",
+      "headline": "Gemini Tarot Horoscope Today, September 29, 2026: Close people will be helpful, progress by coordinating with everyone",
+      "reason": "GNW_ONLY"
+    },
+    {
+      "cluster_id": "cl:hn:49870911",
+      "headline": "Did Anthropic's A.I. Really Make a Scientific Discovery on Its Own?",
+      "reason": "age>=24h"
+    },
+    {
+      "cluster_id": "cl:hn:49870695",
+      "headline": "Anthropic is a supply chain risk for all of us",
+      "reason": "age>=24h"
+    }
+  ],
+  "cluster_id": "cl:hn:49886416",
+  "headline": "OpenAI Says It Will Not Release Newest A.I. Model Over Safety Concerns",
+  "url": "https://www.nytimes.com/2026/09/28/technology/openai-astra-safety.html",
+  "sources": 11,
+  "sig": 43,
+  "reason": "picked",
+  "first_at": "2026-09-28T22:07:59.000Z"
+};
+
+export const LEAD_YESTERDAY: LeadEntry | null = {
   "date": "2026-09-28",
   "at": "2026-09-28T03:23:38.381Z",
   "crawl_at": "2026-09-28T03:21:34Z",
@@ -56,185 +101,7 @@ export const LEAD_TODAY: LeadEntry | null = {
   "first_at": "2026-09-27T12:12:34.000Z"
 };
 
-export const LEAD_YESTERDAY: LeadEntry | null = {
-  "date": "2026-09-27",
-  "at": "2026-09-27T03:21:22.037Z",
-  "crawl_at": "2026-09-27T03:19:45Z",
-  "excluded": [
-    {
-      "cluster_id": "cl:hn:49856913",
-      "headline": "Unsecured OpenAI agents posted 53 user images on the internet",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:hn:49858360",
-      "headline": "OpenAI's Rogue A.I. Agents Tried to Trick a Robot Detector",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:hn:49856665",
-      "headline": "OpenAI bots meddled with multiple US Government agency sites",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:hn:49851355",
-      "headline": "OpenAI’s Systems Went Rogue and Meddled With U.S. Government Websites",
-      "reason": "age>=24h"
-    }
-  ],
-  "cluster_id": "cl:hn:49851154",
-  "headline": "OpenAI investigating 'dozens' of instances of agents acting improperly",
-  "url": "https://www.bbc.co.uk/news/articles/cw62jje658dlo",
-  "sources": 2,
-  "sig": 4,
-  "first_at": "2026-09-25T23:02:54.000Z",
-  "reason": "held",
-  "note": "no qualifying story",
-  "attempts": [
-    {
-      "at": "2026-09-27T03:21:22.037Z",
-      "crawl_at": "2026-09-27T03:19:45Z",
-      "excluded": [
-        {
-          "cluster_id": "cl:hn:49853688",
-          "headline": "OpenAI says agents leaked 53 images from ChatGPT users",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:hn:49858360",
-          "headline": "OpenAI's Rogue A.I. Agents Tried to Trick a Robot Detector",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:hn:49853692",
-          "headline": "One company is at the center of a wave of rogue AI attacks",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:hn:49851355",
-          "headline": "OpenAI’s Systems Went Rogue and Meddled With U.S. Government Websites",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:hn:49849985",
-          "headline": "Revealing the details of how OpenAI agents hacked Hugging Face",
-          "reason": "age>=24h"
-        }
-      ]
-    },
-    {
-      "at": "2026-09-27T07:14:40.596Z",
-      "crawl_at": "2026-09-27T07:14:27Z",
-      "excluded": [
-        {
-          "cluster_id": "cl:hn:49853688",
-          "headline": "OpenAI says agents leaked 53 images from ChatGPT users",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:hn:49858360",
-          "headline": "OpenAI's Rogue A.I. Agents Tried to Trick a Robot Detector",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:hn:49853692",
-          "headline": "One company is at the center of a wave of rogue AI attacks",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:hn:49851355",
-          "headline": "OpenAI’s Systems Went Rogue and Meddled With U.S. Government Websites",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:hn:49849985",
-          "headline": "Revealing the details of how OpenAI agents hacked Hugging Face",
-          "reason": "age>=24h"
-        }
-      ]
-    },
-    {
-      "at": "2026-09-27T11:20:57.412Z",
-      "crawl_at": "2026-09-27T11:19:55Z",
-      "excluded": [
-        {
-          "cluster_id": "cl:hn:49856913",
-          "headline": "Unsecured OpenAI agents posted 53 user images on the internet",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:hn:49858360",
-          "headline": "OpenAI's Rogue A.I. Agents Tried to Trick a Robot Detector",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:hn:49853692",
-          "headline": "One company is at the center of a wave of rogue AI attacks",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:hn:49849985",
-          "headline": "Revealing the details of how OpenAI agents hacked Hugging Face",
-          "reason": "age>=24h"
-        }
-      ]
-    },
-    {
-      "at": "2026-09-27T15:21:44.090Z",
-      "crawl_at": "2026-09-27T15:21:10Z",
-      "excluded": [
-        {
-          "cluster_id": "cl:hn:49856913",
-          "headline": "Unsecured OpenAI agents posted 53 user images on the internet",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:hn:49858360",
-          "headline": "OpenAI's Rogue A.I. Agents Tried to Trick a Robot Detector",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:hn:49853692",
-          "headline": "One company is at the center of a wave of rogue AI attacks",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:hn:49849985",
-          "headline": "Revealing the details of how OpenAI agents hacked Hugging Face",
-          "reason": "age>=24h"
-        }
-      ]
-    },
-    {
-      "at": "2026-09-27T19:27:14.437Z",
-      "crawl_at": "2026-09-27T19:20:38Z",
-      "excluded": [
-        {
-          "cluster_id": "cl:hn:49856913",
-          "headline": "Unsecured OpenAI agents posted 53 user images on the internet",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:hn:49858360",
-          "headline": "OpenAI's Rogue A.I. Agents Tried to Trick a Robot Detector",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:hn:49856665",
-          "headline": "OpenAI bots meddled with multiple US Government agency sites",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:hn:49851355",
-          "headline": "OpenAI’s Systems Went Rogue and Meddled With U.S. Government Websites",
-          "reason": "age>=24h"
-        }
-      ]
-    }
-  ]
-};
-
 export const LEAD_HELD = false;
 
 /** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is ≥24h old. */
-export const LEAD_FIRST_AT: string | null = "2026-09-27T12:12:34.000Z";
+export const LEAD_FIRST_AT: string | null = "2026-09-28T22:07:59.000Z";

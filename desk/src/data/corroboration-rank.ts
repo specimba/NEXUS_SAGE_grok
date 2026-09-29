@@ -3,8 +3,8 @@ import type { MovedRow, RankSnapshot } from "@/lib/corroboration";
 
 export const RANK_CURRENT: RankSnapshot = {
   "schema": 1,
-  "at": "2026-09-28T23:18:36.406Z",
-  "crawl_at": "2026-09-28T23:18:02Z",
+  "at": "2026-09-29T03:21:05.067Z",
+  "crawl_at": "2026-09-29T03:20:19Z",
   "lead_id": "hf-incident",
   "rows": [
     {
@@ -23,20 +23,18 @@ export const RANK_CURRENT: RankSnapshot = {
       "id": "astra-depth",
       "rank": 2,
       "base_rank": 2,
-      "sources": 4,
+      "sources": 3,
       "source_keys": [
-        "crawl:hn",
         "crawl:lab:openai",
         "x:@amir",
         "x:@steph_palazzolo"
       ],
       "crawl_hits": [
-        "cl:hn:49862460",
+        "cl:rss:openai:eb674100bb687fff",
         "cl:rss:openai:52b80abd4e046c04",
-        "cl:rss:openai:f2ff7f7605612041",
-        "cl:rss:openai:0765deb144589280"
+        "cl:rss:openai:f2ff7f7605612041"
       ],
-      "mult": 1.45,
+      "mult": 1.3,
       "lead": false
     },
     {
@@ -68,8 +66,8 @@ export const RANK_CURRENT: RankSnapshot = {
 
 export const RANK_PREV: RankSnapshot | null = {
   "schema": 1,
-  "at": "2026-09-28T19:23:48.895Z",
-  "crawl_at": "2026-09-28T19:23:07Z",
+  "at": "2026-09-28T23:18:36.406Z",
+  "crawl_at": "2026-09-28T23:18:02Z",
   "lead_id": "hf-incident",
   "rows": [
     {
@@ -147,7 +145,7 @@ export const RANK_MOVED: MovedRow[] = [
     "prev_rank": 2,
     "rank": 2,
     "prev_sources": 4,
-    "sources": 4,
+    "sources": 3,
     "by_corroboration": false
   },
   {
