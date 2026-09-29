@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-09-29T03:20:19Z",
+  "stamped_at": "2026-09-29T07:19:33Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 642,
+      "duration_ms": 540,
       "paused_until": null,
       "reason": null
     },
@@ -17,8 +17,8 @@
       "id": "arxiv",
       "label": "arXiv",
       "status": "ok",
-      "rows": 29,
-      "duration_ms": 3352,
+      "rows": 28,
+      "duration_ms": 3287,
       "paused_until": null,
       "reason": null
     },
@@ -27,7 +27,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 325,
+      "duration_ms": 5,
       "paused_until": null,
       "reason": null
     },
@@ -36,7 +36,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 991,
+      "duration_ms": 2,
       "paused_until": null,
       "reason": null
     },
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 64,
-      "duration_ms": 8432,
+      "rows": 65,
+      "duration_ms": 8424,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 18985,
+      "duration_ms": 64,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 4563,
+      "duration_ms": 36,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 70,
-      "duration_ms": 6419,
+      "rows": 74,
+      "duration_ms": 50,
       "paused_until": null,
       "reason": null
     },
@@ -81,7 +81,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 649,
+      "duration_ms": 3,
       "paused_until": null,
       "reason": null
     },
@@ -90,38 +90,38 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 504,
+      "duration_ms": 2750,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 44862,
-    "wall_ms": 45269,
-    "startup_ms": 29,
-    "main_ms": 45276
+    "sources_ms": 15161,
+    "wall_ms": 15625,
+    "startup_ms": 35,
+    "main_ms": 15632
   },
-  "multi_source_independent": 14,
+  "multi_source_independent": 16,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 14,
-    "multi_source_raw": 16,
+    "multi_source_independent": 16,
+    "multi_source_raw": 18,
     "self_reposts": 5,
-    "items_in": 265,
-    "clusters_out": 200,
-    "collapsed": 65,
-    "multi_source": 14,
-    "multi_member": 18,
+    "items_in": 270,
+    "clusters_out": 197,
+    "collapsed": 73,
+    "multi_source": 16,
+    "multi_member": 20,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 85,
+    "new_items": 11,
     "per_source": {
-      "hn-algolia": 64,
+      "hn-algolia": 65,
       "rss-lab": 104,
       "rss-security": 27,
-      "gnews-rss": 70
+      "gnews-rss": 74
     },
     "multi_source_clusters": [
       {
@@ -258,12 +258,111 @@
         ]
       },
       {
+        "title": "OpenAI axes next model citing safety issues",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 3,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:49888653",
+            "source": "hn-algolia",
+            "title": "OpenAI axes next model citing safety issues",
+            "at": "2026-09-29T05:27:12Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:72f4f768db81be16",
+            "source": "gnews-rss",
+            "title": "OpenAI cancels new AI launch, citing safety issues - The Washington Post",
+            "at": "2026-09-29T03:11:00Z",
+            "publisher": "The Washington Post"
+          },
+          {
+            "id": "gnews:31bf0f54b491e0e5",
+            "source": "gnews-rss",
+            "title": "OpenAI axes next model citing safety issues - Financial Times",
+            "at": "2026-09-29T00:52:06Z",
+            "publisher": "Financial Times"
+          }
+        ]
+      },
+      {
+        "title": "Anthropic warns of 'existential risks to humanity' in IPO prospectus",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 8,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:49887124",
+            "source": "hn-algolia",
+            "title": "Anthropic warns of 'existential risks to humanity' in IPO prospectus",
+            "at": "2026-09-29T01:58:42Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:49888334",
+            "source": "hn-algolia",
+            "title": "Anthropic warns AI may pose 'existential risks to humanity' in IPO filing",
+            "at": "2026-09-29T04:38:45Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:49887955",
+            "source": "hn-algolia",
+            "title": "Anthropic warns AI may pose 'existential risks to humanity' in IPO filing",
+            "at": "2026-09-29T03:50:17Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:8a9f5bd8aab26035",
+            "source": "gnews-rss",
+            "title": "Anthropic warns of ‘existential risks to humanity’ in IPO prospectus - Financial Times",
+            "at": "2026-09-29T01:06:35Z",
+            "publisher": "Financial Times"
+          },
+          {
+            "id": "gnews:3602ce66663bf124",
+            "source": "gnews-rss",
+            "title": "Anthropic IPO prospectus states AI could pose 'existential risks to humanity': report - Seeking Alpha",
+            "at": "2026-09-29T01:50:49Z",
+            "publisher": "Seeking Alpha"
+          },
+          {
+            "id": "gnews:4fdec73affc26f09",
+            "source": "gnews-rss",
+            "title": "Anthropic IPO Prospectus Spends 80 Of 261 Pages On Risk, Warns AI Could Pose ‘Catastrophic or Existential - Benzinga",
+            "at": "2026-09-29T02:22:05Z",
+            "publisher": "Benzinga"
+          },
+          {
+            "id": "gnews:7186d759fcecf0c2",
+            "source": "gnews-rss",
+            "title": "Anthropic warns AI may pose 'existential risks to humanity' in IPO filing: Reuters - CNBC",
+            "at": "2026-09-29T01:23:00Z",
+            "publisher": "CNBC"
+          },
+          {
+            "id": "gnews:47c81fbde0f4ff23",
+            "source": "gnews-rss",
+            "title": "Anthropic warns AI may pose ‘existential risks to humanity’ in IPO filing: Reuters exclusive - CTV News",
+            "at": "2026-09-29T00:46:00Z",
+            "publisher": "CTV News"
+          }
+        ]
+      },
+      {
         "title": "OpenAI Says It Will Not Release Newest A.I. Model Over Safety Concerns",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 16,
+        "size": 17,
         "score": 1,
         "members": [
           {
@@ -285,6 +384,13 @@
             "source": "hn-algolia",
             "title": "OpenAI scraps release of Astra 6.1 model over safety issues",
             "at": "2026-09-29T00:38:41Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:49888031",
+            "source": "hn-algolia",
+            "title": "OpenAI scraps rollout of new model over safety concerns",
+            "at": "2026-09-29T03:59:11Z",
             "publisher": null
           },
           {
@@ -381,6 +487,31 @@
         ]
       },
       {
+        "title": "OpenAI apologises for Medicare hack and reveals extent of attack",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 0.887,
+        "members": [
+          {
+            "id": "hn:49887703",
+            "source": "hn-algolia",
+            "title": "OpenAI apologises for Medicare hack and reveals extent of attack",
+            "at": "2026-09-29T03:18:44Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:993660d21b8a2749",
+            "source": "gnews-rss",
+            "title": "‘New kind of cyber incident’: OpenAI apologises for Medicare hack and reveals extent of attack - The Guardian",
+            "at": "2026-09-29T02:10:00Z",
+            "publisher": "The Guardian"
+          }
+        ]
+      },
+      {
         "title": "Anthropic CEO Amodei set to meet with Trump",
         "sources": [
           "hn-algolia",
@@ -430,45 +561,6 @@
             "title": "Memo smearing Anthropic’s Amodei circulated in White House before CEO’s dinner with President Trump - Fortune",
             "at": "2026-09-28T10:33:00Z",
             "publisher": "Fortune"
-          }
-        ]
-      },
-      {
-        "title": "Anthropic warns of 'existential risks to humanity' in IPO prospectus",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 4,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:49887124",
-            "source": "hn-algolia",
-            "title": "Anthropic warns of 'existential risks to humanity' in IPO prospectus",
-            "at": "2026-09-29T01:58:42Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:8a9f5bd8aab26035",
-            "source": "gnews-rss",
-            "title": "Anthropic warns of ‘existential risks to humanity’ in IPO prospectus - Financial Times",
-            "at": "2026-09-29T01:06:35Z",
-            "publisher": "Financial Times"
-          },
-          {
-            "id": "gnews:3602ce66663bf124",
-            "source": "gnews-rss",
-            "title": "Anthropic IPO prospectus states AI could pose 'existential risks to humanity': report - Seeking Alpha",
-            "at": "2026-09-29T01:50:49Z",
-            "publisher": "Seeking Alpha"
-          },
-          {
-            "id": "gnews:7186d759fcecf0c2",
-            "source": "gnews-rss",
-            "title": "Anthropic warns AI may pose 'existential risks to humanity' in IPO filing: Reuters - CNBC",
-            "at": "2026-09-29T01:23:00Z",
-            "publisher": "CNBC"
           }
         ]
       },
@@ -665,7 +757,7 @@
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.721,
+        "score": 0.718,
         "members": [
           {
             "id": "hn:49870695",
@@ -890,7 +982,7 @@
     },
     "gnews_near_misses": [
       {
-        "score": 0.703,
+        "score": 0.705,
         "blocked": "time-window",
         "hours_apart": 34.7,
         "a": {
@@ -915,7 +1007,7 @@
         ]
       },
       {
-        "score": 0.658,
+        "score": 0.661,
         "blocked": "time-window",
         "hours_apart": 34.2,
         "a": {
@@ -937,7 +1029,7 @@
         ]
       },
       {
-        "score": 0.651,
+        "score": 0.653,
         "blocked": "time-window",
         "hours_apart": 33.1,
         "a": {
@@ -959,7 +1051,7 @@
         ]
       },
       {
-        "score": 0.641,
+        "score": 0.643,
         "blocked": "time-window",
         "hours_apart": 32.8,
         "a": {
@@ -985,7 +1077,7 @@
         ]
       },
       {
-        "score": 0.628,
+        "score": 0.627,
         "blocked": "thin-overlap",
         "hours_apart": 8.8,
         "a": {
@@ -1006,7 +1098,7 @@
         ]
       },
       {
-        "score": 0.609,
+        "score": 0.61,
         "blocked": "time-window",
         "hours_apart": 32.7,
         "a": {
@@ -1051,7 +1143,7 @@
         ]
       },
       {
-        "score": 0.587,
+        "score": 0.589,
         "blocked": "below-threshold",
         "hours_apart": 1.6,
         "a": {
@@ -1061,24 +1153,23 @@
           "at": "2026-09-29T00:38:41Z"
         },
         "b": {
-          "id": "gnews:63336d049a81c303",
+          "id": "gnews:1e3a9bc2fca1092e",
           "source": "gnews-rss",
-          "title": "OpenAI cancels release of GPT-6.1 Astra AI model, citing safety worries: WSJ - TradingView",
-          "at": "2026-09-29T02:13:00Z"
+          "title": "OpenAI cancels GPT-6.1 Astra release over safety concerns - qz.com",
+          "at": "2026-09-29T02:12:46Z"
         },
         "shared": [
           "openai",
           "releas",
           "astra",
           "6.1",
-          "model",
           "safety"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.703,
+        "score": 0.705,
         "blocked": "time-window",
         "hours_apart": 34.7,
         "a": {
@@ -1103,7 +1194,7 @@
         ]
       },
       {
-        "score": 0.658,
+        "score": 0.661,
         "blocked": "time-window",
         "hours_apart": 34.2,
         "a": {
@@ -1125,7 +1216,7 @@
         ]
       },
       {
-        "score": 0.651,
+        "score": 0.653,
         "blocked": "time-window",
         "hours_apart": 33.1,
         "a": {
@@ -1147,7 +1238,7 @@
         ]
       },
       {
-        "score": 0.641,
+        "score": 0.643,
         "blocked": "time-window",
         "hours_apart": 32.8,
         "a": {
@@ -1173,7 +1264,7 @@
         ]
       },
       {
-        "score": 0.628,
+        "score": 0.627,
         "blocked": "thin-overlap",
         "hours_apart": 8.8,
         "a": {
@@ -1194,7 +1285,7 @@
         ]
       },
       {
-        "score": 0.609,
+        "score": 0.61,
         "blocked": "time-window",
         "hours_apart": 32.7,
         "a": {
@@ -1239,7 +1330,7 @@
         ]
       },
       {
-        "score": 0.587,
+        "score": 0.589,
         "blocked": "below-threshold",
         "hours_apart": 1.6,
         "a": {
@@ -1249,17 +1340,16 @@
           "at": "2026-09-29T00:38:41Z"
         },
         "b": {
-          "id": "gnews:63336d049a81c303",
+          "id": "gnews:1e3a9bc2fca1092e",
           "source": "gnews-rss",
-          "title": "OpenAI cancels release of GPT-6.1 Astra AI model, citing safety worries: WSJ - TradingView",
-          "at": "2026-09-29T02:13:00Z"
+          "title": "OpenAI cancels GPT-6.1 Astra release over safety concerns - qz.com",
+          "at": "2026-09-29T02:12:46Z"
         },
         "shared": [
           "openai",
           "releas",
           "astra",
           "6.1",
-          "model",
           "safety"
         ]
       }
@@ -1269,76 +1359,76 @@
     {
       "id": "arxiv",
       "state": "ok",
-      "streak_ok": 40,
+      "streak_ok": 41,
       "streak_fail": 0,
-      "items_last": 29
+      "items_last": 28
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 40,
+      "streak_ok": 41,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 40,
+      "streak_ok": 41,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 40,
+      "streak_ok": 41,
       "streak_fail": 0,
-      "items_last": 70
+      "items_last": 74
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 40,
+      "streak_ok": 41,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 40,
+      "streak_ok": 41,
       "streak_fail": 0,
-      "items_last": 64
+      "items_last": 65
     },
     {
       "id": "openalex",
       "state": "flaky",
-      "streak_ok": 14,
+      "streak_ok": 15,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 40,
+      "streak_ok": 41,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 40,
+      "streak_ok": 41,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 40,
+      "streak_ok": 41,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.012788055555555556,
+    "hours": 0.004459444444444445,
     "stale": false
   },
   "hf": {
@@ -1349,7 +1439,7 @@
   "arxiv": {
     "ok": true,
     "enriched": 24,
-    "shelf": 5,
+    "shelf": 4,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
   },
@@ -1361,13 +1451,13 @@
     "secondary": 3,
     "query": "LLM agent",
     "mode": "search",
-    "from_cache": false,
-    "searches": 1,
+    "from_cache": true,
+    "searches": 0,
     "retries": 0,
     "status": "ok",
     "paused_until": null,
     "pause_reason": null,
-    "requests": 1,
+    "requests": 0,
     "auth": "anon",
     "brief": false,
     "pulse_lead": false,
@@ -1404,8 +1494,8 @@
     "enriched": 1,
     "query": "doi:10.1145/3688399",
     "mode": "filter",
-    "from_cache": false,
-    "searches": 1,
+    "from_cache": true,
+    "searches": 0,
     "brief": false,
     "pulse_lead": false,
     "papers_enrich_only": true,
@@ -1427,7 +1517,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 64,
+    "count": 65,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -1450,20 +1540,20 @@
       {
         "id": "hn:49881850",
         "tag": "rest",
-        "score": 629,
+        "score": 734,
         "text": "Sonnet 5.5"
-      },
-      {
-        "id": "hn:49863864",
-        "tag": "rest",
-        "score": 626,
-        "text": "Unsealed Briefs in Authors’ Case v. Microsoft/OpenAI"
       },
       {
         "id": "hn:49868083",
         "tag": "rest",
-        "score": 390,
+        "score": 391,
         "text": "There are no \"rogue\" AI agents"
+      },
+      {
+        "id": "hn:49874728",
+        "tag": "rest",
+        "score": 201,
+        "text": "Prompting Claude Opus 5.5"
       }
     ]
   },
@@ -1479,47 +1569,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "https://openai.com/news/rss.xml",
+        "url": "(cache:openai)",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "https://deepmind.google/blog/rss.xml",
+        "url": "(cache:deepmind)",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "https://blog.google/technology/ai/rss/",
+        "url": "(cache:google-ai)",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "https://huggingface.co/blog/feed.xml",
+        "url": "(cache:huggingface)",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "https://mistral.ai/rss.xml",
+        "url": "(cache:mistral)",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "https://blogs.nvidia.com/feed/",
+        "url": "(cache:nvidia)",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "https://developer.nvidia.com/blog/feed",
+        "url": "(cache:nvidia-dev)",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
+        "url": "(cache:ms-research)",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "https://research.google/blog/rss/",
+        "url": "(cache:google-research)",
         "count": 12
       }
     ],
@@ -1565,17 +1655,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "https://blog.trailofbits.com/feed/",
+        "url": "(cache:trailofbits)",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "https://blog.fox-it.com/feed/",
+        "url": "(cache:fox-it)",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "https://projectzero.google/feed.xml",
+        "url": "(cache:projectzero)",
         "count": 5
       }
     ],
@@ -1616,7 +1706,7 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 70,
+    "items": 74,
     "pool": 392,
     "corroborators": [
       {
@@ -1630,23 +1720,23 @@
       {
         "id": "gnews:3602ce66663bf124",
         "anchor_id": "hn:49887124",
-        "score": 0.749,
+        "score": 0.751,
         "title": "Anthropic IPO prospectus states AI could pose 'existential risks to humanity': report - Seeking Alpha",
         "publisher": "Seeking Alpha",
         "self_repost": false
       },
       {
-        "id": "gnews:7186d759fcecf0c2",
+        "id": "gnews:4fdec73affc26f09",
         "anchor_id": "hn:49887124",
-        "score": 0.743,
-        "title": "Anthropic warns AI may pose 'existential risks to humanity' in IPO filing: Reuters - CNBC",
-        "publisher": "CNBC",
+        "score": 0.626,
+        "title": "Anthropic IPO Prospectus Spends 80 Of 261 Pages On Risk, Warns AI Could Pose ‘Catastrophic or Existential - Benzinga",
+        "publisher": "Benzinga",
         "self_repost": false
       },
       {
         "id": "gnews:1e3a9bc2fca1092e",
         "anchor_id": "hn:49885916",
-        "score": 0.762,
+        "score": 0.76,
         "title": "OpenAI cancels GPT-6.1 Astra release over safety concerns - qz.com",
         "publisher": "qz.com",
         "self_repost": false
@@ -1654,7 +1744,7 @@
       {
         "id": "gnews:b5cb826b7c86a98c",
         "anchor_id": "hn:49885916",
-        "score": 0.692,
+        "score": 0.69,
         "title": "OpenAI Will Not Ship GPT-6.1 Astra Due to Safety Concerns - The Information",
         "publisher": "The Information",
         "self_repost": false
@@ -1662,9 +1752,17 @@
       {
         "id": "gnews:c336e3a98b9fb615",
         "anchor_id": "hn:49885916",
-        "score": 0.679,
+        "score": 0.677,
         "title": "OpenAI cancels GPT-6.1 Astra release over misbehavior & safety concerns - 9to5Google",
         "publisher": "9to5Google",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:993660d21b8a2749",
+        "anchor_id": "hn:49887703",
+        "score": 0.888,
+        "title": "‘New kind of cyber incident’: OpenAI apologises for Medicare hack and reveals extent of attack - The Guardian",
+        "publisher": "The Guardian",
         "self_repost": false
       },
       {
@@ -1686,7 +1784,7 @@
       {
         "id": "gnews:68ac0c1942cce6d9",
         "anchor_id": "hn:49885133",
-        "score": 0.958,
+        "score": 0.957,
         "title": "OpenAI scraps release of latest AI model over safety concerns - aljazeera.com",
         "publisher": "aljazeera.com",
         "self_repost": false
@@ -1700,9 +1798,33 @@
         "self_repost": false
       },
       {
+        "id": "gnews:7186d759fcecf0c2",
+        "anchor_id": "hn:49888334",
+        "score": 0.984,
+        "title": "Anthropic warns AI may pose 'existential risks to humanity' in IPO filing: Reuters - CNBC",
+        "publisher": "CNBC",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:47c81fbde0f4ff23",
+        "anchor_id": "hn:49888334",
+        "score": 0.919,
+        "title": "Anthropic warns AI may pose ‘existential risks to humanity’ in IPO filing: Reuters exclusive - CTV News",
+        "publisher": "CTV News",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:31bf0f54b491e0e5",
+        "anchor_id": "hn:49888653",
+        "score": 1,
+        "title": "OpenAI axes next model citing safety issues - Financial Times",
+        "publisher": "Financial Times",
+        "self_repost": false
+      },
+      {
         "id": "gnews:19886814d5000841",
         "anchor_id": "hn:49886416",
-        "score": 0.981,
+        "score": 0.982,
         "title": "OpenAI Says It Will Not Release Newest Astra A.I. Model Over Safety Concerns - The New York Times",
         "publisher": "The New York Times",
         "self_repost": false
@@ -1710,7 +1832,7 @@
       {
         "id": "gnews:66cfbfc724cc7d3e",
         "anchor_id": "hn:49886459",
-        "score": 0.637,
+        "score": 0.64,
         "title": "OpenAI scraps the GPT-6.1 Astra launch after the model fell short of its safety bar - Business Insider",
         "publisher": "Business Insider",
         "self_repost": false
@@ -1774,7 +1896,7 @@
       {
         "id": "gnews:49bd2d484c336e6e",
         "anchor_id": "hn:49877374",
-        "score": 0.73,
+        "score": 0.732,
         "title": "OpenAI Pauses Models Training After Agents Access US Government - mexicobusiness.news",
         "publisher": "mexicobusiness.news",
         "self_repost": false
@@ -1782,7 +1904,7 @@
       {
         "id": "gnews:261c45a20a946fc9",
         "anchor_id": "hn:49877374",
-        "score": 0.72,
+        "score": 0.721,
         "title": "OpenAI is pausing training of its most powerful AI models after rogue agents hit government sites - qz.com",
         "publisher": "qz.com",
         "self_repost": false
@@ -1894,7 +2016,7 @@
       {
         "id": "gnews:3985e57e6dbff78c",
         "anchor_id": "hn:49868083",
-        "score": 0.657,
+        "score": 0.658,
         "title": "Nvidia launches new tool to keep AI agents from going rogue - CNN",
         "publisher": "CNN",
         "self_repost": false
@@ -1902,7 +2024,7 @@
       {
         "id": "gnews:f7d288586d27eedf",
         "anchor_id": "hn:49868083",
-        "score": 0.636,
+        "score": 0.637,
         "title": "Nvidia Releases Software It Says Can Prevent AI Agents From Going Rogue - WSJ",
         "publisher": "WSJ",
         "self_repost": false
@@ -1933,9 +2055,9 @@
       }
     ],
     "http_status": 200,
-    "content_type": "application/xml; charset=utf-8",
+    "content_type": null,
     "format": "rss2",
-    "from_cache": false,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1994,9 +2116,9 @@
     "soft_fail_reason": null,
     "query": "OWASP LLM",
     "shelf": 1,
-    "from_cache": false,
-    "searches": 1,
-    "rate_limit_remaining": 9,
+    "from_cache": true,
+    "searches": 0,
+    "rate_limit_remaining": null,
     "brief": false,
     "pulse_lead": false,
     "shelf_only": true,
@@ -2009,7 +2131,7 @@
     ]
   },
   "shelf": {
-    "count": 18,
+    "count": 17,
     "brief": false
   },
   "wikidata": {
@@ -2021,7 +2143,7 @@
       "Anthropic",
       "Meta AI"
     ],
-    "searches": 1,
+    "searches": 2,
     "from_cache": false,
     "brief": false,
     "pulse_lead": false,
