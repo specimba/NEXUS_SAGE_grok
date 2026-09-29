@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-09-29T11:14:40Z",
+  "stamped_at": "2026-09-29T15:22:58Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 726,
+      "duration_ms": 665,
       "paused_until": null,
       "reason": null
     },
@@ -18,7 +18,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 3569,
+      "duration_ms": 3983,
       "paused_until": null,
       "reason": null
     },
@@ -27,7 +27,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 5,
+      "duration_ms": 4,
       "paused_until": null,
       "reason": null
     },
@@ -45,7 +45,7 @@
       "label": "HN",
       "status": "ok",
       "rows": 67,
-      "duration_ms": 8379,
+      "duration_ms": 8354,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 18281,
+      "duration_ms": 79,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 4546,
+      "duration_ms": 33,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 70,
-      "duration_ms": 6465,
+      "rows": 71,
+      "duration_ms": 26,
       "paused_until": null,
       "reason": null
     },
@@ -81,7 +81,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 4,
+      "duration_ms": 1,
       "paused_until": null,
       "reason": null
     },
@@ -90,38 +90,38 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 3,
+      "duration_ms": 1,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 41980,
-    "wall_ms": 42496,
-    "startup_ms": 32,
-    "main_ms": 42525
+    "sources_ms": 13148,
+    "wall_ms": 13609,
+    "startup_ms": 37,
+    "main_ms": 13616
   },
-  "multi_source_independent": 14,
+  "multi_source_independent": 15,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 14,
-    "multi_source_raw": 17,
+    "multi_source_independent": 15,
+    "multi_source_raw": 18,
     "self_reposts": 5,
-    "items_in": 268,
+    "items_in": 269,
     "clusters_out": 210,
-    "collapsed": 58,
-    "multi_source": 14,
-    "multi_member": 18,
+    "collapsed": 59,
+    "multi_source": 15,
+    "multi_member": 19,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 53,
+    "new_items": 7,
     "per_source": {
       "hn-algolia": 67,
       "rss-lab": 104,
       "rss-security": 27,
-      "gnews-rss": 70
+      "gnews-rss": 71
     },
     "multi_source_clusters": [
       {
@@ -191,6 +191,31 @@
             "at": "2026-09-28T09:16:18Z",
             "publisher": "developer.nvidia.com",
             "self_repost": true
+          }
+        ]
+      },
+      {
+        "title": "Mistral CEO says U.S. AI safety debate masks competitors' 'negligence'",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:49891721",
+            "source": "hn-algolia",
+            "title": "Mistral CEO says U.S. AI safety debate masks competitors' 'negligence'",
+            "at": "2026-09-29T12:01:07Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:e098c7c402c0f4e5",
+            "source": "gnews-rss",
+            "title": "Mistral CEO says U.S. AI safety debate masks competitors’ 'negligence' - CNBC",
+            "at": "2026-09-29T08:20:04Z",
+            "publisher": "CNBC"
           }
         ]
       },
@@ -338,17 +363,17 @@
             "publisher": null
           },
           {
-            "id": "hn:49888031",
-            "source": "hn-algolia",
-            "title": "OpenAI scraps rollout of new model over safety concerns",
-            "at": "2026-09-29T03:59:11Z",
-            "publisher": null
-          },
-          {
             "id": "hn:49888653",
             "source": "hn-algolia",
             "title": "OpenAI axes next model citing safety issues",
             "at": "2026-09-29T05:27:12Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:49888031",
+            "source": "hn-algolia",
+            "title": "OpenAI scraps rollout of new model over safety concerns",
+            "at": "2026-09-29T03:59:11Z",
             "publisher": null
           },
           {
@@ -444,7 +469,7 @@
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.931,
+        "score": 0.932,
         "members": [
           {
             "id": "hn:49889147",
@@ -512,6 +537,31 @@
             "title": "Anthropic's IPO prospectus shows sweeping AI vision, surging costs: Reuters - CNBC",
             "at": "2026-09-28T23:55:07Z",
             "publisher": "CNBC"
+          }
+        ]
+      },
+      {
+        "title": "Anthropic leaders to control company via 'Founder LLC'",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 0.629,
+        "members": [
+          {
+            "id": "hn:49889617",
+            "source": "hn-algolia",
+            "title": "Anthropic leaders to control company via 'Founder LLC'",
+            "at": "2026-09-29T07:47:10Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:1044d3739aa492ee",
+            "source": "gnews-rss",
+            "title": "EXCLUSIVE: Anthropic leaders to control AI lab via 'Founder LLC' to promote public good over market forces - Reuters",
+            "at": "2026-09-29T00:09:00Z",
+            "publisher": "Reuters"
           }
         ]
       },
@@ -626,31 +676,6 @@
             "title": "OpenAI still doesn’t seem to have a handle on all of its rogue AI activity - TechCrunch",
             "at": "2026-09-28T17:09:02Z",
             "publisher": "TechCrunch"
-          }
-        ]
-      },
-      {
-        "title": "Florida asks court to bar OpenAI from new models as part of child harm lawsuit",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 0.985,
-        "members": [
-          {
-            "id": "hn:49880973",
-            "source": "hn-algolia",
-            "title": "Florida asks court to bar OpenAI from new models as part of child harm lawsuit",
-            "at": "2026-09-28T16:56:12Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:f91a1e8c9f666fd0",
-            "source": "gnews-rss",
-            "title": "Florida asks court to bar OpenAI from developing new models as part of child harm lawsuit - Reuters",
-            "at": "2026-09-28T17:13:17Z",
-            "publisher": "Reuters"
           }
         ]
       },
@@ -851,11 +876,11 @@
       ],
       "gnews_shown_dropped": [],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 7
+      "hn_dropped": 8
     },
     "gnews_near_misses": [
       {
-        "score": 0.668,
+        "score": 0.667,
         "blocked": "time-window",
         "hours_apart": 42.3,
         "a": {
@@ -877,7 +902,7 @@
         ]
       },
       {
-        "score": 0.572,
+        "score": 0.571,
         "blocked": "below-threshold",
         "hours_apart": 6.3,
         "a": {
@@ -901,7 +926,7 @@
         ]
       },
       {
-        "score": 0.572,
+        "score": 0.571,
         "blocked": "below-threshold",
         "hours_apart": 6.3,
         "a": {
@@ -948,7 +973,7 @@
         ]
       },
       {
-        "score": 0.559,
+        "score": 0.561,
         "blocked": "below-threshold",
         "hours_apart": 10,
         "a": {
@@ -972,7 +997,7 @@
         ]
       },
       {
-        "score": 0.551,
+        "score": 0.547,
         "blocked": "time-window",
         "hours_apart": 38.9,
         "a": {
@@ -995,7 +1020,7 @@
         ]
       },
       {
-        "score": 0.544,
+        "score": 0.545,
         "blocked": "below-threshold",
         "hours_apart": 0.3,
         "a": {
@@ -1020,33 +1045,33 @@
       },
       {
         "score": 0.544,
-        "blocked": "time-window",
-        "hours_apart": 38.8,
+        "blocked": "below-threshold",
+        "hours_apart": 10.2,
         "a": {
-          "id": "hn:49870436",
+          "id": "hn:49872468",
           "source": "hn-algolia",
-          "title": "Trump and Anthropic CEO Dario Amodei Set for White House Dinner",
-          "at": "2026-09-27T20:20:05Z"
+          "title": "OpenAI pauses training of latest models after agents probed US Government sites",
+          "at": "2026-09-28T01:20:50Z"
         },
         "b": {
-          "id": "gnews:1677d040b715210f",
+          "id": "gnews:5db2505c3b4202e6",
           "source": "gnews-rss",
-          "title": "Anthropic CEO Amodei Faces New Attack From Trump Allies With An Attack Brief Sent To The White House - International Business Times",
-          "at": "2026-09-29T11:10:05Z"
+          "title": "OpenAI Pauses Training Its Most Powerful Models After Rogue Agents Target Government - wired.com",
+          "at": "2026-09-28T11:32:00Z"
         },
         "shared": [
-          "trump",
-          "anthropic",
-          "ceo",
-          "amodei",
-          "whit",
-          "hous"
+          "openai",
+          "paus",
+          "train",
+          "model",
+          "agent",
+          "government"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.668,
+        "score": 0.667,
         "blocked": "time-window",
         "hours_apart": 42.3,
         "a": {
@@ -1068,7 +1093,7 @@
         ]
       },
       {
-        "score": 0.572,
+        "score": 0.571,
         "blocked": "below-threshold",
         "hours_apart": 6.3,
         "a": {
@@ -1092,7 +1117,7 @@
         ]
       },
       {
-        "score": 0.572,
+        "score": 0.571,
         "blocked": "below-threshold",
         "hours_apart": 6.3,
         "a": {
@@ -1139,7 +1164,7 @@
         ]
       },
       {
-        "score": 0.559,
+        "score": 0.561,
         "blocked": "below-threshold",
         "hours_apart": 10,
         "a": {
@@ -1163,7 +1188,7 @@
         ]
       },
       {
-        "score": 0.551,
+        "score": 0.547,
         "blocked": "time-window",
         "hours_apart": 38.9,
         "a": {
@@ -1186,7 +1211,7 @@
         ]
       },
       {
-        "score": 0.544,
+        "score": 0.545,
         "blocked": "below-threshold",
         "hours_apart": 0.3,
         "a": {
@@ -1211,27 +1236,27 @@
       },
       {
         "score": 0.544,
-        "blocked": "time-window",
-        "hours_apart": 38.8,
+        "blocked": "below-threshold",
+        "hours_apart": 10.2,
         "a": {
-          "id": "hn:49870436",
+          "id": "hn:49872468",
           "source": "hn-algolia",
-          "title": "Trump and Anthropic CEO Dario Amodei Set for White House Dinner",
-          "at": "2026-09-27T20:20:05Z"
+          "title": "OpenAI pauses training of latest models after agents probed US Government sites",
+          "at": "2026-09-28T01:20:50Z"
         },
         "b": {
-          "id": "gnews:1677d040b715210f",
+          "id": "gnews:5db2505c3b4202e6",
           "source": "gnews-rss",
-          "title": "Anthropic CEO Amodei Faces New Attack From Trump Allies With An Attack Brief Sent To The White House - International Business Times",
-          "at": "2026-09-29T11:10:05Z"
+          "title": "OpenAI Pauses Training Its Most Powerful Models After Rogue Agents Target Government - wired.com",
+          "at": "2026-09-28T11:32:00Z"
         },
         "shared": [
-          "trump",
-          "anthropic",
-          "ceo",
-          "amodei",
-          "whit",
-          "hous"
+          "openai",
+          "paus",
+          "train",
+          "model",
+          "agent",
+          "government"
         ]
       }
     ]
@@ -1240,76 +1265,76 @@
     {
       "id": "arxiv",
       "state": "ok",
-      "streak_ok": 42,
+      "streak_ok": 43,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 42,
+      "streak_ok": 43,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 42,
+      "streak_ok": 43,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 42,
+      "streak_ok": 43,
       "streak_fail": 0,
-      "items_last": 70
+      "items_last": 71
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 42,
+      "streak_ok": 43,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 42,
+      "streak_ok": 43,
       "streak_fail": 0,
       "items_last": 67
     },
     {
       "id": "openalex",
       "state": "flaky",
-      "streak_ok": 16,
+      "streak_ok": 17,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 42,
+      "streak_ok": 43,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 42,
+      "streak_ok": 43,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 42,
+      "streak_ok": 43,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.01193888888888889,
+    "hours": 0.003883611111111111,
     "stale": false
   },
   "hf": {
@@ -1415,13 +1440,13 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 7,
+    "ai_dropped": 8,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
         "id": "hn:49881850",
         "tag": "rest",
-        "score": 812,
+        "score": 847,
         "text": "Sonnet 5.5"
       },
       {
@@ -1431,10 +1456,10 @@
         "text": "There are no \"rogue\" AI agents"
       },
       {
-        "id": "hn:49874728",
+        "id": "hn:49879883",
         "tag": "rest",
-        "score": 203,
-        "text": "Prompting Claude Opus 5.5"
+        "score": 209,
+        "text": "Nvidia wants to put a watchdog chip next to every AI agent"
       }
     ]
   },
@@ -1450,47 +1475,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "https://openai.com/news/rss.xml",
+        "url": "(cache:openai)",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "https://deepmind.google/blog/rss.xml",
+        "url": "(cache:deepmind)",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "https://blog.google/technology/ai/rss/",
+        "url": "(cache:google-ai)",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "https://huggingface.co/blog/feed.xml",
+        "url": "(cache:huggingface)",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "https://mistral.ai/rss.xml",
+        "url": "(cache:mistral)",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "https://blogs.nvidia.com/feed/",
+        "url": "(cache:nvidia)",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "https://developer.nvidia.com/blog/feed",
+        "url": "(cache:nvidia-dev)",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
+        "url": "(cache:ms-research)",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "https://research.google/blog/rss/",
+        "url": "(cache:google-research)",
         "count": 12
       }
     ],
@@ -1536,17 +1561,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "https://blog.trailofbits.com/feed/",
+        "url": "(cache:trailofbits)",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "https://blog.fox-it.com/feed/",
+        "url": "(cache:fox-it)",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "https://projectzero.google/feed.xml",
+        "url": "(cache:projectzero)",
         "count": 5
       }
     ],
@@ -1587,7 +1612,7 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 70,
+    "items": 71,
     "pool": 394,
     "corroborators": [
       {
@@ -1668,6 +1693,14 @@
         "score": 0.924,
         "title": "As AI models go rogue, do you still trust OpenAI and Anthropic to stop them? I don’t and neither should you - theguardian.com",
         "publisher": "theguardian.com",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:e098c7c402c0f4e5",
+        "anchor_id": "hn:49891721",
+        "score": 1,
+        "title": "Mistral CEO says U.S. AI safety debate masks competitors’ 'negligence' - CNBC",
+        "publisher": "CNBC",
         "self_repost": false
       },
       {
@@ -1775,6 +1808,14 @@
         "self_repost": false
       },
       {
+        "id": "gnews:1044d3739aa492ee",
+        "anchor_id": "hn:49889617",
+        "score": 0.63,
+        "title": "EXCLUSIVE: Anthropic leaders to control AI lab via 'Founder LLC' to promote public good over market forces - Reuters",
+        "publisher": "Reuters",
+        "self_repost": false
+      },
+      {
         "id": "gnews:438dbae3c206eeff",
         "anchor_id": "hn:49886005",
         "score": 0.947,
@@ -1815,14 +1856,6 @@
         "self_repost": true
       },
       {
-        "id": "gnews:f91a1e8c9f666fd0",
-        "anchor_id": "hn:49880973",
-        "score": 0.988,
-        "title": "Florida asks court to bar OpenAI from developing new models as part of child harm lawsuit - Reuters",
-        "publisher": "Reuters",
-        "self_repost": false
-      },
-      {
         "id": "gnews:27ce699db6f1b997",
         "anchor_id": "hn:49881484",
         "score": 1,
@@ -1841,7 +1874,7 @@
       {
         "id": "gnews:37b35cd7988791f7",
         "anchor_id": "hn:49870436",
-        "score": 0.754,
+        "score": 0.753,
         "title": "Trump had private dinner with Anthropic CEO Dario Amodei - CBS News",
         "publisher": "CBS News",
         "self_repost": false
@@ -1896,9 +1929,9 @@
       }
     ],
     "http_status": 200,
-    "content_type": "application/xml; charset=utf-8",
+    "content_type": null,
     "format": "rss2",
-    "from_cache": false,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
