@@ -16,7 +16,7 @@ export type RssLabRow = {
   cluster_id?: string;
 };
 
-export const RSS_LABS_AT = "2026-09-30T07:21:22Z";
+export const RSS_LABS_AT = "2026-09-30T11:14:27Z";
 
 export const RSS_LABS: RssLabRow[] = [
   { id: "rss:nvidia-dev:a1b7c3f1faa2ee83", lab: "nvidia-dev" as const, title: "AI Native by Design: Lessons Learned from Building NVIDIA TensorRT Model Connect", link: "https://developer.nvidia.com/blog/ai-native-by-design-lessons-learned-from-building-nvidia-tensorrt-model-connect/", published: "2026-09-29T19:10:51Z", summary: "Parallel work, model-family isolation, reversible changes, and GPU-backed validation shaped an open source project designed around coding agents NVIDIA TensorRT...", source: "rss-lab" as const, tag: "rest" as const, first_seen: "2026-09-29T19:15:38Z", is_new: false, cluster_id: "cl:rss:nvidia-dev:a1b7c3f1faa2ee83" },
