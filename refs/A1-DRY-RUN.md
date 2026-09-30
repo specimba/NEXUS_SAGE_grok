@@ -1,8 +1,8 @@
 # A1 STALE auto-ingest — DRY-RUN evidence
 
-**UTC:** 2026-09-30T11:15:53.492Z
+**UTC:** 2026-09-30T15:24:33.636Z
 **Operator:** Coder Gürok (executor) · Reviewer stamp pending
-**FORCE:** 1 · **pre-age:** 3.88h (threshold 12h)
+**FORCE:** 1 · **pre-age:** 4.15h (threshold 12h)
 **Weekday window:** Mon–Fri daytime only (~09:00–17:00 VM/local intent) — no overnight @every firehose; standing cron AFTER Reviewer PASS
 
 ## Path exercised
@@ -17,15 +17,15 @@
 
 | Check | Result |
 |-------|--------|
-| 1 stamp-truth live=disk | live=`2026-09-30T11:14:27Z` disk=`2026-09-30T11:14:27Z` **PASS** |
+| 1 stamp-truth live=disk | live=`2026-09-30T15:23:16Z` disk=`2026-09-30T15:23:16Z` **PASS** |
 | 2 Brief pins / lead hf-incident / cycle 003 | unchanged (locks assert + cycle.ts sha) |
 | 3 no X | ingest-last.x skipped/disabled |
 | 4 locks hold | cycle 003 · lead hf-incident · no 004 |
-| 5 dual-home sha identical | `sage-pack-003-20260930T111527Z.tar.gz` sha256 `9e7503f3f724d85f31654726ec7d5da7d9de14c4961d6c2ee93fdcfff6fb28aa` |
-| 6 soft-fails stamped | openalex=HTTP 429 |
+| 5 dual-home sha identical | `sage-pack-003-20260930T152329Z.tar.gz` sha256 `9e3450247d1302fb76686a122e5ec246e1ba6d4d5c7b10d770c67a74978de5c3` |
+| 6 soft-fails stamped | openalex=paused_until 2026-10-01T11:14:50Z |
 | 7 not overnight spam | script documents weekday window; cron NOT installed |
 | 8 no craft/WIRE | no new WIRE-* · Brief untouched |
 
-Crawl before: `2026-09-30T07:21:22Z` → after: `2026-09-30T11:14:27Z`
+Crawl before: `2026-09-30T11:14:27Z` → after: `2026-09-30T15:23:16Z`
 
 **Standing cron:** NOT installed (awaits Reviewer PASS).

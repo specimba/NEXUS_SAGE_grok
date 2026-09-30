@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-09-30T11:14:27Z",
+  "stamped_at": "2026-09-30T15:23:16Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 206,
+      "duration_ms": 232,
       "paused_until": null,
       "reason": null
     },
@@ -17,26 +17,26 @@
       "id": "arxiv",
       "label": "arXiv",
       "status": "ok",
-      "rows": 16,
-      "duration_ms": 23390,
+      "rows": 29,
+      "duration_ms": 3239,
       "paused_until": null,
       "reason": null
     },
     {
       "id": "openalex",
       "label": "OpenAlex",
-      "status": "fail",
+      "status": "paused",
       "rows": 0,
-      "duration_ms": 174,
+      "duration_ms": 1,
       "paused_until": "2026-10-01T11:14:50Z",
-      "reason": "HTTP 429"
+      "reason": "paused_until 2026-10-01T11:14:50Z"
     },
     {
       "id": "crossref",
       "label": "Crossref",
       "status": "ok",
-      "rows": 1,
-      "duration_ms": 482,
+      "rows": 2,
+      "duration_ms": 861,
       "paused_until": null,
       "reason": null
     },
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 66,
-      "duration_ms": 8300,
+      "rows": 70,
+      "duration_ms": 8289,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 16308,
+      "duration_ms": 58,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 4304,
+      "duration_ms": 30,
       "paused_until": null,
       "reason": null
     },
@@ -72,7 +72,7 @@
       "label": "Google News",
       "status": "ok",
       "rows": 39,
-      "duration_ms": 6302,
+      "duration_ms": 20,
       "paused_until": null,
       "reason": null
     },
@@ -81,7 +81,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 2,
+      "duration_ms": 1,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 1,
+      "duration_ms": 2,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 59469,
-    "wall_ms": 59858,
-    "startup_ms": 31,
-    "main_ms": 59868
+    "sources_ms": 12733,
+    "wall_ms": 13237,
+    "startup_ms": 29,
+    "main_ms": 13261
   },
   "multi_source_independent": 9,
   "stale_hours": 6,
@@ -108,17 +108,17 @@
     "multi_source_independent": 9,
     "multi_source_raw": 11,
     "self_reposts": 2,
-    "items_in": 236,
-    "clusters_out": 211,
-    "collapsed": 25,
+    "items_in": 240,
+    "clusters_out": 213,
+    "collapsed": 27,
     "multi_source": 9,
-    "multi_member": 14,
+    "multi_member": 16,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 31,
+    "new_items": 8,
     "per_source": {
-      "hn-algolia": 66,
+      "hn-algolia": 70,
       "rss-lab": 104,
       "rss-security": 27,
       "gnews-rss": 39
@@ -319,7 +319,7 @@
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.943,
+        "score": 0.939,
         "members": [
           {
             "id": "hn:49889147",
@@ -477,7 +477,7 @@
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 18
+      "hn_dropped": 17
     },
     "gnews_near_misses": [
       {
@@ -507,7 +507,7 @@
         ]
       },
       {
-        "score": 0.477,
+        "score": 0.473,
         "blocked": "time-window",
         "hours_apart": 352.6,
         "a": {
@@ -529,7 +529,7 @@
         ]
       },
       {
-        "score": 0.362,
+        "score": 0.363,
         "blocked": "below-threshold",
         "hours_apart": 9.6,
         "a": {
@@ -551,7 +551,7 @@
         ]
       },
       {
-        "score": 0.358,
+        "score": 0.359,
         "blocked": "below-threshold",
         "hours_apart": 23,
         "a": {
@@ -617,7 +617,7 @@
         ]
       },
       {
-        "score": 0.302,
+        "score": 0.303,
         "blocked": "thin-overlap",
         "hours_apart": 12.6,
         "a": {
@@ -638,7 +638,7 @@
         ]
       },
       {
-        "score": 0.302,
+        "score": 0.303,
         "blocked": "thin-overlap",
         "hours_apart": 12.6,
         "a": {
@@ -661,7 +661,7 @@
     ],
     "near_misses": [
       {
-        "score": 0.694,
+        "score": 0.693,
         "blocked": "short-title",
         "hours_apart": 17.1,
         "a": {
@@ -703,7 +703,7 @@
         ]
       },
       {
-        "score": 0.669,
+        "score": 0.668,
         "blocked": "version-conflict",
         "hours_apart": 8,
         "a": {
@@ -773,7 +773,7 @@
         ]
       },
       {
-        "score": 0.477,
+        "score": 0.473,
         "blocked": "time-window",
         "hours_apart": 352.6,
         "a": {
@@ -816,7 +816,7 @@
         ]
       },
       {
-        "score": 0.362,
+        "score": 0.363,
         "blocked": "below-threshold",
         "hours_apart": 9.6,
         "a": {
@@ -843,44 +843,44 @@
     {
       "id": "arxiv",
       "state": "ok",
-      "streak_ok": 48,
+      "streak_ok": 49,
       "streak_fail": 0,
-      "items_last": 16
+      "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 48,
+      "streak_ok": 49,
       "streak_fail": 0,
-      "items_last": 1
+      "items_last": 2
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 48,
+      "streak_ok": 49,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 48,
+      "streak_ok": 49,
       "streak_fail": 0,
       "items_last": 39
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 48,
+      "streak_ok": 49,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 48,
+      "streak_ok": 49,
       "streak_fail": 0,
-      "items_last": 66
+      "items_last": 70
     },
     {
       "id": "openalex",
@@ -892,27 +892,27 @@
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 48,
+      "streak_ok": 49,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 48,
+      "streak_ok": 49,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 48,
+      "streak_ok": 49,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.016679166666666665,
+    "hours": 0.0037066666666666667,
     "stale": false
   },
   "hf": {
@@ -922,26 +922,26 @@
   },
   "arxiv": {
     "ok": true,
-    "enriched": 16,
-    "shelf": 0,
+    "enriched": 24,
+    "shelf": 5,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
   },
   "openalex": {
     "ok": false,
     "soft_fail": true,
-    "soft_fail_reason": "HTTP 429",
+    "soft_fail_reason": "paused_until 2026-10-01T11:14:50Z",
     "enriched": 0,
     "secondary": 0,
     "query": "LLM agent sandbox",
     "mode": "search",
     "from_cache": false,
-    "searches": 1,
+    "searches": 0,
     "retries": 0,
-    "status": "fail",
+    "status": "paused",
     "paused_until": "2026-10-01T11:14:50Z",
     "pause_reason": "3 consecutive failures → 24h",
-    "requests": 1,
+    "requests": 0,
     "auth": "anon",
     "brief": false,
     "pulse_lead": false,
@@ -953,8 +953,8 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "enriched": 1,
-    "query": "PanoVLN: Towards Effective Panoramic Vision-and-Language Navigation",
+    "enriched": 2,
+    "query": "Omni-IO Skills: Harnessing Your Agent Omni-Native",
     "mode": "bibliographic",
     "from_cache": false,
     "searches": 1,
@@ -965,12 +965,21 @@
     "merge_notes": [],
     "sample": [
       {
-        "id": "2609.34759",
-        "crossrefDoi": "https://doi.org/10.14264/77c1e7c",
-        "issued": null,
-        "type": "dissertation",
+        "id": "2609.31847",
+        "crossrefDoi": "https://doi.org/10.1007/978-3-030-85769-1_7",
+        "issued": "2021-12-03",
+        "type": "book-chapter",
         "openalexId": null,
-        "doi": "https://doi.org/10.14264/77c1e7c",
+        "doi": "https://doi.org/10.1007/978-3-030-85769-1_7",
+        "enrichOnly": false
+      },
+      {
+        "id": "2607.11433",
+        "crossrefDoi": "https://doi.org/10.1007/978-3-030-85769-1_6",
+        "issued": "2021-12-03",
+        "type": "book-chapter",
+        "openalexId": null,
+        "doi": "https://doi.org/10.1007/978-3-030-85769-1_6",
         "enrichOnly": false
       }
     ]
@@ -979,7 +988,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 66,
+    "count": 70,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -996,25 +1005,25 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 18,
+    "ai_dropped": 17,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
         "id": "hn:49896586",
         "tag": "companion",
-        "score": 969,
+        "score": 1016,
         "text": "GPT 6.1 Sol: Near-Astra intelligence for a fifth of the price"
       },
       {
         "id": "hn:49881850",
         "tag": "rest",
-        "score": 877,
+        "score": 878,
         "text": "Sonnet 5.5"
       },
       {
         "id": "hn:49896604",
         "tag": "rest",
-        "score": 642,
+        "score": 699,
         "text": "Dots: Always-on agents"
       }
     ]
@@ -1031,47 +1040,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "https://openai.com/news/rss.xml",
+        "url": "(cache:openai)",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "https://deepmind.google/blog/rss.xml",
+        "url": "(cache:deepmind)",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "https://blog.google/technology/ai/rss/",
+        "url": "(cache:google-ai)",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "https://huggingface.co/blog/feed.xml",
+        "url": "(cache:huggingface)",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "https://mistral.ai/rss.xml",
+        "url": "(cache:mistral)",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "https://blogs.nvidia.com/feed/",
+        "url": "(cache:nvidia)",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "https://developer.nvidia.com/blog/feed",
+        "url": "(cache:nvidia-dev)",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
+        "url": "(cache:ms-research)",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "https://research.google/blog/rss/",
+        "url": "(cache:google-research)",
         "count": 12
       }
     ],
@@ -1117,17 +1126,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "https://blog.trailofbits.com/feed/",
+        "url": "(cache:trailofbits)",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "https://blog.fox-it.com/feed/",
+        "url": "(cache:fox-it)",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "https://projectzero.google/feed.xml",
+        "url": "(cache:projectzero)",
         "count": 5
       }
     ],
@@ -1198,7 +1207,7 @@
       {
         "id": "gnews:b9999ba84d25ea40",
         "anchor_id": "hn:49889147",
-        "score": 0.935,
+        "score": 0.934,
         "title": "As AI models go rogue, do you still trust OpenAI and Anthropic to stop them? I don’t and neither should you - The Guardian",
         "publisher": "The Guardian",
         "self_repost": false
@@ -1246,16 +1255,16 @@
       {
         "id": "gnews:63fe76301f3c75f4",
         "anchor_id": "hn:49881899",
-        "score": 0.607,
+        "score": 0.608,
         "title": "Nvidia launches new platform for reining in rogue AI agents - TechCrunch",
         "publisher": "TechCrunch",
         "self_repost": false
       }
     ],
     "http_status": 200,
-    "content_type": "application/xml; charset=utf-8",
+    "content_type": null,
     "format": "rss2",
-    "from_cache": false,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1337,7 +1346,7 @@
     ]
   },
   "shelf": {
-    "count": 15,
+    "count": 20,
     "brief": false
   },
   "wikidata": {
