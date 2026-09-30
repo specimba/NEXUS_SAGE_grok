@@ -18,9 +18,7 @@ export const SHELF: ShelfItem[] = [
   { href: "https://owasp.org/www-project-automated-threats-to-web-applications/", label: "owasp.org/www-project-automated-threats-to-web-applications/", reason: "toolkit" as const },
   { href: "https://owasp.org/www-community/Virtual_Patching_Best_Practices", label: "owasp.org/www-community/Virtual_Patching_Best_Practices", reason: "toolkit" as const },
   { href: "https://cheatsheetseries.owasp.org/cheatsheets/Virtual_Patching_Cheat_Sheet.html", label: "cheatsheetseries.owasp.org/cheatsheets/Virtual_Patching_Cheat_Sheet.html", reason: "toolkit" as const },
-  { href: "https://arxiv.org/abs/2609.35770", label: "arxiv.org/abs/2609.35770", reason: "arxiv-shelf" as const },
-  { href: "https://arxiv.org/abs/2609.35769", label: "arxiv.org/abs/2609.35769", reason: "arxiv-shelf" as const },
-  { href: "https://arxiv.org/abs/2609.35768", label: "arxiv.org/abs/2609.35768", reason: "arxiv-shelf" as const },
-  { href: "https://arxiv.org/abs/2609.35765", label: "arxiv.org/abs/2609.35765", reason: "arxiv-shelf" as const },
-  { href: "https://github.com/Juadsuarezsan/ai-safety-redteam", label: "Juadsuarezsan/ai-safety-redteam", reason: "github-search-shelf" as const },
+  { href: "https://github.com/hyperlight-dev/hyperagent", label: "hyperlight-dev/hyperagent", reason: "github-search-shelf" as const },
+  { href: "https://github.com/jkelly-dev1/agent-sandbox-escape", label: "jkelly-dev1/agent-sandbox-escape", reason: "github-search-shelf" as const },
+  { href: "https://github.com/agentfront/enclave", label: "agentfront/enclave", reason: "github-search-shelf" as const },
 ];

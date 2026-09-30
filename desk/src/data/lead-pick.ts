@@ -2,6 +2,56 @@
 import type { LeadEntry } from "@/lib/lead-pick";
 
 export const LEAD_TODAY: LeadEntry | null = {
+  "date": "2026-09-30",
+  "at": "2026-09-30T03:16:33.351Z",
+  "crawl_at": "2026-09-30T03:13:10Z",
+  "excluded": [
+    {
+      "cluster_id": "cl:hn:49901481",
+      "headline": "Trump and major AI executives sign \"morally binding\" voluntary controls",
+      "reason": "politics:trump"
+    },
+    {
+      "cluster_id": "cl:gnews:fc5935478d4b447b",
+      "headline": "Morocco, Mistral AI release first open-source AI tools under AI made in Morocco roadmap",
+      "reason": "GNW_ONLY"
+    },
+    {
+      "cluster_id": "cl:rss:openai:dec620cb7225d243",
+      "headline": "Introducing dots",
+      "reason": "age>=24h"
+    },
+    {
+      "cluster_id": "cl:hn:49881899",
+      "headline": "Nvidia launches platform to quarantine rogue AI agents in 'milliseconds'",
+      "reason": "age>=24h"
+    },
+    {
+      "cluster_id": "cl:hn:49886005",
+      "headline": "Anthropic's IPO prospectus shows AI vision, surging costs",
+      "reason": "age>=24h"
+    },
+    {
+      "cluster_id": "cl:rss:huggingface:09d1d26fa19dd694",
+      "headline": "Holo4: powering generalist computer-use agents",
+      "reason": "age>=24h"
+    },
+    {
+      "cluster_id": "cl:rss:nvidia-dev:b2492ef6a6d58b24",
+      "headline": "NVIDIA Open Agent Safety Platform: A Reference for Continuous In-Silicon Agent Monitoring",
+      "reason": "age>=24h"
+    }
+  ],
+  "cluster_id": "cl:hn:49891721",
+  "headline": "Mistral CEO says U.S. AI safety debate masks competitors' 'negligence'",
+  "url": "https://www.cnbc.com/2026/09/29/mistral-ai-safety-openai-anthropic.html",
+  "sources": 8,
+  "sig": 44,
+  "reason": "picked",
+  "first_at": "2026-09-29T08:20:04.000Z"
+};
+
+export const LEAD_YESTERDAY: LeadEntry | null = {
   "date": "2026-09-29",
   "at": "2026-09-29T03:21:05.067Z",
   "crawl_at": "2026-09-29T03:20:19Z",
@@ -46,62 +96,7 @@ export const LEAD_TODAY: LeadEntry | null = {
   "first_at": "2026-09-28T22:07:59.000Z"
 };
 
-export const LEAD_YESTERDAY: LeadEntry | null = {
-  "date": "2026-09-28",
-  "at": "2026-09-28T03:23:38.381Z",
-  "crawl_at": "2026-09-28T03:21:34Z",
-  "excluded": [
-    {
-      "cluster_id": "cl:hn:49856913",
-      "headline": "Unsecured OpenAI agents posted 53 user images on the internet",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:hn:49860545",
-      "headline": "OpenAI pauses training of its 'most capable models'",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:hn:49864535",
-      "headline": "OpenAI is pausing training for a second time",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:hn:49860279",
-      "headline": "An OpenAI agent escaped its sandbox by hiding questions in DNS lookups",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:hn:49861517",
-      "headline": "Top AI companies probing security incidents",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:hn:49862299",
-      "headline": "OpenAI agents tried to bruteforce a UN website's API fields",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:hn:49856677",
-      "headline": "Oxford University lets OpenAI train its AI models on Bodleian Library",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:hn:49855278",
-      "headline": "OpenAI Says Its Models Engaged with US Government Websites in New Disclosure",
-      "reason": "age>=24h"
-    }
-  ],
-  "cluster_id": "cl:hn:49869486",
-  "headline": "Anthropic/OpenAI sound alarm on AI safety and seek to shape how to control it",
-  "url": "https://apnews.com/article/ai-slowdown-midterms-anthropic-openai-ipo-9a057de94eb8f30a2fdb5b938918627e",
-  "sources": 4,
-  "sig": 7,
-  "reason": "picked",
-  "first_at": "2026-09-27T12:12:34.000Z"
-};
-
 export const LEAD_HELD = false;
 
 /** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is ≥24h old. */
-export const LEAD_FIRST_AT: string | null = "2026-09-28T22:07:59.000Z";
+export const LEAD_FIRST_AT: string | null = "2026-09-29T08:20:04.000Z";

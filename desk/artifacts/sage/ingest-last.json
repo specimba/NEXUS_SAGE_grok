@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-09-29T23:20:31Z",
+  "stamped_at": "2026-09-30T03:13:10Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 206,
+      "duration_ms": 254,
       "paused_until": null,
       "reason": null
     },
@@ -17,26 +17,26 @@
       "id": "arxiv",
       "label": "arXiv",
       "status": "ok",
-      "rows": 28,
-      "duration_ms": 3250,
+      "rows": 4,
+      "duration_ms": 163618,
       "paused_until": null,
       "reason": null
     },
     {
       "id": "openalex",
       "label": "OpenAlex",
-      "status": "ok",
-      "rows": 3,
-      "duration_ms": 4,
-      "paused_until": null,
-      "reason": null
+      "status": "fail",
+      "rows": 0,
+      "duration_ms": 127,
+      "paused_until": "2026-09-30T03:16:34Z",
+      "reason": "HTTP 429"
     },
     {
       "id": "crossref",
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 2,
+      "duration_ms": 667,
       "paused_until": null,
       "reason": null
     },
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 72,
-      "duration_ms": 8272,
+      "rows": 66,
+      "duration_ms": 8314,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 60,
+      "duration_ms": 18112,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 30,
+      "duration_ms": 4450,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 66,
-      "duration_ms": 25,
+      "rows": 42,
+      "duration_ms": 6344,
       "paused_until": null,
       "reason": null
     },
@@ -80,8 +80,8 @@
       "id": "github",
       "label": "GitHub",
       "status": "ok",
-      "rows": 1,
-      "duration_ms": 2,
+      "rows": 3,
+      "duration_ms": 351,
       "paused_until": null,
       "reason": null
     },
@@ -90,48 +90,171 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 1,
+      "duration_ms": 273,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 11852,
-    "wall_ms": 12218,
-    "startup_ms": 27,
-    "main_ms": 12226
+    "sources_ms": 202510,
+    "wall_ms": 202843,
+    "startup_ms": 57,
+    "main_ms": 202852
   },
-  "multi_source_independent": 17,
+  "multi_source_independent": 11,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 17,
-    "multi_source_raw": 19,
-    "self_reposts": 4,
-    "items_in": 269,
-    "clusters_out": 219,
-    "collapsed": 50,
-    "multi_source": 17,
-    "multi_member": 22,
+    "multi_source_independent": 11,
+    "multi_source_raw": 14,
+    "self_reposts": 5,
+    "items_in": 239,
+    "clusters_out": 209,
+    "collapsed": 30,
+    "multi_source": 11,
+    "multi_member": 18,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 19,
+    "new_items": 41,
     "per_source": {
-      "hn-algolia": 72,
+      "hn-algolia": 66,
       "rss-lab": 104,
       "rss-security": 27,
-      "gnews-rss": 66
+      "gnews-rss": 42
     },
     "multi_source_clusters": [
+      {
+        "title": "Mistral CEO says U.S. AI safety debate masks competitors' 'negligence'",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 9,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:49891721",
+            "source": "hn-algolia",
+            "title": "Mistral CEO says U.S. AI safety debate masks competitors' 'negligence'",
+            "at": "2026-09-29T12:01:07Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:270d9efc5c48b0b5",
+            "source": "gnews-rss",
+            "title": "Mistral CEO: AI Slowdown Debate Has Been \"A Cover For The Negligence\" Of Our Competitors - Real Clear Politics",
+            "at": "2026-09-30T01:35:43Z",
+            "publisher": "Real Clear Politics"
+          },
+          {
+            "id": "gnews:1fa7c41d3ef36b6a",
+            "source": "gnews-rss",
+            "title": "Mistral CEO Says AI Safety Debate Is Being Used to Mask ‘Negligence’ as Rival Labs Face Pressure to Slow Down - Tekedia",
+            "at": "2026-09-29T19:26:37Z",
+            "publisher": "Tekedia"
+          },
+          {
+            "id": "gnews:91b4339588bcf7d7",
+            "source": "gnews-rss",
+            "title": "Mistral CEO Says AI Safety Debate Masks Negligence - Yahoo Finance",
+            "at": "2026-09-29T19:12:11Z",
+            "publisher": "Yahoo Finance"
+          },
+          {
+            "id": "gnews:5e07e6e25ecfc0ec",
+            "source": "gnews-rss",
+            "title": "Mistral CEO: AI Safety Debate Masks Competitor Negligence - briefs.co",
+            "at": "2026-09-29T18:40:00Z",
+            "publisher": "briefs.co"
+          },
+          {
+            "id": "gnews:78bc3c7e6dc2e358",
+            "source": "gnews-rss",
+            "title": "Mistral CEO accuses competitors of 'negligence' - Politico",
+            "at": "2026-09-29T17:39:00Z",
+            "publisher": "Politico"
+          },
+          {
+            "id": "gnews:e098c7c402c0f4e5",
+            "source": "gnews-rss",
+            "title": "Mistral CEO says U.S. AI safety debate masks competitors’ 'negligence' - cnbc.com",
+            "at": "2026-09-29T08:20:04Z",
+            "publisher": "cnbc.com"
+          },
+          {
+            "id": "gnews:7bf4d4d4a01e9a1a",
+            "source": "gnews-rss",
+            "title": "Mistral CEO calls AI safety debate a cover for competitors’ negligence — CNBC - UA.NEWS",
+            "at": "2026-09-29T12:04:40Z",
+            "publisher": "UA.NEWS"
+          },
+          {
+            "id": "gnews:f17831af1d5581b8",
+            "source": "gnews-rss",
+            "title": "Mistral's CEO is calling the U.S. AI safety debate a cover for rivals' negligence - qz.com",
+            "at": "2026-09-29T11:21:22Z",
+            "publisher": "qz.com"
+          }
+        ]
+      },
+      {
+        "title": "Is Claude Conscious? Inside Anthropic's Quest to Instill Morality into Its AI",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 0.966,
+        "members": [
+          {
+            "id": "hn:49899579",
+            "source": "hn-algolia",
+            "title": "Is Claude Conscious? Inside Anthropic's Quest to Instill Morality into Its AI",
+            "at": "2026-09-29T20:07:08Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:646dfb9d4b577be4",
+            "source": "gnews-rss",
+            "title": "Is Claude Conscious? Inside Anthropic’s Quest to Instill Morality Into Its A.I. Models - The New York Times",
+            "at": "2026-09-30T00:09:48Z",
+            "publisher": "The New York Times"
+          }
+        ]
+      },
+      {
+        "title": "Trump and major AI executives sign \"morally binding\" voluntary controls",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 0.859,
+        "members": [
+          {
+            "id": "hn:49901481",
+            "source": "hn-algolia",
+            "title": "Trump and major AI executives sign \"morally binding\" voluntary controls",
+            "at": "2026-09-29T22:13:42Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:3ebf4d0fc9de5cfb",
+            "source": "gnews-rss",
+            "title": "Trump and major AI executives sign \"morally binding\" voluntary controls: \"It's almost like a constitution\" - CBS News",
+            "at": "2026-09-29T20:23:00Z",
+            "publisher": "CBS News"
+          }
+        ]
+      },
       {
         "title": "Introducing dots",
         "sources": [
           "rss-lab",
-          "hn-algolia",
-          "gnews-rss"
+          "hn-algolia"
         ],
-        "size": 5,
+        "size": 2,
         "score": 1,
         "members": [
           {
@@ -147,324 +270,6 @@
             "title": "Introducing dots",
             "at": "2026-09-29T00:00:00Z",
             "publisher": "openai"
-          },
-          {
-            "id": "gnews:73d7031af8b3c62f",
-            "source": "gnews-rss",
-            "title": "OpenAI launches dots, always-on AI agents with their own cloud computers - The Next Web",
-            "at": "2026-09-29T17:30:38Z",
-            "publisher": "The Next Web"
-          },
-          {
-            "id": "gnews:1ae28f2a6410d91a",
-            "source": "gnews-rss",
-            "title": "OpenAI launches Dots, new ‘always-on agents’ you can assign tasks to - 9to5google.com",
-            "at": "2026-09-29T17:55:00Z",
-            "publisher": "9to5google.com"
-          },
-          {
-            "id": "gnews:c115088a737a7312",
-            "source": "gnews-rss",
-            "title": "OpenAI Goes After Meta's Muse With Always-On Dots Agents - PCMag",
-            "at": "2026-09-29T18:39:36Z",
-            "publisher": "PCMag"
-          }
-        ]
-      },
-      {
-        "title": "NVIDIA Open Agent Safety Platform: A Reference for Continuous In-Silicon Agent Monitoring",
-        "sources": [
-          "rss-lab",
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 5,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:49875500",
-            "source": "hn-algolia",
-            "title": "Nvidia Open Agent Safety Platform",
-            "at": "2026-09-28T09:27:59Z",
-            "publisher": null
-          },
-          {
-            "id": "rss:nvidia-dev:b2492ef6a6d58b24",
-            "source": "rss-lab",
-            "title": "NVIDIA Open Agent Safety Platform: A Reference for Continuous In-Silicon Agent Monitoring",
-            "at": "2026-09-28T08:56:55Z",
-            "publisher": "nvidia-dev"
-          },
-          {
-            "id": "gnews:4004285c68b55d03",
-            "source": "gnews-rss",
-            "title": "NVIDIA Unveils an Open Platform for AI Agent Safety - 80 Level",
-            "at": "2026-09-29T07:01:30Z",
-            "publisher": "80 Level"
-          },
-          {
-            "id": "gnews:5a0cdfa8f9e777fc",
-            "source": "gnews-rss",
-            "title": "NVIDIA Launches Open Agent Safety Platform to Secure Agents From Testing to Deployment - NVIDIA Newsroom",
-            "at": "2026-09-28T22:54:06Z",
-            "publisher": "NVIDIA Newsroom",
-            "self_repost": true
-          },
-          {
-            "id": "gnews:e8fb2dc5bc5e0e45",
-            "source": "gnews-rss",
-            "title": "NVIDIA Open Agent Safety Platform: A Reference for Continuous In-Silicon Agent Monitoring | NVIDIA Technical Blog - NVIDIA Developer",
-            "at": "2026-09-28T09:16:18Z",
-            "publisher": "NVIDIA Developer",
-            "self_repost": true
-          }
-        ]
-      },
-      {
-        "title": "OpenAI hit with landmark lawsuit following Hugging Face hack",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:49902027",
-            "source": "hn-algolia",
-            "title": "OpenAI hit with landmark lawsuit following Hugging Face hack",
-            "at": "2026-09-29T23:04:15Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:24d9890114932d6e",
-            "source": "gnews-rss",
-            "title": "OpenAI hit with landmark lawsuit following Hugging Face hack - Axios",
-            "at": "2026-09-29T19:01:29Z",
-            "publisher": "Axios"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI Gets Sued over the Hugging Face Hack",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:49901051",
-            "source": "hn-algolia",
-            "title": "OpenAI Gets Sued over the Hugging Face Hack",
-            "at": "2026-09-29T21:40:05Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:0912bafeff443c9f",
-            "source": "gnews-rss",
-            "title": "OpenAI Gets Sued Over the Hugging Face Hack - WIRED",
-            "at": "2026-09-29T19:05:00Z",
-            "publisher": "WIRED"
-          }
-        ]
-      },
-      {
-        "title": "Anthropic IPO leak is insane",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 5,
-        "score": 0.76,
-        "members": [
-          {
-            "id": "hn:49900851",
-            "source": "hn-algolia",
-            "title": "Anthropic IPO leak is insane",
-            "at": "2026-09-29T21:25:51Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:49897766",
-            "source": "hn-algolia",
-            "title": "Leaked Anthropic IPO Prospectus",
-            "at": "2026-09-29T18:07:01Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:ea54f61e1d619d6e",
-            "source": "gnews-rss",
-            "title": "What smart people are saying about Anthropic's leaked IPO prospectus numbers - Business Insider",
-            "at": "2026-09-29T17:18:47Z",
-            "publisher": "Business Insider"
-          },
-          {
-            "id": "gnews:1fe0544c980a67e3",
-            "source": "gnews-rss",
-            "title": "Anthropic IPO: What investors should know about costs, risks after leaked prospectus - Yahoo Finance",
-            "at": "2026-09-29T16:47:31Z",
-            "publisher": "Yahoo Finance"
-          },
-          {
-            "id": "gnews:4f67e54278c41899",
-            "source": "gnews-rss",
-            "title": "Anthropic’s $2 trillion IPO prospectus has leaked—here’s a snapshot of its income statements - Fortune",
-            "at": "2026-09-29T10:03:00Z",
-            "publisher": "Fortune"
-          }
-        ]
-      },
-      {
-        "title": "Anthropic's $518B AI buildout hinges largely on deals that cannot be canceled",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:49898457",
-            "source": "hn-algolia",
-            "title": "Anthropic's $518B AI buildout hinges largely on deals that cannot be canceled",
-            "at": "2026-09-29T18:50:02Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:248685bd41dd63c2",
-            "source": "gnews-rss",
-            "title": "Anthropic's $518 billion AI buildout hinges largely on deals that cannot be canceled, filing shows - Reuters",
-            "at": "2026-09-29T16:48:56Z",
-            "publisher": "Reuters"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI Targets $30B in New Funding at $1.4T Value",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 3,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:49897336",
-            "source": "hn-algolia",
-            "title": "OpenAI Targets $30B in New Funding at $1.4T Value",
-            "at": "2026-09-29T17:44:21Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:a4ebcb52eb910cdb",
-            "source": "gnews-rss",
-            "title": "OpenAI Targets $30 Billion in New Funding at $1.4 Trillion Value - Bloomberg.com",
-            "at": "2026-09-29T17:35:13Z",
-            "publisher": "Bloomberg.com"
-          },
-          {
-            "id": "gnews:599ee5403f56a414",
-            "source": "gnews-rss",
-            "title": "OpenAI targets $30 billion funding at $1.4 trillion valuation, Bloomberg News reports - Reuters",
-            "at": "2026-09-29T18:27:05Z",
-            "publisher": "Reuters"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI Says It Will Not Release Newest A.I. Model Over Safety Concerns",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 12,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:49886416",
-            "source": "hn-algolia",
-            "title": "OpenAI Says It Will Not Release Newest A.I. Model Over Safety Concerns",
-            "at": "2026-09-29T00:34:27Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:49885133",
-            "source": "hn-algolia",
-            "title": "OpenAI Scraps Release of New AI Model over Safety Concerns",
-            "at": "2026-09-28T22:07:59Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:49886459",
-            "source": "hn-algolia",
-            "title": "OpenAI scraps release of Astra 6.1 model over safety issues",
-            "at": "2026-09-29T00:38:41Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:49885916",
-            "source": "hn-algolia",
-            "title": "WSJ reports OpenAI scrapped GPT-6.1 Astra over safety concerns",
-            "at": "2026-09-28T23:30:35Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:b7d033421bafaea5",
-            "source": "gnews-rss",
-            "title": "Exclusive | OpenAI Scraps Release of New AI Model Over Safety Concerns - WSJ",
-            "at": "2026-09-28T23:07:00Z",
-            "publisher": "WSJ"
-          },
-          {
-            "id": "gnews:e3f242808cfa167e",
-            "source": "gnews-rss",
-            "title": "OpenAI scraps rollout of new model over safety concerns - BBC",
-            "at": "2026-09-29T09:14:13Z",
-            "publisher": "BBC"
-          },
-          {
-            "id": "gnews:365a53e338881cfd",
-            "source": "gnews-rss",
-            "title": "Trump hosts AI giants as OpenAI scraps new model over safety concerns - Fox Business",
-            "at": "2026-09-29T18:09:21Z",
-            "publisher": "Fox Business"
-          },
-          {
-            "id": "gnews:d55df394020156eb",
-            "source": "gnews-rss",
-            "title": "Safety Over Speed: OpenAI Scraps GPT-6.1 Astra Release - AI Magazine",
-            "at": "2026-09-29T17:42:45Z",
-            "publisher": "AI Magazine"
-          },
-          {
-            "id": "gnews:e352de3a9ce1a4c2",
-            "source": "gnews-rss",
-            "title": "OpenAI cancels release of Astra 6.1 model due to safety concerns - Tech Xplore",
-            "at": "2026-09-29T15:10:52Z",
-            "publisher": "Tech Xplore"
-          },
-          {
-            "id": "gnews:19886814d5000841",
-            "source": "gnews-rss",
-            "title": "OpenAI Says It Will Not Release Newest Astra A.I. Model Over Safety Concerns - The New York Times",
-            "at": "2026-09-29T00:19:42Z",
-            "publisher": "The New York Times"
-          },
-          {
-            "id": "gnews:7d041d504e29c615",
-            "source": "gnews-rss",
-            "title": "OpenAI halts releasing newest model over safety concerns - The Hill",
-            "at": "2026-09-29T13:52:00Z",
-            "publisher": "The Hill"
-          },
-          {
-            "id": "gnews:68ac0c1942cce6d9",
-            "source": "gnews-rss",
-            "title": "OpenAI cancels release of AI model GPT-6.1 Astra, citing safety concerns - aljazeera.com",
-            "at": "2026-09-29T03:43:46Z",
-            "publisher": "aljazeera.com"
           }
         ]
       },
@@ -500,7 +305,7 @@
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.943,
+        "score": 0.941,
         "members": [
           {
             "id": "hn:49889147",
@@ -515,87 +320,6 @@
             "title": "As AI models go rogue, do you still trust OpenAI and Anthropic to stop them? I don’t and neither should you - The Guardian",
             "at": "2026-09-29T16:32:00Z",
             "publisher": "The Guardian"
-          }
-        ]
-      },
-      {
-        "title": "Anthropic warns of 'existential risks to humanity' in IPO prospectus",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 10,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:49887124",
-            "source": "hn-algolia",
-            "title": "Anthropic warns of 'existential risks to humanity' in IPO prospectus",
-            "at": "2026-09-29T01:58:42Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:49888334",
-            "source": "hn-algolia",
-            "title": "Anthropic warns AI may pose 'existential risks to humanity' in IPO filing",
-            "at": "2026-09-29T04:38:45Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:49891070",
-            "source": "hn-algolia",
-            "title": "Anthropic warns of 'existential risks to humanity' in IPO prospectus",
-            "at": "2026-09-29T10:53:11Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:49887955",
-            "source": "hn-algolia",
-            "title": "Anthropic warns AI may pose 'existential risks to humanity' in IPO filing",
-            "at": "2026-09-29T03:50:17Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:f0c39178329057d8",
-            "source": "gnews-rss",
-            "title": "Anthropic IPO filing warns AI may pose 'existential risks to humanity' - Euronews.com",
-            "at": "2026-09-29T09:44:13Z",
-            "publisher": "Euronews.com"
-          },
-          {
-            "id": "gnews:527d2bc9b63c4711",
-            "source": "gnews-rss",
-            "title": "EXCLUSIVE: Anthropic warns AI may pose 'existential risks to humanity' in IPO filing - Reuters",
-            "at": "2026-09-29T00:17:00Z",
-            "publisher": "Reuters"
-          },
-          {
-            "id": "gnews:f53fb1a296de2d10",
-            "source": "gnews-rss",
-            "title": "Anthropic warns of 'existential' AI risks in IPO filing: Report - Tech Xplore",
-            "at": "2026-09-29T15:40:05Z",
-            "publisher": "Tech Xplore"
-          },
-          {
-            "id": "gnews:8a9f5bd8aab26035",
-            "source": "gnews-rss",
-            "title": "Anthropic warns of ‘existential risks to humanity’ in IPO prospectus - Financial Times",
-            "at": "2026-09-29T01:06:35Z",
-            "publisher": "Financial Times"
-          },
-          {
-            "id": "gnews:98026566146b862f",
-            "source": "gnews-rss",
-            "title": "Anthropic IPO Prospectus Warns Its AI Could Pose ‘Existential Risks To Humanity’ - Forbes",
-            "at": "2026-09-29T03:43:25Z",
-            "publisher": "Forbes"
-          },
-          {
-            "id": "gnews:7186d759fcecf0c2",
-            "source": "gnews-rss",
-            "title": "Anthropic warns investors of AI’s 'existential risk to humanity' in IPO prospectus, reports say - CNBC",
-            "at": "2026-09-29T01:23:00Z",
-            "publisher": "CNBC"
           }
         ]
       },
@@ -625,38 +349,13 @@
         ]
       },
       {
-        "title": "Anthropic's prospectus details losses, growth, and, yes, a warning that its AI",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 0.939,
-        "members": [
-          {
-            "id": "hn:49891799",
-            "source": "hn-algolia",
-            "title": "Anthropic's prospectus details losses, growth, and, yes, a warning that its AI",
-            "at": "2026-09-29T12:07:08Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:39b7e353c2bef337",
-            "source": "gnews-rss",
-            "title": "Anthropic's prospectus details losses, growth, and, yes, a warning that its AI could end humanity - TechCrunch",
-            "at": "2026-09-29T05:13:43Z",
-            "publisher": "TechCrunch"
-          }
-        ]
-      },
-      {
         "title": "Nvidia launches platform to quarantine rogue AI agents in 'milliseconds'",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.647,
+        "score": 0.644,
         "members": [
           {
             "id": "hn:49881899",
@@ -675,38 +374,13 @@
         ]
       },
       {
-        "title": "Anthropic leaders to control company via 'Founder LLC'",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 0.617,
-        "members": [
-          {
-            "id": "hn:49889617",
-            "source": "hn-algolia",
-            "title": "Anthropic leaders to control company via 'Founder LLC'",
-            "at": "2026-09-29T07:47:10Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:1044d3739aa492ee",
-            "source": "gnews-rss",
-            "title": "EXCLUSIVE: Anthropic leaders to control AI lab via 'Founder LLC' to promote public good over market forces - Reuters",
-            "at": "2026-09-29T00:09:00Z",
-            "publisher": "Reuters"
-          }
-        ]
-      },
-      {
         "title": "Anthropic's IPO prospectus shows AI vision, surging costs",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.946,
+        "score": 0.958,
         "members": [
           {
             "id": "hn:49886005",
@@ -748,6 +422,54 @@
             "publisher": "huggingface"
           }
         ]
+      },
+      {
+        "title": "NVIDIA Open Agent Safety Platform: A Reference for Continuous In-Silicon Agent Monitoring",
+        "sources": [
+          "rss-lab",
+          "hn-algolia"
+        ],
+        "size": 5,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:49875500",
+            "source": "hn-algolia",
+            "title": "Nvidia Open Agent Safety Platform",
+            "at": "2026-09-28T09:27:59Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:49875565",
+            "source": "hn-algolia",
+            "title": "Nvidia Launches Agent Safety Platform to Secure Agents, Testing to Deployment",
+            "at": "2026-09-28T09:37:44Z",
+            "publisher": null
+          },
+          {
+            "id": "rss:nvidia-dev:b2492ef6a6d58b24",
+            "source": "rss-lab",
+            "title": "NVIDIA Open Agent Safety Platform: A Reference for Continuous In-Silicon Agent Monitoring",
+            "at": "2026-09-28T08:56:55Z",
+            "publisher": "nvidia-dev"
+          },
+          {
+            "id": "gnews:5a0cdfa8f9e777fc",
+            "source": "gnews-rss",
+            "title": "NVIDIA Launches Open Agent Safety Platform to Secure Agents From Testing to Deployment - nvidianews.nvidia.com",
+            "at": "2026-09-28T22:54:06Z",
+            "publisher": "nvidianews.nvidia.com",
+            "self_repost": true
+          },
+          {
+            "id": "gnews:e8fb2dc5bc5e0e45",
+            "source": "gnews-rss",
+            "title": "NVIDIA Open Agent Safety Platform: A Reference for Continuous In-Silicon Agent Monitoring | NVIDIA Technical Blog - NVIDIA Developer",
+            "at": "2026-09-28T09:16:18Z",
+            "publisher": "NVIDIA Developer",
+            "self_repost": true
+          }
+        ]
       }
     ],
     "self_repost_clusters": [
@@ -755,8 +477,7 @@
         "title": "NVIDIA Open Agent Safety Platform: A Reference for Continuous In-Silicon Agent Monitoring",
         "sources": [
           "rss-lab",
-          "hn-algolia",
-          "gnews-rss"
+          "hn-algolia"
         ],
         "all_sources": [
           "rss-lab",
@@ -766,8 +487,8 @@
         "self_reposts": [
           {
             "id": "gnews:5a0cdfa8f9e777fc",
-            "publisher": "NVIDIA Newsroom",
-            "title": "NVIDIA Launches Open Agent Safety Platform to Secure Agents From Testing to Deployment - NVIDIA Newsroom"
+            "publisher": "nvidianews.nvidia.com",
+            "title": "NVIDIA Launches Open Agent Safety Platform to Secure Agents From Testing to Deployment - nvidianews.nvidia.com"
           },
           {
             "id": "gnews:e8fb2dc5bc5e0e45",
@@ -777,7 +498,7 @@
         ]
       },
       {
-        "title": "Towards safety cases for frontier AI training",
+        "title": "AI Native by Design: Lessons Learned from Building NVIDIA TensorRT Model Connect",
         "sources": [
           "rss-lab"
         ],
@@ -787,9 +508,26 @@
         ],
         "self_reposts": [
           {
-            "id": "gnews:c3ce37ff107d6fcb",
-            "publisher": "OpenAI",
-            "title": "Towards safety cases for frontier AI training - OpenAI"
+            "id": "gnews:f2ec96c3c93d380f",
+            "publisher": "NVIDIA Developer",
+            "title": "AI Native by Design: Lessons Learned from Building NVIDIA TensorRT Model Connect | NVIDIA Technical Blog - NVIDIA Developer"
+          }
+        ]
+      },
+      {
+        "title": "Lower the Cost of Building and Running Visual AI Agents with NVIDIA VSS Blueprint 3.3",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:da72c35430bfb77f",
+            "publisher": "NVIDIA Developer",
+            "title": "Lower the Cost of Building and Running Visual AI Agents with NVIDIA VSS Blueprint 3.3 | NVIDIA Technical Blog - NVIDIA Developer"
           }
         ]
       },
@@ -824,99 +562,175 @@
           "reason": "category:GeForce NOW"
         }
       ],
-      "gnews_shown_dropped": [],
+      "gnews_shown_dropped": [
+        {
+          "publisher": "eu.36kr.com",
+          "title": "Fei-Fei Li Secured a Coveted Tenure Position, Sparking Panic Among Embodied Intelligence Entrepreneurs - eu.36kr.com"
+        },
+        {
+          "publisher": "thestreet.com",
+          "title": "Michael Burry sends fresh warning on Nvidia stock - thestreet.com"
+        },
+        {
+          "publisher": "Medium",
+          "title": "The Next Item: Netflix’s GenRec and the New Economics of Recommendation - Medium"
+        },
+        {
+          "publisher": "Yahoo! Finance Canada",
+          "title": "Venly Wins Mastercard For Fintechs France-Belgium - Yahoo! Finance Canada"
+        }
+      ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 8
+      "hn_dropped": 17
     },
     "gnews_near_misses": [
       {
-        "score": 0.598,
+        "score": 0.674,
         "blocked": "thin-overlap",
-        "hours_apart": 18.2,
+        "hours_apart": 11.1,
         "a": {
-          "id": "hn:49885916",
-          "source": "hn-algolia",
-          "title": "WSJ reports OpenAI scrapped GPT-6.1 Astra over safety concerns",
-          "at": "2026-09-28T23:30:35Z"
+          "id": "rss:openai:d6b9f5e651b1891e",
+          "source": "rss-lab",
+          "title": "Introducing GPT-6.1 Sol",
+          "at": "2026-09-29T10:00:00Z"
         },
         "b": {
-          "id": "gnews:d55df394020156eb",
+          "id": "gnews:cb112a72b9c5ceed",
           "source": "gnews-rss",
-          "title": "Safety Over Speed: OpenAI Scraps GPT-6.1 Astra Release - AI Magazine",
-          "at": "2026-09-29T17:42:45Z"
+          "title": "OpenAI Released GPT-6.1 Sol Model, Priced Below Competitors - MarketForces Africa",
+          "at": "2026-09-29T21:05:18Z"
         },
         "shared": [
-          "openai",
           "gpt",
           "6.1",
-          "astra",
-          "safety"
+          "sol"
         ]
       },
       {
-        "score": 0.586,
-        "blocked": "short-title",
-        "hours_apart": 17.9,
-        "a": {
-          "id": "rss:openai:dec620cb7225d243",
-          "source": "rss-lab",
-          "title": "Introducing dots",
-          "at": "2026-09-29T00:00:00Z"
-        },
-        "b": {
-          "id": "gnews:1ae28f2a6410d91a",
-          "source": "gnews-rss",
-          "title": "OpenAI launches Dots, new ‘always-on agents’ you can assign tasks to - 9to5google.com",
-          "at": "2026-09-29T17:55:00Z"
-        },
-        "shared": [
-          "dot"
-        ]
-      },
-      {
-        "score": 0.583,
-        "blocked": "short-title",
-        "hours_apart": 17.5,
-        "a": {
-          "id": "rss:openai:dec620cb7225d243",
-          "source": "rss-lab",
-          "title": "Introducing dots",
-          "at": "2026-09-29T00:00:00Z"
-        },
-        "b": {
-          "id": "gnews:73d7031af8b3c62f",
-          "source": "gnews-rss",
-          "title": "OpenAI launches dots, always-on AI agents with their own cloud computers - The Next Web",
-          "at": "2026-09-29T17:30:38Z"
-        },
-        "shared": [
-          "dot"
-        ]
-      },
-      {
-        "score": 0.573,
-        "blocked": "short-title",
-        "hours_apart": 18.7,
-        "a": {
-          "id": "rss:openai:dec620cb7225d243",
-          "source": "rss-lab",
-          "title": "Introducing dots",
-          "at": "2026-09-29T00:00:00Z"
-        },
-        "b": {
-          "id": "gnews:c115088a737a7312",
-          "source": "gnews-rss",
-          "title": "OpenAI Goes After Meta's Muse With Always-On Dots Agents - PCMag",
-          "at": "2026-09-29T18:39:36Z"
-        },
-        "shared": [
-          "dot"
-        ]
-      },
-      {
-        "score": 0.55,
+        "score": 0.599,
         "blocked": "below-threshold",
-        "hours_apart": 0.3,
+        "hours_apart": 13.6,
+        "a": {
+          "id": "hn:49891721",
+          "source": "hn-algolia",
+          "title": "Mistral CEO says U.S. AI safety debate masks competitors' 'negligence'",
+          "at": "2026-09-29T12:01:07Z"
+        },
+        "b": {
+          "id": "gnews:270d9efc5c48b0b5",
+          "source": "gnews-rss",
+          "title": "Mistral CEO: AI Slowdown Debate Has Been \"A Cover For The Negligence\" Of Our Competitors - Real Clear Politics",
+          "at": "2026-09-30T01:35:43Z"
+        },
+        "shared": [
+          "mistral",
+          "ceo",
+          "ai",
+          "debat",
+          "competitor",
+          "negligenc"
+        ]
+      },
+      {
+        "score": 0.587,
+        "blocked": "below-threshold",
+        "hours_apart": 5.6,
+        "a": {
+          "id": "hn:49891721",
+          "source": "hn-algolia",
+          "title": "Mistral CEO says U.S. AI safety debate masks competitors' 'negligence'",
+          "at": "2026-09-29T12:01:07Z"
+        },
+        "b": {
+          "id": "gnews:78bc3c7e6dc2e358",
+          "source": "gnews-rss",
+          "title": "Mistral CEO accuses competitors of 'negligence' - Politico",
+          "at": "2026-09-29T17:39:00Z"
+        },
+        "shared": [
+          "mistral",
+          "ceo",
+          "competitor",
+          "negligenc"
+        ]
+      },
+      {
+        "score": 0.554,
+        "blocked": "below-threshold",
+        "hours_apart": 7.4,
+        "a": {
+          "id": "hn:49891721",
+          "source": "hn-algolia",
+          "title": "Mistral CEO says U.S. AI safety debate masks competitors' 'negligence'",
+          "at": "2026-09-29T12:01:07Z"
+        },
+        "b": {
+          "id": "gnews:1fa7c41d3ef36b6a",
+          "source": "gnews-rss",
+          "title": "Mistral CEO Says AI Safety Debate Is Being Used to Mask ‘Negligence’ as Rival Labs Face Pressure to Slow Down - Tekedia",
+          "at": "2026-09-29T19:26:37Z"
+        },
+        "shared": [
+          "mistral",
+          "ceo",
+          "ai",
+          "safety",
+          "debat",
+          "mask",
+          "negligenc"
+        ]
+      },
+      {
+        "score": 0.481,
+        "blocked": "thin-overlap",
+        "hours_apart": 4,
+        "a": {
+          "id": "hn:49896586",
+          "source": "hn-algolia",
+          "title": "GPT 6.1 Sol: Near-Astra intelligence for a fifth of the price",
+          "at": "2026-09-29T17:06:45Z"
+        },
+        "b": {
+          "id": "gnews:cb112a72b9c5ceed",
+          "source": "gnews-rss",
+          "title": "OpenAI Released GPT-6.1 Sol Model, Priced Below Competitors - MarketForces Africa",
+          "at": "2026-09-29T21:05:18Z"
+        },
+        "shared": [
+          "gpt",
+          "6.1",
+          "sol",
+          "pric"
+        ]
+      },
+      {
+        "score": 0.458,
+        "blocked": "below-threshold",
+        "hours_apart": 14,
+        "a": {
+          "id": "rss:nvidia-dev:b2492ef6a6d58b24",
+          "source": "rss-lab",
+          "title": "NVIDIA Open Agent Safety Platform: A Reference for Continuous In-Silicon Agent Monitoring",
+          "at": "2026-09-28T08:56:55Z"
+        },
+        "b": {
+          "id": "gnews:5a0cdfa8f9e777fc",
+          "source": "gnews-rss",
+          "title": "NVIDIA Launches Open Agent Safety Platform to Secure Agents From Testing to Deployment - nvidianews.nvidia.com",
+          "at": "2026-09-28T22:54:06Z"
+        },
+        "shared": [
+          "nvidia",
+          "open",
+          "agent",
+          "safety",
+          "platform"
+        ]
+      },
+      {
+        "score": 0.397,
+        "blocked": "below-threshold",
+        "hours_apart": 20.4,
         "a": {
           "id": "hn:49886459",
           "source": "hn-algolia",
@@ -924,82 +738,38 @@
           "at": "2026-09-29T00:38:41Z"
         },
         "b": {
-          "id": "gnews:19886814d5000841",
+          "id": "gnews:cb112a72b9c5ceed",
           "source": "gnews-rss",
-          "title": "OpenAI Says It Will Not Release Newest Astra A.I. Model Over Safety Concerns - The New York Times",
-          "at": "2026-09-29T00:19:42Z"
+          "title": "OpenAI Released GPT-6.1 Sol Model, Priced Below Competitors - MarketForces Africa",
+          "at": "2026-09-29T21:05:18Z"
         },
         "shared": [
           "openai",
           "releas",
-          "astra",
-          "model",
-          "safety"
+          "6.1",
+          "model"
         ]
       },
       {
-        "score": 0.539,
-        "blocked": "short-title",
-        "hours_apart": 18.7,
-        "a": {
-          "id": "rss:openai:dec620cb7225d243",
-          "source": "rss-lab",
-          "title": "Introducing dots",
-          "at": "2026-09-29T00:00:00Z"
-        },
-        "b": {
-          "id": "gnews:9f0a08cae4dac2ed",
-          "source": "gnews-rss",
-          "title": "OpenAI’s Dots: Like OpenClaw declawed – for $100/mo ChatGPT Pro users - ZDNET",
-          "at": "2026-09-29T18:41:00Z"
-        },
-        "shared": [
-          "dot"
-        ]
-      },
-      {
-        "score": 0.535,
+        "score": 0.396,
         "blocked": "below-threshold",
-        "hours_apart": 17,
+        "hours_apart": 4.4,
         "a": {
-          "id": "hn:49897766",
+          "id": "hn:49889147",
           "source": "hn-algolia",
-          "title": "Leaked Anthropic IPO Prospectus",
-          "at": "2026-09-29T18:07:01Z"
+          "title": "As AI models go rogue, do you still trust OpenAI and Anthropic to stop them?",
+          "at": "2026-09-29T06:46:39Z"
         },
         "b": {
-          "id": "gnews:8a9f5bd8aab26035",
+          "id": "gnews:3636106127388976",
           "source": "gnews-rss",
-          "title": "Anthropic warns of ‘existential risks to humanity’ in IPO prospectus - Financial Times",
-          "at": "2026-09-29T01:06:35Z"
+          "title": "Nvidia Says It Can Stop Rogue AI in 'Milliseconds' - Newser",
+          "at": "2026-09-29T11:11:00Z"
         },
         "shared": [
-          "anthropic",
-          "ipo",
-          "prospectus"
-        ]
-      },
-      {
-        "score": 0.533,
-        "blocked": "below-threshold",
-        "hours_apart": 19.6,
-        "a": {
-          "id": "hn:49885133",
-          "source": "hn-algolia",
-          "title": "OpenAI Scraps Release of New AI Model over Safety Concerns",
-          "at": "2026-09-28T22:07:59Z"
-        },
-        "b": {
-          "id": "gnews:d55df394020156eb",
-          "source": "gnews-rss",
-          "title": "Safety Over Speed: OpenAI Scraps GPT-6.1 Astra Release - AI Magazine",
-          "at": "2026-09-29T17:42:45Z"
-        },
-        "shared": [
-          "openai",
-          "scrap",
-          "releas",
-          "safety"
+          "ai",
+          "rogu",
+          "stop"
         ]
       }
     ],
@@ -1025,6 +795,50 @@
         ]
       },
       {
+        "score": 0.674,
+        "blocked": "thin-overlap",
+        "hours_apart": 11.1,
+        "a": {
+          "id": "rss:openai:d6b9f5e651b1891e",
+          "source": "rss-lab",
+          "title": "Introducing GPT-6.1 Sol",
+          "at": "2026-09-29T10:00:00Z"
+        },
+        "b": {
+          "id": "gnews:cb112a72b9c5ceed",
+          "source": "gnews-rss",
+          "title": "OpenAI Released GPT-6.1 Sol Model, Priced Below Competitors - MarketForces Africa",
+          "at": "2026-09-29T21:05:18Z"
+        },
+        "shared": [
+          "gpt",
+          "6.1",
+          "sol"
+        ]
+      },
+      {
+        "score": 0.667,
+        "blocked": "thin-overlap",
+        "hours_apart": 7.1,
+        "a": {
+          "id": "hn:49896586",
+          "source": "hn-algolia",
+          "title": "GPT 6.1 Sol: Near-Astra intelligence for a fifth of the price",
+          "at": "2026-09-29T17:06:45Z"
+        },
+        "b": {
+          "id": "rss:openai:d6b9f5e651b1891e",
+          "source": "rss-lab",
+          "title": "Introducing GPT-6.1 Sol",
+          "at": "2026-09-29T10:00:00Z"
+        },
+        "shared": [
+          "gpt",
+          "6.1",
+          "sol"
+        ]
+      },
+      {
         "score": 0.667,
         "blocked": "version-conflict",
         "hours_apart": 8,
@@ -1047,9 +861,83 @@
         ]
       },
       {
-        "score": 0.665,
+        "score": 0.599,
+        "blocked": "below-threshold",
+        "hours_apart": 13.6,
+        "a": {
+          "id": "hn:49891721",
+          "source": "hn-algolia",
+          "title": "Mistral CEO says U.S. AI safety debate masks competitors' 'negligence'",
+          "at": "2026-09-29T12:01:07Z"
+        },
+        "b": {
+          "id": "gnews:270d9efc5c48b0b5",
+          "source": "gnews-rss",
+          "title": "Mistral CEO: AI Slowdown Debate Has Been \"A Cover For The Negligence\" Of Our Competitors - Real Clear Politics",
+          "at": "2026-09-30T01:35:43Z"
+        },
+        "shared": [
+          "mistral",
+          "ceo",
+          "ai",
+          "debat",
+          "competitor",
+          "negligenc"
+        ]
+      },
+      {
+        "score": 0.587,
+        "blocked": "below-threshold",
+        "hours_apart": 5.6,
+        "a": {
+          "id": "hn:49891721",
+          "source": "hn-algolia",
+          "title": "Mistral CEO says U.S. AI safety debate masks competitors' 'negligence'",
+          "at": "2026-09-29T12:01:07Z"
+        },
+        "b": {
+          "id": "gnews:78bc3c7e6dc2e358",
+          "source": "gnews-rss",
+          "title": "Mistral CEO accuses competitors of 'negligence' - Politico",
+          "at": "2026-09-29T17:39:00Z"
+        },
+        "shared": [
+          "mistral",
+          "ceo",
+          "competitor",
+          "negligenc"
+        ]
+      },
+      {
+        "score": 0.554,
+        "blocked": "below-threshold",
+        "hours_apart": 7.4,
+        "a": {
+          "id": "hn:49891721",
+          "source": "hn-algolia",
+          "title": "Mistral CEO says U.S. AI safety debate masks competitors' 'negligence'",
+          "at": "2026-09-29T12:01:07Z"
+        },
+        "b": {
+          "id": "gnews:1fa7c41d3ef36b6a",
+          "source": "gnews-rss",
+          "title": "Mistral CEO Says AI Safety Debate Is Being Used to Mask ‘Negligence’ as Rival Labs Face Pressure to Slow Down - Tekedia",
+          "at": "2026-09-29T19:26:37Z"
+        },
+        "shared": [
+          "mistral",
+          "ceo",
+          "ai",
+          "safety",
+          "debat",
+          "mask",
+          "negligenc"
+        ]
+      },
+      {
+        "score": 0.481,
         "blocked": "thin-overlap",
-        "hours_apart": 7.1,
+        "hours_apart": 4,
         "a": {
           "id": "hn:49896586",
           "source": "hn-algolia",
@@ -1057,123 +945,16 @@
           "at": "2026-09-29T17:06:45Z"
         },
         "b": {
-          "id": "rss:openai:d6b9f5e651b1891e",
-          "source": "rss-lab",
-          "title": "Introducing GPT-6.1 Sol",
-          "at": "2026-09-29T10:00:00Z"
+          "id": "gnews:cb112a72b9c5ceed",
+          "source": "gnews-rss",
+          "title": "OpenAI Released GPT-6.1 Sol Model, Priced Below Competitors - MarketForces Africa",
+          "at": "2026-09-29T21:05:18Z"
         },
         "shared": [
           "gpt",
           "6.1",
-          "sol"
-        ]
-      },
-      {
-        "score": 0.598,
-        "blocked": "thin-overlap",
-        "hours_apart": 18.2,
-        "a": {
-          "id": "hn:49885916",
-          "source": "hn-algolia",
-          "title": "WSJ reports OpenAI scrapped GPT-6.1 Astra over safety concerns",
-          "at": "2026-09-28T23:30:35Z"
-        },
-        "b": {
-          "id": "gnews:d55df394020156eb",
-          "source": "gnews-rss",
-          "title": "Safety Over Speed: OpenAI Scraps GPT-6.1 Astra Release - AI Magazine",
-          "at": "2026-09-29T17:42:45Z"
-        },
-        "shared": [
-          "openai",
-          "gpt",
-          "6.1",
-          "astra",
-          "safety"
-        ]
-      },
-      {
-        "score": 0.586,
-        "blocked": "short-title",
-        "hours_apart": 17.9,
-        "a": {
-          "id": "rss:openai:dec620cb7225d243",
-          "source": "rss-lab",
-          "title": "Introducing dots",
-          "at": "2026-09-29T00:00:00Z"
-        },
-        "b": {
-          "id": "gnews:1ae28f2a6410d91a",
-          "source": "gnews-rss",
-          "title": "OpenAI launches Dots, new ‘always-on agents’ you can assign tasks to - 9to5google.com",
-          "at": "2026-09-29T17:55:00Z"
-        },
-        "shared": [
-          "dot"
-        ]
-      },
-      {
-        "score": 0.583,
-        "blocked": "short-title",
-        "hours_apart": 17.5,
-        "a": {
-          "id": "rss:openai:dec620cb7225d243",
-          "source": "rss-lab",
-          "title": "Introducing dots",
-          "at": "2026-09-29T00:00:00Z"
-        },
-        "b": {
-          "id": "gnews:73d7031af8b3c62f",
-          "source": "gnews-rss",
-          "title": "OpenAI launches dots, always-on AI agents with their own cloud computers - The Next Web",
-          "at": "2026-09-29T17:30:38Z"
-        },
-        "shared": [
-          "dot"
-        ]
-      },
-      {
-        "score": 0.573,
-        "blocked": "short-title",
-        "hours_apart": 18.7,
-        "a": {
-          "id": "rss:openai:dec620cb7225d243",
-          "source": "rss-lab",
-          "title": "Introducing dots",
-          "at": "2026-09-29T00:00:00Z"
-        },
-        "b": {
-          "id": "gnews:c115088a737a7312",
-          "source": "gnews-rss",
-          "title": "OpenAI Goes After Meta's Muse With Always-On Dots Agents - PCMag",
-          "at": "2026-09-29T18:39:36Z"
-        },
-        "shared": [
-          "dot"
-        ]
-      },
-      {
-        "score": 0.55,
-        "blocked": "below-threshold",
-        "hours_apart": 0.3,
-        "a": {
-          "id": "hn:49886459",
-          "source": "hn-algolia",
-          "title": "OpenAI scraps release of Astra 6.1 model over safety issues",
-          "at": "2026-09-29T00:38:41Z"
-        },
-        "b": {
-          "id": "gnews:19886814d5000841",
-          "source": "gnews-rss",
-          "title": "OpenAI Says It Will Not Release Newest Astra A.I. Model Over Safety Concerns - The New York Times",
-          "at": "2026-09-29T00:19:42Z"
-        },
-        "shared": [
-          "openai",
-          "releas",
-          "astra",
-          "model",
-          "safety"
+          "sol",
+          "pric"
         ]
       }
     ]
@@ -1182,143 +963,121 @@
     {
       "id": "arxiv",
       "state": "ok",
-      "streak_ok": 45,
+      "streak_ok": 46,
       "streak_fail": 0,
-      "items_last": 28
+      "items_last": 4
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 45,
+      "streak_ok": 46,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 45,
+      "streak_ok": 46,
       "streak_fail": 0,
-      "items_last": 1
+      "items_last": 3
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 45,
+      "streak_ok": 46,
       "streak_fail": 0,
-      "items_last": 66
+      "items_last": 42
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 45,
+      "streak_ok": 46,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 45,
+      "streak_ok": 46,
       "streak_fail": 0,
-      "items_last": 72
+      "items_last": 66
     },
     {
       "id": "openalex",
       "state": "flaky",
-      "streak_ok": 19,
-      "streak_fail": 0,
-      "items_last": 3
+      "streak_ok": 0,
+      "streak_fail": 1,
+      "items_last": 0
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 45,
+      "streak_ok": 46,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 45,
+      "streak_ok": 46,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 45,
+      "streak_ok": 46,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.0035280555555555555,
+    "hours": 0.05647944444444444,
     "stale": false
   },
   "hf": {
     "ok": true,
-    "count": 27,
+    "count": 24,
     "url": "https://huggingface.co/api/daily_papers"
   },
   "arxiv": {
     "ok": true,
-    "enriched": 24,
-    "shelf": 4,
+    "enriched": 4,
+    "shelf": 0,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
   },
   "openalex": {
-    "ok": true,
-    "soft_fail": false,
-    "soft_fail_reason": null,
-    "enriched": 3,
-    "secondary": 3,
-    "query": "LLM agent",
+    "ok": false,
+    "soft_fail": true,
+    "soft_fail_reason": "HTTP 429",
+    "enriched": 0,
+    "secondary": 0,
+    "query": "LLM agent sandbox",
     "mode": "search",
-    "from_cache": true,
-    "searches": 0,
+    "from_cache": false,
+    "searches": 1,
     "retries": 0,
-    "status": "ok",
-    "paused_until": null,
-    "pause_reason": null,
-    "requests": 0,
+    "status": "fail",
+    "paused_until": "2026-09-30T03:16:34Z",
+    "pause_reason": "HTTP 429 Retry-After 40",
+    "requests": 1,
     "auth": "anon",
     "brief": false,
     "pulse_lead": false,
     "papers_enrich_only": true,
     "url": "https://api.openalex.org/works",
-    "sample": [
-      {
-        "id": "W4393160747",
-        "openalexId": "https://openalex.org/W4393160747",
-        "year": 2024,
-        "doi": "https://doi.org/10.1609/aaai.v38i17.29936",
-        "enrichOnly": true
-      },
-      {
-        "id": "W4401545735",
-        "openalexId": "https://openalex.org/W4401545735",
-        "year": 2024,
-        "doi": "https://doi.org/10.1145/3688399",
-        "enrichOnly": true
-      },
-      {
-        "id": "W4416033994",
-        "openalexId": "https://openalex.org/W4416033994",
-        "year": 2025,
-        "doi": "https://doi.org/10.18653/v1/2025.findings-emnlp.743",
-        "enrichOnly": true
-      }
-    ]
+    "sample": []
   },
   "crossref": {
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
     "enriched": 1,
-    "query": "doi:10.1145/3688399",
-    "mode": "filter",
-    "from_cache": true,
-    "searches": 0,
+    "query": "VisionHOPE: Visual Backbones as Self-Modifying Learning Systems",
+    "mode": "bibliographic",
+    "from_cache": false,
+    "searches": 1,
     "brief": false,
     "pulse_lead": false,
     "papers_enrich_only": true,
@@ -1326,12 +1085,12 @@
     "merge_notes": [],
     "sample": [
       {
-        "id": "W4401545735",
-        "crossrefDoi": "https://doi.org/10.1145/3688399",
-        "issued": "2025-02-10",
-        "type": "journal-article",
-        "openalexId": "https://openalex.org/W4401545735",
-        "doi": "https://doi.org/10.1145/3688399",
+        "id": "2609.33325",
+        "crossrefDoi": "https://doi.org/10.52202/068431-0569",
+        "issued": "2022",
+        "type": "proceedings-article",
+        "openalexId": null,
+        "doi": "https://doi.org/10.52202/068431-0569",
         "enrichOnly": false
       }
     ]
@@ -1340,42 +1099,42 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 72,
+    "count": 66,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
     "queries_run": [
-      "Anthropic",
       "Hugging Face",
-      "agents"
+      "agents",
+      "eval"
     ],
     "queries_ok": [
-      "Anthropic",
       "Hugging Face",
-      "agents"
+      "agents",
+      "eval"
     ],
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 8,
+    "ai_dropped": 17,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
         "id": "hn:49881850",
         "tag": "rest",
-        "score": 868,
+        "score": 872,
         "text": "Sonnet 5.5"
       },
       {
         "id": "hn:49896586",
         "tag": "companion",
-        "score": 732,
+        "score": 818,
         "text": "GPT 6.1 Sol: Near-Astra intelligence for a fifth of the price"
       },
       {
         "id": "hn:49896604",
         "tag": "rest",
-        "score": 434,
+        "score": 477,
         "text": "Dots: Always-on agents"
       }
     ]
@@ -1392,47 +1151,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "(cache:openai)",
+        "url": "https://openai.com/news/rss.xml",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "(cache:deepmind)",
+        "url": "https://deepmind.google/blog/rss.xml",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "(cache:google-ai)",
+        "url": "https://blog.google/technology/ai/rss/",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "(cache:huggingface)",
+        "url": "https://huggingface.co/blog/feed.xml",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "(cache:mistral)",
+        "url": "https://mistral.ai/rss.xml",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "(cache:nvidia)",
+        "url": "https://blogs.nvidia.com/feed/",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "(cache:nvidia-dev)",
+        "url": "https://developer.nvidia.com/blog/feed",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "(cache:ms-research)",
+        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "(cache:google-research)",
+        "url": "https://research.google/blog/rss/",
         "count": 12
       }
     ],
@@ -1478,17 +1237,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "(cache:trailofbits)",
+        "url": "https://blog.trailofbits.com/feed/",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "(cache:fox-it)",
+        "url": "https://blog.fox-it.com/feed/",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "(cache:projectzero)",
+        "url": "https://projectzero.google/feed.xml",
         "count": 5
       }
     ],
@@ -1529,120 +1288,40 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 66,
-    "pool": 392,
+    "items": 42,
+    "pool": 327,
     "corroborators": [
       {
-        "id": "gnews:73d7031af8b3c62f",
-        "anchor_id": "hn:49896604",
-        "score": 0.712,
-        "title": "OpenAI launches dots, always-on AI agents with their own cloud computers - The Next Web",
-        "publisher": "The Next Web",
+        "id": "gnews:646dfb9d4b577be4",
+        "anchor_id": "hn:49899579",
+        "score": 0.979,
+        "title": "Is Claude Conscious? Inside Anthropic’s Quest to Instill Morality Into Its A.I. Models - The New York Times",
+        "publisher": "The New York Times",
         "self_repost": false
       },
       {
-        "id": "gnews:1ae28f2a6410d91a",
-        "anchor_id": "hn:49896604",
-        "score": 0.703,
-        "title": "OpenAI launches Dots, new ‘always-on agents’ you can assign tasks to - 9to5google.com",
-        "publisher": "9to5google.com",
+        "id": "gnews:3ebf4d0fc9de5cfb",
+        "anchor_id": "hn:49901481",
+        "score": 0.851,
+        "title": "Trump and major AI executives sign \"morally binding\" voluntary controls: \"It's almost like a constitution\" - CBS News",
+        "publisher": "CBS News",
         "self_repost": false
       },
       {
-        "id": "gnews:c115088a737a7312",
-        "anchor_id": "hn:49896604",
-        "score": 0.694,
-        "title": "OpenAI Goes After Meta's Muse With Always-On Dots Agents - PCMag",
-        "publisher": "PCMag",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:a4ebcb52eb910cdb",
-        "anchor_id": "hn:49897336",
+        "id": "gnews:f2ec96c3c93d380f",
+        "anchor_id": "rss:nvidia-dev:a1b7c3f1faa2ee83",
         "score": 1,
-        "title": "OpenAI Targets $30 Billion in New Funding at $1.4 Trillion Value - Bloomberg.com",
-        "publisher": "Bloomberg.com",
-        "self_repost": false
+        "title": "AI Native by Design: Lessons Learned from Building NVIDIA TensorRT Model Connect | NVIDIA Technical Blog - NVIDIA Developer",
+        "publisher": "NVIDIA Developer",
+        "self_repost": true
       },
       {
-        "id": "gnews:599ee5403f56a414",
-        "anchor_id": "hn:49897336",
-        "score": 0.732,
-        "title": "OpenAI targets $30 billion funding at $1.4 trillion valuation, Bloomberg News reports - Reuters",
-        "publisher": "Reuters",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:b7d033421bafaea5",
-        "anchor_id": "hn:49885133",
+        "id": "gnews:da72c35430bfb77f",
+        "anchor_id": "rss:nvidia-dev:250cdf9491b40b01",
         "score": 1,
-        "title": "Exclusive | OpenAI Scraps Release of New AI Model Over Safety Concerns - WSJ",
-        "publisher": "WSJ",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:e3f242808cfa167e",
-        "anchor_id": "hn:49885133",
-        "score": 0.711,
-        "title": "OpenAI scraps rollout of new model over safety concerns - BBC",
-        "publisher": "BBC",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:365a53e338881cfd",
-        "anchor_id": "hn:49885133",
-        "score": 0.692,
-        "title": "Trump hosts AI giants as OpenAI scraps new model over safety concerns - Fox Business",
-        "publisher": "Fox Business",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:d55df394020156eb",
-        "anchor_id": "hn:49886459",
-        "score": 0.706,
-        "title": "Safety Over Speed: OpenAI Scraps GPT-6.1 Astra Release - AI Magazine",
-        "publisher": "AI Magazine",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:e352de3a9ce1a4c2",
-        "anchor_id": "hn:49886459",
-        "score": 0.639,
-        "title": "OpenAI cancels release of Astra 6.1 model due to safety concerns - Tech Xplore",
-        "publisher": "Tech Xplore",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:ea54f61e1d619d6e",
-        "anchor_id": "hn:49897766",
-        "score": 0.741,
-        "title": "What smart people are saying about Anthropic's leaked IPO prospectus numbers - Business Insider",
-        "publisher": "Business Insider",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:1fe0544c980a67e3",
-        "anchor_id": "hn:49897766",
-        "score": 0.717,
-        "title": "Anthropic IPO: What investors should know about costs, risks after leaked prospectus - Yahoo Finance",
-        "publisher": "Yahoo Finance",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:4f67e54278c41899",
-        "anchor_id": "hn:49897766",
-        "score": 0.715,
-        "title": "Anthropic’s $2 trillion IPO prospectus has leaked—here’s a snapshot of its income statements - Fortune",
-        "publisher": "Fortune",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:248685bd41dd63c2",
-        "anchor_id": "hn:49898457",
-        "score": 1,
-        "title": "Anthropic's $518 billion AI buildout hinges largely on deals that cannot be canceled, filing shows - Reuters",
-        "publisher": "Reuters",
-        "self_repost": false
+        "title": "Lower the Cost of Building and Running Visual AI Agents with NVIDIA VSS Blueprint 3.3 | NVIDIA Technical Blog - NVIDIA Developer",
+        "publisher": "NVIDIA Developer",
+        "self_repost": true
       },
       {
         "id": "gnews:b9999ba84d25ea40",
@@ -1653,73 +1332,33 @@
         "self_repost": false
       },
       {
-        "id": "gnews:f0c39178329057d8",
-        "anchor_id": "hn:49888334",
+        "id": "gnews:e098c7c402c0f4e5",
+        "anchor_id": "hn:49891721",
         "score": 1,
-        "title": "Anthropic IPO filing warns AI may pose 'existential risks to humanity' - Euronews.com",
-        "publisher": "Euronews.com",
+        "title": "Mistral CEO says U.S. AI safety debate masks competitors’ 'negligence' - cnbc.com",
+        "publisher": "cnbc.com",
         "self_repost": false
       },
       {
-        "id": "gnews:527d2bc9b63c4711",
-        "anchor_id": "hn:49888334",
-        "score": 1,
-        "title": "EXCLUSIVE: Anthropic warns AI may pose 'existential risks to humanity' in IPO filing - Reuters",
-        "publisher": "Reuters",
+        "id": "gnews:7bf4d4d4a01e9a1a",
+        "anchor_id": "hn:49891721",
+        "score": 0.678,
+        "title": "Mistral CEO calls AI safety debate a cover for competitors’ negligence — CNBC - UA.NEWS",
+        "publisher": "UA.NEWS",
         "self_repost": false
       },
       {
-        "id": "gnews:f53fb1a296de2d10",
-        "anchor_id": "hn:49888334",
-        "score": 0.902,
-        "title": "Anthropic warns of 'existential' AI risks in IPO filing: Report - Tech Xplore",
-        "publisher": "Tech Xplore",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:19886814d5000841",
-        "anchor_id": "hn:49886416",
-        "score": 0.985,
-        "title": "OpenAI Says It Will Not Release Newest Astra A.I. Model Over Safety Concerns - The New York Times",
-        "publisher": "The New York Times",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:7d041d504e29c615",
-        "anchor_id": "hn:49886416",
-        "score": 0.787,
-        "title": "OpenAI halts releasing newest model over safety concerns - The Hill",
-        "publisher": "The Hill",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:8a9f5bd8aab26035",
-        "anchor_id": "hn:49887124",
-        "score": 1,
-        "title": "Anthropic warns of ‘existential risks to humanity’ in IPO prospectus - Financial Times",
-        "publisher": "Financial Times",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:98026566146b862f",
-        "anchor_id": "hn:49887124",
-        "score": 0.943,
-        "title": "Anthropic IPO Prospectus Warns Its AI Could Pose ‘Existential Risks To Humanity’ - Forbes",
-        "publisher": "Forbes",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:7186d759fcecf0c2",
-        "anchor_id": "hn:49887124",
-        "score": 0.936,
-        "title": "Anthropic warns investors of AI’s 'existential risk to humanity' in IPO prospectus, reports say - CNBC",
-        "publisher": "CNBC",
+        "id": "gnews:f17831af1d5581b8",
+        "anchor_id": "hn:49891721",
+        "score": 0.646,
+        "title": "Mistral's CEO is calling the U.S. AI safety debate a cover for rivals' negligence - qz.com",
+        "publisher": "qz.com",
         "self_repost": false
       },
       {
         "id": "gnews:3636106127388976",
         "anchor_id": "hn:49881899",
-        "score": 0.644,
+        "score": 0.645,
         "title": "Nvidia Says It Can Stop Rogue AI in 'Milliseconds' - Newser",
         "publisher": "Newser",
         "self_repost": false
@@ -1733,60 +1372,20 @@
         "self_repost": false
       },
       {
-        "id": "gnews:4004285c68b55d03",
-        "anchor_id": "hn:49875500",
-        "score": 1,
-        "title": "NVIDIA Unveils an Open Platform for AI Agent Safety - 80 Level",
-        "publisher": "80 Level",
+        "id": "gnews:438dbae3c206eeff",
+        "anchor_id": "hn:49886005",
+        "score": 0.941,
+        "title": "EXCLUSIVE: Anthropic's IPO prospectus shows sweeping AI vision, surging costs - Reuters",
+        "publisher": "Reuters",
         "self_repost": false
       },
       {
         "id": "gnews:5a0cdfa8f9e777fc",
-        "anchor_id": "hn:49875500",
-        "score": 0.788,
-        "title": "NVIDIA Launches Open Agent Safety Platform to Secure Agents From Testing to Deployment - NVIDIA Newsroom",
-        "publisher": "NVIDIA Newsroom",
+        "anchor_id": "hn:49875565",
+        "score": 0.989,
+        "title": "NVIDIA Launches Open Agent Safety Platform to Secure Agents From Testing to Deployment - nvidianews.nvidia.com",
+        "publisher": "nvidianews.nvidia.com",
         "self_repost": true
-      },
-      {
-        "id": "gnews:c3ce37ff107d6fcb",
-        "anchor_id": "rss:openai:2fc54b690d7b20a2",
-        "score": 1,
-        "title": "Towards safety cases for frontier AI training - OpenAI",
-        "publisher": "OpenAI",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:39b7e353c2bef337",
-        "anchor_id": "hn:49891799",
-        "score": 0.937,
-        "title": "Anthropic's prospectus details losses, growth, and, yes, a warning that its AI could end humanity - TechCrunch",
-        "publisher": "TechCrunch",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:68ac0c1942cce6d9",
-        "anchor_id": "hn:49885916",
-        "score": 0.641,
-        "title": "OpenAI cancels release of AI model GPT-6.1 Astra, citing safety concerns - aljazeera.com",
-        "publisher": "aljazeera.com",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:1044d3739aa492ee",
-        "anchor_id": "hn:49889617",
-        "score": 0.646,
-        "title": "EXCLUSIVE: Anthropic leaders to control AI lab via 'Founder LLC' to promote public good over market forces - Reuters",
-        "publisher": "Reuters",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:438dbae3c206eeff",
-        "anchor_id": "hn:49886005",
-        "score": 0.946,
-        "title": "EXCLUSIVE: Anthropic's IPO prospectus shows sweeping AI vision, surging costs - Reuters",
-        "publisher": "Reuters",
-        "self_repost": false
       },
       {
         "id": "gnews:e8fb2dc5bc5e0e45",
@@ -1806,9 +1405,9 @@
       }
     ],
     "http_status": 200,
-    "content_type": null,
+    "content_type": "application/xml; charset=utf-8",
     "format": "rss2",
-    "from_cache": true,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1817,38 +1416,38 @@
     "pulse_only": true,
     "url_template": "https://news.google.com/rss/search?q={QUERY}&hl=en-US&gl=US&ceid=US:en",
     "queried": [
-      "OpenAI",
       "Anthropic",
-      "Gemini",
-      "NVIDIA AI"
+      "large language model",
+      "NVIDIA AI",
+      "Mistral AI"
     ],
     "queries_ok_list": [
-      "OpenAI",
       "Anthropic",
-      "Gemini",
-      "NVIDIA AI"
+      "large language model",
+      "NVIDIA AI",
+      "Mistral AI"
     ],
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:4acf77b3576ad944",
-        "title": "AMD takes on Nvidia with aggressive $8.2 billion bet on AI’s next era - thestreet.com",
-        "publisher": "thestreet.com",
-        "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOcUd2UV9QeWdzS0p4d3c4ZFpfanJNOF84eHBxNXU3dGNlMGpzbkVkeDBqd3dpQUNtaVQ3MjBYeE4yNmxNV2plS2NiZ25xT2JzRWRpZ0dYMjE0ZlFhV0ZqS2hGdnpsMlJsQ3ljZkdDNThYYTBYS0FMNjR0MDk1Sjc2dDVpX2NRSTI4NjVTUlYzWldZTXFFbmF3bFpuaUpNWFZZOGxkMkEwMzZpX1RTbmJqYWtITQ?oc=5",
+        "id": "gnews:295089b03d435171",
+        "title": "DeepSeek partners with Huawei to develop chip programming tools, reducing reliance on Nvidia - reuters.com",
+        "publisher": "reuters.com",
+        "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPdUg5OUtKZEFWWE1PU3dHYURRTThhbS1fWTM2YzdIekQyTTIwU1daMl8wSW5XNTl4aklKSWlxVHRrazlhRlNjNXZDX0ZHd3RnUldXTUZmbGNuYXJYMUV2SFVvWEZsVWRuajcxazZ5WmZ3eEg5TEMtMVVIMXB1V0ppNHA4VEIyQzN0c0hmZDNjaWFLTE81d3IxLXZQeWVJWjhzWTNrUXBzU0IwYXhaX3NqUXkwNTJmMS1yZlhiaGNPRVUxcGZ0RmNKVFhRRVZrQQ?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:28044d8ba39a3802",
-        "title": "Life's Way Happier For 3 Zodiac Signs After The Moon Enters Gemini On Wednesday - YourTango",
-        "publisher": "YourTango",
-        "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxONGx1bVdCODF2S19hTVNabnphck04M2FmM1laSXlseGx0WU5XMFdSVlhNQVRXbmlJMW54NDZoSEF3X2hvN2ZOX2tVTUoyTWJvS1VUQm41ZldrUmF3ekt6dmhaT3MyQ01YeFJlRGJEMGllTXREdV9CQ2NjeTQyZkZmS0I1UzFWS3lJ?oc=5",
+        "id": "gnews:677eadf3e7a993d5",
+        "title": "Anthropic CEO Dario Amodei flags ‘very real risks’ of AI after White House meeting with Trump - Firstpost",
+        "publisher": "Firstpost",
+        "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPNUFRZTFjaGFkRjV5VTFuSEtrY3hqOGxaQ3dBZUIxUnIwNEJaRWxZck5ueDg0cmFzNG9QU2lWWjVQZnRrY0MxWFplQ2JuZ0x5dW9ROHdNNUd3OTdFRUJYU1U3bUNlRVc4al9LcGVsQnFKWTFqUUlTSUF0RUxVb21GU1JlcGticFNpbVl4elBTZXc2aGl2Z3pOVXlucmVNX0lPQ1lJcU9WcHVZbDVWOVUySVFaV1BzbEo0ZjZEMTM1dmNYSmttNllZM0pjdHVkLTZvNlHSAdcBQVVfeXFMTVMzX2t4YkpsUVYwR2JLY0pBa2tPZjlMb2ZyNFZNSWwwM0hUMEE0bUxMa1FrY0xaaHpmb0g5MWhPY1NYeTdqUFdIMmNKS3ZPS21SVzZ6c0M3NWxFM282ci1YZ2RLTHlTbDNHY0hweHhRelN3VW1WVlF0b3FNbEhRbmY2eGdfeXVfY25jZ2pIR2dEbmY2aXRWX3czZ3JUSVl3bXNMWFRHRlNxOTdQMzczZndpVU96NFBocFBBZUJMQm9XN1VUTE92TDRVeU1lZnZxcmRzS0VlSEE?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:0912bafeff443c9f",
-        "title": "OpenAI Gets Sued Over the Hugging Face Hack - WIRED",
-        "publisher": "WIRED",
-        "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1sWXNhZ2ZMMlZzU2REeFZIR3ZJX3dsRFVveGcweGR5dlVsY0lhYnljb0JOM3VWY3B3dDZONm1rcGdma2RpWExtdXNMckNkWmdDam1ZeUpXcjdUemxCQjIzNFo2SFVYeUJIRW11RUVPXzdIRTRERmc?oc=5",
+        "id": "gnews:549f32a2c5626cc4",
+        "title": "Report: Anthropic Prospectus Includes a Chilling Warning - Newser",
+        "publisher": "Newser",
+        "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQcm1OY0NuNGVsRTNGdzNMUHc4aU1DTmpKWkVIYWFqUVpIeU9WaEFxVmFkY2d0RWw0LXN6Z3JTcG90bDNhVXd6anVqZUxUU1QwbXMtQkNtR053RV9fRVpyLWpBclgtWEozSkRSNkdkQUtuRmw5eU5GcFQ2b1BoRU5qekdiWkdudThrb1hUdGJaWVBCS2pFOHQ3dzN4V0o?oc=5",
         "tag": "rest"
       }
     ]
@@ -1865,24 +1464,32 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "query": "OWASP LLM",
-    "shelf": 1,
-    "from_cache": true,
-    "searches": 0,
-    "rate_limit_remaining": null,
+    "query": "agent sandbox escape",
+    "shelf": 3,
+    "from_cache": false,
+    "searches": 1,
+    "rate_limit_remaining": 9,
     "brief": false,
     "pulse_lead": false,
     "shelf_only": true,
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
-        "label": "Juadsuarezsan/ai-safety-redteam",
-        "href": "https://github.com/Juadsuarezsan/ai-safety-redteam"
+        "label": "hyperlight-dev/hyperagent",
+        "href": "https://github.com/hyperlight-dev/hyperagent"
+      },
+      {
+        "label": "jkelly-dev1/agent-sandbox-escape",
+        "href": "https://github.com/jkelly-dev1/agent-sandbox-escape"
+      },
+      {
+        "label": "agentfront/enclave",
+        "href": "https://github.com/agentfront/enclave"
       }
     ]
   },
   "shelf": {
-    "count": 17,
+    "count": 15,
     "brief": false
   },
   "wikidata": {
@@ -1890,28 +1497,17 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "seeds": [
-      "DeepMind",
       "Anthropic",
-      "Meta AI"
+      "Meta AI",
+      "Fox-IT"
     ],
-    "searches": 0,
-    "from_cache": true,
+    "searches": 1,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "deny_grounding_only": true,
     "url": "https://www.wikidata.org/w/api.php",
     "hints": [
-      {
-        "seed": "DeepMind",
-        "qid": "Q15733006",
-        "label": "Google DeepMind",
-        "description": "artificial intelligence company owned by Google",
-        "status": "matched",
-        "source": "wikidata",
-        "briefEligible": false,
-        "pulseLeadEligible": false,
-        "denyGroundingOnly": true
-      },
       {
         "seed": "Anthropic",
         "qid": "Q116758847",
@@ -1928,6 +1524,17 @@
         "qid": "Q112114913",
         "label": "Meta AI",
         "description": "artificial intelligence laboratory owned by Meta",
+        "status": "matched",
+        "source": "wikidata",
+        "briefEligible": false,
+        "pulseLeadEligible": false,
+        "denyGroundingOnly": true
+      },
+      {
+        "seed": "Fox-IT",
+        "qid": "Q5476521",
+        "label": "Fox-IT",
+        "description": "information security company in the Netherlands",
         "status": "matched",
         "source": "wikidata",
         "briefEligible": false,
