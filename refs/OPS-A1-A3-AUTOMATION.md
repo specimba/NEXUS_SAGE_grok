@@ -382,3 +382,10 @@ Gates:
 - Crawl `2026-10-01T03:17:41Z` → `2026-10-01T07:15:55Z` · pack `sage-pack-003-20261001T071800Z.tar.gz`
 - Dual-home sha `1597c95e2489…` · soft-fails: openalex=paused_until 2026-10-01T11:14:50Z; google_news=Microsoft Research:empty_channel
 - Checklist: see `refs/A1-DRY-RUN.md` · Reviewer stamp pending · **cron not installed**
+
+## A1 dry-run evidence (2026-10-01T11:14Z)
+
+- Script: `desk/scripts/a1-stale-ingest.mjs` · FORCE=1 path exercised
+- Crawl `2026-10-01T07:15:55Z` → `2026-10-01T11:13:08Z` · pack `sage-pack-003-20261001T111408Z.tar.gz`
+- Dual-home sha `5cde878f743f…` · soft-fails: openalex=paused_until 2026-10-01T11:14:50Z
+- Checklist: see `refs/A1-DRY-RUN.md` · Reviewer stamp pending · **cron not installed**

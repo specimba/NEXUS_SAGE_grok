@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-01T07:15:55Z",
+  "stamped_at": "2026-10-01T11:13:08Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 265,
+      "duration_ms": 223,
       "paused_until": null,
       "reason": null
     },
@@ -17,8 +17,8 @@
       "id": "arxiv",
       "label": "arXiv",
       "status": "ok",
-      "rows": 5,
-      "duration_ms": 115248,
+      "rows": 0,
+      "duration_ms": 23411,
       "paused_until": null,
       "reason": null
     },
@@ -35,8 +35,8 @@
       "id": "crossref",
       "label": "Crossref",
       "status": "ok",
-      "rows": 2,
-      "duration_ms": 968,
+      "rows": 1,
+      "duration_ms": 4,
       "paused_until": null,
       "reason": null
     },
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 80,
-      "duration_ms": 8280,
+      "rows": 83,
+      "duration_ms": 8318,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 105,
-      "duration_ms": 94,
+      "duration_ms": 16501,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 32,
+      "duration_ms": 4298,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 36,
-      "duration_ms": 15,
+      "rows": 34,
+      "duration_ms": 6338,
       "paused_until": null,
       "reason": null
     },
@@ -81,7 +81,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 2,
-      "duration_ms": 1,
+      "duration_ms": 2,
       "paused_until": null,
       "reason": null
     },
@@ -90,40 +90,87 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 1,
+      "duration_ms": 245,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 124905,
-    "wall_ms": 125232,
+    "sources_ms": 59341,
+    "wall_ms": 59727,
     "startup_ms": 31,
-    "main_ms": 125241
+    "main_ms": 59736
   },
   "multi_source_independent": 8,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
     "multi_source_independent": 8,
-    "multi_source_raw": 8,
-    "self_reposts": 0,
-    "items_in": 248,
-    "clusters_out": 223,
+    "multi_source_raw": 10,
+    "self_reposts": 2,
+    "items_in": 249,
+    "clusters_out": 224,
     "collapsed": 25,
     "multi_source": 8,
     "multi_member": 15,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 7,
+    "new_items": 34,
     "per_source": {
-      "hn-algolia": 80,
+      "hn-algolia": 83,
       "rss-lab": 105,
       "rss-security": 27,
-      "gnews-rss": 36
+      "gnews-rss": 34
     },
     "multi_source_clusters": [
+      {
+        "title": "Gemini 4 Argon: our next era of frontier intelligence",
+        "sources": [
+          "rss-lab",
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 5,
+        "score": 0.748,
+        "members": [
+          {
+            "id": "hn:49913571",
+            "source": "hn-algolia",
+            "title": "Gemini 4 Argon",
+            "at": "2026-09-30T20:04:37Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:49914236",
+            "source": "hn-algolia",
+            "title": "Gemini 4 Argon (High): Intelligence, Performance and Price Analysis",
+            "at": "2026-09-30T20:50:28Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:49916067",
+            "source": "hn-algolia",
+            "title": "Gemini 4 Argon: Google is back among the top three labs in intelligence achieved",
+            "at": "2026-10-01T00:07:07Z",
+            "publisher": null
+          },
+          {
+            "id": "rss:deepmind:ce56aa83d0064ef1",
+            "source": "rss-lab",
+            "title": "Gemini 4 Argon: our next era of frontier intelligence",
+            "at": "2026-09-30T20:01:45Z",
+            "publisher": "deepmind"
+          },
+          {
+            "id": "gnews:72dd00cfa72a2b93",
+            "source": "gnews-rss",
+            "title": "Gemini 4 Argon vs GPT-6 Astra, GPT-6.1 Sol and Claude 5.5: Frontier AI Models Compared - Kingy AI",
+            "at": "2026-09-30T20:56:33Z",
+            "publisher": "Kingy AI"
+          }
+        ]
+      },
       {
         "title": "Introducing dots",
         "sources": [
@@ -158,13 +205,45 @@
         ]
       },
       {
+        "title": "Someone Torturing LLMs in a Robot Prison Has Triggered the Dumbest Debate in AI",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 3,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:49916388",
+            "source": "hn-algolia",
+            "title": "Someone Torturing LLMs in a Robot Prison Has Triggered the Dumbest Debate in AI",
+            "at": "2026-10-01T00:54:40Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:49919504",
+            "source": "hn-algolia",
+            "title": "'Torturing' LLMs in a Robot Prison Has Triggered the Dumbest Debate in AI Yet",
+            "at": "2026-10-01T09:16:25Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:e789a5e8747177f0",
+            "source": "gnews-rss",
+            "title": "Someone ‘Torturing’ LLMs in a Robot Prison Has Triggered the Dumbest Debate in AI Yet - 404 Media",
+            "at": "2026-09-30T21:23:54Z",
+            "publisher": "404 Media"
+          }
+        ]
+      },
+      {
         "title": "Meta wants people to use 'AI agents' to do daily tasks. Why that's a problem",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.997,
+        "score": 0.998,
         "members": [
           {
             "id": "hn:49918520",
@@ -188,8 +267,8 @@
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 4,
-        "score": 0.905,
+        "size": 3,
+        "score": 0.906,
         "members": [
           {
             "id": "hn:49911520",
@@ -206,89 +285,11 @@
             "publisher": null
           },
           {
-            "id": "gnews:f0daca4fea982794",
-            "source": "gnews-rss",
-            "title": "FTC Launches Probe Into AI Companies OpenAI, Anthropic - Benzinga",
-            "at": "2026-09-30T19:32:29Z",
-            "publisher": "Benzinga"
-          },
-          {
             "id": "gnews:d99251d1cdd15e75",
             "source": "gnews-rss",
             "title": "FTC opens investigation into Anthropic, OpenAI over AI agent dangers - Türkiye Today",
             "at": "2026-09-30T19:51:37Z",
             "publisher": "Türkiye Today"
-          }
-        ]
-      },
-      {
-        "title": "Someone Torturing LLMs in a Robot Prison Has Triggered the Dumbest Debate in AI",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 0.934,
-        "members": [
-          {
-            "id": "hn:49916388",
-            "source": "hn-algolia",
-            "title": "Someone Torturing LLMs in a Robot Prison Has Triggered the Dumbest Debate in AI",
-            "at": "2026-10-01T00:54:40Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:e789a5e8747177f0",
-            "source": "gnews-rss",
-            "title": "Someone ‘Torturing’ LLMs in a Robot Prison Has Triggered the Dumbest Debate in AI Yet - 404 Media",
-            "at": "2026-09-30T21:23:54Z",
-            "publisher": "404 Media"
-          }
-        ]
-      },
-      {
-        "title": "Gemini 4 Argon: our next era of frontier intelligence",
-        "sources": [
-          "rss-lab",
-          "hn-algolia"
-        ],
-        "size": 5,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:49913571",
-            "source": "hn-algolia",
-            "title": "Gemini 4 Argon",
-            "at": "2026-09-30T20:04:37Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:49914236",
-            "source": "hn-algolia",
-            "title": "Gemini 4 Argon (High): Intelligence, Performance and Price Analysis",
-            "at": "2026-09-30T20:50:28Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:49916067",
-            "source": "hn-algolia",
-            "title": "Gemini 4 Argon: Google is back among the top three labs in intelligence achieved",
-            "at": "2026-10-01T00:07:07Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:49913676",
-            "source": "hn-algolia",
-            "title": "Gemini 4 Argon",
-            "at": "2026-09-30T20:11:09Z",
-            "publisher": null
-          },
-          {
-            "id": "rss:deepmind:ce56aa83d0064ef1",
-            "source": "rss-lab",
-            "title": "Gemini 4 Argon: our next era of frontier intelligence",
-            "at": "2026-09-30T20:01:45Z",
-            "publisher": "deepmind"
           }
         ]
       },
@@ -356,7 +357,7 @@
           "gnews-rss"
         ],
         "size": 4,
-        "score": 1,
+        "score": 0.97,
         "members": [
           {
             "id": "hn:49891721",
@@ -364,13 +365,6 @@
             "title": "Mistral CEO says U.S. AI safety debate masks competitors' 'negligence'",
             "at": "2026-09-29T12:01:07Z",
             "publisher": null
-          },
-          {
-            "id": "gnews:e098c7c402c0f4e5",
-            "source": "gnews-rss",
-            "title": "Mistral CEO says U.S. AI safety debate masks competitors’ 'negligence' - CNBC",
-            "at": "2026-09-29T08:20:04Z",
-            "publisher": "CNBC"
           },
           {
             "id": "gnews:5e07e6e25ecfc0ec",
@@ -385,11 +379,53 @@
             "title": "Mistral CEO Says AI Safety Debate Masks Negligence - GuruFocus",
             "at": "2026-09-29T19:50:26Z",
             "publisher": "GuruFocus"
+          },
+          {
+            "id": "gnews:159595c07b1a10a5",
+            "source": "gnews-rss",
+            "title": "'A cover for the negligence': Mistral CEO on the US AI safety debate - The Next Web",
+            "at": "2026-09-30T07:05:24Z",
+            "publisher": "The Next Web"
           }
         ]
       }
     ],
-    "self_repost_clusters": [],
+    "self_repost_clusters": [
+      {
+        "title": "Forecasting space weather risks on power grids",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:9845920b8f19ecb6",
+            "publisher": "Microsoft",
+            "title": "Forecasting space weather risks on power grids - Microsoft"
+          }
+        ]
+      },
+      {
+        "title": "Introducing Quine: An AI research system designed for the complexity of biology",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:053d8de243ebd5b7",
+            "publisher": "Microsoft",
+            "title": "Introducing Quine: An AI research system designed for the complexity of biology - Microsoft"
+          }
+        ]
+      }
+    ],
     "ai_relevance": {
       "rss_lab_dropped": [
         {
@@ -400,63 +436,58 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "Bioengineer.org",
-          "title": "Genetic Algorithms Meet LoRA: New Study Tests Whether Smarter Search Really Beats Simple Tuning - Bioengineer.org"
+          "publisher": "TradingView",
+          "title": "ZAWYA: Egyptian Minister of Investment and Foreign Trade, French companies discuss investment opportunities across key sectors - TradingView"
         },
         {
-          "publisher": "mindef.gov.sg",
-          "title": "Minister for Defence Chan Chun Sing Reaffirms Strong and Broad-Based Defence Relationship with France - mindef.gov.sg"
+          "publisher": "edtechinnovationhub.com",
+          "title": "Microsoft Science president Peter Lee to retire after 16 years for ‘once-in-a-lifetime’ next move - edtechinnovationhub.com"
+        },
+        {
+          "publisher": "Yahoo Finance Singapore",
+          "title": "The Zacks Analyst Blog Highlights Apple, Microsoft and Broadcom - Yahoo Finance Singapore"
+        },
+        {
+          "publisher": "GeekWire",
+          "title": "UW moves Global Innovation Exchange program to Microsoft’s campus in rent-free deal - GeekWire"
+        },
+        {
+          "publisher": "hrsea.economictimes.indiatimes.com",
+          "title": "The inbox after vacation is becoming a workplace problem - hrsea.economictimes.indiatimes.com"
+        },
+        {
+          "publisher": "The Information",
+          "title": "Microsoft Science President Peter Lee to Step Down - The Information"
+        },
+        {
+          "publisher": "Dailynewsegypt",
+          "title": "Egypt’s investment minister holds expansion talks with six multinational firms in Paris - Dailynewsegypt"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 17
+      "hn_dropped": 13
     },
     "gnews_near_misses": [
       {
-        "score": 0.666,
-        "blocked": "time-window",
-        "hours_apart": 26.4,
+        "score": 0.609,
+        "blocked": "version-conflict",
+        "hours_apart": 34.9,
         "a": {
-          "id": "hn:49897587",
-          "source": "hn-algolia",
-          "title": "OpenAI Launches Decisions API",
-          "at": "2026-09-29T17:58:10Z"
-        },
-        "b": {
-          "id": "gnews:07d6b6842655c045",
-          "source": "gnews-rss",
-          "title": "OpenAI unveils 'Decisions API' to speed up choice-based judgments, targeting software automation - 디지털투데이",
-          "at": "2026-09-30T20:22:16Z"
-        },
-        "shared": [
-          "openai",
-          "decision",
-          "api"
-        ]
-      },
-      {
-        "score": 0.65,
-        "blocked": "time-window",
-        "hours_apart": 66.2,
-        "a": {
-          "id": "rss:nvidia-dev:fd7ac71c1dc39408",
+          "id": "rss:openai:d6b9f5e651b1891e",
           "source": "rss-lab",
-          "title": "Add Runtime Controls to AI Agents with NVIDIA OpenShell",
-          "at": "2026-09-28T08:55:00Z"
+          "title": "Introducing GPT-6.1 Sol",
+          "at": "2026-09-29T10:00:00Z"
         },
         "b": {
-          "id": "gnews:e09aaae4f2c26574",
+          "id": "gnews:72dd00cfa72a2b93",
           "source": "gnews-rss",
-          "title": "Nvidia Adds Runtime and Hardware Controls to Keep AI Agents Within Their Limits - ADTmag",
-          "at": "2026-10-01T03:05:28Z"
+          "title": "Gemini 4 Argon vs GPT-6 Astra, GPT-6.1 Sol and Claude 5.5: Frontier AI Models Compared - Kingy AI",
+          "at": "2026-09-30T20:56:33Z"
         },
         "shared": [
-          "add",
-          "runtim",
-          "control",
-          "ai",
-          "agent",
-          "nvidia"
+          "gpt",
+          "6.1",
+          "sol"
         ]
       },
       {
@@ -480,7 +511,7 @@
         ]
       },
       {
-        "score": 0.549,
+        "score": 0.553,
         "blocked": "below-threshold",
         "hours_apart": 2.9,
         "a": {
@@ -504,9 +535,29 @@
         ]
       },
       {
-        "score": 0.542,
+        "score": 0.549,
+        "blocked": "short-title",
+        "hours_apart": 2.5,
+        "a": {
+          "id": "hn:49919817",
+          "source": "hn-algolia",
+          "title": "We are all just LLMs",
+          "at": "2026-10-01T10:08:08Z"
+        },
+        "b": {
+          "id": "gnews:646295e7391922f3",
+          "source": "gnews-rss",
+          "title": "Why LLMs Are The Best Thing To Happen To Chip Design - Semiconductor Engineering",
+          "at": "2026-10-01T07:36:06Z"
+        },
+        "shared": [
+          "llm"
+        ]
+      },
+      {
+        "score": 0.534,
         "blocked": "thin-overlap",
-        "hours_apart": 4.5,
+        "hours_apart": 3.4,
         "a": {
           "id": "hn:49911928",
           "source": "hn-algolia",
@@ -514,85 +565,84 @@
           "at": "2026-09-30T17:32:06Z"
         },
         "b": {
-          "id": "gnews:9304efbcb08a503d",
+          "id": "gnews:72dd00cfa72a2b93",
           "source": "gnews-rss",
-          "title": "Put ChatGPT, Claude & Gemini to Work From One $100 Lifetime AI Platform - Boing Boing",
-          "at": "2026-09-30T13:00:00Z"
+          "title": "Gemini 4 Argon vs GPT-6 Astra, GPT-6.1 Sol and Claude 5.5: Frontier AI Models Compared - Kingy AI",
+          "at": "2026-09-30T20:56:33Z"
         },
         "shared": [
           "claude"
         ]
       },
       {
-        "score": 0.343,
-        "blocked": "time-window",
-        "hours_apart": 370.8,
+        "score": 0.532,
+        "blocked": "short-title",
+        "hours_apart": 12.7,
         "a": {
-          "id": "rss:huggingface:a1d018f16fad79f9",
-          "source": "rss-lab",
-          "title": "Your Agent Aced the Task. Will It Do It Again?",
-          "at": "2026-09-15T16:00:44Z"
-        },
-        "b": {
-          "id": "gnews:e3280cfa13a19404",
-          "source": "gnews-rss",
-          "title": "Meta wants people to use ‘AI agents’ to do daily tasks for them. Here’s why that’s a problem - The Conversation",
-          "at": "2026-10-01T02:49:00Z"
-        },
-        "shared": [
-          "agent",
-          "task",
-          "do"
-        ]
-      },
-      {
-        "score": 0.296,
-        "blocked": "below-threshold",
-        "hours_apart": 10.7,
-        "a": {
-          "id": "hn:49910385",
+          "id": "hn:49919817",
           "source": "hn-algolia",
-          "title": "Show HN: Glance – Build, evaluate, and monitor AI agents",
-          "at": "2026-09-30T15:37:36Z"
+          "title": "We are all just LLMs",
+          "at": "2026-10-01T10:08:08Z"
         },
         "b": {
-          "id": "gnews:a82572665bf3e6f2",
+          "id": "gnews:e789a5e8747177f0",
           "source": "gnews-rss",
-          "title": "How Capital One evaluates, governs its AI agents - Constellation Research",
-          "at": "2026-10-01T02:19:09Z"
+          "title": "Someone ‘Torturing’ LLMs in a Robot Prison Has Triggered the Dumbest Debate in AI Yet - 404 Media",
+          "at": "2026-09-30T21:23:54Z"
         },
         "shared": [
-          "evaluat",
-          "ai",
-          "agent"
+          "llm"
         ]
       },
       {
-        "score": 0.296,
-        "blocked": "below-threshold",
-        "hours_apart": 3,
+        "score": 0.477,
+        "blocked": "time-window",
+        "hours_apart": 714,
         "a": {
-          "id": "rss:openai:061338e668ed6974",
+          "id": "rss:deepmind:20b040f8e58f31e9",
           "source": "rss-lab",
-          "title": "Helping small businesses put AI to work",
-          "at": "2026-09-30T10:00:00Z"
+          "title": "Introducing agentic video understanding with Gemini",
+          "at": "2026-09-01T17:08:51Z"
         },
         "b": {
-          "id": "gnews:9304efbcb08a503d",
+          "id": "gnews:2b798e51a65878de",
           "source": "gnews-rss",
-          "title": "Put ChatGPT, Claude & Gemini to Work From One $100 Lifetime AI Platform - Boing Boing",
-          "at": "2026-09-30T13:00:00Z"
+          "title": "Why Cyber Resilience is Like Muscle Memory: Understanding Safety In Agentic AI - Forbes",
+          "at": "2026-10-01T11:05:57Z"
         },
         "shared": [
-          "put",
-          "ai",
-          "work"
+          "agentic",
+          "understand"
+        ]
+      },
+      {
+        "score": 0.425,
+        "blocked": "thin-overlap",
+        "hours_apart": 27,
+        "a": {
+          "id": "hn:49897586",
+          "source": "hn-algolia",
+          "title": "Addendum to GPT-6 Astra System Card: GPT-6.1 Sol",
+          "at": "2026-09-29T17:58:04Z"
+        },
+        "b": {
+          "id": "gnews:72dd00cfa72a2b93",
+          "source": "gnews-rss",
+          "title": "Gemini 4 Argon vs GPT-6 Astra, GPT-6.1 Sol and Claude 5.5: Frontier AI Models Compared - Kingy AI",
+          "at": "2026-09-30T20:56:33Z"
+        },
+        "shared": [
+          "gpt",
+          "6",
+          "astra",
+          "6.1",
+          "sol"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.699,
+        "score": 0.698,
         "blocked": "short-title",
         "hours_apart": 17.1,
         "a": {
@@ -612,7 +662,7 @@
         ]
       },
       {
-        "score": 0.677,
+        "score": 0.672,
         "blocked": "thin-overlap",
         "hours_apart": 7.1,
         "a": {
@@ -634,7 +684,7 @@
         ]
       },
       {
-        "score": 0.671,
+        "score": 0.667,
         "blocked": "version-conflict",
         "hours_apart": 8,
         "a": {
@@ -656,54 +706,7 @@
         ]
       },
       {
-        "score": 0.666,
-        "blocked": "time-window",
-        "hours_apart": 26.4,
-        "a": {
-          "id": "hn:49897587",
-          "source": "hn-algolia",
-          "title": "OpenAI Launches Decisions API",
-          "at": "2026-09-29T17:58:10Z"
-        },
-        "b": {
-          "id": "gnews:07d6b6842655c045",
-          "source": "gnews-rss",
-          "title": "OpenAI unveils 'Decisions API' to speed up choice-based judgments, targeting software automation - 디지털투데이",
-          "at": "2026-09-30T20:22:16Z"
-        },
-        "shared": [
-          "openai",
-          "decision",
-          "api"
-        ]
-      },
-      {
-        "score": 0.65,
-        "blocked": "time-window",
-        "hours_apart": 66.2,
-        "a": {
-          "id": "rss:nvidia-dev:fd7ac71c1dc39408",
-          "source": "rss-lab",
-          "title": "Add Runtime Controls to AI Agents with NVIDIA OpenShell",
-          "at": "2026-09-28T08:55:00Z"
-        },
-        "b": {
-          "id": "gnews:e09aaae4f2c26574",
-          "source": "gnews-rss",
-          "title": "Nvidia Adds Runtime and Hardware Controls to Keep AI Agents Within Their Limits - ADTmag",
-          "at": "2026-10-01T03:05:28Z"
-        },
-        "shared": [
-          "add",
-          "runtim",
-          "control",
-          "ai",
-          "agent",
-          "nvidia"
-        ]
-      },
-      {
-        "score": 0.637,
+        "score": 0.633,
         "blocked": "thin-overlap",
         "hours_apart": 24,
         "a": {
@@ -725,7 +728,7 @@
         ]
       },
       {
-        "score": 0.623,
+        "score": 0.619,
         "blocked": "short-title",
         "hours_apart": 0.1,
         "a": {
@@ -743,6 +746,28 @@
         "shared": [
           "synthid",
           "bio"
+        ]
+      },
+      {
+        "score": 0.609,
+        "blocked": "version-conflict",
+        "hours_apart": 34.9,
+        "a": {
+          "id": "rss:openai:d6b9f5e651b1891e",
+          "source": "rss-lab",
+          "title": "Introducing GPT-6.1 Sol",
+          "at": "2026-09-29T10:00:00Z"
+        },
+        "b": {
+          "id": "gnews:72dd00cfa72a2b93",
+          "source": "gnews-rss",
+          "title": "Gemini 4 Argon vs GPT-6 Astra, GPT-6.1 Sol and Claude 5.5: Frontier AI Models Compared - Kingy AI",
+          "at": "2026-09-30T20:56:33Z"
+        },
+        "shared": [
+          "gpt",
+          "6.1",
+          "sol"
         ]
       },
       {
@@ -764,6 +789,30 @@
         "shared": [
           "dot"
         ]
+      },
+      {
+        "score": 0.553,
+        "blocked": "below-threshold",
+        "hours_apart": 2.9,
+        "a": {
+          "id": "hn:49911520",
+          "source": "hn-algolia",
+          "title": "FTC opens probe into AI giants including Anthropic and OpenAI",
+          "at": "2026-09-30T16:59:37Z"
+        },
+        "b": {
+          "id": "gnews:d99251d1cdd15e75",
+          "source": "gnews-rss",
+          "title": "FTC opens investigation into Anthropic, OpenAI over AI agent dangers - Türkiye Today",
+          "at": "2026-09-30T19:51:37Z"
+        },
+        "shared": [
+          "ftc",
+          "open",
+          "ai",
+          "anthropic",
+          "openai"
+        ]
       }
     ]
   },
@@ -771,44 +820,44 @@
     {
       "id": "arxiv",
       "state": "ok",
-      "streak_ok": 53,
+      "streak_ok": 54,
       "streak_fail": 0,
-      "items_last": 5
+      "items_last": 0
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 53,
+      "streak_ok": 54,
       "streak_fail": 0,
-      "items_last": 2
+      "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 53,
+      "streak_ok": 54,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 53,
+      "streak_ok": 54,
       "streak_fail": 0,
-      "items_last": 36
+      "items_last": 34
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 53,
+      "streak_ok": 54,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 53,
+      "streak_ok": 54,
       "streak_fail": 0,
-      "items_last": 80
+      "items_last": 83
     },
     {
       "id": "openalex",
@@ -820,27 +869,27 @@
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 53,
+      "streak_ok": 54,
       "streak_fail": 0,
       "items_last": 105
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 53,
+      "streak_ok": 54,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 53,
+      "streak_ok": 54,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.03495527777777778,
+    "hours": 0.016802222222222222,
     "stale": false
   },
   "hf": {
@@ -851,7 +900,7 @@
   "arxiv": {
     "ok": false,
     "enriched": 0,
-    "shelf": 5,
+    "shelf": 0,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
   },
@@ -881,11 +930,11 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "enriched": 2,
+    "enriched": 1,
     "query": "The Teacher Is a Direction, Not a Destination: Extrapolating RL-Induced Representation Residuals in On-Policy Distillation",
     "mode": "bibliographic",
-    "from_cache": false,
-    "searches": 1,
+    "from_cache": true,
+    "searches": 0,
     "brief": false,
     "pulse_lead": false,
     "papers_enrich_only": true,
@@ -900,15 +949,6 @@
         "openalexId": null,
         "doi": "https://doi.org/10.21203/rs.3.rs-7184025/v1",
         "enrichOnly": false
-      },
-      {
-        "id": "2609.38360",
-        "crossrefDoi": "https://doi.org/10.1109/iros60139.2025.11246761",
-        "issued": "2025-10-19",
-        "type": "proceedings-article",
-        "openalexId": null,
-        "doi": "https://doi.org/10.1109/iros60139.2025.11246761",
-        "enrichOnly": false
       }
     ]
   },
@@ -916,7 +956,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 80,
+    "count": 83,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -933,13 +973,13 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 17,
+    "ai_dropped": 13,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
         "id": "hn:49913571",
         "tag": "rest",
-        "score": 1283,
+        "score": 1421,
         "text": "Gemini 4 Argon"
       },
       {
@@ -951,7 +991,7 @@
       {
         "id": "hn:49896604",
         "tag": "rest",
-        "score": 751,
+        "score": 756,
         "text": "Dots: Always-on agents"
       }
     ]
@@ -968,52 +1008,59 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "(cache:openai)",
+        "url": "https://openai.com/news/rss.xml",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "(cache:deepmind)",
+        "url": "https://deepmind.google/blog/rss.xml",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "(cache:google-ai)",
+        "url": "https://blog.google/technology/ai/rss/",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "(cache:huggingface)",
+        "url": "https://huggingface.co/blog/feed.xml",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "(cache:mistral)",
+        "url": "https://mistral.ai/rss.xml",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "(cache:nvidia)",
+        "url": "https://blogs.nvidia.com/feed/",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "(cache:nvidia-dev)",
+        "url": "https://developer.nvidia.com/blog/feed",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "(cache:ms-research)",
+        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "(cache:google-research)",
+        "url": "https://research.google/blog/rss/",
         "count": 12
       }
     ],
     "feeds_soft_fail": [],
     "sample": [
+      {
+        "id": "rss:nvidia-dev:1fca9693a1dac487",
+        "lab": "nvidia-dev",
+        "tag": "rest",
+        "title": "Fine-Tuning NVIDIA Nemotron for Saudi Arabic Dialects, with a Path to Other Languages",
+        "link": "https://developer.nvidia.com/blog/fine-tuning-nvidia-nemotron-for-saudi-arabic-dialects-with-a-path-to-other-languages/"
+      },
       {
         "id": "rss:nvidia-dev:2efebb52e52f8375",
         "lab": "nvidia-dev",
@@ -1034,13 +1081,6 @@
         "tag": "rest",
         "title": "Expanding AI Storage Access with NVIDIA cuObject and the NVIDIA SCADA Server SDK",
         "link": "https://developer.nvidia.com/blog/expanding-ai-storage-access-with-nvidia-cuobject-and-the-nvidia-scada-server-sdk/"
-      },
-      {
-        "id": "rss:nvidia:2d6b6b3ac74c3717",
-        "lab": "nvidia",
-        "tag": "rest",
-        "title": "NVIDIA Opens Applications for 2027–2028 Graduate Fellowships With Awards Up to $60,000",
-        "link": "https://blogs.nvidia.com/blog/applications-open-graduate-fellowship-awards-2026/"
       }
     ]
   },
@@ -1054,17 +1094,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "(cache:trailofbits)",
+        "url": "https://blog.trailofbits.com/feed/",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "(cache:fox-it)",
+        "url": "https://blog.fox-it.com/feed/",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "(cache:projectzero)",
+        "url": "https://projectzero.google/feed.xml",
         "count": 5
       }
     ],
@@ -1101,19 +1141,27 @@
   },
   "google_news": {
     "ok": true,
-    "soft_fail": true,
-    "soft_fail_reason": "Microsoft Research:empty_channel",
+    "soft_fail": false,
+    "soft_fail_reason": null,
     "queries_attempted": 4,
-    "queries_ok": 3,
-    "items": 36,
-    "pool": 217,
+    "queries_ok": 4,
+    "items": 34,
+    "pool": 265,
     "corroborators": [
       {
-        "id": "gnews:f0daca4fea982794",
-        "anchor_id": "hn:49918131",
-        "score": 0.844,
-        "title": "FTC Launches Probe Into AI Companies OpenAI, Anthropic - Benzinga",
-        "publisher": "Benzinga",
+        "id": "gnews:e3280cfa13a19404",
+        "anchor_id": "hn:49918520",
+        "score": 0.994,
+        "title": "Meta wants people to use ‘AI agents’ to do daily tasks for them. Here’s why that’s a problem - The Conversation",
+        "publisher": "The Conversation",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:e789a5e8747177f0",
+        "anchor_id": "hn:49916388",
+        "score": 0.941,
+        "title": "Someone ‘Torturing’ LLMs in a Robot Prison Has Triggered the Dumbest Debate in AI Yet - 404 Media",
+        "publisher": "404 Media",
         "self_repost": false
       },
       {
@@ -1125,25 +1173,25 @@
         "self_repost": false
       },
       {
+        "id": "gnews:9845920b8f19ecb6",
+        "anchor_id": "rss:ms-research:4ed2607a5b2ebbf9",
+        "score": 1,
+        "title": "Forecasting space weather risks on power grids - Microsoft",
+        "publisher": "Microsoft",
+        "self_repost": true
+      },
+      {
         "id": "gnews:34d5d89b49f3409b",
         "anchor_id": "hn:49896604",
-        "score": 0.683,
+        "score": 0.686,
         "title": "OpenAI introduces Dots, a new always-on AI agent, at Dev Day 2026 - Mashable",
         "publisher": "Mashable",
         "self_repost": false
       },
       {
-        "id": "gnews:e098c7c402c0f4e5",
-        "anchor_id": "hn:49891721",
-        "score": 1,
-        "title": "Mistral CEO says U.S. AI safety debate masks competitors’ 'negligence' - CNBC",
-        "publisher": "CNBC",
-        "self_repost": false
-      },
-      {
         "id": "gnews:5e07e6e25ecfc0ec",
         "anchor_id": "hn:49891721",
-        "score": 0.974,
+        "score": 0.97,
         "title": "Mistral CEO: AI Safety Debate Masks Competitor Negligence - Briefs Finance",
         "publisher": "Briefs Finance",
         "self_repost": false
@@ -1151,16 +1199,32 @@
       {
         "id": "gnews:21c1aa9944280317",
         "anchor_id": "hn:49891721",
-        "score": 0.907,
+        "score": 0.903,
         "title": "Mistral CEO Says AI Safety Debate Masks Negligence - GuruFocus",
         "publisher": "GuruFocus",
         "self_repost": false
+      },
+      {
+        "id": "gnews:159595c07b1a10a5",
+        "anchor_id": "hn:49891721",
+        "score": 0.692,
+        "title": "'A cover for the negligence': Mistral CEO on the US AI safety debate - The Next Web",
+        "publisher": "The Next Web",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:053d8de243ebd5b7",
+        "anchor_id": "rss:ms-research:0e6ecf3b3252b952",
+        "score": 1,
+        "title": "Introducing Quine: An AI research system designed for the complexity of biology - Microsoft",
+        "publisher": "Microsoft",
+        "self_repost": true
       }
     ],
     "http_status": 200,
-    "content_type": null,
-    "format": "empty",
-    "from_cache": true,
+    "content_type": "application/xml; charset=utf-8",
+    "format": "rss2",
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1177,36 +1241,30 @@
     "queries_ok_list": [
       "large language model",
       "AI agent",
-      "Mistral AI"
+      "Mistral AI",
+      "Microsoft Research"
     ],
-    "queries_soft_fail": [
-      {
-        "query": "Microsoft Research",
-        "reason": "empty_channel",
-        "soft_fail": true,
-        "format": "empty"
-      }
-    ],
+    "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:e09aaae4f2c26574",
-        "title": "Nvidia Adds Runtime and Hardware Controls to Keep AI Agents Within Their Limits - ADTmag",
-        "publisher": "ADTmag",
-        "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQVnR4ZUhCaUhBZk9iZE1oak1iMjJNZW42Z1V4X0k4c3dTZkJQdE9Ea0MzUkhWVXUwUHVNWkxVcEtKYTFNMlViMlQ5Z0diWWpTNnhkX0J2N2RIdURZV1lLVVBVTnQ4UDByZlVZRGtvamJXNVdMbVlDRkVZSHczTV8yUWlrMnQwM2NRYkUxclZmMkdRbmxEdVFNSnBoU2lrLXVlUGRhdnJzNjJFZDBKT3g5VVBlblVIMGFWdWI2dzFtekw?oc=5",
+        "id": "gnews:2b798e51a65878de",
+        "title": "Why Cyber Resilience is Like Muscle Memory: Understanding Safety In Agentic AI - Forbes",
+        "publisher": "Forbes",
+        "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQUDliNDNJU1pZRldJZnY0ZWU3OTRJLURjSzFuN3V5MG5FdGdsSDdOWnZJOTNqd3A4eTJYZ25qeDBOX3l2YVFTY3dFVFNyYzEwZk44TTcwSlBDMXhXMVQ1SnU1aVlOQmdYdHluMmk3Wlc5OERRWFNOdnJ4UzNmZ2tGWDZWOUZSdXZLZkZ2Qk9fLXhRVGkyRkdCQUMyOXBqX1FoRm1yVEJkbGJPSl9HNVZkVlpiM2RQR3VGdGJpZVNqNDdubTA1S0FUVUZ2MV8?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:bcbfa63339a3c830",
-        "title": "AI agents tried to hack a Canadian government website, researchers say - The Washington Post",
-        "publisher": "The Washington Post",
-        "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPeEVjbGN0N2NJSC1vQ3FPTUNmZFdLSWhlVmhiZVJ4TnhISFh2VjJZZzJrdEFka2IwUTdGaW5aY3FzZ3dQRk9UQnF3dHhhbXA3a0NlVW82Q0JXSFA1ak9keHdydVBXdnZURXlVWmx6MDdHbzFxOGo3V3hOazEtb2F0Vko3VHhoUVZmM1M3b2J3b0RoZUp4c3FqZHRNN1phaGdXLVlzdFlLTnJGNXpOeUl4dTBCU3A?oc=5",
+        "id": "gnews:363e36b3a21ce846",
+        "title": "Using an Excel agent to clean, validate, and reconcile data - journalofaccountancy.com",
+        "publisher": "journalofaccountancy.com",
+        "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNRk1pMWlKM1R4d1FwdXpDa0JVaEt5djY3UGFGNzVUOERaVUhDSDMtdFVuaV9OcGtibjNFdWVIU1VTY2NreWJrM09aU1F2RnFETlh1SHJOcXlnT3A5NmVIVF95SXg3WENGUGlkQU9TXzJvWVByRXZOZHNBUGpCcjZLZzhWLUhqZjRPOFU0UktBQkJxd281bUphQWpHNHJTYzdpUHJXdG5FVjByWlhKU2hfYg?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:e3280cfa13a19404",
-        "title": "Meta wants people to use ‘AI agents’ to do daily tasks for them. Here’s why that’s a problem - The Conversation",
-        "publisher": "The Conversation",
-        "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQc094dFB4TTIycWpCLXNubnc5a3FzbnRaSEZ3VnotQnhLTk1jWE1kQklzc1k4ZGUxbVA0M2wxTVZtMkZVanhrQnFmOE1zTFlZV1lFWEFLZVNEYmpxNGF6cDJKTkVZT2xYTmxQS2FaRWpZX0hSYkVPemI0WHZfbl9LRFBJYkM2UDh1Rm5GZFN6NDVLeTF0bkJ4SWtuNHVhTWJuRWU2UkFYNGEzNWV5SG9Kc1lYRkJUQTlnM05SQV9xYw?oc=5",
+        "id": "gnews:f70197f1b3849c90",
+        "title": "AppZen introduces ZenLM Plus, finance-specialized language models that outperform frontier models on finance T&E tasks - PR Newswire",
+        "publisher": "PR Newswire",
+        "link": "https://news.google.com/rss/articles/CBMiggJBVV95cUxOeFNSRUMzNERzeUNwZlJSU2ttX1duMVZHTUlXakp5bHQxLUpHcnptSTJFVkJLbjRJNUw5Y08ydTQxQUlNMjd6NkhKeS0xMm5jU2pHcVIyQnBBVzRDQW5jQVlBRm44MHIzWllPWDJNRTF1WUp6TVpnQkRuWmhaeDM2dzNodkFBTThwYXlOX0JESW5aaVd2Y3RQdHZScF9XMUFtUlZ0Yy1MdFE5T1NickxkWGFwNUlINlZLVFpYODE3cnVsLV9KMW1vMl9DelYweURKT1k5OVJ4eUZLRTJhdHFGRkltd0xfQXFWTFlyQnQxMnZ0c2prLUw2d1hZYXduSjA0SEE?oc=5",
         "tag": "rest"
       }
     ]
@@ -1244,7 +1302,7 @@
     ]
   },
   "shelf": {
-    "count": 19,
+    "count": 14,
     "brief": false
   },
   "wikidata": {
@@ -1256,8 +1314,8 @@
       "Fox-IT",
       "Project Zero"
     ],
-    "searches": 0,
-    "from_cache": true,
+    "searches": 1,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "deny_grounding_only": true,
