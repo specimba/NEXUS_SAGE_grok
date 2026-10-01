@@ -43,6 +43,7 @@ import {
 import { resolve, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { spawnSync, spawn } from "node:child_process";
+import { writeOpsStatus } from "./lib/ops-status.mjs";
 
 const desk = resolve(fileURLToPath(new URL(".", import.meta.url)), "..");
 const root = resolve(desk, "..");
@@ -431,20 +432,16 @@ function appendDryRunEvidence({
   ];
   writeFileSync(path, lines.join("\n"), "utf8");
 
+  // OPS status: ONE marker-delimited block replaced in place (lib/ops-status.mjs), never an
+  // appended per-run "## A1 dry-run evidence" section (that grew to 43 copies by 2026-10-01).
   const ops = join(root, "refs/OPS-A1-A3-AUTOMATION.md");
-  if (existsSync(ops)) {
-    let src = readFileSync(ops, "utf8");
-    const note = `
-## A1 dry-run evidence (${new Date().toISOString().slice(0, 16)}Z)
-
-- Script: \`desk/scripts/a1-stale-ingest.mjs\` · FORCE=1 path exercised
-- Crawl \`${crawlBefore}\` → \`${crawlAfter}\` · pack \`${packName}\`
-- Dual-home sha \`${sha.slice(0, 12)}…\` · soft-fails: ${softStr}
-- Checklist: see \`refs/A1-DRY-RUN.md\` · Reviewer stamp pending · **cron not installed**
-`;
-    src = src.trimEnd() + "\n" + note;
-    writeFileSync(ops, src, "utf8");
-  }
+  const opsOut = writeOpsStatus({
+    opsPath: ops,
+    crawlAt: crawlAfter,
+    pack: packName,
+    a2LogPath: process.env.A2_LOG || resolve(root, "logs/a2-digest.log"),
+  });
+  if (opsOut) log(`updated OPS status block ${ops}`);
   log(`wrote ${path}`);
 }
 
