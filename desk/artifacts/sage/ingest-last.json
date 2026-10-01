@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-09-30T23:18:33Z",
+  "stamped_at": "2026-10-01T03:17:41Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 294,
+      "duration_ms": 202,
       "paused_until": null,
       "reason": null
     },
@@ -17,8 +17,8 @@
       "id": "arxiv",
       "label": "arXiv",
       "status": "ok",
-      "rows": 29,
-      "duration_ms": 3235,
+      "rows": 12,
+      "duration_ms": 102172,
       "paused_until": null,
       "reason": null
     },
@@ -27,7 +27,7 @@
       "label": "OpenAlex",
       "status": "paused",
       "rows": 0,
-      "duration_ms": 2,
+      "duration_ms": 1,
       "paused_until": "2026-10-01T11:14:50Z",
       "reason": "paused_until 2026-10-01T11:14:50Z"
     },
@@ -36,7 +36,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 979,
+      "duration_ms": 3,
       "paused_until": null,
       "reason": null
     },
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 73,
-      "duration_ms": 8420,
+      "rows": 81,
+      "duration_ms": 8306,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 105,
-      "duration_ms": 75,
+      "duration_ms": 16472,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 29,
+      "duration_ms": 4273,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 41,
-      "duration_ms": 27,
+      "rows": 35,
+      "duration_ms": 10084,
       "paused_until": null,
       "reason": null
     },
@@ -80,8 +80,8 @@
       "id": "github",
       "label": "GitHub",
       "status": "ok",
-      "rows": 3,
-      "duration_ms": 1,
+      "rows": 2,
+      "duration_ms": 272,
       "paused_until": null,
       "reason": null
     },
@@ -90,48 +90,152 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 1,
+      "duration_ms": 2409,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 13063,
-    "wall_ms": 13423,
-    "startup_ms": 54,
-    "main_ms": 13435
+    "sources_ms": 144194,
+    "wall_ms": 144494,
+    "startup_ms": 27,
+    "main_ms": 144505
   },
-  "multi_source_independent": 9,
+  "multi_source_independent": 7,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 9,
-    "multi_source_raw": 13,
-    "self_reposts": 4,
-    "items_in": 246,
-    "clusters_out": 216,
-    "collapsed": 30,
-    "multi_source": 9,
-    "multi_member": 18,
+    "multi_source_independent": 7,
+    "multi_source_raw": 7,
+    "self_reposts": 0,
+    "items_in": 248,
+    "clusters_out": 226,
+    "collapsed": 22,
+    "multi_source": 7,
+    "multi_member": 14,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 10,
+    "new_items": 52,
     "per_source": {
-      "hn-algolia": 73,
+      "hn-algolia": 81,
       "rss-lab": 105,
       "rss-security": 27,
-      "gnews-rss": 41
+      "gnews-rss": 35
     },
     "multi_source_clusters": [
+      {
+        "title": "Introducing dots",
+        "sources": [
+          "rss-lab",
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 3,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:49896604",
+            "source": "hn-algolia",
+            "title": "Dots: Always-on agents",
+            "at": "2026-09-29T17:07:57Z",
+            "publisher": null
+          },
+          {
+            "id": "rss:openai:dec620cb7225d243",
+            "source": "rss-lab",
+            "title": "Introducing dots",
+            "at": "2026-09-29T00:00:00Z",
+            "publisher": "openai"
+          },
+          {
+            "id": "gnews:34d5d89b49f3409b",
+            "source": "gnews-rss",
+            "title": "OpenAI introduces Dots, a new always-on AI agent, at Dev Day 2026 - Mashable",
+            "at": "2026-09-30T13:07:41Z",
+            "publisher": "Mashable"
+          }
+        ]
+      },
+      {
+        "title": "Someone Torturing LLMs in a Robot Prison Has Triggered the Dumbest Debate in AI",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 0.934,
+        "members": [
+          {
+            "id": "hn:49916388",
+            "source": "hn-algolia",
+            "title": "Someone Torturing LLMs in a Robot Prison Has Triggered the Dumbest Debate in AI",
+            "at": "2026-10-01T00:54:40Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:e789a5e8747177f0",
+            "source": "gnews-rss",
+            "title": "Someone ‘Torturing’ LLMs in a Robot Prison Has Triggered the Dumbest Debate in AI Yet - 404 Media",
+            "at": "2026-09-30T21:23:54Z",
+            "publisher": "404 Media"
+          }
+        ]
+      },
+      {
+        "title": "Gemini 4 Argon: our next era of frontier intelligence",
+        "sources": [
+          "rss-lab",
+          "hn-algolia"
+        ],
+        "size": 5,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:49913571",
+            "source": "hn-algolia",
+            "title": "Gemini 4 Argon",
+            "at": "2026-09-30T20:04:37Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:49914236",
+            "source": "hn-algolia",
+            "title": "Gemini 4 Argon (High): Intelligence, Performance and Price Analysis",
+            "at": "2026-09-30T20:50:28Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:49913676",
+            "source": "hn-algolia",
+            "title": "Gemini 4 Argon",
+            "at": "2026-09-30T20:11:09Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:49916067",
+            "source": "hn-algolia",
+            "title": "Gemini 4 Argon: Google is back among the top three labs in intelligence achieved",
+            "at": "2026-10-01T00:07:07Z",
+            "publisher": null
+          },
+          {
+            "id": "rss:deepmind:ce56aa83d0064ef1",
+            "source": "rss-lab",
+            "title": "Gemini 4 Argon: our next era of frontier intelligence",
+            "at": "2026-09-30T20:01:45Z",
+            "publisher": "deepmind"
+          }
+        ]
+      },
       {
         "title": "FTC opens probe into AI giants including Anthropic and OpenAI",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 10,
-        "score": 1,
+        "size": 2,
+        "score": 0.745,
         "members": [
           {
             "id": "hn:49911520",
@@ -141,92 +245,11 @@
             "publisher": null
           },
           {
-            "id": "hn:49913254",
-            "source": "hn-algolia",
-            "title": "US trade regulator opens investigation into AI giants",
-            "at": "2026-09-30T19:34:02Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:ab49d447013cc08c",
+            "id": "gnews:f0daca4fea982794",
             "source": "gnews-rss",
-            "title": "FTC launches broad investigation into Anthropic, OpenAI - The Washington Post",
-            "at": "2026-09-30T18:59:21Z",
-            "publisher": "The Washington Post"
-          },
-          {
-            "id": "gnews:3fee88c6b8314b63",
-            "source": "gnews-rss",
-            "title": "FTC probes OpenAI, Anthropic, and METR - Yahoo",
-            "at": "2026-09-30T18:51:30Z",
-            "publisher": "Yahoo"
-          },
-          {
-            "id": "gnews:d624b9d9a2bbd124",
-            "source": "gnews-rss",
-            "title": "US trade regulator opens investigation into AI giants including Anthropic and OpenAI - The Guardian",
-            "at": "2026-09-30T18:35:00Z",
-            "publisher": "The Guardian"
-          },
-          {
-            "id": "gnews:f8a8969615c46aa7",
-            "source": "gnews-rss",
-            "title": "FTC Opens Investigation of Anthropic and OpenAI - WSJ",
-            "at": "2026-09-30T18:24:47Z",
-            "publisher": "WSJ"
-          },
-          {
-            "id": "gnews:82508547f55cf3cd",
-            "source": "gnews-rss",
-            "title": "FTC opens probe into AI giants including Anthropic and OpenAI - Reuters",
-            "at": "2026-09-30T18:17:19Z",
-            "publisher": "Reuters"
-          },
-          {
-            "id": "gnews:28c7a25a16e34a0c",
-            "source": "gnews-rss",
-            "title": "FTC opens probe into AI giants including Anthropic and OpenAI, New York Post reports - Rock Hill Herald",
-            "at": "2026-09-30T14:42:03Z",
-            "publisher": "Rock Hill Herald"
-          },
-          {
-            "id": "gnews:0279895513611c74",
-            "source": "gnews-rss",
-            "title": "FTC opens probe into AI giants including Anthropic and OpenAI, New York Post reports - WHTC",
-            "at": "2026-09-30T14:26:50Z",
-            "publisher": "WHTC"
-          },
-          {
-            "id": "gnews:3e9e52fc5ce54430",
-            "source": "gnews-rss",
-            "title": "FTC opens probe into AI giants including Anthropic and OpenAI, New York Post reports - The Lufkin Daily News",
-            "at": "2026-09-30T13:53:28Z",
-            "publisher": "The Lufkin Daily News"
-          }
-        ]
-      },
-      {
-        "title": "NVIDIA Kumo Tabular Sets a New Accuracy-Efficiency Frontier for Tabular Prediction",
-        "sources": [
-          "rss-lab",
-          "hn-algolia"
-        ],
-        "size": 2,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:49910974",
-            "source": "hn-algolia",
-            "title": "Nvidia Kumo Tabular: Open Foundation Model for Tabular Prediction",
-            "at": "2026-09-30T16:24:53Z",
-            "publisher": null
-          },
-          {
-            "id": "rss:huggingface:dc53fce90c6f36f5",
-            "source": "rss-lab",
-            "title": "NVIDIA Kumo Tabular Sets a New Accuracy-Efficiency Frontier for Tabular Prediction",
-            "at": "2026-09-29T15:30:38Z",
-            "publisher": "huggingface"
+            "title": "FTC Launches Probe Into AI Companies OpenAI, Anthropic - Benzinga",
+            "at": "2026-09-30T19:32:29Z",
+            "publisher": "Benzinga"
           }
         ]
       },
@@ -252,38 +275,6 @@
             "title": "Introducing SynthID Bio",
             "at": "2026-09-30T15:03:07Z",
             "publisher": "deepmind"
-          }
-        ]
-      },
-      {
-        "title": "Religious Scholars Met with Anthropic. What They Heard Stunned Them",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 3,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:49906855",
-            "source": "hn-algolia",
-            "title": "Religious Scholars Met with Anthropic. What They Heard Stunned Them",
-            "at": "2026-09-30T10:24:36Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:49899579",
-            "source": "hn-algolia",
-            "title": "Is Claude Conscious? Inside Anthropic's Quest to Instill Morality into Its AI",
-            "at": "2026-09-29T20:07:08Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:646dfb9d4b577be4",
-            "source": "gnews-rss",
-            "title": "Is Claude Conscious? Inside Anthropic’s Quest to Instill Morality Into Its A.I. Models - The New York Times",
-            "at": "2026-09-30T00:09:48Z",
-            "publisher": "The New York Times"
           }
         ]
       },
@@ -338,9 +329,9 @@
           {
             "id": "gnews:e098c7c402c0f4e5",
             "source": "gnews-rss",
-            "title": "Mistral CEO says U.S. AI safety debate masks competitors’ 'negligence' - cnbc.com",
+            "title": "Mistral CEO says U.S. AI safety debate masks competitors’ 'negligence' - CNBC",
             "at": "2026-09-29T08:20:04Z",
-            "publisher": "cnbc.com"
+            "publisher": "CNBC"
           },
           {
             "id": "gnews:5e07e6e25ecfc0ec",
@@ -350,160 +341,16 @@
             "publisher": "Briefs Finance"
           },
           {
-            "id": "gnews:91b4339588bcf7d7",
+            "id": "gnews:21c1aa9944280317",
             "source": "gnews-rss",
-            "title": "Mistral CEO Says AI Safety Debate Masks Negligence - Yahoo Finance",
-            "at": "2026-09-29T19:12:11Z",
-            "publisher": "Yahoo Finance"
-          }
-        ]
-      },
-      {
-        "title": "Introducing dots",
-        "sources": [
-          "rss-lab",
-          "hn-algolia"
-        ],
-        "size": 2,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:49896604",
-            "source": "hn-algolia",
-            "title": "Dots: Always-on agents",
-            "at": "2026-09-29T17:07:57Z",
-            "publisher": null
-          },
-          {
-            "id": "rss:openai:dec620cb7225d243",
-            "source": "rss-lab",
-            "title": "Introducing dots",
-            "at": "2026-09-29T00:00:00Z",
-            "publisher": "openai"
-          }
-        ]
-      },
-      {
-        "title": "Anthropic's IPO prospectus shows AI vision, surging costs",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 0.96,
-        "members": [
-          {
-            "id": "hn:49886005",
-            "source": "hn-algolia",
-            "title": "Anthropic's IPO prospectus shows AI vision, surging costs",
-            "at": "2026-09-28T23:40:59Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:438dbae3c206eeff",
-            "source": "gnews-rss",
-            "title": "EXCLUSIVE: Anthropic's IPO prospectus shows sweeping AI vision, surging costs - Reuters",
-            "at": "2026-09-28T23:17:00Z",
-            "publisher": "Reuters"
-          }
-        ]
-      },
-      {
-        "title": "Holo4: powering generalist computer-use agents",
-        "sources": [
-          "rss-lab",
-          "hn-algolia"
-        ],
-        "size": 2,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:49885972",
-            "source": "hn-algolia",
-            "title": "Holo4: Powering generalist computer-use agents",
-            "at": "2026-09-28T23:37:23Z",
-            "publisher": null
-          },
-          {
-            "id": "rss:huggingface:09d1d26fa19dd694",
-            "source": "rss-lab",
-            "title": "Holo4: powering generalist computer-use agents",
-            "at": "2026-09-28T09:44:05Z",
-            "publisher": "huggingface"
+            "title": "Mistral CEO Says AI Safety Debate Masks Negligence - GuruFocus",
+            "at": "2026-09-29T19:50:26Z",
+            "publisher": "GuruFocus"
           }
         ]
       }
     ],
-    "self_repost_clusters": [
-      {
-        "title": "NVIDIA Opens Applications for 2027–2028 Graduate Fellowships With Awards Up to $60,000",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:9ea7c06c3bf5bdb6",
-            "publisher": "NVIDIA Blog",
-            "title": "NVIDIA Opens Applications for 2027–2028 Graduate Fellowships With Awards Up to $60,000 - NVIDIA Blog"
-          }
-        ]
-      },
-      {
-        "title": "From Training to Production, NVIDIA and CoreWeave Close the Loop on Agentic AI",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:76c74ac218bc7cfb",
-            "publisher": "NVIDIA Blog",
-            "title": "From Training to Production, NVIDIA and CoreWeave Close the Loop on Agentic AI - NVIDIA Blog"
-          }
-        ]
-      },
-      {
-        "title": "AI Native by Design: Lessons Learned from Building NVIDIA TensorRT Model Connect",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:f2ec96c3c93d380f",
-            "publisher": "NVIDIA Developer",
-            "title": "AI Native by Design: Lessons Learned from Building NVIDIA TensorRT Model Connect | NVIDIA Technical Blog - NVIDIA Developer"
-          }
-        ]
-      },
-      {
-        "title": "Lower the Cost of Building and Running Visual AI Agents with NVIDIA VSS Blueprint 3.3",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:da72c35430bfb77f",
-            "publisher": "NVIDIA Developer",
-            "title": "Lower the Cost of Building and Running Visual AI Agents with NVIDIA VSS Blueprint 3.3 | NVIDIA Technical Blog - NVIDIA Developer"
-          }
-        ]
-      }
-    ],
+    "self_repost_clusters": [],
     "ai_relevance": {
       "rss_lab_dropped": [
         {
@@ -514,12 +361,8 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "Investor's Business Daily",
-          "title": "Nvidia, AMD Collaborator Teases Breakout To Record High. These Clues Bode Well. - Investor's Business Daily"
-        },
-        {
-          "publisher": "alphaXiv",
-          "title": "Tokenization: A Survey for Modern NLP - alphaXiv"
+          "publisher": "Bioengineer.org",
+          "title": "Genetic Algorithms Meet LoRA: New Study Tests Whether Smarter Search Really Beats Simple Tuning - Bioengineer.org"
         },
         {
           "publisher": "mindef.gov.sg",
@@ -527,51 +370,74 @@
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 14
+      "hn_dropped": 16
     },
     "gnews_near_misses": [
       {
-        "score": 0.749,
+        "score": 0.665,
         "blocked": "time-window",
-        "hours_apart": 57.4,
+        "hours_apart": 26.4,
         "a": {
-          "id": "rss:nvidia-dev:b2492ef6a6d58b24",
-          "source": "rss-lab",
-          "title": "NVIDIA Open Agent Safety Platform: A Reference for Continuous In-Silicon Agent Monitoring",
-          "at": "2026-09-28T08:56:55Z"
+          "id": "hn:49897587",
+          "source": "hn-algolia",
+          "title": "OpenAI Launches Decisions API",
+          "at": "2026-09-29T17:58:10Z"
         },
         "b": {
-          "id": "gnews:d1ccc6320de90c66",
+          "id": "gnews:07d6b6842655c045",
           "source": "gnews-rss",
-          "title": "NVIDIA Launches Open Agent Safety Platform - Supply & Demand Chain Executive",
-          "at": "2026-09-30T18:22:30Z"
+          "title": "OpenAI unveils 'Decisions API' to speed up choice-based judgments, targeting software automation - 디지털투데이",
+          "at": "2026-09-30T20:22:16Z"
         },
         "shared": [
-          "nvidia",
-          "open",
-          "agent",
-          "safety",
-          "platform"
+          "openai",
+          "decision",
+          "api"
         ]
       },
       {
-        "score": 0.547,
-        "blocked": "thin-overlap",
-        "hours_apart": 17.4,
+        "score": 0.65,
+        "blocked": "time-window",
+        "hours_apart": 66.2,
         "a": {
-          "id": "hn:49911928",
-          "source": "hn-algolia",
-          "title": "Claude Says",
-          "at": "2026-09-30T17:32:06Z"
+          "id": "rss:nvidia-dev:fd7ac71c1dc39408",
+          "source": "rss-lab",
+          "title": "Add Runtime Controls to AI Agents with NVIDIA OpenShell",
+          "at": "2026-09-28T08:55:00Z"
         },
         "b": {
-          "id": "gnews:646dfb9d4b577be4",
+          "id": "gnews:e09aaae4f2c26574",
           "source": "gnews-rss",
-          "title": "Is Claude Conscious? Inside Anthropic’s Quest to Instill Morality Into Its A.I. Models - The New York Times",
-          "at": "2026-09-30T00:09:48Z"
+          "title": "Nvidia Adds Runtime and Hardware Controls to Keep AI Agents Within Their Limits - ADTmag",
+          "at": "2026-10-01T03:05:28Z"
         },
         "shared": [
-          "claude"
+          "add",
+          "runtim",
+          "control",
+          "ai",
+          "agent",
+          "nvidia"
+        ]
+      },
+      {
+        "score": 0.575,
+        "blocked": "time-window",
+        "hours_apart": 37.1,
+        "a": {
+          "id": "rss:openai:dec620cb7225d243",
+          "source": "rss-lab",
+          "title": "Introducing dots",
+          "at": "2026-09-29T00:00:00Z"
+        },
+        "b": {
+          "id": "gnews:34d5d89b49f3409b",
+          "source": "gnews-rss",
+          "title": "OpenAI introduces Dots, a new always-on AI agent, at Dev Day 2026 - Mashable",
+          "at": "2026-09-30T13:07:41Z"
+        },
+        "shared": [
+          "dot"
         ]
       },
       {
@@ -587,7 +453,7 @@
         "b": {
           "id": "gnews:9304efbcb08a503d",
           "source": "gnews-rss",
-          "title": "Put ChatGPT, Claude & Gemini to Work From One $100 Lifetime AI Platform - boingboing.net",
+          "title": "Put ChatGPT, Claude & Gemini to Work From One $100 Lifetime AI Platform - Boing Boing",
           "at": "2026-09-30T13:00:00Z"
         },
         "shared": [
@@ -595,145 +461,98 @@
         ]
       },
       {
-        "score": 0.46,
-        "blocked": "thin-overlap",
-        "hours_apart": 2,
-        "a": {
-          "id": "hn:49911520",
-          "source": "hn-algolia",
-          "title": "FTC opens probe into AI giants including Anthropic and OpenAI",
-          "at": "2026-09-30T16:59:37Z"
-        },
-        "b": {
-          "id": "gnews:ab49d447013cc08c",
-          "source": "gnews-rss",
-          "title": "FTC launches broad investigation into Anthropic, OpenAI - The Washington Post",
-          "at": "2026-09-30T18:59:21Z"
-        },
-        "shared": [
-          "ftc",
-          "anthropic",
-          "openai"
-        ]
-      },
-      {
-        "score": 0.43,
+        "score": 0.34,
         "blocked": "time-window",
-        "hours_apart": 45.5,
+        "hours_apart": 370.8,
         "a": {
-          "id": "hn:49914149",
-          "source": "hn-algolia",
-          "title": "Anthropic's IPO Prospectus Is a Fucking Doozy",
-          "at": "2026-09-30T20:44:19Z"
-        },
-        "b": {
-          "id": "gnews:438dbae3c206eeff",
-          "source": "gnews-rss",
-          "title": "EXCLUSIVE: Anthropic's IPO prospectus shows sweeping AI vision, surging costs - Reuters",
-          "at": "2026-09-28T23:17:00Z"
-        },
-        "shared": [
-          "anthropic",
-          "ipo",
-          "prospectus"
-        ]
-      },
-      {
-        "score": 0.359,
-        "blocked": "time-window",
-        "hours_apart": 57.1,
-        "a": {
-          "id": "rss:nvidia-dev:b2492ef6a6d58b24",
+          "id": "rss:huggingface:a1d018f16fad79f9",
           "source": "rss-lab",
-          "title": "NVIDIA Open Agent Safety Platform: A Reference for Continuous In-Silicon Agent Monitoring",
-          "at": "2026-09-28T08:56:55Z"
+          "title": "Your Agent Aced the Task. Will It Do It Again?",
+          "at": "2026-09-15T16:00:44Z"
         },
         "b": {
-          "id": "gnews:ea9c871107c2ead0",
+          "id": "gnews:e3280cfa13a19404",
           "source": "gnews-rss",
-          "title": "NVIDIA Launches Open Agent Safety Platform: How OpenShell and Sentry Are Meant to Contain Autonomous AI Agents - Межа. Новини України.",
-          "at": "2026-09-30T18:01:43Z"
+          "title": "Meta wants people to use ‘AI agents’ to do daily tasks for them. Here’s why that’s a problem - The Conversation",
+          "at": "2026-10-01T02:49:00Z"
         },
         "shared": [
-          "nvidia",
-          "open",
           "agent",
-          "safety",
-          "platform"
+          "task",
+          "do"
         ]
       },
       {
-        "score": 0.337,
-        "blocked": "time-window",
-        "hours_apart": 57.1,
+        "score": 0.336,
+        "blocked": "thin-overlap",
+        "hours_apart": 36.8,
         "a": {
-          "id": "rss:nvidia-dev:fd7ac71c1dc39408",
-          "source": "rss-lab",
-          "title": "Add Runtime Controls to AI Agents with NVIDIA OpenShell",
-          "at": "2026-09-28T08:55:00Z"
+          "id": "hn:49889147",
+          "source": "hn-algolia",
+          "title": "As AI models go rogue, do you still trust OpenAI and Anthropic to stop them?",
+          "at": "2026-09-29T06:46:39Z"
         },
         "b": {
-          "id": "gnews:ea9c871107c2ead0",
+          "id": "gnews:f0daca4fea982794",
           "source": "gnews-rss",
-          "title": "NVIDIA Launches Open Agent Safety Platform: How OpenShell and Sentry Are Meant to Contain Autonomous AI Agents - Межа. Новини України.",
-          "at": "2026-09-30T18:01:43Z"
+          "title": "FTC Launches Probe Into AI Companies OpenAI, Anthropic - Benzinga",
+          "at": "2026-09-30T19:32:29Z"
         },
         "shared": [
           "ai",
-          "agent",
-          "nvidia",
-          "openshell"
+          "openai",
+          "anthropic"
         ]
       },
       {
-        "score": 0.333,
-        "blocked": "below-threshold",
-        "hours_apart": 1.2,
+        "score": 0.299,
+        "blocked": "time-window",
+        "hours_apart": 42.7,
         "a": {
-          "id": "hn:49913254",
+          "id": "hn:49889780",
           "source": "hn-algolia",
-          "title": "US trade regulator opens investigation into AI giants",
-          "at": "2026-09-30T19:34:02Z"
+          "title": "Meta's new AI agent built lists of people in vulnerable groups on request",
+          "at": "2026-09-29T08:06:40Z"
         },
         "b": {
-          "id": "gnews:f8a8969615c46aa7",
+          "id": "gnews:e3280cfa13a19404",
           "source": "gnews-rss",
-          "title": "FTC Opens Investigation of Anthropic and OpenAI - WSJ",
-          "at": "2026-09-30T18:24:47Z"
+          "title": "Meta wants people to use ‘AI agents’ to do daily tasks for them. Here’s why that’s a problem - The Conversation",
+          "at": "2026-10-01T02:49:00Z"
         },
         "shared": [
-          "open",
-          "investigation"
+          "meta",
+          "ai",
+          "agent",
+          "peopl"
+        ]
+      },
+      {
+        "score": 0.296,
+        "blocked": "below-threshold",
+        "hours_apart": 10.7,
+        "a": {
+          "id": "hn:49910385",
+          "source": "hn-algolia",
+          "title": "Show HN: Glance – Build, evaluate, and monitor AI agents",
+          "at": "2026-09-30T15:37:36Z"
+        },
+        "b": {
+          "id": "gnews:a82572665bf3e6f2",
+          "source": "gnews-rss",
+          "title": "How Capital One evaluates, governs its AI agents - Constellation Research",
+          "at": "2026-10-01T02:19:09Z"
+        },
+        "shared": [
+          "evaluat",
+          "ai",
+          "agent"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.749,
-        "blocked": "time-window",
-        "hours_apart": 57.4,
-        "a": {
-          "id": "rss:nvidia-dev:b2492ef6a6d58b24",
-          "source": "rss-lab",
-          "title": "NVIDIA Open Agent Safety Platform: A Reference for Continuous In-Silicon Agent Monitoring",
-          "at": "2026-09-28T08:56:55Z"
-        },
-        "b": {
-          "id": "gnews:d1ccc6320de90c66",
-          "source": "gnews-rss",
-          "title": "NVIDIA Launches Open Agent Safety Platform - Supply & Demand Chain Executive",
-          "at": "2026-09-30T18:22:30Z"
-        },
-        "shared": [
-          "nvidia",
-          "open",
-          "agent",
-          "safety",
-          "platform"
-        ]
-      },
-      {
-        "score": 0.695,
+        "score": 0.699,
         "blocked": "short-title",
         "hours_apart": 17.1,
         "a": {
@@ -753,7 +572,7 @@
         ]
       },
       {
-        "score": 0.671,
+        "score": 0.677,
         "blocked": "thin-overlap",
         "hours_apart": 7.1,
         "a": {
@@ -775,7 +594,7 @@
         ]
       },
       {
-        "score": 0.669,
+        "score": 0.671,
         "blocked": "version-conflict",
         "hours_apart": 8,
         "a": {
@@ -797,7 +616,54 @@
         ]
       },
       {
-        "score": 0.633,
+        "score": 0.665,
+        "blocked": "time-window",
+        "hours_apart": 26.4,
+        "a": {
+          "id": "hn:49897587",
+          "source": "hn-algolia",
+          "title": "OpenAI Launches Decisions API",
+          "at": "2026-09-29T17:58:10Z"
+        },
+        "b": {
+          "id": "gnews:07d6b6842655c045",
+          "source": "gnews-rss",
+          "title": "OpenAI unveils 'Decisions API' to speed up choice-based judgments, targeting software automation - 디지털투데이",
+          "at": "2026-09-30T20:22:16Z"
+        },
+        "shared": [
+          "openai",
+          "decision",
+          "api"
+        ]
+      },
+      {
+        "score": 0.65,
+        "blocked": "time-window",
+        "hours_apart": 66.2,
+        "a": {
+          "id": "rss:nvidia-dev:fd7ac71c1dc39408",
+          "source": "rss-lab",
+          "title": "Add Runtime Controls to AI Agents with NVIDIA OpenShell",
+          "at": "2026-09-28T08:55:00Z"
+        },
+        "b": {
+          "id": "gnews:e09aaae4f2c26574",
+          "source": "gnews-rss",
+          "title": "Nvidia Adds Runtime and Hardware Controls to Keep AI Agents Within Their Limits - ADTmag",
+          "at": "2026-10-01T03:05:28Z"
+        },
+        "shared": [
+          "add",
+          "runtim",
+          "control",
+          "ai",
+          "agent",
+          "nvidia"
+        ]
+      },
+      {
+        "score": 0.637,
         "blocked": "thin-overlap",
         "hours_apart": 24,
         "a": {
@@ -840,46 +706,23 @@
         ]
       },
       {
-        "score": 0.556,
+        "score": 0.575,
         "blocked": "time-window",
-        "hours_apart": 24.9,
+        "hours_apart": 37.1,
         "a": {
-          "id": "hn:49910974",
-          "source": "hn-algolia",
-          "title": "Nvidia Kumo Tabular: Open Foundation Model for Tabular Prediction",
-          "at": "2026-09-30T16:24:53Z"
-        },
-        "b": {
-          "id": "rss:huggingface:dc53fce90c6f36f5",
+          "id": "rss:openai:dec620cb7225d243",
           "source": "rss-lab",
-          "title": "NVIDIA Kumo Tabular Sets a New Accuracy-Efficiency Frontier for Tabular Prediction",
-          "at": "2026-09-29T15:30:38Z"
-        },
-        "shared": [
-          "nvidia",
-          "kumo",
-          "tabular",
-          "prediction"
-        ]
-      },
-      {
-        "score": 0.547,
-        "blocked": "thin-overlap",
-        "hours_apart": 17.4,
-        "a": {
-          "id": "hn:49911928",
-          "source": "hn-algolia",
-          "title": "Claude Says",
-          "at": "2026-09-30T17:32:06Z"
+          "title": "Introducing dots",
+          "at": "2026-09-29T00:00:00Z"
         },
         "b": {
-          "id": "gnews:646dfb9d4b577be4",
+          "id": "gnews:34d5d89b49f3409b",
           "source": "gnews-rss",
-          "title": "Is Claude Conscious? Inside Anthropic’s Quest to Instill Morality Into Its A.I. Models - The New York Times",
-          "at": "2026-09-30T00:09:48Z"
+          "title": "OpenAI introduces Dots, a new always-on AI agent, at Dev Day 2026 - Mashable",
+          "at": "2026-09-30T13:07:41Z"
         },
         "shared": [
-          "claude"
+          "dot"
         ]
       }
     ]
@@ -888,44 +731,44 @@
     {
       "id": "arxiv",
       "state": "ok",
-      "streak_ok": 51,
+      "streak_ok": 52,
       "streak_fail": 0,
-      "items_last": 29
+      "items_last": 12
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 51,
+      "streak_ok": 52,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 51,
+      "streak_ok": 52,
       "streak_fail": 0,
-      "items_last": 3
+      "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 51,
+      "streak_ok": 52,
       "streak_fail": 0,
-      "items_last": 41
+      "items_last": 35
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 51,
+      "streak_ok": 52,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 51,
+      "streak_ok": 52,
       "streak_fail": 0,
-      "items_last": 73
+      "items_last": 81
     },
     {
       "id": "openalex",
@@ -937,27 +780,27 @@
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 51,
+      "streak_ok": 52,
       "streak_fail": 0,
       "items_last": 105
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 51,
+      "streak_ok": 52,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 51,
+      "streak_ok": 52,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.003991944444444445,
+    "hours": 0.04036527777777778,
     "stale": false
   },
   "hf": {
@@ -967,8 +810,8 @@
   },
   "arxiv": {
     "ok": true,
-    "enriched": 24,
-    "shelf": 5,
+    "enriched": 12,
+    "shelf": 0,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
   },
@@ -978,7 +821,7 @@
     "soft_fail_reason": "paused_until 2026-10-01T11:14:50Z",
     "enriched": 0,
     "secondary": 0,
-    "query": "LLM agent sandbox",
+    "query": "Hugging Face agent",
     "mode": "search",
     "from_cache": false,
     "searches": 0,
@@ -1001,8 +844,8 @@
     "enriched": 1,
     "query": "Scaling Properties of Same-Family On-Policy Distillation",
     "mode": "bibliographic",
-    "from_cache": false,
-    "searches": 1,
+    "from_cache": true,
+    "searches": 0,
     "brief": false,
     "pulse_lead": false,
     "papers_enrich_only": true,
@@ -1024,42 +867,42 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 73,
+    "count": 81,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
     "queries_run": [
-      "Hugging Face",
       "agents",
-      "eval"
+      "eval",
+      "LLM"
     ],
     "queries_ok": [
-      "Hugging Face",
       "agents",
-      "eval"
+      "eval",
+      "LLM"
     ],
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 14,
+    "ai_dropped": 16,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
-        "id": "hn:49896586",
-        "tag": "companion",
-        "score": 1046,
-        "text": "GPT 6.1 Sol: Near-Astra intelligence for a fifth of the price"
-      },
-      {
         "id": "hn:49913571",
         "tag": "rest",
-        "score": 802,
+        "score": 1065,
         "text": "Gemini 4 Argon"
+      },
+      {
+        "id": "hn:49896586",
+        "tag": "companion",
+        "score": 1052,
+        "text": "GPT 6.1 Sol: Near-Astra intelligence for a fifth of the price"
       },
       {
         "id": "hn:49896604",
         "tag": "rest",
-        "score": 747,
+        "score": 750,
         "text": "Dots: Always-on agents"
       }
     ]
@@ -1076,52 +919,66 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "(cache:openai)",
+        "url": "https://openai.com/news/rss.xml",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "(cache:deepmind)",
+        "url": "https://deepmind.google/blog/rss.xml",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "(cache:google-ai)",
+        "url": "https://blog.google/technology/ai/rss/",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "(cache:huggingface)",
+        "url": "https://huggingface.co/blog/feed.xml",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "(cache:mistral)",
+        "url": "https://mistral.ai/rss.xml",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "(cache:nvidia)",
+        "url": "https://blogs.nvidia.com/feed/",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "(cache:nvidia-dev)",
+        "url": "https://developer.nvidia.com/blog/feed",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "(cache:ms-research)",
+        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "(cache:google-research)",
+        "url": "https://research.google/blog/rss/",
         "count": 12
       }
     ],
     "feeds_soft_fail": [],
     "sample": [
+      {
+        "id": "rss:nvidia-dev:2efebb52e52f8375",
+        "lab": "nvidia-dev",
+        "tag": "rest",
+        "title": "Deploying an HSTU Generative Recommender with NVIDIA Dynamo-Triton",
+        "link": "https://developer.nvidia.com/blog/deploying-an-hstu-generative-recommender-with-nvidia-dynamo-triton/"
+      },
+      {
+        "id": "rss:deepmind:ce56aa83d0064ef1",
+        "lab": "deepmind",
+        "tag": "rest",
+        "title": "Gemini 4 Argon: our next era of frontier intelligence",
+        "link": "https://deepmind.google/blog/gemini-4-argon-our-next-era-of-frontier-intelligence/"
+      },
       {
         "id": "rss:nvidia-dev:ddabb606b8e6dd0b",
         "lab": "nvidia-dev",
@@ -1135,20 +992,6 @@
         "tag": "rest",
         "title": "NVIDIA Opens Applications for 2027–2028 Graduate Fellowships With Awards Up to $60,000",
         "link": "https://blogs.nvidia.com/blog/applications-open-graduate-fellowship-awards-2026/"
-      },
-      {
-        "id": "rss:nvidia-dev:c551764e90f55e66",
-        "lab": "nvidia-dev",
-        "tag": "rest",
-        "title": "Tracing Agent Harness Behavior with NVIDIA NeMo Relay",
-        "link": "https://developer.nvidia.com/blog/tracing-agent-harness-behavior-with-nvidia-nemo-relay/"
-      },
-      {
-        "id": "rss:ms-research:4ed2607a5b2ebbf9",
-        "lab": "ms-research",
-        "tag": "rest",
-        "title": "Forecasting space weather risks on power grids",
-        "link": "https://www.microsoft.com/en-us/research/blog/forecasting-space-weather-risks-on-power-grids/"
       }
     ]
   },
@@ -1162,17 +1005,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "(cache:trailofbits)",
+        "url": "https://blog.trailofbits.com/feed/",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "(cache:fox-it)",
+        "url": "https://blog.fox-it.com/feed/",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "(cache:projectzero)",
+        "url": "https://projectzero.google/feed.xml",
         "count": 5
       }
     ],
@@ -1209,114 +1052,58 @@
   },
   "google_news": {
     "ok": true,
-    "soft_fail": false,
-    "soft_fail_reason": null,
+    "soft_fail": true,
+    "soft_fail_reason": "Microsoft Research:empty_channel",
     "queries_attempted": 4,
-    "queries_ok": 4,
-    "items": 41,
-    "pool": 322,
+    "queries_ok": 3,
+    "items": 35,
+    "pool": 217,
     "corroborators": [
       {
-        "id": "gnews:28c7a25a16e34a0c",
+        "id": "gnews:f0daca4fea982794",
         "anchor_id": "hn:49911520",
-        "score": 1,
-        "title": "FTC opens probe into AI giants including Anthropic and OpenAI, New York Post reports - Rock Hill Herald",
-        "publisher": "Rock Hill Herald",
+        "score": 0.753,
+        "title": "FTC Launches Probe Into AI Companies OpenAI, Anthropic - Benzinga",
+        "publisher": "Benzinga",
         "self_repost": false
       },
       {
-        "id": "gnews:0279895513611c74",
-        "anchor_id": "hn:49911520",
-        "score": 1,
-        "title": "FTC opens probe into AI giants including Anthropic and OpenAI, New York Post reports - WHTC",
-        "publisher": "WHTC",
+        "id": "gnews:34d5d89b49f3409b",
+        "anchor_id": "hn:49896604",
+        "score": 0.684,
+        "title": "OpenAI introduces Dots, a new always-on AI agent, at Dev Day 2026 - Mashable",
+        "publisher": "Mashable",
         "self_repost": false
-      },
-      {
-        "id": "gnews:3e9e52fc5ce54430",
-        "anchor_id": "hn:49911520",
-        "score": 1,
-        "title": "FTC opens probe into AI giants including Anthropic and OpenAI, New York Post reports - The Lufkin Daily News",
-        "publisher": "The Lufkin Daily News",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:9ea7c06c3bf5bdb6",
-        "anchor_id": "rss:nvidia:2d6b6b3ac74c3717",
-        "score": 1,
-        "title": "NVIDIA Opens Applications for 2027–2028 Graduate Fellowships With Awards Up to $60,000 - NVIDIA Blog",
-        "publisher": "NVIDIA Blog",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:76c74ac218bc7cfb",
-        "anchor_id": "rss:nvidia:b69b513bb30984b7",
-        "score": 1,
-        "title": "From Training to Production, NVIDIA and CoreWeave Close the Loop on Agentic AI - NVIDIA Blog",
-        "publisher": "NVIDIA Blog",
-        "self_repost": true
       },
       {
         "id": "gnews:e098c7c402c0f4e5",
         "anchor_id": "hn:49891721",
         "score": 1,
-        "title": "Mistral CEO says U.S. AI safety debate masks competitors’ 'negligence' - cnbc.com",
-        "publisher": "cnbc.com",
+        "title": "Mistral CEO says U.S. AI safety debate masks competitors’ 'negligence' - CNBC",
+        "publisher": "CNBC",
         "self_repost": false
       },
       {
         "id": "gnews:5e07e6e25ecfc0ec",
         "anchor_id": "hn:49891721",
-        "score": 0.975,
+        "score": 0.974,
         "title": "Mistral CEO: AI Safety Debate Masks Competitor Negligence - Briefs Finance",
         "publisher": "Briefs Finance",
         "self_repost": false
       },
       {
-        "id": "gnews:91b4339588bcf7d7",
+        "id": "gnews:21c1aa9944280317",
         "anchor_id": "hn:49891721",
-        "score": 0.906,
-        "title": "Mistral CEO Says AI Safety Debate Masks Negligence - Yahoo Finance",
-        "publisher": "Yahoo Finance",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:646dfb9d4b577be4",
-        "anchor_id": "hn:49899579",
-        "score": 0.982,
-        "title": "Is Claude Conscious? Inside Anthropic’s Quest to Instill Morality Into Its A.I. Models - The New York Times",
-        "publisher": "The New York Times",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:f2ec96c3c93d380f",
-        "anchor_id": "rss:nvidia-dev:a1b7c3f1faa2ee83",
-        "score": 1,
-        "title": "AI Native by Design: Lessons Learned from Building NVIDIA TensorRT Model Connect | NVIDIA Technical Blog - NVIDIA Developer",
-        "publisher": "NVIDIA Developer",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:da72c35430bfb77f",
-        "anchor_id": "rss:nvidia-dev:250cdf9491b40b01",
-        "score": 1,
-        "title": "Lower the Cost of Building and Running Visual AI Agents with NVIDIA VSS Blueprint 3.3 | NVIDIA Technical Blog - NVIDIA Developer",
-        "publisher": "NVIDIA Developer",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:438dbae3c206eeff",
-        "anchor_id": "hn:49886005",
-        "score": 0.96,
-        "title": "EXCLUSIVE: Anthropic's IPO prospectus shows sweeping AI vision, surging costs - Reuters",
-        "publisher": "Reuters",
+        "score": 0.907,
+        "title": "Mistral CEO Says AI Safety Debate Masks Negligence - GuruFocus",
+        "publisher": "GuruFocus",
         "self_repost": false
       }
     ],
     "http_status": 200,
-    "content_type": null,
-    "format": "rss2",
-    "from_cache": true,
+    "content_type": "application/xml; charset=utf-8",
+    "format": "empty",
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1325,38 +1112,44 @@
     "pulse_only": true,
     "url_template": "https://news.google.com/rss/search?q={QUERY}&hl=en-US&gl=US&ceid=US:en",
     "queried": [
-      "Anthropic",
       "large language model",
-      "NVIDIA AI",
-      "Mistral AI"
+      "AI agent",
+      "Mistral AI",
+      "Microsoft Research"
     ],
     "queries_ok_list": [
-      "Anthropic",
       "large language model",
-      "NVIDIA AI",
+      "AI agent",
       "Mistral AI"
     ],
-    "queries_soft_fail": [],
+    "queries_soft_fail": [
+      {
+        "query": "Microsoft Research",
+        "reason": "empty_channel",
+        "soft_fail": true,
+        "format": "empty"
+      }
+    ],
     "sample": [
       {
-        "id": "gnews:66a057a7bda6a2bf",
-        "title": "Nvidia's New OpenShell Security Platform Aims to Prevent Rogue AI Attacks - androidheadlines.com",
-        "publisher": "androidheadlines.com",
-        "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQbFFOSWhTT3pXQjV6VzBPQTZlTkxjUFhFMmNQN0lTRWVHUjV0RkVvd3lOWXVYZlFJMmVweTFYWS1oQlN4cVgtS3dPOTNIQ2dldlJUV1JFOUNyS1RReTBkdEw1a29VbDUxWDZwamtSVTFXeEtwLVpVQ0RMSFR1eFNKTW9Za3diZDV5Q2xYTkNxcWJTQ1o5RmlmNFQ0V01pUmNQaXVRSThKbjBpanhjLUpQU2pBODJVTXg4Znc?oc=5",
+        "id": "gnews:e09aaae4f2c26574",
+        "title": "Nvidia Adds Runtime and Hardware Controls to Keep AI Agents Within Their Limits - ADTmag",
+        "publisher": "ADTmag",
+        "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQVnR4ZUhCaUhBZk9iZE1oak1iMjJNZW42Z1V4X0k4c3dTZkJQdE9Ea0MzUkhWVXUwUHVNWkxVcEtKYTFNMlViMlQ5Z0diWWpTNnhkX0J2N2RIdURZV1lLVVBVTnQ4UDByZlVZRGtvamJXNVdMbVlDRkVZSHczTV8yUWlrMnQwM2NRYkUxclZmMkdRbmxEdVFNSnBoU2lrLXVlUGRhdnJzNjJFZDBKT3g5VVBlblVIMGFWdWI2dzFtekw?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:93d1f75854e747d9",
-        "title": "CoreWeave Will Offer NVIDIA Vera CPU for AI Agents - CoreWeave",
-        "publisher": "CoreWeave",
-        "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQYUZWeTVHblMtX0dFc20xTmtJNk52UUdCcTRLdkdzWmZEa1FDZ2pENl9QVmFEeUYwb0dIR3JNWTNjdlBfTk9BTlNfSnYxa1N2T3BwMWY3OE5XXy1SY3BWREZZdTlGUmpNbW1iMVVHWGtoUDluZ0ZJWktwTFJaTnZmV2xIaGY0ekdndnV1ekwwOHBwTjhWOG5TNldrRQ?oc=5",
-        "tag": "rest"
-      },
-      {
-        "id": "gnews:ab49d447013cc08c",
-        "title": "FTC launches broad investigation into Anthropic, OpenAI - The Washington Post",
+        "id": "gnews:bcbfa63339a3c830",
+        "title": "AI agents tried to hack a Canadian government website, researchers say - The Washington Post",
         "publisher": "The Washington Post",
-        "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPNERSOFU3M09XYWNrVTdSdHhkcVl4NkxXeUU2dHItLW41QnJ5TjhOX1VhaUh0Wmc1Y3ZFVm9qeXhfd0gxRVNNclo3UURDbGFrb19KS2RhSWlrbFl1RTZ5V2dlbEN4WXZ0SkwyTy1mRFc4M0lDYVRCZ0lBQnJzZ2xmenA1cDNaX294MzJYVmhydXlBQ1ZQbG40LW9lY1UtQ2MzRmZsdDJ2MWplNVAx?oc=5",
+        "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPeEVjbGN0N2NJSC1vQ3FPTUNmZFdLSWhlVmhiZVJ4TnhISFh2VjJZZzJrdEFka2IwUTdGaW5aY3FzZ3dQRk9UQnF3dHhhbXA3a0NlVW82Q0JXSFA1ak9keHdydVBXdnZURXlVWmx6MDdHbzFxOGo3V3hOazEtb2F0Vko3VHhoUVZmM1M3b2J3b0RoZUp4c3FqZHRNN1phaGdXLVlzdFlLTnJGNXpOeUl4dTBCU3A?oc=5",
+        "tag": "rest"
+      },
+      {
+        "id": "gnews:e3280cfa13a19404",
+        "title": "Meta wants people to use ‘AI agents’ to do daily tasks for them. Here’s why that’s a problem - The Conversation",
+        "publisher": "The Conversation",
+        "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQc094dFB4TTIycWpCLXNubnc5a3FzbnRaSEZ3VnotQnhLTk1jWE1kQklzc1k4ZGUxbVA0M2wxTVZtMkZVanhrQnFmOE1zTFlZV1lFWEFLZVNEYmpxNGF6cDJKTkVZT2xYTmxQS2FaRWpZX0hSYkVPemI0WHZfbl9LRFBJYkM2UDh1Rm5GZFN6NDVLeTF0bkJ4SWtuNHVhTWJuRWU2UkFYNGEzNWV5SG9Kc1lYRkJUQTlnM05SQV9xYw?oc=5",
         "tag": "rest"
       }
     ]
@@ -1373,32 +1166,28 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "query": "agent sandbox escape",
-    "shelf": 3,
-    "from_cache": true,
-    "searches": 0,
-    "rate_limit_remaining": null,
+    "query": "LLM red team toolkit",
+    "shelf": 2,
+    "from_cache": false,
+    "searches": 1,
+    "rate_limit_remaining": 9,
     "brief": false,
     "pulse_lead": false,
     "shelf_only": true,
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
-        "label": "hyperlight-dev/hyperagent",
-        "href": "https://github.com/hyperlight-dev/hyperagent"
+        "label": "AKIVA-AI/toolkit-policy-test-bench",
+        "href": "https://github.com/AKIVA-AI/toolkit-policy-test-bench"
       },
       {
-        "label": "jkelly-dev1/agent-sandbox-escape",
-        "href": "https://github.com/jkelly-dev1/agent-sandbox-escape"
-      },
-      {
-        "label": "agentfront/enclave",
-        "href": "https://github.com/agentfront/enclave"
+        "label": "seikaikyo/ai-red-team",
+        "href": "https://github.com/seikaikyo/ai-red-team"
       }
     ]
   },
   "shelf": {
-    "count": 20,
+    "count": 14,
     "brief": false
   },
   "wikidata": {
@@ -1406,28 +1195,17 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "seeds": [
-      "Anthropic",
       "Meta AI",
-      "Fox-IT"
+      "Fox-IT",
+      "Project Zero"
     ],
-    "searches": 0,
-    "from_cache": true,
+    "searches": 2,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "deny_grounding_only": true,
     "url": "https://www.wikidata.org/w/api.php",
     "hints": [
-      {
-        "seed": "Anthropic",
-        "qid": "Q116758847",
-        "label": "Anthropic",
-        "description": "American artificial intelligence corporation",
-        "status": "matched",
-        "source": "wikidata",
-        "briefEligible": false,
-        "pulseLeadEligible": false,
-        "denyGroundingOnly": true
-      },
       {
         "seed": "Meta AI",
         "qid": "Q112114913",
@@ -1444,6 +1222,17 @@
         "qid": "Q5476521",
         "label": "Fox-IT",
         "description": "information security company in the Netherlands",
+        "status": "matched",
+        "source": "wikidata",
+        "briefEligible": false,
+        "pulseLeadEligible": false,
+        "denyGroundingOnly": true
+      },
+      {
+        "seed": "Project Zero",
+        "qid": "Q18859887",
+        "label": "Project Zero",
+        "description": "security analysis team employed by Google",
         "status": "matched",
         "source": "wikidata",
         "briefEligible": false,

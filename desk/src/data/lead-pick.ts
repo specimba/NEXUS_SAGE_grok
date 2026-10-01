@@ -2,6 +2,46 @@
 import type { LeadEntry } from "@/lib/lead-pick";
 
 export const LEAD_TODAY: LeadEntry | null = {
+  "date": "2026-10-01",
+  "at": "2026-10-01T03:20:06.342Z",
+  "crawl_at": "2026-10-01T03:17:41Z",
+  "excluded": [
+    {
+      "cluster_id": "cl:rss:openai:dec620cb7225d243",
+      "headline": "Introducing dots",
+      "reason": "age>=24h"
+    },
+    {
+      "cluster_id": "cl:hn:49891721",
+      "headline": "Mistral CEO says U.S. AI safety debate masks competitors' 'negligence'",
+      "reason": "age>=24h"
+    },
+    {
+      "cluster_id": "cl:gnews:bcbfa63339a3c830",
+      "headline": "AI agents tried to hack a Canadian government website, researchers say",
+      "reason": "GNW_ONLY"
+    },
+    {
+      "cluster_id": "cl:gnews:bb11789ce5e03e45",
+      "headline": "Aerospike’s Network Efficiency Advantage for Rapidly Scaling Operational AI",
+      "reason": "GNW_ONLY"
+    },
+    {
+      "cluster_id": "cl:rss:openai:d6b9f5e651b1891e",
+      "headline": "Introducing GPT-6.1 Sol",
+      "reason": "age>=24h"
+    }
+  ],
+  "cluster_id": "cl:rss:deepmind:ce56aa83d0064ef1",
+  "headline": "Gemini 4 Argon: our next era of frontier intelligence",
+  "url": "https://deepmind.google/blog/gemini-4-argon-our-next-era-of-frontier-intelligence/",
+  "sources": 2,
+  "sig": 1065,
+  "reason": "picked",
+  "first_at": "2026-09-30T20:01:45.000Z"
+};
+
+export const LEAD_YESTERDAY: LeadEntry | null = {
   "date": "2026-09-30",
   "at": "2026-09-30T03:16:33.351Z",
   "crawl_at": "2026-09-30T03:13:10Z",
@@ -51,52 +91,7 @@ export const LEAD_TODAY: LeadEntry | null = {
   "first_at": "2026-09-29T08:20:04.000Z"
 };
 
-export const LEAD_YESTERDAY: LeadEntry | null = {
-  "date": "2026-09-29",
-  "at": "2026-09-29T03:21:05.067Z",
-  "crawl_at": "2026-09-29T03:20:19Z",
-  "excluded": [
-    {
-      "cluster_id": "cl:rss:nvidia-dev:b2492ef6a6d58b24",
-      "headline": "NVIDIA Open Agent Safety Platform: A Reference for Continuous In-Silicon Agent Monitoring",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:hn:49870423",
-      "headline": "Anthropic CEO Amodei set to meet with Trump",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:hn:49872468",
-      "headline": "OpenAI pauses training of latest models after agents probed US Government sites",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:gnews:7e6aefa3a9071531",
-      "headline": "Gemini Tarot Horoscope Today, September 29, 2026: Close people will be helpful, progress by coordinating with everyone",
-      "reason": "GNW_ONLY"
-    },
-    {
-      "cluster_id": "cl:hn:49870911",
-      "headline": "Did Anthropic's A.I. Really Make a Scientific Discovery on Its Own?",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:hn:49870695",
-      "headline": "Anthropic is a supply chain risk for all of us",
-      "reason": "age>=24h"
-    }
-  ],
-  "cluster_id": "cl:hn:49886416",
-  "headline": "OpenAI Says It Will Not Release Newest A.I. Model Over Safety Concerns",
-  "url": "https://www.nytimes.com/2026/09/28/technology/openai-astra-safety.html",
-  "sources": 11,
-  "sig": 43,
-  "reason": "picked",
-  "first_at": "2026-09-28T22:07:59.000Z"
-};
-
 export const LEAD_HELD = false;
 
 /** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is ≥24h old. */
-export const LEAD_FIRST_AT: string | null = "2026-09-29T08:20:04.000Z";
+export const LEAD_FIRST_AT: string | null = "2026-09-30T20:01:45.000Z";
