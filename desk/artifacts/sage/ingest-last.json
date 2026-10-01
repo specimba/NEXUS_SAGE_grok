@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-01T11:13:08Z",
+  "stamped_at": "2026-10-01T15:19:43Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 223,
+      "duration_ms": 206,
       "paused_until": null,
       "reason": null
     },
@@ -17,26 +17,26 @@
       "id": "arxiv",
       "label": "arXiv",
       "status": "ok",
-      "rows": 0,
-      "duration_ms": 23411,
+      "rows": 29,
+      "duration_ms": 3332,
       "paused_until": null,
       "reason": null
     },
     {
       "id": "openalex",
       "label": "OpenAlex",
-      "status": "paused",
+      "status": "fail",
       "rows": 0,
-      "duration_ms": 1,
-      "paused_until": "2026-10-01T11:14:50Z",
-      "reason": "paused_until 2026-10-01T11:14:50Z"
+      "duration_ms": 173,
+      "paused_until": "2026-10-02T15:19:46Z",
+      "reason": "HTTP 429"
     },
     {
       "id": "crossref",
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 4,
+      "duration_ms": 1383,
       "paused_until": null,
       "reason": null
     },
@@ -45,7 +45,7 @@
       "label": "HN",
       "status": "ok",
       "rows": 83,
-      "duration_ms": 8318,
+      "duration_ms": 8276,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 105,
-      "duration_ms": 16501,
+      "duration_ms": 76,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 4298,
+      "duration_ms": 33,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 34,
-      "duration_ms": 6338,
+      "rows": 31,
+      "duration_ms": 19,
       "paused_until": null,
       "reason": null
     },
@@ -90,38 +90,38 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 245,
+      "duration_ms": 1,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 59341,
-    "wall_ms": 59727,
-    "startup_ms": 31,
-    "main_ms": 59736
+    "sources_ms": 13501,
+    "wall_ms": 13895,
+    "startup_ms": 33,
+    "main_ms": 13907
   },
-  "multi_source_independent": 8,
+  "multi_source_independent": 7,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 8,
-    "multi_source_raw": 10,
+    "multi_source_independent": 7,
+    "multi_source_raw": 9,
     "self_reposts": 2,
-    "items_in": 249,
-    "clusters_out": 224,
-    "collapsed": 25,
-    "multi_source": 8,
+    "items_in": 246,
+    "clusters_out": 223,
+    "collapsed": 23,
+    "multi_source": 7,
     "multi_member": 15,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 34,
+    "new_items": 7,
     "per_source": {
       "hn-algolia": 83,
       "rss-lab": 105,
       "rss-security": 27,
-      "gnews-rss": 34
+      "gnews-rss": 31
     },
     "multi_source_clusters": [
       {
@@ -132,7 +132,7 @@
           "gnews-rss"
         ],
         "size": 5,
-        "score": 0.748,
+        "score": 0.752,
         "members": [
           {
             "id": "hn:49913571",
@@ -268,7 +268,7 @@
           "gnews-rss"
         ],
         "size": 3,
-        "score": 0.906,
+        "score": 0.902,
         "members": [
           {
             "id": "hn:49911520",
@@ -349,45 +349,6 @@
             "publisher": "openai"
           }
         ]
-      },
-      {
-        "title": "Mistral CEO says U.S. AI safety debate masks competitors' 'negligence'",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 4,
-        "score": 0.97,
-        "members": [
-          {
-            "id": "hn:49891721",
-            "source": "hn-algolia",
-            "title": "Mistral CEO says U.S. AI safety debate masks competitors' 'negligence'",
-            "at": "2026-09-29T12:01:07Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:5e07e6e25ecfc0ec",
-            "source": "gnews-rss",
-            "title": "Mistral CEO: AI Safety Debate Masks Competitor Negligence - Briefs Finance",
-            "at": "2026-09-29T18:40:00Z",
-            "publisher": "Briefs Finance"
-          },
-          {
-            "id": "gnews:21c1aa9944280317",
-            "source": "gnews-rss",
-            "title": "Mistral CEO Says AI Safety Debate Masks Negligence - GuruFocus",
-            "at": "2026-09-29T19:50:26Z",
-            "publisher": "GuruFocus"
-          },
-          {
-            "id": "gnews:159595c07b1a10a5",
-            "source": "gnews-rss",
-            "title": "'A cover for the negligence': Mistral CEO on the US AI safety debate - The Next Web",
-            "at": "2026-09-30T07:05:24Z",
-            "publisher": "The Next Web"
-          }
-        ]
       }
     ],
     "self_repost_clusters": [
@@ -465,7 +426,7 @@
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 13
+      "hn_dropped": 14
     },
     "gnews_near_misses": [
       {
@@ -491,7 +452,7 @@
         ]
       },
       {
-        "score": 0.575,
+        "score": 0.574,
         "blocked": "time-window",
         "hours_apart": 37.1,
         "a": {
@@ -508,30 +469,6 @@
         },
         "shared": [
           "dot"
-        ]
-      },
-      {
-        "score": 0.553,
-        "blocked": "below-threshold",
-        "hours_apart": 2.9,
-        "a": {
-          "id": "hn:49911520",
-          "source": "hn-algolia",
-          "title": "FTC opens probe into AI giants including Anthropic and OpenAI",
-          "at": "2026-09-30T16:59:37Z"
-        },
-        "b": {
-          "id": "gnews:d99251d1cdd15e75",
-          "source": "gnews-rss",
-          "title": "FTC opens investigation into Anthropic, OpenAI over AI agent dangers - Türkiye Today",
-          "at": "2026-09-30T19:51:37Z"
-        },
-        "shared": [
-          "ftc",
-          "open",
-          "ai",
-          "anthropic",
-          "openai"
         ]
       },
       {
@@ -555,7 +492,31 @@
         ]
       },
       {
-        "score": 0.534,
+        "score": 0.544,
+        "blocked": "below-threshold",
+        "hours_apart": 2.9,
+        "a": {
+          "id": "hn:49911520",
+          "source": "hn-algolia",
+          "title": "FTC opens probe into AI giants including Anthropic and OpenAI",
+          "at": "2026-09-30T16:59:37Z"
+        },
+        "b": {
+          "id": "gnews:d99251d1cdd15e75",
+          "source": "gnews-rss",
+          "title": "FTC opens investigation into Anthropic, OpenAI over AI agent dangers - Türkiye Today",
+          "at": "2026-09-30T19:51:37Z"
+        },
+        "shared": [
+          "ftc",
+          "open",
+          "ai",
+          "anthropic",
+          "openai"
+        ]
+      },
+      {
+        "score": 0.536,
         "blocked": "thin-overlap",
         "hours_apart": 3.4,
         "a": {
@@ -595,7 +556,7 @@
         ]
       },
       {
-        "score": 0.477,
+        "score": 0.479,
         "blocked": "time-window",
         "hours_apart": 714,
         "a": {
@@ -616,27 +577,26 @@
         ]
       },
       {
-        "score": 0.425,
-        "blocked": "thin-overlap",
-        "hours_apart": 27,
+        "score": 0.431,
+        "blocked": "below-threshold",
+        "hours_apart": 17.2,
         "a": {
-          "id": "hn:49897586",
+          "id": "hn:49921050",
           "source": "hn-algolia",
-          "title": "Addendum to GPT-6 Astra System Card: GPT-6.1 Sol",
-          "at": "2026-09-29T17:58:04Z"
+          "title": "FTC is investigating OpenAI, Anthropic and other AI companies over product risks",
+          "at": "2026-10-01T13:00:55Z"
         },
         "b": {
-          "id": "gnews:72dd00cfa72a2b93",
+          "id": "gnews:d99251d1cdd15e75",
           "source": "gnews-rss",
-          "title": "Gemini 4 Argon vs GPT-6 Astra, GPT-6.1 Sol and Claude 5.5: Frontier AI Models Compared - Kingy AI",
-          "at": "2026-09-30T20:56:33Z"
+          "title": "FTC opens investigation into Anthropic, OpenAI over AI agent dangers - Türkiye Today",
+          "at": "2026-09-30T19:51:37Z"
         },
         "shared": [
-          "gpt",
-          "6",
-          "astra",
-          "6.1",
-          "sol"
+          "ftc",
+          "openai",
+          "anthropic",
+          "ai"
         ]
       }
     ],
@@ -662,7 +622,7 @@
         ]
       },
       {
-        "score": 0.672,
+        "score": 0.671,
         "blocked": "thin-overlap",
         "hours_apart": 7.1,
         "a": {
@@ -771,7 +731,7 @@
         ]
       },
       {
-        "score": 0.575,
+        "score": 0.574,
         "blocked": "time-window",
         "hours_apart": 37.1,
         "a": {
@@ -791,27 +751,23 @@
         ]
       },
       {
-        "score": 0.553,
-        "blocked": "below-threshold",
-        "hours_apart": 2.9,
+        "score": 0.549,
+        "blocked": "short-title",
+        "hours_apart": 2.5,
         "a": {
-          "id": "hn:49911520",
+          "id": "hn:49919817",
           "source": "hn-algolia",
-          "title": "FTC opens probe into AI giants including Anthropic and OpenAI",
-          "at": "2026-09-30T16:59:37Z"
+          "title": "We are all just LLMs",
+          "at": "2026-10-01T10:08:08Z"
         },
         "b": {
-          "id": "gnews:d99251d1cdd15e75",
+          "id": "gnews:646295e7391922f3",
           "source": "gnews-rss",
-          "title": "FTC opens investigation into Anthropic, OpenAI over AI agent dangers - Türkiye Today",
-          "at": "2026-09-30T19:51:37Z"
+          "title": "Why LLMs Are The Best Thing To Happen To Chip Design - Semiconductor Engineering",
+          "at": "2026-10-01T07:36:06Z"
         },
         "shared": [
-          "ftc",
-          "open",
-          "ai",
-          "anthropic",
-          "openai"
+          "llm"
         ]
       }
     ]
@@ -820,42 +776,42 @@
     {
       "id": "arxiv",
       "state": "ok",
-      "streak_ok": 54,
+      "streak_ok": 55,
       "streak_fail": 0,
-      "items_last": 0
+      "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 54,
+      "streak_ok": 55,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 54,
+      "streak_ok": 55,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 54,
+      "streak_ok": 55,
       "streak_fail": 0,
-      "items_last": 34
+      "items_last": 31
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 54,
+      "streak_ok": 55,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 54,
+      "streak_ok": 55,
       "streak_fail": 0,
       "items_last": 83
     },
@@ -863,33 +819,33 @@
       "id": "openalex",
       "state": "fail",
       "streak_ok": 0,
-      "streak_fail": 3,
+      "streak_fail": 4,
       "items_last": 0
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 54,
+      "streak_ok": 55,
       "streak_fail": 0,
       "items_last": 105
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 54,
+      "streak_ok": 55,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 54,
+      "streak_ok": 55,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.016802222222222222,
+    "hours": 0.003954722222222222,
     "stale": false
   },
   "hf": {
@@ -898,27 +854,27 @@
     "url": "https://huggingface.co/api/daily_papers"
   },
   "arxiv": {
-    "ok": false,
-    "enriched": 0,
-    "shelf": 0,
+    "ok": true,
+    "enriched": 24,
+    "shelf": 5,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
   },
   "openalex": {
     "ok": false,
     "soft_fail": true,
-    "soft_fail_reason": "paused_until 2026-10-01T11:14:50Z",
+    "soft_fail_reason": "HTTP 429",
     "enriched": 0,
     "secondary": 0,
     "query": "Hugging Face agent",
     "mode": "search",
     "from_cache": false,
-    "searches": 0,
+    "searches": 1,
     "retries": 0,
-    "status": "paused",
-    "paused_until": "2026-10-01T11:14:50Z",
-    "pause_reason": "3 consecutive failures → 24h",
-    "requests": 0,
+    "status": "fail",
+    "paused_until": "2026-10-02T15:19:46Z",
+    "pause_reason": "4 consecutive failures → 24h",
+    "requests": 1,
     "auth": "anon",
     "brief": false,
     "pulse_lead": false,
@@ -931,10 +887,10 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "enriched": 1,
-    "query": "The Teacher Is a Direction, Not a Destination: Extrapolating RL-Induced Representation Residuals in On-Policy Distillation",
+    "query": "UniEvo-VL: An On-policy Self-Distillation Training Recipe for Multimodal Model Self-improvement",
     "mode": "bibliographic",
-    "from_cache": true,
-    "searches": 0,
+    "from_cache": false,
+    "searches": 1,
     "brief": false,
     "pulse_lead": false,
     "papers_enrich_only": true,
@@ -942,12 +898,12 @@
     "merge_notes": [],
     "sample": [
       {
-        "id": "2609.36484",
-        "crossrefDoi": "https://doi.org/10.21203/rs.3.rs-7184025/v1",
-        "issued": "2025-07-25",
+        "id": "2609.38721",
+        "crossrefDoi": "https://doi.org/10.2139/ssrn.5787102",
+        "issued": "2025",
         "type": "posted-content",
         "openalexId": null,
-        "doi": "https://doi.org/10.21203/rs.3.rs-7184025/v1",
+        "doi": "https://doi.org/10.2139/ssrn.5787102",
         "enrichOnly": false
       }
     ]
@@ -973,25 +929,25 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 13,
+    "ai_dropped": 14,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
         "id": "hn:49913571",
         "tag": "rest",
-        "score": 1421,
+        "score": 1542,
         "text": "Gemini 4 Argon"
       },
       {
         "id": "hn:49896586",
         "tag": "companion",
-        "score": 1053,
+        "score": 1056,
         "text": "GPT 6.1 Sol: Near-Astra intelligence for a fifth of the price"
       },
       {
         "id": "hn:49896604",
         "tag": "rest",
-        "score": 756,
+        "score": 757,
         "text": "Dots: Always-on agents"
       }
     ]
@@ -1008,47 +964,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "https://openai.com/news/rss.xml",
+        "url": "(cache:openai)",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "https://deepmind.google/blog/rss.xml",
+        "url": "(cache:deepmind)",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "https://blog.google/technology/ai/rss/",
+        "url": "(cache:google-ai)",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "https://huggingface.co/blog/feed.xml",
+        "url": "(cache:huggingface)",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "https://mistral.ai/rss.xml",
+        "url": "(cache:mistral)",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "https://blogs.nvidia.com/feed/",
+        "url": "(cache:nvidia)",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "https://developer.nvidia.com/blog/feed",
+        "url": "(cache:nvidia-dev)",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
+        "url": "(cache:ms-research)",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "https://research.google/blog/rss/",
+        "url": "(cache:google-research)",
         "count": 12
       }
     ],
@@ -1094,17 +1050,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "https://blog.trailofbits.com/feed/",
+        "url": "(cache:trailofbits)",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "https://blog.fox-it.com/feed/",
+        "url": "(cache:fox-it)",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "https://projectzero.google/feed.xml",
+        "url": "(cache:projectzero)",
         "count": 5
       }
     ],
@@ -1145,13 +1101,13 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 34,
+    "items": 31,
     "pool": 265,
     "corroborators": [
       {
         "id": "gnews:e3280cfa13a19404",
         "anchor_id": "hn:49918520",
-        "score": 0.994,
+        "score": 0.993,
         "title": "Meta wants people to use ‘AI agents’ to do daily tasks for them. Here’s why that’s a problem - The Conversation",
         "publisher": "The Conversation",
         "self_repost": false
@@ -1167,7 +1123,7 @@
       {
         "id": "gnews:d99251d1cdd15e75",
         "anchor_id": "hn:49918131",
-        "score": 0.689,
+        "score": 0.682,
         "title": "FTC opens investigation into Anthropic, OpenAI over AI agent dangers - Türkiye Today",
         "publisher": "Türkiye Today",
         "self_repost": false
@@ -1189,30 +1145,6 @@
         "self_repost": false
       },
       {
-        "id": "gnews:5e07e6e25ecfc0ec",
-        "anchor_id": "hn:49891721",
-        "score": 0.97,
-        "title": "Mistral CEO: AI Safety Debate Masks Competitor Negligence - Briefs Finance",
-        "publisher": "Briefs Finance",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:21c1aa9944280317",
-        "anchor_id": "hn:49891721",
-        "score": 0.903,
-        "title": "Mistral CEO Says AI Safety Debate Masks Negligence - GuruFocus",
-        "publisher": "GuruFocus",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:159595c07b1a10a5",
-        "anchor_id": "hn:49891721",
-        "score": 0.692,
-        "title": "'A cover for the negligence': Mistral CEO on the US AI safety debate - The Next Web",
-        "publisher": "The Next Web",
-        "self_repost": false
-      },
-      {
         "id": "gnews:053d8de243ebd5b7",
         "anchor_id": "rss:ms-research:0e6ecf3b3252b952",
         "score": 1,
@@ -1222,9 +1154,9 @@
       }
     ],
     "http_status": 200,
-    "content_type": "application/xml; charset=utf-8",
+    "content_type": null,
     "format": "rss2",
-    "from_cache": false,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1302,7 +1234,7 @@
     ]
   },
   "shelf": {
-    "count": 14,
+    "count": 19,
     "brief": false
   },
   "wikidata": {
@@ -1314,8 +1246,8 @@
       "Fox-IT",
       "Project Zero"
     ],
-    "searches": 1,
-    "from_cache": false,
+    "searches": 0,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "deny_grounding_only": true,

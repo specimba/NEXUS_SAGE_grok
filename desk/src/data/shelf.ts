@@ -18,6 +18,11 @@ export const SHELF: ShelfItem[] = [
   { href: "https://owasp.org/www-project-automated-threats-to-web-applications/", label: "owasp.org/www-project-automated-threats-to-web-applications/", reason: "toolkit" as const },
   { href: "https://owasp.org/www-community/Virtual_Patching_Best_Practices", label: "owasp.org/www-community/Virtual_Patching_Best_Practices", reason: "toolkit" as const },
   { href: "https://cheatsheetseries.owasp.org/cheatsheets/Virtual_Patching_Cheat_Sheet.html", label: "cheatsheetseries.owasp.org/cheatsheets/Virtual_Patching_Cheat_Sheet.html", reason: "toolkit" as const },
+  { href: "https://arxiv.org/abs/2609.40361", label: "arxiv.org/abs/2609.40361", reason: "arxiv-shelf" as const },
+  { href: "https://arxiv.org/abs/2609.40360", label: "arxiv.org/abs/2609.40360", reason: "arxiv-shelf" as const },
+  { href: "https://arxiv.org/abs/2609.40359", label: "arxiv.org/abs/2609.40359", reason: "arxiv-shelf" as const },
+  { href: "https://arxiv.org/abs/2609.40356", label: "arxiv.org/abs/2609.40356", reason: "arxiv-shelf" as const },
+  { href: "https://arxiv.org/abs/2609.40347", label: "arxiv.org/abs/2609.40347", reason: "arxiv-shelf" as const },
   { href: "https://github.com/AKIVA-AI/toolkit-policy-test-bench", label: "AKIVA-AI/toolkit-policy-test-bench", reason: "github-search-shelf" as const },
   { href: "https://github.com/seikaikyo/ai-red-team", label: "seikaikyo/ai-red-team", reason: "github-search-shelf" as const },
 ];
