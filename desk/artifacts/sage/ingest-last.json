@@ -2,25 +2,25 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-02T03:14:15Z",
+  "stamped_at": "2026-10-02T05:04:08Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 204,
+      "duration_ms": 196,
       "paused_until": null,
       "reason": null
     },
     {
       "id": "arxiv",
       "label": "arXiv",
-      "status": "ok",
-      "rows": 29,
-      "duration_ms": 3812,
+      "status": "timeout",
+      "rows": 17,
+      "duration_ms": 20001,
       "paused_until": null,
-      "reason": null
+      "reason": "timeout after 20000ms budget · last good: 17 cached enrich + 0 kept shelf"
     },
     {
       "id": "openalex",
@@ -36,7 +36,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 3,
+      "duration_ms": 1,
       "paused_until": null,
       "reason": null
     },
@@ -45,7 +45,7 @@
       "label": "HN",
       "status": "ok",
       "rows": 72,
-      "duration_ms": 8265,
+      "duration_ms": 121,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 17883,
+      "duration_ms": 121,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 4413,
+      "duration_ms": 121,
       "paused_until": null,
       "reason": null
     },
@@ -72,7 +72,7 @@
       "label": "Google News",
       "status": "ok",
       "rows": 32,
-      "duration_ms": 6382,
+      "duration_ms": 121,
       "paused_until": null,
       "reason": null
     },
@@ -81,7 +81,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 1445,
+      "duration_ms": 121,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,35 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 255,
+      "duration_ms": 121,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 42663,
-    "wall_ms": 42990,
-    "startup_ms": 33,
-    "main_ms": 42999
+    "sources_ms": 20925,
+    "sources_wall_ms": 20208,
+    "papers_lane_ms": 20208,
+    "slowest_source_ms": 20001,
+    "concurrent": true,
+    "budget_ms": {
+      "hf": 25000,
+      "arxiv": 20000,
+      "openalex": 25000,
+      "crossref": 25000,
+      "hn": 30000,
+      "rss_labs": 30000,
+      "rss_security": 25000,
+      "gnews": 25000,
+      "github": 25000,
+      "wikidata": 25000
+    },
+    "timed_out": [
+      "arxiv"
+    ],
+    "wall_ms": 20514,
+    "startup_ms": 31,
+    "main_ms": 20523
   },
   "multi_source_independent": 6,
   "stale_hours": 6,
@@ -116,7 +135,7 @@
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 38,
+    "new_items": 0,
     "per_source": {
       "hn-algolia": 72,
       "rss-lab": 104,
@@ -218,7 +237,7 @@
           "gnews-rss"
         ],
         "size": 3,
-        "score": 0.899,
+        "score": 0.898,
         "members": [
           {
             "id": "hn:49911520",
@@ -491,7 +510,7 @@
         ]
       },
       {
-        "score": 0.566,
+        "score": 0.564,
         "blocked": "below-threshold",
         "hours_apart": 21,
         "a": {
@@ -538,7 +557,7 @@
         ]
       },
       {
-        "score": 0.458,
+        "score": 0.456,
         "blocked": "below-threshold",
         "hours_apart": 0.7,
         "a": {
@@ -627,7 +646,7 @@
         ]
       },
       {
-        "score": 0.435,
+        "score": 0.437,
         "blocked": "below-threshold",
         "hours_apart": 11,
         "a": {
@@ -716,7 +735,7 @@
         ]
       },
       {
-        "score": 0.566,
+        "score": 0.564,
         "blocked": "below-threshold",
         "hours_apart": 21,
         "a": {
@@ -763,7 +782,7 @@
         ]
       },
       {
-        "score": 0.458,
+        "score": 0.456,
         "blocked": "below-threshold",
         "hours_apart": 0.8,
         "a": {
@@ -786,7 +805,7 @@
         ]
       },
       {
-        "score": 0.458,
+        "score": 0.456,
         "blocked": "below-threshold",
         "hours_apart": 0.7,
         "a": {
@@ -837,43 +856,43 @@
   "source_health": [
     {
       "id": "arxiv",
-      "state": "ok",
-      "streak_ok": 58,
-      "streak_fail": 0,
-      "items_last": 29
+      "state": "flaky",
+      "streak_ok": 0,
+      "streak_fail": 1,
+      "items_last": 17
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 58,
+      "streak_ok": 60,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 58,
+      "streak_ok": 60,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 58,
+      "streak_ok": 60,
       "streak_fail": 0,
       "items_last": 32
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 58,
+      "streak_ok": 60,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 58,
+      "streak_ok": 60,
       "streak_fail": 0,
       "items_last": 72
     },
@@ -887,27 +906,27 @@
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 58,
+      "streak_ok": 60,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 58,
+      "streak_ok": 60,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 58,
+      "streak_ok": 60,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.0121525,
+    "hours": 0.005901388888888889,
     "stale": false
   },
   "hf": {
@@ -916,9 +935,11 @@
     "url": "https://huggingface.co/api/daily_papers"
   },
   "arxiv": {
-    "ok": true,
-    "enriched": 24,
-    "shelf": 5,
+    "ok": false,
+    "enriched": 17,
+    "shelf": 0,
+    "timed_out": true,
+    "budget_ms": 20000,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
   },
@@ -949,7 +970,7 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "enriched": 1,
-    "query": "Rethinking Latent Visual Reasoning: Grounding Latent Reasoning in Visual Evidence",
+    "query": "Adaptive Reward Routing: Dynamic Multi-Reward Optimization for Joint Audio-Video Diffusion via Forward-Process RL",
     "mode": "bibliographic",
     "from_cache": true,
     "searches": 0,
@@ -960,12 +981,12 @@
     "merge_notes": [],
     "sample": [
       {
-        "id": "2609.34563",
-        "crossrefDoi": "https://doi.org/10.1093/oso/9780195104271.003.0005",
-        "issued": "1996-07-18",
-        "type": "book-chapter",
+        "id": "2609.37200",
+        "crossrefDoi": "https://doi.org/10.2139/ssrn.6890261",
+        "issued": "2026",
+        "type": "posted-content",
         "openalexId": null,
-        "doi": "https://doi.org/10.1093/oso/9780195104271.003.0005",
+        "doi": "https://doi.org/10.2139/ssrn.6890261",
         "enrichOnly": false
       }
     ]
@@ -997,7 +1018,7 @@
       {
         "id": "hn:49913571",
         "tag": "rest",
-        "score": 1644,
+        "score": 1646,
         "text": "Gemini 4 Argon"
       },
       {
@@ -1026,47 +1047,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "https://openai.com/news/rss.xml",
+        "url": "(cache:openai)",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "https://deepmind.google/blog/rss.xml",
+        "url": "(cache:deepmind)",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "https://blog.google/technology/ai/rss/",
+        "url": "(cache:google-ai)",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "https://huggingface.co/blog/feed.xml",
+        "url": "(cache:huggingface)",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "https://mistral.ai/rss.xml",
+        "url": "(cache:mistral)",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "https://blogs.nvidia.com/feed/",
+        "url": "(cache:nvidia)",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "https://developer.nvidia.com/blog/feed",
+        "url": "(cache:nvidia-dev)",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
+        "url": "(cache:ms-research)",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "https://research.google/blog/rss/",
+        "url": "(cache:google-research)",
         "count": 12
       }
     ],
@@ -1112,17 +1133,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "https://blog.trailofbits.com/feed/",
+        "url": "(cache:trailofbits)",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "https://blog.fox-it.com/feed/",
+        "url": "(cache:fox-it)",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "https://projectzero.google/feed.xml",
+        "url": "(cache:projectzero)",
         "count": 5
       }
     ],
@@ -1185,7 +1206,7 @@
       {
         "id": "gnews:6a39ba0261cf33b2",
         "anchor_id": "hn:49913571",
-        "score": 0.677,
+        "score": 0.676,
         "title": "Google Unveils Gemini 4 Argon: New Frontier Model Brings Deep Reasoning, More Complex Workflow - Tech Times",
         "publisher": "Tech Times",
         "self_repost": false
@@ -1232,9 +1253,9 @@
       }
     ],
     "http_status": 200,
-    "content_type": "application/xml; charset=utf-8",
+    "content_type": null,
     "format": "rss2",
-    "from_cache": false,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1293,9 +1314,9 @@
     "soft_fail_reason": null,
     "query": "LLM agent eval harness",
     "shelf": 3,
-    "from_cache": false,
-    "searches": 1,
-    "rate_limit_remaining": 9,
+    "from_cache": true,
+    "searches": 0,
+    "rate_limit_remaining": null,
     "brief": false,
     "pulse_lead": false,
     "shelf_only": true,
@@ -1316,7 +1337,7 @@
     ]
   },
   "shelf": {
-    "count": 20,
+    "count": 15,
     "brief": false
   },
   "wikidata": {
@@ -1328,8 +1349,8 @@
       "Project Zero",
       "OWASP"
     ],
-    "searches": 1,
-    "from_cache": false,
+    "searches": 0,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "deny_grounding_only": true,
