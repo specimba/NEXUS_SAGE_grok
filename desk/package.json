@@ -19,7 +19,9 @@
     "brand-check": "node scripts/brand-check.mjs",
     "visual:check": "node scripts/visual-check.mjs",
     "digest:tick": "bun scripts/digest-tick.mjs",
-    "a2:tick": "bun scripts/a2-digest-export.mjs"
+    "a2:tick": "bun scripts/a2-digest-export.mjs",
+    "build:pages": "PAGES=1 bun run build",
+    "pages:publish": "bash scripts/pages-publish.sh"
   },
   "dependencies": {
     "clsx": "^2.1.1",

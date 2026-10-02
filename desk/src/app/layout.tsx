@@ -16,20 +16,29 @@ const jetbrains = JetBrains_Mono({
   display: "swap",
 });
 
+/**
+ * Site URL + base path are inlined at build from next.config.ts `env` (PAGES=1 → GitHub Pages under /NEXUS_SAGE_grok,
+ * else :3000 at "/"). Metadata URLs are NOT basePath-prefixed by Next, so prefix by hand; OG/canonical are absolute.
+ */
+const BASE_PATH = process.env.SAGE_BASE_PATH ?? "";
+const SITE_URL = (process.env.SAGE_SITE_URL ?? "http://localhost:3000").replace(/\/+$/, "");
+
 export const metadata: Metadata = {
   title: "SAGE://DESK",
   description: "NEXUS SAGE C-suite briefing desk — Fallout × Matrix phosphor terminal",
   applicationName: "NEXUS SAGE Desk",
   icons: {
-    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+    icon: [{ url: `${BASE_PATH}/favicon.svg`, type: "image/svg+xml" }],
   },
+  alternates: { canonical: `${SITE_URL}/` },
   openGraph: {
+    url: `${SITE_URL}/`,
     title: "SAGE://DESK",
     description: "NEXUS SAGE C-suite briefing desk — Fallout × Matrix phosphor terminal",
     siteName: "NEXUS SAGE",
     images: [
       {
-        url: "/og.jpg",
+        url: `${SITE_URL}/og.jpg`,
         width: 1200,
         height: 630,
         alt: "SAGE desk — green phosphor on charcoal",
@@ -41,7 +50,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "SAGE://DESK",
     description: "NEXUS SAGE C-suite briefing desk",
-    images: ["/og.jpg"],
+    images: [`${SITE_URL}/og.jpg`],
   },
 };
 
