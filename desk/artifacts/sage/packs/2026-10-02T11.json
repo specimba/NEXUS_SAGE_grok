@@ -1,0 +1,196 @@
+{
+  "at": "2026-10-02T11:20:43.149Z",
+  "cycle": "003",
+  "lead_id": "hf-incident",
+  "pack_id": "2026-10-02T11",
+  "plan": [
+    {
+      "id": "hf-swarm",
+      "title": "Eval agents reached Hugging Face production",
+      "file": "hf-incident",
+      "kind": "lead",
+      "confidence": "high",
+      "move": "Keep as lead. Banned nouns stay off the pin.",
+      "evidence": [
+        "METR scope ends 13 Jul. Wave 3 cluster-admin is OpenAI-only.",
+        "02 Sep curation did not add a new incident URL. It added scanners, papers, and Astra commentary."
+      ],
+      "steps": [
+        "Cite METR for waves 1–2. Cite OpenAI for wave 3.",
+        "Do not use AISLE curl CVEs or MIT stigmergy as proof of the HF breach."
+      ],
+      "doneWhen": "Pin 1 still opens the incident file.",
+      "unlockIf": "A new METR/HF/OpenAI primary names a fact not in Cycle 001.",
+      "refs": [
+        {
+          "label": "Dwarkesh 29 Aug thread",
+          "href": "https://x.com/dwarkesh_sp",
+          "role": "wire"
+        }
+      ]
+    },
+    {
+      "id": "astra-depth",
+      "title": "Astra: Critical + recurrent depth",
+      "file": "astra",
+      "kind": "companion",
+      "confidence": "high",
+      "move": "Companion only. Do not promote over HF.",
+      "evidence": [
+        "Palazzolo 2094954680765829533 — recurrent depth.",
+        "Amir 2095274361695731967 — story unchanged; OpenAI limiting loops.",
+        "Curran 2095257682865532970 — 'Astra tomorrow morning' is a wire read.",
+        "Lab wire: How NVIDIA GPUs Help Accelerate OpenAI’s GPT-6 Astra Ultrafast.",
+        "Lab wire: Introducing GPT-6.1 Sol.",
+        "Lab wire: DevDay 2026 Recap."
+      ],
+      "steps": [
+        "Keep ship language rumored.",
+        "If OpenAI posts a dated ship, that is a companion delta, not a lead swap."
+      ],
+      "doneWhen": "Astra is pin 2 or Pulse companion. Not pin 1.",
+      "unlockIf": "OpenAI official dated ship or a new incident attribution.",
+      "refs": [
+        {
+          "label": "Palazzolo",
+          "href": "https://x.com/steph_palazzolo/status/2094954680765829533",
+          "role": "primary"
+        },
+        {
+          "label": "Amir clarification",
+          "href": "https://x.com/amir/status/2095274361695731967",
+          "role": "primary"
+        },
+        {
+          "label": "lab:nvidia How NVIDIA GPUs Help Accelerate Open…",
+          "href": "https://blogs.nvidia.com/blog/gpus-openai-gpt-6-astra-ultrafast/",
+          "role": "wire"
+        },
+        {
+          "label": "lab:openai Introducing GPT-6.1 Sol",
+          "href": "https://openai.com/index/introducing-gpt-6-1-sol",
+          "role": "wire"
+        },
+        {
+          "label": "lab:openai DevDay 2026 Recap",
+          "href": "https://openai.com/index/devday-2026-recap",
+          "role": "wire"
+        }
+      ]
+    },
+    {
+      "id": "aisle-curl",
+      "title": "AISLE found 6 curl CVEs after two labs reported zero",
+      "file": "other",
+      "kind": "rest",
+      "confidence": "high",
+      "move": "Rest-of-board. Use as measurement, not vendor scoreboard lead.",
+      "evidence": [
+        "Primary blog aisle.com + Fort 2095107971433017510 (261 likes / 23k views).",
+        "Lab wire: AutoSynthData: Generating Training Data for Enterprise Agents.",
+        "Lab wire: Build Applications on NVIDIA BlueField Faster with NVIDIA DOCA ….",
+        "Lab wire: Build Local AI Apps with C++ and NVIDIA TensorRT RTX Samples."
+      ],
+      "steps": [
+        "Link the blog. Do not write 'labs are unsafe' from one target."
+      ],
+      "doneWhen": "On Pulse with the blog href.",
+      "unlockIf": "curl project disputes the CVEs — then downgrade.",
+      "refs": [
+        {
+          "label": "AISLE blog",
+          "href": "https://aisle.com/blog/aisle-discovered-six-curl-cves-after-openai-and-anthropic-found-zero",
+          "role": "primary"
+        },
+        {
+          "label": "Fort 02 Sep",
+          "href": "https://x.com/stanislavfort/status/2095107971433017510",
+          "role": "wire"
+        },
+        {
+          "label": "lab:huggingface AutoSynthData: Generating Train…",
+          "href": "https://huggingface.co/blog/ServiceNow-AI/autosynthdata",
+          "role": "wire"
+        },
+        {
+          "label": "lab:nvidia-dev Build Applications on NVIDIA Blu…",
+          "href": "https://developer.nvidia.com/blog/build-applications-on-nvidia-bluefield-faster-with-nvidia-doca-agent-skills/",
+          "role": "wire"
+        },
+        {
+          "label": "lab:nvidia-dev Build Local AI Apps with C++ and…",
+          "href": "https://developer.nvidia.com/blog/build-local-ai-apps-with-c-and-nvidia-tensorrt-rtx-samples/",
+          "role": "wire"
+        },
+        {
+          "label": "lab:openai The eternal complement",
+          "href": "https://openai.com/index/the-eternal-complement",
+          "role": "wire"
+        },
+        {
+          "label": "lab:openai How Albertsons Companies is reimagin…",
+          "href": "https://openai.com/index/albertsons-reimagining-retail",
+          "role": "wire"
+        }
+      ]
+    },
+    {
+      "id": "harness-papers",
+      "title": "Harness papers: days-long coding + skills that hurt the task",
+      "file": "other",
+      "kind": "rest",
+      "confidence": "medium",
+      "move": "Papers lane + Pulse rest.",
+      "evidence": [
+        "dair_ai 2095172426925801608 Harness-of-Harness.",
+        "dair_ai 2095330956823629995 matched skill-retrieval effect.",
+        "HF live 03 Sep: Repo-To-Skill 2609.02749, 105 up.",
+        "DOI confirm 2609.35690: Agent Priors-guided Policy Learning.",
+        "HF keep still ranked 2610.01762: OneStreamer: Unifying Perception, Memory, and Proactive… (42 up).",
+        "HF keep still ranked 2610.02162: World Observer: Joint Actor-Observer Generation for Per… (39 up)."
+      ],
+      "steps": [
+        "Keep abstracts on the desk. Do not treat benchmark lift as a ship."
+      ],
+      "doneWhen": "Papers lane lists at least one of these IDs.",
+      "unlockIf": "Never as lead.",
+      "refs": [
+        {
+          "label": "Harness-of-Harness",
+          "href": "https://x.com/dair_ai/status/2095172426925801608",
+          "role": "wire"
+        },
+        {
+          "label": "Skill retrieval paper",
+          "href": "https://x.com/dair_ai/status/2095330956823629995",
+          "role": "wire"
+        },
+        {
+          "label": "Agent Priors-guided Policy Learning",
+          "href": "https://doi.org/10.1109/tmm.2025.3535325/mm1",
+          "role": "support"
+        },
+        {
+          "label": "OneStreamer: Unifying Perception, Memory, and P…",
+          "href": "https://arxiv.org/abs/2610.01762",
+          "role": "support"
+        },
+        {
+          "label": "World Observer: Joint Actor-Observer Generation…",
+          "href": "https://arxiv.org/abs/2610.02162",
+          "role": "support"
+        },
+        {
+          "label": "Sharpening Tax in Post-Training",
+          "href": "https://arxiv.org/abs/2610.01509",
+          "role": "support"
+        },
+        {
+          "label": "A Missing Piece for Trustworthy AI Reviewers: F…",
+          "href": "https://arxiv.org/abs/2609.39027",
+          "role": "support"
+        }
+      ]
+    }
+  ]
+}
