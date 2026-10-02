@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-02T15:17:28Z",
+  "stamped_at": "2026-10-02T19:13:43Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 244,
+      "duration_ms": 209,
       "paused_until": null,
       "reason": null
     },
@@ -18,25 +18,25 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 5538,
+      "duration_ms": 3225,
       "paused_until": null,
       "reason": null
     },
     {
       "id": "openalex",
       "label": "OpenAlex",
-      "status": "paused",
+      "status": "fail",
       "rows": 0,
-      "duration_ms": 2,
-      "paused_until": "2026-10-02T15:19:46Z",
-      "reason": "paused_until 2026-10-02T15:19:46Z"
+      "duration_ms": 195,
+      "paused_until": "2026-10-03T19:13:47Z",
+      "reason": "HTTP 429"
     },
     {
       "id": "crossref",
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 333,
+      "duration_ms": 2,
       "paused_until": null,
       "reason": null
     },
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 68,
-      "duration_ms": 8535,
+      "rows": 67,
+      "duration_ms": 8295,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 236,
+      "duration_ms": 17223,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 237,
+      "duration_ms": 4297,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 30,
-      "duration_ms": 237,
+      "rows": 29,
+      "duration_ms": 6389,
       "paused_until": null,
       "reason": null
     },
@@ -81,7 +81,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 237,
+      "duration_ms": 17,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 237,
+      "duration_ms": 17,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 15836,
-    "sources_wall_ms": 8538,
-    "papers_lane_ms": 6122,
-    "slowest_source_ms": 8535,
+    "sources_ms": 39869,
+    "sources_wall_ms": 17227,
+    "papers_lane_ms": 3634,
+    "slowest_source_ms": 17223,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -114,41 +114,65 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 8887,
-    "startup_ms": 38,
-    "main_ms": 8900
+    "wall_ms": 17499,
+    "startup_ms": 31,
+    "main_ms": 17506
   },
-  "multi_source_independent": 5,
+  "multi_source_independent": 2,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 5,
-    "multi_source_raw": 5,
-    "self_reposts": 2,
-    "items_in": 229,
+    "multi_source_independent": 2,
+    "multi_source_raw": 4,
+    "self_reposts": 3,
+    "items_in": 227,
     "clusters_out": 212,
-    "collapsed": 17,
-    "multi_source": 5,
+    "collapsed": 15,
+    "multi_source": 2,
     "multi_member": 9,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 7,
+    "new_items": 40,
     "per_source": {
-      "hn-algolia": 68,
+      "hn-algolia": 67,
       "rss-lab": 104,
       "rss-security": 27,
-      "gnews-rss": 30
+      "gnews-rss": 29
     },
     "multi_source_clusters": [
+      {
+        "title": "US judge dismisses Chegg, Penske antitrust suits over Google AI Overviews",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 0.684,
+        "members": [
+          {
+            "id": "hn:49925606",
+            "source": "hn-algolia",
+            "title": "US judge dismisses Chegg, Penske antitrust suits over Google AI Overviews",
+            "at": "2026-10-01T18:53:51Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:727fe17491b140b0",
+            "source": "gnews-rss",
+            "title": "Judge dismisses Chegg and Penske antitrust lawsuits targeting Google AI search - Ars Technica",
+            "at": "2026-10-01T20:11:55Z",
+            "publisher": "Ars Technica"
+          }
+        ]
+      },
       {
         "title": "Gemini 4 Argon: our next era of frontier intelligence",
         "sources": [
           "rss-lab",
-          "hn-algolia",
-          "gnews-rss"
+          "hn-algolia"
         ],
-        "size": 6,
+        "size": 5,
         "score": 1,
         "members": [
           {
@@ -180,134 +204,12 @@
             "publisher": "deepmind"
           },
           {
-            "id": "gnews:6a39ba0261cf33b2",
-            "source": "gnews-rss",
-            "title": "Google Unveils Gemini 4 Argon: New Frontier Model Brings Deep Reasoning, More Complex Workflow - Tech Times",
-            "at": "2026-10-01T07:00:06Z",
-            "publisher": "Tech Times"
-          },
-          {
             "id": "gnews:9f3f8a66cbed86b0",
             "source": "gnews-rss",
             "title": "Gemini 4 Argon: our next era of frontier intelligence - blog.google",
             "at": "2026-09-30T20:06:23Z",
             "publisher": "blog.google",
             "self_repost": true
-          }
-        ]
-      },
-      {
-        "title": "US judge dismisses Chegg, Penske antitrust suits over Google AI Overviews",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 0.681,
-        "members": [
-          {
-            "id": "hn:49925606",
-            "source": "hn-algolia",
-            "title": "US judge dismisses Chegg, Penske antitrust suits over Google AI Overviews",
-            "at": "2026-10-01T18:53:51Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:727fe17491b140b0",
-            "source": "gnews-rss",
-            "title": "Judge dismisses Chegg and Penske antitrust lawsuits targeting Google AI search - arstechnica.com",
-            "at": "2026-10-01T20:11:55Z",
-            "publisher": "arstechnica.com"
-          }
-        ]
-      },
-      {
-        "title": "Introducing Olmo-core 3: Open, scalable training infrastructure for large MoEs",
-        "sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 1,
-        "members": [
-          {
-            "id": "rss:huggingface:f928531f96372519",
-            "source": "rss-lab",
-            "title": "Introducing Olmo-core 3: Open, scalable training infrastructure for large MoEs",
-            "at": "2026-10-01T15:01:43Z",
-            "publisher": "huggingface"
-          },
-          {
-            "id": "gnews:7ce88b79e3c86df4",
-            "source": "gnews-rss",
-            "title": "Introducing Olmo-core 3: Open, scalable training infrastructure for large MoEs - Allen Institute for Artificial Intelligence",
-            "at": "2026-10-01T17:48:50Z",
-            "publisher": "Allen Institute for Artificial Intelligence"
-          }
-        ]
-      },
-      {
-        "title": "FTC opens probe into AI giants including Anthropic and OpenAI",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 3,
-        "score": 0.9,
-        "members": [
-          {
-            "id": "hn:49911520",
-            "source": "hn-algolia",
-            "title": "FTC opens probe into AI giants including Anthropic and OpenAI",
-            "at": "2026-09-30T16:59:37Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:49918131",
-            "source": "hn-algolia",
-            "title": "FTC opens probe of Anthropic, OpenAI",
-            "at": "2026-10-01T05:42:45Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:8ceb45e83017708e",
-            "source": "gnews-rss",
-            "title": "FTC Probes OpenAI, Anthropic Over Agent Attacks [2026] - shattered.io",
-            "at": "2026-10-01T14:02:17Z",
-            "publisher": "shattered.io"
-          }
-        ]
-      },
-      {
-        "title": "Forecasting space weather risks on power grids",
-        "sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "size": 3,
-        "score": 1,
-        "members": [
-          {
-            "id": "rss:ms-research:4ed2607a5b2ebbf9",
-            "source": "rss-lab",
-            "title": "Forecasting space weather risks on power grids",
-            "at": "2026-09-30T16:00:00Z",
-            "publisher": "ms-research"
-          },
-          {
-            "id": "gnews:9845920b8f19ecb6",
-            "source": "gnews-rss",
-            "title": "Forecasting space weather risks on power grids - Microsoft",
-            "at": "2026-09-30T16:00:00Z",
-            "publisher": "Microsoft",
-            "self_repost": true
-          },
-          {
-            "id": "gnews:12194e25b7f5a129",
-            "source": "gnews-rss",
-            "title": "Microsoft Research Is Forecasting Space Weather Risks on Power Grids, but Operators Still Need Proof - remio",
-            "at": "2026-10-01T04:14:57Z",
-            "publisher": "remio"
           }
         ]
       }
@@ -317,8 +219,7 @@
         "title": "Gemini 4 Argon: our next era of frontier intelligence",
         "sources": [
           "rss-lab",
-          "hn-algolia",
-          "gnews-rss"
+          "hn-algolia"
         ],
         "all_sources": [
           "rss-lab",
@@ -334,10 +235,9 @@
         ]
       },
       {
-        "title": "Forecasting space weather risks on power grids",
+        "title": "The latest AI news we announced in September 2026",
         "sources": [
-          "rss-lab",
-          "gnews-rss"
+          "rss-lab"
         ],
         "all_sources": [
           "rss-lab",
@@ -345,9 +245,26 @@
         ],
         "self_reposts": [
           {
-            "id": "gnews:9845920b8f19ecb6",
-            "publisher": "Microsoft",
-            "title": "Forecasting space weather risks on power grids - Microsoft"
+            "id": "gnews:24b62ecd2c7cc959",
+            "publisher": "blog.google",
+            "title": "The latest AI news we announced in September 2026 - blog.google"
+          }
+        ]
+      },
+      {
+        "title": "Toward provably private learning from federated data",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:fce71ec5a872014a",
+            "publisher": "research.google",
+            "title": "Toward provably private learning from federated data - research.google"
           }
         ]
       }
@@ -367,91 +284,78 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "the-decoder.com",
-          "title": "Black Forest Labs launches Flux 3 Image with multi-step editing that leaves the rest of your picture alone - the-decoder.com"
+          "publisher": "Tech Times",
+          "title": "Ai2 Releases OlmoCore 3: Open MoE Training Stack Delivers 2.7x Throughput Gain - Tech Times"
         },
         {
-          "publisher": "MarkTechPost",
-          "title": "AWS Strands Labs Releases Strands Decider 2B: An Open Source Decision Model That Picks Options in About 115 ms - MarkTechPost"
+          "publisher": "research.google",
+          "title": "Toward provably private learning from federated data - research.google"
         },
         {
-          "publisher": "blog.google",
-          "title": "Our Project Suncatcher prototype satellite is in orbit. - blog.google"
+          "publisher": "Search Engine Roundtable",
+          "title": "Google Ads Sponsored Products Results Missing Images - Search Engine Roundtable"
         },
         {
           "publisher": "GeekWire",
           "title": "Longtime Microsoft research leader Peter Lee and former LinkedIn CEO Ryan Roslansky to depart - GeekWire"
         },
         {
-          "publisher": "Cybersecurity Insiders",
-          "title": "Microsoft study says United States has become the Worlds most targeted Country for Cyber Attacks - Cybersecurity Insiders"
-        },
-        {
           "publisher": "EdTech Innovation Hub",
           "title": "Microsoft Science president Peter Lee to retire after 16 years for ‘once-in-a-lifetime’ next move - EdTech Innovation Hub"
         },
         {
-          "publisher": "remio",
-          "title": "Microsoft Research Is Forecasting Space Weather Risks on Power Grids, but Operators Still Need Proof - remio"
-        },
-        {
-          "publisher": "The Information",
-          "title": "Microsoft Science President Peter Lee to Step Down - The Information"
-        },
-        {
-          "publisher": "Microsoft",
-          "title": "Forecasting space weather risks on power grids - Microsoft"
+          "publisher": "theinformation.com",
+          "title": "Microsoft Science President Peter Lee to Step Down - theinformation.com"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 27
+      "hn_dropped": 28
     },
     "gnews_near_misses": [
       {
-        "score": 0.569,
-        "blocked": "below-threshold",
-        "hours_apart": 21,
+        "score": 0.671,
+        "blocked": "time-window",
+        "hours_apart": 40.4,
         "a": {
-          "id": "hn:49911520",
+          "id": "hn:49913571",
           "source": "hn-algolia",
-          "title": "FTC opens probe into AI giants including Anthropic and OpenAI",
-          "at": "2026-09-30T16:59:37Z"
+          "title": "Gemini 4 Argon",
+          "at": "2026-09-30T20:04:37Z"
         },
         "b": {
-          "id": "gnews:8ceb45e83017708e",
+          "id": "gnews:5d85830b5bbd801d",
           "source": "gnews-rss",
-          "title": "FTC Probes OpenAI, Anthropic Over Agent Attacks [2026] - shattered.io",
-          "at": "2026-10-01T14:02:17Z"
+          "title": "GPT-6 Astra vs Gemini 4 Argon vs DeepSeek: 13x Gap [2026] - tech-insider.org",
+          "at": "2026-10-02T12:27:32Z"
         },
         "shared": [
-          "ftc",
-          "prob",
-          "anthropic",
-          "openai"
+          "gemini",
+          "4",
+          "argon"
         ]
       },
       {
-        "score": 0.547,
-        "blocked": "thin-overlap",
-        "hours_apart": 35.3,
+        "score": 0.567,
+        "blocked": "time-window",
+        "hours_apart": 90.4,
         "a": {
-          "id": "hn:49911928",
-          "source": "hn-algolia",
-          "title": "Claude Says",
-          "at": "2026-09-30T17:32:06Z"
+          "id": "rss:openai:dec620cb7225d243",
+          "source": "rss-lab",
+          "title": "Introducing dots",
+          "at": "2026-09-29T00:00:00Z"
         },
         "b": {
-          "id": "gnews:b970200aa18649bf",
+          "id": "gnews:4c5cad5a6acb15f8",
           "source": "gnews-rss",
-          "title": "Claude AI shared chats appeared publicly in Google search results - NewsBytes",
-          "at": "2026-10-02T04:48:06Z"
+          "title": "OpenAI Introduces Dot, the AI Agent Assisting with Business Tasks and Online Orders - nacionale.com",
+          "at": "2026-10-02T18:23:45Z"
         },
         "shared": [
-          "claude"
+          "dot"
         ]
       },
       {
-        "score": 0.467,
+        "score": 0.453,
         "blocked": "below-threshold",
         "hours_apart": 0.7,
         "a": {
@@ -474,30 +378,32 @@
         ]
       },
       {
-        "score": 0.447,
+        "score": 0.432,
         "blocked": "below-threshold",
-        "hours_apart": 11,
+        "hours_apart": 5.1,
         "a": {
-          "id": "rss:deepmind:ce56aa83d0064ef1",
+          "id": "rss:nvidia:60ea0cfc7bea518f",
           "source": "rss-lab",
-          "title": "Gemini 4 Argon: our next era of frontier intelligence",
-          "at": "2026-09-30T20:01:45Z"
+          "title": "NVIDIA DGX Spark 64GB Gives Developers More Ways to Build and Scale Local AI",
+          "at": "2026-10-02T13:00:39Z"
         },
         "b": {
-          "id": "gnews:6a39ba0261cf33b2",
+          "id": "gnews:4b22bc01b5f24686",
           "source": "gnews-rss",
-          "title": "Google Unveils Gemini 4 Argon: New Frontier Model Brings Deep Reasoning, More Complex Workflow - Tech Times",
-          "at": "2026-10-01T07:00:06Z"
+          "title": "NVIDIA Announces DGX Spark 64GB: A 1-PetaFLOP Grace Blackwell Desktop for Local AI Agents, Fine-Tuning, and Inference - MarkTechPost",
+          "at": "2026-10-02T18:04:56Z"
         },
         "shared": [
-          "gemini",
-          "4",
-          "argon",
-          "frontier"
+          "nvidia",
+          "dgx",
+          "spark",
+          "64gb",
+          "local",
+          "ai"
         ]
       },
       {
-        "score": 0.434,
+        "score": 0.423,
         "blocked": "below-threshold",
         "hours_apart": 4,
         "a": {
@@ -520,118 +426,117 @@
         ]
       },
       {
-        "score": 0.403,
-        "blocked": "thin-overlap",
-        "hours_apart": 1,
+        "score": 0.366,
+        "blocked": "below-threshold",
+        "hours_apart": 0.3,
         "a": {
-          "id": "hn:49921050",
-          "source": "hn-algolia",
-          "title": "FTC is investigating OpenAI, Anthropic and other AI companies over product risks",
-          "at": "2026-10-01T13:00:55Z"
+          "id": "rss:huggingface:e81b1dea7ce0fb42",
+          "source": "rss-lab",
+          "title": "Open-sourcing AstaBrief, the fast report-generation model in Asta",
+          "at": "2026-10-02T15:19:50Z"
         },
         "b": {
-          "id": "gnews:8ceb45e83017708e",
+          "id": "gnews:0355f2b6482ba12b",
           "source": "gnews-rss",
-          "title": "FTC Probes OpenAI, Anthropic Over Agent Attacks [2026] - shattered.io",
-          "at": "2026-10-01T14:02:17Z"
+          "title": "Ai2 Open-Sources AstaBrief 8B for Fast Scientific Report Generation - Unite.AI",
+          "at": "2026-10-02T15:38:01Z"
         },
         "shared": [
-          "ftc",
-          "openai",
-          "anthropic"
+          "astabrief",
+          "fast",
+          "generation"
         ]
       },
       {
-        "score": 0.347,
+        "score": 0.335,
         "blocked": "thin-overlap",
-        "hours_apart": 10.5,
+        "hours_apart": 40.4,
         "a": {
-          "id": "hn:49913950",
-          "source": "hn-algolia",
-          "title": "Google Grapples with Employee Skepticism About New Gemini Model",
-          "at": "2026-09-30T20:30:40Z"
+          "id": "rss:deepmind:ce56aa83d0064ef1",
+          "source": "rss-lab",
+          "title": "Gemini 4 Argon: our next era of frontier intelligence",
+          "at": "2026-09-30T20:01:45Z"
         },
         "b": {
-          "id": "gnews:6a39ba0261cf33b2",
+          "id": "gnews:5d85830b5bbd801d",
           "source": "gnews-rss",
-          "title": "Google Unveils Gemini 4 Argon: New Frontier Model Brings Deep Reasoning, More Complex Workflow - Tech Times",
-          "at": "2026-10-01T07:00:06Z"
+          "title": "GPT-6 Astra vs Gemini 4 Argon vs DeepSeek: 13x Gap [2026] - tech-insider.org",
+          "at": "2026-10-02T12:27:32Z"
         },
         "shared": [
-          "google",
           "gemini",
-          "model"
+          "4",
+          "argon"
         ]
       },
       {
-        "score": 0.347,
+        "score": 0.273,
         "blocked": "thin-overlap",
-        "hours_apart": 3.1,
+        "hours_apart": 39.6,
         "a": {
-          "id": "hn:49917533",
+          "id": "hn:49914236",
           "source": "hn-algolia",
-          "title": "Google Grapples with Employee Skepticism About New Gemini Model",
-          "at": "2026-10-01T03:52:09Z"
+          "title": "Gemini 4 Argon (High): Intelligence, Performance and Price Analysis",
+          "at": "2026-09-30T20:50:28Z"
         },
         "b": {
-          "id": "gnews:6a39ba0261cf33b2",
+          "id": "gnews:5d85830b5bbd801d",
           "source": "gnews-rss",
-          "title": "Google Unveils Gemini 4 Argon: New Frontier Model Brings Deep Reasoning, More Complex Workflow - Tech Times",
-          "at": "2026-10-01T07:00:06Z"
+          "title": "GPT-6 Astra vs Gemini 4 Argon vs DeepSeek: 13x Gap [2026] - tech-insider.org",
+          "at": "2026-10-02T12:27:32Z"
         },
         "shared": [
-          "google",
           "gemini",
-          "model"
+          "4",
+          "argon"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.569,
-        "blocked": "below-threshold",
-        "hours_apart": 21,
+        "score": 0.671,
+        "blocked": "time-window",
+        "hours_apart": 40.4,
         "a": {
-          "id": "hn:49911520",
+          "id": "hn:49913571",
           "source": "hn-algolia",
-          "title": "FTC opens probe into AI giants including Anthropic and OpenAI",
-          "at": "2026-09-30T16:59:37Z"
+          "title": "Gemini 4 Argon",
+          "at": "2026-09-30T20:04:37Z"
         },
         "b": {
-          "id": "gnews:8ceb45e83017708e",
+          "id": "gnews:5d85830b5bbd801d",
           "source": "gnews-rss",
-          "title": "FTC Probes OpenAI, Anthropic Over Agent Attacks [2026] - shattered.io",
-          "at": "2026-10-01T14:02:17Z"
+          "title": "GPT-6 Astra vs Gemini 4 Argon vs DeepSeek: 13x Gap [2026] - tech-insider.org",
+          "at": "2026-10-02T12:27:32Z"
         },
         "shared": [
-          "ftc",
-          "prob",
-          "anthropic",
-          "openai"
+          "gemini",
+          "4",
+          "argon"
         ]
       },
       {
-        "score": 0.547,
-        "blocked": "thin-overlap",
-        "hours_apart": 35.3,
+        "score": 0.567,
+        "blocked": "time-window",
+        "hours_apart": 90.4,
         "a": {
-          "id": "hn:49911928",
-          "source": "hn-algolia",
-          "title": "Claude Says",
-          "at": "2026-09-30T17:32:06Z"
+          "id": "rss:openai:dec620cb7225d243",
+          "source": "rss-lab",
+          "title": "Introducing dots",
+          "at": "2026-09-29T00:00:00Z"
         },
         "b": {
-          "id": "gnews:b970200aa18649bf",
+          "id": "gnews:4c5cad5a6acb15f8",
           "source": "gnews-rss",
-          "title": "Claude AI shared chats appeared publicly in Google search results - NewsBytes",
-          "at": "2026-10-02T04:48:06Z"
+          "title": "OpenAI Introduces Dot, the AI Agent Assisting with Business Tasks and Online Orders - nacionale.com",
+          "at": "2026-10-02T18:23:45Z"
         },
         "shared": [
-          "claude"
+          "dot"
         ]
       },
       {
-        "score": 0.467,
+        "score": 0.453,
         "blocked": "below-threshold",
         "hours_apart": 0.8,
         "a": {
@@ -654,7 +559,7 @@
         ]
       },
       {
-        "score": 0.467,
+        "score": 0.453,
         "blocked": "below-threshold",
         "hours_apart": 0.7,
         "a": {
@@ -677,30 +582,32 @@
         ]
       },
       {
-        "score": 0.447,
+        "score": 0.432,
         "blocked": "below-threshold",
-        "hours_apart": 11,
+        "hours_apart": 5.1,
         "a": {
-          "id": "rss:deepmind:ce56aa83d0064ef1",
+          "id": "rss:nvidia:60ea0cfc7bea518f",
           "source": "rss-lab",
-          "title": "Gemini 4 Argon: our next era of frontier intelligence",
-          "at": "2026-09-30T20:01:45Z"
+          "title": "NVIDIA DGX Spark 64GB Gives Developers More Ways to Build and Scale Local AI",
+          "at": "2026-10-02T13:00:39Z"
         },
         "b": {
-          "id": "gnews:6a39ba0261cf33b2",
+          "id": "gnews:4b22bc01b5f24686",
           "source": "gnews-rss",
-          "title": "Google Unveils Gemini 4 Argon: New Frontier Model Brings Deep Reasoning, More Complex Workflow - Tech Times",
-          "at": "2026-10-01T07:00:06Z"
+          "title": "NVIDIA Announces DGX Spark 64GB: A 1-PetaFLOP Grace Blackwell Desktop for Local AI Agents, Fine-Tuning, and Inference - MarkTechPost",
+          "at": "2026-10-02T18:04:56Z"
         },
         "shared": [
-          "gemini",
-          "4",
-          "argon",
-          "frontier"
+          "nvidia",
+          "dgx",
+          "spark",
+          "64gb",
+          "local",
+          "ai"
         ]
       },
       {
-        "score": 0.434,
+        "score": 0.423,
         "blocked": "below-threshold",
         "hours_apart": 4.1,
         "a": {
@@ -723,7 +630,7 @@
         ]
       },
       {
-        "score": 0.434,
+        "score": 0.423,
         "blocked": "below-threshold",
         "hours_apart": 4,
         "a": {
@@ -746,25 +653,25 @@
         ]
       },
       {
-        "score": 0.403,
-        "blocked": "thin-overlap",
-        "hours_apart": 1,
+        "score": 0.366,
+        "blocked": "below-threshold",
+        "hours_apart": 0.3,
         "a": {
-          "id": "hn:49921050",
-          "source": "hn-algolia",
-          "title": "FTC is investigating OpenAI, Anthropic and other AI companies over product risks",
-          "at": "2026-10-01T13:00:55Z"
+          "id": "rss:huggingface:e81b1dea7ce0fb42",
+          "source": "rss-lab",
+          "title": "Open-sourcing AstaBrief, the fast report-generation model in Asta",
+          "at": "2026-10-02T15:19:50Z"
         },
         "b": {
-          "id": "gnews:8ceb45e83017708e",
+          "id": "gnews:0355f2b6482ba12b",
           "source": "gnews-rss",
-          "title": "FTC Probes OpenAI, Anthropic Over Agent Attacks [2026] - shattered.io",
-          "at": "2026-10-01T14:02:17Z"
+          "title": "Ai2 Open-Sources AstaBrief 8B for Fast Scientific Report Generation - Unite.AI",
+          "at": "2026-10-02T15:38:01Z"
         },
         "shared": [
-          "ftc",
-          "openai",
-          "anthropic"
+          "astabrief",
+          "fast",
+          "generation"
         ]
       }
     ]
@@ -773,76 +680,76 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 2,
+      "streak_ok": 3,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 62,
+      "streak_ok": 63,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 62,
+      "streak_ok": 63,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 62,
+      "streak_ok": 63,
       "streak_fail": 0,
-      "items_last": 30
+      "items_last": 29
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 62,
+      "streak_ok": 63,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 62,
+      "streak_ok": 63,
       "streak_fail": 0,
-      "items_last": 68
+      "items_last": 67
     },
     {
       "id": "openalex",
       "state": "fail",
       "streak_ok": 0,
-      "streak_fail": 4,
+      "streak_fail": 5,
       "items_last": 0
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 62,
+      "streak_ok": 63,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 62,
+      "streak_ok": 63,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 62,
+      "streak_ok": 63,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.002746111111111111,
+    "hours": 0.005081111111111111,
     "stale": false
   },
   "hf": {
@@ -862,18 +769,18 @@
   "openalex": {
     "ok": false,
     "soft_fail": true,
-    "soft_fail_reason": "paused_until 2026-10-02T15:19:46Z",
+    "soft_fail_reason": "HTTP 429",
     "enriched": 0,
     "secondary": 0,
     "query": "LLM agent",
     "mode": "search",
     "from_cache": false,
-    "searches": 0,
+    "searches": 1,
     "retries": 0,
-    "status": "paused",
-    "paused_until": "2026-10-02T15:19:46Z",
-    "pause_reason": "4 consecutive failures → 24h",
-    "requests": 0,
+    "status": "fail",
+    "paused_until": "2026-10-03T19:13:47Z",
+    "pause_reason": "5 consecutive failures → 24h",
+    "requests": 1,
     "auth": "anon",
     "brief": false,
     "pulse_lead": false,
@@ -888,8 +795,8 @@
     "enriched": 1,
     "query": "OneStreamer: Unifying Perception, Memory, and Proactive Response in Streaming Video Interaction",
     "mode": "bibliographic",
-    "from_cache": false,
-    "searches": 1,
+    "from_cache": true,
+    "searches": 0,
     "brief": false,
     "pulse_lead": false,
     "papers_enrich_only": true,
@@ -911,7 +818,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 68,
+    "count": 67,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -928,13 +835,13 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 27,
+    "ai_dropped": 28,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
         "id": "hn:49913571",
         "tag": "rest",
-        "score": 1675,
+        "score": 1682,
         "text": "Gemini 4 Argon"
       },
       {
@@ -946,7 +853,7 @@
       {
         "id": "hn:49921050",
         "tag": "rest",
-        "score": 205,
+        "score": 206,
         "text": "FTC is investigating OpenAI, Anthropic and other AI companies over product risks"
       }
     ]
@@ -963,79 +870,79 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "(cache:openai)",
+        "url": "https://openai.com/news/rss.xml",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "(cache:deepmind)",
+        "url": "https://deepmind.google/blog/rss.xml",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "(cache:google-ai)",
+        "url": "https://blog.google/technology/ai/rss/",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "(cache:huggingface)",
+        "url": "https://huggingface.co/blog/feed.xml",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "(cache:mistral)",
+        "url": "https://mistral.ai/rss.xml",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "(cache:nvidia)",
+        "url": "https://blogs.nvidia.com/feed/",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "(cache:nvidia-dev)",
+        "url": "https://developer.nvidia.com/blog/feed",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "(cache:ms-research)",
+        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "(cache:google-research)",
+        "url": "https://research.google/blog/rss/",
         "count": 12
       }
     ],
     "feeds_soft_fail": [],
     "sample": [
       {
-        "id": "rss:huggingface:56c490db040147f1",
+        "id": "rss:openai:c38af6e5cae43e23",
+        "lab": "openai",
+        "tag": "rest",
+        "title": "A model guide for the GPT-6 family",
+        "link": "https://openai.com/index/practical-guide-building-gpt-6"
+      },
+      {
+        "id": "rss:huggingface:e81b1dea7ce0fb42",
         "lab": "huggingface",
         "tag": "rest",
-        "title": "AutoSynthData: Generating Training Data for Enterprise Agents",
-        "link": "https://huggingface.co/blog/ServiceNow-AI/autosynthdata"
+        "title": "Open-sourcing AstaBrief, the fast report-generation model in Asta",
+        "link": "https://huggingface.co/blog/allenai/astabrief"
       },
       {
-        "id": "rss:nvidia:6e9bdaa4a319db62",
-        "lab": "nvidia",
-        "tag": "companion",
-        "title": "How NVIDIA GPUs Help Accelerate OpenAI’s GPT-6 Astra Ultrafast",
-        "link": "https://blogs.nvidia.com/blog/gpus-openai-gpt-6-astra-ultrafast/"
-      },
-      {
-        "id": "rss:nvidia-dev:b9f92f4f287905ab",
-        "lab": "nvidia-dev",
+        "id": "rss:google-ai:6a7bb4e3e69d69f5",
+        "lab": "google-ai",
         "tag": "rest",
-        "title": "Build Applications on NVIDIA BlueField Faster with NVIDIA DOCA Agent Skills",
-        "link": "https://developer.nvidia.com/blog/build-applications-on-nvidia-bluefield-faster-with-nvidia-doca-agent-skills/"
+        "title": "The latest AI news we announced in September 2026",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-september-2026/"
       },
       {
-        "id": "rss:nvidia-dev:bc7ec3e2a0e4be9f",
-        "lab": "nvidia-dev",
+        "id": "rss:google-research:a47750453f6e4504",
+        "lab": "google-research",
         "tag": "rest",
-        "title": "Build Local AI Apps with C++ and NVIDIA TensorRT RTX Samples",
-        "link": "https://developer.nvidia.com/blog/build-local-ai-apps-with-c-and-nvidia-tensorrt-rtx-samples/"
+        "title": "Toward provably private learning from federated data",
+        "link": "https://research.google/blog/toward-provably-private-learning-from-federated-data/"
       }
     ]
   },
@@ -1049,17 +956,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "(cache:trailofbits)",
+        "url": "https://blog.trailofbits.com/feed/",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "(cache:fox-it)",
+        "url": "https://blog.fox-it.com/feed/",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "(cache:projectzero)",
+        "url": "https://projectzero.google/feed.xml",
         "count": 5
       }
     ],
@@ -1100,55 +1007,23 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 30,
-    "pool": 211,
+    "items": 29,
+    "pool": 206,
     "corroborators": [
       {
-        "id": "gnews:727fe17491b140b0",
-        "anchor_id": "hn:49925606",
-        "score": 0.703,
-        "title": "Judge dismisses Chegg and Penske antitrust lawsuits targeting Google AI search - arstechnica.com",
-        "publisher": "arstechnica.com",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:7ce88b79e3c86df4",
-        "anchor_id": "rss:huggingface:f928531f96372519",
+        "id": "gnews:fce71ec5a872014a",
+        "anchor_id": "rss:google-research:a47750453f6e4504",
         "score": 1,
-        "title": "Introducing Olmo-core 3: Open, scalable training infrastructure for large MoEs - Allen Institute for Artificial Intelligence",
-        "publisher": "Allen Institute for Artificial Intelligence",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:8ceb45e83017708e",
-        "anchor_id": "hn:49918131",
-        "score": 0.798,
-        "title": "FTC Probes OpenAI, Anthropic Over Agent Attacks [2026] - shattered.io",
-        "publisher": "shattered.io",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:6a39ba0261cf33b2",
-        "anchor_id": "hn:49913571",
-        "score": 0.678,
-        "title": "Google Unveils Gemini 4 Argon: New Frontier Model Brings Deep Reasoning, More Complex Workflow - Tech Times",
-        "publisher": "Tech Times",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:9845920b8f19ecb6",
-        "anchor_id": "rss:ms-research:4ed2607a5b2ebbf9",
-        "score": 1,
-        "title": "Forecasting space weather risks on power grids - Microsoft",
-        "publisher": "Microsoft",
+        "title": "Toward provably private learning from federated data - research.google",
+        "publisher": "research.google",
         "self_repost": true
       },
       {
-        "id": "gnews:12194e25b7f5a129",
-        "anchor_id": "rss:ms-research:4ed2607a5b2ebbf9",
-        "score": 0.749,
-        "title": "Microsoft Research Is Forecasting Space Weather Risks on Power Grids, but Operators Still Need Proof - remio",
-        "publisher": "remio",
+        "id": "gnews:727fe17491b140b0",
+        "anchor_id": "hn:49925606",
+        "score": 0.694,
+        "title": "Judge dismisses Chegg and Penske antitrust lawsuits targeting Google AI search - Ars Technica",
+        "publisher": "Ars Technica",
         "self_repost": false
       },
       {
@@ -1161,9 +1036,9 @@
       }
     ],
     "http_status": 200,
-    "content_type": null,
+    "content_type": "application/xml; charset=utf-8",
     "format": "rss2",
-    "from_cache": true,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1186,24 +1061,24 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:9d62f68193393074",
-        "title": "Send It a Text, and This DoorDash AI Agent Will Order Food For You - extremetech.com",
-        "publisher": "extremetech.com",
-        "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPaDRLOEYtV1lxWGQyS1dyemYtR2JuNE1YY0NWeFh0OUpkd2JGT1Y0aGVscmZueXhrRGJ0eUlUOW5lTmx3bXJTekUxQlM2ZlhwdWpXb0JJNERYU21GZDh1OS0wZXA1eGstRk5VWERoZUw0TVBKbjFQdDVnVVJUdG1Ha3hqOU40T2JsRGhtN2puMWZGd0ZRTmpCRFZfWEpBRjdHU3c?oc=5",
-        "tag": "rest"
-      },
-      {
-        "id": "gnews:0d3c1b474b214437",
-        "title": "Wall Street's AI Hiring Surge: Agent Orchestration Skills Up 1,721% - The Tech Buzz",
+        "id": "gnews:e1c78299d10aa29a",
+        "title": "Wall Street's AI Hiring Surge: Agent Orchestration Demand Up 1,721% - The Tech Buzz",
         "publisher": "The Tech Buzz",
-        "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPRjd4OE5OS19VX1ZWX011OWtBT1U3Zlg0N3JtRGpjMGRyb3NfR05xbThKZ1NJTzY3T0FYS3BwcEZBOGdRWjJNREc2N0VJRjN0alo5RndES2hHUlplaFp4cU5ScFYyOENjY0hjTmVJWEpDSW5xcE9CTW51VS1hMzFtWEJhenM2VkI3clJDNGtERWVhU0ZnRTVJYmd5N2dNcGM?oc=5",
+        "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNOG9zUDJ0X2VJVWJzcjltSEwxcG5wbnZtbzR6ODg2WFBBZFNxX3JINkxpRmVtaEpuUmlBdGJabExEcTgzYkp5RGVHZDdBVTlaYzRvYlNzdjZVZFhpVUtEVjhTWWVlYXVRTXlfdkNQU2hxV3pXX21iWERTd09Oc2VpbE02ZkF1QkRUYzNvUTJYckFiQ21MTjkxaFZVR1BtYmM?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:bdec422d15f5af94",
-        "title": "Argo-Bench AI Benchmark: Top Model Clears 34.8% [2026] - shattered.io",
-        "publisher": "shattered.io",
-        "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE1lYkxzdGg1NS1ydndBdExXd19FNEtCOHVoVWszMkM4anp5RFdzaUQzdFV1OXVHbGVEanRwTGFpZ3FJN085YlFveHYwLXgxOFRCTHIyN0RnbExNOXU1aUNmcXBnaXlaTkR2VVRJZGt4Ym9zUHhwR3ZGUw?oc=5",
+        "id": "gnews:fbceb77592f37af6",
+        "title": "Hugging Face Pulls GLM-5.3 Build Made for Cyberattacks - Pasquale Pillitteri",
+        "publisher": "Pasquale Pillitteri",
+        "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQUURpZTJSVEhpcHVlR3ozMmk0cVlucGlrTDlaUTJqV1NaQ01QeE1RWmcxNDQwdlVHNDNhWW1xaVBnY2Z2R2E1cHlIQlNqbWdFZHlmdG1QRXZvRGJ0R1lycVk1clYwbk5YdVVyTFl1dHBGc21TUlppMk9mNGthaVBZVFYzWFZFZw?oc=5",
+        "tag": "rest"
+      },
+      {
+        "id": "gnews:ecdd7a13d228482f",
+        "title": "Commvault looking after Claude agent configs - Blocks & Files",
+        "publisher": "Blocks & Files",
+        "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQR09PU3pzNWVwOE1jeVdZX0pwdTdTNHFNZHNNR1lWX0VzeURoRnBmdjJLQ0c0VEg1Q1RJYUlacFRJQVZ5UkVYSmx2Y3A2SFBTYzlsVzBQOXUzSGxybFkxSElkdzRVbllfQ1c2QTVWWlc5cGhZM3JhVmYtazMzQVVDeEFlUDZONURHc3F2S0FoTEJDQmhSWHU2cUZwN1NtZzVMZUE?oc=5",
         "tag": "rest"
       }
     ]
