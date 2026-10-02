@@ -97,7 +97,7 @@ if [ ! -e "$WT/.git" ]; then
   fi
 fi
 cd "$WT"
-[ "$(git rev-parse --abbrev-ref HEAD 2>/dev/null || git symbolic-ref --short HEAD)" = "$BRANCH" ] || die "$WT is not on $BRANCH"
+[ "$(git symbolic-ref --short HEAD 2>/dev/null)" = "$BRANCH" ] || die "$WT is not on $BRANCH"
 if [ "$remote_has" = 1 ]; then
   if git rev-parse -q --verify HEAD >/dev/null; then
     git merge -q --ff-only "origin/$BRANCH" || die "local $BRANCH diverged from origin/$BRANCH — refusing (no force, no rewrite)"
@@ -109,7 +109,7 @@ fi
 # Replace the tree with the verified output; stage exactly those paths (+ deletions of tracked files).
 find "$WT" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
 cp -a "$OUT/." "$WT/"
-git add -u -- .
+if git rev-parse -q --verify HEAD >/dev/null; then git add -u -- .; fi
 ( cd "$OUT" && find . -type f -print0 ) | git add --pathspec-from-file=- --pathspec-file-nul
 if git diff --cached --quiet 2>/dev/null && git rev-parse -q --verify HEAD >/dev/null; then
   log "no changes vs $(git rev-parse --short HEAD)"
