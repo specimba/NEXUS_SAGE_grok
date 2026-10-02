@@ -112,7 +112,7 @@ describe("Beat 9 keys — helpers + wiring", () => {
     expect(resolveKey(k("u"), { typing: true })).toBeNull();
   });
   test("key map lists every binding", () => {
-    expect(KEY_MAP.map(([key]) => key)).toEqual(["1–6", "j / k", "Enter", "o", "Esc", "/", "?", "g g / G", "u"]);
+    expect(KEY_MAP.map(([key]) => key)).toEqual(["1–6", "j / k", "Enter", "o", "Esc", "/", "?", "g g / G", "u", "l"]);
   });
   test("exactly one global keydown listener, removed on unmount; drawer Esc does not double-fire", () => {
     const tsx = readFileSync(resolve(import.meta.dir, "../../components/sage/desk.tsx"), "utf8");

@@ -2543,3 +2543,217 @@ a.story-drawer-rowlink:focus-visible .story-drawer-open {
   color: var(--muted-foreground);
   text-transform: none;
 }
+
+/* Beat 11 — holotape lead log (refs/UX-BEAT11-12-HOLOTAPE-MOBILE.md). Skin V2 vars only; min text = muted-foreground. */
+.brief-v5 .sage-take-yesterday-link {
+  text-decoration: none;
+  cursor: pointer;
+}
+.brief-v5 .sage-take-yesterday-link:hover .sage-take-yesterday-go,
+.brief-v5 .sage-take-yesterday-link:focus-visible .sage-take-yesterday-go {
+  color: var(--phosphor-bright);
+  text-decoration: underline;
+}
+.brief-v5 .sage-take-yesterday .sage-take-yesterday-go {
+  flex: none;
+  margin-left: auto;
+  color: var(--phosphor);
+}
+.leadlog {
+  margin-bottom: 0.5rem;
+  min-width: 0;
+  background: var(--bg-deep);
+}
+.leadlog-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.75rem;
+  padding: 0.35rem 0.6rem;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--text-kicker);
+  letter-spacing: var(--tracking-kicker);
+  text-transform: uppercase;
+}
+.leadlog-kicker {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--phosphor);
+}
+/* Tape-reel glyph: CSS only, amber (the one amber mark on the panel). */
+.leadlog-kicker::before {
+  content: "▣";
+  color: var(--pip-amber);
+  font-size: 0.875rem;
+  line-height: 1;
+  letter-spacing: 0;
+}
+.leadlog-meta {
+  color: var(--muted-foreground);
+}
+.leadlog-close {
+  margin-left: auto;
+  padding: 0 0.4rem;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--phosphor);
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+}
+.leadlog-close:hover {
+  border-color: var(--phosphor);
+}
+.leadlog-empty {
+  padding: 0.75rem 0.6rem;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--text-kicker);
+  letter-spacing: var(--tracking-kicker);
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+.leadlog-cols {
+  display: grid;
+  grid-template-columns: 10.5ch 5ch minmax(0, 1fr) minmax(8ch, 22ch) 5ch;
+  align-items: center;
+  column-gap: 0.75rem;
+  padding: 0 0.6rem 0 0.5rem;
+}
+.leadlog-colhead {
+  height: 24px;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--text-kicker);
+  letter-spacing: var(--tracking-kicker);
+  color: var(--muted-foreground);
+}
+.leadlog-row {
+  height: 40px;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+  border-left: 2px solid transparent;
+  font-size: 0.8125rem;
+  color: var(--phosphor);
+  cursor: pointer;
+}
+.leadlog-rows > .leadlog-row:nth-of-type(even) {
+  background: var(--card);
+}
+.leadlog-row:hover,
+.leadlog-row:focus-visible,
+.leadlog-row[data-nav-selected],
+.leadlog-row-open {
+  border-left-color: var(--phosphor);
+  outline: none;
+}
+.leadlog-date,
+.leadlog-pick {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+}
+.leadlog-date {
+  color: var(--phosphor);
+}
+.leadlog-pick {
+  color: var(--phosphor-bright);
+}
+.leadlog-headline {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--phosphor-bright);
+}
+.leadlog-pubs {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+  color: var(--phosphor);
+}
+.leadlog-pubnames,
+.leadlog-carried {
+  color: var(--muted-foreground);
+}
+.leadlog-sig {
+  text-align: right;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+}
+/* HELD / SEED days: the whole row muted. */
+.leadlog-row[data-state="held"],
+.leadlog-row[data-state="held"] .leadlog-date,
+.leadlog-row[data-state="held"] .leadlog-pick,
+.leadlog-row[data-state="held"] .leadlog-headline,
+.leadlog-row[data-state="held"] .leadlog-pubs,
+.leadlog-row[data-state="seed"],
+.leadlog-row[data-state="seed"] .leadlog-pick,
+.leadlog-row[data-state="seed"] .leadlog-headline {
+  color: var(--muted-foreground);
+}
+/* Tape playback block. */
+.leadlog-tape {
+  padding: 0.5rem 0.75rem 0.6rem 1.1rem;
+  border-bottom: 1px solid var(--border);
+  border-left: 2px solid var(--phosphor);
+  background: var(--bg-deep);
+  /* Real mono for the fixed-width codes: --font-jetbrains lives on <body> (next/font), so read it directly —
+     the :root alias --font-mono resolves before that variable exists and falls back to the UA serif. */
+  font-family: var(--font-jetbrains, ui-monospace), ui-monospace, monospace;
+  font-size: 0.75rem;
+  line-height: 1.55;
+}
+.leadlog-tape-line {
+  display: flex;
+  gap: 0.6ch;
+  min-width: 0;
+  white-space: pre;
+  color: var(--muted-foreground);
+}
+.leadlog-tape-head {
+  margin-top: 0.15rem;
+  color: var(--phosphor);
+  letter-spacing: var(--tracking-kicker);
+}
+.leadlog-tape-mark {
+  flex: none;
+  width: 2ch;
+  text-align: right;
+}
+.leadlog-tape-code {
+  flex: none;
+  width: 6ch;
+}
+.leadlog-tape-text {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.leadlog-tape-line[data-kind="lead"] {
+  color: var(--phosphor-bright);
+}
+.leadlog-tape-line[data-kind="lead"] .leadlog-tape-mark,
+.leadlog-tape-line[data-kind="lead"] .leadlog-tape-code {
+  color: var(--phosphor);
+}
+@keyframes leadlog-tape-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .leadlog-tape-line {
+    animation: leadlog-tape-in 90ms steps(2, end) both;
+    animation-delay: calc(var(--i, 0) * 40ms);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .leadlog-tape-line {
+    animation: none;
+  }
+}

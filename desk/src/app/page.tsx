@@ -1,5 +1,10 @@
 import { Desk } from "@/components/sage/desk";
 import { BUILD_META } from "@/lib/build-meta";
+import { buildLeadLog } from "@/lib/lead-log";
+// Beat 11 — build-time only: this server component reads the history; the client gets the slim log as props.
+import leadHistory from "../../artifacts/sage/lead-history.json";
+
+const LEAD_LOG = buildLeadLog(leadHistory);
 
 // Static export (B1): CURRENT lock + build id are baked in at build (src/data/build-stamp.ts); no request-time fs.
 
@@ -38,6 +43,7 @@ export default function Home() {
           commit={BUILD_META.commit}
           crawlCommit={BUILD_META.crawlCommit}
           repoUrl={BUILD_META.repoUrl}
+          leadLog={LEAD_LOG}
         />
     </>
   );

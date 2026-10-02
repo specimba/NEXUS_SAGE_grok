@@ -63,6 +63,21 @@ import { companyFilterMatch, deltaText, heatCells, heatLabel } from "@/lib/topic
 import { TOPIC_HEAT_WINDOWS } from "@/data/topic-heat";
 import { isTypingTarget, KEY_MAP, matchesFilter, resolveKey, stepSelection } from "@/lib/keys";
 import { writeStoryParam } from "@/lib/story-drawer";
+import { LeadLogPanel } from "@/components/sage/lead-log";
+import type { LeadLog } from "@/lib/lead-log";
+
+/** Beat 11 — `?view=leadlog` opens the holotape inside the Brief (no new lane tab). */
+const LEADLOG_VIEW = "leadlog";
+function viewFromSearch(search: string): string | null {
+  return new URLSearchParams(search).get("view");
+}
+function withView(search: string, view: string | null): string {
+  const p = new URLSearchParams(search);
+  if (view) p.set("view", view);
+  else p.delete("view");
+  const s = p.toString();
+  return s ? `?${s}` : "";
+}
 
 function laneFromHash(): Lane {
   const raw = typeof window === "undefined" ? "" : window.location.hash.replace("#", "");
@@ -91,6 +106,8 @@ type DeskProps = {
   commit?: string;
   crawlCommit?: string;
   repoUrl?: string;
+  /** Beat 11 — slim lead log built at build time from artifacts/sage/lead-history.json (app/page.tsx). */
+  leadLog?: LeadLog;
 };
 
 /** One chip per source type, ×n when that type has >1 independent publisher; Σ n = N SRC (SELF excluded). */
@@ -218,7 +235,9 @@ function SinceDivider({ base, n }: { base: string; n: number }) {
   );
 }
 
-export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", crawlCommit = "", repoUrl = "" }: DeskProps) {
+const EMPTY_LOG: LeadLog = { days: [], lastAt: null };
+
+export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", crawlCommit = "", repoUrl = "", leadLog = EMPTY_LOG }: DeskProps) {
   const [lane, setLane] = useState<Lane>("brief");
   // Tabs light only after the hash is read — SSR default "brief" must never paint as filled on another lane.
   const [laneReady, setLaneReady] = useState(false);
@@ -236,6 +255,28 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
     if (typeof window !== "undefined") window.location.hash = id;
   }, []);
 
+  // ── Beat 11 · lead log view (?view=leadlog, read after mount ⇒ static HTML never differs) ──
+  const [logOpen, setLogOpen] = useState(false);
+  useEffect(() => {
+    const read = () => setLogOpen(viewFromSearch(window.location.search) === LEADLOG_VIEW);
+    read();
+    window.addEventListener("popstate", read);
+    return () => window.removeEventListener("popstate", read);
+  }, []);
+  const openLog = useCallback(() => {
+    const { pathname, search } = window.location;
+    window.history.pushState(window.history.state, "", `${pathname}${withView(search, LEADLOG_VIEW)}#brief`);
+    setLogOpen(true);
+    setLane("brief");
+    window.requestAnimationFrame(() => document.querySelector(".leadlog")?.scrollIntoView({ block: "nearest" }));
+  }, []);
+  const closeLog = useCallback(() => {
+    const { pathname, search, hash } = window.location;
+    window.history.replaceState(window.history.state, "", `${pathname}${withView(search, null)}${hash}`);
+    setLogOpen(false);
+  }, []);
+  const leadLogState = useMemo(() => ({ leadLog, logOpen, openLog, closeLog }), [leadLog, logOpen, openLog, closeLog]);
+
   // ── Beat 9 · keyboard control ──
   const [keymapOpen, setKeymapOpen] = useState(false);
   const [filterOpen, setFilterOpen] = useState(false);
@@ -244,8 +285,8 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
   const filterRef = useRef<HTMLInputElement>(null);
   const sel = useRef<Partial<Record<Lane, number>>>({});
   const pendingG = useRef<number | null>(null);
-  const live = useRef({ lane, keymapOpen, filterOpen, q });
-  live.current = { lane, keymapOpen, filterOpen, q };
+  const live = useRef({ lane, keymapOpen, filterOpen, q, logOpen });
+  live.current = { lane, keymapOpen, filterOpen, q, logOpen };
 
   const report = useCallback((shown: number, total: number) => setCounts({ shown, total }), []);
   const openStory = useCallback(
@@ -346,8 +387,13 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
           if (L.filterOpen || L.q) {
             clearFilter();
             window.requestAnimationFrame(() => navRows()[sel.current[L.lane] ?? -1]?.focus({ preventScroll: true }));
+            return;
           }
+          if (L.logOpen && L.lane === "brief") closeLog();
           return;
+        case "leadlog":
+          if (drawer) return;
+          return L.logOpen && L.lane === "brief" ? closeLog() : openLog();
         case "filter":
           return setFilterOpen(true);
         case "since": {
@@ -361,7 +407,7 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [go, select, clearFilter]);
+  }, [go, select, clearFilter, openLog, closeLog]);
 
   // Relative crawl age only after mount (static HTML shows the absolute Istanbul crawl time).
   const now = useNow();
@@ -460,7 +506,11 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
           </div>
           <div className="relative z-10 p-3 md:p-4">
             <DeskKeysCtx.Provider value={keysCtx}>
-            {lane === "brief" ? <Brief /> : null}
+            {lane === "brief" ? (
+              <LeadLogCtx.Provider value={leadLogState}>
+                <Brief />
+              </LeadLogCtx.Provider>
+            ) : null}
             {lane === "pulse" ? <Pulse /> : null}
             {lane === "digest" ? <Digest /> : null}
             {lane === "papers" ? <Papers /> : null}
@@ -691,7 +741,12 @@ function LeadInline({ view }: { view: LeadView }) {
   );
 }
 
+/** Beat 11 — lead log state handed from Desk (URL `?view=leadlog`) to the Brief. */
+type LeadLogState = { leadLog: LeadLog; logOpen: boolean; openLog: () => void; closeLog: () => void };
+const LeadLogCtx = createContext<LeadLogState>({ leadLog: EMPTY_LOG, logOpen: false, openLog: () => {}, closeLog: () => {} });
+
 function Brief() {
+  const { leadLog, logOpen, openLog, closeLog } = useContext(LeadLogCtx);
   // Lead staleness: crawl stamp on first render (SSR/static-stable), then the wall clock.
   // 24h lead-age HELD check runs in the browser after mount (static HTML ships only LEAD_FIRST_AT).
   const leadNow = useNow();
@@ -712,6 +767,8 @@ function Brief() {
     { id: "secrets", label: "secrets", val: "956", pct: Math.round((956 / 1200) * 100), hot: false },
   ] as const;
   return (
+    <>
+    {logOpen ? <LeadLogPanel log={leadLog} onClose={closeLog} /> : null}
     <div className="brief-v5 grid gap-2 lg:grid-cols-12 lg:grid-rows-[auto_auto_auto]">
       {/* Left · Pip-Boy needle rail */}
       <aside
@@ -817,10 +874,21 @@ function Brief() {
         </>
         )}
         {LEAD_YESTERDAY && !(lv.held && LEAD_YESTERDAY.headline === staleLead?.headline) ? (
-          <p className="sage-take-yesterday text-sm">
+          <a
+            className="sage-take-yesterday sage-take-yesterday-link focus-phosphor text-sm"
+            href={`?view=${LEADLOG_VIEW}#brief`}
+            data-leadlog-link="1"
+            aria-label={`Yesterday ${LEAD_YESTERDAY.date}: ${LEAD_YESTERDAY.headline} — open the lead log`}
+            onClick={(e) => {
+              if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || e.button !== 0) return;
+              e.preventDefault();
+              openLog();
+            }}
+          >
             <span className="font-mono text-kicker uppercase tracking-kicker">Yesterday · {LEAD_YESTERDAY.date}</span>{" "}
             <span className="line-clamp-1">{LEAD_YESTERDAY.headline}</span>
-          </p>
+            <span className="sage-take-yesterday-go font-mono text-kicker uppercase tracking-kicker">→ log</span>
+          </a>
         ) : null}
       </section>
 
@@ -924,6 +992,7 @@ function Brief() {
         </div>
       </section>
     </div>
+    </>
   );
 }
 
