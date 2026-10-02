@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-02T11:18:28Z",
+  "stamped_at": "2026-10-02T15:17:28Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 193,
+      "duration_ms": 244,
       "paused_until": null,
       "reason": null
     },
@@ -18,7 +18,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 3248,
+      "duration_ms": 5538,
       "paused_until": null,
       "reason": null
     },
@@ -27,7 +27,7 @@
       "label": "OpenAlex",
       "status": "paused",
       "rows": 0,
-      "duration_ms": 1,
+      "duration_ms": 2,
       "paused_until": "2026-10-02T15:19:46Z",
       "reason": "paused_until 2026-10-02T15:19:46Z"
     },
@@ -36,7 +36,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 549,
+      "duration_ms": 333,
       "paused_until": null,
       "reason": null
     },
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 71,
-      "duration_ms": 8311,
+      "rows": 68,
+      "duration_ms": 8535,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 17026,
+      "duration_ms": 236,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 4325,
+      "duration_ms": 237,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 31,
-      "duration_ms": 6381,
+      "rows": 30,
+      "duration_ms": 237,
       "paused_until": null,
       "reason": null
     },
@@ -81,7 +81,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 16,
+      "duration_ms": 237,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 16,
+      "duration_ms": 237,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 40066,
-    "sources_wall_ms": 17027,
-    "papers_lane_ms": 3996,
-    "slowest_source_ms": 17026,
+    "sources_ms": 15836,
+    "sources_wall_ms": 8538,
+    "papers_lane_ms": 6122,
+    "slowest_source_ms": 8535,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -114,31 +114,31 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 17368,
-    "startup_ms": 29,
-    "main_ms": 17379
+    "wall_ms": 8887,
+    "startup_ms": 38,
+    "main_ms": 8900
   },
-  "multi_source_independent": 6,
+  "multi_source_independent": 5,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 6,
-    "multi_source_raw": 6,
-    "self_reposts": 3,
-    "items_in": 233,
-    "clusters_out": 215,
-    "collapsed": 18,
-    "multi_source": 6,
-    "multi_member": 10,
+    "multi_source_independent": 5,
+    "multi_source_raw": 5,
+    "self_reposts": 2,
+    "items_in": 229,
+    "clusters_out": 212,
+    "collapsed": 17,
+    "multi_source": 5,
+    "multi_member": 9,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 25,
+    "new_items": 7,
     "per_source": {
-      "hn-algolia": 71,
+      "hn-algolia": 68,
       "rss-lab": 104,
       "rss-security": 27,
-      "gnews-rss": 31
+      "gnews-rss": 30
     },
     "multi_source_clusters": [
       {
@@ -148,7 +148,7 @@
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 7,
+        "size": 6,
         "score": 1,
         "members": [
           {
@@ -170,13 +170,6 @@
             "source": "hn-algolia",
             "title": "Gemini 4 Argon: Google is back among the top three labs in intelligence achieved",
             "at": "2026-10-01T00:07:07Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:49913676",
-            "source": "hn-algolia",
-            "title": "Gemini 4 Argon",
-            "at": "2026-09-30T20:11:09Z",
             "publisher": null
           },
           {
@@ -260,7 +253,7 @@
           "gnews-rss"
         ],
         "size": 3,
-        "score": 0.899,
+        "score": 0.9,
         "members": [
           {
             "id": "hn:49911520",
@@ -317,39 +310,6 @@
             "publisher": "remio"
           }
         ]
-      },
-      {
-        "title": "Introducing SynthID Bio",
-        "sources": [
-          "rss-lab",
-          "hn-algolia"
-        ],
-        "size": 3,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:49910027",
-            "source": "hn-algolia",
-            "title": "SynthID Bio: Watermarking methods for synthetic biology – Google DeepMind",
-            "at": "2026-09-30T15:10:05Z",
-            "publisher": null
-          },
-          {
-            "id": "rss:deepmind:c696e8b1f3422473",
-            "source": "rss-lab",
-            "title": "Introducing SynthID Bio",
-            "at": "2026-09-30T15:03:07Z",
-            "publisher": "deepmind"
-          },
-          {
-            "id": "gnews:776da929906c7b15",
-            "source": "gnews-rss",
-            "title": "SynthID Bio: Watermarking methods for synthetic biology - Google DeepMind",
-            "at": "2026-09-30T15:07:03Z",
-            "publisher": "Google DeepMind",
-            "self_repost": true
-          }
-        ]
       }
     ],
     "self_repost_clusters": [
@@ -388,25 +348,6 @@
             "id": "gnews:9845920b8f19ecb6",
             "publisher": "Microsoft",
             "title": "Forecasting space weather risks on power grids - Microsoft"
-          }
-        ]
-      },
-      {
-        "title": "Introducing SynthID Bio",
-        "sources": [
-          "rss-lab",
-          "hn-algolia"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:776da929906c7b15",
-            "publisher": "Google DeepMind",
-            "title": "SynthID Bio: Watermarking methods for synthetic biology - Google DeepMind"
           }
         ]
       }
@@ -463,32 +404,11 @@
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 24
+      "hn_dropped": 27
     },
     "gnews_near_misses": [
       {
-        "score": 0.659,
-        "blocked": "short-title",
-        "hours_apart": 0.1,
-        "a": {
-          "id": "rss:deepmind:c696e8b1f3422473",
-          "source": "rss-lab",
-          "title": "Introducing SynthID Bio",
-          "at": "2026-09-30T15:03:07Z"
-        },
-        "b": {
-          "id": "gnews:776da929906c7b15",
-          "source": "gnews-rss",
-          "title": "SynthID Bio: Watermarking methods for synthetic biology - Google DeepMind",
-          "at": "2026-09-30T15:07:03Z"
-        },
-        "shared": [
-          "synthid",
-          "bio"
-        ]
-      },
-      {
-        "score": 0.567,
+        "score": 0.569,
         "blocked": "below-threshold",
         "hours_apart": 21,
         "a": {
@@ -511,7 +431,7 @@
         ]
       },
       {
-        "score": 0.553,
+        "score": 0.547,
         "blocked": "thin-overlap",
         "hours_apart": 35.3,
         "a": {
@@ -531,7 +451,7 @@
         ]
       },
       {
-        "score": 0.461,
+        "score": 0.467,
         "blocked": "below-threshold",
         "hours_apart": 0.7,
         "a": {
@@ -554,7 +474,7 @@
         ]
       },
       {
-        "score": 0.441,
+        "score": 0.447,
         "blocked": "below-threshold",
         "hours_apart": 11,
         "a": {
@@ -577,7 +497,7 @@
         ]
       },
       {
-        "score": 0.428,
+        "score": 0.434,
         "blocked": "below-threshold",
         "hours_apart": 4,
         "a": {
@@ -600,7 +520,7 @@
         ]
       },
       {
-        "score": 0.4,
+        "score": 0.403,
         "blocked": "thin-overlap",
         "hours_apart": 1,
         "a": {
@@ -622,7 +542,7 @@
         ]
       },
       {
-        "score": 0.346,
+        "score": 0.347,
         "blocked": "thin-overlap",
         "hours_apart": 10.5,
         "a": {
@@ -642,53 +562,33 @@
           "gemini",
           "model"
         ]
+      },
+      {
+        "score": 0.347,
+        "blocked": "thin-overlap",
+        "hours_apart": 3.1,
+        "a": {
+          "id": "hn:49917533",
+          "source": "hn-algolia",
+          "title": "Google Grapples with Employee Skepticism About New Gemini Model",
+          "at": "2026-10-01T03:52:09Z"
+        },
+        "b": {
+          "id": "gnews:6a39ba0261cf33b2",
+          "source": "gnews-rss",
+          "title": "Google Unveils Gemini 4 Argon: New Frontier Model Brings Deep Reasoning, More Complex Workflow - Tech Times",
+          "at": "2026-10-01T07:00:06Z"
+        },
+        "shared": [
+          "google",
+          "gemini",
+          "model"
+        ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.659,
-        "blocked": "short-title",
-        "hours_apart": 0.1,
-        "a": {
-          "id": "rss:deepmind:c696e8b1f3422473",
-          "source": "rss-lab",
-          "title": "Introducing SynthID Bio",
-          "at": "2026-09-30T15:03:07Z"
-        },
-        "b": {
-          "id": "gnews:776da929906c7b15",
-          "source": "gnews-rss",
-          "title": "SynthID Bio: Watermarking methods for synthetic biology - Google DeepMind",
-          "at": "2026-09-30T15:07:03Z"
-        },
-        "shared": [
-          "synthid",
-          "bio"
-        ]
-      },
-      {
-        "score": 0.623,
-        "blocked": "short-title",
-        "hours_apart": 0.1,
-        "a": {
-          "id": "hn:49910027",
-          "source": "hn-algolia",
-          "title": "SynthID Bio: Watermarking methods for synthetic biology – Google DeepMind",
-          "at": "2026-09-30T15:10:05Z"
-        },
-        "b": {
-          "id": "rss:deepmind:c696e8b1f3422473",
-          "source": "rss-lab",
-          "title": "Introducing SynthID Bio",
-          "at": "2026-09-30T15:03:07Z"
-        },
-        "shared": [
-          "synthid",
-          "bio"
-        ]
-      },
-      {
-        "score": 0.567,
+        "score": 0.569,
         "blocked": "below-threshold",
         "hours_apart": 21,
         "a": {
@@ -711,7 +611,7 @@
         ]
       },
       {
-        "score": 0.553,
+        "score": 0.547,
         "blocked": "thin-overlap",
         "hours_apart": 35.3,
         "a": {
@@ -731,7 +631,7 @@
         ]
       },
       {
-        "score": 0.461,
+        "score": 0.467,
         "blocked": "below-threshold",
         "hours_apart": 0.8,
         "a": {
@@ -754,7 +654,7 @@
         ]
       },
       {
-        "score": 0.461,
+        "score": 0.467,
         "blocked": "below-threshold",
         "hours_apart": 0.7,
         "a": {
@@ -777,7 +677,7 @@
         ]
       },
       {
-        "score": 0.441,
+        "score": 0.447,
         "blocked": "below-threshold",
         "hours_apart": 11,
         "a": {
@@ -800,7 +700,7 @@
         ]
       },
       {
-        "score": 0.428,
+        "score": 0.434,
         "blocked": "below-threshold",
         "hours_apart": 4.1,
         "a": {
@@ -821,6 +721,51 @@
           "argon",
           "intelligenc"
         ]
+      },
+      {
+        "score": 0.434,
+        "blocked": "below-threshold",
+        "hours_apart": 4,
+        "a": {
+          "id": "hn:49916067",
+          "source": "hn-algolia",
+          "title": "Gemini 4 Argon: Google is back among the top three labs in intelligence achieved",
+          "at": "2026-10-01T00:07:07Z"
+        },
+        "b": {
+          "id": "gnews:9f3f8a66cbed86b0",
+          "source": "gnews-rss",
+          "title": "Gemini 4 Argon: our next era of frontier intelligence - blog.google",
+          "at": "2026-09-30T20:06:23Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon",
+          "intelligenc"
+        ]
+      },
+      {
+        "score": 0.403,
+        "blocked": "thin-overlap",
+        "hours_apart": 1,
+        "a": {
+          "id": "hn:49921050",
+          "source": "hn-algolia",
+          "title": "FTC is investigating OpenAI, Anthropic and other AI companies over product risks",
+          "at": "2026-10-01T13:00:55Z"
+        },
+        "b": {
+          "id": "gnews:8ceb45e83017708e",
+          "source": "gnews-rss",
+          "title": "FTC Probes OpenAI, Anthropic Over Agent Attacks [2026] - shattered.io",
+          "at": "2026-10-01T14:02:17Z"
+        },
+        "shared": [
+          "ftc",
+          "openai",
+          "anthropic"
+        ]
       }
     ]
   },
@@ -828,44 +773,44 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 1,
+      "streak_ok": 2,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 61,
+      "streak_ok": 62,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 61,
+      "streak_ok": 62,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 61,
+      "streak_ok": 62,
       "streak_fail": 0,
-      "items_last": 31
+      "items_last": 30
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 61,
+      "streak_ok": 62,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 61,
+      "streak_ok": 62,
       "streak_fail": 0,
-      "items_last": 71
+      "items_last": 68
     },
     {
       "id": "openalex",
@@ -877,27 +822,27 @@
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 61,
+      "streak_ok": 62,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 61,
+      "streak_ok": 62,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 61,
+      "streak_ok": 62,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.0050305555555555555,
+    "hours": 0.002746111111111111,
     "stale": false
   },
   "hf": {
@@ -941,7 +886,7 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "enriched": 1,
-    "query": "Agent Priors-guided Policy Learning",
+    "query": "OneStreamer: Unifying Perception, Memory, and Proactive Response in Streaming Video Interaction",
     "mode": "bibliographic",
     "from_cache": false,
     "searches": 1,
@@ -952,12 +897,12 @@
     "merge_notes": [],
     "sample": [
       {
-        "id": "2609.35690",
-        "crossrefDoi": "https://doi.org/10.1109/tmm.2025.3535325/mm1",
-        "issued": null,
-        "type": "component",
+        "id": "2610.01762",
+        "crossrefDoi": "https://doi.org/10.1109/iscit70453.2026.11695365",
+        "issued": "2026-07",
+        "type": "proceedings-article",
         "openalexId": null,
-        "doi": "https://doi.org/10.1109/tmm.2025.3535325/mm1",
+        "doi": "https://doi.org/10.1109/iscit70453.2026.11695365",
         "enrichOnly": false
       }
     ]
@@ -966,7 +911,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 71,
+    "count": 68,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -983,13 +928,13 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 24,
+    "ai_dropped": 27,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
         "id": "hn:49913571",
         "tag": "rest",
-        "score": 1656,
+        "score": 1675,
         "text": "Gemini 4 Argon"
       },
       {
@@ -1001,7 +946,7 @@
       {
         "id": "hn:49921050",
         "tag": "rest",
-        "score": 204,
+        "score": 205,
         "text": "FTC is investigating OpenAI, Anthropic and other AI companies over product risks"
       }
     ]
@@ -1018,47 +963,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "https://openai.com/news/rss.xml",
+        "url": "(cache:openai)",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "https://deepmind.google/blog/rss.xml",
+        "url": "(cache:deepmind)",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "https://blog.google/technology/ai/rss/",
+        "url": "(cache:google-ai)",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "https://huggingface.co/blog/feed.xml",
+        "url": "(cache:huggingface)",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "https://mistral.ai/rss.xml",
+        "url": "(cache:mistral)",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "https://blogs.nvidia.com/feed/",
+        "url": "(cache:nvidia)",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "https://developer.nvidia.com/blog/feed",
+        "url": "(cache:nvidia-dev)",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
+        "url": "(cache:ms-research)",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "https://research.google/blog/rss/",
+        "url": "(cache:google-research)",
         "count": 12
       }
     ],
@@ -1104,17 +1049,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "https://blog.trailofbits.com/feed/",
+        "url": "(cache:trailofbits)",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "https://blog.fox-it.com/feed/",
+        "url": "(cache:fox-it)",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "https://projectzero.google/feed.xml",
+        "url": "(cache:projectzero)",
         "count": 5
       }
     ],
@@ -1155,7 +1100,7 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 31,
+    "items": 30,
     "pool": 211,
     "corroborators": [
       {
@@ -1177,7 +1122,7 @@
       {
         "id": "gnews:8ceb45e83017708e",
         "anchor_id": "hn:49918131",
-        "score": 0.796,
+        "score": 0.798,
         "title": "FTC Probes OpenAI, Anthropic Over Agent Attacks [2026] - shattered.io",
         "publisher": "shattered.io",
         "self_repost": false
@@ -1185,7 +1130,7 @@
       {
         "id": "gnews:6a39ba0261cf33b2",
         "anchor_id": "hn:49913571",
-        "score": 0.675,
+        "score": 0.678,
         "title": "Google Unveils Gemini 4 Argon: New Frontier Model Brings Deep Reasoning, More Complex Workflow - Tech Times",
         "publisher": "Tech Times",
         "self_repost": false
@@ -1213,20 +1158,12 @@
         "title": "Gemini 4 Argon: our next era of frontier intelligence - blog.google",
         "publisher": "blog.google",
         "self_repost": true
-      },
-      {
-        "id": "gnews:776da929906c7b15",
-        "anchor_id": "hn:49910027",
-        "score": 0.902,
-        "title": "SynthID Bio: Watermarking methods for synthetic biology - Google DeepMind",
-        "publisher": "Google DeepMind",
-        "self_repost": true
       }
     ],
     "http_status": 200,
-    "content_type": "application/xml; charset=utf-8",
+    "content_type": null,
     "format": "rss2",
-    "from_cache": false,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
