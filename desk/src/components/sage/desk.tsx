@@ -775,7 +775,7 @@ function Brief() {
         className="sage-panel sage-ticks sage-instrument sage-pip-rail flex flex-col gap-1 px-2 py-2 lg:col-span-2 lg:row-span-3"
         aria-label="Cycle 003 board instrument rail"
       >
-        <p className="font-mono text-kicker uppercase tracking-kicker text-amber">rail · cyc/003 board</p>
+        <p className="font-mono text-kicker uppercase tracking-kicker text-primary">rail · cyc/003 board</p>
         {pip.map((g) => (
           <div key={g.id} className="sage-pip-gauge">
             <div className="sage-pip-track" role="img" aria-label={`${g.label} ${g.pct}%`}>
@@ -902,7 +902,7 @@ function Brief() {
           aria-label="Pin legend"
         >
           <span className="font-mono text-kicker uppercase tracking-kicker text-subtle">pins</span>
-          <span className="font-mono text-kicker uppercase tracking-kicker text-amber">companion</span>
+          <span className="font-mono text-kicker uppercase tracking-kicker text-primary">companion</span>
           <span className="font-mono text-kicker uppercase tracking-kicker text-subtle">rest</span>
           <span className="font-mono text-kicker uppercase tracking-kicker text-subtle">context</span>
           <span className="ml-auto font-mono text-kicker uppercase tracking-kicker text-subtle">
@@ -922,7 +922,7 @@ function Brief() {
                   className={cn("sage-panel sage-ticks pin-card pin-card-quiet px-2.5 py-2", ctx && "pin-card-context")}
                 >
                   <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
-                    <span className={cn(p.kind === "companion" && "text-amber", p.kind === "rest" && "text-subtle")}>
+                    <span className={cn(p.kind === "companion" && "text-primary", p.kind === "rest" && "text-subtle")}>
                       {ctx ? "cycle 003 context" : p.kind}
                     </span>{" "}
                     · <span className="tabular-nums">{p.id}</span>
@@ -1706,7 +1706,7 @@ function Digest() {
           className="sage-panel sage-ticks overflow-hidden lg:col-span-6"
           aria-label="Digest next window"
         >
-          <div className="sage-panel-header">&gt; Next window · pack span</div>
+          <div className="sage-panel-header">Next window · pack span</div>
           <div className="p-2.5">
             <p className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
               {istHHMM(DIGEST_CADENCE.last_at)} → {istHHMM(nextAt)} {IST_LABEL} · {DIGEST_CADENCE.pack_id}
@@ -1732,7 +1732,7 @@ function Digest() {
           className="sage-panel sage-ticks sage-moved overflow-hidden lg:col-span-12"
           aria-label="Moved since last crawl"
         >
-          <div className="sage-panel-header">&gt; Moved since last crawl · corroboration rank below lead</div>
+          <div className="sage-panel-header">Moved since last crawl · corroboration rank below lead</div>
           <div className="px-2.5 py-2">
             <p className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
               crawl {RANK_PREV?.crawl_at ? istDateTime(RANK_PREV.crawl_at) : "—"} → {istDateTime(RANK_CURRENT.crawl_at)} {IST_LABEL} · lead {RANK_CURRENT.lead_id} pinned · ×
@@ -1783,7 +1783,7 @@ function Digest() {
 
       {/* Quiet ops chrome — preview browser-only */}
       <div className="sage-panel sage-ticks lane-craft-digest-panel mt-3 overflow-hidden">
-        <div className="sage-panel-header">&gt; Ops · preview browser-only · downloads</div>
+        <div className="sage-panel-header">Ops · preview browser-only · downloads</div>
         <div className="flex flex-wrap items-center gap-2 p-2">
           <button
             type="button"
@@ -1845,7 +1845,7 @@ function Digest() {
 
       {/* Toolkit shelf — quiet companion, never Brief */}
       <div className="sage-panel sage-ticks mt-3 overflow-hidden">
-        <div className="sage-panel-header">&gt; Toolkit shelf · classifyUrl · never Brief</div>
+        <div className="sage-panel-header">Toolkit shelf · classifyUrl · never Brief</div>
         <p className="border-b border-line px-3 py-1.5 font-mono text-kicker uppercase tracking-kicker text-subtle">
           {SHELF.length} links · github-search off Pulse lead
         </p>
@@ -2237,7 +2237,7 @@ function Voice() {
           className="sage-panel sage-ticks overflow-hidden lg:col-span-6"
           aria-label="Voice chain progress"
         >
-          <div className="sage-panel-header">&gt; Waveform · chain progress</div>
+          <div className="sage-panel-header">Waveform · chain progress</div>
           <div className="p-2.5">
             <div
               className="flex h-12 items-end gap-0.5 border border-line bg-bg-deep p-1.5"
@@ -2288,7 +2288,7 @@ function Gov() {
   return (
     <div>
       <div className="sage-panel sage-ticks overflow-hidden">
-        <div className="sage-panel-header">&gt; Governance · trust close</div>
+        <div className="sage-panel-header">Governance · trust close</div>
         <p className="border-b border-line px-3 py-1.5 font-mono text-kicker uppercase tracking-kicker text-subtle">
           never invent pins · Sol ≠ Astra
         </p>
@@ -2309,7 +2309,7 @@ function Gov() {
       </div>
       <section className="mt-3" aria-label="Wikidata DENY hygiene">
         <div className="sage-panel sage-ticks overflow-hidden mb-2">
-          <div className="sage-panel-header">&gt; Wikidata DENY · grounding only</div>
+          <div className="sage-panel-header">Wikidata DENY · grounding only</div>
           <div className="flex flex-wrap items-center justify-between gap-2 px-3 py-1.5">
             <p className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
               snap {WIKIDATA_DENY_LAST.at} · {WIKIDATA_DENY_LAST.hints.length} hints

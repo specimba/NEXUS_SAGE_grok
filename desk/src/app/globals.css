@@ -1481,7 +1481,8 @@ body {
 .pulse-v5-head,
 .pulse-v5-line {
   display: grid;
-  grid-template-columns: 2.5ch 4.5ch 5ch minmax(0, 1fr) 13ch 7ch;
+  /* SRC track 17ch: lead chip + ≤1 more + SELF fit in mono without overprint (UX audit 2026-10-02). */
+  grid-template-columns: 2.5ch 4.5ch 5ch minmax(0, 1fr) 17ch 7ch;
   align-items: center;
   column-gap: 0.6rem;
   padding: 0 0.6rem 0 0.5rem;
@@ -1540,11 +1541,13 @@ body {
 }
 .pulse-v5-src {
   display: inline-flex;
-  gap: 0.2rem;
+  gap: 0.35ch;
   overflow: hidden;
 }
 .pulse-v5-badge {
   display: inline-block;
+  flex-shrink: 0;
+  white-space: nowrap;
   min-width: 3.4ch;
   padding: 0 0.2rem;
   font-size: var(--text-kicker);
@@ -2756,4 +2759,24 @@ a.story-drawer-rowlink:focus-visible .story-drawer-open {
   .leadlog-tape-line {
     animation: none;
   }
+}
+
+/* UX audit 2026-10-02 · Brief amber = Δ LIVE (status bar) + the TAKE kicker only. Everything else on the Brief
+   that was amber moves to phosphor: rail filament + wave corner brackets → --phosphor-dim, needles + the panel
+   prompt → --primary. Scoped to .brief-v5; other lanes keep their scarce amber. Skin V2 vars only. */
+.brief-v5 .sage-instrument {
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--border) 90%, transparent),
+    inset 2px 0 0 var(--phosphor-dim);
+}
+.brief-v5 .sage-pip-needle {
+  background: var(--primary);
+  box-shadow: 0 0 6px var(--phosphor-glow);
+}
+.brief-v5 .sage-wave-dense,
+.brief-v5 .sage-wave-dense .sage-ticks {
+  --tick: var(--phosphor-dim);
+}
+.brief-v5 .sage-panel-header::before {
+  color: var(--primary);
 }
