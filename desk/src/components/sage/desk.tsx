@@ -873,7 +873,23 @@ function Brief() {
         )}
         </>
         )}
-        {LEAD_YESTERDAY && !(lv.held && LEAD_YESTERDAY.headline === staleLead?.headline) ? (
+        {/* The Yesterday row is the only way into the log. When it would repeat the HELD plate's headline (or there is
+            no yesterday), keep the row with just a right-aligned → LOG (≥44px tap) — same spot every day. */}
+        {!LEAD_YESTERDAY || (lv.held && LEAD_YESTERDAY.headline === staleLead?.headline) ? (
+          <a
+            className="sage-take-yesterday sage-take-yesterday-link sage-take-yesterday-goonly focus-phosphor text-sm"
+            href={`?view=${LEADLOG_VIEW}#brief`}
+            data-leadlog-link="1"
+            aria-label="Open the lead log"
+            onClick={(e) => {
+              if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || e.button !== 0) return;
+              e.preventDefault();
+              openLog();
+            }}
+          >
+            <span className="sage-take-yesterday-go font-mono text-kicker uppercase tracking-kicker">→ log</span>
+          </a>
+        ) : (
           <a
             className="sage-take-yesterday sage-take-yesterday-link focus-phosphor text-sm"
             href={`?view=${LEADLOG_VIEW}#brief`}
@@ -889,7 +905,7 @@ function Brief() {
             <span className="line-clamp-1">{LEAD_YESTERDAY.headline}</span>
             <span className="sage-take-yesterday-go font-mono text-kicker uppercase tracking-kicker">→ log</span>
           </a>
-        ) : null}
+        )}
       </section>
 
       {/* Under the Take · Beat 7 Wire — live multi-source clusters; never displaces lead/Take */}

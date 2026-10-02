@@ -1,6 +1,6 @@
 /**
  * 1280x800 proof shot of one lane: bun scripts/lane-shot.ts <lane> <out.png> [url] [--scroll <css selector>]
- * --width 390 emulates a phone viewport; --eval <js> runs before the shot (900ms settle).
+ * --now <ISO> fakes the page clock (e.g. to see the HELD plate). --width 390 emulates a phone viewport; --eval <js> runs before the shot (900ms settle).
  * lane = brief | pulse | … (clicks the lane tab by its text). No npm deps: Bun WebSocket + CDP.
  */
 import { spawn } from "node:child_process";
@@ -42,6 +42,8 @@ const cdp = (method: string, params: Record<string, unknown> = {}) =>
 const ev = async (expression: string) => (await cdp("Runtime.evaluate", { expression, returnByValue: true, awaitPromise: true })).result?.value;
 const W = process.argv.includes("--width") ? Number(process.argv[process.argv.indexOf("--width") + 1]) : 0;
 if (W) await cdp("Emulation.setDeviceMetricsOverride", { width: W, height: 844, deviceScaleFactor: 1, mobile: true });
+const NOW = process.argv.includes("--now") ? Date.parse(process.argv[process.argv.indexOf("--now") + 1]) : NaN;
+if (!Number.isNaN(NOW)) await cdp("Page.addScriptToEvaluateOnNewDocument", { source: `{const off=${NOW}-Date.now();const D=Date;Date=class extends D{constructor(...a){super(...(a.length?a:[D.now()+off]))}static now(){return D.now()+off}};}` });
 await cdp("Runtime.enable");
 await cdp("Page.enable");
 await cdp("Page.navigate", { url });
