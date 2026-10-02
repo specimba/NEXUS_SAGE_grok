@@ -57,7 +57,7 @@ describe("Beat 11 lead log builder (artifacts/sage/lead-history.json → holotap
     expect(text.slice(2)).toEqual([
       "> CANDIDATES 4 · 06:11 UTC+3",
       "  ✓ LEAD   UN AI-safety CEOs · 2 PUB · SIG 3",
-      "  ✗ AGE    Claude enzyme · ≥24h at pick",
+      "  ✗ AGE    Claude enzyme",
       "  ✗ POLIT  Trump allies … Anthropic CEO · trump",
       "  ✗ LIST   5 AI Semiconductor Stocks",
     ]);
@@ -75,7 +75,7 @@ describe("Beat 11 lead log builder (artifacts/sage/lead-history.json → holotap
     const lines = tapeLines(d).map((l) => (l.kind === "head" ? `> ${l.text}` : `${l.mark} ${l.code} ${l.text}`));
     expect(lines).toEqual([
       "> PASS 1/2 · CANDIDATES 2 · 06:11 UTC+3 · HELD",
-      "✗ AGE    Gemini TTS · ≥24h at pick",
+      "✗ AGE    Gemini TTS",
       "✗ GNW    Gemini tarot · Google News only",
       "· HELD   no qualifying story",
       "> PASS 2/2 · CANDIDATES 1 · 10:12 UTC+3 · HELD",

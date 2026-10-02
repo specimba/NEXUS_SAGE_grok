@@ -2507,6 +2507,14 @@ a.story-drawer-rowlink:focus-visible .story-drawer-open {
   white-space: nowrap;
   color: var(--muted-foreground);
 }
+/* Phone: the stamp wraps — it was the whole 83px of sideways scroll at 390 (Beat 12 baseline). */
+@media (max-width: 767px) {
+  .desk-build-stamp-text {
+    min-width: 0;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+}
 .desk-build-stamp-link {
   color: inherit;
   text-decoration: underline;
@@ -2692,7 +2700,9 @@ a.story-drawer-rowlink:focus-visible .story-drawer-open {
 .leadlog-row[data-state="held"] .leadlog-headline,
 .leadlog-row[data-state="held"] .leadlog-pubs,
 .leadlog-row[data-state="seed"],
+.leadlog-row[data-state="seed"] .leadlog-date,
 .leadlog-row[data-state="seed"] .leadlog-pick,
+.leadlog-row[data-state="seed"] .leadlog-pubs,
 .leadlog-row[data-state="seed"] .leadlog-headline {
   color: var(--muted-foreground);
 }
@@ -2736,6 +2746,42 @@ a.story-drawer-rowlink:focus-visible .story-drawer-open {
 }
 .leadlog-tape-line[data-kind="lead"] {
   color: var(--phosphor-bright);
+}
+/* PASS header lines wrap instead of spilling past the panel (UX mono re-audit §2). */
+.leadlog-tape-line[data-kind="head"] {
+  white-space: normal;
+}
+/* Phone (<768px): no column heading; each row is two lines: date · pick · pubs · sig, then the headline full width. */
+@media (max-width: 767px) {
+  .leadlog-colhead {
+    display: none;
+  }
+  .leadlog-row {
+    height: auto;
+    min-height: 40px;
+    padding-top: 0.35rem;
+    padding-bottom: 0.4rem;
+    grid-template-columns: 10.5ch 5ch minmax(0, 1fr) 5ch;
+    grid-template-areas:
+      "date pick pubs sig"
+      "head head head head";
+    row-gap: 0.15rem;
+  }
+  .leadlog-row .leadlog-date { grid-area: date; }
+  .leadlog-row .leadlog-pick { grid-area: pick; }
+  .leadlog-row .leadlog-pubs { grid-area: pubs; }
+  .leadlog-row .leadlog-sig { grid-area: sig; }
+  .leadlog-row .leadlog-headline {
+    grid-area: head;
+    white-space: normal;
+  }
+  .leadlog-tape {
+    padding-left: 0.6rem;
+    padding-right: 0.5rem;
+  }
+  .leadlog-tape-line {
+    white-space: pre-wrap;
+  }
 }
 .leadlog-tape-line[data-kind="lead"] .leadlog-tape-mark,
 .leadlog-tape-line[data-kind="lead"] .leadlog-tape-code {

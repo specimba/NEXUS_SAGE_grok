@@ -1,5 +1,6 @@
 /**
  * 1280x800 proof shot of one lane: bun scripts/lane-shot.ts <lane> <out.png> [url] [--scroll <css selector>]
+ * --width 390 emulates a phone viewport; --eval <js> runs before the shot (900ms settle).
  * lane = brief | pulse | … (clicks the lane tab by its text). No npm deps: Bun WebSocket + CDP.
  */
 import { spawn } from "node:child_process";
@@ -39,6 +40,8 @@ const cdp = (method: string, params: Record<string, unknown> = {}) =>
     ws.send(JSON.stringify({ id: n, method, params }));
   });
 const ev = async (expression: string) => (await cdp("Runtime.evaluate", { expression, returnByValue: true, awaitPromise: true })).result?.value;
+const W = process.argv.includes("--width") ? Number(process.argv[process.argv.indexOf("--width") + 1]) : 0;
+if (W) await cdp("Emulation.setDeviceMetricsOverride", { width: W, height: 844, deviceScaleFactor: 1, mobile: true });
 await cdp("Runtime.enable");
 await cdp("Page.enable");
 await cdp("Page.navigate", { url });
@@ -50,6 +53,7 @@ else if (scrollSel) await ev(`document.querySelector(${JSON.stringify(scrollSel)
 await sleep(300);
 const evalExpr = process.argv.includes("--eval") ? process.argv[process.argv.indexOf("--eval") + 1] : null;
 const evalOut = evalExpr ? await ev(evalExpr) : undefined;
+if (evalExpr) await sleep(900);
 const png = await cdp("Page.captureScreenshot", { format: "png" });
 await Bun.write(out, Buffer.from(png.data, "base64"));
 console.log(JSON.stringify({ lane, out, console: logs, ...(evalExpr ? { eval: evalOut } : {}) }));

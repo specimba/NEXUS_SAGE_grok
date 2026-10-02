@@ -111,11 +111,12 @@ export function LeadLogPanel({ log, onClose }: { log: LeadLog; onClose: () => vo
                     ) : (
                       <span className="leadlog-headline">{d.headline}</span>
                     )}
+                    {/* HELD: nothing was picked, so no pubs/sig (the carried lead's numbers would mislead). */}
                     <span className="leadlog-pubs tabular-nums">
-                      {d.sources}
-                      {d.pubs.length ? <span className="leadlog-pubnames"> {d.pubs.slice(0, 3).join(", ")}</span> : null}
+                      {held ? "—" : d.sources}
+                      {!held && d.pubs.length ? <span className="leadlog-pubnames"> {d.pubs.slice(0, 3).join(", ")}</span> : null}
                     </span>
-                    <span className="leadlog-sig tabular-nums">{d.sig ?? "—"}</span>
+                    <span className="leadlog-sig tabular-nums">{held ? "—" : (d.sig ?? "—")}</span>
                   </li>
                   {isOpen ? <Tape day={d} /> : null}
                 </Fragment>

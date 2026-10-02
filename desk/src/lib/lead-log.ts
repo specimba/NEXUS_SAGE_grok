@@ -159,7 +159,7 @@ export function tapeLines(day: LogDay): TapeLine[] {
         kind: "out",
         mark: "✗",
         code: pad(o.code),
-        text: `${o.headline}${o.code === "AGE" ? " · ≥24h at pick" : o.detail ? ` · ${o.detail}` : ""}`,
+        text: `${o.headline}${o.code !== "AGE" && o.detail ? ` · ${o.detail}` : ""}`,
       });
     if (p.held) lines.push({ kind: "held", mark: "·", code: pad("HELD"), text: "no qualifying story" });
   });
