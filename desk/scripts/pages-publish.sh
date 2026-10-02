@@ -26,6 +26,9 @@ die() { echo "pages-publish FAIL: $*" >&2; exit 1; }
 # ── 0. one build at a time ──
 if pgrep -f '[n]ext build' >/dev/null 2>&1; then die "another 'next build' is running — one build at a time"; fi
 
+# ── 0b. one crawl: header CRAWL_AT must equal the Wire / Pulse / heat snapshot (skipped postingest stays off Pages) ──
+( cd "$DESK" && bun scripts/pages-coherence.ts ) || die "data incoherent — header crawl ≠ Wire snapshot; nothing built or pushed"
+
 # ── 1. build ──
 log "build PAGES=1 → $OUT"
 rm -rf "$OUT"
@@ -35,6 +38,7 @@ rm -rf "$OUT"
 
 # ── 2. verify (fail closed) ──
 fails=()
+( cd "$DESK" && bun scripts/pages-coherence.ts "$OUT" ) >/dev/null 2>&1 || fails+=("built header CRAWL ≠ Wire crawl (bun scripts/pages-coherence.ts $OUT)")
 [ -f "$OUT/.nojekyll" ] || fails+=(".nojekyll missing")
 envs="$(find "$OUT" -name '.env*' -print)"; [ -z "$envs" ] || fails+=(".env file(s) in output: $envs")
 # 2a. root-relative refs in HTML attributes / CSS url() must carry the base path.
