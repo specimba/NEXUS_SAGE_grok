@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-02T19:13:43Z",
+  "stamped_at": "2026-10-02T23:12:42Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 209,
+      "duration_ms": 224,
       "paused_until": null,
       "reason": null
     },
@@ -18,25 +18,25 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 3225,
+      "duration_ms": 3720,
       "paused_until": null,
       "reason": null
     },
     {
       "id": "openalex",
       "label": "OpenAlex",
-      "status": "fail",
+      "status": "paused",
       "rows": 0,
-      "duration_ms": 195,
+      "duration_ms": 2,
       "paused_until": "2026-10-03T19:13:47Z",
-      "reason": "HTTP 429"
+      "reason": "paused_until 2026-10-03T19:13:47Z"
     },
     {
       "id": "crossref",
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 2,
+      "duration_ms": 3,
       "paused_until": null,
       "reason": null
     },
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 67,
-      "duration_ms": 8295,
+      "rows": 68,
+      "duration_ms": 8516,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 17223,
+      "duration_ms": 220,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 4297,
+      "duration_ms": 220,
       "paused_until": null,
       "reason": null
     },
@@ -72,7 +72,7 @@
       "label": "Google News",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 6389,
+      "duration_ms": 221,
       "paused_until": null,
       "reason": null
     },
@@ -81,7 +81,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 17,
+      "duration_ms": 220,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 17,
+      "duration_ms": 220,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 39869,
-    "sources_wall_ms": 17227,
-    "papers_lane_ms": 3634,
-    "slowest_source_ms": 17223,
+    "sources_ms": 13566,
+    "sources_wall_ms": 8518,
+    "papers_lane_ms": 3953,
+    "slowest_source_ms": 8516,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -114,28 +114,28 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 17499,
-    "startup_ms": 31,
-    "main_ms": 17506
+    "wall_ms": 8926,
+    "startup_ms": 49,
+    "main_ms": 8940
   },
-  "multi_source_independent": 2,
+  "multi_source_independent": 1,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 2,
+    "multi_source_independent": 1,
     "multi_source_raw": 4,
     "self_reposts": 3,
-    "items_in": 227,
-    "clusters_out": 212,
-    "collapsed": 15,
-    "multi_source": 2,
-    "multi_member": 9,
+    "items_in": 228,
+    "clusters_out": 217,
+    "collapsed": 11,
+    "multi_source": 1,
+    "multi_member": 8,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 40,
+    "new_items": 6,
     "per_source": {
-      "hn-algolia": 67,
+      "hn-algolia": 68,
       "rss-lab": 104,
       "rss-security": 27,
       "gnews-rss": 29
@@ -165,75 +165,9 @@
             "publisher": "Ars Technica"
           }
         ]
-      },
-      {
-        "title": "Gemini 4 Argon: our next era of frontier intelligence",
-        "sources": [
-          "rss-lab",
-          "hn-algolia"
-        ],
-        "size": 5,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:49913571",
-            "source": "hn-algolia",
-            "title": "Gemini 4 Argon",
-            "at": "2026-09-30T20:04:37Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:49914236",
-            "source": "hn-algolia",
-            "title": "Gemini 4 Argon (High): Intelligence, Performance and Price Analysis",
-            "at": "2026-09-30T20:50:28Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:49916067",
-            "source": "hn-algolia",
-            "title": "Gemini 4 Argon: Google is back among the top three labs in intelligence achieved",
-            "at": "2026-10-01T00:07:07Z",
-            "publisher": null
-          },
-          {
-            "id": "rss:deepmind:ce56aa83d0064ef1",
-            "source": "rss-lab",
-            "title": "Gemini 4 Argon: our next era of frontier intelligence",
-            "at": "2026-09-30T20:01:45Z",
-            "publisher": "deepmind"
-          },
-          {
-            "id": "gnews:9f3f8a66cbed86b0",
-            "source": "gnews-rss",
-            "title": "Gemini 4 Argon: our next era of frontier intelligence - blog.google",
-            "at": "2026-09-30T20:06:23Z",
-            "publisher": "blog.google",
-            "self_repost": true
-          }
-        ]
       }
     ],
     "self_repost_clusters": [
-      {
-        "title": "Gemini 4 Argon: our next era of frontier intelligence",
-        "sources": [
-          "rss-lab",
-          "hn-algolia"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:9f3f8a66cbed86b0",
-            "publisher": "blog.google",
-            "title": "Gemini 4 Argon: our next era of frontier intelligence - blog.google"
-          }
-        ]
-      },
       {
         "title": "The latest AI news we announced in September 2026",
         "sources": [
@@ -265,6 +199,23 @@
             "id": "gnews:fce71ec5a872014a",
             "publisher": "research.google",
             "title": "Toward provably private learning from federated data - research.google"
+          }
+        ]
+      },
+      {
+        "title": "Gemini 4 Argon: our next era of frontier intelligence",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:9f3f8a66cbed86b0",
+            "publisher": "blog.google",
+            "title": "Gemini 4 Argon: our next era of frontier intelligence - blog.google"
           }
         ]
       }
@@ -313,29 +264,7 @@
     },
     "gnews_near_misses": [
       {
-        "score": 0.671,
-        "blocked": "time-window",
-        "hours_apart": 40.4,
-        "a": {
-          "id": "hn:49913571",
-          "source": "hn-algolia",
-          "title": "Gemini 4 Argon",
-          "at": "2026-09-30T20:04:37Z"
-        },
-        "b": {
-          "id": "gnews:5d85830b5bbd801d",
-          "source": "gnews-rss",
-          "title": "GPT-6 Astra vs Gemini 4 Argon vs DeepSeek: 13x Gap [2026] - tech-insider.org",
-          "at": "2026-10-02T12:27:32Z"
-        },
-        "shared": [
-          "gemini",
-          "4",
-          "argon"
-        ]
-      },
-      {
-        "score": 0.567,
+        "score": 0.562,
         "blocked": "time-window",
         "hours_apart": 90.4,
         "a": {
@@ -355,55 +284,7 @@
         ]
       },
       {
-        "score": 0.453,
-        "blocked": "below-threshold",
-        "hours_apart": 0.7,
-        "a": {
-          "id": "hn:49914236",
-          "source": "hn-algolia",
-          "title": "Gemini 4 Argon (High): Intelligence, Performance and Price Analysis",
-          "at": "2026-09-30T20:50:28Z"
-        },
-        "b": {
-          "id": "gnews:9f3f8a66cbed86b0",
-          "source": "gnews-rss",
-          "title": "Gemini 4 Argon: our next era of frontier intelligence - blog.google",
-          "at": "2026-09-30T20:06:23Z"
-        },
-        "shared": [
-          "gemini",
-          "4",
-          "argon",
-          "intelligenc"
-        ]
-      },
-      {
-        "score": 0.432,
-        "blocked": "below-threshold",
-        "hours_apart": 5.1,
-        "a": {
-          "id": "rss:nvidia:60ea0cfc7bea518f",
-          "source": "rss-lab",
-          "title": "NVIDIA DGX Spark 64GB Gives Developers More Ways to Build and Scale Local AI",
-          "at": "2026-10-02T13:00:39Z"
-        },
-        "b": {
-          "id": "gnews:4b22bc01b5f24686",
-          "source": "gnews-rss",
-          "title": "NVIDIA Announces DGX Spark 64GB: A 1-PetaFLOP Grace Blackwell Desktop for Local AI Agents, Fine-Tuning, and Inference - MarkTechPost",
-          "at": "2026-10-02T18:04:56Z"
-        },
-        "shared": [
-          "nvidia",
-          "dgx",
-          "spark",
-          "64gb",
-          "local",
-          "ai"
-        ]
-      },
-      {
-        "score": 0.423,
+        "score": 0.44,
         "blocked": "below-threshold",
         "hours_apart": 4,
         "a": {
@@ -426,163 +307,7 @@
         ]
       },
       {
-        "score": 0.366,
-        "blocked": "below-threshold",
-        "hours_apart": 0.3,
-        "a": {
-          "id": "rss:huggingface:e81b1dea7ce0fb42",
-          "source": "rss-lab",
-          "title": "Open-sourcing AstaBrief, the fast report-generation model in Asta",
-          "at": "2026-10-02T15:19:50Z"
-        },
-        "b": {
-          "id": "gnews:0355f2b6482ba12b",
-          "source": "gnews-rss",
-          "title": "Ai2 Open-Sources AstaBrief 8B for Fast Scientific Report Generation - Unite.AI",
-          "at": "2026-10-02T15:38:01Z"
-        },
-        "shared": [
-          "astabrief",
-          "fast",
-          "generation"
-        ]
-      },
-      {
-        "score": 0.335,
-        "blocked": "thin-overlap",
-        "hours_apart": 40.4,
-        "a": {
-          "id": "rss:deepmind:ce56aa83d0064ef1",
-          "source": "rss-lab",
-          "title": "Gemini 4 Argon: our next era of frontier intelligence",
-          "at": "2026-09-30T20:01:45Z"
-        },
-        "b": {
-          "id": "gnews:5d85830b5bbd801d",
-          "source": "gnews-rss",
-          "title": "GPT-6 Astra vs Gemini 4 Argon vs DeepSeek: 13x Gap [2026] - tech-insider.org",
-          "at": "2026-10-02T12:27:32Z"
-        },
-        "shared": [
-          "gemini",
-          "4",
-          "argon"
-        ]
-      },
-      {
-        "score": 0.273,
-        "blocked": "thin-overlap",
-        "hours_apart": 39.6,
-        "a": {
-          "id": "hn:49914236",
-          "source": "hn-algolia",
-          "title": "Gemini 4 Argon (High): Intelligence, Performance and Price Analysis",
-          "at": "2026-09-30T20:50:28Z"
-        },
-        "b": {
-          "id": "gnews:5d85830b5bbd801d",
-          "source": "gnews-rss",
-          "title": "GPT-6 Astra vs Gemini 4 Argon vs DeepSeek: 13x Gap [2026] - tech-insider.org",
-          "at": "2026-10-02T12:27:32Z"
-        },
-        "shared": [
-          "gemini",
-          "4",
-          "argon"
-        ]
-      }
-    ],
-    "near_misses": [
-      {
-        "score": 0.671,
-        "blocked": "time-window",
-        "hours_apart": 40.4,
-        "a": {
-          "id": "hn:49913571",
-          "source": "hn-algolia",
-          "title": "Gemini 4 Argon",
-          "at": "2026-09-30T20:04:37Z"
-        },
-        "b": {
-          "id": "gnews:5d85830b5bbd801d",
-          "source": "gnews-rss",
-          "title": "GPT-6 Astra vs Gemini 4 Argon vs DeepSeek: 13x Gap [2026] - tech-insider.org",
-          "at": "2026-10-02T12:27:32Z"
-        },
-        "shared": [
-          "gemini",
-          "4",
-          "argon"
-        ]
-      },
-      {
-        "score": 0.567,
-        "blocked": "time-window",
-        "hours_apart": 90.4,
-        "a": {
-          "id": "rss:openai:dec620cb7225d243",
-          "source": "rss-lab",
-          "title": "Introducing dots",
-          "at": "2026-09-29T00:00:00Z"
-        },
-        "b": {
-          "id": "gnews:4c5cad5a6acb15f8",
-          "source": "gnews-rss",
-          "title": "OpenAI Introduces Dot, the AI Agent Assisting with Business Tasks and Online Orders - nacionale.com",
-          "at": "2026-10-02T18:23:45Z"
-        },
-        "shared": [
-          "dot"
-        ]
-      },
-      {
-        "score": 0.453,
-        "blocked": "below-threshold",
-        "hours_apart": 0.8,
-        "a": {
-          "id": "hn:49914236",
-          "source": "hn-algolia",
-          "title": "Gemini 4 Argon (High): Intelligence, Performance and Price Analysis",
-          "at": "2026-09-30T20:50:28Z"
-        },
-        "b": {
-          "id": "rss:deepmind:ce56aa83d0064ef1",
-          "source": "rss-lab",
-          "title": "Gemini 4 Argon: our next era of frontier intelligence",
-          "at": "2026-09-30T20:01:45Z"
-        },
-        "shared": [
-          "gemini",
-          "4",
-          "argon",
-          "intelligenc"
-        ]
-      },
-      {
-        "score": 0.453,
-        "blocked": "below-threshold",
-        "hours_apart": 0.7,
-        "a": {
-          "id": "hn:49914236",
-          "source": "hn-algolia",
-          "title": "Gemini 4 Argon (High): Intelligence, Performance and Price Analysis",
-          "at": "2026-09-30T20:50:28Z"
-        },
-        "b": {
-          "id": "gnews:9f3f8a66cbed86b0",
-          "source": "gnews-rss",
-          "title": "Gemini 4 Argon: our next era of frontier intelligence - blog.google",
-          "at": "2026-09-30T20:06:23Z"
-        },
-        "shared": [
-          "gemini",
-          "4",
-          "argon",
-          "intelligenc"
-        ]
-      },
-      {
-        "score": 0.432,
+        "score": 0.433,
         "blocked": "below-threshold",
         "hours_apart": 5.1,
         "a": {
@@ -607,7 +332,156 @@
         ]
       },
       {
-        "score": 0.423,
+        "score": 0.365,
+        "blocked": "below-threshold",
+        "hours_apart": 0.3,
+        "a": {
+          "id": "rss:huggingface:e81b1dea7ce0fb42",
+          "source": "rss-lab",
+          "title": "Open-sourcing AstaBrief, the fast report-generation model in Asta",
+          "at": "2026-10-02T15:19:50Z"
+        },
+        "b": {
+          "id": "gnews:0355f2b6482ba12b",
+          "source": "gnews-rss",
+          "title": "Ai2 Open-Sources AstaBrief 8B for Fast Scientific Report Generation - Unite.AI",
+          "at": "2026-10-02T15:38:01Z"
+        },
+        "shared": [
+          "astabrief",
+          "fast",
+          "generation"
+        ]
+      },
+      {
+        "score": 0.352,
+        "blocked": "thin-overlap",
+        "hours_apart": 40.4,
+        "a": {
+          "id": "rss:deepmind:ce56aa83d0064ef1",
+          "source": "rss-lab",
+          "title": "Gemini 4 Argon: our next era of frontier intelligence",
+          "at": "2026-09-30T20:01:45Z"
+        },
+        "b": {
+          "id": "gnews:5d85830b5bbd801d",
+          "source": "gnews-rss",
+          "title": "GPT-6 Astra vs Gemini 4 Argon vs DeepSeek: 13x Gap [2026] - tech-insider.org",
+          "at": "2026-10-02T12:27:32Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon"
+        ]
+      },
+      {
+        "score": 0.262,
+        "blocked": "thin-overlap",
+        "hours_apart": 12.3,
+        "a": {
+          "id": "hn:49930421",
+          "source": "hn-algolia",
+          "title": "Is Claude Conscious?",
+          "at": "2026-10-02T06:29:35Z"
+        },
+        "b": {
+          "id": "gnews:ecdd7a13d228482f",
+          "source": "gnews-rss",
+          "title": "Commvault looking after Claude agent configs - Blocks & Files",
+          "at": "2026-10-02T18:45:23Z"
+        },
+        "shared": [
+          "claude"
+        ]
+      },
+      {
+        "score": 0.257,
+        "blocked": "thin-overlap",
+        "hours_apart": 12.7,
+        "a": {
+          "id": "rss:nvidia:6e9bdaa4a319db62",
+          "source": "rss-lab",
+          "title": "How NVIDIA GPUs Help Accelerate OpenAI’s GPT-6 Astra Ultrafast",
+          "at": "2026-10-01T23:44:13Z"
+        },
+        "b": {
+          "id": "gnews:5d85830b5bbd801d",
+          "source": "gnews-rss",
+          "title": "GPT-6 Astra vs Gemini 4 Argon vs DeepSeek: 13x Gap [2026] - tech-insider.org",
+          "at": "2026-10-02T12:27:32Z"
+        },
+        "shared": [
+          "gpt",
+          "6",
+          "astra"
+        ]
+      },
+      {
+        "score": 0.253,
+        "blocked": "time-window",
+        "hours_apart": 15850.9,
+        "a": {
+          "id": "rss-sec:fox-it:3c6aa320553da032",
+          "source": "rss-security",
+          "title": "Decrypting Full Disk Encryption with Dissect",
+          "at": "2024-12-11T07:30:00Z"
+        },
+        "b": {
+          "id": "gnews:7222fc23b8f744b6",
+          "source": "gnews-rss",
+          "title": "Apple to Tighten macOS Full Disk Access, Citing AI Agent Risks - Unite.AI",
+          "at": "2026-10-02T18:26:01Z"
+        },
+        "shared": [
+          "full",
+          "disk"
+        ]
+      }
+    ],
+    "near_misses": [
+      {
+        "score": 0.562,
+        "blocked": "time-window",
+        "hours_apart": 90.4,
+        "a": {
+          "id": "rss:openai:dec620cb7225d243",
+          "source": "rss-lab",
+          "title": "Introducing dots",
+          "at": "2026-09-29T00:00:00Z"
+        },
+        "b": {
+          "id": "gnews:4c5cad5a6acb15f8",
+          "source": "gnews-rss",
+          "title": "OpenAI Introduces Dot, the AI Agent Assisting with Business Tasks and Online Orders - nacionale.com",
+          "at": "2026-10-02T18:23:45Z"
+        },
+        "shared": [
+          "dot"
+        ]
+      },
+      {
+        "score": 0.55,
+        "blocked": "time-window",
+        "hours_apart": 67.5,
+        "a": {
+          "id": "hn:49926047",
+          "source": "hn-algolia",
+          "title": "The $10B AI Assistant Challenging Meta's Muse, Grok's Bots, and OpenAI's Dots [video]",
+          "at": "2026-10-01T19:30:44Z"
+        },
+        "b": {
+          "id": "rss:openai:dec620cb7225d243",
+          "source": "rss-lab",
+          "title": "Introducing dots",
+          "at": "2026-09-29T00:00:00Z"
+        },
+        "shared": [
+          "dot"
+        ]
+      },
+      {
+        "score": 0.44,
         "blocked": "below-threshold",
         "hours_apart": 4.1,
         "a": {
@@ -630,7 +504,7 @@
         ]
       },
       {
-        "score": 0.423,
+        "score": 0.44,
         "blocked": "below-threshold",
         "hours_apart": 4,
         "a": {
@@ -653,7 +527,32 @@
         ]
       },
       {
-        "score": 0.366,
+        "score": 0.433,
+        "blocked": "below-threshold",
+        "hours_apart": 5.1,
+        "a": {
+          "id": "rss:nvidia:60ea0cfc7bea518f",
+          "source": "rss-lab",
+          "title": "NVIDIA DGX Spark 64GB Gives Developers More Ways to Build and Scale Local AI",
+          "at": "2026-10-02T13:00:39Z"
+        },
+        "b": {
+          "id": "gnews:4b22bc01b5f24686",
+          "source": "gnews-rss",
+          "title": "NVIDIA Announces DGX Spark 64GB: A 1-PetaFLOP Grace Blackwell Desktop for Local AI Agents, Fine-Tuning, and Inference - MarkTechPost",
+          "at": "2026-10-02T18:04:56Z"
+        },
+        "shared": [
+          "nvidia",
+          "dgx",
+          "spark",
+          "64gb",
+          "local",
+          "ai"
+        ]
+      },
+      {
+        "score": 0.365,
         "blocked": "below-threshold",
         "hours_apart": 0.3,
         "a": {
@@ -673,6 +572,50 @@
           "fast",
           "generation"
         ]
+      },
+      {
+        "score": 0.352,
+        "blocked": "thin-overlap",
+        "hours_apart": 40.4,
+        "a": {
+          "id": "rss:deepmind:ce56aa83d0064ef1",
+          "source": "rss-lab",
+          "title": "Gemini 4 Argon: our next era of frontier intelligence",
+          "at": "2026-09-30T20:01:45Z"
+        },
+        "b": {
+          "id": "gnews:5d85830b5bbd801d",
+          "source": "gnews-rss",
+          "title": "GPT-6 Astra vs Gemini 4 Argon vs DeepSeek: 13x Gap [2026] - tech-insider.org",
+          "at": "2026-10-02T12:27:32Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon"
+        ]
+      },
+      {
+        "score": 0.339,
+        "blocked": "time-window",
+        "hours_apart": 374.9,
+        "a": {
+          "id": "hn:49918520",
+          "source": "hn-algolia",
+          "title": "Meta wants people to use 'AI agents' to do daily tasks. Why that's a problem",
+          "at": "2026-10-01T06:52:51Z"
+        },
+        "b": {
+          "id": "rss:huggingface:a1d018f16fad79f9",
+          "source": "rss-lab",
+          "title": "Your Agent Aced the Task. Will It Do It Again?",
+          "at": "2026-09-15T16:00:44Z"
+        },
+        "shared": [
+          "agent",
+          "do",
+          "task"
+        ]
       }
     ]
   },
@@ -680,44 +623,44 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 3,
+      "streak_ok": 4,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 63,
+      "streak_ok": 64,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 63,
+      "streak_ok": 64,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 63,
+      "streak_ok": 64,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 63,
+      "streak_ok": 64,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 63,
+      "streak_ok": 64,
       "streak_fail": 0,
-      "items_last": 67
+      "items_last": 68
     },
     {
       "id": "openalex",
@@ -729,27 +672,27 @@
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 63,
+      "streak_ok": 64,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 63,
+      "streak_ok": 64,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 63,
+      "streak_ok": 64,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.005081111111111111,
+    "hours": 0.0027202777777777776,
     "stale": false
   },
   "hf": {
@@ -769,18 +712,18 @@
   "openalex": {
     "ok": false,
     "soft_fail": true,
-    "soft_fail_reason": "HTTP 429",
+    "soft_fail_reason": "paused_until 2026-10-03T19:13:47Z",
     "enriched": 0,
     "secondary": 0,
     "query": "LLM agent",
     "mode": "search",
     "from_cache": false,
-    "searches": 1,
+    "searches": 0,
     "retries": 0,
-    "status": "fail",
+    "status": "paused",
     "paused_until": "2026-10-03T19:13:47Z",
     "pause_reason": "5 consecutive failures → 24h",
-    "requests": 1,
+    "requests": 0,
     "auth": "anon",
     "brief": false,
     "pulse_lead": false,
@@ -818,7 +761,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 67,
+    "count": 68,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -839,22 +782,22 @@
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
-        "id": "hn:49913571",
-        "tag": "rest",
-        "score": 1682,
-        "text": "Gemini 4 Argon"
-      },
-      {
         "id": "hn:49921118",
         "tag": "rest",
-        "score": 252,
+        "score": 253,
         "text": "Meta Uses A.I. Data Centers to Avoid Billions in Federal Taxes"
       },
       {
         "id": "hn:49921050",
         "tag": "rest",
-        "score": 206,
+        "score": 207,
         "text": "FTC is investigating OpenAI, Anthropic and other AI companies over product risks"
+      },
+      {
+        "id": "hn:49924618",
+        "tag": "rest",
+        "score": 195,
+        "text": "Vote on which of Hacker News' challenges for AI have been met"
       }
     ]
   },
@@ -870,47 +813,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "https://openai.com/news/rss.xml",
+        "url": "(cache:openai)",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "https://deepmind.google/blog/rss.xml",
+        "url": "(cache:deepmind)",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "https://blog.google/technology/ai/rss/",
+        "url": "(cache:google-ai)",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "https://huggingface.co/blog/feed.xml",
+        "url": "(cache:huggingface)",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "https://mistral.ai/rss.xml",
+        "url": "(cache:mistral)",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "https://blogs.nvidia.com/feed/",
+        "url": "(cache:nvidia)",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "https://developer.nvidia.com/blog/feed",
+        "url": "(cache:nvidia-dev)",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
+        "url": "(cache:ms-research)",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "https://research.google/blog/rss/",
+        "url": "(cache:google-research)",
         "count": 12
       }
     ],
@@ -956,17 +899,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "https://blog.trailofbits.com/feed/",
+        "url": "(cache:trailofbits)",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "https://blog.fox-it.com/feed/",
+        "url": "(cache:fox-it)",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "https://projectzero.google/feed.xml",
+        "url": "(cache:projectzero)",
         "count": 5
       }
     ],
@@ -1036,9 +979,9 @@
       }
     ],
     "http_status": 200,
-    "content_type": "application/xml; charset=utf-8",
+    "content_type": null,
     "format": "rss2",
-    "from_cache": false,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
