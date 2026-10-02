@@ -2,6 +2,51 @@
 import type { LeadEntry } from "@/lib/lead-pick";
 
 export const LEAD_TODAY: LeadEntry | null = {
+  "date": "2026-10-02",
+  "at": "2026-10-02T03:14:58.776Z",
+  "crawl_at": "2026-10-02T03:14:15Z",
+  "excluded": [
+    {
+      "cluster_id": "cl:rss:deepmind:ce56aa83d0064ef1",
+      "headline": "Gemini 4 Argon: our next era of frontier intelligence",
+      "reason": "age>=24h"
+    },
+    {
+      "cluster_id": "cl:gnews:dfd86427557f7e0e",
+      "headline": "OpenAI, Meta Push AI Agents Despite 85.5% Trust Gap [2026]",
+      "reason": "GNW_ONLY"
+    },
+    {
+      "cluster_id": "cl:hn:49911520",
+      "headline": "FTC opens probe into AI giants including Anthropic and OpenAI",
+      "reason": "age>=24h"
+    },
+    {
+      "cluster_id": "cl:rss:ms-research:4ed2607a5b2ebbf9",
+      "headline": "Forecasting space weather risks on power grids",
+      "reason": "age>=24h"
+    },
+    {
+      "cluster_id": "cl:hn:49913950",
+      "headline": "Google Grapples with Employee Skepticism About New Gemini Model",
+      "reason": "age>=24h"
+    },
+    {
+      "cluster_id": "cl:rss:deepmind:c696e8b1f3422473",
+      "headline": "Introducing SynthID Bio",
+      "reason": "age>=24h"
+    }
+  ],
+  "cluster_id": "cl:hn:49925606",
+  "headline": "US judge dismisses Chegg, Penske antitrust suits over Google AI Overviews",
+  "url": "https://reuters.com/legal/litigation/google-wins-dismissal-chegg-penske-media-lawsuits-over-ai-overviews-2026-10-01",
+  "sources": 2,
+  "sig": 19,
+  "reason": "picked",
+  "first_at": "2026-10-01T18:53:51.000Z"
+};
+
+export const LEAD_YESTERDAY: LeadEntry | null = {
   "date": "2026-10-01",
   "at": "2026-10-01T03:20:06.342Z",
   "crawl_at": "2026-10-01T03:17:41Z",
@@ -41,57 +86,7 @@ export const LEAD_TODAY: LeadEntry | null = {
   "first_at": "2026-09-30T20:01:45.000Z"
 };
 
-export const LEAD_YESTERDAY: LeadEntry | null = {
-  "date": "2026-09-30",
-  "at": "2026-09-30T03:16:33.351Z",
-  "crawl_at": "2026-09-30T03:13:10Z",
-  "excluded": [
-    {
-      "cluster_id": "cl:hn:49901481",
-      "headline": "Trump and major AI executives sign \"morally binding\" voluntary controls",
-      "reason": "politics:trump"
-    },
-    {
-      "cluster_id": "cl:gnews:fc5935478d4b447b",
-      "headline": "Morocco, Mistral AI release first open-source AI tools under AI made in Morocco roadmap",
-      "reason": "GNW_ONLY"
-    },
-    {
-      "cluster_id": "cl:rss:openai:dec620cb7225d243",
-      "headline": "Introducing dots",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:hn:49881899",
-      "headline": "Nvidia launches platform to quarantine rogue AI agents in 'milliseconds'",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:hn:49886005",
-      "headline": "Anthropic's IPO prospectus shows AI vision, surging costs",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:rss:huggingface:09d1d26fa19dd694",
-      "headline": "Holo4: powering generalist computer-use agents",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:rss:nvidia-dev:b2492ef6a6d58b24",
-      "headline": "NVIDIA Open Agent Safety Platform: A Reference for Continuous In-Silicon Agent Monitoring",
-      "reason": "age>=24h"
-    }
-  ],
-  "cluster_id": "cl:hn:49891721",
-  "headline": "Mistral CEO says U.S. AI safety debate masks competitors' 'negligence'",
-  "url": "https://www.cnbc.com/2026/09/29/mistral-ai-safety-openai-anthropic.html",
-  "sources": 8,
-  "sig": 44,
-  "reason": "picked",
-  "first_at": "2026-09-29T08:20:04.000Z"
-};
-
 export const LEAD_HELD = false;
 
 /** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is ≥24h old. */
-export const LEAD_FIRST_AT: string | null = "2026-09-30T20:01:45.000Z";
+export const LEAD_FIRST_AT: string | null = "2026-10-01T18:53:51.000Z";
