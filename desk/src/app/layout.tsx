@@ -52,8 +52,9 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" data-theme="phosphor" className="dark">
-      <body className={`${shareTech.variable} ${jetbrains.variable} min-h-screen antialiased`}>
+    <html lang="en" data-theme="phosphor" className={`dark ${shareTech.variable} ${jetbrains.variable}`}>
+      {/* next/font vars on <html>: @theme inline resolves --font-mono / --font-display at :root. */}
+      <body className="min-h-screen antialiased">
         {children}
       </body>
     </html>

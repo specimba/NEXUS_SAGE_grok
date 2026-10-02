@@ -6,7 +6,8 @@
  */
 import { spawnSync } from "node:child_process";
 
-const URL = process.env.SAGE_DESK_URL || "http://127.0.0.1:3000/";
+// Base URL: first http(s) arg, else SAGE_DESK_URL, else live :3000 (also works on the GitHub Pages URL).
+const URL = process.argv.slice(2).find((a) => /^https?:\/\//.test(a)) || process.env.SAGE_DESK_URL || "http://127.0.0.1:3000/";
 const FROZEN_COMPILE = "2026-09-03T05:40:00Z";
 
 function fail(msg, details = []) {
@@ -123,6 +124,15 @@ const summary = {
   build: buildId,
   bytes: html.length,
 };
+// Font gate (UX audit 2026-10-02): headless Chrome confirms the mono faces actually load at this URL.
+// SAGE_SKIP_FONT_CHECK=1 skips it (no Chrome on the host); it never skips silently.
+if (process.env.SAGE_SKIP_FONT_CHECK === "1") {
+  console.log("  font-check SKIPPED (SAGE_SKIP_FONT_CHECK=1)");
+} else {
+  const fc = spawnSync("bun", [new globalThis.URL("./font-check.ts", import.meta.url).pathname, URL], { encoding: "utf8", timeout: 90_000 });
+  if (fc.status !== 0) fail(`font gate failed at ${URL}`, `${fc.stderr || ""}${fc.stdout || ""}`.trim().split("\n"));
+  console.log(`  ${(fc.stdout || "").trim()}`);
+}
 console.log("visual:check OK");
 console.log(
   `  url=${summary.url} theme=${summary.theme} lanes=${summary.lane01 ? "ok" : "?"} crawl=${summary.crawl} build=${summary.build} bytes=${summary.bytes}`,
