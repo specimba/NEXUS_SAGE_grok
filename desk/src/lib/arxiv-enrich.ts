@@ -7,6 +7,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import type { Paper } from "./ingest/papers";
+import { abortableSleep } from "./crawl-budget";
 
 export const ARXIV_API = "https://export.arxiv.org/api/query";
 export const ARXIV_UA = "NEXUS-SAGE-desk/0.2 (free-ingest; contact: local)";
@@ -41,10 +42,6 @@ const DEFAULT_CACHE_DIR = resolve(
 );
 
 let lastRequestAt = 0;
-
-function sleep(ms: number): Promise<void> {
-  return new Promise((r) => setTimeout(r, ms));
-}
 
 /** Normalize arXiv id: strip version / URL → "2401.12345" or "hep-th/9901001". */
 export function normalizeArxivId(raw: string): string | null {
@@ -196,20 +193,23 @@ function writeCache(cacheDir: string, id: string, atom: string, now = Date.now()
   writeFileSync(cachePath(cacheDir, id), `<!-- cached_at:${iso} -->\n${atom}`);
 }
 
-async function throttle(): Promise<void> {
+async function throttle(signal?: AbortSignal): Promise<void> {
   const gap = Date.now() - lastRequestAt;
   if (lastRequestAt > 0 && gap < ARXIV_MIN_INTERVAL_MS) {
-    await sleep(ARXIV_MIN_INTERVAL_MS - gap);
+    await abortableSleep(ARXIV_MIN_INTERVAL_MS - gap, signal);
   }
 }
 
+type AtomNet = { fetchImpl?: typeof fetch; signal?: AbortSignal };
+
 async function getAtom(
   url: string,
-  opts: { alreadyRetried429?: boolean } = {},
+  opts: { alreadyRetried429?: boolean } & AtomNet = {},
 ): Promise<{ ok: true; body: string } | { ok: false; status: number; skip: boolean }> {
-  await throttle();
+  await throttle(opts.signal);
   lastRequestAt = Date.now();
-  const res = await fetch(url, {
+  const fetchImpl = opts.fetchImpl ?? fetch;
+  const res = await fetchImpl(url, {
     method: "GET",
     headers: {
       Accept: "application/atom+xml, application/xml, text/xml, */*",
@@ -219,8 +219,8 @@ async function getAtom(
   const body = await res.text();
   if (res.status === 429 || /Rate exceeded/i.test(body)) {
     if (!opts.alreadyRetried429) {
-      await sleep(10_000);
-      return getAtom(url, { alreadyRetried429: true });
+      await abortableSleep(10_000, opts.signal);
+      return getAtom(url, { ...opts, alreadyRetried429: true });
     }
     return { ok: false, status: 429, skip: true };
   }
@@ -236,6 +236,12 @@ export type FetchArxivOpts = {
   /** Inject Atom XML (tests / offline). Skips network. */
   fixtureAtom?: string;
   now?: number;
+  /** fetch override — ingest passes the crawl-budget-bound fetch (arXiv budget 20 s). */
+  fetchImpl?: typeof fetch;
+  /** Budget signal: aborts the throttle wait / 429 backoff as well as the request. */
+  signal?: AbortSignal;
+  /** Cache hits only, no network (last good data after a budget timeout). */
+  cacheOnly?: boolean;
 };
 
 /**
@@ -282,14 +288,14 @@ export async function fetchArxivByIds(
     missing.push(id);
   }
 
-  if (!missing.length) return fromCache;
+  if (!missing.length || opts.cacheOnly) return fromCache;
 
   const idList = missing.slice(0, maxResults).join(",");
   const url = `${ARXIV_API}?id_list=${encodeURIComponent(idList)}&start=0&max_results=${Math.min(maxResults, missing.length)}`;
 
   let live: ArxivEnrichment[] = [];
   try {
-    const res = await getAtom(url);
+    const res = await getAtom(url, { fetchImpl: opts.fetchImpl, signal: opts.signal });
     if (!res.ok) {
       console.log(`arXiv: HTTP ${res.status} — skip live enrich (cache hits=${fromCache.length})`);
       return fromCache;
@@ -346,7 +352,7 @@ export async function fetchArxivSearch(
     `${ARXIV_API}?search_query=${encodeURIComponent(q)}` +
     `&sortBy=submittedDate&sortOrder=descending&start=0&max_results=${maxResults}`;
   try {
-    const res = await getAtom(url);
+    const res = await getAtom(url, { fetchImpl: opts.fetchImpl, signal: opts.signal });
     if (!res.ok) {
       console.log(`arXiv search: HTTP ${res.status} — skip`);
       return [];

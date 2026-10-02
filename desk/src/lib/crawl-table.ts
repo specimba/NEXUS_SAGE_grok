@@ -4,7 +4,7 @@
  * THROTTLED? (cloud IPs get rate-limited). Older ingest-last.json without crawl_sources[] falls back to
  * the legacy per-source blocks (counts + ok/soft_fail, no timings). Pure; no IO.
  */
-export type TableRow = { id: string; label: string; status: string; rows: number | null; ms: number | null; note: string; flag: "" | "THROTTLED?" | "PAUSED" };
+export type TableRow = { id: string; label: string; status: string; rows: number | null; ms: number | null; note: string; flag: "" | "THROTTLED?" | "PAUSED" | "TIMEOUT" };
 
 type Src = { id?: string; label?: string; status?: string; rows?: number; duration_ms?: number; reason?: string | null; paused_until?: string | null };
 type Legacy = Record<string, { ok?: boolean; soft_fail?: boolean; soft_fail_reason?: string | null; count?: number; items?: number; enriched?: number; shelf?: number; searches?: number } | undefined>;
@@ -25,6 +25,7 @@ const LEGACY: ReadonlyArray<[id: string, label: string, key: string, metric: "co
 
 function flagOf(status: string, rows: number | null): TableRow["flag"] {
   if (status === "paused") return "PAUSED";
+  if (status === "timeout") return "TIMEOUT";
   return rows === 0 ? "THROTTLED?" : "";
 }
 

@@ -119,6 +119,7 @@ import {
 import { crawlSourceRow, renderCrawlSourceTable, stopwatch, totalMs, type CrawlSourceRow } from "../src/lib/crawl-timings";
 import { markSeen, parseSeenIndex } from "../src/lib/seen-index";
 import { STALE_GUARD_HOURS } from "../src/lib/crawl-staleness";
+import { runConcurrent, runWithBudget, SOURCE_BUDGET_MS, type SourceRun } from "../src/lib/crawl-budget";
 
 const root = resolve(import.meta.dir, "..");
 const dryRun = process.argv.includes("--dry-run");
@@ -406,8 +407,8 @@ function patchCurrentJson(path: string, stamp: string) {
 /** Beat 6: Papers table shows ≥14 rows — keep top 24 of the same single HF daily_papers response (no new requests). */
 const PAPERS_KEEP = 24;
 
-async function fetchHfPapers(): Promise<Paper[]> {
-  const res = await fetch(HF_DAILY_PAPERS_URL, {
+async function fetchHfPapers(fetchImpl: typeof fetch = fetch): Promise<Paper[]> {
+  const res = await fetchImpl(HF_DAILY_PAPERS_URL, {
     headers: { Accept: "application/json" },
   });
   if (!res.ok) throw new Error(`HF daily_papers HTTP ${res.status}`);
@@ -425,6 +426,18 @@ function loadUrlList(): string[] {
   const urls = tasteUrls();
   console.log(`URL list: src/data/x-taste.ts (${urls.length} taste urls, captured ${X_TASTE.captured_at})`);
   return urls;
+}
+
+/** A source run that did not finish (timeout | error) → thrown into the source's existing catch. */
+class RunFail extends Error {
+  override toString() {
+    return this.message;
+  }
+}
+
+function settledRun<T>(id: string, s: PromiseSettledResult<SourceRun<T>>): SourceRun<T> {
+  if (s.status === "fulfilled") return s.value;
+  return { id, status: "error", error: String(s.reason), duration_ms: 0, budget_ms: SOURCE_BUDGET_MS[id] ?? 0 };
 }
 
 async function main() {
@@ -469,12 +482,74 @@ async function main() {
       crossrefEnrichOnly: row.crossrefEnrichOnly,
     };
   });
+  // ── Crawl sources run concurrently, each under its own time budget (src/lib/crawl-budget.ts) ──
+  // The six Pulse/shelf sources are independent: they start together here. The paper lane is a chain
+  // (HF → arXiv → OpenAlex → Crossref: each enriches the previous result and OpenAlex/Crossref build
+  // their request from it), so it runs inline below, one budgeted step at a time, alongside them.
+  // Every source keeps its own throttle/cache/pause rules; results are consumed in the fixed source
+  // order below — never arrival order — so merged output does not depend on who finishes first.
+  const timedOut = new Set<string>();
+  const unwrap = <T,>(r: SourceRun<T>): T => {
+    if (r.status === "done") return r.value as T;
+    if (r.status === "timeout") timedOut.add(r.id);
+    throw new RunFail(r.error ?? "unknown");
+  };
+  resetGnewsTickState();
+  resetGithubShelfTickState();
+  resetWikidataDenyTickState();
+  const swSources = stopwatch();
+  const independent = runConcurrent([
+    // Dedupe v2 freshness: last-48h window + one OR-entity recency sweep (free Algolia only).
+    () =>
+      runWithBudget("hn", (c) =>
+        fetchHnPulse({
+          cacheDir: resolveHnCacheDir(root),
+          hitsPerPage: 20,
+          recentHours: HN_RECENT_WINDOW_HOURS,
+          recentSweep: true,
+          aiOnly: true,
+          fetchImpl: c.fetch,
+        }),
+      ),
+    () =>
+      runWithBudget("rss_labs", (c) =>
+        fetchRssLabs({
+          cacheDir: resolveRssCacheDir(root),
+          maxPerFeed: 12,
+          fetchImpl: c.fetch,
+        }),
+      ),
+    // Beat 5: standing (≤2) + lab-name (≤2) queries, last 2 days, pool ≤32 (round-robin per query).
+    () =>
+      runWithBudget("gnews", (c) =>
+        fetchGnewsRss({
+          cacheDir: resolveGnewsCacheDir(root),
+          displayCap: GNEWS_POOL_CAP,
+          labQueries: true,
+          recentDays: GNEWS_RECENT_DAYS,
+          fetchImpl: c.fetch,
+        }),
+      ),
+    () =>
+      runWithBudget("rss_security", (c) =>
+        fetchRssSecurity({
+          cacheDir: resolveSecRssCacheDir(root),
+          maxPerFeed: 12,
+          fetchImpl: c.fetch,
+        }),
+      ),
+    () => runWithBudget("github", (c) => fetchGithubShelf({ cacheDir: resolveGithubCacheDir(root), fetchImpl: c.fetch })),
+    () => runWithBudget("wikidata", (c) => fetchWikidataDeny({ cacheDir: resolveWikidataCacheDir(root), fetchImpl: c.fetch })),
+  ] as const);
+
+  const swPapersLane = stopwatch();
   let hfOk = false;
   let hfLiveCount = 0;
   let hfFailReason: string | undefined;
-  const sw_hf = stopwatch();
+  const hfRun = await runWithBudget("hf", (c) => fetchHfPapers(c.fetch));
+  ms.hf = hfRun.duration_ms;
   try {
-    const live = await fetchHfPapers();
+    const live = unwrap(hfRun);
     hfLiveCount = live.length;
     const keptAgent = papers.filter(isAgentPaper);
     papers = mergeDailyPapers(live, { keptAgent, limit: PAPERS_KEEP });
@@ -482,21 +557,31 @@ async function main() {
     console.log(`HF: ${live.length} live → ${papers.length} kept (displacement rule applied)`);
   } catch (err) {
     hfFailReason = String(err);
-    console.log(`HF: fetch failed — keeping existing papers (${String(err)})`);
+    console.log(
+      `HF: ${timedOut.has("hf") ? "TIMEOUT" : "fetch failed"} — keeping existing papers (${String(err)})`,
+    );
   }
 
-  ms.hf = sw_hf.lap();
   // arXiv Atom enrich AFTER HF merge — Papers abstracts/links only; never Brief pins / never cycle 004
   let arxivOk = false;
   let arxivCount = 0;
   let arxivShelf: { href: string; label: string; reason: "arxiv-shelf" }[] = [];
   let arxivFailReason: string | undefined;
-  const sw_arxiv = stopwatch();
+  const arxivIds = papers.map((p) => p.id);
+  const arxivRun = await runWithBudget("arxiv", async (c) => {
+    const enrichments = await fetchArxivByIds(arxivIds, {
+      cacheDir: resolveArxivCacheDir(root),
+      maxResults: 25,
+      fetchImpl: c.fetch,
+      signal: c.signal,
+    });
+    // Optional shelf-only search hits (not already HF keeps)
+    const searchHits = await fetchArxivSearch({ maxResults: 5, fetchImpl: c.fetch, signal: c.signal });
+    return { enrichments, searchHits };
+  });
+  ms.arxiv = arxivRun.duration_ms;
   try {
-    const enrichments = await fetchArxivByIds(
-      papers.map((p) => p.id),
-      { cacheDir: resolveArxivCacheDir(root), maxResults: 25 },
-    );
+    const { enrichments, searchHits } = unwrap(arxivRun);
     if (enrichments.length) {
       papers = applyArxivEnrichment(papers, enrichments);
       arxivOk = true;
@@ -505,8 +590,6 @@ async function main() {
     } else {
       console.log("arXiv: no enrichments (skip / empty)");
     }
-    // Optional shelf-only search hits (not already HF keeps)
-    const searchHits = await fetchArxivSearch({ maxResults: 5 });
     arxivShelf = toShelfItems(
       searchHits,
       papers.map((p) => p.id),
@@ -516,11 +599,33 @@ async function main() {
     }
   } catch (err) {
     arxivFailReason = String(err);
-    console.log(`arXiv: enrich failed — continuing (${String(err)})`);
+    if (timedOut.has("arxiv")) {
+      // Budget hit → last good data: cached per-id Atom (24h, no network) + the committed arXiv shelf rows.
+      try {
+        const cached = await fetchArxivByIds(arxivIds, {
+          cacheDir: resolveArxivCacheDir(root),
+          maxResults: 25,
+          cacheOnly: true,
+        });
+        if (cached.length) papers = applyArxivEnrichment(papers, cached);
+        arxivCount = cached.length;
+      } catch {
+        arxivCount = 0;
+      }
+      arxivShelf = KEPT_SHELF.filter((s) => s.reason === "arxiv-shelf").map((s) => ({
+        href: s.href,
+        label: s.label,
+        reason: "arxiv-shelf" as const,
+      }));
+      arxivFailReason = `${String(err)} · last good: ${arxivCount} cached enrich + ${arxivShelf.length} kept shelf`;
+      console.log(`arXiv: TIMEOUT — ${arxivFailReason} — continuing`);
+    } else {
+      console.log(`arXiv: enrich failed — continuing (${String(err)})`);
+    }
   }
 
-  ms.arxiv = sw_arxiv.lap();
   // OpenAlex Papers enrich AFTER arXiv — id/year/DOI metadata only; never Brief / never Pulse lead / never displace HF keeps
+  // Pause gate / Retry-After / 3-strike logic lives in fetchOpenAlexEnrich + source-state.json, unchanged.
   resetOpenAlexTickState();
   let openalexOk = false;
   let openalexSoftFail = false;
@@ -538,14 +643,19 @@ async function main() {
   let openalexRequests = 0;
   let openalexAuth: "anon" | "key" = "anon";
   const sourceStatePath = resolve(root, "artifacts/sage/source-state.json");
-  const sw_openalex = stopwatch();
-  try {
-    const oa = await fetchOpenAlexEnrich({
-      papers,
+  const openalexPapers = papers;
+  const openalexRun = await runWithBudget("openalex", (c) =>
+    fetchOpenAlexEnrich({
+      papers: openalexPapers,
       cacheDir: resolveOpenAlexCacheDir(root),
       // Pause state (Retry-After / 3-strike). Written even on --dry-run: a real request was made.
       statePath: sourceStatePath,
-    });
+      fetchImpl: c.fetch,
+    }),
+  );
+  ms.openalex = openalexRun.duration_ms;
+  try {
+    const oa = unwrap(openalexRun);
     openalexStatus = oa.status;
     openalexPausedUntil = oa.paused_until;
     openalexPauseReason = oa.pause_reason;
@@ -590,10 +700,11 @@ async function main() {
   } catch (err) {
     openalexSoftFail = true;
     openalexSoftFailReason = String(err);
-    console.log(`OpenAlex: soft-fail exception — continuing (${String(err)})`);
+    console.log(
+      `OpenAlex: ${timedOut.has("openalex") ? "TIMEOUT" : "soft-fail exception"} — continuing (${String(err)})`,
+    );
   }
 
-  ms.openalex = sw_openalex.lap();
   // Crossref Papers DOI enrich AFTER OpenAlex — filter=doi:/bibliographic only; never Brief / never Pulse lead / never displace HF keeps
   resetCrossrefTickState();
   let crossrefOk = false;
@@ -605,12 +716,17 @@ async function main() {
   let crossrefSearches = 0;
   let crossrefMode: string = "bibliographic";
   let crossrefMergeNotes: string[] = [];
-  const sw_crossref = stopwatch();
-  try {
-    const cr = await fetchCrossrefEnrich({
-      papers,
+  const crossrefPapers = papers;
+  const crossrefRun = await runWithBudget("crossref", (c) =>
+    fetchCrossrefEnrich({
+      papers: crossrefPapers,
       cacheDir: resolveCrossrefCacheDir(root),
-    });
+      fetchImpl: c.fetch,
+    }),
+  );
+  ms.crossref = crossrefRun.duration_ms;
+  try {
+    const cr = unwrap(crossrefRun);
     crossrefQuery = cr.query;
     crossrefFromCache = cr.from_cache;
     crossrefSearches = cr.searches;
@@ -649,10 +765,22 @@ async function main() {
   } catch (err) {
     crossrefSoftFail = true;
     crossrefSoftFailReason = String(err);
-    console.log(`Crossref: soft-fail exception — continuing (${String(err)})`);
+    console.log(
+      `Crossref: ${timedOut.has("crossref") ? "TIMEOUT" : "soft-fail exception"} — continuing (${String(err)})`,
+    );
   }
+  const papersLaneMs = swPapersLane.lap();
 
-  ms.crossref = sw_crossref.lap();
+  // Independent sources — awaited here, then processed in the fixed order hn → rss_labs → gnews →
+  // rss_security → github → wikidata (same order and logic as the old sequential blocks).
+  const [hnSettled, rssSettled, gnewsSettled, secSettled, githubSettled, wikidataSettled] = await independent;
+  const sourcesFetchMs = swSources.lap();
+  const hnRun = settledRun("hn", hnSettled);
+  const rssRun = settledRun("rss_labs", rssSettled);
+  const gnewsRun = settledRun("gnews", gnewsSettled);
+  const secRun = settledRun("rss_security", secSettled);
+  const githubRun = settledRun("github", githubSettled);
+  const wikidataRun = settledRun("wikidata", wikidataSettled);
   // HN Algolia AFTER Crossref — Pulse chatter only; never Brief lead/companion / never toolkit Brief pins
   // FREE-PULSE P3: rotate ≤3 queries/tick · soft_fail merge · never Brief · never displace HF
   let hnOk = false;
@@ -663,16 +791,9 @@ async function main() {
   let hnQueriesOk: string[] = [];
   let hnQueriesSoftFail: { query: string; reason: string; soft_fail: true }[] = [];
   let hnAiDropped: number | null = null;
-  const sw_hn = stopwatch();
+  ms.hn = hnRun.duration_ms;
   try {
-    // Dedupe v2 freshness: last-48h window + one OR-entity recency sweep (free Algolia only).
-    const hn = await fetchHnPulse({
-      cacheDir: resolveHnCacheDir(root),
-      hitsPerPage: 20,
-      recentHours: HN_RECENT_WINDOW_HOURS,
-      recentSweep: true,
-      aiOnly: true,
-    });
+    const hn = unwrap(hnRun);
     hnRows = hn.candidates;
     hnOk = hn.ok || hnRows.length > 0;
     hnSoftFail = hn.soft_fail;
@@ -699,11 +820,10 @@ async function main() {
     }
   } catch (err) {
     hnSoftFail = true;
-    hnSoftFailReason = `exception: ${String(err)}`;
-    console.log(`HN: soft_fail — continuing (${String(err)})`);
+    hnSoftFailReason = timedOut.has("hn") ? String(err) : `exception: ${String(err)}`;
+    console.log(`HN: ${timedOut.has("hn") ? "TIMEOUT" : "soft_fail"} — continuing with committed Pulse (${String(err)})`);
   }
 
-  ms.hn = sw_hn.lap();
   // Lab RSS AFTER HN — Pulse/shelf only; never Brief lead / never cycle 004 / never displace HF
   let rssOk = false;
   let rssSoftFail = false;
@@ -713,12 +833,9 @@ async function main() {
   let rssShelf: { href: string; label: string; reason: "rss-lab-shelf" }[] = [];
   let rssFeedsOk: { lab: string; url: string; count: number }[] = [];
   let rssFeedsSoftFail: { lab: string; reason: string; soft_fail: true }[] = [];
-  const sw_rss_labs = stopwatch();
+  ms.rss_labs = rssRun.duration_ms;
   try {
-    const rss = await fetchRssLabs({
-      cacheDir: resolveRssCacheDir(root),
-      maxPerFeed: 12,
-    });
+    const rss = unwrap(rssRun);
     // Lab relevance: research-lab feeds are AI by default. NVIDIA blog/dev drop consumer posts
     // (GeForce NOW / gaming) by <category> + link path — never by title.
     const rssGate = partitionAiRelevant(rss.pulse, (it) => isLabItemRelevant(it));
@@ -747,15 +864,15 @@ async function main() {
     }
   } catch (err) {
     rssSoftFail = true;
-    rssSoftFailReason = `exception: ${String(err)}`;
-    console.log(`RSS labs: soft_fail — continuing (${String(err)})`);
+    rssSoftFailReason = timedOut.has("rss_labs") ? String(err) : `exception: ${String(err)}`;
+    console.log(
+      `RSS labs: ${timedOut.has("rss_labs") ? "TIMEOUT" : "soft_fail"} — continuing with committed rows (${String(err)})`,
+    );
   }
 
-  ms.rss_labs = sw_rss_labs.lap();
 
   // Google News RSS AFTER lab RSS — Pulse quiet spice only; never Brief · never sole lead · rotate ≤2/tick
   // FREE-PULSE P5: soft_fail format-break/empty/403/429 · locks 003/hf-incident · no 004 · paid X/Bluesky DENY
-  resetGnewsTickState();
   let gnewsOk = false;
   let gnewsSoftFail = false;
   let gnewsSoftFailReason: string | undefined;
@@ -763,7 +880,7 @@ async function main() {
   let gnewsPool: GnewsRssItem[] = [];
   let gnewsAiDropped: { publisher: string; title: string }[] = [];
   let gnewsPoolAiDropped = 0;
-  let gnewsCorroborators: { id: string; anchor_id: string; score: number; title: string; publisher: string; self_repost: boolean }[] = [];
+  const gnewsCorroborators: { id: string; anchor_id: string; score: number; title: string; publisher: string; self_repost: boolean }[] = [];
   let gnewsQueriesRun: string[] = [];
   let gnewsQueriesOk: string[] = [];
   let gnewsQueriesSoftFail: { query: string; reason: string; soft_fail: true }[] = [];
@@ -773,15 +890,9 @@ async function main() {
   let gnewsContentType: string | null = null;
   let gnewsFormat: string | null = null;
   let gnewsFromCache = false;
-  const sw_gnews = stopwatch();
+  ms.gnews = gnewsRun.duration_ms;
   try {
-    // Beat 5: standing (≤2) + lab-name (≤2) queries, last 2 days, pool ≤32 (round-robin per query).
-    const gn = await fetchGnewsRss({
-      cacheDir: resolveGnewsCacheDir(root),
-      displayCap: GNEWS_POOL_CAP,
-      labQueries: true,
-      recentDays: GNEWS_RECENT_DAYS,
-    });
+    const gn = unwrap(gnewsRun);
     // AI-relevance gate (title-only — GNews links are news.google.com redirects).
     const gnGate = partitionAiRelevant(gn.items, (it) => isAiRelevantTitle(it.title));
     gnewsRows = gnGate.kept;
@@ -820,23 +931,21 @@ async function main() {
     }
   } catch (err) {
     gnewsSoftFail = true;
-    gnewsSoftFailReason = `exception: ${String(err)}`;
-    console.log(`GNews: soft_fail — continuing (${String(err)})`);
+    gnewsSoftFailReason = timedOut.has("gnews") ? String(err) : `exception: ${String(err)}`;
+    console.log(`GNews: ${timedOut.has("gnews") ? "TIMEOUT — continuing with committed rows" : "soft_fail — continuing"} (${String(err)})`);
   }
+  // A timed-out GNews keeps the committed rows (no live rows to stamp); other soft-fails behave as before.
+  const gnewsLive = (gnewsOk || gnewsSoftFail) && !timedOut.has("gnews");
 
-  ms.gnews = sw_gnews.lap();
   // Security lab RSS AFTER lab RSS — Pulse/shelf/Digest-ref; never Brief lead / never cycle 004
   let secOk = false;
   let secPulse: SecurityRssItem[] = [];
   let secShelf: { href: string; label: string; reason: "rss-security-shelf" }[] = [];
   let secFeedsOk: { lab: string; url: string; count: number }[] = [];
   let secFailReason: string | undefined;
-  const sw_rss_security = stopwatch();
+  ms.rss_security = secRun.duration_ms;
   try {
-    const sec = await fetchRssSecurity({
-      cacheDir: resolveSecRssCacheDir(root),
-      maxPerFeed: 12,
-    });
+    const sec = unwrap(secRun);
     secPulse = sec.pulse;
     secShelf = toSecShelfItems(sec.shelf);
     secFeedsOk = sec.feedsOk;
@@ -856,12 +965,12 @@ async function main() {
     }
   } catch (err) {
     secFailReason = String(err);
-    console.log(`RSS security: fetch failed — continuing (${String(err)})`);
+    console.log(
+      `RSS security: ${timedOut.has("rss_security") ? "TIMEOUT" : "fetch failed"} — continuing with committed rows (${String(err)})`,
+    );
   }
 
-  ms.rss_security = sw_rss_security.lap();
   // GitHub unauth AFTER security RSS — FREE-PULSE P4: ≤1 search/tick · 24h cache-first · Remaining-0 skip · shelf only
-  resetGithubShelfTickState();
   let githubOk = false;
   let githubSoftFail = false;
   let githubSoftFailReason: string | undefined;
@@ -870,11 +979,9 @@ async function main() {
   let githubFromCache = false;
   let githubSearches = 0;
   let githubRateRemaining: number | null = null;
-  const sw_github = stopwatch();
+  ms.github = githubRun.duration_ms;
   try {
-    const gh = await fetchGithubShelf({
-      cacheDir: resolveGithubCacheDir(root),
-    });
+    const gh = unwrap(githubRun);
     githubQuery = gh.query;
     githubFromCache = gh.from_cache;
     githubSearches = gh.searches;
@@ -898,13 +1005,20 @@ async function main() {
   } catch (err) {
     githubSoftFail = true;
     githubSoftFailReason = String(err);
-    console.log(`GitHub shelf: soft-fail exception — continuing (${String(err)})`);
+    if (timedOut.has("github")) {
+      // Budget hit → last good data: the committed GitHub shelf rows.
+      githubShelf = KEPT_SHELF.filter((s) => s.reason === "github-search-shelf").map((s) => ({
+        href: s.href,
+        label: s.label,
+        reason: "github-search-shelf" as const,
+      }));
+      console.log(`GitHub shelf: TIMEOUT — keeping ${githubShelf.length} committed shelf rows (${String(err)})`);
+    } else {
+      console.log(`GitHub shelf: soft-fail exception — continuing (${String(err)})`);
+    }
   }
 
-
-  ms.github = sw_github.lap();
   // Wikidata DENY grounding AFTER GitHub — hygiene only; never Brief / never Pulse lead / never invent pins
-  resetWikidataDenyTickState();
   let wikidataOk = false;
   let wikidataSoftFail = false;
   let wikidataSoftFailReason: string | undefined;
@@ -912,11 +1026,9 @@ async function main() {
   let wikidataFromCache = false;
   let wikidataSearches = 0;
   let wikidataSeedsTried: string[] = [];
-  const sw_wikidata = stopwatch();
+  ms.wikidata = wikidataRun.duration_ms;
   try {
-    const wd = await fetchWikidataDeny({
-      cacheDir: resolveWikidataCacheDir(root),
-    });
+    const wd = unwrap(wikidataRun);
     wikidataHints = wd.hints;
     wikidataFromCache = wd.from_cache;
     wikidataSearches = wd.searches;
@@ -941,10 +1053,11 @@ async function main() {
   } catch (err) {
     wikidataSoftFail = true;
     wikidataSoftFailReason = String(err);
-    console.log(`Wikidata DENY: soft-fail exception — continuing (${String(err)})`);
+    console.log(
+      `Wikidata DENY: ${timedOut.has("wikidata") ? "TIMEOUT" : "soft-fail exception"} — continuing (${String(err)})`,
+    );
   }
 
-  ms.wikidata = sw_wikidata.lap();
   const urls = loadUrlList();
   const scored = scoreUrlList(urls);
   const toolkitShelf = scored.shelf.length
@@ -1014,7 +1127,7 @@ async function main() {
       at: toIso(r.published),
       publisher: r.lab,
     })),
-    ...(gnewsOk || gnewsSoftFail ? gnewsRows : GNEWS_RSS.filter((r) => isAiRelevantTitle(r.title))).map((r) => ({
+    ...(gnewsLive ? gnewsRows : GNEWS_RSS.filter((r) => isAiRelevantTitle(r.title))).map((r) => ({
       id: r.id,
       source: "gnews-rss" as const,
       title: r.title,
@@ -1150,6 +1263,7 @@ async function main() {
       rows: o.items,
       duration_ms: ms[o.id] ?? 0,
       skipped_paused: o.skipped_paused,
+      timed_out: timedOut.has(o.id),
       paused_until: o.paused_until ?? null,
       reason: o.reason ?? null,
     }),
@@ -1187,7 +1301,7 @@ async function main() {
       renderRssSecurityTs(secPulse, stamp, rowMeta),
     );
   }
-  if (gnewsOk || gnewsSoftFail) {
+  if (gnewsLive) {
     writeText(resolve(root, "src/data/gnews-rss.ts"), renderGnewsRssTs(gnewsRows, stamp, rowMeta));
   }
   writeText(seenPath, `${JSON.stringify(seenIndex, null, 2)}\n`);
@@ -1203,8 +1317,18 @@ async function main() {
     /** One row per source: rows fetched · duration_ms · status ok|fail|paused · paused_until (ISO UTC). */
     crawl_sources: crawlSources,
     crawl_timing: {
-      /** Σ per-source fetch blocks. */
+      /** Σ per-source fetch blocks (sources run concurrently, so this exceeds wall time). */
       sources_ms: totalMs(crawlSources),
+      /** Sources launch → last source settled (paper lane ∥ six independent sources). */
+      sources_wall_ms: sourcesFetchMs,
+      /** HF → arXiv → OpenAlex → Crossref chain (sequential by data dependency). */
+      papers_lane_ms: papersLaneMs,
+      /** Longest single source; pass mark: wall_ms < 1.2 × this (OPT-PROFILE win #1). */
+      slowest_source_ms: Math.max(0, ...crawlSources.map((r) => r.duration_ms)),
+      concurrent: true,
+      /** Per-source time budget (AbortController); a source over budget → status "timeout". */
+      budget_ms: SOURCE_BUDGET_MS,
+      timed_out: [...timedOut].sort(),
       /** main() start → all sources + dedupe + health ledger done. */
       wall_ms: wallMs,
       /** process start → main() start (bun startup + module load). */
@@ -1271,6 +1395,8 @@ async function main() {
       ok: arxivOk,
       enriched: arxivCount,
       shelf: arxivShelf.length,
+      timed_out: timedOut.has("arxiv"),
+      budget_ms: SOURCE_BUDGET_MS.arxiv,
       brief: false,
       url: "https://export.arxiv.org/api/query",
     },
@@ -1489,6 +1615,11 @@ async function main() {
       : `STALE proof: fresh stamp age ${proof.hours.toFixed(2)}h ≤ ${STALE_HOURS}h (banner clear)`,
   );
   console.log("Done. Pulse reads CRAWL_AT; banner uses crawlAgeHours + .sage-stale.");
+  if (timedOut.size) {
+    // A timed-out source's aborted work may still be sleeping in its own throttle; don't let it hold
+    // the process open. unref'd: fires only if something is still pending after main() returned.
+    setTimeout(() => process.exit(process.exitCode ?? 0), 250).unref();
+  }
 }
 
 main().catch((err) => {

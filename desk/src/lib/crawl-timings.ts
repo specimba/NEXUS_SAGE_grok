@@ -4,7 +4,8 @@
  * artifacts/sage/ingest-last.json → crawl_sources[] (and prints the table).
  */
 
-export type CrawlSourceStatus = "ok" | "fail" | "paused";
+/** timeout = the source hit its crawl-budget (src/lib/crawl-budget.ts); soft-fail, last good data kept. */
+export type CrawlSourceStatus = "ok" | "fail" | "paused" | "timeout";
 
 export type CrawlSourceRow = {
   id: string;
@@ -37,9 +38,17 @@ export function crawlSourceRow(input: {
   duration_ms: number;
   paused_until?: string | null;
   skipped_paused?: boolean;
+  /** Source ran out of its time budget (wins over ok/fail; a paused skip never times out). */
+  timed_out?: boolean;
   reason?: string | null;
 }): CrawlSourceRow {
-  const status: CrawlSourceStatus = input.skipped_paused ? "paused" : input.ok ? "ok" : "fail";
+  const status: CrawlSourceStatus = input.skipped_paused
+    ? "paused"
+    : input.timed_out
+      ? "timeout"
+      : input.ok
+        ? "ok"
+        : "fail";
   return {
     id: input.id,
     label: input.label ?? input.id,

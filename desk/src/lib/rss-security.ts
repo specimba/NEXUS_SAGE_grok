@@ -325,10 +325,11 @@ async function getXmlStreamCapped(
   url: string,
   maxBytes = SEC_RSS_STREAM_MAX_BYTES,
   maxEntries = SEC_RSS_STREAM_MAX_ENTRIES,
+  fetchImpl: typeof fetch = fetch,
 ): Promise<{ ok: true; body: string } | { ok: false; status: number }> {
   await throttle();
   lastRequestAt = Date.now();
-  const res = await fetch(url, {
+  const res = await fetchImpl(url, {
     method: "GET",
     headers: {
       Accept:
@@ -400,10 +401,11 @@ export function truncateAfterNthEntry(xml: string, n: number): string {
 
 async function getXml(
   url: string,
+  fetchImpl: typeof fetch = fetch,
 ): Promise<{ ok: true; body: string } | { ok: false; status: number }> {
   await throttle();
   lastRequestAt = Date.now();
-  const res = await fetch(url, {
+  const res = await fetchImpl(url, {
     method: "GET",
     headers: {
       Accept:
@@ -427,6 +429,8 @@ export type FetchSecRssOpts = {
   maxPerFeed?: number;
   fixtures?: Partial<Record<SecurityLabId, string>>;
   now?: number;
+  /** fetch override — ingest passes the crawl-budget-bound fetch. */
+  fetchImpl?: typeof fetch;
 };
 
 export type FetchSecRssResult = {
@@ -447,6 +451,7 @@ export async function fetchRssSecurity(
   );
   const now = opts.now ?? Date.now();
   const feeds = opts.feeds ?? SECURITY_FEEDS;
+  const fetchImpl = opts.fetchImpl ?? fetch;
 
   const all: SecurityRssItem[] = [];
   const feedsOk: FetchSecRssResult["feedsOk"] = [];
@@ -480,8 +485,8 @@ export async function fetchRssSecurity(
       for (const url of feed.urls) {
         try {
           const res = feed.streamCap
-            ? await getXmlStreamCapped(url, SEC_RSS_STREAM_MAX_BYTES, maxPerFeed)
-            : await getXml(url);
+            ? await getXmlStreamCapped(url, SEC_RSS_STREAM_MAX_BYTES, maxPerFeed, fetchImpl)
+            : await getXml(url, fetchImpl);
           if (!res.ok) {
             lastStatus = res.status;
             if (res.status === 404) continue;
