@@ -161,7 +161,9 @@ describe("Beat 11 lead log builder (artifacts/sage/lead-history.json → holotap
     expect(tsx).toContain("→ log");
     expect(tsx).toContain('const LEADLOG_VIEW = "leadlog"');
     const page = readFileSync(join(DESK, "src/app/page.tsx"), "utf8");
-    expect(page).toContain("buildLeadLog(leadHistory)");
+    // OPT win 3: built at generation time (scripts/desk-view.ts → slimLeadLog(buildLeadLog(lead-history.json))).
+    expect(page).toContain('import { LEAD_LOG } from "@/data/lead-log-view"');
+    expect(readFileSync(join(DESK, "src/lib/lead-log-module.ts"), "utf8")).toContain("slimLeadLog(buildLeadLog(history))");
     expect(page).not.toContain('"use client"');
     const panel = readFileSync(join(DESK, "src/components/sage/lead-log.tsx"), "utf8");
     expect(panel).not.toMatch(/fetch\(|from\s+["'][^"']*lead-history\.json/); // renders from props only

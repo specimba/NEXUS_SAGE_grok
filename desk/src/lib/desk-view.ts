@@ -14,6 +14,11 @@
  *   - the small crawl-written modules (wire, rank, lead pick minus audit fields, topic heat, source health, shelf).
  * Raw modules stay for scripts and tests. Non-crawl modules (cycle, digest-pack/-cadence, x-taste, soft-fail
  * meters, wikidata deny) are written by other jobs (digest:tick, a2) and stay direct imports.
+ *
+ * FIXED SIZE (DESK_VIEW_CAPS below): the view's size is set by the caps, not by the crawl — row caps per source
+ * (oldest story dropped first, ties by id; a story = a Pulse cluster, dropped whole with all its members, so no id
+ * ever dangles; stories the Wire / rank / lead point at are pinned), field caps per row, and a hard gzip budget on
+ * the generated module (src/lib/desk-view-module.ts trims the oldest unpinned stories until it fits).
  */
 import { labBadge, memberSource, type ClusterInput, type PaperInput, type PulseMemberInfo } from "@/lib/pulse-v5";
 import type { LeadEntry } from "@/lib/lead-pick";
@@ -22,6 +27,37 @@ import type { MemberItem } from "@/lib/story-drawer";
 /** Pulse row shows `summary.slice(0, 280)`; Papers row shows `abstract.slice(0, 600)`. */
 export const SUMMARY_CHARS = 280;
 export const ABSTRACT_CHARS = 600;
+
+/**
+ * The ONE place the desk-view size is fixed. Budget math (next build, 2026-10-03; numbers pinned in desk-view-caps.test.ts):
+ *   First Load JS for `/` = shared 102.6 kB + page ≈ 8.3 kB of other page JS + page chunk (≈ 29.1 kB gz of desk code
+ *   + the desk-view data, which costs ≈ 1 byte of chunk gz per byte of `gzip -9 src/data/desk-view.ts`). Gate 185 kB.
+ *   Row and field caps bound every row, but every lane at its row cap with every field at max (synthetic worst case,
+ *   331 crawl items with 640-char links) is far over any budget, so the generator also enforces `gzBytes`: it drops
+ *   the oldest unpinned stories until `gzip -9(desk-view.ts) ≤ gzBytes`. Worst case built at 41 385 B → 181 kB; at the
+ *   full 41 900 B ≈ 181.8 kB — ≥ 3 kB under the gate on ANY crawl. Real 07:12:59Z crawl: 43 035 B uncapped → 6 oldest
+ *   stories (fox-it security posts, 2023-11 … 2024-04) dropped → 41 802 B → 181 kB.
+ *   Row caps ≈ 1.5× that crawl (hn 59 · gnews 30 · rss-labs 104 · rss-security 27 · X 7 · papers 24); field caps sit
+ *   above every value seen (title ≤144 · publisher ≤19 · link ≤502 · X take ≤70 · X link ≤54 · paper title ≤112 · paper
+ *   link ≤32), so no kept row's text changes. Raising gzBytes needs a new worst-case build (bun scripts/desk-view-worst.ts).
+ */
+export const DESK_VIEW_CAPS = {
+  /** Crawl items kept per source (counted over kept stories; a story is dropped whole, oldest first). */
+  items: { hn: 90, gnews: 45, rss: 156, "rss-sec": 40 } as Record<string, number>,
+  /** Operator X posts (newest kept). */
+  xPosts: 12,
+  /** Papers (lowest arXiv id = oldest dropped first; feed order kept). */
+  papers: 36,
+  /** Per-field characters. Over-long text is cut with "…"; links cannot be cut, so an over-long URL drops its story. */
+  chars: { title: 200, drawerTitle: 200, publisher: 40, take: 280, paperTitle: 240, url: 640, xUrl: 128, paperUrl: 64 },
+  /** Hard budget: gzip -9 bytes of the generated src/data/desk-view.ts. */
+  gzBytes: 41_900,
+} as const;
+
+/** Cut to `n` chars with an ellipsis (only past the cap — never touches text under it). */
+export function clip(s: string, n: number): string {
+  return s.length > n ? `${s.slice(0, n - 1).trimEnd()}…` : s;
+}
 
 /** GNews titles end in " - Publisher"; the drawer / Pulse headline drop that tail. */
 export function stripPublisher(title: string, publisher: string): string {
@@ -87,12 +123,19 @@ export function slimLead(e: LeadEntry | null): SlimLead | null {
 }
 
 export type XPost = { id: string; take: string; href: string; at: string };
+/**
+ * Stored X post: the take is the head of its member's summary (`take — text`) and the link is the member's url, so
+ * only the length `n` is kept (`t` only if the take is not that head, e.g. cut past the cap). No duplicated text.
+ */
+export type XRef = { id: string; at: string; n?: number; t?: string };
 
 type RawCluster = ClusterInput & { canonical_url?: string; all_sources?: string[]; score?: number };
 type RawPaper = PaperInput & Record<string, unknown>;
 
 export type DeskViewInput = {
   clusters: readonly RawCluster[];
+  /** Cluster ids other crawl modules point at (Wire rows, rank crawl_hits, lead pick) — never dropped. */
+  pins?: readonly string[];
   /** memberInfo() over the raw modules (scripts only). */
   members: Record<string, PulseMemberInfo>;
   /** GNews raw title + publisher by id (drawer headline strip). */
@@ -104,9 +147,62 @@ export type DeskViewInput = {
 export type DeskView = {
   memberRows: Record<string, MemberRow>;
   orphanClusters: OrphanCluster[];
-  xPosts: XPost[];
+  xPosts: XRef[];
   papers: PaperInput[];
+  /** What the caps left out (counts only; never rendered). */
+  trimmed: DeskViewTrim;
 };
+export type DeskViewTrim = { stories: number; items: number; xPosts: number; papers: number };
+
+export type DeskViewOpts = {
+  /** Extra oldest unpinned stories to drop (the gzip-budget loop in desk-view-module.ts raises this). */
+  drop?: number;
+  caps?: typeof DESK_VIEW_CAPS;
+};
+
+const ts = (iso: string | undefined | null) => Date.parse(iso ?? "") || 0;
+/** Oldest first, ties by id — the one drop order every cap uses. */
+const oldestFirst = <T extends { id: string; t: number }>(a: T, b: T) => a.t - b.t || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
+export const sourceOf = (id: string) => id.slice(0, Math.max(0, id.indexOf(":")));
+
+/**
+ * Which stories (raw cluster indexes) survive the caps: over-long links out; then, oldest first, drop unpinned
+ * stories carrying an item of an over-cap source; then the `drop` oldest unpinned survivors. Pure + deterministic.
+ */
+export function keptStories(i: DeskViewInput, opts: DeskViewOpts = {}): Set<number> {
+  const caps = opts.caps ?? DESK_VIEW_CAPS;
+  const pins = new Set(i.pins ?? []);
+  const units = i.clusters.map((c, idx) => ({ idx, id: c.id, t: ts(c.at), pinned: pins.has(c.id), ids: [...new Set([c.lead_id, ...c.member_ids])] }));
+  const urlOk = (idx: number) => {
+    const c = i.clusters[idx]!;
+    if (c.url.length > caps.chars.url) return false;
+    return units[idx]!.ids.every((id) => (i.members[id]?.url ?? "").length <= caps.chars.url);
+  };
+  const kept = new Set(units.filter((u) => u.pinned || urlOk(u.idx)).map((u) => u.idx));
+  const count: Record<string, number> = {};
+  for (const idx of kept) for (const id of units[idx]!.ids) count[sourceOf(id)] = (count[sourceOf(id)] ?? 0) + 1;
+  const over = (src: string) => (count[src] ?? 0) > (caps.items[src] ?? Infinity);
+  const order = [...units].sort(oldestFirst);
+  for (const u of order) {
+    if (u.pinned || !kept.has(u.idx) || !u.ids.some((id) => over(sourceOf(id)))) continue;
+    kept.delete(u.idx);
+    for (const id of u.ids) count[sourceOf(id)]!--;
+  }
+  let drop = opts.drop ?? 0;
+  for (const u of order) {
+    if (drop <= 0) break;
+    if (u.pinned || !kept.has(u.idx)) continue;
+    kept.delete(u.idx);
+    drop--;
+  }
+  return kept;
+}
+
+/** Unpinned stories still droppable after the row caps (upper bound for the budget loop). */
+export function droppableStories(i: DeskViewInput, opts: DeskViewOpts = {}): number {
+  const pins = new Set(i.pins ?? []);
+  return [...keptStories(i, { ...opts, drop: 0 })].filter((idx) => !pins.has(i.clusters[idx]!.id)).length;
+}
 
 const same = (a: unknown, b: unknown) => JSON.stringify(a) === JSON.stringify(b);
 
@@ -128,11 +224,26 @@ function slimCluster(c: RawCluster, lead: MemberRow | undefined): SlimCluster {
   };
 }
 
-export function buildDeskView(i: DeskViewInput): DeskView {
-  const leads = new Set<string>([...i.clusters.map((c) => c.lead_id), ...i.xPosts.map((p) => `x:${p.id}`)]);
+export function buildDeskView(i: DeskViewInput, opts: DeskViewOpts = {}): DeskView {
+  const caps = opts.caps ?? DESK_VIEW_CAPS;
+  const C = caps.chars;
+  const keep = keptStories(i, opts);
+  const clusters = i.clusters
+    .map((c, idx) => ({ c, idx }))
+    .filter(({ idx }) => keep.has(idx))
+    .map(({ c, idx }) => ({ c: { ...c, title: clip(c.title, C.title) }, idx }));
+  // Operator X posts: newest `xPosts` kept (feed order kept), take cut to `take`, over-long links out.
+  const xOk = i.xPosts.filter((p) => p.href.length <= C.xUrl);
+  const xKeep = new Set([...xOk.map((p) => ({ id: p.id, t: ts(p.at) }))].sort(oldestFirst).slice(-caps.xPosts).map((p) => p.id));
+  const xPosts = xOk.filter((p) => xKeep.has(p.id));
+  // Members: exactly the items of kept stories (+ kept X posts) — a dropped story takes its members with it.
+  const live = new Set<string>([...clusters.flatMap(({ c }) => [c.lead_id, ...c.member_ids]), ...xPosts.map((p) => `x:${p.id}`)]);
+  const leads = new Set<string>([...clusters.map(({ c }) => c.lead_id), ...xPosts.map((p) => `x:${p.id}`)]);
   const gnews = new Map(i.gnews.map((g) => [g.id, g]));
   const rows = new Map<string, MemberRow>();
-  for (const [id, m] of Object.entries(i.members)) {
+  for (const [id, m0] of Object.entries(i.members)) {
+    if (!live.has(id)) continue;
+    const m = { ...m0, publisher: clip(m0.publisher, C.publisher), ...(m0.title !== undefined ? { title: clip(m0.title, id.startsWith("x:") ? C.take : C.title) } : {}) };
     const r: MemberRow = {};
     if (m.publisher !== defaultPublisher(id)) r.p = m.publisher;
     if (m.badge !== defaultBadge(id, m.publisher)) r.b = m.badge;
@@ -143,20 +254,24 @@ export function buildDeskView(i: DeskViewInput): DeskView {
     if (m.summary && leads.has(id)) r.m = m.summary.slice(0, SUMMARY_CHARS);
     if (m.security) r.sec = true;
     const g = gnews.get(id);
-    if (g && stripPublisher(g.title, g.publisher) !== drawerTitle(id, r)) r.dt = stripPublisher(g.title, g.publisher);
+    const dt = g ? clip(stripPublisher(g.title, g.publisher), C.drawerTitle) : null;
+    if (dt !== null && dt !== drawerTitle(id, r)) r.dt = dt;
     rows.set(id, r);
   }
   // Cluster leads first, in cluster order (buildRows' stable sort keeps it); then every other member.
   const memberRows: Record<string, MemberRow> = {};
   const orphanClusters: OrphanCluster[] = [];
-  i.clusters.forEach((c, idx) => {
+  clusters.forEach(({ c }, pos) => {
     const lead = rows.get(c.lead_id);
     if (lead && !lead.c && !(c.lead_id in memberRows)) memberRows[c.lead_id] = { ...lead, c: slimCluster(c, lead) };
-    else orphanClusters.push({ ...slimCluster(c, lead), lead_id: c.lead_id, i: idx });
+    else orphanClusters.push({ ...slimCluster(c, lead), lead_id: c.lead_id, i: pos });
   });
   for (const [id, r] of rows) if (!(id in memberRows)) memberRows[id] = r;
-  const papers = i.papers.map((p): PaperInput => {
-    const o: PaperInput = { id: p.id, title: p.title, up: p.up, href: p.href };
+  // Papers: over-long links out; the `papers` newest by arXiv id kept, feed order kept.
+  const pOk = i.papers.filter((p) => p.href.length <= C.paperUrl && (p.pdfUrl ?? "").length <= C.paperUrl);
+  const pKeep = new Set([...pOk].sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0)).slice(-caps.papers).map((p) => p.id));
+  const papers = pOk.filter((p) => pKeep.has(p.id)).map((p): PaperInput => {
+    const o: PaperInput = { id: p.id, title: clip(p.title, C.paperTitle), up: p.up, href: p.href };
     if (p.abstract !== undefined) o.abstract = p.abstract.slice(0, ABSTRACT_CHARS);
     if (p.pdfUrl !== undefined) o.pdfUrl = p.pdfUrl;
     if (p.primaryCategory !== undefined) o.primaryCategory = p.primaryCategory;
@@ -166,11 +281,22 @@ export function buildDeskView(i: DeskViewInput): DeskView {
     if (p.openalexId !== undefined) o.openalexId = p.openalexId;
     return o;
   });
+  const itemsIn = Object.keys(i.members).filter((id) => !id.startsWith("x:")).length;
   return {
     memberRows,
     orphanClusters,
-    xPosts: i.xPosts.map((p) => ({ id: p.id, take: p.take, href: p.href, at: p.at })),
+    xPosts: xPosts.map((p): XRef => {
+      const take = clip(p.take, C.take);
+      const head = memberRows[`x:${p.id}`]?.m?.slice(0, take.length);
+      return head === take ? { id: p.id, at: p.at, n: take.length } : { id: p.id, at: p.at, t: take };
+    }),
     papers,
+    trimmed: {
+      stories: i.clusters.length - clusters.length,
+      items: itemsIn - crawlItemIds(memberRows).length,
+      xPosts: i.xPosts.length - xPosts.length,
+      papers: i.papers.length - papers.length,
+    },
   };
 }
 
@@ -240,9 +366,17 @@ export function inflateClusters(rows: Record<string, MemberRow>, orphans: readon
   return out;
 }
 
+/** Stored X refs → the posts (take from the member summary head, link from the member url). */
+export function xPosts(refs: readonly XRef[], rows: Record<string, MemberRow>): XPost[] {
+  return refs.map((x) => {
+    const r = rows[`x:${x.id}`];
+    return { id: x.id, take: x.t ?? r?.m?.slice(0, x.n ?? 0) ?? "", href: r?.u ?? "", at: x.at };
+  });
+}
+
 /** Pulse V5 operator X posts as single-source rows (same shape the desk built from CRAWL). */
-export function xRows(posts: readonly XPost[]): ClusterInput[] {
-  return posts.map((p) => ({
+export function xRows(refs: readonly XRef[], rows: Record<string, MemberRow>): ClusterInput[] {
+  return xPosts(refs, rows).map((p) => ({
     id: `x:${p.id}`,
     title: p.take,
     url: p.href,

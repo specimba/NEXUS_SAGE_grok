@@ -1,6 +1,7 @@
 /**
- * OPT win 3 — the slim client view (src/data/desk-view.ts) must give the desk EXACTLY what the raw crawl modules gave:
- * same Pulse rows (chips, N SRC, NEW, signal, summary as rendered), same story ages, same drawer coverage, same papers.
+ * OPT win 3 — the slim client view (src/data/desk-view.ts) must give the desk EXACTLY what the raw crawl modules gave
+ * for every story it keeps: same Pulse rows (chips, N SRC, NEW, signal, summary as rendered), same story ages, same
+ * drawer coverage, same papers. Stories past DESK_VIEW_CAPS are dropped whole, oldest first (see desk-view-caps.test.ts).
  */
 import { describe, expect, test } from "bun:test";
 import { spawnSync } from "node:child_process";
@@ -27,6 +28,7 @@ import {
   memberAt,
   memberItems,
   stripPublisher,
+  xPosts,
   xRows,
 } from "@/lib/desk-view";
 import { buildPaperRows, buildRows, labBadge, type ClusterInput, type PaperInput, type PulseMemberInfo } from "@/lib/pulse-v5";
@@ -47,15 +49,18 @@ for (const g of GNEWS_RSS)
   RAW_ITEMS[g.id] = { title: stripPublisher(g.title, g.publisher), publisher: g.publisher || "google news", badge: "GNW", at: g.published, url: g.link };
 for (const r of RSS_LABS) RAW_ITEMS[r.id] = { title: r.title, publisher: r.lab, badge: labBadge(r.lab), at: r.published, url: r.link };
 for (const r of RSS_SECURITY) RAW_ITEMS[r.id] = { title: r.title, publisher: r.lab, badge: "SEC", at: r.published, url: r.link };
-const RAW_X: ClusterInput[] = CRAWL.map((p) => ({
-  id: `x:${p.id}`, title: p.take, url: p.href, lead_id: `x:${p.id}`, lead_source: "x", sources: ["x"],
-  member_ids: [`x:${p.id}`], size: 1, at: p.at, first_seen: null, is_new: false,
-}));
-
 // ── what desk.tsx computes from the slim view now ──
 const MEMBERS = inflateMembers(V.MEMBER_ROWS);
 const ITEM_IDS = crawlItemIds(V.MEMBER_ROWS);
 const CLUSTERS = inflateClusters(V.MEMBER_ROWS, V.ORPHAN_CLUSTERS);
+const KEPT = new Set(CLUSTERS.map((c) => c.id));
+const KEPT_X = new Set(V.X_POSTS.map((p) => p.id));
+/** The raw clusters the caps kept (all of them unless DESK_VIEW_TRIMMED says otherwise). */
+const RAW_KEPT = (PULSE_CLUSTERS as ClusterInput[]).filter((c) => KEPT.has(c.id));
+const RAW_X: ClusterInput[] = CRAWL.filter((p) => KEPT_X.has(p.id)).map((p) => ({
+  id: `x:${p.id}`, title: p.take, url: p.href, lead_id: `x:${p.id}`, lead_source: "x", sources: ["x"],
+  member_ids: [`x:${p.id}`], size: 1, at: p.at, first_seen: null, is_new: false,
+}));
 
 /** The Pulse row only ever shows summary.slice(0, 280). */
 const asRendered = (rows: ReturnType<typeof buildRows>) => ({
@@ -76,21 +81,35 @@ describe("desk-view.ts — slim client view == raw crawl modules", () => {
     expect(V.WIRE_ROWS).toEqual(norm(WIRE_ROWS));
   });
 
+  test("the caps dropped only what DESK_VIEW_TRIMMED reports — whole stories, oldest first", () => {
+    expect(PULSE_CLUSTERS.length - CLUSTERS.length).toBe(V.DESK_VIEW_TRIMMED.stories);
+    expect(CRAWL.length - V.X_POSTS.length).toBe(V.DESK_VIEW_TRIMMED.xPosts);
+    expect(PAPERS.length - V.PAPERS.length).toBe(V.DESK_VIEW_TRIMMED.papers);
+    const pinned = new Set([...V.WIRE_ROWS.map((w) => w.id), ...(V.LEAD_TODAY?.cluster_id ? [V.LEAD_TODAY.cluster_id] : [])]);
+    const dropped = PULSE_CLUSTERS.filter((c) => !KEPT.has(c.id));
+    const keptFree = RAW_KEPT.filter((c) => !pinned.has(c.id));
+    if (dropped.length && keptFree.length) {
+      const newestDropped = Math.max(...dropped.map((c) => Date.parse(c.at)));
+      expect(newestDropped).toBeLessThanOrEqual(Math.min(...keptFree.map((c) => Date.parse(c.at))));
+    }
+  });
+
   test("Pulse rows (clusters + X) are identical as rendered — chips, N SRC, NEW, signal, security, summary", () => {
-    const raw = asRendered(buildRows([...(PULSE_CLUSTERS as ClusterInput[]), ...RAW_X], RAW_MEMBERS));
-    const slim = asRendered(buildRows([...CLUSTERS, ...xRows(V.X_POSTS)], MEMBERS));
+    const raw = asRendered(buildRows([...RAW_KEPT, ...RAW_X], RAW_MEMBERS));
+    const slim = asRendered(buildRows([...CLUSTERS, ...xRows(V.X_POSTS, V.MEMBER_ROWS)], MEMBERS));
     expect(norm(slim)).toEqual(norm(raw));
   });
 
   test("Wire chips: the Wire subset builds the same rows", () => {
     const ids = new Set(V.WIRE_ROWS.map((r) => r.id));
-    const raw = buildRows((PULSE_CLUSTERS as ClusterInput[]).filter((c) => ids.has(c.id)), RAW_MEMBERS);
+    for (const id of ids) expect(KEPT.has(id)).toBe(true); // Wire stories are pinned
+    const raw = buildRows(RAW_KEPT.filter((c) => ids.has(c.id)), RAW_MEMBERS);
     const slim = buildRows(CLUSTERS.filter((c) => ids.has(c.id)), MEMBERS);
     expect(norm(asRendered(slim))).toEqual(norm(asRendered(raw)));
   });
 
   test("every cluster field the desk reads survives (only canonical_url / all_sources / score dropped)", () => {
-    const rawSlim = PULSE_CLUSTERS.map((c) => {
+    const rawSlim = RAW_KEPT.map((c) => {
       const rest: Record<string, unknown> = { ...(c as Record<string, unknown>) };
       for (const k of ["canonical_url", "all_sources", "score"]) delete rest[k];
       return rest;
@@ -99,9 +118,11 @@ describe("desk-view.ts — slim client view == raw crawl modules", () => {
   });
 
   test("member info: same badge / publisher / title / time / url / signal / security; summary only for row leads (≤280)", () => {
-    const leads = new Set([...PULSE_CLUSTERS.map((c) => c.lead_id), ...CRAWL.map((p) => `x:${p.id}`)]);
+    const leads = new Set([...RAW_KEPT.map((c) => c.lead_id), ...RAW_X.map((p) => p.lead_id)]);
+    const live = new Set([...RAW_KEPT.flatMap((c) => [c.lead_id, ...c.member_ids]), ...RAW_X.map((p) => p.lead_id)]);
     const expected: Record<string, PulseMemberInfo> = {};
     for (const [id, m] of Object.entries(RAW_MEMBERS)) {
+      if (!live.has(id)) continue;
       const e: PulseMemberInfo = { ...m };
       if (e.score == null) delete e.score;
       if (!e.summary || !leads.has(id)) delete e.summary;
@@ -113,13 +134,18 @@ describe("desk-view.ts — slim client view == raw crawl modules", () => {
   });
 
   test("story ages (MEMBER_AT) and drawer coverage for every cluster are identical", () => {
-    expect(memberAt(V.MEMBER_ROWS, ITEM_IDS)).toEqual(RAW_AT);
+    const pick = <T,>(o: Record<string, T>) => Object.fromEntries(ITEM_IDS.map((id) => [id, o[id]!]));
+    expect(memberAt(V.MEMBER_ROWS, ITEM_IDS)).toEqual(pick(RAW_AT));
     const items = memberItems(V.MEMBER_ROWS, ITEM_IDS);
-    expect(norm(items)).toEqual(norm(RAW_ITEMS));
-    for (const c of PULSE_CLUSTERS) {
+    expect(norm(items)).toEqual(norm(pick(RAW_ITEMS)));
+    for (const c of RAW_KEPT) {
       const slimC = CLUSTERS.find((x) => x.id === c.id)!;
       expect(norm(buildCoverage(slimC, items))).toEqual(norm(buildCoverage(c as ClusterInput, RAW_ITEMS)));
     }
+  });
+
+  test("X posts: take / link / time identical (take = head of the member summary, no duplicated text)", () => {
+    expect(xPosts(V.X_POSTS, V.MEMBER_ROWS)).toEqual(CRAWL.filter((p) => KEPT_X.has(p.id)).map((p) => ({ id: p.id, take: p.take, href: p.href, at: p.at })));
   });
 
   test("Papers rows identical as rendered (abstract shown ≤600 chars)", () => {

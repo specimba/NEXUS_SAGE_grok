@@ -1,7 +1,8 @@
 /**
  * Pages publish gate: the header crawl and the Wire snapshot must come from the same crawl.
  *   bun scripts/pages-coherence.ts            → checks src/data (CRAWL_AT = WIRE_CRAWL_AT = PULSE_CLUSTERS_AT = TOPIC_HEAT_AT
- *                                               = DESK_VIEW_AT, and desk-view.ts is exactly what the raw modules generate)
+ *                                               = DESK_VIEW_AT, and desk-view.ts + lead-log-view.ts are exactly what the raw
+ *                                               modules / lead-history.json generate under DESK_VIEW_CAPS / LEAD_LOG_CAPS)
  *   bun scripts/pages-coherence.ts <out-dir>  → also checks the built index.html (header "CRAWL HH:MM" = "WIRE · crawl HH:MM")
  * Exit 1 on any mismatch. A manual ingest that skips postingest (rank-snapshot) fails here and never reaches Pages.
  */
@@ -29,7 +30,7 @@ for (const [k, v] of Object.entries(stamps)) if (v && ref && v !== ref) fails.pu
 // … and the same content (a hand-edited raw module or a skipped regen fails here).
 if (stamps.DESK_VIEW_AT) {
   const r = spawnSync("bun", ["scripts/desk-view.ts", "--check"], { cwd: desk, encoding: "utf8" });
-  if (r.status !== 0) fails.push(`desk-view.ts stale vs raw modules (bun scripts/desk-view.ts --check: ${(r.stderr || r.stdout || "").trim().slice(0, 160)})`);
+  if (r.status !== 0) fails.push(`desk-view.ts / lead-log-view.ts stale vs raw modules (bun scripts/desk-view.ts --check: ${(r.stderr || r.stdout || "").trim().slice(0, 160)})`);
 }
 
 const out = process.argv[2];

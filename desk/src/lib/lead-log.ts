@@ -36,6 +36,46 @@ export type LogDay = {
 };
 export type LeadLog = { days: LogDay[]; lastAt: string | null };
 
+/**
+ * Fixed size of the log the page ships (src/data/lead-log-view.ts, generated with desk-view): the holotape shows
+ * the `days` newest days (a rolling window); per day the newest `passes` (6 crawls/day + 0 manual re-runs); per pass
+ * the first `outs` ✗ lines. Text is cut with "…" past `headline` / `detail` chars; a lead URL past `url` chars loses
+ * its link. 2026-10-03: 10 days · ≤5 passes/day · ≤8 ✗/pass · headline ≤118 · detail ≤16 — today's tape is unchanged.
+ * Worst case (every cap full, every field max) ≈ 134 KB raw / 38 KB gz of server props in index.html — not First Load JS.
+ */
+export const LEAD_LOG_CAPS = { days: 10, passes: 6, outs: 8, headline: 140, detail: 40, url: 640 } as const;
+
+const cut = (s: string, n: number) => (s.length > n ? `${s.slice(0, n - 1).trimEnd()}…` : s);
+
+/** The log minus everything the holotape never renders, capped by LEAD_LOG_CAPS. Pure; same input ⇒ same output. */
+export function slimLeadLog(log: LeadLog, caps: typeof LEAD_LOG_CAPS = LEAD_LOG_CAPS): LeadLog {
+  return {
+    lastAt: log.lastAt,
+    days: log.days.slice(0, caps.days).map((d) => ({
+      date: d.date,
+      state: d.state,
+      at: d.at,
+      headline: cut(d.headline, caps.headline),
+      url: d.url && d.url.length <= caps.url ? d.url : null,
+      sources: d.sources,
+      sig: d.sig,
+      pubs: d.pubs.slice(0, 3).map((p) => cut(p, caps.detail)),
+      passes: d.passes.slice(-caps.passes).map((p) => ({
+        at: p.at,
+        held: p.held,
+        ...(p.lead ? { lead: { headline: cut(p.lead.headline, caps.headline), sources: p.lead.sources, sig: p.lead.sig } } : {}),
+        // ✗ line = time (pass) · code · headline (+ the detail the line shows — never for AGE).
+        out: p.out.slice(0, caps.outs).map((o) => ({
+          code: o.code,
+          headline: cut(o.headline, caps.headline),
+          ...(o.detail && o.code !== "AGE" ? { detail: cut(o.detail, caps.detail) } : {}),
+        })),
+        ...(p.tags?.length ? { tags: p.tags } : {}),
+      })),
+    })),
+  };
+}
+
 /** Raw lead-history reason → fixed-width code (+ detail when the code alone loses information). */
 export function reasonCode(reason: string): { code: LogCode; detail?: string } {
   const r = String(reason ?? "");

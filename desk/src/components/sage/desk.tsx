@@ -1201,7 +1201,7 @@ function StoryDrawer({
 }
 
 /** Pulse V5 (Beat 3) — spec refs/UX-PULSE-V5.md. Operator X crawl posts join the one table as single-source X rows (not clusters). */
-const X_ROWS: ClusterInput[] = xRows(X_POSTS);
+const X_ROWS: ClusterInput[] = xRows(X_POSTS, MEMBER_ROWS);
 
 /** Beat 10 — topic heat strip (refs/UX-BEAT10-SINCE-HEAT.md). Bars = 4h routine windows; null = honest gap. */
 function HeatStrip() {
