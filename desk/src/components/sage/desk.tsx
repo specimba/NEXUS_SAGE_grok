@@ -794,7 +794,7 @@ function Brief() {
     <div className="brief-v5 grid gap-2 lg:grid-cols-12 lg:grid-rows-[auto_auto_auto]">
       {/* Left · Pip-Boy needle rail */}
       <aside
-        className="sage-panel sage-ticks sage-instrument sage-pip-rail flex flex-col gap-1 px-2 py-2 lg:col-span-2 lg:row-span-3"
+        className="sage-panel sage-ticks sage-instrument sage-pip-rail flex flex-col gap-1 px-2 py-2 order-last lg:order-none lg:col-span-2 lg:row-span-3"
         aria-label="Cycle 003 board instrument rail"
       >
         <p className="font-mono text-kicker uppercase tracking-kicker text-primary">rail · cyc/003 board</p>
