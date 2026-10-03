@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-03T03:17:23Z",
+  "stamped_at": "2026-10-03T07:12:59Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 218,
+      "duration_ms": 265,
       "paused_until": null,
       "reason": null
     },
@@ -17,10 +17,10 @@
       "id": "arxiv",
       "label": "arXiv",
       "status": "timeout",
-      "rows": 28,
+      "rows": 27,
       "duration_ms": 20001,
       "paused_until": null,
-      "reason": "timeout after 20000ms budget · last good: 23 cached enrich + 5 kept shelf"
+      "reason": "timeout after 20000ms budget · last good: 22 cached enrich + 5 kept shelf"
     },
     {
       "id": "openalex",
@@ -45,7 +45,7 @@
       "label": "HN",
       "status": "ok",
       "rows": 59,
-      "duration_ms": 8296,
+      "duration_ms": 8570,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 18194,
+      "duration_ms": 263,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 4349,
+      "duration_ms": 263,
       "paused_until": null,
       "reason": null
     },
@@ -72,7 +72,7 @@
       "label": "Google News",
       "status": "ok",
       "rows": 30,
-      "duration_ms": 6365,
+      "duration_ms": 263,
       "paused_until": null,
       "reason": null
     },
@@ -81,7 +81,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 308,
+      "duration_ms": 263,
       "paused_until": null,
       "reason": null
     },
@@ -90,15 +90,15 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 2423,
+      "duration_ms": 557,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 60156,
-    "sources_wall_ms": 20232,
-    "papers_lane_ms": 20230,
+    "sources_ms": 30447,
+    "sources_wall_ms": 20277,
+    "papers_lane_ms": 20276,
     "slowest_source_ms": 20001,
     "concurrent": true,
     "budget_ms": {
@@ -116,26 +116,26 @@
     "timed_out": [
       "arxiv"
     ],
-    "wall_ms": 20480,
-    "startup_ms": 31,
-    "main_ms": 20489
+    "wall_ms": 20565,
+    "startup_ms": 34,
+    "main_ms": 20581
   },
-  "multi_source_independent": 1,
+  "multi_source_independent": 2,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 1,
-    "multi_source_raw": 4,
+    "multi_source_independent": 2,
+    "multi_source_raw": 5,
     "self_reposts": 3,
     "items_in": 220,
-    "clusters_out": 211,
-    "collapsed": 9,
-    "multi_source": 1,
-    "multi_member": 8,
+    "clusters_out": 210,
+    "collapsed": 10,
+    "multi_source": 2,
+    "multi_member": 9,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 25,
+    "new_items": 3,
     "per_source": {
       "hn-algolia": 59,
       "rss-lab": 104,
@@ -144,13 +144,38 @@
     },
     "multi_source_clusters": [
       {
+        "title": "NVIDIA DGX Spark 64GB Gives Developers More Ways to Build and Scale Local AI",
+        "sources": [
+          "rss-lab",
+          "hn-algolia"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:49933234",
+            "source": "hn-algolia",
+            "title": "Nvidia DGX Spark 64GB Gives Developers More Ways to Build and Scale Local AI",
+            "at": "2026-10-02T13:18:28Z",
+            "publisher": null
+          },
+          {
+            "id": "rss:nvidia:60ea0cfc7bea518f",
+            "source": "rss-lab",
+            "title": "NVIDIA DGX Spark 64GB Gives Developers More Ways to Build and Scale Local AI",
+            "at": "2026-10-02T13:00:39Z",
+            "publisher": "nvidia"
+          }
+        ]
+      },
+      {
         "title": "US judge dismisses Chegg, Penske antitrust suits over Google AI Overviews",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.677,
+        "score": 0.678,
         "members": [
           {
             "id": "hn:49925606",
@@ -326,7 +351,7 @@
         ]
       },
       {
-        "score": 0.482,
+        "score": 0.485,
         "blocked": "below-threshold",
         "hours_apart": 22.1,
         "a": {
@@ -346,28 +371,6 @@
           "subpoena",
           "openai",
           "hack"
-        ]
-      },
-      {
-        "score": 0.475,
-        "blocked": "time-window",
-        "hours_apart": 35.5,
-        "a": {
-          "id": "hn:49918131",
-          "source": "hn-algolia",
-          "title": "FTC opens probe of Anthropic, OpenAI",
-          "at": "2026-10-01T05:42:45Z"
-        },
-        "b": {
-          "id": "gnews:0ff0f9f2619fbb7e",
-          "source": "gnews-rss",
-          "title": "OpenAI Rogue AI Agents Hacked Hugging Face; FTC Probes Labs and Safety Auditor METR - Tech Times",
-          "at": "2026-10-02T17:13:48Z"
-        },
-        "shared": [
-          "ftc",
-          "prob",
-          "openai"
         ]
       },
       {
@@ -394,7 +397,32 @@
         ]
       },
       {
-        "score": 0.435,
+        "score": 0.433,
+        "blocked": "below-threshold",
+        "hours_apart": 4.8,
+        "a": {
+          "id": "hn:49933234",
+          "source": "hn-algolia",
+          "title": "Nvidia DGX Spark 64GB Gives Developers More Ways to Build and Scale Local AI",
+          "at": "2026-10-02T13:18:28Z"
+        },
+        "b": {
+          "id": "gnews:4b22bc01b5f24686",
+          "source": "gnews-rss",
+          "title": "NVIDIA Announces DGX Spark 64GB: A 1-PetaFLOP Grace Blackwell Desktop for Local AI Agents, Fine-Tuning, and Inference - MarkTechPost",
+          "at": "2026-10-02T18:04:56Z"
+        },
+        "shared": [
+          "nvidia",
+          "dgx",
+          "spark",
+          "64gb",
+          "local",
+          "ai"
+        ]
+      },
+      {
+        "score": 0.433,
         "blocked": "below-threshold",
         "hours_apart": 5.1,
         "a": {
@@ -419,7 +447,7 @@
         ]
       },
       {
-        "score": 0.345,
+        "score": 0.346,
         "blocked": "below-threshold",
         "hours_apart": 5.2,
         "a": {
@@ -526,7 +554,7 @@
         ]
       },
       {
-        "score": 0.482,
+        "score": 0.485,
         "blocked": "below-threshold",
         "hours_apart": 22.1,
         "a": {
@@ -546,28 +574,6 @@
           "subpoena",
           "openai",
           "hack"
-        ]
-      },
-      {
-        "score": 0.475,
-        "blocked": "time-window",
-        "hours_apart": 35.5,
-        "a": {
-          "id": "hn:49918131",
-          "source": "hn-algolia",
-          "title": "FTC opens probe of Anthropic, OpenAI",
-          "at": "2026-10-01T05:42:45Z"
-        },
-        "b": {
-          "id": "gnews:0ff0f9f2619fbb7e",
-          "source": "gnews-rss",
-          "title": "OpenAI Rogue AI Agents Hacked Hugging Face; FTC Probes Labs and Safety Auditor METR - Tech Times",
-          "at": "2026-10-02T17:13:48Z"
-        },
-        "shared": [
-          "ftc",
-          "prob",
-          "openai"
         ]
       },
       {
@@ -594,7 +600,32 @@
         ]
       },
       {
-        "score": 0.435,
+        "score": 0.433,
+        "blocked": "below-threshold",
+        "hours_apart": 4.8,
+        "a": {
+          "id": "hn:49933234",
+          "source": "hn-algolia",
+          "title": "Nvidia DGX Spark 64GB Gives Developers More Ways to Build and Scale Local AI",
+          "at": "2026-10-02T13:18:28Z"
+        },
+        "b": {
+          "id": "gnews:4b22bc01b5f24686",
+          "source": "gnews-rss",
+          "title": "NVIDIA Announces DGX Spark 64GB: A 1-PetaFLOP Grace Blackwell Desktop for Local AI Agents, Fine-Tuning, and Inference - MarkTechPost",
+          "at": "2026-10-02T18:04:56Z"
+        },
+        "shared": [
+          "nvidia",
+          "dgx",
+          "spark",
+          "64gb",
+          "local",
+          "ai"
+        ]
+      },
+      {
+        "score": 0.433,
         "blocked": "below-threshold",
         "hours_apart": 5.1,
         "a": {
@@ -623,43 +654,43 @@
   "source_health": [
     {
       "id": "arxiv",
-      "state": "flaky",
+      "state": "fail",
       "streak_ok": 0,
-      "streak_fail": 1,
-      "items_last": 28
+      "streak_fail": 2,
+      "items_last": 27
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 65,
+      "streak_ok": 66,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 65,
+      "streak_ok": 66,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 65,
+      "streak_ok": 66,
       "streak_fail": 0,
       "items_last": 30
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 65,
+      "streak_ok": 66,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 65,
+      "streak_ok": 66,
       "streak_fail": 0,
       "items_last": 59
     },
@@ -673,27 +704,27 @@
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 65,
+      "streak_ok": 66,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 65,
+      "streak_ok": 66,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 65,
+      "streak_ok": 66,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.005721388888888889,
+    "hours": 0.005886388888888889,
     "stale": false
   },
   "hf": {
@@ -703,7 +734,7 @@
   },
   "arxiv": {
     "ok": false,
-    "enriched": 23,
+    "enriched": 22,
     "shelf": 5,
     "timed_out": true,
     "budget_ms": 20000,
@@ -789,16 +820,16 @@
         "text": "Meta Uses A.I. Data Centers to Avoid Billions in Federal Taxes"
       },
       {
-        "id": "hn:49921050",
+        "id": "hn:49929391",
         "tag": "rest",
-        "score": 208,
-        "text": "FTC is investigating OpenAI, Anthropic and other AI companies over product risks"
+        "score": 224,
+        "text": "Greg Kroah-Hartman – Security in the LLM Age [video]"
       },
       {
-        "id": "hn:49924618",
+        "id": "hn:49936575",
         "tag": "rest",
-        "score": 196,
-        "text": "Vote on which of Hacker News' challenges for AI have been met"
+        "score": 212,
+        "text": "From the creator of Redis; run LLM locally with ds4"
       }
     ]
   },
@@ -814,47 +845,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "https://openai.com/news/rss.xml",
+        "url": "(cache:openai)",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "https://deepmind.google/blog/rss.xml",
+        "url": "(cache:deepmind)",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "https://blog.google/technology/ai/rss/",
+        "url": "(cache:google-ai)",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "https://huggingface.co/blog/feed.xml",
+        "url": "(cache:huggingface)",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "https://mistral.ai/rss.xml",
+        "url": "(cache:mistral)",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "https://blogs.nvidia.com/feed/",
+        "url": "(cache:nvidia)",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "https://developer.nvidia.com/blog/feed",
+        "url": "(cache:nvidia-dev)",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
+        "url": "(cache:ms-research)",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "https://research.google/blog/rss/",
+        "url": "(cache:google-research)",
         "count": 12
       }
     ],
@@ -900,17 +931,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "https://blog.trailofbits.com/feed/",
+        "url": "(cache:trailofbits)",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "https://blog.fox-it.com/feed/",
+        "url": "(cache:fox-it)",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "https://projectzero.google/feed.xml",
+        "url": "(cache:projectzero)",
         "count": 5
       }
     ],
@@ -980,9 +1011,9 @@
       }
     ],
     "http_status": 200,
-    "content_type": "application/xml; charset=utf-8",
+    "content_type": null,
     "format": "rss2",
-    "from_cache": false,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1041,9 +1072,9 @@
     "soft_fail_reason": null,
     "query": "OWASP LLM",
     "shelf": 1,
-    "from_cache": false,
-    "searches": 1,
-    "rate_limit_remaining": 9,
+    "from_cache": true,
+    "searches": 0,
+    "rate_limit_remaining": null,
     "brief": false,
     "pulse_lead": false,
     "shelf_only": true,
@@ -1068,7 +1099,7 @@
       "OWASP",
       "NIST"
     ],
-    "searches": 2,
+    "searches": 1,
     "from_cache": false,
     "brief": false,
     "pulse_lead": false,

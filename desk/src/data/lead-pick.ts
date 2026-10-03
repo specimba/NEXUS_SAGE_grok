@@ -3,8 +3,9 @@ import type { LeadEntry } from "@/lib/lead-pick";
 
 export const LEAD_TODAY: LeadEntry | null = {
   "date": "2026-10-03",
-  "at": "2026-10-03T03:17:43.625Z",
-  "crawl_at": "2026-10-03T03:17:23Z",
+  "at": "2026-10-03T07:13:20.223Z",
+  "crawl_at": "2026-10-03T07:12:59Z",
+  "catch_up": true,
   "excluded": [
     {
       "cluster_id": "cl:hn:49925606",
@@ -12,27 +13,13 @@ export const LEAD_TODAY: LeadEntry | null = {
       "reason": "age>=24h"
     }
   ],
-  "cluster_id": "cl:hn:49925606",
-  "headline": "US judge dismisses Chegg, Penske antitrust suits over Google AI Overviews",
-  "url": "https://reuters.com/legal/litigation/google-wins-dismissal-chegg-penske-media-lawsuits-over-ai-overviews-2026-10-01",
+  "cluster_id": "cl:rss:nvidia:60ea0cfc7bea518f",
+  "headline": "NVIDIA DGX Spark 64GB Gives Developers More Ways to Build and Scale Local AI",
+  "url": "https://blogs.nvidia.com/blog/local-ai-dgx-spark-64gb-sync/",
   "sources": 2,
-  "sig": 19,
-  "first_at": "2026-10-01T18:53:51.000Z",
-  "reason": "held",
-  "note": "no qualifying story",
-  "attempts": [
-    {
-      "at": "2026-10-03T03:17:43.625Z",
-      "crawl_at": "2026-10-03T03:17:23Z",
-      "excluded": [
-        {
-          "cluster_id": "cl:hn:49925606",
-          "headline": "US judge dismisses Chegg, Penske antitrust suits over Google AI Overviews",
-          "reason": "age>=24h"
-        }
-      ]
-    }
-  ]
+  "sig": 6,
+  "reason": "picked",
+  "first_at": "2026-10-02T13:00:39.000Z"
 };
 
 export const LEAD_YESTERDAY: LeadEntry | null = {
@@ -80,7 +67,7 @@ export const LEAD_YESTERDAY: LeadEntry | null = {
   "first_at": "2026-10-01T18:53:51.000Z"
 };
 
-export const LEAD_HELD = true;
+export const LEAD_HELD = false;
 
 /** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is ≥24h old. */
-export const LEAD_FIRST_AT: string | null = "2026-10-01T18:53:51.000Z";
+export const LEAD_FIRST_AT: string | null = "2026-10-02T13:00:39.000Z";
