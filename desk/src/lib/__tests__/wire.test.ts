@@ -150,9 +150,9 @@ describe("Beat 7 wire — daily lead exclusion", () => {
 });
 
 describe("Beat 7 wire — generated data + placement", () => {
-  test("generated WIRE_ROWS: 1–5 rows, all ≥2 SRC, no X / taste ids", async () => {
+  test("generated WIRE_ROWS: 0–5 rows, all ≥2 SRC, no X / taste ids", async () => {
     const { WIRE_ROWS } = await import("@/data/wire");
-    expect(WIRE_ROWS.length).toBeGreaterThan(0);
+    // 0 is honest when only the (excluded) daily lead has 2+ sources — crawl 2026-10-03T03:17:23Z; the desk shows a zero line.
     expect(WIRE_ROWS.length).toBeLessThanOrEqual(WIRE_MAX);
     for (const r of WIRE_ROWS) {
       expect(r.sources).toBeGreaterThanOrEqual(2);

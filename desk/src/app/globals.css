@@ -1895,6 +1895,12 @@ body {
 .brief-wire-row:last-child {
   border-bottom: none;
 }
+.brief-wire-empty {
+  padding: 0.6rem 0.75rem;
+  color: var(--muted-foreground);
+  font-size: var(--text-kicker);
+  letter-spacing: 0.04em;
+}
 .brief-wire-row:nth-child(even) {
   background: var(--card);
 }
@@ -2833,4 +2839,126 @@ a.story-drawer-rowlink:focus-visible .story-drawer-open {
 }
 .brief-v5 .sage-panel-header::before {
   color: var(--primary);
+}
+
+/* === Beat 12 — phone (<768px): only the tab row stays sticky; chips one line; ingest folded; Moved rows as cards === */
+@media (max-width: 767px) {
+  /* The header box dissolves so the tab row can stick to the page, not to the header. */
+  .desk-topbar,
+  .desk-topbar > div {
+    display: contents;
+  }
+  .desk-topbar > div > * {
+    margin-inline: 1rem;
+  }
+  .desk-topbar > div > :first-child {
+    padding-top: 0.5rem;
+  }
+  .desk-topbar > div > * + * {
+    margin-top: 0.5rem;
+  }
+  .desk-chips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    max-width: 100%;
+  }
+  .desk-chips {
+    gap: 0.375rem;
+  }
+  .desk-chips .desk-chip {
+    flex: none;
+    padding: 0 0.35rem;
+    letter-spacing: 0.04em;
+  }
+  /* Digest's single column must not grow to its widest child (the Moved panel pushed it to 526px). */
+  .digest-v4 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .digest-v4 > * {
+    min-width: 0;
+  }
+  .sage-moved p {
+    overflow-wrap: anywhere;
+  }
+  .desk-ingest-toggle {
+    cursor: pointer;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    color: var(--muted-foreground);
+  }
+  .desk-ingest-line {
+    padding-bottom: 0.25rem;
+  }
+  .desk-lane {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: auto;
+    overflow: visible;
+    background: var(--bg-deep);
+  }
+  .desk-lane-btn {
+    height: 44px;
+    padding: 0 0.25rem;
+    letter-spacing: 0.06em;
+  }
+  /* Pulse source-health ledger wraps into a grid instead of scrolling past the edge. */
+  .pulse-v5-health {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+    overflow-x: visible;
+  }
+  .pulse-v5-health-cell {
+    min-height: 28px;
+    min-width: 0;
+    white-space: normal;
+    padding-block: 0.2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  /* Pulse topic heat: one topic per row instead of a strip wider than the screen. */
+  .heat-strip {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    height: auto;
+    overflow-x: visible;
+  }
+  .heat-strip-kicker,
+  .heat-cell {
+    min-height: 32px;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .heat-cell:last-child {
+    border-bottom: none;
+  }
+  /* Digest · Moved: each row is a card — Δ + item on top, the four numbers labelled below. */
+  .sage-moved-head {
+    display: none;
+  }
+  .sage-moved-row {
+    grid-template-columns: 5ch repeat(4, minmax(0, 1fr));
+    grid-template-areas: "d i i i i";
+    row-gap: 0.2rem;
+    padding-top: 0.35rem;
+    padding-bottom: 0.4rem;
+  }
+  .sage-moved-row .sage-moved-delta {
+    grid-area: d;
+  }
+  .sage-moved-row .sage-moved-item {
+    grid-area: i;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  .sage-moved-row [data-label]:nth-of-type(3) {
+    grid-column: 2;
+  }
+  .sage-moved-row [data-label]::before {
+    content: attr(data-label) " ";
+    color: var(--muted-foreground);
+  }
 }

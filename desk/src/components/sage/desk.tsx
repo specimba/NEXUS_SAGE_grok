@@ -239,6 +239,7 @@ const EMPTY_LOG: LeadLog = { days: [], lastAt: null };
 
 export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", crawlCommit = "", repoUrl = "", leadLog = EMPTY_LOG }: DeskProps) {
   const [lane, setLane] = useState<Lane>("brief");
+  const [ingestOpen, setIngestOpen] = useState(false);
   // Tabs light only after the hash is read — SSR default "brief" must never paint as filled on another lane.
   const [laneReady, setLaneReady] = useState(false);
   // B2 build stamp footer (Istanbul clock, source + crawl commit links).
@@ -431,7 +432,7 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
                 <span className="text-sm text-muted">{CYCLE.window}</span>
               </div>
             </div>
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="desk-chips flex flex-wrap items-center gap-2">
               <span className="desk-chip desk-chip-quiet">STABLE</span>
               <span
                 className={cn("desk-chip tabular-nums", age?.stale ? "desk-chip-warn sage-stale-chip" : "desk-chip-live")}
@@ -442,12 +443,30 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
                 {fresh ? `${fresh.label} ${fresh.hours.toFixed(1)}H` : `CRAWL ${istHHMM(CRAWL_AT)}`}
               </span>
               <span className="desk-chip desk-chip-live tabular-nums" title="crawl snap" data-crawl-at={CRAWL_AT}>
-                crawl {istDateTime(CRAWL_AT)} {IST_LABEL}
+                crawl <span className="hidden md:inline">{istDateTime(CRAWL_AT)}</span>
+                <span className="md:hidden">{istHHMM(CRAWL_AT)}</span>
+                <span className="hidden md:inline"> {IST_LABEL}</span>
               </span>
-              <span className="desk-chip desk-chip-quiet tabular-nums" title="cycle compile">cyc {istDateTime(CYCLE.compiledAt)}</span>
+              <span className="desk-chip desk-chip-quiet tabular-nums" title={`cycle compile ${istDateTime(CYCLE.compiledAt)}`}>
+                cyc <span className="hidden md:inline">{istDateTime(CYCLE.compiledAt)}</span>
+                <span className="md:hidden">{istDateTime(CYCLE.compiledAt).slice(5, 10)}</span>
+              </span>
             </div>
           </div>
-          <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
+          {/* Phone: the ingest line folds behind a tap (Beat 12); md+ always shows it. */}
+          <button
+            type="button"
+            className="desk-ingest-toggle font-mono text-kicker uppercase tracking-kicker md:hidden"
+            aria-expanded={ingestOpen}
+            aria-controls="desk-ingest-line"
+            onClick={() => setIngestOpen((o) => !o)}
+          >
+            ingest · snap {istHHMM(CRAWL_AT)} {ingestOpen ? "▴" : "▾"}
+          </button>
+          <p
+            id="desk-ingest-line"
+            className={`desk-ingest-line ${ingestOpen ? "block" : "hidden"} font-mono text-kicker uppercase tracking-kicker text-subtle md:block`}
+          >
             ingest · snap {istDateTime(CRAWL_AT)} · pack {istDateTime(PACK_AT)} {IST_LABEL} · lead{" "}
             <LeadInline view={leadV} />
           </p>
@@ -666,7 +685,7 @@ function BriefWire() {
   );
   const rows = useMemo(() => [...part.since, ...part.rest], [part]);
   useEffect(() => report(rows.length, WIRE_ROWS.length), [rows.length, report]);
-  if (WIRE_ROWS.length === 0) return null;
+  // Empty Wire still renders its crawl stamp (Pages coherence gate reads it) with an honest zero line.
   return (
     <section className="brief-wire sage-panel sage-ticks lg:col-span-6" aria-label="Wire — live multi-source clusters">
       <div className="brief-wire-head">
@@ -675,7 +694,10 @@ function BriefWire() {
           {WIRE_PREV_CRAWL_AT ? `vs ${istanbulHHMM(WIRE_PREV_CRAWL_AT)}` : "first crawl"}
         </span>
       </div>
-      <ol className="brief-wire-list">
+      {WIRE_ROWS.length === 0 ? (
+        <p className="brief-wire-empty">0 stories with 2+ independent sources this crawl (the lead pick is never repeated here).</p>
+      ) : null}
+      <ol className="brief-wire-list" hidden={WIRE_ROWS.length === 0}>
         {rows.map((r, i) => {
           const mark = wireMark(r);
           const isNewSince = i < part.since.length;
@@ -1770,19 +1792,19 @@ function Digest() {
                 return (
                   <li key={m.id} className="sage-moved-row" data-status={m.status} data-corroboration={m.by_corroboration ? "1" : undefined}>
                     <span className="sage-moved-delta">{glyph}</span>
-                    <span className="truncate">
+                    <span className="sage-moved-item truncate">
                       {m.id}
                       {r?.lead ? " · lead" : ""}
                       {m.by_corroboration ? " · moved by SRC" : ""}
                     </span>
-                    <span className="tabular-nums">
+                    <span className="tabular-nums" data-label="rank">
                       {m.prev_rank ?? "—"}→{m.rank ?? "—"}
                     </span>
-                    <span className="tabular-nums">{r?.base_rank ?? "—"}</span>
-                    <span className="tabular-nums">
+                    <span className="tabular-nums" data-label="base">{r?.base_rank ?? "—"}</span>
+                    <span className="tabular-nums" data-label="SRC">
                       {m.prev_sources ?? "—"}→{m.sources ?? "—"}
                     </span>
-                    <span className="tabular-nums">{r?.lead ? "pin" : r?.mult ?? "—"}</span>
+                    <span className="tabular-nums" data-label="×">{r?.lead ? "pin" : r?.mult ?? "—"}</span>
                   </li>
                 );
               })}

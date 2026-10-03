@@ -52,6 +52,10 @@ describe("next try = next crawl slot 02/06/10/14/18/22 :11 Istanbul", () => {
 
 describe("desk wiring", () => {
   const src = readFileSync(join(DESK, "src/components/sage/desk.tsx"), "utf8");
+  test("empty Wire still renders its crawl stamp and an honest zero line (Pages coherence reads the stamp)", () => {
+    expect(src).not.toMatch(/WIRE_ROWS\.length === 0\) return null/);
+    expect(src).toMatch(/className="brief-wire-empty"/);
+  });
   test("no spot renders LEAD_TODAY.headline directly (all go through leadView)", () => {
     expect(src).not.toMatch(/LEAD_TODAY\?\.headline/);
     expect(src.match(/<LeadInline view=\{leadV\} \/>/g)?.length).toBe(2);
