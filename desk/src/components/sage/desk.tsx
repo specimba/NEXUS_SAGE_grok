@@ -853,11 +853,11 @@ function Brief() {
                 data-lead-held="1"
                 title="a lead needs ≥2 SRC incl. one non-Google-News publisher · every crawl from 06:00 retries until one qualifies"
               >
-                {LEAD_HELD_TEXT} · next try {nextTry}
+                {LEAD_HELD_TEXT} · <span className="whitespace-nowrap">next try {nextTry}</span>
               </p>
             ) : (
               <p className="sage-lead-held font-mono text-kicker uppercase tracking-kicker tabular-nums" data-lead-stale="1">
-                HELD · lead older than 24h ({leadAge != null ? `${Math.floor(leadAge)}h` : "—"}) · next try {nextTry}
+                HELD · lead older than 24h ({leadAge != null ? `${Math.floor(leadAge)}h` : "—"}) · <span className="whitespace-nowrap">next try {nextTry}</span>
               </p>
             )}
             {staleLead.headline ? (
