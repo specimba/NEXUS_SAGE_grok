@@ -2,25 +2,25 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-03T07:12:59Z",
+  "stamped_at": "2026-10-03T11:16:29Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 265,
+      "duration_ms": 211,
       "paused_until": null,
       "reason": null
     },
     {
       "id": "arxiv",
       "label": "arXiv",
-      "status": "timeout",
-      "rows": 27,
-      "duration_ms": 20001,
+      "status": "ok",
+      "rows": 29,
+      "duration_ms": 3233,
       "paused_until": null,
-      "reason": "timeout after 20000ms budget · last good: 22 cached enrich + 5 kept shelf"
+      "reason": null
     },
     {
       "id": "openalex",
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 59,
-      "duration_ms": 8570,
+      "rows": 58,
+      "duration_ms": 8315,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 263,
+      "duration_ms": 18102,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 263,
+      "duration_ms": 4322,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 30,
-      "duration_ms": 263,
+      "rows": 28,
+      "duration_ms": 6354,
       "paused_until": null,
       "reason": null
     },
@@ -81,7 +81,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 263,
+      "duration_ms": 25,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 557,
+      "duration_ms": 26,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 30447,
-    "sources_wall_ms": 20277,
-    "papers_lane_ms": 20276,
-    "slowest_source_ms": 20001,
+    "sources_ms": 40590,
+    "sources_wall_ms": 18104,
+    "papers_lane_ms": 3473,
+    "slowest_source_ms": 18102,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -113,34 +113,32 @@
       "github": 25000,
       "wikidata": 25000
     },
-    "timed_out": [
-      "arxiv"
-    ],
-    "wall_ms": 20565,
-    "startup_ms": 34,
-    "main_ms": 20581
+    "timed_out": [],
+    "wall_ms": 18576,
+    "startup_ms": 60,
+    "main_ms": 18605
   },
   "multi_source_independent": 2,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
     "multi_source_independent": 2,
-    "multi_source_raw": 5,
-    "self_reposts": 3,
-    "items_in": 220,
-    "clusters_out": 210,
-    "collapsed": 10,
+    "multi_source_raw": 4,
+    "self_reposts": 2,
+    "items_in": 217,
+    "clusters_out": 208,
+    "collapsed": 9,
     "multi_source": 2,
-    "multi_member": 9,
+    "multi_member": 8,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 3,
+    "new_items": 20,
     "per_source": {
-      "hn-algolia": 59,
+      "hn-algolia": 58,
       "rss-lab": 104,
       "rss-security": 27,
-      "gnews-rss": 30
+      "gnews-rss": 28
     },
     "multi_source_clusters": [
       {
@@ -175,7 +173,7 @@
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.678,
+        "score": 0.68,
         "members": [
           {
             "id": "hn:49925606",
@@ -228,23 +226,6 @@
             "title": "Toward provably private learning from federated data - Google Research"
           }
         ]
-      },
-      {
-        "title": "Gemini 4 Argon: our next era of frontier intelligence",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:05cfd65803121a1e",
-            "publisher": "blog.google",
-            "title": "Gemini 4 Argon: our next era of frontier intelligence - blog.google"
-          }
-        ]
       }
     ],
     "ai_relevance": {
@@ -262,53 +243,40 @@
       ],
       "gnews_shown_dropped": [
         {
+          "publisher": "ababnews.com",
+          "title": "YouTube Creator Felix Kjellberg's Local Model Faces Account Suspension, One Instance Clearly Labeled as Distillation - ababnews.com"
+        },
+        {
+          "publisher": "shattered.io",
+          "title": "Google MVP Satellite Launch: SpaceX Transporter-18 [2026] - shattered.io"
+        },
+        {
+          "publisher": "24/7 Wall St.",
+          "title": "2-Year Treasury Yield Pulls Back to 4.78% After a Long Climb - 24/7 Wall St."
+        },
+        {
+          "publisher": "shattered.io",
+          "title": "Google Suncatcher’s Next Act: 2 Satellites by 2027 [2026] - shattered.io"
+        },
+        {
+          "publisher": "MediaPost",
+          "title": "Google Pushes Court To Scuttle Search Monopoly Verdict 10/05/2026 - MediaPost"
+        },
+        {
+          "publisher": "Rolling Stone",
+          "title": "The Best Over-Ear Headphones for Working Out of 2026: Tried and Tested - Rolling Stone"
+        },
+        {
           "publisher": "FourWeekMBA",
           "title": "Google Research Cogentic Reports Five Open Math Results - FourWeekMBA"
-        },
-        {
-          "publisher": "MediaPost",
-          "title": "Google Defeats Search Users' Antitrust Suit 10/02/2026 - MediaPost"
-        },
-        {
-          "publisher": "Dealroom",
-          "title": "Google launches first Project Suncatcher satellite to test TPUs in orbit - Dealroom"
-        },
-        {
-          "publisher": "MediaPost",
-          "title": "Google Testing Video In Search Tied To Maps 04/21/2026 - MediaPost"
-        },
-        {
-          "publisher": "Google Research",
-          "title": "Toward provably private learning from federated data - Google Research"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 19
+      "hn_dropped": 21
     },
     "gnews_near_misses": [
       {
-        "score": 0.673,
-        "blocked": "time-window",
-        "hours_apart": 46.7,
-        "a": {
-          "id": "rss:deepmind:c696e8b1f3422473",
-          "source": "rss-lab",
-          "title": "Introducing SynthID Bio",
-          "at": "2026-09-30T15:03:07Z"
-        },
-        "b": {
-          "id": "gnews:b43a35937918727b",
-          "source": "gnews-rss",
-          "title": "Google tests AI watermarks for proteins with SynthID Bio - The Rundown AI",
-          "at": "2026-10-02T13:44:26Z"
-        },
-        "shared": [
-          "synthid",
-          "bio"
-        ]
-      },
-      {
-        "score": 0.618,
+        "score": 0.62,
         "blocked": "time-window",
         "hours_apart": 50.2,
         "a": {
@@ -329,7 +297,7 @@
         ]
       },
       {
-        "score": 0.611,
+        "score": 0.612,
         "blocked": "thin-overlap",
         "hours_apart": 83.9,
         "a": {
@@ -351,7 +319,7 @@
         ]
       },
       {
-        "score": 0.485,
+        "score": 0.501,
         "blocked": "below-threshold",
         "hours_apart": 22.1,
         "a": {
@@ -374,80 +342,7 @@
         ]
       },
       {
-        "score": 0.444,
-        "blocked": "below-threshold",
-        "hours_apart": 17.9,
-        "a": {
-          "id": "hn:49928099",
-          "source": "hn-algolia",
-          "title": "California issues investigative subpoena to OpenAI over rogue agents' hacking",
-          "at": "2026-10-01T23:07:08Z"
-        },
-        "b": {
-          "id": "gnews:23eb7f7ea5d92bf9",
-          "source": "gnews-rss",
-          "title": "California AG Subpoenas OpenAI in Investigation of 'Hugging Face' Hack - Law.com",
-          "at": "2026-10-02T17:00:11Z"
-        },
-        "shared": [
-          "california",
-          "subpoena",
-          "openai",
-          "hack"
-        ]
-      },
-      {
-        "score": 0.433,
-        "blocked": "below-threshold",
-        "hours_apart": 4.8,
-        "a": {
-          "id": "hn:49933234",
-          "source": "hn-algolia",
-          "title": "Nvidia DGX Spark 64GB Gives Developers More Ways to Build and Scale Local AI",
-          "at": "2026-10-02T13:18:28Z"
-        },
-        "b": {
-          "id": "gnews:4b22bc01b5f24686",
-          "source": "gnews-rss",
-          "title": "NVIDIA Announces DGX Spark 64GB: A 1-PetaFLOP Grace Blackwell Desktop for Local AI Agents, Fine-Tuning, and Inference - MarkTechPost",
-          "at": "2026-10-02T18:04:56Z"
-        },
-        "shared": [
-          "nvidia",
-          "dgx",
-          "spark",
-          "64gb",
-          "local",
-          "ai"
-        ]
-      },
-      {
-        "score": 0.433,
-        "blocked": "below-threshold",
-        "hours_apart": 5.1,
-        "a": {
-          "id": "rss:nvidia:60ea0cfc7bea518f",
-          "source": "rss-lab",
-          "title": "NVIDIA DGX Spark 64GB Gives Developers More Ways to Build and Scale Local AI",
-          "at": "2026-10-02T13:00:39Z"
-        },
-        "b": {
-          "id": "gnews:4b22bc01b5f24686",
-          "source": "gnews-rss",
-          "title": "NVIDIA Announces DGX Spark 64GB: A 1-PetaFLOP Grace Blackwell Desktop for Local AI Agents, Fine-Tuning, and Inference - MarkTechPost",
-          "at": "2026-10-02T18:04:56Z"
-        },
-        "shared": [
-          "nvidia",
-          "dgx",
-          "spark",
-          "64gb",
-          "local",
-          "ai"
-        ]
-      },
-      {
-        "score": 0.346,
+        "score": 0.348,
         "blocked": "below-threshold",
         "hours_apart": 5.2,
         "a": {
@@ -466,32 +361,96 @@
           "decision",
           "model"
         ]
+      },
+      {
+        "score": 0.348,
+        "blocked": "below-threshold",
+        "hours_apart": 11.1,
+        "a": {
+          "id": "hn:49942092",
+          "source": "hn-algolia",
+          "title": "New in Llama.cpp: Decision Models",
+          "at": "2026-10-03T07:27:06Z"
+        },
+        "b": {
+          "id": "gnews:778e4997c9e5e1cd",
+          "source": "gnews-rss",
+          "title": "AWS Releases Decision Model for AI Agents That Routes Without Generating Any Text - Tech Times",
+          "at": "2026-10-02T20:20:04Z"
+        },
+        "shared": [
+          "decision",
+          "model"
+        ]
+      },
+      {
+        "score": 0.339,
+        "blocked": "below-threshold",
+        "hours_apart": 12.4,
+        "a": {
+          "id": "hn:49934323",
+          "source": "hn-algolia",
+          "title": "New in Llama.cpp: Decision Models",
+          "at": "2026-10-02T15:06:13Z"
+        },
+        "b": {
+          "id": "gnews:5a90bce828ddd863",
+          "source": "gnews-rss",
+          "title": "Decision AI Models Explained: TypeSafe Jev vs Fastino GLiDE, GLiNER2.5-Decide and Open-Source Competitors - MarkTechPost",
+          "at": "2026-10-03T03:31:15Z"
+        },
+        "shared": [
+          "decision",
+          "model"
+        ]
+      },
+      {
+        "score": 0.339,
+        "blocked": "below-threshold",
+        "hours_apart": 3.9,
+        "a": {
+          "id": "hn:49942092",
+          "source": "hn-algolia",
+          "title": "New in Llama.cpp: Decision Models",
+          "at": "2026-10-03T07:27:06Z"
+        },
+        "b": {
+          "id": "gnews:5a90bce828ddd863",
+          "source": "gnews-rss",
+          "title": "Decision AI Models Explained: TypeSafe Jev vs Fastino GLiDE, GLiNER2.5-Decide and Open-Source Competitors - MarkTechPost",
+          "at": "2026-10-03T03:31:15Z"
+        },
+        "shared": [
+          "decision",
+          "model"
+        ]
+      },
+      {
+        "score": 0.326,
+        "blocked": "thin-overlap",
+        "hours_apart": 45.5,
+        "a": {
+          "id": "rss:deepmind:ce56aa83d0064ef1",
+          "source": "rss-lab",
+          "title": "Gemini 4 Argon: our next era of frontier intelligence",
+          "at": "2026-09-30T20:01:45Z"
+        },
+        "b": {
+          "id": "gnews:a8aad6026204b3f8",
+          "source": "gnews-rss",
+          "title": "Google Launches Gemini 4 Argon, Challenging GPT-6 Astra With 1 Million Token Output Window - Brave New Coin",
+          "at": "2026-10-02T17:31:45Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon"
+        ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.673,
-        "blocked": "time-window",
-        "hours_apart": 46.7,
-        "a": {
-          "id": "rss:deepmind:c696e8b1f3422473",
-          "source": "rss-lab",
-          "title": "Introducing SynthID Bio",
-          "at": "2026-09-30T15:03:07Z"
-        },
-        "b": {
-          "id": "gnews:b43a35937918727b",
-          "source": "gnews-rss",
-          "title": "Google tests AI watermarks for proteins with SynthID Bio - The Rundown AI",
-          "at": "2026-10-02T13:44:26Z"
-        },
-        "shared": [
-          "synthid",
-          "bio"
-        ]
-      },
-      {
-        "score": 0.618,
+        "score": 0.62,
         "blocked": "time-window",
         "hours_apart": 50.2,
         "a": {
@@ -512,7 +471,7 @@
         ]
       },
       {
-        "score": 0.611,
+        "score": 0.612,
         "blocked": "thin-overlap",
         "hours_apart": 83.9,
         "a": {
@@ -534,7 +493,7 @@
         ]
       },
       {
-        "score": 0.554,
+        "score": 0.553,
         "blocked": "time-window",
         "hours_apart": 67.5,
         "a": {
@@ -554,7 +513,7 @@
         ]
       },
       {
-        "score": 0.485,
+        "score": 0.501,
         "blocked": "below-threshold",
         "hours_apart": 22.1,
         "a": {
@@ -577,76 +536,87 @@
         ]
       },
       {
-        "score": 0.444,
-        "blocked": "below-threshold",
-        "hours_apart": 17.9,
+        "score": 0.379,
+        "blocked": "thin-overlap",
+        "hours_apart": 736.9,
         "a": {
-          "id": "hn:49928099",
+          "id": "hn:49942592",
           "source": "hn-algolia",
-          "title": "California issues investigative subpoena to OpenAI over rogue agents' hacking",
-          "at": "2026-10-01T23:07:08Z"
+          "title": "Gemini ending free use of Flash and Pro models",
+          "at": "2026-10-03T09:13:19Z"
         },
         "b": {
-          "id": "gnews:23eb7f7ea5d92bf9",
-          "source": "gnews-rss",
-          "title": "California AG Subpoenas OpenAI in Investigation of 'Hugging Face' Hack - Law.com",
-          "at": "2026-10-02T17:00:11Z"
-        },
-        "shared": [
-          "california",
-          "subpoena",
-          "openai",
-          "hack"
-        ]
-      },
-      {
-        "score": 0.433,
-        "blocked": "below-threshold",
-        "hours_apart": 4.8,
-        "a": {
-          "id": "hn:49933234",
-          "source": "hn-algolia",
-          "title": "Nvidia DGX Spark 64GB Gives Developers More Ways to Build and Scale Local AI",
-          "at": "2026-10-02T13:18:28Z"
-        },
-        "b": {
-          "id": "gnews:4b22bc01b5f24686",
-          "source": "gnews-rss",
-          "title": "NVIDIA Announces DGX Spark 64GB: A 1-PetaFLOP Grace Blackwell Desktop for Local AI Agents, Fine-Tuning, and Inference - MarkTechPost",
-          "at": "2026-10-02T18:04:56Z"
-        },
-        "shared": [
-          "nvidia",
-          "dgx",
-          "spark",
-          "64gb",
-          "local",
-          "ai"
-        ]
-      },
-      {
-        "score": 0.433,
-        "blocked": "below-threshold",
-        "hours_apart": 5.1,
-        "a": {
-          "id": "rss:nvidia:60ea0cfc7bea518f",
+          "id": "rss:deepmind:63b19b50b4021cb5",
           "source": "rss-lab",
-          "title": "NVIDIA DGX Spark 64GB Gives Developers More Ways to Build and Scale Local AI",
-          "at": "2026-10-02T13:00:39Z"
-        },
-        "b": {
-          "id": "gnews:4b22bc01b5f24686",
-          "source": "gnews-rss",
-          "title": "NVIDIA Announces DGX Spark 64GB: A 1-PetaFLOP Grace Blackwell Desktop for Local AI Agents, Fine-Tuning, and Inference - MarkTechPost",
-          "at": "2026-10-02T18:04:56Z"
+          "title": "Introducing Gemini 3.8 Flash and 3.8 Flash Cyber",
+          "at": "2026-09-02T16:18:31Z"
         },
         "shared": [
-          "nvidia",
-          "dgx",
-          "spark",
-          "64gb",
-          "local",
-          "ai"
+          "gemini",
+          "flash"
+        ]
+      },
+      {
+        "score": 0.348,
+        "blocked": "below-threshold",
+        "hours_apart": 5.2,
+        "a": {
+          "id": "hn:49934323",
+          "source": "hn-algolia",
+          "title": "New in Llama.cpp: Decision Models",
+          "at": "2026-10-02T15:06:13Z"
+        },
+        "b": {
+          "id": "gnews:778e4997c9e5e1cd",
+          "source": "gnews-rss",
+          "title": "AWS Releases Decision Model for AI Agents That Routes Without Generating Any Text - Tech Times",
+          "at": "2026-10-02T20:20:04Z"
+        },
+        "shared": [
+          "decision",
+          "model"
+        ]
+      },
+      {
+        "score": 0.348,
+        "blocked": "below-threshold",
+        "hours_apart": 11.1,
+        "a": {
+          "id": "hn:49942092",
+          "source": "hn-algolia",
+          "title": "New in Llama.cpp: Decision Models",
+          "at": "2026-10-03T07:27:06Z"
+        },
+        "b": {
+          "id": "gnews:778e4997c9e5e1cd",
+          "source": "gnews-rss",
+          "title": "AWS Releases Decision Model for AI Agents That Routes Without Generating Any Text - Tech Times",
+          "at": "2026-10-02T20:20:04Z"
+        },
+        "shared": [
+          "decision",
+          "model"
+        ]
+      },
+      {
+        "score": 0.339,
+        "blocked": "below-threshold",
+        "hours_apart": 12.4,
+        "a": {
+          "id": "hn:49934323",
+          "source": "hn-algolia",
+          "title": "New in Llama.cpp: Decision Models",
+          "at": "2026-10-02T15:06:13Z"
+        },
+        "b": {
+          "id": "gnews:5a90bce828ddd863",
+          "source": "gnews-rss",
+          "title": "Decision AI Models Explained: TypeSafe Jev vs Fastino GLiDE, GLiNER2.5-Decide and Open-Source Competitors - MarkTechPost",
+          "at": "2026-10-03T03:31:15Z"
+        },
+        "shared": [
+          "decision",
+          "model"
         ]
       }
     ]
@@ -654,45 +624,45 @@
   "source_health": [
     {
       "id": "arxiv",
-      "state": "fail",
-      "streak_ok": 0,
-      "streak_fail": 2,
-      "items_last": 27
+      "state": "flaky",
+      "streak_ok": 1,
+      "streak_fail": 0,
+      "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 66,
+      "streak_ok": 67,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 66,
+      "streak_ok": 67,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 66,
+      "streak_ok": 67,
       "streak_fail": 0,
-      "items_last": 30
+      "items_last": 28
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 66,
+      "streak_ok": 67,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 66,
+      "streak_ok": 67,
       "streak_fail": 0,
-      "items_last": 59
+      "items_last": 58
     },
     {
       "id": "openalex",
@@ -704,27 +674,27 @@
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 66,
+      "streak_ok": 67,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 66,
+      "streak_ok": 67,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 66,
+      "streak_ok": 67,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.005886388888888889,
+    "hours": 0.005253611111111111,
     "stale": false
   },
   "hf": {
@@ -733,10 +703,10 @@
     "url": "https://huggingface.co/api/daily_papers"
   },
   "arxiv": {
-    "ok": false,
-    "enriched": 22,
+    "ok": true,
+    "enriched": 24,
     "shelf": 5,
-    "timed_out": true,
+    "timed_out": false,
     "budget_ms": 20000,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
@@ -793,7 +763,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 59,
+    "count": 58,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -810,26 +780,26 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 19,
+    "ai_dropped": 21,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
+        "id": "hn:49936575",
+        "tag": "rest",
+        "score": 257,
+        "text": "From the creator of Redis; run LLM locally with ds4"
+      },
+      {
         "id": "hn:49921118",
         "tag": "rest",
-        "score": 253,
+        "score": 254,
         "text": "Meta Uses A.I. Data Centers to Avoid Billions in Federal Taxes"
       },
       {
         "id": "hn:49929391",
         "tag": "rest",
-        "score": 224,
+        "score": 246,
         "text": "Greg Kroah-Hartman – Security in the LLM Age [video]"
-      },
-      {
-        "id": "hn:49936575",
-        "tag": "rest",
-        "score": 212,
-        "text": "From the creator of Redis; run LLM locally with ds4"
       }
     ]
   },
@@ -845,47 +815,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "(cache:openai)",
+        "url": "https://openai.com/news/rss.xml",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "(cache:deepmind)",
+        "url": "https://deepmind.google/blog/rss.xml",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "(cache:google-ai)",
+        "url": "https://blog.google/technology/ai/rss/",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "(cache:huggingface)",
+        "url": "https://huggingface.co/blog/feed.xml",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "(cache:mistral)",
+        "url": "https://mistral.ai/rss.xml",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "(cache:nvidia)",
+        "url": "https://blogs.nvidia.com/feed/",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "(cache:nvidia-dev)",
+        "url": "https://developer.nvidia.com/blog/feed",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "(cache:ms-research)",
+        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "(cache:google-research)",
+        "url": "https://research.google/blog/rss/",
         "count": 12
       }
     ],
@@ -931,17 +901,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "(cache:trailofbits)",
+        "url": "https://blog.trailofbits.com/feed/",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "(cache:fox-it)",
+        "url": "https://blog.fox-it.com/feed/",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "(cache:projectzero)",
+        "url": "https://projectzero.google/feed.xml",
         "count": 5
       }
     ],
@@ -982,9 +952,17 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 30,
-    "pool": 228,
+    "items": 28,
+    "pool": 232,
     "corroborators": [
+      {
+        "id": "gnews:24b62ecd2c7cc959",
+        "anchor_id": "rss:google-ai:6a7bb4e3e69d69f5",
+        "score": 1,
+        "title": "The latest AI news we announced in September 2026 - blog.google",
+        "publisher": "blog.google",
+        "self_repost": true
+      },
       {
         "id": "gnews:fce71ec5a872014a",
         "anchor_id": "rss:google-research:a47750453f6e4504",
@@ -996,24 +974,16 @@
       {
         "id": "gnews:727fe17491b140b0",
         "anchor_id": "hn:49925606",
-        "score": 0.695,
+        "score": 0.682,
         "title": "Judge dismisses Chegg and Penske antitrust lawsuits targeting Google AI search - Ars Technica",
         "publisher": "Ars Technica",
         "self_repost": false
-      },
-      {
-        "id": "gnews:05cfd65803121a1e",
-        "anchor_id": "rss:deepmind:ce56aa83d0064ef1",
-        "score": 1,
-        "title": "Gemini 4 Argon: our next era of frontier intelligence - blog.google",
-        "publisher": "blog.google",
-        "self_repost": true
       }
     ],
     "http_status": 200,
-    "content_type": null,
+    "content_type": "application/xml; charset=utf-8",
     "format": "rss2",
-    "from_cache": true,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1036,24 +1006,24 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:a91f38ffe919614e",
-        "title": "Google DeepMind develops watermark for AI generated proteins - dqindia.com",
-        "publisher": "dqindia.com",
-        "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPblR6djF4NEd6STJEZGNQTU9pSWhnRFlMd3Z1U0ZRUHNoM2tlU1lDbkk3c083dDhEX0RCaUZ2dmhMQVBtQ28xVVdpcUhhSGdZTmZBYnBDdlpWMTZ2SUpuTmpNRjNveUZMa1plR2c3bEtJRG1tZWJqdG85dUhWVmZ6bHpYZVlKT2pKVjkyYnl4Yk5NV0g2ZkpsNkJrVUR1dFhFbWdLTnd4blDSAagBQVVfeXFMT25UenYxeDRHekkyRGRjUE1PaUloZ0RZTHd2dVNGUVBzaDNrZVNZQ25JN3NPN3Q4RF9EQmlGdnZoTEFQbUNvMVVXaXFIYUhnWU5mQWJwQ3ZaVjE2dklKbk5qTUYzb3lGTGtaZUdnN2xLSURtbWVianRvOXVIVlZmemx6WGVZSk9qSlY5MmJ5eGJOTVdINmZKbDZCa1VEdXRYRW1nS053eG5Q?oc=5",
+        "id": "gnews:706e97c84d98f0cc",
+        "title": "Deepmind researchers propose \"Artificial Symbiotic Intelligence\" as an alternative to the singularity - the-decoder.com",
+        "publisher": "the-decoder.com",
+        "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPZEdIcnpHVnFXbFVvZUhseG1Ja3lRX2JsaHltdm01SFYtRXd1WmxOZnY4dFJjSlYwWFpwei1zQlJlelJ3MEhhTklURlhxU0R5THZjN3NNdE5LWGFkcFg1YWJEeU4yeFZTQXduSncwWUstdXFnSUNCckozeHY3WUx4azhyOHkyV2wwU19SR0FtNGFoQ2l5Z2tWeVZha1RkSGRJZ09MZW1DNUFBNXJDY0FBUEpsa1BheERodHdjdEQxSEdCZw?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:4437551d6846b386",
-        "title": "Developing Capable Models Responsibly - Meta AI",
-        "publisher": "Meta AI",
-        "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9ZelkzalFpSm8yY2gtOVh1eVBTNUNLOUNiT1RJcjlhOGdReVFVZ0VuZ2daMFBLRFNfRmcxaEg0Q291SkNpc2xXZHMza2FYMENnT2U3WkZMWjd6ZXl5SVBjUVV2bjRpN3dPVkVyM2dKWERHd0MyYnc?oc=5",
+        "id": "gnews:377af58638a8eaa2",
+        "title": "OpenAI reveals new detail on Australia Medicare hack probe - The News International",
+        "publisher": "The News International",
+        "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxONW5qZ082SWQzeHNJa0xQZXBDWHA3TUgtQ2szYkhfODgxR0dSMEljc3A3UUVNY2E3QUlqRkRDYWtfZlM3V2NWcmFDVTdGLVhUWE5tc2dGdTV4UUJXU0l4NjRIVWlzS3YyWkRrMFkyZFYxTzBSb2t4V1ZjV084eUhheV96aHJvbW9ISkJaZWVoQnZMbFBEaDlWNFIyN1E0TDdsZHfSAZ4BQVVfeXFMUFgwUFZCYTZvR0JoMkluWHRRd0xXcE9zUmx4c2JkZHAyRlFOYW1HLWJOODdzUUxoOWhIUTRIdWdmOTIyeVlRZ3J6bEJWUWZPeWU0VTQ0QUVKN0Nwa19VY3FsWWIxcjZhMDNnb3JVR2dlQ0Rwd0pEZVRkY25BSG0zcDh3dzRFUXdxYk1YR01RSU1qTHFtSlRSZVRXZ3BERnc?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:30a94e0630715576",
-        "title": "Whose frontier? AI, the OpenAI breakout and China’s open weights - Struggle-La Lucha",
-        "publisher": "Struggle-La Lucha",
-        "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPS1lEeFcxR19aLWNzMVc3ZzJhQTBfRlg4YmdzeUJSc1V6YzZWRlZGY3RYU3dTT2ZmUjdyd3lXSkRINlFuX1J3QUwzNFFVT2szT1dIajNWTzdFUUM5QV9td19GcmdQZllmV3lybGZsUkJsUzk4MktfbHVqSWZ4ODk4cWNUVXpOcVJBXzJaYUpVbnFoM2VlVGVFNk9ETXY5QXBhcE1GdTVGUjhwU1k?oc=5",
+        "id": "gnews:379e1dd6e2f150fd",
+        "title": "ChatGPT and Other AI Tools Are Changing How We Learn. A Massive New Study Calls It ‘Knowledge Collapse’ - inc.com",
+        "publisher": "inc.com",
+        "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxOR3lOYWNvV0VpMTl1T3JiTUV5eDBHWmhtQ09lcFlPN2ZZWHMyTXQzUU01ZU53YzZGQ0pWclN4VkVwb0h2dm9uUVNJVklHTzJCSmtEd3diRVRPYVQ3UkdJWFJCQV8zbl9qX0VfY2I1bnhyRVNNdlZfN1dKaVNrNk90S0NIdVpKZEVRbU45WFlTa29TYlpLNUltREdST1dpRG0tdnBHRjZOd0pZUU1jWl9CbXczbnU3WlEwQkl4N1BkTkRtbWJvTDNXWlhlbHFGT3NIVGFsZWwzcTJoTjl0?oc=5",
         "tag": "rest"
       }
     ]
@@ -1099,8 +1069,8 @@
       "OWASP",
       "NIST"
     ],
-    "searches": 1,
-    "from_cache": false,
+    "searches": 0,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "deny_grounding_only": true,
