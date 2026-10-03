@@ -23,7 +23,5 @@ export const SHELF: ShelfItem[] = [
   { href: "https://arxiv.org/abs/2610.02204", label: "arxiv.org/abs/2610.02204", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.02203", label: "arxiv.org/abs/2610.02203", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.02202", label: "arxiv.org/abs/2610.02202", reason: "arxiv-shelf" as const },
-  { href: "https://github.com/juanestebanj/tool-using-agent-evals", label: "juanestebanj/tool-using-agent-evals", reason: "github-search-shelf" as const },
-  { href: "https://github.com/gpatwa/multi-agent-eval", label: "gpatwa/multi-agent-eval", reason: "github-search-shelf" as const },
-  { href: "https://github.com/krishankant/harnessy", label: "krishankant/harnessy", reason: "github-search-shelf" as const },
+  { href: "https://github.com/api-evangelist/agentcheck-care", label: "api-evangelist/agentcheck-care", reason: "github-search-shelf" as const },
 ];

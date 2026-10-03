@@ -2,32 +2,32 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-02T23:12:42Z",
+  "stamped_at": "2026-10-03T03:17:23Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 224,
+      "duration_ms": 218,
       "paused_until": null,
       "reason": null
     },
     {
       "id": "arxiv",
       "label": "arXiv",
-      "status": "ok",
-      "rows": 29,
-      "duration_ms": 3720,
+      "status": "timeout",
+      "rows": 28,
+      "duration_ms": 20001,
       "paused_until": null,
-      "reason": null
+      "reason": "timeout after 20000ms budget · last good: 23 cached enrich + 5 kept shelf"
     },
     {
       "id": "openalex",
       "label": "OpenAlex",
       "status": "paused",
       "rows": 0,
-      "duration_ms": 2,
+      "duration_ms": 1,
       "paused_until": "2026-10-03T19:13:47Z",
       "reason": "paused_until 2026-10-03T19:13:47Z"
     },
@@ -36,7 +36,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 3,
+      "duration_ms": 1,
       "paused_until": null,
       "reason": null
     },
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 68,
-      "duration_ms": 8516,
+      "rows": 59,
+      "duration_ms": 8296,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 220,
+      "duration_ms": 18194,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 220,
+      "duration_ms": 4349,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 29,
-      "duration_ms": 221,
+      "rows": 30,
+      "duration_ms": 6365,
       "paused_until": null,
       "reason": null
     },
@@ -80,8 +80,8 @@
       "id": "github",
       "label": "GitHub",
       "status": "ok",
-      "rows": 3,
-      "duration_ms": 220,
+      "rows": 1,
+      "duration_ms": 308,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 220,
+      "duration_ms": 2423,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 13566,
-    "sources_wall_ms": 8518,
-    "papers_lane_ms": 3953,
-    "slowest_source_ms": 8516,
+    "sources_ms": 60156,
+    "sources_wall_ms": 20232,
+    "papers_lane_ms": 20230,
+    "slowest_source_ms": 20001,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -113,10 +113,12 @@
       "github": 25000,
       "wikidata": 25000
     },
-    "timed_out": [],
-    "wall_ms": 8926,
-    "startup_ms": 49,
-    "main_ms": 8940
+    "timed_out": [
+      "arxiv"
+    ],
+    "wall_ms": 20480,
+    "startup_ms": 31,
+    "main_ms": 20489
   },
   "multi_source_independent": 1,
   "stale_hours": 6,
@@ -125,20 +127,20 @@
     "multi_source_independent": 1,
     "multi_source_raw": 4,
     "self_reposts": 3,
-    "items_in": 228,
-    "clusters_out": 217,
-    "collapsed": 11,
+    "items_in": 220,
+    "clusters_out": 211,
+    "collapsed": 9,
     "multi_source": 1,
     "multi_member": 8,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 6,
+    "new_items": 25,
     "per_source": {
-      "hn-algolia": 68,
+      "hn-algolia": 59,
       "rss-lab": 104,
       "rss-security": 27,
-      "gnews-rss": 29
+      "gnews-rss": 30
     },
     "multi_source_clusters": [
       {
@@ -148,7 +150,7 @@
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.684,
+        "score": 0.677,
         "members": [
           {
             "id": "hn:49925606",
@@ -197,8 +199,8 @@
         "self_reposts": [
           {
             "id": "gnews:fce71ec5a872014a",
-            "publisher": "research.google",
-            "title": "Toward provably private learning from federated data - research.google"
+            "publisher": "Google Research",
+            "title": "Toward provably private learning from federated data - Google Research"
           }
         ]
       },
@@ -213,7 +215,7 @@
         ],
         "self_reposts": [
           {
-            "id": "gnews:9f3f8a66cbed86b0",
+            "id": "gnews:05cfd65803121a1e",
             "publisher": "blog.google",
             "title": "Gemini 4 Argon: our next era of frontier intelligence - blog.google"
           }
@@ -235,79 +237,164 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "Tech Times",
-          "title": "Ai2 Releases OlmoCore 3: Open MoE Training Stack Delivers 2.7x Throughput Gain - Tech Times"
+          "publisher": "FourWeekMBA",
+          "title": "Google Research Cogentic Reports Five Open Math Results - FourWeekMBA"
         },
         {
-          "publisher": "research.google",
-          "title": "Toward provably private learning from federated data - research.google"
+          "publisher": "MediaPost",
+          "title": "Google Defeats Search Users' Antitrust Suit 10/02/2026 - MediaPost"
         },
         {
-          "publisher": "Search Engine Roundtable",
-          "title": "Google Ads Sponsored Products Results Missing Images - Search Engine Roundtable"
+          "publisher": "Dealroom",
+          "title": "Google launches first Project Suncatcher satellite to test TPUs in orbit - Dealroom"
         },
         {
-          "publisher": "GeekWire",
-          "title": "Longtime Microsoft research leader Peter Lee and former LinkedIn CEO Ryan Roslansky to depart - GeekWire"
+          "publisher": "MediaPost",
+          "title": "Google Testing Video In Search Tied To Maps 04/21/2026 - MediaPost"
         },
         {
-          "publisher": "EdTech Innovation Hub",
-          "title": "Microsoft Science president Peter Lee to retire after 16 years for ‘once-in-a-lifetime’ next move - EdTech Innovation Hub"
-        },
-        {
-          "publisher": "theinformation.com",
-          "title": "Microsoft Science President Peter Lee to Step Down - theinformation.com"
+          "publisher": "Google Research",
+          "title": "Toward provably private learning from federated data - Google Research"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 28
+      "hn_dropped": 19
     },
     "gnews_near_misses": [
       {
-        "score": 0.562,
+        "score": 0.673,
         "blocked": "time-window",
-        "hours_apart": 90.4,
+        "hours_apart": 46.7,
         "a": {
-          "id": "rss:openai:dec620cb7225d243",
+          "id": "rss:deepmind:c696e8b1f3422473",
           "source": "rss-lab",
-          "title": "Introducing dots",
-          "at": "2026-09-29T00:00:00Z"
+          "title": "Introducing SynthID Bio",
+          "at": "2026-09-30T15:03:07Z"
         },
         "b": {
-          "id": "gnews:4c5cad5a6acb15f8",
+          "id": "gnews:b43a35937918727b",
           "source": "gnews-rss",
-          "title": "OpenAI Introduces Dot, the AI Agent Assisting with Business Tasks and Online Orders - nacionale.com",
-          "at": "2026-10-02T18:23:45Z"
+          "title": "Google tests AI watermarks for proteins with SynthID Bio - The Rundown AI",
+          "at": "2026-10-02T13:44:26Z"
         },
         "shared": [
-          "dot"
+          "synthid",
+          "bio"
         ]
       },
       {
-        "score": 0.44,
-        "blocked": "below-threshold",
-        "hours_apart": 4,
+        "score": 0.618,
+        "blocked": "time-window",
+        "hours_apart": 50.2,
         "a": {
-          "id": "hn:49916067",
-          "source": "hn-algolia",
-          "title": "Gemini 4 Argon: Google is back among the top three labs in intelligence achieved",
-          "at": "2026-10-01T00:07:07Z"
+          "id": "rss:deepmind:c696e8b1f3422473",
+          "source": "rss-lab",
+          "title": "Introducing SynthID Bio",
+          "at": "2026-09-30T15:03:07Z"
         },
         "b": {
-          "id": "gnews:9f3f8a66cbed86b0",
+          "id": "gnews:2726cacf79a0a183",
           "source": "gnews-rss",
-          "title": "Gemini 4 Argon: our next era of frontier intelligence - blog.google",
-          "at": "2026-09-30T20:06:23Z"
+          "title": "SynthID Bio Watermarks AI-Designed Proteins Without Breaking Their Function - Tech Times",
+          "at": "2026-10-02T17:16:12Z"
         },
         "shared": [
-          "gemini",
-          "4",
-          "argon",
-          "intelligenc"
+          "synthid",
+          "bio"
         ]
       },
       {
-        "score": 0.433,
+        "score": 0.611,
+        "blocked": "thin-overlap",
+        "hours_apart": 83.9,
+        "a": {
+          "id": "rss:openai:d6b9f5e651b1891e",
+          "source": "rss-lab",
+          "title": "Introducing GPT-6.1 Sol",
+          "at": "2026-09-29T10:00:00Z"
+        },
+        "b": {
+          "id": "gnews:f33b8adebf5d2774",
+          "source": "gnews-rss",
+          "title": "Gemini 4 Argon vs Claude Opus 5.5 vs GPT-6.1 Sol: 12-Pt Gap [2026] - tech-insider.org",
+          "at": "2026-10-02T21:51:32Z"
+        },
+        "shared": [
+          "gpt",
+          "6.1",
+          "sol"
+        ]
+      },
+      {
+        "score": 0.482,
+        "blocked": "below-threshold",
+        "hours_apart": 22.1,
+        "a": {
+          "id": "hn:49928099",
+          "source": "hn-algolia",
+          "title": "California issues investigative subpoena to OpenAI over rogue agents' hacking",
+          "at": "2026-10-01T23:07:08Z"
+        },
+        "b": {
+          "id": "gnews:2241b6b881d0a689",
+          "source": "gnews-rss",
+          "title": "California Subpoenas OpenAI Over AI Models That Hacked Their Way Out of a Test - Decrypt News",
+          "at": "2026-10-02T21:16:04Z"
+        },
+        "shared": [
+          "california",
+          "subpoena",
+          "openai",
+          "hack"
+        ]
+      },
+      {
+        "score": 0.475,
+        "blocked": "time-window",
+        "hours_apart": 35.5,
+        "a": {
+          "id": "hn:49918131",
+          "source": "hn-algolia",
+          "title": "FTC opens probe of Anthropic, OpenAI",
+          "at": "2026-10-01T05:42:45Z"
+        },
+        "b": {
+          "id": "gnews:0ff0f9f2619fbb7e",
+          "source": "gnews-rss",
+          "title": "OpenAI Rogue AI Agents Hacked Hugging Face; FTC Probes Labs and Safety Auditor METR - Tech Times",
+          "at": "2026-10-02T17:13:48Z"
+        },
+        "shared": [
+          "ftc",
+          "prob",
+          "openai"
+        ]
+      },
+      {
+        "score": 0.444,
+        "blocked": "below-threshold",
+        "hours_apart": 17.9,
+        "a": {
+          "id": "hn:49928099",
+          "source": "hn-algolia",
+          "title": "California issues investigative subpoena to OpenAI over rogue agents' hacking",
+          "at": "2026-10-01T23:07:08Z"
+        },
+        "b": {
+          "id": "gnews:23eb7f7ea5d92bf9",
+          "source": "gnews-rss",
+          "title": "California AG Subpoenas OpenAI in Investigation of 'Hugging Face' Hack - Law.com",
+          "at": "2026-10-02T17:00:11Z"
+        },
+        "shared": [
+          "california",
+          "subpoena",
+          "openai",
+          "hack"
+        ]
+      },
+      {
+        "score": 0.435,
         "blocked": "below-threshold",
         "hours_apart": 5.1,
         "a": {
@@ -332,136 +419,94 @@
         ]
       },
       {
-        "score": 0.365,
+        "score": 0.345,
         "blocked": "below-threshold",
-        "hours_apart": 0.3,
+        "hours_apart": 5.2,
         "a": {
-          "id": "rss:huggingface:e81b1dea7ce0fb42",
-          "source": "rss-lab",
-          "title": "Open-sourcing AstaBrief, the fast report-generation model in Asta",
-          "at": "2026-10-02T15:19:50Z"
-        },
-        "b": {
-          "id": "gnews:0355f2b6482ba12b",
-          "source": "gnews-rss",
-          "title": "Ai2 Open-Sources AstaBrief 8B for Fast Scientific Report Generation - Unite.AI",
-          "at": "2026-10-02T15:38:01Z"
-        },
-        "shared": [
-          "astabrief",
-          "fast",
-          "generation"
-        ]
-      },
-      {
-        "score": 0.352,
-        "blocked": "thin-overlap",
-        "hours_apart": 40.4,
-        "a": {
-          "id": "rss:deepmind:ce56aa83d0064ef1",
-          "source": "rss-lab",
-          "title": "Gemini 4 Argon: our next era of frontier intelligence",
-          "at": "2026-09-30T20:01:45Z"
-        },
-        "b": {
-          "id": "gnews:5d85830b5bbd801d",
-          "source": "gnews-rss",
-          "title": "GPT-6 Astra vs Gemini 4 Argon vs DeepSeek: 13x Gap [2026] - tech-insider.org",
-          "at": "2026-10-02T12:27:32Z"
-        },
-        "shared": [
-          "gemini",
-          "4",
-          "argon"
-        ]
-      },
-      {
-        "score": 0.262,
-        "blocked": "thin-overlap",
-        "hours_apart": 12.3,
-        "a": {
-          "id": "hn:49930421",
+          "id": "hn:49934323",
           "source": "hn-algolia",
-          "title": "Is Claude Conscious?",
-          "at": "2026-10-02T06:29:35Z"
+          "title": "New in Llama.cpp: Decision Models",
+          "at": "2026-10-02T15:06:13Z"
         },
         "b": {
-          "id": "gnews:ecdd7a13d228482f",
+          "id": "gnews:778e4997c9e5e1cd",
           "source": "gnews-rss",
-          "title": "Commvault looking after Claude agent configs - Blocks & Files",
-          "at": "2026-10-02T18:45:23Z"
+          "title": "AWS Releases Decision Model for AI Agents That Routes Without Generating Any Text - Tech Times",
+          "at": "2026-10-02T20:20:04Z"
         },
         "shared": [
-          "claude"
-        ]
-      },
-      {
-        "score": 0.257,
-        "blocked": "thin-overlap",
-        "hours_apart": 12.7,
-        "a": {
-          "id": "rss:nvidia:6e9bdaa4a319db62",
-          "source": "rss-lab",
-          "title": "How NVIDIA GPUs Help Accelerate OpenAI’s GPT-6 Astra Ultrafast",
-          "at": "2026-10-01T23:44:13Z"
-        },
-        "b": {
-          "id": "gnews:5d85830b5bbd801d",
-          "source": "gnews-rss",
-          "title": "GPT-6 Astra vs Gemini 4 Argon vs DeepSeek: 13x Gap [2026] - tech-insider.org",
-          "at": "2026-10-02T12:27:32Z"
-        },
-        "shared": [
-          "gpt",
-          "6",
-          "astra"
-        ]
-      },
-      {
-        "score": 0.253,
-        "blocked": "time-window",
-        "hours_apart": 15850.9,
-        "a": {
-          "id": "rss-sec:fox-it:3c6aa320553da032",
-          "source": "rss-security",
-          "title": "Decrypting Full Disk Encryption with Dissect",
-          "at": "2024-12-11T07:30:00Z"
-        },
-        "b": {
-          "id": "gnews:7222fc23b8f744b6",
-          "source": "gnews-rss",
-          "title": "Apple to Tighten macOS Full Disk Access, Citing AI Agent Risks - Unite.AI",
-          "at": "2026-10-02T18:26:01Z"
-        },
-        "shared": [
-          "full",
-          "disk"
+          "decision",
+          "model"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.562,
+        "score": 0.673,
         "blocked": "time-window",
-        "hours_apart": 90.4,
+        "hours_apart": 46.7,
         "a": {
-          "id": "rss:openai:dec620cb7225d243",
+          "id": "rss:deepmind:c696e8b1f3422473",
           "source": "rss-lab",
-          "title": "Introducing dots",
-          "at": "2026-09-29T00:00:00Z"
+          "title": "Introducing SynthID Bio",
+          "at": "2026-09-30T15:03:07Z"
         },
         "b": {
-          "id": "gnews:4c5cad5a6acb15f8",
+          "id": "gnews:b43a35937918727b",
           "source": "gnews-rss",
-          "title": "OpenAI Introduces Dot, the AI Agent Assisting with Business Tasks and Online Orders - nacionale.com",
-          "at": "2026-10-02T18:23:45Z"
+          "title": "Google tests AI watermarks for proteins with SynthID Bio - The Rundown AI",
+          "at": "2026-10-02T13:44:26Z"
         },
         "shared": [
-          "dot"
+          "synthid",
+          "bio"
         ]
       },
       {
-        "score": 0.55,
+        "score": 0.618,
+        "blocked": "time-window",
+        "hours_apart": 50.2,
+        "a": {
+          "id": "rss:deepmind:c696e8b1f3422473",
+          "source": "rss-lab",
+          "title": "Introducing SynthID Bio",
+          "at": "2026-09-30T15:03:07Z"
+        },
+        "b": {
+          "id": "gnews:2726cacf79a0a183",
+          "source": "gnews-rss",
+          "title": "SynthID Bio Watermarks AI-Designed Proteins Without Breaking Their Function - Tech Times",
+          "at": "2026-10-02T17:16:12Z"
+        },
+        "shared": [
+          "synthid",
+          "bio"
+        ]
+      },
+      {
+        "score": 0.611,
+        "blocked": "thin-overlap",
+        "hours_apart": 83.9,
+        "a": {
+          "id": "rss:openai:d6b9f5e651b1891e",
+          "source": "rss-lab",
+          "title": "Introducing GPT-6.1 Sol",
+          "at": "2026-09-29T10:00:00Z"
+        },
+        "b": {
+          "id": "gnews:f33b8adebf5d2774",
+          "source": "gnews-rss",
+          "title": "Gemini 4 Argon vs Claude Opus 5.5 vs GPT-6.1 Sol: 12-Pt Gap [2026] - tech-insider.org",
+          "at": "2026-10-02T21:51:32Z"
+        },
+        "shared": [
+          "gpt",
+          "6.1",
+          "sol"
+        ]
+      },
+      {
+        "score": 0.554,
         "blocked": "time-window",
         "hours_apart": 67.5,
         "a": {
@@ -481,53 +526,75 @@
         ]
       },
       {
-        "score": 0.44,
+        "score": 0.482,
         "blocked": "below-threshold",
-        "hours_apart": 4.1,
+        "hours_apart": 22.1,
         "a": {
-          "id": "hn:49916067",
+          "id": "hn:49928099",
           "source": "hn-algolia",
-          "title": "Gemini 4 Argon: Google is back among the top three labs in intelligence achieved",
-          "at": "2026-10-01T00:07:07Z"
+          "title": "California issues investigative subpoena to OpenAI over rogue agents' hacking",
+          "at": "2026-10-01T23:07:08Z"
         },
         "b": {
-          "id": "rss:deepmind:ce56aa83d0064ef1",
-          "source": "rss-lab",
-          "title": "Gemini 4 Argon: our next era of frontier intelligence",
-          "at": "2026-09-30T20:01:45Z"
-        },
-        "shared": [
-          "gemini",
-          "4",
-          "argon",
-          "intelligenc"
-        ]
-      },
-      {
-        "score": 0.44,
-        "blocked": "below-threshold",
-        "hours_apart": 4,
-        "a": {
-          "id": "hn:49916067",
-          "source": "hn-algolia",
-          "title": "Gemini 4 Argon: Google is back among the top three labs in intelligence achieved",
-          "at": "2026-10-01T00:07:07Z"
-        },
-        "b": {
-          "id": "gnews:9f3f8a66cbed86b0",
+          "id": "gnews:2241b6b881d0a689",
           "source": "gnews-rss",
-          "title": "Gemini 4 Argon: our next era of frontier intelligence - blog.google",
-          "at": "2026-09-30T20:06:23Z"
+          "title": "California Subpoenas OpenAI Over AI Models That Hacked Their Way Out of a Test - Decrypt News",
+          "at": "2026-10-02T21:16:04Z"
         },
         "shared": [
-          "gemini",
-          "4",
-          "argon",
-          "intelligenc"
+          "california",
+          "subpoena",
+          "openai",
+          "hack"
         ]
       },
       {
-        "score": 0.433,
+        "score": 0.475,
+        "blocked": "time-window",
+        "hours_apart": 35.5,
+        "a": {
+          "id": "hn:49918131",
+          "source": "hn-algolia",
+          "title": "FTC opens probe of Anthropic, OpenAI",
+          "at": "2026-10-01T05:42:45Z"
+        },
+        "b": {
+          "id": "gnews:0ff0f9f2619fbb7e",
+          "source": "gnews-rss",
+          "title": "OpenAI Rogue AI Agents Hacked Hugging Face; FTC Probes Labs and Safety Auditor METR - Tech Times",
+          "at": "2026-10-02T17:13:48Z"
+        },
+        "shared": [
+          "ftc",
+          "prob",
+          "openai"
+        ]
+      },
+      {
+        "score": 0.444,
+        "blocked": "below-threshold",
+        "hours_apart": 17.9,
+        "a": {
+          "id": "hn:49928099",
+          "source": "hn-algolia",
+          "title": "California issues investigative subpoena to OpenAI over rogue agents' hacking",
+          "at": "2026-10-01T23:07:08Z"
+        },
+        "b": {
+          "id": "gnews:23eb7f7ea5d92bf9",
+          "source": "gnews-rss",
+          "title": "California AG Subpoenas OpenAI in Investigation of 'Hugging Face' Hack - Law.com",
+          "at": "2026-10-02T17:00:11Z"
+        },
+        "shared": [
+          "california",
+          "subpoena",
+          "openai",
+          "hack"
+        ]
+      },
+      {
+        "score": 0.435,
         "blocked": "below-threshold",
         "hours_apart": 5.1,
         "a": {
@@ -550,72 +617,6 @@
           "local",
           "ai"
         ]
-      },
-      {
-        "score": 0.365,
-        "blocked": "below-threshold",
-        "hours_apart": 0.3,
-        "a": {
-          "id": "rss:huggingface:e81b1dea7ce0fb42",
-          "source": "rss-lab",
-          "title": "Open-sourcing AstaBrief, the fast report-generation model in Asta",
-          "at": "2026-10-02T15:19:50Z"
-        },
-        "b": {
-          "id": "gnews:0355f2b6482ba12b",
-          "source": "gnews-rss",
-          "title": "Ai2 Open-Sources AstaBrief 8B for Fast Scientific Report Generation - Unite.AI",
-          "at": "2026-10-02T15:38:01Z"
-        },
-        "shared": [
-          "astabrief",
-          "fast",
-          "generation"
-        ]
-      },
-      {
-        "score": 0.352,
-        "blocked": "thin-overlap",
-        "hours_apart": 40.4,
-        "a": {
-          "id": "rss:deepmind:ce56aa83d0064ef1",
-          "source": "rss-lab",
-          "title": "Gemini 4 Argon: our next era of frontier intelligence",
-          "at": "2026-09-30T20:01:45Z"
-        },
-        "b": {
-          "id": "gnews:5d85830b5bbd801d",
-          "source": "gnews-rss",
-          "title": "GPT-6 Astra vs Gemini 4 Argon vs DeepSeek: 13x Gap [2026] - tech-insider.org",
-          "at": "2026-10-02T12:27:32Z"
-        },
-        "shared": [
-          "gemini",
-          "4",
-          "argon"
-        ]
-      },
-      {
-        "score": 0.339,
-        "blocked": "time-window",
-        "hours_apart": 374.9,
-        "a": {
-          "id": "hn:49918520",
-          "source": "hn-algolia",
-          "title": "Meta wants people to use 'AI agents' to do daily tasks. Why that's a problem",
-          "at": "2026-10-01T06:52:51Z"
-        },
-        "b": {
-          "id": "rss:huggingface:a1d018f16fad79f9",
-          "source": "rss-lab",
-          "title": "Your Agent Aced the Task. Will It Do It Again?",
-          "at": "2026-09-15T16:00:44Z"
-        },
-        "shared": [
-          "agent",
-          "do",
-          "task"
-        ]
       }
     ]
   },
@@ -623,44 +624,44 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 4,
-      "streak_fail": 0,
-      "items_last": 29
+      "streak_ok": 0,
+      "streak_fail": 1,
+      "items_last": 28
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 64,
+      "streak_ok": 65,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 64,
+      "streak_ok": 65,
       "streak_fail": 0,
-      "items_last": 3
+      "items_last": 1
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 64,
+      "streak_ok": 65,
       "streak_fail": 0,
-      "items_last": 29
+      "items_last": 30
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 64,
+      "streak_ok": 65,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 64,
+      "streak_ok": 65,
       "streak_fail": 0,
-      "items_last": 68
+      "items_last": 59
     },
     {
       "id": "openalex",
@@ -672,27 +673,27 @@
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 64,
+      "streak_ok": 65,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 64,
+      "streak_ok": 65,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 64,
+      "streak_ok": 65,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.0027202777777777776,
+    "hours": 0.005721388888888889,
     "stale": false
   },
   "hf": {
@@ -701,10 +702,10 @@
     "url": "https://huggingface.co/api/daily_papers"
   },
   "arxiv": {
-    "ok": true,
-    "enriched": 24,
+    "ok": false,
+    "enriched": 23,
     "shelf": 5,
-    "timed_out": false,
+    "timed_out": true,
     "budget_ms": 20000,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
@@ -715,7 +716,7 @@
     "soft_fail_reason": "paused_until 2026-10-03T19:13:47Z",
     "enriched": 0,
     "secondary": 0,
-    "query": "LLM agent",
+    "query": "LLM agent sandbox",
     "mode": "search",
     "from_cache": false,
     "searches": 0,
@@ -761,24 +762,24 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 68,
+    "count": 59,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
     "queries_run": [
-      "eval",
       "LLM",
-      "METR"
+      "METR",
+      "ML security"
     ],
     "queries_ok": [
-      "eval",
       "LLM",
-      "METR"
+      "METR",
+      "ML security"
     ],
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 28,
+    "ai_dropped": 19,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
@@ -790,13 +791,13 @@
       {
         "id": "hn:49921050",
         "tag": "rest",
-        "score": 207,
+        "score": 208,
         "text": "FTC is investigating OpenAI, Anthropic and other AI companies over product risks"
       },
       {
         "id": "hn:49924618",
         "tag": "rest",
-        "score": 195,
+        "score": 196,
         "text": "Vote on which of Hacker News' challenges for AI have been met"
       }
     ]
@@ -813,47 +814,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "(cache:openai)",
+        "url": "https://openai.com/news/rss.xml",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "(cache:deepmind)",
+        "url": "https://deepmind.google/blog/rss.xml",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "(cache:google-ai)",
+        "url": "https://blog.google/technology/ai/rss/",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "(cache:huggingface)",
+        "url": "https://huggingface.co/blog/feed.xml",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "(cache:mistral)",
+        "url": "https://mistral.ai/rss.xml",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "(cache:nvidia)",
+        "url": "https://blogs.nvidia.com/feed/",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "(cache:nvidia-dev)",
+        "url": "https://developer.nvidia.com/blog/feed",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "(cache:ms-research)",
+        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "(cache:google-research)",
+        "url": "https://research.google/blog/rss/",
         "count": 12
       }
     ],
@@ -899,17 +900,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "(cache:trailofbits)",
+        "url": "https://blog.trailofbits.com/feed/",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "(cache:fox-it)",
+        "url": "https://blog.fox-it.com/feed/",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "(cache:projectzero)",
+        "url": "https://projectzero.google/feed.xml",
         "count": 5
       }
     ],
@@ -950,27 +951,27 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 29,
-    "pool": 206,
+    "items": 30,
+    "pool": 228,
     "corroborators": [
       {
         "id": "gnews:fce71ec5a872014a",
         "anchor_id": "rss:google-research:a47750453f6e4504",
         "score": 1,
-        "title": "Toward provably private learning from federated data - research.google",
-        "publisher": "research.google",
+        "title": "Toward provably private learning from federated data - Google Research",
+        "publisher": "Google Research",
         "self_repost": true
       },
       {
         "id": "gnews:727fe17491b140b0",
         "anchor_id": "hn:49925606",
-        "score": 0.694,
+        "score": 0.695,
         "title": "Judge dismisses Chegg and Penske antitrust lawsuits targeting Google AI search - Ars Technica",
         "publisher": "Ars Technica",
         "self_repost": false
       },
       {
-        "id": "gnews:9f3f8a66cbed86b0",
+        "id": "gnews:05cfd65803121a1e",
         "anchor_id": "rss:deepmind:ce56aa83d0064ef1",
         "score": 1,
         "title": "Gemini 4 Argon: our next era of frontier intelligence - blog.google",
@@ -979,9 +980,9 @@
       }
     ],
     "http_status": 200,
-    "content_type": null,
+    "content_type": "application/xml; charset=utf-8",
     "format": "rss2",
-    "from_cache": true,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -990,38 +991,38 @@
     "pulse_only": true,
     "url_template": "https://news.google.com/rss/search?q={QUERY}&hl=en-US&gl=US&ceid=US:en",
     "queried": [
-      "AI agent",
       "open weights",
-      "Microsoft Research",
-      "Google Research"
+      "Hugging Face",
+      "Google Research",
+      "Google DeepMind"
     ],
     "queries_ok_list": [
-      "AI agent",
       "open weights",
-      "Microsoft Research",
-      "Google Research"
+      "Hugging Face",
+      "Google Research",
+      "Google DeepMind"
     ],
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:e1c78299d10aa29a",
-        "title": "Wall Street's AI Hiring Surge: Agent Orchestration Demand Up 1,721% - The Tech Buzz",
-        "publisher": "The Tech Buzz",
-        "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNOG9zUDJ0X2VJVWJzcjltSEwxcG5wbnZtbzR6ODg2WFBBZFNxX3JINkxpRmVtaEpuUmlBdGJabExEcTgzYkp5RGVHZDdBVTlaYzRvYlNzdjZVZFhpVUtEVjhTWWVlYXVRTXlfdkNQU2hxV3pXX21iWERTd09Oc2VpbE02ZkF1QkRUYzNvUTJYckFiQ21MTjkxaFZVR1BtYmM?oc=5",
+        "id": "gnews:a91f38ffe919614e",
+        "title": "Google DeepMind develops watermark for AI generated proteins - dqindia.com",
+        "publisher": "dqindia.com",
+        "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPblR6djF4NEd6STJEZGNQTU9pSWhnRFlMd3Z1U0ZRUHNoM2tlU1lDbkk3c083dDhEX0RCaUZ2dmhMQVBtQ28xVVdpcUhhSGdZTmZBYnBDdlpWMTZ2SUpuTmpNRjNveUZMa1plR2c3bEtJRG1tZWJqdG85dUhWVmZ6bHpYZVlKT2pKVjkyYnl4Yk5NV0g2ZkpsNkJrVUR1dFhFbWdLTnd4blDSAagBQVVfeXFMT25UenYxeDRHekkyRGRjUE1PaUloZ0RZTHd2dVNGUVBzaDNrZVNZQ25JN3NPN3Q4RF9EQmlGdnZoTEFQbUNvMVVXaXFIYUhnWU5mQWJwQ3ZaVjE2dklKbk5qTUYzb3lGTGtaZUdnN2xLSURtbWVianRvOXVIVlZmemx6WGVZSk9qSlY5MmJ5eGJOTVdINmZKbDZCa1VEdXRYRW1nS053eG5Q?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:fbceb77592f37af6",
-        "title": "Hugging Face Pulls GLM-5.3 Build Made for Cyberattacks - Pasquale Pillitteri",
-        "publisher": "Pasquale Pillitteri",
-        "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQUURpZTJSVEhpcHVlR3ozMmk0cVlucGlrTDlaUTJqV1NaQ01QeE1RWmcxNDQwdlVHNDNhWW1xaVBnY2Z2R2E1cHlIQlNqbWdFZHlmdG1QRXZvRGJ0R1lycVk1clYwbk5YdVVyTFl1dHBGc21TUlppMk9mNGthaVBZVFYzWFZFZw?oc=5",
+        "id": "gnews:4437551d6846b386",
+        "title": "Developing Capable Models Responsibly - Meta AI",
+        "publisher": "Meta AI",
+        "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9ZelkzalFpSm8yY2gtOVh1eVBTNUNLOUNiT1RJcjlhOGdReVFVZ0VuZ2daMFBLRFNfRmcxaEg0Q291SkNpc2xXZHMza2FYMENnT2U3WkZMWjd6ZXl5SVBjUVV2bjRpN3dPVkVyM2dKWERHd0MyYnc?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:ecdd7a13d228482f",
-        "title": "Commvault looking after Claude agent configs - Blocks & Files",
-        "publisher": "Blocks & Files",
-        "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQR09PU3pzNWVwOE1jeVdZX0pwdTdTNHFNZHNNR1lWX0VzeURoRnBmdjJLQ0c0VEg1Q1RJYUlacFRJQVZ5UkVYSmx2Y3A2SFBTYzlsVzBQOXUzSGxybFkxSElkdzRVbllfQ1c2QTVWWlc5cGhZM3JhVmYtazMzQVVDeEFlUDZONURHc3F2S0FoTEJDQmhSWHU2cUZwN1NtZzVMZUE?oc=5",
+        "id": "gnews:30a94e0630715576",
+        "title": "Whose frontier? AI, the OpenAI breakout and China’s open weights - Struggle-La Lucha",
+        "publisher": "Struggle-La Lucha",
+        "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPS1lEeFcxR19aLWNzMVc3ZzJhQTBfRlg4YmdzeUJSc1V6YzZWRlZGY3RYU3dTT2ZmUjdyd3lXSkRINlFuX1J3QUwzNFFVT2szT1dIajNWTzdFUUM5QV9td19GcmdQZllmV3lybGZsUkJsUzk4MktfbHVqSWZ4ODk4cWNUVXpOcVJBXzJaYUpVbnFoM2VlVGVFNk9ETXY5QXBhcE1GdTVGUjhwU1k?oc=5",
         "tag": "rest"
       }
     ]
@@ -1038,32 +1039,24 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "query": "LLM agent eval harness",
-    "shelf": 3,
-    "from_cache": true,
-    "searches": 0,
-    "rate_limit_remaining": null,
+    "query": "OWASP LLM",
+    "shelf": 1,
+    "from_cache": false,
+    "searches": 1,
+    "rate_limit_remaining": 9,
     "brief": false,
     "pulse_lead": false,
     "shelf_only": true,
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
-        "label": "juanestebanj/tool-using-agent-evals",
-        "href": "https://github.com/juanestebanj/tool-using-agent-evals"
-      },
-      {
-        "label": "gpatwa/multi-agent-eval",
-        "href": "https://github.com/gpatwa/multi-agent-eval"
-      },
-      {
-        "label": "krishankant/harnessy",
-        "href": "https://github.com/krishankant/harnessy"
+        "label": "api-evangelist/agentcheck-care",
+        "href": "https://github.com/api-evangelist/agentcheck-care"
       }
     ]
   },
   "shelf": {
-    "count": 20,
+    "count": 18,
     "brief": false
   },
   "wikidata": {
@@ -1071,28 +1064,17 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "seeds": [
-      "Fox-IT",
       "Project Zero",
-      "OWASP"
+      "OWASP",
+      "NIST"
     ],
-    "searches": 0,
-    "from_cache": true,
+    "searches": 2,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "deny_grounding_only": true,
     "url": "https://www.wikidata.org/w/api.php",
     "hints": [
-      {
-        "seed": "Fox-IT",
-        "qid": "Q5476521",
-        "label": "Fox-IT",
-        "description": "information security company in the Netherlands",
-        "status": "matched",
-        "source": "wikidata",
-        "briefEligible": false,
-        "pulseLeadEligible": false,
-        "denyGroundingOnly": true
-      },
       {
         "seed": "Project Zero",
         "qid": "Q18859887",
@@ -1109,6 +1091,17 @@
         "qid": "Q379297",
         "label": "OWASP",
         "description": "computer security organization",
+        "status": "matched",
+        "source": "wikidata",
+        "briefEligible": false,
+        "pulseLeadEligible": false,
+        "denyGroundingOnly": true
+      },
+      {
+        "seed": "NIST",
+        "qid": "Q176691",
+        "label": "National Institute of Standards and Technology",
+        "description": "measurement standards laboratory in the United States",
         "status": "matched",
         "source": "wikidata",
         "briefEligible": false,

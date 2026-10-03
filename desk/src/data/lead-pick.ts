@@ -2,6 +2,40 @@
 import type { LeadEntry } from "@/lib/lead-pick";
 
 export const LEAD_TODAY: LeadEntry | null = {
+  "date": "2026-10-03",
+  "at": "2026-10-03T03:17:43.625Z",
+  "crawl_at": "2026-10-03T03:17:23Z",
+  "excluded": [
+    {
+      "cluster_id": "cl:hn:49925606",
+      "headline": "US judge dismisses Chegg, Penske antitrust suits over Google AI Overviews",
+      "reason": "age>=24h"
+    }
+  ],
+  "cluster_id": "cl:hn:49925606",
+  "headline": "US judge dismisses Chegg, Penske antitrust suits over Google AI Overviews",
+  "url": "https://reuters.com/legal/litigation/google-wins-dismissal-chegg-penske-media-lawsuits-over-ai-overviews-2026-10-01",
+  "sources": 2,
+  "sig": 19,
+  "first_at": "2026-10-01T18:53:51.000Z",
+  "reason": "held",
+  "note": "no qualifying story",
+  "attempts": [
+    {
+      "at": "2026-10-03T03:17:43.625Z",
+      "crawl_at": "2026-10-03T03:17:23Z",
+      "excluded": [
+        {
+          "cluster_id": "cl:hn:49925606",
+          "headline": "US judge dismisses Chegg, Penske antitrust suits over Google AI Overviews",
+          "reason": "age>=24h"
+        }
+      ]
+    }
+  ]
+};
+
+export const LEAD_YESTERDAY: LeadEntry | null = {
   "date": "2026-10-02",
   "at": "2026-10-02T03:14:58.776Z",
   "crawl_at": "2026-10-02T03:14:15Z",
@@ -46,47 +80,7 @@ export const LEAD_TODAY: LeadEntry | null = {
   "first_at": "2026-10-01T18:53:51.000Z"
 };
 
-export const LEAD_YESTERDAY: LeadEntry | null = {
-  "date": "2026-10-01",
-  "at": "2026-10-01T03:20:06.342Z",
-  "crawl_at": "2026-10-01T03:17:41Z",
-  "excluded": [
-    {
-      "cluster_id": "cl:rss:openai:dec620cb7225d243",
-      "headline": "Introducing dots",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:hn:49891721",
-      "headline": "Mistral CEO says U.S. AI safety debate masks competitors' 'negligence'",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:gnews:bcbfa63339a3c830",
-      "headline": "AI agents tried to hack a Canadian government website, researchers say",
-      "reason": "GNW_ONLY"
-    },
-    {
-      "cluster_id": "cl:gnews:bb11789ce5e03e45",
-      "headline": "Aerospike’s Network Efficiency Advantage for Rapidly Scaling Operational AI",
-      "reason": "GNW_ONLY"
-    },
-    {
-      "cluster_id": "cl:rss:openai:d6b9f5e651b1891e",
-      "headline": "Introducing GPT-6.1 Sol",
-      "reason": "age>=24h"
-    }
-  ],
-  "cluster_id": "cl:rss:deepmind:ce56aa83d0064ef1",
-  "headline": "Gemini 4 Argon: our next era of frontier intelligence",
-  "url": "https://deepmind.google/blog/gemini-4-argon-our-next-era-of-frontier-intelligence/",
-  "sources": 2,
-  "sig": 1065,
-  "reason": "picked",
-  "first_at": "2026-09-30T20:01:45.000Z"
-};
-
-export const LEAD_HELD = false;
+export const LEAD_HELD = true;
 
 /** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is ≥24h old. */
 export const LEAD_FIRST_AT: string | null = "2026-10-01T18:53:51.000Z";
