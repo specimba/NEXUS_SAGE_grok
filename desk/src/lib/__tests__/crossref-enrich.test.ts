@@ -18,6 +18,7 @@ import {
 import { normalizeDoi } from "@/lib/openalex-enrich";
 import { mergeDailyPapers, type Paper } from "@/lib/ingest";
 import { CYCLE } from "@/data/cycle";
+import { tmpCache } from "./tmp-cache";
 
 const FIX = (name: string) =>
   readFileSync(resolve(import.meta.dir, "fixtures", name), "utf8");
@@ -312,10 +313,7 @@ describe("soft-fail 429/5xx/404 · ingest continues · brief=false", () => {
   });
 
   test("live fetch 404 soft-fails via fetchImpl", async () => {
-    const cacheDir = resolve(
-      import.meta.dir,
-      "../../../artifacts/sage/crossref-cache-test-404",
-    );
+    const cacheDir = tmpCache("crossref-cache-test-404");
     rmSync(cacheDir, { recursive: true, force: true });
     const r = await fetchCrossrefEnrich({
       query: "HuggingGPT-softfail-404-unique",
@@ -330,10 +328,7 @@ describe("soft-fail 429/5xx/404 · ingest continues · brief=false", () => {
   });
 
   test("live fetch 429 soft-fails via fetchImpl", async () => {
-    const cacheDir = resolve(
-      import.meta.dir,
-      "../../../artifacts/sage/crossref-cache-test-429",
-    );
+    const cacheDir = tmpCache("crossref-cache-test-429");
     rmSync(cacheDir, { recursive: true, force: true });
     const r = await fetchCrossrefEnrich({
       filterDoi: "10.1007/s11704-024-40231-1",
@@ -362,10 +357,7 @@ describe("soft-fail 429/5xx/404 · ingest continues · brief=false", () => {
         status: 200,
         headers: { "Content-Type": "application/json" },
       })) as typeof fetch;
-    const cacheDir = resolve(
-      import.meta.dir,
-      "../../../artifacts/sage/crossref-cache-test-budget",
-    );
+    const cacheDir = tmpCache("crossref-cache-test-budget");
     rmSync(cacheDir, { recursive: true, force: true });
     mkdirSync(cacheDir, { recursive: true });
     const now = Date.now();

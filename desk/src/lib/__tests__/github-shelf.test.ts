@@ -22,6 +22,7 @@ import {
 } from "@/lib/github-shelf";
 import { classifyUrl, isBriefEligible } from "@/lib/ingest/shelf";
 import { CYCLE } from "@/data/cycle";
+import { tmpCache } from "./tmp-cache";
 
 const FIX = (name: string) =>
   readFileSync(resolve(import.meta.dir, "fixtures", name), "utf8");
@@ -152,7 +153,7 @@ describe("soft-fail 403/429 · ingest continues", () => {
     let called = 0;
     const r = await searchRepos({
       query: "agent sandbox escape",
-      cacheDir: resolve(import.meta.dir, "../../../artifacts/sage/github-cache-test-empty"),
+      cacheDir: tmpCache("github-cache-test-empty"),
       now: Date.now(),
       fetchImpl: (async () => {
         called += 1;
@@ -167,10 +168,7 @@ describe("soft-fail 403/429 · ingest continues", () => {
 
   test("live fetch 403 soft-fails via fetchImpl", async () => {
     const { rmSync, mkdirSync } = await import("node:fs");
-    const cacheDir = resolve(
-      import.meta.dir,
-      `../../../artifacts/sage/github-cache-test-403-${Date.now()}`,
-    );
+    const cacheDir = tmpCache("github-cache-test-403");
     mkdirSync(cacheDir, { recursive: true });
     try {
       const r = await searchRepos({
@@ -202,10 +200,7 @@ describe("soft-fail 403/429 · ingest continues", () => {
 describe("≤1 search per ingest tick · zero credentials", () => {
   test("second searchRepos in same tick soft-fails budget", async () => {
     const { rmSync, mkdirSync } = await import("node:fs");
-    const cacheDir = resolve(
-      import.meta.dir,
-      `../../../artifacts/sage/github-cache-test-budget-${Date.now()}`,
-    );
+    const cacheDir = tmpCache("github-cache-test-budget");
     mkdirSync(cacheDir, { recursive: true });
     try {
       const fetchImpl = (async () =>
@@ -291,10 +286,7 @@ describe("never Brief / Pulse lead · pins unchanged", () => {
 describe("FREE-PULSE P4 · 24h cache-first · rate stamp", () => {
   test("cache hit within 24h skips network · searches=0 · from_cache", async () => {
     const { rmSync, mkdirSync, writeFileSync } = await import("node:fs");
-    const cacheDir = resolve(
-      import.meta.dir,
-      `../../../artifacts/sage/github-cache-test-hit-${Date.now()}`,
-    );
+    const cacheDir = tmpCache("github-cache-test-hit");
     mkdirSync(cacheDir, { recursive: true });
     try {
       const query = "LLM agent eval harness";
@@ -347,10 +339,7 @@ describe("FREE-PULSE P4 · 24h cache-first · rate stamp", () => {
 
   test("stamped Remaining=0 soft_fails without fetch (cross-tick preflight)", async () => {
     const { rmSync, mkdirSync } = await import("node:fs");
-    const cacheDir = resolve(
-      import.meta.dir,
-      `../../../artifacts/sage/github-cache-test-rem0-${Date.now()}`,
-    );
+    const cacheDir = tmpCache("github-cache-test-rem0");
     mkdirSync(cacheDir, { recursive: true });
     try {
       const now = Date.parse("2099-06-02T12:00:00Z");
@@ -385,10 +374,7 @@ describe("FREE-PULSE P4 · 24h cache-first · rate stamp", () => {
 
   test("HTTP 429 soft_fail stamps remaining · ingest stamp shape honest", async () => {
     const { rmSync, mkdirSync, existsSync, readFileSync } = await import("node:fs");
-    const cacheDir = resolve(
-      import.meta.dir,
-      `../../../artifacts/sage/github-cache-test-429-${Date.now()}`,
-    );
+    const cacheDir = tmpCache("github-cache-test-429");
     mkdirSync(cacheDir, { recursive: true });
     try {
       const now = Date.parse("2099-06-03T12:00:00Z");
@@ -447,10 +433,7 @@ describe("FREE-PULSE P4 · 24h cache-first · rate stamp", () => {
 
   test("empty / missing body soft_fails honestly", async () => {
     const { rmSync, mkdirSync } = await import("node:fs");
-    const cacheDir = resolve(
-      import.meta.dir,
-      `../../../artifacts/sage/github-cache-test-emptybody-${Date.now()}`,
-    );
+    const cacheDir = tmpCache("github-cache-test-emptybody");
     mkdirSync(cacheDir, { recursive: true });
     try {
       const r = await searchRepos({

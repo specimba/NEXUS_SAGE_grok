@@ -28,6 +28,7 @@ import { classifyPost } from "@/lib/x-hygiene";
 import { classifyUrl } from "@/lib/ingest";
 import { CYCLE } from "@/data/cycle";
 import { INCIDENT_NOUNS } from "@/lib/ingest/queries";
+import { tmpCache, fast } from "./tmp-cache";
 
 const FIXTURE = JSON.parse(
   readFileSync(resolve(import.meta.dir, "fixtures/hn-hugging-face-hit.json"), "utf8"),
@@ -63,7 +64,7 @@ describe("HN Algolia parse → Pulse schema", () => {
   });
 
   test("fetchHnPulse with fixtureJson offline", async () => {
-    const r = await fetchHnPulse({ fixtureJson: FIXTURE });
+    const r = await fetchHnPulse({ ...fast(), fixtureJson: FIXTURE });
     expect(r.candidates.some((row) => row.id === "hn:49458161")).toBe(true);
     expect(r.brief).toBe(false);
     expect(r.pulse_only).toBe(true);
@@ -255,13 +256,11 @@ describe("P3 rotate ≤3/tick · soft_fail merge", () => {
   });
 
   test("fetchHnPulse rotates ≤3 queries per tick (fetchImpl)", async () => {
-    const cacheDir = resolve(
-      import.meta.dir,
-      `../../../artifacts/sage/hn-cache-test-rotate-${Date.now()}`,
-    );
+    const cacheDir = tmpCache("hn-cache-test-rotate");
     wipe(cacheDir);
     const seen: string[] = [];
     const r = await fetchHnPulse({
+      ...fast(),
       cacheDir,
       now: 86_400_000 * 20_000 + 1,
       fetchImpl: (async (input: RequestInfo | URL) => {
@@ -296,13 +295,11 @@ describe("P3 rotate ≤3/tick · soft_fail merge", () => {
   }, { timeout: 30_000 });
 
   test("one query 5xx soft_fails that query only · merge continues · never Brief", async () => {
-    const cacheDir = resolve(
-      import.meta.dir,
-      `../../../artifacts/sage/hn-cache-test-5xx-${Date.now()}`,
-    );
+    const cacheDir = tmpCache("hn-cache-test-5xx");
     wipe(cacheDir);
     let n = 0;
     const r = await fetchHnPulse({
+      ...fast(),
       cacheDir,
       now: Date.now() + 9_999_999_999,
       queries: ["OpenAI", "Anthropic", "Hugging Face"],
@@ -359,6 +356,7 @@ describe("P3 rotate ≤3/tick · soft_fail merge", () => {
 
   test("forceSoftFail all queries → soft_fail · empty candidates · exit-path ok", async () => {
     const r = await fetchHnPulse({
+      ...fast(),
       forceSoftFail: 500,
       queries: ["OpenAI", "Anthropic", "LLM"],
     });
@@ -408,12 +406,13 @@ describe("HN freshness (dedupe v2 re-land)", () => {
   });
 
   test("recentHours + recentSweep: window on every request, sweep pages, stale hits dropped", async () => {
-    const cacheDir = resolve(import.meta.dir, `../../../artifacts/sage/hn-cache-test-recent-${Date.now()}`);
+    const cacheDir = tmpCache("hn-cache-test-recent");
     wipe(cacheDir);
     const now = Date.parse("2026-09-24T21:00:00Z");
     const urls: string[] = [];
     let n = 0;
     const r = await fetchHnPulse({
+      ...fast(),
       cacheDir,
       now,
       queries: ["OpenAI"],
@@ -468,9 +467,10 @@ describe("HN AI-relevance gate (Beat 5)", () => {
     expect(isHnAiRelevant("Something from Google", "https://blog.google/products-and-platforms/devices/googlebook/")).toBe(false);
   });
   test("fetchHnPulse aiOnly drops non-AI hits and reports count", async () => {
-    const cacheDir = resolve(import.meta.dir, `../../../artifacts/sage/hn-cache-test-ai-${Date.now()}`);
+    const cacheDir = tmpCache("hn-cache-test-ai");
     wipe(cacheDir);
     const r = await fetchHnPulse({
+      ...fast(),
       cacheDir,
       queries: ["OpenAI"],
       maxQueries: 1,

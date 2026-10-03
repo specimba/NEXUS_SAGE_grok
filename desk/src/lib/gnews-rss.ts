@@ -12,6 +12,7 @@ import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { classifyPost, type PostClass } from "./x-hygiene";
 import { assertNoIncidentNouns, INCIDENT_NOUNS } from "./ingest/queries";
+import { paceWait, type Pace } from "./pace";
 import { looksLikeHtml, parseRssOrAtom, type ParsedFeedEntry } from "./rss-labs";
 
 export const GNEWS_SEARCH_TEMPLATE =
@@ -149,9 +150,6 @@ const DEFAULT_CACHE_DIR = resolve(
 let lastRequestAt = 0;
 let queryRotateOffset = 0;
 
-function sleep(ms: number): Promise<void> {
-  return new Promise((r) => setTimeout(r, ms));
-}
 
 /** Test helper — advance rotate cursor. */
 export function setGnewsQueryRotateOffset(n: number) {
@@ -216,11 +214,8 @@ function writeCache(cacheDir: string, query: string, xml: string, now = Date.now
   writeFileSync(cachePath(cacheDir, query), `<!-- cached_at:${iso} -->\n${xml}`);
 }
 
-async function throttle(): Promise<void> {
-  const gap = Date.now() - lastRequestAt;
-  if (lastRequestAt > 0 && gap < GNEWS_MIN_INTERVAL_MS) {
-    await sleep(GNEWS_MIN_INTERVAL_MS - gap);
-  }
+function throttle(pace?: Pace): Promise<void> {
+  return paceWait(lastRequestAt, GNEWS_MIN_INTERVAL_MS, pace);
 }
 
 function decodeXmlEntities(text: string): string {
@@ -516,6 +511,9 @@ export type FetchGnewsOpts = {
   labQueries?: boolean | readonly string[];
   /** Beat 5: append Google News `when:Nd` recency operator to live queries. */
   recentDays?: number;
+  /** Request pacing override (tests pass `minIntervalMs: 0`); default = the source's *_MIN_INTERVAL_MS. */
+  minIntervalMs?: number;
+  sleep?: Pace["sleep"];
 };
 
 /** Effective live query string (adds `when:Nd` when recentDays set). */
@@ -526,11 +524,12 @@ export function gnewsLiveQuery(query: string, recentDays?: number): string {
 async function getXml(
   url: string,
   fetchImpl: typeof fetch = fetch,
+  pace?: Pace,
 ): Promise<
   | { ok: true; body: string; status: number; contentType: string | null }
   | { ok: false; status: number; reason: string; contentType: string | null; body?: string }
 > {
-  await throttle();
+  await throttle(pace);
   lastRequestAt = Date.now();
   const res = await fetchImpl(url, {
     method: "GET",
@@ -587,6 +586,7 @@ export async function fetchGnewsRss(
   const cacheDir = opts.cacheDir ?? DEFAULT_CACHE_DIR;
   const now = opts.now ?? Date.now();
   const fetchImpl = opts.fetchImpl ?? fetch;
+  const pace: Pace = { minIntervalMs: opts.minIntervalMs, sleep: opts.sleep };
   const displayCap = opts.displayCap ?? GNEWS_DISPLAY_CAP;
   const url_template = GNEWS_SEARCH_TEMPLATE;
 
@@ -815,7 +815,7 @@ export async function fetchGnewsRss(
         continue;
       }
       try {
-        const res = await getXml(url, fetchImpl);
+        const res = await getXml(url, fetchImpl, pace);
         lastHttp = res.status;
         lastCt = res.contentType;
         if (!res.ok) {

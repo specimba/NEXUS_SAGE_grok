@@ -13,6 +13,7 @@ import { fileURLToPath } from "node:url";
 import { classifyPost, type PostClass } from "./x-hygiene";
 import { classifyUrl } from "./ingest/shelf";
 import { assertNoIncidentNouns, INCIDENT_NOUNS } from "./ingest/queries";
+import { paceWait, type Pace } from "./pace";
 
 export const HN_ALGOLIA_API = "https://hn.algolia.com/api/v1/search";
 export const HN_UA = "NEXUS-SAGE-desk/0.2 (free-ingest; contact: local)";
@@ -159,10 +160,6 @@ const DEFAULT_CACHE_DIR = resolve(
 let lastRequestAt = 0;
 let queryRotateOffset = 0;
 
-function sleep(ms: number): Promise<void> {
-  return new Promise((r) => setTimeout(r, ms));
-}
-
 /** Test helper — advance rotate cursor. */
 export function setHnQueryRotateOffset(n: number) {
   queryRotateOffset = Math.max(0, Math.floor(n));
@@ -220,11 +217,8 @@ function writeCache(
   );
 }
 
-async function throttle(): Promise<void> {
-  const gap = Date.now() - lastRequestAt;
-  if (lastRequestAt > 0 && gap < HN_MIN_INTERVAL_MS) {
-    await sleep(HN_MIN_INTERVAL_MS - gap);
-  }
+function throttle(pace?: Pace): Promise<void> {
+  return paceWait(lastRequestAt, HN_MIN_INTERVAL_MS, pace);
 }
 
 /** Cap hitsPerPage hard at 20. */
@@ -391,6 +385,9 @@ export type FetchHnOpts = {
   recentSweep?: boolean;
   /** Beat 5: drop rows failing isHnAiRelevant (ingest passes true). */
   aiOnly?: boolean;
+  /** Request pacing override (tests pass `minIntervalMs: 0`); default = the source's *_MIN_INTERVAL_MS. */
+  minIntervalMs?: number;
+  sleep?: Pace["sleep"];
 };
 
 /** Algolia numericFilters value for "created in the last `hours`". */
@@ -428,8 +425,9 @@ export function filterRecentHits(hits: HnAlgoliaHit[], now: number, hours: numbe
 async function getJson(
   url: string,
   fetchImpl: typeof fetch = fetch,
+  pace?: Pace,
 ): Promise<{ ok: true; body: HnAlgoliaResponse } | { ok: false; status: number }> {
-  await throttle();
+  await throttle(pace);
   lastRequestAt = Date.now();
   const res = await fetchImpl(url, {
     method: "GET",
@@ -462,6 +460,7 @@ export async function fetchHnPulse(
   const hitsPerPage = clampHitsPerPage(opts.hitsPerPage ?? 10);
   const now = opts.now ?? Date.now();
   const fetchImpl = opts.fetchImpl ?? fetch;
+  const pace: Pace = { minIntervalMs: opts.minIntervalMs, sleep: opts.sleep };
   const recentHours = opts.recentHours && opts.recentHours > 0 ? opts.recentHours : 0;
 
   if (opts.fixtureJson) {
@@ -510,7 +509,7 @@ export async function fetchHnPulse(
     } else {
       const url = hnSearchUrl(query, hitsPerPage, { now, recentHours });
       try {
-        const res = await getJson(url, fetchImpl);
+        const res = await getJson(url, fetchImpl, pace);
         if (!res.ok) {
           const reason = `HTTP ${res.status}`;
           console.log(`HN: soft_fail query="${query}" — ${reason} (continue merge)`);
@@ -553,6 +552,7 @@ export async function fetchHnPulse(
               minPoints: HN_RECENT_SWEEP_MIN_POINTS,
             })}&page=${page}`,
             fetchImpl,
+            pace,
           );
           if (res.ok) {
             payload = res.body;

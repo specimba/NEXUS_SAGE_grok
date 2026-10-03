@@ -14,6 +14,7 @@ import {
 } from "@/lib/rss-labs";
 import { classifyPost } from "@/lib/x-hygiene";
 import { CYCLE } from "@/data/cycle";
+import { tmpCache, fast } from "./tmp-cache";
 
 const FIX = (name: string) =>
   readFileSync(resolve(import.meta.dir, "fixtures", name), "utf8");
@@ -100,7 +101,7 @@ describe("RSS labs parse → schema", () => {
       deepmind: DEEPMIND,
       huggingface: HF,
     };
-    const r = await fetchRssLabs({ fixtures, feeds: PHASE_A_FEEDS });
+    const r = await fetchRssLabs({ ...fast(), fixtures, feeds: PHASE_A_FEEDS });
     expect(r.ok).toBe(true);
     expect(r.soft_fail).toBe(false);
     expect(r.brief).toBe(false);
@@ -253,7 +254,7 @@ describe("P2 per-feed soft_fail harden", () => {
       "google-ai": GOOGLE_AI,
       huggingface: HF,
     };
-    const r = await fetchRssLabs({ fixtures, feeds: PHASE_A_FEEDS });
+    const r = await fetchRssLabs({ ...fast(), fixtures, feeds: PHASE_A_FEEDS });
     expect(r.ok).toBe(true);
     expect(r.soft_fail).toBe(true);
     expect(r.soft_fail_reason).toMatch(/openai:/);
@@ -277,7 +278,7 @@ describe("P2 per-feed soft_fail harden", () => {
       "google-ai": GOOGLE_AI,
       huggingface: HF,
     };
-    const r = await fetchRssLabs({ fixtures, feeds: PHASE_A_FEEDS });
+    const r = await fetchRssLabs({ ...fast(), fixtures, feeds: PHASE_A_FEEDS });
     expect(r.ok).toBe(true);
     expect(r.soft_fail).toBe(true);
     expect(r.feedsSoftFail.some((f) => f.lab === "deepmind" && /HTML/.test(f.reason))).toBe(
@@ -295,7 +296,7 @@ describe("P2 per-feed soft_fail harden", () => {
       "google-ai": GOOGLE_AI,
       huggingface: HF,
     };
-    const r = await fetchRssLabs({ fixtures, feeds: PHASE_A_FEEDS });
+    const r = await fetchRssLabs({ ...fast(), fixtures, feeds: PHASE_A_FEEDS });
     expect(r.ok).toBe(true);
     expect(r.soft_fail).toBe(true);
     expect(r.feedsSoftFail.length).toBeGreaterThanOrEqual(2);
@@ -307,13 +308,14 @@ describe("P2 per-feed soft_fail harden", () => {
     const fetchImpl = (async () =>
       new Response("forbidden", { status: 403 })) as typeof fetch;
     const r = await fetchRssLabs({
+      ...fast(),
       feeds: [
         { lab: "openai", urls: ["https://openai.com/news/rss.xml"] },
         { lab: "huggingface", urls: ["https://huggingface.co/blog/feed.xml"] },
       ],
       fixtures: { huggingface: HF },
       fetchImpl,
-      cacheDir: "/tmp/sage-rss-p2-softfail-cache",
+      cacheDir: tmpCache("sage-rss-p2-softfail-cache"),
       now: Date.now(),
     });
     expect(r.ok).toBe(true);
@@ -342,7 +344,7 @@ describe("P2 per-feed soft_fail harden", () => {
       "google-ai": "",
       huggingface: "",
     };
-    const r = await fetchRssLabs({ fixtures, feeds: PHASE_A_FEEDS });
+    const r = await fetchRssLabs({ ...fast(), fixtures, feeds: PHASE_A_FEEDS });
     expect(r.ok).toBe(false);
     expect(r.soft_fail).toBe(true);
     expect(r.items).toHaveLength(0);
@@ -377,7 +379,7 @@ describe("P2b first-party Phase B soft_fail", () => {
       "ms-research": "<rss><channel></channel></rss>",
       "google-research": "",
     };
-    const r = await fetchRssLabs({ fixtures });
+    const r = await fetchRssLabs({ ...fast(), fixtures });
     expect(r.ok).toBe(true);
     expect(r.soft_fail).toBe(true);
     expect(r.brief).toBe(false);
@@ -421,7 +423,7 @@ describe("P2b first-party Phase B soft_fail", () => {
       "ms-research": "",
       "google-research": "",
     };
-    const r = await fetchRssLabs({ fixtures, feeds: P2B_FEEDS });
+    const r = await fetchRssLabs({ ...fast(), fixtures, feeds: P2B_FEEDS });
     expect(r.ok).toBe(false);
     expect(r.soft_fail).toBe(true);
     expect(r.items).toHaveLength(0);
@@ -436,13 +438,14 @@ describe("P2b first-party Phase B soft_fail", () => {
     const fetchImpl = (async () =>
       new Response("forbidden", { status: 403 })) as typeof fetch;
     const r = await fetchRssLabs({
+      ...fast(),
       feeds: [
         { lab: "mistral", urls: ["https://mistral.ai/rss.xml"] },
         { lab: "huggingface", urls: ["https://huggingface.co/blog/feed.xml"] },
       ],
       fixtures: { huggingface: HF },
       fetchImpl,
-      cacheDir: "/tmp/sage-rss-p2b-softfail-cache",
+      cacheDir: tmpCache("sage-rss-p2b-softfail-cache"),
       now: Date.now(),
     });
     expect(r.ok).toBe(true);

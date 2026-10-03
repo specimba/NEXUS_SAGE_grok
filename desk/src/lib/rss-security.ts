@@ -9,6 +9,7 @@ import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { classifyPost, type PostClass } from "./x-hygiene";
 import { classifyUrl } from "./ingest/shelf";
+import { paceWait, type Pace } from "./pace";
 import {
   itemId,
   parseRssOrAtom,
@@ -85,9 +86,6 @@ const DEFAULT_CACHE_DIR = resolve(
 
 let lastRequestAt = 0;
 
-function sleep(ms: number): Promise<void> {
-  return new Promise((r) => setTimeout(r, ms));
-}
 
 export function resolveSecRssCacheDir(root?: string): string {
   if (root) return resolve(root, "artifacts/sage/rss-sec-cache");
@@ -305,11 +303,8 @@ function writeCache(cacheDir: string, lab: string, xml: string, now = Date.now()
   writeFileSync(cachePath(cacheDir, lab), `<!-- cached_at:${iso} -->\n${xml}`);
 }
 
-async function throttle(): Promise<void> {
-  const gap = Date.now() - lastRequestAt;
-  if (lastRequestAt > 0 && gap < RSS_MIN_INTERVAL_MS) {
-    await sleep(RSS_MIN_INTERVAL_MS - gap);
-  }
+function throttle(pace?: Pace): Promise<void> {
+  return paceWait(lastRequestAt, RSS_MIN_INTERVAL_MS, pace);
 }
 
 function countCloseTags(buf: string, tag: "item" | "entry"): number {
@@ -326,8 +321,9 @@ async function getXmlStreamCapped(
   maxBytes = SEC_RSS_STREAM_MAX_BYTES,
   maxEntries = SEC_RSS_STREAM_MAX_ENTRIES,
   fetchImpl: typeof fetch = fetch,
+  pace?: Pace,
 ): Promise<{ ok: true; body: string } | { ok: false; status: number }> {
-  await throttle();
+  await throttle(pace);
   lastRequestAt = Date.now();
   const res = await fetchImpl(url, {
     method: "GET",
@@ -402,8 +398,9 @@ export function truncateAfterNthEntry(xml: string, n: number): string {
 async function getXml(
   url: string,
   fetchImpl: typeof fetch = fetch,
+  pace?: Pace,
 ): Promise<{ ok: true; body: string } | { ok: false; status: number }> {
-  await throttle();
+  await throttle(pace);
   lastRequestAt = Date.now();
   const res = await fetchImpl(url, {
     method: "GET",
@@ -431,6 +428,9 @@ export type FetchSecRssOpts = {
   now?: number;
   /** fetch override — ingest passes the crawl-budget-bound fetch. */
   fetchImpl?: typeof fetch;
+  /** Request pacing override (tests pass `minIntervalMs: 0`); default = the source's *_MIN_INTERVAL_MS. */
+  minIntervalMs?: number;
+  sleep?: Pace["sleep"];
 };
 
 export type FetchSecRssResult = {
@@ -452,6 +452,7 @@ export async function fetchRssSecurity(
   const now = opts.now ?? Date.now();
   const feeds = opts.feeds ?? SECURITY_FEEDS;
   const fetchImpl = opts.fetchImpl ?? fetch;
+  const pace: Pace = { minIntervalMs: opts.minIntervalMs, sleep: opts.sleep };
 
   const all: SecurityRssItem[] = [];
   const feedsOk: FetchSecRssResult["feedsOk"] = [];
@@ -485,8 +486,8 @@ export async function fetchRssSecurity(
       for (const url of feed.urls) {
         try {
           const res = feed.streamCap
-            ? await getXmlStreamCapped(url, SEC_RSS_STREAM_MAX_BYTES, maxPerFeed, fetchImpl)
-            : await getXml(url, fetchImpl);
+            ? await getXmlStreamCapped(url, SEC_RSS_STREAM_MAX_BYTES, maxPerFeed, fetchImpl, pace)
+            : await getXml(url, fetchImpl, pace);
           if (!res.ok) {
             lastStatus = res.status;
             if (res.status === 404) continue;

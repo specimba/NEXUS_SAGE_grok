@@ -20,6 +20,7 @@ import {
 } from "@/lib/openalex-enrich";
 import { mergeDailyPapers, type Paper } from "@/lib/ingest";
 import { CYCLE } from "@/data/cycle";
+import { tmpCache } from "./tmp-cache";
 
 const FIX = (name: string) =>
   readFileSync(resolve(import.meta.dir, "fixtures", name), "utf8");
@@ -298,7 +299,7 @@ describe("soft-fail 429 · pause instead of backoff · ingest continues", () => 
     const r = await fetchOpenAlexEnrich({
       query: "LLM agent sandbox",
       now,
-      cacheDir: "/tmp/sage-openalex-test-nocache-" + Math.random().toString(36).slice(2),
+      cacheDir: tmpCache("openalex-nocache"),
       fetchImpl: (async () => {
         calls += 1;
         return new Response("rate limit", { status: 429 });
@@ -320,7 +321,7 @@ describe("soft-fail 429 · pause instead of backoff · ingest continues", () => 
   });
 
   test("200 after a stale pause: success resets state, writes cache", async () => {
-    const cacheDir = resolve(import.meta.dir, "../../../artifacts/sage/openalex-cache-test-retry-after");
+    const cacheDir = tmpCache("openalex-cache-test-retry-after");
     rmSync(cacheDir, { recursive: true, force: true });
     mkdirSync(cacheDir, { recursive: true });
     const r = await fetchOpenAlexEnrich({
@@ -356,10 +357,7 @@ describe("soft-fail 429 · pause instead of backoff · ingest continues", () => 
         status: 200,
         headers: { "Content-Type": "application/json" },
       })) as typeof fetch;
-    const cacheDir = resolve(
-      import.meta.dir,
-      "../../../artifacts/sage/openalex-cache-test-budget",
-    );
+    const cacheDir = tmpCache("openalex-cache-test-budget");
     rmSync(cacheDir, { recursive: true, force: true });
     mkdirSync(cacheDir, { recursive: true });
     const now = Date.now();

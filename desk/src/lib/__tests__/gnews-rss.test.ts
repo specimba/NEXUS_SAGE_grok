@@ -31,6 +31,7 @@ import {
 import { looksLikeHtml } from "@/lib/rss-labs";
 import { classifyPost } from "@/lib/x-hygiene";
 import { CYCLE } from "@/data/cycle";
+import { tmpCache, fast } from "./tmp-cache";
 
 const FIX = (name: string) =>
   readFileSync(resolve(import.meta.dir, "fixtures", name), "utf8");
@@ -82,7 +83,7 @@ describe("Google News RSS parse → Pulse spice schema", () => {
   });
 
   test("fetchGnewsRss fixtureXml offline", async () => {
-    const r = await fetchGnewsRss({ fixtureXml: SAMPLE });
+    const r = await fetchGnewsRss({ ...fast(), fixtureXml: SAMPLE });
     expect(r.soft_fail).toBe(false);
     expect(r.brief).toBe(false);
     expect(r.briefEligible).toBe(false);
@@ -149,7 +150,7 @@ describe("rotate ≤2/tick · standing ≤6 · ban Sol/Astra", () => {
 
 describe("soft_fail honesty · format-break / empty / 403/429", () => {
   test("HTML body → soft_fail html_body", async () => {
-    const r = await fetchGnewsRss({ fixtureXml: HTML_BREAK });
+    const r = await fetchGnewsRss({ ...fast(), fixtureXml: HTML_BREAK });
     expect(r.ok).toBe(false);
     expect(r.soft_fail).toBe(true);
     expect(r.soft_fail_reason).toContain("html_body");
@@ -160,7 +161,7 @@ describe("soft_fail honesty · format-break / empty / 403/429", () => {
   }, { timeout: 30_000 });
 
   test("empty channel → soft_fail empty_channel", async () => {
-    const r = await fetchGnewsRss({ fixtureXml: EMPTY });
+    const r = await fetchGnewsRss({ ...fast(), fixtureXml: EMPTY });
     expect(r.soft_fail).toBe(true);
     expect(r.soft_fail_reason).toContain("empty_channel");
     expect(r.items).toHaveLength(0);
@@ -168,9 +169,10 @@ describe("soft_fail honesty · format-break / empty / 403/429", () => {
   }, { timeout: 30_000 });
 
   test("HTTP 429 force soft_fail merge · ingest continues shape", async () => {
-    const cacheDir = resolve(import.meta.dir, "../../../artifacts/sage/gnews-cache-test-429");
+    const cacheDir = tmpCache("gnews-cache-test-429");
     wipe(cacheDir);
     const r = await fetchGnewsRss({
+      ...fast(),
       cacheDir,
       forceSoftFail: 429,
       now: Date.UTC(2026, 8, 11, 12),
@@ -186,9 +188,10 @@ describe("soft_fail honesty · format-break / empty / 403/429", () => {
   }, { timeout: 30_000 });
 
   test("HTTP 403 soft_fail", async () => {
-    const cacheDir = resolve(import.meta.dir, "../../../artifacts/sage/gnews-cache-test-403");
+    const cacheDir = tmpCache("gnews-cache-test-403");
     wipe(cacheDir);
     const r = await fetchGnewsRss({
+      ...fast(),
       cacheDir,
       forceSoftFail: 403,
       maxQueries: 2,
@@ -201,6 +204,7 @@ describe("soft_fail honesty · format-break / empty / 403/429", () => {
 
   test("one query HTML soft_fail · other fixture ok → merge", async () => {
     const r = await fetchGnewsRss({
+      ...fast(),
       runAllQueries: false,
       maxQueries: 2,
       now: Date.UTC(2026, 8, 11),
@@ -234,6 +238,7 @@ describe("soft_fail honesty · format-break / empty / 403/429", () => {
       [picked[1]!]: SAMPLE,
     };
     const r = await fetchGnewsRss({
+      ...fast(),
       now: Date.UTC(2026, 8, 11),
       maxQueries: 2,
       fixtures,
@@ -250,7 +255,7 @@ describe("soft_fail honesty · format-break / empty / 403/429", () => {
 
 describe("display cap 6–8 · de-dupe", () => {
   test("capGnewsDisplay ≤8", async () => {
-    const r = await fetchGnewsRss({ fixtureXml: SAMPLE, displayCap: 8 });
+    const r = await fetchGnewsRss({ ...fast(), fixtureXml: SAMPLE, displayCap: 8 });
     expect(r.items.length).toBeLessThanOrEqual(8);
     const many = Array.from({ length: 20 }, (_, i) => ({
       ...r.items[0]!,
@@ -267,7 +272,7 @@ describe("display cap 6–8 · de-dupe", () => {
 describe("Beat 5 — publisher, lab queries, pool cap, backoff", () => {
   test("publisher comes from <source> and the ' — Publisher' suffix strips before matching", async () => {
     const { stripPublisherSuffix, normalizeTitle } = await import("@/lib/dedupe");
-    const r = await fetchGnewsRss({ fixtureXml: SAMPLE });
+    const r = await fetchGnewsRss({ ...fast(), fixtureXml: SAMPLE });
     const it = r.items.find((i) => i.title.startsWith("OpenAI ships GPT-6"))!;
     expect(it.publisher).toBe("TechCrunch");
     expect(stripPublisherSuffix(it.title, it.publisher)).toBe("OpenAI ships GPT-6 preview for labs");
@@ -287,10 +292,11 @@ describe("Beat 5 — publisher, lab queries, pool cap, backoff", () => {
     expect(GNEWS_LAB_QUERIES.length).toBeLessThanOrEqual(6);
     expect(gnewsQueriesSafe(GNEWS_LAB_QUERIES)).toBe(true);
     expect(gnewsLiveQuery("Gemini", GNEWS_RECENT_DAYS)).toBe("Gemini when:2d");
-    const cacheDir = resolve(import.meta.dir, `../../../artifacts/sage/gnews-cache-test-lab-${Date.now()}`);
+    const cacheDir = tmpCache("gnews-cache-test-lab");
     wipe(cacheDir);
     const urls: string[] = [];
     const r = await fetchGnewsRss({
+      ...fast(),
       cacheDir,
       now: Date.UTC(2026, 8, 24),
       labQueries: true,
@@ -310,10 +316,11 @@ describe("Beat 5 — publisher, lab queries, pool cap, backoff", () => {
     wipe(cacheDir);
   }, { timeout: 30_000 });
   test("429 stops further live requests this tick (polite backoff)", async () => {
-    const cacheDir = resolve(import.meta.dir, `../../../artifacts/sage/gnews-cache-test-429-${Date.now()}`);
+    const cacheDir = tmpCache("gnews-cache-test-429");
     wipe(cacheDir);
     let n = 0;
     const r = await fetchGnewsRss({
+      ...fast(),
       cacheDir,
       now: Date.UTC(2026, 8, 24),
       labQueries: true,
@@ -329,7 +336,7 @@ describe("Beat 5 — publisher, lab queries, pool cap, backoff", () => {
     wipe(cacheDir);
   }, { timeout: 30_000 });
   test("pool cap ≤ GNEWS_POOL_CAP, round-robin across queries", async () => {
-    const r = await fetchGnewsRss({ fixtureXml: SAMPLE });
+    const r = await fetchGnewsRss({ ...fast(), fixtureXml: SAMPLE });
     const base = r.items[0]!;
     const mk = (q: string, i: number) => ({
       ...base,

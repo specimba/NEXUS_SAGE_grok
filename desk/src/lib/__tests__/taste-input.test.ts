@@ -1,10 +1,10 @@
 import { describe, expect, test } from "bun:test";
-import { mkdtempSync, readFileSync } from "node:fs";
-import { tmpdir } from "node:os";
+import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { X_TASTE } from "@/data/x-taste";
 import { tasteUrls } from "@/lib/taste-input";
 import { scoreUrlList } from "@/lib/ingest/shelf";
+import { tmpDir } from "./tmp-cache";
 
 const DESK = join(import.meta.dir, "../../..");
 
@@ -15,7 +15,7 @@ describe("cloud Taste = committed x-taste.ts (no box-only attachment)", () => {
   });
 
   test("clean env (temp cwd/HOME, no /workspace/attachments) gives the same entries", () => {
-    const tmp = mkdtempSync(join(tmpdir(), "taste-clean-"));
+    const tmp = tmpDir("taste-clean");
     const code = `import { tasteUrls } from ${JSON.stringify(join(DESK, "src/lib/taste-input.ts"))}; console.log(JSON.stringify(tasteUrls()));`;
     const p = Bun.spawnSync(["bun", "-e", code], { cwd: tmp, env: { PATH: process.env.PATH ?? "", HOME: tmp } });
     expect(p.exitCode).toBe(0);

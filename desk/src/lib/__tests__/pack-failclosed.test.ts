@@ -9,13 +9,13 @@ import {
   mkdirSync,
   mkdtempSync,
   readFileSync,
-  renameSync,
   rmSync,
   writeFileSync,
 } from "node:fs";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
 import { tmpdir } from "node:os";
 import { spawnSync } from "node:child_process";
+import { tmpCache, tmpDir } from "./tmp-cache";
 import {
   assertArchiveComplete,
   extractTar,
@@ -36,7 +36,8 @@ function run(cmd: string[], opts: { cwd?: string; env?: Record<string, string> }
   return spawnSync(cmd[0]!, cmd.slice(1), {
     cwd: opts.cwd ?? DESK,
     encoding: "utf8",
-    env: { ...process.env, ...(opts.env ?? {}) },
+    // pack:import exits on a refused pack before its own cleanup runs; keep its mkdtemp staging in our scratch root.
+    env: { ...process.env, TMPDIR: tmpDir("spawn-tmp"), ...(opts.env ?? {}) },
   });
 }
 
@@ -71,7 +72,8 @@ function mutatePack(
     });
     if (tar.status !== 0) throw new Error(tar.stderr || tar.stdout || "tar fail");
     // keep outDir alive by copying to a durable temp under /tmp owned by us
-    const durable = join(tmpdir(), `sage-fc-${Date.now()}.tar.gz`);
+    const durable = join(tmpCache("fc-pack"), "mutated.tar.gz");
+    mkdirSync(dirname(durable), { recursive: true });
     copyFileSync(out, durable);
     return durable;
   } finally {
@@ -84,19 +86,17 @@ describe("P2 fail-closed F1–F5", () => {
   test(
     "F1: pack:export with CURRENT missing → exit ≠ 0",
     () => {
+      // Point the exporter at a CURRENT that does not exist (SAGE_CURRENT_PATH) instead of moving the real
+      // artifacts/sage/CURRENT.json aside, so a crawl running alongside the suite never sees it missing.
       expect(existsSync(CURRENT)).toBe(true);
-      const bak = `${CURRENT}.f1-bak`;
-      renameSync(CURRENT, bak);
-      try {
-        const r = run(["bun", "run", "pack:export"]);
-        expect(r.status).not.toBe(0);
-        const out = `${r.stdout || ""}\n${r.stderr || ""}`;
-        expect(out).toMatch(/CURRENT|HARD GATE|missing/i);
-        expect(out).not.toMatch(/pack:export wrote dual-home/);
-      } finally {
-        if (existsSync(bak) && !existsSync(CURRENT)) renameSync(bak, CURRENT);
-        else if (existsSync(bak)) rmSync(bak, { force: true });
-      }
+      const scratch = tmpCache("f1-pack");
+      const r = run(["bun", "run", "pack:export"], {
+        env: { SAGE_CURRENT_PATH: join(scratch, "CURRENT.json"), SAGE_PACK_HOME: join(scratch, "home") },
+      });
+      expect(r.status).not.toBe(0);
+      const out = `${r.stdout || ""}\n${r.stderr || ""}`;
+      expect(out).toMatch(/CURRENT|HARD GATE|missing/i);
+      expect(out).not.toMatch(/pack:export wrote dual-home/);
       expect(existsSync(CURRENT)).toBe(true);
     },
     { timeout: 60_000 },
@@ -252,7 +252,8 @@ describe("P2 fail-closed F1–F5", () => {
     try {
       extractTar(base, staging);
       writeFileSync(join(staging, ".env"), "SECRET=1\n", "utf8");
-      const forged = join(tmpdir(), `sage-fc-env-${Date.now()}.tar.gz`);
+      const forged = join(tmpCache("fc-env"), "forged.tar.gz");
+      mkdirSync(dirname(forged), { recursive: true });
       const paths = [...listTarPaths(base), ".env"];
       const tar = spawnSync("tar", ["-czf", forged, "-C", staging, ...paths], {
         encoding: "utf8",

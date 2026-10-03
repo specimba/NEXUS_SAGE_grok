@@ -11,6 +11,7 @@ import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { classifyPost, type PostClass } from "./x-hygiene";
 import { classifyUrl } from "./ingest/shelf";
+import { paceWait, type Pace } from "./pace";
 
 export const RSS_UA = "NEXUS-SAGE-desk/0.2 (free-ingest; rss)";
 export const RSS_MIN_INTERVAL_MS = 2_000;
@@ -121,9 +122,6 @@ const DEFAULT_CACHE_DIR = resolve(
 
 let lastRequestAt = 0;
 
-function sleep(ms: number): Promise<void> {
-  return new Promise((r) => setTimeout(r, ms));
-}
 
 export function resolveRssCacheDir(root?: string): string {
   if (root) return resolve(root, "artifacts/sage/rss-cache");
@@ -364,11 +362,8 @@ function writeCache(cacheDir: string, lab: string, xml: string, now = Date.now()
   writeFileSync(cachePath(cacheDir, lab), `<!-- cached_at:${iso} -->\n${xml}`);
 }
 
-async function throttle(): Promise<void> {
-  const gap = Date.now() - lastRequestAt;
-  if (lastRequestAt > 0 && gap < RSS_MIN_INTERVAL_MS) {
-    await sleep(RSS_MIN_INTERVAL_MS - gap);
-  }
+function throttle(pace?: Pace): Promise<void> {
+  return paceWait(lastRequestAt, RSS_MIN_INTERVAL_MS, pace);
 }
 
 /** True when body is HTML (Cloudflare/login wall) rather than RSS/Atom. */
@@ -389,11 +384,12 @@ export function looksLikeHtml(body: string): boolean {
 async function getXml(
   url: string,
   fetchImpl: typeof fetch = fetch,
+  pace?: Pace,
 ): Promise<
   | { ok: true; body: string }
   | { ok: false; status: number; reason: string }
 > {
-  await throttle();
+  await throttle(pace);
   lastRequestAt = Date.now();
   const res = await fetchImpl(url, {
     method: "GET",
@@ -427,6 +423,9 @@ export type FetchRssLabsOpts = {
   /** Test/offline fetch override (github-shelf pattern). */
   fetchImpl?: typeof fetch;
   now?: number;
+  /** Request pacing override (tests pass `minIntervalMs: 0`); default = the source's *_MIN_INTERVAL_MS. */
+  minIntervalMs?: number;
+  sleep?: Pace["sleep"];
 };
 
 export type FetchRssLabsResult = {
@@ -462,6 +461,7 @@ export async function fetchRssLabs(
   const now = opts.now ?? Date.now();
   const feeds = opts.feeds ?? LAB_FEEDS;
   const fetchImpl = opts.fetchImpl ?? fetch;
+  const pace: Pace = { minIntervalMs: opts.minIntervalMs, sleep: opts.sleep };
 
   const all: LabRssItem[] = [];
   const feedsOk: FetchRssLabsResult["feedsOk"] = [];
@@ -519,7 +519,7 @@ export async function fetchRssLabs(
       let lastReason = "network/empty";
       for (const url of feed.urls) {
         try {
-          const res = await getXml(url, fetchImpl);
+          const res = await getXml(url, fetchImpl, pace);
           if (!res.ok) {
             lastReason = res.reason;
             // 403/404/HTML/5xx → try next first-party URL if any; else soft_fail feed

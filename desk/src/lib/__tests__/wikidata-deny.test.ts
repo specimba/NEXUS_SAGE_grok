@@ -16,6 +16,7 @@ import {
 } from "@/lib/wikidata-deny";
 import { WIKIDATA_DENY_SEEDS, findSeed } from "@/data/wikidata-deny-seeds";
 import { CYCLE } from "@/data/cycle";
+import { tmpCache } from "./tmp-cache";
 
 const FIX = (name: string) =>
   readFileSync(resolve(import.meta.dir, "fixtures", name), "utf8");
@@ -149,7 +150,7 @@ describe("toDenyHints + soft-fail + Brief=false", () => {
 
   test("HTTP 403 fetch → soft_fail · briefEligible false", async () => {
     const r = await fetchWikidataDeny({
-      cacheDir: "/tmp/wikidata-deny-test-cache-403",
+      cacheDir: tmpCache("wikidata-deny-test-cache-403"),
       maxSeeds: 1,
       now: 0,
       minIntervalMs: 0,

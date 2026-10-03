@@ -14,6 +14,7 @@ import {
 } from "@/lib/rss-security";
 import { parseRssOrAtom } from "@/lib/rss-labs";
 import { CYCLE } from "@/data/cycle";
+import { fast } from "./tmp-cache";
 
 const FIX = (name: string) =>
   readFileSync(resolve(import.meta.dir, "fixtures", name), "utf8");
@@ -98,7 +99,7 @@ describe("Security RSS parse → schema", () => {
       "fox-it": FOX,
       projectzero: P0,
     };
-    const r = await fetchRssSecurity({ fixtures });
+    const r = await fetchRssSecurity({ ...fast(), fixtures });
     expect(r.feedsOk.length).toBe(3);
     expect(r.feedsOk.map((f) => f.lab).sort()).toEqual([
       "fox-it",
@@ -240,6 +241,7 @@ describe("never Brief · cycle locks · ToB+Fox-IT+P0 · NCC skip", () => {
   test("Fox-IT empty channel soft-continues · brief still false", async () => {
     const empty = `<?xml version="1.0"?><rss version="2.0"><channel><title>x</title></channel></rss>`;
     const r = await fetchRssSecurity({
+      ...fast(),
       feeds: [{ lab: "fox-it", urls: ["https://blog.fox-it.com/feed/"] }],
       fixtures: { "fox-it": empty },
     });
