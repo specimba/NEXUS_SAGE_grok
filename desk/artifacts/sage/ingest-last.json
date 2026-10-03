@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-03T15:20:35Z",
+  "stamped_at": "2026-10-03T19:11:33Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 187,
+      "duration_ms": 242,
       "paused_until": null,
       "reason": null
     },
@@ -17,8 +17,8 @@
       "id": "arxiv",
       "label": "arXiv",
       "status": "ok",
-      "rows": 29,
-      "duration_ms": 3252,
+      "rows": 24,
+      "duration_ms": 10378,
       "paused_until": null,
       "reason": null
     },
@@ -27,7 +27,7 @@
       "label": "OpenAlex",
       "status": "paused",
       "rows": 0,
-      "duration_ms": 1,
+      "duration_ms": 2,
       "paused_until": "2026-10-03T19:13:47Z",
       "reason": "paused_until 2026-10-03T19:13:47Z"
     },
@@ -36,7 +36,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 431,
+      "duration_ms": 2,
       "paused_until": null,
       "reason": null
     },
@@ -45,7 +45,7 @@
       "label": "HN",
       "status": "ok",
       "rows": 56,
-      "duration_ms": 8469,
+      "duration_ms": 8307,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 121,
+      "duration_ms": 16295,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 121,
+      "duration_ms": 4415,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 29,
-      "duration_ms": 121,
+      "rows": 31,
+      "duration_ms": 6366,
       "paused_until": null,
       "reason": null
     },
@@ -81,7 +81,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 121,
+      "duration_ms": 18,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 121,
+      "duration_ms": 19,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 12945,
-    "sources_wall_ms": 8470,
-    "papers_lane_ms": 3875,
-    "slowest_source_ms": 8469,
+    "sources_ms": 46044,
+    "sources_wall_ms": 16297,
+    "papers_lane_ms": 10627,
+    "slowest_source_ms": 16295,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -114,9 +114,9 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 8770,
-    "startup_ms": 36,
-    "main_ms": 8780
+    "wall_ms": 16573,
+    "startup_ms": 32,
+    "main_ms": 16582
   },
   "multi_source_independent": 2,
   "stale_hours": 6,
@@ -125,20 +125,20 @@
     "multi_source_independent": 2,
     "multi_source_raw": 4,
     "self_reposts": 2,
-    "items_in": 216,
-    "clusters_out": 206,
-    "collapsed": 10,
+    "items_in": 218,
+    "clusters_out": 207,
+    "collapsed": 11,
     "multi_source": 2,
-    "multi_member": 8,
+    "multi_member": 9,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 6,
+    "new_items": 19,
     "per_source": {
       "hn-algolia": 56,
       "rss-lab": 104,
       "rss-security": 27,
-      "gnews-rss": 29
+      "gnews-rss": 31
     },
     "multi_source_clusters": [
       {
@@ -174,27 +174,27 @@
         ]
       },
       {
-        "title": "US judge dismisses Chegg, Penske antitrust suits over Google AI Overviews",
+        "title": "NVIDIA DGX Spark 64GB Gives Developers More Ways to Build and Scale Local AI",
         "sources": [
-          "hn-algolia",
-          "gnews-rss"
+          "rss-lab",
+          "hn-algolia"
         ],
         "size": 2,
-        "score": 0.679,
+        "score": 1,
         "members": [
           {
-            "id": "hn:49925606",
+            "id": "hn:49933234",
             "source": "hn-algolia",
-            "title": "US judge dismisses Chegg, Penske antitrust suits over Google AI Overviews",
-            "at": "2026-10-01T18:53:51Z",
+            "title": "Nvidia DGX Spark 64GB Gives Developers More Ways to Build and Scale Local AI",
+            "at": "2026-10-02T13:18:28Z",
             "publisher": null
           },
           {
-            "id": "gnews:727fe17491b140b0",
-            "source": "gnews-rss",
-            "title": "Judge dismisses Chegg and Penske antitrust lawsuits targeting Google AI search - Ars Technica",
-            "at": "2026-10-01T20:11:55Z",
-            "publisher": "Ars Technica"
+            "id": "rss:nvidia:60ea0cfc7bea518f",
+            "source": "rss-lab",
+            "title": "NVIDIA DGX Spark 64GB Gives Developers More Ways to Build and Scale Local AI",
+            "at": "2026-10-02T13:00:39Z",
+            "publisher": "nvidia"
           }
         ]
       }
@@ -250,32 +250,20 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "ababnews.com",
-          "title": "YouTube Creator Felix Kjellberg's Local Model Faces Account Suspension, One Instance Clearly Labeled as Distillation - ababnews.com"
+          "publisher": "techgig.com",
+          "title": "DoorDash built GenAI platform for velocity, reliability, accountability - techgig.com"
         },
         {
-          "publisher": "shattered.io",
-          "title": "Google MVP Satellite Launch: SpaceX Transporter-18 [2026] - shattered.io"
+          "publisher": "Android Police",
+          "title": "I spent 15 years in Chrome before finding a search method that actually saves time - Android Police"
         },
         {
-          "publisher": "24/7 Wall St.",
-          "title": "2-Year Treasury Yield Pulls Back to 4.78% After a Long Climb - 24/7 Wall St."
+          "publisher": "Chosunbiz",
+          "title": "Hyundai Motor bet sees FieldAI valuation jump fivefold to $10 billion - CHOSUNBIZ - Chosunbiz"
         },
         {
-          "publisher": "shattered.io",
-          "title": "Google Suncatcher’s Next Act: 2 Satellites by 2027 [2026] - shattered.io"
-        },
-        {
-          "publisher": "MediaPost",
-          "title": "Google Pushes Court To Scuttle Search Monopoly Verdict 10/05/2026 - MediaPost"
-        },
-        {
-          "publisher": "Rolling Stone",
-          "title": "The Best Over-Ear Headphones for Working Out of 2026: Tried and Tested - Rolling Stone"
-        },
-        {
-          "publisher": "FourWeekMBA",
-          "title": "Google Research Cogentic Reports Five Open Math Results - FourWeekMBA"
+          "publisher": "finance.biggo.com",
+          "title": "77 GPU Clouds. Only 19 Medals. | ClusterMAX 3.0｜Latent Space - finance.biggo.com"
         }
       ],
       "gnews_pool_dropped": 0,
@@ -283,50 +271,7 @@
     },
     "gnews_near_misses": [
       {
-        "score": 0.622,
-        "blocked": "time-window",
-        "hours_apart": 50.2,
-        "a": {
-          "id": "rss:deepmind:c696e8b1f3422473",
-          "source": "rss-lab",
-          "title": "Introducing SynthID Bio",
-          "at": "2026-09-30T15:03:07Z"
-        },
-        "b": {
-          "id": "gnews:2726cacf79a0a183",
-          "source": "gnews-rss",
-          "title": "SynthID Bio Watermarks AI-Designed Proteins Without Breaking Their Function - Tech Times",
-          "at": "2026-10-02T17:16:12Z"
-        },
-        "shared": [
-          "synthid",
-          "bio"
-        ]
-      },
-      {
-        "score": 0.613,
-        "blocked": "thin-overlap",
-        "hours_apart": 83.9,
-        "a": {
-          "id": "rss:openai:d6b9f5e651b1891e",
-          "source": "rss-lab",
-          "title": "Introducing GPT-6.1 Sol",
-          "at": "2026-09-29T10:00:00Z"
-        },
-        "b": {
-          "id": "gnews:f33b8adebf5d2774",
-          "source": "gnews-rss",
-          "title": "Gemini 4 Argon vs Claude Opus 5.5 vs GPT-6.1 Sol: 12-Pt Gap [2026] - tech-insider.org",
-          "at": "2026-10-02T21:51:32Z"
-        },
-        "shared": [
-          "gpt",
-          "6.1",
-          "sol"
-        ]
-      },
-      {
-        "score": 0.497,
+        "score": 0.504,
         "blocked": "below-threshold",
         "hours_apart": 22.1,
         "a": {
@@ -349,49 +294,30 @@
         ]
       },
       {
-        "score": 0.348,
+        "score": 0.437,
         "blocked": "below-threshold",
-        "hours_apart": 5.2,
+        "hours_apart": 3.4,
         "a": {
-          "id": "hn:49934323",
+          "id": "hn:49943034",
           "source": "hn-algolia",
-          "title": "New in Llama.cpp: Decision Models",
-          "at": "2026-10-02T15:06:13Z"
+          "title": "Aleph Alpha Kolibri: How the sovereign German LLM works",
+          "at": "2026-10-03T10:43:51Z"
         },
         "b": {
-          "id": "gnews:778e4997c9e5e1cd",
+          "id": "gnews:cd30b0f3207fbf3a",
           "source": "gnews-rss",
-          "title": "AWS Releases Decision Model for AI Agents That Routes Without Generating Any Text - Tech Times",
-          "at": "2026-10-02T20:20:04Z"
+          "title": "Aleph Alpha’s Sovereign A.I. Model Kolibri Is No Match for the Open-Weight Leaders - trendingtopics.eu",
+          "at": "2026-10-03T14:06:31Z"
         },
         "shared": [
-          "decision",
-          "model"
+          "aleph",
+          "alpha",
+          "kolibri",
+          "sovereign"
         ]
       },
       {
-        "score": 0.348,
-        "blocked": "below-threshold",
-        "hours_apart": 11.1,
-        "a": {
-          "id": "hn:49942092",
-          "source": "hn-algolia",
-          "title": "New in Llama.cpp: Decision Models",
-          "at": "2026-10-03T07:27:06Z"
-        },
-        "b": {
-          "id": "gnews:778e4997c9e5e1cd",
-          "source": "gnews-rss",
-          "title": "AWS Releases Decision Model for AI Agents That Routes Without Generating Any Text - Tech Times",
-          "at": "2026-10-02T20:20:04Z"
-        },
-        "shared": [
-          "decision",
-          "model"
-        ]
-      },
-      {
-        "score": 0.348,
+        "score": 0.344,
         "blocked": "below-threshold",
         "hours_apart": 2,
         "a": {
@@ -413,94 +339,116 @@
         ]
       },
       {
-        "score": 0.339,
+        "score": 0.312,
         "blocked": "below-threshold",
-        "hours_apart": 12.4,
+        "hours_apart": 8.1,
         "a": {
-          "id": "hn:49934323",
+          "id": "hn:49943034",
           "source": "hn-algolia",
-          "title": "New in Llama.cpp: Decision Models",
-          "at": "2026-10-02T15:06:13Z"
+          "title": "Aleph Alpha Kolibri: How the sovereign German LLM works",
+          "at": "2026-10-03T10:43:51Z"
         },
         "b": {
-          "id": "gnews:5a90bce828ddd863",
+          "id": "gnews:dd86a9ae92585731",
           "source": "gnews-rss",
-          "title": "Decision AI Models Explained: TypeSafe Jev vs Fastino GLiDE, GLiNER2.5-Decide and Open-Source Competitors - MarkTechPost",
-          "at": "2026-10-03T03:31:15Z"
+          "title": "Aleph Alpha releases Kolibri, a 78B-parameter open-weight AI model built in Europe - cryptobriefing.com",
+          "at": "2026-10-03T18:52:21Z"
         },
         "shared": [
-          "decision",
-          "model"
+          "aleph",
+          "alpha",
+          "kolibri"
         ]
       },
       {
-        "score": 0.339,
+        "score": 0.309,
         "blocked": "below-threshold",
-        "hours_apart": 3.9,
+        "hours_apart": 4.5,
         "a": {
-          "id": "hn:49942092",
+          "id": "hn:49943034",
           "source": "hn-algolia",
-          "title": "New in Llama.cpp: Decision Models",
-          "at": "2026-10-03T07:27:06Z"
+          "title": "Aleph Alpha Kolibri: How the sovereign German LLM works",
+          "at": "2026-10-03T10:43:51Z"
         },
         "b": {
-          "id": "gnews:5a90bce828ddd863",
+          "id": "gnews:1f418fd3f5c66e89",
           "source": "gnews-rss",
-          "title": "Decision AI Models Explained: TypeSafe Jev vs Fastino GLiDE, GLiNER2.5-Decide and Open-Source Competitors - MarkTechPost",
-          "at": "2026-10-03T03:31:15Z"
+          "title": "Aleph Alpha puts Kolibri's full weights on Hugging Face under Apache 2.0 - Startup Fortune",
+          "at": "2026-10-03T15:16:15Z"
         },
         "shared": [
-          "decision",
-          "model"
+          "aleph",
+          "alpha",
+          "kolibri"
+        ]
+      },
+      {
+        "score": 0.282,
+        "blocked": "below-threshold",
+        "hours_apart": 16.4,
+        "a": {
+          "id": "rss:google-ai:6a7bb4e3e69d69f5",
+          "source": "rss-lab",
+          "title": "The latest AI news we announced in September 2026",
+          "at": "2026-10-02T15:00:00Z"
+        },
+        "b": {
+          "id": "gnews:ee63e858e5bf975a",
+          "source": "gnews-rss",
+          "title": "Google’s September AI push spans frontier models, agents and science - ET Enterprise AI",
+          "at": "2026-10-03T07:24:00Z"
+        },
+        "shared": [
+          "ai",
+          "september"
+        ]
+      },
+      {
+        "score": 0.271,
+        "blocked": "thin-overlap",
+        "hours_apart": 11.9,
+        "a": {
+          "id": "hn:49942569",
+          "source": "hn-algolia",
+          "title": "OpenAI says hacking at scale is expensive to investigate",
+          "at": "2026-10-03T09:07:13Z"
+        },
+        "b": {
+          "id": "gnews:2241b6b881d0a689",
+          "source": "gnews-rss",
+          "title": "California Subpoenas OpenAI Over AI Models That Hacked Their Way Out of a Test - Decrypt News",
+          "at": "2026-10-02T21:16:04Z"
+        },
+        "shared": [
+          "openai",
+          "hack"
+        ]
+      },
+      {
+        "score": 0.265,
+        "blocked": "thin-overlap",
+        "hours_apart": 0.7,
+        "a": {
+          "id": "hn:49942569",
+          "source": "hn-algolia",
+          "title": "OpenAI says hacking at scale is expensive to investigate",
+          "at": "2026-10-03T09:07:13Z"
+        },
+        "b": {
+          "id": "gnews:377af58638a8eaa2",
+          "source": "gnews-rss",
+          "title": "OpenAI reveals new detail on Australia Medicare hack probe - The News International",
+          "at": "2026-10-03T08:27:00Z"
+        },
+        "shared": [
+          "openai",
+          "hack"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.622,
-        "blocked": "time-window",
-        "hours_apart": 50.2,
-        "a": {
-          "id": "rss:deepmind:c696e8b1f3422473",
-          "source": "rss-lab",
-          "title": "Introducing SynthID Bio",
-          "at": "2026-09-30T15:03:07Z"
-        },
-        "b": {
-          "id": "gnews:2726cacf79a0a183",
-          "source": "gnews-rss",
-          "title": "SynthID Bio Watermarks AI-Designed Proteins Without Breaking Their Function - Tech Times",
-          "at": "2026-10-02T17:16:12Z"
-        },
-        "shared": [
-          "synthid",
-          "bio"
-        ]
-      },
-      {
-        "score": 0.613,
-        "blocked": "thin-overlap",
-        "hours_apart": 83.9,
-        "a": {
-          "id": "rss:openai:d6b9f5e651b1891e",
-          "source": "rss-lab",
-          "title": "Introducing GPT-6.1 Sol",
-          "at": "2026-09-29T10:00:00Z"
-        },
-        "b": {
-          "id": "gnews:f33b8adebf5d2774",
-          "source": "gnews-rss",
-          "title": "Gemini 4 Argon vs Claude Opus 5.5 vs GPT-6.1 Sol: 12-Pt Gap [2026] - tech-insider.org",
-          "at": "2026-10-02T21:51:32Z"
-        },
-        "shared": [
-          "gpt",
-          "6.1",
-          "sol"
-        ]
-      },
-      {
-        "score": 0.553,
+        "score": 0.552,
         "blocked": "time-window",
         "hours_apart": 67.5,
         "a": {
@@ -520,7 +468,7 @@
         ]
       },
       {
-        "score": 0.497,
+        "score": 0.504,
         "blocked": "below-threshold",
         "hours_apart": 22.1,
         "a": {
@@ -543,7 +491,30 @@
         ]
       },
       {
-        "score": 0.376,
+        "score": 0.437,
+        "blocked": "below-threshold",
+        "hours_apart": 3.4,
+        "a": {
+          "id": "hn:49943034",
+          "source": "hn-algolia",
+          "title": "Aleph Alpha Kolibri: How the sovereign German LLM works",
+          "at": "2026-10-03T10:43:51Z"
+        },
+        "b": {
+          "id": "gnews:cd30b0f3207fbf3a",
+          "source": "gnews-rss",
+          "title": "Aleph Alpha’s Sovereign A.I. Model Kolibri Is No Match for the Open-Weight Leaders - trendingtopics.eu",
+          "at": "2026-10-03T14:06:31Z"
+        },
+        "shared": [
+          "aleph",
+          "alpha",
+          "kolibri",
+          "sovereign"
+        ]
+      },
+      {
+        "score": 0.379,
         "blocked": "thin-overlap",
         "hours_apart": 736.9,
         "a": {
@@ -564,49 +535,7 @@
         ]
       },
       {
-        "score": 0.348,
-        "blocked": "below-threshold",
-        "hours_apart": 5.2,
-        "a": {
-          "id": "hn:49934323",
-          "source": "hn-algolia",
-          "title": "New in Llama.cpp: Decision Models",
-          "at": "2026-10-02T15:06:13Z"
-        },
-        "b": {
-          "id": "gnews:778e4997c9e5e1cd",
-          "source": "gnews-rss",
-          "title": "AWS Releases Decision Model for AI Agents That Routes Without Generating Any Text - Tech Times",
-          "at": "2026-10-02T20:20:04Z"
-        },
-        "shared": [
-          "decision",
-          "model"
-        ]
-      },
-      {
-        "score": 0.348,
-        "blocked": "below-threshold",
-        "hours_apart": 11.1,
-        "a": {
-          "id": "hn:49942092",
-          "source": "hn-algolia",
-          "title": "New in Llama.cpp: Decision Models",
-          "at": "2026-10-03T07:27:06Z"
-        },
-        "b": {
-          "id": "gnews:778e4997c9e5e1cd",
-          "source": "gnews-rss",
-          "title": "AWS Releases Decision Model for AI Agents That Routes Without Generating Any Text - Tech Times",
-          "at": "2026-10-02T20:20:04Z"
-        },
-        "shared": [
-          "decision",
-          "model"
-        ]
-      },
-      {
-        "score": 0.348,
+        "score": 0.344,
         "blocked": "below-threshold",
         "hours_apart": 2,
         "a": {
@@ -626,6 +555,70 @@
           "goe",
           "rogu"
         ]
+      },
+      {
+        "score": 0.312,
+        "blocked": "below-threshold",
+        "hours_apart": 8.1,
+        "a": {
+          "id": "hn:49943034",
+          "source": "hn-algolia",
+          "title": "Aleph Alpha Kolibri: How the sovereign German LLM works",
+          "at": "2026-10-03T10:43:51Z"
+        },
+        "b": {
+          "id": "gnews:dd86a9ae92585731",
+          "source": "gnews-rss",
+          "title": "Aleph Alpha releases Kolibri, a 78B-parameter open-weight AI model built in Europe - cryptobriefing.com",
+          "at": "2026-10-03T18:52:21Z"
+        },
+        "shared": [
+          "aleph",
+          "alpha",
+          "kolibri"
+        ]
+      },
+      {
+        "score": 0.309,
+        "blocked": "below-threshold",
+        "hours_apart": 4.5,
+        "a": {
+          "id": "hn:49943034",
+          "source": "hn-algolia",
+          "title": "Aleph Alpha Kolibri: How the sovereign German LLM works",
+          "at": "2026-10-03T10:43:51Z"
+        },
+        "b": {
+          "id": "gnews:1f418fd3f5c66e89",
+          "source": "gnews-rss",
+          "title": "Aleph Alpha puts Kolibri's full weights on Hugging Face under Apache 2.0 - Startup Fortune",
+          "at": "2026-10-03T15:16:15Z"
+        },
+        "shared": [
+          "aleph",
+          "alpha",
+          "kolibri"
+        ]
+      },
+      {
+        "score": 0.293,
+        "blocked": "thin-overlap",
+        "hours_apart": 255.1,
+        "a": {
+          "id": "hn:49934323",
+          "source": "hn-algolia",
+          "title": "New in Llama.cpp: Decision Models",
+          "at": "2026-10-02T15:06:13Z"
+        },
+        "b": {
+          "id": "rss:huggingface:689d78c6e007ab8e",
+          "source": "rss-lab",
+          "title": "Transformers now runs llama.cpp quants",
+          "at": "2026-09-22T00:00:00Z"
+        },
+        "shared": [
+          "llama.cpp"
+        ]
       }
     ]
   },
@@ -633,42 +626,42 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 2,
+      "streak_ok": 3,
       "streak_fail": 0,
-      "items_last": 29
+      "items_last": 24
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 68,
+      "streak_ok": 69,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 68,
+      "streak_ok": 69,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 68,
+      "streak_ok": 69,
       "streak_fail": 0,
-      "items_last": 29
+      "items_last": 31
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 68,
+      "streak_ok": 69,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 68,
+      "streak_ok": 69,
       "streak_fail": 0,
       "items_last": 56
     },
@@ -682,27 +675,27 @@
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 68,
+      "streak_ok": 69,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 68,
+      "streak_ok": 69,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 68,
+      "streak_ok": 69,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.002566111111111111,
+    "hours": 0.004680555555555556,
     "stale": false
   },
   "hf": {
@@ -713,7 +706,7 @@
   "arxiv": {
     "ok": true,
     "enriched": 24,
-    "shelf": 5,
+    "shelf": 0,
     "timed_out": false,
     "budget_ms": 20000,
     "brief": false,
@@ -748,8 +741,8 @@
     "enriched": 1,
     "query": "OneStreamer: Unifying Perception, Memory, and Proactive Response in Streaming Video Interaction",
     "mode": "bibliographic",
-    "from_cache": false,
-    "searches": 1,
+    "from_cache": true,
+    "searches": 0,
     "brief": false,
     "pulse_lead": false,
     "papers_enrich_only": true,
@@ -792,22 +785,22 @@
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
+        "id": "hn:49943034",
+        "tag": "rest",
+        "score": 406,
+        "text": "Aleph Alpha Kolibri: How the sovereign German LLM works"
+      },
+      {
         "id": "hn:49936575",
         "tag": "rest",
-        "score": 294,
+        "score": 321,
         "text": "From the creator of Redis; run LLM locally with ds4"
       },
       {
         "id": "hn:49929391",
         "tag": "rest",
-        "score": 279,
+        "score": 308,
         "text": "Greg Kroah-Hartman – Security in the LLM Age [video]"
-      },
-      {
-        "id": "hn:49924618",
-        "tag": "rest",
-        "score": 198,
-        "text": "Vote on which of Hacker News' challenges for AI have been met"
       }
     ]
   },
@@ -823,47 +816,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "(cache:openai)",
+        "url": "https://openai.com/news/rss.xml",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "(cache:deepmind)",
+        "url": "https://deepmind.google/blog/rss.xml",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "(cache:google-ai)",
+        "url": "https://blog.google/technology/ai/rss/",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "(cache:huggingface)",
+        "url": "https://huggingface.co/blog/feed.xml",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "(cache:mistral)",
+        "url": "https://mistral.ai/rss.xml",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "(cache:nvidia)",
+        "url": "https://blogs.nvidia.com/feed/",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "(cache:nvidia-dev)",
+        "url": "https://developer.nvidia.com/blog/feed",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "(cache:ms-research)",
+        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "(cache:google-research)",
+        "url": "https://research.google/blog/rss/",
         "count": 12
       }
     ],
@@ -909,17 +902,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "(cache:trailofbits)",
+        "url": "https://blog.trailofbits.com/feed/",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "(cache:fox-it)",
+        "url": "https://blog.fox-it.com/feed/",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "(cache:projectzero)",
+        "url": "https://projectzero.google/feed.xml",
         "count": 5
       }
     ],
@@ -960,8 +953,8 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 29,
-    "pool": 232,
+    "items": 31,
+    "pool": 219,
     "corroborators": [
       {
         "id": "gnews:24b62ecd2c7cc959",
@@ -986,20 +979,12 @@
         "title": "The Sleuths Who Expose When AI Goes Rogue - WSJ",
         "publisher": "WSJ",
         "self_repost": false
-      },
-      {
-        "id": "gnews:727fe17491b140b0",
-        "anchor_id": "hn:49925606",
-        "score": 0.682,
-        "title": "Judge dismisses Chegg and Penske antitrust lawsuits targeting Google AI search - Ars Technica",
-        "publisher": "Ars Technica",
-        "self_repost": false
       }
     ],
     "http_status": 200,
-    "content_type": null,
+    "content_type": "application/xml; charset=utf-8",
     "format": "rss2",
-    "from_cache": true,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1022,24 +1007,24 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:706e97c84d98f0cc",
-        "title": "Deepmind researchers propose \"Artificial Symbiotic Intelligence\" as an alternative to the singularity - the-decoder.com",
-        "publisher": "the-decoder.com",
-        "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPZEdIcnpHVnFXbFVvZUhseG1Ja3lRX2JsaHltdm01SFYtRXd1WmxOZnY4dFJjSlYwWFpwei1zQlJlelJ3MEhhTklURlhxU0R5THZjN3NNdE5LWGFkcFg1YWJEeU4yeFZTQXduSncwWUstdXFnSUNCckozeHY3WUx4azhyOHkyV2wwU19SR0FtNGFoQ2l5Z2tWeVZha1RkSGRJZ09MZW1DNUFBNXJDY0FBUEpsa1BheERodHdjdEQxSEdCZw?oc=5",
+        "id": "gnews:dd86a9ae92585731",
+        "title": "Aleph Alpha releases Kolibri, a 78B-parameter open-weight AI model built in Europe - cryptobriefing.com",
+        "publisher": "cryptobriefing.com",
+        "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9zX0gybGg4VkFReFZfempCN01RWTNXc1RZNmxHOUFtUkpITHgxdFRVd1NNczBDRW9qbEZaQkZhSk1PTk4tSlk5MmtzaFlVZXBHMEtTRm8yM3ZValhsWHhmWmJPaFBLaHJTSncyVmtheUN1ek0?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:377af58638a8eaa2",
-        "title": "OpenAI reveals new detail on Australia Medicare hack probe - The News International",
-        "publisher": "The News International",
-        "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxONW5qZ082SWQzeHNJa0xQZXBDWHA3TUgtQ2szYkhfODgxR0dSMEljc3A3UUVNY2E3QUlqRkRDYWtfZlM3V2NWcmFDVTdGLVhUWE5tc2dGdTV4UUJXU0l4NjRIVWlzS3YyWkRrMFkyZFYxTzBSb2t4V1ZjV084eUhheV96aHJvbW9ISkJaZWVoQnZMbFBEaDlWNFIyN1E0TDdsZHfSAZ4BQVVfeXFMUFgwUFZCYTZvR0JoMkluWHRRd0xXcE9zUmx4c2JkZHAyRlFOYW1HLWJOODdzUUxoOWhIUTRIdWdmOTIyeVlRZ3J6bEJWUWZPeWU0VTQ0QUVKN0Nwa19VY3FsWWIxcjZhMDNnb3JVR2dlQ0Rwd0pEZVRkY25BSG0zcDh3dzRFUXdxYk1YR01RSU1qTHFtSlRSZVRXZ3BERnc?oc=5",
-        "tag": "rest"
-      },
-      {
-        "id": "gnews:379e1dd6e2f150fd",
-        "title": "ChatGPT and Other AI Tools Are Changing How We Learn. A Massive New Study Calls It ‘Knowledge Collapse’ - inc.com",
+        "id": "gnews:b5cf3fd25bf55f3e",
+        "title": "Customer Value Matters More Than AI Hype. Investors Explain Why - inc.com",
         "publisher": "inc.com",
-        "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxOR3lOYWNvV0VpMTl1T3JiTUV5eDBHWmhtQ09lcFlPN2ZZWHMyTXQzUU01ZU53YzZGQ0pWclN4VkVwb0h2dm9uUVNJVklHTzJCSmtEd3diRVRPYVQ3UkdJWFJCQV8zbl9qX0VfY2I1bnhyRVNNdlZfN1dKaVNrNk90S0NIdVpKZEVRbU45WFlTa29TYlpLNUltREdST1dpRG0tdnBHRjZOd0pZUU1jWl9CbXczbnU3WlEwQkl4N1BkTkRtbWJvTDNXWlhlbHFGT3NIVGFsZWwzcTJoTjl0?oc=5",
+        "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOUldHajRUYXgxTWt5ZjlkQjJ0SnFjak43M3o2emtiTTRGWXhhVWQtY185NVhSUzhyakVYT1JOUjEyU3AxZjdxeDhFVmxlRUcwaV9Md2pvOWd4anJUNllzZ1hITi1vNGRFSVBkdTYwUFc1d2ZqT1hValhUbXlacE9SUzdkNmVkRGt6NUdoYUt2a0xpOWM5Rm5ZY1FIZW5NMTJFU0xZ?oc=5",
+        "tag": "rest"
+      },
+      {
+        "id": "gnews:d448f1b90e83d325",
+        "title": "Google Antigravity Adds Anthropic Claude Opus 5.5 and Sonnet 5.5 for Paid Subscribers - pc-tablet.com",
+        "publisher": "pc-tablet.com",
+        "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPNTNDYTV4SWlJeEpUSUxaVDBqR1B5Smt1eHFfOVhzRUhRQ1UyeDhYMEdoUDBGcTdLRFI0M1gwQlVqai1QSzNSSlgweGY1dm56ckJqMTVrNzdwbWVsODQ2QndMa20xQVJMZEdLdjBuMW9GN0pZYWtVQmZKaGQ5MFQ4RTFXT0xCV3FpTUwzWDVSbzVtZEh2cVBMejZkZXVXUTJVa1Bfem9vYWY0UTY1a0pMNjc5Vjd3UQ?oc=5",
         "tag": "rest"
       }
     ]
@@ -1073,7 +1058,7 @@
     ]
   },
   "shelf": {
-    "count": 18,
+    "count": 13,
     "brief": false
   },
   "wikidata": {
