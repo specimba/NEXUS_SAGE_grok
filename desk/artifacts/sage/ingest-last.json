@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-03T19:11:33Z",
+  "stamped_at": "2026-10-03T23:20:49Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 242,
+      "duration_ms": 319,
       "paused_until": null,
       "reason": null
     },
@@ -17,19 +17,19 @@
       "id": "arxiv",
       "label": "arXiv",
       "status": "ok",
-      "rows": 24,
-      "duration_ms": 10378,
+      "rows": 29,
+      "duration_ms": 3296,
       "paused_until": null,
       "reason": null
     },
     {
       "id": "openalex",
       "label": "OpenAlex",
-      "status": "paused",
+      "status": "fail",
       "rows": 0,
-      "duration_ms": 2,
-      "paused_until": "2026-10-03T19:13:47Z",
-      "reason": "paused_until 2026-10-03T19:13:47Z"
+      "duration_ms": 160,
+      "paused_until": "2026-10-04T23:20:53Z",
+      "reason": "HTTP 429"
     },
     {
       "id": "crossref",
@@ -45,7 +45,7 @@
       "label": "HN",
       "status": "ok",
       "rows": 56,
-      "duration_ms": 8307,
+      "duration_ms": 9404,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 16295,
+      "duration_ms": 312,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 4415,
+      "duration_ms": 312,
       "paused_until": null,
       "reason": null
     },
@@ -72,7 +72,7 @@
       "label": "Google News",
       "status": "ok",
       "rows": 31,
-      "duration_ms": 6366,
+      "duration_ms": 312,
       "paused_until": null,
       "reason": null
     },
@@ -81,7 +81,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 18,
+      "duration_ms": 312,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 19,
+      "duration_ms": 312,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 46044,
-    "sources_wall_ms": 16297,
-    "papers_lane_ms": 10627,
-    "slowest_source_ms": 16295,
+    "sources_ms": 14741,
+    "sources_wall_ms": 9407,
+    "papers_lane_ms": 3783,
+    "slowest_source_ms": 9404,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -114,9 +114,9 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 16573,
-    "startup_ms": 32,
-    "main_ms": 16582
+    "wall_ms": 9955,
+    "startup_ms": 54,
+    "main_ms": 9996
   },
   "multi_source_independent": 2,
   "stale_hours": 6,
@@ -126,14 +126,14 @@
     "multi_source_raw": 4,
     "self_reposts": 2,
     "items_in": 218,
-    "clusters_out": 207,
-    "collapsed": 11,
+    "clusters_out": 206,
+    "collapsed": 12,
     "multi_source": 2,
-    "multi_member": 9,
+    "multi_member": 10,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 19,
+    "new_items": 8,
     "per_source": {
       "hn-algolia": 56,
       "rss-lab": 104,
@@ -267,34 +267,11 @@
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 23
+      "hn_dropped": 21
     },
     "gnews_near_misses": [
       {
-        "score": 0.504,
-        "blocked": "below-threshold",
-        "hours_apart": 22.1,
-        "a": {
-          "id": "hn:49928099",
-          "source": "hn-algolia",
-          "title": "California issues investigative subpoena to OpenAI over rogue agents' hacking",
-          "at": "2026-10-01T23:07:08Z"
-        },
-        "b": {
-          "id": "gnews:2241b6b881d0a689",
-          "source": "gnews-rss",
-          "title": "California Subpoenas OpenAI Over AI Models That Hacked Their Way Out of a Test - Decrypt News",
-          "at": "2026-10-02T21:16:04Z"
-        },
-        "shared": [
-          "california",
-          "subpoena",
-          "openai",
-          "hack"
-        ]
-      },
-      {
-        "score": 0.437,
+        "score": 0.44,
         "blocked": "below-threshold",
         "hours_apart": 3.4,
         "a": {
@@ -317,7 +294,29 @@
         ]
       },
       {
-        "score": 0.344,
+        "score": 0.396,
+        "blocked": "thin-overlap",
+        "hours_apart": 0.8,
+        "a": {
+          "id": "hn:49946567",
+          "source": "hn-algolia",
+          "title": "Getting the most out of Opus 5.5 in Claude and Claude Code",
+          "at": "2026-10-03T18:29:30Z"
+        },
+        "b": {
+          "id": "gnews:d448f1b90e83d325",
+          "source": "gnews-rss",
+          "title": "Google Antigravity Adds Anthropic Claude Opus 5.5 and Sonnet 5.5 for Paid Subscribers - pc-tablet.com",
+          "at": "2026-10-03T17:44:00Z"
+        },
+        "shared": [
+          "opus",
+          "5.5",
+          "claude"
+        ]
+      },
+      {
+        "score": 0.347,
         "blocked": "below-threshold",
         "hours_apart": 2,
         "a": {
@@ -361,7 +360,7 @@
         ]
       },
       {
-        "score": 0.309,
+        "score": 0.31,
         "blocked": "below-threshold",
         "hours_apart": 4.5,
         "a": {
@@ -383,7 +382,7 @@
         ]
       },
       {
-        "score": 0.282,
+        "score": 0.28,
         "blocked": "below-threshold",
         "hours_apart": 16.4,
         "a": {
@@ -404,7 +403,7 @@
         ]
       },
       {
-        "score": 0.271,
+        "score": 0.275,
         "blocked": "thin-overlap",
         "hours_apart": 11.9,
         "a": {
@@ -425,7 +424,7 @@
         ]
       },
       {
-        "score": 0.265,
+        "score": 0.271,
         "blocked": "thin-overlap",
         "hours_apart": 0.7,
         "a": {
@@ -448,50 +447,7 @@
     ],
     "near_misses": [
       {
-        "score": 0.552,
-        "blocked": "time-window",
-        "hours_apart": 67.5,
-        "a": {
-          "id": "hn:49926047",
-          "source": "hn-algolia",
-          "title": "The $10B AI Assistant Challenging Meta's Muse, Grok's Bots, and OpenAI's Dots [video]",
-          "at": "2026-10-01T19:30:44Z"
-        },
-        "b": {
-          "id": "rss:openai:dec620cb7225d243",
-          "source": "rss-lab",
-          "title": "Introducing dots",
-          "at": "2026-09-29T00:00:00Z"
-        },
-        "shared": [
-          "dot"
-        ]
-      },
-      {
-        "score": 0.504,
-        "blocked": "below-threshold",
-        "hours_apart": 22.1,
-        "a": {
-          "id": "hn:49928099",
-          "source": "hn-algolia",
-          "title": "California issues investigative subpoena to OpenAI over rogue agents' hacking",
-          "at": "2026-10-01T23:07:08Z"
-        },
-        "b": {
-          "id": "gnews:2241b6b881d0a689",
-          "source": "gnews-rss",
-          "title": "California Subpoenas OpenAI Over AI Models That Hacked Their Way Out of a Test - Decrypt News",
-          "at": "2026-10-02T21:16:04Z"
-        },
-        "shared": [
-          "california",
-          "subpoena",
-          "openai",
-          "hack"
-        ]
-      },
-      {
-        "score": 0.437,
+        "score": 0.44,
         "blocked": "below-threshold",
         "hours_apart": 3.4,
         "a": {
@@ -511,6 +467,28 @@
           "alpha",
           "kolibri",
           "sovereign"
+        ]
+      },
+      {
+        "score": 0.396,
+        "blocked": "thin-overlap",
+        "hours_apart": 0.8,
+        "a": {
+          "id": "hn:49946567",
+          "source": "hn-algolia",
+          "title": "Getting the most out of Opus 5.5 in Claude and Claude Code",
+          "at": "2026-10-03T18:29:30Z"
+        },
+        "b": {
+          "id": "gnews:d448f1b90e83d325",
+          "source": "gnews-rss",
+          "title": "Google Antigravity Adds Anthropic Claude Opus 5.5 and Sonnet 5.5 for Paid Subscribers - pc-tablet.com",
+          "at": "2026-10-03T17:44:00Z"
+        },
+        "shared": [
+          "opus",
+          "5.5",
+          "claude"
         ]
       },
       {
@@ -535,7 +513,7 @@
         ]
       },
       {
-        "score": 0.344,
+        "score": 0.347,
         "blocked": "below-threshold",
         "hours_apart": 2,
         "a": {
@@ -579,7 +557,7 @@
         ]
       },
       {
-        "score": 0.309,
+        "score": 0.31,
         "blocked": "below-threshold",
         "hours_apart": 4.5,
         "a": {
@@ -601,23 +579,44 @@
         ]
       },
       {
-        "score": 0.293,
+        "score": 0.304,
         "blocked": "thin-overlap",
-        "hours_apart": 255.1,
+        "hours_apart": 38.8,
         "a": {
-          "id": "hn:49934323",
+          "id": "hn:49942208",
           "source": "hn-algolia",
-          "title": "New in Llama.cpp: Decision Models",
-          "at": "2026-10-02T15:06:13Z"
+          "title": "Chamath says open AI models are \"commoditize your complement.\" Agree?",
+          "at": "2026-10-03T07:47:18Z"
         },
         "b": {
-          "id": "rss:huggingface:689d78c6e007ab8e",
+          "id": "rss:openai:b8087b88cb63ae7f",
           "source": "rss-lab",
-          "title": "Transformers now runs llama.cpp quants",
-          "at": "2026-09-22T00:00:00Z"
+          "title": "The eternal complement",
+          "at": "2026-10-01T17:00:00Z"
         },
         "shared": [
-          "llama.cpp"
+          "complement"
+        ]
+      },
+      {
+        "score": 0.286,
+        "blocked": "time-window",
+        "hours_apart": 170.8,
+        "a": {
+          "id": "hn:49933459",
+          "source": "hn-algolia",
+          "title": "Don't be fooled–LLMs don't reason",
+          "at": "2026-10-02T13:45:42Z"
+        },
+        "b": {
+          "id": "rss-sec:trailofbits:3c908d4f959ad715",
+          "source": "rss-security",
+          "title": "Don't let TEEs break your MPC",
+          "at": "2026-09-25T11:00:00Z"
+        },
+        "shared": [
+          "don",
+          "t"
         ]
       }
     ]
@@ -626,42 +625,42 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 3,
+      "streak_ok": 4,
       "streak_fail": 0,
-      "items_last": 24
+      "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 69,
+      "streak_ok": 70,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 69,
+      "streak_ok": 70,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 69,
+      "streak_ok": 70,
       "streak_fail": 0,
       "items_last": 31
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 69,
+      "streak_ok": 70,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 69,
+      "streak_ok": 70,
       "streak_fail": 0,
       "items_last": 56
     },
@@ -669,33 +668,33 @@
       "id": "openalex",
       "state": "fail",
       "streak_ok": 0,
-      "streak_fail": 5,
+      "streak_fail": 6,
       "items_last": 0
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 69,
+      "streak_ok": 70,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 69,
+      "streak_ok": 70,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 69,
+      "streak_ok": 70,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.004680555555555556,
+    "hours": 0.0029055555555555558,
     "stale": false
   },
   "hf": {
@@ -706,7 +705,7 @@
   "arxiv": {
     "ok": true,
     "enriched": 24,
-    "shelf": 0,
+    "shelf": 5,
     "timed_out": false,
     "budget_ms": 20000,
     "brief": false,
@@ -715,18 +714,18 @@
   "openalex": {
     "ok": false,
     "soft_fail": true,
-    "soft_fail_reason": "paused_until 2026-10-03T19:13:47Z",
+    "soft_fail_reason": "HTTP 429",
     "enriched": 0,
     "secondary": 0,
     "query": "LLM agent sandbox",
     "mode": "search",
     "from_cache": false,
-    "searches": 0,
+    "searches": 1,
     "retries": 0,
-    "status": "paused",
-    "paused_until": "2026-10-03T19:13:47Z",
-    "pause_reason": "5 consecutive failures → 24h",
-    "requests": 0,
+    "status": "fail",
+    "paused_until": "2026-10-04T23:20:53Z",
+    "pause_reason": "6 consecutive failures → 24h",
+    "requests": 1,
     "auth": "anon",
     "brief": false,
     "pulse_lead": false,
@@ -781,25 +780,25 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 23,
+    "ai_dropped": 21,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
         "id": "hn:49943034",
         "tag": "rest",
-        "score": 406,
+        "score": 409,
         "text": "Aleph Alpha Kolibri: How the sovereign German LLM works"
       },
       {
         "id": "hn:49936575",
         "tag": "rest",
-        "score": 321,
+        "score": 340,
         "text": "From the creator of Redis; run LLM locally with ds4"
       },
       {
         "id": "hn:49929391",
         "tag": "rest",
-        "score": 308,
+        "score": 325,
         "text": "Greg Kroah-Hartman – Security in the LLM Age [video]"
       }
     ]
@@ -816,47 +815,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "https://openai.com/news/rss.xml",
+        "url": "(cache:openai)",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "https://deepmind.google/blog/rss.xml",
+        "url": "(cache:deepmind)",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "https://blog.google/technology/ai/rss/",
+        "url": "(cache:google-ai)",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "https://huggingface.co/blog/feed.xml",
+        "url": "(cache:huggingface)",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "https://mistral.ai/rss.xml",
+        "url": "(cache:mistral)",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "https://blogs.nvidia.com/feed/",
+        "url": "(cache:nvidia)",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "https://developer.nvidia.com/blog/feed",
+        "url": "(cache:nvidia-dev)",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
+        "url": "(cache:ms-research)",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "https://research.google/blog/rss/",
+        "url": "(cache:google-research)",
         "count": 12
       }
     ],
@@ -902,17 +901,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "https://blog.trailofbits.com/feed/",
+        "url": "(cache:trailofbits)",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "https://blog.fox-it.com/feed/",
+        "url": "(cache:fox-it)",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "https://projectzero.google/feed.xml",
+        "url": "(cache:projectzero)",
         "count": 5
       }
     ],
@@ -982,9 +981,9 @@
       }
     ],
     "http_status": 200,
-    "content_type": "application/xml; charset=utf-8",
+    "content_type": null,
     "format": "rss2",
-    "from_cache": false,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1058,7 +1057,7 @@
     ]
   },
   "shelf": {
-    "count": 13,
+    "count": 18,
     "brief": false
   },
   "wikidata": {
