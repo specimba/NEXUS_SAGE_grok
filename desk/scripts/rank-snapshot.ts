@@ -8,8 +8,11 @@
  * writes src/data/wire.ts — the Brief Wire strip (top 3–5 multi-source clusters, NEW/▲/▼ vs prev).
  * Beat 7 daily lead: appends to artifacts/sage/lead-history.json when today's pick is absent AND
  * (crawl is in the 06:xx Istanbul window OR LEAD_PICK_FORCE=1); writes src/data/lead-pick.ts.
+ * OPT win 3: last, regenerates src/data/desk-view.ts (the desk client's slim crawl view) in a fresh process so it
+ * reads the modules written above; a failed regen fails postingest (pages-coherence would refuse a stale view anyway).
  * No HTTP. Exits 1 if the lead is not hf-* (cycle 003 lock).
  */
+import { spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { DIGEST_ITEMS } from "@/data/digest-pack";
@@ -251,4 +254,11 @@ function leadCandidatesAll(
     const first = groupFirstAt(c, opts.memberAt);
     return { ...r, first: new Date(first).toISOString(), ageH: ((now - first) / 3_600_000).toFixed(1), reason: leadExcludeReason(c, now, opts) };
   });
+}
+
+// ── OPT win 3 · slim client view — fresh process: this one imported the data modules before rewriting them ──
+const dv = spawnSync(process.execPath, [resolve(desk, "scripts/desk-view.ts")], { cwd: desk, stdio: "inherit" });
+if (dv.status !== 0) {
+  console.error("desk-view FAIL — src/data/desk-view.ts not regenerated");
+  process.exit(1);
 }

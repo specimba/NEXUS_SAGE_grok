@@ -2,29 +2,40 @@
 import { createContext, Fragment, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { CYCLE, WAVES, WAVE_TIMELINE } from "@/data/cycle";
-import { CRAWL, CRAWL_AT } from "@/data/x-crawl";
-import { HN_PULSE } from "@/data/hn-pulse";
-import { RSS_LABS } from "@/data/rss-labs";
-import { GNEWS_RSS } from "@/data/gnews-rss";
-import { RSS_SECURITY } from "@/data/rss-security";
-import { PULSE_CLUSTERS, PULSE_CLUSTERS_AT } from "@/data/pulse-clusters";
-import { SOURCE_HEALTH, SOURCE_HEALTH_AT } from "@/data/source-health";
+// Crawl data comes ONLY from the generated slim view (OPT win 3); raw src/data crawl modules never reach the client.
+import {
+  CRAWL_AT,
+  LEAD_FIRST_AT,
+  LEAD_HELD,
+  LEAD_TODAY,
+  LEAD_YESTERDAY,
+  MEMBER_ROWS,
+  ORPHAN_CLUSTERS,
+  PAPERS,
+  PULSE_CLUSTERS_AT,
+  RANK_CURRENT,
+  RANK_MOVED,
+  RANK_PREV,
+  SHELF,
+  SOURCE_HEALTH,
+  SOURCE_HEALTH_AT,
+  TOPIC_HEAT_WINDOWS,
+  WIRE_CRAWL_AT,
+  WIRE_PREV_CRAWL_AT,
+  WIRE_ROWS,
+  X_POSTS,
+} from "@/data/desk-view";
+import { crawlItemIds, inflateClusters, inflateMembers, memberAt, memberItems, stripPublisher, xRows } from "@/lib/desk-view";
 import { X_TASTE } from "@/data/x-taste";
 import { DIGEST_ITEMS, DROPPED, PACK_AT, PACK_SOURCE } from "@/data/digest-pack";
 import { DIGEST_CADENCE } from "@/data/digest-cadence";
-import { RANK_CURRENT, RANK_MOVED, RANK_PREV } from "@/data/corroboration-rank";
-import { LEAD_FIRST_AT, LEAD_HELD, LEAD_TODAY, LEAD_YESTERDAY } from "@/data/lead-pick";
 import { groupFirstAt, leadAgeHours } from "@/lib/lead-pick";
 import { LEAD_HELD_TEXT, leadView, nextCrawlSlotHHMM, type LeadView } from "@/lib/lead-view";
 import { IST_LABEL, istDateTime, istHHMM, istHHMMSS } from "@/lib/ist-time";
 import { useNow } from "@/lib/use-now";
-import { memberInfo } from "@/lib/member-info";
 import { footerStamp } from "@/lib/build-footer";
 import { isPausedAt, type PauseMap } from "@/lib/source-pause";
-import { WIRE_CRAWL_AT, WIRE_PREV_CRAWL_AT, WIRE_ROWS } from "@/data/wire";
 import { istanbulHHMM, wireHeader, wireMark } from "@/lib/wire";
-import { PAPERS } from "@/data/papers";
-import { SHELF } from "@/data/shelf";
 import { WIKIDATA_DENY_LAST } from "@/data/wikidata-deny-last";
 import { SOFT_FAIL_METERS } from "@/data/soft-fail-meters";
 import { isDigestDue, nextDue, PACK_KEY, renderPlan, renderReport } from "@/lib/digest-pack";
@@ -36,7 +47,6 @@ import {
   healthCellState,
   healthTicks,
   HEALTH_TICKS,
-  labBadge,
   PULSE_V5_MAX_ROWS,
   sigCell,
   buildPaperRows,
@@ -60,7 +70,6 @@ import {
 import { useStoryDrawer } from "@/lib/use-story-drawer";
 import { FIRST_VISIT, LAST_SEEN_KEY, SESSION_BASE_KEY, partitionSince, sinceBase } from "@/lib/since";
 import { companyFilterMatch, deltaText, heatCells, heatLabel } from "@/lib/topic-heat";
-import { TOPIC_HEAT_WINDOWS } from "@/data/topic-heat";
 import { isTypingTarget, KEY_MAP, matchesFilter, resolveKey, stepSelection } from "@/lib/keys";
 import { writeStoryParam } from "@/lib/story-drawer";
 import { LeadLogPanel } from "@/components/sage/lead-log";
@@ -150,15 +159,12 @@ function AgeCell({ iso, now, className }: { iso: string; now: number | null; cla
   );
 }
 
+/** Crawl items (HN / GNews / lab / security — not X posts) and the per-member info memberInfo() builds at ingest. */
+const CRAWL_ITEM_IDS = crawlItemIds(MEMBER_ROWS);
+const MEMBERS = inflateMembers(MEMBER_ROWS);
+const PULSE_CLUSTERS = inflateClusters(MEMBER_ROWS, ORPHAN_CLUSTERS);
 /** Every member item's own time (HN created_at, GNews / lab / security published). */
-const MEMBER_AT: Record<string, string> = (() => {
-  const m: Record<string, string> = {};
-  for (const h of HN_PULSE) m[h.id] = h.at;
-  for (const g of GNEWS_RSS) m[g.id] = g.published;
-  for (const r of RSS_LABS) m[r.id] = r.published;
-  for (const r of RSS_SECURITY) m[r.id] = r.published;
-  return m;
-})();
+const MEMBER_AT: Record<string, string> = memberAt(MEMBER_ROWS, CRAWL_ITEM_IDS);
 /** Story age = its EARLIEST member item (same rule as the lead pick) — late reposts never make it look fresh. */
 function firstAtIso(c: { at: string; member_ids: readonly string[] }): string {
   const t = groupFirstAt({ at: c.at, member_ids: [...c.member_ids] }, MEMBER_AT);
@@ -1050,26 +1056,13 @@ const HEALTH_LABEL: Record<string, string> = {
 
 const HEALTH_ORDER = ["hn", "gnews", "rss_labs", "rss_security", "hf", "arxiv", "crossref", "openalex", "github", "wikidata"];
 
-function stripPublisher(title: string, publisher: string): string {
-  const tail = ` - ${publisher}`;
-  return publisher && title.endsWith(tail) ? title.slice(0, -tail.length) : title;
-}
-
 function useMembers(): Record<string, PulseMemberInfo> {
-  return useMemo(() => memberInfo(), []);
+  return MEMBERS;
 }
 
 /** Beat 8 — every source's own headline + time, keyed by member id (story drawer coverage list). */
 function useMemberItems(): Record<string, MemberItem> {
-  return useMemo(() => {
-    const m: Record<string, MemberItem> = {};
-    for (const h of HN_PULSE) m[h.id] = { title: h.text, publisher: `hn/${h.author}`, badge: "HN", at: h.at, url: h.url };
-    for (const g of GNEWS_RSS)
-      m[g.id] = { title: stripPublisher(g.title, g.publisher), publisher: g.publisher || "google news", badge: "GNW", at: g.published, url: g.link };
-    for (const r of RSS_LABS) m[r.id] = { title: r.title, publisher: r.lab, badge: labBadge(r.lab), at: r.published, url: r.link };
-    for (const r of RSS_SECURITY) m[r.id] = { title: r.title, publisher: r.lab, badge: "SEC", at: r.published, url: r.link };
-    return m;
-  }, []);
+  return useMemo(() => memberItems(MEMBER_ROWS, CRAWL_ITEM_IDS), []);
 }
 
 const WIRE_BY_ID = new Map(WIRE_ROWS.map((r) => [r.id, r]));
@@ -1208,19 +1201,7 @@ function StoryDrawer({
 }
 
 /** Pulse V5 (Beat 3) — spec refs/UX-PULSE-V5.md. Operator X crawl posts join the one table as single-source X rows (not clusters). */
-const X_ROWS: ClusterInput[] = CRAWL.map((p) => ({
-  id: `x:${p.id}`,
-  title: p.take,
-  url: p.href,
-  lead_id: `x:${p.id}`,
-  lead_source: "x",
-  sources: ["x"],
-  member_ids: [`x:${p.id}`],
-  size: 1,
-  at: p.at,
-  first_seen: null,
-  is_new: false,
-}));
+const X_ROWS: ClusterInput[] = xRows(X_POSTS);
 
 /** Beat 10 — topic heat strip (refs/UX-BEAT10-SINCE-HEAT.md). Bars = 4h routine windows; null = honest gap. */
 function HeatStrip() {

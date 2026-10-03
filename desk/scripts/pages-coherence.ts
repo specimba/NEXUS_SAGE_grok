@@ -1,9 +1,11 @@
 /**
  * Pages publish gate: the header crawl and the Wire snapshot must come from the same crawl.
- *   bun scripts/pages-coherence.ts            → checks src/data (CRAWL_AT = WIRE_CRAWL_AT = PULSE_CLUSTERS_AT = TOPIC_HEAT_AT)
+ *   bun scripts/pages-coherence.ts            → checks src/data (CRAWL_AT = WIRE_CRAWL_AT = PULSE_CLUSTERS_AT = TOPIC_HEAT_AT
+ *                                               = DESK_VIEW_AT, and desk-view.ts is exactly what the raw modules generate)
  *   bun scripts/pages-coherence.ts <out-dir>  → also checks the built index.html (header "CRAWL HH:MM" = "WIRE · crawl HH:MM")
  * Exit 1 on any mismatch. A manual ingest that skips postingest (rank-snapshot) fails here and never reaches Pages.
  */
+import { spawnSync } from "node:child_process";
 import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
@@ -17,11 +19,18 @@ const stamps = {
   PULSE_CLUSTERS_AT: pick("pulse-clusters.ts", "PULSE_CLUSTERS_AT"),
   WIRE_CRAWL_AT: pick("wire.ts", "WIRE_CRAWL_AT"),
   TOPIC_HEAT_AT: pick("topic-heat.ts", "TOPIC_HEAT_AT"),
+  // OPT win 3: the client renders from the slim view — it must carry the same crawl stamp …
+  DESK_VIEW_AT: existsSync(resolve(desk, "src/data/desk-view.ts")) ? pick("desk-view.ts", "DESK_VIEW_AT") : null,
 };
 const fails: string[] = [];
 for (const [k, v] of Object.entries(stamps)) if (!v) fails.push(`${k} not found`);
 const ref = stamps.CRAWL_AT;
 for (const [k, v] of Object.entries(stamps)) if (v && ref && v !== ref) fails.push(`${k} ${v} ≠ CRAWL_AT ${ref}`);
+// … and the same content (a hand-edited raw module or a skipped regen fails here).
+if (stamps.DESK_VIEW_AT) {
+  const r = spawnSync("bun", ["scripts/desk-view.ts", "--check"], { cwd: desk, encoding: "utf8" });
+  if (r.status !== 0) fails.push(`desk-view.ts stale vs raw modules (bun scripts/desk-view.ts --check: ${(r.stderr || r.stdout || "").trim().slice(0, 160)})`);
+}
 
 const out = process.argv[2];
 if (out) {
