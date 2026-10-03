@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-03T11:16:29Z",
+  "stamped_at": "2026-10-03T15:20:35Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 211,
+      "duration_ms": 187,
       "paused_until": null,
       "reason": null
     },
@@ -18,7 +18,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 3233,
+      "duration_ms": 3252,
       "paused_until": null,
       "reason": null
     },
@@ -36,7 +36,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 1,
+      "duration_ms": 431,
       "paused_until": null,
       "reason": null
     },
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 58,
-      "duration_ms": 8315,
+      "rows": 56,
+      "duration_ms": 8469,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 18102,
+      "duration_ms": 121,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 4322,
+      "duration_ms": 121,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 28,
-      "duration_ms": 6354,
+      "rows": 29,
+      "duration_ms": 121,
       "paused_until": null,
       "reason": null
     },
@@ -81,7 +81,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 25,
+      "duration_ms": 121,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 26,
+      "duration_ms": 121,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 40590,
-    "sources_wall_ms": 18104,
-    "papers_lane_ms": 3473,
-    "slowest_source_ms": 18102,
+    "sources_ms": 12945,
+    "sources_wall_ms": 8470,
+    "papers_lane_ms": 3875,
+    "slowest_source_ms": 8469,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -114,9 +114,9 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 18576,
-    "startup_ms": 60,
-    "main_ms": 18605
+    "wall_ms": 8770,
+    "startup_ms": 36,
+    "main_ms": 8780
   },
   "multi_source_independent": 2,
   "stale_hours": 6,
@@ -125,44 +125,51 @@
     "multi_source_independent": 2,
     "multi_source_raw": 4,
     "self_reposts": 2,
-    "items_in": 217,
-    "clusters_out": 208,
-    "collapsed": 9,
+    "items_in": 216,
+    "clusters_out": 206,
+    "collapsed": 10,
     "multi_source": 2,
     "multi_member": 8,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 20,
+    "new_items": 6,
     "per_source": {
-      "hn-algolia": 58,
+      "hn-algolia": 56,
       "rss-lab": 104,
       "rss-security": 27,
-      "gnews-rss": 28
+      "gnews-rss": 29
     },
     "multi_source_clusters": [
       {
-        "title": "NVIDIA DGX Spark 64GB Gives Developers More Ways to Build and Scale Local AI",
+        "title": "The Sleuths Who Expose When AI Goes Rogue",
         "sources": [
-          "rss-lab",
-          "hn-algolia"
+          "hn-algolia",
+          "gnews-rss"
         ],
-        "size": 2,
+        "size": 3,
         "score": 1,
         "members": [
           {
-            "id": "hn:49933234",
+            "id": "hn:49938646",
             "source": "hn-algolia",
-            "title": "Nvidia DGX Spark 64GB Gives Developers More Ways to Build and Scale Local AI",
-            "at": "2026-10-02T13:18:28Z",
+            "title": "The Sleuths Who Expose When AI Goes Rogue",
+            "at": "2026-10-02T21:11:18Z",
             "publisher": null
           },
           {
-            "id": "rss:nvidia:60ea0cfc7bea518f",
-            "source": "rss-lab",
-            "title": "NVIDIA DGX Spark 64GB Gives Developers More Ways to Build and Scale Local AI",
-            "at": "2026-10-02T13:00:39Z",
-            "publisher": "nvidia"
+            "id": "hn:49932295",
+            "source": "hn-algolia",
+            "title": "They're Known as Swarm Chasers–and They Spring into Action When AI Goes Rogue",
+            "at": "2026-10-02T11:29:16Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:50b72429f34acc50",
+            "source": "gnews-rss",
+            "title": "The Sleuths Who Expose When AI Goes Rogue - WSJ",
+            "at": "2026-10-02T09:30:00Z",
+            "publisher": "WSJ"
           }
         ]
       },
@@ -173,7 +180,7 @@
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.68,
+        "score": 0.679,
         "members": [
           {
             "id": "hn:49925606",
@@ -272,11 +279,11 @@
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 21
+      "hn_dropped": 23
     },
     "gnews_near_misses": [
       {
-        "score": 0.62,
+        "score": 0.622,
         "blocked": "time-window",
         "hours_apart": 50.2,
         "a": {
@@ -297,7 +304,7 @@
         ]
       },
       {
-        "score": 0.612,
+        "score": 0.613,
         "blocked": "thin-overlap",
         "hours_apart": 83.9,
         "a": {
@@ -319,7 +326,7 @@
         ]
       },
       {
-        "score": 0.501,
+        "score": 0.497,
         "blocked": "below-threshold",
         "hours_apart": 22.1,
         "a": {
@@ -384,6 +391,28 @@
         ]
       },
       {
+        "score": 0.348,
+        "blocked": "below-threshold",
+        "hours_apart": 2,
+        "a": {
+          "id": "hn:49932295",
+          "source": "hn-algolia",
+          "title": "They're Known as Swarm Chasers–and They Spring into Action When AI Goes Rogue",
+          "at": "2026-10-02T11:29:16Z"
+        },
+        "b": {
+          "id": "gnews:50b72429f34acc50",
+          "source": "gnews-rss",
+          "title": "The Sleuths Who Expose When AI Goes Rogue - WSJ",
+          "at": "2026-10-02T09:30:00Z"
+        },
+        "shared": [
+          "ai",
+          "goe",
+          "rogu"
+        ]
+      },
+      {
         "score": 0.339,
         "blocked": "below-threshold",
         "hours_apart": 12.4,
@@ -424,33 +453,11 @@
           "decision",
           "model"
         ]
-      },
-      {
-        "score": 0.326,
-        "blocked": "thin-overlap",
-        "hours_apart": 45.5,
-        "a": {
-          "id": "rss:deepmind:ce56aa83d0064ef1",
-          "source": "rss-lab",
-          "title": "Gemini 4 Argon: our next era of frontier intelligence",
-          "at": "2026-09-30T20:01:45Z"
-        },
-        "b": {
-          "id": "gnews:a8aad6026204b3f8",
-          "source": "gnews-rss",
-          "title": "Google Launches Gemini 4 Argon, Challenging GPT-6 Astra With 1 Million Token Output Window - Brave New Coin",
-          "at": "2026-10-02T17:31:45Z"
-        },
-        "shared": [
-          "gemini",
-          "4",
-          "argon"
-        ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.62,
+        "score": 0.622,
         "blocked": "time-window",
         "hours_apart": 50.2,
         "a": {
@@ -471,7 +478,7 @@
         ]
       },
       {
-        "score": 0.612,
+        "score": 0.613,
         "blocked": "thin-overlap",
         "hours_apart": 83.9,
         "a": {
@@ -513,7 +520,7 @@
         ]
       },
       {
-        "score": 0.501,
+        "score": 0.497,
         "blocked": "below-threshold",
         "hours_apart": 22.1,
         "a": {
@@ -536,7 +543,7 @@
         ]
       },
       {
-        "score": 0.379,
+        "score": 0.376,
         "blocked": "thin-overlap",
         "hours_apart": 736.9,
         "a": {
@@ -599,24 +606,25 @@
         ]
       },
       {
-        "score": 0.339,
+        "score": 0.348,
         "blocked": "below-threshold",
-        "hours_apart": 12.4,
+        "hours_apart": 2,
         "a": {
-          "id": "hn:49934323",
+          "id": "hn:49932295",
           "source": "hn-algolia",
-          "title": "New in Llama.cpp: Decision Models",
-          "at": "2026-10-02T15:06:13Z"
+          "title": "They're Known as Swarm Chasers–and They Spring into Action When AI Goes Rogue",
+          "at": "2026-10-02T11:29:16Z"
         },
         "b": {
-          "id": "gnews:5a90bce828ddd863",
+          "id": "gnews:50b72429f34acc50",
           "source": "gnews-rss",
-          "title": "Decision AI Models Explained: TypeSafe Jev vs Fastino GLiDE, GLiNER2.5-Decide and Open-Source Competitors - MarkTechPost",
-          "at": "2026-10-03T03:31:15Z"
+          "title": "The Sleuths Who Expose When AI Goes Rogue - WSJ",
+          "at": "2026-10-02T09:30:00Z"
         },
         "shared": [
-          "decision",
-          "model"
+          "ai",
+          "goe",
+          "rogu"
         ]
       }
     ]
@@ -625,44 +633,44 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 1,
+      "streak_ok": 2,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 67,
+      "streak_ok": 68,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 67,
+      "streak_ok": 68,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 67,
+      "streak_ok": 68,
       "streak_fail": 0,
-      "items_last": 28
+      "items_last": 29
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 67,
+      "streak_ok": 68,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 67,
+      "streak_ok": 68,
       "streak_fail": 0,
-      "items_last": 58
+      "items_last": 56
     },
     {
       "id": "openalex",
@@ -674,27 +682,27 @@
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 67,
+      "streak_ok": 68,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 67,
+      "streak_ok": 68,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 67,
+      "streak_ok": 68,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.005253611111111111,
+    "hours": 0.002566111111111111,
     "stale": false
   },
   "hf": {
@@ -740,8 +748,8 @@
     "enriched": 1,
     "query": "OneStreamer: Unifying Perception, Memory, and Proactive Response in Streaming Video Interaction",
     "mode": "bibliographic",
-    "from_cache": true,
-    "searches": 0,
+    "from_cache": false,
+    "searches": 1,
     "brief": false,
     "pulse_lead": false,
     "papers_enrich_only": true,
@@ -763,7 +771,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 58,
+    "count": 56,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -780,26 +788,26 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 21,
+    "ai_dropped": 23,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
         "id": "hn:49936575",
         "tag": "rest",
-        "score": 257,
+        "score": 294,
         "text": "From the creator of Redis; run LLM locally with ds4"
-      },
-      {
-        "id": "hn:49921118",
-        "tag": "rest",
-        "score": 254,
-        "text": "Meta Uses A.I. Data Centers to Avoid Billions in Federal Taxes"
       },
       {
         "id": "hn:49929391",
         "tag": "rest",
-        "score": 246,
+        "score": 279,
         "text": "Greg Kroah-Hartman – Security in the LLM Age [video]"
+      },
+      {
+        "id": "hn:49924618",
+        "tag": "rest",
+        "score": 198,
+        "text": "Vote on which of Hacker News' challenges for AI have been met"
       }
     ]
   },
@@ -815,47 +823,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "https://openai.com/news/rss.xml",
+        "url": "(cache:openai)",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "https://deepmind.google/blog/rss.xml",
+        "url": "(cache:deepmind)",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "https://blog.google/technology/ai/rss/",
+        "url": "(cache:google-ai)",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "https://huggingface.co/blog/feed.xml",
+        "url": "(cache:huggingface)",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "https://mistral.ai/rss.xml",
+        "url": "(cache:mistral)",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "https://blogs.nvidia.com/feed/",
+        "url": "(cache:nvidia)",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "https://developer.nvidia.com/blog/feed",
+        "url": "(cache:nvidia-dev)",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
+        "url": "(cache:ms-research)",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "https://research.google/blog/rss/",
+        "url": "(cache:google-research)",
         "count": 12
       }
     ],
@@ -901,17 +909,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "https://blog.trailofbits.com/feed/",
+        "url": "(cache:trailofbits)",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "https://blog.fox-it.com/feed/",
+        "url": "(cache:fox-it)",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "https://projectzero.google/feed.xml",
+        "url": "(cache:projectzero)",
         "count": 5
       }
     ],
@@ -952,7 +960,7 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 28,
+    "items": 29,
     "pool": 232,
     "corroborators": [
       {
@@ -972,6 +980,14 @@
         "self_repost": true
       },
       {
+        "id": "gnews:50b72429f34acc50",
+        "anchor_id": "hn:49938646",
+        "score": 1,
+        "title": "The Sleuths Who Expose When AI Goes Rogue - WSJ",
+        "publisher": "WSJ",
+        "self_repost": false
+      },
+      {
         "id": "gnews:727fe17491b140b0",
         "anchor_id": "hn:49925606",
         "score": 0.682,
@@ -981,9 +997,9 @@
       }
     ],
     "http_status": 200,
-    "content_type": "application/xml; charset=utf-8",
+    "content_type": null,
     "format": "rss2",
-    "from_cache": false,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,

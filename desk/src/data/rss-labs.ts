@@ -16,7 +16,7 @@ export type RssLabRow = {
   cluster_id?: string;
 };
 
-export const RSS_LABS_AT = "2026-10-03T11:16:29Z";
+export const RSS_LABS_AT = "2026-10-03T15:20:35Z";
 
 export const RSS_LABS: RssLabRow[] = [
   { id: "rss:openai:c38af6e5cae43e23", lab: "openai" as const, title: "A model guide for the GPT-6 family", link: "https://openai.com/index/practical-guide-building-gpt-6", published: "2026-10-02T16:15:00Z", summary: "Learn how startups can choose GPT-6 models, tune reasoning effort, improve prompts and skills, coordinate tools, and prepare workflows for production.", source: "rss-lab" as const, tag: "rest" as const, first_seen: "2026-10-02T19:13:43Z", is_new: false, cluster_id: "cl:rss:openai:c38af6e5cae43e23" },
