@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-04T15:20:10Z",
+  "stamped_at": "2026-10-04T19:13:38Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 200,
+      "duration_ms": 232,
       "paused_until": null,
       "reason": null
     },
@@ -18,7 +18,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 424,
+      "duration_ms": 3256,
       "paused_until": null,
       "reason": null
     },
@@ -36,7 +36,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 843,
+      "duration_ms": 1,
       "paused_until": null,
       "reason": null
     },
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 41,
-      "duration_ms": 8427,
+      "rows": 39,
+      "duration_ms": 8302,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 434,
+      "duration_ms": 15654,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 137,
+      "duration_ms": 4348,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 37,
-      "duration_ms": 137,
+      "rows": 39,
+      "duration_ms": 6433,
       "paused_until": null,
       "reason": null
     },
@@ -81,7 +81,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 137,
+      "duration_ms": 16,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 137,
+      "duration_ms": 16,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 10878,
-    "sources_wall_ms": 8428,
-    "papers_lane_ms": 1471,
-    "slowest_source_ms": 8427,
+    "sources_ms": 38260,
+    "sources_wall_ms": 15655,
+    "papers_lane_ms": 3494,
+    "slowest_source_ms": 15654,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -114,65 +114,40 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 8757,
-    "startup_ms": 38,
-    "main_ms": 8767
+    "wall_ms": 15953,
+    "startup_ms": 44,
+    "main_ms": 15962
   },
   "multi_source_independent": 4,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
     "multi_source_independent": 4,
-    "multi_source_raw": 6,
-    "self_reposts": 2,
+    "multi_source_raw": 4,
+    "self_reposts": 0,
     "items_in": 209,
-    "clusters_out": 192,
-    "collapsed": 17,
+    "clusters_out": 195,
+    "collapsed": 14,
     "multi_source": 4,
-    "multi_member": 8,
+    "multi_member": 6,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 4,
+    "new_items": 36,
     "per_source": {
-      "hn-algolia": 41,
+      "hn-algolia": 39,
       "rss-lab": 104,
       "rss-security": 27,
-      "gnews-rss": 37
+      "gnews-rss": 39
     },
     "multi_source_clusters": [
-      {
-        "title": "Legal risks pile up for Altman as OpenAI uncovers hacks",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 0.969,
-        "members": [
-          {
-            "id": "hn:49953179",
-            "source": "hn-algolia",
-            "title": "Legal risks pile up for Altman as OpenAI uncovers hacks",
-            "at": "2026-10-04T12:06:57Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:bce1098d3529c1f5",
-            "source": "gnews-rss",
-            "title": "Legal risks pile up for Altman as OpenAI uncovers dozens of hacks - Financial Times",
-            "at": "2026-10-04T11:00:08Z",
-            "publisher": "Financial Times"
-          }
-        ]
-      },
       {
         "title": "I quit OpenAI because its culture is broken",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 11,
+        "size": 7,
         "score": 1,
         "members": [
           {
@@ -190,18 +165,11 @@
             "publisher": null
           },
           {
-            "id": "hn:49945206",
-            "source": "hn-algolia",
-            "title": "OpenAI safety leader David Robinson resigns",
-            "at": "2026-10-03T15:38:32Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:5226dc4d121509af",
+            "id": "gnews:7303fe89fb3ebb40",
             "source": "gnews-rss",
-            "title": "Former OpenAI Safety Leader Warns on AI Safety - techerati.com",
-            "at": "2026-10-04T10:25:35Z",
-            "publisher": "techerati.com"
+            "title": "OpenAI safety lead resigns, calling company culture \"broken\" - Roya News",
+            "at": "2026-10-04T15:12:09Z",
+            "publisher": "Roya News"
           },
           {
             "id": "gnews:f76eafad86f51afb",
@@ -211,39 +179,18 @@
             "publisher": "The Guardian"
           },
           {
-            "id": "gnews:434155dd4cc55b6c",
+            "id": "gnews:45c9cc11254f6742",
             "source": "gnews-rss",
-            "title": "OpenAI safety leader David Robinson quits, says company culture is ‘broken’ as AI race accelerates - Fortune India",
-            "at": "2026-10-04T06:14:08Z",
-            "publisher": "Fortune India"
-          },
-          {
-            "id": "gnews:ae23b7cd2435437a",
-            "source": "gnews-rss",
-            "title": "OpenAI safety leader Robinson quits over ‘broken culture’. What does his essay suggest for AI companies? - ET Enterprise AI",
-            "at": "2026-10-04T06:27:29Z",
-            "publisher": "ET Enterprise AI"
-          },
-          {
-            "id": "gnews:e284cfb60d76fd23",
-            "source": "gnews-rss",
-            "title": "OpenAI safety leader David Robinson resigns — and says company culture is dangerous - Business Insider",
-            "at": "2026-10-03T12:43:00Z",
-            "publisher": "Business Insider"
-          },
-          {
-            "id": "gnews:8c001437452856bc",
-            "source": "gnews-rss",
-            "title": "OpenAI Safety Leader David Robinson Resigns as ChatGPT Maker Faces Growing Scrutiny Over AI Risks and Transparency: Report - TradingView",
-            "at": "2026-10-02T22:00:00Z",
+            "title": "OpenAI Safety Lead Quits, Warns Company's Culture Is ‘Broken’ — ‘The Time For Trial And Error Is Over’ - TradingView",
+            "at": "2026-10-04T13:30:42Z",
             "publisher": "TradingView"
           },
           {
-            "id": "gnews:f6f3b53429b0a1b1",
+            "id": "gnews:3be7ede8d4e9d8c5",
             "source": "gnews-rss",
-            "title": "DETAILS: OpenAI safety leader RESIGNS - foxnews.com",
-            "at": "2026-10-03T16:32:15Z",
-            "publisher": "foxnews.com"
+            "title": "OpenAI's safety report lead quits and calls the company culture broken - notebookcheck.net",
+            "at": "2026-10-04T13:00:00Z",
+            "publisher": "notebookcheck.net"
           },
           {
             "id": "gnews:b97d155dd557e5f6",
@@ -255,92 +202,103 @@
         ]
       },
       {
-        "title": "The Sleuths Who Expose When AI Goes Rogue",
+        "title": "Introducing SynthID Bio",
         "sources": [
-          "hn-algolia",
-          "gnews-rss"
+          "rss-lab",
+          "hn-algolia"
         ],
         "size": 2,
         "score": 1,
         "members": [
           {
-            "id": "hn:49938646",
+            "id": "hn:49954471",
             "source": "hn-algolia",
-            "title": "The Sleuths Who Expose When AI Goes Rogue",
-            "at": "2026-10-02T21:11:18Z",
+            "title": "SynthID Bio: Watermarking methods for synthetic biology",
+            "at": "2026-10-04T14:58:54Z",
             "publisher": null
           },
           {
-            "id": "gnews:50b72429f34acc50",
-            "source": "gnews-rss",
-            "title": "The Sleuths Who Expose When AI Goes Rogue - WSJ",
-            "at": "2026-10-04T04:02:22Z",
-            "publisher": "WSJ"
+            "id": "rss:deepmind:c696e8b1f3422473",
+            "source": "rss-lab",
+            "title": "Introducing SynthID Bio",
+            "at": "2026-09-30T15:03:07Z",
+            "publisher": "deepmind"
           }
         ]
       },
       {
-        "title": "California Attorney General Serves Investigative Subpoena on OpenAI",
+        "title": "Legal risks pile up for Altman as OpenAI uncovers hacks",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 2,
-        "score": 0.63,
+        "size": 3,
+        "score": 0.964,
         "members": [
           {
-            "id": "hn:49942467",
+            "id": "hn:49953179",
             "source": "hn-algolia",
-            "title": "California Attorney General Serves Investigative Subpoena on OpenAI",
-            "at": "2026-10-03T08:47:01Z",
+            "title": "Legal risks pile up for Altman as OpenAI uncovers hacks",
+            "at": "2026-10-04T12:06:57Z",
             "publisher": null
           },
           {
-            "id": "gnews:ff804b9866ada61e",
+            "id": "gnews:9e08fa904f0f58b5",
             "source": "gnews-rss",
-            "title": "California attorney general subpoenas OpenAI over cyber incidents - WOODTV.com",
-            "at": "2026-10-03T07:00:00Z",
-            "publisher": "WOODTV.com"
-          }
-        ]
-      }
-    ],
-    "self_repost_clusters": [
-      {
-        "title": "Chatham scales its capital markets expertise with OpenAI",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
+            "title": "Sam Altman faces new legal risks as OpenAI uncovers hacks - The News International",
+            "at": "2026-10-04T13:13:00Z",
+            "publisher": "The News International"
+          },
           {
-            "id": "gnews:36692e52fa95ddd7",
-            "publisher": "openai.com",
-            "title": "Chatham scales its capital markets expertise with OpenAI - openai.com"
+            "id": "gnews:bce1098d3529c1f5",
+            "source": "gnews-rss",
+            "title": "Legal risks pile up for Altman as OpenAI uncovers dozens of hacks - ft.com",
+            "at": "2026-10-04T11:00:08Z",
+            "publisher": "ft.com"
           }
         ]
       },
       {
-        "title": "The latest AI news we announced in September 2026",
+        "title": "OpenAI safety leader David Robinson resigns",
         "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
+          "hn-algolia",
           "gnews-rss"
         ],
-        "self_reposts": [
+        "size": 4,
+        "score": 0.861,
+        "members": [
           {
-            "id": "gnews:24b62ecd2c7cc959",
-            "publisher": "blog.google",
-            "title": "The latest AI news we announced in September 2026 - blog.google"
+            "id": "hn:49945206",
+            "source": "hn-algolia",
+            "title": "OpenAI safety leader David Robinson resigns",
+            "at": "2026-10-03T15:38:32Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:e284cfb60d76fd23",
+            "source": "gnews-rss",
+            "title": "OpenAI safety leader David Robinson resigns — and says company culture is dangerous - Business Insider",
+            "at": "2026-10-03T12:43:00Z",
+            "publisher": "Business Insider"
+          },
+          {
+            "id": "gnews:e0138fb429d740c3",
+            "source": "gnews-rss",
+            "title": "OpenAI Safety Systems Leader David Robinson Resigns, Citing Industry's 'Fundamental' Culture Problem - finance.biggo.com",
+            "at": "2026-10-03T18:05:00Z",
+            "publisher": "finance.biggo.com"
+          },
+          {
+            "id": "gnews:2a4845a8ebb637f4",
+            "source": "gnews-rss",
+            "title": "OpenAI Safety Leader David Robinson Resigns as ChatGPT Maker Faces Growing Scrutiny Over AI Risks and Transparency: Report - TradingView",
+            "at": "2026-10-03T05:00:29Z",
+            "publisher": "TradingView"
           }
         ]
       }
     ],
+    "self_repost_clusters": [],
     "ai_relevance": {
       "rss_lab_dropped": [
         {
@@ -356,58 +314,63 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "조선일보",
-          "title": "Elon Musk Ends Relationship With Co-Parent Shivon Zilis - 조선일보"
-        },
-        {
-          "publisher": "Android Police",
-          "title": "Why Pebble's Index tool beats Google Keep at the one thing that matters - Android Police"
-        },
-        {
-          "publisher": "YourTango",
-          "title": "Great Things Fall Into Place For 3 Zodiac Signs On Sunday, October 4 - YourTango"
-        },
-        {
-          "publisher": "Android Authority",
-          "title": "I tried Duolingo for the first time in a year, and it's worse than I thought - Android Authority"
-        },
-        {
-          "publisher": "The Economic Times",
-          "title": "From 'lower middle class' Tamil family, he missed IIT Madras CSE by 0.01, was rejected by MIT. Today, he - The Economic Times"
+          "publisher": "The Next Web",
+          "title": "SoftBank's Masayoshi Son says superintelligence in the wrong hands could be \"super dangerous\" - The Next Web"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 22
+      "hn_dropped": 24
     },
     "gnews_near_misses": [
       {
-        "score": 0.582,
+        "score": 0.654,
         "blocked": "time-window",
-        "hours_apart": 25.9,
+        "hours_apart": 64.7,
         "a": {
-          "id": "hn:49942467",
-          "source": "hn-algolia",
-          "title": "California Attorney General Serves Investigative Subpoena on OpenAI",
-          "at": "2026-10-03T08:47:01Z"
+          "id": "rss:nvidia:6e9bdaa4a319db62",
+          "source": "rss-lab",
+          "title": "How NVIDIA GPUs Help Accelerate OpenAI’s GPT-6 Astra Ultrafast",
+          "at": "2026-10-01T23:44:13Z"
         },
         "b": {
-          "id": "gnews:e93060339fec1a7b",
+          "id": "gnews:08662303444d0f57",
           "source": "gnews-rss",
-          "title": "California's attorney general subpoenas OpenAI, saying developers can be held accountable - MIXED Reality News",
-          "at": "2026-10-04T10:39:52Z"
+          "title": "OpenAI says its own models optimised Astra Ultrafast's inference on Nvidia GPUs - MIXED Reality News",
+          "at": "2026-10-04T16:27:35Z"
         },
         "shared": [
-          "california",
-          "attorney",
-          "general",
-          "subpoena",
-          "openai"
+          "nvidia",
+          "gpus",
+          "openai",
+          "astra",
+          "ultrafast"
         ]
       },
       {
-        "score": 0.556,
+        "score": 0.618,
+        "blocked": "time-window",
+        "hours_apart": 98.8,
+        "a": {
+          "id": "rss:deepmind:c696e8b1f3422473",
+          "source": "rss-lab",
+          "title": "Introducing SynthID Bio",
+          "at": "2026-09-30T15:03:07Z"
+        },
+        "b": {
+          "id": "gnews:e450f16f774f3576",
+          "source": "gnews-rss",
+          "title": "Google DeepMind Introduces SynthID Bio to Identify AI-Designed Proteins -- Teknuzu - PRLog",
+          "at": "2026-10-04T17:49:07Z"
+        },
+        "shared": [
+          "synthid",
+          "bio"
+        ]
+      },
+      {
+        "score": 0.543,
         "blocked": "below-threshold",
-        "hours_apart": 16.5,
+        "hours_apart": 23.7,
         "a": {
           "id": "hn:49944227",
           "source": "hn-algolia",
@@ -415,10 +378,10 @@
           "at": "2026-10-03T13:46:34Z"
         },
         "b": {
-          "id": "gnews:434155dd4cc55b6c",
+          "id": "gnews:45c9cc11254f6742",
           "source": "gnews-rss",
-          "title": "OpenAI safety leader David Robinson quits, says company culture is ‘broken’ as AI race accelerates - Fortune India",
-          "at": "2026-10-04T06:14:08Z"
+          "title": "OpenAI Safety Lead Quits, Warns Company's Culture Is ‘Broken’ — ‘The Time For Trial And Error Is Over’ - TradingView",
+          "at": "2026-10-04T13:30:42Z"
         },
         "shared": [
           "quit",
@@ -428,9 +391,9 @@
         ]
       },
       {
-        "score": 0.552,
+        "score": 0.511,
         "blocked": "below-threshold",
-        "hours_apart": 5,
+        "hours_apart": 16.9,
         "a": {
           "id": "hn:49948332",
           "source": "hn-algolia",
@@ -438,65 +401,21 @@
           "at": "2026-10-03T22:18:13Z"
         },
         "b": {
-          "id": "gnews:05a6ce30155ae637",
+          "id": "gnews:7303fe89fb3ebb40",
           "source": "gnews-rss",
-          "title": "OpenAI safety leader quits, warns AI firms lack caution - Daijiworld",
-          "at": "2026-10-04T03:16:15Z"
+          "title": "OpenAI safety lead resigns, calling company culture \"broken\" - Roya News",
+          "at": "2026-10-04T15:12:09Z"
         },
         "shared": [
           "openai",
           "safety",
-          "leader",
-          "quit",
-          "warn",
-          "ai"
-        ]
-      },
-      {
-        "score": 0.547,
-        "blocked": "below-threshold",
-        "hours_apart": 16.7,
-        "a": {
-          "id": "hn:49944227",
-          "source": "hn-algolia",
-          "title": "I quit OpenAI because its culture is broken",
-          "at": "2026-10-03T13:46:34Z"
-        },
-        "b": {
-          "id": "gnews:ae23b7cd2435437a",
-          "source": "gnews-rss",
-          "title": "OpenAI safety leader Robinson quits over ‘broken culture’. What does his essay suggest for AI companies? - ET Enterprise AI",
-          "at": "2026-10-04T06:27:29Z"
-        },
-        "shared": [
-          "quit",
-          "openai",
+          "company",
           "cultur",
           "broken"
         ]
       },
       {
-        "score": 0.539,
-        "blocked": "time-window",
-        "hours_apart": 131.1,
-        "a": {
-          "id": "rss:openai:dec620cb7225d243",
-          "source": "rss-lab",
-          "title": "Introducing dots",
-          "at": "2026-09-29T00:00:00Z"
-        },
-        "b": {
-          "id": "gnews:37f324cd9c9f5c12",
-          "source": "gnews-rss",
-          "title": "The Sequence Radar - Issue 944 — Last Week in AI: Last Week in AI: OpenAI Connects the Dots, Gemini Levels Up, and Agents Cash In - TheSequence | Jesus Rodriguez",
-          "at": "2026-10-04T11:03:34Z"
-        },
-        "shared": [
-          "dot"
-        ]
-      },
-      {
-        "score": 0.488,
+        "score": 0.489,
         "blocked": "below-threshold",
         "hours_apart": 9.6,
         "a": {
@@ -520,79 +439,143 @@
         ]
       },
       {
-        "score": 0.47,
+        "score": 0.477,
         "blocked": "below-threshold",
-        "hours_apart": 21.5,
+        "hours_apart": 17.9,
         "a": {
-          "id": "hn:49942706",
+          "id": "hn:49945630",
           "source": "hn-algolia",
-          "title": "Kolibri: A Sovereign Open-Weight Model",
-          "at": "2026-10-03T09:36:04Z"
+          "title": "Changes to Gemini model access and limits",
+          "at": "2026-10-03T16:29:12Z"
         },
         "b": {
-          "id": "gnews:ccccc37adc0e275f",
+          "id": "gnews:6bf5b6ff92db328e",
           "source": "gnews-rss",
-          "title": "Aleph Alpha Releases Kolibri-1, a 78B Open-Weight Model With 1M Context - Pasquale Pillitteri",
-          "at": "2026-10-04T07:07:20Z"
-        },
-        "shared": [
-          "kolibri",
-          "openweight",
-          "model"
-        ]
-      },
-      {
-        "score": 0.47,
-        "blocked": "below-threshold",
-        "hours_apart": 23.7,
-        "a": {
-          "id": "hn:49942592",
-          "source": "hn-algolia",
-          "title": "Gemini ending free use of Flash and Pro models",
-          "at": "2026-10-03T09:13:19Z"
-        },
-        "b": {
-          "id": "gnews:cfcaf246c2adba8d",
-          "source": "gnews-rss",
-          "title": "Google to restrict free use of Gemini | Gulf Times - Gulf Times",
-          "at": "2026-10-04T08:56:00Z"
+          "title": "Google Launches Gemini 4 Argon With 1 Million Token Output and Limited Access - iThinkDifferent",
+          "at": "2026-10-04T10:22:36Z"
         },
         "shared": [
           "gemini",
-          "free",
-          "use"
+          "access",
+          "limit"
+        ]
+      },
+      {
+        "score": 0.471,
+        "blocked": "thin-overlap",
+        "hours_apart": 93.5,
+        "a": {
+          "id": "rss:deepmind:ce56aa83d0064ef1",
+          "source": "rss-lab",
+          "title": "Gemini 4 Argon: our next era of frontier intelligence",
+          "at": "2026-09-30T20:01:45Z"
+        },
+        "b": {
+          "id": "gnews:5d17ea626aee2cca",
+          "source": "gnews-rss",
+          "title": "Google DeepMind Introduces Gemini 4 Argon - Techiexpert.com",
+          "at": "2026-10-04T17:29:09Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon"
+        ]
+      },
+      {
+        "score": 0.431,
+        "blocked": "time-window",
+        "hours_apart": 25.4,
+        "a": {
+          "id": "hn:49944227",
+          "source": "hn-algolia",
+          "title": "I quit OpenAI because its culture is broken",
+          "at": "2026-10-03T13:46:34Z"
+        },
+        "b": {
+          "id": "gnews:7303fe89fb3ebb40",
+          "source": "gnews-rss",
+          "title": "OpenAI safety lead resigns, calling company culture \"broken\" - Roya News",
+          "at": "2026-10-04T15:12:09Z"
+        },
+        "shared": [
+          "openai",
+          "cultur",
+          "broken"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.582,
+        "score": 0.654,
         "blocked": "time-window",
-        "hours_apart": 25.9,
+        "hours_apart": 64.7,
         "a": {
-          "id": "hn:49942467",
-          "source": "hn-algolia",
-          "title": "California Attorney General Serves Investigative Subpoena on OpenAI",
-          "at": "2026-10-03T08:47:01Z"
+          "id": "rss:nvidia:6e9bdaa4a319db62",
+          "source": "rss-lab",
+          "title": "How NVIDIA GPUs Help Accelerate OpenAI’s GPT-6 Astra Ultrafast",
+          "at": "2026-10-01T23:44:13Z"
         },
         "b": {
-          "id": "gnews:e93060339fec1a7b",
+          "id": "gnews:08662303444d0f57",
           "source": "gnews-rss",
-          "title": "California's attorney general subpoenas OpenAI, saying developers can be held accountable - MIXED Reality News",
-          "at": "2026-10-04T10:39:52Z"
+          "title": "OpenAI says its own models optimised Astra Ultrafast's inference on Nvidia GPUs - MIXED Reality News",
+          "at": "2026-10-04T16:27:35Z"
         },
         "shared": [
-          "california",
-          "attorney",
-          "general",
-          "subpoena",
-          "openai"
+          "nvidia",
+          "gpus",
+          "openai",
+          "astra",
+          "ultrafast"
         ]
       },
       {
-        "score": 0.556,
+        "score": 0.646,
+        "blocked": "time-window",
+        "hours_apart": 95.9,
+        "a": {
+          "id": "hn:49954471",
+          "source": "hn-algolia",
+          "title": "SynthID Bio: Watermarking methods for synthetic biology",
+          "at": "2026-10-04T14:58:54Z"
+        },
+        "b": {
+          "id": "rss:deepmind:c696e8b1f3422473",
+          "source": "rss-lab",
+          "title": "Introducing SynthID Bio",
+          "at": "2026-09-30T15:03:07Z"
+        },
+        "shared": [
+          "synthid",
+          "bio"
+        ]
+      },
+      {
+        "score": 0.618,
+        "blocked": "time-window",
+        "hours_apart": 98.8,
+        "a": {
+          "id": "rss:deepmind:c696e8b1f3422473",
+          "source": "rss-lab",
+          "title": "Introducing SynthID Bio",
+          "at": "2026-09-30T15:03:07Z"
+        },
+        "b": {
+          "id": "gnews:e450f16f774f3576",
+          "source": "gnews-rss",
+          "title": "Google DeepMind Introduces SynthID Bio to Identify AI-Designed Proteins -- Teknuzu - PRLog",
+          "at": "2026-10-04T17:49:07Z"
+        },
+        "shared": [
+          "synthid",
+          "bio"
+        ]
+      },
+      {
+        "score": 0.543,
         "blocked": "below-threshold",
-        "hours_apart": 16.5,
+        "hours_apart": 23.7,
         "a": {
           "id": "hn:49944227",
           "source": "hn-algolia",
@@ -600,10 +583,10 @@
           "at": "2026-10-03T13:46:34Z"
         },
         "b": {
-          "id": "gnews:434155dd4cc55b6c",
+          "id": "gnews:45c9cc11254f6742",
           "source": "gnews-rss",
-          "title": "OpenAI safety leader David Robinson quits, says company culture is ‘broken’ as AI race accelerates - Fortune India",
-          "at": "2026-10-04T06:14:08Z"
+          "title": "OpenAI Safety Lead Quits, Warns Company's Culture Is ‘Broken’ — ‘The Time For Trial And Error Is Over’ - TradingView",
+          "at": "2026-10-04T13:30:42Z"
         },
         "shared": [
           "quit",
@@ -613,9 +596,9 @@
         ]
       },
       {
-        "score": 0.552,
+        "score": 0.511,
         "blocked": "below-threshold",
-        "hours_apart": 5,
+        "hours_apart": 16.9,
         "a": {
           "id": "hn:49948332",
           "source": "hn-algolia",
@@ -623,65 +606,21 @@
           "at": "2026-10-03T22:18:13Z"
         },
         "b": {
-          "id": "gnews:05a6ce30155ae637",
+          "id": "gnews:7303fe89fb3ebb40",
           "source": "gnews-rss",
-          "title": "OpenAI safety leader quits, warns AI firms lack caution - Daijiworld",
-          "at": "2026-10-04T03:16:15Z"
+          "title": "OpenAI safety lead resigns, calling company culture \"broken\" - Roya News",
+          "at": "2026-10-04T15:12:09Z"
         },
         "shared": [
           "openai",
           "safety",
-          "leader",
-          "quit",
-          "warn",
-          "ai"
-        ]
-      },
-      {
-        "score": 0.547,
-        "blocked": "below-threshold",
-        "hours_apart": 16.7,
-        "a": {
-          "id": "hn:49944227",
-          "source": "hn-algolia",
-          "title": "I quit OpenAI because its culture is broken",
-          "at": "2026-10-03T13:46:34Z"
-        },
-        "b": {
-          "id": "gnews:ae23b7cd2435437a",
-          "source": "gnews-rss",
-          "title": "OpenAI safety leader Robinson quits over ‘broken culture’. What does his essay suggest for AI companies? - ET Enterprise AI",
-          "at": "2026-10-04T06:27:29Z"
-        },
-        "shared": [
-          "quit",
-          "openai",
+          "company",
           "cultur",
           "broken"
         ]
       },
       {
-        "score": 0.539,
-        "blocked": "time-window",
-        "hours_apart": 131.1,
-        "a": {
-          "id": "rss:openai:dec620cb7225d243",
-          "source": "rss-lab",
-          "title": "Introducing dots",
-          "at": "2026-09-29T00:00:00Z"
-        },
-        "b": {
-          "id": "gnews:37f324cd9c9f5c12",
-          "source": "gnews-rss",
-          "title": "The Sequence Radar - Issue 944 — Last Week in AI: Last Week in AI: OpenAI Connects the Dots, Gemini Levels Up, and Agents Cash In - TheSequence | Jesus Rodriguez",
-          "at": "2026-10-04T11:03:34Z"
-        },
-        "shared": [
-          "dot"
-        ]
-      },
-      {
-        "score": 0.488,
+        "score": 0.489,
         "blocked": "below-threshold",
         "hours_apart": 9.6,
         "a": {
@@ -705,47 +644,47 @@
         ]
       },
       {
-        "score": 0.47,
+        "score": 0.477,
         "blocked": "below-threshold",
-        "hours_apart": 21.5,
+        "hours_apart": 17.9,
         "a": {
-          "id": "hn:49942706",
+          "id": "hn:49945630",
           "source": "hn-algolia",
-          "title": "Kolibri: A Sovereign Open-Weight Model",
-          "at": "2026-10-03T09:36:04Z"
+          "title": "Changes to Gemini model access and limits",
+          "at": "2026-10-03T16:29:12Z"
         },
         "b": {
-          "id": "gnews:ccccc37adc0e275f",
+          "id": "gnews:6bf5b6ff92db328e",
           "source": "gnews-rss",
-          "title": "Aleph Alpha Releases Kolibri-1, a 78B Open-Weight Model With 1M Context - Pasquale Pillitteri",
-          "at": "2026-10-04T07:07:20Z"
-        },
-        "shared": [
-          "kolibri",
-          "openweight",
-          "model"
-        ]
-      },
-      {
-        "score": 0.47,
-        "blocked": "below-threshold",
-        "hours_apart": 23.7,
-        "a": {
-          "id": "hn:49942592",
-          "source": "hn-algolia",
-          "title": "Gemini ending free use of Flash and Pro models",
-          "at": "2026-10-03T09:13:19Z"
-        },
-        "b": {
-          "id": "gnews:cfcaf246c2adba8d",
-          "source": "gnews-rss",
-          "title": "Google to restrict free use of Gemini | Gulf Times - Gulf Times",
-          "at": "2026-10-04T08:56:00Z"
+          "title": "Google Launches Gemini 4 Argon With 1 Million Token Output and Limited Access - iThinkDifferent",
+          "at": "2026-10-04T10:22:36Z"
         },
         "shared": [
           "gemini",
-          "free",
-          "use"
+          "access",
+          "limit"
+        ]
+      },
+      {
+        "score": 0.471,
+        "blocked": "thin-overlap",
+        "hours_apart": 93.5,
+        "a": {
+          "id": "rss:deepmind:ce56aa83d0064ef1",
+          "source": "rss-lab",
+          "title": "Gemini 4 Argon: our next era of frontier intelligence",
+          "at": "2026-09-30T20:01:45Z"
+        },
+        "b": {
+          "id": "gnews:5d17ea626aee2cca",
+          "source": "gnews-rss",
+          "title": "Google DeepMind Introduces Gemini 4 Argon - Techiexpert.com",
+          "at": "2026-10-04T17:29:09Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon"
         ]
       }
     ]
@@ -754,44 +693,44 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 8,
+      "streak_ok": 9,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 74,
+      "streak_ok": 75,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 74,
+      "streak_ok": 75,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 74,
+      "streak_ok": 75,
       "streak_fail": 0,
-      "items_last": 37
+      "items_last": 39
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 74,
+      "streak_ok": 75,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 74,
+      "streak_ok": 75,
       "streak_fail": 0,
-      "items_last": 41
+      "items_last": 39
     },
     {
       "id": "openalex",
@@ -803,27 +742,27 @@
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 3,
+      "streak_ok": 4,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 74,
+      "streak_ok": 75,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 74,
+      "streak_ok": 75,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.0026347222222222223,
+    "hours": 0.004642777777777778,
     "stale": false
   },
   "hf": {
@@ -869,8 +808,8 @@
     "enriched": 1,
     "query": "On-Policy or Off-Policy Learning? A Systematic Study of Distillation Dynamics",
     "mode": "bibliographic",
-    "from_cache": false,
-    "searches": 1,
+    "from_cache": true,
+    "searches": 0,
     "brief": false,
     "pulse_lead": false,
     "papers_enrich_only": true,
@@ -892,7 +831,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 41,
+    "count": 39,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -909,25 +848,25 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 22,
+    "ai_dropped": 24,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
         "id": "hn:49942706",
         "tag": "rest",
-        "score": 631,
+        "score": 647,
         "text": "Kolibri: A Sovereign Open-Weight Model"
       },
       {
         "id": "hn:49944227",
         "tag": "rest",
-        "score": 343,
+        "score": 425,
         "text": "I quit OpenAI because its culture is broken"
       },
       {
         "id": "hn:49948332",
         "tag": "rest",
-        "score": 265,
+        "score": 267,
         "text": "OpenAI safety leader quits, warning AI company's culture is 'broken'"
       }
     ]
@@ -944,47 +883,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "(cache:openai)",
+        "url": "https://openai.com/news/rss.xml",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "(cache:deepmind)",
+        "url": "https://deepmind.google/blog/rss.xml",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "(cache:google-ai)",
+        "url": "https://blog.google/technology/ai/rss/",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "(cache:huggingface)",
+        "url": "https://huggingface.co/blog/feed.xml",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "(cache:mistral)",
+        "url": "https://mistral.ai/rss.xml",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "(cache:nvidia)",
+        "url": "https://blogs.nvidia.com/feed/",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "(cache:nvidia-dev)",
+        "url": "https://developer.nvidia.com/blog/feed",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "(cache:ms-research)",
+        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "https://research.google/blog/rss/",
+        "url": "(cache:google-research)",
         "count": 12
       }
     ],
@@ -1030,17 +969,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "(cache:trailofbits)",
+        "url": "https://blog.trailofbits.com/feed/",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "(cache:fox-it)",
+        "url": "https://blog.fox-it.com/feed/",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "(cache:projectzero)",
+        "url": "https://projectzero.google/feed.xml",
         "count": 5
       }
     ],
@@ -1081,8 +1020,8 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 37,
-    "pool": 296,
+    "items": 39,
+    "pool": 280,
     "corroborators": [
       {
         "id": "gnews:f76eafad86f51afb",
@@ -1093,43 +1032,51 @@
         "self_repost": false
       },
       {
-        "id": "gnews:434155dd4cc55b6c",
+        "id": "gnews:45c9cc11254f6742",
         "anchor_id": "hn:49948332",
-        "score": 0.735,
-        "title": "OpenAI safety leader David Robinson quits, says company culture is ‘broken’ as AI race accelerates - Fortune India",
-        "publisher": "Fortune India",
+        "score": 0.698,
+        "title": "OpenAI Safety Lead Quits, Warns Company's Culture Is ‘Broken’ — ‘The Time For Trial And Error Is Over’ - TradingView",
+        "publisher": "TradingView",
         "self_repost": false
       },
       {
-        "id": "gnews:ae23b7cd2435437a",
+        "id": "gnews:3be7ede8d4e9d8c5",
         "anchor_id": "hn:49948332",
-        "score": 0.717,
-        "title": "OpenAI safety leader Robinson quits over ‘broken culture’. What does his essay suggest for AI companies? - ET Enterprise AI",
-        "publisher": "ET Enterprise AI",
+        "score": 0.645,
+        "title": "OpenAI's safety report lead quits and calls the company culture broken - notebookcheck.net",
+        "publisher": "notebookcheck.net",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:bce1098d3529c1f5",
+        "anchor_id": "hn:49953179",
+        "score": 0.957,
+        "title": "Legal risks pile up for Altman as OpenAI uncovers dozens of hacks - ft.com",
+        "publisher": "ft.com",
         "self_repost": false
       },
       {
         "id": "gnews:e284cfb60d76fd23",
         "anchor_id": "hn:49945206",
-        "score": 0.852,
+        "score": 0.858,
         "title": "OpenAI safety leader David Robinson resigns — and says company culture is dangerous - Business Insider",
         "publisher": "Business Insider",
         "self_repost": false
       },
       {
-        "id": "gnews:8c001437452856bc",
+        "id": "gnews:e0138fb429d740c3",
         "anchor_id": "hn:49945206",
-        "score": 0.726,
-        "title": "OpenAI Safety Leader David Robinson Resigns as ChatGPT Maker Faces Growing Scrutiny Over AI Risks and Transparency: Report - TradingView",
-        "publisher": "TradingView",
+        "score": 0.743,
+        "title": "OpenAI Safety Systems Leader David Robinson Resigns, Citing Industry's 'Fundamental' Culture Problem - finance.biggo.com",
+        "publisher": "finance.biggo.com",
         "self_repost": false
       },
       {
-        "id": "gnews:f6f3b53429b0a1b1",
+        "id": "gnews:2a4845a8ebb637f4",
         "anchor_id": "hn:49945206",
-        "score": 0.616,
-        "title": "DETAILS: OpenAI safety leader RESIGNS - foxnews.com",
-        "publisher": "foxnews.com",
+        "score": 0.724,
+        "title": "OpenAI Safety Leader David Robinson Resigns as ChatGPT Maker Faces Growing Scrutiny Over AI Risks and Transparency: Report - TradingView",
+        "publisher": "TradingView",
         "self_repost": false
       },
       {
@@ -1139,36 +1086,12 @@
         "title": "I Quit OpenAI Because Its Culture Is Broken - The Atlantic",
         "publisher": "The Atlantic",
         "self_repost": false
-      },
-      {
-        "id": "gnews:ff804b9866ada61e",
-        "anchor_id": "hn:49942467",
-        "score": 0.626,
-        "title": "California attorney general subpoenas OpenAI over cyber incidents - WOODTV.com",
-        "publisher": "WOODTV.com",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:36692e52fa95ddd7",
-        "anchor_id": "rss:openai:882596cbc7639eb4",
-        "score": 1,
-        "title": "Chatham scales its capital markets expertise with OpenAI - openai.com",
-        "publisher": "openai.com",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:24b62ecd2c7cc959",
-        "anchor_id": "rss:google-ai:6a7bb4e3e69d69f5",
-        "score": 1,
-        "title": "The latest AI news we announced in September 2026 - blog.google",
-        "publisher": "blog.google",
-        "self_repost": true
       }
     ],
     "http_status": 200,
-    "content_type": null,
+    "content_type": "application/xml; charset=utf-8",
     "format": "rss2",
-    "from_cache": true,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1191,24 +1114,24 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:37f324cd9c9f5c12",
-        "title": "The Sequence Radar - Issue 944 — Last Week in AI: Last Week in AI: OpenAI Connects the Dots, Gemini Levels Up, and Agents Cash In - TheSequence | Jesus Rodriguez",
-        "publisher": "TheSequence | Jesus Rodriguez",
-        "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9uQktJUlpNWmFDdjRYaFlLc3JJanRIWjNDdkpRSUpyOWJHVDFULV9uUU9NblhUMkFXclpfcE9EVURybWpEMG45T1dxOWlRR2V6Ynd0eWdtdDhiSkhsNUc2NGo3ckl0LWVKdWFrX0NRUzRCc2t5LVNr?oc=5",
+        "id": "gnews:c35a9101414cc1fe",
+        "title": "OpenAI says senior leaders should each be able to veto a frontier training run - MIXED Reality News",
+        "publisher": "MIXED Reality News",
+        "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPajBGZ29SbkdTS05Mdm42Yk1DbEx5NzJaLVJDaFlyRnJRM2JyZDd2d09vRXBMWGVqbzczNGZ3RzZWMWpXZ05VSDJ1dmlmQXF5TkJNc1k2b0ZZYWlGeUNVQlJkZDFfalludU13TVhfaERsMEVBSkhLOWZxSVkzQ0xqUk1yR0lGd1NHOS1v?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:bce1098d3529c1f5",
-        "title": "Legal risks pile up for Altman as OpenAI uncovers dozens of hacks - Financial Times",
-        "publisher": "Financial Times",
-        "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNbTIyS2l3QWYtSTZxVzB4Znp2U2ZtQzY3NHl5M0VHa3FVMU1PWTR4eWdmd0VwNnNIRTVlS0gyaU9WTVBDZ2RCRGU5dXFKWmc2bWdNWlpfazdrUHpBRGMyRmN5dTc4Qzh6OGh5cUpuZkNGb1BNZ0lxVW5FMmpwLUkycDNPcW8?oc=5",
+        "id": "gnews:8f642981cf757a2d",
+        "title": "Google Restructures Gemini AI Pricing: Pro Model Blocked Even for $10 Monthly Subscribers - news.sbs.co.kr",
+        "publisher": "news.sbs.co.kr",
+        "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9POS1nZElwMlJreGp0a0JwTlE0V0ppb1hMNm9hTW5vUkRMTFpzZG42RmlRUVBGT3dLRVhXRVhUXzlHNmtkQ1JGbUFJZFpsZ296R3VfdzhicXZGTGtDSU5rcDVzNHc4dFN4Vkx4UVFB?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:86d7371876c4982c",
-        "title": "An OpenAI model was caught trying to cheat at StarCraft, and of course it did it by stealing a human's work - PC Gamer",
-        "publisher": "PC Gamer",
-        "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxOcTBtZ3hrcVhYQjhKYk01clVPRi1YMzdWZUJjU0VSUHA4ZkJtTjV2bXFvRklGOXc0emlUMG9LZHNUX2w2TmlPeXdwSE82T1hjcFByYlhpQXN5SDZxdGIyTVZ3ZU5tSFFMRmpzYkVjSHBCTWxQWHdRdWZTT3FzR2Jod19TUUtRTUllM0dxVFRSamZXTXVIVjRFWjBIUFllSmFWRDFoZlUtVTNvRmNNdHd6UUk5bUlxcDYzSXNtc0FDSjZIQ2FIOXlIM202MmtDSXRFUE9NWkkyUWJMQQ?oc=5",
+        "id": "gnews:39da2335d5794b43",
+        "title": "Another Alarm Bell at OpenAI as Safety Lead Resigns Over Major Risks - BeInCrypto",
+        "publisher": "BeInCrypto",
+        "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE11UzB4SW1zZjQyd3BHRkc0S05wSi1jbTRQMXVnMlNDRUxpN0pCUEhCM1pnSktTUjFzQ1VyUUlWSmRmdjN4MERGU3I4V0JfSmc4ZnJDMkIxakZJLVFmT1NZNU9HM3ZUemNIZG1CTlliUQ?oc=5",
         "tag": "rest"
       }
     ]
