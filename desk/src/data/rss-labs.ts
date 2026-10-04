@@ -16,7 +16,7 @@ export type RssLabRow = {
   cluster_id?: string;
 };
 
-export const RSS_LABS_AT = "2026-10-04T11:19:25Z";
+export const RSS_LABS_AT = "2026-10-04T15:20:10Z";
 
 export const RSS_LABS: RssLabRow[] = [
   { id: "rss:huggingface:bd1136d0fcfd6f13", lab: "huggingface" as const, title: "The Agent Said It Was Done. The Database Disagreed.", link: "https://huggingface.co/blog/microsoft/thinkingbox", published: "2026-10-03T22:56:48Z", summary: "", source: "rss-lab" as const, tag: "rest" as const, first_seen: "2026-10-04T07:21:32Z", is_new: false, cluster_id: "cl:rss:huggingface:bd1136d0fcfd6f13" },
