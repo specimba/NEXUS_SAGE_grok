@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-03T23:20:49Z",
+  "stamped_at": "2026-10-04T03:14:31Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 319,
+      "duration_ms": 199,
       "paused_until": null,
       "reason": null
     },
@@ -18,25 +18,25 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 3296,
+      "duration_ms": 485,
       "paused_until": null,
       "reason": null
     },
     {
       "id": "openalex",
       "label": "OpenAlex",
-      "status": "fail",
+      "status": "paused",
       "rows": 0,
-      "duration_ms": 160,
+      "duration_ms": 1,
       "paused_until": "2026-10-04T23:20:53Z",
-      "reason": "HTTP 429"
+      "reason": "paused_until 2026-10-04T23:20:53Z"
     },
     {
       "id": "crossref",
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 2,
+      "duration_ms": 1,
       "paused_until": null,
       "reason": null
     },
@@ -44,26 +44,26 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 56,
-      "duration_ms": 9404,
+      "rows": 41,
+      "duration_ms": 8294,
       "paused_until": null,
       "reason": null
     },
     {
       "id": "rss_labs",
       "label": "lab RSS",
-      "status": "ok",
-      "rows": 104,
-      "duration_ms": 312,
+      "status": "timeout",
+      "rows": 0,
+      "duration_ms": 39576,
       "paused_until": null,
-      "reason": null
+      "reason": "timeout after 30000ms budget"
     },
     {
       "id": "rss_security",
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 312,
+      "duration_ms": 4340,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 31,
-      "duration_ms": 312,
+      "rows": 37,
+      "duration_ms": 6454,
       "paused_until": null,
       "reason": null
     },
@@ -80,8 +80,8 @@
       "id": "github",
       "label": "GitHub",
       "status": "ok",
-      "rows": 1,
-      "duration_ms": 312,
+      "rows": 3,
+      "duration_ms": 417,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 312,
+      "duration_ms": 242,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 14741,
-    "sources_wall_ms": 9407,
-    "papers_lane_ms": 3783,
-    "slowest_source_ms": 9404,
+    "sources_ms": 60009,
+    "sources_wall_ms": 47843,
+    "papers_lane_ms": 689,
+    "slowest_source_ms": 39576,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -113,34 +113,96 @@
       "github": 25000,
       "wikidata": 25000
     },
-    "timed_out": [],
-    "wall_ms": 9955,
-    "startup_ms": 54,
-    "main_ms": 9996
+    "timed_out": [
+      "rss_labs"
+    ],
+    "wall_ms": 52412,
+    "startup_ms": 34,
+    "main_ms": 52422
   },
-  "multi_source_independent": 2,
+  "multi_source_independent": 3,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 2,
-    "multi_source_raw": 4,
+    "multi_source_independent": 3,
+    "multi_source_raw": 5,
     "self_reposts": 2,
-    "items_in": 218,
-    "clusters_out": 206,
-    "collapsed": 12,
-    "multi_source": 2,
-    "multi_member": 10,
+    "items_in": 209,
+    "clusters_out": 190,
+    "collapsed": 19,
+    "multi_source": 3,
+    "multi_member": 9,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 8,
+    "new_items": 33,
     "per_source": {
-      "hn-algolia": 56,
+      "hn-algolia": 41,
       "rss-lab": 104,
       "rss-security": 27,
-      "gnews-rss": 31
+      "gnews-rss": 37
     },
     "multi_source_clusters": [
+      {
+        "title": "OpenAI safety leader quits, warning AI company's culture is 'broken'",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 7,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:49948332",
+            "source": "hn-algolia",
+            "title": "OpenAI safety leader quits, warning AI company's culture is 'broken'",
+            "at": "2026-10-03T22:18:13Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:49944227",
+            "source": "hn-algolia",
+            "title": "I Quit OpenAI Because Its Culture Is Broken",
+            "at": "2026-10-03T13:46:34Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:b832fdd24045624f",
+            "source": "gnews-rss",
+            "title": "OpenAI safety employee quits, says 'time for trial and error is over' - Latest news from Azerbaijan",
+            "at": "2026-10-04T02:12:35Z",
+            "publisher": "Latest news from Azerbaijan"
+          },
+          {
+            "id": "gnews:b97d155dd557e5f6",
+            "source": "gnews-rss",
+            "title": "I Quit OpenAI Because Its Culture Is Broken - The Atlantic",
+            "at": "2026-10-03T11:00:00Z",
+            "publisher": "The Atlantic"
+          },
+          {
+            "id": "gnews:f76eafad86f51afb",
+            "source": "gnews-rss",
+            "title": "OpenAI safety leader quits, warning AI company’s culture is ‘broken’ - The Guardian",
+            "at": "2026-10-03T20:09:00Z",
+            "publisher": "The Guardian"
+          },
+          {
+            "id": "gnews:b47af0ced0ee6cbe",
+            "source": "gnews-rss",
+            "title": "OpenAI Safety Employee Quits Over 'Broken' Culture - The Tech Buzz",
+            "at": "2026-10-03T16:36:00Z",
+            "publisher": "The Tech Buzz"
+          },
+          {
+            "id": "gnews:2cf48dd3132e61b7",
+            "source": "gnews-rss",
+            "title": "“The time for trial and error is over”: OpenAI safety researcher quits, says company culture is broken - calcalistech.com",
+            "at": "2026-10-03T19:25:00Z",
+            "publisher": "calcalistech.com"
+          }
+        ]
+      },
       {
         "title": "The Sleuths Who Expose When AI Goes Rogue",
         "sources": [
@@ -167,9 +229,9 @@
           {
             "id": "gnews:50b72429f34acc50",
             "source": "gnews-rss",
-            "title": "The Sleuths Who Expose When AI Goes Rogue - WSJ",
-            "at": "2026-10-02T09:30:00Z",
-            "publisher": "WSJ"
+            "title": "The Sleuths Who Expose When AI Goes Rogue - wsj.com",
+            "at": "2026-10-03T19:02:19Z",
+            "publisher": "wsj.com"
           }
         ]
       },
@@ -201,6 +263,23 @@
     ],
     "self_repost_clusters": [
       {
+        "title": "Chatham scales its capital markets expertise with OpenAI",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:36692e52fa95ddd7",
+            "publisher": "OpenAI",
+            "title": "Chatham scales its capital markets expertise with OpenAI - OpenAI"
+          }
+        ]
+      },
+      {
         "title": "The latest AI news we announced in September 2026",
         "sources": [
           "rss-lab"
@@ -216,285 +295,156 @@
             "title": "The latest AI news we announced in September 2026 - blog.google"
           }
         ]
-      },
-      {
-        "title": "Toward provably private learning from federated data",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:fce71ec5a872014a",
-            "publisher": "Google Research",
-            "title": "Toward provably private learning from federated data - Google Research"
-          }
-        ]
       }
     ],
     "ai_relevance": {
-      "rss_lab_dropped": [
-        {
-          "lab": "nvidia",
-          "title": "Fall Into 25 New Games on GeForce NOW This October",
-          "reason": "category:GeForce NOW"
-        },
-        {
-          "lab": "nvidia",
-          "title": "Contain the Chaos: ‘CONTROL Resonant’ Launches on GeForce NOW",
-          "reason": "category:GeForce NOW"
-        }
-      ],
-      "gnews_shown_dropped": [
-        {
-          "publisher": "techgig.com",
-          "title": "DoorDash built GenAI platform for velocity, reliability, accountability - techgig.com"
-        },
-        {
-          "publisher": "Android Police",
-          "title": "I spent 15 years in Chrome before finding a search method that actually saves time - Android Police"
-        },
-        {
-          "publisher": "Chosunbiz",
-          "title": "Hyundai Motor bet sees FieldAI valuation jump fivefold to $10 billion - CHOSUNBIZ - Chosunbiz"
-        },
-        {
-          "publisher": "finance.biggo.com",
-          "title": "77 GPU Clouds. Only 19 Medals. | ClusterMAX 3.0｜Latent Space - finance.biggo.com"
-        }
-      ],
+      "rss_lab_dropped": [],
+      "gnews_shown_dropped": [],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 21
+      "hn_dropped": 23
     },
     "gnews_near_misses": [
       {
-        "score": 0.44,
-        "blocked": "below-threshold",
-        "hours_apart": 3.4,
+        "score": 0.643,
+        "blocked": "time-window",
+        "hours_apart": 122.1,
         "a": {
-          "id": "hn:49943034",
-          "source": "hn-algolia",
-          "title": "Aleph Alpha Kolibri: How the sovereign German LLM works",
-          "at": "2026-10-03T10:43:51Z"
+          "id": "rss:openai:dec620cb7225d243",
+          "source": "rss-lab",
+          "title": "Introducing dots",
+          "at": "2026-09-29T00:00:00Z"
         },
         "b": {
-          "id": "gnews:cd30b0f3207fbf3a",
+          "id": "gnews:cc0003ad5e542387",
           "source": "gnews-rss",
-          "title": "Aleph Alpha’s Sovereign A.I. Model Kolibri Is No Match for the Open-Weight Leaders - trendingtopics.eu",
-          "at": "2026-10-03T14:06:31Z"
+          "title": "How Muse Stacks up Vs. OpenAI Dots - Investing.com",
+          "at": "2026-10-04T02:07:20Z"
         },
         "shared": [
-          "aleph",
-          "alpha",
-          "kolibri",
-          "sovereign"
+          "dot"
         ]
       },
       {
-        "score": 0.396,
-        "blocked": "thin-overlap",
-        "hours_apart": 0.8,
+        "score": 0.599,
+        "blocked": "below-threshold",
+        "hours_apart": 11.3,
         "a": {
-          "id": "hn:49946567",
+          "id": "hn:49948332",
           "source": "hn-algolia",
-          "title": "Getting the most out of Opus 5.5 in Claude and Claude Code",
-          "at": "2026-10-03T18:29:30Z"
+          "title": "OpenAI safety leader quits, warning AI company's culture is 'broken'",
+          "at": "2026-10-03T22:18:13Z"
         },
         "b": {
-          "id": "gnews:d448f1b90e83d325",
+          "id": "gnews:b97d155dd557e5f6",
           "source": "gnews-rss",
-          "title": "Google Antigravity Adds Anthropic Claude Opus 5.5 and Sonnet 5.5 for Paid Subscribers - pc-tablet.com",
-          "at": "2026-10-03T17:44:00Z"
+          "title": "I Quit OpenAI Because Its Culture Is Broken - The Atlantic",
+          "at": "2026-10-03T11:00:00Z"
         },
         "shared": [
-          "opus",
-          "5.5",
-          "claude"
+          "openai",
+          "quit",
+          "cultur",
+          "broken"
         ]
       },
       {
-        "score": 0.347,
+        "score": 0.599,
         "blocked": "below-threshold",
-        "hours_apart": 2,
+        "hours_apart": 6.4,
         "a": {
-          "id": "hn:49932295",
+          "id": "hn:49944227",
           "source": "hn-algolia",
-          "title": "They're Known as Swarm Chasers–and They Spring into Action When AI Goes Rogue",
-          "at": "2026-10-02T11:29:16Z"
+          "title": "I Quit OpenAI Because Its Culture Is Broken",
+          "at": "2026-10-03T13:46:34Z"
         },
         "b": {
-          "id": "gnews:50b72429f34acc50",
+          "id": "gnews:f76eafad86f51afb",
           "source": "gnews-rss",
-          "title": "The Sleuths Who Expose When AI Goes Rogue - WSJ",
-          "at": "2026-10-02T09:30:00Z"
+          "title": "OpenAI safety leader quits, warning AI company’s culture is ‘broken’ - The Guardian",
+          "at": "2026-10-03T20:09:00Z"
         },
         "shared": [
+          "quit",
+          "openai",
+          "cultur",
+          "broken"
+        ]
+      },
+      {
+        "score": 0.592,
+        "blocked": "below-threshold",
+        "hours_apart": 2.9,
+        "a": {
+          "id": "hn:49948332",
+          "source": "hn-algolia",
+          "title": "OpenAI safety leader quits, warning AI company's culture is 'broken'",
+          "at": "2026-10-03T22:18:13Z"
+        },
+        "b": {
+          "id": "gnews:2cf48dd3132e61b7",
+          "source": "gnews-rss",
+          "title": "“The time for trial and error is over”: OpenAI safety researcher quits, says company culture is broken - calcalistech.com",
+          "at": "2026-10-03T19:25:00Z"
+        },
+        "shared": [
+          "openai",
+          "safety",
+          "quit",
+          "company",
+          "cultur",
+          "broken"
+        ]
+      },
+      {
+        "score": 0.571,
+        "blocked": "below-threshold",
+        "hours_apart": 5.6,
+        "a": {
+          "id": "hn:49944227",
+          "source": "hn-algolia",
+          "title": "I Quit OpenAI Because Its Culture Is Broken",
+          "at": "2026-10-03T13:46:34Z"
+        },
+        "b": {
+          "id": "gnews:2cf48dd3132e61b7",
+          "source": "gnews-rss",
+          "title": "“The time for trial and error is over”: OpenAI safety researcher quits, says company culture is broken - calcalistech.com",
+          "at": "2026-10-03T19:25:00Z"
+        },
+        "shared": [
+          "quit",
+          "openai",
+          "cultur",
+          "broken"
+        ]
+      },
+      {
+        "score": 0.56,
+        "blocked": "below-threshold",
+        "hours_apart": 20.1,
+        "a": {
+          "id": "hn:49938646",
+          "source": "hn-algolia",
+          "title": "The Sleuths Who Expose When AI Goes Rogue",
+          "at": "2026-10-02T21:11:18Z"
+        },
+        "b": {
+          "id": "gnews:d90ececa3c52bdaf",
+          "source": "gnews-rss",
+          "title": "Citizen Sleuths Expose the Rogue AI Big Tech Hid - townhall.com",
+          "at": "2026-10-03T17:15:00Z"
+        },
+        "shared": [
+          "sleuth",
+          "expos",
           "ai",
-          "goe",
           "rogu"
         ]
       },
       {
-        "score": 0.312,
+        "score": 0.401,
         "blocked": "below-threshold",
-        "hours_apart": 8.1,
-        "a": {
-          "id": "hn:49943034",
-          "source": "hn-algolia",
-          "title": "Aleph Alpha Kolibri: How the sovereign German LLM works",
-          "at": "2026-10-03T10:43:51Z"
-        },
-        "b": {
-          "id": "gnews:dd86a9ae92585731",
-          "source": "gnews-rss",
-          "title": "Aleph Alpha releases Kolibri, a 78B-parameter open-weight AI model built in Europe - cryptobriefing.com",
-          "at": "2026-10-03T18:52:21Z"
-        },
-        "shared": [
-          "aleph",
-          "alpha",
-          "kolibri"
-        ]
-      },
-      {
-        "score": 0.31,
-        "blocked": "below-threshold",
-        "hours_apart": 4.5,
-        "a": {
-          "id": "hn:49943034",
-          "source": "hn-algolia",
-          "title": "Aleph Alpha Kolibri: How the sovereign German LLM works",
-          "at": "2026-10-03T10:43:51Z"
-        },
-        "b": {
-          "id": "gnews:1f418fd3f5c66e89",
-          "source": "gnews-rss",
-          "title": "Aleph Alpha puts Kolibri's full weights on Hugging Face under Apache 2.0 - Startup Fortune",
-          "at": "2026-10-03T15:16:15Z"
-        },
-        "shared": [
-          "aleph",
-          "alpha",
-          "kolibri"
-        ]
-      },
-      {
-        "score": 0.28,
-        "blocked": "below-threshold",
-        "hours_apart": 16.4,
-        "a": {
-          "id": "rss:google-ai:6a7bb4e3e69d69f5",
-          "source": "rss-lab",
-          "title": "The latest AI news we announced in September 2026",
-          "at": "2026-10-02T15:00:00Z"
-        },
-        "b": {
-          "id": "gnews:ee63e858e5bf975a",
-          "source": "gnews-rss",
-          "title": "Google’s September AI push spans frontier models, agents and science - ET Enterprise AI",
-          "at": "2026-10-03T07:24:00Z"
-        },
-        "shared": [
-          "ai",
-          "september"
-        ]
-      },
-      {
-        "score": 0.275,
-        "blocked": "thin-overlap",
-        "hours_apart": 11.9,
-        "a": {
-          "id": "hn:49942569",
-          "source": "hn-algolia",
-          "title": "OpenAI says hacking at scale is expensive to investigate",
-          "at": "2026-10-03T09:07:13Z"
-        },
-        "b": {
-          "id": "gnews:2241b6b881d0a689",
-          "source": "gnews-rss",
-          "title": "California Subpoenas OpenAI Over AI Models That Hacked Their Way Out of a Test - Decrypt News",
-          "at": "2026-10-02T21:16:04Z"
-        },
-        "shared": [
-          "openai",
-          "hack"
-        ]
-      },
-      {
-        "score": 0.271,
-        "blocked": "thin-overlap",
-        "hours_apart": 0.7,
-        "a": {
-          "id": "hn:49942569",
-          "source": "hn-algolia",
-          "title": "OpenAI says hacking at scale is expensive to investigate",
-          "at": "2026-10-03T09:07:13Z"
-        },
-        "b": {
-          "id": "gnews:377af58638a8eaa2",
-          "source": "gnews-rss",
-          "title": "OpenAI reveals new detail on Australia Medicare hack probe - The News International",
-          "at": "2026-10-03T08:27:00Z"
-        },
-        "shared": [
-          "openai",
-          "hack"
-        ]
-      }
-    ],
-    "near_misses": [
-      {
-        "score": 0.44,
-        "blocked": "below-threshold",
-        "hours_apart": 3.4,
-        "a": {
-          "id": "hn:49943034",
-          "source": "hn-algolia",
-          "title": "Aleph Alpha Kolibri: How the sovereign German LLM works",
-          "at": "2026-10-03T10:43:51Z"
-        },
-        "b": {
-          "id": "gnews:cd30b0f3207fbf3a",
-          "source": "gnews-rss",
-          "title": "Aleph Alpha’s Sovereign A.I. Model Kolibri Is No Match for the Open-Weight Leaders - trendingtopics.eu",
-          "at": "2026-10-03T14:06:31Z"
-        },
-        "shared": [
-          "aleph",
-          "alpha",
-          "kolibri",
-          "sovereign"
-        ]
-      },
-      {
-        "score": 0.396,
-        "blocked": "thin-overlap",
-        "hours_apart": 0.8,
-        "a": {
-          "id": "hn:49946567",
-          "source": "hn-algolia",
-          "title": "Getting the most out of Opus 5.5 in Claude and Claude Code",
-          "at": "2026-10-03T18:29:30Z"
-        },
-        "b": {
-          "id": "gnews:d448f1b90e83d325",
-          "source": "gnews-rss",
-          "title": "Google Antigravity Adds Anthropic Claude Opus 5.5 and Sonnet 5.5 for Paid Subscribers - pc-tablet.com",
-          "at": "2026-10-03T17:44:00Z"
-        },
-        "shared": [
-          "opus",
-          "5.5",
-          "claude"
-        ]
-      },
-      {
-        "score": 0.379,
-        "blocked": "thin-overlap",
-        "hours_apart": 736.9,
+        "hours_apart": 16.6,
         "a": {
           "id": "hn:49942592",
           "source": "hn-algolia",
@@ -502,20 +452,22 @@
           "at": "2026-10-03T09:13:19Z"
         },
         "b": {
-          "id": "rss:deepmind:63b19b50b4021cb5",
-          "source": "rss-lab",
-          "title": "Introducing Gemini 3.8 Flash and 3.8 Flash Cyber",
-          "at": "2026-09-02T16:18:31Z"
+          "id": "gnews:593ebf7f317e936f",
+          "source": "gnews-rss",
+          "title": "Gemini Cuts Pro Model Access for Free and AI Plus Users, While AI Pro Gains Deep Think - XenoSpectrum",
+          "at": "2026-10-04T01:47:51Z"
         },
         "shared": [
           "gemini",
-          "flash"
+          "free",
+          "pro",
+          "model"
         ]
       },
       {
-        "score": 0.347,
-        "blocked": "below-threshold",
-        "hours_apart": 2,
+        "score": 0.366,
+        "blocked": "time-window",
+        "hours_apart": 31.6,
         "a": {
           "id": "hn:49932295",
           "source": "hn-algolia",
@@ -525,98 +477,197 @@
         "b": {
           "id": "gnews:50b72429f34acc50",
           "source": "gnews-rss",
-          "title": "The Sleuths Who Expose When AI Goes Rogue - WSJ",
-          "at": "2026-10-02T09:30:00Z"
+          "title": "The Sleuths Who Expose When AI Goes Rogue - wsj.com",
+          "at": "2026-10-03T19:02:19Z"
         },
         "shared": [
           "ai",
           "goe",
           "rogu"
         ]
-      },
+      }
+    ],
+    "near_misses": [
       {
-        "score": 0.312,
-        "blocked": "below-threshold",
-        "hours_apart": 8.1,
-        "a": {
-          "id": "hn:49943034",
-          "source": "hn-algolia",
-          "title": "Aleph Alpha Kolibri: How the sovereign German LLM works",
-          "at": "2026-10-03T10:43:51Z"
-        },
-        "b": {
-          "id": "gnews:dd86a9ae92585731",
-          "source": "gnews-rss",
-          "title": "Aleph Alpha releases Kolibri, a 78B-parameter open-weight AI model built in Europe - cryptobriefing.com",
-          "at": "2026-10-03T18:52:21Z"
-        },
-        "shared": [
-          "aleph",
-          "alpha",
-          "kolibri"
-        ]
-      },
-      {
-        "score": 0.31,
-        "blocked": "below-threshold",
-        "hours_apart": 4.5,
-        "a": {
-          "id": "hn:49943034",
-          "source": "hn-algolia",
-          "title": "Aleph Alpha Kolibri: How the sovereign German LLM works",
-          "at": "2026-10-03T10:43:51Z"
-        },
-        "b": {
-          "id": "gnews:1f418fd3f5c66e89",
-          "source": "gnews-rss",
-          "title": "Aleph Alpha puts Kolibri's full weights on Hugging Face under Apache 2.0 - Startup Fortune",
-          "at": "2026-10-03T15:16:15Z"
-        },
-        "shared": [
-          "aleph",
-          "alpha",
-          "kolibri"
-        ]
-      },
-      {
-        "score": 0.304,
-        "blocked": "thin-overlap",
-        "hours_apart": 38.8,
-        "a": {
-          "id": "hn:49942208",
-          "source": "hn-algolia",
-          "title": "Chamath says open AI models are \"commoditize your complement.\" Agree?",
-          "at": "2026-10-03T07:47:18Z"
-        },
-        "b": {
-          "id": "rss:openai:b8087b88cb63ae7f",
-          "source": "rss-lab",
-          "title": "The eternal complement",
-          "at": "2026-10-01T17:00:00Z"
-        },
-        "shared": [
-          "complement"
-        ]
-      },
-      {
-        "score": 0.286,
+        "score": 0.643,
         "blocked": "time-window",
-        "hours_apart": 170.8,
+        "hours_apart": 122.1,
         "a": {
-          "id": "hn:49933459",
-          "source": "hn-algolia",
-          "title": "Don't be fooled–LLMs don't reason",
-          "at": "2026-10-02T13:45:42Z"
+          "id": "rss:openai:dec620cb7225d243",
+          "source": "rss-lab",
+          "title": "Introducing dots",
+          "at": "2026-09-29T00:00:00Z"
         },
         "b": {
-          "id": "rss-sec:trailofbits:3c908d4f959ad715",
-          "source": "rss-security",
-          "title": "Don't let TEEs break your MPC",
-          "at": "2026-09-25T11:00:00Z"
+          "id": "gnews:cc0003ad5e542387",
+          "source": "gnews-rss",
+          "title": "How Muse Stacks up Vs. OpenAI Dots - Investing.com",
+          "at": "2026-10-04T02:07:20Z"
         },
         "shared": [
-          "don",
-          "t"
+          "dot"
+        ]
+      },
+      {
+        "score": 0.599,
+        "blocked": "below-threshold",
+        "hours_apart": 11.3,
+        "a": {
+          "id": "hn:49948332",
+          "source": "hn-algolia",
+          "title": "OpenAI safety leader quits, warning AI company's culture is 'broken'",
+          "at": "2026-10-03T22:18:13Z"
+        },
+        "b": {
+          "id": "gnews:b97d155dd557e5f6",
+          "source": "gnews-rss",
+          "title": "I Quit OpenAI Because Its Culture Is Broken - The Atlantic",
+          "at": "2026-10-03T11:00:00Z"
+        },
+        "shared": [
+          "openai",
+          "quit",
+          "cultur",
+          "broken"
+        ]
+      },
+      {
+        "score": 0.599,
+        "blocked": "below-threshold",
+        "hours_apart": 6.4,
+        "a": {
+          "id": "hn:49944227",
+          "source": "hn-algolia",
+          "title": "I Quit OpenAI Because Its Culture Is Broken",
+          "at": "2026-10-03T13:46:34Z"
+        },
+        "b": {
+          "id": "gnews:f76eafad86f51afb",
+          "source": "gnews-rss",
+          "title": "OpenAI safety leader quits, warning AI company’s culture is ‘broken’ - The Guardian",
+          "at": "2026-10-03T20:09:00Z"
+        },
+        "shared": [
+          "quit",
+          "openai",
+          "cultur",
+          "broken"
+        ]
+      },
+      {
+        "score": 0.592,
+        "blocked": "below-threshold",
+        "hours_apart": 2.9,
+        "a": {
+          "id": "hn:49948332",
+          "source": "hn-algolia",
+          "title": "OpenAI safety leader quits, warning AI company's culture is 'broken'",
+          "at": "2026-10-03T22:18:13Z"
+        },
+        "b": {
+          "id": "gnews:2cf48dd3132e61b7",
+          "source": "gnews-rss",
+          "title": "“The time for trial and error is over”: OpenAI safety researcher quits, says company culture is broken - calcalistech.com",
+          "at": "2026-10-03T19:25:00Z"
+        },
+        "shared": [
+          "openai",
+          "safety",
+          "quit",
+          "company",
+          "cultur",
+          "broken"
+        ]
+      },
+      {
+        "score": 0.571,
+        "blocked": "below-threshold",
+        "hours_apart": 5.6,
+        "a": {
+          "id": "hn:49944227",
+          "source": "hn-algolia",
+          "title": "I Quit OpenAI Because Its Culture Is Broken",
+          "at": "2026-10-03T13:46:34Z"
+        },
+        "b": {
+          "id": "gnews:2cf48dd3132e61b7",
+          "source": "gnews-rss",
+          "title": "“The time for trial and error is over”: OpenAI safety researcher quits, says company culture is broken - calcalistech.com",
+          "at": "2026-10-03T19:25:00Z"
+        },
+        "shared": [
+          "quit",
+          "openai",
+          "cultur",
+          "broken"
+        ]
+      },
+      {
+        "score": 0.56,
+        "blocked": "below-threshold",
+        "hours_apart": 20.1,
+        "a": {
+          "id": "hn:49938646",
+          "source": "hn-algolia",
+          "title": "The Sleuths Who Expose When AI Goes Rogue",
+          "at": "2026-10-02T21:11:18Z"
+        },
+        "b": {
+          "id": "gnews:d90ececa3c52bdaf",
+          "source": "gnews-rss",
+          "title": "Citizen Sleuths Expose the Rogue AI Big Tech Hid - townhall.com",
+          "at": "2026-10-03T17:15:00Z"
+        },
+        "shared": [
+          "sleuth",
+          "expos",
+          "ai",
+          "rogu"
+        ]
+      },
+      {
+        "score": 0.401,
+        "blocked": "below-threshold",
+        "hours_apart": 16.6,
+        "a": {
+          "id": "hn:49942592",
+          "source": "hn-algolia",
+          "title": "Gemini ending free use of Flash and Pro models",
+          "at": "2026-10-03T09:13:19Z"
+        },
+        "b": {
+          "id": "gnews:593ebf7f317e936f",
+          "source": "gnews-rss",
+          "title": "Gemini Cuts Pro Model Access for Free and AI Plus Users, While AI Pro Gains Deep Think - XenoSpectrum",
+          "at": "2026-10-04T01:47:51Z"
+        },
+        "shared": [
+          "gemini",
+          "free",
+          "pro",
+          "model"
+        ]
+      },
+      {
+        "score": 0.366,
+        "blocked": "time-window",
+        "hours_apart": 31.6,
+        "a": {
+          "id": "hn:49932295",
+          "source": "hn-algolia",
+          "title": "They're Known as Swarm Chasers–and They Spring into Action When AI Goes Rogue",
+          "at": "2026-10-02T11:29:16Z"
+        },
+        "b": {
+          "id": "gnews:50b72429f34acc50",
+          "source": "gnews-rss",
+          "title": "The Sleuths Who Expose When AI Goes Rogue - wsj.com",
+          "at": "2026-10-03T19:02:19Z"
+        },
+        "shared": [
+          "ai",
+          "goe",
+          "rogu"
         ]
       }
     ]
@@ -625,44 +676,44 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 4,
+      "streak_ok": 5,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 70,
+      "streak_ok": 71,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 70,
+      "streak_ok": 71,
       "streak_fail": 0,
-      "items_last": 1
+      "items_last": 3
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 70,
+      "streak_ok": 71,
       "streak_fail": 0,
-      "items_last": 31
+      "items_last": 37
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 70,
+      "streak_ok": 71,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 70,
+      "streak_ok": 71,
       "streak_fail": 0,
-      "items_last": 56
+      "items_last": 41
     },
     {
       "id": "openalex",
@@ -673,28 +724,28 @@
     },
     {
       "id": "rss_labs",
-      "state": "ok",
-      "streak_ok": 70,
-      "streak_fail": 0,
-      "items_last": 104
+      "state": "flaky",
+      "streak_ok": 0,
+      "streak_fail": 1,
+      "items_last": 0
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 70,
+      "streak_ok": 71,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 70,
+      "streak_ok": 71,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.0029055555555555558,
+    "hours": 0.01472638888888889,
     "stale": false
   },
   "hf": {
@@ -714,18 +765,18 @@
   "openalex": {
     "ok": false,
     "soft_fail": true,
-    "soft_fail_reason": "HTTP 429",
+    "soft_fail_reason": "paused_until 2026-10-04T23:20:53Z",
     "enriched": 0,
     "secondary": 0,
-    "query": "LLM agent sandbox",
+    "query": "Hugging Face agent",
     "mode": "search",
     "from_cache": false,
-    "searches": 1,
+    "searches": 0,
     "retries": 0,
-    "status": "fail",
+    "status": "paused",
     "paused_until": "2026-10-04T23:20:53Z",
     "pause_reason": "6 consecutive failures → 24h",
-    "requests": 1,
+    "requests": 0,
     "auth": "anon",
     "brief": false,
     "pulse_lead": false,
@@ -763,133 +814,58 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 56,
+    "count": 41,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
     "queries_run": [
-      "LLM",
       "METR",
-      "ML security"
+      "ML security",
+      "open weights"
     ],
     "queries_ok": [
-      "LLM",
       "METR",
-      "ML security"
+      "ML security",
+      "open weights"
     ],
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 21,
+    "ai_dropped": 23,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
-        "id": "hn:49943034",
+        "id": "hn:49942706",
         "tag": "rest",
-        "score": 409,
-        "text": "Aleph Alpha Kolibri: How the sovereign German LLM works"
+        "score": 533,
+        "text": "Kolibri: A Sovereign Open-Weight Model"
       },
       {
-        "id": "hn:49936575",
+        "id": "hn:49948332",
         "tag": "rest",
-        "score": 340,
-        "text": "From the creator of Redis; run LLM locally with ds4"
+        "score": 206,
+        "text": "OpenAI safety leader quits, warning AI company's culture is 'broken'"
       },
       {
-        "id": "hn:49929391",
+        "id": "hn:49946567",
         "tag": "rest",
-        "score": 325,
-        "text": "Greg Kroah-Hartman – Security in the LLM Age [video]"
+        "score": 177,
+        "text": "Getting the most out of Opus 5.5 in Claude and Claude Code"
       }
     ]
   },
   "rss": {
-    "ok": true,
-    "soft_fail": false,
-    "soft_fail_reason": null,
-    "count": 104,
+    "ok": false,
+    "soft_fail": true,
+    "soft_fail_reason": "timeout after 30000ms budget",
+    "count": 0,
     "shelf": 0,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
-    "feeds": [
-      {
-        "lab": "openai",
-        "url": "(cache:openai)",
-        "count": 12
-      },
-      {
-        "lab": "deepmind",
-        "url": "(cache:deepmind)",
-        "count": 12
-      },
-      {
-        "lab": "google-ai",
-        "url": "(cache:google-ai)",
-        "count": 12
-      },
-      {
-        "lab": "huggingface",
-        "url": "(cache:huggingface)",
-        "count": 12
-      },
-      {
-        "lab": "mistral",
-        "url": "(cache:mistral)",
-        "count": 12
-      },
-      {
-        "lab": "nvidia",
-        "url": "(cache:nvidia)",
-        "count": 12
-      },
-      {
-        "lab": "nvidia-dev",
-        "url": "(cache:nvidia-dev)",
-        "count": 12
-      },
-      {
-        "lab": "ms-research",
-        "url": "(cache:ms-research)",
-        "count": 10
-      },
-      {
-        "lab": "google-research",
-        "url": "(cache:google-research)",
-        "count": 12
-      }
-    ],
+    "feeds": [],
     "feeds_soft_fail": [],
-    "sample": [
-      {
-        "id": "rss:openai:c38af6e5cae43e23",
-        "lab": "openai",
-        "tag": "rest",
-        "title": "A model guide for the GPT-6 family",
-        "link": "https://openai.com/index/practical-guide-building-gpt-6"
-      },
-      {
-        "id": "rss:huggingface:e81b1dea7ce0fb42",
-        "lab": "huggingface",
-        "tag": "rest",
-        "title": "Open-sourcing AstaBrief, the fast report-generation model in Asta",
-        "link": "https://huggingface.co/blog/allenai/astabrief"
-      },
-      {
-        "id": "rss:google-ai:6a7bb4e3e69d69f5",
-        "lab": "google-ai",
-        "tag": "rest",
-        "title": "The latest AI news we announced in September 2026",
-        "link": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-september-2026/"
-      },
-      {
-        "id": "rss:google-research:a47750453f6e4504",
-        "lab": "google-research",
-        "tag": "rest",
-        "title": "Toward provably private learning from federated data",
-        "link": "https://research.google/blog/toward-provably-private-learning-from-federated-data/"
-      }
-    ]
+    "sample": []
   },
   "rss_security": {
     "ok": true,
@@ -901,17 +877,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "(cache:trailofbits)",
+        "url": "https://blog.trailofbits.com/feed/",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "(cache:fox-it)",
+        "url": "https://blog.fox-it.com/feed/",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "(cache:projectzero)",
+        "url": "https://projectzero.google/feed.xml",
         "count": 5
       }
     ],
@@ -952,9 +928,41 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 31,
-    "pool": 219,
+    "items": 37,
+    "pool": 298,
     "corroborators": [
+      {
+        "id": "gnews:f76eafad86f51afb",
+        "anchor_id": "hn:49948332",
+        "score": 1,
+        "title": "OpenAI safety leader quits, warning AI company’s culture is ‘broken’ - The Guardian",
+        "publisher": "The Guardian",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:b47af0ced0ee6cbe",
+        "anchor_id": "hn:49948332",
+        "score": 0.701,
+        "title": "OpenAI Safety Employee Quits Over 'Broken' Culture - The Tech Buzz",
+        "publisher": "The Tech Buzz",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:2cf48dd3132e61b7",
+        "anchor_id": "hn:49948332",
+        "score": 0.604,
+        "title": "“The time for trial and error is over”: OpenAI safety researcher quits, says company culture is broken - calcalistech.com",
+        "publisher": "calcalistech.com",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:36692e52fa95ddd7",
+        "anchor_id": "rss:openai:882596cbc7639eb4",
+        "score": 1,
+        "title": "Chatham scales its capital markets expertise with OpenAI - OpenAI",
+        "publisher": "OpenAI",
+        "self_repost": true
+      },
       {
         "id": "gnews:24b62ecd2c7cc959",
         "anchor_id": "rss:google-ai:6a7bb4e3e69d69f5",
@@ -962,28 +970,12 @@
         "title": "The latest AI news we announced in September 2026 - blog.google",
         "publisher": "blog.google",
         "self_repost": true
-      },
-      {
-        "id": "gnews:fce71ec5a872014a",
-        "anchor_id": "rss:google-research:a47750453f6e4504",
-        "score": 1,
-        "title": "Toward provably private learning from federated data - Google Research",
-        "publisher": "Google Research",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:50b72429f34acc50",
-        "anchor_id": "hn:49938646",
-        "score": 1,
-        "title": "The Sleuths Who Expose When AI Goes Rogue - WSJ",
-        "publisher": "WSJ",
-        "self_repost": false
       }
     ],
     "http_status": 200,
-    "content_type": null,
+    "content_type": "application/xml; charset=utf-8",
     "format": "rss2",
-    "from_cache": true,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -992,38 +984,38 @@
     "pulse_only": true,
     "url_template": "https://news.google.com/rss/search?q={QUERY}&hl=en-US&gl=US&ceid=US:en",
     "queried": [
-      "open weights",
       "Hugging Face",
-      "Google Research",
-      "Google DeepMind"
+      "OpenAI",
+      "Google DeepMind",
+      "Gemini"
     ],
     "queries_ok_list": [
-      "open weights",
       "Hugging Face",
-      "Google Research",
-      "Google DeepMind"
+      "OpenAI",
+      "Google DeepMind",
+      "Gemini"
     ],
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:dd86a9ae92585731",
-        "title": "Aleph Alpha releases Kolibri, a 78B-parameter open-weight AI model built in Europe - cryptobriefing.com",
-        "publisher": "cryptobriefing.com",
-        "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9zX0gybGg4VkFReFZfempCN01RWTNXc1RZNmxHOUFtUkpITHgxdFRVd1NNczBDRW9qbEZaQkZhSk1PTk4tSlk5MmtzaFlVZXBHMEtTRm8yM3ZValhsWHhmWmJPaFBLaHJTSncyVmtheUN1ek0?oc=5",
+        "id": "gnews:8a02383304a70d29",
+        "title": "Stop AI Chats Training Models—Without Assuming History Is Deleted - quasa.io",
+        "publisher": "quasa.io",
+        "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQcjl2TWczQ1ZIdFdRUndMWElpT3JRUDVQWVBIZE5URHVVbFBvNllGTlc3SV93b2ZVR3pBVm1Bel9IbGx0ekhxblZUSlltQy1ZTFpSX2hITjJOTnNBdEFSZk1GeDdacUhrRjBuZTU0U21TYU9zaGFNU25Fc2Q2bkI3MUZ1dlk3cVhZd0l6Mmh2bHhGNklHRWc?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:b5cf3fd25bf55f3e",
-        "title": "Customer Value Matters More Than AI Hype. Investors Explain Why - inc.com",
-        "publisher": "inc.com",
-        "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOUldHajRUYXgxTWt5ZjlkQjJ0SnFjak43M3o2emtiTTRGWXhhVWQtY185NVhSUzhyakVYT1JOUjEyU3AxZjdxeDhFVmxlRUcwaV9Md2pvOWd4anJUNllzZ1hITi1vNGRFSVBkdTYwUFc1d2ZqT1hValhUbXlacE9SUzdkNmVkRGt6NUdoYUt2a0xpOWM5Rm5ZY1FIZW5NMTJFU0xZ?oc=5",
+        "id": "gnews:9d9fda024822dde3",
+        "title": "An OpenAI model read Slack, reasoned \"we may die\", and OpenAI says that is not misalignment - MIXED Reality News",
+        "publisher": "MIXED Reality News",
+        "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNUWlJRkwxZFJSM0FqZUs1YmNlSTNDVU5ITUJjSG51blAyaE1kOGUtNmRFNFpJZURtWktqOHctbkxEWkVBTGNnSWV2VDlLZXZINTY0cDNEMzB4bTdvM2dfRGZ2QlBmUWhXLWV4cU5mWTRnek5hdmlESWFIc0NzcmFVSUo0WEN5cjJycVJ4QjZB?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:d448f1b90e83d325",
-        "title": "Google Antigravity Adds Anthropic Claude Opus 5.5 and Sonnet 5.5 for Paid Subscribers - pc-tablet.com",
-        "publisher": "pc-tablet.com",
-        "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPNTNDYTV4SWlJeEpUSUxaVDBqR1B5Smt1eHFfOVhzRUhRQ1UyeDhYMEdoUDBGcTdLRFI0M1gwQlVqai1QSzNSSlgweGY1dm56ckJqMTVrNzdwbWVsODQ2QndMa20xQVJMZEdLdjBuMW9GN0pZYWtVQmZKaGQ5MFQ4RTFXT0xCV3FpTUwzWDVSbzVtZEh2cVBMejZkZXVXUTJVa1Bfem9vYWY0UTY1a0pMNjc5Vjd3UQ?oc=5",
+        "id": "gnews:d9d02f48b57af317",
+        "title": "OpenAI 12-Year Veteran Resigns in Last-Ditch Protest: The Trial-and-Error Era Has Collapsed - 36 Kr",
+        "publisher": "36 Kr",
+        "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1fS2lmcldNLVliYUl0d0tNaW9JT0pRU2w5MHE2SExuZzZWSjBUSlR3bGNLb21BTGJPdWFSU3RocmxUbzk4dUVpNEZBTmMtN09ZSDM0?oc=5",
         "tag": "rest"
       }
     ]
@@ -1040,24 +1032,32 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "query": "OWASP LLM",
-    "shelf": 1,
-    "from_cache": true,
-    "searches": 0,
-    "rate_limit_remaining": null,
+    "query": "agent sandbox escape",
+    "shelf": 3,
+    "from_cache": false,
+    "searches": 1,
+    "rate_limit_remaining": 9,
     "brief": false,
     "pulse_lead": false,
     "shelf_only": true,
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
-        "label": "api-evangelist/agentcheck-care",
-        "href": "https://github.com/api-evangelist/agentcheck-care"
+        "label": "agentfront/enclave",
+        "href": "https://github.com/agentfront/enclave"
+      },
+      {
+        "label": "hyperlight-dev/hyperagent",
+        "href": "https://github.com/hyperlight-dev/hyperagent"
+      },
+      {
+        "label": "roerbakei/sandboxai",
+        "href": "https://github.com/roerbakei/sandboxai"
       }
     ]
   },
   "shelf": {
-    "count": 18,
+    "count": 20,
     "brief": false
   },
   "wikidata": {
@@ -1065,28 +1065,17 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "seeds": [
-      "Project Zero",
       "OWASP",
-      "NIST"
+      "NIST",
+      "MITRE"
     ],
-    "searches": 0,
-    "from_cache": true,
+    "searches": 1,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "deny_grounding_only": true,
     "url": "https://www.wikidata.org/w/api.php",
     "hints": [
-      {
-        "seed": "Project Zero",
-        "qid": "Q18859887",
-        "label": "Project Zero",
-        "description": "security analysis team employed by Google",
-        "status": "matched",
-        "source": "wikidata",
-        "briefEligible": false,
-        "pulseLeadEligible": false,
-        "denyGroundingOnly": true
-      },
       {
         "seed": "OWASP",
         "qid": "Q379297",
@@ -1103,6 +1092,17 @@
         "qid": "Q176691",
         "label": "National Institute of Standards and Technology",
         "description": "measurement standards laboratory in the United States",
+        "status": "matched",
+        "source": "wikidata",
+        "briefEligible": false,
+        "pulseLeadEligible": false,
+        "denyGroundingOnly": true
+      },
+      {
+        "seed": "MITRE",
+        "qid": "Q627039",
+        "label": "MITRE Corporation",
+        "description": "company",
         "status": "matched",
         "source": "wikidata",
         "briefEligible": false,
