@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-04T03:14:31Z",
+  "stamped_at": "2026-10-04T07:21:32Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 199,
+      "duration_ms": 197,
       "paused_until": null,
       "reason": null
     },
@@ -17,8 +17,8 @@
       "id": "arxiv",
       "label": "arXiv",
       "status": "ok",
-      "rows": 29,
-      "duration_ms": 485,
+      "rows": 24,
+      "duration_ms": 10357,
       "paused_until": null,
       "reason": null
     },
@@ -27,7 +27,7 @@
       "label": "OpenAlex",
       "status": "paused",
       "rows": 0,
-      "duration_ms": 1,
+      "duration_ms": 2,
       "paused_until": "2026-10-04T23:20:53Z",
       "reason": "paused_until 2026-10-04T23:20:53Z"
     },
@@ -36,7 +36,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 1,
+      "duration_ms": 2,
       "paused_until": null,
       "reason": null
     },
@@ -45,25 +45,25 @@
       "label": "HN",
       "status": "ok",
       "rows": 41,
-      "duration_ms": 8294,
+      "duration_ms": 8417,
       "paused_until": null,
       "reason": null
     },
     {
       "id": "rss_labs",
       "label": "lab RSS",
-      "status": "timeout",
-      "rows": 0,
-      "duration_ms": 39576,
+      "status": "ok",
+      "rows": 104,
+      "duration_ms": 469,
       "paused_until": null,
-      "reason": "timeout after 30000ms budget"
+      "reason": null
     },
     {
       "id": "rss_security",
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 4340,
+      "duration_ms": 138,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 37,
-      "duration_ms": 6454,
+      "rows": 38,
+      "duration_ms": 138,
       "paused_until": null,
       "reason": null
     },
@@ -81,7 +81,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 417,
+      "duration_ms": 138,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 242,
+      "duration_ms": 2680,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 60009,
-    "sources_wall_ms": 47843,
-    "papers_lane_ms": 689,
-    "slowest_source_ms": 39576,
+    "sources_ms": 22538,
+    "sources_wall_ms": 10562,
+    "papers_lane_ms": 10561,
+    "slowest_source_ms": 10357,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -113,34 +113,32 @@
       "github": 25000,
       "wikidata": 25000
     },
-    "timed_out": [
-      "rss_labs"
-    ],
-    "wall_ms": 52412,
-    "startup_ms": 34,
-    "main_ms": 52422
+    "timed_out": [],
+    "wall_ms": 10857,
+    "startup_ms": 32,
+    "main_ms": 10867
   },
-  "multi_source_independent": 3,
+  "multi_source_independent": 4,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 3,
-    "multi_source_raw": 5,
+    "multi_source_independent": 4,
+    "multi_source_raw": 6,
     "self_reposts": 2,
-    "items_in": 209,
-    "clusters_out": 190,
-    "collapsed": 19,
-    "multi_source": 3,
-    "multi_member": 9,
+    "items_in": 210,
+    "clusters_out": 192,
+    "collapsed": 18,
+    "multi_source": 4,
+    "multi_member": 10,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 33,
+    "new_items": 4,
     "per_source": {
       "hn-algolia": 41,
       "rss-lab": 104,
       "rss-security": 27,
-      "gnews-rss": 37
+      "gnews-rss": 38
     },
     "multi_source_clusters": [
       {
@@ -162,7 +160,7 @@
           {
             "id": "hn:49944227",
             "source": "hn-algolia",
-            "title": "I Quit OpenAI Because Its Culture Is Broken",
+            "title": "I quit OpenAI because its culture is broken",
             "at": "2026-10-03T13:46:34Z",
             "publisher": null
           },
@@ -236,6 +234,31 @@
         ]
       },
       {
+        "title": "OpenAI alerts 100 orgs that its 'misaligned models' attempted to break in",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 0.978,
+        "members": [
+          {
+            "id": "hn:49939208",
+            "source": "hn-algolia",
+            "title": "OpenAI alerts 100 orgs that its 'misaligned models' attempted to break in",
+            "at": "2026-10-02T22:07:08Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:0c65ab51c6a530d4",
+            "source": "gnews-rss",
+            "title": "OpenAI alerts 100+ orgs that its 'misaligned models' attempted to break in - or worse - The Register",
+            "at": "2026-10-02T17:37:05Z",
+            "publisher": "The Register"
+          }
+        ]
+      },
+      {
         "title": "NVIDIA DGX Spark 64GB Gives Developers More Ways to Build and Scale Local AI",
         "sources": [
           "rss-lab",
@@ -298,10 +321,21 @@
       }
     ],
     "ai_relevance": {
-      "rss_lab_dropped": [],
+      "rss_lab_dropped": [
+        {
+          "lab": "nvidia",
+          "title": "Fall Into 25 New Games on GeForce NOW This October",
+          "reason": "category:GeForce NOW"
+        },
+        {
+          "lab": "nvidia",
+          "title": "Contain the Chaos: ‘CONTROL Resonant’ Launches on GeForce NOW",
+          "reason": "category:GeForce NOW"
+        }
+      ],
       "gnews_shown_dropped": [],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 23
+      "hn_dropped": 22
     },
     "gnews_near_misses": [
       {
@@ -325,7 +359,7 @@
         ]
       },
       {
-        "score": 0.599,
+        "score": 0.598,
         "blocked": "below-threshold",
         "hours_apart": 11.3,
         "a": {
@@ -348,13 +382,13 @@
         ]
       },
       {
-        "score": 0.599,
+        "score": 0.598,
         "blocked": "below-threshold",
         "hours_apart": 6.4,
         "a": {
           "id": "hn:49944227",
           "source": "hn-algolia",
-          "title": "I Quit OpenAI Because Its Culture Is Broken",
+          "title": "I quit OpenAI because its culture is broken",
           "at": "2026-10-03T13:46:34Z"
         },
         "b": {
@@ -371,7 +405,7 @@
         ]
       },
       {
-        "score": 0.592,
+        "score": 0.591,
         "blocked": "below-threshold",
         "hours_apart": 2.9,
         "a": {
@@ -396,13 +430,13 @@
         ]
       },
       {
-        "score": 0.571,
+        "score": 0.57,
         "blocked": "below-threshold",
         "hours_apart": 5.6,
         "a": {
           "id": "hn:49944227",
           "source": "hn-algolia",
-          "title": "I Quit OpenAI Because Its Culture Is Broken",
+          "title": "I quit OpenAI because its culture is broken",
           "at": "2026-10-03T13:46:34Z"
         },
         "b": {
@@ -442,7 +476,7 @@
         ]
       },
       {
-        "score": 0.401,
+        "score": 0.4,
         "blocked": "below-threshold",
         "hours_apart": 16.6,
         "a": {
@@ -465,7 +499,7 @@
         ]
       },
       {
-        "score": 0.366,
+        "score": 0.365,
         "blocked": "time-window",
         "hours_apart": 31.6,
         "a": {
@@ -509,7 +543,7 @@
         ]
       },
       {
-        "score": 0.599,
+        "score": 0.598,
         "blocked": "below-threshold",
         "hours_apart": 11.3,
         "a": {
@@ -532,13 +566,13 @@
         ]
       },
       {
-        "score": 0.599,
+        "score": 0.598,
         "blocked": "below-threshold",
         "hours_apart": 6.4,
         "a": {
           "id": "hn:49944227",
           "source": "hn-algolia",
-          "title": "I Quit OpenAI Because Its Culture Is Broken",
+          "title": "I quit OpenAI because its culture is broken",
           "at": "2026-10-03T13:46:34Z"
         },
         "b": {
@@ -555,7 +589,7 @@
         ]
       },
       {
-        "score": 0.592,
+        "score": 0.591,
         "blocked": "below-threshold",
         "hours_apart": 2.9,
         "a": {
@@ -580,13 +614,13 @@
         ]
       },
       {
-        "score": 0.571,
+        "score": 0.57,
         "blocked": "below-threshold",
         "hours_apart": 5.6,
         "a": {
           "id": "hn:49944227",
           "source": "hn-algolia",
-          "title": "I Quit OpenAI Because Its Culture Is Broken",
+          "title": "I quit OpenAI because its culture is broken",
           "at": "2026-10-03T13:46:34Z"
         },
         "b": {
@@ -626,7 +660,7 @@
         ]
       },
       {
-        "score": 0.401,
+        "score": 0.4,
         "blocked": "below-threshold",
         "hours_apart": 16.6,
         "a": {
@@ -649,25 +683,24 @@
         ]
       },
       {
-        "score": 0.366,
+        "score": 0.365,
         "blocked": "time-window",
-        "hours_apart": 31.6,
+        "hours_apart": 597.6,
         "a": {
-          "id": "hn:49932295",
+          "id": "hn:49942706",
           "source": "hn-algolia",
-          "title": "They're Known as Swarm Chasers–and They Spring into Action When AI Goes Rogue",
-          "at": "2026-10-02T11:29:16Z"
+          "title": "Kolibri: A Sovereign Open-Weight Model",
+          "at": "2026-10-03T09:36:04Z"
         },
         "b": {
-          "id": "gnews:50b72429f34acc50",
-          "source": "gnews-rss",
-          "title": "The Sleuths Who Expose When AI Goes Rogue - wsj.com",
-          "at": "2026-10-03T19:02:19Z"
+          "id": "rss:mistral:7db995c30f47deac",
+          "source": "rss-lab",
+          "title": "Mistral raises €3B to make sovereign, open-weight AI the technology frontier",
+          "at": "2026-09-08T12:00:22Z"
         },
         "shared": [
-          "ai",
-          "goe",
-          "rogu"
+          "sovereign",
+          "openweight"
         ]
       }
     ]
@@ -676,42 +709,42 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 5,
+      "streak_ok": 6,
       "streak_fail": 0,
-      "items_last": 29
+      "items_last": 24
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 71,
+      "streak_ok": 72,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 71,
+      "streak_ok": 72,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 71,
+      "streak_ok": 72,
       "streak_fail": 0,
-      "items_last": 37
+      "items_last": 38
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 71,
+      "streak_ok": 72,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 71,
+      "streak_ok": 72,
       "streak_fail": 0,
       "items_last": 41
     },
@@ -725,27 +758,27 @@
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 0,
-      "streak_fail": 1,
-      "items_last": 0
+      "streak_ok": 1,
+      "streak_fail": 0,
+      "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 71,
+      "streak_ok": 72,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 71,
+      "streak_ok": 72,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.01472638888888889,
+    "hours": 0.0032591666666666667,
     "stale": false
   },
   "hf": {
@@ -756,7 +789,7 @@
   "arxiv": {
     "ok": true,
     "enriched": 24,
-    "shelf": 5,
+    "shelf": 0,
     "timed_out": false,
     "budget_ms": 20000,
     "brief": false,
@@ -831,41 +864,116 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 23,
+    "ai_dropped": 22,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
         "id": "hn:49942706",
         "tag": "rest",
-        "score": 533,
+        "score": 587,
         "text": "Kolibri: A Sovereign Open-Weight Model"
       },
       {
         "id": "hn:49948332",
         "tag": "rest",
-        "score": 206,
+        "score": 259,
         "text": "OpenAI safety leader quits, warning AI company's culture is 'broken'"
       },
       {
         "id": "hn:49946567",
         "tag": "rest",
-        "score": 177,
+        "score": 208,
         "text": "Getting the most out of Opus 5.5 in Claude and Claude Code"
       }
     ]
   },
   "rss": {
-    "ok": false,
-    "soft_fail": true,
-    "soft_fail_reason": "timeout after 30000ms budget",
-    "count": 0,
+    "ok": true,
+    "soft_fail": false,
+    "soft_fail_reason": null,
+    "count": 104,
     "shelf": 0,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
-    "feeds": [],
+    "feeds": [
+      {
+        "lab": "openai",
+        "url": "(cache:openai)",
+        "count": 12
+      },
+      {
+        "lab": "deepmind",
+        "url": "(cache:deepmind)",
+        "count": 12
+      },
+      {
+        "lab": "google-ai",
+        "url": "(cache:google-ai)",
+        "count": 12
+      },
+      {
+        "lab": "huggingface",
+        "url": "(cache:huggingface)",
+        "count": 12
+      },
+      {
+        "lab": "mistral",
+        "url": "(cache:mistral)",
+        "count": 12
+      },
+      {
+        "lab": "nvidia",
+        "url": "(cache:nvidia)",
+        "count": 12
+      },
+      {
+        "lab": "nvidia-dev",
+        "url": "(cache:nvidia-dev)",
+        "count": 12
+      },
+      {
+        "lab": "ms-research",
+        "url": "(cache:ms-research)",
+        "count": 10
+      },
+      {
+        "lab": "google-research",
+        "url": "https://research.google/blog/rss/",
+        "count": 12
+      }
+    ],
     "feeds_soft_fail": [],
-    "sample": []
+    "sample": [
+      {
+        "id": "rss:huggingface:bd1136d0fcfd6f13",
+        "lab": "huggingface",
+        "tag": "rest",
+        "title": "The Agent Said It Was Done. The Database Disagreed.",
+        "link": "https://huggingface.co/blog/microsoft/thinkingbox"
+      },
+      {
+        "id": "rss:openai:c38af6e5cae43e23",
+        "lab": "openai",
+        "tag": "rest",
+        "title": "A model guide for the GPT-6 family",
+        "link": "https://openai.com/index/practical-guide-building-gpt-6"
+      },
+      {
+        "id": "rss:huggingface:e81b1dea7ce0fb42",
+        "lab": "huggingface",
+        "tag": "rest",
+        "title": "Open-sourcing AstaBrief, the fast report-generation model in Asta",
+        "link": "https://huggingface.co/blog/allenai/astabrief"
+      },
+      {
+        "id": "rss:google-ai:6a7bb4e3e69d69f5",
+        "lab": "google-ai",
+        "tag": "rest",
+        "title": "The latest AI news we announced in September 2026",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-september-2026/"
+      }
+    ]
   },
   "rss_security": {
     "ok": true,
@@ -877,17 +985,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "https://blog.trailofbits.com/feed/",
+        "url": "(cache:trailofbits)",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "https://blog.fox-it.com/feed/",
+        "url": "(cache:fox-it)",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "https://projectzero.google/feed.xml",
+        "url": "(cache:projectzero)",
         "count": 5
       }
     ],
@@ -928,7 +1036,7 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 37,
+    "items": 38,
     "pool": 298,
     "corroborators": [
       {
@@ -956,6 +1064,14 @@
         "self_repost": false
       },
       {
+        "id": "gnews:0c65ab51c6a530d4",
+        "anchor_id": "hn:49939208",
+        "score": 0.969,
+        "title": "OpenAI alerts 100+ orgs that its 'misaligned models' attempted to break in - or worse - The Register",
+        "publisher": "The Register",
+        "self_repost": false
+      },
+      {
         "id": "gnews:36692e52fa95ddd7",
         "anchor_id": "rss:openai:882596cbc7639eb4",
         "score": 1,
@@ -973,9 +1089,9 @@
       }
     ],
     "http_status": 200,
-    "content_type": "application/xml; charset=utf-8",
+    "content_type": null,
     "format": "rss2",
-    "from_cache": false,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1034,9 +1150,9 @@
     "soft_fail_reason": null,
     "query": "agent sandbox escape",
     "shelf": 3,
-    "from_cache": false,
-    "searches": 1,
-    "rate_limit_remaining": 9,
+    "from_cache": true,
+    "searches": 0,
+    "rate_limit_remaining": null,
     "brief": false,
     "pulse_lead": false,
     "shelf_only": true,
@@ -1057,7 +1173,7 @@
     ]
   },
   "shelf": {
-    "count": 20,
+    "count": 15,
     "brief": false
   },
   "wikidata": {
@@ -1069,7 +1185,7 @@
       "NIST",
       "MITRE"
     ],
-    "searches": 1,
+    "searches": 2,
     "from_cache": false,
     "brief": false,
     "pulse_lead": false,
