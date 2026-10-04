@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-04T19:13:38Z",
+  "stamped_at": "2026-10-04T23:12:32Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 232,
+      "duration_ms": 789,
       "paused_until": null,
       "reason": null
     },
@@ -18,7 +18,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 3256,
+      "duration_ms": 492,
       "paused_until": null,
       "reason": null
     },
@@ -27,7 +27,7 @@
       "label": "OpenAlex",
       "status": "paused",
       "rows": 0,
-      "duration_ms": 2,
+      "duration_ms": 3,
       "paused_until": "2026-10-04T23:20:53Z",
       "reason": "paused_until 2026-10-04T23:20:53Z"
     },
@@ -36,7 +36,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 1,
+      "duration_ms": 3,
       "paused_until": null,
       "reason": null
     },
@@ -45,7 +45,7 @@
       "label": "HN",
       "status": "ok",
       "rows": 39,
-      "duration_ms": 8302,
+      "duration_ms": 9046,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 15654,
+      "duration_ms": 1054,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 4348,
+      "duration_ms": 781,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 39,
-      "duration_ms": 6433,
+      "rows": 40,
+      "duration_ms": 781,
       "paused_until": null,
       "reason": null
     },
@@ -81,7 +81,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 16,
+      "duration_ms": 781,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 16,
+      "duration_ms": 781,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 38260,
-    "sources_wall_ms": 15655,
-    "papers_lane_ms": 3494,
-    "slowest_source_ms": 15654,
+    "sources_ms": 14511,
+    "sources_wall_ms": 9057,
+    "papers_lane_ms": 1293,
+    "slowest_source_ms": 9046,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -114,33 +114,58 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 15953,
-    "startup_ms": 44,
-    "main_ms": 15962
+    "wall_ms": 9707,
+    "startup_ms": 161,
+    "main_ms": 9725
   },
-  "multi_source_independent": 4,
+  "multi_source_independent": 5,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 4,
-    "multi_source_raw": 4,
+    "multi_source_independent": 5,
+    "multi_source_raw": 5,
     "self_reposts": 0,
-    "items_in": 209,
+    "items_in": 210,
     "clusters_out": 195,
-    "collapsed": 14,
-    "multi_source": 4,
-    "multi_member": 6,
+    "collapsed": 15,
+    "multi_source": 5,
+    "multi_member": 7,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 36,
+    "new_items": 5,
     "per_source": {
       "hn-algolia": 39,
       "rss-lab": 104,
       "rss-security": 27,
-      "gnews-rss": 39
+      "gnews-rss": 40
     },
     "multi_source_clusters": [
+      {
+        "title": "An AI couldn't beat humans at StarCraft, so it decided to cheat",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:49957870",
+            "source": "hn-algolia",
+            "title": "An AI couldn't beat humans at StarCraft, so it decided to cheat",
+            "at": "2026-10-04T21:07:09Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:6802fdca0641be15",
+            "source": "gnews-rss",
+            "title": "An AI couldn’t beat humans at StarCraft, so it decided to cheat - The Verge",
+            "at": "2026-10-04T15:21:59Z",
+            "publisher": "The Verge"
+          }
+        ]
+      },
       {
         "title": "I quit OpenAI because its culture is broken",
         "sources": [
@@ -319,11 +344,11 @@
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 24
+      "hn_dropped": 23
     },
     "gnews_near_misses": [
       {
-        "score": 0.654,
+        "score": 0.653,
         "blocked": "time-window",
         "hours_apart": 64.7,
         "a": {
@@ -368,7 +393,7 @@
         ]
       },
       {
-        "score": 0.543,
+        "score": 0.544,
         "blocked": "below-threshold",
         "hours_apart": 23.7,
         "a": {
@@ -391,7 +416,7 @@
         ]
       },
       {
-        "score": 0.511,
+        "score": 0.512,
         "blocked": "below-threshold",
         "hours_apart": 16.9,
         "a": {
@@ -439,7 +464,7 @@
         ]
       },
       {
-        "score": 0.477,
+        "score": 0.476,
         "blocked": "below-threshold",
         "hours_apart": 17.9,
         "a": {
@@ -461,7 +486,7 @@
         ]
       },
       {
-        "score": 0.471,
+        "score": 0.472,
         "blocked": "thin-overlap",
         "hours_apart": 93.5,
         "a": {
@@ -483,7 +508,7 @@
         ]
       },
       {
-        "score": 0.431,
+        "score": 0.432,
         "blocked": "time-window",
         "hours_apart": 25.4,
         "a": {
@@ -507,7 +532,7 @@
     ],
     "near_misses": [
       {
-        "score": 0.654,
+        "score": 0.653,
         "blocked": "time-window",
         "hours_apart": 64.7,
         "a": {
@@ -573,7 +598,7 @@
         ]
       },
       {
-        "score": 0.543,
+        "score": 0.544,
         "blocked": "below-threshold",
         "hours_apart": 23.7,
         "a": {
@@ -596,7 +621,7 @@
         ]
       },
       {
-        "score": 0.511,
+        "score": 0.512,
         "blocked": "below-threshold",
         "hours_apart": 16.9,
         "a": {
@@ -644,7 +669,7 @@
         ]
       },
       {
-        "score": 0.477,
+        "score": 0.476,
         "blocked": "below-threshold",
         "hours_apart": 17.9,
         "a": {
@@ -666,7 +691,7 @@
         ]
       },
       {
-        "score": 0.471,
+        "score": 0.472,
         "blocked": "thin-overlap",
         "hours_apart": 93.5,
         "a": {
@@ -693,42 +718,42 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 9,
+      "streak_ok": 10,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 75,
+      "streak_ok": 76,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 75,
+      "streak_ok": 76,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 75,
+      "streak_ok": 76,
       "streak_fail": 0,
-      "items_last": 39
+      "items_last": 40
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 75,
+      "streak_ok": 76,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 75,
+      "streak_ok": 76,
       "streak_fail": 0,
       "items_last": 39
     },
@@ -742,27 +767,27 @@
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 4,
+      "streak_ok": 5,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 75,
+      "streak_ok": 76,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 75,
+      "streak_ok": 76,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.004642777777777778,
+    "hours": 0.0027305555555555555,
     "stale": false
   },
   "hf": {
@@ -848,19 +873,19 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 24,
+    "ai_dropped": 23,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
         "id": "hn:49942706",
         "tag": "rest",
-        "score": 647,
+        "score": 653,
         "text": "Kolibri: A Sovereign Open-Weight Model"
       },
       {
         "id": "hn:49944227",
         "tag": "rest",
-        "score": 425,
+        "score": 453,
         "text": "I quit OpenAI because its culture is broken"
       },
       {
@@ -883,47 +908,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "https://openai.com/news/rss.xml",
+        "url": "(cache:openai)",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "https://deepmind.google/blog/rss.xml",
+        "url": "(cache:deepmind)",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "https://blog.google/technology/ai/rss/",
+        "url": "(cache:google-ai)",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "https://huggingface.co/blog/feed.xml",
+        "url": "(cache:huggingface)",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "https://mistral.ai/rss.xml",
+        "url": "(cache:mistral)",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "https://blogs.nvidia.com/feed/",
+        "url": "(cache:nvidia)",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "https://developer.nvidia.com/blog/feed",
+        "url": "(cache:nvidia-dev)",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
+        "url": "(cache:ms-research)",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "(cache:google-research)",
+        "url": "https://research.google/blog/rss/",
         "count": 12
       }
     ],
@@ -969,17 +994,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "https://blog.trailofbits.com/feed/",
+        "url": "(cache:trailofbits)",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "https://blog.fox-it.com/feed/",
+        "url": "(cache:fox-it)",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "https://projectzero.google/feed.xml",
+        "url": "(cache:projectzero)",
         "count": 5
       }
     ],
@@ -1020,9 +1045,17 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 39,
+    "items": 40,
     "pool": 280,
     "corroborators": [
+      {
+        "id": "gnews:6802fdca0641be15",
+        "anchor_id": "hn:49957870",
+        "score": 1,
+        "title": "An AI couldn’t beat humans at StarCraft, so it decided to cheat - The Verge",
+        "publisher": "The Verge",
+        "self_repost": false
+      },
       {
         "id": "gnews:f76eafad86f51afb",
         "anchor_id": "hn:49948332",
@@ -1089,9 +1122,9 @@
       }
     ],
     "http_status": 200,
-    "content_type": "application/xml; charset=utf-8",
+    "content_type": null,
     "format": "rss2",
-    "from_cache": false,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
