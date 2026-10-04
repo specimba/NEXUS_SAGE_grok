@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-04T07:21:32Z",
+  "stamped_at": "2026-10-04T11:19:25Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 197,
+      "duration_ms": 192,
       "paused_until": null,
       "reason": null
     },
@@ -17,8 +17,8 @@
       "id": "arxiv",
       "label": "arXiv",
       "status": "ok",
-      "rows": 24,
-      "duration_ms": 10357,
+      "rows": 29,
+      "duration_ms": 3233,
       "paused_until": null,
       "reason": null
     },
@@ -27,7 +27,7 @@
       "label": "OpenAlex",
       "status": "paused",
       "rows": 0,
-      "duration_ms": 2,
+      "duration_ms": 1,
       "paused_until": "2026-10-04T23:20:53Z",
       "reason": "paused_until 2026-10-04T23:20:53Z"
     },
@@ -36,7 +36,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 2,
+      "duration_ms": 1,
       "paused_until": null,
       "reason": null
     },
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 41,
-      "duration_ms": 8417,
+      "rows": 42,
+      "duration_ms": 12950,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 469,
+      "duration_ms": 16668,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 138,
+      "duration_ms": 4304,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 38,
-      "duration_ms": 138,
+      "rows": 36,
+      "duration_ms": 6472,
       "paused_until": null,
       "reason": null
     },
@@ -81,7 +81,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 138,
+      "duration_ms": 36,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 2680,
+      "duration_ms": 36,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 22538,
-    "sources_wall_ms": 10562,
-    "papers_lane_ms": 10561,
-    "slowest_source_ms": 10357,
+    "sources_ms": 43893,
+    "sources_wall_ms": 16670,
+    "papers_lane_ms": 3430,
+    "slowest_source_ms": 16668,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -114,31 +114,31 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 10857,
-    "startup_ms": 32,
-    "main_ms": 10867
+    "wall_ms": 16984,
+    "startup_ms": 33,
+    "main_ms": 16994
   },
-  "multi_source_independent": 4,
+  "multi_source_independent": 3,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 4,
-    "multi_source_raw": 6,
+    "multi_source_independent": 3,
+    "multi_source_raw": 5,
     "self_reposts": 2,
-    "items_in": 210,
-    "clusters_out": 192,
+    "items_in": 209,
+    "clusters_out": 191,
     "collapsed": 18,
-    "multi_source": 4,
-    "multi_member": 10,
+    "multi_source": 3,
+    "multi_member": 8,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 4,
+    "new_items": 32,
     "per_source": {
-      "hn-algolia": 41,
+      "hn-algolia": 42,
       "rss-lab": 104,
       "rss-security": 27,
-      "gnews-rss": 38
+      "gnews-rss": 36
     },
     "multi_source_clusters": [
       {
@@ -147,7 +147,7 @@
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 7,
+        "size": 11,
         "score": 1,
         "members": [
           {
@@ -165,11 +165,60 @@
             "publisher": null
           },
           {
-            "id": "gnews:b832fdd24045624f",
+            "id": "hn:49945206",
+            "source": "hn-algolia",
+            "title": "OpenAI safety leader David Robinson resigns",
+            "at": "2026-10-03T15:38:32Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:5226dc4d121509af",
             "source": "gnews-rss",
-            "title": "OpenAI safety employee quits, says 'time for trial and error is over' - Latest news from Azerbaijan",
-            "at": "2026-10-04T02:12:35Z",
-            "publisher": "Latest news from Azerbaijan"
+            "title": "Former OpenAI Safety Leader Warns on AI Safety - techerati.com",
+            "at": "2026-10-04T10:25:35Z",
+            "publisher": "techerati.com"
+          },
+          {
+            "id": "gnews:f76eafad86f51afb",
+            "source": "gnews-rss",
+            "title": "OpenAI safety leader quits, warning AI company’s culture is ‘broken’ - The Guardian",
+            "at": "2026-10-03T19:41:00Z",
+            "publisher": "The Guardian"
+          },
+          {
+            "id": "gnews:434155dd4cc55b6c",
+            "source": "gnews-rss",
+            "title": "OpenAI safety leader David Robinson quits, says company culture is ‘broken’ as AI race accelerates - Fortune India",
+            "at": "2026-10-04T06:14:08Z",
+            "publisher": "Fortune India"
+          },
+          {
+            "id": "gnews:ae23b7cd2435437a",
+            "source": "gnews-rss",
+            "title": "OpenAI safety leader Robinson quits over ‘broken culture’. What does his essay suggest for AI companies? - ET Enterprise AI",
+            "at": "2026-10-04T06:27:29Z",
+            "publisher": "ET Enterprise AI"
+          },
+          {
+            "id": "gnews:e284cfb60d76fd23",
+            "source": "gnews-rss",
+            "title": "OpenAI safety leader David Robinson resigns — and says company culture is dangerous - Business Insider",
+            "at": "2026-10-03T12:43:00Z",
+            "publisher": "Business Insider"
+          },
+          {
+            "id": "gnews:8c001437452856bc",
+            "source": "gnews-rss",
+            "title": "OpenAI Safety Leader David Robinson Resigns as ChatGPT Maker Faces Growing Scrutiny Over AI Risks and Transparency: Report - TradingView",
+            "at": "2026-10-02T22:00:00Z",
+            "publisher": "TradingView"
+          },
+          {
+            "id": "gnews:f6f3b53429b0a1b1",
+            "source": "gnews-rss",
+            "title": "DETAILS: OpenAI safety leader RESIGNS - foxnews.com",
+            "at": "2026-10-03T16:32:15Z",
+            "publisher": "foxnews.com"
           },
           {
             "id": "gnews:b97d155dd557e5f6",
@@ -177,27 +226,6 @@
             "title": "I Quit OpenAI Because Its Culture Is Broken - The Atlantic",
             "at": "2026-10-03T11:00:00Z",
             "publisher": "The Atlantic"
-          },
-          {
-            "id": "gnews:f76eafad86f51afb",
-            "source": "gnews-rss",
-            "title": "OpenAI safety leader quits, warning AI company’s culture is ‘broken’ - The Guardian",
-            "at": "2026-10-03T20:09:00Z",
-            "publisher": "The Guardian"
-          },
-          {
-            "id": "gnews:b47af0ced0ee6cbe",
-            "source": "gnews-rss",
-            "title": "OpenAI Safety Employee Quits Over 'Broken' Culture - The Tech Buzz",
-            "at": "2026-10-03T16:36:00Z",
-            "publisher": "The Tech Buzz"
-          },
-          {
-            "id": "gnews:2cf48dd3132e61b7",
-            "source": "gnews-rss",
-            "title": "“The time for trial and error is over”: OpenAI safety researcher quits, says company culture is broken - calcalistech.com",
-            "at": "2026-10-03T19:25:00Z",
-            "publisher": "calcalistech.com"
           }
         ]
       },
@@ -227,34 +255,9 @@
           {
             "id": "gnews:50b72429f34acc50",
             "source": "gnews-rss",
-            "title": "The Sleuths Who Expose When AI Goes Rogue - wsj.com",
-            "at": "2026-10-03T19:02:19Z",
-            "publisher": "wsj.com"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI alerts 100 orgs that its 'misaligned models' attempted to break in",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 0.978,
-        "members": [
-          {
-            "id": "hn:49939208",
-            "source": "hn-algolia",
-            "title": "OpenAI alerts 100 orgs that its 'misaligned models' attempted to break in",
-            "at": "2026-10-02T22:07:08Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:0c65ab51c6a530d4",
-            "source": "gnews-rss",
-            "title": "OpenAI alerts 100+ orgs that its 'misaligned models' attempted to break in - or worse - The Register",
-            "at": "2026-10-02T17:37:05Z",
-            "publisher": "The Register"
+            "title": "The Sleuths Who Expose When AI Goes Rogue - WSJ",
+            "at": "2026-10-04T04:02:22Z",
+            "publisher": "WSJ"
           }
         ]
       },
@@ -297,8 +300,8 @@
         "self_reposts": [
           {
             "id": "gnews:36692e52fa95ddd7",
-            "publisher": "OpenAI",
-            "title": "Chatham scales its capital markets expertise with OpenAI - OpenAI"
+            "publisher": "openai.com",
+            "title": "Chatham scales its capital markets expertise with OpenAI - openai.com"
           }
         ]
       },
@@ -333,15 +336,107 @@
           "reason": "category:GeForce NOW"
         }
       ],
-      "gnews_shown_dropped": [],
+      "gnews_shown_dropped": [
+        {
+          "publisher": "조선일보",
+          "title": "Elon Musk Ends Relationship With Co-Parent Shivon Zilis - 조선일보"
+        },
+        {
+          "publisher": "Android Police",
+          "title": "Why Pebble's Index tool beats Google Keep at the one thing that matters - Android Police"
+        },
+        {
+          "publisher": "YourTango",
+          "title": "Great Things Fall Into Place For 3 Zodiac Signs On Sunday, October 4 - YourTango"
+        },
+        {
+          "publisher": "Android Authority",
+          "title": "I tried Duolingo for the first time in a year, and it's worse than I thought - Android Authority"
+        },
+        {
+          "publisher": "The Economic Times",
+          "title": "From 'lower middle class' Tamil family, he missed IIT Madras CSE by 0.01, was rejected by MIT. Today, he - The Economic Times"
+        }
+      ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 22
+      "hn_dropped": 21
     },
     "gnews_near_misses": [
       {
-        "score": 0.643,
+        "score": 0.558,
+        "blocked": "below-threshold",
+        "hours_apart": 16.5,
+        "a": {
+          "id": "hn:49944227",
+          "source": "hn-algolia",
+          "title": "I quit OpenAI because its culture is broken",
+          "at": "2026-10-03T13:46:34Z"
+        },
+        "b": {
+          "id": "gnews:434155dd4cc55b6c",
+          "source": "gnews-rss",
+          "title": "OpenAI safety leader David Robinson quits, says company culture is ‘broken’ as AI race accelerates - Fortune India",
+          "at": "2026-10-04T06:14:08Z"
+        },
+        "shared": [
+          "quit",
+          "openai",
+          "cultur",
+          "broken"
+        ]
+      },
+      {
+        "score": 0.555,
+        "blocked": "below-threshold",
+        "hours_apart": 5,
+        "a": {
+          "id": "hn:49948332",
+          "source": "hn-algolia",
+          "title": "OpenAI safety leader quits, warning AI company's culture is 'broken'",
+          "at": "2026-10-03T22:18:13Z"
+        },
+        "b": {
+          "id": "gnews:05a6ce30155ae637",
+          "source": "gnews-rss",
+          "title": "OpenAI safety leader quits, warns AI firms lack caution - Daijiworld",
+          "at": "2026-10-04T03:16:15Z"
+        },
+        "shared": [
+          "openai",
+          "safety",
+          "leader",
+          "quit",
+          "warn",
+          "ai"
+        ]
+      },
+      {
+        "score": 0.549,
+        "blocked": "below-threshold",
+        "hours_apart": 16.7,
+        "a": {
+          "id": "hn:49944227",
+          "source": "hn-algolia",
+          "title": "I quit OpenAI because its culture is broken",
+          "at": "2026-10-03T13:46:34Z"
+        },
+        "b": {
+          "id": "gnews:ae23b7cd2435437a",
+          "source": "gnews-rss",
+          "title": "OpenAI safety leader Robinson quits over ‘broken culture’. What does his essay suggest for AI companies? - ET Enterprise AI",
+          "at": "2026-10-04T06:27:29Z"
+        },
+        "shared": [
+          "quit",
+          "openai",
+          "cultur",
+          "broken"
+        ]
+      },
+      {
+        "score": 0.539,
         "blocked": "time-window",
-        "hours_apart": 122.1,
+        "hours_apart": 131.1,
         "a": {
           "id": "rss:openai:dec620cb7225d243",
           "source": "rss-lab",
@@ -349,19 +444,19 @@
           "at": "2026-09-29T00:00:00Z"
         },
         "b": {
-          "id": "gnews:cc0003ad5e542387",
+          "id": "gnews:37f324cd9c9f5c12",
           "source": "gnews-rss",
-          "title": "How Muse Stacks up Vs. OpenAI Dots - Investing.com",
-          "at": "2026-10-04T02:07:20Z"
+          "title": "The Sequence Radar - Issue 944 — Last Week in AI: Last Week in AI: OpenAI Connects the Dots, Gemini Levels Up, and Agents Cash In - TheSequence | Jesus Rodriguez",
+          "at": "2026-10-04T11:03:34Z"
         },
         "shared": [
           "dot"
         ]
       },
       {
-        "score": 0.598,
+        "score": 0.491,
         "blocked": "below-threshold",
-        "hours_apart": 11.3,
+        "hours_apart": 9.6,
         "a": {
           "id": "hn:49948332",
           "source": "hn-algolia",
@@ -369,323 +464,23 @@
           "at": "2026-10-03T22:18:13Z"
         },
         "b": {
-          "id": "gnews:b97d155dd557e5f6",
+          "id": "gnews:e284cfb60d76fd23",
           "source": "gnews-rss",
-          "title": "I Quit OpenAI Because Its Culture Is Broken - The Atlantic",
-          "at": "2026-10-03T11:00:00Z"
-        },
-        "shared": [
-          "openai",
-          "quit",
-          "cultur",
-          "broken"
-        ]
-      },
-      {
-        "score": 0.598,
-        "blocked": "below-threshold",
-        "hours_apart": 6.4,
-        "a": {
-          "id": "hn:49944227",
-          "source": "hn-algolia",
-          "title": "I quit OpenAI because its culture is broken",
-          "at": "2026-10-03T13:46:34Z"
-        },
-        "b": {
-          "id": "gnews:f76eafad86f51afb",
-          "source": "gnews-rss",
-          "title": "OpenAI safety leader quits, warning AI company’s culture is ‘broken’ - The Guardian",
-          "at": "2026-10-03T20:09:00Z"
-        },
-        "shared": [
-          "quit",
-          "openai",
-          "cultur",
-          "broken"
-        ]
-      },
-      {
-        "score": 0.591,
-        "blocked": "below-threshold",
-        "hours_apart": 2.9,
-        "a": {
-          "id": "hn:49948332",
-          "source": "hn-algolia",
-          "title": "OpenAI safety leader quits, warning AI company's culture is 'broken'",
-          "at": "2026-10-03T22:18:13Z"
-        },
-        "b": {
-          "id": "gnews:2cf48dd3132e61b7",
-          "source": "gnews-rss",
-          "title": "“The time for trial and error is over”: OpenAI safety researcher quits, says company culture is broken - calcalistech.com",
-          "at": "2026-10-03T19:25:00Z"
+          "title": "OpenAI safety leader David Robinson resigns — and says company culture is dangerous - Business Insider",
+          "at": "2026-10-03T12:43:00Z"
         },
         "shared": [
           "openai",
           "safety",
-          "quit",
+          "leader",
           "company",
-          "cultur",
-          "broken"
+          "cultur"
         ]
       },
       {
-        "score": 0.57,
+        "score": 0.47,
         "blocked": "below-threshold",
-        "hours_apart": 5.6,
-        "a": {
-          "id": "hn:49944227",
-          "source": "hn-algolia",
-          "title": "I quit OpenAI because its culture is broken",
-          "at": "2026-10-03T13:46:34Z"
-        },
-        "b": {
-          "id": "gnews:2cf48dd3132e61b7",
-          "source": "gnews-rss",
-          "title": "“The time for trial and error is over”: OpenAI safety researcher quits, says company culture is broken - calcalistech.com",
-          "at": "2026-10-03T19:25:00Z"
-        },
-        "shared": [
-          "quit",
-          "openai",
-          "cultur",
-          "broken"
-        ]
-      },
-      {
-        "score": 0.56,
-        "blocked": "below-threshold",
-        "hours_apart": 20.1,
-        "a": {
-          "id": "hn:49938646",
-          "source": "hn-algolia",
-          "title": "The Sleuths Who Expose When AI Goes Rogue",
-          "at": "2026-10-02T21:11:18Z"
-        },
-        "b": {
-          "id": "gnews:d90ececa3c52bdaf",
-          "source": "gnews-rss",
-          "title": "Citizen Sleuths Expose the Rogue AI Big Tech Hid - townhall.com",
-          "at": "2026-10-03T17:15:00Z"
-        },
-        "shared": [
-          "sleuth",
-          "expos",
-          "ai",
-          "rogu"
-        ]
-      },
-      {
-        "score": 0.4,
-        "blocked": "below-threshold",
-        "hours_apart": 16.6,
-        "a": {
-          "id": "hn:49942592",
-          "source": "hn-algolia",
-          "title": "Gemini ending free use of Flash and Pro models",
-          "at": "2026-10-03T09:13:19Z"
-        },
-        "b": {
-          "id": "gnews:593ebf7f317e936f",
-          "source": "gnews-rss",
-          "title": "Gemini Cuts Pro Model Access for Free and AI Plus Users, While AI Pro Gains Deep Think - XenoSpectrum",
-          "at": "2026-10-04T01:47:51Z"
-        },
-        "shared": [
-          "gemini",
-          "free",
-          "pro",
-          "model"
-        ]
-      },
-      {
-        "score": 0.365,
-        "blocked": "time-window",
-        "hours_apart": 31.6,
-        "a": {
-          "id": "hn:49932295",
-          "source": "hn-algolia",
-          "title": "They're Known as Swarm Chasers–and They Spring into Action When AI Goes Rogue",
-          "at": "2026-10-02T11:29:16Z"
-        },
-        "b": {
-          "id": "gnews:50b72429f34acc50",
-          "source": "gnews-rss",
-          "title": "The Sleuths Who Expose When AI Goes Rogue - wsj.com",
-          "at": "2026-10-03T19:02:19Z"
-        },
-        "shared": [
-          "ai",
-          "goe",
-          "rogu"
-        ]
-      }
-    ],
-    "near_misses": [
-      {
-        "score": 0.643,
-        "blocked": "time-window",
-        "hours_apart": 122.1,
-        "a": {
-          "id": "rss:openai:dec620cb7225d243",
-          "source": "rss-lab",
-          "title": "Introducing dots",
-          "at": "2026-09-29T00:00:00Z"
-        },
-        "b": {
-          "id": "gnews:cc0003ad5e542387",
-          "source": "gnews-rss",
-          "title": "How Muse Stacks up Vs. OpenAI Dots - Investing.com",
-          "at": "2026-10-04T02:07:20Z"
-        },
-        "shared": [
-          "dot"
-        ]
-      },
-      {
-        "score": 0.598,
-        "blocked": "below-threshold",
-        "hours_apart": 11.3,
-        "a": {
-          "id": "hn:49948332",
-          "source": "hn-algolia",
-          "title": "OpenAI safety leader quits, warning AI company's culture is 'broken'",
-          "at": "2026-10-03T22:18:13Z"
-        },
-        "b": {
-          "id": "gnews:b97d155dd557e5f6",
-          "source": "gnews-rss",
-          "title": "I Quit OpenAI Because Its Culture Is Broken - The Atlantic",
-          "at": "2026-10-03T11:00:00Z"
-        },
-        "shared": [
-          "openai",
-          "quit",
-          "cultur",
-          "broken"
-        ]
-      },
-      {
-        "score": 0.598,
-        "blocked": "below-threshold",
-        "hours_apart": 6.4,
-        "a": {
-          "id": "hn:49944227",
-          "source": "hn-algolia",
-          "title": "I quit OpenAI because its culture is broken",
-          "at": "2026-10-03T13:46:34Z"
-        },
-        "b": {
-          "id": "gnews:f76eafad86f51afb",
-          "source": "gnews-rss",
-          "title": "OpenAI safety leader quits, warning AI company’s culture is ‘broken’ - The Guardian",
-          "at": "2026-10-03T20:09:00Z"
-        },
-        "shared": [
-          "quit",
-          "openai",
-          "cultur",
-          "broken"
-        ]
-      },
-      {
-        "score": 0.591,
-        "blocked": "below-threshold",
-        "hours_apart": 2.9,
-        "a": {
-          "id": "hn:49948332",
-          "source": "hn-algolia",
-          "title": "OpenAI safety leader quits, warning AI company's culture is 'broken'",
-          "at": "2026-10-03T22:18:13Z"
-        },
-        "b": {
-          "id": "gnews:2cf48dd3132e61b7",
-          "source": "gnews-rss",
-          "title": "“The time for trial and error is over”: OpenAI safety researcher quits, says company culture is broken - calcalistech.com",
-          "at": "2026-10-03T19:25:00Z"
-        },
-        "shared": [
-          "openai",
-          "safety",
-          "quit",
-          "company",
-          "cultur",
-          "broken"
-        ]
-      },
-      {
-        "score": 0.57,
-        "blocked": "below-threshold",
-        "hours_apart": 5.6,
-        "a": {
-          "id": "hn:49944227",
-          "source": "hn-algolia",
-          "title": "I quit OpenAI because its culture is broken",
-          "at": "2026-10-03T13:46:34Z"
-        },
-        "b": {
-          "id": "gnews:2cf48dd3132e61b7",
-          "source": "gnews-rss",
-          "title": "“The time for trial and error is over”: OpenAI safety researcher quits, says company culture is broken - calcalistech.com",
-          "at": "2026-10-03T19:25:00Z"
-        },
-        "shared": [
-          "quit",
-          "openai",
-          "cultur",
-          "broken"
-        ]
-      },
-      {
-        "score": 0.56,
-        "blocked": "below-threshold",
-        "hours_apart": 20.1,
-        "a": {
-          "id": "hn:49938646",
-          "source": "hn-algolia",
-          "title": "The Sleuths Who Expose When AI Goes Rogue",
-          "at": "2026-10-02T21:11:18Z"
-        },
-        "b": {
-          "id": "gnews:d90ececa3c52bdaf",
-          "source": "gnews-rss",
-          "title": "Citizen Sleuths Expose the Rogue AI Big Tech Hid - townhall.com",
-          "at": "2026-10-03T17:15:00Z"
-        },
-        "shared": [
-          "sleuth",
-          "expos",
-          "ai",
-          "rogu"
-        ]
-      },
-      {
-        "score": 0.4,
-        "blocked": "below-threshold",
-        "hours_apart": 16.6,
-        "a": {
-          "id": "hn:49942592",
-          "source": "hn-algolia",
-          "title": "Gemini ending free use of Flash and Pro models",
-          "at": "2026-10-03T09:13:19Z"
-        },
-        "b": {
-          "id": "gnews:593ebf7f317e936f",
-          "source": "gnews-rss",
-          "title": "Gemini Cuts Pro Model Access for Free and AI Plus Users, While AI Pro Gains Deep Think - XenoSpectrum",
-          "at": "2026-10-04T01:47:51Z"
-        },
-        "shared": [
-          "gemini",
-          "free",
-          "pro",
-          "model"
-        ]
-      },
-      {
-        "score": 0.365,
-        "blocked": "time-window",
-        "hours_apart": 597.6,
+        "hours_apart": 21.5,
         "a": {
           "id": "hn:49942706",
           "source": "hn-algolia",
@@ -693,14 +488,244 @@
           "at": "2026-10-03T09:36:04Z"
         },
         "b": {
-          "id": "rss:mistral:7db995c30f47deac",
-          "source": "rss-lab",
-          "title": "Mistral raises €3B to make sovereign, open-weight AI the technology frontier",
-          "at": "2026-09-08T12:00:22Z"
+          "id": "gnews:ccccc37adc0e275f",
+          "source": "gnews-rss",
+          "title": "Aleph Alpha Releases Kolibri-1, a 78B Open-Weight Model With 1M Context - Pasquale Pillitteri",
+          "at": "2026-10-04T07:07:20Z"
         },
         "shared": [
-          "sovereign",
-          "openweight"
+          "kolibri",
+          "openweight",
+          "model"
+        ]
+      },
+      {
+        "score": 0.47,
+        "blocked": "below-threshold",
+        "hours_apart": 23.7,
+        "a": {
+          "id": "hn:49942592",
+          "source": "hn-algolia",
+          "title": "Gemini ending free use of Flash and Pro models",
+          "at": "2026-10-03T09:13:19Z"
+        },
+        "b": {
+          "id": "gnews:cfcaf246c2adba8d",
+          "source": "gnews-rss",
+          "title": "Google to restrict free use of Gemini | Gulf Times - Gulf Times",
+          "at": "2026-10-04T08:56:00Z"
+        },
+        "shared": [
+          "gemini",
+          "free",
+          "use"
+        ]
+      },
+      {
+        "score": 0.467,
+        "blocked": "below-threshold",
+        "hours_apart": 14.8,
+        "a": {
+          "id": "hn:49945206",
+          "source": "hn-algolia",
+          "title": "OpenAI safety leader David Robinson resigns",
+          "at": "2026-10-03T15:38:32Z"
+        },
+        "b": {
+          "id": "gnews:ae23b7cd2435437a",
+          "source": "gnews-rss",
+          "title": "OpenAI safety leader Robinson quits over ‘broken culture’. What does his essay suggest for AI companies? - ET Enterprise AI",
+          "at": "2026-10-04T06:27:29Z"
+        },
+        "shared": [
+          "openai",
+          "safety",
+          "leader",
+          "robinson"
+        ]
+      }
+    ],
+    "near_misses": [
+      {
+        "score": 0.558,
+        "blocked": "below-threshold",
+        "hours_apart": 16.5,
+        "a": {
+          "id": "hn:49944227",
+          "source": "hn-algolia",
+          "title": "I quit OpenAI because its culture is broken",
+          "at": "2026-10-03T13:46:34Z"
+        },
+        "b": {
+          "id": "gnews:434155dd4cc55b6c",
+          "source": "gnews-rss",
+          "title": "OpenAI safety leader David Robinson quits, says company culture is ‘broken’ as AI race accelerates - Fortune India",
+          "at": "2026-10-04T06:14:08Z"
+        },
+        "shared": [
+          "quit",
+          "openai",
+          "cultur",
+          "broken"
+        ]
+      },
+      {
+        "score": 0.555,
+        "blocked": "below-threshold",
+        "hours_apart": 5,
+        "a": {
+          "id": "hn:49948332",
+          "source": "hn-algolia",
+          "title": "OpenAI safety leader quits, warning AI company's culture is 'broken'",
+          "at": "2026-10-03T22:18:13Z"
+        },
+        "b": {
+          "id": "gnews:05a6ce30155ae637",
+          "source": "gnews-rss",
+          "title": "OpenAI safety leader quits, warns AI firms lack caution - Daijiworld",
+          "at": "2026-10-04T03:16:15Z"
+        },
+        "shared": [
+          "openai",
+          "safety",
+          "leader",
+          "quit",
+          "warn",
+          "ai"
+        ]
+      },
+      {
+        "score": 0.549,
+        "blocked": "below-threshold",
+        "hours_apart": 16.7,
+        "a": {
+          "id": "hn:49944227",
+          "source": "hn-algolia",
+          "title": "I quit OpenAI because its culture is broken",
+          "at": "2026-10-03T13:46:34Z"
+        },
+        "b": {
+          "id": "gnews:ae23b7cd2435437a",
+          "source": "gnews-rss",
+          "title": "OpenAI safety leader Robinson quits over ‘broken culture’. What does his essay suggest for AI companies? - ET Enterprise AI",
+          "at": "2026-10-04T06:27:29Z"
+        },
+        "shared": [
+          "quit",
+          "openai",
+          "cultur",
+          "broken"
+        ]
+      },
+      {
+        "score": 0.539,
+        "blocked": "time-window",
+        "hours_apart": 131.1,
+        "a": {
+          "id": "rss:openai:dec620cb7225d243",
+          "source": "rss-lab",
+          "title": "Introducing dots",
+          "at": "2026-09-29T00:00:00Z"
+        },
+        "b": {
+          "id": "gnews:37f324cd9c9f5c12",
+          "source": "gnews-rss",
+          "title": "The Sequence Radar - Issue 944 — Last Week in AI: Last Week in AI: OpenAI Connects the Dots, Gemini Levels Up, and Agents Cash In - TheSequence | Jesus Rodriguez",
+          "at": "2026-10-04T11:03:34Z"
+        },
+        "shared": [
+          "dot"
+        ]
+      },
+      {
+        "score": 0.491,
+        "blocked": "below-threshold",
+        "hours_apart": 9.6,
+        "a": {
+          "id": "hn:49948332",
+          "source": "hn-algolia",
+          "title": "OpenAI safety leader quits, warning AI company's culture is 'broken'",
+          "at": "2026-10-03T22:18:13Z"
+        },
+        "b": {
+          "id": "gnews:e284cfb60d76fd23",
+          "source": "gnews-rss",
+          "title": "OpenAI safety leader David Robinson resigns — and says company culture is dangerous - Business Insider",
+          "at": "2026-10-03T12:43:00Z"
+        },
+        "shared": [
+          "openai",
+          "safety",
+          "leader",
+          "company",
+          "cultur"
+        ]
+      },
+      {
+        "score": 0.47,
+        "blocked": "below-threshold",
+        "hours_apart": 21.5,
+        "a": {
+          "id": "hn:49942706",
+          "source": "hn-algolia",
+          "title": "Kolibri: A Sovereign Open-Weight Model",
+          "at": "2026-10-03T09:36:04Z"
+        },
+        "b": {
+          "id": "gnews:ccccc37adc0e275f",
+          "source": "gnews-rss",
+          "title": "Aleph Alpha Releases Kolibri-1, a 78B Open-Weight Model With 1M Context - Pasquale Pillitteri",
+          "at": "2026-10-04T07:07:20Z"
+        },
+        "shared": [
+          "kolibri",
+          "openweight",
+          "model"
+        ]
+      },
+      {
+        "score": 0.47,
+        "blocked": "below-threshold",
+        "hours_apart": 23.7,
+        "a": {
+          "id": "hn:49942592",
+          "source": "hn-algolia",
+          "title": "Gemini ending free use of Flash and Pro models",
+          "at": "2026-10-03T09:13:19Z"
+        },
+        "b": {
+          "id": "gnews:cfcaf246c2adba8d",
+          "source": "gnews-rss",
+          "title": "Google to restrict free use of Gemini | Gulf Times - Gulf Times",
+          "at": "2026-10-04T08:56:00Z"
+        },
+        "shared": [
+          "gemini",
+          "free",
+          "use"
+        ]
+      },
+      {
+        "score": 0.467,
+        "blocked": "below-threshold",
+        "hours_apart": 14.8,
+        "a": {
+          "id": "hn:49945206",
+          "source": "hn-algolia",
+          "title": "OpenAI safety leader David Robinson resigns",
+          "at": "2026-10-03T15:38:32Z"
+        },
+        "b": {
+          "id": "gnews:ae23b7cd2435437a",
+          "source": "gnews-rss",
+          "title": "OpenAI safety leader Robinson quits over ‘broken culture’. What does his essay suggest for AI companies? - ET Enterprise AI",
+          "at": "2026-10-04T06:27:29Z"
+        },
+        "shared": [
+          "openai",
+          "safety",
+          "leader",
+          "robinson"
         ]
       }
     ]
@@ -709,44 +734,44 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 6,
+      "streak_ok": 7,
       "streak_fail": 0,
-      "items_last": 24
+      "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 72,
+      "streak_ok": 73,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 72,
+      "streak_ok": 73,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 72,
+      "streak_ok": 73,
       "streak_fail": 0,
-      "items_last": 38
+      "items_last": 36
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 72,
+      "streak_ok": 73,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 72,
+      "streak_ok": 73,
       "streak_fail": 0,
-      "items_last": 41
+      "items_last": 42
     },
     {
       "id": "openalex",
@@ -758,27 +783,27 @@
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 1,
+      "streak_ok": 2,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 72,
+      "streak_ok": 73,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 72,
+      "streak_ok": 73,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.0032591666666666667,
+    "hours": 0.004730277777777778,
     "stale": false
   },
   "hf": {
@@ -789,7 +814,7 @@
   "arxiv": {
     "ok": true,
     "enriched": 24,
-    "shelf": 0,
+    "shelf": 5,
     "timed_out": false,
     "budget_ms": 20000,
     "brief": false,
@@ -847,7 +872,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 41,
+    "count": 42,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -864,26 +889,26 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 22,
+    "ai_dropped": 21,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
         "id": "hn:49942706",
         "tag": "rest",
-        "score": 587,
+        "score": 617,
         "text": "Kolibri: A Sovereign Open-Weight Model"
       },
       {
         "id": "hn:49948332",
         "tag": "rest",
-        "score": 259,
+        "score": 263,
         "text": "OpenAI safety leader quits, warning AI company's culture is 'broken'"
       },
       {
-        "id": "hn:49946567",
+        "id": "hn:49944227",
         "tag": "rest",
-        "score": 208,
-        "text": "Getting the most out of Opus 5.5 in Claude and Claude Code"
+        "score": 250,
+        "text": "I quit OpenAI because its culture is broken"
       }
     ]
   },
@@ -899,47 +924,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "(cache:openai)",
+        "url": "https://openai.com/news/rss.xml",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "(cache:deepmind)",
+        "url": "https://deepmind.google/blog/rss.xml",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "(cache:google-ai)",
+        "url": "https://blog.google/technology/ai/rss/",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "(cache:huggingface)",
+        "url": "https://huggingface.co/blog/feed.xml",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "(cache:mistral)",
+        "url": "https://mistral.ai/rss.xml",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "(cache:nvidia)",
+        "url": "https://blogs.nvidia.com/feed/",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "(cache:nvidia-dev)",
+        "url": "https://developer.nvidia.com/blog/feed",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "(cache:ms-research)",
+        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "https://research.google/blog/rss/",
+        "url": "(cache:google-research)",
         "count": 12
       }
     ],
@@ -985,17 +1010,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "(cache:trailofbits)",
+        "url": "https://blog.trailofbits.com/feed/",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "(cache:fox-it)",
+        "url": "https://blog.fox-it.com/feed/",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "(cache:projectzero)",
+        "url": "https://projectzero.google/feed.xml",
         "count": 5
       }
     ],
@@ -1036,8 +1061,8 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 38,
-    "pool": 298,
+    "items": 36,
+    "pool": 296,
     "corroborators": [
       {
         "id": "gnews:f76eafad86f51afb",
@@ -1048,35 +1073,59 @@
         "self_repost": false
       },
       {
-        "id": "gnews:b47af0ced0ee6cbe",
+        "id": "gnews:434155dd4cc55b6c",
         "anchor_id": "hn:49948332",
-        "score": 0.701,
-        "title": "OpenAI Safety Employee Quits Over 'Broken' Culture - The Tech Buzz",
-        "publisher": "The Tech Buzz",
+        "score": 0.736,
+        "title": "OpenAI safety leader David Robinson quits, says company culture is ‘broken’ as AI race accelerates - Fortune India",
+        "publisher": "Fortune India",
         "self_repost": false
       },
       {
-        "id": "gnews:2cf48dd3132e61b7",
+        "id": "gnews:ae23b7cd2435437a",
         "anchor_id": "hn:49948332",
-        "score": 0.604,
-        "title": "“The time for trial and error is over”: OpenAI safety researcher quits, says company culture is broken - calcalistech.com",
-        "publisher": "calcalistech.com",
+        "score": 0.717,
+        "title": "OpenAI safety leader Robinson quits over ‘broken culture’. What does his essay suggest for AI companies? - ET Enterprise AI",
+        "publisher": "ET Enterprise AI",
         "self_repost": false
       },
       {
-        "id": "gnews:0c65ab51c6a530d4",
-        "anchor_id": "hn:49939208",
-        "score": 0.969,
-        "title": "OpenAI alerts 100+ orgs that its 'misaligned models' attempted to break in - or worse - The Register",
-        "publisher": "The Register",
+        "id": "gnews:e284cfb60d76fd23",
+        "anchor_id": "hn:49945206",
+        "score": 0.852,
+        "title": "OpenAI safety leader David Robinson resigns — and says company culture is dangerous - Business Insider",
+        "publisher": "Business Insider",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:8c001437452856bc",
+        "anchor_id": "hn:49945206",
+        "score": 0.726,
+        "title": "OpenAI Safety Leader David Robinson Resigns as ChatGPT Maker Faces Growing Scrutiny Over AI Risks and Transparency: Report - TradingView",
+        "publisher": "TradingView",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:f6f3b53429b0a1b1",
+        "anchor_id": "hn:49945206",
+        "score": 0.617,
+        "title": "DETAILS: OpenAI safety leader RESIGNS - foxnews.com",
+        "publisher": "foxnews.com",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:b97d155dd557e5f6",
+        "anchor_id": "hn:49944227",
+        "score": 1,
+        "title": "I Quit OpenAI Because Its Culture Is Broken - The Atlantic",
+        "publisher": "The Atlantic",
         "self_repost": false
       },
       {
         "id": "gnews:36692e52fa95ddd7",
         "anchor_id": "rss:openai:882596cbc7639eb4",
         "score": 1,
-        "title": "Chatham scales its capital markets expertise with OpenAI - OpenAI",
-        "publisher": "OpenAI",
+        "title": "Chatham scales its capital markets expertise with OpenAI - openai.com",
+        "publisher": "openai.com",
         "self_repost": true
       },
       {
@@ -1089,9 +1138,9 @@
       }
     ],
     "http_status": 200,
-    "content_type": null,
+    "content_type": "application/xml; charset=utf-8",
     "format": "rss2",
-    "from_cache": true,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1114,24 +1163,24 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:8a02383304a70d29",
-        "title": "Stop AI Chats Training Models—Without Assuming History Is Deleted - quasa.io",
-        "publisher": "quasa.io",
-        "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQcjl2TWczQ1ZIdFdRUndMWElpT3JRUDVQWVBIZE5URHVVbFBvNllGTlc3SV93b2ZVR3pBVm1Bel9IbGx0ekhxblZUSlltQy1ZTFpSX2hITjJOTnNBdEFSZk1GeDdacUhrRjBuZTU0U21TYU9zaGFNU25Fc2Q2bkI3MUZ1dlk3cVhZd0l6Mmh2bHhGNklHRWc?oc=5",
+        "id": "gnews:37f324cd9c9f5c12",
+        "title": "The Sequence Radar - Issue 944 — Last Week in AI: Last Week in AI: OpenAI Connects the Dots, Gemini Levels Up, and Agents Cash In - TheSequence | Jesus Rodriguez",
+        "publisher": "TheSequence | Jesus Rodriguez",
+        "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9uQktJUlpNWmFDdjRYaFlLc3JJanRIWjNDdkpRSUpyOWJHVDFULV9uUU9NblhUMkFXclpfcE9EVURybWpEMG45T1dxOWlRR2V6Ynd0eWdtdDhiSkhsNUc2NGo3ckl0LWVKdWFrX0NRUzRCc2t5LVNr?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:9d9fda024822dde3",
-        "title": "An OpenAI model read Slack, reasoned \"we may die\", and OpenAI says that is not misalignment - MIXED Reality News",
-        "publisher": "MIXED Reality News",
-        "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNUWlJRkwxZFJSM0FqZUs1YmNlSTNDVU5ITUJjSG51blAyaE1kOGUtNmRFNFpJZURtWktqOHctbkxEWkVBTGNnSWV2VDlLZXZINTY0cDNEMzB4bTdvM2dfRGZ2QlBmUWhXLWV4cU5mWTRnek5hdmlESWFIc0NzcmFVSUo0WEN5cjJycVJ4QjZB?oc=5",
+        "id": "gnews:bce1098d3529c1f5",
+        "title": "Legal risks pile up for Altman as OpenAI uncovers dozens of hacks - Financial Times",
+        "publisher": "Financial Times",
+        "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNbTIyS2l3QWYtSTZxVzB4Znp2U2ZtQzY3NHl5M0VHa3FVMU1PWTR4eWdmd0VwNnNIRTVlS0gyaU9WTVBDZ2RCRGU5dXFKWmc2bWdNWlpfazdrUHpBRGMyRmN5dTc4Qzh6OGh5cUpuZkNGb1BNZ0lxVW5FMmpwLUkycDNPcW8?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:d9d02f48b57af317",
-        "title": "OpenAI 12-Year Veteran Resigns in Last-Ditch Protest: The Trial-and-Error Era Has Collapsed - 36 Kr",
-        "publisher": "36 Kr",
-        "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1fS2lmcldNLVliYUl0d0tNaW9JT0pRU2w5MHE2SExuZzZWSjBUSlR3bGNLb21BTGJPdWFSU3RocmxUbzk4dUVpNEZBTmMtN09ZSDM0?oc=5",
+        "id": "gnews:86d7371876c4982c",
+        "title": "An OpenAI model was caught trying to cheat at StarCraft, and of course it did it by stealing a human's work - PC Gamer",
+        "publisher": "PC Gamer",
+        "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxOcTBtZ3hrcVhYQjhKYk01clVPRi1YMzdWZUJjU0VSUHA4ZkJtTjV2bXFvRklGOXc0emlUMG9LZHNUX2w2TmlPeXdwSE82T1hjcFByYlhpQXN5SDZxdGIyTVZ3ZU5tSFFMRmpzYkVjSHBCTWxQWHdRdWZTT3FzR2Jod19TUUtRTUllM0dxVFRSamZXTXVIVjRFWjBIUFllSmFWRDFoZlUtVTNvRmNNdHd6UUk5bUlxcDYzSXNtc0FDSjZIQ2FIOXlIM202MmtDSXRFUE9NWkkyUWJMQQ?oc=5",
         "tag": "rest"
       }
     ]
@@ -1173,7 +1222,7 @@
     ]
   },
   "shelf": {
-    "count": 15,
+    "count": 20,
     "brief": false
   },
   "wikidata": {
@@ -1185,8 +1234,8 @@
       "NIST",
       "MITRE"
     ],
-    "searches": 2,
-    "from_cache": false,
+    "searches": 0,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "deny_grounding_only": true,

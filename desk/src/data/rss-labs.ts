@@ -16,10 +16,10 @@ export type RssLabRow = {
   cluster_id?: string;
 };
 
-export const RSS_LABS_AT = "2026-10-04T07:21:32Z";
+export const RSS_LABS_AT = "2026-10-04T11:19:25Z";
 
 export const RSS_LABS: RssLabRow[] = [
-  { id: "rss:huggingface:bd1136d0fcfd6f13", lab: "huggingface" as const, title: "The Agent Said It Was Done. The Database Disagreed.", link: "https://huggingface.co/blog/microsoft/thinkingbox", published: "2026-10-03T22:56:48Z", summary: "", source: "rss-lab" as const, tag: "rest" as const, first_seen: "2026-10-04T07:21:32Z", is_new: true, cluster_id: "cl:rss:huggingface:bd1136d0fcfd6f13" },
+  { id: "rss:huggingface:bd1136d0fcfd6f13", lab: "huggingface" as const, title: "The Agent Said It Was Done. The Database Disagreed.", link: "https://huggingface.co/blog/microsoft/thinkingbox", published: "2026-10-03T22:56:48Z", summary: "", source: "rss-lab" as const, tag: "rest" as const, first_seen: "2026-10-04T07:21:32Z", is_new: false, cluster_id: "cl:rss:huggingface:bd1136d0fcfd6f13" },
   { id: "rss:openai:c38af6e5cae43e23", lab: "openai" as const, title: "A model guide for the GPT-6 family", link: "https://openai.com/index/practical-guide-building-gpt-6", published: "2026-10-02T16:15:00Z", summary: "Learn how startups can choose GPT-6 models, tune reasoning effort, improve prompts and skills, coordinate tools, and prepare workflows for production.", source: "rss-lab" as const, tag: "rest" as const, first_seen: "2026-10-02T19:13:43Z", is_new: false, cluster_id: "cl:rss:openai:c38af6e5cae43e23" },
   { id: "rss:huggingface:e81b1dea7ce0fb42", lab: "huggingface" as const, title: "Open-sourcing AstaBrief, the fast report-generation model in Asta", link: "https://huggingface.co/blog/allenai/astabrief", published: "2026-10-02T15:19:50Z", summary: "", source: "rss-lab" as const, tag: "rest" as const, first_seen: "2026-10-02T19:13:43Z", is_new: false, cluster_id: "cl:rss:huggingface:e81b1dea7ce0fb42" },
   { id: "rss:google-ai:6a7bb4e3e69d69f5", lab: "google-ai" as const, title: "The latest AI news we announced in September 2026", link: "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-september-2026/", published: "2026-10-02T15:00:00Z", summary: "Here are Google’s latest AI updates from September 2026", source: "rss-lab" as const, tag: "rest" as const, first_seen: "2026-10-02T19:13:43Z", is_new: false, cluster_id: "cl:rss:google-ai:6a7bb4e3e69d69f5" },

@@ -1,28 +1,27 @@
 # P2 home 2b drill-log — operator off-box
 
-**UTC refreshed:** 2026-10-04T07:22:13Z  
-**Pack id:** `sage-pack-003-20261004T072143Z`  
+**UTC refreshed:** 2026-10-04T11:20:16Z  
+**Pack id:** `sage-pack-003-20261004T112016Z`  
 **Cycle / lead:** `003` / `hf-incident`  
 
 ## Homes
 
 | Home | Path | Status |
 |------|------|--------|
-| 1 · VM primary | `/workspace/nexus-sage/packs/sage-pack-003-20261004T072143Z.tar.gz` | OK |
-| 2a · desk mirror | `/workspace/nexus-sage/desk/packs/sage-pack-003-20261004T072143Z.tar.gz` | OK |
-| 2b · operator PC | `C:\Users\speci.000\Downloads\nexus-sage-packs\sage-pack-003-20261004T072143Z.tar.gz` | PENDING (no re-ask) |
+| 1 · VM primary | `/workspace/nexus-sage/packs/sage-pack-003-20261004T112016Z.tar.gz` | OK |
+| 2a · desk mirror | `/workspace/nexus-sage/desk/packs/sage-pack-003-20261004T112016Z.tar.gz` | OK |
+| 2b · operator PC | `C:\Users\speci.000\Downloads\nexus-sage-packs\sage-pack-003-20261004T112016Z.tar.gz` | PENDING (no re-ask) |
 
 ## Checksums (VM)
 
 ```
-sha256  b4bc69e75f07c449d0b833e68c4f815312c8c9c1d061945c4e08c337624f7abc
+sha256  1ac351c4798625191741aca0e388dc49902ed719d15ebea4d6efe2d129b31043
 ```
 
 ## Notes
-- A1 STALE auto-ingest FORCE=1 dry-run · crawl `2026-10-04T07:21:32Z` · pre-age ~4.12h
-- Dual-home pack `sage-pack-003-20261004T072143Z` identical both homes
-- Freeze ON · cycle 003 / hf-incident · no digest 004 · no craft · no WIRE · no paid X
-- Manifest sha256 `c6c1443257a2b2878bce5bfa0f0ae5f59014be84d1c3a6590c9ad371289e7438`
-- Soft-fails STAMPED (not silent): openalex=paused_until 2026-10-04T23:20:53Z
-- Weekday window: Mon–Fri daytime only (~09:00–17:00 VM/local intent) — no overnight @every firehose; standing cron AFTER Reviewer PASS
+- A2 unattended DUE→WROTE→dual-home · digest pack_id `2026-10-04T11`
+- Dual-home pack `sage-pack-003-20261004T112016Z` identical both homes
+- Freeze ON · cycle 003 / hf-incident · no digest 004 · no craft · no WIRE · no paid X · Bluesky DENY
+- Manifest sha256 `see archive`
+- Window: Europe/Istanbul Mon–Fri 09–16 (+ 09:00 catch-up)
 - Reviewer stamp pending (Coder factual only)
