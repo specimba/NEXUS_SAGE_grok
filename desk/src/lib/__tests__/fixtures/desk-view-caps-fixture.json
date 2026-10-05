@@ -1,0 +1,286 @@
+{
+ "_about": "Fixed cap-semantics fixture (desk-view-cap-fixture.test.ts). Hand-built; expected sets derived by hand from the rules: over-long link (>caps.chars.url) drops a story at any age unless pinned; then per-source over cap \u2192 oldest unpinned first (ties by id); then `drop` extra oldest unpinned survivors. Pinned never dropped.",
+ "caps": {
+  "items": {
+   "rss-sec": 3,
+   "gnews": 10
+  },
+  "url": 640
+ },
+ "pins": [
+  "cl:rss-sec:fox-it:s1",
+  "cl:gnews:plong"
+ ],
+ "clusters": [
+  {
+   "id": "cl:rss-sec:fox-it:s1",
+   "title": "cl:rss-sec:fox-it:s1",
+   "url": "https://x.test/s1",
+   "lead_id": "rss-sec:fox-it:s1",
+   "lead_source": "rss-sec",
+   "sources": [
+    "rss-sec"
+   ],
+   "member_ids": [
+    "rss-sec:fox-it:s1"
+   ],
+   "size": 1,
+   "at": "2023-01-10T00:00:00Z",
+   "first_seen": null,
+   "is_new": false
+  },
+  {
+   "id": "cl:rss-sec:fox-it:s2",
+   "title": "cl:rss-sec:fox-it:s2",
+   "url": "https://x.test/s2",
+   "lead_id": "rss-sec:fox-it:s2",
+   "lead_source": "rss-sec",
+   "sources": [
+    "rss-sec"
+   ],
+   "member_ids": [
+    "rss-sec:fox-it:s2"
+   ],
+   "size": 1,
+   "at": "2023-06-10T00:00:00Z",
+   "first_seen": null,
+   "is_new": false
+  },
+  {
+   "id": "cl:rss-sec:fox-it:s3",
+   "title": "cl:rss-sec:fox-it:s3",
+   "url": "https://x.test/s3",
+   "lead_id": "rss-sec:fox-it:s3",
+   "lead_source": "rss-sec",
+   "sources": [
+    "rss-sec"
+   ],
+   "member_ids": [
+    "rss-sec:fox-it:s3"
+   ],
+   "size": 1,
+   "at": "2024-01-10T00:00:00Z",
+   "first_seen": null,
+   "is_new": false
+  },
+  {
+   "id": "cl:rss-sec:fox-it:s4",
+   "title": "cl:rss-sec:fox-it:s4",
+   "url": "https://x.test/s4",
+   "lead_id": "rss-sec:fox-it:s4",
+   "lead_source": "rss-sec",
+   "sources": [
+    "rss-sec"
+   ],
+   "member_ids": [
+    "rss-sec:fox-it:s4"
+   ],
+   "size": 1,
+   "at": "2025-01-10T00:00:00Z",
+   "first_seen": null,
+   "is_new": false
+  },
+  {
+   "id": "cl:rss-sec:fox-it:s5",
+   "title": "cl:rss-sec:fox-it:s5",
+   "url": "https://x.test/s5",
+   "lead_id": "rss-sec:fox-it:s5",
+   "lead_source": "rss-sec",
+   "sources": [
+    "rss-sec"
+   ],
+   "member_ids": [
+    "rss-sec:fox-it:s5"
+   ],
+   "size": 1,
+   "at": "2026-01-10T00:00:00Z",
+   "first_seen": null,
+   "is_new": false
+  },
+  {
+   "id": "cl:gnews:g1",
+   "title": "cl:gnews:g1",
+   "url": "https://news.google.com/rss/articles/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "lead_id": "gnews:g1",
+   "lead_source": "gnews",
+   "sources": [
+    "gnews"
+   ],
+   "member_ids": [
+    "gnews:g1"
+   ],
+   "size": 1,
+   "at": "2026-10-05T19:00:28Z",
+   "first_seen": null,
+   "is_new": false
+  },
+  {
+   "id": "cl:gnews:g2",
+   "title": "cl:gnews:g2",
+   "url": "https://x.test/g2",
+   "lead_id": "gnews:g2",
+   "lead_source": "gnews",
+   "sources": [
+    "gnews"
+   ],
+   "member_ids": [
+    "gnews:g2"
+   ],
+   "size": 1,
+   "at": "2026-10-04T10:00:00Z",
+   "first_seen": null,
+   "is_new": false
+  },
+  {
+   "id": "cl:gnews:g3a",
+   "title": "cl:gnews:g3a",
+   "url": "https://x.test/g3a",
+   "lead_id": "gnews:g3a",
+   "lead_source": "gnews",
+   "sources": [
+    "gnews"
+   ],
+   "member_ids": [
+    "gnews:g3a"
+   ],
+   "size": 1,
+   "at": "2026-09-01T10:00:00Z",
+   "first_seen": null,
+   "is_new": false
+  },
+  {
+   "id": "cl:gnews:g3b",
+   "title": "cl:gnews:g3b",
+   "url": "https://x.test/g3b",
+   "lead_id": "gnews:g3b",
+   "lead_source": "gnews",
+   "sources": [
+    "gnews"
+   ],
+   "member_ids": [
+    "gnews:g3b"
+   ],
+   "size": 1,
+   "at": "2026-09-01T10:00:00Z",
+   "first_seen": null,
+   "is_new": false
+  },
+  {
+   "id": "cl:gnews:plong",
+   "title": "cl:gnews:plong",
+   "url": "https://news.google.com/rss/articles/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "lead_id": "gnews:plong",
+   "lead_source": "gnews",
+   "sources": [
+    "gnews"
+   ],
+   "member_ids": [
+    "gnews:plong"
+   ],
+   "size": 1,
+   "at": "2026-10-01T10:00:00Z",
+   "first_seen": null,
+   "is_new": false
+  }
+ ],
+ "members": {
+  "rss-sec:fox-it:s1": {
+   "url": "https://x.test/s1",
+   "title": "rss-sec:fox-it:s1",
+   "publisher": "p",
+   "badge": "B"
+  },
+  "rss-sec:fox-it:s2": {
+   "url": "https://x.test/s2",
+   "title": "rss-sec:fox-it:s2",
+   "publisher": "p",
+   "badge": "B"
+  },
+  "rss-sec:fox-it:s3": {
+   "url": "https://x.test/s3",
+   "title": "rss-sec:fox-it:s3",
+   "publisher": "p",
+   "badge": "B"
+  },
+  "rss-sec:fox-it:s4": {
+   "url": "https://x.test/s4",
+   "title": "rss-sec:fox-it:s4",
+   "publisher": "p",
+   "badge": "B"
+  },
+  "rss-sec:fox-it:s5": {
+   "url": "https://x.test/s5",
+   "title": "rss-sec:fox-it:s5",
+   "publisher": "p",
+   "badge": "B"
+  },
+  "gnews:g1": {
+   "url": "https://news.google.com/rss/articles/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "title": "gnews:g1",
+   "publisher": "p",
+   "badge": "B"
+  },
+  "gnews:g2": {
+   "url": "https://x.test/g2",
+   "title": "gnews:g2",
+   "publisher": "p",
+   "badge": "B"
+  },
+  "gnews:g3a": {
+   "url": "https://x.test/g3a",
+   "title": "gnews:g3a",
+   "publisher": "p",
+   "badge": "B"
+  },
+  "gnews:g3b": {
+   "url": "https://x.test/g3b",
+   "title": "gnews:g3b",
+   "publisher": "p",
+   "badge": "B"
+  },
+  "gnews:plong": {
+   "url": "https://news.google.com/rss/articles/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "title": "gnews:plong",
+   "publisher": "p",
+   "badge": "B"
+  }
+ },
+ "expected": {
+  "drop0": {
+   "kept": [
+    "cl:gnews:g2",
+    "cl:gnews:g3a",
+    "cl:gnews:g3b",
+    "cl:gnews:plong",
+    "cl:rss-sec:fox-it:s1",
+    "cl:rss-sec:fox-it:s4",
+    "cl:rss-sec:fox-it:s5"
+   ],
+   "why_dropped": {
+    "cl:gnews:g1": "link 708 chars > 640 (newest story, still dropped)",
+    "cl:rss-sec:fox-it:s2": "rss-sec over cap 3, oldest unpinned",
+    "cl:rss-sec:fox-it:s3": "rss-sec over cap 3, next oldest unpinned"
+   },
+   "droppable": 5
+  },
+  "drop3": {
+   "kept": [
+    "cl:gnews:g2",
+    "cl:gnews:g3b",
+    "cl:gnews:plong",
+    "cl:rss-sec:fox-it:s1"
+   ],
+   "why_dropped": {
+    "cl:rss-sec:fox-it:s4": "budget drop 1 (oldest unpinned survivor)",
+    "cl:rss-sec:fox-it:s5": "budget drop 2",
+    "cl:gnews:g3a": "budget drop 3 \u2014 ties g3b on time, id g3a < g3b"
+   }
+  },
+  "drop99": {
+   "kept": [
+    "cl:gnews:plong",
+    "cl:rss-sec:fox-it:s1"
+   ]
+  }
+ }
+}

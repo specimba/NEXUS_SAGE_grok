@@ -81,17 +81,12 @@ describe("desk-view.ts — slim client view == raw crawl modules", () => {
     expect(V.WIRE_ROWS).toEqual(norm(WIRE_ROWS));
   });
 
-  test("the caps dropped only what DESK_VIEW_TRIMMED reports — whole stories, oldest first", () => {
+  test("DESK_VIEW_TRIMMED counts match what the generated view left out (bookkeeping only)", () => {
+    // Cap SEMANTICS (oldest first, pins, link cap) are tested on a fixed fixture in desk-view-cap-fixture.test.ts;
+    // what tonight's crawl trimmed is a report: bun scripts/desk-view.ts --report.
     expect(PULSE_CLUSTERS.length - CLUSTERS.length).toBe(V.DESK_VIEW_TRIMMED.stories);
     expect(CRAWL.length - V.X_POSTS.length).toBe(V.DESK_VIEW_TRIMMED.xPosts);
     expect(PAPERS.length - V.PAPERS.length).toBe(V.DESK_VIEW_TRIMMED.papers);
-    const pinned = new Set([...V.WIRE_ROWS.map((w) => w.id), ...(V.LEAD_TODAY?.cluster_id ? [V.LEAD_TODAY.cluster_id] : [])]);
-    const dropped = PULSE_CLUSTERS.filter((c) => !KEPT.has(c.id));
-    const keptFree = RAW_KEPT.filter((c) => !pinned.has(c.id));
-    if (dropped.length && keptFree.length) {
-      const newestDropped = Math.max(...dropped.map((c) => Date.parse(c.at)));
-      expect(newestDropped).toBeLessThanOrEqual(Math.min(...keptFree.map((c) => Date.parse(c.at))));
-    }
   });
 
   test("Pulse rows (clusters + X) are identical as rendered — chips, N SRC, NEW, signal, security, summary", () => {

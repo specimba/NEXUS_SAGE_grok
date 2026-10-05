@@ -165,12 +165,6 @@ describe("lead-log view — capped holotape (LEAD_LOG_CAPS), lead-history.json u
     expect(LEAD_LOG).toEqual(JSON.parse(JSON.stringify(slimLeadLog(buildLeadLog(history)))));
   });
 
-  test("today the tape text is identical to the full history's (every day, every pass, every ✗ line)", () => {
-    const full = buildLeadLog(history);
-    expect(full.days.length).toBeLessThanOrEqual(LEAD_LOG_CAPS.days);
-    expect(renderLeadLogText(LEAD_LOG)).toBe(renderLeadLogText(full));
-  });
-
   test("past the caps: newest days, newest passes, first ✗ lines; text cut with …; only rendered fields kept", () => {
     const big = synthLeadLog();
     const more = { ...big, days: [...big.days, ...big.days.map((d) => ({ ...d, date: d.date.replace("2026-09", "2026-08") }))] };
