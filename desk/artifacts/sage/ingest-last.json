@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-05T11:16:19Z",
+  "stamped_at": "2026-10-05T15:20:35Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 224,
+      "duration_ms": 246,
       "paused_until": null,
       "reason": null
     },
@@ -18,7 +18,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 3372,
+      "duration_ms": 3230,
       "paused_until": null,
       "reason": null
     },
@@ -27,7 +27,7 @@
       "label": "OpenAlex",
       "status": "paused",
       "rows": 0,
-      "duration_ms": 2,
+      "duration_ms": 1,
       "paused_until": "2026-10-06T03:20:26Z",
       "reason": "paused_until 2026-10-06T03:20:26Z"
     },
@@ -36,7 +36,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 2,
+      "duration_ms": 477,
       "paused_until": null,
       "reason": null
     },
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 41,
-      "duration_ms": 8534,
+      "rows": 43,
+      "duration_ms": 8536,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 17639,
+      "duration_ms": 479,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 4481,
+      "duration_ms": 174,
       "paused_until": null,
       "reason": null
     },
@@ -72,7 +72,7 @@
       "label": "Google News",
       "status": "ok",
       "rows": 34,
-      "duration_ms": 6477,
+      "duration_ms": 173,
       "paused_until": null,
       "reason": null
     },
@@ -81,7 +81,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 2,
-      "duration_ms": 49,
+      "duration_ms": 174,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 334,
+      "duration_ms": 173,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 41114,
-    "sources_wall_ms": 17642,
-    "papers_lane_ms": 3603,
-    "slowest_source_ms": 17639,
+    "sources_ms": 13663,
+    "sources_wall_ms": 8537,
+    "papers_lane_ms": 3956,
+    "slowest_source_ms": 8536,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -114,9 +114,9 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 17975,
-    "startup_ms": 66,
-    "main_ms": 17985
+    "wall_ms": 8896,
+    "startup_ms": 34,
+    "main_ms": 8910
   },
   "multi_source_independent": 5,
   "stale_hours": 6,
@@ -125,17 +125,17 @@
     "multi_source_independent": 5,
     "multi_source_raw": 6,
     "self_reposts": 1,
-    "items_in": 206,
-    "clusters_out": 193,
-    "collapsed": 13,
+    "items_in": 208,
+    "clusters_out": 196,
+    "collapsed": 12,
     "multi_source": 5,
     "multi_member": 7,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 38,
+    "new_items": 6,
     "per_source": {
-      "hn-algolia": 41,
+      "hn-algolia": 43,
       "rss-lab": 104,
       "rss-security": 27,
       "gnews-rss": 34
@@ -258,7 +258,7 @@
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.703,
+        "score": 0.707,
         "members": [
           {
             "id": "hn:49955908",
@@ -277,21 +277,14 @@
         ]
       },
       {
-        "title": "I quit OpenAI because its culture is broken",
+        "title": "OpenAI safety leader quits, warning AI company's culture is 'broken'",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 3,
+        "size": 2,
         "score": 1,
         "members": [
-          {
-            "id": "hn:49944227",
-            "source": "hn-algolia",
-            "title": "I quit OpenAI because its culture is broken",
-            "at": "2026-10-03T13:46:34Z",
-            "publisher": null
-          },
           {
             "id": "hn:49948332",
             "source": "hn-algolia",
@@ -368,11 +361,11 @@
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 14
+      "hn_dropped": 16
     },
     "gnews_near_misses": [
       {
-        "score": 0.571,
+        "score": 0.58,
         "blocked": "time-window",
         "hours_apart": 36.6,
         "a": {
@@ -420,28 +413,6 @@
         ]
       },
       {
-        "score": 0.446,
-        "blocked": "time-window",
-        "hours_apart": 45.2,
-        "a": {
-          "id": "hn:49944227",
-          "source": "hn-algolia",
-          "title": "I quit OpenAI because its culture is broken",
-          "at": "2026-10-03T13:46:34Z"
-        },
-        "b": {
-          "id": "gnews:2f21a4c481ecb46d",
-          "source": "gnews-rss",
-          "title": "OpenAI Safety Worker Alleges Company's Culture Is Broken - Newsradio 600 KOGO",
-          "at": "2026-10-05T10:57:00Z"
-        },
-        "shared": [
-          "openai",
-          "cultur",
-          "broken"
-        ]
-      },
-      {
         "score": 0.379,
         "blocked": "below-threshold",
         "hours_apart": 2.6,
@@ -465,7 +436,7 @@
         ]
       },
       {
-        "score": 0.375,
+        "score": 0.377,
         "blocked": "time-window",
         "hours_apart": 41.9,
         "a": {
@@ -487,7 +458,7 @@
         ]
       },
       {
-        "score": 0.363,
+        "score": 0.361,
         "blocked": "below-threshold",
         "hours_apart": 21.4,
         "a": {
@@ -510,7 +481,7 @@
         ]
       },
       {
-        "score": 0.352,
+        "score": 0.354,
         "blocked": "below-threshold",
         "hours_apart": 4,
         "a": {
@@ -551,11 +522,33 @@
           "gemini",
           "think"
         ]
+      },
+      {
+        "score": 0.276,
+        "blocked": "time-window",
+        "hours_apart": 69.1,
+        "a": {
+          "id": "rss:nvidia:60ea0cfc7bea518f",
+          "source": "rss-lab",
+          "title": "NVIDIA DGX Spark 64GB Gives Developers More Ways to Build and Scale Local AI",
+          "at": "2026-10-02T13:00:39Z"
+        },
+        "b": {
+          "id": "gnews:3e955271e64ec482",
+          "source": "gnews-rss",
+          "title": "Building advertising for the way people use AI - OpenAI",
+          "at": "2026-10-05T10:04:58Z"
+        },
+        "shared": [
+          "way",
+          "build",
+          "ai"
+        ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.571,
+        "score": 0.58,
         "blocked": "time-window",
         "hours_apart": 36.6,
         "a": {
@@ -603,28 +596,6 @@
         ]
       },
       {
-        "score": 0.446,
-        "blocked": "time-window",
-        "hours_apart": 45.2,
-        "a": {
-          "id": "hn:49944227",
-          "source": "hn-algolia",
-          "title": "I quit OpenAI because its culture is broken",
-          "at": "2026-10-03T13:46:34Z"
-        },
-        "b": {
-          "id": "gnews:2f21a4c481ecb46d",
-          "source": "gnews-rss",
-          "title": "OpenAI Safety Worker Alleges Company's Culture Is Broken - Newsradio 600 KOGO",
-          "at": "2026-10-05T10:57:00Z"
-        },
-        "shared": [
-          "openai",
-          "cultur",
-          "broken"
-        ]
-      },
-      {
         "score": 0.379,
         "blocked": "below-threshold",
         "hours_apart": 2.6,
@@ -648,7 +619,7 @@
         ]
       },
       {
-        "score": 0.375,
+        "score": 0.377,
         "blocked": "time-window",
         "hours_apart": 41.9,
         "a": {
@@ -670,7 +641,7 @@
         ]
       },
       {
-        "score": 0.363,
+        "score": 0.361,
         "blocked": "below-threshold",
         "hours_apart": 21.4,
         "a": {
@@ -693,7 +664,7 @@
         ]
       },
       {
-        "score": 0.352,
+        "score": 0.354,
         "blocked": "below-threshold",
         "hours_apart": 4,
         "a": {
@@ -715,7 +686,7 @@
         ]
       },
       {
-        "score": 0.31,
+        "score": 0.319,
         "blocked": "thin-overlap",
         "hours_apart": 71.8,
         "a": {
@@ -736,6 +707,27 @@
           "6",
           "astra"
         ]
+      },
+      {
+        "score": 0.304,
+        "blocked": "thin-overlap",
+        "hours_apart": 473,
+        "a": {
+          "id": "rss:deepmind:947e89eaa83a27ae",
+          "source": "rss-lab",
+          "title": "Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking",
+          "at": "2026-09-15T17:05:57Z"
+        },
+        "b": {
+          "id": "gnews:74ef6f7cda895a01",
+          "source": "gnews-rss",
+          "title": "Google Adjusts Gemini Access and Adds Deep Think to Pro Tier - The Mac Observer",
+          "at": "2026-10-05T10:07:30Z"
+        },
+        "shared": [
+          "gemini",
+          "think"
+        ]
       }
     ]
   },
@@ -743,44 +735,44 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 1,
+      "streak_ok": 2,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 79,
+      "streak_ok": 80,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 79,
+      "streak_ok": 80,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 79,
+      "streak_ok": 80,
       "streak_fail": 0,
       "items_last": 34
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 79,
+      "streak_ok": 80,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 79,
+      "streak_ok": 80,
       "streak_fail": 0,
-      "items_last": 41
+      "items_last": 43
     },
     {
       "id": "openalex",
@@ -792,27 +784,27 @@
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 8,
+      "streak_ok": 9,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 79,
+      "streak_ok": 80,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 79,
+      "streak_ok": 80,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.005041388888888889,
+    "hours": 0.002663611111111111,
     "stale": false
   },
   "hf": {
@@ -856,10 +848,10 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "enriched": 1,
-    "query": "On-Policy or Off-Policy Learning? A Systematic Study of Distillation Dynamics",
+    "query": "Does Learning Protein Folding Generalize to Broader Reasoning?",
     "mode": "bibliographic",
-    "from_cache": true,
-    "searches": 0,
+    "from_cache": false,
+    "searches": 1,
     "brief": false,
     "pulse_lead": false,
     "papers_enrich_only": true,
@@ -867,12 +859,12 @@
     "merge_notes": [],
     "sample": [
       {
-        "id": "2609.35259",
-        "crossrefDoi": "https://doi.org/10.1109/tnnls.2024.3373749/mm1",
-        "issued": null,
-        "type": "component",
+        "id": "2609.38879",
+        "crossrefDoi": "https://doi.org/10.1101/2020.08.17.250985",
+        "issued": "2020-08-17",
+        "type": "posted-content",
         "openalexId": null,
-        "doi": "https://doi.org/10.1109/tnnls.2024.3373749/mm1",
+        "doi": "https://doi.org/10.1101/2020.08.17.250985",
         "enrichOnly": false
       }
     ]
@@ -881,7 +873,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 41,
+    "count": 43,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -898,15 +890,9 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 14,
+    "ai_dropped": 16,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
-      {
-        "id": "hn:49944227",
-        "tag": "rest",
-        "score": 476,
-        "text": "I quit OpenAI because its culture is broken"
-      },
       {
         "id": "hn:49948332",
         "tag": "rest",
@@ -916,8 +902,14 @@
       {
         "id": "hn:49946567",
         "tag": "rest",
-        "score": 235,
+        "score": 237,
         "text": "Getting the most out of Opus 5.5 in Claude and Claude Code"
+      },
+      {
+        "id": "hn:49950052",
+        "tag": "rest",
+        "score": 164,
+        "text": "Religious scholars met with Anthropic"
       }
     ]
   },
@@ -933,47 +925,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "https://openai.com/news/rss.xml",
+        "url": "(cache:openai)",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "https://deepmind.google/blog/rss.xml",
+        "url": "(cache:deepmind)",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "https://blog.google/technology/ai/rss/",
+        "url": "(cache:google-ai)",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "https://huggingface.co/blog/feed.xml",
+        "url": "(cache:huggingface)",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "https://mistral.ai/rss.xml",
+        "url": "(cache:mistral)",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "https://blogs.nvidia.com/feed/",
+        "url": "(cache:nvidia)",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "https://developer.nvidia.com/blog/feed",
+        "url": "(cache:nvidia-dev)",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
+        "url": "(cache:ms-research)",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "(cache:google-research)",
+        "url": "https://research.google/blog/rss/",
         "count": 12
       }
     ],
@@ -1019,17 +1011,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "https://blog.trailofbits.com/feed/",
+        "url": "(cache:trailofbits)",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "https://blog.fox-it.com/feed/",
+        "url": "(cache:fox-it)",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "https://projectzero.google/feed.xml",
+        "url": "(cache:projectzero)",
         "count": 5
       }
     ],
@@ -1116,7 +1108,7 @@
       {
         "id": "gnews:8e16c65bfd16491e",
         "anchor_id": "hn:49955908",
-        "score": 0.697,
+        "score": 0.699,
         "title": "Scoop: A powerful new model from startup Reflection is set to shake up the AI race - axios.com",
         "publisher": "axios.com",
         "self_repost": false
@@ -1124,7 +1116,7 @@
       {
         "id": "gnews:bce1098d3529c1f5",
         "anchor_id": "hn:49959361",
-        "score": 0.957,
+        "score": 0.958,
         "title": "Legal risks pile up for Altman as OpenAI uncovers dozens of hacks - Financial Times",
         "publisher": "Financial Times",
         "self_repost": false
@@ -1139,9 +1131,9 @@
       }
     ],
     "http_status": 200,
-    "content_type": "application/xml; charset=utf-8",
+    "content_type": null,
     "format": "rss2",
-    "from_cache": false,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1231,8 +1223,8 @@
       "MITRE",
       "JFrog"
     ],
-    "searches": 1,
-    "from_cache": false,
+    "searches": 0,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "deny_grounding_only": true,
