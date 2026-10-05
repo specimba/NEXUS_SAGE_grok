@@ -16,7 +16,7 @@ export type RssSecurityRow = {
   cluster_id?: string;
 };
 
-export const RSS_SECURITY_AT = "2026-10-04T23:12:32Z";
+export const RSS_SECURITY_AT = "2026-10-05T03:20:06Z";
 
 export const RSS_SECURITY: RssSecurityRow[] = [
   { id: "rss-sec:trailofbits:f8144ece9a9d92ce", lab: "trailofbits" as const, title: "SequenceHash: multihashing for the rest of us", link: "https://blog.trailofbits.com/2026/10/02/sequencehash-multihashing-for-the-rest-of-us/", published: "2026-10-02T11:00:00Z", summary: "Multihashing is one of those cryptographic tasks that’s easy not to think about too much. This is unfortunate, because multihashing is a common stumbling point when cryptographers try to use hashes. As part of our goal to “fix software, not bugs,” Trail of Bits is introducing SequenceHash and its sister function SequenceMAC , a pair of related hash constructions that bring secure multihashing to…", source: "rss-security" as const, tag: "rest" as const, first_seen: "2026-10-02T11:18:28Z", is_new: false, cluster_id: "cl:rss-sec:trailofbits:f8144ece9a9d92ce" },

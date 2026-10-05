@@ -23,7 +23,6 @@ export const SHELF: ShelfItem[] = [
   { href: "https://arxiv.org/abs/2610.02204", label: "arxiv.org/abs/2610.02204", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.02203", label: "arxiv.org/abs/2610.02203", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.02202", label: "arxiv.org/abs/2610.02202", reason: "arxiv-shelf" as const },
-  { href: "https://github.com/agentfront/enclave", label: "agentfront/enclave", reason: "github-search-shelf" as const },
-  { href: "https://github.com/hyperlight-dev/hyperagent", label: "hyperlight-dev/hyperagent", reason: "github-search-shelf" as const },
-  { href: "https://github.com/roerbakei/sandboxai", label: "roerbakei/sandboxai", reason: "github-search-shelf" as const },
+  { href: "https://github.com/seikaikyo/ai-red-team", label: "seikaikyo/ai-red-team", reason: "github-search-shelf" as const },
+  { href: "https://github.com/AKIVA-AI/toolkit-policy-test-bench", label: "AKIVA-AI/toolkit-policy-test-bench", reason: "github-search-shelf" as const },
 ];
