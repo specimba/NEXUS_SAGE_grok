@@ -105,7 +105,7 @@ Gates:
 <!-- OPS-STATUS:BEGIN -->
 ## OPS status (auto · replaced each A1 run, not appended)
 
-- **Updated** `2026-10-05T15:21:12Z` · **last crawl** `2026-10-05T15:20:35Z` · **last pack** `sage-pack-003-20261005T152044Z.tar.gz` · **last A2** OK — DUE→WROTE→dual-home · sage-pack-003-20261005T111713Z.tar.gz (2026-10-05T11:17Z)
+- **Updated** `2026-10-05T19:22:45Z` · **last crawl** `2026-10-05T19:21:52Z` · **last pack** `sage-pack-003-20261005T192210Z.tar.gz` · **last A2** HOLD — no pack:export (2026-10-05T15:21Z)
 
 Run history lives in `logs/a1-stale-ingest.log`, `logs/a2-digest.log` and the crawl commits; dry-run checklist in `refs/A1-DRY-RUN.md`.
 <!-- OPS-STATUS:END -->
