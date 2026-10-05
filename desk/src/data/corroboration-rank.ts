@@ -3,8 +3,8 @@ import type { MovedRow, RankSnapshot } from "@/lib/corroboration";
 
 export const RANK_CURRENT: RankSnapshot = {
   "schema": 1,
-  "at": "2026-10-05T03:20:27.065Z",
-  "crawl_at": "2026-10-05T03:20:06Z",
+  "at": "2026-10-05T07:13:37.809Z",
+  "crawl_at": "2026-10-05T07:13:17Z",
   "lead_id": "hf-incident",
   "rows": [
     {
@@ -67,8 +67,8 @@ export const RANK_CURRENT: RankSnapshot = {
 
 export const RANK_PREV: RankSnapshot | null = {
   "schema": 1,
-  "at": "2026-10-04T23:12:41.918Z",
-  "crawl_at": "2026-10-04T23:12:32Z",
+  "at": "2026-10-05T03:20:27.065Z",
+  "crawl_at": "2026-10-05T03:20:06Z",
   "lead_id": "hf-incident",
   "rows": [
     {
@@ -87,17 +87,15 @@ export const RANK_PREV: RankSnapshot | null = {
       "id": "astra-depth",
       "rank": 2,
       "base_rank": 2,
-      "sources": 5,
+      "sources": 4,
       "source_keys": [
         "crawl:hn",
         "crawl:lab:nvidia",
-        "crawl:pub:mixed reality news",
         "x:@amir",
         "x:@steph_palazzolo"
       ],
       "crawl_hits": [
-        "cl:gnews:08662303444d0f57",
-        "cl:hn:49954402",
+        "cl:hn:49959056",
         "cl:hn:49943964",
         "cl:rss:nvidia:6e9bdaa4a319db62"
       ],
@@ -146,7 +144,7 @@ export const RANK_MOVED: MovedRow[] = [
     "status": "same",
     "prev_rank": 2,
     "rank": 2,
-    "prev_sources": 5,
+    "prev_sources": 4,
     "sources": 4,
     "by_corroboration": false
   },

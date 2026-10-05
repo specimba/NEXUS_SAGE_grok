@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-05T03:20:06Z",
+  "stamped_at": "2026-10-05T07:13:17Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 245,
+      "duration_ms": 180,
       "paused_until": null,
       "reason": null
     },
@@ -17,26 +17,26 @@
       "id": "arxiv",
       "label": "arXiv",
       "status": "timeout",
-      "rows": 16,
+      "rows": 10,
       "duration_ms": 20001,
       "paused_until": null,
-      "reason": "timeout after 20000ms budget · last good: 11 cached enrich + 5 kept shelf"
+      "reason": "timeout after 20000ms budget · last good: 5 cached enrich + 5 kept shelf"
     },
     {
       "id": "openalex",
       "label": "OpenAlex",
-      "status": "fail",
+      "status": "paused",
       "rows": 0,
-      "duration_ms": 157,
+      "duration_ms": 2,
       "paused_until": "2026-10-06T03:20:26Z",
-      "reason": "HTTP 429"
+      "reason": "paused_until 2026-10-06T03:20:26Z"
     },
     {
       "id": "crossref",
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 2,
+      "duration_ms": 1,
       "paused_until": null,
       "reason": null
     },
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 40,
-      "duration_ms": 8898,
+      "rows": 42,
+      "duration_ms": 8413,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 16811,
+      "duration_ms": 436,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 4335,
+      "duration_ms": 142,
       "paused_until": null,
       "reason": null
     },
@@ -72,7 +72,7 @@
       "label": "Google News",
       "status": "ok",
       "rows": 43,
-      "duration_ms": 7126,
+      "duration_ms": 142,
       "paused_until": null,
       "reason": null
     },
@@ -81,7 +81,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 2,
-      "duration_ms": 379,
+      "duration_ms": 142,
       "paused_until": null,
       "reason": null
     },
@@ -90,15 +90,15 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 2422,
+      "duration_ms": 142,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 60376,
-    "sources_wall_ms": 20412,
-    "papers_lane_ms": 20412,
+    "sources_ms": 29601,
+    "sources_wall_ms": 20193,
+    "papers_lane_ms": 20191,
     "slowest_source_ms": 20001,
     "concurrent": true,
     "budget_ms": {
@@ -116,9 +116,9 @@
     "timed_out": [
       "arxiv"
     ],
-    "wall_ms": 20712,
-    "startup_ms": 33,
-    "main_ms": 20722
+    "wall_ms": 20488,
+    "startup_ms": 32,
+    "main_ms": 20498
   },
   "multi_source_independent": 6,
   "stale_hours": 6,
@@ -127,22 +127,54 @@
     "multi_source_independent": 6,
     "multi_source_raw": 6,
     "self_reposts": 0,
-    "items_in": 214,
-    "clusters_out": 191,
-    "collapsed": 23,
+    "items_in": 216,
+    "clusters_out": 192,
+    "collapsed": 24,
     "multi_source": 6,
     "multi_member": 13,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 41,
+    "new_items": 1,
     "per_source": {
-      "hn-algolia": 40,
+      "hn-algolia": 42,
       "rss-lab": 104,
       "rss-security": 27,
       "gnews-rss": 43
     },
     "multi_source_clusters": [
+      {
+        "title": "Anthropic reported diary entry to police, woman faces felony charge",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 3,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:49961057",
+            "source": "hn-algolia",
+            "title": "Anthropic reported diary entry to police, woman faces felony charge",
+            "at": "2026-10-05T05:37:40Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:49958089",
+            "source": "hn-algolia",
+            "title": "Florida woman used Claude as a diary, then Anthropic reported an entry to police",
+            "at": "2026-10-04T21:29:59Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:086c85268c7f7718",
+            "source": "gnews-rss",
+            "title": "Florida woman used Claude as a diary, then Anthropic reported an entry to police - TechSpot",
+            "at": "2026-10-04T13:37:00Z",
+            "publisher": "TechSpot"
+          }
+        ]
+      },
       {
         "title": "Legal risks pile up for Altman as OpenAI uncovers hacks",
         "sources": [
@@ -186,31 +218,6 @@
             "title": "FirstFT: Legal risks pile up for OpenAI - Financial Times",
             "at": "2026-10-04T21:45:18Z",
             "publisher": "Financial Times"
-          }
-        ]
-      },
-      {
-        "title": "Florida woman used Claude as a diary, then Anthropic reported an entry to police",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:49958089",
-            "source": "hn-algolia",
-            "title": "Florida woman used Claude as a diary, then Anthropic reported an entry to police",
-            "at": "2026-10-04T21:29:59Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:086c85268c7f7718",
-            "source": "gnews-rss",
-            "title": "Florida woman used Claude as a diary, then Anthropic reported an entry to police - TechSpot",
-            "at": "2026-10-04T13:37:00Z",
-            "publisher": "TechSpot"
           }
         ]
       },
@@ -359,9 +366,33 @@
       ],
       "gnews_shown_dropped": [],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 12
+      "hn_dropped": 11
     },
     "gnews_near_misses": [
+      {
+        "score": 0.567,
+        "blocked": "below-threshold",
+        "hours_apart": 16,
+        "a": {
+          "id": "hn:49961057",
+          "source": "hn-algolia",
+          "title": "Anthropic reported diary entry to police, woman faces felony charge",
+          "at": "2026-10-05T05:37:40Z"
+        },
+        "b": {
+          "id": "gnews:086c85268c7f7718",
+          "source": "gnews-rss",
+          "title": "Florida woman used Claude as a diary, then Anthropic reported an entry to police - TechSpot",
+          "at": "2026-10-04T13:37:00Z"
+        },
+        "shared": [
+          "anthropic",
+          "diary",
+          "entry",
+          "polic",
+          "woman"
+        ]
+      },
       {
         "score": 0.545,
         "blocked": "below-threshold",
@@ -433,7 +464,7 @@
         ]
       },
       {
-        "score": 0.408,
+        "score": 0.407,
         "blocked": "time-window",
         "hours_apart": 34,
         "a": {
@@ -479,7 +510,7 @@
         ]
       },
       {
-        "score": 0.365,
+        "score": 0.364,
         "blocked": "time-window",
         "hours_apart": 41.3,
         "a": {
@@ -521,30 +552,33 @@
           "safety",
           "leader"
         ]
-      },
-      {
-        "score": 0.348,
-        "blocked": "thin-overlap",
-        "hours_apart": 32.4,
-        "a": {
-          "id": "hn:49945630",
-          "source": "hn-algolia",
-          "title": "Changes to Gemini model access and limits",
-          "at": "2026-10-03T16:29:12Z"
-        },
-        "b": {
-          "id": "gnews:2be7b4ca72f97a82",
-          "source": "gnews-rss",
-          "title": "Google Gemini will be limited further for free Personal Accounts - TechNave",
-          "at": "2026-10-05T00:53:47Z"
-        },
-        "shared": [
-          "gemini",
-          "limit"
-        ]
       }
     ],
     "near_misses": [
+      {
+        "score": 0.567,
+        "blocked": "below-threshold",
+        "hours_apart": 16,
+        "a": {
+          "id": "hn:49961057",
+          "source": "hn-algolia",
+          "title": "Anthropic reported diary entry to police, woman faces felony charge",
+          "at": "2026-10-05T05:37:40Z"
+        },
+        "b": {
+          "id": "gnews:086c85268c7f7718",
+          "source": "gnews-rss",
+          "title": "Florida woman used Claude as a diary, then Anthropic reported an entry to police - TechSpot",
+          "at": "2026-10-04T13:37:00Z"
+        },
+        "shared": [
+          "anthropic",
+          "diary",
+          "entry",
+          "polic",
+          "woman"
+        ]
+      },
       {
         "score": 0.545,
         "blocked": "below-threshold",
@@ -616,7 +650,7 @@
         ]
       },
       {
-        "score": 0.408,
+        "score": 0.407,
         "blocked": "time-window",
         "hours_apart": 34,
         "a": {
@@ -662,7 +696,7 @@
         ]
       },
       {
-        "score": 0.365,
+        "score": 0.364,
         "blocked": "time-window",
         "hours_apart": 41.3,
         "a": {
@@ -684,7 +718,7 @@
         ]
       },
       {
-        "score": 0.36,
+        "score": 0.361,
         "blocked": "time-window",
         "hours_apart": 597.6,
         "a": {
@@ -703,72 +737,51 @@
           "sovereign",
           "openweight"
         ]
-      },
-      {
-        "score": 0.356,
-        "blocked": "thin-overlap",
-        "hours_apart": 736.9,
-        "a": {
-          "id": "hn:49942592",
-          "source": "hn-algolia",
-          "title": "Gemini ending free use of Flash and Pro models",
-          "at": "2026-10-03T09:13:19Z"
-        },
-        "b": {
-          "id": "rss:deepmind:63b19b50b4021cb5",
-          "source": "rss-lab",
-          "title": "Introducing Gemini 3.8 Flash and 3.8 Flash Cyber",
-          "at": "2026-09-02T16:18:31Z"
-        },
-        "shared": [
-          "gemini",
-          "flash"
-        ]
       }
     ]
   },
   "source_health": [
     {
       "id": "arxiv",
-      "state": "flaky",
+      "state": "fail",
       "streak_ok": 0,
-      "streak_fail": 1,
-      "items_last": 16
+      "streak_fail": 2,
+      "items_last": 10
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 77,
+      "streak_ok": 78,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 77,
+      "streak_ok": 78,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 77,
+      "streak_ok": 78,
       "streak_fail": 0,
       "items_last": 43
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 77,
+      "streak_ok": 78,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 77,
+      "streak_ok": 78,
       "streak_fail": 0,
-      "items_last": 40
+      "items_last": 42
     },
     {
       "id": "openalex",
@@ -780,27 +793,27 @@
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 6,
+      "streak_ok": 7,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 77,
+      "streak_ok": 78,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 77,
+      "streak_ok": 78,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.005841666666666667,
+    "hours": 0.00577,
     "stale": false
   },
   "hf": {
@@ -810,7 +823,7 @@
   },
   "arxiv": {
     "ok": false,
-    "enriched": 11,
+    "enriched": 5,
     "shelf": 5,
     "timed_out": true,
     "budget_ms": 20000,
@@ -820,18 +833,18 @@
   "openalex": {
     "ok": false,
     "soft_fail": true,
-    "soft_fail_reason": "HTTP 429",
+    "soft_fail_reason": "paused_until 2026-10-06T03:20:26Z",
     "enriched": 0,
     "secondary": 0,
     "query": "LLM agent",
     "mode": "search",
     "from_cache": false,
-    "searches": 1,
+    "searches": 0,
     "retries": 0,
-    "status": "fail",
+    "status": "paused",
     "paused_until": "2026-10-06T03:20:26Z",
     "pause_reason": "7 consecutive failures → 24h",
-    "requests": 1,
+    "requests": 0,
     "auth": "anon",
     "brief": false,
     "pulse_lead": false,
@@ -869,7 +882,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 40,
+    "count": 42,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -886,19 +899,19 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 12,
+    "ai_dropped": 11,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
         "id": "hn:49942706",
         "tag": "rest",
-        "score": 656,
+        "score": 666,
         "text": "Kolibri: A Sovereign Open-Weight Model"
       },
       {
         "id": "hn:49944227",
         "tag": "rest",
-        "score": 463,
+        "score": 470,
         "text": "I quit OpenAI because its culture is broken"
       },
       {
@@ -921,47 +934,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "https://openai.com/news/rss.xml",
+        "url": "(cache:openai)",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "https://deepmind.google/blog/rss.xml",
+        "url": "(cache:deepmind)",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "https://blog.google/technology/ai/rss/",
+        "url": "(cache:google-ai)",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "https://huggingface.co/blog/feed.xml",
+        "url": "(cache:huggingface)",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "https://mistral.ai/rss.xml",
+        "url": "(cache:mistral)",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "https://blogs.nvidia.com/feed/",
+        "url": "(cache:nvidia)",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "https://developer.nvidia.com/blog/feed",
+        "url": "(cache:nvidia-dev)",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
+        "url": "(cache:ms-research)",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "(cache:google-research)",
+        "url": "https://research.google/blog/rss/",
         "count": 12
       }
     ],
@@ -1007,17 +1020,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "https://blog.trailofbits.com/feed/",
+        "url": "(cache:trailofbits)",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "https://blog.fox-it.com/feed/",
+        "url": "(cache:fox-it)",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "https://projectzero.google/feed.xml",
+        "url": "(cache:projectzero)",
         "count": 5
       }
     ],
@@ -1072,7 +1085,7 @@
       {
         "id": "gnews:9e08fa904f0f58b5",
         "anchor_id": "hn:49959361",
-        "score": 0.752,
+        "score": 0.754,
         "title": "Sam Altman faces new legal risks as OpenAI uncovers hacks - The News International",
         "publisher": "The News International",
         "self_repost": false
@@ -1151,9 +1164,9 @@
       }
     ],
     "http_status": 200,
-    "content_type": "application/xml; charset=utf-8",
+    "content_type": null,
     "format": "empty",
-    "from_cache": false,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1218,9 +1231,9 @@
     "soft_fail_reason": null,
     "query": "LLM red team toolkit",
     "shelf": 2,
-    "from_cache": false,
-    "searches": 1,
-    "rate_limit_remaining": 9,
+    "from_cache": true,
+    "searches": 0,
+    "rate_limit_remaining": null,
     "brief": false,
     "pulse_lead": false,
     "shelf_only": true,
@@ -1249,8 +1262,8 @@
       "MITRE",
       "JFrog"
     ],
-    "searches": 2,
-    "from_cache": false,
+    "searches": 0,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "deny_grounding_only": true,
