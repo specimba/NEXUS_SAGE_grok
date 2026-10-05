@@ -6,7 +6,9 @@
 # copy into the gh-pages worktree (default /workspace/nexus-sage-pages) · one normal commit on top of the previous
 # gh-pages commit (the first run starts the branch) · git push origin gh-pages. Never force, never rewrite.
 # Verify: every root-relative asset reference starts with /NEXUS_SAGE_grok/ · .nojekyll present · no .env* ·
-# no token-like strings / secret values · no /home/box or /workspace paths · only known build files.
+# no token-like strings / secret values · no /home/box or /workspace paths · only known build files ·
+# per-HTML font classes defined in its linked CSS + no missing _next/static (scripts/pages-asset-check.ts) ·
+# headless font-check on a local serve of out-pages under the basePath. Build starts from a wiped .next + out-pages.
 # Auth: plain `origin` + the git credential helper. Identity from GIT_AUTHOR_* / GIT_COMMITTER_* (defaults below).
 set -euo pipefail
 set +x
@@ -31,7 +33,12 @@ if pgrep -f '[n]ext build' >/dev/null 2>&1; then die "another 'next build' is ru
 
 # ── 1. build ──
 log "build PAGES=1 → $OUT"
-rm -rf "$OUT"
+# Clean build every time. next 15 `output:"export"` still compiles into desk/.next (distDir only moves the EXPORT to
+# out-pages), so the :3000 build and the Pages build share .next/cache/webpack. On 2026-10-06 02:41 (gh-pages f286e1c)
+# the server compile re-ran next/font (JetBrains → __variable_0466e9) while the client compile restored the CSS +
+# layout chunk from that cache (__variable_210582) ⇒ HTML used a class its CSS never defined ⇒ Times New Roman.
+# desk/out (what :3000 serves) is NOT touched: the Pages build never writes it, and :3000 reads only desk/out.
+rm -rf "$OUT" "$DESK/.next"
 ( cd "$DESK" && PAGES=1 bun run build ) > /tmp/pages-publish-build.log 2>&1 || { tail -30 /tmp/pages-publish-build.log >&2; die "PAGES build failed (log /tmp/pages-publish-build.log)"; }
 [ -f "$OUT/index.html" ] || die "$OUT/index.html missing after build"
 : > "$OUT/.nojekyll"
@@ -78,6 +85,21 @@ extra="$(cd "$OUT" && find . -type f | sed 's#^\./##' | while read -r f; do
 done)"
 [ -z "$extra" ] || fails+=("unexpected files (not build output / tracked public): $(echo "$extra" | head -8 | tr '\n' ' ')")
 
+# 2f. asset integrity: per HTML, every __variable_* class it (and its linked JS) uses is defined in the CSS that HTML
+#     links, and every hashed _next/static URL in HTML / RSC payload / linked CSS+JS exists in $OUT (basePath stripped).
+( cd "$DESK" && bun scripts/pages-asset-check.ts "$OUT" "$BASE" ) > /tmp/pages-asset-check.log 2>&1 \
+  || fails+=("asset/font-class integrity: $(grep -E '^ - ' /tmp/pages-asset-check.log | head -3 | tr '\n' ' ')")
+# 2g. real-browser font-check against a local static serve of $OUT under $BASE (same check as the live gate).
+if [ "${#fails[@]}" -eq 0 ] && [ "${PAGES_SKIP_LOCAL_FONTCHECK:-0}" != "1" ]; then
+  fport=$(( 3900 + RANDOM % 90 ))
+  bun "$DESK/scripts/serve-out.ts" --host 127.0.0.1 --port "$fport" --root "$OUT" --base "$BASE" > /tmp/pages-serve-local.log 2>&1 &
+  spid=$!
+  for _ in $(seq 1 50); do curl -fs -o /dev/null "http://127.0.0.1:$fport$BASE/" && break; sleep 0.1; done
+  ( cd "$DESK" && bun scripts/font-check.ts "http://127.0.0.1:$fport$BASE/" ) > /tmp/pages-font-check-local.log 2>&1 \
+    || fails+=("local font-check on $OUT under $BASE failed: $(head -4 /tmp/pages-font-check-local.log | tr '\n' ' ')")
+  kill "$spid" 2>/dev/null || true; wait "$spid" 2>/dev/null || true
+fi
+
 if [ "${#fails[@]}" -gt 0 ]; then
   for f in "${fails[@]}"; do echo "pages-publish CHECK FAIL: $f" >&2; done
   die "${#fails[@]} check(s) failed — nothing committed or pushed"
@@ -113,6 +135,9 @@ fi
 # Replace the tree with the verified output; stage exactly those paths (+ deletions of tracked files).
 find "$WT" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
 cp -a "$OUT/." "$WT/"
+# The worktree must now equal the verified output (no stale leftovers) and pass the same asset gate.
+diff -rq --exclude=.git "$OUT" "$WT" >/dev/null || die "worktree $WT differs from $OUT after copy — nothing committed"
+( cd "$DESK" && bun scripts/pages-asset-check.ts "$WT" "$BASE" ) >/dev/null 2>&1 || die "asset gate failed on worktree $WT — nothing committed"
 if git rev-parse -q --verify HEAD >/dev/null; then git add -u -- .; fi
 ( cd "$OUT" && find . -type f -print0 ) | git add --pathspec-from-file=- --pathspec-file-nul
 if git diff --cached --quiet 2>/dev/null && git rev-parse -q --verify HEAD >/dev/null; then
