@@ -82,7 +82,7 @@ export function checkAssets(dir: string, basePath = "/NEXUS_SAGE_grok"): AssetCh
   return { ok: errors.length === 0, errors, checked: { html: htmls.length, css: nCss, classes: nCls, refs: nRefs } };
 }
 
-if (import.meta.main) {
+if ((import.meta as ImportMeta & { main?: boolean }).main) {
   const dir = process.argv[2];
   if (!dir || !existsSync(dir)) { console.error("usage: bun scripts/pages-asset-check.ts <dir> [basePath]"); process.exit(2); }
   const r = checkAssets(dir, process.argv[3] ?? "/NEXUS_SAGE_grok");
