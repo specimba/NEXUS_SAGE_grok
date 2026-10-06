@@ -54,7 +54,7 @@ Before/after of Pulse (SIG→UP) and Papers (unchanged UP) at 1280 and 390 → G
 | F | Gmail keyword search — see PASS-F-GMAIL-NEWS.md |
 | C | Dates |
 | B | Digest UI stamp |
-| E | Session taste only |
+| E | Session taste only — see PASS-E-SESSION-TASTE.md |
 | A | Cycle unlock — Digest titles vs `CYCLE.003` (Architect unlock policy later) |
 
 ## Land order
