@@ -33,14 +33,18 @@ export const ABSTRACT_CHARS = 600;
  *   First Load JS for `/` = shared 102.6 kB + page ≈ 8.3 kB of other page JS + page chunk (≈ 29.1 kB gz of desk code
  *   + the desk-view data, which costs ≈ 1 byte of chunk gz per byte of `gzip -9 src/data/desk-view.ts`). Gate 185 kB.
  *   Row and field caps bound every row, but every lane at its row cap with every field at max (synthetic worst case,
- *   331 crawl items with 640-char links) is far over any budget, so the generator also enforces `gzBytes`: it drops
- *   the oldest unpinned stories until `gzip -9(desk-view.ts) ≤ gzBytes`. Worst case built at 41 385 B → 181 kB; at the
+ *   331 crawl items) is far over any budget, so the generator also enforces `gzBytes`: it drops the oldest unpinned
+ *   stories until `gzip -9(desk-view.ts) ≤ gzBytes` (and, only if pins + fixed lanes alone overflow, the oldest papers,
+ *   then X posts). 2026-10-06, every story link at LINK_MAX 2048 random chars: worst seed 41 892 B → First Load 181.6 kB. Worst case built at 41 385 B → 181 kB; at the
  *   full 41 900 B ≈ 181.8 kB — ≥ 3 kB under the gate on ANY crawl. Real 07:12:59Z crawl: 43 035 B uncapped → 6 oldest
  *   stories (fox-it security posts, 2023-11 … 2024-04) dropped → 41 802 B → 181 kB.
  *   Row caps ≈ 1.5× that crawl (hn 59 · gnews 30 · rss-labs 104 · rss-security 27 · X 7 · papers 24); field caps sit
  *   above every value seen (title ≤144 · publisher ≤19 · link ≤502 · X take ≤70 · X link ≤54 · paper title ≤112 · paper
  *   link ≤32), so no kept row's text changes. Raising gzBytes needs a new worst-case build (bun scripts/desk-view-worst.ts).
  */
+/** Longest story link kept (chars). Longer = broken data → story dropped (pinned stories survive). No redirect resolving. */
+export const LINK_MAX = 2048;
+
 export const DESK_VIEW_CAPS = {
   /** Crawl items kept per source (counted over kept stories; a story is dropped whole, oldest first). */
   items: { hn: 90, gnews: 45, rss: 156, "rss-sec": 40 } as Record<string, number>,
@@ -48,8 +52,13 @@ export const DESK_VIEW_CAPS = {
   xPosts: 12,
   /** Papers (lowest arXiv id = oldest dropped first; feed order kept). */
   papers: 36,
-  /** Per-field characters. Over-long text is cut with "…"; links cannot be cut, so an over-long URL drops its story. */
-  chars: { title: 200, drawerTitle: 200, publisher: 40, take: 280, paperTitle: 240, url: 640, xUrl: 128, paperUrl: 64 },
+  /**
+   * Per-field characters. Over-long text is cut with "…". Links are never cut: story links (GNews redirects included)
+   * ship whole up to `url` = LINK_MAX (2048) — past that the link is broken data and the story is dropped (unless
+   * pinned). X / arXiv links have fixed shapes (x.com/<user>/status/<id>, arxiv.org/abs/<id>); xUrl / paperUrl stay
+   * shape checks, since 36 papers × 2 links at 2048 could not fit gzBytes (papers are not budget-dropped).
+   */
+  chars: { title: 200, drawerTitle: 200, publisher: 40, take: 280, paperTitle: 240, url: LINK_MAX, xUrl: 128, paperUrl: 64 },
   /** Hard budget: gzip -9 bytes of the generated src/data/desk-view.ts. */
   gzBytes: 41_900,
 } as const;
@@ -58,6 +67,10 @@ export const DESK_VIEW_CAPS = {
 export function clip(s: string, n: number): string {
   return s.length > n ? `${s.slice(0, n - 1).trimEnd()}…` : s;
 }
+
+type Widen<T> = { [K in keyof T]: T[K] extends number ? number : Widen<T[K]> };
+/** DESK_VIEW_CAPS with plain number fields (the budget fallback in desk-view-module.ts lowers papers / xPosts). */
+export type DeskViewCaps = Widen<typeof DESK_VIEW_CAPS>;
 
 /** GNews titles end in " - Publisher"; the drawer / Pulse headline drop that tail. */
 export function stripPublisher(title: string, publisher: string): string {
@@ -157,7 +170,7 @@ export type DeskViewTrim = { stories: number; items: number; xPosts: number; pap
 export type DeskViewOpts = {
   /** Extra oldest unpinned stories to drop (the gzip-budget loop in desk-view-module.ts raises this). */
   drop?: number;
-  caps?: typeof DESK_VIEW_CAPS;
+  caps?: DeskViewCaps;
 };
 
 const ts = (iso: string | undefined | null) => Date.parse(iso ?? "") || 0;
@@ -234,7 +247,7 @@ export function buildDeskView(i: DeskViewInput, opts: DeskViewOpts = {}): DeskVi
     .map(({ c, idx }) => ({ c: { ...c, title: clip(c.title, C.title) }, idx }));
   // Operator X posts: newest `xPosts` kept (feed order kept), take cut to `take`, over-long links out.
   const xOk = i.xPosts.filter((p) => p.href.length <= C.xUrl);
-  const xKeep = new Set([...xOk.map((p) => ({ id: p.id, t: ts(p.at) }))].sort(oldestFirst).slice(-caps.xPosts).map((p) => p.id));
+  const xKeep = new Set([...xOk.map((p) => ({ id: p.id, t: ts(p.at) }))].sort(oldestFirst).slice(Math.max(0, xOk.length - caps.xPosts)).map((p) => p.id));
   const xPosts = xOk.filter((p) => xKeep.has(p.id));
   // Members: exactly the items of kept stories (+ kept X posts) — a dropped story takes its members with it.
   const live = new Set<string>([...clusters.flatMap(({ c }) => [c.lead_id, ...c.member_ids]), ...xPosts.map((p) => `x:${p.id}`)]);
@@ -269,7 +282,7 @@ export function buildDeskView(i: DeskViewInput, opts: DeskViewOpts = {}): DeskVi
   for (const [id, r] of rows) if (!(id in memberRows)) memberRows[id] = r;
   // Papers: over-long links out; the `papers` newest by arXiv id kept, feed order kept.
   const pOk = i.papers.filter((p) => p.href.length <= C.paperUrl && (p.pdfUrl ?? "").length <= C.paperUrl);
-  const pKeep = new Set([...pOk].sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0)).slice(-caps.papers).map((p) => p.id));
+  const pKeep = new Set([...pOk].sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0)).slice(Math.max(0, pOk.length - caps.papers)).map((p) => p.id));
   const papers = pOk.filter((p) => pKeep.has(p.id)).map((p): PaperInput => {
     const o: PaperInput = { id: p.id, title: clip(p.title, C.paperTitle), up: p.up, href: p.href };
     if (p.abstract !== undefined) o.abstract = p.abstract.slice(0, ABSTRACT_CHARS);

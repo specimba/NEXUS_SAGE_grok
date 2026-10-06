@@ -39,11 +39,12 @@ export type LeadLog = { days: LogDay[]; lastAt: string | null };
 /**
  * Fixed size of the log the page ships (src/data/lead-log-view.ts, generated with desk-view): the holotape shows
  * the `days` newest days (a rolling window); per day the newest `passes` (6 crawls/day + 0 manual re-runs); per pass
- * the first `outs` ✗ lines. Text is cut with "…" past `headline` / `detail` chars; a lead URL past `url` chars loses
- * its link. 2026-10-03: 10 days · ≤5 passes/day · ≤8 ✗/pass · headline ≤118 · detail ≤16 — today's tape is unchanged.
- * Worst case (every cap full, every field max) ≈ 134 KB raw / 38 KB gz of server props in index.html — not First Load JS.
+ * the first `outs` ✗ lines. Text is cut with "…" past `headline` / `detail` chars; a lead URL past `url` (2048, = LINK_MAX:
+ * broken data) loses its link. 2026-10-03: 10 days · ≤5 passes/day · ≤8 ✗/pass · headline ≤118 · detail ≤16 — today's tape is unchanged.
+ * Worst case (every cap full, every field max) ≈ 148 KB raw / 42.5 KB gz of server props in index.html — not First Load JS
+ * (≈134 KB / 38 KB before the lead URL cap went 640 → 2048 on 2026-10-06).
  */
-export const LEAD_LOG_CAPS = { days: 10, passes: 6, outs: 8, headline: 140, detail: 40, url: 640 } as const;
+export const LEAD_LOG_CAPS = { days: 10, passes: 6, outs: 8, headline: 140, detail: 40, url: 2048 } as const;
 
 const cut = (s: string, n: number) => (s.length > n ? `${s.slice(0, n - 1).trimEnd()}…` : s);
 

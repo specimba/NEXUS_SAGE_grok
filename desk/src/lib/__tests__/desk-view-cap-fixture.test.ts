@@ -1,7 +1,7 @@
 /**
  * Cap semantics on FIXED, committed fixtures — independent of whatever the latest crawl contains.
  *  - fixtures/desk-view-caps-fixture.json: hand-built crawl input + hand-derived expected kept sets (DESK_VIEW_CAPS rules:
- *    over-long link drops a story at any age unless pinned; per-source over cap → oldest unpinned first, ties by id;
+ *    a link over LINK_MAX = 2048 chars (broken data) drops a story at any age unless pinned; per-source over cap → oldest unpinned first, ties by id;
  *    then `drop` extra oldest unpinned survivors; pinned stories are never dropped).
  *  - fixtures/lead-history-2026-10-06.json (12 days, snapshot of artifacts/sage/lead-history.json) +
  *    lead-log-tape-2026-10-06.expected.txt: the holotape keeps the newest LEAD_LOG_CAPS.days = 10 days, each day as the
@@ -11,17 +11,24 @@
 import { describe, expect, test } from "bun:test";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { DESK_VIEW_CAPS, droppableStories, keptStories, type DeskViewInput } from "@/lib/desk-view";
+import { DESK_VIEW_CAPS, LINK_MAX, droppableStories, keptStories, type DeskViewInput } from "@/lib/desk-view";
 import { LEAD_LOG_CAPS, buildLeadLog, renderLeadLogText, slimLeadLog } from "@/lib/lead-log";
 
 const FX = join(import.meta.dir, "fixtures");
 const fx = JSON.parse(readFileSync(join(FX, "desk-view-caps-fixture.json"), "utf8"));
-const caps = { ...DESK_VIEW_CAPS, items: fx.caps.items, chars: { ...DESK_VIEW_CAPS.chars, url: fx.caps.url } } as typeof DESK_VIEW_CAPS;
+const caps = { ...DESK_VIEW_CAPS, items: fx.caps.items } as typeof DESK_VIEW_CAPS; // real link cap (LINK_MAX)
 const input = { clusters: fx.clusters, members: fx.members, pins: fx.pins, gnews: [], xPosts: [], papers: [] } as unknown as DeskViewInput;
 const keptIds = (drop: number) => [...keptStories(input, { caps, drop })].map((i) => input.clusters[i]!.id).sort();
 
 describe("desk-view caps on a fixed fixture (oldest first · pins never dropped · link cap)", () => {
-  test("row + link caps (drop 0): over-long link drops the NEWEST story; over-cap source sheds its oldest unpinned", () => {
+  test("row + link caps (drop 0): a 708-char GNews link is kept whole; a >2048-char link drops even the NEWEST story; over-cap source sheds its oldest unpinned", () => {
+    expect(LINK_MAX).toBe(2048);
+    expect(DESK_VIEW_CAPS.chars.url).toBe(LINK_MAX);
+    const len = (id: string) => fx.clusters.find((c: { id: string }) => c.id === id).url.length;
+    expect(len("cl:gnews:g1")).toBe(708);
+    expect(len("cl:gnews:gx")).toBeGreaterThan(2048);
+    expect(keptIds(0)).toContain(fx.expected.drop0.kept_long_link);
+    expect(keptIds(0)).not.toContain("cl:gnews:gx");
     expect(keptIds(0)).toEqual(fx.expected.drop0.kept);
     for (const id of Object.keys(fx.expected.drop0.why_dropped)) expect(keptIds(0)).not.toContain(id);
     expect(droppableStories(input, { caps })).toBe(fx.expected.drop0.droppable);

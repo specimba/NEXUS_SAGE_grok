@@ -140,7 +140,8 @@ export function synth(seed = 7) {
       const mids = ids.slice(n, n + size);
       const lead = mids[0]!;
       clusters.push({
-        id: `cl:${lead}`, title: text(C.title), url: url(C.url), lead_id: lead, lead_source: srcName[src]!,
+        // cluster url = its lead's url (dedupe.ts: url: lead.url) — never an independent link.
+        id: `cl:${lead}`, title: text(C.title), url: members[lead]!.url!, lead_id: lead, lead_source: srcName[src]!,
         sources: size > 1 ? [srcName[src]!, "gnews", "hn-algolia"] : [srcName[src]!], member_ids: mids, size,
         at: members[lead]!.at!, first_seen: iso(n * 7), is_new: n % 9 === 0,
       });
@@ -159,7 +160,8 @@ export function synth(seed = 7) {
 
   // Small crawl modules at their producers' bounds: Wire at WIRE_MAX rows (pinned), today-sized rank / heat / health.
   const wire = clusters.slice(0, WIRE_MAX).map((c, n) => ({
-    id: c.id, title: text(C.title), url: url(C.url), at: c.at, sources: 3, score: 99, member_ids: c.member_ids, is_new: false, rank: n + 1, prev_rank: null, status: "new" as const,
+    // Wire row url = its cluster's url (wire.ts: url: c.url).
+    id: c.id, title: text(C.title), url: c.url, at: c.at, sources: 3, score: 99, member_ids: c.member_ids, is_new: false, rank: n + 1, prev_rank: null, status: "new" as const,
   }));
   return { input, wire };
 }

@@ -31,12 +31,15 @@ const DESK = join(import.meta.dir, "../../..");
  * budget): module gzip 41 385 B → First Load JS for `/` 181 kB (page 78.7 kB + shared 103 kB); per extra module byte
  * ≈ +1 chunk byte, so at the full 41 900 B budget ≈ 181.8 kB — ≥ 3 kB under the 185 kB gate. The real 07:12:59Z crawl
  * (capped) builds to 181 kB. Raising gzBytes past this needs a new worst-case build.
+ * Re-measured 2026-10-06 with every story link at LINK_MAX = 2048 random chars (cluster / Wire url = the lead's, as
+ * dedupe.ts / wire.ts build them): worst seed 23 → 41 892 B gz (216 stories + 2 papers shed) → First Load 181.6 kB.
  */
 const WORST_CASE_PROVEN_GZ = 41_900;
 const WORST_CASE_FIRST_LOAD_KB = 181.8;
-/** slimLeadLog(synthLeadLog()) measured 2026-10-03 — the holotape props can never grow past this. */
-const WORST_LOG_RAW = 134_000;
-const WORST_LOG_GZ = 38_000;
+/** slimLeadLog(synthLeadLog()) — the holotape props can never grow past this. 2026-10-03 at url ≤640: ≈134 KB / 38 KB gz;
+ *  2026-10-06 lead URL cap raised to LINK_MAX 2048: 147 886 B raw / 42 497 B gz (index.html server props, not First Load JS). */
+const WORST_LOG_RAW = 148_000;
+const WORST_LOG_GZ = 43_000;
 
 const hn = (n: number, at: string, extra: Record<string, unknown> = {}) => ({ badge: "HN", publisher: `hn/u${n}`, title: `story ${n}`, at, url: `https://e.com/${n}`, summary: `sum ${n}`, ...extra });
 const story = (lead: string, at: string, members: string[] = [lead]) => ({

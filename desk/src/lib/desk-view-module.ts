@@ -6,7 +6,7 @@
  */
 import { gzipSync } from "node:zlib";
 import type { MovedRow, RankSnapshot } from "@/lib/corroboration";
-import { buildDeskView, droppableStories, DESK_VIEW_CAPS, type DeskView, type DeskViewInput, type DeskViewOpts, type SlimLead } from "@/lib/desk-view";
+import { buildDeskView, droppableStories, DESK_VIEW_CAPS, type DeskView, type DeskViewCaps, type DeskViewInput, type DeskViewOpts, type SlimLead } from "@/lib/desk-view";
 import type { SourceHealthRow } from "@/lib/source-health";
 import type { HeatWindow } from "@/lib/topic-heat";
 import type { WireRow } from "@/lib/wire";
@@ -115,7 +115,7 @@ export const SHELF: { href: string; label: string; reason: string }[] = ${lines(
 
 export type FitResult = { view: DeskView; body: string; gz: number; drop: number };
 
-/** Row + field caps, then the fewest extra oldest stories dropped so the module fits gzBytes. Throws if it cannot. */
+/** Row + field caps, then the fewest extra oldest stories dropped so the module fits gzBytes (then oldest papers / X posts if pins alone overflow). Throws if it cannot. */
 export function fitDeskView(input: DeskViewInput, extras: DeskViewExtras, opts: Omit<DeskViewOpts, "drop"> = {}): FitResult {
   const budget = (opts.caps ?? DESK_VIEW_CAPS).gzBytes;
   const pins = deskViewPins(extras);
@@ -131,7 +131,21 @@ export function fitDeskView(input: DeskViewInput, extras: DeskViewExtras, opts: 
   let lo = 1;
   let hi = droppableStories(inp, opts);
   let best = at(hi);
-  if (best.gz > budget) throw new Error(`desk-view: ${best.gz} B gz > budget ${budget} B even with every unpinned story dropped`);
+  if (best.gz > budget) {
+    // Pins + fixed lanes alone are over budget (only reachable with pathological input, e.g. every pinned link at
+    // LINK_MAX = 2048 random chars): every unpinned story is already gone, so shed the oldest papers, then the oldest
+    // operator X posts, until it fits. Pinned stories are never dropped; the budget stays the bound on total size.
+    const caps: DeskViewCaps = opts.caps ?? DESK_VIEW_CAPS;
+    const atCaps = (c: DeskViewCaps): FitResult => {
+      const view = buildDeskView(inp, { ...opts, caps: c, drop: hi });
+      const body = renderDeskViewModule(view, extras);
+      return { view, body, gz: gzBytes(body), drop: hi };
+    };
+    for (let p = caps.papers - 1; p >= 0 && best.gz > budget; p--) best = atCaps({ ...caps, papers: p });
+    for (let x = caps.xPosts - 1; x >= 0 && best.gz > budget; x--) best = atCaps({ ...caps, papers: 0, xPosts: x });
+    if (best.gz > budget) throw new Error(`desk-view: ${best.gz} B gz > budget ${budget} B with only pinned stories left and no papers / X posts`);
+    return best;
+  }
   while (lo < hi) {
     const mid = (lo + hi) >> 1;
     const r = at(mid);

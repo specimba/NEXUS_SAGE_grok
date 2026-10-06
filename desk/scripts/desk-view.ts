@@ -44,9 +44,12 @@ if (process.argv.includes("--report")) {
   input.clusters.forEach((c, i) => { if (kept.has(i)) for (const id of new Set([c.lead_id, ...c.member_ids])) cnt[sourceOf(id)] = (cnt[sourceOf(id)] ?? 0) + 1; });
   const dropped = input.clusters.filter((_, i) => !kept.has(i));
   console.log(`desk-view REPORT · ${summary}`);
+  const longest = input.clusters.reduce((m, c) => Math.max(m, c.url.length), 0);
+  const over640 = input.clusters.filter((c, i) => kept.has(i) && c.url.length > 640).length;
+  console.log(`  links: longest story link ${longest} chars · ${over640} kept stories with links > 640 (kept whole; drop only > ${DESK_VIEW_CAPS.chars.url})`);
   console.log(`  budget drop ${fit.drop} · pins ${pins.size} · kept items/source ${Object.entries(cnt).map(([k, n]) => `${k} ${n}/${DESK_VIEW_CAPS.items[k] ?? "∞"}`).join(" · ")}`);
   for (const c of [...dropped].sort((a, b) => Date.parse(b.at) - Date.parse(a.at)))
-    console.log(`  - ${c.at} ${c.id} · ${linkLong(c) ? `link > ${DESK_VIEW_CAPS.chars.url} chars (any age)` : "age (oldest unpinned)"} · ${c.title.slice(0, 60)}`);
+    console.log(`  - ${c.at} ${c.id} · ${linkLong(c) ? `link ${Math.max(c.url.length, ...[c.lead_id, ...c.member_ids].map((id) => (input.members[id]?.url ?? "").length))} > ${DESK_VIEW_CAPS.chars.url} chars — broken data (any age)` : "age (oldest unpinned)"} · ${c.title.slice(0, 60)}`);
   const ageDropped = dropped.filter((c) => !linkLong(c));
   const keptFree = input.clusters.filter((c, i) => kept.has(i) && !pins.has(c.id));
   if (ageDropped.length && keptFree.length) {
