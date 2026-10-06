@@ -5,9 +5,8 @@
   "scripts": {
     "check:current": "bun scripts/check-current.mjs",
     "predev": "bun scripts/check-current.mjs && bun scripts/build-stamp.mjs",
-    "prebuild": "bun scripts/check-current.mjs && bun scripts/build-stamp.mjs",
     "dev": "next dev --turbopack --hostname 0.0.0.0 --port 3000",
-    "build": "next build",
+    "build": "bash scripts/locked-build.sh",
     "start": "bun scripts/serve-out.ts --host 0.0.0.0 --port 3000",
     "lint": "eslint",
     "test": "bun test src/lib/__tests__",
@@ -21,7 +20,7 @@
     "visual:check": "node scripts/visual-check.mjs",
     "digest:tick": "bun scripts/digest-tick.mjs",
     "a2:tick": "bun scripts/a2-digest-export.mjs",
-    "build:pages": "PAGES=1 bun run build",
+    "build:pages": "PAGES_BUILD_ONLY=1 bash scripts/pages-publish.sh",
     "pages:publish": "bash scripts/pages-publish.sh"
   },
   "dependencies": {

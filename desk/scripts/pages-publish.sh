@@ -2,6 +2,9 @@
 # GitHub Pages publish — build the desk under /NEXUS_SAGE_grok and fast-forward the gh-pages branch.
 #   bun run pages:publish            (= bash scripts/pages-publish.sh)
 #   PAGES_NO_PUSH=1 bun run pages:publish   build + verify + commit locally, skip the push
+#   bun run build:pages              (= PAGES_BUILD_ONLY=1) build + verify only — no worktree, commit or push
+# Lock: holds desk/.build.lock (flock, ≤ NEXUS_BUILD_LOCK_WAIT=900 s wait) for the .next swap + build and exports
+# NEXUS_BUILD_LOCK_HELD=1; the :3000 `bun run build` (scripts/locked-build.sh) waits on the same lock.
 # Steps: PAGES=1 next build → desk/out-pages/ · .nojekyll · verify (fail closed, exit≠0, nothing pushed) ·
 # copy into the gh-pages worktree (default /workspace/nexus-sage-pages) · one normal commit on top of the previous
 # gh-pages commit (the first run starts the branch) · git push origin gh-pages. Never force, never rewrite.
@@ -25,7 +28,19 @@ t0=$(date +%s)
 log() { echo "pages-publish: $*"; }
 die() { echo "pages-publish FAIL: $*" >&2; exit 1; }
 
-# ── 0. one build at a time ──
+# ── 0. one build at a time: the shared build lock (scripts/locked-build.sh = package.json "build" waits on it) ──
+LOCK="${NEXUS_BUILD_LOCK_FILE:-$DESK/.build.lock}"; LOCK_WAIT="${NEXUS_BUILD_LOCK_WAIT:-900}"
+if [ "${NEXUS_BUILD_LOCK_HELD:-0}" != "1" ]; then
+  exec 9>>"$LOCK"
+  if ! flock -n 9; then
+    log "build lock held ($(tail -1 "$LOCK" 2>/dev/null || true)) — waiting up to ${LOCK_WAIT}s"
+    flock -w "$LOCK_WAIT" 9 || die "build lock $LOCK still held after ${LOCK_WAIT}s — nothing built or pushed"
+  fi
+  echo "pages-publish pid $$ since $(date -Iseconds)" > "$LOCK"
+  export NEXUS_BUILD_LOCK_HELD=1  # an indirect `bun run build` from here must not wait on our own lock
+fi
+release_lock() { if { true >&9; } 2>/dev/null; then flock -u 9 2>/dev/null || true; exec 9>&-; fi; unset NEXUS_BUILD_LOCK_HELD; }
+# Unlocked strays (a bare `npx next build`) still refuse.
 if pgrep -f '[n]ext build' >/dev/null 2>&1; then die "another 'next build' is running — one build at a time"; fi
 
 # ── 0b. one crawl: header CRAWL_AT must equal the Wire / Pulse / heat snapshot (skipped postingest stays off Pages) ──
@@ -56,8 +71,10 @@ trap restore_next EXIT
 rm -rf "$OUT" "$PAGES_NEXT"
 : > "$SWAP"
 if [ -e "$NEXT_DIR" ]; then mv "$NEXT_DIR" "$HOLD"; fi
-( cd "$DESK" && PAGES=1 bun run build ) > /tmp/pages-publish-build.log 2>&1 || { tail -30 /tmp/pages-publish-build.log >&2; die "PAGES build failed (log /tmp/pages-publish-build.log)"; }
+# next build DIRECTLY (not `bun run build`, which is the locked :3000 wrapper) while we hold the lock.
+( cd "$DESK" && bun scripts/check-current.mjs && bun scripts/build-stamp.mjs && PAGES=1 "$DESK/node_modules/.bin/next" build ) > /tmp/pages-publish-build.log 2>&1 || { tail -30 /tmp/pages-publish-build.log >&2; die "PAGES build failed (log /tmp/pages-publish-build.log)"; }
 restore_next
+release_lock   # .next is back, the Pages compile sits in .next-pages: a waiting :3000 build may start now
 grep -q '"outDirectory": "'"$OUT"'"' "$PAGES_NEXT/export-detail.json" 2>/dev/null || die "Pages compile did not land in $PAGES_NEXT (export → $OUT)"
 [ -f "$OUT/index.html" ] || die "$OUT/index.html missing after build"
 : > "$OUT/.nojekyll"
@@ -125,6 +142,7 @@ if [ "${#fails[@]}" -gt 0 ]; then
 fi
 nfiles=$(find "$OUT" -type f | wc -l); size=$(du -sh "$OUT" | cut -f1)
 log "verify OK — $nfiles files, $size, all refs under $BASE/"
+if [ "${PAGES_BUILD_ONLY:-0}" = "1" ]; then log "PAGES_BUILD_ONLY=1 — built + verified $OUT, no worktree / commit / push ($(( $(date +%s) - t0 ))s)"; exit 0; fi
 
 # ── 3. gh-pages worktree (fast-forward only) ──
 cd "$REPO"

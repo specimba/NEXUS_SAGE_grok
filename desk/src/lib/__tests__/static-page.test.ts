@@ -67,7 +67,10 @@ describe("static page — no request-time filesystem", () => {
     expect(page).not.toContain("force-dynamic");
     expect(readFileSync(resolve(src, "lib/build-meta.ts"), "utf8")).toContain('from "@/data/build-stamp"');
     const pkg = JSON.parse(readFileSync(resolve(desk, "package.json"), "utf8"));
-    expect(pkg.scripts.prebuild).toBe("bun scripts/check-current.mjs && bun scripts/build-stamp.mjs");
+    // Gate + stamp run inside the build lock (scripts/locked-build.sh), not in an unlocked npm "prebuild".
+    expect(pkg.scripts.prebuild).toBeUndefined();
+    expect(pkg.scripts.build).toBe("bash scripts/locked-build.sh");
+    expect(readFileSync(resolve(desk, "scripts/locked-build.sh"), "utf8")).toContain("bun scripts/check-current.mjs && bun scripts/build-stamp.mjs && \"$DESK/node_modules/.bin/next\" build");
     expect(pkg.scripts.prestart).toBeUndefined();
     expect(pkg.scripts.start).toContain("serve-out.ts");
     expect(existsSync(resolve(src, "lib/require-current.ts"))).toBe(false);
