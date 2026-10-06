@@ -1,7 +1,7 @@
 # Pass E — Session taste only
 
 **Architect cut:** 2026-10-07 · Canberk order D→F→C→B→E→A  
-**Status:** LANDED · Coder land after B (soft-fail + sync honesty)  
+**Status:** GATE PASS · Reviewer 2026-10-07 00:22 TRT @ 17531be / gh-pages ab3de6a · clear for A  
 **Owners:** Coder builds · UX signs off · Reviewer gates  
 **Prefer free.** DENY: paid X API / bearer / `api.x.com` · Bluesky · cookie-to-token · inventing taste cards · Brief pins / lead from taste · putting taste likes into Pulse `UP` (D).
 
