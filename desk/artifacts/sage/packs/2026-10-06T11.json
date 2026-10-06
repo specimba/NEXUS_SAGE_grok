@@ -1,0 +1,196 @@
+{
+  "at": "2026-10-06T11:20:38.646Z",
+  "cycle": "003",
+  "lead_id": "hf-incident",
+  "pack_id": "2026-10-06T11",
+  "plan": [
+    {
+      "id": "hf-swarm",
+      "title": "Eval agents reached Hugging Face production",
+      "file": "hf-incident",
+      "kind": "lead",
+      "confidence": "high",
+      "move": "Keep as lead. Banned nouns stay off the pin.",
+      "evidence": [
+        "METR scope ends 13 Jul. Wave 3 cluster-admin is OpenAI-only.",
+        "02 Sep curation did not add a new incident URL. It added scanners, papers, and Astra commentary."
+      ],
+      "steps": [
+        "Cite METR for waves 1–2. Cite OpenAI for wave 3.",
+        "Do not use AISLE curl CVEs or MIT stigmergy as proof of the HF breach."
+      ],
+      "doneWhen": "Pin 1 still opens the incident file.",
+      "unlockIf": "A new METR/HF/OpenAI primary names a fact not in Cycle 001.",
+      "refs": [
+        {
+          "label": "Dwarkesh 29 Aug thread",
+          "href": "https://x.com/dwarkesh_sp",
+          "role": "wire"
+        }
+      ]
+    },
+    {
+      "id": "astra-depth",
+      "title": "Astra: Critical + recurrent depth",
+      "file": "astra",
+      "kind": "companion",
+      "confidence": "high",
+      "move": "Companion only. Do not promote over HF.",
+      "evidence": [
+        "Palazzolo 2094954680765829533 — recurrent depth.",
+        "Amir 2095274361695731967 — story unchanged; OpenAI limiting loops.",
+        "Curran 2095257682865532970 — 'Astra tomorrow morning' is a wire read.",
+        "Lab wire: How NVIDIA GPUs Help Accelerate OpenAI’s GPT-6 Astra Ultrafast.",
+        "Lab wire: DevDay 2026 Recap.",
+        "Lab wire: Introducing GPT-6.1 Sol."
+      ],
+      "steps": [
+        "Keep ship language rumored.",
+        "If OpenAI posts a dated ship, that is a companion delta, not a lead swap."
+      ],
+      "doneWhen": "Astra is pin 2 or Pulse companion. Not pin 1.",
+      "unlockIf": "OpenAI official dated ship or a new incident attribution.",
+      "refs": [
+        {
+          "label": "Palazzolo",
+          "href": "https://x.com/steph_palazzolo/status/2094954680765829533",
+          "role": "primary"
+        },
+        {
+          "label": "Amir clarification",
+          "href": "https://x.com/amir/status/2095274361695731967",
+          "role": "primary"
+        },
+        {
+          "label": "lab:nvidia How NVIDIA GPUs Help Accelerate Open…",
+          "href": "https://blogs.nvidia.com/blog/gpus-openai-gpt-6-astra-ultrafast/",
+          "role": "wire"
+        },
+        {
+          "label": "lab:openai DevDay 2026 Recap",
+          "href": "https://openai.com/index/devday-2026-recap",
+          "role": "wire"
+        },
+        {
+          "label": "lab:openai Introducing GPT-6.1 Sol",
+          "href": "https://openai.com/index/introducing-gpt-6-1-sol",
+          "role": "wire"
+        }
+      ]
+    },
+    {
+      "id": "aisle-curl",
+      "title": "AISLE found 6 curl CVEs after two labs reported zero",
+      "file": "other",
+      "kind": "rest",
+      "confidence": "high",
+      "move": "Rest-of-board. Use as measurement, not vendor scoreboard lead.",
+      "evidence": [
+        "Primary blog aisle.com + Fort 2095107971433017510 (261 likes / 23k views).",
+        "Lab wire: Falcon-Emirati: When an LLM Learns the Dialect, the Culture, an….",
+        "Lab wire: Open and Emergent Problems in Agentic Privacy and Security: A C….",
+        "Lab wire: Our approach to EU text provenance rules."
+      ],
+      "steps": [
+        "Link the blog. Do not write 'labs are unsafe' from one target."
+      ],
+      "doneWhen": "On Pulse with the blog href.",
+      "unlockIf": "curl project disputes the CVEs — then downgrade.",
+      "refs": [
+        {
+          "label": "AISLE blog",
+          "href": "https://aisle.com/blog/aisle-discovered-six-curl-cves-after-openai-and-anthropic-found-zero",
+          "role": "primary"
+        },
+        {
+          "label": "Fort 02 Sep",
+          "href": "https://x.com/stanislavfort/status/2095107971433017510",
+          "role": "wire"
+        },
+        {
+          "label": "lab:huggingface Falcon-Emirati: When an LLM Lea…",
+          "href": "https://huggingface.co/blog/tiiuae/falcon-emirati",
+          "role": "wire"
+        },
+        {
+          "label": "lab:google-research Open and Emergent Problems …",
+          "href": "https://research.google/blog/open-and-emergent-problems-in-agentic-privacy-and-security-a-contextual-angle/",
+          "role": "wire"
+        },
+        {
+          "label": "lab:openai Our approach to EU text provenance r…",
+          "href": "https://openai.com/index/eu-text-provenance",
+          "role": "wire"
+        },
+        {
+          "label": "lab:nvidia From Scan to Treatment Plan, AI Help…",
+          "href": "https://blogs.nvidia.com/blog/ai-breast-cancer-startups/",
+          "role": "wire"
+        },
+        {
+          "label": "lab:openai Building advertising for the way peo…",
+          "href": "https://openai.com/index/new-chatgpt-ads-format-and-measurement",
+          "role": "wire"
+        }
+      ]
+    },
+    {
+      "id": "harness-papers",
+      "title": "Harness papers: days-long coding + skills that hurt the task",
+      "file": "other",
+      "kind": "rest",
+      "confidence": "medium",
+      "move": "Papers lane + Pulse rest.",
+      "evidence": [
+        "dair_ai 2095172426925801608 Harness-of-Harness.",
+        "dair_ai 2095330956823629995 matched skill-retrieval effect.",
+        "HF live 03 Sep: Repo-To-Skill 2609.02749, 105 up.",
+        "DOI confirm 2610.05608: Kandinsky 6.0 Video: Foundation Models for Synchronized….",
+        "HF keep still ranked 2610.02840: PointWAM: 3D World Action Modeling for Dexterous Roboti… (37 up).",
+        "HF keep still ranked 2610.04198: ALoDLM: Adaptively Looped Diffusion Language Models (37 up)."
+      ],
+      "steps": [
+        "Keep abstracts on the desk. Do not treat benchmark lift as a ship."
+      ],
+      "doneWhen": "Papers lane lists at least one of these IDs.",
+      "unlockIf": "Never as lead.",
+      "refs": [
+        {
+          "label": "Harness-of-Harness",
+          "href": "https://x.com/dair_ai/status/2095172426925801608",
+          "role": "wire"
+        },
+        {
+          "label": "Skill retrieval paper",
+          "href": "https://x.com/dair_ai/status/2095330956823629995",
+          "role": "wire"
+        },
+        {
+          "label": "Kandinsky 6.0 Video: Foundation Models for Sync…",
+          "href": "https://doi.org/10.5594/smpte.st2064-1.2015",
+          "role": "support"
+        },
+        {
+          "label": "PointWAM: 3D World Action Modeling for Dexterou…",
+          "href": "https://arxiv.org/abs/2610.02840",
+          "role": "support"
+        },
+        {
+          "label": "ALoDLM: Adaptively Looped Diffusion Language Mo…",
+          "href": "https://arxiv.org/abs/2610.04198",
+          "role": "support"
+        },
+        {
+          "label": "Memadapter: Counterfactual Adaptation Against M…",
+          "href": "https://arxiv.org/abs/2610.05162",
+          "role": "support"
+        },
+        {
+          "label": "Foundations of Proactive Agents: Principles, Te…",
+          "href": "https://arxiv.org/abs/2609.37267",
+          "role": "support"
+        }
+      ]
+    }
+  ]
+}
