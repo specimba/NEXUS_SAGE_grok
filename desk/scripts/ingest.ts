@@ -15,6 +15,7 @@
 
 import { tasteUrls } from "@/lib/taste-input";
 import { X_TASTE } from "@/data/x-taste";
+import { tasteSoftMeter } from "@/lib/x-taste-meter";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import {
@@ -326,9 +327,14 @@ function renderSoftFailMetersTs(
 ): string {
   const gmailState = extra.gmail.soft ? "soft" : "ok";
   const gmailDetail = extra.gmail.detail;
-  const aggregate = extra.gmail.soft ? [`Gmail ${gmailDetail}`] : [];
-  const softCount = extra.gmail.soft ? 1 : 0;
-  return `/** A4 soft-fail meters — snapshot from ingest (Pass F adds Gmail). Pulse/rail only; never Brief. */
+  // Pass E: X-session soft from committed taste snap (login_wall / empty / taste stale >14d).
+  const xMeter = tasteSoftMeter(X_TASTE, Date.parse(stamp) || Date.now());
+  const aggregate = [
+    ...(extra.gmail.soft ? [`Gmail ${gmailDetail}`] : []),
+    ...(xMeter.state === "soft" ? [`X-session ${xMeter.detail}`] : []),
+  ];
+  const softCount = (extra.gmail.soft ? 1 : 0) + (xMeter.state === "soft" ? 1 : 0);
+  return `/** A4 soft-fail meters — snapshot from ingest (Pass F Gmail · Pass E X-session). Pulse/rail only; never Brief. */
 export type SoftFailState = "ok" | "soft" | "deny";
 
 export type SoftFailChip = {
@@ -359,7 +365,7 @@ export const SOFT_FAIL_METERS: SoftFailMeters = {
     { id: "openalex", label: "OpenAlex", state: "ok", detail: "ok" },
     { id: "crossref", label: "Crossref", state: "ok", detail: "ok" },
     { id: "github", label: "GitHub", state: "ok", detail: "ok" },
-    { id: "x_session", label: "X-session", state: "ok", detail: "landed" },
+    { id: "x_session", label: "X-session", state: ${JSON.stringify(xMeter.state)} as SoftFailState, detail: ${JSON.stringify(xMeter.detail)} },
   ],
   aggregate: ${JSON.stringify(aggregate)},
   deny: ["paid X", "Bluesky", "scrape farms"],

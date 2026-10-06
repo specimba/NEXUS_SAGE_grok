@@ -10,6 +10,7 @@ import { spawnSync } from "node:child_process";
 import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { digestCadenceCoherenceFails } from "@/lib/digest-pack-disk";
+import { xTasteCoherenceFails } from "@/lib/x-taste-disk";
 
 const desk = resolve(import.meta.dir, "..");
 const pick = (file: string, name: string): string | null => {
@@ -49,6 +50,8 @@ if (out) {
 }
 // Pass B — Digest cadence module must mirror disk digest-last.json (+ newest pack stamp).
 for (const f of digestCadenceCoherenceFails(desk)) fails.push(f);
+// Pass E — X-taste module must mirror disk x-taste-last.json (ids/counts/locks).
+for (const f of xTasteCoherenceFails(desk)) fails.push(f);
 
 if (fails.length) {
   console.error(`pages-coherence FAIL: ${fails.join(" · ")} — run \`bun run rank:snapshot\` (postingest) and rebuild`);

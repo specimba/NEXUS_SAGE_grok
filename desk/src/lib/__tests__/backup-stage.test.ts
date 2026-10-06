@@ -23,12 +23,13 @@ const ALLOWED = [
   "desk/artifacts/sage/source-health.json", "desk/artifacts/sage/lead-history.json", "desk/artifacts/sage/wire-last.json",
   "desk/artifacts/sage/digest-003.json", "desk/artifacts/sage/packs/2026-09-25T15.json",
   "desk/src/data/wire.ts", "desk/src/data/source-health.ts", "desk/src/data/lead-pick.ts", "packs/drill-log.md",
+  "desk/src/data/x-taste.ts", "desk/artifacts/sage/x-taste-last.json",
 ];
 const PLANTED = [
   "desk/artifacts/sage/feedback.json", "desk/artifacts/sage/notes.json", "desk/artifacts/sage/taste-votes.json",
   "desk/src/data/feedback.json", "desk/src/data/notes.json", "desk/src/data/taste-votes.json",
   "desk/artifacts/sage/packs/feedback.json", "desk/artifacts/sage/hn-cache/x.json",
-  "desk/src/data/x-taste.ts", "desk/artifacts/sage/x-taste-last.json", "desk/.env",
+  "desk/.env",
 ];
 
 function repo(name: string) {

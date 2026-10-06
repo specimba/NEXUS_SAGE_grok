@@ -27,6 +27,7 @@ import {
 } from "@/data/desk-view";
 import { crawlItemIds, inflateClusters, inflateMembers, memberAt, memberItems, stripPublisher, xRows } from "@/lib/desk-view";
 import { X_TASTE } from "@/data/x-taste";
+import { TASTE_VISIBLE_CAP, tasteSoftMeter } from "@/lib/x-taste-meter";
 import { DIGEST_ITEMS, DROPPED, PACK_AT, PACK_SOURCE } from "@/data/digest-pack";
 import { DIGEST_CADENCE } from "@/data/digest-cadence";
 import { groupFirstAt, leadAgeHours } from "@/lib/lead-pick";
@@ -1302,7 +1303,8 @@ export function Pulse() {
   const health = [...SOURCE_HEALTH].sort(
     (a, b) => HEALTH_ORDER.indexOf(a.id) - HEALTH_ORDER.indexOf(b.id),
   );
-  const tasteItems = tasteAll ? X_TASTE.items : X_TASTE.items.slice(0, 6);
+  const tasteMeter = tasteSoftMeter(X_TASTE);
+  const tasteItems = tasteAll ? X_TASTE.items : X_TASTE.items.slice(0, TASTE_VISIBLE_CAP);
 
   return (
     <div className="pulse-v5" data-baseline={baseline ? "1" : undefined} data-drawer={drawerRow ? "1" : undefined}>
@@ -1487,7 +1489,16 @@ export function Pulse() {
 
         <aside className="pulse-v5-taste sage-panel pin-card-quiet" aria-label="Operator X-session taste">
           <p className="pulse-v5-taste-head">TASTE · X-session · never lead</p>
+          {tasteMeter.state === "soft" ? (
+            <p className="pulse-v5-taste-skip" role="status" data-taste-meter={tasteMeter.detail}>
+              shelf · soft · <span className="sage-deny">{tasteMeter.detail}</span>
+              {tasteMeter.detail === "taste stale"
+                ? " · prior honest shelf · no invent"
+                : " · Session quiet / login wall — taste empty. Sign into X on Agent Computer Chrome, then re-run capture."}
+            </p>
+          ) : null}
           {X_TASTE.skipped || X_TASTE.items.length === 0 ? (
+            tasteMeter.state === "soft" ? null : (
             <p className="pulse-v5-taste-skip">
               shelf · skip
               {X_TASTE.soft_fail && X_TASTE.soft_fail_reason ? (
@@ -1498,12 +1509,13 @@ export function Pulse() {
               ) : null}{" "}
               · Session quiet / login wall — taste empty. Sign into X on Agent Computer Chrome, then re-run dry-run.
             </p>
+            )
           ) : (
             <ul>
               {tasteItems.map((it) => (
                 <li key={it.id}>
                   <p className="pulse-v5-taste-kicker">
-                    {it.surface}
+                    taste · {it.surface}
                     {it.handle ? <> · @{it.handle}</> : null}
                   </p>
                   {it.url ? (
@@ -1517,13 +1529,14 @@ export function Pulse() {
               ))}
             </ul>
           )}
-          {X_TASTE.items.length > 6 ? (
+          {X_TASTE.items.length > TASTE_VISIBLE_CAP ? (
             <button type="button" className="pulse-v5-more focus-phosphor" onClick={() => setTasteAll((v) => !v)}>
-              {tasteAll ? "fewer" : `+${X_TASTE.items.length - 6} more`}
+              {tasteAll ? "fewer taste" : `+${X_TASTE.items.length - TASTE_VISIBLE_CAP} more taste`}
             </button>
           ) : null}
           <p className="pulse-v5-taste-kicker tabular-nums">
             kept {X_TASTE.counts.kept}/{X_TASTE.counts.seen} · land {X_TASTE.land}
+            {tasteMeter.state === "soft" ? <> · meter {tasteMeter.detail}</> : null}
           </p>
         </aside>
       </div>
@@ -1532,6 +1545,16 @@ export function Pulse() {
       <p className="pulse-v5-foot tabular-nums">
         <span className="sage-deny">DENY</span> · {SOFT_FAIL_METERS.deny.join(" · ")} · briefEligible=false · Pulse never
         Brief · never sole lead · clusters {PULSE_CLUSTERS.length} · multi-source {rows.filter((r) => r.multiSource).length} · snap {istDateTime(PULSE_CLUSTERS_AT)} {IST_LABEL}
+        {SOFT_FAIL_METERS.soft_count > 0 || tasteMeter.state === "soft" ? (
+          <>
+            {" · "}
+            <span className="sage-deny">SOFT</span>{" "}
+            {[...SOFT_FAIL_METERS.aggregate, tasteMeter.state === "soft" ? `X-session ${tasteMeter.detail}` : null]
+              .filter(Boolean)
+              .filter((v, i, a) => a.indexOf(v) === i)
+              .join(" · ") || tasteMeter.detail}
+          </>
+        ) : null}
       </p>
     </div>
   );

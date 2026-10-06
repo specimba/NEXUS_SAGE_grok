@@ -14,9 +14,9 @@ export const SOFT_FAIL_METERS: SoftFailMeters = {
     { id: "openalex", label: "OpenAlex", state: "ok", detail: "ok" },
     { id: "crossref", label: "Crossref", state: "ok", detail: "ok" },
     { id: "github", label: "GitHub", state: "ok", detail: "ok" },
-    { id: "x_session", label: "X-session", state: "ok", detail: "landed" },
+    { id: "x_session", label: "X-session", state: "soft", detail: "taste stale" },
   ],
-  aggregate: [],
+  aggregate: ["X-session taste stale"],
   deny: ["paid X", "Bluesky", "scrape farms"],
-  soft_count: 0,
+  soft_count: 1,
 } as const;
