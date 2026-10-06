@@ -1,7 +1,7 @@
 # Pass B — Digest UI stamp sync
 
 **Architect cut:** 2026-10-06 · Canberk order D→F→C→B→E→A  
-**Status:** PASS MARK · land after C (or after D if C is blocked; do not wait on A)  
+**Status:** GATE PASS · Reviewer 2026-10-07 00:05 TRT @ f90b71b / gh-pages 6f38868 · clear for E  
 **Owners:** Coder builds · UX signs off · Reviewer gates  
 **Prefer free.** DENY: inventing Digest titles · unlocking Cycle 003 content (that is **A**) · paid X.
 
