@@ -16,7 +16,7 @@ export type RssLabRow = {
   cluster_id?: string;
 };
 
-export const RSS_LABS_AT = "2026-10-06T03:20:50Z";
+export const RSS_LABS_AT = "2026-10-06T07:15:31Z";
 
 export const RSS_LABS: RssLabRow[] = [
   { id: "rss:google-research:7eeb0a9dde534539", lab: "google-research" as const, title: "Open and Emergent Problems in Agentic Privacy and Security: A Contextual Angle", link: "https://research.google/blog/open-and-emergent-problems-in-agentic-privacy-and-security-a-contextual-angle/", published: "2026-10-05T21:08:31Z", summary: "Education Innovation", source: "rss-lab" as const, tag: "rest" as const, first_seen: "2026-10-05T23:15:31Z", is_new: false, cluster_id: "cl:rss:google-research:7eeb0a9dde534539" },
