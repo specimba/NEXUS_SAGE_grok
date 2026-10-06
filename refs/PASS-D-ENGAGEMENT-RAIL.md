@@ -51,7 +51,7 @@ Before/after of Pulse (SIG→UP) and Papers (unchanged UP) at 1280 and 390 → G
 
 | Letter | Note |
 |--------|------|
-| F | Named feeds — waits Canberk naming |
+| F | Gmail keyword search — see PASS-F-GMAIL-NEWS.md |
 | C | Dates |
 | B | Digest UI stamp |
 | E | Session taste only |

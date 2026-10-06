@@ -41,4 +41,4 @@ Sort order unchanged. Skin V2 only. 390: DATE must not cause sideways scroll (re
 
 ## Out of scope
 
-D engagement · B Digest stamp · A cycle unlock · F feeds · E session taste.
+D engagement · B Digest stamp · A cycle unlock · F Gmail-news · E session taste.
