@@ -8,7 +8,7 @@
 # Verify: every root-relative asset reference starts with /NEXUS_SAGE_grok/ · .nojekyll present · no .env* ·
 # no token-like strings / secret values · no /home/box or /workspace paths · only known build files ·
 # per-HTML font classes defined in its linked CSS + no missing _next/static (scripts/pages-asset-check.ts) ·
-# headless font-check on a local serve of out-pages under the basePath. Build starts from a wiped .next + out-pages.
+# headless font-check on a local serve of out-pages under the basePath. Compiles in .next-pages (wiped each run; the :3000 .next is parked, never touched), exports to out-pages.
 # Auth: plain `origin` + the git credential helper. Identity from GIT_AUTHOR_* / GIT_COMMITTER_* (defaults below).
 set -euo pipefail
 set +x
@@ -33,13 +33,32 @@ if pgrep -f '[n]ext build' >/dev/null 2>&1; then die "another 'next build' is ru
 
 # ── 1. build ──
 log "build PAGES=1 → $OUT"
-# Clean build every time. next 15 `output:"export"` still compiles into desk/.next (distDir only moves the EXPORT to
-# out-pages), so the :3000 build and the Pages build share .next/cache/webpack. On 2026-10-06 02:41 (gh-pages f286e1c)
-# the server compile re-ran next/font (JetBrains → __variable_0466e9) while the client compile restored the CSS +
-# layout chunk from that cache (__variable_210582) ⇒ HTML used a class its CSS never defined ⇒ Times New Roman.
-# desk/out (what :3000 serves) is NOT touched: the Pages build never writes it, and :3000 reads only desk/out.
-rm -rf "$OUT" "$DESK/.next"
+# Separate compile dir. next 15.5 `output:"export"` HARD-CODES the compile dir to <project>/.next: a custom distDir
+# only becomes the EXPORT dir (build/index.js: hasCustomExportOutput ⇒ configOutDir = distDir; distDir = ".next").
+# So .next was shared with the :3000 build, and its webpack cache mixed font hashes (next/font class = sha1 of the
+# font CSS, which carries the basePath): 2026-10-06 02:41 gh-pages f286e1c shipped HTML with __variable_0466e9 and a
+# cached CSS defining only __variable_210582 ⇒ Times New Roman. Now the :3000 .next is parked at $HOLD for the
+# build and the Pages compile lands in $PAGES_NEXT (wiped every run), so neither cache ever sees the other's hashes.
+# desk/out (what :3000 serves) is never touched. An interrupted run is repaired at the next start ($SWAP marker).
+NEXT_DIR="$DESK/.next"; PAGES_NEXT="$DESK/.next-pages"; HOLD="$DESK/.next-local-hold"; SWAP="$DESK/.next-pages.swap"
+if [ -e "$SWAP" ]; then
+  log "repairing an interrupted Pages build (restoring the :3000 .next)"
+  rm -rf "$NEXT_DIR"; [ -e "$HOLD" ] && mv "$HOLD" "$NEXT_DIR"; rm -f "$SWAP"
+fi
+[ -e "$HOLD" ] && die "$HOLD exists without a swap marker — inspect it by hand"
+restore_next() {
+  [ -e "$SWAP" ] || return 0
+  if [ -e "$NEXT_DIR" ]; then rm -rf "$PAGES_NEXT"; mv "$NEXT_DIR" "$PAGES_NEXT"; fi
+  if [ -e "$HOLD" ]; then mv "$HOLD" "$NEXT_DIR"; fi
+  rm -f "$SWAP"
+}
+trap restore_next EXIT
+rm -rf "$OUT" "$PAGES_NEXT"
+: > "$SWAP"
+if [ -e "$NEXT_DIR" ]; then mv "$NEXT_DIR" "$HOLD"; fi
 ( cd "$DESK" && PAGES=1 bun run build ) > /tmp/pages-publish-build.log 2>&1 || { tail -30 /tmp/pages-publish-build.log >&2; die "PAGES build failed (log /tmp/pages-publish-build.log)"; }
+restore_next
+grep -q '"outDirectory": "'"$OUT"'"' "$PAGES_NEXT/export-detail.json" 2>/dev/null || die "Pages compile did not land in $PAGES_NEXT (export → $OUT)"
 [ -f "$OUT/index.html" ] || die "$OUT/index.html missing after build"
 : > "$OUT/.nojekyll"
 

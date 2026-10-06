@@ -60,10 +60,14 @@ describe("pages-asset-check (pre-push gate: HTML font classes ⊆ its linked CSS
     const r = checkAssets(tree({ ...base, "index.html": html("__variable_aa11bb").replaceAll(B, ""), "_next/static/css/a.css": css("__variable_aa11bb").replaceAll(B, "") }), "");
     expect(r.ok).toBe(true);
   });
-  test("pages-publish.sh wipes .next + out-pages (never out/) and runs the asset gate + local font-check before push", () => {
+  test("pages-publish.sh compiles in .next-pages (wipes out-pages + .next-pages only; :3000 .next parked, never wiped) and gates before push", () => {
     const sh = readFileSync(resolve(import.meta.dir, "../../../scripts/pages-publish.sh"), "utf8");
-    expect(sh).toMatch(/rm -rf "\$OUT" "\$DESK\/\.next"/);
+    expect(sh).toContain('PAGES_NEXT="$DESK/.next-pages"');
+    expect(sh).toMatch(/rm -rf "\$OUT" "\$PAGES_NEXT"/);
+    expect(sh).toMatch(/mv "\$NEXT_DIR" "\$HOLD"/);
+    expect(sh).toMatch(/trap restore_next EXIT/);
     expect(sh).not.toMatch(/rm -rf[^\n]*"\$DESK\/out"/);
+    expect(sh).not.toMatch(/rm -rf[^\n]*"\$DESK\/\.next"/);
     const gate = sh.indexOf("pages-asset-check.ts"), font = sh.indexOf("font-check.ts"), push = sh.indexOf("git push -q origin");
     expect(gate).toBeGreaterThan(0);
     expect(font).toBeGreaterThan(0);
