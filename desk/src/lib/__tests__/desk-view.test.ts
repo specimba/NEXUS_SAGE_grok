@@ -13,6 +13,7 @@ import { GNEWS_RSS } from "@/data/gnews-rss";
 import { HN_PULSE } from "@/data/hn-pulse";
 import { RSS_LABS } from "@/data/rss-labs";
 import { RSS_SECURITY } from "@/data/rss-security";
+import { GMAIL_NEWS } from "@/data/gmail-news";
 import { PULSE_CLUSTERS, PULSE_CLUSTERS_AT } from "@/data/pulse-clusters";
 import { PAPERS } from "@/data/papers";
 import { WIRE_CRAWL_AT, WIRE_ROWS } from "@/data/wire";
@@ -43,12 +44,14 @@ for (const h of HN_PULSE) RAW_AT[h.id] = h.at;
 for (const g of GNEWS_RSS) RAW_AT[g.id] = g.published;
 for (const r of RSS_LABS) RAW_AT[r.id] = r.published;
 for (const r of RSS_SECURITY) RAW_AT[r.id] = r.published;
+for (const g of GMAIL_NEWS) RAW_AT[g.id] = g.published;
 const RAW_ITEMS: Record<string, MemberItem> = {};
 for (const h of HN_PULSE) RAW_ITEMS[h.id] = { title: h.text, publisher: `hn/${h.author}`, badge: "HN", at: h.at, url: h.url };
 for (const g of GNEWS_RSS)
   RAW_ITEMS[g.id] = { title: stripPublisher(g.title, g.publisher), publisher: g.publisher || "google news", badge: "GNW", at: g.published, url: g.link };
 for (const r of RSS_LABS) RAW_ITEMS[r.id] = { title: r.title, publisher: r.lab, badge: labBadge(r.lab), at: r.published, url: r.link };
 for (const r of RSS_SECURITY) RAW_ITEMS[r.id] = { title: r.title, publisher: r.lab, badge: "SEC", at: r.published, url: r.link };
+for (const g of GMAIL_NEWS) RAW_ITEMS[g.id] = { title: g.title, publisher: g.publisher || "gmail", badge: "GML", at: g.published, url: g.link };
 // ── what desk.tsx computes from the slim view now ──
 const MEMBERS = inflateMembers(V.MEMBER_ROWS);
 const ITEM_IDS = crawlItemIds(V.MEMBER_ROWS);

@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-06T19:19:19Z",
+  "stamped_at": "2026-10-06T20:03:17Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 243,
+      "duration_ms": 219,
       "paused_until": null,
       "reason": null
     },
@@ -18,7 +18,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 3467,
+      "duration_ms": 151,
       "paused_until": null,
       "reason": null
     },
@@ -27,7 +27,7 @@
       "label": "OpenAlex",
       "status": "paused",
       "rows": 0,
-      "duration_ms": 1,
+      "duration_ms": 2,
       "paused_until": "2026-10-07T03:20:53Z",
       "reason": "paused_until 2026-10-07T03:20:53Z"
     },
@@ -36,7 +36,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 491,
+      "duration_ms": 1,
       "paused_until": null,
       "reason": null
     },
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 56,
-      "duration_ms": 8297,
+      "rows": 55,
+      "duration_ms": 8471,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 17634,
+      "duration_ms": 150,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 4379,
+      "duration_ms": 150,
       "paused_until": null,
       "reason": null
     },
@@ -72,7 +72,7 @@
       "label": "Google News",
       "status": "ok",
       "rows": 46,
-      "duration_ms": 6425,
+      "duration_ms": 150,
       "paused_until": null,
       "reason": null
     },
@@ -81,7 +81,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 18,
+      "duration_ms": 150,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 18,
+      "duration_ms": 150,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 40973,
-    "sources_wall_ms": 17635,
-    "papers_lane_ms": 4206,
-    "slowest_source_ms": 17634,
+    "sources_ms": 9594,
+    "sources_wall_ms": 8474,
+    "papers_lane_ms": 378,
+    "slowest_source_ms": 8471,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -114,9 +114,9 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 18010,
-    "startup_ms": 34,
-    "main_ms": 18021
+    "wall_ms": 9059,
+    "startup_ms": 52,
+    "main_ms": 9085
   },
   "multi_source_independent": 5,
   "stale_hours": 6,
@@ -125,17 +125,17 @@
     "multi_source_independent": 5,
     "multi_source_raw": 8,
     "self_reposts": 3,
-    "items_in": 234,
-    "clusters_out": 203,
+    "items_in": 233,
+    "clusters_out": 202,
     "collapsed": 31,
     "multi_source": 5,
     "multi_member": 11,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 53,
+    "new_items": 1,
     "per_source": {
-      "hn-algolia": 56,
+      "hn-algolia": 55,
       "rss-lab": 104,
       "rss-security": 28,
       "gnews-rss": 46
@@ -286,7 +286,7 @@
           "gnews-rss"
         ],
         "size": 3,
-        "score": 0.821,
+        "score": 0.822,
         "members": [
           {
             "id": "hn:49980872",
@@ -493,7 +493,7 @@
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 25
+      "hn_dropped": 27
     },
     "gnews_near_misses": [
       {
@@ -653,7 +653,7 @@
         ]
       },
       {
-        "score": 0.478,
+        "score": 0.477,
         "blocked": "thin-overlap",
         "hours_apart": 0.8,
         "a": {
@@ -833,7 +833,7 @@
         ]
       },
       {
-        "score": 0.478,
+        "score": 0.477,
         "blocked": "thin-overlap",
         "hours_apart": 0.8,
         "a": {
@@ -860,44 +860,44 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 3,
+      "streak_ok": 4,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 87,
+      "streak_ok": 88,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 87,
+      "streak_ok": 88,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 87,
+      "streak_ok": 88,
       "streak_fail": 0,
       "items_last": 46
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 87,
+      "streak_ok": 88,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 87,
+      "streak_ok": 88,
       "streak_fail": 0,
-      "items_last": 56
+      "items_last": 55
     },
     {
       "id": "openalex",
@@ -909,27 +909,27 @@
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 16,
+      "streak_ok": 17,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 87,
+      "streak_ok": 88,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 87,
+      "streak_ok": 88,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.005120277777777777,
+    "hours": 0.0025419444444444443,
     "stale": false
   },
   "hf": {
@@ -975,8 +975,8 @@
     "enriched": 1,
     "query": "In-Distribution Forcing for Long Video Generation at Test Time",
     "mode": "bibliographic",
-    "from_cache": false,
-    "searches": 1,
+    "from_cache": true,
+    "searches": 0,
     "brief": false,
     "pulse_lead": false,
     "papers_enrich_only": true,
@@ -998,7 +998,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 56,
+    "count": 55,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -1015,25 +1015,25 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 25,
+    "ai_dropped": 27,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
         "id": "hn:49977979",
         "tag": "rest",
-        "score": 1178,
+        "score": 1260,
         "text": "Mistral Large 4"
       },
       {
         "id": "hn:49961057",
         "tag": "rest",
-        "score": 786,
+        "score": 794,
         "text": "Anthropic reported diary entry to police, woman faces felony charge"
       },
       {
         "id": "hn:49969183",
         "tag": "rest",
-        "score": 523,
+        "score": 526,
         "text": "Beam: Reflection's 501B open-weight model"
       }
     ]
@@ -1050,42 +1050,42 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "https://openai.com/news/rss.xml",
+        "url": "(cache:openai)",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "https://deepmind.google/blog/rss.xml",
+        "url": "(cache:deepmind)",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "https://blog.google/technology/ai/rss/",
+        "url": "(cache:google-ai)",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "https://huggingface.co/blog/feed.xml",
+        "url": "(cache:huggingface)",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "https://mistral.ai/rss.xml",
+        "url": "(cache:mistral)",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "https://blogs.nvidia.com/feed/",
+        "url": "(cache:nvidia)",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "https://developer.nvidia.com/blog/feed",
+        "url": "(cache:nvidia-dev)",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
+        "url": "(cache:ms-research)",
         "count": 10
       },
       {
@@ -1136,17 +1136,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "https://blog.trailofbits.com/feed/",
+        "url": "(cache:trailofbits)",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "https://blog.fox-it.com/feed/",
+        "url": "(cache:fox-it)",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "https://projectzero.google/feed.xml",
+        "url": "(cache:projectzero)",
         "count": 6
       }
     ],
@@ -1321,7 +1321,7 @@
       {
         "id": "gnews:ecb3ae23ff88741d",
         "anchor_id": "hn:49958089",
-        "score": 0.837,
+        "score": 0.842,
         "title": "A Florida Woman Used Claude as a Diary. An Anthropic Employee Read It and Reported It to Police - Yahoo",
         "publisher": "Yahoo",
         "self_repost": false
@@ -1336,9 +1336,9 @@
       }
     ],
     "http_status": 200,
-    "content_type": "application/xml; charset=utf-8",
+    "content_type": null,
     "format": "rss2",
-    "from_cache": false,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1380,6 +1380,44 @@
         "publisher": "Digital Journal",
         "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNbEFVcUNmU0JTV1BRR3NHQUJybVFlV1EzTlQxVG5fREtCV0lUZHpBZThGcVZEd19LdWtjVFZKRTRpQjl2X09JckhqRUNCVm9NQ3dhdHRWSkVaTVlGSndDUmJSQ2F6bWdST0dZVm9LRDlvQjBxYXVxdE5zWF9VSHY2bjRqRXZoZlV0OGlzRmtodVpJY0toNW9BREJ4Tk5qenk2OU5BelhZSUkwcm0yY2RLcw?oc=5",
         "tag": "rest"
+      }
+    ]
+  },
+  "gmail_news": {
+    "ok": true,
+    "soft_fail": false,
+    "soft_fail_reason": null,
+    "count": 10,
+    "fetched": 10,
+    "from_cache": true,
+    "last_query_hash": "14f148f8d31e",
+    "brief": false,
+    "pulse_only": true,
+    "briefEligible": false,
+    "sample": [
+      {
+        "id": "gmail:1a11250b91591834",
+        "title": "AI systems could cover up misbehavior",
+        "publisher": "substack.com",
+        "qi": 44,
+        "priority": "P1",
+        "link": "https://metr.org/blog/cover-up"
+      },
+      {
+        "id": "gmail:1a111f35812d42ba",
+        "title": "Oct. 6 - Water hacks, rogue AI raise alarms | Java vulnerabilities disclosed",
+        "publisher": "divenewsletter.com",
+        "qi": 44,
+        "priority": "P1",
+        "link": "https://www.cybersecuritydive.com/news/water"
+      },
+      {
+        "id": "gmail:1a1118c601f1cb6a",
+        "title": "OpenAI Starts Watermarking ChatGPT Text",
+        "publisher": "alvarocintas.com",
+        "qi": 33,
+        "priority": "P2",
+        "link": "https://newsletter.alvarocintas.com/watermark"
       }
     ]
   },

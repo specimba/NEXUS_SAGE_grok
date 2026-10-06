@@ -84,6 +84,13 @@ import {
   type GnewsRssItem,
 } from "../src/lib/gnews-rss";
 import {
+  cacheDir as gmailCacheDir,
+  envTokenFetcher,
+  runGmailNews,
+  tokenFromEnv,
+  type GmailNewsHit,
+} from "../src/lib/gmail-news";
+import {
   fetchWikidataDeny,
   resetWikidataDenyTickState,
   resolveWikidataCacheDir,
@@ -98,6 +105,7 @@ import { RSS_LABS } from "../src/data/rss-labs";
 import { isAiRelevantTitle, isLabItemRelevant, labItemDropReason, partitionAiRelevant } from "../src/lib/ai-relevance";
 import { RSS_SECURITY } from "../src/data/rss-security";
 import { GNEWS_RSS } from "../src/data/gnews-rss";
+import { GMAIL_NEWS } from "../src/data/gmail-news";
 import {
   canonicalizeUrl,
   clusterItems,
@@ -303,6 +311,87 @@ ${META_TYPE_FIELDS}};
 export const GNEWS_RSS_AT = ${JSON.stringify(stamp)};
 
 export const GNEWS_RSS: GnewsRssRow[] = [
+${body},
+];
+`;
+}
+
+
+
+function renderSoftFailMetersTs(
+  stamp: string,
+  extra: { gmail: { soft: boolean; ok: boolean; detail: string } },
+): string {
+  const gmailState = extra.gmail.soft ? "soft" : "ok";
+  const gmailDetail = extra.gmail.detail;
+  const aggregate = extra.gmail.soft ? [`Gmail ${gmailDetail}`] : [];
+  const softCount = extra.gmail.soft ? 1 : 0;
+  return `/** A4 soft-fail meters — snapshot from ingest (Pass F adds Gmail). Pulse/rail only; never Brief. */
+export type SoftFailState = "ok" | "soft" | "deny";
+
+export type SoftFailChip = {
+  id: string;
+  label: string;
+  state: SoftFailState;
+  detail: string;
+};
+
+export type SoftFailMeters = {
+  stamped_at: string;
+  briefEligible: false;
+  providers: SoftFailChip[];
+  aggregate: string[];
+  deny: string[];
+  soft_count: number;
+};
+
+export const SOFT_FAIL_METERS: SoftFailMeters = {
+  stamped_at: ${JSON.stringify(stamp)},
+  briefEligible: false,
+  providers: [
+    { id: "hn", label: "HN", state: "ok", detail: "ok" },
+    { id: "hf", label: "HF", state: "ok", detail: "ok" },
+    { id: "rss", label: "RSS", state: "ok", detail: "ok" },
+    { id: "gnews", label: "GNews", state: "ok", detail: "landed" },
+    { id: "gmail", label: "Gmail", state: ${JSON.stringify(gmailState)} as SoftFailState, detail: ${JSON.stringify(gmailDetail)} },
+    { id: "openalex", label: "OpenAlex", state: "ok", detail: "ok" },
+    { id: "crossref", label: "Crossref", state: "ok", detail: "ok" },
+    { id: "github", label: "GitHub", state: "ok", detail: "ok" },
+    { id: "x_session", label: "X-session", state: "ok", detail: "landed" },
+  ],
+  aggregate: ${JSON.stringify(aggregate)},
+  deny: ["paid X", "Bluesky", "scrape farms"],
+  soft_count: ${softCount},
+} as const;
+`;
+}
+
+function renderGmailNewsTs(rows: GmailNewsHit[], stamp: string): string {
+  const body = rows
+    .map((r) => {
+      return `  { id: ${JSON.stringify(r.id)}, title: ${JSON.stringify(r.title)}, link: ${JSON.stringify(r.link)}, published: ${JSON.stringify(r.published)}, summary: ${JSON.stringify(r.summary)}, publisher: ${JSON.stringify(r.publisher)}, from: ${JSON.stringify(r.from)}, source: "gmail-news" as const, qi: ${r.qi}, priority: ${JSON.stringify(r.priority)} as const, tag: ${JSON.stringify(r.tag)} as const, briefEligible: false as const, pulse_only: true as const }`;
+    })
+    .join(",\n");
+  return `/** Pass F Gmail news Pulse — generated/refreshed by bun run ingest. Pulse-only; never Brief. */
+export type GmailNewsRow = {
+  id: string;
+  title: string;
+  link: string;
+  published: string;
+  summary: string;
+  publisher: string;
+  from: string;
+  source: "gmail-news";
+  qi: number;
+  priority: "P1" | "P2" | "P3";
+  tag: "rest" | "rumor" | "companion" | "incident";
+  briefEligible: false;
+  pulse_only: true;
+};
+
+export const GMAIL_NEWS_AT = ${JSON.stringify(stamp)};
+
+export const GMAIL_NEWS: GmailNewsRow[] = [
 ${body},
 ];
 `;
@@ -935,7 +1024,49 @@ async function main() {
     console.log(`GNews: ${timedOut.has("gnews") ? "TIMEOUT — continuing with committed rows" : "soft_fail — continuing"} (${String(err)})`);
   }
   // A timed-out GNews keeps the committed rows (no live rows to stamp); other soft-fails behave as before.
+
   const gnewsLive = (gnewsOk || gnewsSoftFail) && !timedOut.has("gnews");
+
+  // Pass F — Gmail keyword news → Pulse only (never Brief). Soft-fail on auth/timeout; ≤15s.
+  let gmailOk = false;
+  let gmailSoftFail = false;
+  let gmailSoftFailReason: string | undefined;
+  let gmailRows: GmailNewsHit[] = [];
+  let gmailFromCache = false;
+  let gmailQueryHash = "";
+  let gmailFetched = 0;
+  ms.gmail_news = 0;
+  {
+    const g0 = Date.now();
+    try {
+      const token = tokenFromEnv();
+      const gn = await runGmailNews({
+        cacheDir: gmailCacheDir(root),
+        fetcher: token ? envTokenFetcher(token) : undefined,
+        timeoutMs: 15_000,
+      });
+      ms.gmail_news = gn.duration_ms;
+      gmailRows = gn.items;
+      gmailOk = gn.ok && gn.items.length > 0;
+      gmailSoftFail = gn.soft_fail;
+      gmailSoftFailReason = gn.soft_fail_reason ?? undefined;
+      gmailFromCache = gn.from_cache;
+      gmailQueryHash = gn.query_hash;
+      gmailFetched = gn.fetched;
+      console.log(
+        `Gmail news: ${gmailRows.length} Pulse (fetched=${gmailFetched}) soft_fail=${gn.soft_fail}${gn.soft_fail_reason ? ` (${gn.soft_fail_reason})` : ""} from_cache=${gn.from_cache} (brief=false · pulse_only)`,
+      );
+      for (const it of gmailRows.slice(0, 3)) {
+        console.log(`  gmail [${it.priority} qi=${it.qi}] ${it.publisher} :: ${it.title.slice(0, 72)}`);
+      }
+    } catch (err) {
+      ms.gmail_news = Date.now() - g0;
+      gmailSoftFail = true;
+      gmailSoftFailReason = String(err).slice(0, 160);
+      console.log(`Gmail news: soft_fail — continuing (${String(err)})`);
+    }
+  }
+
 
   // Security lab RSS AFTER lab RSS — Pulse/shelf/Digest-ref; never Brief lead / never cycle 004
   let secOk = false;
@@ -1135,6 +1266,14 @@ async function main() {
       at: toIso(r.published),
       publisher: r.publisher,
     })),
+    ...(gmailOk || gmailRows.length ? gmailRows : GMAIL_NEWS).map((r) => ({
+      id: r.id,
+      source: "gmail-news" as const,
+      title: r.title,
+      url: r.link,
+      at: toIso(r.published),
+      publisher: r.publisher,
+    })),
   ];
   // Beat 5: GNews corroborators — pool items (beyond the display cap) whose headline directly
   // matches an HN/lab/security item under the same v2 rules. ≤3 per anchor. Never Brief · GNews-last lead.
@@ -1304,6 +1443,11 @@ async function main() {
   if (gnewsLive) {
     writeText(resolve(root, "src/data/gnews-rss.ts"), renderGnewsRssTs(gnewsRows, stamp, rowMeta));
   }
+  // Pass F: always refresh the module (empty on soft-fail with no cache) so the desk matches the stamp.
+  writeText(resolve(root, "src/data/gmail-news.ts"), renderGmailNewsTs(gmailRows, stamp));
+  writeText(resolve(root, "src/data/soft-fail-meters.ts"), renderSoftFailMetersTs(stamp, {
+    gmail: { soft: gmailSoftFail, ok: gmailOk, detail: gmailSoftFail ? (gmailSoftFailReason ?? "soft") : gmailOk ? `${gmailRows.length} landed` : "empty" },
+  }));
   writeText(seenPath, `${JSON.stringify(seenIndex, null, 2)}\n`);
   writeText(healthPath, `${JSON.stringify(ledger, null, 2)}\n`);
   writeText(resolve(root, "src/data/source-health.ts"), renderSourceHealthTs(healthRows, stamp));
@@ -1539,6 +1683,26 @@ async function main() {
         publisher: r.publisher,
         link: r.link,
         tag: r.tag,
+      })),
+    },
+    gmail_news: {
+      ok: gmailOk,
+      soft_fail: gmailSoftFail,
+      soft_fail_reason: gmailSoftFailReason ?? null,
+      count: gmailRows.length,
+      fetched: gmailFetched,
+      from_cache: gmailFromCache,
+      last_query_hash: gmailQueryHash,
+      brief: false,
+      pulse_only: true,
+      briefEligible: false,
+      sample: gmailRows.slice(0, 3).map((r) => ({
+        id: r.id,
+        title: r.title,
+        publisher: r.publisher,
+        qi: r.qi,
+        priority: r.priority,
+        link: r.link,
       })),
     },
     x: {

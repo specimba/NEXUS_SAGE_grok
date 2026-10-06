@@ -75,6 +75,7 @@ const SOURCE_BADGE: Record<string, string> = {
   "rss-lab": "LAB",
   "rss-security": "SEC",
   x: "X",
+  "gmail-news": "GML",
 };
 
 const LAB_BADGE: Record<string, string> = {
@@ -101,6 +102,7 @@ export function memberSource(id: string): string | null {
   if (id.startsWith("rss-sec:")) return "rss-security";
   if (id.startsWith("rss:")) return "rss-lab";
   if (id.startsWith("x:")) return "x";
+  if (id.startsWith("gmail:")) return "gmail-news";
   return null;
 }
 

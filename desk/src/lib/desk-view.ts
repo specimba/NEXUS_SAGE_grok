@@ -47,7 +47,7 @@ export const LINK_MAX = 2048;
 
 export const DESK_VIEW_CAPS = {
   /** Crawl items kept per source (counted over kept stories; a story is dropped whole, oldest first). */
-  items: { hn: 90, gnews: 45, rss: 156, "rss-sec": 40 } as Record<string, number>,
+  items: { hn: 90, gnews: 45, rss: 156, "rss-sec": 40, gmail: 18 } as Record<string, number>,
   /** Operator X posts (newest kept). */
   xPosts: 12,
   /** Papers (lowest arXiv id = oldest dropped first; feed order kept). */
@@ -111,6 +111,7 @@ export function defaultBadge(id: string, publisher: string): string | undefined 
   if (id.startsWith("rss-sec:")) return "SEC";
   if (id.startsWith("rss:")) return labBadge(publisher);
   if (id.startsWith("x:")) return "X";
+  if (id.startsWith("gmail:")) return "GML";
   return undefined;
 }
 const pubOf = (id: string, r: MemberRow) => r.p ?? defaultPublisher(id)!;

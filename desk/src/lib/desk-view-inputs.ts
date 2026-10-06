@@ -7,6 +7,7 @@ import { GNEWS_RSS } from "@/data/gnews-rss";
 import { HN_PULSE } from "@/data/hn-pulse";
 import { RSS_LABS } from "@/data/rss-labs";
 import { RSS_SECURITY } from "@/data/rss-security";
+import { GMAIL_NEWS } from "@/data/gmail-news";
 import { PULSE_CLUSTERS, PULSE_CLUSTERS_AT } from "@/data/pulse-clusters";
 import { SOURCE_HEALTH, SOURCE_HEALTH_AT } from "@/data/source-health";
 import { WIRE_CRAWL_AT, WIRE_PREV_CRAWL_AT, WIRE_ROWS } from "@/data/wire";
@@ -29,7 +30,7 @@ const noAt = <T extends { at?: unknown }>(s: T | null) => {
 };
 
 export function rawDeskViewInputs(): { input: DeskViewInput; extras: DeskViewExtras } {
-  const itemIds = [...HN_PULSE.map((h) => h.id), ...GNEWS_RSS.map((g) => g.id), ...RSS_LABS.map((r) => r.id), ...RSS_SECURITY.map((r) => r.id)];
+  const itemIds = [...HN_PULSE.map((h) => h.id), ...GNEWS_RSS.map((g) => g.id), ...RSS_LABS.map((r) => r.id), ...RSS_SECURITY.map((r) => r.id), ...GMAIL_NEWS.map((g) => g.id)];
   const members = memberInfo();
   // The client recovers the crawl-item list as "every member id not under x:" (crawlItemIds) — make sure that holds.
   for (const id of itemIds) if (id.startsWith("x:")) throw new Error(`desk-view: crawl item id ${id} collides with the X namespace`);

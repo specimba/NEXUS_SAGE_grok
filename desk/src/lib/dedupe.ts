@@ -16,7 +16,7 @@
 
 import { companyOf, isSelfRepost, type Company } from "./publisher-company";
 
-export type PulseSource = "rss-lab" | "hn-algolia" | "rss-security" | "gnews-rss";
+export type PulseSource = "rss-lab" | "hn-algolia" | "rss-security" | "gnews-rss" | "gmail-news";
 
 export type PulseInput = {
   id: string;
@@ -72,6 +72,7 @@ const LEAD_PRIORITY: Record<PulseSource, number> = {
   "hn-algolia": 1,
   "rss-security": 2,
   "gnews-rss": 3,
+  "gmail-news": 4, // Pass F: never sole-leads; Pulse-only
 };
 
 const TRACKING_PARAMS = new Set([
