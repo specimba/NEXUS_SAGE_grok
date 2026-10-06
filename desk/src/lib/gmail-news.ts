@@ -116,7 +116,7 @@ export function extractLink(snippet: string, viewUrl?: string): string | null {
   const text = String(snippet ?? "");
   const m = text.match(/https?:\/\/[^\s<>"')\]]+/i);
   if (m) {
-    let u = m[0]!.replace(/[),.]+$/, "");
+    const u = m[0]!.replace(/[),.]+$/, "");
     if (/unsubscribe|mailto:|preference/i.test(u)) return viewUrl || null;
     return u;
   }
