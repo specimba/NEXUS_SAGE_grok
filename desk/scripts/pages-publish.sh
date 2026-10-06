@@ -41,7 +41,8 @@ if [ "${NEXUS_BUILD_LOCK_HELD:-0}" != "1" ]; then
 fi
 release_lock() { if { true >&9; } 2>/dev/null; then flock -u 9 2>/dev/null || true; exec 9>&-; fi; unset NEXUS_BUILD_LOCK_HELD; }
 # Unlocked strays (a bare `npx next build`) still refuse.
-if pgrep -f '[n]ext build' >/dev/null 2>&1; then die "another 'next build' is running — one build at a time"; fi
+# Matches the next binary (".../.bin/next build", "npx next build"), not any shell line that merely mentions it.
+if pgrep -f '(^|[/ ])[n]ext build( |$)' >/dev/null 2>&1; then die "another 'next build' is running — one build at a time"; fi
 
 # ── 0b. one crawl: header CRAWL_AT must equal the Wire / Pulse / heat snapshot (skipped postingest stays off Pages) ──
 ( cd "$DESK" && bun scripts/pages-coherence.ts ) || die "data incoherent — header crawl ≠ Wire snapshot; nothing built or pushed"
