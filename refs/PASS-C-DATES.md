@@ -1,7 +1,7 @@
 # Pass C — Real dates on Papers / Pulse / Wire
 
 **Architect cut:** 2026-10-06 · Canberk order D→F→C→B→E→A  
-**Status:** PASS MARK · land after D  
+**Status:** GATE PASS · Reviewer 2026-10-06 23:55 TRT @ 1a4ac4a / gh-pages fc437e8 · clear for B  
 **Owners:** Coder builds · UX signs off · Reviewer gates  
 **Prefer free.** DENY: inventing dates · Brief pin changes · paid X.
 
