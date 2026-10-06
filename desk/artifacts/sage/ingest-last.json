@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-05T23:15:31Z",
+  "stamped_at": "2026-10-06T03:20:50Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 207,
+      "duration_ms": 218,
       "paused_until": null,
       "reason": null
     },
@@ -18,25 +18,25 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 4510,
+      "duration_ms": 3591,
       "paused_until": null,
       "reason": null
     },
     {
       "id": "openalex",
       "label": "OpenAlex",
-      "status": "paused",
+      "status": "fail",
       "rows": 0,
-      "duration_ms": 2,
-      "paused_until": "2026-10-06T03:20:26Z",
-      "reason": "paused_until 2026-10-06T03:20:26Z"
+      "duration_ms": 180,
+      "paused_until": "2026-10-07T03:20:53Z",
+      "reason": "HTTP 429"
     },
     {
       "id": "crossref",
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 1,
+      "duration_ms": 2,
       "paused_until": null,
       "reason": null
     },
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 42,
-      "duration_ms": 8478,
+      "rows": 50,
+      "duration_ms": 8363,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 480,
+      "duration_ms": 15685,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 27,
-      "duration_ms": 160,
+      "duration_ms": 4369,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 41,
-      "duration_ms": 160,
+      "rows": 38,
+      "duration_ms": 6295,
       "paused_until": null,
       "reason": null
     },
@@ -80,8 +80,8 @@
       "id": "github",
       "label": "GitHub",
       "status": "ok",
-      "rows": 2,
-      "duration_ms": 160,
+      "rows": 1,
+      "duration_ms": 422,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 160,
+      "duration_ms": 4665,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 14318,
-    "sources_wall_ms": 8479,
-    "papers_lane_ms": 4723,
-    "slowest_source_ms": 8478,
+    "sources_ms": 43790,
+    "sources_wall_ms": 15686,
+    "papers_lane_ms": 3995,
+    "slowest_source_ms": 15685,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -114,143 +114,40 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 8882,
-    "startup_ms": 36,
-    "main_ms": 8899
+    "wall_ms": 16005,
+    "startup_ms": 37,
+    "main_ms": 16016
   },
   "multi_source_independent": 6,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
     "multi_source_independent": 6,
-    "multi_source_raw": 8,
-    "self_reposts": 2,
-    "items_in": 214,
-    "clusters_out": 195,
-    "collapsed": 19,
+    "multi_source_raw": 7,
+    "self_reposts": 1,
+    "items_in": 219,
+    "clusters_out": 203,
+    "collapsed": 16,
     "multi_source": 6,
-    "multi_member": 12,
+    "multi_member": 10,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 9,
+    "new_items": 43,
     "per_source": {
-      "hn-algolia": 42,
+      "hn-algolia": 50,
       "rss-lab": 104,
       "rss-security": 27,
-      "gnews-rss": 41
+      "gnews-rss": 38
     },
     "multi_source_clusters": [
-      {
-        "title": "Pentagon stops using Anthropic AI tools after blacklisting company, BBC told",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:49969929",
-            "source": "hn-algolia",
-            "title": "Pentagon stops using Anthropic AI tools after blacklisting company, BBC told",
-            "at": "2026-10-05T20:07:10Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:2eccafd8c7629f6a",
-            "source": "gnews-rss",
-            "title": "Pentagon stops using Anthropic AI tools after blacklisting company, BBC told - BBC",
-            "at": "2026-10-05T16:13:21Z",
-            "publisher": "BBC"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI will show visual ads in ChatGPT while you generate images",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 5,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:49964517",
-            "source": "hn-algolia",
-            "title": "OpenAI will show visual ads in ChatGPT while you generate images",
-            "at": "2026-10-05T13:21:26Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:410912c128d9e8b5",
-            "source": "gnews-rss",
-            "title": "OpenAI is testing visual ads inside ChatGPT's image generation tool - qz.com",
-            "at": "2026-10-05T18:51:46Z",
-            "publisher": "qz.com"
-          },
-          {
-            "id": "gnews:446614908c7be5e1",
-            "source": "gnews-rss",
-            "title": "OpenAI will show visual ads in ChatGPT while you generate images - BleepingComputer",
-            "at": "2026-10-05T10:28:45Z",
-            "publisher": "BleepingComputer"
-          },
-          {
-            "id": "gnews:c4203939163aaaeb",
-            "source": "gnews-rss",
-            "title": "OpenAI Will Test Visual Ads Beside ChatGPT Image Results in the US - mezha.net",
-            "at": "2026-10-05T16:04:14Z",
-            "publisher": "mezha.net"
-          },
-          {
-            "id": "gnews:9562a0148ac3a7d1",
-            "source": "gnews-rss",
-            "title": "OpenAI Is Putting Visual Ads Next to Your ChatGPT Image Results - Yahoo Finance",
-            "at": "2026-10-05T18:45:47Z",
-            "publisher": "Yahoo Finance"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI \"rogue\" agent activities found on Wikimedia projects",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 3,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:49968105",
-            "source": "hn-algolia",
-            "title": "OpenAI \"rogue\" agent activities found on Wikimedia projects",
-            "at": "2026-10-05T17:53:35Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:49967781",
-            "source": "hn-algolia",
-            "title": "OpenAI \"rogue\" agent activities found on Wikimedia projects",
-            "at": "2026-10-05T17:27:31Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:73ed875e6045c17d",
-            "source": "gnews-rss",
-            "title": "OpenAI “rogue” agent activities found on Wikimedia projects - wikimediafoundation.org",
-            "at": "2026-10-05T17:02:58Z",
-            "publisher": "wikimediafoundation.org"
-          }
-        ]
-      },
       {
         "title": "Anthropic reported diary entry to police, woman faces felony charge",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 4,
+        "size": 7,
         "score": 1,
         "members": [
           {
@@ -268,6 +165,13 @@
             "publisher": null
           },
           {
+            "id": "hn:49972816",
+            "source": "hn-algolia",
+            "title": "Third conversation with Claude that Anthropic reported to police since August",
+            "at": "2026-10-06T00:53:45Z",
+            "publisher": null
+          },
+          {
             "id": "gnews:90a59da3fc98dd09",
             "source": "gnews-rss",
             "title": "Florida Woman Used Claude as a Diary. Anthropic Reported Her to Police. - Gadget Review",
@@ -275,11 +179,107 @@
             "publisher": "Gadget Review"
           },
           {
-            "id": "gnews:5ffef4a244477b64",
+            "id": "gnews:6821df2e7eec72df",
             "source": "gnews-rss",
-            "title": "The woman used Claude as a diary, and Anthropic reported her to the police. What happened? - dev.ua",
-            "at": "2026-10-05T12:06:00Z",
-            "publisher": "dev.ua"
+            "title": "A Florida Woman Used Claude as a Diary. An Anthropic Employee Read It and Reported It to Police - Decrypt News",
+            "at": "2026-10-05T21:16:03Z",
+            "publisher": "Decrypt News"
+          },
+          {
+            "id": "gnews:ecb3ae23ff88741d",
+            "source": "gnews-rss",
+            "title": "A Florida Woman Used Claude as a Diary. An Anthropic Employee Read It and Reported It to Police - Yahoo",
+            "at": "2026-10-05T21:16:03Z",
+            "publisher": "Yahoo"
+          },
+          {
+            "id": "gnews:4319eff64ea5228c",
+            "source": "gnews-rss",
+            "title": "Anthropic reports Florida woman’s Claude ‘diary’ threat to shoot up sheriff’s office, felony charge follows — it’s at least the third such conversation to reach police since August - tomshardware.com",
+            "at": "2026-10-05T09:40:00Z",
+            "publisher": "tomshardware.com"
+          }
+        ]
+      },
+      {
+        "title": "Beam: Reflection's 501B open-weight model",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 3,
+        "score": 0.921,
+        "members": [
+          {
+            "id": "hn:49969183",
+            "source": "hn-algolia",
+            "title": "Beam: Reflection's 501B open-weight model",
+            "at": "2026-10-05T19:16:35Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:50b8aafe856c8bec",
+            "source": "gnews-rss",
+            "title": "Reflection AI debuts open-source Beam model with 501B parameters - SiliconANGLE",
+            "at": "2026-10-06T00:46:00Z",
+            "publisher": "SiliconANGLE"
+          },
+          {
+            "id": "gnews:6d7f2e3b62970d4f",
+            "source": "gnews-rss",
+            "title": "Reflection AI Unveils Beam, a 501B-Parameter Open-Weight Model - Unite.AI",
+            "at": "2026-10-05T19:46:03Z",
+            "publisher": "Unite.AI"
+          }
+        ]
+      },
+      {
+        "title": "Pentagon stops using Anthropic AI tools after blacklisting company, BBC told",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:49969929",
+            "source": "hn-algolia",
+            "title": "Pentagon stops using Anthropic AI tools after blacklisting company, BBC told",
+            "at": "2026-10-05T20:07:10Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:415c71beb6847263",
+            "source": "gnews-rss",
+            "title": "Pentagon stops using Anthropic AI tools after blacklisting company, BBC told - BBC",
+            "at": "2026-10-05T16:13:21Z",
+            "publisher": "BBC"
+          }
+        ]
+      },
+      {
+        "title": "Anthropic Subscriptions Offer 5x+ More Value Than OpenAI",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:49969927",
+            "source": "hn-algolia",
+            "title": "Anthropic Subscriptions Offer 5x+ More Value Than OpenAI",
+            "at": "2026-10-05T20:06:53Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:4418bd00871bc18b",
+            "source": "gnews-rss",
+            "title": "Anthropic Subscriptions Offer 5x+ More Value Than OpenAI - SemiAnalysis",
+            "at": "2026-10-05T20:01:09Z",
+            "publisher": "SemiAnalysis"
           }
         ]
       },
@@ -289,7 +289,7 @@
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 3,
+        "size": 2,
         "score": 1,
         "members": [
           {
@@ -303,15 +303,8 @@
             "id": "gnews:5ff58ebe3729dba2",
             "source": "gnews-rss",
             "title": "Anthropic Now Asks Claude Users to Share Voice Data for AI Training - The Mac Observer",
-            "at": "2026-10-05T14:30:43Z",
+            "at": "2026-10-05T20:00:57Z",
             "publisher": "The Mac Observer"
-          },
-          {
-            "id": "gnews:97ac90d2c7de1541",
-            "source": "gnews-rss",
-            "title": "Anthropic Wants Your Voice Chats to Train Claude AI Models - Android Headlines",
-            "at": "2026-10-05T13:23:35Z",
-            "publisher": "Android Headlines"
           }
         ]
       },
@@ -322,7 +315,7 @@
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.717,
+        "score": 0.719,
         "members": [
           {
             "id": "hn:49955908",
@@ -334,9 +327,9 @@
           {
             "id": "gnews:8e16c65bfd16491e",
             "source": "gnews-rss",
-            "title": "Scoop: A powerful new model from startup Reflection is set to shake up the AI race - axios.com",
+            "title": "Scoop: A powerful new model from startup Reflection is set to shake up the AI race - Axios",
             "at": "2026-10-04T12:50:25Z",
-            "publisher": "axios.com"
+            "publisher": "Axios"
           }
         ]
       }
@@ -358,23 +351,6 @@
             "title": "From Scan to Treatment Plan, AI Helps Close Breast Cancer’s Deadliest Gaps - NVIDIA Blog"
           }
         ]
-      },
-      {
-        "title": "Building advertising for the way people use AI",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:3e955271e64ec482",
-            "publisher": "OpenAI",
-            "title": "Building advertising for the way people use AI - OpenAI"
-          }
-        ]
       }
     ],
     "ai_relevance": {
@@ -392,67 +368,99 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "24/7 Wall St.",
-          "title": "Up 28% in 2026, NVIDIA Just Tapped an All-Time High: Is the Rally Overextended or Just Getting Started? - 24/7 Wall St."
+          "publisher": "Startup Fortune",
+          "title": "Nvidia Backs Reactor as World Model Startups Draw Big Money - Startup Fortune"
         },
         {
-          "publisher": "Boston Herald",
-          "title": "Privacy concerns put smart glasses under scrutiny as Norway seeks temporary ban - Boston Herald"
+          "publisher": "finance.biggo.com",
+          "title": "Nvidia's $20 Billion Groq Deal Draws Shareholder Lawsuit From Former Engineers - finance.biggo.com"
         },
         {
-          "publisher": "AFR",
-          "title": "Firmus IPO and future success are greatly dependent on Nvidia’s Jensen Huang - AFR"
+          "publisher": "Fortune",
+          "title": "Nvidia backs startup Reactor as buzz grows for world models - Fortune"
+        },
+        {
+          "publisher": "MarketBeat",
+          "title": "NVIDIA’s Record High Raises a Bigger Question About How Far the Rally Can Run - MarketBeat"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 12
+      "hn_dropped": 18
     },
     "gnews_near_misses": [
       {
-        "score": 1,
-        "blocked": "time-window",
-        "hours_apart": 97.9,
+        "score": 0.544,
+        "blocked": "below-threshold",
+        "hours_apart": 12.2,
         "a": {
-          "id": "rss:openai:b8087b88cb63ae7f",
-          "source": "rss-lab",
-          "title": "The eternal complement",
-          "at": "2026-10-01T17:00:00Z"
+          "id": "hn:49958089",
+          "source": "hn-algolia",
+          "title": "Florida woman used Claude as a diary, then Anthropic reported an entry to police",
+          "at": "2026-10-04T21:29:59Z"
         },
         "b": {
-          "id": "gnews:b28764d8a562373f",
+          "id": "gnews:4319eff64ea5228c",
           "source": "gnews-rss",
-          "title": "The eternal complement - OpenAI",
-          "at": "2026-10-05T18:51:17Z"
+          "title": "Anthropic reports Florida woman’s Claude ‘diary’ threat to shoot up sheriff’s office, felony charge follows — it’s at least the third such conversation to reach police since August - tomshardware.com",
+          "at": "2026-10-05T09:40:00Z"
         },
         "shared": [
-          "eternal",
-          "complement"
+          "florida",
+          "woman",
+          "claude",
+          "diary",
+          "anthropic",
+          "polic"
         ]
       },
       {
-        "score": 0.497,
+        "score": 0.513,
         "blocked": "below-threshold",
-        "hours_apart": 1,
+        "hours_apart": 4,
         "a": {
-          "id": "hn:49963895",
+          "id": "hn:49961057",
           "source": "hn-algolia",
-          "title": "Anthropic wants your thoughts on AI",
-          "at": "2026-10-05T12:21:02Z"
+          "title": "Anthropic reported diary entry to police, woman faces felony charge",
+          "at": "2026-10-05T05:37:40Z"
         },
         "b": {
-          "id": "gnews:97ac90d2c7de1541",
+          "id": "gnews:4319eff64ea5228c",
           "source": "gnews-rss",
-          "title": "Anthropic Wants Your Voice Chats to Train Claude AI Models - Android Headlines",
-          "at": "2026-10-05T13:23:35Z"
+          "title": "Anthropic reports Florida woman’s Claude ‘diary’ threat to shoot up sheriff’s office, felony charge follows — it’s at least the third such conversation to reach police since August - tomshardware.com",
+          "at": "2026-10-05T09:40:00Z"
         },
         "shared": [
           "anthropic",
-          "want",
-          "ai"
+          "diary",
+          "polic",
+          "woman",
+          "felony",
+          "charg"
         ]
       },
       {
-        "score": 0.48,
+        "score": 0.481,
+        "blocked": "thin-overlap",
+        "hours_apart": 35.1,
+        "a": {
+          "id": "hn:49953892",
+          "source": "hn-algolia",
+          "title": "Anthropic asks Claude users to share voice data for AI model training",
+          "at": "2026-10-04T13:44:26Z"
+        },
+        "b": {
+          "id": "gnews:01074f454a1b42e0",
+          "source": "gnews-rss",
+          "title": "Anthropic Reports User to the Police - Futurism",
+          "at": "2026-10-06T00:52:00Z"
+        },
+        "shared": [
+          "anthropic",
+          "user"
+        ]
+      },
+      {
+        "score": 0.475,
         "blocked": "below-threshold",
         "hours_apart": 9,
         "a": {
@@ -475,32 +483,9 @@
         ]
       },
       {
-        "score": 0.47,
+        "score": 0.432,
         "blocked": "below-threshold",
-        "hours_apart": 6.5,
-        "a": {
-          "id": "hn:49961057",
-          "source": "hn-algolia",
-          "title": "Anthropic reported diary entry to police, woman faces felony charge",
-          "at": "2026-10-05T05:37:40Z"
-        },
-        "b": {
-          "id": "gnews:5ffef4a244477b64",
-          "source": "gnews-rss",
-          "title": "The woman used Claude as a diary, and Anthropic reported her to the police. What happened? - dev.ua",
-          "at": "2026-10-05T12:06:00Z"
-        },
-        "shared": [
-          "anthropic",
-          "diary",
-          "polic",
-          "woman"
-        ]
-      },
-      {
-        "score": 0.415,
-        "blocked": "below-threshold",
-        "hours_apart": 0.3,
+        "hours_apart": 6,
         "a": {
           "id": "hn:49969183",
           "source": "hn-algolia",
@@ -508,10 +493,10 @@
           "at": "2026-10-05T19:16:35Z"
         },
         "b": {
-          "id": "gnews:6d20523d70ee66e6",
+          "id": "gnews:7c99e61969d11708",
           "source": "gnews-rss",
-          "title": "Reflection AI unveils its first open model, Beam. Could it be the America's best chance to compete with China? - Fortune",
-          "at": "2026-10-05T19:00:00Z"
+          "title": "Reflection AI Beam: Open Model Takes on GLM-5.2 [2026] - shattered.io",
+          "at": "2026-10-06T01:18:47Z"
         },
         "shared": [
           "beam",
@@ -520,115 +505,143 @@
         ]
       },
       {
-        "score": 0.391,
+        "score": 0.43,
         "blocked": "thin-overlap",
-        "hours_apart": 5.5,
+        "hours_apart": 0,
         "a": {
-          "id": "hn:49964517",
+          "id": "hn:49972816",
           "source": "hn-algolia",
-          "title": "OpenAI will show visual ads in ChatGPT while you generate images",
-          "at": "2026-10-05T13:21:26Z"
+          "title": "Third conversation with Claude that Anthropic reported to police since August",
+          "at": "2026-10-06T00:53:45Z"
         },
         "b": {
-          "id": "gnews:99f0e0220d777d52",
+          "id": "gnews:01074f454a1b42e0",
           "source": "gnews-rss",
-          "title": "OpenAI gains 20 measurement partners for ChatGPT Ads - PPC Land",
-          "at": "2026-10-05T18:51:58Z"
+          "title": "Anthropic Reports User to the Police - Futurism",
+          "at": "2026-10-06T00:52:00Z"
         },
         "shared": [
-          "openai",
-          "ads",
-          "chatgpt"
+          "anthropic",
+          "polic"
         ]
       },
       {
-        "score": 0.336,
+        "score": 0.427,
         "blocked": "thin-overlap",
-        "hours_apart": 793.4,
+        "hours_apart": 27.4,
         "a": {
-          "id": "rss:deepmind:63b19b50b4021cb5",
-          "source": "rss-lab",
-          "title": "Introducing Gemini 3.8 Flash and 3.8 Flash Cyber",
-          "at": "2026-09-02T16:18:31Z"
+          "id": "hn:49958089",
+          "source": "hn-algolia",
+          "title": "Florida woman used Claude as a diary, then Anthropic reported an entry to police",
+          "at": "2026-10-04T21:29:59Z"
         },
         "b": {
-          "id": "gnews:5c83c13dd4184511",
+          "id": "gnews:01074f454a1b42e0",
           "source": "gnews-rss",
-          "title": "Gemini AI Paywall: Google Restricts Free Users To Flash-Lite Model From October 9 - NDTV Profit",
-          "at": "2026-10-05T17:41:13Z"
+          "title": "Anthropic Reports User to the Police - Futurism",
+          "at": "2026-10-06T00:52:00Z"
         },
         "shared": [
-          "gemini",
-          "flash"
+          "anthropic",
+          "polic"
         ]
       },
       {
-        "score": 0.303,
+        "score": 0.419,
         "blocked": "thin-overlap",
-        "hours_apart": 507.1,
+        "hours_apart": 19.2,
         "a": {
-          "id": "rss:google-ai:ac6fab4ebd9f6bc8",
-          "source": "rss-lab",
-          "title": "DevFest is back",
-          "at": "2026-09-14T16:00:00Z"
+          "id": "hn:49961057",
+          "source": "hn-algolia",
+          "title": "Anthropic reported diary entry to police, woman faces felony charge",
+          "at": "2026-10-05T05:37:40Z"
         },
         "b": {
-          "id": "gnews:0e7eaae2d78524df",
+          "id": "gnews:01074f454a1b42e0",
           "source": "gnews-rss",
-          "title": "Meta, Microsoft scale back employee use of Claude: report - Seeking Alpha",
-          "at": "2026-10-05T19:07:05Z"
+          "title": "Anthropic Reports User to the Police - Futurism",
+          "at": "2026-10-06T00:52:00Z"
         },
         "shared": [
-          "back"
+          "anthropic",
+          "polic"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 1,
-        "blocked": "time-window",
-        "hours_apart": 97.9,
+        "score": 0.544,
+        "blocked": "below-threshold",
+        "hours_apart": 12.2,
         "a": {
-          "id": "rss:openai:b8087b88cb63ae7f",
-          "source": "rss-lab",
-          "title": "The eternal complement",
-          "at": "2026-10-01T17:00:00Z"
+          "id": "hn:49958089",
+          "source": "hn-algolia",
+          "title": "Florida woman used Claude as a diary, then Anthropic reported an entry to police",
+          "at": "2026-10-04T21:29:59Z"
         },
         "b": {
-          "id": "gnews:b28764d8a562373f",
+          "id": "gnews:4319eff64ea5228c",
           "source": "gnews-rss",
-          "title": "The eternal complement - OpenAI",
-          "at": "2026-10-05T18:51:17Z"
+          "title": "Anthropic reports Florida woman’s Claude ‘diary’ threat to shoot up sheriff’s office, felony charge follows — it’s at least the third such conversation to reach police since August - tomshardware.com",
+          "at": "2026-10-05T09:40:00Z"
         },
         "shared": [
-          "eternal",
-          "complement"
+          "florida",
+          "woman",
+          "claude",
+          "diary",
+          "anthropic",
+          "polic"
         ]
       },
       {
-        "score": 0.497,
+        "score": 0.513,
         "blocked": "below-threshold",
-        "hours_apart": 1,
+        "hours_apart": 4,
         "a": {
-          "id": "hn:49963895",
+          "id": "hn:49961057",
           "source": "hn-algolia",
-          "title": "Anthropic wants your thoughts on AI",
-          "at": "2026-10-05T12:21:02Z"
+          "title": "Anthropic reported diary entry to police, woman faces felony charge",
+          "at": "2026-10-05T05:37:40Z"
         },
         "b": {
-          "id": "gnews:97ac90d2c7de1541",
+          "id": "gnews:4319eff64ea5228c",
           "source": "gnews-rss",
-          "title": "Anthropic Wants Your Voice Chats to Train Claude AI Models - Android Headlines",
-          "at": "2026-10-05T13:23:35Z"
+          "title": "Anthropic reports Florida woman’s Claude ‘diary’ threat to shoot up sheriff’s office, felony charge follows — it’s at least the third such conversation to reach police since August - tomshardware.com",
+          "at": "2026-10-05T09:40:00Z"
         },
         "shared": [
           "anthropic",
-          "want",
-          "ai"
+          "diary",
+          "polic",
+          "woman",
+          "felony",
+          "charg"
         ]
       },
       {
-        "score": 0.48,
+        "score": 0.481,
+        "blocked": "thin-overlap",
+        "hours_apart": 35.1,
+        "a": {
+          "id": "hn:49953892",
+          "source": "hn-algolia",
+          "title": "Anthropic asks Claude users to share voice data for AI model training",
+          "at": "2026-10-04T13:44:26Z"
+        },
+        "b": {
+          "id": "gnews:01074f454a1b42e0",
+          "source": "gnews-rss",
+          "title": "Anthropic Reports User to the Police - Futurism",
+          "at": "2026-10-06T00:52:00Z"
+        },
+        "shared": [
+          "anthropic",
+          "user"
+        ]
+      },
+      {
+        "score": 0.475,
         "blocked": "below-threshold",
         "hours_apart": 9,
         "a": {
@@ -651,32 +664,9 @@
         ]
       },
       {
-        "score": 0.47,
+        "score": 0.432,
         "blocked": "below-threshold",
-        "hours_apart": 6.5,
-        "a": {
-          "id": "hn:49961057",
-          "source": "hn-algolia",
-          "title": "Anthropic reported diary entry to police, woman faces felony charge",
-          "at": "2026-10-05T05:37:40Z"
-        },
-        "b": {
-          "id": "gnews:5ffef4a244477b64",
-          "source": "gnews-rss",
-          "title": "The woman used Claude as a diary, and Anthropic reported her to the police. What happened? - dev.ua",
-          "at": "2026-10-05T12:06:00Z"
-        },
-        "shared": [
-          "anthropic",
-          "diary",
-          "polic",
-          "woman"
-        ]
-      },
-      {
-        "score": 0.415,
-        "blocked": "below-threshold",
-        "hours_apart": 0.3,
+        "hours_apart": 6,
         "a": {
           "id": "hn:49969183",
           "source": "hn-algolia",
@@ -684,10 +674,10 @@
           "at": "2026-10-05T19:16:35Z"
         },
         "b": {
-          "id": "gnews:6d20523d70ee66e6",
+          "id": "gnews:7c99e61969d11708",
           "source": "gnews-rss",
-          "title": "Reflection AI unveils its first open model, Beam. Could it be the America's best chance to compete with China? - Fortune",
-          "at": "2026-10-05T19:00:00Z"
+          "title": "Reflection AI Beam: Open Model Takes on GLM-5.2 [2026] - shattered.io",
+          "at": "2026-10-06T01:18:47Z"
         },
         "shared": [
           "beam",
@@ -696,69 +686,66 @@
         ]
       },
       {
-        "score": 0.391,
+        "score": 0.43,
         "blocked": "thin-overlap",
-        "hours_apart": 5.5,
+        "hours_apart": 0,
         "a": {
-          "id": "hn:49964517",
+          "id": "hn:49972816",
           "source": "hn-algolia",
-          "title": "OpenAI will show visual ads in ChatGPT while you generate images",
-          "at": "2026-10-05T13:21:26Z"
+          "title": "Third conversation with Claude that Anthropic reported to police since August",
+          "at": "2026-10-06T00:53:45Z"
         },
         "b": {
-          "id": "gnews:99f0e0220d777d52",
+          "id": "gnews:01074f454a1b42e0",
           "source": "gnews-rss",
-          "title": "OpenAI gains 20 measurement partners for ChatGPT Ads - PPC Land",
-          "at": "2026-10-05T18:51:58Z"
+          "title": "Anthropic Reports User to the Police - Futurism",
+          "at": "2026-10-06T00:52:00Z"
         },
         "shared": [
-          "openai",
-          "ads",
-          "chatgpt"
+          "anthropic",
+          "polic"
         ]
       },
       {
-        "score": 0.336,
+        "score": 0.427,
         "blocked": "thin-overlap",
-        "hours_apart": 793.4,
+        "hours_apart": 27.4,
         "a": {
-          "id": "rss:deepmind:63b19b50b4021cb5",
-          "source": "rss-lab",
-          "title": "Introducing Gemini 3.8 Flash and 3.8 Flash Cyber",
-          "at": "2026-09-02T16:18:31Z"
+          "id": "hn:49958089",
+          "source": "hn-algolia",
+          "title": "Florida woman used Claude as a diary, then Anthropic reported an entry to police",
+          "at": "2026-10-04T21:29:59Z"
         },
         "b": {
-          "id": "gnews:5c83c13dd4184511",
+          "id": "gnews:01074f454a1b42e0",
           "source": "gnews-rss",
-          "title": "Gemini AI Paywall: Google Restricts Free Users To Flash-Lite Model From October 9 - NDTV Profit",
-          "at": "2026-10-05T17:41:13Z"
+          "title": "Anthropic Reports User to the Police - Futurism",
+          "at": "2026-10-06T00:52:00Z"
         },
         "shared": [
-          "gemini",
-          "flash"
+          "anthropic",
+          "polic"
         ]
       },
       {
-        "score": 0.307,
+        "score": 0.419,
         "blocked": "thin-overlap",
-        "hours_apart": 71.8,
+        "hours_apart": 19.2,
         "a": {
-          "id": "hn:49959056",
+          "id": "hn:49961057",
           "source": "hn-algolia",
-          "title": "OpenAI's GPT-6 Astra Gets Frustrated Losing at StarCraft and Decides to Cheat",
-          "at": "2026-10-04T23:34:17Z"
+          "title": "Anthropic reported diary entry to police, woman faces felony charge",
+          "at": "2026-10-05T05:37:40Z"
         },
         "b": {
-          "id": "rss:nvidia:6e9bdaa4a319db62",
-          "source": "rss-lab",
-          "title": "How NVIDIA GPUs Help Accelerate OpenAI’s GPT-6 Astra Ultrafast",
-          "at": "2026-10-01T23:44:13Z"
+          "id": "gnews:01074f454a1b42e0",
+          "source": "gnews-rss",
+          "title": "Anthropic Reports User to the Police - Futurism",
+          "at": "2026-10-06T00:52:00Z"
         },
         "shared": [
-          "openai",
-          "gpt",
-          "6",
-          "astra"
+          "anthropic",
+          "polic"
         ]
       }
     ]
@@ -767,76 +754,76 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 4,
+      "streak_ok": 5,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 82,
+      "streak_ok": 83,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 82,
+      "streak_ok": 83,
       "streak_fail": 0,
-      "items_last": 2
+      "items_last": 1
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 82,
+      "streak_ok": 83,
       "streak_fail": 0,
-      "items_last": 41
+      "items_last": 38
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 82,
+      "streak_ok": 83,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 82,
+      "streak_ok": 83,
       "streak_fail": 0,
-      "items_last": 42
+      "items_last": 50
     },
     {
       "id": "openalex",
       "state": "fail",
       "streak_ok": 0,
-      "streak_fail": 7,
+      "streak_fail": 8,
       "items_last": 0
     },
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 11,
+      "streak_ok": 12,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 82,
+      "streak_ok": 83,
       "streak_fail": 0,
       "items_last": 27
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 82,
+      "streak_ok": 83,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.002615,
+    "hours": 0.004477777777777778,
     "stale": false
   },
   "hf": {
@@ -856,18 +843,18 @@
   "openalex": {
     "ok": false,
     "soft_fail": true,
-    "soft_fail_reason": "paused_until 2026-10-06T03:20:26Z",
+    "soft_fail_reason": "HTTP 429",
     "enriched": 0,
     "secondary": 0,
-    "query": "LLM agent",
+    "query": "LLM agent sandbox",
     "mode": "search",
     "from_cache": false,
-    "searches": 0,
+    "searches": 1,
     "retries": 0,
-    "status": "paused",
-    "paused_until": "2026-10-06T03:20:26Z",
-    "pause_reason": "7 consecutive failures → 24h",
-    "requests": 0,
+    "status": "fail",
+    "paused_until": "2026-10-07T03:20:53Z",
+    "pause_reason": "8 consecutive failures → 24h",
+    "requests": 1,
     "auth": "anon",
     "brief": false,
     "pulse_lead": false,
@@ -905,43 +892,43 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 42,
+    "count": 50,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
     "queries_run": [
-      "ML security",
       "open weights",
-      "inference"
+      "inference",
+      "benchmark"
     ],
     "queries_ok": [
-      "ML security",
       "open weights",
-      "inference"
+      "inference",
+      "benchmark"
     ],
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 12,
+    "ai_dropped": 18,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
         "id": "hn:49961057",
         "tag": "rest",
-        "score": 466,
+        "score": 584,
         "text": "Anthropic reported diary entry to police, woman faces felony charge"
-      },
-      {
-        "id": "hn:49968105",
-        "tag": "rest",
-        "score": 252,
-        "text": "OpenAI \"rogue\" agent activities found on Wikimedia projects"
       },
       {
         "id": "hn:49969183",
         "tag": "rest",
-        "score": 248,
+        "score": 342,
         "text": "Beam: Reflection's 501B open-weight model"
+      },
+      {
+        "id": "hn:49968105",
+        "tag": "rest",
+        "score": 261,
+        "text": "OpenAI \"rogue\" agent activities found on Wikimedia projects"
       }
     ]
   },
@@ -957,47 +944,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "(cache:openai)",
+        "url": "https://openai.com/news/rss.xml",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "(cache:deepmind)",
+        "url": "https://deepmind.google/blog/rss.xml",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "(cache:google-ai)",
+        "url": "https://blog.google/technology/ai/rss/",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "(cache:huggingface)",
+        "url": "https://huggingface.co/blog/feed.xml",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "(cache:mistral)",
+        "url": "https://mistral.ai/rss.xml",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "(cache:nvidia)",
+        "url": "https://blogs.nvidia.com/feed/",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "(cache:nvidia-dev)",
+        "url": "https://developer.nvidia.com/blog/feed",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "(cache:ms-research)",
+        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "https://research.google/blog/rss/",
+        "url": "(cache:google-research)",
         "count": 12
       }
     ],
@@ -1043,17 +1030,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "(cache:trailofbits)",
+        "url": "https://blog.trailofbits.com/feed/",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "(cache:fox-it)",
+        "url": "https://blog.fox-it.com/feed/",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "(cache:projectzero)",
+        "url": "https://projectzero.google/feed.xml",
         "count": 5
       }
     ],
@@ -1094,33 +1081,9 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 41,
-    "pool": 381,
+    "items": 38,
+    "pool": 280,
     "corroborators": [
-      {
-        "id": "gnews:446614908c7be5e1",
-        "anchor_id": "hn:49964517",
-        "score": 1,
-        "title": "OpenAI will show visual ads in ChatGPT while you generate images - BleepingComputer",
-        "publisher": "BleepingComputer",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:c4203939163aaaeb",
-        "anchor_id": "hn:49964517",
-        "score": 0.616,
-        "title": "OpenAI Will Test Visual Ads Beside ChatGPT Image Results in the US - mezha.net",
-        "publisher": "mezha.net",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:9562a0148ac3a7d1",
-        "anchor_id": "hn:49964517",
-        "score": 0.613,
-        "title": "OpenAI Is Putting Visual Ads Next to Your ChatGPT Image Results - Yahoo Finance",
-        "publisher": "Yahoo Finance",
-        "self_repost": false
-      },
       {
         "id": "gnews:89dfc31b88dd277a",
         "anchor_id": "rss:nvidia:4c8a40d000b5e2c7",
@@ -1128,22 +1091,6 @@
         "title": "From Scan to Treatment Plan, AI Helps Close Breast Cancer’s Deadliest Gaps - NVIDIA Blog",
         "publisher": "NVIDIA Blog",
         "self_repost": true
-      },
-      {
-        "id": "gnews:73ed875e6045c17d",
-        "anchor_id": "hn:49968105",
-        "score": 1,
-        "title": "OpenAI “rogue” agent activities found on Wikimedia projects - wikimediafoundation.org",
-        "publisher": "wikimediafoundation.org",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:2eccafd8c7629f6a",
-        "anchor_id": "hn:49969929",
-        "score": 1,
-        "title": "Pentagon stops using Anthropic AI tools after blacklisting company, BBC told - BBC",
-        "publisher": "BBC",
-        "self_repost": false
       },
       {
         "id": "gnews:90a59da3fc98dd09",
@@ -1154,11 +1101,27 @@
         "self_repost": false
       },
       {
-        "id": "gnews:5ffef4a244477b64",
+        "id": "gnews:6821df2e7eec72df",
         "anchor_id": "hn:49958089",
-        "score": 0.829,
-        "title": "The woman used Claude as a diary, and Anthropic reported her to the police. What happened? - dev.ua",
-        "publisher": "dev.ua",
+        "score": 0.827,
+        "title": "A Florida Woman Used Claude as a Diary. An Anthropic Employee Read It and Reported It to Police - Decrypt News",
+        "publisher": "Decrypt News",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:ecb3ae23ff88741d",
+        "anchor_id": "hn:49958089",
+        "score": 0.827,
+        "title": "A Florida Woman Used Claude as a Diary. An Anthropic Employee Read It and Reported It to Police - Yahoo",
+        "publisher": "Yahoo",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:4418bd00871bc18b",
+        "anchor_id": "hn:49969927",
+        "score": 1,
+        "title": "Anthropic Subscriptions Offer 5x+ More Value Than OpenAI - SemiAnalysis",
+        "publisher": "SemiAnalysis",
         "self_repost": false
       },
       {
@@ -1170,34 +1133,42 @@
         "self_repost": false
       },
       {
-        "id": "gnews:97ac90d2c7de1541",
-        "anchor_id": "hn:49953892",
-        "score": 0.624,
-        "title": "Anthropic Wants Your Voice Chats to Train Claude AI Models - Android Headlines",
-        "publisher": "Android Headlines",
+        "id": "gnews:6d7f2e3b62970d4f",
+        "anchor_id": "hn:49969183",
+        "score": 0.933,
+        "title": "Reflection AI Unveils Beam, a 501B-Parameter Open-Weight Model - Unite.AI",
+        "publisher": "Unite.AI",
         "self_repost": false
       },
       {
-        "id": "gnews:3e955271e64ec482",
-        "anchor_id": "rss:openai:2d8e70fb45cef747",
+        "id": "gnews:415c71beb6847263",
+        "anchor_id": "hn:49969929",
         "score": 1,
-        "title": "Building advertising for the way people use AI - OpenAI",
-        "publisher": "OpenAI",
-        "self_repost": true
+        "title": "Pentagon stops using Anthropic AI tools after blacklisting company, BBC told - BBC",
+        "publisher": "BBC",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:4319eff64ea5228c",
+        "anchor_id": "hn:49972816",
+        "score": 0.749,
+        "title": "Anthropic reports Florida woman’s Claude ‘diary’ threat to shoot up sheriff’s office, felony charge follows — it’s at least the third such conversation to reach police since August - tomshardware.com",
+        "publisher": "tomshardware.com",
+        "self_repost": false
       },
       {
         "id": "gnews:8e16c65bfd16491e",
         "anchor_id": "hn:49955908",
-        "score": 0.704,
-        "title": "Scoop: A powerful new model from startup Reflection is set to shake up the AI race - axios.com",
-        "publisher": "axios.com",
+        "score": 0.727,
+        "title": "Scoop: A powerful new model from startup Reflection is set to shake up the AI race - Axios",
+        "publisher": "Axios",
         "self_repost": false
       }
     ],
     "http_status": 200,
-    "content_type": null,
+    "content_type": "application/xml; charset=utf-8",
     "format": "rss2",
-    "from_cache": true,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1206,38 +1177,38 @@
     "pulse_only": true,
     "url_template": "https://news.google.com/rss/search?q={QUERY}&hl=en-US&gl=US&ceid=US:en",
     "queried": [
-      "OpenAI",
       "Anthropic",
-      "Gemini",
-      "NVIDIA AI"
+      "large language model",
+      "NVIDIA AI",
+      "Mistral AI"
     ],
     "queries_ok_list": [
-      "OpenAI",
       "Anthropic",
-      "Gemini",
-      "NVIDIA AI"
+      "large language model",
+      "NVIDIA AI",
+      "Mistral AI"
     ],
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:33524caabf2802b9",
-        "title": "Wikipedia operator says OpenAI's rogue agents possibly tied to data service disruption in May - KSL News",
-        "publisher": "KSL News",
-        "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNaEdvaEVkNmEtRENHNDlKU2JqNlV1MGtGWE5hZzdiVkt5S2VjdmtxTVNXSXU1dWJabTFpT2RYNlVaNHJMRkJMRGo1c3FfSWNsT3hXLU1tU2xDcmQ4ZENmQ0NTenB6b3lpZkloQzJDSUY1bzIxekFPV0Z6TW8tV1BFeWM1NjM2UVNRRGVlQlBtX0NRQ1BpblFqT2o3TFFmSXlERjRWelFmeFVxZ0RUTFBXUzA1LXMxVFRyRDZzall0UjdzUHhBN0JrMQ?oc=5",
+        "id": "gnews:10cee70d43a2ca67",
+        "title": "While Nvidia has renewed its artificial intelligence (AI) rally by hitting an all-time high in the U.. - 매일경제",
+        "publisher": "매일경제",
+        "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1NV0ZXaE5Kb1JuY2pnWnZ5b0xFS2s5cGpyQk5GVHR1TFhLSzBPVXg4MklENFVsd1FCLVhoRDdTSTFxS0xOWTc3SWFJOElCd1k?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:5e4b36a537fccf1e",
-        "title": "Why AI Researchers Are Leaving OpenAI, Anthropic and Google DeepMind - WinBuzzer",
-        "publisher": "WinBuzzer",
-        "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOS01wUm02eUVDd3JnYnN4bmZtWk92bXJCWVVKTWVEVGtnY1lPa0pVVVc5TGUwRjRsdm1aRmpFZ2ttTDFJdm9lcDh2WEppcWZHakwwS0JCUWxkWUlwUjZWTVEwOEhlZldrOVFvUlVmUVJpMG5nOC1RU01vdDlyY0dESVdGbVBibVhWaXdzdDBZdnBsVjR0QWctOW9wMGY2QXdvbWdj?oc=5",
+        "id": "gnews:8c250515c74325f9",
+        "title": "OpenAI brings text watermarking to its API — and unlike Anthropic, it’s off by default - The New Stack",
+        "publisher": "The New Stack",
+        "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5YcVlZSTdJM09ibS1LUHVOUl9BYlZYVWxkTjRFc2ZRY2pxcERwWVRFd2xyNXJLckZaWnJIdDUxYkJQVzZHRUlJU2lsR0ZNQVpQeTlJcXREUjBuNVRNT2U0OEpn?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:0e7eaae2d78524df",
-        "title": "Meta, Microsoft scale back employee use of Claude: report - Seeking Alpha",
-        "publisher": "Seeking Alpha",
-        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPRy1RTjlDMEZWSXJmemJ4M0JjV0lOd3plYmtpT01ITUY1Sm5qWnVmQlBheXVpak1zYy1XVm9STnpWUTFyaEYwdTBSMnBEQm1MeHF6ZHJxcGhFcUtLYjh1UmlsdUZvbndxNktzbHg3eUlQYzE1ai1nR1dJbGJaMURpX0doX05OOGFuSFcyZi1CZ25wUkJ5aVJ0Yg?oc=5",
+        "id": "gnews:058182fd4437ebb2",
+        "title": "Anthropic launches AI academy for enterprise engineers - CFOtech Asia",
+        "publisher": "CFOtech Asia",
+        "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNXzU5a3RwUlVUanBWMmtKS2VndEtxcHhCdEMzdWRKVEVJbHJiNHhTSkNlRWlNTGpXQmZHdW9DclhpZzdhTjFtbm00ZlBSYkJTRFZiNXlkTTVqT2JSUmRpa0VmRlNkS1J6VE02WTYzTTNXY3Z3Z0tOUDFJanN3bzBNYXdIZXJJbUh6?oc=5",
         "tag": "rest"
       }
     ]
@@ -1254,28 +1225,24 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "query": "LLM red team toolkit",
-    "shelf": 2,
-    "from_cache": true,
-    "searches": 0,
-    "rate_limit_remaining": null,
+    "query": "LLM agent eval harness",
+    "shelf": 1,
+    "from_cache": false,
+    "searches": 1,
+    "rate_limit_remaining": 9,
     "brief": false,
     "pulse_lead": false,
     "shelf_only": true,
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
-        "label": "seikaikyo/ai-red-team",
-        "href": "https://github.com/seikaikyo/ai-red-team"
-      },
-      {
-        "label": "AKIVA-AI/toolkit-policy-test-bench",
-        "href": "https://github.com/AKIVA-AI/toolkit-policy-test-bench"
+        "label": "GuillermoBarreto/evalkit",
+        "href": "https://github.com/GuillermoBarreto/evalkit"
       }
     ]
   },
   "shelf": {
-    "count": 19,
+    "count": 18,
     "brief": false
   },
   "wikidata": {
@@ -1283,34 +1250,23 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "seeds": [
-      "NIST",
       "MITRE",
-      "JFrog"
+      "JFrog",
+      "Trail of Bits"
     ],
-    "searches": 0,
-    "from_cache": true,
+    "searches": 3,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "deny_grounding_only": true,
     "url": "https://www.wikidata.org/w/api.php",
     "hints": [
       {
-        "seed": "NIST",
-        "qid": "Q176691",
-        "label": "National Institute of Standards and Technology",
-        "description": "measurement standards laboratory in the United States",
-        "status": "matched",
-        "source": "wikidata",
-        "briefEligible": false,
-        "pulseLeadEligible": false,
-        "denyGroundingOnly": true
-      },
-      {
         "seed": "MITRE",
-        "qid": null,
-        "label": null,
-        "description": null,
-        "status": "unresolved",
+        "qid": "Q627039",
+        "label": "MITRE Corporation",
+        "description": "company",
+        "status": "matched",
         "source": "wikidata",
         "briefEligible": false,
         "pulseLeadEligible": false,
@@ -1322,6 +1278,17 @@
         "label": "JFrog Ltd",
         "description": "Software company",
         "status": "matched",
+        "source": "wikidata",
+        "briefEligible": false,
+        "pulseLeadEligible": false,
+        "denyGroundingOnly": true
+      },
+      {
+        "seed": "Trail of Bits",
+        "qid": null,
+        "label": null,
+        "description": null,
+        "status": "unresolved",
         "source": "wikidata",
         "briefEligible": false,
         "pulseLeadEligible": false,

@@ -2,6 +2,36 @@
 import type { LeadEntry } from "@/lib/lead-pick";
 
 export const LEAD_TODAY: LeadEntry | null = {
+  "date": "2026-10-06",
+  "at": "2026-10-06T03:21:06.155Z",
+  "crawl_at": "2026-10-06T03:20:50Z",
+  "excluded": [
+    {
+      "cluster_id": "cl:hn:49961057",
+      "headline": "Anthropic reported diary entry to police, woman faces felony charge",
+      "reason": "age>=24h"
+    },
+    {
+      "cluster_id": "cl:hn:49953892",
+      "headline": "Anthropic asks Claude users to share voice data for AI model training",
+      "reason": "age>=24h"
+    },
+    {
+      "cluster_id": "cl:hn:49955908",
+      "headline": "Powerful open model is set to shake up AI race",
+      "reason": "age>=24h"
+    }
+  ],
+  "cluster_id": "cl:hn:49969183",
+  "headline": "Beam: Reflection's 501B open-weight model",
+  "url": "https://reflection.ai/blog/introducing-beam",
+  "sources": 3,
+  "sig": 342,
+  "reason": "picked",
+  "first_at": "2026-10-05T19:16:35.000Z"
+};
+
+export const LEAD_YESTERDAY: LeadEntry | null = {
   "date": "2026-10-05",
   "at": "2026-10-05T03:20:27.065Z",
   "crawl_at": "2026-10-05T03:20:06Z",
@@ -51,37 +81,7 @@ export const LEAD_TODAY: LeadEntry | null = {
   "first_at": "2026-10-04T11:00:08.000Z"
 };
 
-export const LEAD_YESTERDAY: LeadEntry | null = {
-  "date": "2026-10-04",
-  "at": "2026-10-04T03:15:24.057Z",
-  "crawl_at": "2026-10-04T03:14:31Z",
-  "excluded": [
-    {
-      "cluster_id": "cl:gnews:284a71a886602a62",
-      "headline": "Gemini Tarot Horoscope Today, October 4, 2026: Business Will Improve, Meeting with Professionals",
-      "reason": "GNW_ONLY"
-    },
-    {
-      "cluster_id": "cl:hn:49938646",
-      "headline": "The Sleuths Who Expose When AI Goes Rogue",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:rss:nvidia:60ea0cfc7bea518f",
-      "headline": "NVIDIA DGX Spark 64GB Gives Developers More Ways to Build and Scale Local AI",
-      "reason": "age>=24h"
-    }
-  ],
-  "cluster_id": "cl:hn:49948332",
-  "headline": "OpenAI safety leader quits, warning AI company's culture is 'broken'",
-  "url": "https://www.theguardian.com/technology/2026/oct/03/openai-safety-leader-quits-warning-ai-companys-culture-is-broken",
-  "sources": 6,
-  "sig": 206,
-  "reason": "picked",
-  "first_at": "2026-10-03T11:00:00.000Z"
-};
-
 export const LEAD_HELD = false;
 
 /** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is ≥24h old. */
-export const LEAD_FIRST_AT: string | null = "2026-10-04T11:00:08.000Z";
+export const LEAD_FIRST_AT: string | null = "2026-10-05T19:16:35.000Z";
