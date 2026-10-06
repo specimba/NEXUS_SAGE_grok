@@ -21,6 +21,13 @@ Digest and Voice stop reading the frozen Sep 3 `CYCLE.003` copy ("Eval agents…
 | **`CYCLE.003` static pins** | Kept as an **archive** block (read-only, collapsed), not deleted. Not the live headline. |
 | **Voice** | Same lead + same top rows as Digest, text only. No new audio/TTS pipeline in A. If Voice lane is still parked in the UI, A only unblocks its copy; layout parity stays a separate ask. |
 
+## Chrome (UX lock)
+
+1. Live Digest/Voice lead uses the **same chrome** as Brief's Take title (type, weight, phosphor) — one desk, one lead look.
+2. `HELD` and `archive · 003` are a **small kicker above** the lead, never a second headline competing with Take.
+3. Old `CYCLE.003` pins sit under a **closed** `archive · 003` fold — collapsed by default so they don't fight today's lead.
+4. 390 proofs scroll Digest and Voice lead (+ kicker) into frame.
+
 ## Pass marks (Reviewer on live Pages + `:3000`)
 
 1. Digest lead title equals Brief `LEAD_TODAY` title for the same build (not "HF production swarm" / Sep 3 text).
@@ -30,7 +37,8 @@ Digest and Voice stop reading the frozen Sep 3 `CYCLE.003` copy ("Eval agents…
 5. Fixture: a `GML` / taste / RSS item never becomes a Digest or Voice title.
 6. Mid-window crawl (after 06:11) does not change Digest/Voice titles; next pick does.
 7. Pass B coherence still green (cadence meters vs `digest-last.json`); pack file carries the unlocked titles.
-8. First Load under 185 kB; desk-view caps unchanged; Skin V2; 0 sideways scroll at 390.
+8. Chrome: lead matches Brief Take; HELD/archive are kickers only; archive fold starts closed.
+9. First Load under 185 kB; desk-view caps unchanged; Skin V2; 0 sideways scroll at 390. 390 proofs scroll Digest + Voice lead into frame.
 
 ## Proof
 
