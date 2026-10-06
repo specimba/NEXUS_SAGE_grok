@@ -185,6 +185,8 @@ function renderPapersTs(papers: Paper[]): string {
       if (p.authors?.length) extras.push(`,\n    authors: ${JSON.stringify(p.authors)}`);
       if (p.doi) extras.push(`,\n    doi: ${JSON.stringify(p.doi)}`);
       if (p.year != null) extras.push(`,\n    year: ${p.year}`);
+      if (p.published) extras.push(`,\n    published: ${JSON.stringify(p.published)}`);
+      if (p.openalexPublicationDate) extras.push(`,\n    openalexPublicationDate: ${JSON.stringify(p.openalexPublicationDate)}`);
       if (p.openalexId) extras.push(`,\n    openalexId: ${JSON.stringify(p.openalexId)}`);
       if (p.openalexEnrichOnly) extras.push(`,\n    openalexEnrichOnly: true`);
       if (p.crossrefDoi) extras.push(`,\n    crossrefDoi: ${JSON.stringify(p.crossrefDoi)}`);
@@ -562,6 +564,8 @@ async function main() {
       primaryCategory: row.primaryCategory,
       doi: row.doi,
       year: row.year,
+      published: row.published,
+      openalexPublicationDate: row.openalexPublicationDate,
       openalexId: row.openalexId,
       openalexEnrichOnly: row.openalexEnrichOnly,
       crossrefDoi: row.crossrefDoi,

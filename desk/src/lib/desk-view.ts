@@ -293,6 +293,11 @@ export function buildDeskView(i: DeskViewInput, opts: DeskViewOpts = {}): DeskVi
     else if (p.doi !== undefined) o.doi = p.doi;
     if (p.year !== undefined) o.year = p.year;
     if (p.openalexId !== undefined) o.openalexId = p.openalexId;
+    if (p.published !== undefined && p.published !== null) o.published = p.published;
+    if (p.crossrefIssued !== undefined && p.crossrefIssued !== null) o.crossrefIssued = p.crossrefIssued;
+    if (p.openalexPublicationDate !== undefined && p.openalexPublicationDate !== null) {
+      o.openalexPublicationDate = p.openalexPublicationDate;
+    }
     return o;
   });
   const itemsIn = Object.keys(i.members).filter((id) => !id.startsWith("x:")).length;

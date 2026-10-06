@@ -1482,7 +1482,7 @@ body {
 .pulse-v5-line {
   display: grid;
   /* SRC track 17ch: lead chip + ≤1 more + SELF fit in mono without overprint (UX audit 2026-10-02). */
-  grid-template-columns: 2.5ch 4.5ch 5ch minmax(0, 1fr) 17ch 7ch;
+  grid-template-columns: 2.5ch 4.5ch 12ch minmax(0, 1fr) 17ch 7ch;
   align-items: center;
   column-gap: 0.6rem;
   padding: 0 0.6rem 0 0.5rem;
@@ -1803,7 +1803,7 @@ body {
 .papers-v6-head,
 .papers-v6-line {
   display: grid;
-  grid-template-columns: 2.5ch 5ch 4.5ch minmax(0, 1fr) 23ch 8ch;
+  grid-template-columns: 2.5ch 5ch 5.5ch minmax(0, 1fr) 23ch 8ch;
   align-items: center;
   column-gap: 0.6rem;
   padding: 0 0.6rem 0 0.5rem;
@@ -1847,7 +1847,7 @@ body {
     min-height: 44px;
     grid-template-columns: auto auto auto 1fr auto;
     grid-template-areas:
-      "idx up yr src links"
+      "idx up date src links"
       "hl hl hl hl hl";
     row-gap: 0.1rem;
     padding-top: 0.3rem;
@@ -1855,7 +1855,7 @@ body {
   }
   .papers-v6-line > :nth-child(1) { grid-area: idx; }
   .papers-v6-line > :nth-child(2) { grid-area: up; }
-  .papers-v6-line > :nth-child(3) { grid-area: yr; }
+  .papers-v6-line > :nth-child(3) { grid-area: date; }
   .papers-v6-line > :nth-child(4) { grid-area: hl; white-space: normal; }
   .papers-v6-line > :nth-child(5) { grid-area: src; }
   .papers-v6-line > :nth-child(6) { grid-area: links; }
@@ -1884,7 +1884,7 @@ body {
 }
 .brief-wire-row {
   display: grid;
-  grid-template-columns: 4.5ch 5ch minmax(0, 1fr) auto;
+  grid-template-columns: 4.5ch 12ch minmax(0, 1fr) auto;
   align-items: center;
   column-gap: 0.6rem;
   height: 26px;
@@ -2465,10 +2465,17 @@ a.story-drawer-rowlink:focus-visible .story-drawer-open {
   color: var(--phosphor);
 }
 
-/* B1 static export — AGE: absolute Istanbul "14:11" in static HTML, relative "2h" after mount; fixed 5ch, no shift. */
+/* Pass C — AGE folds MM-DD · age; widen column, no sideways scroll. */
 .pulse-v5-age {
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
+}
+@media (max-width: 767px) {
+  .pulse-v5-age {
+    white-space: normal;
+    line-height: 1.15;
+    max-width: 12ch;
+  }
 }
 /* PAUSED source (crawl skips it until then): dim, legible, NOT the struck-through fail style. */
 .pulse-v5-health-cell[data-state="paused"],

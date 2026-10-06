@@ -413,6 +413,8 @@ export function applyArxivEnrichment(
       pdfUrl: e.pdfUrl,
       authors: e.authors,
       primaryCategory: e.primaryCategory,
+      // Pass C — prefer existing HF published; else arXiv Atom published day.
+      published: p.published || e.published || null,
     };
   });
 }

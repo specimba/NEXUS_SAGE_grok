@@ -1,7 +1,7 @@
 /**
  * B1 · Cloudflare builds on UTC and the static page freezes what it renders. Every clock time must be
  * Istanbul (Intl, timeZone Europe/Istanbul, label UTC+3) whatever the host TZ, and the static HTML must
- * carry absolute times only (relative AGE is swapped in after mount).
+ * carry absolute `MM-DD · HH:MM` (Pass C); relative age swaps in after mount.
  */
 import { describe, expect, test } from "bun:test";
 import { join } from "node:path";
@@ -54,8 +54,15 @@ describe("Istanbul clock times (Intl, host TZ ignored)", () => {
     expect(utc.hostHour).toBe(0); // the child really ran on UTC
     expect(tokyo.hostHour).toBe(9);
     expect(utc.ages.length).toBeGreaterThan(20);
-    for (const a of utc.ages) expect(a.text).toBe(oracleHHMM(a.at)); // absolute "HH:MM", 5 chars
-    for (const a of utc.ages) expect(a.text).toHaveLength(5);
+    // Pass C: static AGE folds Istanbul calendar day — `MM-DD · HH:MM` (absolute; relative after mount).
+    const oracleMMDD = (iso: string) => {
+      const d = new Date(Date.parse(iso) + 3 * 3_600_000);
+      return `${String(d.getUTCMonth() + 1).padStart(2, "0")}-${String(d.getUTCDate()).padStart(2, "0")}`;
+    };
+    for (const a of utc.ages) {
+      expect(a.text).toBe(`${oracleMMDD(a.at)} · ${oracleHHMM(a.at)}`);
+      expect(a.text).toMatch(/^\d{2}-\d{2} · \d{2}:\d{2}$/);
+    }
     expect(utc.paused).toBe("03:00"); // 2026-09-26T00:00Z
     expect(utc.built).toBe("2026-09-25 15:58");
     expect(utc.hasZ).toBe(false); // no raw "HH:MMZ" UTC clock left anywhere

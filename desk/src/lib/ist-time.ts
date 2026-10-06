@@ -44,3 +44,18 @@ export function istDateTime(iso: string): string {
   const p = parts(DT, iso);
   return p ? `${p.year}-${p.month}-${p.day} ${p.hour}:${p.minute}` : "—";
 }
+
+/** "10-06" (Istanbul month-day), "—" when unparseable. Never invents today. */
+export function istMMDD(iso: string): string {
+  DT ??= new Intl.DateTimeFormat("en-GB", {
+    timeZone: IST_TZ,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
+  });
+  const p = parts(DT, iso);
+  return p ? `${p.month}-${p.day}` : "—";
+}

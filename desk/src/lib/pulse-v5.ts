@@ -395,7 +395,13 @@ export type PaperInput = {
   doi?: string;
   year?: number;
   openalexId?: string;
+  /** OpenAlex publication_date (YYYY-MM-DD) when available. */
+  openalexPublicationDate?: string | null;
   crossrefDoi?: string;
+  /** Crossref issued date (YYYY-MM-DD). */
+  crossrefIssued?: string | null;
+  /** HF / arXiv published ISO (or date-only). Prefer for DATE cell. */
+  published?: string | null;
 };
 
 export type PaperBadge = { label: "HF" | "ARX" | "OAX" | "XREF"; lit: boolean };
@@ -404,6 +410,9 @@ export type PaperRow = {
   id: string;
   title: string;
   up: number;
+  /** Istanbul MM-DD published day; null → dim — */
+  date: string | null;
+  /** Kept for enrich badges / tests; not shown in DATE column. */
   year: number | null;
   badges: PaperBadge[];
   abs: string;
@@ -421,6 +430,47 @@ export function arxivYear(id: string): number | null {
   return mm >= 1 && mm <= 12 ? 2000 + Number(m[1]) : null;
 }
 
+/** arXiv id YYMM → ISO first-of-month UTC (`2610.03120` → `2026-10-01T00:00:00Z`). */
+export function arxivIdMonthIso(id: string): string | null {
+  const m = /^(\d{2})(\d{2})\.\d{4,5}(v\d+)?$/.exec(id);
+  if (!m) return null;
+  const yy = Number(m[1]);
+  const mm = Number(m[2]);
+  if (!(mm >= 1 && mm <= 12)) return null;
+  return `20${String(yy).padStart(2, "0")}-${String(mm).padStart(2, "0")}-01T00:00:00Z`;
+}
+
+/**
+ * Pass C published-day priority (never invents wall-clock now):
+ * HF/arXiv `published` → OpenAlex `publication_date` → Crossref `issued` → arXiv id YYMM first-of-month.
+ */
+export function paperPublishedIso(p: Pick<PaperInput, "id" | "published" | "openalexPublicationDate" | "crossrefIssued">): string | null {
+  for (const raw of [p.published, p.openalexPublicationDate, p.crossrefIssued]) {
+    if (raw == null || raw === "") continue;
+    const s = String(raw).trim();
+    // Date-only YYYY-MM-DD → noon UTC so Istanbul calendar day stays the stated day.
+    const iso = /^\d{4}-\d{2}-\d{2}$/.test(s) ? `${s}T12:00:00Z` : s;
+    if (Number.isFinite(Date.parse(iso))) return iso;
+  }
+  return arxivIdMonthIso(p.id);
+}
+
+/** Istanbul MM-DD for Papers DATE cell; null → dim —. */
+export function paperDateMmDd(p: Pick<PaperInput, "id" | "published" | "openalexPublicationDate" | "crossrefIssued">): string | null {
+  const iso = paperPublishedIso(p);
+  if (!iso) return null;
+  const t = Date.parse(iso);
+  if (!Number.isFinite(t)) return null;
+  // Inline Istanbul MM-DD (avoid circular import with ist-time in tests that stub Intl).
+  const fmt = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Europe/Istanbul",
+    month: "2-digit",
+    day: "2-digit",
+  });
+  const parts = Object.fromEntries(fmt.formatToParts(t).map((x) => [x.type, x.value]));
+  return parts.month && parts.day ? `${parts.month}-${parts.day}` : null;
+}
+
 export function buildPaperRows(papers: PaperInput[]): PaperRow[] {
   return papers.map((p) => {
     const doi = p.crossrefDoi ?? p.doi ?? null;
@@ -428,6 +478,7 @@ export function buildPaperRows(papers: PaperInput[]): PaperRow[] {
       id: p.id,
       title: p.title,
       up: Number.isFinite(p.up) ? p.up : 0,
+      date: paperDateMmDd(p),
       year: p.year ?? arxivYear(p.id),
       badges: [
         { label: "HF", lit: true },

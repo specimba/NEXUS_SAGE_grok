@@ -19,6 +19,10 @@ export type Paper = {
   openalexId?: string;
   /** Secondary OpenAlex-only row (never Brief; never displaces HF agent keeps). */
   openalexEnrichOnly?: boolean;
+  /** HF / arXiv published ISO (Pass C DATE). */
+  published?: string | null;
+  /** OpenAlex publication_date YYYY-MM-DD when enrich provides day precision. */
+  openalexPublicationDate?: string | null;
   /** Crossref Papers DOI enrich (optional) — registered DOI / issued / type. */
   crossrefDoi?: string | null;
   crossrefIssued?: string | null;
@@ -126,12 +130,21 @@ export function normalizeHfRow(row: unknown): Paper | null {
       : typeof r.summary === "string"
         ? r.summary
         : undefined;
+  const publishedRaw =
+    (typeof paper.publishedAt === "string" && paper.publishedAt) ||
+    (typeof r.publishedAt === "string" && r.publishedAt) ||
+    null;
+  const published =
+    publishedRaw && Number.isFinite(Date.parse(publishedRaw))
+      ? new Date(publishedRaw).toISOString().replace(/\.\d{3}Z$/, "Z")
+      : null;
   return {
     id,
     title,
     up: Number.isFinite(up) ? up : 0,
     href: `https://arxiv.org/abs/${id}`,
     abstract,
+    ...(published ? { published } : {}),
   };
 }
 

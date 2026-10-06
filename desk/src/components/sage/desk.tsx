@@ -31,7 +31,7 @@ import { DIGEST_ITEMS, DROPPED, PACK_AT, PACK_SOURCE } from "@/data/digest-pack"
 import { DIGEST_CADENCE } from "@/data/digest-cadence";
 import { groupFirstAt, leadAgeHours } from "@/lib/lead-pick";
 import { LEAD_HELD_TEXT, leadView, nextCrawlSlotHHMM, type LeadView } from "@/lib/lead-view";
-import { IST_LABEL, istDateTime, istHHMM, istHHMMSS } from "@/lib/ist-time";
+import { IST_LABEL, istDateTime, istHHMM, istHHMMSS, istMMDD } from "@/lib/ist-time";
 import { useNow } from "@/lib/use-now";
 import { footerStamp } from "@/lib/build-footer";
 import { isPausedAt, type PauseMap } from "@/lib/source-pause";
@@ -151,10 +151,21 @@ export const PausesCtx = createContext<PauseMap>({});
  * AGE cell: server/static HTML shows the absolute Istanbul time (e.g. "14:11"); after mount it swaps
  * to the relative value ("2h"). Fixed 5ch column, tabular numerals — no layout shift, no hydration mismatch.
  */
-function AgeCell({ iso, now, className }: { iso: string; now: number | null; className?: string }) {
+/** Pass C — fold calendar day into AGE: static `MM-DD · HH:MM`, live `MM-DD · 2h`; missing → dim —. */
+function AgeCell({ iso, now, className }: { iso: string | null | undefined; now: number | null; className?: string }) {
+  const raw = iso && Number.isFinite(Date.parse(iso)) ? iso : null;
+  const day = raw ? istMMDD(raw) : "—";
+  const age = raw == null ? "—" : now == null ? istHHMM(raw) : compactAge(raw, now);
+  const text = day === "—" && age === "—" ? "—" : day === "—" ? age : `${day} · ${age}`;
   return (
-    <span className={cn("pulse-v5-age tabular-nums", className)} data-age-at={iso} data-age-rel={now == null ? undefined : "1"} title={`${istDateTime(iso)} ${IST_LABEL}`}>
-      {now == null ? istHHMM(iso) : compactAge(iso, now)}
+    <span
+      className={cn("pulse-v5-age tabular-nums", (day === "—" || age === "—") && "pulse-v5-sig-dim", className)}
+      data-age-at={raw ?? undefined}
+      data-age-rel={now == null || raw == null ? undefined : "1"}
+      data-date={day === "—" ? undefined : day}
+      title={raw ? `${istDateTime(raw)} ${IST_LABEL}` : "no timestamp"}
+    >
+      {text}
     </span>
   );
 }
@@ -1912,7 +1923,7 @@ function Papers() {
         <div className="papers-v6-head" aria-hidden>
           <span>#</span>
           <span className="pulse-v5-sig">UP</span>
-          <span className="pulse-v5-age">YR</span>
+          <span className="pulse-v5-age">DATE</span>
           <span>TITLE</span>
           <span>SRC</span>
           <span>LINKS</span>
@@ -1939,7 +1950,7 @@ function Papers() {
                 >
                   <span className="pulse-v5-idx tabular-nums">{String(i + 1).padStart(2, "0")}</span>
                   <span className="pulse-v5-sig tabular-nums">{p.up}</span>
-                  <span className="pulse-v5-age tabular-nums">{p.year ?? "—"}</span>
+                  <span className={cn("pulse-v5-age tabular-nums", !p.date && "pulse-v5-sig-dim")}>{p.date ?? "—"}</span>
                   <span className="pulse-v5-headline">{p.title}</span>
                   <span className="pulse-v5-src">
                     {p.badges.map((b) => (
