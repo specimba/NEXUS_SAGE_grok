@@ -121,15 +121,16 @@ describe("pulse-v5 age + health", () => {
   });
 });
 
-describe("pulse-v5 SIG column", () => {
-  test("HN points and X likes render as plain integers; no-score is dim —", () => {
+describe("pulse-v5 UP column (Pass D — HN points only)", () => {
+  test("sigCell: HN points → plain integer; null / non-finite → dim —; never invent 0", () => {
     expect(sigCell({ score: 247 })).toEqual({ text: "247", dim: false });
     expect(sigCell({ score: 3 })).toEqual({ text: "3", dim: false });
-    expect(sigCell({ score: 0 })).toEqual({ text: "0", dim: false });
+    expect(sigCell({ score: 0 })).toEqual({ text: "0", dim: false }); // explicit HN 0 stays 0
     expect(sigCell({ score: null })).toEqual({ text: "—", dim: true });
+    expect(sigCell({ score: Number.NaN })).toEqual({ text: "—", dim: true });
   });
 
-  test("built rows: multi-member GNews and SEC rows without score show — (no ×N / SEC / ·)", () => {
+  test("built rows: HN points → UP; GNews/SEC without HN → —", () => {
     const { rows } = buildRows(
       [
         cl("c", { lead_source: "gnews-rss", sources: ["gnews-rss"], member_ids: ["c", "c2"], size: 2 }),
@@ -141,5 +142,47 @@ describe("pulse-v5 SIG column", () => {
     const byId = Object.fromEntries(rows.map((r) => [r.id, sigCell(r).text]));
     expect(byId).toEqual({ "cl:c": "—", "cl:d": "—", "cl:b": "420" });
     for (const r of rows) expect(sigCell(r).text).toMatch(/^(\d+|—)$/);
+  });
+
+  test("fixture: HN points win UP; missing score → —; X likes on a member are ignored", () => {
+    // Cluster lead is GNews (no score); HN member has 88 points; X member has 999 likes — UP must be 88, not 999.
+    const members: Record<string, PulseMemberInfo> = {
+      "gnews:lead": { badge: "GNW", publisher: "Reuters" },
+      "hn:42": { badge: "HN", publisher: "hn/alice", score: 88 },
+      "x:paid": { badge: "X", publisher: "@operator", score: 999 }, // likes stored; Pulse UP must ignore
+    };
+    const { rows } = buildRows(
+      [
+        cl("mix", {
+          id: "cl:mix",
+          lead_id: "gnews:lead",
+          lead_source: "gnews-rss",
+          sources: ["gnews-rss", "hn-algolia", "x"],
+          member_ids: ["gnews:lead", "hn:42", "x:paid"],
+          size: 3,
+        }),
+        cl("xonly", {
+          id: "cl:xonly",
+          lead_id: "x:paid",
+          lead_source: "x",
+          sources: ["x"],
+          member_ids: ["x:paid"],
+          size: 1,
+        }),
+        cl("empty", {
+          id: "cl:empty",
+          lead_id: "gnews:lead",
+          lead_source: "gnews-rss",
+          sources: ["gnews-rss"],
+          member_ids: ["gnews:lead"],
+          size: 1,
+        }),
+      ],
+      members,
+    );
+    const byId = Object.fromEntries(rows.map((r) => [r.id, { score: r.score, cell: sigCell(r) }]));
+    expect(byId["cl:mix"]).toEqual({ score: 88, cell: { text: "88", dim: false } });
+    expect(byId["cl:xonly"]).toEqual({ score: null, cell: { text: "—", dim: true } });
+    expect(byId["cl:empty"]).toEqual({ score: null, cell: { text: "—", dim: true } });
   });
 });

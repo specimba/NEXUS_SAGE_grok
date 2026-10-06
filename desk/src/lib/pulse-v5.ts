@@ -63,6 +63,7 @@ export type PulseV5Row = {
   /** Outlet members folded together as press-release / wire copies (drawer marks them WIRE). */
   wireCopyIds: string[];
   size: number;
+  /** HN Algolia points only (Pass D UP). Null when no HN member has points — never X likes. */
   score: number | null;
   security: boolean;
   summary?: string;
@@ -299,7 +300,11 @@ export function buildRows(
     const selfBadges: string[] = [];
     const alsoBadges: string[] = [];
     const alsoPublishers: string[] = [];
-    let score: number | null = lead?.score ?? null;
+    // Pass D UP: max free engagement = HN Algolia points only. X likes (paid X DENY) stay on Taste / member.score
+    // storage but never feed this cell; null / non-finite → dim "—" via sigCell (never invent 0).
+    const hnPoints = (id: string, m: PulseMemberInfo | undefined): number | null =>
+      m?.score != null && Number.isFinite(m.score) && (m.badge === "HN" || id.startsWith("hn:")) ? m.score : null;
+    let score: number | null = hnPoints(c.lead_id, lead);
     let security = lead?.security ?? c.lead_source === "rss-security";
     for (const id of c.member_ids) {
       if (id === c.lead_id) continue;
@@ -310,7 +315,8 @@ export function buildRows(
         continue;
       }
       if (!m) continue;
-      if (m.score != null) score = Math.max(score ?? 0, m.score);
+      const pts = hnPoints(id, m);
+      if (pts != null) score = Math.max(score ?? 0, pts);
       if (m.security) security = true;
       if (multiSource && m.badge !== leadBadge && !alsoBadges.includes(m.badge)) alsoBadges.push(m.badge);
       if (m.publisher && !alsoPublishers.includes(m.publisher)) alsoPublishers.push(m.publisher);
@@ -351,8 +357,9 @@ export function buildRows(
 export type SigCell = { text: string; dim: boolean };
 
 /**
- * SIG column (UX fix): plain integers only. HN points / X likes → `247`;
- * rows whose source carries no score → dim `—`. No `p`, `×N`, `·` mixing.
+ * Pulse UP cell (Pass D; CSS class stays `.pulse-v5-sig` so it matches Papers UP chrome).
+ * Plain integers only: HN Algolia points → `247`; null / non-finite → dim `—`. Never invent `0`.
+ * X likes are not in `row.score` (buildRows filters them out). No `p`, `×N`, `·` mixing.
  */
 export function sigCell(row: Pick<PulseV5Row, "score">): SigCell {
   if (row.score == null || !Number.isFinite(row.score)) return { text: "—", dim: true };

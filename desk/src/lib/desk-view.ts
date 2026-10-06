@@ -92,7 +92,7 @@ export type MemberRow = {
   /** own headline */ t?: string;
   /** own publish time (ISO) */ a?: string;
   /** url */ u?: string;
-  /** signal (HN points / X likes) */ s?: number;
+  /** signal: HN points (Pulse UP) or X likes (stored; Pulse UP ignores X — Pass D). */ s?: number;
   /** summary (row leads only, ≤ SUMMARY_CHARS) */ m?: string;
   /** security feed */ sec?: true;
   /** drawer headline, only when it differs from drawerTitle()'s default */ dt?: string;

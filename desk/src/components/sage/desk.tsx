@@ -1384,7 +1384,7 @@ export function Pulse() {
             <span className="pulse-v5-age">AGE</span>
             <span>HEADLINE</span>
             <span>SRC</span>
-            <span className="pulse-v5-sig">SIG</span>
+            <span className="pulse-v5-sig">UP</span>
           </div>
           <ol>
             {visible.map((r, i) => {
