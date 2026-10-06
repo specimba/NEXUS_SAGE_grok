@@ -48,7 +48,7 @@ Emit a compact `priority` (`P1` · `P2` · `P3`) and keep raw `qi` score in inge
 
 | Surface | After F |
 |---------|---------|
-| **Pulse** | New members with `source: "gmail-news"`, `pulseEligible: true`, `briefEligible: false`, `pulse_only: true`. Soft chrome consistent with Lab/Sec RSS shelf rows. Optional small `Gmail` chip on soft-fail meters. |
+| **Pulse** | New members with `source: "gmail-news"`, `pulseEligible: true`, `briefEligible: false`, `pulse_only: true`. **Own SRC chip** (e.g. `GML` / `Gmail`) — must **not** read as GNW/GNews. Soft chrome otherwise consistent with Lab/Sec RSS shelf rows. Optional soft-fail meter chip. |
 | **Wire** | May mirror the same pulse_only items if Wire already shows shelf-class RSS; otherwise Pulse-only is enough for PASS. |
 | **Brief Take / lead / HELD / cycle `003`** | **Unchanged.** Gmail hits never become pins, never force a lead, never bump cycle. |
 | **Digest / Voice** | At most Digest **refs** (same as security RSS `digestRefOk`) if Coder already has that path; **no** title unlock (that is **A**). |
@@ -72,7 +72,7 @@ Emit a compact `priority` (`P1` · `P2` · `P3`) and keep raw `qi` score in inge
 
 ## Pass marks (Reviewer on live Pages + `:3000`)
 
-1. Fixture: keyword query → ≥1 Pulse row with `source: gmail-news`, `briefEligible: false`.
+1. Fixture: keyword query → ≥1 Pulse row with `source: gmail-news`, `briefEligible: false`, and a distinct SRC chip (not GNW).
 2. Fixture: Gmail timeout / 401 → soft meter, ingest exit 0, Brief pins identical to pre-F crawl.
 3. Live (when Gmail connected): at least one real hit in the 14d window shows on Pulse with honest date/age; no new Brief pin.
 4. Paid X still DENY strip; no X likes in Pulse `UP` (D).
