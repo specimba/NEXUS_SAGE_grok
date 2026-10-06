@@ -19,6 +19,7 @@ export const SHELF: ShelfItem[] = [
   { href: "https://owasp.org/www-community/Virtual_Patching_Best_Practices", label: "owasp.org/www-community/Virtual_Patching_Best_Practices", reason: "toolkit" as const },
   { href: "https://cheatsheetseries.owasp.org/cheatsheets/Virtual_Patching_Cheat_Sheet.html", label: "cheatsheetseries.owasp.org/cheatsheets/Virtual_Patching_Cheat_Sheet.html", reason: "toolkit" as const },
   { href: "https://arxiv.org/abs/2610.06852", label: "arxiv.org/abs/2610.06852", reason: "arxiv-shelf" as const },
+  { href: "https://arxiv.org/abs/2610.06851", label: "arxiv.org/abs/2610.06851", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.06846", label: "arxiv.org/abs/2610.06846", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.06844", label: "arxiv.org/abs/2610.06844", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.06843", label: "arxiv.org/abs/2610.06843", reason: "arxiv-shelf" as const },
