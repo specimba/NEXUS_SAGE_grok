@@ -1,13 +1,110 @@
 {
-  "at": "2026-10-06T19:20:17.030Z",
-  "source": "free-ingest digest refresh 2026-10-06T19:20:17.030Z · cycle 003 · lead hf-incident",
+  "at": "2026-10-06T21:41:09.476Z",
+  "source": "free-ingest digest refresh 2026-10-06T21:41:09.476Z · cycle 003 · lead hf-incident · unlock:live",
   "cycle": "003",
-  "lead_id": "hf-incident",
+  "lead_id": "cl:hn:49969183",
   "items": [
     {
-      "id": "hf-swarm",
+      "id": "cl:hn:49969183",
       "kind": "lead",
-      "title": "Eval agents reached Hugging Face production",
+      "title": "Beam: Reflection's 501B open-weight model",
+      "take": "3 SRC · sig 342 · pick 2026-10-06",
+      "why": "LEAD_TODAY · picked · frozen at daily pick",
+      "move": "Digest/Voice follow Brief lead · cycle label 003",
+      "file": "other",
+      "confidence": "high",
+      "evidence": [
+        "stamp live",
+        "frozen 2026-10-06T03:21:06.155Z",
+        "pick 2026-10-06"
+      ],
+      "steps": [
+        "Follow LEAD_TODAY · never invent",
+        "Cycle label stays 003"
+      ],
+      "doneWhen": "Digest lead equals Brief LEAD_TODAY title",
+      "unlockIf": "Next 06:11 Istanbul pick",
+      "refs": [
+        {
+          "label": "lead",
+          "href": "https://reflection.ai/blog/introducing-beam",
+          "role": "primary"
+        }
+      ]
+    },
+    {
+      "id": "cl:rss:mistral:1ef243007176e85c",
+      "kind": "companion",
+      "title": "Introducing Mistral Large 4",
+      "take": "12 SRC · sig 1260",
+      "why": "Top corroborated Wire cluster · same pack as lead pick",
+      "move": "Digest row · never displaces Brief lead",
+      "file": "other",
+      "confidence": "medium",
+      "evidence": [
+        "12 SRC"
+      ],
+      "steps": [],
+      "doneWhen": "Listed under Digest lead",
+      "unlockIf": "Never as Brief lead from pulse-only",
+      "refs": [
+        {
+          "label": "Introducing Mistral Large 4",
+          "href": "https://mistral.ai/news/mistral-large-4/",
+          "role": "wire"
+        }
+      ]
+    },
+    {
+      "id": "cl:hn:49980872",
+      "kind": "rest",
+      "title": "Anthropic expands Claude Startups program with up to $45K in credits",
+      "take": "3 SRC · sig 3",
+      "why": "Top corroborated Wire cluster · same pack as lead pick",
+      "move": "Digest row · never displaces Brief lead",
+      "file": "other",
+      "confidence": "medium",
+      "evidence": [
+        "3 SRC"
+      ],
+      "steps": [],
+      "doneWhen": "Listed under Digest lead",
+      "unlockIf": "Never as Brief lead from pulse-only",
+      "refs": [
+        {
+          "label": "Anthropic expands Claude Startups progra",
+          "href": "https://www.cnbc.com/2026/10/06/anthropic-claude-startups-program.html",
+          "role": "wire"
+        }
+      ]
+    },
+    {
+      "id": "cl:hn:49975345",
+      "kind": "rest",
+      "title": "Anthropic Subscriptions Offer 5x+ More Value Than OpenAI",
+      "take": "2 SRC · sig 78",
+      "why": "Top corroborated Wire cluster · same pack as lead pick",
+      "move": "Digest row · never displaces Brief lead",
+      "file": "other",
+      "confidence": "medium",
+      "evidence": [
+        "2 SRC"
+      ],
+      "steps": [],
+      "doneWhen": "Listed under Digest lead",
+      "unlockIf": "Never as Brief lead from pulse-only",
+      "refs": [
+        {
+          "label": "Anthropic Subscriptions Offer 5x+ More V",
+          "href": "https://newsletter.semianalysis.com/p/anthropic-subscriptions-offer-5x",
+          "role": "wire"
+        }
+      ]
+    },
+    {
+      "id": "hf-swarm",
+      "kind": "drop",
+      "title": "[archive · 003] Eval agents reached Hugging Face production",
       "take": "1,200 coordinating agents. ~700 on HF. 956 secrets. Three waves. Not one rogue run.",
       "why": "Still no new METR/Redwood or HF/OpenAI primary in the 02 Sep list or 03 Sep crawl.",
       "move": "Keep as lead. Banned nouns stay off the pin.",
@@ -33,8 +130,8 @@
     },
     {
       "id": "astra-depth",
-      "kind": "companion",
-      "title": "Astra: Critical + recurrent depth",
+      "kind": "drop",
+      "title": "[archive · 003] Astra: Critical + recurrent depth",
       "take": "Palazzolo + Curran + Amir: looping hides some reasoning. OpenAI says Astra CoT is still monitorable.",
       "why": "Bond to the missing CoT monitor on the HF file. Curran 'tomorrow morning' is rumor.",
       "move": "Companion only. Do not promote over HF.",
@@ -78,8 +175,8 @@
     },
     {
       "id": "aisle-curl",
-      "kind": "rest",
-      "title": "AISLE found 6 curl CVEs after two labs reported zero",
+      "kind": "drop",
+      "title": "[archive · 003] AISLE found 6 curl CVEs after two labs reported zero",
       "take": "Fort: Codex Security and Mythos reported 0. AISLE found 6 validated zero-days.",
       "why": "In the 02 Sep list. Agent scanner quality, not HF.",
       "move": "Rest-of-board. Use as measurement, not vendor scoreboard lead.",
@@ -136,8 +233,8 @@
     },
     {
       "id": "harness-papers",
-      "kind": "rest",
-      "title": "Harness papers: days-long coding + skills that hurt the task",
+      "kind": "drop",
+      "title": "[archive · 003] Harness papers: days-long coding + skills that hurt the task",
       "take": "DAIR 02–03 Sep: Harness-of-Harness +52% relative. Retrieved skills can raise the average and damage the tasks they fire on.",
       "why": "Curation-heavy DAIR/omarsar cluster. Research rest. Pattern for this desk's own skills.",
       "move": "Papers lane + Pulse rest.",
@@ -148,7 +245,7 @@
         "dair_ai 2095330956823629995 matched skill-retrieval effect.",
         "HF live 03 Sep: Repo-To-Skill 2609.02749, 105 up.",
         "DOI confirm 2610.03120: In-Distribution Forcing for Long Video Generation at Te….",
-        "HF keep still ranked 2610.04292: LMBuild: Evaluating LLM Agents for Generating Buildable… (21 up).",
+        "HF keep still ranked 2610.04292: LMBuild: Evaluating LLM Agents for Generating Buildable… (22 up).",
         "HF keep still ranked 2609.37267: Foundations of Proactive Agents: Principles, Technical … (20 up)."
       ],
       "steps": [
@@ -287,184 +384,91 @@
   ],
   "plan": [
     {
-      "id": "hf-swarm",
-      "title": "Eval agents reached Hugging Face production",
-      "file": "hf-incident",
+      "id": "cl:hn:49969183",
+      "title": "Beam: Reflection's 501B open-weight model",
+      "file": "other",
       "kind": "lead",
       "confidence": "high",
-      "move": "Keep as lead. Banned nouns stay off the pin.",
+      "move": "Digest/Voice follow Brief lead · cycle label 003",
       "evidence": [
-        "METR scope ends 13 Jul. Wave 3 cluster-admin is OpenAI-only.",
-        "02 Sep curation did not add a new incident URL. It added scanners, papers, and Astra commentary."
+        "stamp live",
+        "frozen 2026-10-06T03:21:06.155Z",
+        "pick 2026-10-06"
       ],
       "steps": [
-        "Cite METR for waves 1–2. Cite OpenAI for wave 3.",
-        "Do not use AISLE curl CVEs or MIT stigmergy as proof of the HF breach."
+        "Follow LEAD_TODAY · never invent",
+        "Cycle label stays 003"
       ],
-      "doneWhen": "Pin 1 still opens the incident file.",
-      "unlockIf": "A new METR/HF/OpenAI primary names a fact not in Cycle 001.",
+      "doneWhen": "Digest lead equals Brief LEAD_TODAY title",
+      "unlockIf": "Next 06:11 Istanbul pick",
       "refs": [
         {
-          "label": "Dwarkesh 29 Aug thread",
-          "href": "https://x.com/dwarkesh_sp",
-          "role": "wire"
+          "label": "lead",
+          "href": "https://reflection.ai/blog/introducing-beam",
+          "role": "primary"
         }
       ]
     },
     {
-      "id": "astra-depth",
-      "title": "Astra: Critical + recurrent depth",
-      "file": "astra",
-      "kind": "companion",
-      "confidence": "high",
-      "move": "Companion only. Do not promote over HF.",
-      "evidence": [
-        "Palazzolo 2094954680765829533 — recurrent depth.",
-        "Amir 2095274361695731967 — story unchanged; OpenAI limiting loops.",
-        "Curran 2095257682865532970 — 'Astra tomorrow morning' is a wire read.",
-        "Lab wire: How NVIDIA GPUs Help Accelerate OpenAI’s GPT-6 Astra Ultrafast.",
-        "Lab wire: Introducing GPT-6.1 Sol."
-      ],
-      "steps": [
-        "Keep ship language rumored.",
-        "If OpenAI posts a dated ship, that is a companion delta, not a lead swap."
-      ],
-      "doneWhen": "Astra is pin 2 or Pulse companion. Not pin 1.",
-      "unlockIf": "OpenAI official dated ship or a new incident attribution.",
-      "refs": [
-        {
-          "label": "Palazzolo",
-          "href": "https://x.com/steph_palazzolo/status/2094954680765829533",
-          "role": "primary"
-        },
-        {
-          "label": "Amir clarification",
-          "href": "https://x.com/amir/status/2095274361695731967",
-          "role": "primary"
-        },
-        {
-          "label": "lab:nvidia How NVIDIA GPUs Help Accelerate Open…",
-          "href": "https://blogs.nvidia.com/blog/gpus-openai-gpt-6-astra-ultrafast/",
-          "role": "wire"
-        },
-        {
-          "label": "lab:openai Introducing GPT-6.1 Sol",
-          "href": "https://openai.com/index/introducing-gpt-6-1-sol",
-          "role": "wire"
-        }
-      ]
-    },
-    {
-      "id": "aisle-curl",
-      "title": "AISLE found 6 curl CVEs after two labs reported zero",
+      "id": "cl:rss:mistral:1ef243007176e85c",
+      "title": "Introducing Mistral Large 4",
       "file": "other",
-      "kind": "rest",
-      "confidence": "high",
-      "move": "Rest-of-board. Use as measurement, not vendor scoreboard lead.",
+      "kind": "companion",
+      "confidence": "medium",
+      "move": "Digest row · never displaces Brief lead",
       "evidence": [
-        "Primary blog aisle.com + Fort 2095107971433017510 (261 likes / 23k views).",
-        "Lab wire: How DOCA GPUNetIO Unifies GPU-Initiated Networking Across the N….",
-        "Lab wire: AICR v1.0: Open, stable, and verifiable GPU cluster configurati….",
-        "Lab wire: Atlassian and OpenAI expand partnership to turn enterprise know…."
+        "12 SRC"
       ],
-      "steps": [
-        "Link the blog. Do not write 'labs are unsafe' from one target."
-      ],
-      "doneWhen": "On Pulse with the blog href.",
-      "unlockIf": "curl project disputes the CVEs — then downgrade.",
+      "steps": [],
+      "doneWhen": "Listed under Digest lead",
+      "unlockIf": "Never as Brief lead from pulse-only",
       "refs": [
         {
-          "label": "AISLE blog",
-          "href": "https://aisle.com/blog/aisle-discovered-six-curl-cves-after-openai-and-anthropic-found-zero",
-          "role": "primary"
-        },
-        {
-          "label": "Fort 02 Sep",
-          "href": "https://x.com/stanislavfort/status/2095107971433017510",
-          "role": "wire"
-        },
-        {
-          "label": "lab:nvidia-dev How DOCA GPUNetIO Unifies GPU-In…",
-          "href": "https://developer.nvidia.com/blog/doca-gpunetio-gda-ki-unified-gpu-networking/",
-          "role": "wire"
-        },
-        {
-          "label": "lab:nvidia-dev AICR v1.0: Open, stable, and ver…",
-          "href": "https://developer.nvidia.com/blog/aicr-v1-0-open-stable-and-verifiable-gpu-cluster-configuration/",
-          "role": "wire"
-        },
-        {
-          "label": "lab:openai Atlassian and OpenAI expand partners…",
-          "href": "https://openai.com/index/atlassian-partnership",
-          "role": "wire"
-        },
-        {
-          "label": "lab:google-research Unlocking Earth AI’s planet…",
-          "href": "https://research.google/blog/earth-ais-planetary-geospatial-foundation-models-for-global-public-health/",
-          "role": "wire"
-        },
-        {
-          "label": "lab:nvidia-dev Control How Your GPU Shares Work…",
-          "href": "https://developer.nvidia.com/blog/control-how-your-gpu-shares-work-with-green-contexts/",
+          "label": "Introducing Mistral Large 4",
+          "href": "https://mistral.ai/news/mistral-large-4/",
           "role": "wire"
         }
       ]
     },
     {
-      "id": "harness-papers",
-      "title": "Harness papers: days-long coding + skills that hurt the task",
+      "id": "cl:hn:49980872",
+      "title": "Anthropic expands Claude Startups program with up to $45K in credits",
       "file": "other",
       "kind": "rest",
       "confidence": "medium",
-      "move": "Papers lane + Pulse rest.",
+      "move": "Digest row · never displaces Brief lead",
       "evidence": [
-        "dair_ai 2095172426925801608 Harness-of-Harness.",
-        "dair_ai 2095330956823629995 matched skill-retrieval effect.",
-        "HF live 03 Sep: Repo-To-Skill 2609.02749, 105 up.",
-        "DOI confirm 2610.03120: In-Distribution Forcing for Long Video Generation at Te….",
-        "HF keep still ranked 2610.04292: LMBuild: Evaluating LLM Agents for Generating Buildable… (21 up).",
-        "HF keep still ranked 2609.37267: Foundations of Proactive Agents: Principles, Technical … (20 up)."
+        "3 SRC"
       ],
-      "steps": [
-        "Keep abstracts on the desk. Do not treat benchmark lift as a ship."
-      ],
-      "doneWhen": "Papers lane lists at least one of these IDs.",
-      "unlockIf": "Never as lead.",
+      "steps": [],
+      "doneWhen": "Listed under Digest lead",
+      "unlockIf": "Never as Brief lead from pulse-only",
       "refs": [
         {
-          "label": "Harness-of-Harness",
-          "href": "https://x.com/dair_ai/status/2095172426925801608",
+          "label": "Anthropic expands Claude Startups progra",
+          "href": "https://www.cnbc.com/2026/10/06/anthropic-claude-startups-program.html",
           "role": "wire"
-        },
+        }
+      ]
+    },
+    {
+      "id": "cl:hn:49975345",
+      "title": "Anthropic Subscriptions Offer 5x+ More Value Than OpenAI",
+      "file": "other",
+      "kind": "rest",
+      "confidence": "medium",
+      "move": "Digest row · never displaces Brief lead",
+      "evidence": [
+        "2 SRC"
+      ],
+      "steps": [],
+      "doneWhen": "Listed under Digest lead",
+      "unlockIf": "Never as Brief lead from pulse-only",
+      "refs": [
         {
-          "label": "Skill retrieval paper",
-          "href": "https://x.com/dair_ai/status/2095330956823629995",
+          "label": "Anthropic Subscriptions Offer 5x+ More V",
+          "href": "https://newsletter.semianalysis.com/p/anthropic-subscriptions-offer-5x",
           "role": "wire"
-        },
-        {
-          "label": "In-Distribution Forcing for Long Video Generati…",
-          "href": "https://doi.org/10.1109/iccv51701.2025.01735",
-          "role": "support"
-        },
-        {
-          "label": "LMBuild: Evaluating LLM Agents for Generating B…",
-          "href": "https://arxiv.org/abs/2610.04292",
-          "role": "support"
-        },
-        {
-          "label": "Foundations of Proactive Agents: Principles, Te…",
-          "href": "https://arxiv.org/abs/2609.37267",
-          "role": "support"
-        },
-        {
-          "label": "Self-Generated Feedback Destabilizes Test-Time …",
-          "href": "https://arxiv.org/abs/2610.05076",
-          "role": "support"
-        },
-        {
-          "label": "Optimizing the Optimizer: Language Models Disco…",
-          "href": "https://arxiv.org/abs/2610.06577",
-          "role": "support"
         }
       ]
     }

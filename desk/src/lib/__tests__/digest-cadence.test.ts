@@ -11,6 +11,8 @@ import { join } from "node:path";
 import { tmpdir } from "node:os";
 import { CYCLE } from "@/data/cycle";
 import { DIGEST_ITEMS } from "@/data/digest-pack";
+import { DIGEST_UNLOCK } from "@/data/digest-unlock";
+import { LEAD_TODAY } from "@/data/lead-pick";
 import {
   CADENCE_MS,
   isDigestDue,
@@ -79,7 +81,7 @@ describe("digest cadence (WIRE-DIGEST-CADENCE)", () => {
     expect(nd.due).toBe(false);
   });
 
-  test("overdue tick writes pack JSON+md; lead hf-incident; drop/stigmergy present", () => {
+  test("overdue tick writes pack JSON+md; unlocked lead; drop/stigmergy present", () => {
     const wrote = runDigestTick({ deskRoot, now: NOW });
     expect(wrote.status).toBe("WROTE");
     if (wrote.status !== "WROTE") return;
@@ -95,10 +97,12 @@ describe("digest cadence (WIRE-DIGEST-CADENCE)", () => {
       plan: ReturnType<typeof renderPlan>;
     };
     expect(pack.cycle).toBe("003");
-    expect(pack.lead_id).toBe("hf-incident");
+    // Pass A: pack carries unlocked LEAD_TODAY titles (cycle label stays 003).
+    expect(pack.lead_id).toBe(DIGEST_UNLOCK.leadId ?? LEAD_TODAY?.cluster_id ?? "hf-incident");
     expect(Array.isArray(pack.plan)).toBe(true);
     const lead = pack.plan.find((p) => p.kind === "lead");
-    expect(lead?.file).toBe("hf-incident");
+    expect(lead?.title).toBe(DIGEST_UNLOCK.lead.title);
+    expect(lead?.title).not.toMatch(/Eval agents reached Hugging Face|HF production swarm/i);
 
     const digest = JSON.parse(readFileSync(wrote.paths.cycleJsonPath, "utf8")) as {
       items: typeof DIGEST_ITEMS;
@@ -129,19 +133,23 @@ describe("digest cadence (WIRE-DIGEST-CADENCE)", () => {
     expect(wrote.status).toBe("WROTE");
     if (wrote.status === "WROTE") {
       expect(wrote.cycleId).toBe("003");
-      expect(wrote.leadId).toBe("hf-incident");
+      expect(wrote.leadId).toBe(DIGEST_UNLOCK.leadId ?? LEAD_TODAY?.cluster_id ?? "hf-incident");
     }
+    // Brief pin set untouched — unlock does not mutate CYCLE.pins / invent 004.
     expect(JSON.stringify(CYCLE.pins)).toBe(beforePins);
     expect(CYCLE.id).toBe("003");
     expect(CYCLE.pins.find((p) => p.kind === "lead")?.id).toBe("hf-incident");
+    expect(CYCLE.pins.find((p) => p.id === "astra-depth")?.kind).toBe("companion");
 
     const digest = JSON.parse(
       readFileSync(join(deskRoot, "artifacts/sage/digest-003.json"), "utf8"),
-    ) as { items: typeof DIGEST_ITEMS; cycle: string };
+    ) as { items: typeof DIGEST_ITEMS; cycle: string; lead_id: string };
     expect(digest.cycle).toBe("003");
+    expect(digest.lead_id).toBe(DIGEST_UNLOCK.leadId ?? LEAD_TODAY?.cluster_id);
+    // Pass A archive: baseline astra kept as archive drop, not deleted.
     const astra = digest.items.find((i) => i.id === "astra-depth");
-    expect(astra?.kind).toBe("companion");
-    expect(astra?.file).toBe("astra");
+    expect(astra?.kind).toBe("drop");
+    expect(astra?.title).toMatch(/archive · 003/);
   });
 
   test("does not require browser localStorage", () => {

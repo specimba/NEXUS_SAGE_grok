@@ -29,6 +29,8 @@ import { crawlItemIds, inflateClusters, inflateMembers, memberAt, memberItems, s
 import { X_TASTE } from "@/data/x-taste";
 import { TASTE_VISIBLE_CAP, tasteSoftMeter } from "@/lib/x-taste-meter";
 import { DIGEST_ITEMS, DROPPED, PACK_AT, PACK_SOURCE } from "@/data/digest-pack";
+import { DIGEST_UNLOCK } from "@/data/digest-unlock";
+import { resolveUnlock, archiveRowsFromCycle, type UnlockView, type UnlockRow } from "@/lib/digest-unlock";
 import { DIGEST_CADENCE } from "@/data/digest-cadence";
 import { groupFirstAt, leadAgeHours } from "@/lib/lead-pick";
 import { LEAD_HELD_TEXT, leadView, nextCrawlSlotHHMM, type LeadView } from "@/lib/lead-view";
@@ -1560,8 +1562,99 @@ export function Pulse() {
   );
 }
 
+
+/** Pass A — one shared unlock view for Digest + Voice (frozen at pick). */
+function useDigestUnlock(): UnlockView {
+  return useMemo(
+    () =>
+      resolveUnlock({
+        held: LEAD_HELD,
+        today: LEAD_TODAY
+          ? {
+              date: LEAD_TODAY.date,
+              at: LEAD_TODAY.at,
+              cluster_id: LEAD_TODAY.cluster_id,
+              headline: LEAD_TODAY.headline,
+              url: LEAD_TODAY.url,
+              sources: LEAD_TODAY.sources,
+              sig: LEAD_TODAY.sig,
+              reason: LEAD_TODAY.reason,
+              crawl_at: LEAD_TODAY.at,
+            }
+          : null,
+        lastGood: DIGEST_UNLOCK,
+      }),
+    [],
+  );
+}
+
+/** Pass A chrome: HELD / archive · 003 are a small kicker above the lead — never a second headline. */
+function UnlockKicker({ view }: { view: UnlockView }) {
+  if (!view.kicker) return null;
+  return (
+    <p
+      className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums"
+      data-unlock-kicker={view.stamp}
+    >
+      {view.kicker}
+    </p>
+  );
+}
+
+/** Pass A chrome: live lead uses the same Take title classes as Brief. */
+function UnlockLeadTitle({
+  row,
+  className,
+}: {
+  row: UnlockRow;
+  className?: string;
+}) {
+  const title = (
+    <h2
+      className={cn(
+        "sage-take-title font-display text-2xl font-bold normal-case tracking-normal md:text-3xl",
+        className,
+      )}
+      data-unlock-lead="1"
+    >
+      {row.url ? (
+        <a href={row.url} target="_blank" rel="noreferrer" className="sage-take-link">
+          {row.title}
+        </a>
+      ) : (
+        row.title
+      )}
+    </h2>
+  );
+  return <div className="sage-take-plate">{title}</div>;
+}
+
+/** CYCLE.003 pins — closed fold; does not compete with today's lead. */
+function CycleArchiveFold() {
+  const pins = archiveRowsFromCycle();
+  return (
+    <details className="sage-panel sage-ticks digest-archive-fold" data-archive-fold="003">
+      <summary className="cursor-pointer px-2.5 py-1.5 font-mono text-kicker uppercase tracking-kicker text-subtle">
+        archive · 003 · {pins.length} pins · closed
+      </summary>
+      <ul className="space-y-1 border-t border-line px-2.5 py-2">
+        {pins.map((p) => (
+          <li key={p.id} className="pin-card-quiet px-2 py-1">
+            <p className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
+              {p.kind} · {p.id}
+            </p>
+            <p className="truncate text-sm text-muted">{p.title}</p>
+          </li>
+        ))}
+      </ul>
+    </details>
+  );
+}
+
 function Digest() {
-  const [openId, setOpenId] = useState(DIGEST_ITEMS[0].id);
+  const unlock = useDigestUnlock();
+  const liveRows = useMemo(() => [unlock.lead, ...unlock.rows], [unlock]);
+  const [openId, setOpenId] = useState(unlock.lead.id);
   const [last, setLast] = useState<string | null>(DIGEST_CADENCE.last_at);
   const [previewNote, setPreviewNote] = useState(false);
   useEffect(() => {
@@ -1590,7 +1683,7 @@ function Digest() {
   const cadence = useMemo(() => nextDue(last ?? DIGEST_CADENCE.last_at, cadenceNow), [last, cadenceNow]);
   const due = diskCadence.due;
   const nextAt = diskCadence.nextAt;
-  const item = DIGEST_ITEMS.find((i) => i.id === openId) ?? DIGEST_ITEMS[0];
+  const item = liveRows.find((i) => i.id === openId) ?? unlock.lead;
   const report = useMemo(
     () => renderReport(DIGEST_ITEMS, last ?? DIGEST_CADENCE.last_at),
     [last],
@@ -1667,22 +1760,28 @@ function Digest() {
           </div>
         </aside>
 
-        {/* Mid · report / open item story — brightest */}
+        {/* Mid · unlocked lead / open row — Brief Take chrome (Pass A) */}
         <section
           className="sage-panel sage-ticks sage-panel-glow holo-edge sage-bento-hero sage-take px-4 py-3 lg:col-span-6 lg:row-span-1"
           aria-label="Digest report body"
+          data-unlock-stamp={unlock.stamp}
         >
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <p className="lane-kicker font-mono text-kicker uppercase tracking-kicker text-amber">
+            <p className="lane-kicker font-mono text-kicker uppercase tracking-kicker">
               Report · story
             </p>
             <span className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
-              {item.kind} · {item.id} · {item.confidence}
+              {item.kind} · cyc/{CYCLE.id} · {unlock.stamp}
             </span>
           </div>
-          <h2 className="sage-take-title mt-2 font-display text-2xl font-medium normal-case tracking-normal text-phosphor-bright md:text-3xl">
-            {item.title}
-          </h2>
+          <UnlockKicker view={unlock} />
+          {item.kind === "lead" ? (
+            <UnlockLeadTitle row={item} />
+          ) : (
+            <h2 className="sage-take-title mt-1 font-display text-xl font-bold normal-case tracking-normal md:text-2xl">
+              {item.title}
+            </h2>
+          )}
           <dl className="pin-meta mt-3 max-w-prose">
             <dt>take</dt>
             <dd className="text-phosphor-bright">{item.take}</dd>
@@ -1691,18 +1790,9 @@ function Digest() {
             <dt className="sage-signal">move</dt>
             <dd className="sage-signal">{item.move}</dd>
           </dl>
-          {item.evidence.length ? (
-            <ul className="mt-3 max-w-prose space-y-1 border-t border-line pt-2 text-sm text-muted">
-              {item.evidence.slice(0, 3).map((e) => (
-                <li key={e.slice(0, 32)} className="border-l-2 border-phosphor pl-3">
-                  {e}
-                </li>
-              ))}
-            </ul>
-          ) : null}
         </section>
 
-        {/* Right · compact item rail */}
+        {/* Right · unlocked rows + closed archive · 003 fold */}
         <div className="digest-item-rail flex flex-col gap-1.5 lg:col-span-4 lg:row-span-2">
           <div
             className="pin-legend-rail sage-panel sage-ticks flex flex-wrap items-center gap-x-3 gap-y-1 px-2.5 py-1.5"
@@ -1710,11 +1800,11 @@ function Digest() {
           >
             <span className="font-mono text-kicker uppercase tracking-kicker text-subtle">items</span>
             <span className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
-              {DIGEST_ITEMS.length} · never Brief lead
+              {liveRows.length} · unlock · cyc/{CYCLE.id}
             </span>
           </div>
           <ul className="flex flex-col gap-1">
-            {byCorroboration(DIGEST_ITEMS).map((i, idx) => {
+            {liveRows.map((i, idx) => {
               const open = i.id === item.id;
               return (
                 <li key={i.id}>
@@ -1728,13 +1818,8 @@ function Digest() {
                     )}
                   >
                     <p className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
-                      [{String(idx + 1).padStart(2, "0")}] · {i.id} · {i.kind}
-                      {i.kind !== "lead" && i.kind !== "drop" ? (
-                        <>
-                          {" "}
-                          <SrcChip id={i.id} />
-                        </>
-                      ) : null}
+                      [{String(idx + 1).padStart(2, "0")}] · {i.kind}
+                      {i.sources ? ` · ${i.sources} SRC` : ""}
                     </p>
                     <p
                       className={cn(
@@ -1745,13 +1830,14 @@ function Digest() {
                       {i.title}
                     </p>
                     <p className="mt-0.5 font-mono text-kicker uppercase tracking-kicker text-subtle">
-                      {i.confidence} · {open ? "open" : "ready"}
+                      {open ? "open" : "ready"}
                     </p>
                   </button>
                 </li>
               );
             })}
           </ul>
+          <CycleArchiveFold />
         </div>
 
         {/* Under mid · next window / pack span */}
@@ -1775,7 +1861,7 @@ function Digest() {
               />
             </div>
             <p className="mt-2 font-mono text-kicker uppercase tracking-kicker text-subtle">
-              {PACK_SOURCE} · lead hf-incident · Sol≠Astra
+              {PACK_SOURCE} · unlock · cyc/{CYCLE.id} · Sol≠Astra
             </p>
           </div>
         </section>
@@ -2066,18 +2152,22 @@ function pickAvaAndrewVoices(): {
 }
 
 function Voice() {
+  const unlock = useDigestUnlock();
   const [playing, setPlaying] = useState(false);
   const [level, setLevel] = useState(0);
   const [beat, setBeat] = useState<VoiceBeatId>("idle");
-  const lead = CYCLE.pins.find((p) => p.kind === "lead") ?? CYCLE.pins[0];
+  const lead = unlock.lead;
 
   const script = useMemo(
     () => ({
-      take: lead?.take ?? CYCLE.exec[0],
-      why: lead?.why ?? CYCLE.exec[1] ?? "",
-      move: lead?.move ?? CYCLE.exec[2] ?? "",
+      take: lead.title,
+      why: lead.take,
+      move:
+        unlock.rows.length > 0
+          ? unlock.rows.map((r) => r.title).join(" · ")
+          : lead.move,
     }),
-    [lead],
+    [lead, unlock.rows],
   );
 
   useEffect(() => {
@@ -2223,15 +2313,18 @@ function Voice() {
         <section
           className="sage-panel sage-ticks sage-panel-glow holo-edge sage-bento-hero sage-take px-4 py-3 lg:col-span-6 lg:row-span-1"
           aria-label="Voice script"
+          data-unlock-stamp={unlock.stamp}
         >
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <p className="lane-kicker font-mono text-kicker uppercase tracking-kicker text-amber">
+            <p className="lane-kicker font-mono text-kicker uppercase tracking-kicker">
               Script · story
             </p>
             <span className="font-mono text-kicker uppercase tracking-kicker text-subtle">
-              lead · {lead?.id ?? "hf-incident"} · TAKE→WHY→MOVE
+              lead · cyc/{CYCLE.id} · {unlock.stamp} · TAKE→WHY→MOVE
             </span>
           </div>
+          <UnlockKicker view={unlock} />
+          <UnlockLeadTitle row={lead} />
           <dl className="pin-meta mt-3 max-w-prose">
             <dt className={cn(beat === "take" && "sage-signal")}>take</dt>
             <dd className={cn("text-phosphor-bright", beat === "take" && "text-phosphor-bright")}>
@@ -2242,6 +2335,15 @@ function Voice() {
             <dt className={cn(beat === "move" && "sage-signal")}>move</dt>
             <dd className={cn("sage-signal", beat === "move" && "text-phosphor-bright")}>{script.move}</dd>
           </dl>
+          {unlock.rows.length ? (
+            <ul className="mt-3 max-w-prose space-y-1 border-t border-line pt-2 text-sm text-muted" data-voice-rows="1">
+              {unlock.rows.map((r) => (
+                <li key={r.id} className="border-l-2 border-phosphor pl-3 truncate">
+                  {r.title}
+                </li>
+              ))}
+            </ul>
+          ) : null}
         </section>
 
         {/* Right · clip / speaker / TTS chain — quiet */}
@@ -2266,8 +2368,9 @@ function Voice() {
               {playing ? "Stop" : "Play brief"}
             </button>
             <p className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
-              lead {lead?.id ?? "hf-incident"}
+              lead {lead.id} · unlock
             </p>
+            <CycleArchiveFold />
             <ul className="space-y-1 border-t border-line pt-2">
               <li className="font-mono text-kicker uppercase tracking-kicker text-subtle">
                 Ava · TAKE / MOVE
@@ -2281,7 +2384,7 @@ function Voice() {
             </ul>
           </div>
           <p className="px-1 font-mono text-kicker uppercase tracking-kicker text-subtle">
-            Podcast mix offline · locked lead only · Sol≠Astra
+            {`Podcast mix offline · unlock · cyc/${CYCLE.id} · Sol≠Astra`}
           </p>
         </div>
 

@@ -14,6 +14,9 @@ import {
   writeDigestPackFiles,
 } from "@/lib/digest-pack-disk";
 import { refreshDigest } from "@/lib/digest-refresh";
+import { DIGEST_UNLOCK } from "@/data/digest-unlock";
+import { LEAD_HELD, LEAD_TODAY } from "@/data/lead-pick";
+import { resolveUnlock, unlockToDigestItems } from "@/lib/digest-unlock";
 
 export type TickResult =
   | {
@@ -79,13 +82,22 @@ export function runDigestTick(opts: {
     leadId: "hf-incident",
   });
 
+  // Pass A: pack carries unlocked titles (cycle label stays 003; archive baseline kept as drops).
+  const unlockView = resolveUnlock({
+    held: LEAD_HELD,
+    today: LEAD_TODAY,
+    lastGood: DIGEST_UNLOCK,
+  });
+  const unlockedItems = unlockToDigestItems(unlockView, refreshed.items);
+  const packLeadId = unlockView.leadId ?? refreshed.leadId;
+
   const packId = packStamp(now);
   const paths = writeDigestPackFiles(deskRoot, {
     cycleId: refreshed.cycleId,
-    leadId: refreshed.leadId,
+    leadId: packLeadId,
     at: refreshed.at,
-    source: refreshed.source,
-    items: refreshed.items,
+    source: `${refreshed.source} · unlock:${unlockView.stamp}`,
+    items: unlockedItems,
     dropped: refreshed.dropped,
     packId,
   });
@@ -108,6 +120,6 @@ export function runDigestTick(opts: {
     next_at: nextAt,
     paths,
     cycleId: refreshed.cycleId,
-    leadId: refreshed.leadId,
+    leadId: packLeadId,
   };
 }

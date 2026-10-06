@@ -27,6 +27,7 @@ import { RSS_SECURITY } from "@/data/rss-security";
 import { X_TASTE } from "@/data/x-taste";
 import { diffSnapshots, rankBelowLead, toSnapshot, type RankSnapshot } from "@/lib/corroboration";
 import { CYCLE } from "@/data/cycle";
+import { buildLiveSnapshot, renderUnlockModule, type DigestUnlockSnapshot } from "@/lib/digest-unlock";
 import { applyPick, currentLead, groupFirstAt, leadExcludeReason, decidePick, istanbulDate, readLeadHistory, yesterdayLead, type LeadHistory } from "@/lib/lead-pick";
 import { bucketWindows, countCompanies, countOtherLabs, heatCells, heatLabel, upsertCrawl, type HeatFile } from "@/lib/topic-heat";
 import { buildWire, readWireSnapshot, wireCounts, wireHeader, wireMark, type WireSnapshot } from "@/lib/wire";
@@ -225,6 +226,34 @@ export const WIRE_ROWS: WireRow[] = ${JSON.stringify(wire.rows, null, 2)};
 console.log(`wire OK ${wireHeader(wire.crawl_at, wire.rows)} prev=${wirePrev?.crawl_at ?? "(none)"} eligible=${wire.order.length}`);
 for (const r of wire.rows)
   console.log(`  ${wireMark(r).padEnd(4)} #${r.rank} prev ${r.prev_rank ?? "—"} ${r.sources} SRC ${r.id.padEnd(24)} ${r.title.slice(0, 80)}`);
+
+
+// ── Pass A · Digest/Voice unlock freeze (only on pick / first write for pick date) ──
+const unlockPath = resolve(dir, "digest-unlock.json");
+const unlockDataPath = resolve(desk, "src/data/digest-unlock.ts");
+function readUnlock(p: string): DigestUnlockSnapshot | null {
+  if (!existsSync(p)) return null;
+  try {
+    const j = JSON.parse(readFileSync(p, "utf8")) as DigestUnlockSnapshot;
+    return j?.schema === 1 && j.lead?.title ? j : null;
+  } catch {
+    return null;
+  }
+}
+const unlockPrev = readUnlock(unlockPath);
+const shouldFreezeUnlock =
+  (decision.action === "picked" && leadNow && leadNow.reason === "picked" && leadNow.headline) ||
+  (leadNow && leadNow.reason === "picked" && leadNow.headline && (!unlockPrev || unlockPrev.pickDate !== leadNow.date));
+if (shouldFreezeUnlock && leadNow) {
+  const snap = buildLiveSnapshot({ lead: leadNow, wire: wire.rows, frozenAt: leadNow.at });
+  writeFileSync(unlockPath, JSON.stringify(snap, null, 2) + "\n");
+  writeFileSync(unlockDataPath, renderUnlockModule(snap));
+  console.log(`digest-unlock FREEZE pick=${snap.pickDate} lead=${snap.leadId} rows=${snap.rows.length} · ${snap.lead.title.slice(0, 60)}`);
+} else if (decision.action === "held") {
+  console.log(`digest-unlock HOLD keep last-good pick=${unlockPrev?.pickDate ?? "(none)"} · HELD stamp at UI`);
+} else {
+  console.log(`digest-unlock skip (${decision.action === "none" ? decision.why : decision.action}) pick=${unlockPrev?.pickDate ?? "(none)"}`);
+}
 
 // ── Beat 10 · topic heat — per-crawl company counts, bucketed into 4h routine windows ──
 const heatPath = resolve(desk, "artifacts/sage/topic-heat.json");
