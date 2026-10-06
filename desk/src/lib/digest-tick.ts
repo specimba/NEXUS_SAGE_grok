@@ -8,6 +8,8 @@ import { CADENCE_MS, isDigestDue, type DigestLast } from "@/lib/digest-pack";
 import {
   packStamp,
   readDigestLast,
+  syncDigestCadenceFromDisk,
+  writeDigestCadenceTs,
   writeDigestLast,
   writeDigestPackFiles,
 } from "@/lib/digest-pack-disk";
@@ -64,6 +66,8 @@ export function runDigestTick(opts: {
   const due = isDigestDue(last, now);
 
   if (!opts.force && !due.due) {
+    // Pass B: HOLD must not invent wall-clock stamps; may mirror disk → module if drifted.
+    syncDigestCadenceFromDisk(deskRoot);
     return { status: "HOLD", next_at: due.nextAt, last };
   }
 
@@ -94,6 +98,8 @@ export function runDigestTick(opts: {
     pack_id: packId,
   };
   writeDigestLast(deskRoot, digestLast);
+  // Pass B: commit-time mirror for static export — emit only on real WROTE.
+  writeDigestCadenceTs(deskRoot, digestLast);
 
   return {
     status: "WROTE",

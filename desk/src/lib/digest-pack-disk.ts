@@ -1,7 +1,7 @@
 /**
  * Disk helpers for Digest cadence — Node/Bun only (not imported by browser UI).
  */
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import type { DigestItem } from "@/data/digest-pack";
 import {
@@ -113,4 +113,109 @@ export function writeDigestPackFiles(
     cycleMdPath,
     plan,
   };
+}
+
+/** Commit-time mirror path for static export (Pass B). Disk digest-last.json remains truth. */
+export function digestCadenceTsPath(deskRoot: string) {
+  return resolve(deskRoot, "src/data/digest-cadence.ts");
+}
+
+/** Newest pack stamp under artifacts/sage/packs/*.json (lexicographic = chronological for packStamp). */
+export function newestPackStamp(deskRoot: string): string | null {
+  const dir = digestPacksDir(deskRoot);
+  if (!existsSync(dir)) return null;
+  const ids = readdirSync(dir)
+    .filter((f) => f.endsWith(".json"))
+    .map((f) => f.replace(/\.json$/, ""))
+    .filter((id) => /^\d{4}-\d{2}-\d{2}T\d{2}/.test(id))
+    .sort();
+  return ids.length ? ids[ids.length - 1]! : null;
+}
+
+/** Render digest-cadence.ts from a DigestLast snapshot. */
+export function renderDigestCadenceTs(last: DigestLast): string {
+  return (
+    `/** Snapshot of artifacts/sage/digest-last.json — regenerate via bun run digest:tick. */\n` +
+    `export const DIGEST_CADENCE = {\n` +
+    `  "last_at": ${JSON.stringify(last.last_at)},\n` +
+    `  "next_at": ${JSON.stringify(last.next_at)},\n` +
+    `  "pack_id": ${JSON.stringify(last.pack_id)},\n` +
+    `} as const;\n`
+  );
+}
+
+/** Write src/data/digest-cadence.ts from the given last (Pass B emit-on-WROTE). */
+export function writeDigestCadenceTs(deskRoot: string, last: DigestLast) {
+  const path = digestCadenceTsPath(deskRoot);
+  mkdirSync(dirname(path), { recursive: true });
+  writeFileSync(path, renderDigestCadenceTs(last), "utf8");
+  return path;
+}
+
+export type SyncCadenceResult =
+  | { status: "wrote"; last: DigestLast; path: string }
+  | { status: "soft"; reason: string };
+
+/**
+ * Mirror disk digest-last.json → digest-cadence.ts.
+ * Soft-fail if missing/unreadable: keep last committed module, do not invent timestamps.
+ */
+export function syncDigestCadenceFromDisk(deskRoot: string): SyncCadenceResult {
+  const last = readDigestLast(deskRoot);
+  if (!last) {
+    return { status: "soft", reason: "missing or unreadable digest-last.json" };
+  }
+  const path = writeDigestCadenceTs(deskRoot, last);
+  return { status: "wrote", last, path };
+}
+
+/** Parse DIGEST_CADENCE fields from the committed TS module (for coherence). */
+export function readDigestCadenceModule(deskRoot: string): DigestLast | null {
+  const path = digestCadenceTsPath(deskRoot);
+  if (!existsSync(path)) return null;
+  try {
+    const src = readFileSync(path, "utf8");
+    const last_at = src.match(/"last_at":\s*"([^"]+)"/)?.[1];
+    const next_at = src.match(/"next_at":\s*"([^"]+)"/)?.[1];
+    const pack_id = src.match(/"pack_id":\s*"([^"]+)"/)?.[1];
+    if (!last_at || !next_at) return null;
+    return { last_at, next_at, pack_id: pack_id ?? "" };
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Pass B coherence: module last_at must equal disk; pack_id must equal newest pack when packs exist.
+ * Returns list of failure strings (empty = ok). Soft: missing disk → no hard fail (caller may soft-meter).
+ */
+export function digestCadenceCoherenceFails(deskRoot: string): string[] {
+  const fails: string[] = [];
+  const disk = readDigestLast(deskRoot);
+  const mod = readDigestCadenceModule(deskRoot);
+  if (!disk) {
+    // Soft-fail path — do not invent; no hard gate when disk missing.
+    return fails;
+  }
+  if (!mod) {
+    fails.push("DIGEST_CADENCE module missing while digest-last.json present");
+    return fails;
+  }
+  if (mod.last_at !== disk.last_at) {
+    fails.push(`DIGEST_CADENCE.last_at ${mod.last_at} ≠ digest-last.json.last_at ${disk.last_at}`);
+  }
+  if (mod.next_at !== disk.next_at) {
+    fails.push(`DIGEST_CADENCE.next_at ${mod.next_at} ≠ digest-last.json.next_at ${disk.next_at}`);
+  }
+  if (mod.pack_id !== disk.pack_id) {
+    fails.push(`DIGEST_CADENCE.pack_id ${mod.pack_id} ≠ digest-last.json.pack_id ${disk.pack_id}`);
+  }
+  const newest = newestPackStamp(deskRoot);
+  if (newest && disk.pack_id && disk.pack_id !== newest) {
+    fails.push(`digest-last pack_id ${disk.pack_id} ≠ newest pack ${newest}`);
+  }
+  if (newest && mod.pack_id && mod.pack_id !== newest) {
+    fails.push(`DIGEST_CADENCE.pack_id ${mod.pack_id} ≠ newest pack ${newest}`);
+  }
+  return fails;
 }

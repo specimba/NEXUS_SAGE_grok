@@ -8,6 +8,15 @@ ROOT="${1:?repo root}"
 DRY="${2:-}"
 LIST="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/backup-allowlist.txt"
 [ -f "$LIST" ] || { echo "[backup-stage] allowlist missing: $LIST" >&2; exit 2; }
+
+# Pass B — mirror digest-last.json → desk/src/data/digest-cadence.ts before allowlist stage (soft if missing).
+DESK="$ROOT/desk"
+if [ -z "${DRY:-}" ] && [ -d "$DESK" ]; then
+  ( cd "$DESK" && bun -e 'import { syncDigestCadenceFromDisk } from "./src/lib/digest-pack-disk.ts";
+const r = syncDigestCadenceFromDisk(process.cwd());
+console.log(r.status === "wrote" ? `[backup-stage] digest-cadence synced pack_id=${r.last.pack_id}` : `[backup-stage] digest-cadence soft — ${r.reason}`);
+' ) || echo "[backup-stage] digest-cadence sync soft-failed (continuing)" >&2
+fi
 shopt -s nullglob
 files=()
 while IFS= read -r line || [ -n "$line" ]; do
