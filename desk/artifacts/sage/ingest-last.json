@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-06T20:03:17Z",
+  "stamped_at": "2026-10-07T23:18:00Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 219,
+      "duration_ms": 181,
       "paused_until": null,
       "reason": null
     },
@@ -18,24 +18,24 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 151,
+      "duration_ms": 110,
       "paused_until": null,
       "reason": null
     },
     {
       "id": "openalex",
       "label": "OpenAlex",
-      "status": "paused",
-      "rows": 0,
+      "status": "ok",
+      "rows": 3,
       "duration_ms": 2,
-      "paused_until": "2026-10-07T03:20:53Z",
-      "reason": "paused_until 2026-10-07T03:20:53Z"
+      "paused_until": null,
+      "reason": null
     },
     {
       "id": "crossref",
       "label": "Crossref",
       "status": "ok",
-      "rows": 1,
+      "rows": 0,
       "duration_ms": 1,
       "paused_until": null,
       "reason": null
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 55,
-      "duration_ms": 8471,
+      "rows": 41,
+      "duration_ms": 178,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 150,
+      "duration_ms": 178,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 150,
+      "duration_ms": 178,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 46,
-      "duration_ms": 150,
+      "rows": 37,
+      "duration_ms": 178,
       "paused_until": null,
       "reason": null
     },
@@ -80,8 +80,8 @@
       "id": "github",
       "label": "GitHub",
       "status": "ok",
-      "rows": 1,
-      "duration_ms": 150,
+      "rows": 2,
+      "duration_ms": 178,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 150,
+      "duration_ms": 178,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 9594,
-    "sources_wall_ms": 8474,
-    "papers_lane_ms": 378,
-    "slowest_source_ms": 8471,
+    "sources_ms": 1362,
+    "sources_wall_ms": 299,
+    "papers_lane_ms": 299,
+    "slowest_source_ms": 181,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -114,31 +114,32 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 9059,
-    "startup_ms": 52,
-    "main_ms": 9085
+    "wall_ms": 760,
+    "startup_ms": 46,
+    "main_ms": 771
   },
-  "multi_source_independent": 5,
+  "multi_source_independent": 4,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 5,
-    "multi_source_raw": 8,
-    "self_reposts": 3,
-    "items_in": 233,
+    "multi_source_independent": 4,
+    "multi_source_raw": 6,
+    "self_reposts": 2,
+    "items_in": 220,
     "clusters_out": 202,
-    "collapsed": 31,
-    "multi_source": 5,
-    "multi_member": 11,
+    "collapsed": 18,
+    "multi_source": 4,
+    "multi_member": 8,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 1,
+    "new_items": 0,
     "per_source": {
-      "hn-algolia": 55,
+      "hn-algolia": 41,
       "rss-lab": 104,
       "rss-security": 28,
-      "gnews-rss": 46
+      "gnews-rss": 37,
+      "gmail-news": 10
     },
     "multi_source_clusters": [
       {
@@ -148,7 +149,7 @@
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 18,
+        "size": 12,
         "score": 1,
         "members": [
           {
@@ -173,13 +174,6 @@
             "publisher": null
           },
           {
-            "id": "hn:49978040",
-            "source": "hn-algolia",
-            "title": "Mistral debuts Large 4 'Le Chonk', a 1T parameter text output model",
-            "at": "2026-10-06T13:20:44Z",
-            "publisher": null
-          },
-          {
             "id": "rss:mistral:1ef243007176e85c",
             "source": "rss-lab",
             "title": "Introducing Mistral Large 4",
@@ -187,32 +181,18 @@
             "publisher": "mistral"
           },
           {
-            "id": "gnews:4d3a6cd29cfadf0b",
+            "id": "gnews:e91842775272b5b5",
             "source": "gnews-rss",
-            "title": "Mistral Launches Mistral Large 4 Preview With 1 Trillion Parameters - Technobezz",
-            "at": "2026-10-06T18:16:59Z",
-            "publisher": "Technobezz"
+            "title": "Mistral Previews 1 Trillion-Parameter Large 4 AI Model - TOKENPOST",
+            "at": "2026-10-07T15:07:12Z",
+            "publisher": "TOKENPOST"
           },
           {
-            "id": "gnews:7c4fc7bd4b214f2d",
+            "id": "gnews:fc0e81a2dde66898",
             "source": "gnews-rss",
-            "title": "Mistral unveils Large 4 AI model, claims edge over Chinese rivals - Crypto Briefing",
-            "at": "2026-10-06T17:31:56Z",
-            "publisher": "Crypto Briefing"
-          },
-          {
-            "id": "gnews:c38a5bb7fb0e33eb",
-            "source": "gnews-rss",
-            "title": "Mistral AI Releases Mistral Large 4 (Le Chonk): A 1.05T Parameter Open-Weight Multimodal MoE - MarkTechPost",
-            "at": "2026-10-06T17:30:46Z",
-            "publisher": "MarkTechPost"
-          },
-          {
-            "id": "gnews:94c7d7107d02533a",
-            "source": "gnews-rss",
-            "title": "Mistral Unveils 1-Trillion-Parameter ‘Large 4,’ Europe’s Strongest Open-Weight Model - Wowtale",
-            "at": "2026-10-06T17:01:16Z",
-            "publisher": "Wowtale"
+            "title": "Mistral Large 4 \"Le Chonk\": The 1-Trillion Parameter Open-Source Monster That Changes Everything? - YouTube",
+            "at": "2026-10-07T14:45:09Z",
+            "publisher": "YouTube"
           },
           {
             "id": "gnews:d3e42a4555b606d8",
@@ -222,195 +202,121 @@
             "publisher": "marketscreener.com"
           },
           {
-            "id": "gnews:716f84e44bf96b6f",
+            "id": "gnews:4d9d0e80876eb5cb",
             "source": "gnews-rss",
-            "title": "Mistral launches Mistral Large 4 open-weight AI model - Quartz",
-            "at": "2026-10-06T13:41:18Z",
-            "publisher": "Quartz"
+            "title": "Mistral Launches Mistral Large 4 With 1 Trillion Parameters - Dataconomy",
+            "at": "2026-10-07T08:23:29Z",
+            "publisher": "Dataconomy"
           },
           {
-            "id": "gnews:c36f4909c5495147",
+            "id": "gnews:74ef38feaf591a19",
             "source": "gnews-rss",
-            "title": "Mistral rolls out preview of Large 4 AI model - Breakingthenews.net",
-            "at": "2026-10-06T14:13:00Z",
-            "publisher": "Breakingthenews.net"
+            "title": "Mistral Large 4 is Europe’s most powerful model - Techzine Global",
+            "at": "2026-10-07T08:08:34Z",
+            "publisher": "Techzine Global"
           },
           {
-            "id": "gnews:10da9c579f8a1fa3",
+            "id": "gnews:1c9557280f505957",
             "source": "gnews-rss",
-            "title": "Mistral Releases Mistral Large 4 (Le Chonk), Says It’s The Top Open Model From The West - OfficeChai",
-            "at": "2026-10-06T13:31:51Z",
-            "publisher": "OfficeChai"
+            "title": "Mistral Large 4 \"Le Chonk\": 1.05T Param AI Model - https://tech-insider.org/",
+            "at": "2026-10-06T19:25:42Z",
+            "publisher": "https://tech-insider.org/"
           },
           {
-            "id": "gnews:d4fe11e5288aaa96",
+            "id": "gnews:030d12ab4b3630f8",
             "source": "gnews-rss",
-            "title": "Mistral Large 4 (Le Chonk): Specs, Benchmarks, Pricing and the Open-Weight Promise - Kingy AI",
-            "at": "2026-10-06T14:03:10Z",
-            "publisher": "Kingy AI"
+            "title": "Mistral Large 4 'Le Chonk': 675B-Param MoE Model - shattered.io",
+            "at": "2026-10-06T20:18:57Z",
+            "publisher": "shattered.io"
           },
           {
-            "id": "gnews:6e3c30b0cd656b88",
+            "id": "gnews:39347c6aa5c491b1",
             "source": "gnews-rss",
-            "title": "Mistral Large 4 (Le Chonk) Becomes Top Non-Chinese Open Model On Artificial Analysis Intelligence Index - OfficeChai",
-            "at": "2026-10-06T13:42:05Z",
-            "publisher": "OfficeChai"
-          },
-          {
-            "id": "gnews:72187910fc5f25d5",
-            "source": "gnews-rss",
-            "title": "Mistral le Chonk 1T-parameter AI debuts - Briefs Finance",
-            "at": "2026-10-06T13:35:00Z",
-            "publisher": "Briefs Finance"
-          },
-          {
-            "id": "gnews:f5b1ab040213febf",
-            "source": "gnews-rss",
-            "title": "Mistral debuts Large 4 ‘Le Chonk', a 1-trillion parameter text output model with high benchmarks planned for open weights release - VentureBeat",
-            "at": "2026-10-06T13:00:00Z",
-            "publisher": "VentureBeat"
-          },
-          {
-            "id": "gnews:7754aabac9916c01",
-            "source": "gnews-rss",
-            "title": "Mistral’s 1T-parameter ‘Le Chonk’ model: what’s reported and what’s confirmed - Crypto Briefing",
-            "at": "2026-10-06T13:17:09Z",
-            "publisher": "Crypto Briefing"
+            "title": "Mistral Large 4, the 1-trillion-parameter model nicknamed Le Chonk - Korben",
+            "at": "2026-10-07T09:01:04Z",
+            "publisher": "Korben"
           }
         ]
       },
       {
-        "title": "Anthropic expands Claude Startups program with up to $45K in credits",
+        "title": "I'm not paying $20 for ChatGPT or Claude because a free local LLM does",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 3,
-        "score": 0.822,
-        "members": [
-          {
-            "id": "hn:49980872",
-            "source": "hn-algolia",
-            "title": "Anthropic expands Claude Startups program with up to $45K in credits",
-            "at": "2026-10-06T16:36:41Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:2a79e27b1543a013",
-            "source": "gnews-rss",
-            "title": "Anthropic expands Claude Startups program with credits and perks - Quartz",
-            "at": "2026-10-06T16:35:48Z",
-            "publisher": "Quartz"
-          },
-          {
-            "id": "gnews:0a6aca36bd7f890a",
-            "source": "gnews-rss",
-            "title": "Anthropic Expands Claude Startups Program With New Founder Benefits - Unite.AI",
-            "at": "2026-10-06T16:39:01Z",
-            "publisher": "Unite.AI"
-          }
-        ]
-      },
-      {
-        "title": "Beam: Reflection's 501B open-weight model",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 3,
-        "score": 0.848,
-        "members": [
-          {
-            "id": "hn:49969183",
-            "source": "hn-algolia",
-            "title": "Beam: Reflection's 501B open-weight model",
-            "at": "2026-10-05T19:16:35Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:211c0cba065bd967",
-            "source": "gnews-rss",
-            "title": "Nvidia-Backed Reflection AI Launches Beam, a 501B-Parameter Open-Weight Model - Technology Org",
-            "at": "2026-10-06T11:38:22Z",
-            "publisher": "Technology Org"
-          },
-          {
-            "id": "gnews:50b8aafe856c8bec",
-            "source": "gnews-rss",
-            "title": "Reflection AI debuts open-source Beam model with 501B parameters - SiliconANGLE",
-            "at": "2026-10-06T00:46:00Z",
-            "publisher": "SiliconANGLE"
-          }
-        ]
-      },
-      {
-        "title": "Anthropic Subscriptions Offer 5x+ More Value Than OpenAI",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 3,
+        "size": 2,
         "score": 1,
         "members": [
           {
-            "id": "hn:49975345",
+            "id": "hn:49996713",
             "source": "hn-algolia",
-            "title": "Anthropic Subscriptions Offer 5x+ More Value Than OpenAI",
-            "at": "2026-10-06T07:29:50Z",
+            "title": "I'm not paying $20 for ChatGPT or Claude because a free local LLM does",
+            "at": "2026-10-07T18:19:03Z",
             "publisher": null
           },
           {
-            "id": "hn:49969927",
-            "source": "hn-algolia",
-            "title": "Anthropic Subscriptions Offer 5x+ More Value Than OpenAI",
-            "at": "2026-10-05T20:06:53Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:4418bd00871bc18b",
+            "id": "gnews:1f96c75be09b5c49",
             "source": "gnews-rss",
-            "title": "Anthropic Subscriptions Offer 5x+ More Value Than OpenAI - SemiAnalysis",
-            "at": "2026-10-05T20:01:09Z",
-            "publisher": "SemiAnalysis"
+            "title": "I'm not paying $20 for ChatGPT or Claude because a free local LLM does everything I need - XDA",
+            "at": "2026-10-06T11:30:18Z",
+            "publisher": "XDA"
           }
         ]
       },
       {
-        "title": "Anthropic reported diary entry to police, woman faces felony charge",
+        "title": "GPT-6 and Intelligent UI for everyone",
         "sources": [
-          "hn-algolia",
-          "gnews-rss"
+          "rss-lab",
+          "hn-algolia"
         ],
-        "size": 3,
+        "size": 2,
         "score": 1,
         "members": [
           {
-            "id": "hn:49961057",
+            "id": "hn:49996425",
             "source": "hn-algolia",
-            "title": "Anthropic reported diary entry to police, woman faces felony charge",
-            "at": "2026-10-05T05:37:40Z",
+            "title": "GPT‑6 and Intelligent UI for everyone",
+            "at": "2026-10-07T18:00:58Z",
             "publisher": null
           },
           {
-            "id": "hn:49958089",
+            "id": "rss:openai:a097ef0d441a7216",
+            "source": "rss-lab",
+            "title": "GPT-6 and Intelligent UI for everyone",
+            "at": "2026-10-07T00:00:00Z",
+            "publisher": "openai"
+          }
+        ]
+      },
+      {
+        "title": "Introducing Playground: Create and play custom games",
+        "sources": [
+          "rss-lab",
+          "hn-algolia"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:49991823",
             "source": "hn-algolia",
-            "title": "Florida woman used Claude as a diary, then Anthropic reported an entry to police",
-            "at": "2026-10-04T21:29:59Z",
+            "title": "Google Playground: Create and play custom games",
+            "at": "2026-10-07T12:28:36Z",
             "publisher": null
           },
           {
-            "id": "gnews:ecb3ae23ff88741d",
-            "source": "gnews-rss",
-            "title": "A Florida Woman Used Claude as a Diary. An Anthropic Employee Read It and Reported It to Police - Yahoo",
-            "at": "2026-10-05T21:16:03Z",
-            "publisher": "Yahoo"
+            "id": "rss:google-ai:b6aec8c05cfc3e2f",
+            "source": "rss-lab",
+            "title": "Introducing Playground: Create and play custom games",
+            "at": "2026-10-07T12:00:00Z",
+            "publisher": "google-ai"
           }
         ]
       }
     ],
     "self_repost_clusters": [
       {
-        "title": "AICR v1.0: Open, stable, and verifiable GPU cluster configuration",
+        "title": "Validate AI Factory Changes with Digital Twins and AI Agents",
         "sources": [
           "rss-lab"
         ],
@@ -420,14 +326,14 @@
         ],
         "self_reposts": [
           {
-            "id": "gnews:44fef2811c1c9a4c",
+            "id": "gnews:673e9f4acadeffec",
             "publisher": "NVIDIA Developer",
-            "title": "AICR v1.0: Open, stable, and verifiable GPU cluster configuration | NVIDIA Technical Blog - NVIDIA Developer"
+            "title": "Validate AI Factory Changes with Digital Twins and AI Agents | NVIDIA Technical Blog - NVIDIA Developer"
           }
         ]
       },
       {
-        "title": "Why Telecom Operators Are Building Their AI Strategy on Open Models",
+        "title": "Agent Lightning v1.0: A 3,500-Line Lightweight Agentic RL Framework for Training Agents with Real Harnesses",
         "sources": [
           "rss-lab"
         ],
@@ -437,26 +343,9 @@
         ],
         "self_reposts": [
           {
-            "id": "gnews:9bbaf1c8533c9cf3",
-            "publisher": "NVIDIA Blog",
-            "title": "Why Telecom Operators Are Building Their AI Strategy on Open Models - NVIDIA Blog"
-          }
-        ]
-      },
-      {
-        "title": "From Scan to Treatment Plan, AI Helps Close Breast Cancer’s Deadliest Gaps",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:89dfc31b88dd277a",
-            "publisher": "NVIDIA Blog",
-            "title": "From Scan to Treatment Plan, AI Helps Close Breast Cancer’s Deadliest Gaps - NVIDIA Blog"
+            "id": "gnews:9499f5da784c1b3d",
+            "publisher": "Microsoft",
+            "title": "Agent Lightning v1.0: A 3,500-Line Lightweight Agentic RL Framework for Training Agents with Real Harnesses - Microsoft"
           }
         ]
       }
@@ -476,30 +365,30 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "Benzinga",
-          "title": "Challenging Nvidia's Dominance: Broadcom Pairs Custom TPU Chips with $60 Billion Debt Package - Benzinga"
+          "publisher": "Jon Peddie Research",
+          "title": "Microsoft takes shader compilation to cloud - Jon Peddie Research"
         },
         {
-          "publisher": "TradingView",
-          "title": "Nvidia Stocks Rise 1.4% as Power Crunch Spares 2027 Forecasts - TradingView"
+          "publisher": "Cisco Talos Blog",
+          "title": "Microsoft, Adobe, Apple, and Foxit vulnerabilities - Cisco Talos Blog"
         },
         {
-          "publisher": "Thailand Business News",
-          "title": "Hanwha recognized on Fast Company's 2026 Next Big Things in Tech list - Thailand Business News"
+          "publisher": "Breitbart",
+          "title": "Media Research Center: Apple News Hid Stories Reporting on DNC’s Financial Woes Ahead of Midterms - Breitbart"
         },
         {
-          "publisher": "TechCrunch",
-          "title": "Mirror Particle is building a ‘world model’ of human behavior - TechCrunch"
+          "publisher": "mcpmag.com",
+          "title": "What every IT team should know about managing Microsoft environments - mcpmag.com"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 27
+      "hn_dropped": 29
     },
     "gnews_near_misses": [
       {
-        "score": 0.526,
-        "blocked": "thin-overlap",
-        "hours_apart": 2.1,
+        "score": 0.712,
+        "blocked": "time-window",
+        "hours_apart": 25.3,
         "a": {
           "id": "hn:49978116",
           "source": "hn-algolia",
@@ -507,144 +396,34 @@
           "at": "2026-10-06T13:25:50Z"
         },
         "b": {
-          "id": "gnews:d3e42a4555b606d8",
+          "id": "gnews:fc0e81a2dde66898",
           "source": "gnews-rss",
-          "title": "Mistral unveils Large 4, its new open-weight AI model - marketscreener.com",
-          "at": "2026-10-06T15:32:24Z"
-        },
-        "shared": [
-          "mistral",
-          "larg",
-          "4"
-        ]
-      },
-      {
-        "score": 0.526,
-        "blocked": "thin-overlap",
-        "hours_apart": 0.3,
-        "a": {
-          "id": "hn:49978116",
-          "source": "hn-algolia",
-          "title": "Mistral Large 4: \"Le Chonk\"",
-          "at": "2026-10-06T13:25:50Z"
-        },
-        "b": {
-          "id": "gnews:716f84e44bf96b6f",
-          "source": "gnews-rss",
-          "title": "Mistral launches Mistral Large 4 open-weight AI model - Quartz",
-          "at": "2026-10-06T13:41:18Z"
-        },
-        "shared": [
-          "mistral",
-          "larg",
-          "4"
-        ]
-      },
-      {
-        "score": 0.511,
-        "blocked": "below-threshold",
-        "hours_apart": 2.2,
-        "a": {
-          "id": "hn:49978040",
-          "source": "hn-algolia",
-          "title": "Mistral debuts Large 4 'Le Chonk', a 1T parameter text output model",
-          "at": "2026-10-06T13:20:44Z"
-        },
-        "b": {
-          "id": "gnews:d3e42a4555b606d8",
-          "source": "gnews-rss",
-          "title": "Mistral unveils Large 4, its new open-weight AI model - marketscreener.com",
-          "at": "2026-10-06T15:32:24Z"
+          "title": "Mistral Large 4 \"Le Chonk\": The 1-Trillion Parameter Open-Source Monster That Changes Everything? - YouTube",
+          "at": "2026-10-07T14:45:09Z"
         },
         "shared": [
           "mistral",
           "larg",
           "4",
-          "model"
-        ]
-      },
-      {
-        "score": 0.511,
-        "blocked": "below-threshold",
-        "hours_apart": 0.3,
-        "a": {
-          "id": "hn:49978040",
-          "source": "hn-algolia",
-          "title": "Mistral debuts Large 4 'Le Chonk', a 1T parameter text output model",
-          "at": "2026-10-06T13:20:44Z"
-        },
-        "b": {
-          "id": "gnews:716f84e44bf96b6f",
-          "source": "gnews-rss",
-          "title": "Mistral launches Mistral Large 4 open-weight AI model - Quartz",
-          "at": "2026-10-06T13:41:18Z"
-        },
-        "shared": [
-          "mistral",
-          "larg",
-          "4",
-          "model"
-        ]
-      },
-      {
-        "score": 0.505,
-        "blocked": "below-threshold",
-        "hours_apart": 0.2,
-        "a": {
-          "id": "hn:49978116",
-          "source": "hn-algolia",
-          "title": "Mistral Large 4: \"Le Chonk\"",
-          "at": "2026-10-06T13:25:50Z"
-        },
-        "b": {
-          "id": "gnews:72187910fc5f25d5",
-          "source": "gnews-rss",
-          "title": "Mistral le Chonk 1T-parameter AI debuts - Briefs Finance",
-          "at": "2026-10-06T13:35:00Z"
-        },
-        "shared": [
-          "mistral",
           "le",
           "chonk"
         ]
       },
       {
-        "score": 0.495,
-        "blocked": "below-threshold",
-        "hours_apart": 0.1,
+        "score": 0.707,
+        "blocked": "time-window",
+        "hours_apart": 25.9,
         "a": {
-          "id": "hn:49978116",
+          "id": "hn:49977979",
           "source": "hn-algolia",
-          "title": "Mistral Large 4: \"Le Chonk\"",
-          "at": "2026-10-06T13:25:50Z"
+          "title": "Mistral Large 4",
+          "at": "2026-10-06T13:15:49Z"
         },
         "b": {
-          "id": "gnews:7754aabac9916c01",
+          "id": "gnews:e91842775272b5b5",
           "source": "gnews-rss",
-          "title": "Mistral’s 1T-parameter ‘Le Chonk’ model: what’s reported and what’s confirmed - Crypto Briefing",
-          "at": "2026-10-06T13:17:09Z"
-        },
-        "shared": [
-          "mistral",
-          "le",
-          "chonk"
-        ]
-      },
-      {
-        "score": 0.481,
-        "blocked": "thin-overlap",
-        "hours_apart": 4.9,
-        "a": {
-          "id": "hn:49978116",
-          "source": "hn-algolia",
-          "title": "Mistral Large 4: \"Le Chonk\"",
-          "at": "2026-10-06T13:25:50Z"
-        },
-        "b": {
-          "id": "gnews:4d3a6cd29cfadf0b",
-          "source": "gnews-rss",
-          "title": "Mistral Launches Mistral Large 4 Preview With 1 Trillion Parameters - Technobezz",
-          "at": "2026-10-06T18:16:59Z"
+          "title": "Mistral Previews 1 Trillion-Parameter Large 4 AI Model - TOKENPOST",
+          "at": "2026-10-07T15:07:12Z"
         },
         "shared": [
           "mistral",
@@ -653,20 +432,130 @@
         ]
       },
       {
-        "score": 0.477,
-        "blocked": "thin-overlap",
-        "hours_apart": 0.8,
+        "score": 0.707,
+        "blocked": "time-window",
+        "hours_apart": 26,
         "a": {
-          "id": "hn:49978116",
+          "id": "hn:49977844",
           "source": "hn-algolia",
-          "title": "Mistral Large 4: \"Le Chonk\"",
-          "at": "2026-10-06T13:25:50Z"
+          "title": "Mistral Large 4",
+          "at": "2026-10-06T13:06:16Z"
         },
         "b": {
-          "id": "gnews:c36f4909c5495147",
+          "id": "gnews:e91842775272b5b5",
           "source": "gnews-rss",
-          "title": "Mistral rolls out preview of Large 4 AI model - Breakingthenews.net",
-          "at": "2026-10-06T14:13:00Z"
+          "title": "Mistral Previews 1 Trillion-Parameter Large 4 AI Model - TOKENPOST",
+          "at": "2026-10-07T15:07:12Z"
+        },
+        "shared": [
+          "mistral",
+          "larg",
+          "4"
+        ]
+      },
+      {
+        "score": 0.707,
+        "blocked": "time-window",
+        "hours_apart": 27.1,
+        "a": {
+          "id": "rss:mistral:1ef243007176e85c",
+          "source": "rss-lab",
+          "title": "Introducing Mistral Large 4",
+          "at": "2026-10-06T12:00:27Z"
+        },
+        "b": {
+          "id": "gnews:e91842775272b5b5",
+          "source": "gnews-rss",
+          "title": "Mistral Previews 1 Trillion-Parameter Large 4 AI Model - TOKENPOST",
+          "at": "2026-10-07T15:07:12Z"
+        },
+        "shared": [
+          "mistral",
+          "larg",
+          "4"
+        ]
+      },
+      {
+        "score": 0.684,
+        "blocked": "time-window",
+        "hours_apart": 25.5,
+        "a": {
+          "id": "hn:49977979",
+          "source": "hn-algolia",
+          "title": "Mistral Large 4",
+          "at": "2026-10-06T13:15:49Z"
+        },
+        "b": {
+          "id": "gnews:38d5192c04a37bb6",
+          "source": "gnews-rss",
+          "title": "With Mistral Large 4, Europe’s AI is (somewhat) competitive again - Techzine Global",
+          "at": "2026-10-07T14:45:34Z"
+        },
+        "shared": [
+          "mistral",
+          "larg",
+          "4"
+        ]
+      },
+      {
+        "score": 0.684,
+        "blocked": "time-window",
+        "hours_apart": 25.7,
+        "a": {
+          "id": "hn:49977844",
+          "source": "hn-algolia",
+          "title": "Mistral Large 4",
+          "at": "2026-10-06T13:06:16Z"
+        },
+        "b": {
+          "id": "gnews:38d5192c04a37bb6",
+          "source": "gnews-rss",
+          "title": "With Mistral Large 4, Europe’s AI is (somewhat) competitive again - Techzine Global",
+          "at": "2026-10-07T14:45:34Z"
+        },
+        "shared": [
+          "mistral",
+          "larg",
+          "4"
+        ]
+      },
+      {
+        "score": 0.684,
+        "blocked": "time-window",
+        "hours_apart": 26.8,
+        "a": {
+          "id": "rss:mistral:1ef243007176e85c",
+          "source": "rss-lab",
+          "title": "Introducing Mistral Large 4",
+          "at": "2026-10-06T12:00:27Z"
+        },
+        "b": {
+          "id": "gnews:38d5192c04a37bb6",
+          "source": "gnews-rss",
+          "title": "With Mistral Large 4, Europe’s AI is (somewhat) competitive again - Techzine Global",
+          "at": "2026-10-07T14:45:34Z"
+        },
+        "shared": [
+          "mistral",
+          "larg",
+          "4"
+        ]
+      },
+      {
+        "score": 0.652,
+        "blocked": "time-window",
+        "hours_apart": 25.4,
+        "a": {
+          "id": "hn:49977979",
+          "source": "hn-algolia",
+          "title": "Mistral Large 4",
+          "at": "2026-10-06T13:15:49Z"
+        },
+        "b": {
+          "id": "gnews:52c58880cfdba7bd",
+          "source": "gnews-rss",
+          "title": "Mistral AI Releases Trillion-Parameter Mistral Large 4 as Europe’s Alternative to US and Chinese Models - AI Insider",
+          "at": "2026-10-07T14:40:32Z"
         },
         "shared": [
           "mistral",
@@ -677,9 +566,9 @@
     ],
     "near_misses": [
       {
-        "score": 0.526,
-        "blocked": "thin-overlap",
-        "hours_apart": 2.1,
+        "score": 0.712,
+        "blocked": "time-window",
+        "hours_apart": 25.3,
         "a": {
           "id": "hn:49978116",
           "source": "hn-algolia",
@@ -687,144 +576,34 @@
           "at": "2026-10-06T13:25:50Z"
         },
         "b": {
-          "id": "gnews:d3e42a4555b606d8",
+          "id": "gnews:fc0e81a2dde66898",
           "source": "gnews-rss",
-          "title": "Mistral unveils Large 4, its new open-weight AI model - marketscreener.com",
-          "at": "2026-10-06T15:32:24Z"
-        },
-        "shared": [
-          "mistral",
-          "larg",
-          "4"
-        ]
-      },
-      {
-        "score": 0.526,
-        "blocked": "thin-overlap",
-        "hours_apart": 0.3,
-        "a": {
-          "id": "hn:49978116",
-          "source": "hn-algolia",
-          "title": "Mistral Large 4: \"Le Chonk\"",
-          "at": "2026-10-06T13:25:50Z"
-        },
-        "b": {
-          "id": "gnews:716f84e44bf96b6f",
-          "source": "gnews-rss",
-          "title": "Mistral launches Mistral Large 4 open-weight AI model - Quartz",
-          "at": "2026-10-06T13:41:18Z"
-        },
-        "shared": [
-          "mistral",
-          "larg",
-          "4"
-        ]
-      },
-      {
-        "score": 0.511,
-        "blocked": "below-threshold",
-        "hours_apart": 2.2,
-        "a": {
-          "id": "hn:49978040",
-          "source": "hn-algolia",
-          "title": "Mistral debuts Large 4 'Le Chonk', a 1T parameter text output model",
-          "at": "2026-10-06T13:20:44Z"
-        },
-        "b": {
-          "id": "gnews:d3e42a4555b606d8",
-          "source": "gnews-rss",
-          "title": "Mistral unveils Large 4, its new open-weight AI model - marketscreener.com",
-          "at": "2026-10-06T15:32:24Z"
+          "title": "Mistral Large 4 \"Le Chonk\": The 1-Trillion Parameter Open-Source Monster That Changes Everything? - YouTube",
+          "at": "2026-10-07T14:45:09Z"
         },
         "shared": [
           "mistral",
           "larg",
           "4",
-          "model"
-        ]
-      },
-      {
-        "score": 0.511,
-        "blocked": "below-threshold",
-        "hours_apart": 0.3,
-        "a": {
-          "id": "hn:49978040",
-          "source": "hn-algolia",
-          "title": "Mistral debuts Large 4 'Le Chonk', a 1T parameter text output model",
-          "at": "2026-10-06T13:20:44Z"
-        },
-        "b": {
-          "id": "gnews:716f84e44bf96b6f",
-          "source": "gnews-rss",
-          "title": "Mistral launches Mistral Large 4 open-weight AI model - Quartz",
-          "at": "2026-10-06T13:41:18Z"
-        },
-        "shared": [
-          "mistral",
-          "larg",
-          "4",
-          "model"
-        ]
-      },
-      {
-        "score": 0.505,
-        "blocked": "below-threshold",
-        "hours_apart": 0.2,
-        "a": {
-          "id": "hn:49978116",
-          "source": "hn-algolia",
-          "title": "Mistral Large 4: \"Le Chonk\"",
-          "at": "2026-10-06T13:25:50Z"
-        },
-        "b": {
-          "id": "gnews:72187910fc5f25d5",
-          "source": "gnews-rss",
-          "title": "Mistral le Chonk 1T-parameter AI debuts - Briefs Finance",
-          "at": "2026-10-06T13:35:00Z"
-        },
-        "shared": [
-          "mistral",
           "le",
           "chonk"
         ]
       },
       {
-        "score": 0.495,
-        "blocked": "below-threshold",
-        "hours_apart": 0.1,
+        "score": 0.707,
+        "blocked": "time-window",
+        "hours_apart": 25.9,
         "a": {
-          "id": "hn:49978116",
+          "id": "hn:49977979",
           "source": "hn-algolia",
-          "title": "Mistral Large 4: \"Le Chonk\"",
-          "at": "2026-10-06T13:25:50Z"
+          "title": "Mistral Large 4",
+          "at": "2026-10-06T13:15:49Z"
         },
         "b": {
-          "id": "gnews:7754aabac9916c01",
+          "id": "gnews:e91842775272b5b5",
           "source": "gnews-rss",
-          "title": "Mistral’s 1T-parameter ‘Le Chonk’ model: what’s reported and what’s confirmed - Crypto Briefing",
-          "at": "2026-10-06T13:17:09Z"
-        },
-        "shared": [
-          "mistral",
-          "le",
-          "chonk"
-        ]
-      },
-      {
-        "score": 0.481,
-        "blocked": "thin-overlap",
-        "hours_apart": 4.9,
-        "a": {
-          "id": "hn:49978116",
-          "source": "hn-algolia",
-          "title": "Mistral Large 4: \"Le Chonk\"",
-          "at": "2026-10-06T13:25:50Z"
-        },
-        "b": {
-          "id": "gnews:4d3a6cd29cfadf0b",
-          "source": "gnews-rss",
-          "title": "Mistral Launches Mistral Large 4 Preview With 1 Trillion Parameters - Technobezz",
-          "at": "2026-10-06T18:16:59Z"
+          "title": "Mistral Previews 1 Trillion-Parameter Large 4 AI Model - TOKENPOST",
+          "at": "2026-10-07T15:07:12Z"
         },
         "shared": [
           "mistral",
@@ -833,20 +612,130 @@
         ]
       },
       {
-        "score": 0.477,
-        "blocked": "thin-overlap",
-        "hours_apart": 0.8,
+        "score": 0.707,
+        "blocked": "time-window",
+        "hours_apart": 26,
         "a": {
-          "id": "hn:49978116",
+          "id": "hn:49977844",
           "source": "hn-algolia",
-          "title": "Mistral Large 4: \"Le Chonk\"",
-          "at": "2026-10-06T13:25:50Z"
+          "title": "Mistral Large 4",
+          "at": "2026-10-06T13:06:16Z"
         },
         "b": {
-          "id": "gnews:c36f4909c5495147",
+          "id": "gnews:e91842775272b5b5",
           "source": "gnews-rss",
-          "title": "Mistral rolls out preview of Large 4 AI model - Breakingthenews.net",
-          "at": "2026-10-06T14:13:00Z"
+          "title": "Mistral Previews 1 Trillion-Parameter Large 4 AI Model - TOKENPOST",
+          "at": "2026-10-07T15:07:12Z"
+        },
+        "shared": [
+          "mistral",
+          "larg",
+          "4"
+        ]
+      },
+      {
+        "score": 0.707,
+        "blocked": "time-window",
+        "hours_apart": 27.1,
+        "a": {
+          "id": "rss:mistral:1ef243007176e85c",
+          "source": "rss-lab",
+          "title": "Introducing Mistral Large 4",
+          "at": "2026-10-06T12:00:27Z"
+        },
+        "b": {
+          "id": "gnews:e91842775272b5b5",
+          "source": "gnews-rss",
+          "title": "Mistral Previews 1 Trillion-Parameter Large 4 AI Model - TOKENPOST",
+          "at": "2026-10-07T15:07:12Z"
+        },
+        "shared": [
+          "mistral",
+          "larg",
+          "4"
+        ]
+      },
+      {
+        "score": 0.684,
+        "blocked": "time-window",
+        "hours_apart": 25.5,
+        "a": {
+          "id": "hn:49977979",
+          "source": "hn-algolia",
+          "title": "Mistral Large 4",
+          "at": "2026-10-06T13:15:49Z"
+        },
+        "b": {
+          "id": "gnews:38d5192c04a37bb6",
+          "source": "gnews-rss",
+          "title": "With Mistral Large 4, Europe’s AI is (somewhat) competitive again - Techzine Global",
+          "at": "2026-10-07T14:45:34Z"
+        },
+        "shared": [
+          "mistral",
+          "larg",
+          "4"
+        ]
+      },
+      {
+        "score": 0.684,
+        "blocked": "time-window",
+        "hours_apart": 25.7,
+        "a": {
+          "id": "hn:49977844",
+          "source": "hn-algolia",
+          "title": "Mistral Large 4",
+          "at": "2026-10-06T13:06:16Z"
+        },
+        "b": {
+          "id": "gnews:38d5192c04a37bb6",
+          "source": "gnews-rss",
+          "title": "With Mistral Large 4, Europe’s AI is (somewhat) competitive again - Techzine Global",
+          "at": "2026-10-07T14:45:34Z"
+        },
+        "shared": [
+          "mistral",
+          "larg",
+          "4"
+        ]
+      },
+      {
+        "score": 0.684,
+        "blocked": "time-window",
+        "hours_apart": 26.8,
+        "a": {
+          "id": "rss:mistral:1ef243007176e85c",
+          "source": "rss-lab",
+          "title": "Introducing Mistral Large 4",
+          "at": "2026-10-06T12:00:27Z"
+        },
+        "b": {
+          "id": "gnews:38d5192c04a37bb6",
+          "source": "gnews-rss",
+          "title": "With Mistral Large 4, Europe’s AI is (somewhat) competitive again - Techzine Global",
+          "at": "2026-10-07T14:45:34Z"
+        },
+        "shared": [
+          "mistral",
+          "larg",
+          "4"
+        ]
+      },
+      {
+        "score": 0.652,
+        "blocked": "time-window",
+        "hours_apart": 25.4,
+        "a": {
+          "id": "hn:49977979",
+          "source": "hn-algolia",
+          "title": "Mistral Large 4",
+          "at": "2026-10-06T13:15:49Z"
+        },
+        "b": {
+          "id": "gnews:52c58880cfdba7bd",
+          "source": "gnews-rss",
+          "title": "Mistral AI Releases Trillion-Parameter Mistral Large 4 as Europe’s Alternative to US and Chinese Models - AI Insider",
+          "at": "2026-10-07T14:40:32Z"
         },
         "shared": [
           "mistral",
@@ -860,81 +749,81 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 4,
+      "streak_ok": 6,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 88,
+      "streak_ok": 90,
       "streak_fail": 0,
-      "items_last": 1
+      "items_last": 0
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 88,
+      "streak_ok": 90,
       "streak_fail": 0,
-      "items_last": 1
+      "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 88,
+      "streak_ok": 90,
       "streak_fail": 0,
-      "items_last": 46
+      "items_last": 37
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 88,
+      "streak_ok": 90,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 88,
+      "streak_ok": 90,
       "streak_fail": 0,
-      "items_last": 55
+      "items_last": 41
     },
     {
       "id": "openalex",
-      "state": "fail",
-      "streak_ok": 0,
-      "streak_fail": 8,
-      "items_last": 0
+      "state": "flaky",
+      "streak_ok": 2,
+      "streak_fail": 0,
+      "items_last": 3
     },
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 17,
+      "streak_ok": 19,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 88,
+      "streak_ok": 90,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 88,
+      "streak_ok": 90,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.0025419444444444443,
+    "hours": 0.00032194444444444447,
     "stale": false
   },
   "hf": {
     "ok": true,
-    "count": 24,
+    "count": 27,
     "url": "https://huggingface.co/api/daily_papers"
   },
   "arxiv": {
@@ -947,34 +836,56 @@
     "url": "https://export.arxiv.org/api/query"
   },
   "openalex": {
-    "ok": false,
-    "soft_fail": true,
-    "soft_fail_reason": "paused_until 2026-10-07T03:20:53Z",
-    "enriched": 0,
-    "secondary": 0,
-    "query": "LLM agent sandbox",
+    "ok": true,
+    "soft_fail": false,
+    "soft_fail_reason": null,
+    "enriched": 3,
+    "secondary": 3,
+    "query": "Hugging Face agent",
     "mode": "search",
-    "from_cache": false,
+    "from_cache": true,
     "searches": 0,
     "retries": 0,
-    "status": "paused",
-    "paused_until": "2026-10-07T03:20:53Z",
-    "pause_reason": "8 consecutive failures → 24h",
+    "status": "ok",
+    "paused_until": null,
+    "pause_reason": null,
     "requests": 0,
     "auth": "anon",
     "brief": false,
     "pulse_lead": false,
     "papers_enrich_only": true,
     "url": "https://api.openalex.org/works",
-    "sample": []
+    "sample": [
+      {
+        "id": "W7171617880",
+        "openalexId": "https://openalex.org/W7171617880",
+        "year": 2026,
+        "doi": "https://doi.org/10.5281/zenodo.21686546",
+        "enrichOnly": true
+      },
+      {
+        "id": "W7171717460",
+        "openalexId": "https://openalex.org/W7171717460",
+        "year": 2026,
+        "doi": "https://doi.org/10.5281/zenodo.21686547",
+        "enrichOnly": true
+      },
+      {
+        "id": "W7171936549",
+        "openalexId": "https://openalex.org/W7171936549",
+        "year": 2026,
+        "doi": "https://doi.org/10.5281/zenodo.21715175",
+        "enrichOnly": true
+      }
+    ]
   },
   "crossref": {
-    "ok": true,
+    "ok": false,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "enriched": 1,
-    "query": "In-Distribution Forcing for Long Video Generation at Test Time",
-    "mode": "bibliographic",
+    "enriched": 0,
+    "query": "doi:10.5281/zenodo.21686546",
+    "mode": "filter",
     "from_cache": true,
     "searches": 0,
     "brief": false,
@@ -982,59 +893,49 @@
     "papers_enrich_only": true,
     "url": "https://api.crossref.org/works",
     "merge_notes": [],
-    "sample": [
-      {
-        "id": "2610.03120",
-        "crossrefDoi": "https://doi.org/10.1109/iccv51701.2025.01735",
-        "issued": "2025-10-19",
-        "type": "proceedings-article",
-        "openalexId": null,
-        "doi": "https://doi.org/10.1109/iccv51701.2025.01735",
-        "enrichOnly": false
-      }
-    ]
+    "sample": []
   },
   "hn": {
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 55,
+    "count": 41,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
     "queries_run": [
-      "open weights",
       "inference",
-      "benchmark"
+      "benchmark",
+      "agent tooling"
     ],
     "queries_ok": [
-      "open weights",
       "inference",
-      "benchmark"
+      "benchmark",
+      "agent tooling"
     ],
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 27,
+    "ai_dropped": 29,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
         "id": "hn:49977979",
         "tag": "rest",
-        "score": 1260,
+        "score": 1991,
         "text": "Mistral Large 4"
       },
       {
-        "id": "hn:49961057",
+        "id": "hn:49996437",
         "tag": "rest",
-        "score": 794,
-        "text": "Anthropic reported diary entry to police, woman faces felony charge"
+        "score": 604,
+        "text": "Claude Haiku 5.5"
       },
       {
-        "id": "hn:49969183",
+        "id": "hn:49978116",
         "tag": "rest",
-        "score": 526,
-        "text": "Beam: Reflection's 501B open-weight model"
+        "score": 521,
+        "text": "Mistral Large 4: \"Le Chonk\""
       }
     ]
   },
@@ -1097,32 +998,32 @@
     "feeds_soft_fail": [],
     "sample": [
       {
-        "id": "rss:nvidia-dev:9591528d124af255",
-        "lab": "nvidia-dev",
-        "tag": "rest",
-        "title": "How DOCA GPUNetIO Unifies GPU-Initiated Networking Across the NVIDIA Software Stack",
-        "link": "https://developer.nvidia.com/blog/doca-gpunetio-gda-ki-unified-gpu-networking/"
-      },
-      {
-        "id": "rss:nvidia-dev:3a6288722d36e1e2",
-        "lab": "nvidia-dev",
-        "tag": "rest",
-        "title": "AICR v1.0: Open, stable, and verifiable GPU cluster configuration",
-        "link": "https://developer.nvidia.com/blog/aicr-v1-0-open-stable-and-verifiable-gpu-cluster-configuration/"
-      },
-      {
-        "id": "rss:openai:2896758265cec81d",
-        "lab": "openai",
-        "tag": "rest",
-        "title": "Atlassian and OpenAI expand partnership to turn enterprise knowledge into action",
-        "link": "https://openai.com/index/atlassian-partnership"
-      },
-      {
-        "id": "rss:google-research:c02127d349672db4",
+        "id": "rss:google-research:b96cc914fffc0786",
         "lab": "google-research",
         "tag": "rest",
-        "title": "Unlocking Earth AI’s planetary geospatial foundation models for global public health",
-        "link": "https://research.google/blog/earth-ais-planetary-geospatial-foundation-models-for-global-public-health/"
+        "title": "Does better work always mean better workers?",
+        "link": "https://research.google/blog/does-better-work-always-mean-better-workers/"
+      },
+      {
+        "id": "rss:nvidia:9ef5df398b6c290e",
+        "lab": "nvidia",
+        "tag": "rest",
+        "title": "NVIDIA, Microsoft Kick Off a New Beginning for Windows PCs With RTX Spark and AI Agents",
+        "link": "https://blogs.nvidia.com/blog/local-ai-rtx-spark-microsoft-windows-event/"
+      },
+      {
+        "id": "rss:nvidia-dev:1fd6b880e95ea139",
+        "lab": "nvidia-dev",
+        "tag": "rest",
+        "title": "The Machines that Make the Machines",
+        "link": "https://developer.nvidia.com/blog/the-machines-that-make-the-machines/"
+      },
+      {
+        "id": "rss:huggingface:88e871d5a8d26738",
+        "lab": "huggingface",
+        "tag": "rest",
+        "title": "Multimodal open d1 decision models for the edge",
+        "link": "https://huggingface.co/blog/LiquidAI/open-d1"
       }
     ]
   },
@@ -1187,151 +1088,79 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 46,
-    "pool": 353,
+    "items": 37,
+    "pool": 345,
     "corroborators": [
       {
-        "id": "gnews:2a79e27b1543a013",
-        "anchor_id": "hn:49980872",
-        "score": 0.805,
-        "title": "Anthropic expands Claude Startups program with credits and perks - Quartz",
-        "publisher": "Quartz",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:0a6aca36bd7f890a",
-        "anchor_id": "hn:49980872",
-        "score": 0.613,
-        "title": "Anthropic Expands Claude Startups Program With New Founder Benefits - Unite.AI",
-        "publisher": "Unite.AI",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:44fef2811c1c9a4c",
-        "anchor_id": "rss:nvidia-dev:3a6288722d36e1e2",
+        "id": "gnews:673e9f4acadeffec",
+        "anchor_id": "rss:nvidia-dev:cdbf7413fbf9a74f",
         "score": 1,
-        "title": "AICR v1.0: Open, stable, and verifiable GPU cluster configuration | NVIDIA Technical Blog - NVIDIA Developer",
+        "title": "Validate AI Factory Changes with Digital Twins and AI Agents | NVIDIA Technical Blog - NVIDIA Developer",
         "publisher": "NVIDIA Developer",
+        "self_repost": true
+      },
+      {
+        "id": "gnews:9499f5da784c1b3d",
+        "anchor_id": "rss:ms-research:47b11e346bad2690",
+        "score": 1,
+        "title": "Agent Lightning v1.0: A 3,500-Line Lightweight Agentic RL Framework for Training Agents with Real Harnesses - Microsoft",
+        "publisher": "Microsoft",
         "self_repost": true
       },
       {
         "id": "gnews:d3e42a4555b606d8",
         "anchor_id": "hn:49977979",
-        "score": 0.837,
+        "score": 0.818,
         "title": "Mistral unveils Large 4, its new open-weight AI model - marketscreener.com",
         "publisher": "marketscreener.com",
         "self_repost": false
       },
       {
-        "id": "gnews:716f84e44bf96b6f",
+        "id": "gnews:4d9d0e80876eb5cb",
         "anchor_id": "hn:49977979",
-        "score": 0.837,
-        "title": "Mistral launches Mistral Large 4 open-weight AI model - Quartz",
-        "publisher": "Quartz",
+        "score": 0.803,
+        "title": "Mistral Launches Mistral Large 4 With 1 Trillion Parameters - Dataconomy",
+        "publisher": "Dataconomy",
         "self_repost": false
       },
       {
-        "id": "gnews:c36f4909c5495147",
+        "id": "gnews:74ef38feaf591a19",
         "anchor_id": "hn:49977979",
-        "score": 0.736,
-        "title": "Mistral rolls out preview of Large 4 AI model - Breakingthenews.net",
-        "publisher": "Breakingthenews.net",
+        "score": 0.737,
+        "title": "Mistral Large 4 is Europe’s most powerful model - Techzine Global",
+        "publisher": "Techzine Global",
         "self_repost": false
       },
       {
-        "id": "gnews:10da9c579f8a1fa3",
+        "id": "gnews:1c9557280f505957",
         "anchor_id": "hn:49978116",
-        "score": 0.764,
-        "title": "Mistral Releases Mistral Large 4 (Le Chonk), Says It’s The Top Open Model From The West - OfficeChai",
-        "publisher": "OfficeChai",
+        "score": 0.8,
+        "title": "Mistral Large 4 \"Le Chonk\": 1.05T Param AI Model - https://tech-insider.org/",
+        "publisher": "https://tech-insider.org/",
         "self_repost": false
       },
       {
-        "id": "gnews:d4fe11e5288aaa96",
+        "id": "gnews:030d12ab4b3630f8",
         "anchor_id": "hn:49978116",
-        "score": 0.743,
-        "title": "Mistral Large 4 (Le Chonk): Specs, Benchmarks, Pricing and the Open-Weight Promise - Kingy AI",
-        "publisher": "Kingy AI",
+        "score": 0.758,
+        "title": "Mistral Large 4 'Le Chonk': 675B-Param MoE Model - shattered.io",
+        "publisher": "shattered.io",
         "self_repost": false
       },
       {
-        "id": "gnews:6e3c30b0cd656b88",
+        "id": "gnews:39347c6aa5c491b1",
         "anchor_id": "hn:49978116",
-        "score": 0.676,
-        "title": "Mistral Large 4 (Le Chonk) Becomes Top Non-Chinese Open Model On Artificial Analysis Intelligence Index - OfficeChai",
-        "publisher": "OfficeChai",
+        "score": 0.757,
+        "title": "Mistral Large 4, the 1-trillion-parameter model nicknamed Le Chonk - Korben",
+        "publisher": "Korben",
         "self_repost": false
       },
       {
-        "id": "gnews:72187910fc5f25d5",
-        "anchor_id": "hn:49978040",
-        "score": 0.789,
-        "title": "Mistral le Chonk 1T-parameter AI debuts - Briefs Finance",
-        "publisher": "Briefs Finance",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:f5b1ab040213febf",
-        "anchor_id": "hn:49978040",
-        "score": 0.746,
-        "title": "Mistral debuts Large 4 ‘Le Chonk', a 1-trillion parameter text output model with high benchmarks planned for open weights release - VentureBeat",
-        "publisher": "VentureBeat",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:7754aabac9916c01",
-        "anchor_id": "hn:49978040",
-        "score": 0.625,
-        "title": "Mistral’s 1T-parameter ‘Le Chonk’ model: what’s reported and what’s confirmed - Crypto Briefing",
-        "publisher": "Crypto Briefing",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:9bbaf1c8533c9cf3",
-        "anchor_id": "rss:nvidia:bbd0de392fd97b71",
+        "id": "gnews:1f96c75be09b5c49",
+        "anchor_id": "hn:49996713",
         "score": 1,
-        "title": "Why Telecom Operators Are Building Their AI Strategy on Open Models - NVIDIA Blog",
-        "publisher": "NVIDIA Blog",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:211c0cba065bd967",
-        "anchor_id": "hn:49969183",
-        "score": 0.869,
-        "title": "Nvidia-Backed Reflection AI Launches Beam, a 501B-Parameter Open-Weight Model - Technology Org",
-        "publisher": "Technology Org",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:50b8aafe856c8bec",
-        "anchor_id": "hn:49969183",
-        "score": 0.7,
-        "title": "Reflection AI debuts open-source Beam model with 501B parameters - SiliconANGLE",
-        "publisher": "SiliconANGLE",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:89dfc31b88dd277a",
-        "anchor_id": "rss:nvidia:4c8a40d000b5e2c7",
-        "score": 1,
-        "title": "From Scan to Treatment Plan, AI Helps Close Breast Cancer’s Deadliest Gaps - NVIDIA Blog",
-        "publisher": "NVIDIA Blog",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:ecb3ae23ff88741d",
-        "anchor_id": "hn:49958089",
-        "score": 0.842,
-        "title": "A Florida Woman Used Claude as a Diary. An Anthropic Employee Read It and Reported It to Police - Yahoo",
-        "publisher": "Yahoo",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:4418bd00871bc18b",
-        "anchor_id": "hn:49975345",
-        "score": 1,
-        "title": "Anthropic Subscriptions Offer 5x+ More Value Than OpenAI - SemiAnalysis",
-        "publisher": "SemiAnalysis",
+        "title": "I'm not paying $20 for ChatGPT or Claude because a free local LLM does everything I need - XDA",
+        "publisher": "XDA",
         "self_repost": false
       }
     ],
@@ -1347,38 +1176,38 @@
     "pulse_only": true,
     "url_template": "https://news.google.com/rss/search?q={QUERY}&hl=en-US&gl=US&ceid=US:en",
     "queried": [
-      "Anthropic",
       "large language model",
-      "NVIDIA AI",
-      "Mistral AI"
+      "AI agent",
+      "Mistral AI",
+      "Microsoft Research"
     ],
     "queries_ok_list": [
-      "Anthropic",
       "large language model",
-      "NVIDIA AI",
-      "Mistral AI"
+      "AI agent",
+      "Mistral AI",
+      "Microsoft Research"
     ],
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:8b536da789e5f562",
-        "title": "Anthropic Could Beat OpenAI to Wall Street by Over a Year - The Motley Fool",
-        "publisher": "The Motley Fool",
-        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQZTBNTC13NGdlcnZia3BPSGdsM1FQVW9pS3NDNDNRLURHNzBuTGltaEdvdjVNbDQ2Mm1xZ21iOWVmM1JLcUJFSkoyM01xR2FmVnBYcHdZbVZzd3Y3RnZXRFNVYjdqQkdSZlVTSERpV3ktdUVaUm5xN0F6bnZSZktqc1JydU0yWkhCc0FKWEZ6cGhOZmdkRjY0NA?oc=5",
+        "id": "gnews:7b968cbb83bc7fee",
+        "title": "SailPoint Adds AI Security Agents, IdentityIQ 9.0 - Channel Insider",
+        "publisher": "Channel Insider",
+        "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPLXYwUjZHRWVMcnZpRWpXUTZLZTlKVnQ1eFIxLXhMUEt6dWo5Qk9QdkV2cTF5SXdJTFVQOXFuSy1RSVlZaGlsV3o4YTZsZE5OMWF3cTNZZGNJcV95SE9qalRYd2VYQnUzZFQ4b3VwNXVBd2VCZUlSZlJ2UlN4WTk5ei1fVVJnWE14aXJUUkEyeHZIalR6cHZ5RXlwQm90akxsYV8yeXdoNA?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:3e65fd5cfda3f068",
-        "title": "Anthropic Expands Cyber Verification Program to Three Access Tiers - Unite.AI",
-        "publisher": "Unite.AI",
-        "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPSkZtRnlTQlUtdktPeHFReFVFdmtaeXlOdnBYMXFwdkd5MV9TUGZWWGhPZnVUSzh2WEgtNFk1VzFjZzdiLXlJQjlXSUdlc3hIZFptSlh0ZXRqcTNiU3cxYk1KMUV1NUpBOVVXM1plRXROQ3ljWVQwQUpFZ1NTU29NbDZNT29TbnlKcHBrTEdRbW5yZw?oc=5",
+        "id": "gnews:81dc8101bbae7b2d",
+        "title": "Microsoft Execution Containers: Policy-driven containment for AI agents - Windows Blog",
+        "publisher": "Windows Blog",
+        "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPMHhKel95eVdnemQzSkZ6Y3dSZFRwdzNsVTQyYnNxRlBac3NPXzl6TENvUExvOHpUdlRlMlpJdS0zVGREbkkwWEFzUUhmdjB1YWlBX0RNV2xCbEd4elZqTEd0OGx3R1c4MWhUVnV5TEVoeVg3SEdYUlJyTFBqLUVSZkt2dFptQ3pXV1pwZ0U5bG9Zeko0R2xEaHo5VFhnTFhOWjNacm1tbmhCMHlCY0RhbFVaM2o0U2V6U1F6Tm1nTFJvb1k?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:5a9d950ca626b63b",
-        "title": "Why do large language models agree with users, even when users are wrong? - Digital Journal",
-        "publisher": "Digital Journal",
-        "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNbEFVcUNmU0JTV1BRR3NHQUJybVFlV1EzTlQxVG5fREtCV0lUZHpBZThGcVZEd19LdWtjVFZKRTRpQjl2X09JckhqRUNCVm9NQ3dhdHRWSkVaTVlGSndDUmJSQ2F6bWdST0dZVm9LRDlvQjBxYXVxdE5zWF9VSHY2bjRqRXZoZlV0OGlzRmtodVpJY0toNW9BREJ4Tk5qenk2OU5BelhZSUkwcm0yY2RLcw?oc=5",
+        "id": "gnews:41cb1c373c642495",
+        "title": "Morningstar launches AI agent for fund research - Citywire",
+        "publisher": "Citywire",
+        "link": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPNzNRZ1UzMTUxVFgtZ1VlQU5IMjlEMWs5SFlQQzBpODF5OENJUlBNN1NKNzcxQjBGU2dsMl9yQkNHQ0pXNUk2TGVKclY1V0FKSXJSWjZPcGFjMFI4UlJJZUIxdHNSUlFLc2NncXZndXlrMWNOdWtnMmRjR0RVNHRONkpfREhTOEJYNDhWeUdLbG1idE5kQm9wbTZaQVVWWlFiN2dRckdia3BaM1F0dkk5MHg1cVREUHhVMHQ3eXZzWi15MVY0eHV6b21DQXNkcWdQN1YyV3dBWnNQdTJYUXYta09zdEpLdw?oc=5",
         "tag": "rest"
       }
     ]
@@ -1399,23 +1228,23 @@
         "id": "gmail:1a11250b91591834",
         "title": "AI systems could cover up misbehavior",
         "publisher": "substack.com",
-        "qi": 44,
-        "priority": "P1",
+        "qi": 30.8,
+        "priority": "P2",
         "link": "https://metr.org/blog/cover-up"
       },
       {
         "id": "gmail:1a111f35812d42ba",
         "title": "Oct. 6 - Water hacks, rogue AI raise alarms | Java vulnerabilities disclosed",
         "publisher": "divenewsletter.com",
-        "qi": 44,
-        "priority": "P1",
+        "qi": 30.8,
+        "priority": "P2",
         "link": "https://www.cybersecuritydive.com/news/water"
       },
       {
         "id": "gmail:1a1118c601f1cb6a",
         "title": "OpenAI Starts Watermarking ChatGPT Text",
         "publisher": "alvarocintas.com",
-        "qi": 33,
+        "qi": 23.1,
         "priority": "P2",
         "link": "https://newsletter.alvarocintas.com/watermark"
       }
@@ -1433,24 +1262,28 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "query": "LLM agent eval harness",
-    "shelf": 1,
+    "query": "OWASP LLM",
+    "shelf": 2,
     "from_cache": true,
     "searches": 0,
-    "rate_limit_remaining": null,
+    "rate_limit_remaining": 9,
     "brief": false,
     "pulse_lead": false,
     "shelf_only": true,
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
-        "label": "GuillermoBarreto/evalkit",
-        "href": "https://github.com/GuillermoBarreto/evalkit"
+        "label": "StussK/LLM-red-team-assessment",
+        "href": "https://github.com/StussK/LLM-red-team-assessment"
+      },
+      {
+        "label": "owaspcornucopia/llm-companion-scenario-dotnet",
+        "href": "https://github.com/owaspcornucopia/llm-companion-scenario-dotnet"
       }
     ]
   },
   "shelf": {
-    "count": 18,
+    "count": 19,
     "brief": false
   },
   "wikidata": {
@@ -1458,9 +1291,9 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "seeds": [
-      "MITRE",
       "JFrog",
-      "Trail of Bits"
+      "Trail of Bits",
+      "stigmergy"
     ],
     "searches": 0,
     "from_cache": true,
@@ -1469,17 +1302,6 @@
     "deny_grounding_only": true,
     "url": "https://www.wikidata.org/w/api.php",
     "hints": [
-      {
-        "seed": "MITRE",
-        "qid": "Q627039",
-        "label": "MITRE Corporation",
-        "description": "company",
-        "status": "matched",
-        "source": "wikidata",
-        "briefEligible": false,
-        "pulseLeadEligible": false,
-        "denyGroundingOnly": true
-      },
       {
         "seed": "JFrog",
         "qid": "Q98608948",
@@ -1497,6 +1319,17 @@
         "label": null,
         "description": null,
         "status": "unresolved",
+        "source": "wikidata",
+        "briefEligible": false,
+        "pulseLeadEligible": false,
+        "denyGroundingOnly": true
+      },
+      {
+        "seed": "stigmergy",
+        "qid": "Q2141158",
+        "label": "stigmergy",
+        "description": "mechanism of indirect coordination, through the environment, between agents or actions",
+        "status": "matched",
         "source": "wikidata",
         "briefEligible": false,
         "pulseLeadEligible": false,

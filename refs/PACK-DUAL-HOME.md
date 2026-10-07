@@ -1,21 +1,21 @@
 # Pack dual-home — latest export
 
-**UTC:** 20261006T192017Z  
-**Pack:** `sage-pack-003-20261006T192017Z.tar.gz`
+**UTC:** 20261007T231847Z  
+**Pack:** `sage-pack-003-20261007T231847Z.tar.gz`
 
 | Home | Path |
 |------|------|
-| Primary (VM) | `/workspace/nexus-sage/packs/sage-pack-003-20261006T192017Z.tar.gz` |
-| Desk mirror | `/workspace/nexus-sage/desk/packs/sage-pack-003-20261006T192017Z.tar.gz` |
+| Primary (VM) | `/workspace/nexus-sage/packs/sage-pack-003-20261007T231847Z.tar.gz` |
+| Desk mirror | `/workspace/nexus-sage/desk/packs/sage-pack-003-20261007T231847Z.tar.gz` |
 | Operator | Windows `Downloads\\nexus-sage-packs\\` or Drive — see `P2-EXPORT-IMPORT.md` |
 
 **Locks:** cycle `003` · lead `hf-incident` · `sol_ne_astra` · no `004` without primary  
 
-**Digest cadence:** A2 WROTE · pack_id `2026-10-06T19`  
+**Digest cadence:** A2 WROTE · pack_id `2026-10-07T23`  
 
-**Crawl / ingest:** `2026-10-06T19:19:19Z`  
+**Crawl / ingest:** `2026-10-07T23:18:00Z`  
 
-**sha256 (archive):** `f598b85b49ef442de446f9608205dfe6058980e48c99d71edae0fdbae0deb221`  
+**sha256 (archive):** `ee44ef9df0f6abd92902899514bac58179705acaf647e4c50e6d419014f6416d`  
 **manifest sha256:** `see archive`  
 
 **Commands:** `bun run pack:export` · `bun run a2:tick` · `bun run digest:tick` · `bun run ingest`
