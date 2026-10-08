@@ -28,9 +28,9 @@ import {
 import { crawlItemIds, inflateClusters, inflateMembers, memberAt, memberItems, stripPublisher, xRows } from "@/lib/desk-view";
 import { X_TASTE } from "@/data/x-taste";
 import { TASTE_VISIBLE_CAP, tasteSoftMeter } from "@/lib/x-taste-meter";
-import { DIGEST_ITEMS, DROPPED, PACK_AT, PACK_SOURCE } from "@/data/digest-pack";
+import { DIGEST_ITEMS, DROPPED } from "@/data/digest-pack";
 import { DIGEST_UNLOCK } from "@/data/digest-unlock";
-import { resolveUnlock, archiveRowsFromCycle, type UnlockView, type UnlockRow } from "@/lib/digest-unlock";
+import { resolveUnlock, withLeadView, archiveRowsFromCycle, type UnlockView, type UnlockRow } from "@/lib/digest-unlock";
 import { DIGEST_CADENCE } from "@/data/digest-cadence";
 import { groupFirstAt, leadAgeHours } from "@/lib/lead-pick";
 import { LEAD_HELD_TEXT, leadView, nextCrawlSlotHHMM, type LeadView } from "@/lib/lead-view";
@@ -436,6 +436,13 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
   const fresh = now == null ? null : crawlFreshness(CRAWL_AT, now);
   // Same lead source of truth as the Brief plate (HELD flag at build, 24h age after mount).
   const leadV = leadViewAt(now);
+  // Pass A1 — chrome honesty: when Digest unlock is live, topbar stops selling Sep pack/window.
+  const unlockChrome = useDigestUnlock();
+  const unlockLive = unlockChrome.stamp !== "archive";
+  const packStamp = DIGEST_CADENCE.last_at;
+  const cycleWindowLabel = unlockLive ? `unlock · pick ${unlockChrome.pickDate ?? "—"}` : CYCLE.window;
+  const cycChipAt = unlockLive && unlockChrome.frozenAt ? unlockChrome.frozenAt : CYCLE.compiledAt;
+
   return (
     <PausesCtx.Provider value={pauses}>
     <div className="desk-shell relative">
@@ -449,7 +456,7 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
                 <h1 className="font-display text-2xl tracking-[0.12em] text-phosphor-bright">
                   CYC/{CYCLE.id}
                 </h1>
-                <span className="text-sm text-muted">{CYCLE.window}</span>
+                <span className="text-sm text-muted" data-cycle-window={unlockLive ? "unlock" : "archive"}>{cycleWindowLabel}</span>
               </div>
             </div>
             <div className="desk-chips flex flex-wrap items-center gap-2">
@@ -467,9 +474,9 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
                 <span className="md:hidden">{istHHMM(CRAWL_AT)}</span>
                 <span className="hidden md:inline"> {IST_LABEL}</span>
               </span>
-              <span className="desk-chip desk-chip-quiet tabular-nums" title={`cycle compile ${istDateTime(CYCLE.compiledAt)}`}>
-                cyc <span className="hidden md:inline">{istDateTime(CYCLE.compiledAt)}</span>
-                <span className="md:hidden">{istDateTime(CYCLE.compiledAt).slice(5, 10)}</span>
+              <span className="desk-chip desk-chip-quiet tabular-nums" title={`${unlockLive ? "unlock frozen" : "cycle compile"} ${istDateTime(cycChipAt)}`}>
+                cyc <span className="hidden md:inline">{unlockLive ? "003 · pick " : ""}{istDateTime(cycChipAt)}</span>
+                <span className="md:hidden">{istDateTime(cycChipAt).slice(5, 10)}</span>
               </span>
             </div>
           </div>
@@ -487,7 +494,7 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
             id="desk-ingest-line"
             className={`desk-ingest-line ${ingestOpen ? "block" : "hidden"} font-mono text-kicker uppercase tracking-kicker text-subtle md:block`}
           >
-            ingest · snap {istDateTime(CRAWL_AT)} · pack {istDateTime(PACK_AT)} {IST_LABEL} · lead{" "}
+            ingest · snap {istDateTime(CRAWL_AT)} · pack {istDateTime(packStamp)} {IST_LABEL} · {DIGEST_CADENCE.pack_id} · lead{" "}
             <LeadInline view={leadV} />
           </p>
           <div className="desk-ticker" aria-label="What changed">
@@ -981,7 +988,7 @@ function Brief() {
                 >
                   <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
                     <span className={cn(p.kind === "companion" && "text-primary", p.kind === "rest" && "text-subtle")}>
-                      {ctx ? "cycle 003 context" : p.kind}
+                      {ctx ? "archive · cycle 003 context" : p.kind}
                     </span>{" "}
                     · <span className="tabular-nums">{p.id}</span>
                     {!ctx ? (
@@ -1588,6 +1595,16 @@ function useDigestUnlock(): UnlockView {
   );
 }
 
+/** Pass A1 — Sep cycle-003 lead ids: archive / closed fold only, never the live Moved lead row. */
+const ARCHIVE_LEAD_IDS = new Set(["hf-swarm", "hf-incident"]);
+
+/** Pass A1 — Digest/Voice unlock + Brief's runtime HELD (same leadViewAt source as the Brief plate). Titles unchanged. */
+function useLeadAwareUnlock(): UnlockView {
+  const base = useDigestUnlock();
+  const lv = leadViewAt(useNow());
+  return useMemo(() => withLeadView(base, lv), [base, lv.held, lv.reason]); // eslint-disable-line react-hooks/exhaustive-deps
+}
+
 /** Pass A chrome: HELD / archive · 003 are a small kicker above the lead — never a second headline. */
 function UnlockKicker({ view }: { view: UnlockView }) {
   if (!view.kicker) return null;
@@ -1652,7 +1669,10 @@ function CycleArchiveFold() {
 }
 
 function Digest() {
-  const unlock = useDigestUnlock();
+  const unlock = useLeadAwareUnlock();
+  // Pass A1: when unlock live, Moved pin follows DIGEST_UNLOCK lead — never hf-swarm (archive only).
+  const movedUnlock = unlock.stamp !== "archive" && !!unlock.leadId;
+  const movedLeadId = movedUnlock ? unlock.leadId : RANK_CURRENT.lead_id;
   const liveRows = useMemo(() => [unlock.lead, ...unlock.rows], [unlock]);
   const [openId, setOpenId] = useState(unlock.lead.id);
   const [last, setLast] = useState<string | null>(DIGEST_CADENCE.last_at);
@@ -1860,8 +1880,10 @@ function Digest() {
                 style={{ width: `${windowSpan}%`, opacity: 0.55 + windowSpan / 200 }}
               />
             </div>
-            <p className="mt-2 font-mono text-kicker uppercase tracking-kicker text-subtle">
-              {PACK_SOURCE} · unlock · cyc/{CYCLE.id} · Sol≠Astra
+            <p className="mt-2 font-mono text-kicker uppercase tracking-kicker text-subtle" data-pack-source={unlock.stamp === "archive" ? "archive" : "unlock"}>
+              {unlock.stamp === "archive"
+                ? `archive · cyc/${CYCLE.id} · Sol≠Astra`
+                : `unlock · ${unlock.leadId ?? unlock.lead.id} · pick ${unlock.pickDate ?? "—"} · cyc/${CYCLE.id} · Sol≠Astra`}
             </p>
           </div>
         </section>
@@ -1873,8 +1895,8 @@ function Digest() {
         >
           <div className="sage-panel-header">Moved since last crawl · corroboration rank below lead</div>
           <div className="px-2.5 py-2">
-            <p className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
-              crawl {RANK_PREV?.crawl_at ? istDateTime(RANK_PREV.crawl_at) : "—"} → {istDateTime(RANK_CURRENT.crawl_at)} {IST_LABEL} · lead {RANK_CURRENT.lead_id} pinned · ×
+            <p className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums" data-moved-lead={movedLeadId}>
+              crawl {RANK_PREV?.crawl_at ? istDateTime(RANK_PREV.crawl_at) : "—"} → {istDateTime(RANK_CURRENT.crawl_at)} {IST_LABEL} · lead {movedLeadId} pinned · ×
               {"≤"}1.45 · curated items only
             </p>
             <ol className="sage-moved-table mt-1.5">
@@ -1886,7 +1908,17 @@ function Digest() {
                 <span>SRC</span>
                 <span>×</span>
               </li>
-              {RANK_MOVED.map((m) => {
+              {movedUnlock ? (
+                <li className="sage-moved-row" data-status="same" data-unlock-lead="1">
+                  <span className="sage-moved-delta">=</span>
+                  <span className="sage-moved-item truncate">{movedLeadId} · lead · pick {unlock.pickDate}</span>
+                  <span className="tabular-nums" data-label="rank">1</span>
+                  <span className="tabular-nums" data-label="base">—</span>
+                  <span className="tabular-nums" data-label="SRC">{unlock.lead.sources}</span>
+                  <span className="tabular-nums" data-label="×">pin</span>
+                </li>
+              ) : null}
+              {(movedUnlock ? RANK_MOVED.filter((m) => !ARCHIVE_LEAD_IDS.has(m.id)) : RANK_MOVED).map((m) => {
                 const r = RANK_CURRENT.rows.find((x) => x.id === m.id);
                 const glyph =
                   m.status === "up" ? "▲" : m.status === "down" ? "▼" : m.status === "new" ? "NEW" : m.status === "gone" ? "OUT" : "=";
@@ -2152,7 +2184,7 @@ function pickAvaAndrewVoices(): {
 }
 
 function Voice() {
-  const unlock = useDigestUnlock();
+  const unlock = useLeadAwareUnlock();
   const [playing, setPlaying] = useState(false);
   const [level, setLevel] = useState(0);
   const [beat, setBeat] = useState<VoiceBeatId>("idle");

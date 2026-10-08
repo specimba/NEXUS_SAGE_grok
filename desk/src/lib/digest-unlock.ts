@@ -7,10 +7,13 @@ import { CYCLE, type Pin } from "@/data/cycle";
 import { DIGEST_ITEMS, type DigestItem } from "@/data/digest-pack";
 import type { LeadEntry } from "@/lib/lead-pick";
 import type { WireRow } from "@/lib/wire";
+import { LEAD_HELD_TEXT } from "@/lib/lead-view";
 
 export const UNLOCK_CYCLE_ID = "003" as const;
 export const ARCHIVE_KICKER = "archive · 003";
 export const HELD_KICKER = "HELD";
+/** Pass A1 — runtime HELD kicker (same lead-view source as the Brief plate). Titles unchanged. */
+export const STALE_HELD_KICKER = "HELD · lead older than 24h";
 
 export type UnlockStamp = "live" | "held" | "archive";
 
@@ -88,6 +91,34 @@ export function titleEligible(input: {
   }
   if ((input.sources ?? 1) < 1) return false;
   return true;
+}
+
+/**
+ * Pass A1 — the already-picked Brief lead (LEAD_TODAY) may be the Digest/Voice title.
+ * lead-pick already enforced ≥2 SRC incl. one non-Google-News publisher, so a lab-RSS cluster
+ * that won the pick is the same story Brief shows. Only hard-deny families (GML / taste / X) block it.
+ * Wire/Pulse rows still go through titleEligible (lone RSS / GNews never become titles).
+ */
+export function pickedLeadEligible(lead: { id?: string | null; sources?: number | null }): boolean {
+  const id = String(lead.id ?? "");
+  if (!id || TITLE_DENY_ID.test(id)) return false;
+  return (lead.sources ?? 0) >= 1;
+}
+
+/**
+ * Pass A1 — Digest/Voice follow Brief's runtime lead view (build HELD flag + 24h age after mount).
+ * When Brief shows HELD, a live unlock view becomes HELD with Brief's wording; titles are unchanged.
+ */
+export function withLeadView(
+  view: UnlockView,
+  lv: { held: boolean; reason: "held" | "stale" | null },
+): UnlockView {
+  if (!lv.held || view.stamp !== "live") return view;
+  return {
+    ...view,
+    stamp: "held",
+    kicker: lv.reason === "stale" ? STALE_HELD_KICKER : LEAD_HELD_TEXT,
+  };
 }
 
 function factualTake(sources: number, sig: number | null | undefined, date: string | null): string {
@@ -212,7 +243,7 @@ export function resolveUnlock(opts: {
     !opts.held &&
     !!opts.today?.headline &&
     opts.today.reason !== "held" &&
-    titleEligible({
+    pickedLeadEligible({
       id: opts.today.cluster_id,
       sources: opts.today.sources,
     });
@@ -230,7 +261,7 @@ export function resolveUnlock(opts: {
               frozenAt: opts.today.at,
             });
     // Guard: never show a deny-family title as live lead.
-    if (!titleEligible({ id: snap.lead.id, sources: snap.lead.sources })) {
+    if (!pickedLeadEligible({ id: snap.lead.id, sources: snap.lead.sources })) {
       return archiveView();
     }
     return { ...snap, stamp: "live", kicker: null };
