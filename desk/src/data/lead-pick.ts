@@ -2,6 +2,41 @@
 import type { LeadEntry } from "@/lib/lead-pick";
 
 export const LEAD_TODAY: LeadEntry | null = {
+  "date": "2026-10-08",
+  "at": "2026-10-08T03:13:13.066Z",
+  "crawl_at": "2026-10-08T03:13:02Z",
+  "excluded": [
+    {
+      "cluster_id": "cl:rss:mistral:1ef243007176e85c",
+      "headline": "Introducing Mistral Large 4",
+      "reason": "age>=24h"
+    },
+    {
+      "cluster_id": "cl:hn:49980866",
+      "headline": "Google Nano Banana 2.1",
+      "reason": "age>=24h"
+    },
+    {
+      "cluster_id": "cl:rss:deepmind:c11a83f73b42d756",
+      "headline": "EmbeddingGemma 2: an open, lightweight multimodal embedding model",
+      "reason": "age>=24h"
+    },
+    {
+      "cluster_id": "cl:rss:openai:a097ef0d441a7216",
+      "headline": "GPT-6 and Intelligent UI for everyone",
+      "reason": "age>=24h"
+    }
+  ],
+  "cluster_id": "cl:rss:google-ai:b6aec8c05cfc3e2f",
+  "headline": "Introducing Playground: Create and play custom games",
+  "url": "https://blog.google/innovation-and-ai/technology/ai/playground-experimental-gaming-platform/",
+  "sources": 2,
+  "sig": 124,
+  "reason": "picked",
+  "first_at": "2026-10-07T12:00:00.000Z"
+};
+
+export const LEAD_YESTERDAY: LeadEntry | null = {
   "date": "2026-10-06",
   "at": "2026-10-06T03:21:06.155Z",
   "crawl_at": "2026-10-06T03:20:50Z",
@@ -31,57 +66,7 @@ export const LEAD_TODAY: LeadEntry | null = {
   "first_at": "2026-10-05T19:16:35.000Z"
 };
 
-export const LEAD_YESTERDAY: LeadEntry | null = {
-  "date": "2026-10-05",
-  "at": "2026-10-05T03:20:27.065Z",
-  "crawl_at": "2026-10-05T03:20:06Z",
-  "excluded": [
-    {
-      "cluster_id": "cl:hn:49944227",
-      "headline": "I quit OpenAI because its culture is broken",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:gnews:d9957b5e314a4005",
-      "headline": "Sam Altman says AI benefits justify accepting some harm",
-      "reason": "GNW_ONLY"
-    },
-    {
-      "cluster_id": "cl:gnews:36752abe502e7ce7",
-      "headline": "Former Anthropic researcher to testify at NYC Council AI hearing - report",
-      "reason": "GNW_ONLY"
-    },
-    {
-      "cluster_id": "cl:gnews:9e76b3139fdf2e10",
-      "headline": "Gemini Receives 4,000 ETH Deposit from Patricio Worthalter",
-      "reason": "GNW_ONLY"
-    },
-    {
-      "cluster_id": "cl:gnews:fabf6c9b47611d74",
-      "headline": "Google to restrict free access to Gemini AI models",
-      "reason": "GNW_ONLY"
-    },
-    {
-      "cluster_id": "cl:gnews:bf7f194de27faae6",
-      "headline": "Gemini Horoscope Today, October 5, 2026: Discipline Will Increase, Behaviour Will Remain Easygoing",
-      "reason": "GNW_ONLY"
-    },
-    {
-      "cluster_id": "cl:hn:49945206",
-      "headline": "OpenAI safety leader David Robinson resigns",
-      "reason": "age>=24h"
-    }
-  ],
-  "cluster_id": "cl:hn:49959361",
-  "headline": "Legal risks pile up for Altman as OpenAI uncovers hacks",
-  "url": "https://www.ft.com/content/2c24ece3-ac99-43a8-b0e6-4a3867e37ebf",
-  "sources": 3,
-  "sig": 11,
-  "reason": "picked",
-  "first_at": "2026-10-04T11:00:08.000Z"
-};
-
 export const LEAD_HELD = false;
 
 /** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is ≥24h old. */
-export const LEAD_FIRST_AT: string | null = "2026-10-05T19:16:35.000Z";
+export const LEAD_FIRST_AT: string | null = "2026-10-07T12:00:00.000Z";

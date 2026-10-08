@@ -7,53 +7,53 @@ import type { DigestUnlockSnapshot } from "@/lib/digest-unlock";
 export const DIGEST_UNLOCK: DigestUnlockSnapshot = {
   "schema": 1,
   "cycleId": "003",
-  "pickDate": "2026-10-06",
-  "frozenAt": "2026-10-06T03:21:06.155Z",
-  "leadId": "cl:hn:49969183",
+  "pickDate": "2026-10-08",
+  "frozenAt": "2026-10-08T03:13:13.066Z",
+  "leadId": "cl:rss:google-ai:b6aec8c05cfc3e2f",
   "lead": {
-    "id": "cl:hn:49969183",
+    "id": "cl:rss:google-ai:b6aec8c05cfc3e2f",
     "kind": "lead",
-    "title": "Beam: Reflection's 501B open-weight model",
-    "take": "3 SRC · sig 342 · pick 2026-10-06",
+    "title": "Introducing Playground: Create and play custom games",
+    "take": "2 SRC · sig 124 · pick 2026-10-08",
     "why": "LEAD_TODAY · picked · frozen at daily pick",
     "move": "Digest/Voice follow Brief lead · cycle label 003",
-    "url": "https://reflection.ai/blog/introducing-beam",
-    "sources": 3,
-    "sig": 342
+    "url": "https://blog.google/innovation-and-ai/technology/ai/playground-experimental-gaming-platform/",
+    "sources": 2,
+    "sig": 124
   },
   "rows": [
     {
       "id": "cl:rss:mistral:1ef243007176e85c",
       "kind": "companion",
       "title": "Introducing Mistral Large 4",
-      "take": "12 SRC · sig 1260",
+      "take": "9 SRC · sig 1999",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
       "url": "https://mistral.ai/news/mistral-large-4/",
-      "sources": 12,
-      "sig": 1260
+      "sources": 9,
+      "sig": 1999
     },
     {
-      "id": "cl:hn:49980872",
+      "id": "cl:hn:49980866",
       "kind": "rest",
-      "title": "Anthropic expands Claude Startups program with up to $45K in credits",
-      "take": "3 SRC · sig 3",
+      "title": "Google Nano Banana 2.1",
+      "take": "4 SRC · sig 7",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
-      "url": "https://www.cnbc.com/2026/10/06/anthropic-claude-startups-program.html",
-      "sources": 3,
-      "sig": 3
+      "url": "https://gemini.google/overview/image-generation/",
+      "sources": 4,
+      "sig": 7
     },
     {
-      "id": "cl:hn:49975345",
+      "id": "cl:rss:openai:a097ef0d441a7216",
       "kind": "rest",
-      "title": "Anthropic Subscriptions Offer 5x+ More Value Than OpenAI",
-      "take": "2 SRC · sig 78",
+      "title": "GPT-6 and Intelligent UI for everyone",
+      "take": "2 SRC · sig 524",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
-      "url": "https://newsletter.semianalysis.com/p/anthropic-subscriptions-offer-5x",
+      "url": "https://openai.com/index/gpt-6-for-everyone",
       "sources": 2,
-      "sig": 78
+      "sig": 524
     }
   ]
 } as const;
