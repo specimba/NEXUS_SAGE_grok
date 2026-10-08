@@ -16,7 +16,7 @@ export type RssLabRow = {
   cluster_id?: string;
 };
 
-export const RSS_LABS_AT = "2026-10-08T07:17:46Z";
+export const RSS_LABS_AT = "2026-10-08T11:20:23Z";
 
 export const RSS_LABS: RssLabRow[] = [
   { id: "rss:google-research:b96cc914fffc0786", lab: "google-research" as const, title: "Does better work always mean better workers?", link: "https://research.google/blog/does-better-work-always-mean-better-workers/", published: "2026-10-07T20:19:57Z", summary: "", source: "rss-lab" as const, tag: "rest" as const, first_seen: "2026-10-07T23:17:19Z", is_new: false, cluster_id: "cl:rss:google-research:b96cc914fffc0786" },

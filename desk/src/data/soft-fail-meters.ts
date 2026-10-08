@@ -18,7 +18,7 @@ export type SoftFailMeters = {
 };
 
 export const SOFT_FAIL_METERS: SoftFailMeters = {
-  stamped_at: "2026-10-08T07:17:46Z",
+  stamped_at: "2026-10-08T11:20:23Z",
   briefEligible: false,
   providers: [
     { id: "hn", label: "HN", state: "ok", detail: "ok" },
