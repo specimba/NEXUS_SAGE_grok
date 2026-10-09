@@ -1,6 +1,7 @@
 # Pass Q1 — Quota-smart pipeline on GitHub Actions
 
 **Architect cut:** 2026-10-09 · Canberk (via Grok Bot): quota-smart first · audit `refs/QUOTA-SMART-ROUTINES.md` (#1, #3, #4)  
+**Superseded runner:** GitHub Actions blocked (billing). See `PASS-Q1G-GITLAB-CI.md`.  
 **Status:** PASS MARK · Coder builds · Reviewer PASS after **2 green scheduled runs**  
 **Free only.** Public repo → standard runners free. DENY: paid runners · paid APIs · LLM calls in the pipeline · Gmail/X credentials in Actions · cycle `004`.
 
