@@ -15,7 +15,7 @@ export type GmailNewsRow = {
   pulse_only: true;
 };
 
-export const GMAIL_NEWS_AT = "2026-10-08T11:20:23Z";
+export const GMAIL_NEWS_AT = "2026-10-09T11:27:50Z";
 
 export const GMAIL_NEWS: GmailNewsRow[] = [
   { id: "gmail:1a11250b91591834", title: "AI systems could cover up misbehavior", link: "https://metr.org/blog/cover-up", published: "2026-10-06T17:42:45Z", summary: "Treating AI observability as security-critical https://metr.org/blog/cover-up", publisher: "substack.com", from: "metr@substack.com", source: "gmail-news" as const, qi: 30.8, priority: "P2" as const, tag: "rest" as const, briefEligible: false as const, pulse_only: true as const },

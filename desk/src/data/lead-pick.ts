@@ -2,6 +2,37 @@
 import type { LeadEntry } from "@/lib/lead-pick";
 
 export const LEAD_TODAY: LeadEntry | null = {
+  "date": "2026-10-09",
+  "at": "2026-10-09T11:28:17.635Z",
+  "crawl_at": "2026-10-09T11:27:50Z",
+  "catch_up": true,
+  "excluded": [
+    {
+      "cluster_id": "cl:rss:mistral:1ef243007176e85c",
+      "headline": "Introducing Mistral Large 4",
+      "reason": "age>=24h"
+    },
+    {
+      "cluster_id": "cl:rss:openai:a097ef0d441a7216",
+      "headline": "GPT-6 and Intelligent UI for everyone",
+      "reason": "age>=24h"
+    },
+    {
+      "cluster_id": "cl:rss:google-ai:b6aec8c05cfc3e2f",
+      "headline": "Introducing Playground: Create and play custom games",
+      "reason": "age>=24h"
+    }
+  ],
+  "cluster_id": "cl:hn:50006368",
+  "headline": "Google is launching a one-stop Gemini agent for your work tasks",
+  "url": "https://www.theverge.com/tech/1007904/google-gemini-ai-agent-enterprise",
+  "sources": 2,
+  "sig": 3,
+  "reason": "picked",
+  "first_at": "2026-10-08T14:39:57.000Z"
+};
+
+export const LEAD_YESTERDAY: LeadEntry | null = {
   "date": "2026-10-08",
   "at": "2026-10-08T03:13:13.066Z",
   "crawl_at": "2026-10-08T03:13:02Z",
@@ -36,37 +67,7 @@ export const LEAD_TODAY: LeadEntry | null = {
   "first_at": "2026-10-07T12:00:00.000Z"
 };
 
-export const LEAD_YESTERDAY: LeadEntry | null = {
-  "date": "2026-10-06",
-  "at": "2026-10-06T03:21:06.155Z",
-  "crawl_at": "2026-10-06T03:20:50Z",
-  "excluded": [
-    {
-      "cluster_id": "cl:hn:49961057",
-      "headline": "Anthropic reported diary entry to police, woman faces felony charge",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:hn:49953892",
-      "headline": "Anthropic asks Claude users to share voice data for AI model training",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:hn:49955908",
-      "headline": "Powerful open model is set to shake up AI race",
-      "reason": "age>=24h"
-    }
-  ],
-  "cluster_id": "cl:hn:49969183",
-  "headline": "Beam: Reflection's 501B open-weight model",
-  "url": "https://reflection.ai/blog/introducing-beam",
-  "sources": 3,
-  "sig": 342,
-  "reason": "picked",
-  "first_at": "2026-10-05T19:16:35.000Z"
-};
-
 export const LEAD_HELD = false;
 
 /** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is ≥24h old. */
-export const LEAD_FIRST_AT: string | null = "2026-10-07T12:00:00.000Z";
+export const LEAD_FIRST_AT: string | null = "2026-10-08T14:39:57.000Z";

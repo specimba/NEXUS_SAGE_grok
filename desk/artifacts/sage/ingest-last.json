@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-08T11:20:23Z",
+  "stamped_at": "2026-10-09T11:27:50Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 291,
+      "duration_ms": 251,
       "paused_until": null,
       "reason": null
     },
@@ -17,8 +17,8 @@
       "id": "arxiv",
       "label": "arXiv",
       "status": "ok",
-      "rows": 28,
-      "duration_ms": 3226,
+      "rows": 29,
+      "duration_ms": 3276,
       "paused_until": null,
       "reason": null
     },
@@ -26,8 +26,8 @@
       "id": "openalex",
       "label": "OpenAlex",
       "status": "ok",
-      "rows": 3,
-      "duration_ms": 5,
+      "rows": 5,
+      "duration_ms": 572,
       "paused_until": null,
       "reason": null
     },
@@ -36,7 +36,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 5,
+      "duration_ms": 9661,
       "paused_until": null,
       "reason": null
     },
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 53,
-      "duration_ms": 8579,
+      "rows": 66,
+      "duration_ms": 16388,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 279,
+      "duration_ms": 25947,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 279,
+      "duration_ms": 13742,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 47,
-      "duration_ms": 2672,
+      "rows": 29,
+      "duration_ms": 14190,
       "paused_until": null,
       "reason": null
     },
@@ -81,7 +81,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 2,
-      "duration_ms": 279,
+      "duration_ms": 436,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 279,
+      "duration_ms": 14002,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 15894,
-    "sources_wall_ms": 8580,
-    "papers_lane_ms": 3537,
-    "slowest_source_ms": 8579,
+    "sources_ms": 98465,
+    "sources_wall_ms": 25953,
+    "papers_lane_ms": 13822,
+    "slowest_source_ms": 25947,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -114,174 +114,56 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 9039,
-    "startup_ms": 55,
-    "main_ms": 9060
+    "wall_ms": 26773,
+    "startup_ms": 90,
+    "main_ms": 26805
   },
-  "multi_source_independent": 6,
+  "multi_source_independent": 4,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 6,
-    "multi_source_raw": 10,
-    "self_reposts": 7,
-    "items_in": 242,
-    "clusters_out": 212,
-    "collapsed": 30,
-    "multi_source": 6,
-    "multi_member": 12,
+    "multi_source_independent": 4,
+    "multi_source_raw": 5,
+    "self_reposts": 2,
+    "items_in": 237,
+    "clusters_out": 224,
+    "collapsed": 13,
+    "multi_source": 4,
+    "multi_member": 10,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 14,
+    "new_items": 80,
     "per_source": {
-      "hn-algolia": 53,
+      "hn-algolia": 66,
       "rss-lab": 104,
       "rss-security": 28,
-      "gnews-rss": 47,
+      "gnews-rss": 29,
       "gmail-news": 10
     },
     "multi_source_clusters": [
       {
-        "title": "Introducing Mistral Large 4",
+        "title": "Google is launching a one-stop Gemini agent for your work tasks",
         "sources": [
-          "rss-lab",
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 13,
-        "score": 1,
+        "size": 2,
+        "score": 0.605,
         "members": [
           {
-            "id": "hn:49977979",
+            "id": "hn:50006368",
             "source": "hn-algolia",
-            "title": "Mistral Large 4",
-            "at": "2026-10-06T13:15:49Z",
+            "title": "Google is launching a one-stop Gemini agent for your work tasks",
+            "at": "2026-10-08T14:39:57Z",
             "publisher": null
           },
           {
-            "id": "hn:49978116",
-            "source": "hn-algolia",
-            "title": "Mistral Large 4: \"Le Chonk\"",
-            "at": "2026-10-06T13:25:50Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:49977844",
-            "source": "hn-algolia",
-            "title": "Mistral Large 4",
-            "at": "2026-10-06T13:06:16Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:49978040",
-            "source": "hn-algolia",
-            "title": "Mistral debuts Large 4 'Le Chonk', a 1T parameter text output model",
-            "at": "2026-10-06T13:20:44Z",
-            "publisher": null
-          },
-          {
-            "id": "rss:mistral:1ef243007176e85c",
-            "source": "rss-lab",
-            "title": "Introducing Mistral Large 4",
-            "at": "2026-10-06T12:00:27Z",
-            "publisher": "mistral"
-          },
-          {
-            "id": "gnews:4d9d0e80876eb5cb",
+            "id": "gnews:3bf5a2c254702a4e",
             "source": "gnews-rss",
-            "title": "Mistral Launches Mistral Large 4 With 1 Trillion Parameters - Dataconomy",
-            "at": "2026-10-07T08:23:29Z",
-            "publisher": "Dataconomy"
-          },
-          {
-            "id": "gnews:a7786eeaec6856d0",
-            "source": "gnews-rss",
-            "title": "Mistral Unveils Large 4, a 1-Trillion-Parameter Open-Weight Model - Technology Org",
-            "at": "2026-10-07T08:26:35Z",
-            "publisher": "Technology Org"
-          },
-          {
-            "id": "gnews:818ad0c3f5f9c6e6",
-            "source": "gnews-rss",
-            "title": "Mistral launches Large 4 preview with 1 T parameters - TestingCatalog AI News",
-            "at": "2026-10-06T14:04:50Z",
-            "publisher": "TestingCatalog AI News"
-          },
-          {
-            "id": "gnews:1c9557280f505957",
-            "source": "gnews-rss",
-            "title": "Mistral Large 4 \"Le Chonk\": 1.05T Param AI Model - https://tech-insider.org/",
-            "at": "2026-10-06T19:25:42Z",
-            "publisher": "https://tech-insider.org/"
-          },
-          {
-            "id": "gnews:0ff028feef42f7e1",
-            "source": "gnews-rss",
-            "title": "Mistral Launches Mistral Large 4 “Le Chonk” Open-Weight Model To Compete With U.S. And China - NewsCord",
-            "at": "2026-10-06T23:01:56Z",
-            "publisher": "NewsCord"
-          },
-          {
-            "id": "gnews:030d12ab4b3630f8",
-            "source": "gnews-rss",
-            "title": "Mistral Large 4 'Le Chonk': 675B-Param MoE Model - shattered.io",
-            "at": "2026-10-06T20:18:57Z",
-            "publisher": "shattered.io"
-          },
-          {
-            "id": "gnews:f5b1ab040213febf",
-            "source": "gnews-rss",
-            "title": "Mistral debuts Large 4 ‘Le Chonk', a 1-trillion parameter text output model with high benchmarks planned for open weights release - VentureBeat",
-            "at": "2026-10-06T13:00:00Z",
-            "publisher": "VentureBeat"
-          },
-          {
-            "id": "gnews:7754aabac9916c01",
-            "source": "gnews-rss",
-            "title": "Mistral’s 1T-parameter ‘Le Chonk’ model: what’s reported and what’s confirmed - Crypto Briefing",
-            "at": "2026-10-06T13:17:09Z",
-            "publisher": "Crypto Briefing"
-          }
-        ]
-      },
-      {
-        "title": "NVIDIA, Microsoft Kick Off a New Beginning for Windows PCs With RTX Spark and AI Agents",
-        "sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "size": 4,
-        "score": 1,
-        "members": [
-          {
-            "id": "rss:nvidia:9ef5df398b6c290e",
-            "source": "rss-lab",
-            "title": "NVIDIA, Microsoft Kick Off a New Beginning for Windows PCs With RTX Spark and AI Agents",
-            "at": "2026-10-07T18:45:28Z",
-            "publisher": "nvidia"
-          },
-          {
-            "id": "gnews:8257c2357664668b",
-            "source": "gnews-rss",
-            "title": "NVIDIA, Microsoft Kick Off a New Beginning for Windows PCs With RTX Spark and AI Agents - NVIDIA Blog",
-            "at": "2026-10-07T18:48:10Z",
-            "publisher": "NVIDIA Blog",
-            "self_repost": true
-          },
-          {
-            "id": "gnews:04b6287defa23772",
-            "source": "gnews-rss",
-            "title": "NVIDIA and Microsoft Bring RTX Spark Laptops, AI Agents to Windows PCs - Unite.AI",
-            "at": "2026-10-07T19:06:05Z",
-            "publisher": "Unite.AI"
-          },
-          {
-            "id": "gnews:972a7dc6020c4a00",
-            "source": "gnews-rss",
-            "title": "Microsoft and Nvidia bring AI models and agents to Windows PCs - Tech Wire Asia",
-            "at": "2026-10-08T04:02:26Z",
-            "publisher": "Tech Wire Asia"
+            "title": "Google Cloud Launches Gemini Agent, One Universal Agent for Enterprise Work - MarkTechPost",
+            "at": "2026-10-09T06:47:56Z",
+            "publisher": "MarkTechPost"
           }
         ]
       },
@@ -344,104 +226,39 @@
         ]
       },
       {
-        "title": "Google Nano Banana 2.1",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 4,
-        "score": 0.847,
-        "members": [
-          {
-            "id": "hn:49980866",
-            "source": "hn-algolia",
-            "title": "Google Nano Banana 2.1",
-            "at": "2026-10-06T16:36:27Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:6656690e7b3df9f1",
-            "source": "gnews-rss",
-            "title": "Nano Banana 2.1 In Google AI Mode In Search - Search Engine Roundtable",
-            "at": "2026-10-06T17:10:00Z",
-            "publisher": "Search Engine Roundtable"
-          },
-          {
-            "id": "gnews:ff4fef991f29ea16",
-            "source": "gnews-rss",
-            "title": "Nano Banana 2.1 Lands in Google Search With Big Upgrades - SQ Magazine",
-            "at": "2026-10-06T17:44:19Z",
-            "publisher": "SQ Magazine"
-          },
-          {
-            "id": "gnews:50d1e5aa5e4195a0",
-            "source": "gnews-rss",
-            "title": "Google Unveils Image Generation AI 'Nano Banana 2.1', Halves Image Output Fees - ASCII.jp",
-            "at": "2026-10-07T06:05:00Z",
-            "publisher": "ASCII.jp"
-          }
-        ]
-      },
-      {
-        "title": "EmbeddingGemma 2: an open, lightweight multimodal embedding model",
+        "title": "Introducing Mistral Large 4",
         "sources": [
           "rss-lab",
           "gnews-rss"
         ],
-        "size": 4,
-        "score": 1,
+        "size": 3,
+        "score": 0.677,
         "members": [
           {
-            "id": "rss:deepmind:c11a83f73b42d756",
+            "id": "rss:mistral:1ef243007176e85c",
             "source": "rss-lab",
-            "title": "EmbeddingGemma 2: an open, lightweight multimodal embedding model",
-            "at": "2026-10-06T19:57:04Z",
-            "publisher": "deepmind"
+            "title": "Introducing Mistral Large 4",
+            "at": "2026-10-06T12:00:27Z",
+            "publisher": "mistral"
           },
           {
-            "id": "gnews:6c61c8d0385164eb",
+            "id": "gnews:199e493954d6ba1b",
             "source": "gnews-rss",
-            "title": "EmbeddingGemma 2: an open, lightweight multimodal embedding model - blog.google",
-            "at": "2026-10-06T16:22:22Z",
-            "publisher": "blog.google",
-            "self_repost": true
+            "title": "Mistral AI Unveils 1-Trillion-Parameter Large 4 Model to Challenge US and Chinese AI Rivals - International Business Times, Singapore Edition",
+            "at": "2026-10-07T11:35:02Z",
+            "publisher": "International Business Times, Singapore Edition"
           },
           {
-            "id": "gnews:8fcd28a4a3bc2d8d",
+            "id": "gnews:3d55dbbaa9424c6e",
             "source": "gnews-rss",
-            "title": "Google DeepMind Launches EmbeddingGemma 2, Its First Open, Native Multimodal Embedding Model - https://www.ababnews.com/",
-            "at": "2026-10-07T05:59:55Z",
-            "publisher": "https://www.ababnews.com/"
-          },
-          {
-            "id": "gnews:6c22f0b617578c91",
-            "source": "gnews-rss",
-            "title": "Google DeepMind Releases EmbeddingGemma 2, a 740M Open Multimodal Embedding Model Built on Gemma 4 - MarkTechPost",
-            "at": "2026-10-06T18:36:08Z",
-            "publisher": "MarkTechPost"
+            "title": "Mistral Launches Large 4 With 1 Trillion Parameters and 49 Billion Active Parameters for Advanced AI Workloads - بوابة التكنولوجيا المالية",
+            "at": "2026-10-07T11:41:45Z",
+            "publisher": "بوابة التكنولوجيا المالية"
           }
         ]
       }
     ],
     "self_repost_clusters": [
-      {
-        "title": "NVIDIA, Microsoft Kick Off a New Beginning for Windows PCs With RTX Spark and AI Agents",
-        "sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:8257c2357664668b",
-            "publisher": "NVIDIA Blog",
-            "title": "NVIDIA, Microsoft Kick Off a New Beginning for Windows PCs With RTX Spark and AI Agents - NVIDIA Blog"
-          }
-        ]
-      },
       {
         "title": "Introducing Playground: Create and play custom games",
         "sources": [
@@ -462,24 +279,6 @@
         ]
       },
       {
-        "title": "EmbeddingGemma 2: an open, lightweight multimodal embedding model",
-        "sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:6c61c8d0385164eb",
-            "publisher": "blog.google",
-            "title": "EmbeddingGemma 2: an open, lightweight multimodal embedding model - blog.google"
-          }
-        ]
-      },
-      {
         "title": "Does better work always mean better workers?",
         "sources": [
           "rss-lab"
@@ -495,154 +294,59 @@
             "title": "Does better work always mean better workers? - Google Research"
           }
         ]
-      },
-      {
-        "title": "Validate AI Factory Changes with Digital Twins and AI Agents",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:673e9f4acadeffec",
-            "publisher": "NVIDIA Developer",
-            "title": "Validate AI Factory Changes with Digital Twins and AI Agents | NVIDIA Technical Blog - NVIDIA Developer"
-          }
-        ]
-      },
-      {
-        "title": "Agent Lightning v1.0: A 3,500-Line Lightweight Agentic RL Framework for Training Agents with Real Harnesses",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:9499f5da784c1b3d",
-            "publisher": "Microsoft",
-            "title": "Agent Lightning v1.0: A 3,500-Line Lightweight Agentic RL Framework for Training Agents with Real Harnesses - Microsoft"
-          }
-        ]
-      },
-      {
-        "title": "Unlocking Earth AI’s planetary geospatial foundation models for global public health",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:e8f22df4f934e00d",
-            "publisher": "Google Research",
-            "title": "Unlocking Earth AI’s planetary geospatial foundation models for global public health - Google Research"
-          }
-        ]
       }
     ],
     "ai_relevance": {
       "rss_lab_dropped": [
         {
           "lab": "nvidia",
-          "title": "Fall Into 25 New Games on GeForce NOW This October",
+          "title": "Rally Up: ‘Gears of War: E-Day’ Launches on GeForce NOW",
           "reason": "category:GeForce NOW"
         },
         {
           "lab": "nvidia",
-          "title": "Contain the Chaos: ‘CONTROL Resonant’ Launches on GeForce NOW",
+          "title": "Fall Into 25 New Games on GeForce NOW This October",
           "reason": "category:GeForce NOW"
         }
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "MusicRadar",
-          "title": "“I was like, ‘Oh thanks, every Google search from now on is going to come up with that’”: Robert Smith considers the SEO implications of Olivia Rodrigo releasing a song called The Cure - MusicRadar"
+          "publisher": "Cleveland.com",
+          "title": "Are data centers a good deal for Ohio? 5 numbers from a new study raise questions - Cleveland.com"
         },
         {
-          "publisher": "Search Engine Land",
-          "title": "Google September 2026 spam update done rolling out - Search Engine Land"
+          "publisher": "ABC News - Breaking News, Latest News and Videos",
+          "title": "Google information security engineer charged with using inside information to make $1M on Polymarket - ABC News - Breaking News, Latest News and Videos"
         },
         {
-          "publisher": "SQ Magazine",
-          "title": "What Are Model Weights, and Why the License Attached to Them Decides What You Can Build - SQ Magazine"
+          "publisher": "eu.36kr.com",
+          "title": "Why is Google betting big on RSI? - eu.36kr.com"
         },
         {
-          "publisher": "Jon Peddie Research",
-          "title": "Microsoft takes shader compilation to cloud - Jon Peddie Research"
+          "publisher": "IFAB MEDIA",
+          "title": "Google Study finds 9 in 10 Indian festive shoppers research online, while 70% make impulse purchases - IFAB MEDIA"
         },
         {
-          "publisher": "Google Research",
-          "title": "Does better work always mean better workers? - Google Research"
+          "publisher": "Android Authority",
+          "title": "Google is rolling out a redesigned search bar in the Google app - Android Authority"
         },
         {
-          "publisher": "Cisco Talos Blog",
-          "title": "Microsoft, Adobe, Apple, and Foxit vulnerabilities - Cisco Talos Blog"
+          "publisher": "TradeFlock",
+          "title": "Google’s 1998 Incorporation: How It Changed Search Forever - TradeFlock"
         },
         {
-          "publisher": "Medium",
-          "title": "The Enterprise Case for Open Models | by Adnan Masood, PhD. | Oct, 2026 - Medium"
+          "publisher": "Substack",
+          "title": "How To Align A Country Of Geniuses In A Data Center - Substack"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 20
+      "hn_dropped": 4
     },
     "gnews_near_misses": [
       {
-        "score": 0.729,
+        "score": 0.694,
         "blocked": "time-window",
-        "hours_apart": 39.5,
-        "a": {
-          "id": "hn:49977979",
-          "source": "hn-algolia",
-          "title": "Mistral Large 4",
-          "at": "2026-10-06T13:15:49Z"
-        },
-        "b": {
-          "id": "gnews:45a2c298fdd6b8fc",
-          "source": "gnews-rss",
-          "title": "Mistral Large 4 Preview: What’s Confirmed and What’s Hype - Online Tech Tips",
-          "at": "2026-10-08T04:47:29Z"
-        },
-        "shared": [
-          "mistral",
-          "larg",
-          "4"
-        ]
-      },
-      {
-        "score": 0.729,
-        "blocked": "time-window",
-        "hours_apart": 39.7,
-        "a": {
-          "id": "hn:49977844",
-          "source": "hn-algolia",
-          "title": "Mistral Large 4",
-          "at": "2026-10-06T13:06:16Z"
-        },
-        "b": {
-          "id": "gnews:45a2c298fdd6b8fc",
-          "source": "gnews-rss",
-          "title": "Mistral Large 4 Preview: What’s Confirmed and What’s Hype - Online Tech Tips",
-          "at": "2026-10-08T04:47:29Z"
-        },
-        "shared": [
-          "mistral",
-          "larg",
-          "4"
-        ]
-      },
-      {
-        "score": 0.729,
-        "blocked": "time-window",
-        "hours_apart": 40.8,
+        "hours_apart": 68.2,
         "a": {
           "id": "rss:mistral:1ef243007176e85c",
           "source": "rss-lab",
@@ -650,10 +354,10 @@
           "at": "2026-10-06T12:00:27Z"
         },
         "b": {
-          "id": "gnews:45a2c298fdd6b8fc",
+          "id": "gnews:c25d505a4a61884c",
           "source": "gnews-rss",
-          "title": "Mistral Large 4 Preview: What’s Confirmed and What’s Hype - Online Tech Tips",
-          "at": "2026-10-08T04:47:29Z"
+          "title": "Mistral Large 4 Preview Opens Before Its Model Weights Arrive - iNews Zoombangla",
+          "at": "2026-10-09T08:15:06Z"
         },
         "shared": [
           "mistral",
@@ -662,171 +366,168 @@
         ]
       },
       {
-        "score": 0.702,
+        "score": 0.683,
         "blocked": "time-window",
-        "hours_apart": 27.2,
+        "hours_apart": 71,
         "a": {
-          "id": "hn:49978040",
-          "source": "hn-algolia",
-          "title": "Mistral debuts Large 4 'Le Chonk', a 1T parameter text output model",
-          "at": "2026-10-06T13:20:44Z"
+          "id": "rss:mistral:1ef243007176e85c",
+          "source": "rss-lab",
+          "title": "Introducing Mistral Large 4",
+          "at": "2026-10-06T12:00:27Z"
         },
         "b": {
-          "id": "gnews:36bee30b25fe4095",
+          "id": "gnews:e01a653f1f6b154a",
           "source": "gnews-rss",
-          "title": "Mistral's 1 trillion-parameter open weights model is 'Le Chonk' - news.lavx.hu",
-          "at": "2026-10-07T16:35:39Z"
-        },
-        "shared": [
-          "mistral",
-          "le",
-          "chonk",
-          "1t",
-          "parameter",
-          "model"
-        ]
-      },
-      {
-        "score": 0.526,
-        "blocked": "time-window",
-        "hours_apart": 27.2,
-        "a": {
-          "id": "hn:49978116",
-          "source": "hn-algolia",
-          "title": "Mistral Large 4: \"Le Chonk\"",
-          "at": "2026-10-06T13:25:50Z"
-        },
-        "b": {
-          "id": "gnews:36bee30b25fe4095",
-          "source": "gnews-rss",
-          "title": "Mistral's 1 trillion-parameter open weights model is 'Le Chonk' - news.lavx.hu",
-          "at": "2026-10-07T16:35:39Z"
-        },
-        "shared": [
-          "mistral",
-          "le",
-          "chonk"
-        ]
-      },
-      {
-        "score": 0.523,
-        "blocked": "below-threshold",
-        "hours_apart": 6.1,
-        "a": {
-          "id": "hn:49978040",
-          "source": "hn-algolia",
-          "title": "Mistral debuts Large 4 'Le Chonk', a 1T parameter text output model",
-          "at": "2026-10-06T13:20:44Z"
-        },
-        "b": {
-          "id": "gnews:1c9557280f505957",
-          "source": "gnews-rss",
-          "title": "Mistral Large 4 \"Le Chonk\": 1.05T Param AI Model - https://tech-insider.org/",
-          "at": "2026-10-06T19:25:42Z"
-        },
-        "shared": [
-          "mistral",
-          "larg",
-          "4",
-          "le",
-          "chonk",
-          "model"
-        ]
-      },
-      {
-        "score": 0.519,
-        "blocked": "below-threshold",
-        "hours_apart": 0.1,
-        "a": {
-          "id": "hn:49978116",
-          "source": "hn-algolia",
-          "title": "Mistral Large 4: \"Le Chonk\"",
-          "at": "2026-10-06T13:25:50Z"
-        },
-        "b": {
-          "id": "gnews:7754aabac9916c01",
-          "source": "gnews-rss",
-          "title": "Mistral’s 1T-parameter ‘Le Chonk’ model: what’s reported and what’s confirmed - Crypto Briefing",
-          "at": "2026-10-06T13:17:09Z"
-        },
-        "shared": [
-          "mistral",
-          "le",
-          "chonk"
-        ]
-      },
-      {
-        "score": 0.509,
-        "blocked": "thin-overlap",
-        "hours_apart": 19,
-        "a": {
-          "id": "hn:49978116",
-          "source": "hn-algolia",
-          "title": "Mistral Large 4: \"Le Chonk\"",
-          "at": "2026-10-06T13:25:50Z"
-        },
-        "b": {
-          "id": "gnews:4d9d0e80876eb5cb",
-          "source": "gnews-rss",
-          "title": "Mistral Launches Mistral Large 4 With 1 Trillion Parameters - Dataconomy",
-          "at": "2026-10-07T08:23:29Z"
+          "title": "Mistral’s new Large 4 trails some Chinese open models in independent tests - Tom's Hardware",
+          "at": "2026-10-09T11:00:00Z"
         },
         "shared": [
           "mistral",
           "larg",
           "4"
+        ]
+      },
+      {
+        "score": 0.502,
+        "blocked": "below-threshold",
+        "hours_apart": 13.1,
+        "a": {
+          "id": "hn:50013071",
+          "source": "hn-algolia",
+          "title": "OpenAI cuts ties with 3 safety researchers",
+          "at": "2026-10-08T22:06:36Z"
+        },
+        "b": {
+          "id": "gnews:14b3c92e7d33e55f",
+          "source": "gnews-rss",
+          "title": "OpenAI fires 3 safety researchers in dispute over AI risks - The Globe and Mail",
+          "at": "2026-10-09T11:11:41Z"
+        },
+        "shared": [
+          "openai",
+          "3",
+          "safety",
+          "researcher"
+        ]
+      },
+      {
+        "score": 0.499,
+        "blocked": "below-threshold",
+        "hours_apart": 8.8,
+        "a": {
+          "id": "hn:50013071",
+          "source": "hn-algolia",
+          "title": "OpenAI cuts ties with 3 safety researchers",
+          "at": "2026-10-08T22:06:36Z"
+        },
+        "b": {
+          "id": "gnews:3b70052fc85a9128",
+          "source": "gnews-rss",
+          "title": "OpenAI faces AI safety backlash after firing 3 researchers - People Matters Global",
+          "at": "2026-10-09T06:56:25Z"
+        },
+        "shared": [
+          "openai",
+          "3",
+          "safety",
+          "researcher"
+        ]
+      },
+      {
+        "score": 0.452,
+        "blocked": "below-threshold",
+        "hours_apart": 11.9,
+        "a": {
+          "id": "hn:50013071",
+          "source": "hn-algolia",
+          "title": "OpenAI cuts ties with 3 safety researchers",
+          "at": "2026-10-08T22:06:36Z"
+        },
+        "b": {
+          "id": "gnews:4f668796d47baa05",
+          "source": "gnews-rss",
+          "title": "OpenAI defends firing of 3 AI safety researchers, cites ‘significant breach of trust’ - The Indian Express",
+          "at": "2026-10-09T10:01:25Z"
+        },
+        "shared": [
+          "openai",
+          "3",
+          "safety",
+          "researcher"
+        ]
+      },
+      {
+        "score": 0.448,
+        "blocked": "below-threshold",
+        "hours_apart": 1.2,
+        "a": {
+          "id": "hn:50018350",
+          "source": "hn-algolia",
+          "title": "OpenAI fires three safety researchers for \"mishandling research information\"",
+          "at": "2026-10-09T10:00:26Z"
+        },
+        "b": {
+          "id": "gnews:14b3c92e7d33e55f",
+          "source": "gnews-rss",
+          "title": "OpenAI fires 3 safety researchers in dispute over AI risks - The Globe and Mail",
+          "at": "2026-10-09T11:11:41Z"
+        },
+        "shared": [
+          "openai",
+          "fire",
+          "safety",
+          "researcher"
+        ]
+      },
+      {
+        "score": 0.324,
+        "blocked": "time-window",
+        "hours_apart": 566.1,
+        "a": {
+          "id": "rss:google-ai:970c94673769027a",
+          "source": "rss-lab",
+          "title": "AI for Societal Impact",
+          "at": "2026-09-15T16:00:00Z"
+        },
+        "b": {
+          "id": "gnews:87f09d4e9fd2325a",
+          "source": "gnews-rss",
+          "title": "AI is wreaking havoc on math and coding. Where could it have the biggest impact next? - R&D World",
+          "at": "2026-10-09T06:08:47Z"
+        },
+        "shared": [
+          "ai",
+          "impact"
+        ]
+      },
+      {
+        "score": 0.301,
+        "blocked": "below-threshold",
+        "hours_apart": 3.1,
+        "a": {
+          "id": "hn:50018350",
+          "source": "hn-algolia",
+          "title": "OpenAI fires three safety researchers for \"mishandling research information\"",
+          "at": "2026-10-09T10:00:26Z"
+        },
+        "b": {
+          "id": "gnews:3b70052fc85a9128",
+          "source": "gnews-rss",
+          "title": "OpenAI faces AI safety backlash after firing 3 researchers - People Matters Global",
+          "at": "2026-10-09T06:56:25Z"
+        },
+        "shared": [
+          "openai",
+          "safety",
+          "researcher"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.729,
+        "score": 0.694,
         "blocked": "time-window",
-        "hours_apart": 39.5,
-        "a": {
-          "id": "hn:49977979",
-          "source": "hn-algolia",
-          "title": "Mistral Large 4",
-          "at": "2026-10-06T13:15:49Z"
-        },
-        "b": {
-          "id": "gnews:45a2c298fdd6b8fc",
-          "source": "gnews-rss",
-          "title": "Mistral Large 4 Preview: What’s Confirmed and What’s Hype - Online Tech Tips",
-          "at": "2026-10-08T04:47:29Z"
-        },
-        "shared": [
-          "mistral",
-          "larg",
-          "4"
-        ]
-      },
-      {
-        "score": 0.729,
-        "blocked": "time-window",
-        "hours_apart": 39.7,
-        "a": {
-          "id": "hn:49977844",
-          "source": "hn-algolia",
-          "title": "Mistral Large 4",
-          "at": "2026-10-06T13:06:16Z"
-        },
-        "b": {
-          "id": "gnews:45a2c298fdd6b8fc",
-          "source": "gnews-rss",
-          "title": "Mistral Large 4 Preview: What’s Confirmed and What’s Hype - Online Tech Tips",
-          "at": "2026-10-08T04:47:29Z"
-        },
-        "shared": [
-          "mistral",
-          "larg",
-          "4"
-        ]
-      },
-      {
-        "score": 0.729,
-        "blocked": "time-window",
-        "hours_apart": 40.8,
+        "hours_apart": 68.2,
         "a": {
           "id": "rss:mistral:1ef243007176e85c",
           "source": "rss-lab",
@@ -834,10 +535,10 @@
           "at": "2026-10-06T12:00:27Z"
         },
         "b": {
-          "id": "gnews:45a2c298fdd6b8fc",
+          "id": "gnews:c25d505a4a61884c",
           "source": "gnews-rss",
-          "title": "Mistral Large 4 Preview: What’s Confirmed and What’s Hype - Online Tech Tips",
-          "at": "2026-10-08T04:47:29Z"
+          "title": "Mistral Large 4 Preview Opens Before Its Model Weights Arrive - iNews Zoombangla",
+          "at": "2026-10-09T08:15:06Z"
         },
         "shared": [
           "mistral",
@@ -846,101 +547,29 @@
         ]
       },
       {
-        "score": 0.702,
+        "score": 0.683,
         "blocked": "time-window",
-        "hours_apart": 27.2,
+        "hours_apart": 71,
         "a": {
-          "id": "hn:49978040",
-          "source": "hn-algolia",
-          "title": "Mistral debuts Large 4 'Le Chonk', a 1T parameter text output model",
-          "at": "2026-10-06T13:20:44Z"
+          "id": "rss:mistral:1ef243007176e85c",
+          "source": "rss-lab",
+          "title": "Introducing Mistral Large 4",
+          "at": "2026-10-06T12:00:27Z"
         },
         "b": {
-          "id": "gnews:36bee30b25fe4095",
+          "id": "gnews:e01a653f1f6b154a",
           "source": "gnews-rss",
-          "title": "Mistral's 1 trillion-parameter open weights model is 'Le Chonk' - news.lavx.hu",
-          "at": "2026-10-07T16:35:39Z"
-        },
-        "shared": [
-          "mistral",
-          "le",
-          "chonk",
-          "1t",
-          "parameter",
-          "model"
-        ]
-      },
-      {
-        "score": 0.526,
-        "blocked": "time-window",
-        "hours_apart": 27.2,
-        "a": {
-          "id": "hn:49978116",
-          "source": "hn-algolia",
-          "title": "Mistral Large 4: \"Le Chonk\"",
-          "at": "2026-10-06T13:25:50Z"
-        },
-        "b": {
-          "id": "gnews:36bee30b25fe4095",
-          "source": "gnews-rss",
-          "title": "Mistral's 1 trillion-parameter open weights model is 'Le Chonk' - news.lavx.hu",
-          "at": "2026-10-07T16:35:39Z"
-        },
-        "shared": [
-          "mistral",
-          "le",
-          "chonk"
-        ]
-      },
-      {
-        "score": 0.523,
-        "blocked": "below-threshold",
-        "hours_apart": 6.1,
-        "a": {
-          "id": "hn:49978040",
-          "source": "hn-algolia",
-          "title": "Mistral debuts Large 4 'Le Chonk', a 1T parameter text output model",
-          "at": "2026-10-06T13:20:44Z"
-        },
-        "b": {
-          "id": "gnews:1c9557280f505957",
-          "source": "gnews-rss",
-          "title": "Mistral Large 4 \"Le Chonk\": 1.05T Param AI Model - https://tech-insider.org/",
-          "at": "2026-10-06T19:25:42Z"
+          "title": "Mistral’s new Large 4 trails some Chinese open models in independent tests - Tom's Hardware",
+          "at": "2026-10-09T11:00:00Z"
         },
         "shared": [
           "mistral",
           "larg",
-          "4",
-          "le",
-          "chonk",
-          "model"
+          "4"
         ]
       },
       {
-        "score": 0.519,
-        "blocked": "below-threshold",
-        "hours_apart": 0.1,
-        "a": {
-          "id": "hn:49978116",
-          "source": "hn-algolia",
-          "title": "Mistral Large 4: \"Le Chonk\"",
-          "at": "2026-10-06T13:25:50Z"
-        },
-        "b": {
-          "id": "gnews:7754aabac9916c01",
-          "source": "gnews-rss",
-          "title": "Mistral’s 1T-parameter ‘Le Chonk’ model: what’s reported and what’s confirmed - Crypto Briefing",
-          "at": "2026-10-06T13:17:09Z"
-        },
-        "shared": [
-          "mistral",
-          "le",
-          "chonk"
-        ]
-      },
-      {
-        "score": 0.519,
+        "score": 0.526,
         "blocked": "below-threshold",
         "hours_apart": 0.3,
         "a": {
@@ -960,6 +589,118 @@
           "decision",
           "model"
         ]
+      },
+      {
+        "score": 0.502,
+        "blocked": "below-threshold",
+        "hours_apart": 13.1,
+        "a": {
+          "id": "hn:50013071",
+          "source": "hn-algolia",
+          "title": "OpenAI cuts ties with 3 safety researchers",
+          "at": "2026-10-08T22:06:36Z"
+        },
+        "b": {
+          "id": "gnews:14b3c92e7d33e55f",
+          "source": "gnews-rss",
+          "title": "OpenAI fires 3 safety researchers in dispute over AI risks - The Globe and Mail",
+          "at": "2026-10-09T11:11:41Z"
+        },
+        "shared": [
+          "openai",
+          "3",
+          "safety",
+          "researcher"
+        ]
+      },
+      {
+        "score": 0.499,
+        "blocked": "below-threshold",
+        "hours_apart": 8.8,
+        "a": {
+          "id": "hn:50013071",
+          "source": "hn-algolia",
+          "title": "OpenAI cuts ties with 3 safety researchers",
+          "at": "2026-10-08T22:06:36Z"
+        },
+        "b": {
+          "id": "gnews:3b70052fc85a9128",
+          "source": "gnews-rss",
+          "title": "OpenAI faces AI safety backlash after firing 3 researchers - People Matters Global",
+          "at": "2026-10-09T06:56:25Z"
+        },
+        "shared": [
+          "openai",
+          "3",
+          "safety",
+          "researcher"
+        ]
+      },
+      {
+        "score": 0.452,
+        "blocked": "below-threshold",
+        "hours_apart": 11.9,
+        "a": {
+          "id": "hn:50013071",
+          "source": "hn-algolia",
+          "title": "OpenAI cuts ties with 3 safety researchers",
+          "at": "2026-10-08T22:06:36Z"
+        },
+        "b": {
+          "id": "gnews:4f668796d47baa05",
+          "source": "gnews-rss",
+          "title": "OpenAI defends firing of 3 AI safety researchers, cites ‘significant breach of trust’ - The Indian Express",
+          "at": "2026-10-09T10:01:25Z"
+        },
+        "shared": [
+          "openai",
+          "3",
+          "safety",
+          "researcher"
+        ]
+      },
+      {
+        "score": 0.448,
+        "blocked": "below-threshold",
+        "hours_apart": 1.2,
+        "a": {
+          "id": "hn:50018350",
+          "source": "hn-algolia",
+          "title": "OpenAI fires three safety researchers for \"mishandling research information\"",
+          "at": "2026-10-09T10:00:26Z"
+        },
+        "b": {
+          "id": "gnews:14b3c92e7d33e55f",
+          "source": "gnews-rss",
+          "title": "OpenAI fires 3 safety researchers in dispute over AI risks - The Globe and Mail",
+          "at": "2026-10-09T11:11:41Z"
+        },
+        "shared": [
+          "openai",
+          "fire",
+          "safety",
+          "researcher"
+        ]
+      },
+      {
+        "score": 0.416,
+        "blocked": "thin-overlap",
+        "hours_apart": 684.2,
+        "a": {
+          "id": "hn:50000030",
+          "source": "hn-algolia",
+          "title": "The OpenAI proofs are us",
+          "at": "2026-10-07T23:13:34Z"
+        },
+        "b": {
+          "id": "rss-sec:trailofbits:009d5c98023fba4a",
+          "source": "rss-security",
+          "title": "A “proof” of Fermat’s Last Theorem that fits the margin",
+          "at": "2026-09-09T11:00:00Z"
+        },
+        "shared": [
+          "proof"
+        ]
       }
     ]
   },
@@ -967,76 +708,76 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 9,
+      "streak_ok": 10,
       "streak_fail": 0,
-      "items_last": 28
+      "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 93,
+      "streak_ok": 94,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 93,
+      "streak_ok": 94,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 93,
+      "streak_ok": 94,
       "streak_fail": 0,
-      "items_last": 47
+      "items_last": 29
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 93,
+      "streak_ok": 94,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 93,
+      "streak_ok": 94,
       "streak_fail": 0,
-      "items_last": 53
+      "items_last": 66
     },
     {
       "id": "openalex",
       "state": "flaky",
-      "streak_ok": 5,
+      "streak_ok": 6,
       "streak_fail": 0,
-      "items_last": 3
+      "items_last": 5
     },
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 22,
+      "streak_ok": 23,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 93,
+      "streak_ok": 94,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 93,
+      "streak_ok": 94,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.0026625,
+    "hours": 0.0076458333333333335,
     "stale": false
   },
   "hf": {
@@ -1047,7 +788,7 @@
   "arxiv": {
     "ok": true,
     "enriched": 24,
-    "shelf": 4,
+    "shelf": 5,
     "timed_out": false,
     "budget_ms": 20000,
     "brief": false,
@@ -1057,17 +798,17 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "enriched": 3,
+    "enriched": 5,
     "secondary": 3,
-    "query": "LLM agent",
+    "query": "LLM agent sandbox",
     "mode": "search",
-    "from_cache": true,
-    "searches": 0,
+    "from_cache": false,
+    "searches": 1,
     "retries": 0,
     "status": "ok",
     "paused_until": null,
     "pause_reason": null,
-    "requests": 0,
+    "requests": 1,
     "auth": "anon",
     "brief": false,
     "pulse_lead": false,
@@ -1075,24 +816,24 @@
     "url": "https://api.openalex.org/works",
     "sample": [
       {
-        "id": "W4393160747",
-        "openalexId": "https://openalex.org/W4393160747",
-        "year": 2024,
-        "doi": "https://doi.org/10.1609/aaai.v38i17.29936",
-        "enrichOnly": true
-      },
-      {
-        "id": "W4412877164",
-        "openalexId": "https://openalex.org/W4412877164",
+        "id": "2610.08215",
+        "openalexId": "https://openalex.org/W4416036585",
         "year": 2025,
-        "doi": "https://doi.org/10.1145/3711896.3736570",
-        "enrichOnly": true
+        "doi": "https://doi.org/10.18653/v1/2025.emnlp-main.466",
+        "enrichOnly": false
       },
       {
-        "id": "W7167900302",
-        "openalexId": "https://openalex.org/W7167900302",
+        "id": "2610.12242",
+        "openalexId": "https://openalex.org/W7171516088",
         "year": 2026,
-        "doi": "https://doi.org/10.1145/3805712.3808515",
+        "doi": "https://doi.org/10.48550/arxiv.2607.23933",
+        "enrichOnly": false
+      },
+      {
+        "id": "W7204032694",
+        "openalexId": "https://openalex.org/W7204032694",
+        "year": 2026,
+        "doi": "https://doi.org/10.1007/978-981-92-4805-6_13",
         "enrichOnly": true
       }
     ]
@@ -1102,10 +843,10 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "enriched": 1,
-    "query": "doi:10.1145/3711896.3736570",
+    "query": "doi:10.1007/978-981-92-4805-6_13",
     "mode": "filter",
-    "from_cache": true,
-    "searches": 0,
+    "from_cache": false,
+    "searches": 1,
     "brief": false,
     "pulse_lead": false,
     "papers_enrich_only": true,
@@ -1113,12 +854,12 @@
     "merge_notes": [],
     "sample": [
       {
-        "id": "W4412877164",
-        "crossrefDoi": "https://doi.org/10.1145/3711896.3736570",
-        "issued": "2025-08-03",
-        "type": "proceedings-article",
-        "openalexId": "https://openalex.org/W4412877164",
-        "doi": "https://doi.org/10.1145/3711896.3736570",
+        "id": "W7204032694",
+        "crossrefDoi": "https://doi.org/10.1007/978-981-92-4805-6_13",
+        "issued": "2026-08-24",
+        "type": "book-chapter",
+        "openalexId": "https://openalex.org/W7204032694",
+        "doi": "https://doi.org/10.1007/978-981-92-4805-6_13",
         "enrichOnly": false
       }
     ]
@@ -1127,43 +868,43 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 53,
+    "count": 66,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
     "queries_run": [
-      "benchmark",
       "agent tooling",
-      "OpenAI"
+      "OpenAI",
+      "Anthropic"
     ],
     "queries_ok": [
-      "benchmark",
       "agent tooling",
-      "OpenAI"
+      "OpenAI",
+      "Anthropic"
     ],
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 20,
+    "ai_dropped": 4,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
-        "id": "hn:49977979",
-        "tag": "rest",
-        "score": 2017,
-        "text": "Mistral Large 4"
-      },
-      {
         "id": "hn:49996437",
         "tag": "rest",
-        "score": 904,
+        "score": 1039,
         "text": "Claude Haiku 5.5"
       },
       {
         "id": "hn:49996425",
         "tag": "rest",
-        "score": 657,
+        "score": 749,
         "text": "GPT‑6 and Intelligent UI for everyone"
+      },
+      {
+        "id": "hn:50008187",
+        "tag": "rest",
+        "score": 399,
+        "text": "OpenAI annualised revenues $20B less than previously signalled"
       }
     ]
   },
@@ -1179,79 +920,79 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "(cache:openai)",
+        "url": "https://openai.com/news/rss.xml",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "(cache:deepmind)",
+        "url": "https://deepmind.google/blog/rss.xml",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "(cache:google-ai)",
+        "url": "https://blog.google/technology/ai/rss/",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "(cache:huggingface)",
+        "url": "https://huggingface.co/blog/feed.xml",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "(cache:mistral)",
+        "url": "https://mistral.ai/rss.xml",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "(cache:nvidia)",
+        "url": "https://blogs.nvidia.com/feed/",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "(cache:nvidia-dev)",
+        "url": "https://developer.nvidia.com/blog/feed",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "(cache:ms-research)",
+        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "(cache:google-research)",
+        "url": "https://research.google/blog/rss/",
         "count": 12
       }
     ],
     "feeds_soft_fail": [],
     "sample": [
       {
-        "id": "rss:google-research:b96cc914fffc0786",
-        "lab": "google-research",
+        "id": "rss:openai:570fe3204556675e",
+        "lab": "openai",
         "tag": "rest",
-        "title": "Does better work always mean better workers?",
-        "link": "https://research.google/blog/does-better-work-always-mean-better-workers/"
+        "title": "Sophos cuts threat investigation time by 96% with OpenAI Daybreak",
+        "link": "https://openai.com/index/sophos"
       },
       {
-        "id": "rss:nvidia:9ef5df398b6c290e",
+        "id": "rss:nvidia:dfd05486e53d5871",
         "lab": "nvidia",
         "tag": "rest",
-        "title": "NVIDIA, Microsoft Kick Off a New Beginning for Windows PCs With RTX Spark and AI Agents",
-        "link": "https://blogs.nvidia.com/blog/local-ai-rtx-spark-microsoft-windows-event/"
+        "title": "Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents",
+        "link": "https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents/"
       },
       {
-        "id": "rss:nvidia-dev:1fd6b880e95ea139",
+        "id": "rss:nvidia-dev:a5504ce4c597a9c4",
         "lab": "nvidia-dev",
         "tag": "rest",
-        "title": "The Machines that Make the Machines",
-        "link": "https://developer.nvidia.com/blog/the-machines-that-make-the-machines/"
+        "title": "5 Steps to Create SimReady Assets for Robotics with Frontier AI Models",
+        "link": "https://developer.nvidia.com/blog/5-steps-to-create-simready-assets-for-robotics-with-frontier-ai-models/"
       },
       {
-        "id": "rss:huggingface:88e871d5a8d26738",
-        "lab": "huggingface",
+        "id": "rss:nvidia-dev:e7f46a28622bd58d",
+        "lab": "nvidia-dev",
         "tag": "rest",
-        "title": "Multimodal open d1 decision models for the edge",
-        "link": "https://huggingface.co/blog/LiquidAI/open-d1"
+        "title": "Building Reliable Data Analytics Agents: Lessons from the KDD Cup",
+        "link": "https://developer.nvidia.com/blog/building-reliable-data-analytics-agents-lessons-from-the-kdd-cup/"
       }
     ]
   },
@@ -1265,17 +1006,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "(cache:trailofbits)",
+        "url": "https://blog.trailofbits.com/feed/",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "(cache:fox-it)",
+        "url": "https://blog.fox-it.com/feed/",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "(cache:projectzero)",
+        "url": "https://projectzero.google/feed.xml",
         "count": 6
       }
     ],
@@ -1316,55 +1057,15 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 47,
-    "pool": 306,
+    "items": 29,
+    "pool": 229,
     "corroborators": [
-      {
-        "id": "gnews:8257c2357664668b",
-        "anchor_id": "rss:nvidia:9ef5df398b6c290e",
-        "score": 1,
-        "title": "NVIDIA, Microsoft Kick Off a New Beginning for Windows PCs With RTX Spark and AI Agents - NVIDIA Blog",
-        "publisher": "NVIDIA Blog",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:04b6287defa23772",
-        "anchor_id": "rss:nvidia:9ef5df398b6c290e",
-        "score": 0.739,
-        "title": "NVIDIA and Microsoft Bring RTX Spark Laptops, AI Agents to Windows PCs - Unite.AI",
-        "publisher": "Unite.AI",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:972a7dc6020c4a00",
-        "anchor_id": "rss:nvidia:9ef5df398b6c290e",
-        "score": 0.651,
-        "title": "Microsoft and Nvidia bring AI models and agents to Windows PCs - Tech Wire Asia",
-        "publisher": "Tech Wire Asia",
-        "self_repost": false
-      },
       {
         "id": "gnews:cee54b63469ecc14",
         "anchor_id": "rss:google-research:b96cc914fffc0786",
         "score": 1,
         "title": "Does better work always mean better workers? - Google Research",
         "publisher": "Google Research",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:673e9f4acadeffec",
-        "anchor_id": "rss:nvidia-dev:cdbf7413fbf9a74f",
-        "score": 1,
-        "title": "Validate AI Factory Changes with Digital Twins and AI Agents | NVIDIA Technical Blog - NVIDIA Developer",
-        "publisher": "NVIDIA Developer",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:9499f5da784c1b3d",
-        "anchor_id": "rss:ms-research:47b11e346bad2690",
-        "score": 1,
-        "title": "Agent Lightning v1.0: A 3,500-Line Lightweight Agentic RL Framework for Training Agents with Real Harnesses - Microsoft",
-        "publisher": "Microsoft",
         "self_repost": true
       },
       {
@@ -1376,130 +1077,26 @@
         "self_repost": true
       },
       {
-        "id": "gnews:4d9d0e80876eb5cb",
-        "anchor_id": "hn:49977979",
-        "score": 0.814,
-        "title": "Mistral Launches Mistral Large 4 With 1 Trillion Parameters - Dataconomy",
-        "publisher": "Dataconomy",
+        "id": "gnews:199e493954d6ba1b",
+        "anchor_id": "rss:mistral:1ef243007176e85c",
+        "score": 0.671,
+        "title": "Mistral AI Unveils 1-Trillion-Parameter Large 4 Model to Challenge US and Chinese AI Rivals - International Business Times, Singapore Edition",
+        "publisher": "International Business Times, Singapore Edition",
         "self_repost": false
       },
       {
-        "id": "gnews:a7786eeaec6856d0",
-        "anchor_id": "hn:49977979",
-        "score": 0.719,
-        "title": "Mistral Unveils Large 4, a 1-Trillion-Parameter Open-Weight Model - Technology Org",
-        "publisher": "Technology Org",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:818ad0c3f5f9c6e6",
-        "anchor_id": "hn:49977979",
-        "score": 0.719,
-        "title": "Mistral launches Large 4 preview with 1 T parameters - TestingCatalog AI News",
-        "publisher": "TestingCatalog AI News",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:6656690e7b3df9f1",
-        "anchor_id": "hn:49980866",
-        "score": 0.878,
-        "title": "Nano Banana 2.1 In Google AI Mode In Search - Search Engine Roundtable",
-        "publisher": "Search Engine Roundtable",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:ff4fef991f29ea16",
-        "anchor_id": "hn:49980866",
-        "score": 0.777,
-        "title": "Nano Banana 2.1 Lands in Google Search With Big Upgrades - SQ Magazine",
-        "publisher": "SQ Magazine",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:50d1e5aa5e4195a0",
-        "anchor_id": "hn:49980866",
-        "score": 0.734,
-        "title": "Google Unveils Image Generation AI 'Nano Banana 2.1', Halves Image Output Fees - ASCII.jp",
-        "publisher": "ASCII.jp",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:6c61c8d0385164eb",
-        "anchor_id": "rss:deepmind:c11a83f73b42d756",
-        "score": 1,
-        "title": "EmbeddingGemma 2: an open, lightweight multimodal embedding model - blog.google",
-        "publisher": "blog.google",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:8fcd28a4a3bc2d8d",
-        "anchor_id": "rss:deepmind:c11a83f73b42d756",
-        "score": 0.659,
-        "title": "Google DeepMind Launches EmbeddingGemma 2, Its First Open, Native Multimodal Embedding Model - https://www.ababnews.com/",
-        "publisher": "https://www.ababnews.com/",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:6c22f0b617578c91",
-        "anchor_id": "rss:deepmind:c11a83f73b42d756",
-        "score": 0.608,
-        "title": "Google DeepMind Releases EmbeddingGemma 2, a 740M Open Multimodal Embedding Model Built on Gemma 4 - MarkTechPost",
-        "publisher": "MarkTechPost",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:1c9557280f505957",
-        "anchor_id": "hn:49978116",
-        "score": 0.807,
-        "title": "Mistral Large 4 \"Le Chonk\": 1.05T Param AI Model - https://tech-insider.org/",
-        "publisher": "https://tech-insider.org/",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:0ff028feef42f7e1",
-        "anchor_id": "hn:49978116",
-        "score": 0.769,
-        "title": "Mistral Launches Mistral Large 4 “Le Chonk” Open-Weight Model To Compete With U.S. And China - NewsCord",
-        "publisher": "NewsCord",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:030d12ab4b3630f8",
-        "anchor_id": "hn:49978116",
-        "score": 0.768,
-        "title": "Mistral Large 4 'Le Chonk': 675B-Param MoE Model - shattered.io",
-        "publisher": "shattered.io",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:e8f22df4f934e00d",
-        "anchor_id": "rss:google-research:c02127d349672db4",
-        "score": 1,
-        "title": "Unlocking Earth AI’s planetary geospatial foundation models for global public health - Google Research",
-        "publisher": "Google Research",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:f5b1ab040213febf",
-        "anchor_id": "hn:49978040",
-        "score": 0.755,
-        "title": "Mistral debuts Large 4 ‘Le Chonk', a 1-trillion parameter text output model with high benchmarks planned for open weights release - VentureBeat",
-        "publisher": "VentureBeat",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:7754aabac9916c01",
-        "anchor_id": "hn:49978040",
-        "score": 0.643,
-        "title": "Mistral’s 1T-parameter ‘Le Chonk’ model: what’s reported and what’s confirmed - Crypto Briefing",
-        "publisher": "Crypto Briefing",
+        "id": "gnews:3d55dbbaa9424c6e",
+        "anchor_id": "rss:mistral:1ef243007176e85c",
+        "score": 0.665,
+        "title": "Mistral Launches Large 4 With 1 Trillion Parameters and 49 Billion Active Parameters for Advanced AI Workloads - بوابة التكنولوجيا المالية",
+        "publisher": "بوابة التكنولوجيا المالية",
         "self_repost": false
       }
     ],
     "http_status": 200,
     "content_type": "application/xml; charset=utf-8",
     "format": "rss2",
-    "from_cache": true,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1508,38 +1105,38 @@
     "pulse_only": true,
     "url_template": "https://news.google.com/rss/search?q={QUERY}&hl=en-US&gl=US&ceid=US:en",
     "queried": [
-      "AI agent",
       "open weights",
-      "Microsoft Research",
-      "Google Research"
+      "Hugging Face",
+      "Google Research",
+      "Google DeepMind"
     ],
     "queries_ok_list": [
-      "AI agent",
       "open weights",
-      "Microsoft Research",
-      "Google Research"
+      "Hugging Face",
+      "Google Research",
+      "Google DeepMind"
     ],
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:ec804250f40318bd",
-        "title": "Two tech giants – two AI detectors that are blind to each other - Cybernews",
-        "publisher": "Cybernews",
-        "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBPRmZHLWdJbDVlSjBHMFhlZFl6WHdEeUlGX0U4amJmMEpvM0tzQW5wVnFxT2ZjMUlCVVVraDZTaXpMeHl1WjRlcXJONnVtbEIzbDdVTHVwT29YOHpwYUhQdjFWQTZKS29vZkVWb29FOTI1bllJZlE?oc=5",
+        "id": "gnews:0f24591a7795bd5a",
+        "title": "DeepMind spinout Isomorphic Labs eyes $40B valuation less than five months after $2.1B round: Report - Tech Funding News",
+        "publisher": "Tech Funding News",
+        "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQdll5cmFaNXVQa3RQZHVuZUNERlpFV0gzZW5KWmR6M2gxYXZGNk9fbHVlUDFpd0ZZMlBjN0JPai1YM0lfOFdRZWtYeTRObDB0UGhPczRuWWRpRXBKT016ZUpUcU9BLTdzMlZhYWI0LTBoVTB3ejhtN04zOVVPVEhnNkZWeXg5M3QzaHZJdDBFUGloLUw5MExSWHdhWGdQdjBiVGxRZnF0ZDlpQTFDaWlVc0w1NEQxRUt0VWdkV1dvY2xlVThq?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:d44ad7af166ffb5d",
-        "title": "MAHE partners with Google Cloud to build AI-ready university ecosystem - EdexLive",
-        "publisher": "EdexLive",
-        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNWWZZaTNKMUdMU3FCUmNzMVFKRkhDVkVHVHVweVQ2NXhiRjZpRUtSRzQtdmRBWFdGZ1U2MXMxQmNIakRDeEExd3p6c19hTDlFckQwaVlQSDFoRmR4dVpJQ2pVQklfMzV3amZnNl9UdDJDcDF4RW4tX1F0dXRvYk1wdGd3LXpSc1h1dHlkcENBN0tsQlp6Ml9WWElxSGxzZ0RGZ0QzV1ljWmJoeS1xMHZF0gGvAUFVX3lxTE1ZZllpM0oxR0xTcUJSY3MxUUpGSENWRUdUdXB5VDY1eGJGNmlFS1JHNC12ZEFYV0ZnVTYxczFCY0hqREN4QTF3enpzX2FMOUVyRDBpWVBIMWhGZHh1WklDalVCSV8zNXdqZmc2X1R0MkNwMXhFbi1fUXR1dG9iTXB0Z3ctelJzWHV0eWRwQ0E3S2xCWnoyX1ZYSXFIbHNnREZnRDNXWWNaYmh5LXEwdkU?oc=5",
+        "id": "gnews:14b3c92e7d33e55f",
+        "title": "OpenAI fires 3 safety researchers in dispute over AI risks - The Globe and Mail",
+        "publisher": "The Globe and Mail",
+        "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxNODdsNzVZTjZEVWJrZ3FkdmNGRnZiY1lFeE1HWjRRcVJIS1llMUhoVWFtMEtYYno3ZnV1X19tMTZMT29FSlZhRTRrdUZwVUM0NkJCNmNGV19SakVYWl91c0lYYTVIY3BQRGZXTnBnOUFYMmxfckJJTWNBNC0xM1RDVVdZLUxpNnFvZm5sd24wSTUyS0U2LWVXMUk3ZlByTG9qT3F3UlJ3T2IwVnV4OHZuZHliOWhRamhMVU8zV3VyNWFlYUNjSldmWWR2MllwbGtZUl9WMFU4RGdqdEZh?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:526ca9a9ebcd41ca",
-        "title": "Open-Weight AI Changed the Race, Not the Rules - https://streamlinefeed.co.ke/",
-        "publisher": "https://streamlinefeed.co.ke/",
-        "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNM0tLRmxYc1N3UDBUWmtJajliYXpjWHNvY29kelBaekxSSlhJb0trTEEyMFhtQlNpaXdWOUs2TTExYW94LVpCY1dVWGJvRnBmM3Q0bnRvSG9iMl96WDhyTE90R0RiOTQ2MmRwRTVva01SeWEwcXFBZGxaWElMX09VMXRBYmp0Zw?oc=5",
+        "id": "gnews:e01a653f1f6b154a",
+        "title": "Mistral’s new Large 4 trails some Chinese open models in independent tests - Tom's Hardware",
+        "publisher": "Tom's Hardware",
+        "link": "https://news.google.com/rss/articles/CBMi1AJBVV95cUxPV1ZFZ0ozMkdmNFlwSWlYVm51cW1hWjJLYXVVd2k0RE1xeHNPZ1JIbnlXUnhxU0ZaUlItOWdPZUZkNG1YMC16Si1XN2FtNDBGZXR5czQzc2ZhSG9UNnFqZDY1NHdtODMtMWFlOWZsUktqXzQ3VkpOS1E5LS1sSmtSeUIxdEhGczNlMDU2c2NCT3h2c211c0RJdGlIQjNjUDZRb0FSM0diaTlFWU1fa2d3eHpRcDlfSWliQUZ6OWozUF8xYlNCZVdqTEE5Sy1NbWRGSnEwRVViandmeTZIM0xvQUNpMEZST0ctaWx0RTRuazR2WVFFX0xDb1FyZ0poaWtwZm1UUVpNT0hhZk4zVGphRlBrSlVVNEltdEZIaFFPNzFpX2xFM1p6RzcxdTY0NG5mQ3p5RE1XZkZkUXR3cW1YbDQtakJfMTZqYk00ZzFQRy0yZFlH?oc=5",
         "tag": "rest"
       }
     ]
@@ -1594,28 +1191,28 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "query": "agent sandbox escape",
+    "query": "LLM red team toolkit",
     "shelf": 2,
-    "from_cache": true,
-    "searches": 0,
-    "rate_limit_remaining": null,
+    "from_cache": false,
+    "searches": 1,
+    "rate_limit_remaining": 9,
     "brief": false,
     "pulse_lead": false,
     "shelf_only": true,
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
-        "label": "hyperlight-dev/hyperagent",
-        "href": "https://github.com/hyperlight-dev/hyperagent"
+        "label": "Erentass6/aegis-llm",
+        "href": "https://github.com/Erentass6/aegis-llm"
       },
       {
-        "label": "roerbakei/sandboxai",
-        "href": "https://github.com/roerbakei/sandboxai"
+        "label": "seikaikyo/ai-red-team",
+        "href": "https://github.com/seikaikyo/ai-red-team"
       }
     ]
   },
   "shelf": {
-    "count": 18,
+    "count": 19,
     "brief": false
   },
   "wikidata": {
@@ -1623,28 +1220,17 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "seeds": [
-      "Trail of Bits",
       "stigmergy",
-      "Sol"
+      "Sol",
+      "Astra"
     ],
-    "searches": 0,
-    "from_cache": true,
+    "searches": 3,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "deny_grounding_only": true,
     "url": "https://www.wikidata.org/w/api.php",
     "hints": [
-      {
-        "seed": "Trail of Bits",
-        "qid": null,
-        "label": null,
-        "description": null,
-        "status": "unresolved",
-        "source": "wikidata",
-        "briefEligible": false,
-        "pulseLeadEligible": false,
-        "denyGroundingOnly": true
-      },
       {
         "seed": "stigmergy",
         "qid": "Q2141158",
@@ -1658,9 +1244,20 @@
       },
       {
         "seed": "Sol",
-        "qid": "Q34104679",
-        "label": "Persistent solar influence on North Atlantic climate during the Holocene.",
-        "description": "scientific article published on 15 November 2001",
+        "qid": "Q10673071",
+        "label": "Sol",
+        "description": "unisex given name",
+        "status": "rejected_false_friend",
+        "source": "wikidata",
+        "briefEligible": false,
+        "pulseLeadEligible": false,
+        "denyGroundingOnly": true
+      },
+      {
+        "seed": "Astra",
+        "qid": "Q731938",
+        "label": "AstraZeneca",
+        "description": "British-Swedish pharmaceutical company",
         "status": "rejected_false_friend",
         "source": "wikidata",
         "briefEligible": false,
