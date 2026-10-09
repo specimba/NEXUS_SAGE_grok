@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-09T19:24:21Z",
+  "stamped_at": "2026-10-09T23:18:45Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 236,
+      "duration_ms": 201,
       "paused_until": null,
       "reason": null
     },
@@ -18,7 +18,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 3237,
+      "duration_ms": 3258,
       "paused_until": null,
       "reason": null
     },
@@ -26,8 +26,8 @@
       "id": "openalex",
       "label": "OpenAlex",
       "status": "ok",
-      "rows": 4,
-      "duration_ms": 5,
+      "rows": 3,
+      "duration_ms": 9,
       "paused_until": null,
       "reason": null
     },
@@ -44,26 +44,26 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 61,
-      "duration_ms": 8499,
+      "rows": 55,
+      "duration_ms": 8766,
       "paused_until": null,
       "reason": null
     },
     {
       "id": "rss_labs",
       "label": "lab RSS",
-      "status": "timeout",
-      "rows": 0,
-      "duration_ms": 48504,
+      "status": "ok",
+      "rows": 104,
+      "duration_ms": 592,
       "paused_until": null,
-      "reason": "timeout after 30000ms budget"
+      "reason": null
     },
     {
       "id": "rss_security",
       "label": "security RSS",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 4405,
+      "duration_ms": 196,
       "paused_until": null,
       "reason": null
     },
@@ -72,7 +72,7 @@
       "label": "Google News",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 6520,
+      "duration_ms": 196,
       "paused_until": null,
       "reason": null
     },
@@ -81,7 +81,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 2,
-      "duration_ms": 45,
+      "duration_ms": 196,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 46,
+      "duration_ms": 196,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 71499,
-    "sources_wall_ms": 55382,
-    "papers_lane_ms": 3486,
-    "slowest_source_ms": 48504,
+    "sources_ms": 13612,
+    "sources_wall_ms": 8776,
+    "papers_lane_ms": 3487,
+    "slowest_source_ms": 8766,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -113,12 +113,10 @@
       "github": 25000,
       "wikidata": 25000
     },
-    "timed_out": [
-      "rss_labs"
-    ],
-    "wall_ms": 87860,
-    "startup_ms": 55,
-    "main_ms": 87931
+    "timed_out": [],
+    "wall_ms": 9289,
+    "startup_ms": 38,
+    "main_ms": 9316
   },
   "multi_source_independent": 0,
   "stale_hours": 6,
@@ -127,17 +125,17 @@
     "multi_source_independent": 0,
     "multi_source_raw": 1,
     "self_reposts": 1,
-    "items_in": 232,
-    "clusters_out": 221,
-    "collapsed": 11,
+    "items_in": 226,
+    "clusters_out": 216,
+    "collapsed": 10,
     "multi_source": 0,
     "multi_member": 9,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 32,
+    "new_items": 5,
     "per_source": {
-      "hn-algolia": 61,
+      "hn-algolia": 55,
       "rss-lab": 104,
       "rss-security": 28,
       "gnews-rss": 29,
@@ -164,7 +162,18 @@
       }
     ],
     "ai_relevance": {
-      "rss_lab_dropped": [],
+      "rss_lab_dropped": [
+        {
+          "lab": "nvidia",
+          "title": "Rally Up: ‘Gears of War: E-Day’ Launches on GeForce NOW",
+          "reason": "category:GeForce NOW"
+        },
+        {
+          "lab": "nvidia",
+          "title": "Fall Into 25 New Games on GeForce NOW This October",
+          "reason": "category:GeForce NOW"
+        }
+      ],
       "gnews_shown_dropped": [
         {
           "publisher": "Cloudflare Blog",
@@ -236,7 +245,7 @@
         ]
       },
       {
-        "score": 0.635,
+        "score": 0.634,
         "blocked": "short-title",
         "hours_apart": 17.7,
         "a": {
@@ -279,7 +288,7 @@
         ]
       },
       {
-        "score": 0.5,
+        "score": 0.502,
         "blocked": "below-threshold",
         "hours_apart": 14.8,
         "a": {
@@ -302,7 +311,7 @@
         ]
       },
       {
-        "score": 0.462,
+        "score": 0.46,
         "blocked": "time-window",
         "hours_apart": 24.5,
         "a": {
@@ -325,7 +334,7 @@
         ]
       },
       {
-        "score": 0.462,
+        "score": 0.458,
         "blocked": "time-window",
         "hours_apart": 1422.4,
         "a": {
@@ -347,7 +356,7 @@
         ]
       },
       {
-        "score": 0.429,
+        "score": 0.431,
         "blocked": "below-threshold",
         "hours_apart": 2.9,
         "a": {
@@ -398,7 +407,7 @@
         ]
       },
       {
-        "score": 0.99,
+        "score": 0.988,
         "blocked": "time-window",
         "hours_apart": 75.6,
         "a": {
@@ -444,7 +453,7 @@
         ]
       },
       {
-        "score": 0.635,
+        "score": 0.634,
         "blocked": "short-title",
         "hours_apart": 17.7,
         "a": {
@@ -487,7 +496,7 @@
         ]
       },
       {
-        "score": 0.5,
+        "score": 0.502,
         "blocked": "below-threshold",
         "hours_apart": 14.8,
         "a": {
@@ -510,7 +519,7 @@
         ]
       },
       {
-        "score": 0.462,
+        "score": 0.46,
         "blocked": "time-window",
         "hours_apart": 24.5,
         "a": {
@@ -533,7 +542,7 @@
         ]
       },
       {
-        "score": 0.462,
+        "score": 0.458,
         "blocked": "time-window",
         "hours_apart": 1422.4,
         "a": {
@@ -560,76 +569,76 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 12,
+      "streak_ok": 13,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 96,
+      "streak_ok": 97,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 96,
+      "streak_ok": 97,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 96,
+      "streak_ok": 97,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 96,
+      "streak_ok": 97,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 96,
+      "streak_ok": 97,
       "streak_fail": 0,
-      "items_last": 61
+      "items_last": 55
     },
     {
       "id": "openalex",
       "state": "flaky",
-      "streak_ok": 8,
+      "streak_ok": 9,
       "streak_fail": 0,
-      "items_last": 4
+      "items_last": 3
     },
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 0,
-      "streak_fail": 1,
-      "items_last": 0
+      "streak_ok": 1,
+      "streak_fail": 0,
+      "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 96,
+      "streak_ok": 97,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 96,
+      "streak_ok": 97,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.02468277777777778,
+    "hours": 0.002728611111111111,
     "stale": false
   },
   "hf": {
@@ -650,7 +659,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "enriched": 4,
+    "enriched": 3,
     "secondary": 3,
     "query": "LLM agent sandbox",
     "mode": "search",
@@ -668,13 +677,6 @@
     "url": "https://api.openalex.org/works",
     "sample": [
       {
-        "id": "2610.08215",
-        "openalexId": "https://openalex.org/W4416036585",
-        "year": 2025,
-        "doi": "https://doi.org/10.18653/v1/2025.emnlp-main.466",
-        "enrichOnly": false
-      },
-      {
         "id": "W7171516088",
         "openalexId": "https://openalex.org/W7171516088",
         "year": 2026,
@@ -686,6 +688,13 @@
         "openalexId": "https://openalex.org/W7204032694",
         "year": 2026,
         "doi": "https://doi.org/10.1007/978-981-92-4805-6_13",
+        "enrichOnly": true
+      },
+      {
+        "id": "W4416036585",
+        "openalexId": "https://openalex.org/W4416036585",
+        "year": 2025,
+        "doi": "https://doi.org/10.18653/v1/2025.emnlp-main.466",
         "enrichOnly": true
       }
     ]
@@ -722,7 +731,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 61,
+    "count": 55,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -745,35 +754,110 @@
       {
         "id": "hn:50008187",
         "tag": "rest",
-        "score": 417,
+        "score": 421,
         "text": "OpenAI annualised revenues $20B less than previously signalled"
       },
       {
         "id": "hn:50002650",
         "tag": "rest",
-        "score": 367,
+        "score": 371,
         "text": "OpenAI withdraws three mathematical results"
       },
       {
         "id": "hn:50003107",
         "tag": "rest",
-        "score": 341,
+        "score": 342,
         "text": "OpenAI Withdraws 3 Math Papers"
       }
     ]
   },
   "rss": {
-    "ok": false,
-    "soft_fail": true,
-    "soft_fail_reason": "timeout after 30000ms budget",
-    "count": 0,
+    "ok": true,
+    "soft_fail": false,
+    "soft_fail_reason": null,
+    "count": 104,
     "shelf": 0,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
-    "feeds": [],
+    "feeds": [
+      {
+        "lab": "openai",
+        "url": "(cache:openai)",
+        "count": 12
+      },
+      {
+        "lab": "deepmind",
+        "url": "(cache:deepmind)",
+        "count": 12
+      },
+      {
+        "lab": "google-ai",
+        "url": "(cache:google-ai)",
+        "count": 12
+      },
+      {
+        "lab": "huggingface",
+        "url": "(cache:huggingface)",
+        "count": 12
+      },
+      {
+        "lab": "mistral",
+        "url": "(cache:mistral)",
+        "count": 12
+      },
+      {
+        "lab": "nvidia",
+        "url": "(cache:nvidia)",
+        "count": 12
+      },
+      {
+        "lab": "nvidia-dev",
+        "url": "(cache:nvidia-dev)",
+        "count": 12
+      },
+      {
+        "lab": "ms-research",
+        "url": "(cache:ms-research)",
+        "count": 10
+      },
+      {
+        "lab": "google-research",
+        "url": "https://research.google/blog/rss/",
+        "count": 12
+      }
+    ],
     "feeds_soft_fail": [],
-    "sample": []
+    "sample": [
+      {
+        "id": "rss:huggingface:e05551817b225bef",
+        "lab": "huggingface",
+        "tag": "rest",
+        "title": "Impactful scheduling for GPU clusters",
+        "link": "https://huggingface.co/blog/allenai/impactful-scheduling"
+      },
+      {
+        "id": "rss:openai:570fe3204556675e",
+        "lab": "openai",
+        "tag": "rest",
+        "title": "Sophos cuts threat investigation time by 96% with OpenAI Daybreak",
+        "link": "https://openai.com/index/sophos"
+      },
+      {
+        "id": "rss:openai:9bf93d58cc35db99",
+        "lab": "openai",
+        "tag": "companion",
+        "title": "Asana cuts model costs 76x in browser tests with GPT-6.1 Sol",
+        "link": "https://openai.com/index/asana-browser-agent"
+      },
+      {
+        "id": "rss:nvidia:dfd05486e53d5871",
+        "lab": "nvidia",
+        "tag": "rest",
+        "title": "Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents",
+        "link": "https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents/"
+      }
+    ]
   },
   "rss_security": {
     "ok": true,
@@ -785,17 +869,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "https://blog.trailofbits.com/feed/",
+        "url": "(cache:trailofbits)",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "https://blog.fox-it.com/feed/",
+        "url": "(cache:fox-it)",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "https://projectzero.google/feed.xml",
+        "url": "(cache:projectzero)",
         "count": 6
       }
     ],
@@ -849,9 +933,9 @@
       }
     ],
     "http_status": 200,
-    "content_type": "application/xml; charset=utf-8",
+    "content_type": null,
     "format": "rss2",
-    "from_cache": false,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
