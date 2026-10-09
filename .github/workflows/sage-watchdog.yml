@@ -1,0 +1,38 @@
+# PASS-Q1 §3 — the same failure-only watchdog on its own cron (catches a crawl workflow that never started).
+name: sage-watchdog
+
+on:
+  schedule:
+    - cron: "41 */4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  watchdog:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.4.2"
+      - name: watchdog
+        env:
+          WATCHDOG_REPORT: ${{ runner.temp }}/wd.md
+        run: |
+          : > "$WATCHDOG_REPORT"
+          bun desk/scripts/watchdog.ts
+      - if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: bash desk/scripts/watchdog-issue.sh open "${{ runner.temp }}/wd.md"
+      - if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: bash desk/scripts/watchdog-issue.sh close

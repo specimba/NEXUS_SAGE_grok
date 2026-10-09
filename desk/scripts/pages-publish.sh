@@ -126,6 +126,8 @@ done)"
 #     links, and every hashed _next/static URL in HTML / RSC payload / linked CSS+JS exists in $OUT (basePath stripped).
 ( cd "$DESK" && bun scripts/pages-asset-check.ts "$OUT" "$BASE" ) > /tmp/pages-asset-check.log 2>&1 \
   || fails+=("asset/font-class integrity: $(grep -E '^ - ' /tmp/pages-asset-check.log | head -3 | tr '\n' ' ')")
+# 2f2. PASS-Q1: First Load JS for "/" ≤ 185 000 B, measured the way next build prints it.
+( cd "$DESK" && node scripts/first-load.cjs .next-pages ) > /tmp/pages-first-load.log 2>&1 || fails+=("first load over cap: $(cat /tmp/pages-first-load.log)")
 # 2g. real-browser font-check against a local static serve of $OUT under $BASE (same check as the live gate).
 if [ "${#fails[@]}" -eq 0 ] && [ "${PAGES_SKIP_LOCAL_FONTCHECK:-0}" != "1" ]; then
   fport=$(( 3900 + RANDOM % 90 ))
@@ -145,9 +147,13 @@ nfiles=$(find "$OUT" -type f | wc -l); size=$(du -sh "$OUT" | cut -f1)
 log "verify OK — $nfiles files, $size, all refs under $BASE/"
 if [ "${PAGES_BUILD_ONLY:-0}" = "1" ]; then log "PAGES_BUILD_ONLY=1 — built + verified $OUT, no worktree / commit / push ($(( $(date +%s) - t0 ))s)"; exit 0; fi
 
+# PASS-Q1 §2: the runtime freshness file rides along (verified output above; this is a small static JSON, no secrets).
+if [ -f "$DESK/artifacts/sage/last-checked.json" ]; then cp "$DESK/artifacts/sage/last-checked.json" "$OUT/last-checked.json"; fi
+
 # ── 3. gh-pages worktree (fast-forward only) ──
 cd "$REPO"
-git fetch -q origin "+refs/heads/$BRANCH:refs/remotes/origin/$BRANCH" 2>/dev/null || true
+# PASS-Q1: CI passes PAGES_FETCH_DEPTH=1 (shallow); the box fetches full history as before.
+git fetch -q ${PAGES_FETCH_DEPTH:+--depth="$PAGES_FETCH_DEPTH"} origin "+refs/heads/$BRANCH:refs/remotes/origin/$BRANCH" 2>/dev/null || true
 remote_has=0; git rev-parse -q --verify "refs/remotes/origin/$BRANCH" >/dev/null && remote_has=1
 if [ ! -e "$WT/.git" ]; then
   if [ "$remote_has" = 1 ]; then

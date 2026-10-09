@@ -16,3 +16,13 @@ export function useNow(tickMs = 60_000): number | null {
   }, [tickMs]);
   return now;
 }
+
+/** PASS-Q1 §2: last crawl CHECK (gh-pages last-checked.json, refreshed even when publish is skipped); falls back to the data stamp. */
+let chk: string | undefined;
+export function useCheckedAt(dataAt: string): string {
+  const [v, setV] = useState(chk);
+  useEffect(() => {
+    if (!chk) fetch("last-checked.json", { cache: "no-store" }).then((r) => r.json()).then((j) => setV((chk = j.checked_at))).catch(() => {});
+  }, []);
+  return v && v > dataAt ? v : dataAt;
+}

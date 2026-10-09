@@ -35,7 +35,7 @@ import { DIGEST_CADENCE } from "@/data/digest-cadence";
 import { groupFirstAt, leadAgeHours } from "@/lib/lead-pick";
 import { LEAD_HELD_TEXT, leadView, nextCrawlSlotHHMM, type LeadView } from "@/lib/lead-view";
 import { IST_LABEL, istDateTime, istHHMM, istHHMMSS, istMMDD } from "@/lib/ist-time";
-import { useNow } from "@/lib/use-now";
+import { useCheckedAt, useNow } from "@/lib/use-now";
 import { footerStamp } from "@/lib/build-footer";
 import { isPausedAt, type PauseMap } from "@/lib/source-pause";
 import { istanbulHHMM, wireHeader, wireMark } from "@/lib/wire";
@@ -432,8 +432,9 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
 
   // Relative crawl age only after mount (static HTML shows the absolute Istanbul crawl time).
   const now = useNow();
-  const age = now == null ? null : crawlAgeHours(CRAWL_AT, now);
-  const fresh = now == null ? null : crawlFreshness(CRAWL_AT, now);
+  const checkedAt = useCheckedAt(CRAWL_AT);
+  const age = now == null ? null : crawlAgeHours(checkedAt, now);
+  const fresh = now == null ? null : crawlFreshness(checkedAt, now);
   // Same lead source of truth as the Brief plate (HELD flag at build, 24h age after mount).
   const leadV = leadViewAt(now);
   // Pass A1 — chrome honesty: when Digest unlock is live, topbar stops selling Sep pack/window.
@@ -465,12 +466,12 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
                 className={cn("desk-chip tabular-nums", age?.stale ? "desk-chip-warn sage-stale-chip" : "desk-chip-live")}
                 data-crawl-state={fresh?.label}
                 role="status"
-                title={`crawl ${istDateTime(CRAWL_AT)} ${IST_LABEL}${fresh ? ` · age ${fresh.hours.toFixed(1)}h` : ""} · STALE after ${STALE_GUARD_HOURS}h (4h routine)`}
+                title={`crawl ${istDateTime(CRAWL_AT)} ${IST_LABEL}${fresh ? ` · age ${fresh.hours.toFixed(1)}h` : ""} · STALE after ${STALE_GUARD_HOURS}h`}
               >
                 {fresh ? `${fresh.label} ${fresh.hours.toFixed(1)}H` : `CRAWL ${istHHMM(CRAWL_AT)}`}
               </span>
               <span className="desk-chip desk-chip-live tabular-nums" title="crawl snap" data-crawl-at={CRAWL_AT}>
-                crawl <span className="hidden md:inline">{istDateTime(CRAWL_AT)}</span>
+                checked {istHHMM(checkedAt)} · data <span className="hidden md:inline">{istDateTime(CRAWL_AT)}</span>
                 <span className="md:hidden">{istHHMM(CRAWL_AT)}</span>
                 <span className="hidden md:inline"> {IST_LABEL}</span>
               </span>
@@ -807,7 +808,8 @@ function Brief() {
   const staleLead = lv.held ? LEAD_TODAY : null;
   // Next crawl slot (02/06/10/14/18/22 :11 Istanbul): wall clock after mount, crawl stamp in static HTML.
   const nextTry = nextCrawlSlotHHMM(leadNow ?? Date.parse(CRAWL_AT));
-  const age = leadNow == null ? null : crawlAgeHours(CRAWL_AT, leadNow);
+  const chkAt = useCheckedAt(CRAWL_AT);
+  const age = leadNow == null ? null : crawlAgeHours(chkAt, leadNow);
   const waveMax = 956;
   const waveVals: Record<number, number> = { 1: 80, 2: 700, 3: 956 };
   const pip = [
@@ -1308,7 +1310,8 @@ export function Pulse() {
   useEffect(() => report(filtered.length, rows.length), [filtered.length, rows.length, report]);
   // Beat 10: every since-row stays visible above the divider, even past the top-N cap.
   const visible = showAll || q ? filtered : filtered.slice(0, Math.max(PULSE_V5_MAX_ROWS, part.since.length + PULSE_SINCE_TAIL));
-  const fresh = now == null ? null : crawlFreshness(CRAWL_AT, now);
+  const chkAt = useCheckedAt(CRAWL_AT);
+  const fresh = now == null ? null : crawlFreshness(chkAt, now);
   const health = [...SOURCE_HEALTH].sort(
     (a, b) => HEALTH_ORDER.indexOf(a.id) - HEALTH_ORDER.indexOf(b.id),
   );
@@ -1960,7 +1963,7 @@ function Digest() {
             type="button"
             className="focus-phosphor h-9 bg-accent px-3 font-mono text-kicker uppercase tracking-kicker text-accent-fg"
             onClick={runPreview}
-            title="Browser preview only — durable tick is bun run digest:tick"
+            title="preview only · bun run digest:tick"
           >
             Preview report
           </button>
@@ -1976,7 +1979,7 @@ function Digest() {
           <button
             type="button"
             className="term focus-phosphor h-9 px-3 font-mono text-kicker uppercase tracking-kicker"
-            title="UI twin JSON — durable wipe pack: bun run pack:export · VM digest packs: artifacts/sage/packs/"
+            title="UI twin JSON · bun run pack:export"
             onClick={() =>
               download(
                 `sage-pack-twin-${CYCLE.id}.json`,

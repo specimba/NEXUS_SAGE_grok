@@ -1046,7 +1046,13 @@ async function main() {
   let gmailQueryHash = "";
   let gmailFetched = 0;
   ms.gmail_news = 0;
-  {
+  // PASS-Q1: Gmail is box-only. In CI (SAGE_GMAIL_BOX_ONLY=1) no transport is touched and the committed snapshot stays.
+  const gmailBoxOnly = process.env.SAGE_GMAIL_BOX_ONLY === "1";
+  if (gmailBoxOnly) {
+    gmailSoftFail = true;
+    gmailSoftFailReason = "box-only";
+    console.log(`Gmail news: box-only (CI) — committed snapshot kept (${GMAIL_NEWS.length} rows)`);
+  } else {
     const g0 = Date.now();
     try {
       const token = tokenFromEnv();
@@ -1454,7 +1460,7 @@ async function main() {
     writeText(resolve(root, "src/data/gnews-rss.ts"), renderGnewsRssTs(gnewsRows, stamp, rowMeta));
   }
   // Pass F: always refresh the module (empty on soft-fail with no cache) so the desk matches the stamp.
-  writeText(resolve(root, "src/data/gmail-news.ts"), renderGmailNewsTs(gmailRows, stamp));
+  if (!gmailBoxOnly) writeText(resolve(root, "src/data/gmail-news.ts"), renderGmailNewsTs(gmailRows, stamp));
   writeText(resolve(root, "src/data/soft-fail-meters.ts"), renderSoftFailMetersTs(stamp, {
     gmail: { soft: gmailSoftFail, ok: gmailOk, detail: gmailSoftFail ? (gmailSoftFailReason ?? "soft") : gmailOk ? `${gmailRows.length} landed` : "empty" },
   }));

@@ -1,0 +1,143 @@
+# PASS-Q1 (refs/PASS-Q1-ACTIONS-CRON.md) — 4h crawl + digest tick + hash-gated Pages publish, no agent awake.
+# Free only: standard runner, GITHUB_TOKEN only, no other secrets. Gmail (F) and X-session (E) are box-only:
+# no credentials here; ingest runs with SAGE_GMAIL_BOX_ONLY=1 (committed Gmail snapshot kept, soft "box-only" meter)
+# and X taste reads the committed src/data/x-taste.ts (soft "taste stale"). Cycle stays 003.
+name: sage-crawl
+
+on:
+  schedule:
+    - cron: "11 23,3,7,11,15,19 * * *" # UTC = 02:11/06:11/10:11/14:11/18:11/22:11 Europe/Istanbul
+  workflow_dispatch:
+
+concurrency:
+  group: sage-crawl
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+env:
+  TZ: Europe/Istanbul
+  SAGE_GMAIL_BOX_ONLY: "1"
+  PAGES_FETCH_DEPTH: "1"
+  GIT_AUTHOR_NAME: github-actions[bot]
+  GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+  GIT_COMMITTER_NAME: github-actions[bot]
+  GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    outputs:
+      changed: ${{ steps.hash.outputs.changed }}
+    defaults:
+      run:
+        working-directory: desk
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.4.2"
+      - run: bun install --frozen-lockfile
+      - name: ingest (+ postingest rank/digest snapshot)
+        run: bun run ingest
+      - name: a2 digest tick
+        run: A2_FORCE_WINDOW=1 bun run a2:tick
+      - name: pack export (artifact backup, §4)
+        run: bun run pack:export
+      - name: hash gate (§2)
+        id: hash
+        run: bun scripts/reader-hash.ts
+      - name: publish (hash changed) — build + asset/font/coherence/first-load checks + gh-pages ff push
+        if: steps.hash.outputs.changed == 'true'
+        run: |
+          bun scripts/reader-hash.ts --commit published
+          PAGES_WORKTREE="$RUNNER_TEMP/pages" bash scripts/pages-publish.sh
+      - name: skip publish (hash unchanged) — refresh gh-pages last-checked.json only
+        if: steps.hash.outputs.changed != 'true'
+        run: |
+          bun scripts/reader-hash.ts --commit skipped
+          PAGES_WORKTREE="$RUNNER_TEMP/pages" bash scripts/pages-checked-push.sh
+      - name: commit data to main [skip ci]
+        run: |
+          crawl="$(grep -oE 'CRAWL_AT = "[^"]+"' src/data/x-crawl.ts | cut -d'"' -f2)"
+          mkdir -p ../logs
+          echo "$(date -u +%FT%TZ) gh-actions run ${{ github.run_id }} crawl $crawl changed=${{ steps.hash.outputs.changed }}" >> ../logs/crawl.log
+          if [ "${{ steps.hash.outputs.changed }}" = "true" ]; then
+            git add -- src/data artifacts/sage
+            msg="chore(sage): 4h crawl $crawl (actions) [skip ci]"
+          else
+            git checkout -- src/data artifacts/sage 2>/dev/null || true
+            git add -- artifacts/sage/last-checked.json
+            msg="chore(sage): crawl check, reader unchanged (actions) [skip ci]"
+          fi
+          git add -f -- ../logs/crawl.log
+          git commit -q -m "$msg"
+          for i in 1 2 3; do
+            git push -q origin HEAD:main && exit 0
+            git fetch -q --deepen=50 origin main
+            git rebase -q -X theirs origin/main
+          done
+          echo "push to main failed after 3 tries" >&2; exit 1
+      - name: pack backup id
+        id: pack
+        if: always()
+        run: echo "id=$(bun -e 'console.log(JSON.parse(require("fs").readFileSync("artifacts/sage/digest-last.json","utf8")).pack_id ?? "none")')" >> "$GITHUB_OUTPUT"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sage-pack-${{ steps.pack.outputs.id }}-${{ github.run_id }}
+          retention-days: 30
+          if-no-files-found: warn
+          path: |
+            packs/*.tar.gz
+            desk/artifacts/sage/packs/
+            desk/artifacts/sage/digest-last.json
+            desk/artifacts/sage/reader-hash.json
+
+  watchdog:
+    needs: crawl
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.4.2"
+      - name: watchdog (§3, failure-only)
+        id: wd
+        env:
+          WATCHDOG_REPORT: ${{ runner.temp }}/wd.md
+          CRAWL_RESULT: ${{ needs.crawl.result }}
+        run: |
+          : > "$WATCHDOG_REPORT"
+          if [ "$CRAWL_RESULT" != "success" ]; then echo "- crawl job $CRAWL_RESULT" >> "$WATCHDOG_REPORT"; fi
+          ok=0
+          # Pages deploy lags the gh-pages push by a minute or two: retry the live compare.
+          for i in $(seq 1 10); do
+            if WATCHDOG_REPORT= bun desk/scripts/watchdog.ts 2>/dev/null; then ok=1; break; fi
+            sleep 30
+          done
+          [ "$ok" = 1 ] || bun desk/scripts/watchdog.ts || true
+          [ ! -s "$WATCHDOG_REPORT" ] || { cat "$WATCHDOG_REPORT"; exit 1; }
+      - name: open/update sage-watchdog issue
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: bash desk/scripts/watchdog-issue.sh open "${{ runner.temp }}/wd.md"
+      - name: close sage-watchdog issue on green
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: bash desk/scripts/watchdog-issue.sh close
