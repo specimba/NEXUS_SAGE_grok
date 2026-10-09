@@ -1,0 +1,105 @@
+# PASS-Q1G (refs/PASS-Q1G-GITLAB-CI.md) — quota-smart crawl on GitLab CI Free, publish to GitHub Pages.
+# Lives in the GitHub repo; GitLab project nexus-sage-ci points its CI config at this file's raw URL.
+# No mirror: the job shallow-clones the public GitHub repo, runs, and pushes back (GitHub = source of truth).
+# Secrets: only GH_PUSH_TOKEN (masked + protected GitLab variable, fine-grained, Contents RW on this repo only).
+# Gmail (F) / X-session (E) are box-only: no creds here, SAGE_GMAIL_BOX_ONLY=1, committed snapshots only.
+# Schedule is set in the GitLab UI: cron "11 6,11,16,21 * * *", timezone Europe/Istanbul, branch main.
+# gh-pages: fast-forward only, never force. Cycle stays 003.
+
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+    - if: $CI_PIPELINE_SOURCE == "web"
+    - when: never
+
+variables:
+  TZ: Europe/Istanbul
+  SAGE_GMAIL_BOX_ONLY: "1"
+  PAGES_FETCH_DEPTH: "1"
+  WATCHDOG_MAX_AGE_H: "10"
+  GIT_STRATEGY: none          # the GitLab repo is only a README; we clone GitHub ourselves
+  GH_REPO: specimba/NEXUS_SAGE_grok
+  GIT_AUTHOR_NAME: sage-gitlab-ci
+  GIT_AUTHOR_EMAIL: sage-gitlab-ci@users.noreply.github.com
+  GIT_COMMITTER_NAME: sage-gitlab-ci
+  GIT_COMMITTER_EMAIL: sage-gitlab-ci@users.noreply.github.com
+  BUN_INSTALL_CACHE_DIR: $CI_PROJECT_DIR/.cache/bun
+  SLOW_SECONDS: "240"
+
+crawl:
+  # oven/bun images ship without git, so: pinned node bookworm (has git, curl) + bun 1.4.2 from the npm cache. No apt.
+  image: node:22.12-bookworm
+  timeout: 6m
+  interruptible: false
+  resource_group: sage-crawl
+  cache:
+    - key: bun-1.4.2-v1     # cache:key:files can't see bun.lock (cloned in-script); bump v1 when the lockfile churns
+      paths: [.cache/bun]
+    - key: next-$CI_PROJECT_ID
+      paths: [.cache/next, .cache/npm]
+  script:
+    - t0=$(date +%s)
+    - npm i -g --silent --cache "$CI_PROJECT_DIR/.cache/npm" bun@1.4.2 && bun --version
+    - test -n "$GH_PUSH_TOKEN" || { echo "GH_PUSH_TOKEN missing (masked+protected CI variable)"; exit 1; }
+    - git clone -q --depth 1 --branch main "https://github.com/$GH_REPO.git" repo
+    - cd repo
+    - git config credential.helper '!f() { echo username=x-access-token; echo "password=$GH_PUSH_TOKEN"; }; f'
+    - cd desk
+    # watchdog first: previous run's checked_at vs 10h (catches a missed slot)
+    - bun scripts/watchdog.ts
+    - mkdir -p .next && rm -rf .next/cache && mkdir -p "$CI_PROJECT_DIR/.cache/next" && ln -s "$CI_PROJECT_DIR/.cache/next" .next/cache
+    - bun install --frozen-lockfile
+    - bun run ingest
+    - A2_FORCE_WINDOW=1 bun run a2:tick
+    - bun run pack:export
+    - export GITHUB_OUTPUT="$CI_PROJECT_DIR/hash.out"; true > "$GITHUB_OUTPUT"
+    - bun scripts/reader-hash.ts
+    - changed=$(grep -oE '^changed=.*' "$GITHUB_OUTPUT" | tail -1 | cut -d= -f2); echo "changed=$changed"
+    - |
+      if [ "$changed" = "true" ]; then
+        bun scripts/reader-hash.ts --commit published
+        PAGES_WORKTREE="$CI_PROJECT_DIR/pages" bash scripts/pages-publish.sh
+      else
+        bun scripts/reader-hash.ts --commit skipped
+        PAGES_WORKTREE="$CI_PROJECT_DIR/pages" bash scripts/pages-checked-push.sh
+      fi
+    - |
+      crawl="$(grep -oE 'CRAWL_AT = "[^"]+"' src/data/x-crawl.ts | cut -d'"' -f2)"
+      dur=$(( $(date +%s) - t0 )); slow=""; [ "$dur" -gt "$SLOW_SECONDS" ] && slow=" slow"
+      mkdir -p ../logs
+      echo "$(date -u +%FT%TZ) gitlab pipeline $CI_PIPELINE_ID crawl $crawl changed=$changed ${dur}s$slow" >> ../logs/crawl.log
+      if [ "$changed" = "true" ]; then
+        git add -- src/data artifacts/sage
+        msg="chore(sage): crawl $crawl (gitlab) [skip ci]"
+      else
+        git checkout -- src/data artifacts/sage 2>/dev/null || true
+        git add -- artifacts/sage/last-checked.json
+        msg="chore(sage): crawl check, reader unchanged (gitlab) [skip ci]"
+      fi
+      git add -f -- ../logs/crawl.log
+      git commit -q -m "$msg"
+      ok=0
+      for i in 1 2 3; do
+        if git push -q origin HEAD:main; then ok=1; break; fi
+        git fetch -q --deepen=50 origin main
+        git rebase -q -X theirs origin/main
+      done
+      [ "$ok" = 1 ] || { echo "push to main failed after 3 tries" >&2; exit 1; }
+    # budget guard: two `slow` runs in a row fail the job
+    - |
+      if [ "$(tail -2 ../logs/crawl.log | grep -c ' slow$')" = 2 ]; then echo "watchdog: 2 slow runs in a row (>${SLOW_SECONDS}s)" >&2; exit 1; fi
+    # watchdog last: gh-pages crawl = main crawl, soft-fail ratio, hash gate (Pages deploy lags; retry)
+    - |
+      ok=0
+      for i in 1 2 3 4 5 6; do bun scripts/watchdog.ts >/dev/null 2>&1 && { ok=1; break; }; sleep 20; done
+      [ "$ok" = 1 ] || bun scripts/watchdog.ts
+    - echo "PACK_ID=$(bun -e 'console.log(JSON.parse(require("fs").readFileSync("artifacts/sage/digest-last.json","utf8")).pack_id ?? "none")')"
+  artifacts:
+    when: always
+    name: sage-pack-$CI_PIPELINE_ID
+    expire_in: 30 days
+    paths:
+      - repo/packs/*.tar.gz
+      - repo/desk/artifacts/sage/packs/
+      - repo/desk/artifacts/sage/digest-last.json
+      - repo/desk/artifacts/sage/reader-hash.json
