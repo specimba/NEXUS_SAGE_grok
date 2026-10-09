@@ -5,6 +5,7 @@
  * Zero credentials. No Anthropic/Meta/Cohere/xAI HTML scrape. No Reddit.
  */
 
+import { RSS_FEED_TIMEOUT_MS, rssTimeoutSignal } from "./rss-timeout";
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
@@ -385,6 +386,7 @@ async function getXml(
   url: string,
   fetchImpl: typeof fetch = fetch,
   pace?: Pace,
+  timeoutMs: number = RSS_FEED_TIMEOUT_MS,
 ): Promise<
   | { ok: true; body: string }
   | { ok: false; status: number; reason: string }
@@ -393,6 +395,7 @@ async function getXml(
   lastRequestAt = Date.now();
   const res = await fetchImpl(url, {
     method: "GET",
+    signal: rssTimeoutSignal(timeoutMs),
     headers: {
       Accept: "application/rss+xml, application/atom+xml, application/xml, text/xml, */*",
       "User-Agent": RSS_UA,
@@ -426,6 +429,8 @@ export type FetchRssLabsOpts = {
   /** Request pacing override (tests pass `minIntervalMs: 0`); default = the source's *_MIN_INTERVAL_MS. */
   minIntervalMs?: number;
   sleep?: Pace["sleep"];
+  /** Per-feed fetch cap (default RSS_FEED_TIMEOUT_MS); tests pass a small value. */
+  feedTimeoutMs?: number;
 };
 
 export type FetchRssLabsResult = {
@@ -519,7 +524,7 @@ export async function fetchRssLabs(
       let lastReason = "network/empty";
       for (const url of feed.urls) {
         try {
-          const res = await getXml(url, fetchImpl, pace);
+          const res = await getXml(url, fetchImpl, pace, opts.feedTimeoutMs ?? RSS_FEED_TIMEOUT_MS);
           if (!res.ok) {
             lastReason = res.reason;
             // 403/404/HTML/5xx → try next first-party URL if any; else soft_fail feed
@@ -531,7 +536,10 @@ export async function fetchRssLabs(
           writeCache(cacheDir, feed.lab, got, now);
           break;
         } catch (err) {
-          lastReason = `network: ${String(err)}`;
+          lastReason =
+            (err as Error)?.name === "TimeoutError" || (err as Error)?.name === "AbortError"
+              ? `timeout ${opts.feedTimeoutMs ?? RSS_FEED_TIMEOUT_MS}ms`
+              : `network: ${String(err)}`;
           console.log(`RSS[${feed.lab}]: fetch failed — ${String(err)}`);
           continue;
         }

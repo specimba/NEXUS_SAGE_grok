@@ -6,6 +6,7 @@
  * DENY: paid X · Bluesky · Reddit · scrape farms · Sol/Astra/incident standing · topic-ID invent.
  */
 
+import { rssTimeoutSignal } from "./rss-timeout";
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
@@ -533,6 +534,7 @@ async function getXml(
   lastRequestAt = Date.now();
   const res = await fetchImpl(url, {
     method: "GET",
+    signal: rssTimeoutSignal(),
     headers: {
       Accept: "application/rss+xml, application/xml, text/xml, */*",
       "User-Agent": GNEWS_UA,

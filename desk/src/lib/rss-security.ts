@@ -10,6 +10,7 @@ import { fileURLToPath } from "node:url";
 import { classifyPost, type PostClass } from "./x-hygiene";
 import { classifyUrl } from "./ingest/shelf";
 import { paceWait, type Pace } from "./pace";
+import { rssTimeoutSignal } from "./rss-timeout";
 import {
   itemId,
   parseRssOrAtom,
@@ -327,6 +328,7 @@ async function getXmlStreamCapped(
   lastRequestAt = Date.now();
   const res = await fetchImpl(url, {
     method: "GET",
+    signal: rssTimeoutSignal(),
     headers: {
       Accept:
         "application/rss+xml, application/atom+xml, application/xml, text/xml, */*",
@@ -404,6 +406,7 @@ async function getXml(
   lastRequestAt = Date.now();
   const res = await fetchImpl(url, {
     method: "GET",
+    signal: rssTimeoutSignal(),
     headers: {
       Accept:
         "application/rss+xml, application/atom+xml, application/xml, text/xml, */*",
