@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-10T11:13:02Z",
+  "stamped_at": "2026-10-10T15:14:07Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 186,
+      "duration_ms": 330,
       "paused_until": null,
       "reason": null
     },
@@ -18,7 +18,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 465,
+      "duration_ms": 3262,
       "paused_until": null,
       "reason": null
     },
@@ -27,7 +27,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 3,
+      "duration_ms": 5,
       "paused_until": null,
       "reason": null
     },
@@ -36,7 +36,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 1,
+      "duration_ms": 2,
       "paused_until": null,
       "reason": null
     },
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 67,
-      "duration_ms": 8360,
+      "rows": 63,
+      "duration_ms": 8607,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 16696,
+      "duration_ms": 749,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 4285,
+      "duration_ms": 304,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 47,
-      "duration_ms": 6493,
+      "rows": 46,
+      "duration_ms": 303,
       "paused_until": null,
       "reason": null
     },
@@ -81,7 +81,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 2,
-      "duration_ms": 44,
+      "duration_ms": 303,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 44,
+      "duration_ms": 2869,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 36577,
-    "sources_wall_ms": 16698,
-    "papers_lane_ms": 670,
-    "slowest_source_ms": 16696,
+    "sources_ms": 16734,
+    "sources_wall_ms": 8609,
+    "papers_lane_ms": 3608,
+    "slowest_source_ms": 8607,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -114,9 +114,9 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 17264,
-    "startup_ms": 59,
-    "main_ms": 17288
+    "wall_ms": 9053,
+    "startup_ms": 67,
+    "main_ms": 9067
   },
   "multi_source_independent": 7,
   "stale_hours": 6,
@@ -125,23 +125,48 @@
     "multi_source_independent": 7,
     "multi_source_raw": 12,
     "self_reposts": 5,
-    "items_in": 256,
-    "clusters_out": 226,
-    "collapsed": 30,
+    "items_in": 251,
+    "clusters_out": 223,
+    "collapsed": 28,
     "multi_source": 7,
-    "multi_member": 18,
+    "multi_member": 17,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 22,
+    "new_items": 4,
     "per_source": {
-      "hn-algolia": 67,
+      "hn-algolia": 63,
       "rss-lab": 104,
       "rss-security": 28,
-      "gnews-rss": 47,
+      "gnews-rss": 46,
       "gmail-news": 10
     },
     "multi_source_clusters": [
+      {
+        "title": "The hazy OpenAI growth metric driving Wall Street",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:50030776",
+            "source": "hn-algolia",
+            "title": "The hazy OpenAI growth metric driving Wall Street",
+            "at": "2026-10-10T08:07:08Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:81ccc2d66926ba82",
+            "source": "gnews-rss",
+            "title": "The hazy OpenAI growth metric driving Wall Street - Financial Times",
+            "at": "2026-10-09T20:57:10Z",
+            "publisher": "Financial Times"
+          }
+        ]
+      },
       {
         "title": "OpenAI annualised revenues $20B less than previously signalled",
         "sources": [
@@ -309,38 +334,6 @@
             "title": "Fired OpenAI safety researchers say they were pushed out over ‘suspicious’ circumstances - CNN",
             "at": "2026-10-08T23:22:50Z",
             "publisher": "CNN"
-          }
-        ]
-      },
-      {
-        "title": "Google is launching a one-stop Gemini agent for your work tasks",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 3,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:50006368",
-            "source": "hn-algolia",
-            "title": "Google is launching a one-stop Gemini agent for your work tasks",
-            "at": "2026-10-08T14:39:57Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:4e197a3d95622493",
-            "source": "gnews-rss",
-            "title": "Google is launching a one-stop Gemini agent for your work tasks - The Verge",
-            "at": "2026-10-08T14:28:03Z",
-            "publisher": "The Verge"
-          },
-          {
-            "id": "gnews:85450a508d116781",
-            "source": "gnews-rss",
-            "title": "Google Launches New Gemini AI Agent to Execute Work Tasks - entARABI",
-            "at": "2026-10-09T10:46:49Z",
-            "publisher": "entARABI"
           }
         ]
       },
@@ -536,49 +529,7 @@
         ]
       },
       {
-        "score": 0.658,
-        "blocked": "short-title",
-        "hours_apart": 13.3,
-        "a": {
-          "id": "hn:50012543",
-          "source": "hn-algolia",
-          "title": "The Gemini Agent",
-          "at": "2026-10-08T21:26:28Z"
-        },
-        "b": {
-          "id": "gnews:85450a508d116781",
-          "source": "gnews-rss",
-          "title": "Google Launches New Gemini AI Agent to Execute Work Tasks - entARABI",
-          "at": "2026-10-09T10:46:49Z"
-        },
-        "shared": [
-          "gemini",
-          "agent"
-        ]
-      },
-      {
-        "score": 0.654,
-        "blocked": "short-title",
-        "hours_apart": 7,
-        "a": {
-          "id": "hn:50012543",
-          "source": "hn-algolia",
-          "title": "The Gemini Agent",
-          "at": "2026-10-08T21:26:28Z"
-        },
-        "b": {
-          "id": "gnews:4e197a3d95622493",
-          "source": "gnews-rss",
-          "title": "Google is launching a one-stop Gemini agent for your work tasks - The Verge",
-          "at": "2026-10-08T14:28:03Z"
-        },
-        "shared": [
-          "gemini",
-          "agent"
-        ]
-      },
-      {
-        "score": 0.612,
+        "score": 0.616,
         "blocked": "time-window",
         "hours_apart": 33.6,
         "a": {
@@ -599,7 +550,7 @@
         ]
       },
       {
-        "score": 0.541,
+        "score": 0.54,
         "blocked": "time-window",
         "hours_apart": 38.9,
         "a": {
@@ -622,7 +573,7 @@
         ]
       },
       {
-        "score": 0.541,
+        "score": 0.54,
         "blocked": "time-window",
         "hours_apart": 35.4,
         "a": {
@@ -667,7 +618,7 @@
         ]
       },
       {
-        "score": 0.507,
+        "score": 0.506,
         "blocked": "below-threshold",
         "hours_apart": 8.8,
         "a": {
@@ -687,6 +638,51 @@
           "3",
           "safety",
           "researcher"
+        ]
+      },
+      {
+        "score": 0.504,
+        "blocked": "below-threshold",
+        "hours_apart": 15.9,
+        "a": {
+          "id": "hn:50019173",
+          "source": "hn-algolia",
+          "title": "OpenAI projected to bring in $20B less in revenue than expected",
+          "at": "2026-10-09T11:48:26Z"
+        },
+        "b": {
+          "id": "gnews:0f2b3dd9b0276e28",
+          "source": "gnews-rss",
+          "title": "OpenAI annualized revenue $20 billion less than previously reported - Axios",
+          "at": "2026-10-08T19:54:54Z"
+        },
+        "shared": [
+          "openai",
+          "20b",
+          "less",
+          "revenu"
+        ]
+      },
+      {
+        "score": 0.482,
+        "blocked": "below-threshold",
+        "hours_apart": 17.7,
+        "a": {
+          "id": "hn:50013972",
+          "source": "hn-algolia",
+          "title": "OpenAI Safety Researchers Fired",
+          "at": "2026-10-08T23:38:03Z"
+        },
+        "b": {
+          "id": "gnews:7a6017133fa647e6",
+          "source": "gnews-rss",
+          "title": "Controversy swirls over ‘abrupt’ firing of OpenAI safety team members involved in the Hugging Face hack investigation - Fortune",
+          "at": "2026-10-09T17:21:00Z"
+        },
+        "shared": [
+          "openai",
+          "safety",
+          "fir"
         ]
       }
     ],
@@ -742,48 +738,6 @@
         ]
       },
       {
-        "score": 0.658,
-        "blocked": "short-title",
-        "hours_apart": 13.3,
-        "a": {
-          "id": "hn:50012543",
-          "source": "hn-algolia",
-          "title": "The Gemini Agent",
-          "at": "2026-10-08T21:26:28Z"
-        },
-        "b": {
-          "id": "gnews:85450a508d116781",
-          "source": "gnews-rss",
-          "title": "Google Launches New Gemini AI Agent to Execute Work Tasks - entARABI",
-          "at": "2026-10-09T10:46:49Z"
-        },
-        "shared": [
-          "gemini",
-          "agent"
-        ]
-      },
-      {
-        "score": 0.654,
-        "blocked": "short-title",
-        "hours_apart": 7,
-        "a": {
-          "id": "hn:50012543",
-          "source": "hn-algolia",
-          "title": "The Gemini Agent",
-          "at": "2026-10-08T21:26:28Z"
-        },
-        "b": {
-          "id": "gnews:4e197a3d95622493",
-          "source": "gnews-rss",
-          "title": "Google is launching a one-stop Gemini agent for your work tasks - The Verge",
-          "at": "2026-10-08T14:28:03Z"
-        },
-        "shared": [
-          "gemini",
-          "agent"
-        ]
-      },
-      {
         "score": 0.624,
         "blocked": "time-window",
         "hours_apart": 30.8,
@@ -805,7 +759,7 @@
         ]
       },
       {
-        "score": 0.612,
+        "score": 0.616,
         "blocked": "time-window",
         "hours_apart": 33.6,
         "a": {
@@ -826,7 +780,7 @@
         ]
       },
       {
-        "score": 0.541,
+        "score": 0.54,
         "blocked": "time-window",
         "hours_apart": 38.9,
         "a": {
@@ -849,7 +803,7 @@
         ]
       },
       {
-        "score": 0.541,
+        "score": 0.54,
         "blocked": "time-window",
         "hours_apart": 35.4,
         "a": {
@@ -870,6 +824,51 @@
           "less",
           "previously"
         ]
+      },
+      {
+        "score": 0.536,
+        "blocked": "below-threshold",
+        "hours_apart": 21.8,
+        "a": {
+          "id": "hn:50013972",
+          "source": "hn-algolia",
+          "title": "OpenAI Safety Researchers Fired",
+          "at": "2026-10-08T23:38:03Z"
+        },
+        "b": {
+          "id": "gnews:64059e3a0f047594",
+          "source": "gnews-rss",
+          "title": "Fired OpenAI employees question the company's commitment to safety - WVAS",
+          "at": "2026-10-09T21:28:00Z"
+        },
+        "shared": [
+          "openai",
+          "safety",
+          "fir"
+        ]
+      },
+      {
+        "score": 0.506,
+        "blocked": "below-threshold",
+        "hours_apart": 8.8,
+        "a": {
+          "id": "hn:50013071",
+          "source": "hn-algolia",
+          "title": "OpenAI cuts ties with 3 safety researchers",
+          "at": "2026-10-08T22:06:36Z"
+        },
+        "b": {
+          "id": "gnews:3b70052fc85a9128",
+          "source": "gnews-rss",
+          "title": "OpenAI faces AI safety backlash after firing 3 researchers - People Matters Global",
+          "at": "2026-10-09T06:56:25Z"
+        },
+        "shared": [
+          "openai",
+          "3",
+          "safety",
+          "researcher"
+        ]
       }
     ]
   },
@@ -877,76 +876,76 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 17,
+      "streak_ok": 18,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 101,
+      "streak_ok": 102,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 101,
+      "streak_ok": 102,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 101,
+      "streak_ok": 102,
       "streak_fail": 0,
-      "items_last": 47
+      "items_last": 46
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 101,
+      "streak_ok": 102,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 101,
+      "streak_ok": 102,
       "streak_fail": 0,
-      "items_last": 67
+      "items_last": 63
     },
     {
       "id": "openalex",
       "state": "flaky",
-      "streak_ok": 13,
+      "streak_ok": 14,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 5,
+      "streak_ok": 6,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 101,
+      "streak_ok": 102,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 101,
+      "streak_ok": 102,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.0049702777777777775,
+    "hours": 0.002631388888888889,
     "stale": false
   },
   "hf": {
@@ -1027,7 +1026,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 67,
+    "count": 63,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -1050,19 +1049,19 @@
       {
         "id": "hn:50008187",
         "tag": "rest",
-        "score": 424,
+        "score": 425,
         "text": "OpenAI annualised revenues $20B less than previously signalled"
       },
       {
         "id": "hn:50018350",
         "tag": "rest",
-        "score": 340,
+        "score": 346,
         "text": "OpenAI fires three safety researchers for \"mishandling research information\""
       },
       {
         "id": "hn:50013902",
         "tag": "rest",
-        "score": 203,
+        "score": 204,
         "text": "OpenAI, the Partition Principle, and Mathematics"
       }
     ]
@@ -1079,47 +1078,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "https://openai.com/news/rss.xml",
+        "url": "(cache:openai)",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "https://deepmind.google/blog/rss.xml",
+        "url": "(cache:deepmind)",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "https://blog.google/technology/ai/rss/",
+        "url": "(cache:google-ai)",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "https://huggingface.co/blog/feed.xml",
+        "url": "(cache:huggingface)",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "https://mistral.ai/rss.xml",
+        "url": "(cache:mistral)",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "https://blogs.nvidia.com/feed/",
+        "url": "(cache:nvidia)",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "https://developer.nvidia.com/blog/feed",
+        "url": "(cache:nvidia-dev)",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
+        "url": "(cache:ms-research)",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "(cache:google-research)",
+        "url": "https://research.google/blog/rss/",
         "count": 12
       }
     ],
@@ -1165,17 +1164,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "https://blog.trailofbits.com/feed/",
+        "url": "(cache:trailofbits)",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "https://blog.fox-it.com/feed/",
+        "url": "(cache:fox-it)",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "https://projectzero.google/feed.xml",
+        "url": "(cache:projectzero)",
         "count": 6
       }
     ],
@@ -1216,9 +1215,17 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 47,
+    "items": 46,
     "pool": 281,
     "corroborators": [
+      {
+        "id": "gnews:81ccc2d66926ba82",
+        "anchor_id": "hn:50030776",
+        "score": 1,
+        "title": "The hazy OpenAI growth metric driving Wall Street - Financial Times",
+        "publisher": "Financial Times",
+        "self_repost": false
+      },
       {
         "id": "gnews:2b570fdab45dcbcc",
         "anchor_id": "hn:50023260",
@@ -1246,7 +1253,7 @@
       {
         "id": "gnews:3b70052fc85a9128",
         "anchor_id": "hn:50013972",
-        "score": 0.759,
+        "score": 0.758,
         "title": "OpenAI faces AI safety backlash after firing 3 researchers - People Matters Global",
         "publisher": "People Matters Global",
         "self_repost": false
@@ -1257,22 +1264,6 @@
         "score": 0.745,
         "title": "Fired OpenAI safety researchers say they were pushed out over ‘suspicious’ circumstances - CNN",
         "publisher": "CNN",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:4e197a3d95622493",
-        "anchor_id": "hn:50006368",
-        "score": 1,
-        "title": "Google is launching a one-stop Gemini agent for your work tasks - The Verge",
-        "publisher": "The Verge",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:85450a508d116781",
-        "anchor_id": "hn:50006368",
-        "score": 0.634,
-        "title": "Google Launches New Gemini AI Agent to Execute Work Tasks - entARABI",
-        "publisher": "entARABI",
         "self_repost": false
       },
       {
@@ -1357,9 +1348,9 @@
       }
     ],
     "http_status": 200,
-    "content_type": "application/xml; charset=utf-8",
+    "content_type": null,
     "format": "rss2",
-    "from_cache": false,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1487,8 +1478,8 @@
       "Astra",
       "Hugging Face"
     ],
-    "searches": 0,
-    "from_cache": true,
+    "searches": 2,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "deny_grounding_only": true,
@@ -1496,9 +1487,9 @@
     "hints": [
       {
         "seed": "Sol",
-        "qid": "Q10673071",
-        "label": "Sol",
-        "description": "unisex given name",
+        "qid": "Q34104679",
+        "label": "Persistent solar influence on North Atlantic climate during the Holocene.",
+        "description": "scientific article published on 15 November 2001",
         "status": "rejected_false_friend",
         "source": "wikidata",
         "briefEligible": false,

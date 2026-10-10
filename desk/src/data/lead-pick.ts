@@ -3,8 +3,9 @@ import type { LeadEntry } from "@/lib/lead-pick";
 
 export const LEAD_TODAY: LeadEntry | null = {
   "date": "2026-10-10",
-  "at": "2026-10-10T03:18:13.174Z",
-  "crawl_at": "2026-10-10T03:17:55Z",
+  "at": "2026-10-10T15:14:16.526Z",
+  "crawl_at": "2026-10-10T15:14:07Z",
+  "catch_up": true,
   "excluded": [
     {
       "cluster_id": "cl:hn:50008187",
@@ -14,11 +15,6 @@ export const LEAD_TODAY: LeadEntry | null = {
     {
       "cluster_id": "cl:hn:50013972",
       "headline": "OpenAI Safety Researchers Fired",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:hn:50006368",
-      "headline": "Google is launching a one-stop Gemini agent for your work tasks",
       "reason": "age>=24h"
     },
     {
@@ -47,190 +43,13 @@ export const LEAD_TODAY: LeadEntry | null = {
       "reason": "age>=24h"
     }
   ],
-  "cluster_id": "cl:hn:50006368",
-  "headline": "Google is launching a one-stop Gemini agent for your work tasks",
-  "url": "https://www.theverge.com/tech/1007904/google-gemini-ai-agent-enterprise",
+  "cluster_id": "cl:hn:50030776",
+  "headline": "The hazy OpenAI growth metric driving Wall Street",
+  "url": "https://www.ft.com/content/62653892-2333-4953-a8d5-cfd760ae3257",
   "sources": 2,
-  "sig": 3,
-  "first_at": "2026-10-08T14:39:57.000Z",
-  "reason": "held",
-  "note": "no qualifying story",
-  "attempts": [
-    {
-      "at": "2026-10-10T03:18:13.174Z",
-      "crawl_at": "2026-10-10T03:17:55Z",
-      "excluded": [
-        {
-          "cluster_id": "cl:hn:50006368",
-          "headline": "Google is launching a one-stop Gemini agent for your work tasks",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:gnews:3c9098103a05590f",
-          "headline": "Gemini Tarot Horoscope Today, October 10, 2026: Pay Attention to Health, Will Listen to Close Ones",
-          "reason": "GNW_ONLY"
-        },
-        {
-          "cluster_id": "cl:hn:50023260",
-          "headline": "'Breathtaking,' 'Devastating': Mathematics Reels After New OpenAI Release",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:rss:huggingface:88e871d5a8d26738",
-          "headline": "Multimodal open d1 decision models for the edge",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:gnews:bfa682adff75494b",
-          "headline": "Google Opens AI Content Detector To Users Worldwide",
-          "reason": "GNW_ONLY"
-        },
-        {
-          "cluster_id": "cl:hn:50008187",
-          "headline": "OpenAI annualised revenues $20B less than previously signalled",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:rss:huggingface:16b7810afb00bdc0",
-          "headline": "Introducing Falcon ASR",
-          "reason": "age>=24h"
-        }
-      ]
-    },
-    {
-      "at": "2026-10-10T07:12:47.624Z",
-      "crawl_at": "2026-10-10T07:12:37Z",
-      "excluded": [
-        {
-          "cluster_id": "cl:hn:50013972",
-          "headline": "OpenAI Safety Researchers Fired",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:hn:50006368",
-          "headline": "Google is launching a one-stop Gemini agent for your work tasks",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:gnews:3c9098103a05590f",
-          "headline": "Gemini Tarot Horoscope Today, October 10, 2026: Pay Attention to Health, Will Listen to Close Ones",
-          "reason": "GNW_ONLY"
-        },
-        {
-          "cluster_id": "cl:hn:50023260",
-          "headline": "'Breathtaking,' 'Devastating': Mathematics Reels After New OpenAI Release",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:rss:huggingface:88e871d5a8d26738",
-          "headline": "Multimodal open d1 decision models for the edge",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:gnews:bfa682adff75494b",
-          "headline": "Google Opens AI Content Detector To Users Worldwide",
-          "reason": "GNW_ONLY"
-        },
-        {
-          "cluster_id": "cl:hn:50008187",
-          "headline": "OpenAI annualised revenues $20B less than previously signalled",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:rss:huggingface:16b7810afb00bdc0",
-          "headline": "Introducing Falcon ASR",
-          "reason": "age>=24h"
-        }
-      ]
-    },
-    {
-      "at": "2026-10-10T08:21:33.332Z",
-      "crawl_at": "2026-10-10T08:21:16Z",
-      "excluded": [
-        {
-          "cluster_id": "cl:hn:50013972",
-          "headline": "OpenAI Safety Researchers Fired",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:hn:50006368",
-          "headline": "Google is launching a one-stop Gemini agent for your work tasks",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:hn:50023260",
-          "headline": "'Breathtaking,' 'Devastating': Mathematics Reels After New OpenAI Release",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:rss:huggingface:88e871d5a8d26738",
-          "headline": "Multimodal open d1 decision models for the edge",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:hn:50008187",
-          "headline": "OpenAI annualised revenues $20B less than previously signalled",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:rss:huggingface:16b7810afb00bdc0",
-          "headline": "Introducing Falcon ASR",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:hn:50009239",
-          "headline": "USA Today sues OpenAI for copyright infringement over AI training",
-          "reason": "age>=24h"
-        }
-      ]
-    },
-    {
-      "at": "2026-10-10T11:13:19.947Z",
-      "crawl_at": "2026-10-10T11:13:02Z",
-      "excluded": [
-        {
-          "cluster_id": "cl:hn:50008187",
-          "headline": "OpenAI annualised revenues $20B less than previously signalled",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:hn:50013972",
-          "headline": "OpenAI Safety Researchers Fired",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:hn:50006368",
-          "headline": "Google is launching a one-stop Gemini agent for your work tasks",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:gnews:24c8282971995657",
-          "headline": "Google's Gemini 4 \"Carbon\" model is reportedly matching Anthropic's Opus 5.5 coding performance",
-          "reason": "GNW_ONLY"
-        },
-        {
-          "cluster_id": "cl:hn:50023260",
-          "headline": "'Breathtaking,' 'Devastating': Mathematics Reels After New OpenAI Release",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:rss:huggingface:88e871d5a8d26738",
-          "headline": "Multimodal open d1 decision models for the edge",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:rss:huggingface:16b7810afb00bdc0",
-          "headline": "Introducing Falcon ASR",
-          "reason": "age>=24h"
-        },
-        {
-          "cluster_id": "cl:hn:50009239",
-          "headline": "USA Today sues OpenAI for copyright infringement over AI training",
-          "reason": "age>=24h"
-        }
-      ]
-    }
-  ]
+  "sig": 4,
+  "reason": "picked",
+  "first_at": "2026-10-09T20:57:10.000Z"
 };
 
 export const LEAD_YESTERDAY: LeadEntry | null = {
@@ -264,7 +83,7 @@ export const LEAD_YESTERDAY: LeadEntry | null = {
   "first_at": "2026-10-08T14:39:57.000Z"
 };
 
-export const LEAD_HELD = true;
+export const LEAD_HELD = false;
 
 /** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is ≥24h old. */
-export const LEAD_FIRST_AT: string | null = "2026-10-08T14:39:57.000Z";
+export const LEAD_FIRST_AT: string | null = "2026-10-09T20:57:10.000Z";

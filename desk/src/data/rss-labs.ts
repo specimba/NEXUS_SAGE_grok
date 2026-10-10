@@ -16,7 +16,7 @@ export type RssLabRow = {
   cluster_id?: string;
 };
 
-export const RSS_LABS_AT = "2026-10-10T11:13:02Z";
+export const RSS_LABS_AT = "2026-10-10T15:14:07Z";
 
 export const RSS_LABS: RssLabRow[] = [
   { id: "rss:huggingface:e05551817b225bef", lab: "huggingface" as const, title: "Impactful scheduling for GPU clusters", link: "https://huggingface.co/blog/allenai/impactful-scheduling", published: "2026-10-09T15:20:29Z", summary: "", source: "rss-lab" as const, tag: "rest" as const, first_seen: "2026-10-09T23:18:45Z", is_new: false, cluster_id: "cl:rss:huggingface:e05551817b225bef" },
