@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-10T15:14:07Z",
+  "stamped_at": "2026-10-10T18:21:26Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 330,
+      "duration_ms": 131,
       "paused_until": null,
       "reason": null
     },
@@ -18,7 +18,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 3262,
+      "duration_ms": 3189,
       "paused_until": null,
       "reason": null
     },
@@ -27,7 +27,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 5,
+      "duration_ms": 370,
       "paused_until": null,
       "reason": null
     },
@@ -36,7 +36,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 2,
+      "duration_ms": 262,
       "paused_until": null,
       "reason": null
     },
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 63,
-      "duration_ms": 8607,
+      "rows": 59,
+      "duration_ms": 8288,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 749,
+      "duration_ms": 17908,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 304,
+      "duration_ms": 4252,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 46,
-      "duration_ms": 303,
+      "rows": 38,
+      "duration_ms": 6483,
       "paused_until": null,
       "reason": null
     },
@@ -80,8 +80,8 @@
       "id": "github",
       "label": "GitHub",
       "status": "ok",
-      "rows": 2,
-      "duration_ms": 303,
+      "rows": 3,
+      "duration_ms": 296,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 2869,
+      "duration_ms": 4446,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 16734,
-    "sources_wall_ms": 8609,
-    "papers_lane_ms": 3608,
-    "slowest_source_ms": 8607,
+    "sources_ms": 45625,
+    "sources_wall_ms": 17909,
+    "papers_lane_ms": 3959,
+    "slowest_source_ms": 17908,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -114,31 +114,31 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 9053,
-    "startup_ms": 67,
-    "main_ms": 9067
+    "wall_ms": 18350,
+    "startup_ms": 42,
+    "main_ms": 18361
   },
   "multi_source_independent": 7,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
     "multi_source_independent": 7,
-    "multi_source_raw": 12,
-    "self_reposts": 5,
-    "items_in": 251,
-    "clusters_out": 223,
-    "collapsed": 28,
+    "multi_source_raw": 9,
+    "self_reposts": 2,
+    "items_in": 239,
+    "clusters_out": 220,
+    "collapsed": 19,
     "multi_source": 7,
-    "multi_member": 17,
+    "multi_member": 13,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 4,
+    "new_items": 28,
     "per_source": {
-      "hn-algolia": 63,
+      "hn-algolia": 59,
       "rss-lab": 104,
       "rss-security": 28,
-      "gnews-rss": 46,
+      "gnews-rss": 38,
       "gmail-news": 10
     },
     "multi_source_clusters": [
@@ -168,41 +168,20 @@
         ]
       },
       {
-        "title": "OpenAI annualised revenues $20B less than previously signalled",
+        "title": "OpenAI projected to bring in $20B less in revenue than expected",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 9,
+        "size": 3,
         "score": 1,
         "members": [
-          {
-            "id": "hn:50008187",
-            "source": "hn-algolia",
-            "title": "OpenAI annualised revenues $20B less than previously signalled",
-            "at": "2026-10-08T16:45:58Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:50011505",
-            "source": "hn-algolia",
-            "title": "OpenAI annualised revenues $20B less than previously signalled",
-            "at": "2026-10-08T20:15:21Z",
-            "publisher": null
-          },
           {
             "id": "hn:50019173",
             "source": "hn-algolia",
             "title": "OpenAI projected to bring in $20B less in revenue than expected",
             "at": "2026-10-09T11:48:26Z",
             "publisher": null
-          },
-          {
-            "id": "gnews:931f3cb790c2a03a",
-            "source": "gnews-rss",
-            "title": "OpenAI to bring in $20 billion less than previously expected - Mashable",
-            "at": "2026-10-10T07:41:57Z",
-            "publisher": "Mashable"
           },
           {
             "id": "gnews:d514771348eeba81",
@@ -212,64 +191,11 @@
             "publisher": "The Guardian"
           },
           {
-            "id": "gnews:95794071ce3967f9",
+            "id": "gnews:931f3cb790c2a03a",
             "source": "gnews-rss",
-            "title": "OpenAI’s revenue is reportedly $20 billion less than previously projected - TechCrunch",
-            "at": "2026-10-08T18:19:42Z",
-            "publisher": "TechCrunch"
-          },
-          {
-            "id": "gnews:22e7f1cdb0231862",
-            "source": "gnews-rss",
-            "title": "OpenAI annualised revenues $20bn less than previously signalled - Yahoo Finance",
-            "at": "2026-10-08T16:42:34Z",
-            "publisher": "Yahoo Finance"
-          },
-          {
-            "id": "gnews:5440546fbe3c8025",
-            "source": "gnews-rss",
-            "title": "OpenAI annualised revenues $20bn less than previously signalled - Financial Times",
-            "at": "2026-10-08T16:42:34Z",
-            "publisher": "Financial Times"
-          },
-          {
-            "id": "gnews:0f2b3dd9b0276e28",
-            "source": "gnews-rss",
-            "title": "OpenAI annualized revenue $20 billion less than previously reported - Axios",
-            "at": "2026-10-08T19:54:54Z",
-            "publisher": "Axios"
-          }
-        ]
-      },
-      {
-        "title": "'Breathtaking,' 'Devastating': Mathematics Reels After New OpenAI Release",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 3,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:50023260",
-            "source": "hn-algolia",
-            "title": "'Breathtaking,' 'Devastating': Mathematics Reels After New OpenAI Release",
-            "at": "2026-10-09T16:50:01Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:50013552",
-            "source": "hn-algolia",
-            "title": "'Breathtaking,' 'Devastating': Mathematics Reels After New OpenAI Release",
-            "at": "2026-10-08T22:51:23Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:2b570fdab45dcbcc",
-            "source": "gnews-rss",
-            "title": "‘Breathtaking,’ ‘Devastating’: Mathematics Reels After New OpenAI Release - The New York Times",
-            "at": "2026-10-09T20:28:00Z",
-            "publisher": "The New York Times"
+            "title": "OpenAI to bring in $20 billion less than previously expected - Mashable",
+            "at": "2026-10-10T07:41:57Z",
+            "publisher": "Mashable"
           }
         ]
       },
@@ -299,13 +225,45 @@
         ]
       },
       {
+        "title": "'Breathtaking,' 'Devastating': Mathematics reels after new OpenAI release",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 3,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:50023260",
+            "source": "hn-algolia",
+            "title": "'Breathtaking,' 'Devastating': Mathematics reels after new OpenAI release",
+            "at": "2026-10-09T16:50:01Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:50013552",
+            "source": "hn-algolia",
+            "title": "'Breathtaking,' 'Devastating': Mathematics Reels After New OpenAI Release",
+            "at": "2026-10-08T22:51:23Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:2b570fdab45dcbcc",
+            "source": "gnews-rss",
+            "title": "‘Breathtaking,’ ‘Devastating’: Mathematics Reels After New OpenAI Release - The New York Times",
+            "at": "2026-10-08T21:53:08Z",
+            "publisher": "The New York Times"
+          }
+        ]
+      },
+      {
         "title": "OpenAI Safety Researchers Fired",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 4,
-        "score": 0.773,
+        "size": 5,
+        "score": 0.765,
         "members": [
           {
             "id": "hn:50013972",
@@ -315,18 +273,11 @@
             "publisher": null
           },
           {
-            "id": "gnews:cb349c6b475c77b0",
-            "source": "gnews-rss",
-            "title": "OpenAI denies firing researchers for raising safety concerns - upi",
-            "at": "2026-10-09T14:12:15Z",
-            "publisher": "upi"
-          },
-          {
-            "id": "gnews:3b70052fc85a9128",
-            "source": "gnews-rss",
-            "title": "OpenAI faces AI safety backlash after firing 3 researchers - People Matters Global",
-            "at": "2026-10-09T06:56:25Z",
-            "publisher": "People Matters Global"
+            "id": "hn:50018635",
+            "source": "hn-algolia",
+            "title": "Fired OpenAI researchers say they were let go for 'prioritising safety'",
+            "at": "2026-10-09T10:41:23Z",
+            "publisher": null
           },
           {
             "id": "gnews:7fcdd92b1571a7de",
@@ -334,6 +285,45 @@
             "title": "Fired OpenAI safety researchers say they were pushed out over ‘suspicious’ circumstances - CNN",
             "at": "2026-10-08T23:22:50Z",
             "publisher": "CNN"
+          },
+          {
+            "id": "gnews:d9d063fec0c2c966",
+            "source": "gnews-rss",
+            "title": "OpenAI defends firing AI safety researchers over alleged \"breach of trust\" - CBS News",
+            "at": "2026-10-09T16:21:00Z",
+            "publisher": "CBS News"
+          },
+          {
+            "id": "gnews:cf1f638aae520bef",
+            "source": "gnews-rss",
+            "title": "Fired OpenAI safety researchers dispute misconduct claims, warn of chilling effect - TechCrunch",
+            "at": "2026-10-08T20:04:26Z",
+            "publisher": "TechCrunch"
+          }
+        ]
+      },
+      {
+        "title": "OpenAI annualised revenues $20B less than previously signalled",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 0.697,
+        "members": [
+          {
+            "id": "hn:50011505",
+            "source": "hn-algolia",
+            "title": "OpenAI annualised revenues $20B less than previously signalled",
+            "at": "2026-10-08T20:15:21Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:0f2b3dd9b0276e28",
+            "source": "gnews-rss",
+            "title": "OpenAI annualized revenue $20 billion less than previously reported - Axios",
+            "at": "2026-10-08T19:54:54Z",
+            "publisher": "Axios"
           }
         ]
       },
@@ -359,31 +349,6 @@
             "title": "Introducing Falcon ASR",
             "at": "2026-10-07T13:21:03Z",
             "publisher": "huggingface"
-          }
-        ]
-      },
-      {
-        "title": "USA Today sues OpenAI for copyright infringement over AI training",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:50009239",
-            "source": "hn-algolia",
-            "title": "USA Today sues OpenAI for copyright infringement over AI training",
-            "at": "2026-10-08T17:49:07Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:7a0edaa7afb647ca",
-            "source": "gnews-rss",
-            "title": "USA Today sues OpenAI for copyright infringement over AI training - Reuters",
-            "at": "2026-10-08T15:39:44Z",
-            "publisher": "Reuters"
           }
         ]
       }
@@ -422,57 +387,6 @@
             "title": "LegalOn halves Codex costs while maintaining development speed - OpenAI"
           }
         ]
-      },
-      {
-        "title": "How Oracle turns days of work into minutes with ChatGPT and Codex",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:f9463e175cbd3f98",
-            "publisher": "OpenAI",
-            "title": "How Oracle turns days of work into minutes with ChatGPT and Codex - OpenAI"
-          }
-        ]
-      },
-      {
-        "title": "Pollo AI turns creative ideas into campaigns with OpenAI",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:b6f13070cc9174a3",
-            "publisher": "OpenAI",
-            "title": "Pollo AI turns creative ideas into campaigns with OpenAI - OpenAI"
-          }
-        ]
-      },
-      {
-        "title": "Disrupting AI-enabled “false front” operations",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:71aa6b4f3b805534",
-            "publisher": "OpenAI",
-            "title": "Disrupting AI-enabled “false front” operations - OpenAI"
-          }
-        ]
       }
     ],
     "ai_relevance": {
@@ -490,22 +404,30 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "SFGATE",
-          "title": "Horoscope for Saturday, 10/10/26 by Christopher Renstrom - SFGATE"
+          "publisher": "NDTV",
+          "title": "Join Google Without Any Degree With Pay Up To Rs 11 Crore. Check Details - NDTV"
         },
         {
-          "publisher": "Business Insider Africa",
-          "title": "Nvidia's head of corporate communications has left after roughly four months - Business Insider Africa"
+          "publisher": "Substack",
+          "title": "Hurricane Simon Update: Saturday Oct 10th - Substack"
+        },
+        {
+          "publisher": "shattered.io",
+          "title": "Astra Paused 12 Days, CrowdStrike Rejects Slowdown [2026] - shattered.io"
+        },
+        {
+          "publisher": "The Economic Times",
+          "title": "Horoscope Today, October 11, 2026: Navratri Begins as Aries Finds Courage, Taurus Seeks Stability and Gemi - The Economic Times"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 3
+      "hn_dropped": 4
     },
     "gnews_near_misses": [
       {
         "score": 1,
         "blocked": "time-window",
-        "hours_apart": 230.1,
+        "hours_apart": 236.2,
         "a": {
           "id": "rss:deepmind:ce56aa83d0064ef1",
           "source": "rss-lab",
@@ -516,7 +438,7 @@
           "id": "gnews:05cfd65803121a1e",
           "source": "gnews-rss",
           "title": "Gemini 4 Argon: our next era of frontier intelligence - blog.google",
-          "at": "2026-10-10T10:09:10Z"
+          "at": "2026-10-10T16:13:51Z"
         },
         "shared": [
           "gemini",
@@ -529,51 +451,7 @@
         ]
       },
       {
-        "score": 0.616,
-        "blocked": "time-window",
-        "hours_apart": 33.6,
-        "a": {
-          "id": "hn:50012543",
-          "source": "hn-algolia",
-          "title": "The Gemini Agent",
-          "at": "2026-10-08T21:26:28Z"
-        },
-        "b": {
-          "id": "gnews:f5fa08e94911f1e9",
-          "source": "gnews-rss",
-          "title": "Key facts: GOOG launches Gemini agent; TPU sales, Constellation power - TradingView",
-          "at": "2026-10-10T07:00:00Z"
-        },
-        "shared": [
-          "gemini",
-          "agent"
-        ]
-      },
-      {
-        "score": 0.54,
-        "blocked": "time-window",
-        "hours_apart": 38.9,
-        "a": {
-          "id": "hn:50008187",
-          "source": "hn-algolia",
-          "title": "OpenAI annualised revenues $20B less than previously signalled",
-          "at": "2026-10-08T16:45:58Z"
-        },
-        "b": {
-          "id": "gnews:931f3cb790c2a03a",
-          "source": "gnews-rss",
-          "title": "OpenAI to bring in $20 billion less than previously expected - Mashable",
-          "at": "2026-10-10T07:41:57Z"
-        },
-        "shared": [
-          "openai",
-          "20b",
-          "less",
-          "previously"
-        ]
-      },
-      {
-        "score": 0.54,
+        "score": 0.557,
         "blocked": "time-window",
         "hours_apart": 35.4,
         "a": {
@@ -596,52 +474,7 @@
         ]
       },
       {
-        "score": 0.536,
-        "blocked": "below-threshold",
-        "hours_apart": 21.8,
-        "a": {
-          "id": "hn:50013972",
-          "source": "hn-algolia",
-          "title": "OpenAI Safety Researchers Fired",
-          "at": "2026-10-08T23:38:03Z"
-        },
-        "b": {
-          "id": "gnews:64059e3a0f047594",
-          "source": "gnews-rss",
-          "title": "Fired OpenAI employees question the company's commitment to safety - WVAS",
-          "at": "2026-10-09T21:28:00Z"
-        },
-        "shared": [
-          "openai",
-          "safety",
-          "fir"
-        ]
-      },
-      {
-        "score": 0.506,
-        "blocked": "below-threshold",
-        "hours_apart": 8.8,
-        "a": {
-          "id": "hn:50013071",
-          "source": "hn-algolia",
-          "title": "OpenAI cuts ties with 3 safety researchers",
-          "at": "2026-10-08T22:06:36Z"
-        },
-        "b": {
-          "id": "gnews:3b70052fc85a9128",
-          "source": "gnews-rss",
-          "title": "OpenAI faces AI safety backlash after firing 3 researchers - People Matters Global",
-          "at": "2026-10-09T06:56:25Z"
-        },
-        "shared": [
-          "openai",
-          "3",
-          "safety",
-          "researcher"
-        ]
-      },
-      {
-        "score": 0.504,
+        "score": 0.53,
         "blocked": "below-threshold",
         "hours_apart": 15.9,
         "a": {
@@ -664,7 +497,29 @@
         ]
       },
       {
-        "score": 0.482,
+        "score": 0.497,
+        "blocked": "time-window",
+        "hours_apart": 38.2,
+        "a": {
+          "id": "hn:50013972",
+          "source": "hn-algolia",
+          "title": "OpenAI Safety Researchers Fired",
+          "at": "2026-10-08T23:38:03Z"
+        },
+        "b": {
+          "id": "gnews:99cdecadcaaf2839",
+          "source": "gnews-rss",
+          "title": "‘Breach of trust.’ OpenAI fires 3 safety researchers in dispute over AI risks - Washington Times",
+          "at": "2026-10-10T13:51:34Z"
+        },
+        "shared": [
+          "openai",
+          "safety",
+          "researcher"
+        ]
+      },
+      {
+        "score": 0.487,
         "blocked": "below-threshold",
         "hours_apart": 17.7,
         "a": {
@@ -684,13 +539,82 @@
           "safety",
           "fir"
         ]
+      },
+      {
+        "score": 0.473,
+        "blocked": "below-threshold",
+        "hours_apart": 11.8,
+        "a": {
+          "id": "hn:50011505",
+          "source": "hn-algolia",
+          "title": "OpenAI annualised revenues $20B less than previously signalled",
+          "at": "2026-10-08T20:15:21Z"
+        },
+        "b": {
+          "id": "gnews:d514771348eeba81",
+          "source": "gnews-rss",
+          "title": "OpenAI projected to bring in $20bn less in revenue than expected - The Guardian",
+          "at": "2026-10-09T08:04:00Z"
+        },
+        "shared": [
+          "openai",
+          "revenu",
+          "20b",
+          "less"
+        ]
+      },
+      {
+        "score": 0.472,
+        "blocked": "time-window",
+        "hours_apart": 39.7,
+        "a": {
+          "id": "hn:50013071",
+          "source": "hn-algolia",
+          "title": "OpenAI cuts ties with 3 safety researchers",
+          "at": "2026-10-08T22:06:36Z"
+        },
+        "b": {
+          "id": "gnews:99cdecadcaaf2839",
+          "source": "gnews-rss",
+          "title": "‘Breach of trust.’ OpenAI fires 3 safety researchers in dispute over AI risks - Washington Times",
+          "at": "2026-10-10T13:51:34Z"
+        },
+        "shared": [
+          "openai",
+          "3",
+          "safety",
+          "researcher"
+        ]
+      },
+      {
+        "score": 0.4,
+        "blocked": "below-threshold",
+        "hours_apart": 11.3,
+        "a": {
+          "id": "hn:50018635",
+          "source": "hn-algolia",
+          "title": "Fired OpenAI researchers say they were let go for 'prioritising safety'",
+          "at": "2026-10-09T10:41:23Z"
+        },
+        "b": {
+          "id": "gnews:7fcdd92b1571a7de",
+          "source": "gnews-rss",
+          "title": "Fired OpenAI safety researchers say they were pushed out over ‘suspicious’ circumstances - CNN",
+          "at": "2026-10-08T23:22:50Z"
+        },
+        "shared": [
+          "fir",
+          "openai",
+          "researcher",
+          "safety"
+        ]
       }
     ],
     "near_misses": [
       {
         "score": 1,
         "blocked": "time-window",
-        "hours_apart": 230.1,
+        "hours_apart": 236.2,
         "a": {
           "id": "rss:deepmind:ce56aa83d0064ef1",
           "source": "rss-lab",
@@ -701,7 +625,7 @@
           "id": "gnews:05cfd65803121a1e",
           "source": "gnews-rss",
           "title": "Gemini 4 Argon: our next era of frontier intelligence - blog.google",
-          "at": "2026-10-10T10:09:10Z"
+          "at": "2026-10-10T16:13:51Z"
         },
         "shared": [
           "gemini",
@@ -714,7 +638,7 @@
         ]
       },
       {
-        "score": 0.997,
+        "score": 0.986,
         "blocked": "time-window",
         "hours_apart": 75.6,
         "a": {
@@ -738,7 +662,7 @@
         ]
       },
       {
-        "score": 0.624,
+        "score": 0.622,
         "blocked": "time-window",
         "hours_apart": 30.8,
         "a": {
@@ -759,51 +683,7 @@
         ]
       },
       {
-        "score": 0.616,
-        "blocked": "time-window",
-        "hours_apart": 33.6,
-        "a": {
-          "id": "hn:50012543",
-          "source": "hn-algolia",
-          "title": "The Gemini Agent",
-          "at": "2026-10-08T21:26:28Z"
-        },
-        "b": {
-          "id": "gnews:f5fa08e94911f1e9",
-          "source": "gnews-rss",
-          "title": "Key facts: GOOG launches Gemini agent; TPU sales, Constellation power - TradingView",
-          "at": "2026-10-10T07:00:00Z"
-        },
-        "shared": [
-          "gemini",
-          "agent"
-        ]
-      },
-      {
-        "score": 0.54,
-        "blocked": "time-window",
-        "hours_apart": 38.9,
-        "a": {
-          "id": "hn:50008187",
-          "source": "hn-algolia",
-          "title": "OpenAI annualised revenues $20B less than previously signalled",
-          "at": "2026-10-08T16:45:58Z"
-        },
-        "b": {
-          "id": "gnews:931f3cb790c2a03a",
-          "source": "gnews-rss",
-          "title": "OpenAI to bring in $20 billion less than previously expected - Mashable",
-          "at": "2026-10-10T07:41:57Z"
-        },
-        "shared": [
-          "openai",
-          "20b",
-          "less",
-          "previously"
-        ]
-      },
-      {
-        "score": 0.54,
+        "score": 0.557,
         "blocked": "time-window",
         "hours_apart": 35.4,
         "a": {
@@ -826,9 +706,32 @@
         ]
       },
       {
-        "score": 0.536,
+        "score": 0.53,
         "blocked": "below-threshold",
-        "hours_apart": 21.8,
+        "hours_apart": 15.9,
+        "a": {
+          "id": "hn:50019173",
+          "source": "hn-algolia",
+          "title": "OpenAI projected to bring in $20B less in revenue than expected",
+          "at": "2026-10-09T11:48:26Z"
+        },
+        "b": {
+          "id": "gnews:0f2b3dd9b0276e28",
+          "source": "gnews-rss",
+          "title": "OpenAI annualized revenue $20 billion less than previously reported - Axios",
+          "at": "2026-10-08T19:54:54Z"
+        },
+        "shared": [
+          "openai",
+          "20b",
+          "less",
+          "revenu"
+        ]
+      },
+      {
+        "score": 0.497,
+        "blocked": "time-window",
+        "hours_apart": 38.2,
         "a": {
           "id": "hn:50013972",
           "source": "hn-algolia",
@@ -836,10 +739,32 @@
           "at": "2026-10-08T23:38:03Z"
         },
         "b": {
-          "id": "gnews:64059e3a0f047594",
+          "id": "gnews:99cdecadcaaf2839",
           "source": "gnews-rss",
-          "title": "Fired OpenAI employees question the company's commitment to safety - WVAS",
-          "at": "2026-10-09T21:28:00Z"
+          "title": "‘Breach of trust.’ OpenAI fires 3 safety researchers in dispute over AI risks - Washington Times",
+          "at": "2026-10-10T13:51:34Z"
+        },
+        "shared": [
+          "openai",
+          "safety",
+          "researcher"
+        ]
+      },
+      {
+        "score": 0.487,
+        "blocked": "below-threshold",
+        "hours_apart": 17.7,
+        "a": {
+          "id": "hn:50013972",
+          "source": "hn-algolia",
+          "title": "OpenAI Safety Researchers Fired",
+          "at": "2026-10-08T23:38:03Z"
+        },
+        "b": {
+          "id": "gnews:7a6017133fa647e6",
+          "source": "gnews-rss",
+          "title": "Controversy swirls over ‘abrupt’ firing of OpenAI safety team members involved in the Hugging Face hack investigation - Fortune",
+          "at": "2026-10-09T17:21:00Z"
         },
         "shared": [
           "openai",
@@ -848,26 +773,26 @@
         ]
       },
       {
-        "score": 0.506,
+        "score": 0.473,
         "blocked": "below-threshold",
-        "hours_apart": 8.8,
+        "hours_apart": 11.8,
         "a": {
-          "id": "hn:50013071",
+          "id": "hn:50011505",
           "source": "hn-algolia",
-          "title": "OpenAI cuts ties with 3 safety researchers",
-          "at": "2026-10-08T22:06:36Z"
+          "title": "OpenAI annualised revenues $20B less than previously signalled",
+          "at": "2026-10-08T20:15:21Z"
         },
         "b": {
-          "id": "gnews:3b70052fc85a9128",
+          "id": "gnews:d514771348eeba81",
           "source": "gnews-rss",
-          "title": "OpenAI faces AI safety backlash after firing 3 researchers - People Matters Global",
-          "at": "2026-10-09T06:56:25Z"
+          "title": "OpenAI projected to bring in $20bn less in revenue than expected - The Guardian",
+          "at": "2026-10-09T08:04:00Z"
         },
         "shared": [
           "openai",
-          "3",
-          "safety",
-          "researcher"
+          "revenu",
+          "20b",
+          "less"
         ]
       }
     ]
@@ -876,76 +801,76 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 18,
+      "streak_ok": 19,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 102,
+      "streak_ok": 103,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 102,
+      "streak_ok": 103,
       "streak_fail": 0,
-      "items_last": 2
+      "items_last": 3
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 102,
+      "streak_ok": 103,
       "streak_fail": 0,
-      "items_last": 46
+      "items_last": 38
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 102,
+      "streak_ok": 103,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 102,
+      "streak_ok": 103,
       "streak_fail": 0,
-      "items_last": 63
+      "items_last": 59
     },
     {
       "id": "openalex",
       "state": "flaky",
-      "streak_ok": 14,
+      "streak_ok": 15,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 6,
+      "streak_ok": 7,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 102,
+      "streak_ok": 103,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 102,
+      "streak_ok": 103,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.002631388888888889,
+    "hours": 0.005276388888888889,
     "stale": false
   },
   "hf": {
@@ -970,13 +895,13 @@
     "secondary": 3,
     "query": "Hugging Face agent",
     "mode": "search",
-    "from_cache": true,
-    "searches": 0,
+    "from_cache": false,
+    "searches": 1,
     "retries": 0,
     "status": "ok",
     "paused_until": null,
     "pause_reason": null,
-    "requests": 0,
+    "requests": 1,
     "auth": "anon",
     "brief": false,
     "pulse_lead": false,
@@ -1013,8 +938,8 @@
     "enriched": 0,
     "query": "doi:10.5281/zenodo.21686546",
     "mode": "filter",
-    "from_cache": true,
-    "searches": 0,
+    "from_cache": false,
+    "searches": 1,
     "brief": false,
     "pulse_lead": false,
     "papers_enrich_only": true,
@@ -1026,7 +951,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 63,
+    "count": 59,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -1043,26 +968,26 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 3,
+    "ai_dropped": 4,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
-        "id": "hn:50008187",
-        "tag": "rest",
-        "score": 425,
-        "text": "OpenAI annualised revenues $20B less than previously signalled"
-      },
-      {
         "id": "hn:50018350",
         "tag": "rest",
-        "score": 346,
+        "score": 350,
         "text": "OpenAI fires three safety researchers for \"mishandling research information\""
       },
       {
         "id": "hn:50013902",
         "tag": "rest",
-        "score": 204,
+        "score": 205,
         "text": "OpenAI, the Partition Principle, and Mathematics"
+      },
+      {
+        "id": "hn:50027118",
+        "tag": "rest",
+        "score": 199,
+        "text": "Anthropic AI model submits false tip on unsolved Philly murder, police say"
       }
     ]
   },
@@ -1078,42 +1003,42 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "(cache:openai)",
+        "url": "https://openai.com/news/rss.xml",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "(cache:deepmind)",
+        "url": "https://deepmind.google/blog/rss.xml",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "(cache:google-ai)",
+        "url": "https://blog.google/technology/ai/rss/",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "(cache:huggingface)",
+        "url": "https://huggingface.co/blog/feed.xml",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "(cache:mistral)",
+        "url": "https://mistral.ai/rss.xml",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "(cache:nvidia)",
+        "url": "https://blogs.nvidia.com/feed/",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "(cache:nvidia-dev)",
+        "url": "https://developer.nvidia.com/blog/feed",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "(cache:ms-research)",
+        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
         "count": 10
       },
       {
@@ -1164,17 +1089,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "(cache:trailofbits)",
+        "url": "https://blog.trailofbits.com/feed/",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "(cache:fox-it)",
+        "url": "https://blog.fox-it.com/feed/",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "(cache:projectzero)",
+        "url": "https://projectzero.google/feed.xml",
         "count": 6
       }
     ],
@@ -1215,23 +1140,31 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 46,
-    "pool": 281,
+    "items": 38,
+    "pool": 259,
     "corroborators": [
+      {
+        "id": "gnews:d514771348eeba81",
+        "anchor_id": "hn:50019173",
+        "score": 1,
+        "title": "OpenAI projected to bring in $20bn less in revenue than expected - The Guardian",
+        "publisher": "The Guardian",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:931f3cb790c2a03a",
+        "anchor_id": "hn:50019173",
+        "score": 0.735,
+        "title": "OpenAI to bring in $20 billion less than previously expected - Mashable",
+        "publisher": "Mashable",
+        "self_repost": false
+      },
       {
         "id": "gnews:81ccc2d66926ba82",
         "anchor_id": "hn:50030776",
         "score": 1,
         "title": "The hazy OpenAI growth metric driving Wall Street - Financial Times",
         "publisher": "Financial Times",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:2b570fdab45dcbcc",
-        "anchor_id": "hn:50023260",
-        "score": 1,
-        "title": "‘Breathtaking,’ ‘Devastating’: Mathematics Reels After New OpenAI Release - The New York Times",
-        "publisher": "The New York Times",
         "self_repost": false
       },
       {
@@ -1243,42 +1176,26 @@
         "self_repost": true
       },
       {
-        "id": "gnews:cb349c6b475c77b0",
-        "anchor_id": "hn:50013972",
-        "score": 0.761,
-        "title": "OpenAI denies firing researchers for raising safety concerns - upi",
-        "publisher": "upi",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:3b70052fc85a9128",
-        "anchor_id": "hn:50013972",
-        "score": 0.758,
-        "title": "OpenAI faces AI safety backlash after firing 3 researchers - People Matters Global",
-        "publisher": "People Matters Global",
-        "self_repost": false
-      },
-      {
         "id": "gnews:7fcdd92b1571a7de",
         "anchor_id": "hn:50013972",
-        "score": 0.745,
+        "score": 0.755,
         "title": "Fired OpenAI safety researchers say they were pushed out over ‘suspicious’ circumstances - CNN",
         "publisher": "CNN",
         "self_repost": false
       },
       {
-        "id": "gnews:d514771348eeba81",
-        "anchor_id": "hn:50019173",
-        "score": 1,
-        "title": "OpenAI projected to bring in $20bn less in revenue than expected - The Guardian",
-        "publisher": "The Guardian",
+        "id": "gnews:d9d063fec0c2c966",
+        "anchor_id": "hn:50013972",
+        "score": 0.726,
+        "title": "OpenAI defends firing AI safety researchers over alleged \"breach of trust\" - CBS News",
+        "publisher": "CBS News",
         "self_repost": false
       },
       {
-        "id": "gnews:95794071ce3967f9",
-        "anchor_id": "hn:50019173",
-        "score": 0.745,
-        "title": "OpenAI’s revenue is reportedly $20 billion less than previously projected - TechCrunch",
+        "id": "gnews:cf1f638aae520bef",
+        "anchor_id": "hn:50013972",
+        "score": 0.682,
+        "title": "Fired OpenAI safety researchers dispute misconduct claims, warn of chilling effect - TechCrunch",
         "publisher": "TechCrunch",
         "self_repost": false
       },
@@ -1291,66 +1208,26 @@
         "self_repost": true
       },
       {
-        "id": "gnews:22e7f1cdb0231862",
-        "anchor_id": "hn:50008187",
+        "id": "gnews:2b570fdab45dcbcc",
+        "anchor_id": "hn:50023260",
         "score": 1,
-        "title": "OpenAI annualised revenues $20bn less than previously signalled - Yahoo Finance",
-        "publisher": "Yahoo Finance",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:5440546fbe3c8025",
-        "anchor_id": "hn:50008187",
-        "score": 1,
-        "title": "OpenAI annualised revenues $20bn less than previously signalled - Financial Times",
-        "publisher": "Financial Times",
+        "title": "‘Breathtaking,’ ‘Devastating’: Mathematics Reels After New OpenAI Release - The New York Times",
+        "publisher": "The New York Times",
         "self_repost": false
       },
       {
         "id": "gnews:0f2b3dd9b0276e28",
-        "anchor_id": "hn:50008187",
-        "score": 0.71,
+        "anchor_id": "hn:50011505",
+        "score": 0.706,
         "title": "OpenAI annualized revenue $20 billion less than previously reported - Axios",
         "publisher": "Axios",
         "self_repost": false
-      },
-      {
-        "id": "gnews:f9463e175cbd3f98",
-        "anchor_id": "rss:openai:db7b9e6fe248e314",
-        "score": 1,
-        "title": "How Oracle turns days of work into minutes with ChatGPT and Codex - OpenAI",
-        "publisher": "OpenAI",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:b6f13070cc9174a3",
-        "anchor_id": "rss:openai:855092fba1df7e8a",
-        "score": 1,
-        "title": "Pollo AI turns creative ideas into campaigns with OpenAI - OpenAI",
-        "publisher": "OpenAI",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:7a0edaa7afb647ca",
-        "anchor_id": "hn:50009239",
-        "score": 1,
-        "title": "USA Today sues OpenAI for copyright infringement over AI training - Reuters",
-        "publisher": "Reuters",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:71aa6b4f3b805534",
-        "anchor_id": "rss:openai:d9e485b409fe8517",
-        "score": 1,
-        "title": "Disrupting AI-enabled “false front” operations - OpenAI",
-        "publisher": "OpenAI",
-        "self_repost": true
       }
     ],
     "http_status": 200,
-    "content_type": null,
+    "content_type": "application/xml; charset=utf-8",
     "format": "rss2",
-    "from_cache": true,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1373,65 +1250,40 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:47f15b84ba9a90df",
-        "title": "Google DeepMind offers $550,000 to $1.1 million job, no college degree - NewsBytes",
-        "publisher": "NewsBytes",
-        "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQQlhYNHl4V0VwVWR1cmV2amlTSkQwOVBsSkZDUFVCUndQU2JhSlgya05XOHBuTnVGSUpvSzMxdnp3STdwWGFOUkRUdHJqd1ZMTUZjQUh2TFdHaW0wS252VDJrUDZfczZOaDA4R1Q0QXpoazZVUGZtbktSZzFqbXdHVUNyNktac3hYMjJOT3loMVdRUlFBOUpMRmxLZTFDUUJnUTd2dGI1RGVHTE9RWHpaeXln?oc=5",
+        "id": "gnews:07947f3d9784b30c",
+        "title": "Gemini Adds Map Tool and Replaces Slash: What to Know - JournalArta",
+        "publisher": "JournalArta",
+        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPR2k1UTJoM05oeVNZUjhFTUdnV0VhMTAxMzVnbFcyRGFPdENCWjVJT3Bxa24wb1pGdU9YeHFRVlFnOU1ncFJGWXBZd1dLUVhjTll0eVZrV1RYMlNoWllhXzdjZUZ0ZlNEU0NYaXlISkkwVWF3WEROeFVXSjlYdUxYcER6Rm1lNzR2ckdUdnZRTm1PWnExUDZR?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:939e90c96852e7d3",
-        "title": "Sundar Pichai Reported Alphabet's Cloud Revenue Grew 82% to $24.8 Billion Last Quarter, With the Gemini App Reaching 950 Million Monthly Users. Is Google Cloud Becoming a Bigger Growth Driver Than Search? - The Motley Fool",
-        "publisher": "The Motley Fool",
-        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQVUt3R1c0WnRFd21xRXFnY3VTb1NlTTFfY2hhUmlxRHBOYmNtN0R2ZmFxTmdVZDBJVXpaX2puUkFCV1pmLW5JXzFWalV2clZEZURKbDVGQTVaMzZBMXA4Yy1xVG5RVHRFQlJOdXM2SWdQTHBXejhTejhwNVptTkZvZjJ0MkljSVRySFMxRExnVHltY3V4T3Z3eQ?oc=5",
+        "id": "gnews:ac81ac9afb66a8ee",
+        "title": "Samsung’s Gemini AI Glasses Could Change Wearables - TelecomTalk",
+        "publisher": "TelecomTalk",
+        "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNTEplbkk1d3ZKUFRxcDZKc2tZOVBSbG52aTE0aVk2ZHlFdU1hVkgzSkhTTTg3b2FVUkMwSnJVS1h5a0FRcmI3V1pxZGRnV084NmVoTmd5Y211OUxZTEpqSjBDVXZBaVZra05Sa25lLVZpMGdjclBndmhjQmo5VXFWc2ZGbndkVV9BZWFz?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:4869e8a5f7ec1616",
-        "title": "‘No degree required’: Google DeepMind job offering up to Rs 10 crore sparks debate on formal education - Moneycontrol.com",
-        "publisher": "Moneycontrol.com",
-        "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxQOWYxYkpDbXA0UERuVVd0U1BmcllpbVZYVVFyVHlwejV1ZHliM0Y3ZzBDMjU0ZW9YZGM2djdHMmFvYjUxcnNBYmdjQ2JuLWxubE9BeVVRNDE1Qlg5QlVXX2hicmMtSWd6QjlVbFBrRUF5cUdaOFUtRW5GMWRLSERIa1NPalZ3VmJrbWNYSWlmUmZWUHB3cXZZQmxvSEFJenRNOXNjOVAzYzRfSzhQRXg4RzhBQTVBeTBueXF0VHp2MXRjTGFlc0lVd3g3bHB0Y003VFJVWnFpbkZQb2lEcmZDZUplZWNJb1pWMFHSAe8BQVVfeXFMTlNRRmVmb09QMDRvc0NaNTNNdEo2azVUU2lHZ2dCRkltNVhhQXNmdGlvejNOQTBZOE03ZzFVb0k2Y1VBbG0xUUJ1cHVoMk1FMGhIUWV3NllLNW1xd0FpUmZDZThSMFNjckFWU2xLdTIyMWhqbGJmNUVpN2UyQWRDVGpoUjl2blZaRFhUa0tkT1o0Q1lkNjl1UUhhbnR4UTdubHp6U3FFZ1AxY1BIQjJlbnFIM25fSU8yODJndFVMeGNMQXdRN1JEQkhJT3Rma0YwbkpXTmxVcXYyWmlyQTJPZm4wTXpmRmZPS1A5d1BWenM?oc=5",
+        "id": "gnews:5538660059335a32",
+        "title": "A timeline of developments in AI safety since the attack on Hugging Face - Oskaloosa Herald",
+        "publisher": "Oskaloosa Herald",
+        "link": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxOVkxJZGNqSjByd0JKQ2hOdWlOQktvekt5OFJoLVlIVDNOdm1zelJPdklXRzFWYWxmVS1OUnh1am93OGo3N0FuTmc1WldaLXFTUzRhU253N3I5NHhSdkdIVy1pOHhFVE85Yk83dExNMlJsZzlpYnRvVHNxMjdHRmJzNDlaUWVCVl9YaERuUE95UXBOSDlaa09NVDZydkVlVVp2YUZaak5PMmRSbm9CbVZwdTdVUDNqQ3EzX2hnbEhEQzdqZm1WUlRJRlJiZ2hmeW1jRTV0VmROLUk4c2xVci01cVJ4T3ZObHhNQWxBWjM3QzRFVldJS3o1dUFiQQ?oc=5",
         "tag": "rest"
       }
     ]
   },
   "gmail_news": {
-    "ok": true,
-    "soft_fail": false,
-    "soft_fail_reason": null,
-    "count": 10,
-    "fetched": 10,
-    "from_cache": true,
-    "last_query_hash": "14f148f8d31e",
+    "ok": false,
+    "soft_fail": true,
+    "soft_fail_reason": "box-only",
+    "count": 0,
+    "fetched": 0,
+    "from_cache": false,
+    "last_query_hash": "",
     "brief": false,
     "pulse_only": true,
     "briefEligible": false,
-    "sample": [
-      {
-        "id": "gmail:1a11250b91591834",
-        "title": "AI systems could cover up misbehavior",
-        "publisher": "substack.com",
-        "qi": 15.4,
-        "priority": "P3",
-        "link": "https://metr.org/blog/cover-up"
-      },
-      {
-        "id": "gmail:1a111f35812d42ba",
-        "title": "Oct. 6 - Water hacks, rogue AI raise alarms | Java vulnerabilities disclosed",
-        "publisher": "divenewsletter.com",
-        "qi": 15.4,
-        "priority": "P3",
-        "link": "https://www.cybersecuritydive.com/news/water"
-      },
-      {
-        "id": "gmail:1a1118c601f1cb6a",
-        "title": "OpenAI Starts Watermarking ChatGPT Text",
-        "publisher": "alvarocintas.com",
-        "qi": 11.6,
-        "priority": "P3",
-        "link": "https://newsletter.alvarocintas.com/watermark"
-      }
-    ]
+    "sample": []
   },
   "x": {
     "fetched": 0,
@@ -1446,27 +1298,31 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "query": "LLM agent eval harness",
-    "shelf": 2,
-    "from_cache": true,
-    "searches": 0,
-    "rate_limit_remaining": null,
+    "shelf": 3,
+    "from_cache": false,
+    "searches": 1,
+    "rate_limit_remaining": 9,
     "brief": false,
     "pulse_lead": false,
     "shelf_only": true,
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
-        "label": "GuillermoBarreto/evalkit",
-        "href": "https://github.com/GuillermoBarreto/evalkit"
+        "label": "ssheleg/agent-stack",
+        "href": "https://github.com/ssheleg/agent-stack"
       },
       {
-        "label": "1isaqu/llm-agent-evals",
-        "href": "https://github.com/1isaqu/llm-agent-evals"
+        "label": "Matswm86/mwm-harness",
+        "href": "https://github.com/Matswm86/mwm-harness"
+      },
+      {
+        "label": "Binarysite/agent-eval-harness",
+        "href": "https://github.com/Binarysite/agent-eval-harness"
       }
     ]
   },
   "shelf": {
-    "count": 19,
+    "count": 20,
     "brief": false
   },
   "wikidata": {
@@ -1478,7 +1334,7 @@
       "Astra",
       "Hugging Face"
     ],
-    "searches": 2,
+    "searches": 3,
     "from_cache": false,
     "brief": false,
     "pulse_lead": false,

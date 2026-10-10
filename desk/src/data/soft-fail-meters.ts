@@ -18,20 +18,20 @@ export type SoftFailMeters = {
 };
 
 export const SOFT_FAIL_METERS: SoftFailMeters = {
-  stamped_at: "2026-10-10T15:14:07Z",
+  stamped_at: "2026-10-10T18:21:26Z",
   briefEligible: false,
   providers: [
     { id: "hn", label: "HN", state: "ok", detail: "ok" },
     { id: "hf", label: "HF", state: "ok", detail: "ok" },
     { id: "rss", label: "RSS", state: "ok", detail: "ok" },
     { id: "gnews", label: "GNews", state: "ok", detail: "landed" },
-    { id: "gmail", label: "Gmail", state: "ok" as SoftFailState, detail: "10 landed" },
+    { id: "gmail", label: "Gmail", state: "soft" as SoftFailState, detail: "box-only" },
     { id: "openalex", label: "OpenAlex", state: "ok", detail: "ok" },
     { id: "crossref", label: "Crossref", state: "ok", detail: "ok" },
     { id: "github", label: "GitHub", state: "ok", detail: "ok" },
     { id: "x_session", label: "X-session", state: "soft" as SoftFailState, detail: "taste stale" },
   ],
-  aggregate: ["X-session taste stale"],
+  aggregate: ["Gmail box-only","X-session taste stale"],
   deny: ["paid X", "Bluesky", "scrape farms"],
-  soft_count: 1,
+  soft_count: 2,
 } as const;

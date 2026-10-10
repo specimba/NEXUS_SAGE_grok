@@ -3,19 +3,22 @@ import type { MovedRow, RankSnapshot } from "@/lib/corroboration";
 
 export const RANK_CURRENT: RankSnapshot = {
   "schema": 1,
-  "at": "2026-10-10T15:14:16.526Z",
-  "crawl_at": "2026-10-10T15:14:07Z",
+  "at": "2026-10-10T18:21:45.031Z",
+  "crawl_at": "2026-10-10T18:21:26Z",
   "lead_id": "hf-incident",
   "rows": [
     {
       "id": "hf-swarm",
       "rank": 1,
       "base_rank": 1,
-      "sources": 1,
+      "sources": 2,
       "source_keys": [
+        "crawl:pub:www.lvivherald.com",
         "x:@dwarkesh_sp"
       ],
-      "crawl_hits": [],
+      "crawl_hits": [
+        "cl:gnews:7ac43f0bffc285af"
+      ],
       "mult": 1,
       "lead": true
     },
@@ -64,8 +67,8 @@ export const RANK_CURRENT: RankSnapshot = {
 
 export const RANK_PREV: RankSnapshot | null = {
   "schema": 1,
-  "at": "2026-10-10T11:13:19.947Z",
-  "crawl_at": "2026-10-10T11:13:02Z",
+  "at": "2026-10-10T15:14:16.526Z",
+  "crawl_at": "2026-10-10T15:14:07Z",
   "lead_id": "hf-incident",
   "rows": [
     {
@@ -130,7 +133,7 @@ export const RANK_MOVED: MovedRow[] = [
     "prev_rank": 1,
     "rank": 1,
     "prev_sources": 1,
-    "sources": 1,
+    "sources": 2,
     "by_corroboration": false
   },
   {
