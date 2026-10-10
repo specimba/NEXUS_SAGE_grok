@@ -51,6 +51,7 @@ crawl:
     - git config credential.helper '!f() { echo username=x-access-token; echo "password=$GH_PUSH_TOKEN"; }; f'
     - cd desk
     # watchdog first: previous run's checked_at vs 10h (catches a missed slot); --pre: no last-checked.json yet = first run
+    - bash scripts/ci-state.sh seed   # state lives on main (committed every run); gh-pages is only the fallback
     - bun scripts/watchdog.ts --pre
     - mkdir -p .next && rm -rf .next/cache && mkdir -p "$CI_PROJECT_DIR/.cache/next" && ln -s "$CI_PROJECT_DIR/.cache/next" .next/cache
     - bun install --frozen-lockfile
@@ -74,11 +75,10 @@ crawl:
       mkdir -p ../logs
       echo "$(date -u +%FT%TZ) gitlab pipeline $CI_PIPELINE_ID crawl $crawl changed=$changed ${dur}s$slow" >> ../logs/crawl.log
       if [ "$changed" = "true" ]; then
-        git add -- src/data artifacts/sage
+        bash scripts/ci-state.sh stage true
         msg="chore(sage): crawl $crawl (gitlab) [skip ci]"
       else
-        git checkout -- src/data artifacts/sage 2>/dev/null || true
-        git add -- artifacts/sage/last-checked.json
+        bash scripts/ci-state.sh stage false
         msg="chore(sage): crawl check, reader unchanged (gitlab) [skip ci]"
       fi
       git add -f -- ../logs/crawl.log
