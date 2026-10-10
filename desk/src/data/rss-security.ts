@@ -16,7 +16,7 @@ export type RssSecurityRow = {
   cluster_id?: string;
 };
 
-export const RSS_SECURITY_AT = "2026-10-10T08:21:16Z";
+export const RSS_SECURITY_AT = "2026-10-10T11:13:02Z";
 
 export const RSS_SECURITY: RssSecurityRow[] = [
   { id: "rss-sec:projectzero:c26302aa2cbe872f", lab: "projectzero" as const, title: "How to fix a bug in a fix", link: "https://projectzero.google/2026/10/emergency-patching.html", published: "2026-10-06T07:00:00Z", summary: "Project Zero often works with software vendors to remediate the vulnerabilities we report and provide broader guidance on making software more secure. Some vendors express concern about potential scenarios in which they are unable to fix vulnerabilities that are causing immediate user harm, due to limitations in their patch delivery systems. Since Project Zero encounters a wide array of systems d…", source: "rss-security" as const, tag: "rest" as const, first_seen: "2026-10-06T19:19:19Z", is_new: false, cluster_id: "cl:rss-sec:projectzero:c26302aa2cbe872f" },
