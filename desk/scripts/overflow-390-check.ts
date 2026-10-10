@@ -75,7 +75,9 @@ for (const lane of LANES) {
   for (const it of r.items) fails.push(`${lane}: text right edge ${it.right}px > ${W} · <${it.tag}> "${it.text}"`);
   if (lane === "voice") {
     const fold = await evalv(`(async () => {
-      const d = document.querySelector(".lane-voice details.digest-archive-fold") || document.querySelector("details.digest-archive-fold");
+      const q = () => document.querySelector(".lane-voice details.digest-archive-fold") || document.querySelector("details.digest-archive-fold");
+      for (let i = 0; i < 50 && !q(); i++) await new Promise((r) => setTimeout(r, 200));
+      const d = q();
       if (!d) return "missing";
       const before = d.querySelector("summary").textContent.trim();
       d.open = true; await new Promise((r) => setTimeout(r, 800));
