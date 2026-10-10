@@ -4,6 +4,7 @@
  * drawer coverage, same papers. Stories past DESK_VIEW_CAPS are dropped whole, oldest first (see desk-view-caps.test.ts).
  */
 import { describe, expect, test } from "bun:test";
+import * as VP from "@/data/desk-view-papers";
 import { spawnSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
@@ -89,7 +90,7 @@ describe("desk-view.ts — slim client view == raw crawl modules", () => {
     // what tonight's crawl trimmed is a report: bun scripts/desk-view.ts --report.
     expect(PULSE_CLUSTERS.length - CLUSTERS.length).toBe(V.DESK_VIEW_TRIMMED.stories);
     expect(CRAWL.length - V.X_POSTS.length).toBe(V.DESK_VIEW_TRIMMED.xPosts);
-    expect(PAPERS.length - V.PAPERS.length).toBe(V.DESK_VIEW_TRIMMED.papers);
+    expect(PAPERS.length - VP.PAPERS.length).toBe(V.DESK_VIEW_TRIMMED.papers);
   });
 
   test("Pulse rows (clusters + X) are identical as rendered — chips, N SRC, NEW, signal, security, summary", () => {
@@ -148,7 +149,7 @@ describe("desk-view.ts — slim client view == raw crawl modules", () => {
 
   test("Papers rows identical as rendered (abstract shown ≤600 chars)", () => {
     const shown = (rows: ReturnType<typeof buildPaperRows>) => rows.map((r) => ({ ...r, abstract: r.abstract?.slice(0, ABSTRACT_CHARS) ?? null }));
-    expect(norm(shown(buildPaperRows(V.PAPERS)))).toEqual(norm(shown(buildPaperRows(PAPERS as unknown as PaperInput[]))));
+    expect(norm(shown(buildPaperRows(VP.PAPERS)))).toEqual(norm(shown(buildPaperRows(PAPERS as unknown as PaperInput[]))));
   });
 
   test("orphan clusters (lead not a crawl item) keep their position", () => {

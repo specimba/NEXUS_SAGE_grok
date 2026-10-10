@@ -59,8 +59,12 @@ export const DESK_VIEW_CAPS = {
    * shape checks, since 36 papers × 2 links at 2048 could not fit gzBytes (papers are not budget-dropped).
    */
   chars: { title: 200, drawerTitle: 200, publisher: 40, take: 280, paperTitle: 240, url: LINK_MAX, xUrl: 128, paperUrl: 64 },
-  /** Hard budget: gzip -9 bytes of the generated src/data/desk-view.ts. */
-  gzBytes: 41_900,
+  /**
+   * Hard budget: gzip -9 bytes of the generated src/data/desk-view.ts. Pass A2 (2026-10-10): PAPERS moved to the lazy
+   * desk-view-papers.ts chunk (≈7.8 kB gz out of First Load), so the budget drops 41 900 → 35 500 B: First Load at a
+   * full budget stays ≥ 3 kB under the 185 kB gate (see pass-a2-first-load.test.ts).
+   */
+  gzBytes: 35_500,
 } as const;
 
 /** Cut to `n` chars with an ellipsis (only past the cap — never touches text under it). */

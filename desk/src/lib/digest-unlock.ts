@@ -4,7 +4,7 @@
  * Pure helpers — IO / module writes live in rank-snapshot + digest-tick.
  */
 import { CYCLE, type Pin } from "@/data/cycle";
-import { DIGEST_ITEMS, type DigestItem } from "@/data/digest-pack";
+import { DIGEST_LEAD, type DigestItem } from "@/data/digest-pack-lead";
 import type { LeadEntry } from "@/lib/lead-pick";
 import type { WireRow } from "@/lib/wire";
 import { LEAD_HELD_TEXT } from "@/lib/lead-view";
@@ -146,7 +146,7 @@ export function archiveRowsFromCycle(pins: readonly Pin[] = CYCLE.pins): UnlockR
 /** Archive fallback lead from CYCLE.003 / DIGEST_ITEMS — never invent. */
 export function archiveLeadFromCycle(
   pins: readonly Pin[] = CYCLE.pins,
-  digestItems: readonly DigestItem[] = DIGEST_ITEMS,
+  digestItems: readonly DigestItem[] = [DIGEST_LEAD],
 ): UnlockRow {
   const pin = pins.find((p) => p.kind === "lead") ?? pins[0];
   const dig = digestItems.find((i) => i.kind === "lead") ?? digestItems[0];
@@ -299,7 +299,7 @@ function archiveView(): UnlockView {
 /** Overlay unlocked lead + rows onto DigestItem[] for pack export (cycle stays 003). */
 export function unlockToDigestItems(
   view: UnlockView,
-  baseline: readonly DigestItem[] = DIGEST_ITEMS,
+  baseline: readonly DigestItem[],
 ): DigestItem[] {
   const archiveBaseline = baseline.map((i) =>
     i.kind === "drop"

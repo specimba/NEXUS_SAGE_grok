@@ -1,7 +1,8 @@
 "use client";
+import type { SyntheticEvent } from "react";
 import { createContext, Fragment, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { CYCLE, WAVES, WAVE_TIMELINE } from "@/data/cycle";
+import { CYCLE, WAVES } from "@/data/cycle";
 // Crawl data comes ONLY from the generated slim view (OPT win 3); raw src/data crawl modules never reach the client.
 import {
   CRAWL_AT,
@@ -11,7 +12,6 @@ import {
   LEAD_YESTERDAY,
   MEMBER_ROWS,
   ORPHAN_CLUSTERS,
-  PAPERS,
   PULSE_CLUSTERS_AT,
   RANK_CURRENT,
   RANK_MOVED,
@@ -28,9 +28,8 @@ import {
 import { crawlItemIds, inflateClusters, inflateMembers, memberAt, memberItems, stripPublisher, xRows } from "@/lib/desk-view";
 import { X_TASTE } from "@/data/x-taste";
 import { TASTE_VISIBLE_CAP, tasteSoftMeter } from "@/lib/x-taste-meter";
-import { DIGEST_ITEMS, DROPPED } from "@/data/digest-pack";
 import { DIGEST_UNLOCK } from "@/data/digest-unlock";
-import { resolveUnlock, withLeadView, archiveRowsFromCycle, type UnlockView, type UnlockRow } from "@/lib/digest-unlock";
+import { resolveUnlock, withLeadView, type UnlockView, type UnlockRow } from "@/lib/digest-unlock";
 import { DIGEST_CADENCE } from "@/data/digest-cadence";
 import { groupFirstAt, leadAgeHours } from "@/lib/lead-pick";
 import { LEAD_HELD_TEXT, leadView, nextCrawlSlotHHMM, type LeadView } from "@/lib/lead-view";
@@ -41,7 +40,11 @@ import { isPausedAt, type PauseMap } from "@/lib/source-pause";
 import { istanbulHHMM, wireHeader, wireMark } from "@/lib/wire";
 import { WIKIDATA_DENY_LAST } from "@/data/wikidata-deny-last";
 import { SOFT_FAIL_METERS } from "@/data/soft-fail-meters";
-import { isDigestDue, nextDue, PACK_KEY, renderPlan, renderReport } from "@/lib/digest-pack";
+import { isDigestDue, nextDue, PACK_KEY } from "@/lib/digest-cadence-gate";
+import type { UnlockRow as ArchiveRow } from "@/lib/digest-unlock";
+
+/** Pass A2: Sep archive payload is a lazy chunk — never in First Load. */
+const loadArchive = () => import("@/lib/archive-003");
 import { crawlAgeHours } from "@/lib/x-pulse";
 import { crawlFreshness, STALE_GUARD_HOURS } from "@/lib/crawl-staleness";
 import {
@@ -1649,23 +1652,40 @@ function UnlockLeadTitle({
   return <div className="sage-take-plate">{title}</div>;
 }
 
-/** CYCLE.003 pins — closed fold; does not compete with today's lead. */
+/** CYCLE.003 pins — closed fold; does not compete with today's lead. Pass A2: rows load lazily on first open. */
 function CycleArchiveFold() {
-  const pins = archiveRowsFromCycle();
+  const [pins, setPins] = useState<ArchiveRow[] | null>(null);
+  const [state, setState] = useState<"idle" | "loading" | "ready" | "error">("idle");
+  const onToggle = (e: SyntheticEvent<HTMLDetailsElement>) => {
+    if (!e.currentTarget.open || state === "loading" || state === "ready") return;
+    setState("loading");
+    loadArchive()
+      .then((a) => {
+        setPins(a.archiveFoldRows());
+        setState("ready");
+      })
+      .catch(() => setState("error"));
+  };
   return (
-    <details className="sage-panel sage-ticks digest-archive-fold" data-archive-fold="003">
+    <details className="sage-panel sage-ticks digest-archive-fold" data-archive-fold="003" data-archive-state={state} onToggle={onToggle}>
       <summary className="cursor-pointer px-2.5 py-1.5 font-mono text-kicker uppercase tracking-kicker text-subtle">
-        archive · 003 · {pins.length} pins · closed
+        archive · 003 · {CYCLE.pins.length} pins · closed
       </summary>
-      <ul className="space-y-1 border-t border-line px-2.5 py-2">
-        {pins.map((p) => (
-          <li key={p.id} className="pin-card-quiet px-2 py-1">
-            <p className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
-              {p.kind} · {p.id}
-            </p>
-            <p className="truncate text-sm text-muted">{p.title}</p>
+      <ul className="space-y-1 border-t border-line px-2.5 py-2" style={{ minHeight: `${CYCLE.pins.length * 3.25}rem` }}>
+        {state === "ready" && pins ? (
+          pins.map((p) => (
+            <li key={p.id} className="pin-card-quiet px-2 py-1">
+              <p className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
+                {p.kind} · {p.id}
+              </p>
+              <p className="truncate text-sm text-muted">{p.title}</p>
+            </li>
+          ))
+        ) : (
+          <li className="px-2 py-1 font-mono text-kicker uppercase tracking-kicker text-subtle" data-archive-note={state === "error" ? "unavailable" : "loading"}>
+            {state === "error" ? "archive unavailable" : "loading archive · 003…"}
           </li>
-        ))}
+        )}
       </ul>
     </details>
   );
@@ -1707,11 +1727,6 @@ function Digest() {
   const due = diskCadence.due;
   const nextAt = diskCadence.nextAt;
   const item = liveRows.find((i) => i.id === openId) ?? unlock.lead;
-  const report = useMemo(
-    () => renderReport(DIGEST_ITEMS, last ?? DIGEST_CADENCE.last_at),
-    [last],
-  );
-  const plan = useMemo(() => renderPlan(), []);
   const tickAgeH = useMemo(() => {
     const t = Date.parse(DIGEST_CADENCE.last_at);
     if (now == null || !Number.isFinite(t)) return null;
@@ -1971,7 +1986,13 @@ function Digest() {
             type="button"
             className="term focus-phosphor h-9 px-3 font-mono text-kicker uppercase tracking-kicker"
             onClick={() =>
-              download(`sage-digest-${DIGEST_CADENCE.pack_id.replace(/:/g, "")}.md`, report, "text/markdown")
+              void loadArchive().then((a) =>
+                download(
+                  `sage-digest-${DIGEST_CADENCE.pack_id.replace(/:/g, "")}.md`,
+                  a.renderReport(a.DIGEST_ITEMS, last ?? DIGEST_CADENCE.last_at),
+                  "text/markdown",
+                ),
+              )
             }
           >
             Download report.md
@@ -1981,7 +2002,7 @@ function Digest() {
             className="term focus-phosphor h-9 px-3 font-mono text-kicker uppercase tracking-kicker"
             title="UI twin JSON · bun run pack:export"
             onClick={() =>
-              download(
+              void loadArchive().then((a) => download(
                 `sage-pack-twin-${CYCLE.id}.json`,
                 JSON.stringify(
                   {
@@ -1997,14 +2018,14 @@ function Digest() {
                       deny: CYCLE.trust.deny,
                       new_primary: false,
                     },
-                    digest: { at: last, items: DIGEST_ITEMS, plan, dropped: DROPPED },
-                    cycle_snapshot: { CYCLE, WAVES, WAVE_TIMELINE },
+                    digest: { at: last, items: a.DIGEST_ITEMS, plan: a.renderPlan(), dropped: a.DROPPED },
+                    cycle_snapshot: { CYCLE, WAVES, WAVE_TIMELINE: a.WAVE_TIMELINE },
                   },
                   null,
                   2,
                 ),
                 "application/json",
-              )
+              ))
             }
           >
             Download pack twin
@@ -2048,7 +2069,19 @@ function Digest() {
 
 function Papers() {
   const [openId, setOpenId] = useState<string | null>(null);
-  const allRows = useMemo(() => buildPaperRows(PAPERS as unknown as PaperInput[]), []);
+  // Pass A2: Papers rows are a lazy chunk (desk-view-papers.ts) — fetched when this lane mounts, never in First Load.
+  const [papers, setPapers] = useState<readonly PaperInput[] | null>(null);
+  const [papersErr, setPapersErr] = useState(false);
+  useEffect(() => {
+    let live = true;
+    import("@/data/desk-view-papers")
+      .then((m) => live && setPapers(m.PAPERS as unknown as PaperInput[]))
+      .catch(() => live && setPapersErr(true));
+    return () => {
+      live = false;
+    };
+  }, []);
+  const allRows = useMemo(() => (papers ? buildPaperRows(papers as PaperInput[]) : []), [papers]);
   const { q, report } = useDeskKeys();
   const rows = useMemo(
     () => allRows.filter((p) => matchesFilter(q, [p.title, p.id, ...p.badges.map((b) => b.label)])),
@@ -2061,7 +2094,7 @@ function Papers() {
   return (
     <div className="sage-lane-craft lane-papers pulse-v5 papers-v6">
       <p className="papers-v6-kicker tabular-nums">
-        PAPERS · {rows.length} rows · HF daily + arXiv/OpenAlex/Crossref enrich · never Brief
+        PAPERS · {papers ? `${rows.length} rows` : papersErr ? "papers unavailable" : "loading papers…"} · HF daily + arXiv/OpenAlex/Crossref enrich · never Brief
       </p>
       <section className="pulse-v5-table" aria-label="Papers table">
         <div className="papers-v6-head" aria-hidden>

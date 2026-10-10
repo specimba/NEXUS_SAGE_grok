@@ -17,6 +17,7 @@ import { deskViewPins } from "@/lib/desk-view-module";
 import { buildLeadLog, LEAD_LOG_CAPS } from "@/lib/lead-log";
 import { rawDeskViewInputs } from "@/lib/desk-view-inputs";
 import { fitDeskView } from "@/lib/desk-view-module";
+import { renderDeskViewPapersModule } from "@/lib/desk-view-module";
 import { renderLeadLogModule } from "@/lib/lead-log-module";
 
 const desk = resolve(import.meta.dir, "..");
@@ -28,6 +29,7 @@ const logBody = renderLeadLogModule(existsSync(historyPath) ? JSON.parse(readFil
 
 const files = [
   { name: "src/data/desk-view.ts", body: fit.body },
+  { name: "src/data/desk-view-papers.ts", body: renderDeskViewPapersModule(fit.view, extras) },
   { name: "src/data/lead-log-view.ts", body: logBody },
 ].map((f) => ({ ...f, path: resolve(desk, f.name) }));
 const stale = files.filter((f) => (existsSync(f.path) ? readFileSync(f.path, "utf8") : null) !== f.body);

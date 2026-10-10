@@ -4,6 +4,7 @@
  * lane at its cap, every field at max) stays inside the gzip budget whose build was measured under 185 kB.
  */
 import { describe, expect, test } from "bun:test";
+import * as VP from "@/data/desk-view-papers";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import * as V from "@/data/desk-view";
@@ -127,7 +128,7 @@ describe("desk-view caps — fixed size, oldest dropped first", () => {
   });
 
   test("today's view: no dangling ids, every pinned story kept, gzip within budget", () => {
-    const view: DeskView = { memberRows: V.MEMBER_ROWS, orphanClusters: V.ORPHAN_CLUSTERS, xPosts: V.X_POSTS, papers: V.PAPERS, trimmed: V.DESK_VIEW_TRIMMED };
+    const view: DeskView = { memberRows: V.MEMBER_ROWS, orphanClusters: V.ORPHAN_CLUSTERS, xPosts: V.X_POSTS, papers: VP.PAPERS, trimmed: V.DESK_VIEW_TRIMMED };
     const { extras } = rawDeskViewInputs();
     assertNoDangling(view, deskViewPins(extras).filter((id) => rawDeskViewInputs().input.clusters.some((c) => c.id === id)));
     expect(gzBytes(readFileSync(join(DESK, "src/data/desk-view.ts"), "utf8"))).toBeLessThanOrEqual(DESK_VIEW_CAPS.gzBytes);

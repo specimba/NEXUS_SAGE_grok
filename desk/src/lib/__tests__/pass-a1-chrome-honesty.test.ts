@@ -86,7 +86,7 @@ describe("Pass A1 chrome honesty", () => {
   });
 
   test("archive fold stays closed by default (Pass A chrome)", () => {
-    expect(deskSrc).toContain("archive · 003 · {pins.length} pins · closed");
+    expect(deskSrc).toContain("archive · 003 · {CYCLE.pins.length} pins · closed");
     expect(deskSrc).toContain('<details className="sage-panel sage-ticks digest-archive-fold"');
     expect(deskSrc).not.toMatch(/<details[^>]*open[^>]*digest-archive-fold|digest-archive-fold[^>]*open/);
   });
