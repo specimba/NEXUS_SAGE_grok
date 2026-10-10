@@ -758,7 +758,7 @@ function BriefWire() {
                 {r.status === "new" ? <span className="pulse-v5-new">NEW</span> : mark}
               </span>
               <AgeCell iso={firstAtIso(r)} now={now} />
-              <a className="brief-wire-headline focus-phosphor" href={r.url} target="_blank" rel="noreferrer">
+              <a className="brief-wire-headline focus-phosphor" data-row-clamp="wire" href={r.url} target="_blank" rel="noreferrer">
                 {r.title}
               </a>
               <span className="brief-wire-src" data-src-n={r.sources}>
@@ -957,7 +957,7 @@ function Brief() {
             }}
           >
             <span className="font-mono text-kicker uppercase tracking-kicker">Yesterday · {LEAD_YESTERDAY.date}</span>{" "}
-            <span className="line-clamp-1">{LEAD_YESTERDAY.headline}</span>
+            <span className="line-clamp-1 sage-headline">{LEAD_YESTERDAY.headline}</span>
             <span className="sage-take-yesterday-go font-mono text-kicker uppercase tracking-kicker">→ log</span>
           </a>
         )}
@@ -1863,6 +1863,7 @@ function Digest() {
                       {i.sources ? ` · ${i.sources} SRC` : ""}
                     </p>
                     <p
+                      data-row-clamp="digest"
                       className={cn(
                         "mt-0.5 truncate text-sm",
                         open ? "text-phosphor-bright" : "text-phosphor",
@@ -1930,7 +1931,7 @@ function Digest() {
                 <span>×</span>
               </li>
               {movedUnlock ? (
-                <li className="sage-moved-row" data-status="same" data-unlock-lead="1">
+                <li className="sage-moved-row" data-status="same" data-unlock-lead="1" data-row-clamp="moved">
                   <span className="sage-moved-delta">=</span>
                   <span className="sage-moved-item truncate">{movedLeadId} · lead · pick {unlock.pickDate}</span>
                   <span className="tabular-nums" data-label="rank">1</span>
@@ -2391,7 +2392,7 @@ function Voice() {
               Script · story
             </p>
             <span className="font-mono text-kicker uppercase tracking-kicker text-subtle">
-              lead · cyc/{CYCLE.id} · {unlock.stamp} · TAKE→WHY→MOVE
+              lead · cyc/{CYCLE.id} · TAKE→WHY→MOVE
             </span>
           </div>
           <UnlockKicker view={unlock} />
@@ -2409,7 +2410,7 @@ function Voice() {
           {unlock.rows.length ? (
             <ul className="mt-3 max-w-prose space-y-1 border-t border-line pt-2 text-sm text-muted" data-voice-rows="1">
               {unlock.rows.map((r) => (
-                <li key={r.id} className="border-l-2 border-phosphor pl-3 truncate">
+                <li key={r.id} data-row-clamp="voice" className="border-l-2 border-phosphor pl-3 truncate">
                   {r.title}
                 </li>
               ))}

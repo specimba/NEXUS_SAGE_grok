@@ -2989,3 +2989,22 @@ a.story-drawer-rowlink:focus-visible .story-drawer-open {
   .lane-voice .sage-instrument > div:last-child { grid-column: 1 / -1; }
 }
 .digest-archive-fold { min-width: 0; max-width: 100%; }
+
+/* Architect 390 rule: lead + headline text wraps (never ellipsis / line-clamp) below the desktop breakpoint. 1280 keeps truncate. */
+@media (max-width: 1023.98px) {
+  .sage-take-title, .sage-take-title *, .sage-headline {
+    white-space: normal;
+    text-overflow: clip;
+    overflow: visible;
+    overflow-wrap: anywhere;
+    -webkit-line-clamp: unset;
+    line-clamp: none;
+    min-width: 0;
+  }
+  span.sage-headline { display: inline; }
+  .brief-wire-headline.sage-headline { display: block; }
+}
+@media (max-width: 1023.98px) {
+  /* Voice script card at 390: the single HELD kicker gets air from the wrapped meta line and the title. */
+  .lane-voice [data-unlock-kicker] { margin-block: 0.375rem; }
+}
