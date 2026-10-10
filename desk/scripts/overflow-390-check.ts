@@ -4,13 +4,17 @@
  *   bun scripts/overflow-390-check.ts [url]
  * On every lane (#brief … #governance) at a 390×844 mobile viewport, fails (exit 1) if any visible text
  * run's right edge (Range client rects over text nodes — so text clipped inside overflow-hidden boxes
- * still counts; an ellipsis-truncated element is judged by its own box) extends past x=390, or the document scrolls sideways. On Voice it also opens the archive
+ * still counts; text-overflow: ellipsis is exempt only when its own box ends ≤390) extends past x=390,
+ * or any lead/headline element (HEADLINE_SEL) is ellipsized or line-clamped, or the document scrolls sideways. On Voice it also opens the archive
  * fold and requires its header to read "· open". ONLY exemption: EXEMPT_CLASSES (ticker scrolls by design).
  */
 import { spawn } from "node:child_process";
 import { rmSync } from "node:fs";
 
 const EXEMPT_CLASSES = ["desk-ticker-item"];
+const HEADLINE_SEL = ".sage-take-title, [data-unlock-lead], .sage-headline";
+// List rows (Pulse / Wire / Digest items, Voice sub-rows) may ellipsize or line-clamp — explicit allowlist.
+const ROW_ALLOW = "[data-row-clamp], .pulse-v5-taste-text, .pulse-v5-taste-skip";
 const LANES = ["brief", "pulse", "digest", "papers", "voice", "governance"];
 const W = 390;
 const base = (process.argv.slice(2).find((a) => /^https?:\/\//.test(a)) ?? process.env.SAGE_DESK_URL ?? "http://127.0.0.1:3000/").replace(/#.*$/, "");
@@ -42,7 +46,7 @@ const evalv = async (expression: string) => (await cdp("Runtime.evaluate", { exp
 await cdp("Page.enable");
 await cdp("Emulation.setDeviceMetricsOverride", { width: W, height: 844, deviceScaleFactor: 2, mobile: true });
 const probe = `(() => {
-  const EX = ${JSON.stringify(EXEMPT_CLASSES)}, W = ${W}, out = [];
+  const EX = ${JSON.stringify(EXEMPT_CLASSES)}, W = ${W}, out = [], HEAD = ${JSON.stringify(HEADLINE_SEL)}, ROWS = ${JSON.stringify(ROW_ALLOW)};
   const tw = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
   const seen = new Set();
   for (let n = tw.nextNode(); n; n = tw.nextNode()) {
@@ -54,8 +58,15 @@ const probe = `(() => {
     const r = document.createRange(); r.selectNodeContents(n);
     let right = 0;
     for (const q of r.getClientRects()) if (q.width > 1 && q.height > 1) right = Math.max(right, q.right);
-    // Ellipsis truncation is a deliberate in-box cut: judge the box (it must still end inside the viewport).
-    if (right > W && cs.textOverflow === "ellipsis" && cs.overflowX !== "visible") right = Math.min(right, el.getBoundingClientRect().right);
+    // Lead / headline text must wrap at 390: any ellipsis or line-clamp on it fails outright.
+    if (el.closest(HEAD) && !seen.has(el) && !el.closest(ROWS) && (cs.textOverflow === "ellipsis" || (cs.webkitLineClamp && cs.webkitLineClamp !== "none"))) {
+      seen.add(el);
+      out.push({ right: Math.round(right), tag: el.tagName.toLowerCase() + " (headline ellipsized/clamped)", text: n.textContent.trim().slice(0, 50) });
+      continue;
+    }
+    // ONLY exemption besides EXEMPT_CLASSES: computed text-overflow: ellipsis AND the element's own box ends ≤ 390.
+    // Every other overflow-hidden clip stays strict (judged by the text's own rects).
+    if (right > W && cs.textOverflow === "ellipsis" && el.getBoundingClientRect().right <= W) right = el.getBoundingClientRect().right;
     if (right > W + 0.5 && !seen.has(el)) {
       seen.add(el);
       const cls = (el.className && el.className.baseVal === undefined ? el.className : "").toString().split(" ").slice(0, 3).join(".");
@@ -87,6 +98,26 @@ for (const lane of LANES) {
     const [before = "", after = ""] = String(fold).split(" || ");
     if (!/· closed$/.test(before) || !/· open$/.test(after)) fails.push(`voice: archive fold header must read "· closed" → "· open" (got "${before}" → "${after}")`);
     else console.log(`  fold: "${before}" → "${after}"`);
+    // Voice script card: no two text runs from different elements may overlap — meta line vs HELD kicker.
+    const ov = await evalv(`(() => {
+      const card = document.querySelector('section[aria-label="Voice script"]'); if (!card) return ["card missing"];
+      const tw = document.createTreeWalker(card, NodeFilter.SHOW_TEXT), boxes = [];
+      for (let n = tw.nextNode(); n; n = tw.nextNode()) {
+        if (!n.textContent.trim()) continue;
+        const r = document.createRange(); r.selectNodeContents(n);
+        for (const q of r.getClientRects()) if (q.width > 1 && q.height > 1) boxes.push({ q, el: n.parentElement, t: n.textContent.trim().slice(0, 24) });
+      }
+      const bad = [];
+      for (let a = 0; a < boxes.length; a++) for (let b = a + 1; b < boxes.length; b++) {
+        const A = boxes[a], B = boxes[b];
+        if (A.el === B.el) continue;
+        const x = Math.min(A.q.right, B.q.right) - Math.max(A.q.left, B.q.left);
+        const y = Math.min(A.q.bottom, B.q.bottom) - Math.max(A.q.top, B.q.top);
+        if (x > 2 && y > 0) bad.push('text overlap' + ' "' + A.t + '" ↔ "' + B.t + '" (' + y.toFixed(1) + 'px)');
+      }
+      return bad.slice(0, 6);
+    })()`);
+    for (const o of ov ?? []) fails.push(`voice: script card ${o}`);
     const r2 = await evalv(probe);
     for (const it of r2?.items ?? []) fails.push(`voice(fold open): text right edge ${it.right}px > ${W} · <${it.tag}> "${it.text}"`);
   }
