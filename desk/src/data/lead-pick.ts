@@ -7,6 +7,11 @@ export const LEAD_TODAY: LeadEntry | null = {
   "crawl_at": "2026-10-10T03:17:55Z",
   "excluded": [
     {
+      "cluster_id": "cl:hn:50013972",
+      "headline": "OpenAI Safety Researchers Fired",
+      "reason": "age>=24h"
+    },
+    {
       "cluster_id": "cl:hn:50006368",
       "headline": "Google is launching a one-stop Gemini agent for your work tasks",
       "reason": "age>=24h"
@@ -55,6 +60,52 @@ export const LEAD_TODAY: LeadEntry | null = {
       "at": "2026-10-10T03:18:13.174Z",
       "crawl_at": "2026-10-10T03:17:55Z",
       "excluded": [
+        {
+          "cluster_id": "cl:hn:50006368",
+          "headline": "Google is launching a one-stop Gemini agent for your work tasks",
+          "reason": "age>=24h"
+        },
+        {
+          "cluster_id": "cl:gnews:3c9098103a05590f",
+          "headline": "Gemini Tarot Horoscope Today, October 10, 2026: Pay Attention to Health, Will Listen to Close Ones",
+          "reason": "GNW_ONLY"
+        },
+        {
+          "cluster_id": "cl:hn:50023260",
+          "headline": "'Breathtaking,' 'Devastating': Mathematics Reels After New OpenAI Release",
+          "reason": "age>=24h"
+        },
+        {
+          "cluster_id": "cl:rss:huggingface:88e871d5a8d26738",
+          "headline": "Multimodal open d1 decision models for the edge",
+          "reason": "age>=24h"
+        },
+        {
+          "cluster_id": "cl:gnews:bfa682adff75494b",
+          "headline": "Google Opens AI Content Detector To Users Worldwide",
+          "reason": "GNW_ONLY"
+        },
+        {
+          "cluster_id": "cl:hn:50008187",
+          "headline": "OpenAI annualised revenues $20B less than previously signalled",
+          "reason": "age>=24h"
+        },
+        {
+          "cluster_id": "cl:rss:huggingface:16b7810afb00bdc0",
+          "headline": "Introducing Falcon ASR",
+          "reason": "age>=24h"
+        }
+      ]
+    },
+    {
+      "at": "2026-10-10T07:12:47.624Z",
+      "crawl_at": "2026-10-10T07:12:37Z",
+      "excluded": [
+        {
+          "cluster_id": "cl:hn:50013972",
+          "headline": "OpenAI Safety Researchers Fired",
+          "reason": "age>=24h"
+        },
         {
           "cluster_id": "cl:hn:50006368",
           "headline": "Google is launching a one-stop Gemini agent for your work tasks",

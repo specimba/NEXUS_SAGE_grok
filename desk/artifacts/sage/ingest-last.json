@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-10T03:17:55Z",
+  "stamped_at": "2026-10-10T07:12:37Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 222,
+      "duration_ms": 306,
       "paused_until": null,
       "reason": null
     },
@@ -18,7 +18,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 3369,
+      "duration_ms": 3091,
       "paused_until": null,
       "reason": null
     },
@@ -27,7 +27,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 542,
+      "duration_ms": 6,
       "paused_until": null,
       "reason": null
     },
@@ -36,7 +36,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 822,
+      "duration_ms": 2,
       "paused_until": null,
       "reason": null
     },
@@ -45,7 +45,7 @@
       "label": "HN",
       "status": "ok",
       "rows": 66,
-      "duration_ms": 8306,
+      "duration_ms": 8603,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 17248,
+      "duration_ms": 675,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 4313,
+      "duration_ms": 301,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 36,
-      "duration_ms": 6486,
+      "rows": 39,
+      "duration_ms": 301,
       "paused_until": null,
       "reason": null
     },
@@ -81,7 +81,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 2,
-      "duration_ms": 338,
+      "duration_ms": 301,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 273,
+      "duration_ms": 301,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 41919,
-    "sources_wall_ms": 17250,
-    "papers_lane_ms": 4962,
-    "slowest_source_ms": 17248,
+    "sources_ms": 13887,
+    "sources_wall_ms": 8605,
+    "papers_lane_ms": 3411,
+    "slowest_source_ms": 8603,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -114,34 +114,73 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 17643,
-    "startup_ms": 55,
-    "main_ms": 17670
+    "wall_ms": 10046,
+    "startup_ms": 76,
+    "main_ms": 10093
   },
-  "multi_source_independent": 5,
+  "multi_source_independent": 6,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 5,
-    "multi_source_raw": 8,
+    "multi_source_independent": 6,
+    "multi_source_raw": 9,
     "self_reposts": 3,
-    "items_in": 244,
-    "clusters_out": 225,
-    "collapsed": 19,
-    "multi_source": 5,
+    "items_in": 247,
+    "clusters_out": 226,
+    "collapsed": 21,
+    "multi_source": 6,
     "multi_member": 14,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 39,
+    "new_items": 6,
     "per_source": {
       "hn-algolia": 66,
       "rss-lab": 104,
       "rss-security": 28,
-      "gnews-rss": 36,
+      "gnews-rss": 39,
       "gmail-news": 10
     },
     "multi_source_clusters": [
+      {
+        "title": "OpenAI Safety Researchers Fired",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 4,
+        "score": 0.803,
+        "members": [
+          {
+            "id": "hn:50013972",
+            "source": "hn-algolia",
+            "title": "OpenAI Safety Researchers Fired",
+            "at": "2026-10-08T23:38:03Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:b6ce2bb12b5db403",
+            "source": "gnews-rss",
+            "title": "OpenAI Denies Firing Researchers Over AI Safety Warnings - NDTV",
+            "at": "2026-10-09T20:33:25Z",
+            "publisher": "NDTV"
+          },
+          {
+            "id": "gnews:230039a63a100ee4",
+            "source": "gnews-rss",
+            "title": "OpenAI defends firing researchers who raised safety questions - Washington Examiner",
+            "at": "2026-10-09T18:40:00Z",
+            "publisher": "Washington Examiner"
+          },
+          {
+            "id": "gnews:cb349c6b475c77b0",
+            "source": "gnews-rss",
+            "title": "OpenAI denies firing researchers for raising safety concerns - upi",
+            "at": "2026-10-09T14:12:15Z",
+            "publisher": "upi"
+          }
+        ]
+      },
       {
         "title": "'Breathtaking,' 'Devastating': Mathematics Reels After New OpenAI Release",
         "sources": [
@@ -400,7 +439,7 @@
         ]
       },
       {
-        "score": 0.661,
+        "score": 0.66,
         "blocked": "short-title",
         "hours_apart": 13.3,
         "a": {
@@ -442,7 +481,51 @@
         ]
       },
       {
-        "score": 0.54,
+        "score": 0.579,
+        "blocked": "below-threshold",
+        "hours_apart": 17.7,
+        "a": {
+          "id": "hn:50013972",
+          "source": "hn-algolia",
+          "title": "OpenAI Safety Researchers Fired",
+          "at": "2026-10-08T23:38:03Z"
+        },
+        "b": {
+          "id": "gnews:373d8d191dd3429a",
+          "source": "gnews-rss",
+          "title": "OpenAI Researchers Say They Were Sacked for Prioritizing Safety - NTD News",
+          "at": "2026-10-09T17:17:29Z"
+        },
+        "shared": [
+          "openai",
+          "safety",
+          "researcher"
+        ]
+      },
+      {
+        "score": 0.543,
+        "blocked": "below-threshold",
+        "hours_apart": 21.9,
+        "a": {
+          "id": "hn:50013972",
+          "source": "hn-algolia",
+          "title": "OpenAI Safety Researchers Fired",
+          "at": "2026-10-08T23:38:03Z"
+        },
+        "b": {
+          "id": "gnews:66ca732a10fa9813",
+          "source": "gnews-rss",
+          "title": "Fired OpenAI employees question the company's commitment to safety - capradio.org",
+          "at": "2026-10-09T21:30:55Z"
+        },
+        "shared": [
+          "openai",
+          "safety",
+          "fir"
+        ]
+      },
+      {
+        "score": 0.539,
         "blocked": "time-window",
         "hours_apart": 32.2,
         "a": {
@@ -465,7 +548,7 @@
         ]
       },
       {
-        "score": 0.54,
+        "score": 0.539,
         "blocked": "time-window",
         "hours_apart": 28.7,
         "a": {
@@ -488,7 +571,7 @@
         ]
       },
       {
-        "score": 0.489,
+        "score": 0.488,
         "blocked": "time-window",
         "hours_apart": 29.3,
         "a": {
@@ -508,49 +591,6 @@
           "sue",
           "openai",
           "copyright"
-        ]
-      },
-      {
-        "score": 0.425,
-        "blocked": "below-threshold",
-        "hours_apart": 19.2,
-        "a": {
-          "id": "hn:50013071",
-          "source": "hn-algolia",
-          "title": "OpenAI cuts ties with 3 safety researchers",
-          "at": "2026-10-08T22:06:36Z"
-        },
-        "b": {
-          "id": "gnews:373d8d191dd3429a",
-          "source": "gnews-rss",
-          "title": "OpenAI Researchers Say They Were Sacked for Prioritizing Safety - NTD News",
-          "at": "2026-10-09T17:17:29Z"
-        },
-        "shared": [
-          "openai",
-          "safety",
-          "researcher"
-        ]
-      },
-      {
-        "score": 0.392,
-        "blocked": "thin-overlap",
-        "hours_apart": 24.6,
-        "a": {
-          "id": "hn:50008188",
-          "source": "hn-algolia",
-          "title": "Kurzgesagt: Hugging Face hack by AI [video]",
-          "at": "2026-10-08T16:45:58Z"
-        },
-        "b": {
-          "id": "gnews:7a6017133fa647e6",
-          "source": "gnews-rss",
-          "title": "Controversy swirls over ‘abrupt’ firing of OpenAI safety team members involved in the Hugging Face hack investigation - Fortune",
-          "at": "2026-10-09T17:21:00Z"
-        },
-        "shared": [
-          "huggingface",
-          "hack"
         ]
       }
     ],
@@ -606,7 +646,7 @@
         ]
       },
       {
-        "score": 0.661,
+        "score": 0.66,
         "blocked": "short-title",
         "hours_apart": 13.3,
         "a": {
@@ -669,7 +709,51 @@
         ]
       },
       {
-        "score": 0.54,
+        "score": 0.579,
+        "blocked": "below-threshold",
+        "hours_apart": 17.7,
+        "a": {
+          "id": "hn:50013972",
+          "source": "hn-algolia",
+          "title": "OpenAI Safety Researchers Fired",
+          "at": "2026-10-08T23:38:03Z"
+        },
+        "b": {
+          "id": "gnews:373d8d191dd3429a",
+          "source": "gnews-rss",
+          "title": "OpenAI Researchers Say They Were Sacked for Prioritizing Safety - NTD News",
+          "at": "2026-10-09T17:17:29Z"
+        },
+        "shared": [
+          "openai",
+          "safety",
+          "researcher"
+        ]
+      },
+      {
+        "score": 0.543,
+        "blocked": "below-threshold",
+        "hours_apart": 21.9,
+        "a": {
+          "id": "hn:50013972",
+          "source": "hn-algolia",
+          "title": "OpenAI Safety Researchers Fired",
+          "at": "2026-10-08T23:38:03Z"
+        },
+        "b": {
+          "id": "gnews:66ca732a10fa9813",
+          "source": "gnews-rss",
+          "title": "Fired OpenAI employees question the company's commitment to safety - capradio.org",
+          "at": "2026-10-09T21:30:55Z"
+        },
+        "shared": [
+          "openai",
+          "safety",
+          "fir"
+        ]
+      },
+      {
+        "score": 0.539,
         "blocked": "time-window",
         "hours_apart": 32.2,
         "a": {
@@ -690,52 +774,6 @@
           "less",
           "previously"
         ]
-      },
-      {
-        "score": 0.54,
-        "blocked": "time-window",
-        "hours_apart": 28.7,
-        "a": {
-          "id": "hn:50011505",
-          "source": "hn-algolia",
-          "title": "OpenAI annualised revenues $20B less than previously signalled",
-          "at": "2026-10-08T20:15:21Z"
-        },
-        "b": {
-          "id": "gnews:931f3cb790c2a03a",
-          "source": "gnews-rss",
-          "title": "OpenAI to bring in $20 billion less than previously expected - Mashable",
-          "at": "2026-10-10T00:57:13Z"
-        },
-        "shared": [
-          "openai",
-          "20b",
-          "less",
-          "previously"
-        ]
-      },
-      {
-        "score": 0.489,
-        "blocked": "time-window",
-        "hours_apart": 29.3,
-        "a": {
-          "id": "hn:50009239",
-          "source": "hn-algolia",
-          "title": "USA Today sues OpenAI for copyright infringement over AI training",
-          "at": "2026-10-08T17:49:07Z"
-        },
-        "b": {
-          "id": "gnews:f2790e736240998f",
-          "source": "gnews-rss",
-          "title": "COPYRIGHT NEWS: USA TODAY and affiliated publications sue OpenAI over alleged mass copying of news content - VitalLaw.com",
-          "at": "2026-10-09T23:04:37Z"
-        },
-        "shared": [
-          "usa",
-          "sue",
-          "openai",
-          "copyright"
-        ]
       }
     ]
   },
@@ -743,76 +781,76 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 14,
+      "streak_ok": 15,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 98,
+      "streak_ok": 99,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 98,
+      "streak_ok": 99,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 98,
+      "streak_ok": 99,
       "streak_fail": 0,
-      "items_last": 36
+      "items_last": 39
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 98,
+      "streak_ok": 99,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 98,
+      "streak_ok": 99,
       "streak_fail": 0,
       "items_last": 66
     },
     {
       "id": "openalex",
       "state": "flaky",
-      "streak_ok": 10,
+      "streak_ok": 11,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 2,
+      "streak_ok": 3,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 98,
+      "streak_ok": 99,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 98,
+      "streak_ok": 99,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.005033888888888889,
+    "hours": 0.0029341666666666665,
     "stale": false
   },
   "hf": {
@@ -837,13 +875,13 @@
     "secondary": 3,
     "query": "Hugging Face agent",
     "mode": "search",
-    "from_cache": false,
-    "searches": 1,
+    "from_cache": true,
+    "searches": 0,
     "retries": 0,
     "status": "ok",
     "paused_until": null,
     "pause_reason": null,
-    "requests": 1,
+    "requests": 0,
     "auth": "anon",
     "brief": false,
     "pulse_lead": false,
@@ -880,8 +918,8 @@
     "enriched": 0,
     "query": "doi:10.5281/zenodo.21686546",
     "mode": "filter",
-    "from_cache": false,
-    "searches": 1,
+    "from_cache": true,
+    "searches": 0,
     "brief": false,
     "pulse_lead": false,
     "papers_enrich_only": true,
@@ -916,20 +954,20 @@
       {
         "id": "hn:50008187",
         "tag": "rest",
-        "score": 422,
+        "score": 424,
         "text": "OpenAI annualised revenues $20B less than previously signalled"
-      },
-      {
-        "id": "hn:50002650",
-        "tag": "rest",
-        "score": 373,
-        "text": "OpenAI withdraws three mathematical results"
       },
       {
         "id": "hn:50003107",
         "tag": "rest",
         "score": 342,
         "text": "OpenAI Withdraws 3 Math Papers"
+      },
+      {
+        "id": "hn:50018350",
+        "tag": "rest",
+        "score": 329,
+        "text": "OpenAI fires three safety researchers for \"mishandling research information\""
       }
     ]
   },
@@ -945,47 +983,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "https://openai.com/news/rss.xml",
+        "url": "(cache:openai)",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "https://deepmind.google/blog/rss.xml",
+        "url": "(cache:deepmind)",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "https://blog.google/technology/ai/rss/",
+        "url": "(cache:google-ai)",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "https://huggingface.co/blog/feed.xml",
+        "url": "(cache:huggingface)",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "https://mistral.ai/rss.xml",
+        "url": "(cache:mistral)",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "https://blogs.nvidia.com/feed/",
+        "url": "(cache:nvidia)",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "https://developer.nvidia.com/blog/feed",
+        "url": "(cache:nvidia-dev)",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
+        "url": "(cache:ms-research)",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "(cache:google-research)",
+        "url": "https://research.google/blog/rss/",
         "count": 12
       }
     ],
@@ -1031,17 +1069,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "https://blog.trailofbits.com/feed/",
+        "url": "(cache:trailofbits)",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "https://blog.fox-it.com/feed/",
+        "url": "(cache:fox-it)",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "https://projectzero.google/feed.xml",
+        "url": "(cache:projectzero)",
         "count": 6
       }
     ],
@@ -1082,9 +1120,33 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 36,
+    "items": 39,
     "pool": 297,
     "corroborators": [
+      {
+        "id": "gnews:b6ce2bb12b5db403",
+        "anchor_id": "hn:50013972",
+        "score": 0.786,
+        "title": "OpenAI Denies Firing Researchers Over AI Safety Warnings - NDTV",
+        "publisher": "NDTV",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:230039a63a100ee4",
+        "anchor_id": "hn:50013972",
+        "score": 0.782,
+        "title": "OpenAI defends firing researchers who raised safety questions - Washington Examiner",
+        "publisher": "Washington Examiner",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:cb349c6b475c77b0",
+        "anchor_id": "hn:50013972",
+        "score": 0.77,
+        "title": "OpenAI denies firing researchers for raising safety concerns - upi",
+        "publisher": "upi",
+        "self_repost": false
+      },
       {
         "id": "gnews:2b570fdab45dcbcc",
         "anchor_id": "hn:50023260",
@@ -1143,9 +1205,9 @@
       }
     ],
     "http_status": 200,
-    "content_type": "application/xml; charset=utf-8",
+    "content_type": null,
     "format": "rss2",
-    "from_cache": false,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1242,9 +1304,9 @@
     "soft_fail_reason": null,
     "query": "LLM agent eval harness",
     "shelf": 2,
-    "from_cache": false,
-    "searches": 1,
-    "rate_limit_remaining": 9,
+    "from_cache": true,
+    "searches": 0,
+    "rate_limit_remaining": null,
     "brief": false,
     "pulse_lead": false,
     "shelf_only": true,
@@ -1273,8 +1335,8 @@
       "Astra",
       "Hugging Face"
     ],
-    "searches": 1,
-    "from_cache": false,
+    "searches": 0,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "deny_grounding_only": true,
