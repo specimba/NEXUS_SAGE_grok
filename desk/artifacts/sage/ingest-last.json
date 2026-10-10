@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-10T18:21:26Z",
+  "stamped_at": "2026-10-10T19:18:13Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 131,
+      "duration_ms": 235,
       "paused_until": null,
       "reason": null
     },
@@ -18,7 +18,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 3189,
+      "duration_ms": 3145,
       "paused_until": null,
       "reason": null
     },
@@ -27,7 +27,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 370,
+      "duration_ms": 9,
       "paused_until": null,
       "reason": null
     },
@@ -36,7 +36,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 262,
+      "duration_ms": 2,
       "paused_until": null,
       "reason": null
     },
@@ -45,7 +45,7 @@
       "label": "HN",
       "status": "ok",
       "rows": 59,
-      "duration_ms": 8288,
+      "duration_ms": 8482,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 17908,
+      "duration_ms": 21543,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 4252,
+      "duration_ms": 4416,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 38,
-      "duration_ms": 6483,
+      "rows": 37,
+      "duration_ms": 6539,
       "paused_until": null,
       "reason": null
     },
@@ -80,8 +80,8 @@
       "id": "github",
       "label": "GitHub",
       "status": "ok",
-      "rows": 3,
-      "duration_ms": 296,
+      "rows": 2,
+      "duration_ms": 38,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4446,
+      "duration_ms": 38,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 45625,
-    "sources_wall_ms": 17909,
-    "papers_lane_ms": 3959,
-    "slowest_source_ms": 17908,
+    "sources_ms": 44447,
+    "sources_wall_ms": 21545,
+    "papers_lane_ms": 3401,
+    "slowest_source_ms": 21543,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -114,9 +114,9 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 18350,
-    "startup_ms": 42,
-    "main_ms": 18361
+    "wall_ms": 22106,
+    "startup_ms": 62,
+    "main_ms": 22139
   },
   "multi_source_independent": 7,
   "stale_hours": 6,
@@ -125,20 +125,20 @@
     "multi_source_independent": 7,
     "multi_source_raw": 9,
     "self_reposts": 2,
-    "items_in": 239,
-    "clusters_out": 220,
-    "collapsed": 19,
+    "items_in": 238,
+    "clusters_out": 217,
+    "collapsed": 21,
     "multi_source": 7,
-    "multi_member": 13,
+    "multi_member": 15,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 28,
+    "new_items": 10,
     "per_source": {
       "hn-algolia": 59,
       "rss-lab": 104,
       "rss-security": 28,
-      "gnews-rss": 38,
+      "gnews-rss": 37,
       "gmail-news": 10
     },
     "multi_source_clusters": [
@@ -263,7 +263,7 @@
           "gnews-rss"
         ],
         "size": 5,
-        "score": 0.765,
+        "score": 0.767,
         "members": [
           {
             "id": "hn:50013972",
@@ -404,6 +404,10 @@
       ],
       "gnews_shown_dropped": [
         {
+          "publisher": "Engadget",
+          "title": "This Android Auto Problem Is Affecting Calls On Foldable Phones - Engadget"
+        },
+        {
           "publisher": "NDTV",
           "title": "Join Google Without Any Degree With Pay Up To Rs 11 Crore. Check Details - NDTV"
         },
@@ -421,7 +425,7 @@
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 4
+      "hn_dropped": 5
     },
     "gnews_near_misses": [
       {
@@ -474,7 +478,7 @@
         ]
       },
       {
-        "score": 0.53,
+        "score": 0.531,
         "blocked": "below-threshold",
         "hours_apart": 15.9,
         "a": {
@@ -497,29 +501,7 @@
         ]
       },
       {
-        "score": 0.497,
-        "blocked": "time-window",
-        "hours_apart": 38.2,
-        "a": {
-          "id": "hn:50013972",
-          "source": "hn-algolia",
-          "title": "OpenAI Safety Researchers Fired",
-          "at": "2026-10-08T23:38:03Z"
-        },
-        "b": {
-          "id": "gnews:99cdecadcaaf2839",
-          "source": "gnews-rss",
-          "title": "‘Breach of trust.’ OpenAI fires 3 safety researchers in dispute over AI risks - Washington Times",
-          "at": "2026-10-10T13:51:34Z"
-        },
-        "shared": [
-          "openai",
-          "safety",
-          "researcher"
-        ]
-      },
-      {
-        "score": 0.487,
+        "score": 0.485,
         "blocked": "below-threshold",
         "hours_apart": 17.7,
         "a": {
@@ -564,30 +546,7 @@
         ]
       },
       {
-        "score": 0.472,
-        "blocked": "time-window",
-        "hours_apart": 39.7,
-        "a": {
-          "id": "hn:50013071",
-          "source": "hn-algolia",
-          "title": "OpenAI cuts ties with 3 safety researchers",
-          "at": "2026-10-08T22:06:36Z"
-        },
-        "b": {
-          "id": "gnews:99cdecadcaaf2839",
-          "source": "gnews-rss",
-          "title": "‘Breach of trust.’ OpenAI fires 3 safety researchers in dispute over AI risks - Washington Times",
-          "at": "2026-10-10T13:51:34Z"
-        },
-        "shared": [
-          "openai",
-          "3",
-          "safety",
-          "researcher"
-        ]
-      },
-      {
-        "score": 0.4,
+        "score": 0.404,
         "blocked": "below-threshold",
         "hours_apart": 11.3,
         "a": {
@@ -601,6 +560,52 @@
           "source": "gnews-rss",
           "title": "Fired OpenAI safety researchers say they were pushed out over ‘suspicious’ circumstances - CNN",
           "at": "2026-10-08T23:22:50Z"
+        },
+        "shared": [
+          "fir",
+          "openai",
+          "researcher",
+          "safety"
+        ]
+      },
+      {
+        "score": 0.388,
+        "blocked": "below-threshold",
+        "hours_apart": 5.7,
+        "a": {
+          "id": "hn:50018635",
+          "source": "hn-algolia",
+          "title": "Fired OpenAI researchers say they were let go for 'prioritising safety'",
+          "at": "2026-10-09T10:41:23Z"
+        },
+        "b": {
+          "id": "gnews:d9d063fec0c2c966",
+          "source": "gnews-rss",
+          "title": "OpenAI defends firing AI safety researchers over alleged \"breach of trust\" - CBS News",
+          "at": "2026-10-09T16:21:00Z"
+        },
+        "shared": [
+          "fir",
+          "openai",
+          "researcher",
+          "safety"
+        ]
+      },
+      {
+        "score": 0.373,
+        "blocked": "below-threshold",
+        "hours_apart": 14.6,
+        "a": {
+          "id": "hn:50018635",
+          "source": "hn-algolia",
+          "title": "Fired OpenAI researchers say they were let go for 'prioritising safety'",
+          "at": "2026-10-09T10:41:23Z"
+        },
+        "b": {
+          "id": "gnews:cf1f638aae520bef",
+          "source": "gnews-rss",
+          "title": "Fired OpenAI safety researchers dispute misconduct claims, warn of chilling effect - TechCrunch",
+          "at": "2026-10-08T20:04:26Z"
         },
         "shared": [
           "fir",
@@ -706,7 +711,7 @@
         ]
       },
       {
-        "score": 0.53,
+        "score": 0.531,
         "blocked": "below-threshold",
         "hours_apart": 15.9,
         "a": {
@@ -729,29 +734,7 @@
         ]
       },
       {
-        "score": 0.497,
-        "blocked": "time-window",
-        "hours_apart": 38.2,
-        "a": {
-          "id": "hn:50013972",
-          "source": "hn-algolia",
-          "title": "OpenAI Safety Researchers Fired",
-          "at": "2026-10-08T23:38:03Z"
-        },
-        "b": {
-          "id": "gnews:99cdecadcaaf2839",
-          "source": "gnews-rss",
-          "title": "‘Breach of trust.’ OpenAI fires 3 safety researchers in dispute over AI risks - Washington Times",
-          "at": "2026-10-10T13:51:34Z"
-        },
-        "shared": [
-          "openai",
-          "safety",
-          "researcher"
-        ]
-      },
-      {
-        "score": 0.487,
+        "score": 0.485,
         "blocked": "below-threshold",
         "hours_apart": 17.7,
         "a": {
@@ -794,6 +777,28 @@
           "20b",
           "less"
         ]
+      },
+      {
+        "score": 0.462,
+        "blocked": "thin-overlap",
+        "hours_apart": 90.4,
+        "a": {
+          "id": "hn:50030893",
+          "source": "hn-algolia",
+          "title": "OpenAI's New ChatGPT Watermark Breaks If You Edit One Word in Four",
+          "at": "2026-10-10T08:32:37Z"
+        },
+        "b": {
+          "id": "gmail:1a1118c601f1cb6a",
+          "source": "gmail-news",
+          "title": "OpenAI Starts Watermarking ChatGPT Text",
+          "at": "2026-10-06T14:09:34Z"
+        },
+        "shared": [
+          "openai",
+          "chatgpt",
+          "watermark"
+        ]
       }
     ]
   },
@@ -801,76 +806,76 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 19,
+      "streak_ok": 20,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 103,
+      "streak_ok": 104,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 103,
+      "streak_ok": 104,
       "streak_fail": 0,
-      "items_last": 3
+      "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 103,
+      "streak_ok": 104,
       "streak_fail": 0,
-      "items_last": 38
+      "items_last": 37
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 103,
+      "streak_ok": 104,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 103,
+      "streak_ok": 104,
       "streak_fail": 0,
       "items_last": 59
     },
     {
       "id": "openalex",
       "state": "flaky",
-      "streak_ok": 15,
+      "streak_ok": 16,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 7,
+      "streak_ok": 8,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 103,
+      "streak_ok": 104,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 103,
+      "streak_ok": 104,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.005276388888888889,
+    "hours": 0.006153055555555556,
     "stale": false
   },
   "hf": {
@@ -895,13 +900,13 @@
     "secondary": 3,
     "query": "Hugging Face agent",
     "mode": "search",
-    "from_cache": false,
-    "searches": 1,
+    "from_cache": true,
+    "searches": 0,
     "retries": 0,
     "status": "ok",
     "paused_until": null,
     "pause_reason": null,
-    "requests": 1,
+    "requests": 0,
     "auth": "anon",
     "brief": false,
     "pulse_lead": false,
@@ -938,8 +943,8 @@
     "enriched": 0,
     "query": "doi:10.5281/zenodo.21686546",
     "mode": "filter",
-    "from_cache": false,
-    "searches": 1,
+    "from_cache": true,
+    "searches": 0,
     "brief": false,
     "pulse_lead": false,
     "papers_enrich_only": true,
@@ -968,7 +973,7 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 4,
+    "ai_dropped": 5,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
@@ -986,7 +991,7 @@
       {
         "id": "hn:50027118",
         "tag": "rest",
-        "score": 199,
+        "score": 204,
         "text": "Anthropic AI model submits false tip on unsolved Philly murder, police say"
       }
     ]
@@ -1043,7 +1048,7 @@
       },
       {
         "lab": "google-research",
-        "url": "https://research.google/blog/rss/",
+        "url": "(cache:google-research)",
         "count": 12
       }
     ],
@@ -1140,8 +1145,8 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 38,
-    "pool": 259,
+    "items": 37,
+    "pool": 255,
     "corroborators": [
       {
         "id": "gnews:d514771348eeba81",
@@ -1154,7 +1159,7 @@
       {
         "id": "gnews:931f3cb790c2a03a",
         "anchor_id": "hn:50019173",
-        "score": 0.735,
+        "score": 0.737,
         "title": "OpenAI to bring in $20 billion less than previously expected - Mashable",
         "publisher": "Mashable",
         "self_repost": false
@@ -1178,7 +1183,7 @@
       {
         "id": "gnews:7fcdd92b1571a7de",
         "anchor_id": "hn:50013972",
-        "score": 0.755,
+        "score": 0.75,
         "title": "Fired OpenAI safety researchers say they were pushed out over ‘suspicious’ circumstances - CNN",
         "publisher": "CNN",
         "self_repost": false
@@ -1186,7 +1191,7 @@
       {
         "id": "gnews:d9d063fec0c2c966",
         "anchor_id": "hn:50013972",
-        "score": 0.726,
+        "score": 0.724,
         "title": "OpenAI defends firing AI safety researchers over alleged \"breach of trust\" - CBS News",
         "publisher": "CBS News",
         "self_repost": false
@@ -1194,7 +1199,7 @@
       {
         "id": "gnews:cf1f638aae520bef",
         "anchor_id": "hn:50013972",
-        "score": 0.682,
+        "score": 0.686,
         "title": "Fired OpenAI safety researchers dispute misconduct claims, warn of chilling effect - TechCrunch",
         "publisher": "TechCrunch",
         "self_repost": false
@@ -1218,7 +1223,7 @@
       {
         "id": "gnews:0f2b3dd9b0276e28",
         "anchor_id": "hn:50011505",
-        "score": 0.706,
+        "score": 0.709,
         "title": "OpenAI annualized revenue $20 billion less than previously reported - Axios",
         "publisher": "Axios",
         "self_repost": false
@@ -1250,40 +1255,65 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:07947f3d9784b30c",
-        "title": "Gemini Adds Map Tool and Replaces Slash: What to Know - JournalArta",
-        "publisher": "JournalArta",
-        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPR2k1UTJoM05oeVNZUjhFTUdnV0VhMTAxMzVnbFcyRGFPdENCWjVJT3Bxa24wb1pGdU9YeHFRVlFnOU1ncFJGWXBZd1dLUVhjTll0eVZrV1RYMlNoWllhXzdjZUZ0ZlNEU0NYaXlISkkwVWF3WEROeFVXSjlYdUxYcER6Rm1lNzR2ckdUdnZRTm1PWnExUDZR?oc=5",
+        "id": "gnews:e59541358691187d",
+        "title": "Google Opens AI Content Detection Tool to Users Worldwide - Brand Icon Image",
+        "publisher": "Brand Icon Image",
+        "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNTVR2ZFNZaVIyQWYzd3M1WS1vQVM5UW9kQ0t3TTg1cWJraHhXT3NfcFJieHlFSHJXXzBHUWc5YUlBeWMyM19UekUtbnZsclUzNmI2LUJBUFVKREhHRDROajJmZm91bHFycUNTaEVJNUhsXzZNVkh3NUc0NWVsMUliZzdBZ3R2Y2xvaFE?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:ac81ac9afb66a8ee",
-        "title": "Samsung’s Gemini AI Glasses Could Change Wearables - TelecomTalk",
-        "publisher": "TelecomTalk",
-        "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNTEplbkk1d3ZKUFRxcDZKc2tZOVBSbG52aTE0aVk2ZHlFdU1hVkgzSkhTTTg3b2FVUkMwSnJVS1h5a0FRcmI3V1pxZGRnV084NmVoTmd5Y211OUxZTEpqSjBDVXZBaVZra05Sa25lLVZpMGdjclBndmhjQmo5VXFWc2ZGbndkVV9BZWFz?oc=5",
+        "id": "gnews:a9d54048f82c94ef",
+        "title": "Oracle Insider Buys $3.5 Million in Stock Amid OpenAI Swings - Barron's",
+        "publisher": "Barron's",
+        "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOcDRDWFo4TkI5Z0FLRmtkN0F0Ykw3enE4aEs4d0JfbkxicHB6cEFmeXZjSC1ZMUl4TmFHd0J6YWlfR2JIdWZtdXRJTkZZVUhGRWVJbkFLdlZMM2F1SFdMQmlKZHp2elBsSFFHbnByeGFfZ2Nld3pJaC1LRUltTFNPQTdn?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:5538660059335a32",
-        "title": "A timeline of developments in AI safety since the attack on Hugging Face - Oskaloosa Herald",
-        "publisher": "Oskaloosa Herald",
-        "link": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxOVkxJZGNqSjByd0JKQ2hOdWlOQktvekt5OFJoLVlIVDNOdm1zelJPdklXRzFWYWxmVS1OUnh1am93OGo3N0FuTmc1WldaLXFTUzRhU253N3I5NHhSdkdIVy1pOHhFVE85Yk83dExNMlJsZzlpYnRvVHNxMjdHRmJzNDlaUWVCVl9YaERuUE95UXBOSDlaa09NVDZydkVlVVp2YUZaak5PMmRSbm9CbVZwdTdVUDNqQ3EzX2hnbEhEQzdqZm1WUlRJRlJiZ2hmeW1jRTV0VmROLUk4c2xVci01cVJ4T3ZObHhNQWxBWjM3QzRFVldJS3o1dUFiQQ?oc=5",
+        "id": "gnews:b9e4616ee4c32ce4",
+        "title": "‘A CHILLING EFFECT’: How OpenAI’s massive math breakthrough is ‘DESTROYING’ early careers - Modern Ghana",
+        "publisher": "Modern Ghana",
+        "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9SbDNrZEsya0V0cEhmVEJoU284ZFpCQkNZY0gwU0VpdS1mSC1uZERLVFh1cG5GTDJCNE5PRk9fREp4MFpnSFNaUF9GREZGaHVSd1RNTmRSVGRudVhWR0Rn0gFcQVVfeXFMTkJYcWtyRWFBTmszX0J4MTZqeG1kazdnbEFldUwwLUZMcFVlMjlPYWtiMHluYV9yUDZ5c1ZHSFVKRHh2N3E1M09pZ0U0bUY2c0szMEM2enQwTHZpcjU?oc=5",
         "tag": "rest"
       }
     ]
   },
   "gmail_news": {
-    "ok": false,
-    "soft_fail": true,
-    "soft_fail_reason": "box-only",
-    "count": 0,
-    "fetched": 0,
-    "from_cache": false,
-    "last_query_hash": "",
+    "ok": true,
+    "soft_fail": false,
+    "soft_fail_reason": null,
+    "count": 10,
+    "fetched": 10,
+    "from_cache": true,
+    "last_query_hash": "14f148f8d31e",
     "brief": false,
     "pulse_only": true,
     "briefEligible": false,
-    "sample": []
+    "sample": [
+      {
+        "id": "gmail:1a11250b91591834",
+        "title": "AI systems could cover up misbehavior",
+        "publisher": "substack.com",
+        "qi": 15.4,
+        "priority": "P3",
+        "link": "https://metr.org/blog/cover-up"
+      },
+      {
+        "id": "gmail:1a111f35812d42ba",
+        "title": "Oct. 6 - Water hacks, rogue AI raise alarms | Java vulnerabilities disclosed",
+        "publisher": "divenewsletter.com",
+        "qi": 15.4,
+        "priority": "P3",
+        "link": "https://www.cybersecuritydive.com/news/water"
+      },
+      {
+        "id": "gmail:1a1118c601f1cb6a",
+        "title": "OpenAI Starts Watermarking ChatGPT Text",
+        "publisher": "alvarocintas.com",
+        "qi": 11.6,
+        "priority": "P3",
+        "link": "https://newsletter.alvarocintas.com/watermark"
+      }
+    ]
   },
   "x": {
     "fetched": 0,
@@ -1298,31 +1328,27 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "query": "LLM agent eval harness",
-    "shelf": 3,
-    "from_cache": false,
-    "searches": 1,
-    "rate_limit_remaining": 9,
+    "shelf": 2,
+    "from_cache": true,
+    "searches": 0,
+    "rate_limit_remaining": null,
     "brief": false,
     "pulse_lead": false,
     "shelf_only": true,
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
-        "label": "ssheleg/agent-stack",
-        "href": "https://github.com/ssheleg/agent-stack"
+        "label": "GuillermoBarreto/evalkit",
+        "href": "https://github.com/GuillermoBarreto/evalkit"
       },
       {
-        "label": "Matswm86/mwm-harness",
-        "href": "https://github.com/Matswm86/mwm-harness"
-      },
-      {
-        "label": "Binarysite/agent-eval-harness",
-        "href": "https://github.com/Binarysite/agent-eval-harness"
+        "label": "1isaqu/llm-agent-evals",
+        "href": "https://github.com/1isaqu/llm-agent-evals"
       }
     ]
   },
   "shelf": {
-    "count": 20,
+    "count": 19,
     "brief": false
   },
   "wikidata": {
@@ -1334,8 +1360,8 @@
       "Astra",
       "Hugging Face"
     ],
-    "searches": 3,
-    "from_cache": false,
+    "searches": 0,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "deny_grounding_only": true,
