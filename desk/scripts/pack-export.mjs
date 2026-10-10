@@ -64,6 +64,17 @@ async function main() {
 
   const leadPin = CYCLE.pins.find((p) => p.kind === "lead");
   const leadId = leadPin?.id ?? DEFAULT_LEAD_ID;
+  // Log label only: CYCLE.003 pins the archive lead (hf-incident); today's Brief lead is LEAD_TODAY in src/data/lead-pick.ts.
+  const leadTodayLabel = () => {
+    try {
+      const t = readFileSync(join(desk, "src/data/lead-pick.ts"), "utf8");
+      const m = t.match(/LEAD_TODAY[^=]*=\s*(null|\{)/);
+      if (!m || m[1] === "null") return "none";
+      const body = t.slice(t.indexOf("{", m.index));
+      const top = JSON.parse(body.slice(0, body.indexOf("\n};") + 2));
+      return `${top.cluster_id ?? "?"}${top.reason ? `(${top.reason})` : ""}`;
+    } catch { return "?"; }
+  };
   const leadPolicy = CYCLE.leadPolicy ?? "unlock";
 
   const lockCheck = validateLocks({
@@ -194,7 +205,7 @@ async function main() {
     console.log(`pack:export wrote dual-home:`);
     console.log(`  primary:   ${homes.primary}`);
     console.log(`  secondary: ${homes.secondary}`);
-    console.log(`  pack_id=${packId} cycle=${cycleId} lead=${leadId} schema=${SCHEMA_VERSION}`);
+    console.log(`  pack_id=${packId} cycle=${cycleId} archive_pin=${leadId} lead_today=${leadTodayLabel()} schema=${SCHEMA_VERSION}`);
     console.log(`  manifest sha256=${sha256(readFileSync(join(staging, "manifest.json")))}`);
   } finally {
     rmSync(staging, { recursive: true, force: true });

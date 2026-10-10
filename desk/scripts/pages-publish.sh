@@ -128,15 +128,60 @@ done)"
   || fails+=("asset/font-class integrity: $(grep -E '^ - ' /tmp/pages-asset-check.log | head -3 | tr '\n' ' ')")
 # 2f2. PASS-Q1: First Load JS for "/" ≤ 185 000 B, measured the way next build prints it.
 ( cd "$DESK" && node scripts/first-load.cjs .next-pages ) > /tmp/pages-first-load.log 2>&1 || fails+=("first load over cap: $(cat /tmp/pages-first-load.log)")
-# 2g. real-browser font-check against a local static serve of $OUT under $BASE (same check as the live gate).
-if [ "${#fails[@]}" -eq 0 ] && [ "${PAGES_SKIP_LOCAL_FONTCHECK:-0}" != "1" ]; then
-  fport=$(( 3900 + RANDOM % 90 ))
-  bun "$DESK/scripts/serve-out.ts" --host 127.0.0.1 --port "$fport" --root "$OUT" --base "$BASE" > /tmp/pages-serve-local.log 2>&1 &
+# 2g. font gate. Box (default): real-browser font-check against a local static serve of $OUT under $BASE (same check
+#     as the live gate). CI (SAGE_FONT_CHECK=static, no Chrome in node:22-bookworm): static check — font files exist in
+#     $OUT and every CSS url() resolves to a file under $BASE (scripts/font-static-check.ts).
+have_chrome() { command -v "${CHROME_BIN:-google-chrome}" >/dev/null 2>&1; }
+serve_out() {  # starts a local serve of $OUT; sets spid / sport
+  sport=$(( 3900 + RANDOM % 90 ))
+  bun "$DESK/scripts/serve-out.ts" --host 127.0.0.1 --port "$sport" --root "$OUT" --base "$BASE" > /tmp/pages-serve-local.log 2>&1 &
   spid=$!
-  for _ in $(seq 1 50); do curl -fs -o /dev/null "http://127.0.0.1:$fport$BASE/" && break; sleep 0.1; done
-  ( cd "$DESK" && bun scripts/font-check.ts "http://127.0.0.1:$fport$BASE/" ) > /tmp/pages-font-check-local.log 2>&1 \
-    || fails+=("local font-check on $OUT under $BASE failed: $(head -4 /tmp/pages-font-check-local.log | tr '\n' ' ')")
-  kill "$spid" 2>/dev/null || true; wait "$spid" 2>/dev/null || true
+  for _ in $(seq 1 50); do curl -fs -o /dev/null "http://127.0.0.1:$sport$BASE/" && break; sleep 0.1; done
+}
+stop_out() { kill "$spid" 2>/dev/null || true; wait "$spid" 2>/dev/null || true; }
+if [ "${#fails[@]}" -eq 0 ] && [ "${PAGES_SKIP_LOCAL_FONTCHECK:-0}" != "1" ]; then
+  if [ "${SAGE_FONT_CHECK:-browser}" = "static" ]; then
+    ( cd "$DESK" && bun scripts/font-static-check.ts "$OUT" "$BASE" ) > /tmp/pages-font-check-local.log 2>&1 \
+      || fails+=("static font-check on $OUT under $BASE failed: $(head -4 /tmp/pages-font-check-local.log | tr '\n' ' ')")
+    log "$(tail -1 /tmp/pages-font-check-local.log)"
+  else
+    serve_out
+    ( cd "$DESK" && bun scripts/font-check.ts "http://127.0.0.1:$sport$BASE/" ) > /tmp/pages-font-check-local.log 2>&1 \
+      || fails+=("local font-check on $OUT under $BASE failed: $(head -4 /tmp/pages-font-check-local.log | tr '\n' ' ')")
+    stop_out
+  fi
+fi
+# 2h. overflow-390 (headless). SAGE_OVERFLOW_390=auto (CI): run only if non-data code changed since the main SHA in the
+#     last gh-pages "publish main@<sha>" commit (data-only crawls skip it; they keep the First Load gate above).
+#     Not rendered (ci/, desk/scripts/, tests, *.md) doesn't count. Code changed + no Chrome ⇒ fail closed, never a silent skip. Unknown base SHA ⇒ treated as code changed.
+#     Default (box): not run here — scripts/visual-check.mjs runs it.
+if [ "${#fails[@]}" -eq 0 ] && [ "${SAGE_OVERFLOW_390:-off}" = "auto" ]; then
+  git -C "$REPO" fetch -q --depth=1 origin "+refs/heads/$BRANCH:refs/remotes/origin/$BRANCH" 2>/dev/null || true
+  pub_sha="$(git -C "$REPO" log -1 --format=%s "origin/$BRANCH" 2>/dev/null | grep -oE 'main@[0-9a-f]{7,40}' | cut -d@ -f2 || true)"
+  code_changed=1; why="no last-published main SHA found"
+  if [ -n "$pub_sha" ]; then
+    git -C "$REPO" cat-file -e "$pub_sha^{commit}" 2>/dev/null || git -C "$REPO" fetch -q --depth=1 origin "$pub_sha" 2>/dev/null \
+      || git -C "$REPO" fetch -q --deepen=200 origin main 2>/dev/null || true
+    full="$(git -C "$REPO" rev-parse -q --verify "$pub_sha^{commit}" 2>/dev/null || true)"
+    if [ -n "$full" ]; then
+      changed_code="$(git -C "$REPO" diff --name-only "$full" HEAD -- . ':(exclude)desk/src/data' ':(exclude)desk/artifacts' \
+        ':(exclude)packs' ':(exclude)desk/packs' ':(exclude)logs' ':(exclude)refs' \
+        ':(exclude)ci' ':(exclude)desk/scripts' ':(exclude)desk/src/lib/__tests__' ':(exclude,glob)**/*.md' || echo '?diff-failed')"
+      if [ -z "$changed_code" ]; then code_changed=0; why="data-only since main@$pub_sha"
+      else why="code changed since main@$pub_sha: $(echo "$changed_code" | head -5 | tr '\n' ' ')"; fi
+    else why="main@$pub_sha not fetchable"; fi
+  fi
+  if [ "$code_changed" = 0 ]; then
+    log "overflow-390 skipped — $why"
+  elif ! have_chrome; then
+    fails+=("overflow-390 required ($why) but no headless Chrome (CHROME_BIN/google-chrome) in this runner — run visual:check on the box and publish from there")
+  else
+    log "overflow-390 running — $why"
+    serve_out
+    ( cd "$DESK" && bun scripts/overflow-390-check.ts "http://127.0.0.1:$sport$BASE/" ) > /tmp/pages-overflow-390.log 2>&1 \
+      || fails+=("overflow-390 failed: $(head -4 /tmp/pages-overflow-390.log | tr '\n' ' ')")
+    stop_out
+  fi
 fi
 
 if [ "${#fails[@]}" -gt 0 ]; then
@@ -157,7 +202,8 @@ git fetch -q ${PAGES_FETCH_DEPTH:+--depth="$PAGES_FETCH_DEPTH"} origin "+refs/he
 remote_has=0; git rev-parse -q --verify "refs/remotes/origin/$BRANCH" >/dev/null && remote_has=1
 if [ ! -e "$WT/.git" ]; then
   if [ "$remote_has" = 1 ]; then
-    git show-ref -q --verify "refs/heads/$BRANCH" || git branch -q --track "$BRANCH" "origin/$BRANCH"
+    # CI clones main single-branch, so origin/gh-pages is not a configured tracking ref there: plain branch fallback.
+    git show-ref -q --verify "refs/heads/$BRANCH" || git branch -q --track "$BRANCH" "origin/$BRANCH" 2>/dev/null || git branch -q "$BRANCH" "origin/$BRANCH"
     git worktree add -q "$WT" "$BRANCH"
   elif git show-ref -q --verify "refs/heads/$BRANCH"; then
     git worktree add -q "$WT" "$BRANCH"

@@ -89,7 +89,7 @@ export const RANK_MOVED: MovedRow[] = ${JSON.stringify(moved, null, 2)};
 `;
 writeFileSync(dataPath, body);
 
-console.log(`rank-snapshot OK crawl=${cur.crawl_at} prev=${prev?.crawl_at ?? "(none)"} lead=${cur.lead_id}`);
+console.log(`rank-snapshot OK crawl=${cur.crawl_at} prev=${prev?.crawl_at ?? "(none)"} archive_pin=${cur.lead_id} (CYCLE.003 curated rank pin; LEAD_TODAY is the lead-pick line below)`);
 for (const m of moved) {
   const r = cur.rows.find((x) => x.id === m.id);
   console.log(
@@ -177,7 +177,7 @@ export const LEAD_FIRST_AT: string | null = ${JSON.stringify(leadFirstAt)};
 `,
 );
 console.log(
-  `lead-pick ${decision.action}${decision.action === "none" ? ` (${decision.why})` : ""} · now=${leadNow?.cluster_id ?? "(none)"} ${leadNow?.sources ?? 0} SRC sig ${leadNow?.sig ?? "—"} [${leadNow?.date ?? ""} ${leadNow?.reason ?? ""}] · yesterday=${leadYday?.cluster_id ?? "(none)"} · first ${leadFirstAt ?? "?"} age ${leadFirstAt ? ((pickNow - Date.parse(leadFirstAt)) / 3_600_000).toFixed(1) : "?"}h${leadNow?.catch_up ? " · catch-up" : ""}${leadNow?.forced ? " · forced" : ""}`,
+  `lead-pick LEAD_TODAY=${leadNow?.cluster_id ?? "(none)"} ${decision.action}${decision.action === "none" ? ` (${decision.why})` : ""} · now=${leadNow?.cluster_id ?? "(none)"} ${leadNow?.sources ?? 0} SRC sig ${leadNow?.sig ?? "—"} [${leadNow?.date ?? ""} ${leadNow?.reason ?? ""}] · yesterday=${leadYday?.cluster_id ?? "(none)"} · first ${leadFirstAt ?? "?"} age ${leadFirstAt ? ((pickNow - Date.parse(leadFirstAt)) / 3_600_000).toFixed(1) : "?"}h${leadNow?.catch_up ? " · catch-up" : ""}${leadNow?.forced ? " · forced" : ""}`,
 );
 
 // ── Beat 7 · Brief Wire (same rotate-on-crawl-change rule as rank-*.json) ──

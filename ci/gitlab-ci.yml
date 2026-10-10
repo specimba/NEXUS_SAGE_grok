@@ -25,6 +25,11 @@ variables:
   GIT_COMMITTER_EMAIL: sage-gitlab-ci@users.noreply.github.com
   BUN_INSTALL_CACHE_DIR: $CI_PROJECT_DIR/.cache/bun
   SLOW_SECONDS: "240"
+  # No Chrome in node:22.12-bookworm: static font gate instead of the headless one (box keeps the browser check),
+  # overflow-390 only when non-data code changed since the last published main SHA (fails closed if it must run).
+  SAGE_CI: "1"
+  SAGE_FONT_CHECK: static
+  SAGE_OVERFLOW_390: auto
 
 crawl:
   # oven/bun images ship without git, so: pinned node bookworm (has git, curl) + bun 1.4.2 from the npm cache. No apt.
@@ -94,6 +99,13 @@ crawl:
       for i in 1 2 3 4 5 6; do bun scripts/watchdog.ts >/dev/null 2>&1 && { ok=1; break; }; sleep 20; done
       [ "$ok" = 1 ] || bun scripts/watchdog.ts
     - echo "PACK_ID=$(bun -e 'console.log(JSON.parse(require("fs").readFileSync("artifacts/sage/digest-last.json","utf8")).pack_id ?? "none")')"
+  # A failed run never reaches the commit step: still leave a crawl.log line in the job artifact (not pushed).
+  after_script:
+    - |
+      if [ "$CI_JOB_STATUS" != "success" ] && [ -d repo ]; then
+        mkdir -p repo/logs
+        echo "$(date -u +%FT%TZ) gitlab pipeline $CI_PIPELINE_ID job $CI_JOB_ID FAILED (status=$CI_JOB_STATUS, not pushed)" >> repo/logs/crawl.log
+      fi
   artifacts:
     when: always
     name: sage-pack-$CI_PIPELINE_ID
