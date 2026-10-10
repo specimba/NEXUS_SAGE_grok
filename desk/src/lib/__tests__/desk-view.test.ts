@@ -22,6 +22,8 @@ import { TOPIC_HEAT_AT } from "@/data/topic-heat";
 import { memberInfo } from "@/lib/member-info";
 import {
   ABSTRACT_CHARS,
+  DESK_VIEW_CAPS,
+  clip,
   SUMMARY_CHARS,
   buildDeskView,
   crawlItemIds,
@@ -53,6 +55,15 @@ for (const g of GNEWS_RSS)
 for (const r of RSS_LABS) RAW_ITEMS[r.id] = { title: r.title, publisher: r.lab, badge: labBadge(r.lab), at: r.published, url: r.link };
 for (const r of RSS_SECURITY) RAW_ITEMS[r.id] = { title: r.title, publisher: r.lab, badge: "SEC", at: r.published, url: r.link };
 for (const g of GMAIL_NEWS) RAW_ITEMS[g.id] = { title: g.title, publisher: g.publisher || "gmail", badge: "GML", at: g.published, url: g.link };
+// The generator clips over-long text to DESK_VIEW_CAPS.chars (a field cap, not a drop: the 15:14 crawl carried a 203-char
+// GNews title). Compare against the raw modules with those SAME caps applied, so the check holds for any crawl.
+const CC = DESK_VIEW_CAPS.chars;
+const capItem = (id: string, m: MemberItem): MemberItem => ({ ...m, title: clip(m.title, id.startsWith("gnews:") ? CC.drawerTitle : CC.title), publisher: clip(m.publisher, CC.publisher) });
+for (const [id, m] of Object.entries(RAW_ITEMS)) RAW_ITEMS[id] = capItem(id, m);
+const RAW_MEMBERS_FULL = RAW_MEMBERS;
+const CAPPED_MEMBERS: Record<string, PulseMemberInfo> = Object.fromEntries(
+  Object.entries(RAW_MEMBERS_FULL).map(([id, m]) => [id, { ...m, publisher: clip(m.publisher, CC.publisher), ...(m.title !== undefined ? { title: clip(m.title, id.startsWith("x:") ? CC.take : CC.title) } : {}) }]),
+);
 // ── what desk.tsx computes from the slim view now ──
 const MEMBERS = inflateMembers(V.MEMBER_ROWS);
 const ITEM_IDS = crawlItemIds(V.MEMBER_ROWS);
@@ -60,7 +71,7 @@ const CLUSTERS = inflateClusters(V.MEMBER_ROWS, V.ORPHAN_CLUSTERS);
 const KEPT = new Set(CLUSTERS.map((c) => c.id));
 const KEPT_X = new Set(V.X_POSTS.map((p) => p.id));
 /** The raw clusters the caps kept (all of them unless DESK_VIEW_TRIMMED says otherwise). */
-const RAW_KEPT = (PULSE_CLUSTERS as ClusterInput[]).filter((c) => KEPT.has(c.id));
+const RAW_KEPT = (PULSE_CLUSTERS as ClusterInput[]).filter((c) => KEPT.has(c.id)).map((c) => ({ ...c, title: clip(c.title, CC.title) }));
 const RAW_X: ClusterInput[] = CRAWL.filter((p) => KEPT_X.has(p.id)).map((p) => ({
   id: `x:${p.id}`, title: p.take, url: p.href, lead_id: `x:${p.id}`, lead_source: "x", sources: ["x"],
   member_ids: [`x:${p.id}`], size: 1, at: p.at, first_seen: null, is_new: false,
@@ -94,7 +105,7 @@ describe("desk-view.ts — slim client view == raw crawl modules", () => {
   });
 
   test("Pulse rows (clusters + X) are identical as rendered — chips, N SRC, NEW, signal, security, summary", () => {
-    const raw = asRendered(buildRows([...RAW_KEPT, ...RAW_X], RAW_MEMBERS));
+    const raw = asRendered(buildRows([...RAW_KEPT, ...RAW_X], CAPPED_MEMBERS));
     const slim = asRendered(buildRows([...CLUSTERS, ...xRows(V.X_POSTS, V.MEMBER_ROWS)], MEMBERS));
     expect(norm(slim)).toEqual(norm(raw));
   });
@@ -102,7 +113,7 @@ describe("desk-view.ts — slim client view == raw crawl modules", () => {
   test("Wire chips: the Wire subset builds the same rows", () => {
     const ids = new Set(V.WIRE_ROWS.map((r) => r.id));
     for (const id of ids) expect(KEPT.has(id)).toBe(true); // Wire stories are pinned
-    const raw = buildRows(RAW_KEPT.filter((c) => ids.has(c.id)), RAW_MEMBERS);
+    const raw = buildRows(RAW_KEPT.filter((c) => ids.has(c.id)), CAPPED_MEMBERS);
     const slim = buildRows(CLUSTERS.filter((c) => ids.has(c.id)), MEMBERS);
     expect(norm(asRendered(slim))).toEqual(norm(asRendered(raw)));
   });
@@ -120,7 +131,7 @@ describe("desk-view.ts — slim client view == raw crawl modules", () => {
     const leads = new Set([...RAW_KEPT.map((c) => c.lead_id), ...RAW_X.map((p) => p.lead_id)]);
     const live = new Set([...RAW_KEPT.flatMap((c) => [c.lead_id, ...c.member_ids]), ...RAW_X.map((p) => p.lead_id)]);
     const expected: Record<string, PulseMemberInfo> = {};
-    for (const [id, m] of Object.entries(RAW_MEMBERS)) {
+    for (const [id, m] of Object.entries(CAPPED_MEMBERS)) {
       if (!live.has(id)) continue;
       const e: PulseMemberInfo = { ...m };
       if (e.score == null) delete e.score;
@@ -130,6 +141,20 @@ describe("desk-view.ts — slim client view == raw crawl modules", () => {
       expected[id] = e;
     }
     expect(norm(MEMBERS)).toEqual(norm(expected));
+  });
+
+  test("clipped text is exactly the raw text cut at its cap (prefix + …), never anything else", () => {
+    const pairs: [string, string, number][] = [];
+    for (const c of PULSE_CLUSTERS as ClusterInput[]) { const s = CLUSTERS.find((x) => x.id === c.id); if (s) pairs.push([s.title, c.title, CC.title]); }
+    for (const [id, m] of Object.entries(MEMBERS)) { const r = RAW_MEMBERS_FULL[id]; if (r?.title !== undefined && m.title !== undefined) pairs.push([m.title, r.title, id.startsWith("x:") ? CC.take : CC.title]); }
+    for (const [slim, raw, cap] of pairs) {
+      expect(slim.length).toBeLessThanOrEqual(cap);
+      if (slim !== raw) {
+        expect(raw.length).toBeGreaterThan(cap);
+        expect(slim.endsWith("…")).toBe(true);
+        expect(raw.startsWith(slim.slice(0, -1))).toBe(true);
+      }
+    }
   });
 
   test("story ages (MEMBER_AT) and drawer coverage for every cluster are identical", () => {
