@@ -4,6 +4,8 @@
  *   bun scripts/watchdog.ts            → exit 0 silent when healthy; exit 1 + reasons on stderr otherwise.
  * Fails when: last-checked.json checked_at older than 8h (WATCHDOG_MAX_AGE_H) · live gh-pages crawl ≠ main crawl after a
  * published run · last two runs both soft-failed ≥ half the sources · the hash gate errored.
+ *   bun scripts/watchdog.ts --pre      → pre-crawl check: a missing last-checked.json is a cold start ("watchdog: first run", exit 0).
+ *                                        Without --pre (post-crawl) a missing file still FAILs.
  * Env: WATCHDOG_NOW (ISO, fixtures) · WATCHDOG_LIVE_URL (default the Pages URL; "off" skips the live compare).
  */
 import { appendFileSync, existsSync, readFileSync } from "node:fs";
@@ -16,6 +18,12 @@ const now = process.env.WATCHDOG_NOW ? Date.parse(process.env.WATCHDOG_NOW) : Da
 const LIVE = process.env.WATCHDOG_LIVE_URL ?? "https://specimba.github.io/NEXUS_SAGE_grok/";
 const fails: string[] = [];
 
+const PRE = process.argv.includes("--pre");
+if (PRE && !existsSync(checkedPath)) {
+  console.log("watchdog: first run");
+  if (process.env.GITHUB_OUTPUT) appendFileSync(process.env.GITHUB_OUTPUT, `healthy=true\n`);
+  process.exit(0);
+}
 const lc = existsSync(checkedPath) ? JSON.parse(readFileSync(checkedPath, "utf8")) : null;
 if (!lc) fails.push(`no ${checkedPath}`);
 else {

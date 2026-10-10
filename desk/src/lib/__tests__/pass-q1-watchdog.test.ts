@@ -11,6 +11,10 @@ const run = (lc: object, now: string) => {
   writeFileSync(p, JSON.stringify(lc));
   return spawnSync("bun", [script], { encoding: "utf8", env: { ...process.env, WATCHDOG_CHECKED: p, WATCHDOG_NOW: now, WATCHDOG_LIVE_URL: "off", GITHUB_OUTPUT: "" } });
 };
+const runMissing = (args: string[]) => {
+  const p = resolve(mkdtempSync(resolve(tmpdir(), "wd-")), "last-checked.json");
+  return spawnSync("bun", [script, ...args], { encoding: "utf8", env: { ...process.env, WATCHDOG_CHECKED: p, WATCHDOG_LIVE_URL: "off", GITHUB_OUTPUT: "" } });
+};
 const base = { checked_at: "2026-10-09T20:00:00Z", last_run: "skipped", soft_history: [{ soft: 1, total: 10 }], gate_error: null };
 
 describe("PASS-Q1 watchdog", () => {
@@ -30,5 +34,15 @@ describe("PASS-Q1 watchdog", () => {
   });
   test("gate error → exit 1", () => {
     expect(run({ ...base, gate_error: "boom" }, "2026-10-10T00:00:00Z").status).toBe(1);
+  });
+  test("cold start --pre: missing last-checked.json → first run, exit 0", () => {
+    const r = runMissing(["--pre"]);
+    expect(r.status).toBe(0);
+    expect(r.stdout).toContain("watchdog: first run");
+  });
+  test("post-crawl: missing last-checked.json still FAILs", () => {
+    const r = runMissing([]);
+    expect(r.status).toBe(1);
+    expect(r.stderr).toContain("watchdog FAIL: no");
   });
 });

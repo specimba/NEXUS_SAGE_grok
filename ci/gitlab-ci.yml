@@ -45,8 +45,8 @@ crawl:
     - cd repo
     - git config credential.helper '!f() { echo username=x-access-token; echo "password=$GH_PUSH_TOKEN"; }; f'
     - cd desk
-    # watchdog first: previous run's checked_at vs 10h (catches a missed slot)
-    - bun scripts/watchdog.ts
+    # watchdog first: previous run's checked_at vs 10h (catches a missed slot); --pre: no last-checked.json yet = first run
+    - bun scripts/watchdog.ts --pre
     - mkdir -p .next && rm -rf .next/cache && mkdir -p "$CI_PROJECT_DIR/.cache/next" && ln -s "$CI_PROJECT_DIR/.cache/next" .next/cache
     - bun install --frozen-lockfile
     - bun run ingest
@@ -98,8 +98,13 @@ crawl:
     when: always
     name: sage-pack-$CI_PIPELINE_ID
     expire_in: 30 days
+    # pack:export dual-homes sage-pack-*.tar.gz to <repo>/packs/ and <repo>/desk/packs/; reader-hash.json only exists after a
+    # published run. Missing paths only warn in GitLab ("no matching files"), they don't fail the job.
     paths:
       - repo/packs/*.tar.gz
+      - repo/desk/packs/*.tar.gz
       - repo/desk/artifacts/sage/packs/
       - repo/desk/artifacts/sage/digest-last.json
       - repo/desk/artifacts/sage/reader-hash.json
+      - repo/desk/artifacts/sage/last-checked.json
+      - repo/logs/crawl.log
