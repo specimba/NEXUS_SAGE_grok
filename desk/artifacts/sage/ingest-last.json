@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-09T23:18:45Z",
+  "stamped_at": "2026-10-10T03:17:55Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 201,
+      "duration_ms": 222,
       "paused_until": null,
       "reason": null
     },
@@ -18,7 +18,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 3258,
+      "duration_ms": 3369,
       "paused_until": null,
       "reason": null
     },
@@ -27,7 +27,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 9,
+      "duration_ms": 542,
       "paused_until": null,
       "reason": null
     },
@@ -35,8 +35,8 @@
       "id": "crossref",
       "label": "Crossref",
       "status": "ok",
-      "rows": 1,
-      "duration_ms": 2,
+      "rows": 0,
+      "duration_ms": 822,
       "paused_until": null,
       "reason": null
     },
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 55,
-      "duration_ms": 8766,
+      "rows": 66,
+      "duration_ms": 8306,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 592,
+      "duration_ms": 17248,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 196,
+      "duration_ms": 4313,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 29,
-      "duration_ms": 196,
+      "rows": 36,
+      "duration_ms": 6486,
       "paused_until": null,
       "reason": null
     },
@@ -81,7 +81,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 2,
-      "duration_ms": 196,
+      "duration_ms": 338,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 196,
+      "duration_ms": 273,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 13612,
-    "sources_wall_ms": 8776,
-    "papers_lane_ms": 3487,
-    "slowest_source_ms": 8766,
+    "sources_ms": 41919,
+    "sources_wall_ms": 17250,
+    "papers_lane_ms": 4962,
+    "slowest_source_ms": 17248,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -114,37 +114,184 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 9289,
-    "startup_ms": 38,
-    "main_ms": 9316
+    "wall_ms": 17643,
+    "startup_ms": 55,
+    "main_ms": 17670
   },
-  "multi_source_independent": 0,
+  "multi_source_independent": 5,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 0,
-    "multi_source_raw": 1,
-    "self_reposts": 1,
-    "items_in": 226,
-    "clusters_out": 216,
-    "collapsed": 10,
-    "multi_source": 0,
-    "multi_member": 9,
+    "multi_source_independent": 5,
+    "multi_source_raw": 8,
+    "self_reposts": 3,
+    "items_in": 244,
+    "clusters_out": 225,
+    "collapsed": 19,
+    "multi_source": 5,
+    "multi_member": 14,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 5,
+    "new_items": 39,
     "per_source": {
-      "hn-algolia": 55,
+      "hn-algolia": 66,
       "rss-lab": 104,
       "rss-security": 28,
-      "gnews-rss": 29,
+      "gnews-rss": 36,
       "gmail-news": 10
     },
-    "multi_source_clusters": [],
+    "multi_source_clusters": [
+      {
+        "title": "'Breathtaking,' 'Devastating': Mathematics Reels After New OpenAI Release",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 3,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:50023260",
+            "source": "hn-algolia",
+            "title": "'Breathtaking,' 'Devastating': Mathematics Reels After New OpenAI Release",
+            "at": "2026-10-09T16:50:01Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:50013552",
+            "source": "hn-algolia",
+            "title": "'Breathtaking,' 'Devastating': Mathematics Reels After New OpenAI Release",
+            "at": "2026-10-08T22:51:23Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:2b570fdab45dcbcc",
+            "source": "gnews-rss",
+            "title": "‘Breathtaking,’ ‘Devastating’: Mathematics Reels After New OpenAI Release - The New York Times",
+            "at": "2026-10-09T20:28:00Z",
+            "publisher": "The New York Times"
+          }
+        ]
+      },
+      {
+        "title": "Multimodal open d1 decision models for the edge",
+        "sources": [
+          "rss-lab",
+          "hn-algolia"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:50025515",
+            "source": "hn-algolia",
+            "title": "Liquid AI d1: open decision models that answer in one forward pass",
+            "at": "2026-10-09T19:27:59Z",
+            "publisher": null
+          },
+          {
+            "id": "rss:huggingface:88e871d5a8d26738",
+            "source": "rss-lab",
+            "title": "Multimodal open d1 decision models for the edge",
+            "at": "2026-10-07T16:54:33Z",
+            "publisher": "huggingface"
+          }
+        ]
+      },
+      {
+        "title": "Google is launching a one-stop Gemini agent for your work tasks",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 3,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:50006368",
+            "source": "hn-algolia",
+            "title": "Google is launching a one-stop Gemini agent for your work tasks",
+            "at": "2026-10-08T14:39:57Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:4e197a3d95622493",
+            "source": "gnews-rss",
+            "title": "Google is launching a one-stop Gemini agent for your work tasks - The Verge",
+            "at": "2026-10-08T14:28:03Z",
+            "publisher": "The Verge"
+          },
+          {
+            "id": "gnews:85450a508d116781",
+            "source": "gnews-rss",
+            "title": "Google Launches New Gemini AI Agent to Execute Work Tasks - entARABI",
+            "at": "2026-10-09T10:46:49Z",
+            "publisher": "entARABI"
+          }
+        ]
+      },
+      {
+        "title": "OpenAI annualised revenues $20B less than previously signalled",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 3,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:50008187",
+            "source": "hn-algolia",
+            "title": "OpenAI annualised revenues $20B less than previously signalled",
+            "at": "2026-10-08T16:45:58Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:50011505",
+            "source": "hn-algolia",
+            "title": "OpenAI annualised revenues $20B less than previously signalled",
+            "at": "2026-10-08T20:15:21Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:0f2b3dd9b0276e28",
+            "source": "gnews-rss",
+            "title": "OpenAI annualized revenue $20 billion less than previously reported - Axios",
+            "at": "2026-10-08T19:54:54Z",
+            "publisher": "Axios"
+          }
+        ]
+      },
+      {
+        "title": "Introducing Falcon ASR",
+        "sources": [
+          "rss-lab",
+          "hn-algolia"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:50011428",
+            "source": "hn-algolia",
+            "title": "Falcon ASR: TII's 1.6B Speech Model for Arabic and Emirati",
+            "at": "2026-10-08T20:10:17Z",
+            "publisher": null
+          },
+          {
+            "id": "rss:huggingface:16b7810afb00bdc0",
+            "source": "rss-lab",
+            "title": "Introducing Falcon ASR",
+            "at": "2026-10-07T13:21:03Z",
+            "publisher": "huggingface"
+          }
+        ]
+      }
+    ],
     "self_repost_clusters": [
       {
-        "title": "Does better work always mean better workers?",
+        "title": "Asana cuts model costs 76x in browser tests with GPT-6.1 Sol",
         "sources": [
           "rss-lab"
         ],
@@ -154,9 +301,43 @@
         ],
         "self_reposts": [
           {
-            "id": "gnews:cee54b63469ecc14",
-            "publisher": "Google Research",
-            "title": "Does better work always mean better workers? - Google Research"
+            "id": "gnews:15f92454de1311e9",
+            "publisher": "OpenAI",
+            "title": "Asana cuts model costs 76x in browser tests with GPT-6.1 Sol - OpenAI"
+          }
+        ]
+      },
+      {
+        "title": "How Oracle turns days of work into minutes with ChatGPT and Codex",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:f9463e175cbd3f98",
+            "publisher": "OpenAI",
+            "title": "How Oracle turns days of work into minutes with ChatGPT and Codex - OpenAI"
+          }
+        ]
+      },
+      {
+        "title": "Disrupting AI-enabled “false front” operations",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:71aa6b4f3b805534",
+            "publisher": "OpenAI",
+            "title": "Disrupting AI-enabled “false front” operations - OpenAI"
           }
         ]
       }
@@ -176,30 +357,26 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "Cloudflare Blog",
-          "title": "Introducing Clef-omni with full multimodality, plus a faster Clef and a cheaper Clef-flash - Cloudflare Blog"
+          "publisher": "Seoul Economic Daily",
+          "title": "Zuckerberg-Backed Biohub Joins Google, U.S. Agencies in $1.8 Billion Virtual Cell Push - Seoul Economic Daily"
         },
         {
-          "publisher": "Search Engine Land",
-          "title": "Google launches Display & Video 360 Structured Data Files v11 with expanded targeting - Search Engine Land"
+          "publisher": "Business Insider Africa",
+          "title": "Nvidia's head of corporate communications has left after roughly four months - Business Insider Africa"
         },
         {
-          "publisher": "ALM Corp",
-          "title": "Google Opens Conversion Lift to Search and Pmax - ALM Corp"
-        },
-        {
-          "publisher": "The Sunday Guardian",
-          "title": "Google Play Outage Today: Is Google Play Down in the US? Users Report Search, Downloads & Login Problems as Play Store Shows Server Errors | Check Downdetector Status - The Sunday Guardian"
+          "publisher": "USA Today",
+          "title": "High-tech 'new tools' used in hurricane forecasts, NHC director says - USA Today"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 4
+      "hn_dropped": 3
     },
     "gnews_near_misses": [
       {
         "score": 1,
         "blocked": "time-window",
-        "hours_apart": 211.9,
+        "hours_apart": 221,
         "a": {
           "id": "rss:deepmind:ce56aa83d0064ef1",
           "source": "rss-lab",
@@ -210,7 +387,7 @@
           "id": "gnews:05cfd65803121a1e",
           "source": "gnews-rss",
           "title": "Gemini 4 Argon: our next era of frontier intelligence - blog.google",
-          "at": "2026-10-09T15:53:14Z"
+          "at": "2026-10-10T01:00:22Z"
         },
         "shared": [
           "gemini",
@@ -223,31 +400,9 @@
         ]
       },
       {
-        "score": 0.688,
-        "blocked": "time-window",
-        "hours_apart": 74.4,
-        "a": {
-          "id": "rss:mistral:1ef243007176e85c",
-          "source": "rss-lab",
-          "title": "Introducing Mistral Large 4",
-          "at": "2026-10-06T12:00:27Z"
-        },
-        "b": {
-          "id": "gnews:de639905ad6d90e1",
-          "source": "gnews-rss",
-          "title": "Mistral’s Large 4 ‘Le Chonk’ joins the West’s open model push - The Rundown AI",
-          "at": "2026-10-09T14:23:26Z"
-        },
-        "shared": [
-          "mistral",
-          "larg",
-          "4"
-        ]
-      },
-      {
-        "score": 0.634,
+        "score": 0.661,
         "blocked": "short-title",
-        "hours_apart": 17.7,
+        "hours_apart": 13.3,
         "a": {
           "id": "hn:50012543",
           "source": "hn-algolia",
@@ -255,10 +410,10 @@
           "at": "2026-10-08T21:26:28Z"
         },
         "b": {
-          "id": "gnews:bce73d5e21d03671",
+          "id": "gnews:85450a508d116781",
           "source": "gnews-rss",
-          "title": "Google’s New Gemini Agent Can Handle Work Across Multiple Apps - TechRepublic",
-          "at": "2026-10-09T15:09:05Z"
+          "title": "Google Launches New Gemini AI Agent to Execute Work Tasks - entARABI",
+          "at": "2026-10-09T10:46:49Z"
         },
         "shared": [
           "gemini",
@@ -266,31 +421,99 @@
         ]
       },
       {
-        "score": 0.63,
-        "blocked": "time-window",
-        "hours_apart": 72.8,
+        "score": 0.657,
+        "blocked": "short-title",
+        "hours_apart": 7,
         "a": {
-          "id": "rss:mistral:1ef243007176e85c",
-          "source": "rss-lab",
-          "title": "Introducing Mistral Large 4",
-          "at": "2026-10-06T12:00:27Z"
+          "id": "hn:50012543",
+          "source": "hn-algolia",
+          "title": "The Gemini Agent",
+          "at": "2026-10-08T21:26:28Z"
         },
         "b": {
-          "id": "gnews:612ed9c238f964f8",
+          "id": "gnews:4e197a3d95622493",
           "source": "gnews-rss",
-          "title": "Mistral's trillion-parameter Large 4 ranks as top AI model outside U.S. and China, but trails Chinese open-weight rivals - news.lavx.hu",
-          "at": "2026-10-09T12:46:04Z"
+          "title": "Google is launching a one-stop Gemini agent for your work tasks - The Verge",
+          "at": "2026-10-08T14:28:03Z"
         },
         "shared": [
-          "mistral",
-          "larg",
-          "4"
+          "gemini",
+          "agent"
         ]
       },
       {
-        "score": 0.502,
+        "score": 0.54,
+        "blocked": "time-window",
+        "hours_apart": 32.2,
+        "a": {
+          "id": "hn:50008187",
+          "source": "hn-algolia",
+          "title": "OpenAI annualised revenues $20B less than previously signalled",
+          "at": "2026-10-08T16:45:58Z"
+        },
+        "b": {
+          "id": "gnews:931f3cb790c2a03a",
+          "source": "gnews-rss",
+          "title": "OpenAI to bring in $20 billion less than previously expected - Mashable",
+          "at": "2026-10-10T00:57:13Z"
+        },
+        "shared": [
+          "openai",
+          "20b",
+          "less",
+          "previously"
+        ]
+      },
+      {
+        "score": 0.54,
+        "blocked": "time-window",
+        "hours_apart": 28.7,
+        "a": {
+          "id": "hn:50011505",
+          "source": "hn-algolia",
+          "title": "OpenAI annualised revenues $20B less than previously signalled",
+          "at": "2026-10-08T20:15:21Z"
+        },
+        "b": {
+          "id": "gnews:931f3cb790c2a03a",
+          "source": "gnews-rss",
+          "title": "OpenAI to bring in $20 billion less than previously expected - Mashable",
+          "at": "2026-10-10T00:57:13Z"
+        },
+        "shared": [
+          "openai",
+          "20b",
+          "less",
+          "previously"
+        ]
+      },
+      {
+        "score": 0.489,
+        "blocked": "time-window",
+        "hours_apart": 29.3,
+        "a": {
+          "id": "hn:50009239",
+          "source": "hn-algolia",
+          "title": "USA Today sues OpenAI for copyright infringement over AI training",
+          "at": "2026-10-08T17:49:07Z"
+        },
+        "b": {
+          "id": "gnews:f2790e736240998f",
+          "source": "gnews-rss",
+          "title": "COPYRIGHT NEWS: USA TODAY and affiliated publications sue OpenAI over alleged mass copying of news content - VitalLaw.com",
+          "at": "2026-10-09T23:04:37Z"
+        },
+        "shared": [
+          "usa",
+          "sue",
+          "openai",
+          "copyright"
+        ]
+      },
+      {
+        "score": 0.425,
         "blocked": "below-threshold",
-        "hours_apart": 14.8,
+        "hours_apart": 19.2,
         "a": {
           "id": "hn:50013071",
           "source": "hn-algolia",
@@ -298,84 +521,36 @@
           "at": "2026-10-08T22:06:36Z"
         },
         "b": {
-          "id": "gnews:9a4ff3604224044f",
+          "id": "gnews:373d8d191dd3429a",
           "source": "gnews-rss",
-          "title": "OpenAI fires 3 safety researchers in dispute over AI risks - myMotherLode.com",
-          "at": "2026-10-09T12:55:44Z"
+          "title": "OpenAI Researchers Say They Were Sacked for Prioritizing Safety - NTD News",
+          "at": "2026-10-09T17:17:29Z"
         },
         "shared": [
           "openai",
-          "3",
           "safety",
           "researcher"
         ]
       },
       {
-        "score": 0.46,
-        "blocked": "time-window",
-        "hours_apart": 24.5,
+        "score": 0.392,
+        "blocked": "thin-overlap",
+        "hours_apart": 24.6,
         "a": {
-          "id": "hn:50006368",
+          "id": "hn:50008188",
           "source": "hn-algolia",
-          "title": "Google is launching a one-stop Gemini agent for your work tasks",
-          "at": "2026-10-08T14:39:57Z"
+          "title": "Kurzgesagt: Hugging Face hack by AI [video]",
+          "at": "2026-10-08T16:45:58Z"
         },
         "b": {
-          "id": "gnews:bce73d5e21d03671",
+          "id": "gnews:7a6017133fa647e6",
           "source": "gnews-rss",
-          "title": "Google’s New Gemini Agent Can Handle Work Across Multiple Apps - TechRepublic",
-          "at": "2026-10-09T15:09:05Z"
+          "title": "Controversy swirls over ‘abrupt’ firing of OpenAI safety team members involved in the Hugging Face hack investigation - Fortune",
+          "at": "2026-10-09T17:21:00Z"
         },
         "shared": [
-          "google",
-          "gemini",
-          "agent",
-          "work"
-        ]
-      },
-      {
-        "score": 0.458,
-        "blocked": "time-window",
-        "hours_apart": 1422.4,
-        "a": {
-          "id": "rss:mistral:c1e2b11cbf4853bf",
-          "source": "rss-lab",
-          "title": "In-region inference, open models, and new European infrastructure for sovereign AI.",
-          "at": "2026-08-11T12:00:27Z"
-        },
-        "b": {
-          "id": "gnews:42cf25c682dfddb9",
-          "source": "gnews-rss",
-          "title": "European Open-Weight AI Models - Trend Hunter",
-          "at": "2026-10-09T18:26:57Z"
-        },
-        "shared": [
-          "model",
-          "european",
-          "ai"
-        ]
-      },
-      {
-        "score": 0.431,
-        "blocked": "below-threshold",
-        "hours_apart": 2.9,
-        "a": {
-          "id": "hn:50018350",
-          "source": "hn-algolia",
-          "title": "OpenAI fires three safety researchers for \"mishandling research information\"",
-          "at": "2026-10-09T10:00:26Z"
-        },
-        "b": {
-          "id": "gnews:9a4ff3604224044f",
-          "source": "gnews-rss",
-          "title": "OpenAI fires 3 safety researchers in dispute over AI risks - myMotherLode.com",
-          "at": "2026-10-09T12:55:44Z"
-        },
-        "shared": [
-          "openai",
-          "fire",
-          "safety",
-          "researcher"
+          "huggingface",
+          "hack"
         ]
       }
     ],
@@ -383,7 +558,7 @@
       {
         "score": 1,
         "blocked": "time-window",
-        "hours_apart": 211.9,
+        "hours_apart": 221,
         "a": {
           "id": "rss:deepmind:ce56aa83d0064ef1",
           "source": "rss-lab",
@@ -394,7 +569,7 @@
           "id": "gnews:05cfd65803121a1e",
           "source": "gnews-rss",
           "title": "Gemini 4 Argon: our next era of frontier intelligence - blog.google",
-          "at": "2026-10-09T15:53:14Z"
+          "at": "2026-10-10T01:00:22Z"
         },
         "shared": [
           "gemini",
@@ -407,7 +582,7 @@
         ]
       },
       {
-        "score": 0.988,
+        "score": 0.998,
         "blocked": "time-window",
         "hours_apart": 75.6,
         "a": {
@@ -431,31 +606,9 @@
         ]
       },
       {
-        "score": 0.688,
-        "blocked": "time-window",
-        "hours_apart": 74.4,
-        "a": {
-          "id": "rss:mistral:1ef243007176e85c",
-          "source": "rss-lab",
-          "title": "Introducing Mistral Large 4",
-          "at": "2026-10-06T12:00:27Z"
-        },
-        "b": {
-          "id": "gnews:de639905ad6d90e1",
-          "source": "gnews-rss",
-          "title": "Mistral’s Large 4 ‘Le Chonk’ joins the West’s open model push - The Rundown AI",
-          "at": "2026-10-09T14:23:26Z"
-        },
-        "shared": [
-          "mistral",
-          "larg",
-          "4"
-        ]
-      },
-      {
-        "score": 0.634,
+        "score": 0.661,
         "blocked": "short-title",
-        "hours_apart": 17.7,
+        "hours_apart": 13.3,
         "a": {
           "id": "hn:50012543",
           "source": "hn-algolia",
@@ -463,10 +616,10 @@
           "at": "2026-10-08T21:26:28Z"
         },
         "b": {
-          "id": "gnews:bce73d5e21d03671",
+          "id": "gnews:85450a508d116781",
           "source": "gnews-rss",
-          "title": "Google’s New Gemini Agent Can Handle Work Across Multiple Apps - TechRepublic",
-          "at": "2026-10-09T15:09:05Z"
+          "title": "Google Launches New Gemini AI Agent to Execute Work Tasks - entARABI",
+          "at": "2026-10-09T10:46:49Z"
         },
         "shared": [
           "gemini",
@@ -474,93 +627,114 @@
         ]
       },
       {
-        "score": 0.63,
-        "blocked": "time-window",
-        "hours_apart": 72.8,
+        "score": 0.657,
+        "blocked": "short-title",
+        "hours_apart": 7,
         "a": {
-          "id": "rss:mistral:1ef243007176e85c",
-          "source": "rss-lab",
-          "title": "Introducing Mistral Large 4",
-          "at": "2026-10-06T12:00:27Z"
+          "id": "hn:50012543",
+          "source": "hn-algolia",
+          "title": "The Gemini Agent",
+          "at": "2026-10-08T21:26:28Z"
         },
         "b": {
-          "id": "gnews:612ed9c238f964f8",
+          "id": "gnews:4e197a3d95622493",
           "source": "gnews-rss",
-          "title": "Mistral's trillion-parameter Large 4 ranks as top AI model outside U.S. and China, but trails Chinese open-weight rivals - news.lavx.hu",
-          "at": "2026-10-09T12:46:04Z"
+          "title": "Google is launching a one-stop Gemini agent for your work tasks - The Verge",
+          "at": "2026-10-08T14:28:03Z"
         },
         "shared": [
-          "mistral",
-          "larg",
-          "4"
+          "gemini",
+          "agent"
         ]
       },
       {
-        "score": 0.502,
-        "blocked": "below-threshold",
-        "hours_apart": 14.8,
+        "score": 0.624,
+        "blocked": "time-window",
+        "hours_apart": 30.8,
         "a": {
-          "id": "hn:50013071",
+          "id": "hn:50011428",
           "source": "hn-algolia",
-          "title": "OpenAI cuts ties with 3 safety researchers",
-          "at": "2026-10-08T22:06:36Z"
+          "title": "Falcon ASR: TII's 1.6B Speech Model for Arabic and Emirati",
+          "at": "2026-10-08T20:10:17Z"
         },
         "b": {
-          "id": "gnews:9a4ff3604224044f",
+          "id": "rss:huggingface:16b7810afb00bdc0",
+          "source": "rss-lab",
+          "title": "Introducing Falcon ASR",
+          "at": "2026-10-07T13:21:03Z"
+        },
+        "shared": [
+          "falcon",
+          "asr"
+        ]
+      },
+      {
+        "score": 0.54,
+        "blocked": "time-window",
+        "hours_apart": 32.2,
+        "a": {
+          "id": "hn:50008187",
+          "source": "hn-algolia",
+          "title": "OpenAI annualised revenues $20B less than previously signalled",
+          "at": "2026-10-08T16:45:58Z"
+        },
+        "b": {
+          "id": "gnews:931f3cb790c2a03a",
           "source": "gnews-rss",
-          "title": "OpenAI fires 3 safety researchers in dispute over AI risks - myMotherLode.com",
-          "at": "2026-10-09T12:55:44Z"
+          "title": "OpenAI to bring in $20 billion less than previously expected - Mashable",
+          "at": "2026-10-10T00:57:13Z"
         },
         "shared": [
           "openai",
-          "3",
-          "safety",
-          "researcher"
+          "20b",
+          "less",
+          "previously"
         ]
       },
       {
-        "score": 0.46,
+        "score": 0.54,
         "blocked": "time-window",
-        "hours_apart": 24.5,
+        "hours_apart": 28.7,
         "a": {
-          "id": "hn:50006368",
+          "id": "hn:50011505",
           "source": "hn-algolia",
-          "title": "Google is launching a one-stop Gemini agent for your work tasks",
-          "at": "2026-10-08T14:39:57Z"
+          "title": "OpenAI annualised revenues $20B less than previously signalled",
+          "at": "2026-10-08T20:15:21Z"
         },
         "b": {
-          "id": "gnews:bce73d5e21d03671",
+          "id": "gnews:931f3cb790c2a03a",
           "source": "gnews-rss",
-          "title": "Google’s New Gemini Agent Can Handle Work Across Multiple Apps - TechRepublic",
-          "at": "2026-10-09T15:09:05Z"
+          "title": "OpenAI to bring in $20 billion less than previously expected - Mashable",
+          "at": "2026-10-10T00:57:13Z"
         },
         "shared": [
-          "google",
-          "gemini",
-          "agent",
-          "work"
+          "openai",
+          "20b",
+          "less",
+          "previously"
         ]
       },
       {
-        "score": 0.458,
+        "score": 0.489,
         "blocked": "time-window",
-        "hours_apart": 1422.4,
+        "hours_apart": 29.3,
         "a": {
-          "id": "rss:mistral:c1e2b11cbf4853bf",
-          "source": "rss-lab",
-          "title": "In-region inference, open models, and new European infrastructure for sovereign AI.",
-          "at": "2026-08-11T12:00:27Z"
+          "id": "hn:50009239",
+          "source": "hn-algolia",
+          "title": "USA Today sues OpenAI for copyright infringement over AI training",
+          "at": "2026-10-08T17:49:07Z"
         },
         "b": {
-          "id": "gnews:42cf25c682dfddb9",
+          "id": "gnews:f2790e736240998f",
           "source": "gnews-rss",
-          "title": "European Open-Weight AI Models - Trend Hunter",
-          "at": "2026-10-09T18:26:57Z"
+          "title": "COPYRIGHT NEWS: USA TODAY and affiliated publications sue OpenAI over alleged mass copying of news content - VitalLaw.com",
+          "at": "2026-10-09T23:04:37Z"
         },
         "shared": [
-          "model",
-          "european",
-          "ai"
+          "usa",
+          "sue",
+          "openai",
+          "copyright"
         ]
       }
     ]
@@ -569,76 +743,76 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 13,
+      "streak_ok": 14,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 97,
+      "streak_ok": 98,
       "streak_fail": 0,
-      "items_last": 1
+      "items_last": 0
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 97,
+      "streak_ok": 98,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 97,
+      "streak_ok": 98,
       "streak_fail": 0,
-      "items_last": 29
+      "items_last": 36
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 97,
+      "streak_ok": 98,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 97,
+      "streak_ok": 98,
       "streak_fail": 0,
-      "items_last": 55
+      "items_last": 66
     },
     {
       "id": "openalex",
       "state": "flaky",
-      "streak_ok": 9,
+      "streak_ok": 10,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 1,
+      "streak_ok": 2,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 97,
+      "streak_ok": 98,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 97,
+      "streak_ok": 98,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.002728611111111111,
+    "hours": 0.005033888888888889,
     "stale": false
   },
   "hf": {
@@ -661,15 +835,15 @@
     "soft_fail_reason": null,
     "enriched": 3,
     "secondary": 3,
-    "query": "LLM agent sandbox",
+    "query": "Hugging Face agent",
     "mode": "search",
-    "from_cache": true,
-    "searches": 0,
+    "from_cache": false,
+    "searches": 1,
     "retries": 0,
     "status": "ok",
     "paused_until": null,
     "pause_reason": null,
-    "requests": 0,
+    "requests": 1,
     "auth": "anon",
     "brief": false,
     "pulse_lead": false,
@@ -677,90 +851,78 @@
     "url": "https://api.openalex.org/works",
     "sample": [
       {
-        "id": "W7171516088",
-        "openalexId": "https://openalex.org/W7171516088",
+        "id": "W7171617880",
+        "openalexId": "https://openalex.org/W7171617880",
         "year": 2026,
-        "doi": "https://doi.org/10.48550/arxiv.2607.23933",
+        "doi": "https://doi.org/10.5281/zenodo.21686546",
         "enrichOnly": true
       },
       {
-        "id": "W7204032694",
-        "openalexId": "https://openalex.org/W7204032694",
+        "id": "W7171936549",
+        "openalexId": "https://openalex.org/W7171936549",
         "year": 2026,
-        "doi": "https://doi.org/10.1007/978-981-92-4805-6_13",
+        "doi": "https://doi.org/10.5281/zenodo.21715175",
         "enrichOnly": true
       },
       {
-        "id": "W4416036585",
-        "openalexId": "https://openalex.org/W4416036585",
-        "year": 2025,
-        "doi": "https://doi.org/10.18653/v1/2025.emnlp-main.466",
+        "id": "W7203931864",
+        "openalexId": "https://openalex.org/W7203931864",
+        "year": 2026,
+        "doi": "https://doi.org/10.5281/zenodo.22043399",
         "enrichOnly": true
       }
     ]
   },
   "crossref": {
-    "ok": true,
+    "ok": false,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "enriched": 1,
-    "query": "doi:10.1007/978-981-92-4805-6_13",
+    "enriched": 0,
+    "query": "doi:10.5281/zenodo.21686546",
     "mode": "filter",
-    "from_cache": true,
-    "searches": 0,
+    "from_cache": false,
+    "searches": 1,
     "brief": false,
     "pulse_lead": false,
     "papers_enrich_only": true,
     "url": "https://api.crossref.org/works",
-    "merge_notes": [
-      "doi_collision keep=10.48550/arxiv.2607.23933 crossref=10.1007/978-981-92-4805-6_13 paper=W7171516088 (non-destructive; openalexId preserved)"
-    ],
-    "sample": [
-      {
-        "id": "W7171516088",
-        "crossrefDoi": "https://doi.org/10.1007/978-981-92-4805-6_13",
-        "issued": "2026-08-24",
-        "type": "book-chapter",
-        "openalexId": "https://openalex.org/W7171516088",
-        "doi": "https://doi.org/10.48550/arxiv.2607.23933",
-        "enrichOnly": false
-      }
-    ]
+    "merge_notes": [],
+    "sample": []
   },
   "hn": {
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 55,
+    "count": 66,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
     "queries_run": [
-      "agent tooling",
       "OpenAI",
-      "Anthropic"
+      "Anthropic",
+      "Hugging Face"
     ],
     "queries_ok": [
-      "agent tooling",
       "OpenAI",
-      "Anthropic"
+      "Anthropic",
+      "Hugging Face"
     ],
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 4,
+    "ai_dropped": 3,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
         "id": "hn:50008187",
         "tag": "rest",
-        "score": 421,
+        "score": 422,
         "text": "OpenAI annualised revenues $20B less than previously signalled"
       },
       {
         "id": "hn:50002650",
         "tag": "rest",
-        "score": 371,
+        "score": 373,
         "text": "OpenAI withdraws three mathematical results"
       },
       {
@@ -783,47 +945,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "(cache:openai)",
+        "url": "https://openai.com/news/rss.xml",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "(cache:deepmind)",
+        "url": "https://deepmind.google/blog/rss.xml",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "(cache:google-ai)",
+        "url": "https://blog.google/technology/ai/rss/",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "(cache:huggingface)",
+        "url": "https://huggingface.co/blog/feed.xml",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "(cache:mistral)",
+        "url": "https://mistral.ai/rss.xml",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "(cache:nvidia)",
+        "url": "https://blogs.nvidia.com/feed/",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "(cache:nvidia-dev)",
+        "url": "https://developer.nvidia.com/blog/feed",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "(cache:ms-research)",
+        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "https://research.google/blog/rss/",
+        "url": "(cache:google-research)",
         "count": 12
       }
     ],
@@ -869,17 +1031,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "(cache:trailofbits)",
+        "url": "https://blog.trailofbits.com/feed/",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "(cache:fox-it)",
+        "url": "https://blog.fox-it.com/feed/",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "(cache:projectzero)",
+        "url": "https://projectzero.google/feed.xml",
         "count": 6
       }
     ],
@@ -920,22 +1082,70 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 29,
-    "pool": 204,
+    "items": 36,
+    "pool": 297,
     "corroborators": [
       {
-        "id": "gnews:cee54b63469ecc14",
-        "anchor_id": "rss:google-research:b96cc914fffc0786",
+        "id": "gnews:2b570fdab45dcbcc",
+        "anchor_id": "hn:50023260",
         "score": 1,
-        "title": "Does better work always mean better workers? - Google Research",
-        "publisher": "Google Research",
+        "title": "‘Breathtaking,’ ‘Devastating’: Mathematics Reels After New OpenAI Release - The New York Times",
+        "publisher": "The New York Times",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:15f92454de1311e9",
+        "anchor_id": "rss:openai:9bf93d58cc35db99",
+        "score": 1,
+        "title": "Asana cuts model costs 76x in browser tests with GPT-6.1 Sol - OpenAI",
+        "publisher": "OpenAI",
+        "self_repost": true
+      },
+      {
+        "id": "gnews:4e197a3d95622493",
+        "anchor_id": "hn:50006368",
+        "score": 1,
+        "title": "Google is launching a one-stop Gemini agent for your work tasks - The Verge",
+        "publisher": "The Verge",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:85450a508d116781",
+        "anchor_id": "hn:50006368",
+        "score": 0.631,
+        "title": "Google Launches New Gemini AI Agent to Execute Work Tasks - entARABI",
+        "publisher": "entARABI",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:0f2b3dd9b0276e28",
+        "anchor_id": "hn:50008187",
+        "score": 0.721,
+        "title": "OpenAI annualized revenue $20 billion less than previously reported - Axios",
+        "publisher": "Axios",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:71aa6b4f3b805534",
+        "anchor_id": "rss:openai:d9e485b409fe8517",
+        "score": 1,
+        "title": "Disrupting AI-enabled “false front” operations - OpenAI",
+        "publisher": "OpenAI",
+        "self_repost": true
+      },
+      {
+        "id": "gnews:f9463e175cbd3f98",
+        "anchor_id": "rss:openai:db7b9e6fe248e314",
+        "score": 1,
+        "title": "How Oracle turns days of work into minutes with ChatGPT and Codex - OpenAI",
+        "publisher": "OpenAI",
         "self_repost": true
       }
     ],
     "http_status": 200,
-    "content_type": null,
+    "content_type": "application/xml; charset=utf-8",
     "format": "rss2",
-    "from_cache": true,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -944,38 +1154,38 @@
     "pulse_only": true,
     "url_template": "https://news.google.com/rss/search?q={QUERY}&hl=en-US&gl=US&ceid=US:en",
     "queried": [
-      "open weights",
       "Hugging Face",
-      "Google Research",
-      "Google DeepMind"
+      "OpenAI",
+      "Google DeepMind",
+      "Gemini"
     ],
     "queries_ok_list": [
-      "open weights",
       "Hugging Face",
-      "Google Research",
-      "Google DeepMind"
+      "OpenAI",
+      "Google DeepMind",
+      "Gemini"
     ],
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:bfa682adff75494b",
-        "title": "Google Opens AI Content Detector To Users Worldwide - Arise News",
-        "publisher": "Arise News",
-        "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1iVFl0VWFrR195MWt4OUEwSmpESkU4VDE5UUdfbW5mOUlDM2Q3WXdlOWRmR1UzQllXSGhDVTRGUWlScGhLSi1wVlpkU1NrM2lWY0RVNUJqbGxLZVNRcXF3cjdkOXNkRDBlQnh5bnpUZ0pyV0dUaTFxQUg3WFFyQQ?oc=5",
+        "id": "gnews:54515ad8461d09d0",
+        "title": "Massive Leak: Google's New Gemini 4 Model Internal Beta Evaluation – Is This Actually OpenAI Opus 5.5? - 36Kr",
+        "publisher": "36Kr",
+        "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5HM0JXYTFyR2V2dUhFdUM5VGJpd1pSdks2bW5oZnJJa1JEeHIwVFB6Vy1TV3JIdlV3cE5LT2MtVFgzVkoxdUZNbkhXR0piNnhuMXJN?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:42cf25c682dfddb9",
-        "title": "European Open-Weight AI Models - Trend Hunter",
-        "publisher": "Trend Hunter",
-        "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9Wems4SF9fREh1NjU5Nk1LRExyY2JMdzdlSmV4V2ZZNGxsc3VSc2tWM1Yzcm54ZDJkSEZNUXB4Ty05aXI1bHo0V3NDMjdwV3VJZmxWN3VBMnVLWjZqUzZGQ05EMWtlcEx5b3EtQnBwQk45QjA?oc=5",
+        "id": "gnews:3c9098103a05590f",
+        "title": "Gemini Tarot Horoscope Today, October 10, 2026: Pay Attention to Health, Will Listen to Close Ones - India Today",
+        "publisher": "India Today",
+        "link": "https://news.google.com/rss/articles/CBMipwJBVV95cUxQN0ZUTzlGd3ZIaU9rRGhRdVBZS0ZfX0FNZnN2bWF5M2hrTkdRN1lvSW9LbE94NnZEc0dFZjRFdE5kS2wzNW45bkdvbDV5MERqa1VjcEkyNWhZUXlqZHpTdTdfbTdsOTZvdGUyT0I0M1ZtcWQ0ckVDOFJTNVRFOXhyUFFYQVhzV2hPVjBiVFBWamI0WER4UFo2TVZRbHZnS05OVTNXelhuVWRyZTA3TXlSRnNWcThYQjJPd01jZ2N4U2kxSFIwVmhHYjdSVDFQSmVRa0JtTlBzaDRQU0h1b0xHdDZjX0tMWEEyeHBnNHpmdDZsaUNSSjlXZFBBT0dzblZyZm4zdW55a2k4anJ6dzQzQlFTY3BRaTM5bWRoMDlITjRvQ0kyRWtv0gGsAkFVX3lxTE9QcmJQOUNEYU5IbDFCQXlGOFMyZE5ZY2hTX0RONFNDWGF4UXdfdERPTFVjdzFZUGNhVUZKVEFOdDJmOTgtd2tvcmRtLUo4T2U3NkhaYXluVm1LbjZFWTN5UjlzeDlscUVsanBfS1JDVWk2Z3dnYUI4aEFnbE11ZjlwbHFrR2xMVHZWY2psekU2OXh0cjBDcW1fcWR6aG1SY2c1RF8xUW5OQURoUWsxcjNCel85Y194ZW12a3p1cXZRd1pJWmlic0FDNld3elJzUDRsZTFpRkJOMTZRUHdfV1pfVzAyVzNDUElLMkprbXktdGltUmFVMkF5RHhsTVd4UWhzT09qelptcldXUWhiNEZJT3daRE9RYTFpWjd4eUh1NXhDMGZGU2FoUlZXdw?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:f95b3a5eaab4d33e",
-        "title": "UK AI safety law to stop ‘loss of control’ over autonomous agents - The Times",
-        "publisher": "The Times",
-        "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOeHF6c0M3Qi1ENE9RenFEV1dzZ2JfWEl1RjRYUWJpOGZucUQ5NG1xZ0x6aGZJZ1Q3NUdkd2RLd2JuWmxWd3hzU3U0ZWZjWjhEYUplUFRRcmowdV9ubndMR3BUOGE5TElGN2hkRFY5T3Vzb2o0bkhobndyekxBeHdKLXBBYTFHaUt1MlA5WjBoQWJCdWY3R1dsVG9B?oc=5",
+        "id": "gnews:97650b23330c6ea4",
+        "title": "A.I. Hurricane Models Were Front and Center as Isaias Headed Toward Land - The New York Times",
+        "publisher": "The New York Times",
+        "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9zT1Z6ek9RLWlUUWVGNm9FVzlMMmNUdUR0U3BRV2ZTLTNCN1lVQjBva3pnc0toQnhMZU5BSlZBaDRFV1JKdDEzamlRV0pTbGpkYUhLSnNKdVlDVV9QUVNubDBiYlVqcmJlLU80N3dkS0VpYkxvOUx4Ml9wdjhlT28?oc=5",
         "tag": "rest"
       }
     ]
@@ -1030,23 +1240,23 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "query": "LLM red team toolkit",
+    "query": "LLM agent eval harness",
     "shelf": 2,
-    "from_cache": true,
-    "searches": 0,
-    "rate_limit_remaining": null,
+    "from_cache": false,
+    "searches": 1,
+    "rate_limit_remaining": 9,
     "brief": false,
     "pulse_lead": false,
     "shelf_only": true,
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
-        "label": "Erentass6/aegis-llm",
-        "href": "https://github.com/Erentass6/aegis-llm"
+        "label": "GuillermoBarreto/evalkit",
+        "href": "https://github.com/GuillermoBarreto/evalkit"
       },
       {
-        "label": "seikaikyo/ai-red-team",
-        "href": "https://github.com/seikaikyo/ai-red-team"
+        "label": "1isaqu/llm-agent-evals",
+        "href": "https://github.com/1isaqu/llm-agent-evals"
       }
     ]
   },
@@ -1059,28 +1269,17 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "seeds": [
-      "stigmergy",
       "Sol",
-      "Astra"
+      "Astra",
+      "Hugging Face"
     ],
-    "searches": 0,
-    "from_cache": true,
+    "searches": 1,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "deny_grounding_only": true,
     "url": "https://www.wikidata.org/w/api.php",
     "hints": [
-      {
-        "seed": "stigmergy",
-        "qid": "Q2141158",
-        "label": "stigmergy",
-        "description": "mechanism of indirect coordination, through the environment, between agents or actions",
-        "status": "matched",
-        "source": "wikidata",
-        "briefEligible": false,
-        "pulseLeadEligible": false,
-        "denyGroundingOnly": true
-      },
       {
         "seed": "Sol",
         "qid": "Q10673071",
@@ -1098,6 +1297,17 @@
         "label": "AstraZeneca",
         "description": "British-Swedish pharmaceutical company",
         "status": "rejected_false_friend",
+        "source": "wikidata",
+        "briefEligible": false,
+        "pulseLeadEligible": false,
+        "denyGroundingOnly": true
+      },
+      {
+        "seed": "Hugging Face",
+        "qid": "Q108943604",
+        "label": "Hugging Face",
+        "description": "American company",
+        "status": "matched",
         "source": "wikidata",
         "briefEligible": false,
         "pulseLeadEligible": false,

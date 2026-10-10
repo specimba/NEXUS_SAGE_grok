@@ -2,6 +2,100 @@
 import type { LeadEntry } from "@/lib/lead-pick";
 
 export const LEAD_TODAY: LeadEntry | null = {
+  "date": "2026-10-10",
+  "at": "2026-10-10T03:18:13.174Z",
+  "crawl_at": "2026-10-10T03:17:55Z",
+  "excluded": [
+    {
+      "cluster_id": "cl:hn:50006368",
+      "headline": "Google is launching a one-stop Gemini agent for your work tasks",
+      "reason": "age>=24h"
+    },
+    {
+      "cluster_id": "cl:gnews:3c9098103a05590f",
+      "headline": "Gemini Tarot Horoscope Today, October 10, 2026: Pay Attention to Health, Will Listen to Close Ones",
+      "reason": "GNW_ONLY"
+    },
+    {
+      "cluster_id": "cl:hn:50023260",
+      "headline": "'Breathtaking,' 'Devastating': Mathematics Reels After New OpenAI Release",
+      "reason": "age>=24h"
+    },
+    {
+      "cluster_id": "cl:rss:huggingface:88e871d5a8d26738",
+      "headline": "Multimodal open d1 decision models for the edge",
+      "reason": "age>=24h"
+    },
+    {
+      "cluster_id": "cl:gnews:bfa682adff75494b",
+      "headline": "Google Opens AI Content Detector To Users Worldwide",
+      "reason": "GNW_ONLY"
+    },
+    {
+      "cluster_id": "cl:hn:50008187",
+      "headline": "OpenAI annualised revenues $20B less than previously signalled",
+      "reason": "age>=24h"
+    },
+    {
+      "cluster_id": "cl:rss:huggingface:16b7810afb00bdc0",
+      "headline": "Introducing Falcon ASR",
+      "reason": "age>=24h"
+    }
+  ],
+  "cluster_id": "cl:hn:50006368",
+  "headline": "Google is launching a one-stop Gemini agent for your work tasks",
+  "url": "https://www.theverge.com/tech/1007904/google-gemini-ai-agent-enterprise",
+  "sources": 2,
+  "sig": 3,
+  "first_at": "2026-10-08T14:39:57.000Z",
+  "reason": "held",
+  "note": "no qualifying story",
+  "attempts": [
+    {
+      "at": "2026-10-10T03:18:13.174Z",
+      "crawl_at": "2026-10-10T03:17:55Z",
+      "excluded": [
+        {
+          "cluster_id": "cl:hn:50006368",
+          "headline": "Google is launching a one-stop Gemini agent for your work tasks",
+          "reason": "age>=24h"
+        },
+        {
+          "cluster_id": "cl:gnews:3c9098103a05590f",
+          "headline": "Gemini Tarot Horoscope Today, October 10, 2026: Pay Attention to Health, Will Listen to Close Ones",
+          "reason": "GNW_ONLY"
+        },
+        {
+          "cluster_id": "cl:hn:50023260",
+          "headline": "'Breathtaking,' 'Devastating': Mathematics Reels After New OpenAI Release",
+          "reason": "age>=24h"
+        },
+        {
+          "cluster_id": "cl:rss:huggingface:88e871d5a8d26738",
+          "headline": "Multimodal open d1 decision models for the edge",
+          "reason": "age>=24h"
+        },
+        {
+          "cluster_id": "cl:gnews:bfa682adff75494b",
+          "headline": "Google Opens AI Content Detector To Users Worldwide",
+          "reason": "GNW_ONLY"
+        },
+        {
+          "cluster_id": "cl:hn:50008187",
+          "headline": "OpenAI annualised revenues $20B less than previously signalled",
+          "reason": "age>=24h"
+        },
+        {
+          "cluster_id": "cl:rss:huggingface:16b7810afb00bdc0",
+          "headline": "Introducing Falcon ASR",
+          "reason": "age>=24h"
+        }
+      ]
+    }
+  ]
+};
+
+export const LEAD_YESTERDAY: LeadEntry | null = {
   "date": "2026-10-09",
   "at": "2026-10-09T11:28:17.635Z",
   "crawl_at": "2026-10-09T11:27:50Z",
@@ -32,42 +126,7 @@ export const LEAD_TODAY: LeadEntry | null = {
   "first_at": "2026-10-08T14:39:57.000Z"
 };
 
-export const LEAD_YESTERDAY: LeadEntry | null = {
-  "date": "2026-10-08",
-  "at": "2026-10-08T03:13:13.066Z",
-  "crawl_at": "2026-10-08T03:13:02Z",
-  "excluded": [
-    {
-      "cluster_id": "cl:rss:mistral:1ef243007176e85c",
-      "headline": "Introducing Mistral Large 4",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:hn:49980866",
-      "headline": "Google Nano Banana 2.1",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:rss:deepmind:c11a83f73b42d756",
-      "headline": "EmbeddingGemma 2: an open, lightweight multimodal embedding model",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:rss:openai:a097ef0d441a7216",
-      "headline": "GPT-6 and Intelligent UI for everyone",
-      "reason": "age>=24h"
-    }
-  ],
-  "cluster_id": "cl:rss:google-ai:b6aec8c05cfc3e2f",
-  "headline": "Introducing Playground: Create and play custom games",
-  "url": "https://blog.google/innovation-and-ai/technology/ai/playground-experimental-gaming-platform/",
-  "sources": 2,
-  "sig": 124,
-  "reason": "picked",
-  "first_at": "2026-10-07T12:00:00.000Z"
-};
-
-export const LEAD_HELD = false;
+export const LEAD_HELD = true;
 
 /** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is ≥24h old. */
 export const LEAD_FIRST_AT: string | null = "2026-10-08T14:39:57.000Z";
