@@ -2864,17 +2864,17 @@ a.story-drawer-rowlink:focus-visible .story-drawer-open {
   .desk-topbar > div > * + * {
     margin-top: 0.5rem;
   }
+  /* UX 390 fix: chips wrap (no hidden sideways scroll clipping CHECKED · DATA / cyc). */
   .desk-chips {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scrollbar-width: none;
+    flex-wrap: wrap;
     max-width: 100%;
   }
   .desk-chips {
     gap: 0.375rem;
   }
   .desk-chips .desk-chip {
-    flex: none;
+    flex: 0 1 auto;
+    max-width: 100%;
     padding: 0 0.35rem;
     letter-spacing: 0.04em;
   }
@@ -2969,3 +2969,23 @@ a.story-drawer-rowlink:focus-visible .story-drawer-open {
     color: var(--muted-foreground);
   }
 }
+
+/* UX 390 fix: CHECKED · DATA chip wraps like its siblings instead of clipping */
+.desk-chip-wrap {
+  max-width: 100%;
+  min-width: 0;
+  height: auto;
+  min-height: 1.5rem;
+  flex-wrap: wrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+/* UX 390 fix: Voice lane never wider than viewport; VU stacks side by side on narrow screens */
+.lane-voice, .voice-v4 > * { min-width: 0; max-width: 100%; }
+.lane-voice .voice-v4 h2, .lane-voice .voice-v4 h3 { overflow-wrap: anywhere; }
+@media (max-width: 1023.98px) {
+  .lane-voice .sage-instrument { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lane-voice .sage-instrument > p,
+  .lane-voice .sage-instrument > div:last-child { grid-column: 1 / -1; }
+}
+.digest-archive-fold { min-width: 0; max-width: 100%; }

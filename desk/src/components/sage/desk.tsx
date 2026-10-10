@@ -35,6 +35,7 @@ import { groupFirstAt, leadAgeHours } from "@/lib/lead-pick";
 import { LEAD_HELD_TEXT, leadView, nextCrawlSlotHHMM, type LeadView } from "@/lib/lead-view";
 import { IST_LABEL, istDateTime, istHHMM, istHHMMSS, istMMDD } from "@/lib/ist-time";
 import { useCheckedAt, useNow } from "@/lib/use-now";
+import { archiveFoldLabel } from "@/lib/archive-fold";
 import { footerStamp } from "@/lib/build-footer";
 import { isPausedAt, type PauseMap } from "@/lib/source-pause";
 import { istanbulHHMM, wireHeader, wireMark } from "@/lib/wire";
@@ -473,7 +474,7 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
               >
                 {fresh ? `${fresh.label} ${fresh.hours.toFixed(1)}H` : `CRAWL ${istHHMM(CRAWL_AT)}`}
               </span>
-              <span className="desk-chip desk-chip-live tabular-nums" title="crawl snap" data-crawl-at={CRAWL_AT}>
+              <span className="desk-chip desk-chip-live desk-chip-wrap tabular-nums" title="crawl snap" data-crawl-at={CRAWL_AT}>
                 checked {istHHMM(checkedAt)} · data <span className="hidden md:inline">{istDateTime(CRAWL_AT)}</span>
                 <span className="md:hidden">{istHHMM(CRAWL_AT)}</span>
                 <span className="hidden md:inline"> {IST_LABEL}</span>
@@ -1654,9 +1655,11 @@ function UnlockLeadTitle({
 
 /** CYCLE.003 pins — closed fold; does not compete with today's lead. Pass A2: rows load lazily on first open. */
 function CycleArchiveFold() {
+  const [open, setOpen] = useState(false);
   const [pins, setPins] = useState<ArchiveRow[] | null>(null);
   const [state, setState] = useState<"idle" | "loading" | "ready" | "error">("idle");
   const onToggle = (e: SyntheticEvent<HTMLDetailsElement>) => {
+    setOpen(e.currentTarget.open);
     if (!e.currentTarget.open || state === "loading" || state === "ready") return;
     setState("loading");
     loadArchive()
@@ -1669,7 +1672,7 @@ function CycleArchiveFold() {
   return (
     <details className="sage-panel sage-ticks digest-archive-fold" data-archive-fold="003" data-archive-state={state} onToggle={onToggle}>
       <summary className="cursor-pointer px-2.5 py-1.5 font-mono text-kicker uppercase tracking-kicker text-subtle">
-        archive · 003 · {CYCLE.pins.length} pins · closed
+        archive · 003 · {CYCLE.pins.length} pins · <span data-archive-fold-label>{archiveFoldLabel(open)}</span>
       </summary>
       <ul className="space-y-1 border-t border-line px-2.5 py-2" style={{ minHeight: `${CYCLE.pins.length * 3.25}rem` }}>
         {state === "ready" && pins ? (
@@ -2333,10 +2336,10 @@ function Voice() {
 
   return (
     <div className="sage-lane-craft lane-voice">
-      <div className="voice-v4 grid gap-2 lg:grid-cols-12 lg:grid-rows-[auto_auto_auto]">
+      <div className="voice-v4 grid min-w-0 max-w-full grid-cols-1 gap-2 lg:grid-cols-12 lg:grid-rows-[auto_auto_auto]">
         {/* Left · VU meters Ava / Andrew */}
         <aside
-          className="sage-panel sage-ticks sage-instrument flex flex-col gap-2 px-2.5 py-2 lg:col-span-2 lg:row-span-2"
+          className="sage-panel sage-ticks sage-instrument flex min-w-0 flex-col gap-2 px-2.5 py-2 lg:col-span-2 lg:row-span-2"
           aria-label="Voice VU meters"
         >
           <p className="font-mono text-kicker uppercase tracking-kicker text-amber">VU · meters</p>
@@ -2379,7 +2382,7 @@ function Voice() {
 
         {/* Mid · script TAKE → WHY → MOVE — brightest */}
         <section
-          className="sage-panel sage-ticks sage-panel-glow holo-edge sage-bento-hero sage-take px-4 py-3 lg:col-span-6 lg:row-span-1"
+          className="sage-panel sage-ticks sage-panel-glow holo-edge sage-bento-hero sage-take min-w-0 break-words px-4 py-3 lg:col-span-6 lg:row-span-1"
           aria-label="Voice script"
           data-unlock-stamp={unlock.stamp}
         >
@@ -2415,7 +2418,7 @@ function Voice() {
         </section>
 
         {/* Right · clip / speaker / TTS chain — quiet */}
-        <div className="voice-ops-rail flex flex-col gap-1.5 lg:col-span-4 lg:row-span-2">
+        <div className="voice-ops-rail flex min-w-0 flex-col gap-1.5 lg:col-span-4 lg:row-span-2">
           <div
             className="pin-legend-rail sage-panel sage-ticks flex flex-wrap items-center gap-x-3 gap-y-1 px-2.5 py-1.5"
             aria-label="Voice chain controls"
@@ -2458,7 +2461,7 @@ function Voice() {
 
         {/* Under mid · waveform / chain progress */}
         <section
-          className="sage-panel sage-ticks overflow-hidden lg:col-span-6"
+          className="sage-panel sage-ticks min-w-0 overflow-hidden lg:col-span-6"
           aria-label="Voice chain progress"
         >
           <div className="sage-panel-header">Waveform · chain progress</div>
