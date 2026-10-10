@@ -18,7 +18,7 @@ import {
 } from "@/lib/digest-unlock";
 import type { WireRow } from "@/lib/wire";
 import { readFileSync } from "node:fs";
-import { FX_LAST_GOOD_SNAP, FX_STATES, FX_TODAY_LEAD, FX_TODAY_SNAP } from "./fixtures/unlock-states";
+import { FX_HELD_NO_LAST_GOOD, FX_LAST_GOOD_SNAP, FX_STATES, FX_TODAY_LEAD, FX_TODAY_SNAP } from "./fixtures/unlock-states";
 import { resolve } from "node:path";
 
 const deskSrc = resolve(import.meta.dir, "../../../src/components/sage/desk.tsx");
@@ -46,6 +46,20 @@ describe("Pass A digest unlock", () => {
     expect(view.lead.title).toBe(FX_LAST_GOOD_SNAP.lead.title);
     expect(view.lead.title).not.toBe(FX_TODAY_LEAD.headline);
     expect(view.rows).toEqual(FX_LAST_GOOD_SNAP.rows);
+  });
+
+  test("HELD fixture with no last good → archive · 003 fallback (never today's title)", () => {
+    const view = resolveUnlock(FX_HELD_NO_LAST_GOOD);
+    expect(view.stamp).toBe("archive");
+    expect(view.kicker).toBe(ARCHIVE_KICKER);
+    expect(ARCHIVE_KICKER).toBe("archive · 003");
+    expect(view.cycleId).toBe("003");
+    expect(view.pickDate).toBeNull();
+    expect(view.lead.archive).toBe(true);
+    expect(view.lead.title).toBe(archiveLeadFromCycle().title);
+    expect(view.lead.title).not.toBe(FX_TODAY_LEAD.headline);
+    expect(view.rows.some((r) => r.title === FX_TODAY_LEAD.headline)).toBe(false);
+    expect(readFileSync(deskSrc, "utf8")).not.toMatch(/<details[^>]*open[^>]*digest-archive-fold|digest-archive-fold[^>]*open/);
   });
 
   test("live data, whichever state the crawl left: unlock is never archive while a last good exists", () => {

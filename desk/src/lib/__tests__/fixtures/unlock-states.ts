@@ -50,3 +50,6 @@ export const FX_STATES = {
   live: { held: false, today: FX_TODAY_LEAD, lastGood: FX_TODAY_SNAP },
   held: { held: true, today: FX_TODAY_LEAD, lastGood: FX_LAST_GOOD_SNAP },
 } as const;
+
+/** HELD with no earlier good title/snapshot → PASS-A fallback: archive · 003. */
+export const FX_HELD_NO_LAST_GOOD = { held: true, today: FX_TODAY_LEAD, lastGood: null } as const;
