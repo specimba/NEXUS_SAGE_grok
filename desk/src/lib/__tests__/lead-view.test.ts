@@ -67,16 +67,20 @@ describe("desk wiring", () => {
     expect(block).toMatch(/\.sage-take\.sage-take-held \{\s*background: transparent;\s*border: 1px solid var\(--phosphor\);\s*box-shadow: none;/);
     expect(block).not.toMatch(/#[0-9a-fA-F]{3,8}\b/);
   });
-  test("static export: while HELD, header/ticker lead cells read HELD, never the carried headline", () => {
+  test("static export: lead cells follow the built HELD state (branches on out/, never on the live crawl)", () => {
     const html = join(DESK, "out/index.html");
-    if (!existsSync(html) || !LEAD_HELD) return;
-    const h = readFileSync(html, "utf8");
+    if (!existsSync(html)) return;
+    const h = readFileSync(html, "utf8").replaceAll("<!-- -->", "");
     const cells = [...h.matchAll(/<span class="desk-lead-headline[^"]*"[^>]*>([^<]*)<\/span>/g)].map((m) => m[1]);
-    if (!h.includes("desk-lead-held")) return; // out/ predates this fix
-    expect(cells.length).toBe(2);
-    for (const c of cells) expect(c).toBe(LEAD_HELD_TEXT);
-    if (LEAD_TODAY?.headline) for (const c of cells) expect(c).not.toContain(LEAD_TODAY.headline.slice(0, 20));
-    expect(h).toContain('data-lead-state="held"');
-    expect(h.replaceAll("<!-- -->", "")).toMatch(/HELD · no qualifying story · next try \d\d:11/);
+    if (h.includes('data-lead-state="held"')) {
+      if (!h.includes("desk-lead-held")) return; // out/ predates this fix
+      expect(cells.length).toBe(2);
+      for (const c of cells) expect(c).toBe(LEAD_HELD_TEXT);
+      if (LEAD_HELD && LEAD_TODAY?.headline) for (const c of cells) expect(c).not.toContain(LEAD_TODAY.headline.slice(0, 20));
+      expect(h).toMatch(/HELD · no qualifying story · (?:<span[^>]*>)?next try \d\d:11/);
+    } else {
+      for (const c of cells) expect(c).not.toBe(LEAD_HELD_TEXT);
+      expect(h).not.toContain('data-lead-held="1"');
+    }
   });
 });

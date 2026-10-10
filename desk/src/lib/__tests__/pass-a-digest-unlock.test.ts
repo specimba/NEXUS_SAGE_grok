@@ -18,6 +18,7 @@ import {
 } from "@/lib/digest-unlock";
 import type { WireRow } from "@/lib/wire";
 import { readFileSync } from "node:fs";
+import { FX_LAST_GOOD_SNAP, FX_STATES, FX_TODAY_LEAD, FX_TODAY_SNAP } from "./fixtures/unlock-states";
 import { resolve } from "node:path";
 
 const deskSrc = resolve(import.meta.dir, "../../../src/components/sage/desk.tsx");
@@ -29,19 +30,30 @@ describe("Pass A digest unlock", () => {
     expect(JSON.stringify(DIGEST_UNLOCK)).not.toContain('"004"');
   });
 
-  test("live unlock lead equals LEAD_TODAY title (not Sep 3 HF swarm)", () => {
-    expect(LEAD_HELD).toBe(false);
-    expect(LEAD_TODAY?.headline).toBeTruthy();
-    const view = resolveUnlock({
-      held: LEAD_HELD,
-      today: LEAD_TODAY,
-      lastGood: DIGEST_UNLOCK,
-    });
+  test("not-HELD fixture: unlock lead equals LEAD_TODAY title, no kicker (not Sep 3 HF swarm)", () => {
+    const view = resolveUnlock(FX_STATES.live);
     expect(view.stamp).toBe("live");
     expect(view.kicker).toBeNull();
-    expect(view.lead.title).toBe(LEAD_TODAY!.headline);
+    expect(view.lead.title).toBe(FX_TODAY_LEAD.headline);
+    expect(view.rows.map((r) => r.title)).toEqual(FX_TODAY_SNAP.rows.map((r) => r.title));
     expect(view.lead.title).not.toMatch(/HF production swarm|Eval agents reached Hugging Face/i);
-    expect(DIGEST_UNLOCK.lead.title).toBe(LEAD_TODAY!.headline);
+  });
+
+  test("HELD fixture: last good titles kept + HELD kicker", () => {
+    const view = resolveUnlock(FX_STATES.held);
+    expect(view.stamp).toBe("held");
+    expect(view.kicker).toBe(HELD_KICKER);
+    expect(view.lead.title).toBe(FX_LAST_GOOD_SNAP.lead.title);
+    expect(view.lead.title).not.toBe(FX_TODAY_LEAD.headline);
+    expect(view.rows).toEqual(FX_LAST_GOOD_SNAP.rows);
+  });
+
+  test("live data, whichever state the crawl left: unlock is never archive while a last good exists", () => {
+    const view = resolveUnlock({ held: LEAD_HELD, today: LEAD_TODAY, lastGood: DIGEST_UNLOCK });
+    expect(view.stamp).toBe(LEAD_HELD ? "held" : "live");
+    expect(view.kicker).toBe(LEAD_HELD ? HELD_KICKER : null);
+    expect(view.lead.title).toBe(DIGEST_UNLOCK.lead.title);
+    if (!LEAD_HELD) expect(DIGEST_UNLOCK.lead.title).toBe(LEAD_TODAY!.headline);
   });
 
   test("Voice rows mirror Digest top rows (same snapshot)", () => {
