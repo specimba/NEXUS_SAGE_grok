@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-10T07:12:37Z",
+  "stamped_at": "2026-10-10T08:21:16Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 306,
+      "duration_ms": 137,
       "paused_until": null,
       "reason": null
     },
@@ -18,7 +18,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 3091,
+      "duration_ms": 3185,
       "paused_until": null,
       "reason": null
     },
@@ -27,7 +27,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 6,
+      "duration_ms": 394,
       "paused_until": null,
       "reason": null
     },
@@ -36,7 +36,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 2,
+      "duration_ms": 137,
       "paused_until": null,
       "reason": null
     },
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 66,
-      "duration_ms": 8603,
+      "rows": 67,
+      "duration_ms": 8269,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 675,
+      "duration_ms": 16308,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 301,
+      "duration_ms": 4384,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 39,
-      "duration_ms": 301,
+      "rows": 40,
+      "duration_ms": 6372,
       "paused_until": null,
       "reason": null
     },
@@ -81,7 +81,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 2,
-      "duration_ms": 301,
+      "duration_ms": 343,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 301,
+      "duration_ms": 4468,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 13887,
-    "sources_wall_ms": 8605,
-    "papers_lane_ms": 3411,
-    "slowest_source_ms": 8603,
+    "sources_ms": 43997,
+    "sources_wall_ms": 16309,
+    "papers_lane_ms": 3859,
+    "slowest_source_ms": 16308,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -114,31 +114,31 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 10046,
-    "startup_ms": 76,
-    "main_ms": 10093
+    "wall_ms": 16722,
+    "startup_ms": 43,
+    "main_ms": 16731
   },
-  "multi_source_independent": 6,
+  "multi_source_independent": 7,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 6,
-    "multi_source_raw": 9,
-    "self_reposts": 3,
-    "items_in": 247,
-    "clusters_out": 226,
+    "multi_source_independent": 7,
+    "multi_source_raw": 11,
+    "self_reposts": 4,
+    "items_in": 249,
+    "clusters_out": 228,
     "collapsed": 21,
-    "multi_source": 6,
-    "multi_member": 14,
+    "multi_source": 7,
+    "multi_member": 15,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 6,
+    "new_items": 21,
     "per_source": {
-      "hn-algolia": 66,
+      "hn-algolia": 67,
       "rss-lab": 104,
       "rss-security": 28,
-      "gnews-rss": 39,
+      "gnews-rss": 40,
       "gmail-news": 10
     },
     "multi_source_clusters": [
@@ -149,7 +149,7 @@
           "gnews-rss"
         ],
         "size": 4,
-        "score": 0.803,
+        "score": 0.805,
         "members": [
           {
             "id": "hn:50013972",
@@ -326,6 +326,31 @@
             "publisher": "huggingface"
           }
         ]
+      },
+      {
+        "title": "USA Today sues OpenAI for copyright infringement over AI training",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:50009239",
+            "source": "hn-algolia",
+            "title": "USA Today sues OpenAI for copyright infringement over AI training",
+            "at": "2026-10-08T17:49:07Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:7a0edaa7afb647ca",
+            "source": "gnews-rss",
+            "title": "USA Today sues OpenAI for copyright infringement over AI training - Reuters",
+            "at": "2026-10-08T15:39:44Z",
+            "publisher": "Reuters"
+          }
+        ]
       }
     ],
     "self_repost_clusters": [
@@ -347,7 +372,7 @@
         ]
       },
       {
-        "title": "How Oracle turns days of work into minutes with ChatGPT and Codex",
+        "title": "LegalOn halves Codex costs while maintaining development speed",
         "sources": [
           "rss-lab"
         ],
@@ -357,9 +382,26 @@
         ],
         "self_reposts": [
           {
-            "id": "gnews:f9463e175cbd3f98",
+            "id": "gnews:18a3f4aa9907a956",
             "publisher": "OpenAI",
-            "title": "How Oracle turns days of work into minutes with ChatGPT and Codex - OpenAI"
+            "title": "LegalOn halves Codex costs while maintaining development speed - OpenAI"
+          }
+        ]
+      },
+      {
+        "title": "Pollo AI turns creative ideas into campaigns with OpenAI",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:b6f13070cc9174a3",
+            "publisher": "OpenAI",
+            "title": "Pollo AI turns creative ideas into campaigns with OpenAI - OpenAI"
           }
         ]
       },
@@ -396,6 +438,10 @@
       ],
       "gnews_shown_dropped": [
         {
+          "publisher": "SFGATE",
+          "title": "Horoscope for Saturday, 10/10/26 by Christopher Renstrom - SFGATE"
+        },
+        {
           "publisher": "Seoul Economic Daily",
           "title": "Zuckerberg-Backed Biohub Joins Google, U.S. Agencies in $1.8 Billion Virtual Cell Push - Seoul Economic Daily"
         },
@@ -413,33 +459,7 @@
     },
     "gnews_near_misses": [
       {
-        "score": 1,
-        "blocked": "time-window",
-        "hours_apart": 221,
-        "a": {
-          "id": "rss:deepmind:ce56aa83d0064ef1",
-          "source": "rss-lab",
-          "title": "Gemini 4 Argon: our next era of frontier intelligence",
-          "at": "2026-09-30T20:01:45Z"
-        },
-        "b": {
-          "id": "gnews:05cfd65803121a1e",
-          "source": "gnews-rss",
-          "title": "Gemini 4 Argon: our next era of frontier intelligence - blog.google",
-          "at": "2026-10-10T01:00:22Z"
-        },
-        "shared": [
-          "gemini",
-          "4",
-          "argon",
-          "next",
-          "era",
-          "frontier",
-          "intelligenc"
-        ]
-      },
-      {
-        "score": 0.66,
+        "score": 0.661,
         "blocked": "short-title",
         "hours_apart": 13.3,
         "a": {
@@ -460,7 +480,7 @@
         ]
       },
       {
-        "score": 0.657,
+        "score": 0.656,
         "blocked": "short-title",
         "hours_apart": 7,
         "a": {
@@ -481,31 +501,72 @@
         ]
       },
       {
-        "score": 0.579,
-        "blocked": "below-threshold",
-        "hours_apart": 17.7,
+        "score": 0.617,
+        "blocked": "time-window",
+        "hours_apart": 30.9,
         "a": {
-          "id": "hn:50013972",
+          "id": "hn:50012543",
           "source": "hn-algolia",
-          "title": "OpenAI Safety Researchers Fired",
-          "at": "2026-10-08T23:38:03Z"
+          "title": "The Gemini Agent",
+          "at": "2026-10-08T21:26:28Z"
         },
         "b": {
-          "id": "gnews:373d8d191dd3429a",
+          "id": "gnews:3039c95cb02ef328",
           "source": "gnews-rss",
-          "title": "OpenAI Researchers Say They Were Sacked for Prioritizing Safety - NTD News",
-          "at": "2026-10-09T17:17:29Z"
+          "title": "Google Unveils Unified ‘Gemini’ Work Agent as Big Tech’s Agent War Reignites - Wowtale",
+          "at": "2026-10-10T04:17:43Z"
         },
         "shared": [
-          "openai",
-          "safety",
-          "researcher"
+          "gemini",
+          "agent"
         ]
       },
       {
-        "score": 0.543,
+        "score": 0.615,
+        "blocked": "time-window",
+        "hours_apart": 33.6,
+        "a": {
+          "id": "hn:50012543",
+          "source": "hn-algolia",
+          "title": "The Gemini Agent",
+          "at": "2026-10-08T21:26:28Z"
+        },
+        "b": {
+          "id": "gnews:f5fa08e94911f1e9",
+          "source": "gnews-rss",
+          "title": "Key facts: GOOG launches Gemini agent; TPU sales, Constellation power - TradingView",
+          "at": "2026-10-10T07:00:00Z"
+        },
+        "shared": [
+          "gemini",
+          "agent"
+        ]
+      },
+      {
+        "score": 0.605,
+        "blocked": "time-window",
+        "hours_apart": 34.8,
+        "a": {
+          "id": "hn:50012543",
+          "source": "hn-algolia",
+          "title": "The Gemini Agent",
+          "at": "2026-10-08T21:26:28Z"
+        },
+        "b": {
+          "id": "gnews:dd8e10fc61a55304",
+          "source": "gnews-rss",
+          "title": "5 big analyst AI moves: Google reaffirmed as top pick after Gemini agent launch - Investing.com",
+          "at": "2026-10-10T08:16:22Z"
+        },
+        "shared": [
+          "gemini",
+          "agent"
+        ]
+      },
+      {
+        "score": 0.549,
         "blocked": "below-threshold",
-        "hours_apart": 21.9,
+        "hours_apart": 21.8,
         "a": {
           "id": "hn:50013972",
           "source": "hn-algolia",
@@ -513,10 +574,10 @@
           "at": "2026-10-08T23:38:03Z"
         },
         "b": {
-          "id": "gnews:66ca732a10fa9813",
+          "id": "gnews:64059e3a0f047594",
           "source": "gnews-rss",
-          "title": "Fired OpenAI employees question the company's commitment to safety - capradio.org",
-          "at": "2026-10-09T21:30:55Z"
+          "title": "Fired OpenAI employees question the company's commitment to safety - WVAS",
+          "at": "2026-10-09T21:28:00Z"
         },
         "shared": [
           "openai",
@@ -527,7 +588,7 @@
       {
         "score": 0.539,
         "blocked": "time-window",
-        "hours_apart": 32.2,
+        "hours_apart": 38.9,
         "a": {
           "id": "hn:50008187",
           "source": "hn-algolia",
@@ -538,7 +599,7 @@
           "id": "gnews:931f3cb790c2a03a",
           "source": "gnews-rss",
           "title": "OpenAI to bring in $20 billion less than previously expected - Mashable",
-          "at": "2026-10-10T00:57:13Z"
+          "at": "2026-10-10T07:41:57Z"
         },
         "shared": [
           "openai",
@@ -550,7 +611,7 @@
       {
         "score": 0.539,
         "blocked": "time-window",
-        "hours_apart": 28.7,
+        "hours_apart": 35.4,
         "a": {
           "id": "hn:50011505",
           "source": "hn-algolia",
@@ -561,7 +622,7 @@
           "id": "gnews:931f3cb790c2a03a",
           "source": "gnews-rss",
           "title": "OpenAI to bring in $20 billion less than previously expected - Mashable",
-          "at": "2026-10-10T00:57:13Z"
+          "at": "2026-10-10T07:41:57Z"
         },
         "shared": [
           "openai",
@@ -569,60 +630,11 @@
           "less",
           "previously"
         ]
-      },
-      {
-        "score": 0.488,
-        "blocked": "time-window",
-        "hours_apart": 29.3,
-        "a": {
-          "id": "hn:50009239",
-          "source": "hn-algolia",
-          "title": "USA Today sues OpenAI for copyright infringement over AI training",
-          "at": "2026-10-08T17:49:07Z"
-        },
-        "b": {
-          "id": "gnews:f2790e736240998f",
-          "source": "gnews-rss",
-          "title": "COPYRIGHT NEWS: USA TODAY and affiliated publications sue OpenAI over alleged mass copying of news content - VitalLaw.com",
-          "at": "2026-10-09T23:04:37Z"
-        },
-        "shared": [
-          "usa",
-          "sue",
-          "openai",
-          "copyright"
-        ]
       }
     ],
     "near_misses": [
       {
-        "score": 1,
-        "blocked": "time-window",
-        "hours_apart": 221,
-        "a": {
-          "id": "rss:deepmind:ce56aa83d0064ef1",
-          "source": "rss-lab",
-          "title": "Gemini 4 Argon: our next era of frontier intelligence",
-          "at": "2026-09-30T20:01:45Z"
-        },
-        "b": {
-          "id": "gnews:05cfd65803121a1e",
-          "source": "gnews-rss",
-          "title": "Gemini 4 Argon: our next era of frontier intelligence - blog.google",
-          "at": "2026-10-10T01:00:22Z"
-        },
-        "shared": [
-          "gemini",
-          "4",
-          "argon",
-          "next",
-          "era",
-          "frontier",
-          "intelligenc"
-        ]
-      },
-      {
-        "score": 0.998,
+        "score": 0.999,
         "blocked": "time-window",
         "hours_apart": 75.6,
         "a": {
@@ -646,7 +658,7 @@
         ]
       },
       {
-        "score": 0.66,
+        "score": 0.661,
         "blocked": "short-title",
         "hours_apart": 13.3,
         "a": {
@@ -667,7 +679,7 @@
         ]
       },
       {
-        "score": 0.657,
+        "score": 0.656,
         "blocked": "short-title",
         "hours_apart": 7,
         "a": {
@@ -709,31 +721,72 @@
         ]
       },
       {
-        "score": 0.579,
-        "blocked": "below-threshold",
-        "hours_apart": 17.7,
+        "score": 0.617,
+        "blocked": "time-window",
+        "hours_apart": 30.9,
         "a": {
-          "id": "hn:50013972",
+          "id": "hn:50012543",
           "source": "hn-algolia",
-          "title": "OpenAI Safety Researchers Fired",
-          "at": "2026-10-08T23:38:03Z"
+          "title": "The Gemini Agent",
+          "at": "2026-10-08T21:26:28Z"
         },
         "b": {
-          "id": "gnews:373d8d191dd3429a",
+          "id": "gnews:3039c95cb02ef328",
           "source": "gnews-rss",
-          "title": "OpenAI Researchers Say They Were Sacked for Prioritizing Safety - NTD News",
-          "at": "2026-10-09T17:17:29Z"
+          "title": "Google Unveils Unified ‘Gemini’ Work Agent as Big Tech’s Agent War Reignites - Wowtale",
+          "at": "2026-10-10T04:17:43Z"
         },
         "shared": [
-          "openai",
-          "safety",
-          "researcher"
+          "gemini",
+          "agent"
         ]
       },
       {
-        "score": 0.543,
+        "score": 0.615,
+        "blocked": "time-window",
+        "hours_apart": 33.6,
+        "a": {
+          "id": "hn:50012543",
+          "source": "hn-algolia",
+          "title": "The Gemini Agent",
+          "at": "2026-10-08T21:26:28Z"
+        },
+        "b": {
+          "id": "gnews:f5fa08e94911f1e9",
+          "source": "gnews-rss",
+          "title": "Key facts: GOOG launches Gemini agent; TPU sales, Constellation power - TradingView",
+          "at": "2026-10-10T07:00:00Z"
+        },
+        "shared": [
+          "gemini",
+          "agent"
+        ]
+      },
+      {
+        "score": 0.605,
+        "blocked": "time-window",
+        "hours_apart": 34.8,
+        "a": {
+          "id": "hn:50012543",
+          "source": "hn-algolia",
+          "title": "The Gemini Agent",
+          "at": "2026-10-08T21:26:28Z"
+        },
+        "b": {
+          "id": "gnews:dd8e10fc61a55304",
+          "source": "gnews-rss",
+          "title": "5 big analyst AI moves: Google reaffirmed as top pick after Gemini agent launch - Investing.com",
+          "at": "2026-10-10T08:16:22Z"
+        },
+        "shared": [
+          "gemini",
+          "agent"
+        ]
+      },
+      {
+        "score": 0.549,
         "blocked": "below-threshold",
-        "hours_apart": 21.9,
+        "hours_apart": 21.8,
         "a": {
           "id": "hn:50013972",
           "source": "hn-algolia",
@@ -741,38 +794,15 @@
           "at": "2026-10-08T23:38:03Z"
         },
         "b": {
-          "id": "gnews:66ca732a10fa9813",
+          "id": "gnews:64059e3a0f047594",
           "source": "gnews-rss",
-          "title": "Fired OpenAI employees question the company's commitment to safety - capradio.org",
-          "at": "2026-10-09T21:30:55Z"
+          "title": "Fired OpenAI employees question the company's commitment to safety - WVAS",
+          "at": "2026-10-09T21:28:00Z"
         },
         "shared": [
           "openai",
           "safety",
           "fir"
-        ]
-      },
-      {
-        "score": 0.539,
-        "blocked": "time-window",
-        "hours_apart": 32.2,
-        "a": {
-          "id": "hn:50008187",
-          "source": "hn-algolia",
-          "title": "OpenAI annualised revenues $20B less than previously signalled",
-          "at": "2026-10-08T16:45:58Z"
-        },
-        "b": {
-          "id": "gnews:931f3cb790c2a03a",
-          "source": "gnews-rss",
-          "title": "OpenAI to bring in $20 billion less than previously expected - Mashable",
-          "at": "2026-10-10T00:57:13Z"
-        },
-        "shared": [
-          "openai",
-          "20b",
-          "less",
-          "previously"
         ]
       }
     ]
@@ -781,76 +811,76 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 15,
+      "streak_ok": 16,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 99,
+      "streak_ok": 100,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 99,
+      "streak_ok": 100,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 99,
+      "streak_ok": 100,
       "streak_fail": 0,
-      "items_last": 39
+      "items_last": 40
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 99,
+      "streak_ok": 100,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 99,
+      "streak_ok": 100,
       "streak_fail": 0,
-      "items_last": 66
+      "items_last": 67
     },
     {
       "id": "openalex",
       "state": "flaky",
-      "streak_ok": 11,
+      "streak_ok": 12,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 3,
+      "streak_ok": 4,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 99,
+      "streak_ok": 100,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 99,
+      "streak_ok": 100,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.0029341666666666665,
+    "hours": 0.0048044444444444445,
     "stale": false
   },
   "hf": {
@@ -875,13 +905,13 @@
     "secondary": 3,
     "query": "Hugging Face agent",
     "mode": "search",
-    "from_cache": true,
-    "searches": 0,
+    "from_cache": false,
+    "searches": 1,
     "retries": 0,
     "status": "ok",
     "paused_until": null,
     "pause_reason": null,
-    "requests": 0,
+    "requests": 1,
     "auth": "anon",
     "brief": false,
     "pulse_lead": false,
@@ -918,8 +948,8 @@
     "enriched": 0,
     "query": "doi:10.5281/zenodo.21686546",
     "mode": "filter",
-    "from_cache": true,
-    "searches": 0,
+    "from_cache": false,
+    "searches": 1,
     "brief": false,
     "pulse_lead": false,
     "papers_enrich_only": true,
@@ -931,7 +961,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 66,
+    "count": 67,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -958,16 +988,16 @@
         "text": "OpenAI annualised revenues $20B less than previously signalled"
       },
       {
-        "id": "hn:50003107",
-        "tag": "rest",
-        "score": 342,
-        "text": "OpenAI Withdraws 3 Math Papers"
-      },
-      {
         "id": "hn:50018350",
         "tag": "rest",
         "score": 329,
         "text": "OpenAI fires three safety researchers for \"mishandling research information\""
+      },
+      {
+        "id": "hn:50013902",
+        "tag": "rest",
+        "score": 201,
+        "text": "OpenAI, the Partition Principle, and Mathematics"
       }
     ]
   },
@@ -983,42 +1013,42 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "(cache:openai)",
+        "url": "https://openai.com/news/rss.xml",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "(cache:deepmind)",
+        "url": "https://deepmind.google/blog/rss.xml",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "(cache:google-ai)",
+        "url": "https://blog.google/technology/ai/rss/",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "(cache:huggingface)",
+        "url": "https://huggingface.co/blog/feed.xml",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "(cache:mistral)",
+        "url": "https://mistral.ai/rss.xml",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "(cache:nvidia)",
+        "url": "https://blogs.nvidia.com/feed/",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "(cache:nvidia-dev)",
+        "url": "https://developer.nvidia.com/blog/feed",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "(cache:ms-research)",
+        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
         "count": 10
       },
       {
@@ -1069,17 +1099,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "(cache:trailofbits)",
+        "url": "https://blog.trailofbits.com/feed/",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "(cache:fox-it)",
+        "url": "https://blog.fox-it.com/feed/",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "(cache:projectzero)",
+        "url": "https://projectzero.google/feed.xml",
         "count": 6
       }
     ],
@@ -1120,13 +1150,13 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 39,
-    "pool": 297,
+    "items": 40,
+    "pool": 286,
     "corroborators": [
       {
         "id": "gnews:b6ce2bb12b5db403",
         "anchor_id": "hn:50013972",
-        "score": 0.786,
+        "score": 0.787,
         "title": "OpenAI Denies Firing Researchers Over AI Safety Warnings - NDTV",
         "publisher": "NDTV",
         "self_repost": false
@@ -1134,7 +1164,7 @@
       {
         "id": "gnews:230039a63a100ee4",
         "anchor_id": "hn:50013972",
-        "score": 0.782,
+        "score": 0.777,
         "title": "OpenAI defends firing researchers who raised safety questions - Washington Examiner",
         "publisher": "Washington Examiner",
         "self_repost": false
@@ -1142,7 +1172,7 @@
       {
         "id": "gnews:cb349c6b475c77b0",
         "anchor_id": "hn:50013972",
-        "score": 0.77,
+        "score": 0.766,
         "title": "OpenAI denies firing researchers for raising safety concerns - upi",
         "publisher": "upi",
         "self_repost": false
@@ -1174,17 +1204,41 @@
       {
         "id": "gnews:85450a508d116781",
         "anchor_id": "hn:50006368",
-        "score": 0.631,
+        "score": 0.634,
         "title": "Google Launches New Gemini AI Agent to Execute Work Tasks - entARABI",
         "publisher": "entARABI",
         "self_repost": false
       },
       {
+        "id": "gnews:18a3f4aa9907a956",
+        "anchor_id": "rss:openai:45d6a2b79938283a",
+        "score": 1,
+        "title": "LegalOn halves Codex costs while maintaining development speed - OpenAI",
+        "publisher": "OpenAI",
+        "self_repost": true
+      },
+      {
         "id": "gnews:0f2b3dd9b0276e28",
         "anchor_id": "hn:50008187",
-        "score": 0.721,
+        "score": 0.707,
         "title": "OpenAI annualized revenue $20 billion less than previously reported - Axios",
         "publisher": "Axios",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:b6f13070cc9174a3",
+        "anchor_id": "rss:openai:855092fba1df7e8a",
+        "score": 1,
+        "title": "Pollo AI turns creative ideas into campaigns with OpenAI - OpenAI",
+        "publisher": "OpenAI",
+        "self_repost": true
+      },
+      {
+        "id": "gnews:7a0edaa7afb647ca",
+        "anchor_id": "hn:50009239",
+        "score": 1,
+        "title": "USA Today sues OpenAI for copyright infringement over AI training - Reuters",
+        "publisher": "Reuters",
         "self_repost": false
       },
       {
@@ -1194,20 +1248,12 @@
         "title": "Disrupting AI-enabled “false front” operations - OpenAI",
         "publisher": "OpenAI",
         "self_repost": true
-      },
-      {
-        "id": "gnews:f9463e175cbd3f98",
-        "anchor_id": "rss:openai:db7b9e6fe248e314",
-        "score": 1,
-        "title": "How Oracle turns days of work into minutes with ChatGPT and Codex - OpenAI",
-        "publisher": "OpenAI",
-        "self_repost": true
       }
     ],
     "http_status": 200,
-    "content_type": null,
+    "content_type": "application/xml; charset=utf-8",
     "format": "rss2",
-    "from_cache": true,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1230,65 +1276,40 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:54515ad8461d09d0",
-        "title": "Massive Leak: Google's New Gemini 4 Model Internal Beta Evaluation – Is This Actually OpenAI Opus 5.5? - 36Kr",
-        "publisher": "36Kr",
-        "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5HM0JXYTFyR2V2dUhFdUM5VGJpd1pSdks2bW5oZnJJa1JEeHIwVFB6Vy1TV3JIdlV3cE5LT2MtVFgzVkoxdUZNbkhXR0piNnhuMXJN?oc=5",
+        "id": "gnews:dd8e10fc61a55304",
+        "title": "5 big analyst AI moves: Google reaffirmed as top pick after Gemini agent launch - Investing.com",
+        "publisher": "Investing.com",
+        "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxOVlRZbTNlNWUwVEZoOFBpcHNlYlJlVEpEVFpsc0VWdWNNam84YVJlZGNsRnlFdHp3THNKRTBwTXZBMXdUVWM4N1ZyN3R0Y2hlbml1NTcyVE9xMnhjYVBsSTMyYTZUX0tSbXIwOWVsWF8tSVV1WFo1bWlNeko2TXBzYTc4cWVFbkNFWTJmSi0tNjVjaEdDRGpsSHcxeXNsTzdZTXhlMmhfLUVLd2lYeDY2UzlzVGxOTzVfSV9NbHlSN2FpczNlYi16QUZZYlA0eWZj?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:3c9098103a05590f",
-        "title": "Gemini Tarot Horoscope Today, October 10, 2026: Pay Attention to Health, Will Listen to Close Ones - India Today",
-        "publisher": "India Today",
-        "link": "https://news.google.com/rss/articles/CBMipwJBVV95cUxQN0ZUTzlGd3ZIaU9rRGhRdVBZS0ZfX0FNZnN2bWF5M2hrTkdRN1lvSW9LbE94NnZEc0dFZjRFdE5kS2wzNW45bkdvbDV5MERqa1VjcEkyNWhZUXlqZHpTdTdfbTdsOTZvdGUyT0I0M1ZtcWQ0ckVDOFJTNVRFOXhyUFFYQVhzV2hPVjBiVFBWamI0WER4UFo2TVZRbHZnS05OVTNXelhuVWRyZTA3TXlSRnNWcThYQjJPd01jZ2N4U2kxSFIwVmhHYjdSVDFQSmVRa0JtTlBzaDRQU0h1b0xHdDZjX0tMWEEyeHBnNHpmdDZsaUNSSjlXZFBBT0dzblZyZm4zdW55a2k4anJ6dzQzQlFTY3BRaTM5bWRoMDlITjRvQ0kyRWtv0gGsAkFVX3lxTE9QcmJQOUNEYU5IbDFCQXlGOFMyZE5ZY2hTX0RONFNDWGF4UXdfdERPTFVjdzFZUGNhVUZKVEFOdDJmOTgtd2tvcmRtLUo4T2U3NkhaYXluVm1LbjZFWTN5UjlzeDlscUVsanBfS1JDVWk2Z3dnYUI4aEFnbE11ZjlwbHFrR2xMVHZWY2psekU2OXh0cjBDcW1fcWR6aG1SY2c1RF8xUW5OQURoUWsxcjNCel85Y194ZW12a3p1cXZRd1pJWmlic0FDNld3elJzUDRsZTFpRkJOMTZRUHdfV1pfVzAyVzNDUElLMkprbXktdGltUmFVMkF5RHhsTVd4UWhzT09qelptcldXUWhiNEZJT3daRE9RYTFpWjd4eUh1NXhDMGZGU2FoUlZXdw?oc=5",
+        "id": "gnews:3770362c57dc7970",
+        "title": "AI Companies Prepare For Public Backlash After Potential Catastrophic Incident: Report - NDTV",
+        "publisher": "NDTV",
+        "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNZHJDM1VNODZzbEtXNWFWdWdTZFNhVkJTR19LYUg3Tnh5MHVRWDdFWHBrZFN0ZmRPcHpIMWNicmdnMTdsbENndi1NaVpkNEMwUFFtVk9fbXFoWGoya0lXRU85ZHZINnh3NzZnY3U4S1lXNVliWnRhREpuaEcxaXo0SjdwaWR1VkRvcElxZE14dmN5TjJvR25Ddmw1aDRKZTZLb2NWSm5uYUx6N3pPOVFPS202bGhWSlhzQmRwdEdpRnh6S2tJZmhudFhUaDc0ZXPSAdcBQVVfeXFMTmU4UUh6SVNSVUFLTjdHUzJxZkJoLXo1SEhOellyTkxBUEJiZnpSX2ZFcG5PT3ZjbEpVcjZuLXNERnB4ZEk2X2wtODNfTW96dzdqMEh2WXpoand6SWtqQmxLMi1laDZlTFNpNkg0NzZYTDA1ek14V0hMY1Y0cDU2SUlOM2NRU3Q2QVgtd2lKSmszazZqSklCRmM5YXF5V1gybUQtYjNOSjBYSUw0V3pPVzkxRmp5ZktRSzN2R1dobmk3VF9FRFBrTU1ZQmFLSWU4aWljcUlxM1E?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:97650b23330c6ea4",
-        "title": "A.I. Hurricane Models Were Front and Center as Isaias Headed Toward Land - The New York Times",
-        "publisher": "The New York Times",
-        "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9zT1Z6ek9RLWlUUWVGNm9FVzlMMmNUdUR0U3BRV2ZTLTNCN1lVQjBva3pnc0toQnhMZU5BSlZBaDRFV1JKdDEzamlRV0pTbGpkYUhLSnNKdVlDVV9QUVNubDBiYlVqcmJlLU80N3dkS0VpYkxvOUx4Ml9wdjhlT28?oc=5",
+        "id": "gnews:931f3cb790c2a03a",
+        "title": "OpenAI to bring in $20 billion less than previously expected - Mashable",
+        "publisher": "Mashable",
+        "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1wRW5JWTFpTG5WZ0taSEZ0YUkwUlJhV3Z2S19uNElZV3BoYnVpQVJHaVBrU00xLU80S2dYdFZNUV9NQlJxMEhzOXRQN2tSNTZtaHh5ODJRSXdENXdMOXZEV1c0MDRMc2c?oc=5",
         "tag": "rest"
       }
     ]
   },
   "gmail_news": {
-    "ok": true,
-    "soft_fail": false,
-    "soft_fail_reason": null,
-    "count": 10,
-    "fetched": 10,
-    "from_cache": true,
-    "last_query_hash": "14f148f8d31e",
+    "ok": false,
+    "soft_fail": true,
+    "soft_fail_reason": "box-only",
+    "count": 0,
+    "fetched": 0,
+    "from_cache": false,
+    "last_query_hash": "",
     "brief": false,
     "pulse_only": true,
     "briefEligible": false,
-    "sample": [
-      {
-        "id": "gmail:1a11250b91591834",
-        "title": "AI systems could cover up misbehavior",
-        "publisher": "substack.com",
-        "qi": 15.4,
-        "priority": "P3",
-        "link": "https://metr.org/blog/cover-up"
-      },
-      {
-        "id": "gmail:1a111f35812d42ba",
-        "title": "Oct. 6 - Water hacks, rogue AI raise alarms | Java vulnerabilities disclosed",
-        "publisher": "divenewsletter.com",
-        "qi": 15.4,
-        "priority": "P3",
-        "link": "https://www.cybersecuritydive.com/news/water"
-      },
-      {
-        "id": "gmail:1a1118c601f1cb6a",
-        "title": "OpenAI Starts Watermarking ChatGPT Text",
-        "publisher": "alvarocintas.com",
-        "qi": 11.6,
-        "priority": "P3",
-        "link": "https://newsletter.alvarocintas.com/watermark"
-      }
-    ]
+    "sample": []
   },
   "x": {
     "fetched": 0,
@@ -1304,21 +1325,21 @@
     "soft_fail_reason": null,
     "query": "LLM agent eval harness",
     "shelf": 2,
-    "from_cache": true,
-    "searches": 0,
-    "rate_limit_remaining": null,
+    "from_cache": false,
+    "searches": 1,
+    "rate_limit_remaining": 9,
     "brief": false,
     "pulse_lead": false,
     "shelf_only": true,
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
-        "label": "GuillermoBarreto/evalkit",
-        "href": "https://github.com/GuillermoBarreto/evalkit"
+        "label": "Binarysite/agent-eval-harness",
+        "href": "https://github.com/Binarysite/agent-eval-harness"
       },
       {
-        "label": "1isaqu/llm-agent-evals",
-        "href": "https://github.com/1isaqu/llm-agent-evals"
+        "label": "GuillermoBarreto/evalkit",
+        "href": "https://github.com/GuillermoBarreto/evalkit"
       }
     ]
   },
@@ -1335,8 +1356,8 @@
       "Astra",
       "Hugging Face"
     ],
-    "searches": 0,
-    "from_cache": true,
+    "searches": 3,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "deny_grounding_only": true,
@@ -1344,9 +1365,9 @@
     "hints": [
       {
         "seed": "Sol",
-        "qid": "Q10673071",
-        "label": "Sol",
-        "description": "unisex given name",
+        "qid": "Q34104679",
+        "label": "Persistent solar influence on North Atlantic climate during the Holocene.",
+        "description": "scientific article published on 15 November 2001",
         "status": "rejected_false_friend",
         "source": "wikidata",
         "briefEligible": false,

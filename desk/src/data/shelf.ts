@@ -23,6 +23,6 @@ export const SHELF: ShelfItem[] = [
   { href: "https://arxiv.org/abs/2610.12465", label: "arxiv.org/abs/2610.12465", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.12463", label: "arxiv.org/abs/2610.12463", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.12452", label: "arxiv.org/abs/2610.12452", reason: "arxiv-shelf" as const },
+  { href: "https://github.com/Binarysite/agent-eval-harness", label: "Binarysite/agent-eval-harness", reason: "github-search-shelf" as const },
   { href: "https://github.com/GuillermoBarreto/evalkit", label: "GuillermoBarreto/evalkit", reason: "github-search-shelf" as const },
-  { href: "https://github.com/1isaqu/llm-agent-evals", label: "1isaqu/llm-agent-evals", reason: "github-search-shelf" as const },
 ];
