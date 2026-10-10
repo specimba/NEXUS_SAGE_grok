@@ -4,8 +4,9 @@
  *   bun scripts/watchdog.ts            → exit 0 silent when healthy; exit 1 + reasons on stderr otherwise.
  * Fails when: last-checked.json checked_at older than 8h (WATCHDOG_MAX_AGE_H) · live gh-pages crawl ≠ main crawl after a
  * published run · last two runs both soft-failed ≥ half the sources · the hash gate errored.
- *   bun scripts/watchdog.ts --pre      → pre-crawl check: a missing last-checked.json is a cold start ("watchdog: first run", exit 0).
+ *   bun scripts/watchdog.ts --pre      → pre-crawl check: warn-only, never blocks; a missing last-checked.json is a cold start ("watchdog: first run", exit 0).
  *                                        Without --pre (post-crawl) a missing file still FAILs.
+ *   Crawl-stamp mismatch live vs main: --pre → WARN, exit 0. Post-crawl → FAIL unless live is NEWER than this run's crawl.
  * Env: WATCHDOG_NOW (ISO, fixtures) · WATCHDOG_LIVE_URL (default the Pages URL; "off" skips the live compare).
  */
 import { appendFileSync, existsSync, readFileSync } from "node:fs";
@@ -37,13 +38,25 @@ else {
     try {
       const html = await (await fetch(LIVE, { signal: AbortSignal.timeout(15_000), cache: "no-store" })).text();
       const live = html.match(/data-crawl-at="([^"]+)"/)?.[1] ?? null;
-      if (live !== lc.published_crawl) fails.push(`live gh-pages crawl ${live} ≠ main crawl ${lc.published_crawl}`);
+      const want = lc.published_crawl as string | null;
+      if (live !== want) {
+        const msg = `live gh-pages crawl ${live} ≠ main crawl ${want}`;
+        // --pre: the box and CI both move gh-pages, so a mismatch here is never a reason to block the crawl.
+        if (PRE) console.warn(`watchdog WARN: ${msg} (pre-crawl, not blocking)`);
+        // post-crawl: this run's crawl (written by reader-hash just now) must be live; live NEWER = box published later, OK.
+        else if (!(live && want && Date.parse(live) > Date.parse(want))) fails.push(msg);
+      }
     } catch (e) {
       fails.push(`live fetch failed: ${String(e).slice(0, 120)}`);
     }
   }
 }
 if (process.env.GITHUB_OUTPUT) appendFileSync(process.env.GITHUB_OUTPUT, `healthy=${fails.length === 0}\n`);
+if (fails.length && PRE) {
+  // Pre-crawl: never block the crawl. A box crawl or a missed slot can leave main/live out of step; the crawl itself fixes that.
+  for (const f of fails) console.warn(`watchdog WARN (pre): ${f}`);
+  process.exit(0);
+}
 if (fails.length) {
   for (const f of fails) console.error(`watchdog FAIL: ${f}`);
   if (process.env.WATCHDOG_REPORT) appendFileSync(process.env.WATCHDOG_REPORT, fails.map((f) => `- ${f}`).join("\n") + "\n");
