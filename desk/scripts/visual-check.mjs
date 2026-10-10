@@ -133,6 +133,14 @@ if (process.env.SAGE_SKIP_FONT_CHECK === "1") {
   if (fc.status !== 0) fail(`font gate failed at ${URL}`, `${fc.stderr || ""}${fc.stdout || ""}`.trim().split("\n"));
   console.log(`  ${(fc.stdout || "").trim()}`);
 }
+// 390 gate (UX catch 2026-10-10): no visible text past x=390 on any lane. SAGE_SKIP_390_CHECK=1 skips it loudly.
+if (process.env.SAGE_SKIP_390_CHECK === "1") {
+  console.log("  overflow-390 SKIPPED (SAGE_SKIP_390_CHECK=1)");
+} else {
+  const oc = spawnSync("bun", [new globalThis.URL("./overflow-390-check.ts", import.meta.url).pathname, URL], { encoding: "utf8", timeout: 180_000 });
+  if (oc.status !== 0) fail(`390 overflow gate failed at ${URL}`, `${oc.stderr || ""}${oc.stdout || ""}`.trim().split("\n"));
+  console.log(`  ${(oc.stdout || "").trim().split("\n").join("\n  ")}`);
+}
 console.log("visual:check OK");
 console.log(
   `  url=${summary.url} theme=${summary.theme} lanes=${summary.lane01 ? "ok" : "?"} crawl=${summary.crawl} build=${summary.build} bytes=${summary.bytes}`,
