@@ -5,6 +5,14 @@ import { tmpdir } from "node:os";
 import { resolve } from "node:path";
 
 const script = resolve(import.meta.dir, "../../../scripts/watchdog.ts");
+const runLive = (lc: object, live: string, args: string[]) => {
+  const dir = mkdtempSync(resolve(tmpdir(), "wd-"));
+  const p = resolve(dir, "last-checked.json");
+  const h = resolve(dir, "index.html");
+  writeFileSync(p, JSON.stringify(lc));
+  writeFileSync(h, `<html><body data-crawl-at="${live}"></body></html>`);
+  return spawnSync("bun", [script, ...args], { encoding: "utf8", env: { ...process.env, WATCHDOG_CHECKED: p, WATCHDOG_NOW: "2026-10-10T12:00:00Z", WATCHDOG_LIVE_URL: `file://${h}`, GITHUB_OUTPUT: "" } });
+};
 const run = (lc: object, now: string) => {
   const dir = mkdtempSync(resolve(tmpdir(), "wd-"));
   const p = resolve(dir, "last-checked.json");
@@ -44,5 +52,26 @@ describe("PASS-Q1 watchdog", () => {
     const r = runMissing([]);
     expect(r.status).toBe(1);
     expect(r.stderr).toContain("watchdog FAIL: no");
+  });
+  const pub = { checked_at: "2026-10-10T11:00:00Z", last_run: "published", published_crawl: "2026-10-10T08:21:16Z", soft_history: [], gate_error: null };
+  test("--pre: live ≠ main crawl → WARN, exit 0", () => {
+    const r = runLive(pub, "2026-10-10T11:13:02Z", ["--pre"]);
+    expect(r.status).toBe(0);
+    expect(r.stderr).toContain("watchdog WARN");
+    expect(r.stderr).not.toContain("FAIL");
+    const r2 = runLive(pub, "2026-10-10T07:00:00Z", ["--pre"]);
+    expect(r2.status).toBe(0);
+  });
+  test("post-crawl: live older than this run's crawl → FAIL", () => {
+    const r = runLive(pub, "2026-10-10T07:00:00Z", []);
+    expect(r.status).toBe(1);
+    expect(r.stderr).toContain("watchdog FAIL: live gh-pages crawl");
+  });
+  test("post-crawl: live NEWER than this run's crawl (box published later) → pass", () => {
+    const r = runLive(pub, "2026-10-10T11:13:02Z", []);
+    expect(r.status).toBe(0);
+  });
+  test("post-crawl: live = this run's crawl → pass", () => {
+    expect(runLive(pub, "2026-10-10T08:21:16Z", []).status).toBe(0);
   });
 });
