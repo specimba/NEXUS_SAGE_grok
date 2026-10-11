@@ -2,32 +2,32 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-11T03:22:35Z",
+  "stamped_at": "2026-10-11T08:22:03Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 132,
+      "duration_ms": 197,
       "paused_until": null,
       "reason": null
     },
     {
       "id": "arxiv",
       "label": "arXiv",
-      "status": "timeout",
-      "rows": 5,
-      "duration_ms": 20000,
+      "status": "ok",
+      "rows": 29,
+      "duration_ms": 3249,
       "paused_until": null,
-      "reason": "timeout after 20000ms budget · last good: 0 cached enrich + 5 kept shelf"
+      "reason": null
     },
     {
       "id": "openalex",
       "label": "OpenAlex",
       "status": "ok",
       "rows": 4,
-      "duration_ms": 336,
+      "duration_ms": 434,
       "paused_until": null,
       "reason": null
     },
@@ -36,7 +36,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 191,
+      "duration_ms": 696,
       "paused_until": null,
       "reason": null
     },
@@ -45,7 +45,7 @@
       "label": "HN",
       "status": "ok",
       "rows": 62,
-      "duration_ms": 8252,
+      "duration_ms": 8343,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 16776,
+      "duration_ms": 16539,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 4111,
+      "duration_ms": 4399,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 51,
-      "duration_ms": 6415,
+      "rows": 54,
+      "duration_ms": 6412,
       "paused_until": null,
       "reason": null
     },
@@ -80,8 +80,8 @@
       "id": "github",
       "label": "GitHub",
       "status": "ok",
-      "rows": 0,
-      "duration_ms": 272,
+      "rows": 2,
+      "duration_ms": 259,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4408,
+      "duration_ms": 4452,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 60893,
-    "sources_wall_ms": 20670,
-    "papers_lane_ms": 20670,
-    "slowest_source_ms": 20000,
+    "sources_ms": 44980,
+    "sources_wall_ms": 16540,
+    "papers_lane_ms": 4582,
+    "slowest_source_ms": 16539,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -113,44 +113,74 @@
       "github": 25000,
       "wikidata": 25000
     },
-    "timed_out": [
-      "arxiv"
-    ],
-    "wall_ms": 21145,
+    "timed_out": [],
+    "wall_ms": 17056,
     "startup_ms": 42,
-    "main_ms": 21156
+    "main_ms": 17067
   },
-  "multi_source_independent": 8,
+  "multi_source_independent": 10,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 8,
-    "multi_source_raw": 9,
+    "multi_source_independent": 10,
+    "multi_source_raw": 11,
     "self_reposts": 1,
-    "items_in": 255,
-    "clusters_out": 216,
+    "items_in": 258,
+    "clusters_out": 219,
     "collapsed": 39,
-    "multi_source": 8,
-    "multi_member": 10,
+    "multi_source": 10,
+    "multi_member": 12,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 3,
+    "new_items": 34,
     "per_source": {
       "hn-algolia": 62,
       "rss-lab": 104,
       "rss-security": 28,
-      "gnews-rss": 51,
+      "gnews-rss": 54,
       "gmail-news": 10
     },
     "multi_source_clusters": [
+      {
+        "title": "Anthropic discloses 2 months old fake tip to police among new rogue AI incidents",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 3,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:50035550",
+            "source": "hn-algolia",
+            "title": "Anthropic discloses 2 months old fake tip to police among new rogue AI incidents",
+            "at": "2026-10-10T18:10:54Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:18ac96e5565af7af",
+            "source": "gnews-rss",
+            "title": "Anthropic discloses fake police tip among rogue AI incidents - CGTN",
+            "at": "2026-10-11T07:07:24Z",
+            "publisher": "CGTN"
+          },
+          {
+            "id": "gnews:6d75b3e90cbe7b54",
+            "source": "gnews-rss",
+            "title": "Anthropic discloses fake tip to police among new rogue AI incidents - Reuters",
+            "at": "2026-10-09T19:21:00Z",
+            "publisher": "Reuters"
+          }
+        ]
+      },
       {
         "title": "Anthropic AI model submits false tip on unsolved Philly murder, police say",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 23,
+        "size": 24,
         "score": 1,
         "members": [
           {
@@ -182,13 +212,6 @@
             "publisher": null
           },
           {
-            "id": "hn:50028365",
-            "source": "hn-algolia",
-            "title": "Anthropic Model Submitted a False Homicide Tip to Philadelphia Police",
-            "at": "2026-10-10T00:52:49Z",
-            "publisher": null
-          },
-          {
             "id": "hn:50039318",
             "source": "hn-algolia",
             "title": "Rogue Anthropic AI agent gave police fake tip in unsolved murder case",
@@ -196,32 +219,88 @@
             "publisher": null
           },
           {
+            "id": "hn:50028365",
+            "source": "hn-algolia",
+            "title": "Anthropic Model Submitted a False Homicide Tip to Philadelphia Police",
+            "at": "2026-10-10T00:52:49Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:50034742",
+            "source": "hn-algolia",
+            "title": "Anthropic AI Model Went Rogue, Submitted Fake Unsolved Murder Tip",
+            "at": "2026-10-10T16:54:02Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:50028625",
+            "source": "hn-algolia",
+            "title": "Anthropic AI Model Goes Rogue, Submits Fake Unsolved Murder Tip",
+            "at": "2026-10-10T01:33:51Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:997884c431b5e93f",
+            "source": "gnews-rss",
+            "title": "Anthropic’s Claude went rogue, submitted fake tip to police in unsolved murder among several other inciden - The Economic Times",
+            "at": "2026-10-11T07:04:21Z",
+            "publisher": "The Economic Times"
+          },
+          {
+            "id": "gnews:8dfbfedf7e348408",
+            "source": "gnews-rss",
+            "title": "Anthropic's Claude AI submits a false tip on a Philadelphia unsolved homicide case - LinkedIn",
+            "at": "2026-10-11T06:26:26Z",
+            "publisher": "LinkedIn"
+          },
+          {
+            "id": "gnews:73c0b7f3fd2ccb88",
+            "source": "gnews-rss",
+            "title": "Rogue Anthropic AI agent gave police fake tip in unsolved murder case - Buttondown",
+            "at": "2026-10-11T05:44:40Z",
+            "publisher": "Buttondown"
+          },
+          {
+            "id": "gnews:74535efcdf383c82",
+            "source": "gnews-rss",
+            "title": "Rogue Anthropic AI agent gave police fake tip in unsolved murder case - BBC",
+            "at": "2026-10-10T10:06:23Z",
+            "publisher": "BBC"
+          },
+          {
+            "id": "gnews:b38ea6563b355e3d",
+            "source": "gnews-rss",
+            "title": "Anthropic AI Model Went Rogue, Submitted Fake Unsolved Murder Tip - WSJ",
+            "at": "2026-10-10T03:34:00Z",
+            "publisher": "WSJ"
+          },
+          {
             "id": "gnews:fce91fa5ea0c67e2",
             "source": "gnews-rss",
-            "title": "Anthropic Reveals Claude AI Model Went Rogue, Submitted Fake Tip To Police Submitted False Tip In Homicide Case - NDTV Profit",
+            "title": "Anthropic Reveals Claude AI Model Went Rogue, Submitted Fake Tip To Police In Homicide Case - NDTV Profit",
             "at": "2026-10-11T02:11:17Z",
             "publisher": "NDTV Profit"
           },
           {
-            "id": "gnews:3ac7efee63b0db4d",
+            "id": "gnews:d4b6720a60ea54fc",
             "source": "gnews-rss",
-            "title": "Anthropic AI Test Sent False Philadelphia Homicide Tip - FindArticles",
-            "at": "2026-10-11T00:22:21Z",
-            "publisher": "FindArticles"
+            "title": "Anthropic AI model submitted false tip about unsolved murder, Philadelphia police say - 6abc Philadelphia",
+            "at": "2026-10-10T00:21:43Z",
+            "publisher": "6abc Philadelphia"
           },
           {
-            "id": "gnews:539f5abfe9e21714",
+            "id": "gnews:2e77b6ec0696fb9a",
             "source": "gnews-rss",
-            "title": "Anthropic Claude AI model sends fake homicide tip to Philadelphia police - FOX 7 Austin",
-            "at": "2026-10-11T00:12:36Z",
-            "publisher": "FOX 7 Austin"
+            "title": "Anthropic AI model submits false homicide tip to Philadelphia police - Al Jazeera",
+            "at": "2026-10-10T05:04:38Z",
+            "publisher": "Al Jazeera"
           },
           {
-            "id": "gnews:4b51e6751269eee3",
+            "id": "gnews:af9702405365de6e",
             "source": "gnews-rss",
-            "title": "Anthropic Claude AI model sends fake homicide tip to Philadelphia police - FOX 10 Phoenix",
-            "at": "2026-10-11T00:12:36Z",
-            "publisher": "FOX 10 Phoenix"
+            "title": "Philadelphia police receive false homicide tip from Anthropic AI model - The Hill",
+            "at": "2026-10-09T15:44:00Z",
+            "publisher": "The Hill"
           },
           {
             "id": "gnews:b948c99a251b54d3",
@@ -245,27 +324,6 @@
             "publisher": "Sky News"
           },
           {
-            "id": "gnews:d4b6720a60ea54fc",
-            "source": "gnews-rss",
-            "title": "Anthropic AI model submitted false tip about unsolved murder, Philadelphia police say - 6abc Philadelphia",
-            "at": "2026-10-10T00:21:43Z",
-            "publisher": "6abc Philadelphia"
-          },
-          {
-            "id": "gnews:2e77b6ec0696fb9a",
-            "source": "gnews-rss",
-            "title": "Anthropic AI model submits false homicide tip to Philadelphia police - Al Jazeera",
-            "at": "2026-10-10T05:04:38Z",
-            "publisher": "Al Jazeera"
-          },
-          {
-            "id": "gnews:af9702405365de6e",
-            "source": "gnews-rss",
-            "title": "Philadelphia police receive false homicide tip from Anthropic AI model - The Hill",
-            "at": "2026-10-10T19:31:00Z",
-            "publisher": "The Hill"
-          },
-          {
             "id": "gnews:6170a76928ae9895",
             "source": "gnews-rss",
             "title": "An Anthropic AI model sent a false homicide tip to Philadelphia police - TechCrunch",
@@ -287,32 +345,11 @@
             "publisher": "Cybernews"
           },
           {
-            "id": "gnews:a754d0dedde64619",
-            "source": "gnews-rss",
-            "title": "Rogue Anthropic AI agent gave police fake tip in unsolved murder case - BBC",
-            "at": "2026-10-10T10:06:23Z",
-            "publisher": "BBC"
-          },
-          {
-            "id": "gnews:de1bb3472a7ed2af",
-            "source": "gnews-rss",
-            "title": "Anthropic reports fake police tip in rogue AI cases - Kuwait Times",
-            "at": "2026-10-10T16:50:00Z",
-            "publisher": "Kuwait Times"
-          },
-          {
             "id": "gnews:7c4f993c39597c60",
             "source": "gnews-rss",
             "title": "Anthropic AI model submits false tip on unsolved Philly murder, police say - NBC10 Philadelphia",
             "at": "2026-10-09T18:09:08Z",
             "publisher": "NBC10 Philadelphia"
-          },
-          {
-            "id": "gnews:4516f95fc4b666c6",
-            "source": "gnews-rss",
-            "title": "Anthropic’s AI Model Sends False Tip on Unsolved Murder to Philadelphia Police - ForkLog",
-            "at": "2026-10-10T10:52:35Z",
-            "publisher": "ForkLog"
           }
         ]
       },
@@ -354,8 +391,8 @@
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 5,
-        "score": 0.965,
+        "size": 4,
+        "score": 0.956,
         "members": [
           {
             "id": "hn:50035886",
@@ -363,13 +400,6 @@
             "title": "Nvidia in talks to acquire US 'open' model startup Reflection AI",
             "at": "2026-10-10T18:48:35Z",
             "publisher": null
-          },
-          {
-            "id": "gnews:7ef2ac7c533ca4cc",
-            "source": "gnews-rss",
-            "title": "Nvidia in talks to acquire Reflection AI or increase investment, FT reports By Investing.com - Investing.com UK",
-            "at": "2026-10-10T23:48:00Z",
-            "publisher": "Investing.com UK"
           },
           {
             "id": "gnews:25f3bfa5088aefd8",
@@ -451,7 +481,7 @@
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.606,
+        "score": 0.603,
         "members": [
           {
             "id": "hn:50030778",
@@ -466,6 +496,31 @@
             "title": "Anthropic can't reliably control its AI agents. It's cutting off its internal evals from the live internet instead - TechCrunch",
             "at": "2026-10-10T00:18:32Z",
             "publisher": "TechCrunch"
+          }
+        ]
+      },
+      {
+        "title": "The hazy OpenAI growth metric driving Wall Street",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:50030776",
+            "source": "hn-algolia",
+            "title": "The hazy OpenAI growth metric driving Wall Street",
+            "at": "2026-10-10T08:07:08Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:81ccc2d66926ba82",
+            "source": "gnews-rss",
+            "title": "The hazy OpenAI growth metric driving Wall Street - Financial Times",
+            "at": "2026-10-09T20:57:10Z",
+            "publisher": "Financial Times"
           }
         ]
       },
@@ -495,21 +550,14 @@
         ]
       },
       {
-        "title": "Anthropic bans users from abusive or cruel behavior towards Claude",
+        "title": "Anthropic Usage Policy to prohibit \"abusive or cruel behavior\" toward Claude",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 4,
-        "score": 1,
+        "size": 3,
+        "score": 0.709,
         "members": [
-          {
-            "id": "hn:50017324",
-            "source": "hn-algolia",
-            "title": "Anthropic bans users from abusive or cruel behavior towards Claude",
-            "at": "2026-10-09T07:41:00Z",
-            "publisher": null
-          },
           {
             "id": "hn:50020061",
             "source": "hn-algolia",
@@ -518,18 +566,18 @@
             "publisher": null
           },
           {
-            "id": "gnews:16d51fca674be6ef",
-            "source": "gnews-rss",
-            "title": "Anthropic bans users from ‘needless abusive or cruel behavior’ towards Claude - The Guardian",
-            "at": "2026-10-09T13:43:00Z",
-            "publisher": "The Guardian"
-          },
-          {
             "id": "gnews:e97d32149fdd0482",
             "source": "gnews-rss",
             "title": "Anthropic bars \"abusive or cruel\" behavior toward its Claude AI model - CBS News",
             "at": "2026-10-09T14:59:48Z",
             "publisher": "CBS News"
+          },
+          {
+            "id": "gnews:16d51fca674be6ef",
+            "source": "gnews-rss",
+            "title": "Anthropic bans users from ‘needless abusive or cruel behavior’ towards Claude - The Guardian",
+            "at": "2026-10-09T13:43:00Z",
+            "publisher": "The Guardian"
           }
         ]
       }
@@ -568,20 +616,20 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "The Straits Times",
-          "title": "Nvidia discusses boosting Reflection investment, computing deal - The Straits Times"
-        },
-        {
-          "publisher": "The Globe and Mail",
-          "title": "Cerebras Is About as Big as Nvidia's Data Center Business Was Nearly a Decade Ago. The Similarities Mostly End There. - The Globe and Mail"
-        },
-        {
           "publisher": "The Motley Fool",
-          "title": "Cerebras Is About as Big as Nvidia's Data Center Business Was Nearly a Decade Ago. The Similarities Mostly End There. - The Motley Fool"
+          "title": "TSMC Reports Oct. 15. It's the Best Early Read on Nvidia's Next Quarter. - The Motley Fool"
         },
         {
-          "publisher": "FourWeekMBA",
-          "title": "Nvidia’s 10-Q Lists $530B in Commitments and Guarantees - FourWeekMBA"
+          "publisher": "Ynetnews",
+          "title": "We saw ‘Artificial’ before everyone else, and now we know why Hollywood tried to bury it - Ynetnews"
+        },
+        {
+          "publisher": "NDTV Profit",
+          "title": "Nvidia Discusses Boosting Reflection Investment, Computing Deal - NDTV Profit"
+        },
+        {
+          "publisher": "SFGATE",
+          "title": "Horoscope for Sunday, 10/11/26 by Christopher Renstrom - SFGATE"
         }
       ],
       "gnews_pool_dropped": 0,
@@ -589,7 +637,7 @@
     },
     "gnews_near_misses": [
       {
-        "score": 0.802,
+        "score": 0.797,
         "blocked": "time-window",
         "hours_apart": 27.5,
         "a": {
@@ -615,58 +663,33 @@
         ]
       },
       {
-        "score": 0.717,
+        "score": 0.661,
         "blocked": "time-window",
-        "hours_apart": 28.6,
+        "hours_apart": 29.6,
         "a": {
-          "id": "hn:50025713",
+          "id": "hn:50028121",
           "source": "hn-algolia",
-          "title": "An Anthropic AI model sent a false homicide tip to the police",
-          "at": "2026-10-09T19:44:59Z"
+          "title": "Anthropic's AI gave Philadelphia police a fake tip about an unsolved homicide",
+          "at": "2026-10-10T00:07:08Z"
         },
         "b": {
-          "id": "gnews:3ac7efee63b0db4d",
+          "id": "gnews:73c0b7f3fd2ccb88",
           "source": "gnews-rss",
-          "title": "Anthropic AI Test Sent False Philadelphia Homicide Tip - FindArticles",
-          "at": "2026-10-11T00:22:21Z"
+          "title": "Rogue Anthropic AI agent gave police fake tip in unsolved murder case - Buttondown",
+          "at": "2026-10-11T05:44:40Z"
         },
         "shared": [
           "anthropic",
           "ai",
-          "sent",
-          "fals",
-          "homicid",
-          "tip"
-        ]
-      },
-      {
-        "score": 0.684,
-        "blocked": "time-window",
-        "hours_apart": 25.3,
-        "a": {
-          "id": "hn:50028365",
-          "source": "hn-algolia",
-          "title": "Anthropic Model Submitted a False Homicide Tip to Philadelphia Police",
-          "at": "2026-10-10T00:52:49Z"
-        },
-        "b": {
-          "id": "gnews:fce91fa5ea0c67e2",
-          "source": "gnews-rss",
-          "title": "Anthropic Reveals Claude AI Model Went Rogue, Submitted Fake Tip To Police Submitted False Tip In Homicide Case - NDTV Profit",
-          "at": "2026-10-11T02:11:17Z"
-        },
-        "shared": [
-          "anthropic",
-          "model",
-          "submitt",
-          "fals",
-          "homicid",
+          "gave",
+          "polic",
+          "fake",
           "tip",
-          "polic"
+          "unsolv"
         ]
       },
       {
-        "score": 0.673,
+        "score": 0.661,
         "blocked": "time-window",
         "hours_apart": 29.4,
         "a": {
@@ -692,112 +715,139 @@
         ]
       },
       {
-        "score": 0.654,
-        "blocked": "time-window",
-        "hours_apart": 24.1,
-        "a": {
-          "id": "hn:50028121",
-          "source": "hn-algolia",
-          "title": "Anthropic's AI gave Philadelphia police a fake tip about an unsolved homicide",
-          "at": "2026-10-10T00:07:08Z"
-        },
-        "b": {
-          "id": "gnews:539f5abfe9e21714",
-          "source": "gnews-rss",
-          "title": "Anthropic Claude AI model sends fake homicide tip to Philadelphia police - FOX 7 Austin",
-          "at": "2026-10-11T00:12:36Z"
-        },
-        "shared": [
-          "anthropic",
-          "ai",
-          "philadelphia",
-          "polic",
-          "fake",
-          "tip",
-          "homicid"
-        ]
-      },
-      {
-        "score": 0.654,
-        "blocked": "time-window",
-        "hours_apart": 24.1,
-        "a": {
-          "id": "hn:50028121",
-          "source": "hn-algolia",
-          "title": "Anthropic's AI gave Philadelphia police a fake tip about an unsolved homicide",
-          "at": "2026-10-10T00:07:08Z"
-        },
-        "b": {
-          "id": "gnews:4b51e6751269eee3",
-          "source": "gnews-rss",
-          "title": "Anthropic Claude AI model sends fake homicide tip to Philadelphia police - FOX 10 Phoenix",
-          "at": "2026-10-11T00:12:36Z"
-        },
-        "shared": [
-          "anthropic",
-          "ai",
-          "philadelphia",
-          "polic",
-          "fake",
-          "tip",
-          "homicid"
-        ]
-      },
-      {
-        "score": 0.619,
-        "blocked": "time-window",
-        "hours_apart": 30.4,
-        "a": {
-          "id": "hn:50025713",
-          "source": "hn-algolia",
-          "title": "An Anthropic AI model sent a false homicide tip to the police",
-          "at": "2026-10-09T19:44:59Z"
-        },
-        "b": {
-          "id": "gnews:fce91fa5ea0c67e2",
-          "source": "gnews-rss",
-          "title": "Anthropic Reveals Claude AI Model Went Rogue, Submitted Fake Tip To Police Submitted False Tip In Homicide Case - NDTV Profit",
-          "at": "2026-10-11T02:11:17Z"
-        },
-        "shared": [
-          "anthropic",
-          "ai",
-          "model",
-          "fals",
-          "homicid",
-          "tip",
-          "polic"
-        ]
-      },
-      {
-        "score": 0.594,
+        "score": 0.59,
         "blocked": "below-threshold",
-        "hours_apart": 10,
+        "hours_apart": 0.9,
         "a": {
-          "id": "hn:50028365",
+          "id": "hn:50031438",
           "source": "hn-algolia",
-          "title": "Anthropic Model Submitted a False Homicide Tip to Philadelphia Police",
-          "at": "2026-10-10T00:52:49Z"
+          "title": "Rogue Anthropic AI agent gave police fake tip in unsolved murder case",
+          "at": "2026-10-10T10:23:44Z"
         },
         "b": {
-          "id": "gnews:4516f95fc4b666c6",
+          "id": "gnews:3c5f7cc80bac4b7e",
           "source": "gnews-rss",
-          "title": "Anthropic’s AI Model Sends False Tip on Unsolved Murder to Philadelphia Police - ForkLog",
-          "at": "2026-10-10T10:52:35Z"
+          "title": "Anthropic's AI model sent Philadelphia police fake tip about unsolved murder - Sky News",
+          "at": "2026-10-10T09:28:42Z"
         },
         "shared": [
           "anthropic",
-          "model",
-          "fals",
+          "ai",
+          "polic",
+          "fake",
           "tip",
-          "philadelphia",
-          "polic"
+          "unsolv",
+          "murder"
+        ]
+      },
+      {
+        "score": 0.59,
+        "blocked": "below-threshold",
+        "hours_apart": 17.2,
+        "a": {
+          "id": "hn:50039318",
+          "source": "hn-algolia",
+          "title": "Rogue Anthropic AI agent gave police fake tip in unsolved murder case",
+          "at": "2026-10-11T02:41:19Z"
+        },
+        "b": {
+          "id": "gnews:3c5f7cc80bac4b7e",
+          "source": "gnews-rss",
+          "title": "Anthropic's AI model sent Philadelphia police fake tip about unsolved murder - Sky News",
+          "at": "2026-10-10T09:28:42Z"
+        },
+        "shared": [
+          "anthropic",
+          "ai",
+          "polic",
+          "fake",
+          "tip",
+          "unsolv",
+          "murder"
+        ]
+      },
+      {
+        "score": 0.585,
+        "blocked": "below-threshold",
+        "hours_apart": 6.8,
+        "a": {
+          "id": "hn:50031438",
+          "source": "hn-algolia",
+          "title": "Rogue Anthropic AI agent gave police fake tip in unsolved murder case",
+          "at": "2026-10-10T10:23:44Z"
+        },
+        "b": {
+          "id": "gnews:b38ea6563b355e3d",
+          "source": "gnews-rss",
+          "title": "Anthropic AI Model Went Rogue, Submitted Fake Unsolved Murder Tip - WSJ",
+          "at": "2026-10-10T03:34:00Z"
+        },
+        "shared": [
+          "rogu",
+          "anthropic",
+          "ai",
+          "fake",
+          "tip",
+          "unsolv",
+          "murder"
+        ]
+      },
+      {
+        "score": 0.585,
+        "blocked": "below-threshold",
+        "hours_apart": 23.1,
+        "a": {
+          "id": "hn:50039318",
+          "source": "hn-algolia",
+          "title": "Rogue Anthropic AI agent gave police fake tip in unsolved murder case",
+          "at": "2026-10-11T02:41:19Z"
+        },
+        "b": {
+          "id": "gnews:b38ea6563b355e3d",
+          "source": "gnews-rss",
+          "title": "Anthropic AI Model Went Rogue, Submitted Fake Unsolved Murder Tip - WSJ",
+          "at": "2026-10-10T03:34:00Z"
+        },
+        "shared": [
+          "rogu",
+          "anthropic",
+          "ai",
+          "fake",
+          "tip",
+          "unsolv",
+          "murder"
+        ]
+      },
+      {
+        "score": 0.585,
+        "blocked": "below-threshold",
+        "hours_apart": 12.8,
+        "a": {
+          "id": "hn:50034742",
+          "source": "hn-algolia",
+          "title": "Anthropic AI Model Went Rogue, Submitted Fake Unsolved Murder Tip",
+          "at": "2026-10-10T16:54:02Z"
+        },
+        "b": {
+          "id": "gnews:73c0b7f3fd2ccb88",
+          "source": "gnews-rss",
+          "title": "Rogue Anthropic AI agent gave police fake tip in unsolved murder case - Buttondown",
+          "at": "2026-10-11T05:44:40Z"
+        },
+        "shared": [
+          "anthropic",
+          "ai",
+          "rogu",
+          "fake",
+          "unsolv",
+          "murder",
+          "tip"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.988,
+        "score": 0.985,
         "blocked": "time-window",
         "hours_apart": 75.6,
         "a": {
@@ -821,7 +871,7 @@
         ]
       },
       {
-        "score": 0.802,
+        "score": 0.797,
         "blocked": "time-window",
         "hours_apart": 27.5,
         "a": {
@@ -847,58 +897,33 @@
         ]
       },
       {
-        "score": 0.717,
+        "score": 0.661,
         "blocked": "time-window",
-        "hours_apart": 28.6,
+        "hours_apart": 29.6,
         "a": {
-          "id": "hn:50025713",
+          "id": "hn:50028121",
           "source": "hn-algolia",
-          "title": "An Anthropic AI model sent a false homicide tip to the police",
-          "at": "2026-10-09T19:44:59Z"
+          "title": "Anthropic's AI gave Philadelphia police a fake tip about an unsolved homicide",
+          "at": "2026-10-10T00:07:08Z"
         },
         "b": {
-          "id": "gnews:3ac7efee63b0db4d",
+          "id": "gnews:73c0b7f3fd2ccb88",
           "source": "gnews-rss",
-          "title": "Anthropic AI Test Sent False Philadelphia Homicide Tip - FindArticles",
-          "at": "2026-10-11T00:22:21Z"
+          "title": "Rogue Anthropic AI agent gave police fake tip in unsolved murder case - Buttondown",
+          "at": "2026-10-11T05:44:40Z"
         },
         "shared": [
           "anthropic",
           "ai",
-          "sent",
-          "fals",
-          "homicid",
-          "tip"
-        ]
-      },
-      {
-        "score": 0.684,
-        "blocked": "time-window",
-        "hours_apart": 25.3,
-        "a": {
-          "id": "hn:50028365",
-          "source": "hn-algolia",
-          "title": "Anthropic Model Submitted a False Homicide Tip to Philadelphia Police",
-          "at": "2026-10-10T00:52:49Z"
-        },
-        "b": {
-          "id": "gnews:fce91fa5ea0c67e2",
-          "source": "gnews-rss",
-          "title": "Anthropic Reveals Claude AI Model Went Rogue, Submitted Fake Tip To Police Submitted False Tip In Homicide Case - NDTV Profit",
-          "at": "2026-10-11T02:11:17Z"
-        },
-        "shared": [
-          "anthropic",
-          "model",
-          "submitt",
-          "fals",
-          "homicid",
+          "gave",
+          "polic",
+          "fake",
           "tip",
-          "polic"
+          "unsolv"
         ]
       },
       {
-        "score": 0.673,
+        "score": 0.661,
         "blocked": "time-window",
         "hours_apart": 29.4,
         "a": {
@@ -924,81 +949,107 @@
         ]
       },
       {
-        "score": 0.654,
-        "blocked": "time-window",
-        "hours_apart": 24.1,
+        "score": 0.59,
+        "blocked": "below-threshold",
+        "hours_apart": 0.9,
         "a": {
-          "id": "hn:50028121",
+          "id": "hn:50031438",
           "source": "hn-algolia",
-          "title": "Anthropic's AI gave Philadelphia police a fake tip about an unsolved homicide",
-          "at": "2026-10-10T00:07:08Z"
+          "title": "Rogue Anthropic AI agent gave police fake tip in unsolved murder case",
+          "at": "2026-10-10T10:23:44Z"
         },
         "b": {
-          "id": "gnews:539f5abfe9e21714",
+          "id": "gnews:3c5f7cc80bac4b7e",
           "source": "gnews-rss",
-          "title": "Anthropic Claude AI model sends fake homicide tip to Philadelphia police - FOX 7 Austin",
-          "at": "2026-10-11T00:12:36Z"
+          "title": "Anthropic's AI model sent Philadelphia police fake tip about unsolved murder - Sky News",
+          "at": "2026-10-10T09:28:42Z"
         },
         "shared": [
           "anthropic",
           "ai",
-          "philadelphia",
           "polic",
           "fake",
           "tip",
-          "homicid"
+          "unsolv",
+          "murder"
         ]
       },
       {
-        "score": 0.654,
-        "blocked": "time-window",
-        "hours_apart": 24.1,
+        "score": 0.59,
+        "blocked": "below-threshold",
+        "hours_apart": 17.2,
         "a": {
-          "id": "hn:50028121",
+          "id": "hn:50039318",
           "source": "hn-algolia",
-          "title": "Anthropic's AI gave Philadelphia police a fake tip about an unsolved homicide",
-          "at": "2026-10-10T00:07:08Z"
+          "title": "Rogue Anthropic AI agent gave police fake tip in unsolved murder case",
+          "at": "2026-10-11T02:41:19Z"
         },
         "b": {
-          "id": "gnews:4b51e6751269eee3",
+          "id": "gnews:3c5f7cc80bac4b7e",
           "source": "gnews-rss",
-          "title": "Anthropic Claude AI model sends fake homicide tip to Philadelphia police - FOX 10 Phoenix",
-          "at": "2026-10-11T00:12:36Z"
+          "title": "Anthropic's AI model sent Philadelphia police fake tip about unsolved murder - Sky News",
+          "at": "2026-10-10T09:28:42Z"
         },
         "shared": [
           "anthropic",
           "ai",
-          "philadelphia",
           "polic",
           "fake",
           "tip",
-          "homicid"
+          "unsolv",
+          "murder"
         ]
       },
       {
-        "score": 0.619,
-        "blocked": "time-window",
-        "hours_apart": 30.4,
+        "score": 0.585,
+        "blocked": "below-threshold",
+        "hours_apart": 6.8,
         "a": {
-          "id": "hn:50025713",
+          "id": "hn:50031438",
           "source": "hn-algolia",
-          "title": "An Anthropic AI model sent a false homicide tip to the police",
-          "at": "2026-10-09T19:44:59Z"
+          "title": "Rogue Anthropic AI agent gave police fake tip in unsolved murder case",
+          "at": "2026-10-10T10:23:44Z"
         },
         "b": {
-          "id": "gnews:fce91fa5ea0c67e2",
+          "id": "gnews:b38ea6563b355e3d",
           "source": "gnews-rss",
-          "title": "Anthropic Reveals Claude AI Model Went Rogue, Submitted Fake Tip To Police Submitted False Tip In Homicide Case - NDTV Profit",
-          "at": "2026-10-11T02:11:17Z"
+          "title": "Anthropic AI Model Went Rogue, Submitted Fake Unsolved Murder Tip - WSJ",
+          "at": "2026-10-10T03:34:00Z"
         },
         "shared": [
+          "rogu",
           "anthropic",
           "ai",
-          "model",
-          "fals",
-          "homicid",
+          "fake",
           "tip",
-          "polic"
+          "unsolv",
+          "murder"
+        ]
+      },
+      {
+        "score": 0.585,
+        "blocked": "below-threshold",
+        "hours_apart": 23.1,
+        "a": {
+          "id": "hn:50039318",
+          "source": "hn-algolia",
+          "title": "Rogue Anthropic AI agent gave police fake tip in unsolved murder case",
+          "at": "2026-10-11T02:41:19Z"
+        },
+        "b": {
+          "id": "gnews:b38ea6563b355e3d",
+          "source": "gnews-rss",
+          "title": "Anthropic AI Model Went Rogue, Submitted Fake Unsolved Murder Tip - WSJ",
+          "at": "2026-10-10T03:34:00Z"
+        },
+        "shared": [
+          "rogu",
+          "anthropic",
+          "ai",
+          "fake",
+          "tip",
+          "unsolv",
+          "murder"
         ]
       }
     ]
@@ -1006,77 +1057,77 @@
   "source_health": [
     {
       "id": "arxiv",
-      "state": "fail",
-      "streak_ok": 0,
-      "streak_fail": 2,
-      "items_last": 5
+      "state": "flaky",
+      "streak_ok": 1,
+      "streak_fail": 0,
+      "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 107,
+      "streak_ok": 108,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 107,
+      "streak_ok": 108,
       "streak_fail": 0,
-      "items_last": 0
+      "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 107,
+      "streak_ok": 108,
       "streak_fail": 0,
-      "items_last": 51
+      "items_last": 54
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 107,
+      "streak_ok": 108,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 107,
+      "streak_ok": 108,
       "streak_fail": 0,
       "items_last": 62
     },
     {
       "id": "openalex",
       "state": "flaky",
-      "streak_ok": 19,
+      "streak_ok": 20,
       "streak_fail": 0,
       "items_last": 4
     },
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 11,
+      "streak_ok": 12,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 107,
+      "streak_ok": 108,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 107,
+      "streak_ok": 108,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.006091111111111111,
+    "hours": 0.004934444444444444,
     "stale": false
   },
   "hf": {
@@ -1085,10 +1136,10 @@
     "url": "https://huggingface.co/api/daily_papers"
   },
   "arxiv": {
-    "ok": false,
-    "enriched": 0,
+    "ok": true,
+    "enriched": 24,
     "shelf": 5,
-    "timed_out": true,
+    "timed_out": false,
     "budget_ms": 20000,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
@@ -1190,19 +1241,19 @@
       {
         "id": "hn:50018817",
         "tag": "rest",
-        "score": 412,
+        "score": 413,
         "text": "Show HN: Let your AI agents paint big arrows, boxes and text on your screen"
       },
       {
         "id": "hn:50018350",
         "tag": "rest",
-        "score": 357,
+        "score": 360,
         "text": "OpenAI fires three safety researchers for \"mishandling research information\""
       },
       {
         "id": "hn:50031614",
         "tag": "rest",
-        "score": 262,
+        "score": 287,
         "text": "Talorys – A self-hosted personal AI agent on Cloudflare's free tier"
       }
     ]
@@ -1356,9 +1407,89 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 51,
+    "items": 54,
     "pool": 387,
     "corroborators": [
+      {
+        "id": "gnews:73c0b7f3fd2ccb88",
+        "anchor_id": "hn:50031438",
+        "score": 1,
+        "title": "Rogue Anthropic AI agent gave police fake tip in unsolved murder case - Buttondown",
+        "publisher": "Buttondown",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:74535efcdf383c82",
+        "anchor_id": "hn:50031438",
+        "score": 1,
+        "title": "Rogue Anthropic AI agent gave police fake tip in unsolved murder case - BBC",
+        "publisher": "BBC",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:25f3bfa5088aefd8",
+        "anchor_id": "hn:50035886",
+        "score": 0.969,
+        "title": "Nvidia in talks to buy ‘open’ model startup Reflection AI: FT - Seeking Alpha",
+        "publisher": "Seeking Alpha",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:ba5cca9c28d4febe",
+        "anchor_id": "hn:50035886",
+        "score": 0.808,
+        "title": "Nvidia in talks to acquire US ‘open’ model start-up Reflection AI - Financial Times",
+        "publisher": "Financial Times",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:339acfd4ab495ca0",
+        "anchor_id": "hn:50035886",
+        "score": 0.795,
+        "title": "Nvidia in Talks to Buy Open-Model Maker Reflection AI - FourWeekMBA",
+        "publisher": "FourWeekMBA",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:b38ea6563b355e3d",
+        "anchor_id": "hn:50034742",
+        "score": 1,
+        "title": "Anthropic AI Model Went Rogue, Submitted Fake Unsolved Murder Tip - WSJ",
+        "publisher": "WSJ",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:fce91fa5ea0c67e2",
+        "anchor_id": "hn:50034742",
+        "score": 0.693,
+        "title": "Anthropic Reveals Claude AI Model Went Rogue, Submitted Fake Tip To Police In Homicide Case - NDTV Profit",
+        "publisher": "NDTV Profit",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:d4b6720a60ea54fc",
+        "anchor_id": "hn:50028365",
+        "score": 0.803,
+        "title": "Anthropic AI model submitted false tip about unsolved murder, Philadelphia police say - 6abc Philadelphia",
+        "publisher": "6abc Philadelphia",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:2e77b6ec0696fb9a",
+        "anchor_id": "hn:50028365",
+        "score": 0.79,
+        "title": "Anthropic AI model submits false homicide tip to Philadelphia police - Al Jazeera",
+        "publisher": "Al Jazeera",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:af9702405365de6e",
+        "anchor_id": "hn:50028365",
+        "score": 0.781,
+        "title": "Philadelphia police receive false homicide tip from Anthropic AI model - The Hill",
+        "publisher": "The Hill",
+        "self_repost": false
+      },
       {
         "id": "gnews:b948c99a251b54d3",
         "anchor_id": "hn:50028121",
@@ -1370,7 +1501,7 @@
       {
         "id": "gnews:d9f80cd80d38a68d",
         "anchor_id": "hn:50028121",
-        "score": 0.695,
+        "score": 0.69,
         "title": "Anthropic AI model sent fake homicide tip to Philadelphia police - Quartz",
         "publisher": "Quartz",
         "self_repost": false
@@ -1378,57 +1509,9 @@
       {
         "id": "gnews:3c5f7cc80bac4b7e",
         "anchor_id": "hn:50028121",
-        "score": 0.654,
+        "score": 0.652,
         "title": "Anthropic's AI model sent Philadelphia police fake tip about unsolved murder - Sky News",
         "publisher": "Sky News",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:d4b6720a60ea54fc",
-        "anchor_id": "hn:50028365",
-        "score": 0.806,
-        "title": "Anthropic AI model submitted false tip about unsolved murder, Philadelphia police say - 6abc Philadelphia",
-        "publisher": "6abc Philadelphia",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:2e77b6ec0696fb9a",
-        "anchor_id": "hn:50028365",
-        "score": 0.788,
-        "title": "Anthropic AI model submits false homicide tip to Philadelphia police - Al Jazeera",
-        "publisher": "Al Jazeera",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:af9702405365de6e",
-        "anchor_id": "hn:50028365",
-        "score": 0.773,
-        "title": "Philadelphia police receive false homicide tip from Anthropic AI model - The Hill",
-        "publisher": "The Hill",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:25f3bfa5088aefd8",
-        "anchor_id": "hn:50035886",
-        "score": 0.972,
-        "title": "Nvidia in talks to buy ‘open’ model startup Reflection AI: FT - Seeking Alpha",
-        "publisher": "Seeking Alpha",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:ba5cca9c28d4febe",
-        "anchor_id": "hn:50035886",
-        "score": 0.807,
-        "title": "Nvidia in talks to acquire US ‘open’ model start-up Reflection AI - Financial Times",
-        "publisher": "Financial Times",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:339acfd4ab495ca0",
-        "anchor_id": "hn:50035886",
-        "score": 0.791,
-        "title": "Nvidia in Talks to Buy Open-Model Maker Reflection AI - FourWeekMBA",
-        "publisher": "FourWeekMBA",
         "self_repost": false
       },
       {
@@ -1450,7 +1533,7 @@
       {
         "id": "gnews:25bc34f3f09c23fd",
         "anchor_id": "hn:50025713",
-        "score": 0.733,
+        "score": 0.725,
         "title": "Anthropic AI Model Submits False Homicide Tip - GV Wire",
         "publisher": "GV Wire",
         "self_repost": false
@@ -1464,19 +1547,27 @@
         "self_repost": false
       },
       {
-        "id": "gnews:a754d0dedde64619",
-        "anchor_id": "hn:50031438",
-        "score": 1,
-        "title": "Rogue Anthropic AI agent gave police fake tip in unsolved murder case - BBC",
-        "publisher": "BBC",
+        "id": "gnews:b9368d58c20ca167",
+        "anchor_id": "hn:50030778",
+        "score": 0.613,
+        "title": "Anthropic can't reliably control its AI agents. It's cutting off its internal evals from the live internet instead - TechCrunch",
+        "publisher": "TechCrunch",
         "self_repost": false
       },
       {
-        "id": "gnews:de1bb3472a7ed2af",
-        "anchor_id": "hn:50031438",
-        "score": 0.844,
-        "title": "Anthropic reports fake police tip in rogue AI cases - Kuwait Times",
-        "publisher": "Kuwait Times",
+        "id": "gnews:81ccc2d66926ba82",
+        "anchor_id": "hn:50030776",
+        "score": 1,
+        "title": "The hazy OpenAI growth metric driving Wall Street - Financial Times",
+        "publisher": "Financial Times",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:6d75b3e90cbe7b54",
+        "anchor_id": "hn:50035550",
+        "score": 0.877,
+        "title": "Anthropic discloses fake tip to police among new rogue AI incidents - Reuters",
+        "publisher": "Reuters",
         "self_repost": false
       },
       {
@@ -1488,22 +1579,6 @@
         "self_repost": false
       },
       {
-        "id": "gnews:4516f95fc4b666c6",
-        "anchor_id": "hn:50027118",
-        "score": 0.693,
-        "title": "Anthropic’s AI Model Sends False Tip on Unsolved Murder to Philadelphia Police - ForkLog",
-        "publisher": "ForkLog",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:b9368d58c20ca167",
-        "anchor_id": "hn:50030778",
-        "score": 0.614,
-        "title": "Anthropic can't reliably control its AI agents. It's cutting off its internal evals from the live internet instead - TechCrunch",
-        "publisher": "TechCrunch",
-        "self_repost": false
-      },
-      {
         "id": "gnews:15f92454de1311e9",
         "anchor_id": "rss:openai:9bf93d58cc35db99",
         "score": 1,
@@ -1512,19 +1587,19 @@
         "self_repost": true
       },
       {
-        "id": "gnews:16d51fca674be6ef",
-        "anchor_id": "hn:50017324",
-        "score": 1,
-        "title": "Anthropic bans users from ‘needless abusive or cruel behavior’ towards Claude - The Guardian",
-        "publisher": "The Guardian",
+        "id": "gnews:e97d32149fdd0482",
+        "anchor_id": "hn:50020061",
+        "score": 0.689,
+        "title": "Anthropic bars \"abusive or cruel\" behavior toward its Claude AI model - CBS News",
+        "publisher": "CBS News",
         "self_repost": false
       },
       {
-        "id": "gnews:e97d32149fdd0482",
-        "anchor_id": "hn:50017324",
-        "score": 0.749,
-        "title": "Anthropic bars \"abusive or cruel\" behavior toward its Claude AI model - CBS News",
-        "publisher": "CBS News",
+        "id": "gnews:16d51fca674be6ef",
+        "anchor_id": "hn:50020061",
+        "score": 0.611,
+        "title": "Anthropic bans users from ‘needless abusive or cruel behavior’ towards Claude - The Guardian",
+        "publisher": "The Guardian",
         "self_repost": false
       },
       {
@@ -1570,24 +1645,24 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:3a376f1557f46f1a",
-        "title": "Google’s Gemini Agent Spans Apps, Starting With Enterprises - Quasa.io",
-        "publisher": "Quasa.io",
-        "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOYjVZYzRvdmJCbTJORW1kc1ZtdjIwV19taXp5WGdxMjdqQ2M4eE5XTzJyVUxfcjlYVGJGS0JfVXVXb0p2TF91MXE4YUlzNkpKZkdqYk9HZkNzTkVjbFp2d3o5cm1EZ3AwX0diWnF1dm81YWxMUHhLWS1QSkJxSUZXOHpGWUtsQmltdHluY1g2TTdrOUFVNHhkb094TEctQVdqRVlhQg?oc=5",
+        "id": "gnews:4dee73ce2c5a8a22",
+        "title": "NVIDIA Explores Acquisition of Reflection AI to Enhance AI Model Development - GuruFocus",
+        "publisher": "GuruFocus",
+        "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNLU1DRjV6bjdrdGtaeUFlVF9TRnFSbmhjeVBSQldWMzV6LU90dl9hd0ZQQ0xmSFpVOXRocTExbGVfR2xnTXJyM1ZvdWRhRFJJZUFRYTVnNVJzQlZiUkFiX1dQOW43NW9EMURTb1ZtRjlLZHhpYXZrN2NwbWtfZ2kzT1piMjMxTy00RkdsWUZuZnY5VXhwZDcteDhmaGJXOW85ejl0TEh3N01BRTYwX1Rkamcwa293QQ?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:400414f6d392f648",
-        "title": "Scrapped IPO of Nvidia-Backed Company Points to Limits of AI Boom - WSJ",
-        "publisher": "WSJ",
-        "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPaWFkcXdfaE16UDI1bFo3blBEbDdtT0NRZjN0WkR3aTczRHBBOWJmMTI1empxRm5MRU9nMHRITlNWaGl5Zm9LZk5KTVhyWHdWT2NteXJxbUFxNUZSSFVtbWtYanNaa0lUTHBjdF9zOXBBX0JlYUFOVDBKSlpQeWYtUzRFQjJuMWs5dHlkUk9RdHBvQzNHNmUtSWszNnhwZ1pjX3MwM3hLY2FOMGZrVVE?oc=5",
+        "id": "gnews:e435a0fd9c3d6c6e",
+        "title": "Elon Musk doesn't want you to hurt AI's feelings: \"It's not OK\" - Cybernews",
+        "publisher": "Cybernews",
+        "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5fb2M5d3JXUFp5NUR2dlZocEhjWjJuSjhUVVVkSnRUTWZVOUdIRkNpTzhET2VLQl9fM2o2Zk5oVlJKQ0hPc3ljQ0wzZVNjTW96ZDJKVzNZZUxyN1BFRW9mcDRNSzdONmlkVkJ5UUFn?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:fce91fa5ea0c67e2",
-        "title": "Anthropic Reveals Claude AI Model Went Rogue, Submitted Fake Tip To Police Submitted False Tip In Homicide Case - NDTV Profit",
-        "publisher": "NDTV Profit",
-        "link": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxNTHA3NVRMdlF1OUM5MU9YRFdIdVRHUFlCQzlpSk45ZEZ4UHdKT1JEZWY1SDBqR3Nld0VVN2RwNmFIOWZJbUI5eHo4WDEtVVphVENwN1hrcDduN18zeUhzcEp1NjNpT3BQaFJkQ1Y4UnNPZ1FrMlhqVHBMRnBjUTNFaXUteGozZU50YkpkV1FZdU85Ukc1RF9Hbl9YaFZlVzFTWjUtMlFNX1llYkJtN2RxX04xdnJpMEM0V2dMdVlhU3JHZk9QX0VpNjU5T3pJVkNSUV93NEpsdU5mWE5wdmY5Y1o1Y3liTTZQTUJVaW130gH2AUFVX3lxTE9WSTNQdWpsOFpEa2JodzBmU05qU3p4eXRYbGZIRFEzaDhLTjNqWndJSG55OGx3ay1UeGYzZnBnYUJwVHIxWE5BcnVCZzREd19fcXZnRHVjZDJDLWdCeTFHLTJoWVJVajJueWZrZVZDSXVwUU82OUlBUkFwZll3dFlJSGZ3U0xlOWk1SlZ5RXRqWkZtWmtGeDJxelVrUTZUMWhmTmpWWjdQaFlPeFgwYUxvOWJ5aWd6UnU1Njh6czFnV2N0aGpiVmJ6cVhIbGVpSDJER2dxYmZVeGNHN0l6SXpGczVpSzFvU0praFJSemw3TllpVkNIdw?oc=5",
+        "id": "gnews:dd63ba43706a3c36",
+        "title": "AI agents are going rogue — here's what you need to know if you use ChatGPT, Gemini or Claude - Tom's Guide",
+        "publisher": "Tom's Guide",
+        "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOd202RmQ4dGZjU0V4RVNubk5zb29lMHd1SFh2UURqdUtmSEprVkgweUJfQmM3RnJrWElPVlJYMVZkQjFGZUVZV29aU0RrMVl0TE91SExleU9uWHJpSVk4NUZHRDd6dGZFblBaZ3FZOEhYMVlFczFNcnVWcGt1MF82UzZOYi0wUkRGN2Z4WVUxUUFJdnpMYUJ6Nnk3UktMVWVjUDk2dEFVMXJrY19qekozazZGRlJ5UG5rTVE?oc=5",
         "tag": "rest"
       }
     ]
@@ -1618,7 +1693,7 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "query": "OWASP LLM",
-    "shelf": 0,
+    "shelf": 2,
     "from_cache": false,
     "searches": 1,
     "rate_limit_remaining": 9,
@@ -1626,10 +1701,19 @@
     "pulse_lead": false,
     "shelf_only": true,
     "url": "https://api.github.com/search/repositories",
-    "sample": []
+    "sample": [
+      {
+        "label": "nephritispeepshow717/awesome-agent-security",
+        "href": "https://github.com/nephritispeepshow717/awesome-agent-security"
+      },
+      {
+        "label": "kutta643/llm-sast-scanner",
+        "href": "https://github.com/kutta643/llm-sast-scanner"
+      }
+    ]
   },
   "shelf": {
-    "count": 17,
+    "count": 19,
     "brief": false
   },
   "wikidata": {
