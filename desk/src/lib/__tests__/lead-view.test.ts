@@ -1,7 +1,7 @@
 import { describe, expect, test } from "bun:test";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { LEAD_HELD_TEXT, leadView, nextCrawlSlotHHMM } from "@/lib/lead-view";
+import { LEAD_HELD_TEXT, LEAD_STALE_TEXT, leadHeldText, leadView, nextCrawlSlotHHMM } from "@/lib/lead-view";
 import { LEAD_HELD, LEAD_TODAY } from "@/data/lead-pick";
 
 const DESK = join(import.meta.dir, "../../..");
@@ -34,6 +34,40 @@ describe("leadView — one source of truth for Brief plate, status bar, INGEST l
   });
 });
 
+describe("Phase 2 polish", () => {
+  const src = readFileSync(join(DESK, "src/components/sage/desk.tsx"), "utf8");
+  const css = readFileSync(join(DESK, "src/app/globals.css"), "utf8");
+  test("#1 HELD text depends on the reason; LeadInline and the stale plate use it", () => {
+    expect(LEAD_STALE_TEXT).toBe("HELD · lead >24h old");
+    expect(leadHeldText("stale")).toBe(LEAD_STALE_TEXT);
+    expect(leadHeldText("held")).toBe(LEAD_HELD_TEXT);
+    expect(leadHeldText(null)).toBe(LEAD_HELD_TEXT);
+    expect(src).toMatch(/\{leadHeldText\(view\.reason\)\}/);
+    expect(src).toMatch(/\{leadHeldText\("stale"\)\} ·/);
+    expect(src).not.toMatch(/lead older than 24h \(/);
+  });
+  test("#2 stale plate meta shows staleLead.date, never the old last-pick date", () => {
+    expect(src).toMatch(/lv\.reason === "stale"\s*\? `held · lead \$\{staleLead\.date\}`/);
+  });
+  test("#3 <768 Yesterday headline: full width, clamp 2, tagged as an allowed row", () => {
+    expect(src).toMatch(/sage-take-yesterday-headline line-clamp-1 sage-headline" data-row-clamp="yesterday"/);
+    const m = css.slice(css.indexOf("@media (max-width: 767px) {\n  .brief-v5 .sage-take-yesterday:not"));
+    expect(m).toMatch(/flex: 1 0 100%;[^}]*-webkit-line-clamp: 2;/);
+  });
+  test("#4 Voice MOVE is the lead's single line, never the joined row list", () => {
+    expect(src).toMatch(/move: lead\.move,/);
+    expect(src).not.toMatch(/unlock\.rows\.map\(\(r\) => r\.title\)\.join/);
+    expect(src).toMatch(/data-voice-move="1"/);
+  });
+  test("#5 INGEST line has no lead cell", () => {
+    const line = src.slice(src.indexOf('id="desk-ingest-line"'), src.indexOf('className="desk-ticker"'));
+    expect(line).not.toMatch(/LeadInline|· lead/);
+  });
+  test("#6 .sage-deny is amber", () => {
+    expect(css).toMatch(/\.sage-deny \{\s*color: var\(--pip-amber\);/);
+  });
+});
+
 describe("next try = next crawl slot 02/06/10/14/18/22 :11 Istanbul", () => {
   const at = (ist: string) => Date.parse(`${ist}+03:00`);
   test.each([
@@ -58,7 +92,7 @@ describe("desk wiring", () => {
   });
   test("no spot renders LEAD_TODAY.headline directly (all go through leadView)", () => {
     expect(src).not.toMatch(/LEAD_TODAY\?\.headline/);
-    expect(src.match(/<LeadInline view=\{leadV\} \/>/g)?.length).toBe(2);
+    expect(src.match(/<LeadInline view=\{leadV\} \/>/g)?.length).toBe(1); // status bar only; INGEST line carries no lead (Phase 2 #5)
     expect(src).toMatch(/lv\.held \? "sage-take-held" : "sage-take-inverse"/);
   });
   test("HELD plate CSS is outlined (no fill), vars only", () => {
@@ -74,7 +108,7 @@ describe("desk wiring", () => {
     const cells = [...h.matchAll(/<span class="desk-lead-headline[^"]*"[^>]*>([^<]*)<\/span>/g)].map((m) => m[1]);
     if (h.includes('data-lead-state="held"')) {
       if (!h.includes("desk-lead-held")) return; // out/ predates this fix
-      expect(cells.length).toBe(2);
+      expect(cells.length).toBe(1);
       for (const c of cells) expect(c).toBe(LEAD_HELD_TEXT);
       if (LEAD_HELD && LEAD_TODAY?.headline) for (const c of cells) expect(c).not.toContain(LEAD_TODAY.headline.slice(0, 20));
       expect(h).toMatch(/HELD · no qualifying story · (?:<span[^>]*>)?next try \d\d:11/);

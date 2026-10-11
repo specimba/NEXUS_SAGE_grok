@@ -32,7 +32,7 @@ import { DIGEST_UNLOCK } from "@/data/digest-unlock";
 import { resolveUnlock, withLeadView, type UnlockView, type UnlockRow } from "@/lib/digest-unlock";
 import { DIGEST_CADENCE } from "@/data/digest-cadence";
 import { groupFirstAt, leadAgeHours } from "@/lib/lead-pick";
-import { LEAD_HELD_TEXT, leadView, nextCrawlSlotHHMM, type LeadView } from "@/lib/lead-view";
+import { LEAD_HELD_TEXT, leadHeldText, leadView, nextCrawlSlotHHMM, type LeadView } from "@/lib/lead-view";
 import { IST_LABEL, istDateTime, istHHMM, istHHMMSS, istMMDD } from "@/lib/ist-time";
 import { useCheckedAt, useNow } from "@/lib/use-now";
 import { archiveFoldLabel } from "@/lib/archive-fold";
@@ -499,8 +499,7 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
             id="desk-ingest-line"
             className={`desk-ingest-line ${ingestOpen ? "block" : "hidden"} font-mono text-kicker uppercase tracking-kicker text-subtle md:block`}
           >
-            ingest · snap {istDateTime(CRAWL_AT)} · pack {istDateTime(packStamp)} {IST_LABEL} · {DIGEST_CADENCE.pack_id} · lead{" "}
-            <LeadInline view={leadV} />
+            ingest · snap {istDateTime(CRAWL_AT)} · pack {istDateTime(packStamp)} {IST_LABEL} · {DIGEST_CADENCE.pack_id}
           </p>
           <div className="desk-ticker" aria-label="What changed">
             <span className="desk-ticker-label">Δ LIVE</span>
@@ -785,7 +784,7 @@ function LeadInline({ view }: { view: LeadView }) {
   if (view.held)
     return (
       <span className="desk-lead-headline desk-lead-held" data-lead-held="1" title={view.carried ? `held · last lead: ${view.carried}` : "held"}>
-        {LEAD_HELD_TEXT}
+        {leadHeldText(view.reason)}
       </span>
     );
   return (
@@ -874,7 +873,9 @@ function Brief() {
             {lead
               ? `${lead.reason === "seed" ? "cycle 003 seed" : "daily pick"} · ${lead.date}`
               : staleLead
-                ? `held · last pick ${LEAD_YESTERDAY?.date ?? staleLead.date}`
+                ? lv.reason === "stale"
+                  ? `held · lead ${staleLead.date}`
+                  : `held · last pick ${LEAD_YESTERDAY?.date ?? staleLead.date}`
                 : "no pick yet"}
           </span>
         </div>
@@ -889,8 +890,8 @@ function Brief() {
                 {LEAD_HELD_TEXT} · <span className="whitespace-nowrap">next try {nextTry}</span>
               </p>
             ) : (
-              <p className="sage-lead-held font-mono text-kicker uppercase tracking-kicker tabular-nums" data-lead-stale="1">
-                HELD · lead older than 24h ({leadAge != null ? `${Math.floor(leadAge)}h` : "—"}) · <span className="whitespace-nowrap">next try {nextTry}</span>
+              <p className="sage-lead-held font-mono text-kicker uppercase tracking-kicker tabular-nums" data-lead-stale="1" title={leadAge != null ? `lead ${Math.floor(leadAge)}h old` : undefined}>
+                {leadHeldText("stale")} · <span className="whitespace-nowrap">next try {nextTry}</span>
               </p>
             )}
             {staleLead.headline ? (
@@ -957,7 +958,8 @@ function Brief() {
             }}
           >
             <span className="font-mono text-kicker uppercase tracking-kicker">Yesterday · {LEAD_YESTERDAY.date}</span>{" "}
-            <span className="line-clamp-1 sage-headline">{LEAD_YESTERDAY.headline}</span>
+            {/* <768: full width under the date, clamped to 2 — a list-row clamp by rule (data-row-clamp), not a lead headline. */}
+            <span className="sage-take-yesterday-headline line-clamp-1 sage-headline" data-row-clamp="yesterday">{LEAD_YESTERDAY.headline}</span>
             <span className="sage-take-yesterday-go font-mono text-kicker uppercase tracking-kicker">→ log</span>
           </a>
         )}
@@ -2234,10 +2236,8 @@ function Voice() {
     () => ({
       take: lead.title,
       why: lead.take,
-      move:
-        unlock.rows.length > 0
-          ? unlock.rows.map((r) => r.title).join(" · ")
-          : lead.move,
+      // One line: the lead's own MOVE — the rows are already listed below, never repeated here.
+      move: lead.move,
     }),
     [lead, unlock.rows],
   );
@@ -2405,7 +2405,7 @@ function Voice() {
             <dt className={cn(beat === "why" && "text-amber")}>why</dt>
             <dd className={cn("text-muted", beat === "why" && "text-phosphor-bright")}>{script.why}</dd>
             <dt className={cn(beat === "move" && "sage-signal")}>move</dt>
-            <dd className={cn("sage-signal", beat === "move" && "text-phosphor-bright")}>{script.move}</dd>
+            <dd className={cn("sage-signal truncate", beat === "move" && "text-phosphor-bright")} data-row-clamp="voice-move" data-voice-move="1" title={script.move}>{script.move}</dd>
           </dl>
           {unlock.rows.length ? (
             <ul className="mt-3 max-w-prose space-y-1 border-t border-line pt-2 text-sm text-muted" data-voice-rows="1">

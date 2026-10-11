@@ -7,13 +7,13 @@ import { CYCLE, type Pin } from "@/data/cycle";
 import { DIGEST_LEAD, type DigestItem } from "@/data/digest-pack-lead";
 import type { LeadEntry } from "@/lib/lead-pick";
 import type { WireRow } from "@/lib/wire";
-import { LEAD_HELD_TEXT } from "@/lib/lead-view";
+import { LEAD_HELD_TEXT, LEAD_STALE_TEXT } from "@/lib/lead-view";
 
 export const UNLOCK_CYCLE_ID = "003" as const;
 export const ARCHIVE_KICKER = "archive · 003";
 export const HELD_KICKER = "HELD";
 /** Pass A1 — runtime HELD kicker (same lead-view source as the Brief plate). Titles unchanged. */
-export const STALE_HELD_KICKER = "HELD · lead older than 24h";
+export const STALE_HELD_KICKER = LEAD_STALE_TEXT;
 
 export type UnlockStamp = "live" | "held" | "archive";
 

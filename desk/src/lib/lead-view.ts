@@ -7,6 +7,13 @@
 import { leadIsStale } from "@/lib/lead-pick";
 
 export const LEAD_HELD_TEXT = "HELD · no qualifying story";
+/** Stale day (lead's earliest item ≥24h old): not "no qualifying story" — the story just aged out. */
+export const LEAD_STALE_TEXT = "HELD · lead >24h old";
+
+/** HELD label by reason: stale → LEAD_STALE_TEXT, otherwise (HELD pick / no pick) LEAD_HELD_TEXT. */
+export function leadHeldText(reason: "held" | "stale" | null): string {
+  return reason === "stale" ? LEAD_STALE_TEXT : LEAD_HELD_TEXT;
+}
 
 export type LeadPickData = { held: boolean; today: { headline: string; cluster_id?: string | null } | null; firstAt: string | null };
 

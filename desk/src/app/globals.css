@@ -305,7 +305,7 @@ body {
   }
 
   .sage-deny {
-    color: var(--destructive);
+    color: var(--pip-amber);
   }
 
   .sage-stale {
@@ -2558,6 +2558,25 @@ a.story-drawer-rowlink:focus-visible .story-drawer-open {
   color: var(--phosphor);
   text-shadow: none;
   font-weight: 500;
+}
+/* Phase 2 · <768: Yesterday headline drops to its own full-width line under the date, clamped to 2. */
+@media (max-width: 767px) {
+  .brief-v5 .sage-take-yesterday:not(.sage-take-yesterday-goonly) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: 0.5rem;
+  }
+  .brief-v5 .sage-take-yesterday .sage-take-yesterday-headline {
+    order: 3;
+    flex: 1 0 100%;
+    min-width: 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+  }
 }
 .brief-v5 .sage-take-held .sage-take-yesterday {
   margin-top: 0.5rem;

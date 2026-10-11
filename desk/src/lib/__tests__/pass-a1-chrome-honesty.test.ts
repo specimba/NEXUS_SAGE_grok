@@ -137,7 +137,7 @@ describe("Pass A1 chrome honesty", () => {
     // Desk wires Digest + Voice through the same leadViewAt as Brief.
     expect(deskSrc).toContain("const lv = leadViewAt(useNow());");
     expect(deskSrc.match(/const unlock = useLeadAwareUnlock\(\);/g)?.length).toBe(2);
-    expect(STALE_HELD_KICKER).toBe("HELD · lead older than 24h");
-    expect(deskSrc).toContain("HELD · lead older than 24h ("); // Brief plate wording matches
+    expect(STALE_HELD_KICKER).toBe("HELD · lead >24h old");
+    expect(deskSrc).toContain("{leadHeldText(\"stale\")} ·"); // Brief plate wording matches (same LEAD_STALE_TEXT)
   });
 });
