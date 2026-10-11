@@ -7,64 +7,64 @@ import type { DigestUnlockSnapshot } from "@/lib/digest-unlock";
 export const DIGEST_UNLOCK: DigestUnlockSnapshot = {
   "schema": 1,
   "cycleId": "003",
-  "pickDate": "2026-10-10",
-  "frozenAt": "2026-10-10T15:14:16.526Z",
-  "leadId": "cl:hn:50030776",
+  "pickDate": "2026-10-11",
+  "frozenAt": "2026-10-11T03:20:28.246Z",
+  "leadId": "cl:hn:50035886",
   "lead": {
-    "id": "cl:hn:50030776",
+    "id": "cl:hn:50035886",
     "kind": "lead",
-    "title": "The hazy OpenAI growth metric driving Wall Street",
-    "take": "2 SRC · sig 4 · pick 2026-10-10",
+    "title": "Nvidia in talks to acquire US 'open' model startup Reflection AI",
+    "take": "4 SRC · sig 131 · pick 2026-10-11",
     "why": "LEAD_TODAY · picked · frozen at daily pick",
     "move": "Digest/Voice follow Brief lead · cycle label 003",
-    "url": "https://www.ft.com/content/62653892-2333-4953-a8d5-cfd760ae3257",
-    "sources": 2,
-    "sig": 4
+    "url": "https://www.ft.com/content/052610c5-22b4-4dd4-932e-b7f9f0628b6a",
+    "sources": 4,
+    "sig": 131
   },
   "rows": [
     {
-      "id": "cl:hn:50008187",
+      "id": "cl:hn:50027118",
       "kind": "companion",
-      "title": "OpenAI annualised revenues $20B less than previously signalled",
-      "take": "6 SRC · sig 425",
+      "title": "Anthropic AI model submits false tip on unsolved Philly murder, police say",
+      "take": "16 SRC · sig 208",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
-      "url": "https://www.cnbc.com/2026/10/08/open-ai-revenue-nvidia-oracle-coreweave.html",
-      "sources": 6,
-      "sig": 425
+      "url": "https://www.nbcphiladelphia.com/news/local/anthropic-ai-model-submits-false-tip-on-unsolved-philly-murder-police-say/4477051/",
+      "sources": 16,
+      "sig": 208
     },
     {
-      "id": "cl:hn:50013972",
+      "id": "cl:hn:50017324",
       "kind": "rest",
-      "title": "OpenAI Safety Researchers Fired",
-      "take": "4 SRC · sig 5",
+      "title": "Anthropic bans users from abusive or cruel behavior towards Claude",
+      "take": "3 SRC · sig 9",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
-      "url": "https://twitter.com/balesni/status/2108262814003687745",
-      "sources": 4,
-      "sig": 5
+      "url": "https://www.theguardian.com/technology/2026/oct/08/anthropic-bans-abusive-behavior-claude",
+      "sources": 3,
+      "sig": 9
     },
     {
-      "id": "cl:hn:50023260",
+      "id": "cl:hn:50038865",
       "kind": "rest",
-      "title": "'Breathtaking,' 'Devastating': Mathematics Reels After New OpenAI Release",
-      "take": "2 SRC · sig 25",
+      "title": "Anthropic asks users to stop being mean to Claude",
+      "take": "2 SRC · sig 44",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
-      "url": "https://www.nytimes.com/2026/10/08/science/mathematicians-respond-openai-release.html",
+      "url": "https://www.theregister.com/ai-and-ml/2026/10/09/anthropic-asks-users-to-stop-being-mean-to-claude/5302218",
       "sources": 2,
-      "sig": 25
+      "sig": 44
     },
     {
-      "id": "cl:rss:huggingface:88e871d5a8d26738",
+      "id": "cl:hn:50029330",
       "kind": "rest",
-      "title": "Multimodal open d1 decision models for the edge",
-      "take": "2 SRC · sig 1",
+      "title": "Anthropic Agents Tried to Fill Out Visa Forms on State Dept. Website",
+      "take": "2 SRC · sig 33",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
-      "url": "https://huggingface.co/blog/LiquidAI/open-d1",
+      "url": "https://www.nytimes.com/2026/10/09/technology/anthropic-rogue-ai-agents.html",
       "sources": 2,
-      "sig": 1
+      "sig": 33
     }
   ]
 } as const;

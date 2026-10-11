@@ -1,41 +1,41 @@
 # SAGE digest pack
-compiled 2026-10-10T18:21:45.200Z
-source free-ingest digest refresh 2026-10-10T18:21:45.200Z · cycle 003 · lead hf-incident · unlock:live
+compiled 2026-10-11T03:21:09.770Z
+source free-ingest digest refresh 2026-10-11T03:21:09.770Z · cycle 003 · lead hf-incident · unlock:live
 lead_policy unlock — no new HF primary 03 Sep
 
 ## Lead
-The hazy OpenAI growth metric driving Wall Street [high]
-2 SRC · sig 4 · pick 2026-10-10
+Nvidia in talks to acquire US 'open' model startup Reflection AI [high]
+4 SRC · sig 131 · pick 2026-10-11
 MOVE Digest/Voice follow Brief lead · cycle label 003
 UNLOCK IF Next 06:11 Istanbul pick
 
 ## Files
-### [lead / other / high] The hazy OpenAI growth metric driving Wall Street
-2 SRC · sig 4 · pick 2026-10-10
+### [lead / other / high] Nvidia in talks to acquire US 'open' model startup Reflection AI
+4 SRC · sig 131 · pick 2026-10-11
 - stamp live
-- frozen 2026-10-10T15:14:16.526Z
-- pick 2026-10-10
+- frozen 2026-10-11T03:20:28.246Z
+- pick 2026-10-11
 1. Follow LEAD_TODAY · never invent
 2. Cycle label stays 003
 Done when: Digest lead equals Brief LEAD_TODAY title
 
-### [companion / other / medium] OpenAI annualised revenues $20B less than previously signalled
-6 SRC · sig 425
-- 6 SRC
+### [companion / other / medium] Anthropic AI model submits false tip on unsolved Philly murder, police say
+16 SRC · sig 208
+- 16 SRC
 Done when: Listed under Digest lead
 
-### [rest / other / medium] OpenAI Safety Researchers Fired
-4 SRC · sig 5
-- 4 SRC
+### [rest / other / medium] Anthropic bans users from abusive or cruel behavior towards Claude
+3 SRC · sig 9
+- 3 SRC
 Done when: Listed under Digest lead
 
-### [rest / other / medium] 'Breathtaking,' 'Devastating': Mathematics Reels After New OpenAI Release
-2 SRC · sig 25
+### [rest / other / medium] Anthropic asks users to stop being mean to Claude
+2 SRC · sig 44
 - 2 SRC
 Done when: Listed under Digest lead
 
-### [rest / other / medium] Multimodal open d1 decision models for the edge
-2 SRC · sig 1
+### [rest / other / medium] Anthropic Agents Tried to Fill Out Visa Forms on State Dept. Website
+2 SRC · sig 33
 - 2 SRC
 Done when: Listed under Digest lead
 

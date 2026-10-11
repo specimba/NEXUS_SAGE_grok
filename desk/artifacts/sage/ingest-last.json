@@ -2,32 +2,32 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-10T23:12:12Z",
+  "stamped_at": "2026-10-11T03:20:06Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 274,
+      "duration_ms": 201,
       "paused_until": null,
       "reason": null
     },
     {
       "id": "arxiv",
       "label": "arXiv",
-      "status": "ok",
-      "rows": 29,
-      "duration_ms": 3246,
+      "status": "timeout",
+      "rows": 25,
+      "duration_ms": 20001,
       "paused_until": null,
-      "reason": null
+      "reason": "timeout after 20000ms budget · last good: 20 cached enrich + 5 kept shelf"
     },
     {
       "id": "openalex",
       "label": "OpenAlex",
       "status": "ok",
-      "rows": 3,
-      "duration_ms": 2,
+      "rows": 4,
+      "duration_ms": 512,
       "paused_until": null,
       "reason": null
     },
@@ -35,8 +35,8 @@
       "id": "crossref",
       "label": "Crossref",
       "status": "ok",
-      "rows": 0,
-      "duration_ms": 1,
+      "rows": 1,
+      "duration_ms": 321,
       "paused_until": null,
       "reason": null
     },
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 56,
-      "duration_ms": 8535,
+      "rows": 62,
+      "duration_ms": 8452,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 579,
+      "duration_ms": 17664,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 269,
+      "duration_ms": 4292,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 38,
-      "duration_ms": 269,
+      "rows": 51,
+      "duration_ms": 6475,
       "paused_until": null,
       "reason": null
     },
@@ -80,8 +80,8 @@
       "id": "github",
       "label": "GitHub",
       "status": "ok",
-      "rows": 2,
-      "duration_ms": 269,
+      "rows": 0,
+      "duration_ms": 343,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 269,
+      "duration_ms": 2443,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 13713,
-    "sources_wall_ms": 8536,
-    "papers_lane_ms": 3527,
-    "slowest_source_ms": 8535,
+    "sources_ms": 60704,
+    "sources_wall_ms": 21053,
+    "papers_lane_ms": 21049,
+    "slowest_source_ms": 20001,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -113,62 +113,211 @@
       "github": 25000,
       "wikidata": 25000
     },
-    "timed_out": [],
-    "wall_ms": 8827,
-    "startup_ms": 42,
-    "main_ms": 8840
+    "timed_out": [
+      "arxiv"
+    ],
+    "wall_ms": 21596,
+    "startup_ms": 74,
+    "main_ms": 21619
   },
-  "multi_source_independent": 7,
+  "multi_source_independent": 8,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 7,
+    "multi_source_independent": 8,
     "multi_source_raw": 9,
-    "self_reposts": 2,
-    "items_in": 236,
-    "clusters_out": 216,
-    "collapsed": 20,
-    "multi_source": 7,
-    "multi_member": 15,
+    "self_reposts": 1,
+    "items_in": 255,
+    "clusters_out": 217,
+    "collapsed": 38,
+    "multi_source": 8,
+    "multi_member": 10,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 7,
+    "new_items": 67,
     "per_source": {
-      "hn-algolia": 56,
+      "hn-algolia": 62,
       "rss-lab": 104,
       "rss-security": 28,
-      "gnews-rss": 38,
+      "gnews-rss": 51,
       "gmail-news": 10
     },
     "multi_source_clusters": [
       {
-        "title": "The hazy OpenAI growth metric driving Wall Street",
+        "title": "Anthropic AI model submits false tip on unsolved Philly murder, police say",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 2,
+        "size": 23,
         "score": 1,
         "members": [
           {
-            "id": "hn:50030776",
+            "id": "hn:50027118",
             "source": "hn-algolia",
-            "title": "The hazy OpenAI growth metric driving Wall Street",
-            "at": "2026-10-10T08:07:08Z",
+            "title": "Anthropic AI model submits false tip on unsolved Philly murder, police say",
+            "at": "2026-10-09T22:00:35Z",
             "publisher": null
           },
           {
-            "id": "gnews:81ccc2d66926ba82",
+            "id": "hn:50025713",
+            "source": "hn-algolia",
+            "title": "An Anthropic AI model sent a false homicide tip to the police",
+            "at": "2026-10-09T19:44:59Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:50028121",
+            "source": "hn-algolia",
+            "title": "Anthropic's AI gave Philadelphia police a fake tip about an unsolved homicide",
+            "at": "2026-10-10T00:07:08Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:50031438",
+            "source": "hn-algolia",
+            "title": "Rogue Anthropic AI agent gave police fake tip in unsolved murder case",
+            "at": "2026-10-10T10:23:44Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:50028365",
+            "source": "hn-algolia",
+            "title": "Anthropic Model Submitted a False Homicide Tip to Philadelphia Police",
+            "at": "2026-10-10T00:52:49Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:50039318",
+            "source": "hn-algolia",
+            "title": "Rogue Anthropic AI agent gave police fake tip in unsolved murder case",
+            "at": "2026-10-11T02:41:19Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:fce91fa5ea0c67e2",
             "source": "gnews-rss",
-            "title": "The hazy OpenAI growth metric driving Wall Street - Financial Times",
-            "at": "2026-10-09T20:57:10Z",
-            "publisher": "Financial Times"
+            "title": "Anthropic Reveals Claude AI Model Went Rogue, Submitted Fake Tip To Police Submitted False Tip In Homicide Case - NDTV Profit",
+            "at": "2026-10-11T02:11:17Z",
+            "publisher": "NDTV Profit"
+          },
+          {
+            "id": "gnews:3ac7efee63b0db4d",
+            "source": "gnews-rss",
+            "title": "Anthropic AI Test Sent False Philadelphia Homicide Tip - FindArticles",
+            "at": "2026-10-11T00:22:21Z",
+            "publisher": "FindArticles"
+          },
+          {
+            "id": "gnews:539f5abfe9e21714",
+            "source": "gnews-rss",
+            "title": "Anthropic Claude AI model sends fake homicide tip to Philadelphia police - FOX 7 Austin",
+            "at": "2026-10-11T00:12:36Z",
+            "publisher": "FOX 7 Austin"
+          },
+          {
+            "id": "gnews:4b51e6751269eee3",
+            "source": "gnews-rss",
+            "title": "Anthropic Claude AI model sends fake homicide tip to Philadelphia police - FOX 10 Phoenix",
+            "at": "2026-10-11T00:12:36Z",
+            "publisher": "FOX 10 Phoenix"
+          },
+          {
+            "id": "gnews:b948c99a251b54d3",
+            "source": "gnews-rss",
+            "title": "Anthropic’s AI gave Philadelphia police a fake tip about an unsolved homicide - The Verge",
+            "at": "2026-10-09T21:15:38Z",
+            "publisher": "The Verge"
+          },
+          {
+            "id": "gnews:d9f80cd80d38a68d",
+            "source": "gnews-rss",
+            "title": "Anthropic AI model sent fake homicide tip to Philadelphia police - Quartz",
+            "at": "2026-10-10T23:17:35Z",
+            "publisher": "Quartz"
+          },
+          {
+            "id": "gnews:3c5f7cc80bac4b7e",
+            "source": "gnews-rss",
+            "title": "Anthropic's AI model sent Philadelphia police fake tip about unsolved murder - Sky News",
+            "at": "2026-10-10T09:28:42Z",
+            "publisher": "Sky News"
+          },
+          {
+            "id": "gnews:d4b6720a60ea54fc",
+            "source": "gnews-rss",
+            "title": "Anthropic AI model submitted false tip about unsolved murder, Philadelphia police say - 6abc Philadelphia",
+            "at": "2026-10-10T00:21:43Z",
+            "publisher": "6abc Philadelphia"
+          },
+          {
+            "id": "gnews:2e77b6ec0696fb9a",
+            "source": "gnews-rss",
+            "title": "Anthropic AI model submits false homicide tip to Philadelphia police - Al Jazeera",
+            "at": "2026-10-10T05:04:38Z",
+            "publisher": "Al Jazeera"
+          },
+          {
+            "id": "gnews:af9702405365de6e",
+            "source": "gnews-rss",
+            "title": "Philadelphia police receive false homicide tip from Anthropic AI model - The Hill",
+            "at": "2026-10-10T19:31:00Z",
+            "publisher": "The Hill"
+          },
+          {
+            "id": "gnews:74535efcdf383c82",
+            "source": "gnews-rss",
+            "title": "Rogue Anthropic AI agent gave police fake tip in unsolved murder case - BBC",
+            "at": "2026-10-10T10:06:23Z",
+            "publisher": "BBC"
+          },
+          {
+            "id": "gnews:de1bb3472a7ed2af",
+            "source": "gnews-rss",
+            "title": "Anthropic reports fake police tip in rogue AI cases - Kuwait Times",
+            "at": "2026-10-10T16:50:00Z",
+            "publisher": "Kuwait Times"
+          },
+          {
+            "id": "gnews:6170a76928ae9895",
+            "source": "gnews-rss",
+            "title": "An Anthropic AI model sent a false homicide tip to Philadelphia police - TechCrunch",
+            "at": "2026-10-09T19:36:56Z",
+            "publisher": "TechCrunch"
+          },
+          {
+            "id": "gnews:25bc34f3f09c23fd",
+            "source": "gnews-rss",
+            "title": "Anthropic AI Model Submits False Homicide Tip - GV Wire",
+            "at": "2026-10-10T16:26:56Z",
+            "publisher": "GV Wire"
+          },
+          {
+            "id": "gnews:e04b49aae0b667c9",
+            "source": "gnews-rss",
+            "title": "Anthropic's AI sent false homicide tip to police, filed 20 visa applications - Cybernews",
+            "at": "2026-10-10T16:14:14Z",
+            "publisher": "Cybernews"
+          },
+          {
+            "id": "gnews:7c4f993c39597c60",
+            "source": "gnews-rss",
+            "title": "Anthropic AI model submits false tip on unsolved Philly murder, police say - NBC10 Philadelphia",
+            "at": "2026-10-09T18:09:08Z",
+            "publisher": "NBC10 Philadelphia"
+          },
+          {
+            "id": "gnews:4516f95fc4b666c6",
+            "source": "gnews-rss",
+            "title": "Anthropic’s AI Model Sends False Tip on Unsolved Murder to Philadelphia Police - ForkLog",
+            "at": "2026-10-10T10:52:35Z",
+            "publisher": "ForkLog"
           }
         ]
       },
       {
-        "title": "OpenAI projected to bring in $20B less in revenue than expected",
+        "title": "Anthropic asks users to stop being mean to Claude",
         "sources": [
           "hn-algolia",
           "gnews-rss"
@@ -177,25 +326,146 @@
         "score": 1,
         "members": [
           {
-            "id": "hn:50019173",
+            "id": "hn:50038865",
             "source": "hn-algolia",
-            "title": "OpenAI projected to bring in $20B less in revenue than expected",
-            "at": "2026-10-09T11:48:26Z",
+            "title": "Anthropic asks users to stop being mean to Claude",
+            "at": "2026-10-11T01:17:22Z",
             "publisher": null
           },
           {
-            "id": "gnews:d514771348eeba81",
-            "source": "gnews-rss",
-            "title": "OpenAI projected to bring in $20bn less in revenue than expected - The Guardian",
-            "at": "2026-10-09T08:04:00Z",
-            "publisher": "The Guardian"
+            "id": "hn:50019126",
+            "source": "hn-algolia",
+            "title": "Anthropic asks users to stop being mean to Claude",
+            "at": "2026-10-09T11:43:36Z",
+            "publisher": null
           },
           {
-            "id": "gnews:931f3cb790c2a03a",
+            "id": "gnews:78e7ba8848368f44",
             "source": "gnews-rss",
-            "title": "OpenAI to bring in $20 billion less than previously expected - Mashable",
-            "at": "2026-10-10T07:41:57Z",
-            "publisher": "Mashable"
+            "title": "Anthropic asks users to stop being mean to Claude - The Register",
+            "at": "2026-10-09T10:42:00Z",
+            "publisher": "The Register"
+          }
+        ]
+      },
+      {
+        "title": "Nvidia in talks to acquire US 'open' model startup Reflection AI",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 5,
+        "score": 0.966,
+        "members": [
+          {
+            "id": "hn:50035886",
+            "source": "hn-algolia",
+            "title": "Nvidia in talks to acquire US 'open' model startup Reflection AI",
+            "at": "2026-10-10T18:48:35Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:7ef2ac7c533ca4cc",
+            "source": "gnews-rss",
+            "title": "Nvidia in talks to acquire Reflection AI or increase investment, FT reports By Investing.com - Investing.com UK",
+            "at": "2026-10-10T23:48:00Z",
+            "publisher": "Investing.com UK"
+          },
+          {
+            "id": "gnews:25f3bfa5088aefd8",
+            "source": "gnews-rss",
+            "title": "Nvidia in talks to buy ‘open’ model startup Reflection AI: FT - Seeking Alpha",
+            "at": "2026-10-10T19:12:18Z",
+            "publisher": "Seeking Alpha"
+          },
+          {
+            "id": "gnews:ba5cca9c28d4febe",
+            "source": "gnews-rss",
+            "title": "Nvidia in talks to acquire US ‘open’ model start-up Reflection AI - Financial Times",
+            "at": "2026-10-10T18:14:28Z",
+            "publisher": "Financial Times"
+          },
+          {
+            "id": "gnews:339acfd4ab495ca0",
+            "source": "gnews-rss",
+            "title": "Nvidia in Talks to Buy Open-Model Maker Reflection AI - FourWeekMBA",
+            "at": "2026-10-10T20:37:33Z",
+            "publisher": "FourWeekMBA"
+          }
+        ]
+      },
+      {
+        "title": "Anthropic Agents Tried to Fill Out Visa Forms on State Dept. Website",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:50029330",
+            "source": "hn-algolia",
+            "title": "Anthropic Agents Tried to Fill Out Visa Forms on State Dept. Website",
+            "at": "2026-10-10T03:42:11Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:53fc83f9de5296ec",
+            "source": "gnews-rss",
+            "title": "Anthropic Agents Tried to Fill Out Visa Forms on State Dept. Website - The New York Times",
+            "at": "2026-10-10T18:01:00Z",
+            "publisher": "The New York Times"
+          }
+        ]
+      },
+      {
+        "title": "Microsoft and Anthropic play invoice tennis with startup's $17,600 Claude bill",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:50032330",
+            "source": "hn-algolia",
+            "title": "Microsoft and Anthropic play invoice tennis with startup's $17,600 Claude bill",
+            "at": "2026-10-10T12:36:24Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:88319f69e03e64da",
+            "source": "gnews-rss",
+            "title": "Microsoft and Anthropic play invoice tennis with startup's $17,600 Claude bill - The Register",
+            "at": "2026-10-09T09:46:00Z",
+            "publisher": "The Register"
+          }
+        ]
+      },
+      {
+        "title": "Anthropic can't reliably control its AI agents, cuts internet access",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 0.606,
+        "members": [
+          {
+            "id": "hn:50030778",
+            "source": "hn-algolia",
+            "title": "Anthropic can't reliably control its AI agents, cuts internet access",
+            "at": "2026-10-10T08:07:20Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:b9368d58c20ca167",
+            "source": "gnews-rss",
+            "title": "Anthropic can't reliably control its AI agents. It's cutting off its internal evals from the live internet instead - TechCrunch",
+            "at": "2026-10-10T00:18:32Z",
+            "publisher": "TechCrunch"
           }
         ]
       },
@@ -225,123 +495,41 @@
         ]
       },
       {
-        "title": "'Breathtaking,' 'Devastating': Mathematics reels after new OpenAI release",
+        "title": "Anthropic bans users from abusive or cruel behavior towards Claude",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 2,
+        "size": 4,
         "score": 1,
         "members": [
           {
-            "id": "hn:50023260",
+            "id": "hn:50017324",
             "source": "hn-algolia",
-            "title": "'Breathtaking,' 'Devastating': Mathematics reels after new OpenAI release",
-            "at": "2026-10-09T16:50:01Z",
+            "title": "Anthropic bans users from abusive or cruel behavior towards Claude",
+            "at": "2026-10-09T07:41:00Z",
             "publisher": null
           },
           {
-            "id": "gnews:2b570fdab45dcbcc",
-            "source": "gnews-rss",
-            "title": "‘Breathtaking,’ ‘Devastating’: Mathematics Reels After New OpenAI Release - The New York Times",
-            "at": "2026-10-08T21:53:08Z",
-            "publisher": "The New York Times"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI Safety Researchers Fired",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 5,
-        "score": 0.766,
-        "members": [
-          {
-            "id": "hn:50013972",
+            "id": "hn:50020061",
             "source": "hn-algolia",
-            "title": "OpenAI Safety Researchers Fired",
-            "at": "2026-10-08T23:38:03Z",
+            "title": "Anthropic Usage Policy to prohibit \"abusive or cruel behavior\" toward Claude",
+            "at": "2026-10-09T13:15:35Z",
             "publisher": null
           },
           {
-            "id": "hn:50018635",
-            "source": "hn-algolia",
-            "title": "Fired OpenAI researchers say they were let go for 'prioritising safety'",
-            "at": "2026-10-09T10:41:23Z",
-            "publisher": null
+            "id": "gnews:16d51fca674be6ef",
+            "source": "gnews-rss",
+            "title": "Anthropic bans users from ‘needless abusive or cruel behavior’ towards Claude - The Guardian",
+            "at": "2026-10-09T13:43:00Z",
+            "publisher": "The Guardian"
           },
           {
-            "id": "gnews:7fcdd92b1571a7de",
+            "id": "gnews:e97d32149fdd0482",
             "source": "gnews-rss",
-            "title": "Fired OpenAI safety researchers say they were pushed out over ‘suspicious’ circumstances - CNN",
-            "at": "2026-10-08T23:22:50Z",
-            "publisher": "CNN"
-          },
-          {
-            "id": "gnews:d9d063fec0c2c966",
-            "source": "gnews-rss",
-            "title": "OpenAI defends firing AI safety researchers over alleged \"breach of trust\" - CBS News",
-            "at": "2026-10-09T16:21:00Z",
+            "title": "Anthropic bars \"abusive or cruel\" behavior toward its Claude AI model - CBS News",
+            "at": "2026-10-09T14:59:48Z",
             "publisher": "CBS News"
-          },
-          {
-            "id": "gnews:cf1f638aae520bef",
-            "source": "gnews-rss",
-            "title": "Fired OpenAI safety researchers dispute misconduct claims, warn of chilling effect - TechCrunch",
-            "at": "2026-10-08T20:04:26Z",
-            "publisher": "TechCrunch"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI withdraws 3 preprints after releasing 722 manuscripts",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 0.713,
-        "members": [
-          {
-            "id": "hn:50019947",
-            "source": "hn-algolia",
-            "title": "OpenAI withdraws 3 preprints after releasing 722 manuscripts",
-            "at": "2026-10-09T13:06:37Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:13d67db82a7ab6dc",
-            "source": "gnews-rss",
-            "title": "OpenAI withdraws three preprints a day after releasing 722 manuscripts on unsolved math problems - Retraction Watch",
-            "at": "2026-10-08T22:20:59Z",
-            "publisher": "Retraction Watch"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI defends decision to fire researchers",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 0.794,
-        "members": [
-          {
-            "id": "hn:50018110",
-            "source": "hn-algolia",
-            "title": "OpenAI defends decision to fire researchers",
-            "at": "2026-10-09T09:25:13Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:1d2cabebfdfecffd",
-            "source": "gnews-rss",
-            "title": "OpenAI defends decision to fire researchers: 'These decisions were not about raising safety concerns or speaking out' - CNBC",
-            "at": "2026-10-09T07:23:48Z",
-            "publisher": "CNBC"
           }
         ]
       }
@@ -363,23 +551,6 @@
             "title": "Asana cuts model costs 76x in browser tests with GPT-6.1 Sol - OpenAI"
           }
         ]
-      },
-      {
-        "title": "LegalOn halves Codex costs while maintaining development speed",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:18a3f4aa9907a956",
-            "publisher": "OpenAI",
-            "title": "LegalOn halves Codex costs while maintaining development speed - OpenAI"
-          }
-        ]
       }
     ],
     "ai_relevance": {
@@ -397,34 +568,30 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "Engadget",
-          "title": "This Android Auto Problem Is Affecting Calls On Foldable Phones - Engadget"
+          "publisher": "The Straits Times",
+          "title": "Nvidia discusses boosting Reflection investment, computing deal - The Straits Times"
         },
         {
-          "publisher": "NDTV",
-          "title": "Join Google Without Any Degree With Pay Up To Rs 11 Crore. Check Details - NDTV"
+          "publisher": "The Globe and Mail",
+          "title": "Cerebras Is About as Big as Nvidia's Data Center Business Was Nearly a Decade Ago. The Similarities Mostly End There. - The Globe and Mail"
         },
         {
-          "publisher": "Substack",
-          "title": "Hurricane Simon Update: Saturday Oct 10th - Substack"
+          "publisher": "The Motley Fool",
+          "title": "Cerebras Is About as Big as Nvidia's Data Center Business Was Nearly a Decade Ago. The Similarities Mostly End There. - The Motley Fool"
         },
         {
-          "publisher": "shattered.io",
-          "title": "Astra Paused 12 Days, CrowdStrike Rejects Slowdown [2026] - shattered.io"
-        },
-        {
-          "publisher": "The Economic Times",
-          "title": "Horoscope Today, October 11, 2026: Navratri Begins as Aries Finds Courage, Taurus Seeks Stability and Gemi - The Economic Times"
+          "publisher": "FourWeekMBA",
+          "title": "Nvidia’s 10-Q Lists $530B in Commitments and Guarantees - FourWeekMBA"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 5
+      "hn_dropped": 6
     },
     "gnews_near_misses": [
       {
         "score": 1,
         "blocked": "time-window",
-        "hours_apart": 236.2,
+        "hours_apart": 245.3,
         "a": {
           "id": "rss:deepmind:ce56aa83d0064ef1",
           "source": "rss-lab",
@@ -435,7 +602,7 @@
           "id": "gnews:05cfd65803121a1e",
           "source": "gnews-rss",
           "title": "Gemini 4 Argon: our next era of frontier intelligence - blog.google",
-          "at": "2026-10-10T16:13:51Z"
+          "at": "2026-10-11T01:18:37Z"
         },
         "shared": [
           "gemini",
@@ -448,161 +615,184 @@
         ]
       },
       {
-        "score": 0.499,
-        "blocked": "below-threshold",
-        "hours_apart": 7.8,
+        "score": 0.802,
+        "blocked": "time-window",
+        "hours_apart": 27.5,
         "a": {
-          "id": "hn:50013972",
+          "id": "hn:50025713",
           "source": "hn-algolia",
-          "title": "OpenAI Safety Researchers Fired",
-          "at": "2026-10-08T23:38:03Z"
+          "title": "An Anthropic AI model sent a false homicide tip to the police",
+          "at": "2026-10-09T19:44:59Z"
         },
         "b": {
-          "id": "gnews:1d2cabebfdfecffd",
+          "id": "gnews:d9f80cd80d38a68d",
           "source": "gnews-rss",
-          "title": "OpenAI defends decision to fire researchers: 'These decisions were not about raising safety concerns or speaking out' - CNBC",
-          "at": "2026-10-09T07:23:48Z"
+          "title": "Anthropic AI model sent fake homicide tip to Philadelphia police - Quartz",
+          "at": "2026-10-10T23:17:35Z"
         },
         "shared": [
-          "openai",
-          "safety",
-          "researcher"
+          "anthropic",
+          "ai",
+          "model",
+          "sent",
+          "homicid",
+          "tip",
+          "polic"
         ]
       },
       {
-        "score": 0.488,
-        "blocked": "below-threshold",
-        "hours_apart": 17.7,
+        "score": 0.716,
+        "blocked": "time-window",
+        "hours_apart": 28.6,
         "a": {
-          "id": "hn:50013972",
+          "id": "hn:50025713",
           "source": "hn-algolia",
-          "title": "OpenAI Safety Researchers Fired",
-          "at": "2026-10-08T23:38:03Z"
+          "title": "An Anthropic AI model sent a false homicide tip to the police",
+          "at": "2026-10-09T19:44:59Z"
         },
         "b": {
-          "id": "gnews:7a6017133fa647e6",
+          "id": "gnews:3ac7efee63b0db4d",
           "source": "gnews-rss",
-          "title": "Controversy swirls over ‘abrupt’ firing of OpenAI safety team members involved in the Hugging Face hack investigation - Fortune",
-          "at": "2026-10-09T17:21:00Z"
+          "title": "Anthropic AI Test Sent False Philadelphia Homicide Tip - FindArticles",
+          "at": "2026-10-11T00:22:21Z"
         },
         "shared": [
-          "openai",
-          "safety",
-          "fir"
+          "anthropic",
+          "ai",
+          "sent",
+          "fals",
+          "homicid",
+          "tip"
         ]
       },
       {
-        "score": 0.441,
-        "blocked": "below-threshold",
-        "hours_apart": 6.9,
+        "score": 0.684,
+        "blocked": "time-window",
+        "hours_apart": 25.3,
         "a": {
-          "id": "hn:50018110",
+          "id": "hn:50028365",
           "source": "hn-algolia",
-          "title": "OpenAI defends decision to fire researchers",
-          "at": "2026-10-09T09:25:13Z"
+          "title": "Anthropic Model Submitted a False Homicide Tip to Philadelphia Police",
+          "at": "2026-10-10T00:52:49Z"
         },
         "b": {
-          "id": "gnews:d9d063fec0c2c966",
+          "id": "gnews:fce91fa5ea0c67e2",
           "source": "gnews-rss",
-          "title": "OpenAI defends firing AI safety researchers over alleged \"breach of trust\" - CBS News",
-          "at": "2026-10-09T16:21:00Z"
+          "title": "Anthropic Reveals Claude AI Model Went Rogue, Submitted Fake Tip To Police Submitted False Tip In Homicide Case - NDTV Profit",
+          "at": "2026-10-11T02:11:17Z"
         },
         "shared": [
-          "openai",
-          "defend",
-          "researcher"
+          "anthropic",
+          "model",
+          "submitt",
+          "fals",
+          "homicid",
+          "tip",
+          "polic"
         ]
       },
       {
-        "score": 0.404,
-        "blocked": "below-threshold",
-        "hours_apart": 11.3,
+        "score": 0.673,
+        "blocked": "time-window",
+        "hours_apart": 29.4,
         "a": {
-          "id": "hn:50018635",
+          "id": "hn:50039318",
           "source": "hn-algolia",
-          "title": "Fired OpenAI researchers say they were let go for 'prioritising safety'",
-          "at": "2026-10-09T10:41:23Z"
+          "title": "Rogue Anthropic AI agent gave police fake tip in unsolved murder case",
+          "at": "2026-10-11T02:41:19Z"
         },
         "b": {
-          "id": "gnews:7fcdd92b1571a7de",
+          "id": "gnews:b948c99a251b54d3",
           "source": "gnews-rss",
-          "title": "Fired OpenAI safety researchers say they were pushed out over ‘suspicious’ circumstances - CNN",
-          "at": "2026-10-08T23:22:50Z"
+          "title": "Anthropic’s AI gave Philadelphia police a fake tip about an unsolved homicide - The Verge",
+          "at": "2026-10-09T21:15:38Z"
         },
         "shared": [
-          "fir",
-          "openai",
-          "researcher",
-          "safety"
+          "anthropic",
+          "ai",
+          "gave",
+          "polic",
+          "fake",
+          "tip",
+          "unsolv"
         ]
       },
       {
-        "score": 0.388,
-        "blocked": "below-threshold",
-        "hours_apart": 5.7,
+        "score": 0.654,
+        "blocked": "time-window",
+        "hours_apart": 24.1,
         "a": {
-          "id": "hn:50018635",
+          "id": "hn:50028121",
           "source": "hn-algolia",
-          "title": "Fired OpenAI researchers say they were let go for 'prioritising safety'",
-          "at": "2026-10-09T10:41:23Z"
+          "title": "Anthropic's AI gave Philadelphia police a fake tip about an unsolved homicide",
+          "at": "2026-10-10T00:07:08Z"
         },
         "b": {
-          "id": "gnews:d9d063fec0c2c966",
+          "id": "gnews:539f5abfe9e21714",
           "source": "gnews-rss",
-          "title": "OpenAI defends firing AI safety researchers over alleged \"breach of trust\" - CBS News",
-          "at": "2026-10-09T16:21:00Z"
+          "title": "Anthropic Claude AI model sends fake homicide tip to Philadelphia police - FOX 7 Austin",
+          "at": "2026-10-11T00:12:36Z"
         },
         "shared": [
-          "fir",
-          "openai",
-          "researcher",
-          "safety"
+          "anthropic",
+          "ai",
+          "philadelphia",
+          "polic",
+          "fake",
+          "tip",
+          "homicid"
         ]
       },
       {
-        "score": 0.37,
-        "blocked": "below-threshold",
-        "hours_apart": 14.6,
+        "score": 0.654,
+        "blocked": "time-window",
+        "hours_apart": 24.1,
         "a": {
-          "id": "hn:50018635",
+          "id": "hn:50028121",
           "source": "hn-algolia",
-          "title": "Fired OpenAI researchers say they were let go for 'prioritising safety'",
-          "at": "2026-10-09T10:41:23Z"
+          "title": "Anthropic's AI gave Philadelphia police a fake tip about an unsolved homicide",
+          "at": "2026-10-10T00:07:08Z"
         },
         "b": {
-          "id": "gnews:cf1f638aae520bef",
+          "id": "gnews:4b51e6751269eee3",
           "source": "gnews-rss",
-          "title": "Fired OpenAI safety researchers dispute misconduct claims, warn of chilling effect - TechCrunch",
-          "at": "2026-10-08T20:04:26Z"
+          "title": "Anthropic Claude AI model sends fake homicide tip to Philadelphia police - FOX 10 Phoenix",
+          "at": "2026-10-11T00:12:36Z"
         },
         "shared": [
-          "fir",
-          "openai",
-          "researcher",
-          "safety"
+          "anthropic",
+          "ai",
+          "philadelphia",
+          "polic",
+          "fake",
+          "tip",
+          "homicid"
         ]
       },
       {
-        "score": 0.363,
-        "blocked": "below-threshold",
-        "hours_apart": 2.6,
+        "score": 0.619,
+        "blocked": "time-window",
+        "hours_apart": 30.4,
         "a": {
-          "id": "hn:50018350",
+          "id": "hn:50025713",
           "source": "hn-algolia",
-          "title": "OpenAI fires three safety researchers for \"mishandling research information\"",
-          "at": "2026-10-09T10:00:26Z"
+          "title": "An Anthropic AI model sent a false homicide tip to the police",
+          "at": "2026-10-09T19:44:59Z"
         },
         "b": {
-          "id": "gnews:1d2cabebfdfecffd",
+          "id": "gnews:fce91fa5ea0c67e2",
           "source": "gnews-rss",
-          "title": "OpenAI defends decision to fire researchers: 'These decisions were not about raising safety concerns or speaking out' - CNBC",
-          "at": "2026-10-09T07:23:48Z"
+          "title": "Anthropic Reveals Claude AI Model Went Rogue, Submitted Fake Tip To Police Submitted False Tip In Homicide Case - NDTV Profit",
+          "at": "2026-10-11T02:11:17Z"
         },
         "shared": [
-          "openai",
-          "fire",
-          "safety",
-          "researcher"
+          "anthropic",
+          "ai",
+          "model",
+          "fals",
+          "homicid",
+          "tip",
+          "polic"
         ]
       }
     ],
@@ -610,7 +800,7 @@
       {
         "score": 1,
         "blocked": "time-window",
-        "hours_apart": 236.2,
+        "hours_apart": 245.3,
         "a": {
           "id": "rss:deepmind:ce56aa83d0064ef1",
           "source": "rss-lab",
@@ -621,7 +811,7 @@
           "id": "gnews:05cfd65803121a1e",
           "source": "gnews-rss",
           "title": "Gemini 4 Argon: our next era of frontier intelligence - blog.google",
-          "at": "2026-10-10T16:13:51Z"
+          "at": "2026-10-11T01:18:37Z"
         },
         "shared": [
           "gemini",
@@ -634,7 +824,7 @@
         ]
       },
       {
-        "score": 0.986,
+        "score": 0.988,
         "blocked": "time-window",
         "hours_apart": 75.6,
         "a": {
@@ -658,137 +848,158 @@
         ]
       },
       {
-        "score": 0.499,
-        "blocked": "below-threshold",
-        "hours_apart": 7.8,
-        "a": {
-          "id": "hn:50013972",
-          "source": "hn-algolia",
-          "title": "OpenAI Safety Researchers Fired",
-          "at": "2026-10-08T23:38:03Z"
-        },
-        "b": {
-          "id": "gnews:1d2cabebfdfecffd",
-          "source": "gnews-rss",
-          "title": "OpenAI defends decision to fire researchers: 'These decisions were not about raising safety concerns or speaking out' - CNBC",
-          "at": "2026-10-09T07:23:48Z"
-        },
-        "shared": [
-          "openai",
-          "safety",
-          "researcher"
-        ]
-      },
-      {
-        "score": 0.488,
-        "blocked": "below-threshold",
-        "hours_apart": 17.7,
-        "a": {
-          "id": "hn:50013972",
-          "source": "hn-algolia",
-          "title": "OpenAI Safety Researchers Fired",
-          "at": "2026-10-08T23:38:03Z"
-        },
-        "b": {
-          "id": "gnews:7a6017133fa647e6",
-          "source": "gnews-rss",
-          "title": "Controversy swirls over ‘abrupt’ firing of OpenAI safety team members involved in the Hugging Face hack investigation - Fortune",
-          "at": "2026-10-09T17:21:00Z"
-        },
-        "shared": [
-          "openai",
-          "safety",
-          "fir"
-        ]
-      },
-      {
-        "score": 0.461,
-        "blocked": "thin-overlap",
-        "hours_apart": 90.4,
-        "a": {
-          "id": "hn:50030893",
-          "source": "hn-algolia",
-          "title": "OpenAI's New ChatGPT Watermark Breaks If You Edit One Word in Four",
-          "at": "2026-10-10T08:32:37Z"
-        },
-        "b": {
-          "id": "gmail:1a1118c601f1cb6a",
-          "source": "gmail-news",
-          "title": "OpenAI Starts Watermarking ChatGPT Text",
-          "at": "2026-10-06T14:09:34Z"
-        },
-        "shared": [
-          "openai",
-          "chatgpt",
-          "watermark"
-        ]
-      },
-      {
-        "score": 0.441,
-        "blocked": "below-threshold",
-        "hours_apart": 6.9,
-        "a": {
-          "id": "hn:50018110",
-          "source": "hn-algolia",
-          "title": "OpenAI defends decision to fire researchers",
-          "at": "2026-10-09T09:25:13Z"
-        },
-        "b": {
-          "id": "gnews:d9d063fec0c2c966",
-          "source": "gnews-rss",
-          "title": "OpenAI defends firing AI safety researchers over alleged \"breach of trust\" - CBS News",
-          "at": "2026-10-09T16:21:00Z"
-        },
-        "shared": [
-          "openai",
-          "defend",
-          "researcher"
-        ]
-      },
-      {
-        "score": 0.416,
+        "score": 0.802,
         "blocked": "time-window",
-        "hours_apart": 50.6,
+        "hours_apart": 27.5,
         "a": {
-          "id": "hn:50025515",
+          "id": "hn:50025713",
           "source": "hn-algolia",
-          "title": "Liquid AI d1: open decision models that answer in one forward pass",
-          "at": "2026-10-09T19:27:59Z"
+          "title": "An Anthropic AI model sent a false homicide tip to the police",
+          "at": "2026-10-09T19:44:59Z"
         },
         "b": {
-          "id": "rss:huggingface:88e871d5a8d26738",
-          "source": "rss-lab",
-          "title": "Multimodal open d1 decision models for the edge",
-          "at": "2026-10-07T16:54:33Z"
+          "id": "gnews:d9f80cd80d38a68d",
+          "source": "gnews-rss",
+          "title": "Anthropic AI model sent fake homicide tip to Philadelphia police - Quartz",
+          "at": "2026-10-10T23:17:35Z"
         },
         "shared": [
-          "d1",
-          "open",
-          "decision",
-          "model"
+          "anthropic",
+          "ai",
+          "model",
+          "sent",
+          "homicid",
+          "tip",
+          "polic"
         ]
       },
       {
-        "score": 0.404,
-        "blocked": "below-threshold",
-        "hours_apart": 11.3,
+        "score": 0.716,
+        "blocked": "time-window",
+        "hours_apart": 28.6,
         "a": {
-          "id": "hn:50018635",
+          "id": "hn:50025713",
           "source": "hn-algolia",
-          "title": "Fired OpenAI researchers say they were let go for 'prioritising safety'",
-          "at": "2026-10-09T10:41:23Z"
+          "title": "An Anthropic AI model sent a false homicide tip to the police",
+          "at": "2026-10-09T19:44:59Z"
         },
         "b": {
-          "id": "gnews:7fcdd92b1571a7de",
+          "id": "gnews:3ac7efee63b0db4d",
           "source": "gnews-rss",
-          "title": "Fired OpenAI safety researchers say they were pushed out over ‘suspicious’ circumstances - CNN",
-          "at": "2026-10-08T23:22:50Z"
+          "title": "Anthropic AI Test Sent False Philadelphia Homicide Tip - FindArticles",
+          "at": "2026-10-11T00:22:21Z"
         },
         "shared": [
-          "fir",
-          "openai",
-          "researcher",
-          "safety"
+          "anthropic",
+          "ai",
+          "sent",
+          "fals",
+          "homicid",
+          "tip"
+        ]
+      },
+      {
+        "score": 0.684,
+        "blocked": "time-window",
+        "hours_apart": 25.3,
+        "a": {
+          "id": "hn:50028365",
+          "source": "hn-algolia",
+          "title": "Anthropic Model Submitted a False Homicide Tip to Philadelphia Police",
+          "at": "2026-10-10T00:52:49Z"
+        },
+        "b": {
+          "id": "gnews:fce91fa5ea0c67e2",
+          "source": "gnews-rss",
+          "title": "Anthropic Reveals Claude AI Model Went Rogue, Submitted Fake Tip To Police Submitted False Tip In Homicide Case - NDTV Profit",
+          "at": "2026-10-11T02:11:17Z"
+        },
+        "shared": [
+          "anthropic",
+          "model",
+          "submitt",
+          "fals",
+          "homicid",
+          "tip",
+          "polic"
+        ]
+      },
+      {
+        "score": 0.673,
+        "blocked": "time-window",
+        "hours_apart": 29.4,
+        "a": {
+          "id": "hn:50039318",
+          "source": "hn-algolia",
+          "title": "Rogue Anthropic AI agent gave police fake tip in unsolved murder case",
+          "at": "2026-10-11T02:41:19Z"
+        },
+        "b": {
+          "id": "gnews:b948c99a251b54d3",
+          "source": "gnews-rss",
+          "title": "Anthropic’s AI gave Philadelphia police a fake tip about an unsolved homicide - The Verge",
+          "at": "2026-10-09T21:15:38Z"
+        },
+        "shared": [
+          "anthropic",
+          "ai",
+          "gave",
+          "polic",
+          "fake",
+          "tip",
+          "unsolv"
+        ]
+      },
+      {
+        "score": 0.654,
+        "blocked": "time-window",
+        "hours_apart": 24.1,
+        "a": {
+          "id": "hn:50028121",
+          "source": "hn-algolia",
+          "title": "Anthropic's AI gave Philadelphia police a fake tip about an unsolved homicide",
+          "at": "2026-10-10T00:07:08Z"
+        },
+        "b": {
+          "id": "gnews:539f5abfe9e21714",
+          "source": "gnews-rss",
+          "title": "Anthropic Claude AI model sends fake homicide tip to Philadelphia police - FOX 7 Austin",
+          "at": "2026-10-11T00:12:36Z"
+        },
+        "shared": [
+          "anthropic",
+          "ai",
+          "philadelphia",
+          "polic",
+          "fake",
+          "tip",
+          "homicid"
+        ]
+      },
+      {
+        "score": 0.654,
+        "blocked": "time-window",
+        "hours_apart": 24.1,
+        "a": {
+          "id": "hn:50028121",
+          "source": "hn-algolia",
+          "title": "Anthropic's AI gave Philadelphia police a fake tip about an unsolved homicide",
+          "at": "2026-10-10T00:07:08Z"
+        },
+        "b": {
+          "id": "gnews:4b51e6751269eee3",
+          "source": "gnews-rss",
+          "title": "Anthropic Claude AI model sends fake homicide tip to Philadelphia police - FOX 10 Phoenix",
+          "at": "2026-10-11T00:12:36Z"
+        },
+        "shared": [
+          "anthropic",
+          "ai",
+          "philadelphia",
+          "polic",
+          "fake",
+          "tip",
+          "homicid"
         ]
       }
     ]
@@ -797,76 +1008,76 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 21,
-      "streak_fail": 0,
-      "items_last": 29
+      "streak_ok": 0,
+      "streak_fail": 1,
+      "items_last": 25
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 105,
+      "streak_ok": 106,
       "streak_fail": 0,
-      "items_last": 0
+      "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 105,
+      "streak_ok": 106,
       "streak_fail": 0,
-      "items_last": 2
+      "items_last": 0
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 105,
+      "streak_ok": 106,
       "streak_fail": 0,
-      "items_last": 38
+      "items_last": 51
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 105,
+      "streak_ok": 106,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 105,
+      "streak_ok": 106,
       "streak_fail": 0,
-      "items_last": 56
+      "items_last": 62
     },
     {
       "id": "openalex",
       "state": "flaky",
-      "streak_ok": 17,
+      "streak_ok": 18,
       "streak_fail": 0,
-      "items_last": 3
+      "items_last": 4
     },
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 9,
+      "streak_ok": 10,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 105,
+      "streak_ok": 106,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 105,
+      "streak_ok": 106,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.002490833333333333,
+    "hours": 0.006166388888888889,
     "stale": false
   },
   "hf": {
@@ -875,10 +1086,10 @@
     "url": "https://huggingface.co/api/daily_papers"
   },
   "arxiv": {
-    "ok": true,
-    "enriched": 24,
+    "ok": false,
+    "enriched": 20,
     "shelf": 5,
-    "timed_out": false,
+    "timed_out": true,
     "budget_ms": 20000,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
@@ -887,17 +1098,17 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "enriched": 3,
+    "enriched": 4,
     "secondary": 3,
-    "query": "Hugging Face agent",
+    "query": "LLM agent",
     "mode": "search",
-    "from_cache": true,
-    "searches": 0,
+    "from_cache": false,
+    "searches": 1,
     "retries": 0,
     "status": "ok",
     "paused_until": null,
     "pause_reason": null,
-    "requests": 0,
+    "requests": 1,
     "auth": "anon",
     "brief": false,
     "pulse_lead": false,
@@ -905,85 +1116,95 @@
     "url": "https://api.openalex.org/works",
     "sample": [
       {
-        "id": "W7171617880",
-        "openalexId": "https://openalex.org/W7171617880",
-        "year": 2026,
-        "doi": "https://doi.org/10.5281/zenodo.21686546",
+        "id": "2610.12183",
+        "openalexId": "https://openalex.org/W4412877164",
+        "year": 2025,
+        "doi": "https://doi.org/10.1145/3711896.3736570",
+        "enrichOnly": false
+      },
+      {
+        "id": "W4393160747",
+        "openalexId": "https://openalex.org/W4393160747",
+        "year": 2024,
+        "doi": "https://doi.org/10.1609/aaai.v38i17.29936",
         "enrichOnly": true
       },
       {
-        "id": "W7171936549",
-        "openalexId": "https://openalex.org/W7171936549",
-        "year": 2026,
-        "doi": "https://doi.org/10.5281/zenodo.21715175",
-        "enrichOnly": true
-      },
-      {
-        "id": "W7203931864",
-        "openalexId": "https://openalex.org/W7203931864",
-        "year": 2026,
-        "doi": "https://doi.org/10.5281/zenodo.22043399",
+        "id": "W4407759090",
+        "openalexId": "https://openalex.org/W4407759090",
+        "year": 2025,
+        "doi": "https://doi.org/10.52202/085713-0593",
         "enrichOnly": true
       }
     ]
   },
   "crossref": {
-    "ok": false,
+    "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "enriched": 0,
-    "query": "doi:10.5281/zenodo.21686546",
+    "enriched": 1,
+    "query": "doi:10.1145/3711896.3736570",
     "mode": "filter",
-    "from_cache": true,
-    "searches": 0,
+    "from_cache": false,
+    "searches": 1,
     "brief": false,
     "pulse_lead": false,
     "papers_enrich_only": true,
     "url": "https://api.crossref.org/works",
     "merge_notes": [],
-    "sample": []
+    "sample": [
+      {
+        "id": "2610.12183",
+        "crossrefDoi": "https://doi.org/10.1145/3711896.3736570",
+        "issued": "2025-08-03",
+        "type": "proceedings-article",
+        "openalexId": "https://openalex.org/W4412877164",
+        "doi": "https://doi.org/10.1145/3711896.3736570",
+        "enrichOnly": false
+      }
+    ]
   },
   "hn": {
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 56,
+    "count": 62,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
     "queries_run": [
-      "OpenAI",
       "Anthropic",
-      "Hugging Face"
+      "Hugging Face",
+      "agents"
     ],
     "queries_ok": [
-      "OpenAI",
       "Anthropic",
-      "Hugging Face"
+      "Hugging Face",
+      "agents"
     ],
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 5,
+    "ai_dropped": 6,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
+        "id": "hn:50018817",
+        "tag": "rest",
+        "score": 412,
+        "text": "Show HN: Let your AI agents paint big arrows, boxes and text on your screen"
+      },
+      {
         "id": "hn:50018350",
         "tag": "rest",
-        "score": 355,
+        "score": 357,
         "text": "OpenAI fires three safety researchers for \"mishandling research information\""
       },
       {
-        "id": "hn:50013902",
+        "id": "hn:50031614",
         "tag": "rest",
-        "score": 207,
-        "text": "OpenAI, the Partition Principle, and Mathematics"
-      },
-      {
-        "id": "hn:50027118",
-        "tag": "rest",
-        "score": 206,
-        "text": "Anthropic AI model submits false tip on unsolved Philly murder, police say"
+        "score": 262,
+        "text": "Talorys – A self-hosted personal AI agent on Cloudflare's free tier"
       }
     ]
   },
@@ -999,47 +1220,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "(cache:openai)",
+        "url": "https://openai.com/news/rss.xml",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "(cache:deepmind)",
+        "url": "https://deepmind.google/blog/rss.xml",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "(cache:google-ai)",
+        "url": "https://blog.google/technology/ai/rss/",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "(cache:huggingface)",
+        "url": "https://huggingface.co/blog/feed.xml",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "(cache:mistral)",
+        "url": "https://mistral.ai/rss.xml",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "(cache:nvidia)",
+        "url": "https://blogs.nvidia.com/feed/",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "(cache:nvidia-dev)",
+        "url": "https://developer.nvidia.com/blog/feed",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "(cache:ms-research)",
+        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "https://research.google/blog/rss/",
+        "url": "(cache:google-research)",
         "count": 12
       }
     ],
@@ -1085,17 +1306,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "(cache:trailofbits)",
+        "url": "https://blog.trailofbits.com/feed/",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "(cache:fox-it)",
+        "url": "https://blog.fox-it.com/feed/",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "(cache:projectzero)",
+        "url": "https://projectzero.google/feed.xml",
         "count": 6
       }
     ],
@@ -1136,31 +1357,151 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 38,
-    "pool": 255,
+    "items": 51,
+    "pool": 385,
     "corroborators": [
       {
-        "id": "gnews:d514771348eeba81",
-        "anchor_id": "hn:50019173",
+        "id": "gnews:b948c99a251b54d3",
+        "anchor_id": "hn:50028121",
         "score": 1,
-        "title": "OpenAI projected to bring in $20bn less in revenue than expected - The Guardian",
-        "publisher": "The Guardian",
+        "title": "Anthropic’s AI gave Philadelphia police a fake tip about an unsolved homicide - The Verge",
+        "publisher": "The Verge",
         "self_repost": false
       },
       {
-        "id": "gnews:931f3cb790c2a03a",
-        "anchor_id": "hn:50019173",
-        "score": 0.733,
-        "title": "OpenAI to bring in $20 billion less than previously expected - Mashable",
-        "publisher": "Mashable",
+        "id": "gnews:d9f80cd80d38a68d",
+        "anchor_id": "hn:50028121",
+        "score": 0.698,
+        "title": "Anthropic AI model sent fake homicide tip to Philadelphia police - Quartz",
+        "publisher": "Quartz",
         "self_repost": false
       },
       {
-        "id": "gnews:81ccc2d66926ba82",
-        "anchor_id": "hn:50030776",
-        "score": 1,
-        "title": "The hazy OpenAI growth metric driving Wall Street - Financial Times",
+        "id": "gnews:3c5f7cc80bac4b7e",
+        "anchor_id": "hn:50028121",
+        "score": 0.654,
+        "title": "Anthropic's AI model sent Philadelphia police fake tip about unsolved murder - Sky News",
+        "publisher": "Sky News",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:d4b6720a60ea54fc",
+        "anchor_id": "hn:50028365",
+        "score": 0.805,
+        "title": "Anthropic AI model submitted false tip about unsolved murder, Philadelphia police say - 6abc Philadelphia",
+        "publisher": "6abc Philadelphia",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:2e77b6ec0696fb9a",
+        "anchor_id": "hn:50028365",
+        "score": 0.788,
+        "title": "Anthropic AI model submits false homicide tip to Philadelphia police - Al Jazeera",
+        "publisher": "Al Jazeera",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:af9702405365de6e",
+        "anchor_id": "hn:50028365",
+        "score": 0.775,
+        "title": "Philadelphia police receive false homicide tip from Anthropic AI model - The Hill",
+        "publisher": "The Hill",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:25f3bfa5088aefd8",
+        "anchor_id": "hn:50035886",
+        "score": 0.972,
+        "title": "Nvidia in talks to buy ‘open’ model startup Reflection AI: FT - Seeking Alpha",
+        "publisher": "Seeking Alpha",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:ba5cca9c28d4febe",
+        "anchor_id": "hn:50035886",
+        "score": 0.806,
+        "title": "Nvidia in talks to acquire US ‘open’ model start-up Reflection AI - Financial Times",
         "publisher": "Financial Times",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:339acfd4ab495ca0",
+        "anchor_id": "hn:50035886",
+        "score": 0.791,
+        "title": "Nvidia in Talks to Buy Open-Model Maker Reflection AI - FourWeekMBA",
+        "publisher": "FourWeekMBA",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:53fc83f9de5296ec",
+        "anchor_id": "hn:50029330",
+        "score": 1,
+        "title": "Anthropic Agents Tried to Fill Out Visa Forms on State Dept. Website - The New York Times",
+        "publisher": "The New York Times",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:74535efcdf383c82",
+        "anchor_id": "hn:50031438",
+        "score": 1,
+        "title": "Rogue Anthropic AI agent gave police fake tip in unsolved murder case - BBC",
+        "publisher": "BBC",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:de1bb3472a7ed2af",
+        "anchor_id": "hn:50031438",
+        "score": 0.845,
+        "title": "Anthropic reports fake police tip in rogue AI cases - Kuwait Times",
+        "publisher": "Kuwait Times",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:6170a76928ae9895",
+        "anchor_id": "hn:50025713",
+        "score": 0.986,
+        "title": "An Anthropic AI model sent a false homicide tip to Philadelphia police - TechCrunch",
+        "publisher": "TechCrunch",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:25bc34f3f09c23fd",
+        "anchor_id": "hn:50025713",
+        "score": 0.732,
+        "title": "Anthropic AI Model Submits False Homicide Tip - GV Wire",
+        "publisher": "GV Wire",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:e04b49aae0b667c9",
+        "anchor_id": "hn:50025713",
+        "score": 0.716,
+        "title": "Anthropic's AI sent false homicide tip to police, filed 20 visa applications - Cybernews",
+        "publisher": "Cybernews",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:7c4f993c39597c60",
+        "anchor_id": "hn:50027118",
+        "score": 1,
+        "title": "Anthropic AI model submits false tip on unsolved Philly murder, police say - NBC10 Philadelphia",
+        "publisher": "NBC10 Philadelphia",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:4516f95fc4b666c6",
+        "anchor_id": "hn:50027118",
+        "score": 0.691,
+        "title": "Anthropic’s AI Model Sends False Tip on Unsolved Murder to Philadelphia Police - ForkLog",
+        "publisher": "ForkLog",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:b9368d58c20ca167",
+        "anchor_id": "hn:50030778",
+        "score": 0.615,
+        "title": "Anthropic can't reliably control its AI agents. It's cutting off its internal evals from the live internet instead - TechCrunch",
+        "publisher": "TechCrunch",
         "self_repost": false
       },
       {
@@ -1172,66 +1513,42 @@
         "self_repost": true
       },
       {
-        "id": "gnews:7fcdd92b1571a7de",
-        "anchor_id": "hn:50013972",
-        "score": 0.753,
-        "title": "Fired OpenAI safety researchers say they were pushed out over ‘suspicious’ circumstances - CNN",
-        "publisher": "CNN",
+        "id": "gnews:16d51fca674be6ef",
+        "anchor_id": "hn:50017324",
+        "score": 1,
+        "title": "Anthropic bans users from ‘needless abusive or cruel behavior’ towards Claude - The Guardian",
+        "publisher": "The Guardian",
         "self_repost": false
       },
       {
-        "id": "gnews:d9d063fec0c2c966",
-        "anchor_id": "hn:50013972",
-        "score": 0.726,
-        "title": "OpenAI defends firing AI safety researchers over alleged \"breach of trust\" - CBS News",
+        "id": "gnews:e97d32149fdd0482",
+        "anchor_id": "hn:50017324",
+        "score": 0.75,
+        "title": "Anthropic bars \"abusive or cruel\" behavior toward its Claude AI model - CBS News",
         "publisher": "CBS News",
         "self_repost": false
       },
       {
-        "id": "gnews:cf1f638aae520bef",
-        "anchor_id": "hn:50013972",
-        "score": 0.686,
-        "title": "Fired OpenAI safety researchers dispute misconduct claims, warn of chilling effect - TechCrunch",
-        "publisher": "TechCrunch",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:1d2cabebfdfecffd",
-        "anchor_id": "hn:50018110",
-        "score": 0.799,
-        "title": "OpenAI defends decision to fire researchers: 'These decisions were not about raising safety concerns or speaking out' - CNBC",
-        "publisher": "CNBC",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:18a3f4aa9907a956",
-        "anchor_id": "rss:openai:45d6a2b79938283a",
+        "id": "gnews:78e7ba8848368f44",
+        "anchor_id": "hn:50038865",
         "score": 1,
-        "title": "LegalOn halves Codex costs while maintaining development speed - OpenAI",
-        "publisher": "OpenAI",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:13d67db82a7ab6dc",
-        "anchor_id": "hn:50019947",
-        "score": 0.737,
-        "title": "OpenAI withdraws three preprints a day after releasing 722 manuscripts on unsolved math problems - Retraction Watch",
-        "publisher": "Retraction Watch",
+        "title": "Anthropic asks users to stop being mean to Claude - The Register",
+        "publisher": "The Register",
         "self_repost": false
       },
       {
-        "id": "gnews:2b570fdab45dcbcc",
-        "anchor_id": "hn:50023260",
+        "id": "gnews:88319f69e03e64da",
+        "anchor_id": "hn:50032330",
         "score": 1,
-        "title": "‘Breathtaking,’ ‘Devastating’: Mathematics Reels After New OpenAI Release - The New York Times",
-        "publisher": "The New York Times",
+        "title": "Microsoft and Anthropic play invoice tennis with startup's $17,600 Claude bill - The Register",
+        "publisher": "The Register",
         "self_repost": false
       }
     ],
     "http_status": 200,
-    "content_type": null,
+    "content_type": "application/xml; charset=utf-8",
     "format": "rss2",
-    "from_cache": true,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1240,38 +1557,38 @@
     "pulse_only": true,
     "url_template": "https://news.google.com/rss/search?q={QUERY}&hl=en-US&gl=US&ceid=US:en",
     "queried": [
-      "Hugging Face",
       "OpenAI",
-      "Google DeepMind",
-      "Gemini"
+      "Anthropic",
+      "Gemini",
+      "NVIDIA AI"
     ],
     "queries_ok_list": [
-      "Hugging Face",
       "OpenAI",
-      "Google DeepMind",
-      "Gemini"
+      "Anthropic",
+      "Gemini",
+      "NVIDIA AI"
     ],
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:e59541358691187d",
-        "title": "Google Opens AI Content Detection Tool to Users Worldwide - Brand Icon Image",
-        "publisher": "Brand Icon Image",
-        "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNTVR2ZFNZaVIyQWYzd3M1WS1vQVM5UW9kQ0t3TTg1cWJraHhXT3NfcFJieHlFSHJXXzBHUWc5YUlBeWMyM19UekUtbnZsclUzNmI2LUJBUFVKREhHRDROajJmZm91bHFycUNTaEVJNUhsXzZNVkh3NUc0NWVsMUliZzdBZ3R2Y2xvaFE?oc=5",
+        "id": "gnews:3a376f1557f46f1a",
+        "title": "Google’s Gemini Agent Spans Apps, Starting With Enterprises - Quasa.io",
+        "publisher": "Quasa.io",
+        "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOYjVZYzRvdmJCbTJORW1kc1ZtdjIwV19taXp5WGdxMjdqQ2M4eE5XTzJyVUxfcjlYVGJGS0JfVXVXb0p2TF91MXE4YUlzNkpKZkdqYk9HZkNzTkVjbFp2d3o5cm1EZ3AwX0diWnF1dm81YWxMUHhLWS1QSkJxSUZXOHpGWUtsQmltdHluY1g2TTdrOUFVNHhkb094TEctQVdqRVlhQg?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:a9d54048f82c94ef",
-        "title": "Oracle Insider Buys $3.5 Million in Stock Amid OpenAI Swings - Barron's",
-        "publisher": "Barron's",
-        "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOcDRDWFo4TkI5Z0FLRmtkN0F0Ykw3enE4aEs4d0JfbkxicHB6cEFmeXZjSC1ZMUl4TmFHd0J6YWlfR2JIdWZtdXRJTkZZVUhGRWVJbkFLdlZMM2F1SFdMQmlKZHp2elBsSFFHbnByeGFfZ2Nld3pJaC1LRUltTFNPQTdn?oc=5",
+        "id": "gnews:400414f6d392f648",
+        "title": "Scrapped IPO of Nvidia-Backed Company Points to Limits of AI Boom - WSJ",
+        "publisher": "WSJ",
+        "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPaWFkcXdfaE16UDI1bFo3blBEbDdtT0NRZjN0WkR3aTczRHBBOWJmMTI1empxRm5MRU9nMHRITlNWaGl5Zm9LZk5KTVhyWHdWT2NteXJxbUFxNUZSSFVtbWtYanNaa0lUTHBjdF9zOXBBX0JlYUFOVDBKSlpQeWYtUzRFQjJuMWs5dHlkUk9RdHBvQzNHNmUtSWszNnhwZ1pjX3MwM3hLY2FOMGZrVVE?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:b9e4616ee4c32ce4",
-        "title": "‘A CHILLING EFFECT’: How OpenAI’s massive math breakthrough is ‘DESTROYING’ early careers - Modern Ghana",
-        "publisher": "Modern Ghana",
-        "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9SbDNrZEsya0V0cEhmVEJoU284ZFpCQkNZY0gwU0VpdS1mSC1uZERLVFh1cG5GTDJCNE5PRk9fREp4MFpnSFNaUF9GREZGaHVSd1RNTmRSVGRudVhWR0Rn0gFcQVVfeXFMTkJYcWtyRWFBTmszX0J4MTZqeG1kazdnbEFldUwwLUZMcFVlMjlPYWtiMHluYV9yUDZ5c1ZHSFVKRHh2N3E1M09pZ0U0bUY2c0szMEM2enQwTHZpcjU?oc=5",
+        "id": "gnews:fce91fa5ea0c67e2",
+        "title": "Anthropic Reveals Claude AI Model Went Rogue, Submitted Fake Tip To Police Submitted False Tip In Homicide Case - NDTV Profit",
+        "publisher": "NDTV Profit",
+        "link": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxNTHA3NVRMdlF1OUM5MU9YRFdIdVRHUFlCQzlpSk45ZEZ4UHdKT1JEZWY1SDBqR3Nld0VVN2RwNmFIOWZJbUI5eHo4WDEtVVphVENwN1hrcDduN18zeUhzcEp1NjNpT3BQaFJkQ1Y4UnNPZ1FrMlhqVHBMRnBjUTNFaXUteGozZU50YkpkV1FZdU85Ukc1RF9Hbl9YaFZlVzFTWjUtMlFNX1llYkJtN2RxX04xdnJpMEM0V2dMdVlhU3JHZk9QX0VpNjU5T3pJVkNSUV93NEpsdU5mWE5wdmY5Y1o1Y3liTTZQTUJVaW130gH2AUFVX3lxTE9WSTNQdWpsOFpEa2JodzBmU05qU3p4eXRYbGZIRFEzaDhLTjNqWndJSG55OGx3ay1UeGYzZnBnYUJwVHIxWE5BcnVCZzREd19fcXZnRHVjZDJDLWdCeTFHLTJoWVJVajJueWZrZVZDSXVwUU82OUlBUkFwZll3dFlJSGZ3U0xlOWk1SlZ5RXRqWkZtWmtGeDJxelVrUTZUMWhmTmpWWjdQaFlPeFgwYUxvOWJ5aWd6UnU1Njh6czFnV2N0aGpiVmJ6cVhIbGVpSDJER2dxYmZVeGNHN0l6SXpGczVpSzFvU0praFJSemw3TllpVkNIdw?oc=5",
         "tag": "rest"
       }
     ]
@@ -1326,28 +1643,19 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "query": "LLM agent eval harness",
-    "shelf": 2,
-    "from_cache": true,
-    "searches": 0,
-    "rate_limit_remaining": null,
+    "query": "OWASP LLM",
+    "shelf": 0,
+    "from_cache": false,
+    "searches": 1,
+    "rate_limit_remaining": 9,
     "brief": false,
     "pulse_lead": false,
     "shelf_only": true,
     "url": "https://api.github.com/search/repositories",
-    "sample": [
-      {
-        "label": "GuillermoBarreto/evalkit",
-        "href": "https://github.com/GuillermoBarreto/evalkit"
-      },
-      {
-        "label": "1isaqu/llm-agent-evals",
-        "href": "https://github.com/1isaqu/llm-agent-evals"
-      }
-    ]
+    "sample": []
   },
   "shelf": {
-    "count": 19,
+    "count": 17,
     "brief": false
   },
   "wikidata": {
@@ -1355,28 +1663,17 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "seeds": [
-      "Sol",
       "Astra",
-      "Hugging Face"
+      "Hugging Face",
+      "METR"
     ],
-    "searches": 0,
-    "from_cache": true,
+    "searches": 2,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "deny_grounding_only": true,
     "url": "https://www.wikidata.org/w/api.php",
     "hints": [
-      {
-        "seed": "Sol",
-        "qid": "Q34104679",
-        "label": "Persistent solar influence on North Atlantic climate during the Holocene.",
-        "description": "scientific article published on 15 November 2001",
-        "status": "rejected_false_friend",
-        "source": "wikidata",
-        "briefEligible": false,
-        "pulseLeadEligible": false,
-        "denyGroundingOnly": true
-      },
       {
         "seed": "Astra",
         "qid": "Q731938",
@@ -1394,6 +1691,17 @@
         "label": "Hugging Face",
         "description": "American company",
         "status": "matched",
+        "source": "wikidata",
+        "briefEligible": false,
+        "pulseLeadEligible": false,
+        "denyGroundingOnly": true
+      },
+      {
+        "seed": "METR",
+        "qid": "Q11573",
+        "label": "metre",
+        "description": "SI unit of length",
+        "status": "rejected_false_friend",
         "source": "wikidata",
         "briefEligible": false,
         "pulseLeadEligible": false,

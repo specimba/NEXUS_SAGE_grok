@@ -2,6 +2,56 @@
 import type { LeadEntry } from "@/lib/lead-pick";
 
 export const LEAD_TODAY: LeadEntry | null = {
+  "date": "2026-10-11",
+  "at": "2026-10-11T03:20:28.246Z",
+  "crawl_at": "2026-10-11T03:20:06Z",
+  "excluded": [
+    {
+      "cluster_id": "cl:hn:50027118",
+      "headline": "Anthropic AI model submits false tip on unsolved Philly murder, police say",
+      "reason": "age>=24h"
+    },
+    {
+      "cluster_id": "cl:hn:50017324",
+      "headline": "Anthropic bans users from abusive or cruel behavior towards Claude",
+      "reason": "age>=24h"
+    },
+    {
+      "cluster_id": "cl:gnews:cf310697bb33263c",
+      "headline": "Gemini Tarot Horoscope Today, October 11, 2026: Discomfort will decrease, lifestyle will improve",
+      "reason": "GNW_ONLY"
+    },
+    {
+      "cluster_id": "cl:hn:50038865",
+      "headline": "Anthropic asks users to stop being mean to Claude",
+      "reason": "age>=24h"
+    },
+    {
+      "cluster_id": "cl:hn:50032330",
+      "headline": "Microsoft and Anthropic play invoice tennis with startup's $17,600 Claude bill",
+      "reason": "age>=24h"
+    },
+    {
+      "cluster_id": "cl:hn:50030778",
+      "headline": "Anthropic can't reliably control its AI agents, cuts internet access",
+      "reason": "age>=24h"
+    },
+    {
+      "cluster_id": "cl:rss:huggingface:88e871d5a8d26738",
+      "headline": "Multimodal open d1 decision models for the edge",
+      "reason": "age>=24h"
+    }
+  ],
+  "cluster_id": "cl:hn:50035886",
+  "headline": "Nvidia in talks to acquire US 'open' model startup Reflection AI",
+  "url": "https://www.ft.com/content/052610c5-22b4-4dd4-932e-b7f9f0628b6a",
+  "sources": 4,
+  "sig": 131,
+  "reason": "picked",
+  "first_at": "2026-10-10T18:14:28.000Z"
+};
+
+export const LEAD_YESTERDAY: LeadEntry | null = {
   "date": "2026-10-10",
   "at": "2026-10-10T15:14:16.526Z",
   "crawl_at": "2026-10-10T15:14:07Z",
@@ -52,38 +102,7 @@ export const LEAD_TODAY: LeadEntry | null = {
   "first_at": "2026-10-09T20:57:10.000Z"
 };
 
-export const LEAD_YESTERDAY: LeadEntry | null = {
-  "date": "2026-10-09",
-  "at": "2026-10-09T11:28:17.635Z",
-  "crawl_at": "2026-10-09T11:27:50Z",
-  "catch_up": true,
-  "excluded": [
-    {
-      "cluster_id": "cl:rss:mistral:1ef243007176e85c",
-      "headline": "Introducing Mistral Large 4",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:rss:openai:a097ef0d441a7216",
-      "headline": "GPT-6 and Intelligent UI for everyone",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:rss:google-ai:b6aec8c05cfc3e2f",
-      "headline": "Introducing Playground: Create and play custom games",
-      "reason": "age>=24h"
-    }
-  ],
-  "cluster_id": "cl:hn:50006368",
-  "headline": "Google is launching a one-stop Gemini agent for your work tasks",
-  "url": "https://www.theverge.com/tech/1007904/google-gemini-ai-agent-enterprise",
-  "sources": 2,
-  "sig": 3,
-  "reason": "picked",
-  "first_at": "2026-10-08T14:39:57.000Z"
-};
-
 export const LEAD_HELD = false;
 
 /** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is ≥24h old. */
-export const LEAD_FIRST_AT: string | null = "2026-10-09T20:57:10.000Z";
+export const LEAD_FIRST_AT: string | null = "2026-10-10T18:14:28.000Z";
