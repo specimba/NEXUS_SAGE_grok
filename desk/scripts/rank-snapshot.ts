@@ -157,7 +157,7 @@ history = applyPick(history, decision);
 writeFileSync(historyPath, JSON.stringify(history, null, 2) + "\n");
 const leadNow = currentLead(history);
 const leadYday = yesterdayLead(history);
-// Story age for the Brief's 24h stale → HELD rule: the entry's first_at, else the live group's earliest item.
+// Story age for the Brief's 48h safety-net HELD rule (PASS-L): the entry's first_at, else the live group's earliest item.
 const leadCluster = leadNow?.cluster_id ? PULSE_CLUSTERS.find((c) => c.id === leadNow.cluster_id) : undefined;
 const leadFirstMs = leadCluster ? groupFirstAt(leadCluster, memberAt) : NaN;
 const leadFirstAt = leadNow?.first_at ?? (Number.isFinite(leadFirstMs) ? new Date(leadFirstMs).toISOString() : null);
@@ -172,7 +172,7 @@ export const LEAD_YESTERDAY: LeadEntry | null = ${JSON.stringify(leadYday, null,
 
 export const LEAD_HELD = ${leadNow?.reason === "held"};
 
-/** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is ≥24h old. */
+/** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is >48h old (PASS-L). */
 export const LEAD_FIRST_AT: string | null = ${JSON.stringify(leadFirstAt)};
 `,
 );

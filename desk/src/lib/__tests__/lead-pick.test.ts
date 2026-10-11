@@ -67,10 +67,10 @@ describe("daily lead pick — window + ranking", () => {
     expect(ids.slice(1)).toEqual(["cl:hn:3", "cl:hn:4", "cl:hn:2"]);
   });
 
-  test("never: age ≥24h, <2 SRC, briefEligible:false, Taste/X, non-AI", () => {
+  test("never: age ≥36h, <2 SRC, briefEligible:false, Taste/X, non-AI", () => {
     const now = Date.parse(PICK);
     const bad = [
-      cl("cl:hn:5", { at: "2026-09-24T02:00:00Z" }),
+      cl("cl:hn:5", { at: "2026-09-23T14:00:00Z" }), // 37h at the 06:11 pick (PASS-L window is 36h)
       cl("cl:hn:6", { member_ids: ["hn:6"], sources: ["hn-algolia"], size: 1 }),
       cl("cl:hn:7", { briefEligible: false }),
       cl("cl:x:8", { lead_id: "x:8", lead_source: "x", member_ids: ["x:8", "gnews:8"] }),
@@ -82,16 +82,16 @@ describe("daily lead pick — window + ranking", () => {
 });
 
 describe("daily lead pick — age = earliest member item", () => {
-  test("first item 28h old + 1h-old repost ⇒ ineligible (late repost can't refresh)", () => {
+  test("first item 38h old + 1h-old repost ⇒ ineligible (late repost can't refresh)", () => {
     const now = Date.parse(PICK);
     const g = cl("cl:gnews:late", {
       at: new Date(now - 1 * 3_600_000).toISOString(),
       lead_id: "gnews:late",
       member_ids: ["gnews:late", "hn:old"],
     });
-    const memberAt = { "hn:old": new Date(now - 28 * 3_600_000).toISOString(), "gnews:late": g.at };
-    expect(groupFirstAt(g, memberAt)).toBe(now - 28 * 3_600_000);
-    expect(leadExcludeReason(g, now, { memberAt })).toBe("age>=24h");
+    const memberAt = { "hn:old": new Date(now - 38 * 3_600_000).toISOString(), "gnews:late": g.at };
+    expect(groupFirstAt(g, memberAt)).toBe(now - 38 * 3_600_000);
+    expect(leadExcludeReason(g, now, { memberAt })).toBe("age>=36h");
     expect(leadCandidates([g], now, { memberAt })).toEqual([]);
     expect(leadCandidates([g], now).map((c) => c.id)).toEqual(["cl:gnews:late"]); // without member times it'd pass
   });
@@ -253,10 +253,11 @@ describe("daily lead catch-up — keyed off the crawl's own start time", () => {
     expect(currentLead(applyPick(h, d))?.cluster_id).toBe("cl:hn:9");
   });
 
-  test("Brief stale rule: lead story ≥24h old ⇒ HELD", () => {
+  test("Brief stale rule (PASS-L safety net): lead story >48h old ⇒ HELD; 38h is still the lead", () => {
     const now = Date.parse("2026-09-25T12:35:00Z");
-    expect(leadIsStale("2026-09-23T22:17:39Z", now)).toBe(true); // the 01:14 hand pick, ~38h
+    expect(leadIsStale("2026-09-23T22:17:39Z", now)).toBe(false); // the 01:14 hand pick, ~38h — frozen from pick time
     expect(Math.floor(leadAgeHours("2026-09-23T22:17:39Z", now)!)).toBe(38);
+    expect(leadIsStale("2026-09-23T12:00:00Z", now)).toBe(true); // ~48.6h
     expect(leadIsStale("2026-09-25T01:00:00Z", now)).toBe(false);
     expect(leadIsStale(null, now)).toBe(false);
   });

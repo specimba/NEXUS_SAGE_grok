@@ -20,11 +20,13 @@ describe("leadView — one source of truth for Brief plate, status bar, INGEST l
       held: false, reason: null, headline: "OpenAI ships a model", id: "cl:hn:1", carried: null,
     });
   });
-  test("24h age check switches only after mount (static HTML keeps the lead; the browser flips to HELD)", () => {
+  test("48h age check switches only after mount (static HTML keeps the lead; the browser flips to HELD past 48h)", () => {
     const pick = { held: false, today, firstAt: FIRST };
+    const h = (n: number) => Date.parse(FIRST) + n * 3_600_000;
     expect(leadView(pick, null).held).toBe(false);
-    expect(leadView(pick, Date.parse("2026-09-26T05:59:00Z")).held).toBe(false);
-    expect(leadView(pick, Date.parse("2026-09-26T06:00:00Z"))).toMatchObject({ held: true, reason: "stale", carried: "OpenAI ships a model" });
+    expect(leadView(pick, h(30)).held).toBe(false); // PASS-L: 30h-old lead stays live
+    expect(leadView(pick, h(48)).held).toBe(false); // exactly 48h: not yet
+    expect(leadView(pick, h(48) + 60_000)).toMatchObject({ held: true, reason: "stale", carried: "OpenAI ships a model" });
   });
   test("no pick at all ⇒ HELD", () => {
     expect(leadView({ held: false, today: null, firstAt: null }, null)).toMatchObject({ held: true, reason: "held", carried: null });
@@ -38,7 +40,7 @@ describe("Phase 2 polish", () => {
   const src = readFileSync(join(DESK, "src/components/sage/desk.tsx"), "utf8");
   const css = readFileSync(join(DESK, "src/app/globals.css"), "utf8");
   test("#1 HELD text depends on the reason; LeadInline and the stale plate use it", () => {
-    expect(LEAD_STALE_TEXT).toBe("HELD · lead >24h old");
+    expect(LEAD_STALE_TEXT).toBe("HELD · lead >48h old");
     expect(leadHeldText("stale")).toBe(LEAD_STALE_TEXT);
     expect(leadHeldText("held")).toBe(LEAD_HELD_TEXT);
     expect(leadHeldText(null)).toBe(LEAD_HELD_TEXT);

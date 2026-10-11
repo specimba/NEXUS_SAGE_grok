@@ -6,10 +6,12 @@
  * date's entry is HELD, EVERY crawl starting at/after 06:00 retries (no LEAD_PICK_REPICK); a retry that
  * still finds nothing updates the one HELD entry (attempts[] keeps each crawl's candidates + reasons).
  * The date locks only once a real lead is picked. Never a second pick on a picked date (LEAD_PICK_FORCE=1 only lifts
- * the 06:00 gate); an explicit LEAD_PICK_REPICK=1 appends a superseding entry for the date. Sticky until the next day's pick. A lead whose story is
- * older than 24h renders as HELD on the Brief (leadIsStale), never as a stale lead.
+ * the 06:00 gate); an explicit LEAD_PICK_REPICK=1 appends a superseding entry for the date. Sticky until the next day's pick.
+ * PASS-L: pick window 36h, two tiers (<24h first, then 24–36h); a picked lead is frozen from PICK time and only
+ * renders HELD past 48h of story age (safety net). HELD retries run at slots starting 06:00–20:59 (GitLab: 11:11 and
+ * the planned 16:11 recovery); a 21:11 crawl on a HELD date never picks.
  * Strongest = most independent publishers (self-repost counts 0) → higher SIG → newer.
- * Must pass the Wire gate (AI filter, never Taste/X, never briefEligible:false), age < 24h, ≥2 SRC.
+ * Must pass the Wire gate (AI filter, never Taste/X, never briefEligible:false), age < 36h, ≥2 SRC.
  * Age = age of the group's EARLIEST member item (not the newest) — a late repost never refreshes
  * an old story. Extra rules plug in via `exclude` (a small predicate; none added by default).
  * Nothing qualifies ⇒ HELD: yesterday's lead carries over, Brief shows "HELD · no qualifying story".
@@ -21,7 +23,15 @@ import { HEAT_COMPANIES, OTHER_LABS } from "@/lib/topic-heat";
 
 
 export const LEAD_PICK_HOUR = 6; // first crawl starting at/after 06:00 Europe/Istanbul picks
-export const LEAD_MAX_AGE_H = 24;
+/** PASS-L L1: candidates qualify under 36h old (earliest item). */
+export const LEAD_MAX_AGE_H = 36;
+/** PASS-L L1: tier split — under 24h ranks ahead of 24–36h. */
+export const LEAD_FRESH_AGE_H = 24;
+/** PASS-L L2: a picked lead renders HELD only once its story is older than 48h (safety net). */
+export const LEAD_STALE_AGE_H = 48;
+/** PASS-L L3: HELD retries only for crawls starting before 21:00 Istanbul (16:11 = last planned chance; 21:11 never retries). */
+export const LEAD_RETRY_BEFORE_HOUR = 21;
+export type LeadAgeBand = "<24h" | "24–36h";
 export const LEAD_MIN_SOURCES = 2;
 
 export type LeadEntry = {
@@ -47,6 +57,10 @@ export type LeadEntry = {
   supersedes?: string | null;
   /** Wire-eligible (≥2 SRC) groups ruled out as lead at this pick, with the reason (age>=24h, politics:…). */
   excluded?: { cluster_id: string; headline: string; reason: string }[];
+  /** PASS-L L5: story age band at pick time. */
+  age_band?: LeadAgeBand;
+  /** PASS-L: Istanbul HH:MM of the crawl start that made this entry (pick slot). */
+  pick_slot?: string;
   /** HELD entries only: every pick attempt on this date (first HELD + each ≥06:00 retry), with its ruled-out candidates. Beat 11 reads these. */
   attempts?: HeldAttempt[];
 };
@@ -93,10 +107,27 @@ export function leadAgeHours(firstAt: string | null | undefined, now: number): n
   return Number.isFinite(t) ? (now - t) / 3_600_000 : null;
 }
 
-/** Brief rule: a lead older than 24h shows HELD instead of the stale story. */
+/** PASS-L L2 safety net: a picked lead shows HELD only once its story is older than 48h (frozen from pick time otherwise). */
 export function leadIsStale(firstAt: string | null | undefined, now: number): boolean {
   const h = leadAgeHours(firstAt, now);
-  return h != null && h >= LEAD_MAX_AGE_H;
+  return h != null && h > LEAD_STALE_AGE_H;
+}
+
+/** PASS-L L5: `<24h` / `24–36h` band for an age in hours (null when unknown). */
+export function leadAgeBand(ageH: number | null | undefined): LeadAgeBand | null {
+  if (ageH == null || !Number.isFinite(ageH)) return null;
+  return ageH < LEAD_FRESH_AGE_H ? "<24h" : "24–36h";
+}
+
+export function istanbulHHMM(iso: string): string {
+  const p = istanbulParts(iso);
+  return `${p.hour}:${p.minute}`;
+}
+
+/** PASS-L L3: a HELD date retries only for crawls starting 06:00–20:59 (21:11 doesn't retry). */
+export function inRetryWindow(crawlStartAt: string): boolean {
+  const h = istanbulHour(crawlStartAt);
+  return h >= LEAD_PICK_HOUR && h < LEAD_RETRY_BEFORE_HOUR;
 }
 
 /**
@@ -196,7 +227,7 @@ export function groupFirstAt(c: Pick<WireCluster, "at" | "member_ids">, memberAt
 export function leadExcludeReason(c: WireCluster, now: number, opts: LeadOpts = {}): string | null {
   const first = groupFirstAt(c, opts.memberAt);
   if (!Number.isFinite(first)) return "no-time";
-  if (now - first >= LEAD_MAX_AGE_H * 3_600_000) return "age>=24h";
+  if (now - first >= LEAD_MAX_AGE_H * 3_600_000) return "age>=36h";
   // Title rules first (most specific reason for Beat 11), then the Beat 5 structural rule.
   return (
     politicsLeadReason(c.title) ??
@@ -208,14 +239,16 @@ export function leadExcludeReason(c: WireCluster, now: number, opts: LeadOpts = 
   );
 }
 
-/** Ranked qualifying stories: Wire gate + earliest-item age < 24h + ≥2 independent sources + ≥1 non-GNews publisher; sources → SIG → newer. */
+/** Ranked qualifying stories: Wire gate + earliest-item age < 36h + ≥2 independent sources + ≥1 non-GNews publisher; tier (<24h, then 24–36h) → sources → SIG → newer. */
 export function leadCandidates(clusters: WireCluster[], now: number, opts: LeadOpts = {}) {
   const byId = new Map(clusters.map((c) => [c.id, c]));
+  const tier = (id: string) => (now - groupFirstAt(byId.get(id)!, opts.memberAt) < LEAD_FRESH_AGE_H * 3_600_000 ? 0 : 1);
   return wireCandidates(clusters, opts)
     .filter((c) => c.sources >= LEAD_MIN_SOURCES)
     .filter((c) => leadExcludeReason(byId.get(c.id)!, now, opts) === null)
     .sort(
       (a, b) =>
+        tier(a.id) - tier(b.id) ||
         b.sources - a.sources ||
         (b.score ?? -1) - (a.score ?? -1) ||
         (Date.parse(b.at) || 0) - (Date.parse(a.at) || 0) ||
@@ -240,7 +273,7 @@ export function yesterdayLead(h: LeadHistory): LeadEntry | null {
 }
 
 export type PickDecision =
-  | { action: "none"; why: "already-picked" | "outside-window" }
+  | { action: "none"; why: "already-picked" | "outside-window" | "retry-closed" }
   | { action: "picked"; entry: LeadEntry }
   /** `replace` = update the date's existing HELD entry in place (retry that still found nothing). */
   | { action: "held"; entry: LeadEntry; replace?: true };
@@ -258,6 +291,8 @@ export function decidePick(
   if (existing && existing.reason !== "held" && !opts.repick) return { action: "none", why: "already-picked" };
   const force = !!(opts.force || opts.repick);
   if (!force && !inPickWindow(startAt)) return { action: "none", why: "outside-window" };
+  // PASS-L L3: a HELD date's last planned retry is 16:11; a crawl starting ≥21:00 leaves it HELD (no late title churn).
+  if (!force && existing?.reason === "held" && !inRetryWindow(startAt)) return { action: "none", why: "retry-closed" };
   const now = Date.parse(opts.crawlAt);
   const top = leadCandidates(clusters, now, opts)[0];
   const byId = new Map(clusters.map((c) => [c.id, c]));
@@ -272,6 +307,7 @@ export function decidePick(
     ...(force ? { forced: true as const } : {}),
     ...(!force && istanbulHour(startAt) > LEAD_PICK_HOUR ? { catch_up: true as const } : {}),
     ...(opts.crawlStartedAt && startAt !== opts.crawlAt ? { crawl_started_at: startAt } : {}),
+    pick_slot: istanbulHHMM(startAt),
     ...(existing && opts.repick ? { supersedes: existing.cluster_id } : {}),
     ...(excluded.length ? { excluded } : {}),
   };
@@ -287,7 +323,7 @@ export function decidePick(
         sources: top.sources,
         sig: top.score,
         reason: "picked",
-        ...(Number.isFinite(first) ? { first_at: new Date(first).toISOString() } : {}),
+        ...(Number.isFinite(first) ? { first_at: new Date(first).toISOString(), age_band: leadAgeBand((now - first) / 3_600_000)! } : {}),
       },
     };
   }

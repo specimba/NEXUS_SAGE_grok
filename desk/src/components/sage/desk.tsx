@@ -31,7 +31,7 @@ import { TASTE_VISIBLE_CAP, tasteSoftMeter } from "@/lib/x-taste-meter";
 import { DIGEST_UNLOCK } from "@/data/digest-unlock";
 import { resolveUnlock, withLeadView, type UnlockView, type UnlockRow } from "@/lib/digest-unlock";
 import { DIGEST_CADENCE } from "@/data/digest-cadence";
-import { groupFirstAt, leadAgeHours } from "@/lib/lead-pick";
+import { groupFirstAt, leadAgeBand, leadAgeHours } from "@/lib/lead-pick";
 import { LEAD_HELD_TEXT, leadHeldText, leadView, nextCrawlSlotHHMM, type LeadView } from "@/lib/lead-view";
 import { IST_LABEL, istDateTime, istHHMM, istHHMMSS, istMMDD } from "@/lib/ist-time";
 import { useCheckedAt, useNow } from "@/lib/use-now";
@@ -439,7 +439,7 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
   const checkedAt = useCheckedAt(CRAWL_AT);
   const age = now == null ? null : crawlAgeHours(checkedAt, now);
   const fresh = now == null ? null : crawlFreshness(checkedAt, now);
-  // Same lead source of truth as the Brief plate (HELD flag at build, 24h age after mount).
+  // Same lead source of truth as the Brief plate (HELD flag at build, 48h age after mount).
   const leadV = leadViewAt(now);
   // Pass A1 — chrome honesty: when Digest unlock is live, topbar stops selling Sep pack/window.
   const unlockChrome = useDigestUnlock();
@@ -774,6 +774,11 @@ function BriefWire() {
   );
 }
 
+/** PASS-L L5: story age band at pick time (entry field, else LEAD_FIRST_AT vs the pick time). */
+function leadBand(e: { age_band?: string; at: string }): string {
+  return e.age_band ?? leadAgeBand(leadAgeHours(LEAD_FIRST_AT, Date.parse(e.at))) ?? "age ?";
+}
+
 /** Today's lead for every spot outside the Brief plate too (status bar, INGEST line). `now` = null before mount. */
 function leadViewAt(now: number | null): LeadView {
   return leadView({ held: LEAD_HELD, today: LEAD_TODAY, firstAt: LEAD_FIRST_AT }, now);
@@ -801,10 +806,10 @@ const LeadLogCtx = createContext<LeadLogState>({ leadLog: EMPTY_LOG, logOpen: fa
 function Brief() {
   const { leadLog, logOpen, openLog, closeLog } = useContext(LeadLogCtx);
   // Lead staleness: crawl stamp on first render (SSR/static-stable), then the wall clock.
-  // 24h lead-age HELD check runs in the browser after mount (static HTML ships only LEAD_FIRST_AT).
+  // 48h lead-age (PASS-L safety net) HELD check runs in the browser after mount (static HTML ships only LEAD_FIRST_AT).
   const leadNow = useNow();
   const leadAge = leadNow == null ? null : leadAgeHours(LEAD_FIRST_AT, leadNow);
-  // HELD (no qualifying story at the pick, e.g. every candidate GNW_ONLY) or lead story ≥24h old → HELD plate,
+  // HELD (no qualifying story at the pick, e.g. every candidate GNW_ONLY) or lead story >48h old → HELD plate,
   // never the carried headline as if it were today's lead. Same source of truth as the status bar / INGEST line.
   const lv = leadViewAt(leadNow);
   const lead = lv.held ? null : LEAD_TODAY;
@@ -916,7 +921,7 @@ function Brief() {
         {lead && lead.reason !== "seed" ? (
           <p className="sage-take-meta font-mono text-kicker uppercase tracking-kicker tabular-nums">
             <span className="sage-src-chip sage-src-chip-multi">{lead.sources} SRC</span>
-            {" "}· sig {lead.sig ?? "—"} · picked {istanbulHHMM(lead.at)} UTC+3{lead.forced ? " · manual" : ""} · sticky 24h
+            {" "}· sig {lead.sig ?? "—"} · <span data-lead-band="1">{leadBand(lead)}</span> · picked {istanbulHHMM(lead.at)} UTC+3{lead.forced ? " · manual" : ""} · sticky till next pick
           </p>
         ) : (
           <ul className="sage-take-body max-w-prose space-y-1.5 text-sm">

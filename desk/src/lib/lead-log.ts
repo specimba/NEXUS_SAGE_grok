@@ -80,7 +80,7 @@ export function slimLeadLog(log: LeadLog, caps: typeof LEAD_LOG_CAPS = LEAD_LOG_
 /** Raw lead-history reason → fixed-width code (+ detail when the code alone loses information). */
 export function reasonCode(reason: string): { code: LogCode; detail?: string } {
   const r = String(reason ?? "");
-  if (r === "age>=24h") return { code: "AGE" };
+  if (r === "age>=24h" || r === "age>=36h") return { code: "AGE" };
   if (r.startsWith("politics:")) return { code: "POLIT", detail: r.slice("politics:".length) };
   if (r === "noise:investing") return { code: "LIST" };
   if (r === "GNW_ONLY") return { code: "GNW", detail: "Google News only" };
@@ -116,6 +116,8 @@ function passesFor(day: LeadEntry[]): LogPass[] {
     const tags: string[] = [];
     if (e.forced) tags.push("manual");
     if (e.catch_up) tags.push("catch-up");
+    if (e.reason === "picked" && e.pick_slot) tags.push(`slot ${e.pick_slot}`);
+    if (e.reason === "picked" && e.age_band) tags.push(`tier ${e.age_band}`);
     if (e.reason === "held") {
       const attempts = e.attempts?.length ? e.attempts : [{ at: e.at, excluded: e.excluded ?? [] }];
       // Entry flags (manual / catch-up) describe the crawl that created the HELD entry — its first attempt only.

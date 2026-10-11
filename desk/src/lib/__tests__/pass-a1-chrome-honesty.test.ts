@@ -113,9 +113,9 @@ describe("Pass A1 chrome honesty", () => {
     // Brief lead fresh → no kicker.
     const fresh = leadView({ held: false, today: { headline: "x" }, firstAt: new Date().toISOString() }, Date.now());
     expect(withLeadView(live, fresh)).toBe(live);
-    // Brief 24h-age HELD → Digest/Voice HELD with Brief's wording, same title + rows.
+    // Brief 48h-age HELD (PASS-L safety net) → Digest/Voice HELD with Brief's wording, same title + rows.
     const firstAt = FX_TODAY_LEAD.first_at!;
-    const later = Date.parse(firstAt) + 30 * 3_600_000;
+    const later = Date.parse(firstAt) + 50 * 3_600_000;
     const stale = leadView({ held: false, today: FX_TODAY_LEAD, firstAt }, later);
     expect(stale.held).toBe(true);
     const held = withLeadView(live, stale);
@@ -137,7 +137,7 @@ describe("Pass A1 chrome honesty", () => {
     // Desk wires Digest + Voice through the same leadViewAt as Brief.
     expect(deskSrc).toContain("const lv = leadViewAt(useNow());");
     expect(deskSrc.match(/const unlock = useLeadAwareUnlock\(\);/g)?.length).toBe(2);
-    expect(STALE_HELD_KICKER).toBe("HELD · lead >24h old");
+    expect(STALE_HELD_KICKER).toBe("HELD · lead >48h old");
     expect(deskSrc).toContain("{leadHeldText(\"stale\")} ·"); // Brief plate wording matches (same LEAD_STALE_TEXT)
   });
 });

@@ -55,6 +55,7 @@ crawl:
     - bun scripts/watchdog.ts --pre
     - mkdir -p .next && rm -rf .next/cache && mkdir -p "$CI_PROJECT_DIR/.cache/next" && ln -s "$CI_PROJECT_DIR/.cache/next" .next/cache
     - bun install --frozen-lockfile
+    - export CRAWL_STARTED_AT="$(date -u +%Y-%m-%dT%H:%M:%SZ)"   # PASS-L: lead pick slot (06:11/11:11/16:11 retry, 21:11 no retry) keys off crawl START
     - bun run ingest
     - A2_FORCE_WINDOW=1 bun run a2:tick
     - bun run pack:export

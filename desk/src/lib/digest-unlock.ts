@@ -106,7 +106,7 @@ export function pickedLeadEligible(lead: { id?: string | null; sources?: number 
 }
 
 /**
- * Pass A1 — Digest/Voice follow Brief's runtime lead view (build HELD flag + 24h age after mount).
+ * Pass A1 — Digest/Voice follow Brief's runtime lead view (build HELD flag + 48h age after mount).
  * When Brief shows HELD, a live unlock view becomes HELD with Brief's wording; titles are unchanged.
  */
 export function withLeadView(

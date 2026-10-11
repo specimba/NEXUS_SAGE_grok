@@ -1,14 +1,14 @@
 /**
  * One source of truth for "what is today's lead" — the Brief plate AND every other spot that shows the
  * lead (status-bar ticker, header INGEST line). HELD when the pick is HELD (no qualifying story), when
- * there is no pick, or — after mount, with the wall clock — when the lead's earliest item is ≥24h old.
+ * there is no pick, or — after mount, with the wall clock — when the lead's earliest item is >48h old (PASS-L safety net; a pick is otherwise frozen until the next pick).
  * Never show a carried headline as if it were today's lead.
  */
 import { leadIsStale } from "@/lib/lead-pick";
 
 export const LEAD_HELD_TEXT = "HELD · no qualifying story";
-/** Stale day (lead's earliest item ≥24h old): not "no qualifying story" — the story just aged out. */
-export const LEAD_STALE_TEXT = "HELD · lead >24h old";
+/** Stale day (lead's earliest item >48h old): not "no qualifying story" — the story just aged out. */
+export const LEAD_STALE_TEXT = "HELD · lead >48h old";
 
 /** HELD label by reason: stale → LEAD_STALE_TEXT, otherwise (HELD pick / no pick) LEAD_HELD_TEXT. */
 export function leadHeldText(reason: "held" | "stale" | null): string {
