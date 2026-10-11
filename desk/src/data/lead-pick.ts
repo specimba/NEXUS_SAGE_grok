@@ -104,5 +104,5 @@ export const LEAD_YESTERDAY: LeadEntry | null = {
 
 export const LEAD_HELD = false;
 
-/** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is ≥24h old. */
+/** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is >48h old (PASS-L). */
 export const LEAD_FIRST_AT: string | null = "2026-10-10T18:14:28.000Z";

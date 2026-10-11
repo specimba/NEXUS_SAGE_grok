@@ -23,6 +23,4 @@ export const SHELF: ShelfItem[] = [
   { href: "https://arxiv.org/abs/2610.12465", label: "arxiv.org/abs/2610.12465", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.12463", label: "arxiv.org/abs/2610.12463", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.12452", label: "arxiv.org/abs/2610.12452", reason: "arxiv-shelf" as const },
-  { href: "https://github.com/nephritispeepshow717/awesome-agent-security", label: "nephritispeepshow717/awesome-agent-security", reason: "github-search-shelf" as const },
-  { href: "https://github.com/kutta643/llm-sast-scanner", label: "kutta643/llm-sast-scanner", reason: "github-search-shelf" as const },
 ];
