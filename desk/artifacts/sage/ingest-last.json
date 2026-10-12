@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-12T13:21:56Z",
+  "stamped_at": "2026-10-12T18:23:36Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 118,
+      "duration_ms": 142,
       "paused_until": null,
       "reason": null
     },
@@ -18,7 +18,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 3254,
+      "duration_ms": 3166,
       "paused_until": null,
       "reason": null
     },
@@ -27,7 +27,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 4,
-      "duration_ms": 354,
+      "duration_ms": 359,
       "paused_until": null,
       "reason": null
     },
@@ -36,7 +36,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 686,
+      "duration_ms": 136,
       "paused_until": null,
       "reason": null
     },
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 57,
-      "duration_ms": 8253,
+      "rows": 59,
+      "duration_ms": 8271,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 17028,
+      "duration_ms": 16854,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 4147,
+      "duration_ms": 4136,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +71,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 33,
-      "duration_ms": 6391,
+      "rows": 29,
+      "duration_ms": 6325,
       "paused_until": null,
       "reason": null
     },
@@ -81,7 +81,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 333,
+      "duration_ms": 313,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4406,
+      "duration_ms": 4426,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 44970,
-    "sources_wall_ms": 17028,
-    "papers_lane_ms": 4416,
-    "slowest_source_ms": 17028,
+    "sources_ms": 44128,
+    "sources_wall_ms": 16854,
+    "papers_lane_ms": 3809,
+    "slowest_source_ms": 16854,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -114,42 +114,67 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 17333,
-    "startup_ms": 32,
-    "main_ms": 17341
+    "wall_ms": 17269,
+    "startup_ms": 42,
+    "main_ms": 17279
   },
   "multi_source_independent": 3,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
     "multi_source_independent": 3,
-    "multi_source_raw": 3,
-    "self_reposts": 0,
-    "items_in": 232,
-    "clusters_out": 224,
+    "multi_source_raw": 4,
+    "self_reposts": 1,
+    "items_in": 230,
+    "clusters_out": 222,
     "collapsed": 8,
     "multi_source": 3,
-    "multi_member": 4,
+    "multi_member": 8,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 33,
+    "new_items": 39,
     "per_source": {
-      "hn-algolia": 57,
+      "hn-algolia": 59,
       "rss-lab": 104,
       "rss-security": 28,
-      "gnews-rss": 33,
+      "gnews-rss": 29,
       "gmail-news": 10
     },
     "multi_source_clusters": [
+      {
+        "title": "Anthropic's Claude submits false tip on a Philadelphia unsolved homicide case",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 0.674,
+        "members": [
+          {
+            "id": "hn:50047538",
+            "source": "hn-algolia",
+            "title": "Anthropic's Claude submits false tip on a Philadelphia unsolved homicide case",
+            "at": "2026-10-11T20:33:39Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:2484f7ae098b6280",
+            "source": "gnews-rss",
+            "title": "Claude provided false tip in unsolved murder case, Anthropic says - ABA Journal",
+            "at": "2026-10-12T13:44:00Z",
+            "publisher": "ABA Journal"
+          }
+        ]
+      },
       {
         "title": "Nvidia in talks to acquire US 'open' model startup Reflection AI",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 5,
-        "score": 0.966,
+        "size": 2,
+        "score": 0.963,
         "members": [
           {
             "id": "hn:50035886",
@@ -159,32 +184,11 @@
             "publisher": null
           },
           {
-            "id": "gnews:16b831c522073cde",
-            "source": "gnews-rss",
-            "title": "Nvidia Negotiates Investment or Acquisition of Open Source Startup Reflection AI - Yahoo Finance",
-            "at": "2026-10-12T13:10:10Z",
-            "publisher": "Yahoo Finance"
-          },
-          {
             "id": "gnews:142edcf73667931d",
             "source": "gnews-rss",
             "title": "Will NVIDIA Acquire US Open-Model Startup Reflection AI? - AI Magazine",
-            "at": "2026-10-12T08:33:21Z",
+            "at": "2026-10-12T09:06:46Z",
             "publisher": "AI Magazine"
-          },
-          {
-            "id": "gnews:25f3bfa5088aefd8",
-            "source": "gnews-rss",
-            "title": "Nvidia in talks to buy ‘open’ model startup Reflection AI: FT - Seeking Alpha",
-            "at": "2026-10-10T19:12:18Z",
-            "publisher": "Seeking Alpha"
-          },
-          {
-            "id": "gnews:ba5cca9c28d4febe",
-            "source": "gnews-rss",
-            "title": "Nvidia in talks to acquire US ‘open’ model start-up Reflection AI - Financial Times",
-            "at": "2026-10-10T18:14:28Z",
-            "publisher": "Financial Times"
           }
         ]
       },
@@ -212,41 +216,27 @@
             "publisher": "nvidia"
           }
         ]
-      },
+      }
+    ],
+    "self_repost_clusters": [
       {
-        "title": "Anthropic's Claude submits false tip on a Philadelphia unsolved homicide case",
+        "title": "OCP Global Summit: Amid Ecosystem Adoption, NVIDIA Opens Vera Rubin Architecture to Help Scale AI Factories Worldwide",
         "sources": [
-          "hn-algolia",
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
           "gnews-rss"
         ],
-        "size": 3,
-        "score": 1,
-        "members": [
+        "self_reposts": [
           {
-            "id": "hn:50047538",
-            "source": "hn-algolia",
-            "title": "Anthropic's Claude submits false tip on a Philadelphia unsolved homicide case",
-            "at": "2026-10-11T20:33:39Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:ec415f8d79411f8c",
-            "source": "gnews-rss",
-            "title": "Anthropic's Claude AI submits false tip on Philadelphia unsolved homicide case - Japan Today",
-            "at": "2026-10-11T21:22:24Z",
-            "publisher": "Japan Today"
-          },
-          {
-            "id": "gnews:b46500ba9709613c",
-            "source": "gnews-rss",
-            "title": "Anthropic’s Claude AI submits a false tip on a Philadelphia unsolved homicide case - AP News",
-            "at": "2026-10-10T17:02:00Z",
-            "publisher": "AP News"
+            "id": "gnews:ca65bb58b16bab49",
+            "publisher": "NVIDIA Blog",
+            "title": "Amid Ecosystem Adoption, NVIDIA Opens Vera Rubin Architecture to Help Scale AI Factories Worldwide - NVIDIA Blog"
           }
         ]
       }
     ],
-    "self_repost_clusters": [],
     "ai_relevance": {
       "rss_lab_dropped": [
         {
@@ -262,20 +252,28 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "Benzinga",
-          "title": "Why Is IREN Stock Surging Monday? - IREN (NASDAQ:IREN) - Benzinga"
-        },
-        {
-          "publisher": "TheStreet",
-          "title": "Nvidia’s next move could spell trouble for software workers - TheStreet"
-        },
-        {
-          "publisher": "Tech.eu",
-          "title": "September 2026's top 10 European tech deals you need to know about - Tech.eu"
+          "publisher": "LinkedIn",
+          "title": "Microsoft and Amazon chip away at Nvidia’s dominance - LinkedIn"
         },
         {
           "publisher": "Pasquale Pillitteri",
-          "title": "Yandex hit by drone strikes on three data centers in four days - Pasquale Pillitteri"
+          "title": "Runway unveils Project Continuum, the computer without apps - Pasquale Pillitteri"
+        },
+        {
+          "publisher": "TradingView",
+          "title": "Why Shopify (SHOP) Stock Is Up Today - TradingView"
+        },
+        {
+          "publisher": "digitimes",
+          "title": "Interview: Microsoft's Maia GM on Maia 300, Taiwan and HBM supply - digitimes"
+        },
+        {
+          "publisher": "Quanta Magazine",
+          "title": "Is ‘Attention’ the Essence of Intelligence? - Quanta Magazine"
+        },
+        {
+          "publisher": "digitimes",
+          "title": "Microsoft's Maia 300 rack: 96 accelerators, HBM4, mostly liquid-cooled - digitimes"
         }
       ],
       "gnews_pool_dropped": 0,
@@ -283,9 +281,9 @@
     },
     "gnews_near_misses": [
       {
-        "score": 0.647,
+        "score": 0.896,
         "blocked": "time-window",
-        "hours_apart": 34.4,
+        "hours_apart": 38.6,
         "a": {
           "id": "hn:50039318",
           "source": "hn-algolia",
@@ -293,144 +291,28 @@
           "at": "2026-10-11T02:41:19Z"
         },
         "b": {
-          "id": "gnews:7da058519777c621",
+          "id": "gnews:5ac32f8b8f8489f2",
           "source": "gnews-rss",
-          "title": "AI sent fake tip on unsolved murder to Philadelphia police, Anthropic says - Baltimore Sun",
-          "at": "2026-10-12T13:04:32Z"
+          "title": "Anthropic AI Agent Gave Police A Fake Tip-Off In An Unsolved Murder Case - IFLScience",
+          "at": "2026-10-12T17:15:29Z"
         },
         "shared": [
           "anthropic",
           "ai",
+          "agent",
+          "gave",
           "polic",
           "fake",
           "tip",
           "unsolv",
-          "murder"
-        ]
-      },
-      {
-        "score": 0.595,
-        "blocked": "time-window",
-        "hours_apart": 34.6,
-        "a": {
-          "id": "hn:50039318",
-          "source": "hn-algolia",
-          "title": "Rogue Anthropic AI agent gave police fake tip in unsolved murder case",
-          "at": "2026-10-11T02:41:19Z"
-        },
-        "b": {
-          "id": "gnews:b38ea6563b355e3d",
-          "source": "gnews-rss",
-          "title": "Anthropic AI Model Went Rogue, Submitted Fake Unsolved Murder Tip - WSJ",
-          "at": "2026-10-12T13:18:58Z"
-        },
-        "shared": [
-          "rogu",
-          "anthropic",
-          "ai",
-          "fake",
-          "tip",
-          "unsolv",
-          "murder"
-        ]
-      },
-      {
-        "score": 0.558,
-        "blocked": "time-window",
-        "hours_apart": 42.4,
-        "a": {
-          "id": "hn:50035886",
-          "source": "hn-algolia",
-          "title": "Nvidia in talks to acquire US 'open' model startup Reflection AI",
-          "at": "2026-10-10T18:48:35Z"
-        },
-        "b": {
-          "id": "gnews:16b831c522073cde",
-          "source": "gnews-rss",
-          "title": "Nvidia Negotiates Investment or Acquisition of Open Source Startup Reflection AI - Yahoo Finance",
-          "at": "2026-10-12T13:10:10Z"
-        },
-        "shared": [
-          "nvidia",
-          "acquir",
-          "startup",
-          "reflection",
-          "ai"
-        ]
-      },
-      {
-        "score": 0.45,
-        "blocked": "thin-overlap",
-        "hours_apart": 46.2,
-        "a": {
-          "id": "hn:50033644",
-          "source": "hn-algolia",
-          "title": "Is Anthropic a Good Business?",
-          "at": "2026-10-10T15:01:34Z"
-        },
-        "b": {
-          "id": "gnews:71efa09fca8f4a3b",
-          "source": "gnews-rss",
-          "title": "HCLTech partners with Anthropic to set up dedicated agentic AI business unit - Firstpost",
-          "at": "2026-10-12T13:10:37Z"
-        },
-        "shared": [
-          "anthropic",
-          "business"
-        ]
-      },
-      {
-        "score": 0.398,
-        "blocked": "time-window",
-        "hours_apart": 42.9,
-        "a": {
-          "id": "hn:50035550",
-          "source": "hn-algolia",
-          "title": "Anthropic discloses 2 months old fake tip to police among new rogue AI incidents",
-          "at": "2026-10-10T18:10:54Z"
-        },
-        "b": {
-          "id": "gnews:7da058519777c621",
-          "source": "gnews-rss",
-          "title": "AI sent fake tip on unsolved murder to Philadelphia police, Anthropic says - Baltimore Sun",
-          "at": "2026-10-12T13:04:32Z"
-        },
-        "shared": [
-          "anthropic",
-          "fake",
-          "tip",
-          "polic",
-          "ai"
-        ]
-      },
-      {
-        "score": 0.395,
-        "blocked": "below-threshold",
-        "hours_apart": 18.7,
-        "a": {
-          "id": "hn:50039318",
-          "source": "hn-algolia",
-          "title": "Rogue Anthropic AI agent gave police fake tip in unsolved murder case",
-          "at": "2026-10-11T02:41:19Z"
-        },
-        "b": {
-          "id": "gnews:ec415f8d79411f8c",
-          "source": "gnews-rss",
-          "title": "Anthropic's Claude AI submits false tip on Philadelphia unsolved homicide case - Japan Today",
-          "at": "2026-10-11T21:22:24Z"
-        },
-        "shared": [
-          "anthropic",
-          "ai",
-          "tip",
-          "unsolv",
+          "murder",
           "case"
         ]
       },
       {
-        "score": 0.395,
-        "blocked": "below-threshold",
-        "hours_apart": 9.7,
+        "score": 0.531,
+        "blocked": "time-window",
+        "hours_apart": 35,
         "a": {
           "id": "hn:50039318",
           "source": "hn-algolia",
@@ -438,23 +320,23 @@
           "at": "2026-10-11T02:41:19Z"
         },
         "b": {
-          "id": "gnews:b46500ba9709613c",
+          "id": "gnews:2484f7ae098b6280",
           "source": "gnews-rss",
-          "title": "Anthropic’s Claude AI submits a false tip on a Philadelphia unsolved homicide case - AP News",
-          "at": "2026-10-10T17:02:00Z"
+          "title": "Claude provided false tip in unsolved murder case, Anthropic says - ABA Journal",
+          "at": "2026-10-12T13:44:00Z"
         },
         "shared": [
           "anthropic",
-          "ai",
           "tip",
           "unsolv",
+          "murder",
           "case"
         ]
       },
       {
-        "score": 0.389,
+        "score": 0.358,
         "blocked": "below-threshold",
-        "hours_apart": 16.5,
+        "hours_apart": 20.7,
         "a": {
           "id": "hn:50047538",
           "source": "hn-algolia",
@@ -462,22 +344,129 @@
           "at": "2026-10-11T20:33:39Z"
         },
         "b": {
-          "id": "gnews:7da058519777c621",
+          "id": "gnews:5ac32f8b8f8489f2",
           "source": "gnews-rss",
-          "title": "AI sent fake tip on unsolved murder to Philadelphia police, Anthropic says - Baltimore Sun",
-          "at": "2026-10-12T13:04:32Z"
+          "title": "Anthropic AI Agent Gave Police A Fake Tip-Off In An Unsolved Murder Case - IFLScience",
+          "at": "2026-10-12T17:15:29Z"
         },
         "shared": [
           "anthropic",
           "tip",
-          "philadelphia",
-          "unsolv"
+          "unsolv",
+          "case"
+        ]
+      },
+      {
+        "score": 0.335,
+        "blocked": "thin-overlap",
+        "hours_apart": 22.8,
+        "a": {
+          "id": "hn:50046117",
+          "source": "hn-algolia",
+          "title": "Anthropic is out with new nonsense about Claude",
+          "at": "2026-10-11T18:16:54Z"
+        },
+        "b": {
+          "id": "gnews:136aeb4f3507d437",
+          "source": "gnews-rss",
+          "title": "Anthropic Says Claude Can End Chats: Full Details - JournalArta",
+          "at": "2026-10-12T17:06:56Z"
+        },
+        "shared": [
+          "anthropic",
+          "claude"
+        ]
+      },
+      {
+        "score": 0.32,
+        "blocked": "time-window",
+        "hours_apart": 47.1,
+        "a": {
+          "id": "hn:50035886",
+          "source": "hn-algolia",
+          "title": "Nvidia in talks to acquire US 'open' model startup Reflection AI",
+          "at": "2026-10-10T18:48:35Z"
+        },
+        "b": {
+          "id": "gnews:daf0172e46f78102",
+          "source": "gnews-rss",
+          "title": "Amazon and Nvidia considering AI startup deals: Reports - CNBC",
+          "at": "2026-10-12T17:53:10Z"
+        },
+        "shared": [
+          "nvidia",
+          "startup",
+          "ai"
+        ]
+      },
+      {
+        "score": 0.32,
+        "blocked": "thin-overlap",
+        "hours_apart": 19.5,
+        "a": {
+          "id": "hn:50046117",
+          "source": "hn-algolia",
+          "title": "Anthropic is out with new nonsense about Claude",
+          "at": "2026-10-11T18:16:54Z"
+        },
+        "b": {
+          "id": "gnews:2484f7ae098b6280",
+          "source": "gnews-rss",
+          "title": "Claude provided false tip in unsolved murder case, Anthropic says - ABA Journal",
+          "at": "2026-10-12T13:44:00Z"
+        },
+        "shared": [
+          "anthropic",
+          "claude"
+        ]
+      },
+      {
+        "score": 0.292,
+        "blocked": "thin-overlap",
+        "hours_apart": 14.7,
+        "a": {
+          "id": "hn:50050540",
+          "source": "hn-algolia",
+          "title": "Nvidia, Microsoft Launch Windows PCs with RTX Spark and AI Agents",
+          "at": "2026-10-12T02:20:35Z"
+        },
+        "b": {
+          "id": "gnews:cf32287e4ea0f0f8",
+          "source": "gnews-rss",
+          "title": "Microsoft Bets On In-House Maia Chips for AI From 2027 To Loosen Nvidia’s Grip - NDTV Profit",
+          "at": "2026-10-12T17:05:01Z"
+        },
+        "shared": [
+          "nvidia",
+          "microsoft",
+          "ai"
+        ]
+      },
+      {
+        "score": 0.287,
+        "blocked": "time-window",
+        "hours_apart": 35.8,
+        "a": {
+          "id": "hn:50039630",
+          "source": "hn-algolia",
+          "title": "AI agents in a stand-up call",
+          "at": "2026-10-11T03:42:47Z"
+        },
+        "b": {
+          "id": "gnews:c02331f0925dd4a7",
+          "source": "gnews-rss",
+          "title": "Yann LeCun Calls AI Slowdown Demands 'Theatrical' - 조선일보",
+          "at": "2026-10-12T15:33:26Z"
+        },
+        "shared": [
+          "ai",
+          "call"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.908,
+        "score": 0.916,
         "blocked": "time-window",
         "hours_apart": 103.6,
         "a": {
@@ -504,9 +493,9 @@
         ]
       },
       {
-        "score": 0.647,
+        "score": 0.896,
         "blocked": "time-window",
-        "hours_apart": 34.4,
+        "hours_apart": 38.6,
         "a": {
           "id": "hn:50039318",
           "source": "hn-algolia",
@@ -514,25 +503,28 @@
           "at": "2026-10-11T02:41:19Z"
         },
         "b": {
-          "id": "gnews:7da058519777c621",
+          "id": "gnews:5ac32f8b8f8489f2",
           "source": "gnews-rss",
-          "title": "AI sent fake tip on unsolved murder to Philadelphia police, Anthropic says - Baltimore Sun",
-          "at": "2026-10-12T13:04:32Z"
+          "title": "Anthropic AI Agent Gave Police A Fake Tip-Off In An Unsolved Murder Case - IFLScience",
+          "at": "2026-10-12T17:15:29Z"
         },
         "shared": [
           "anthropic",
           "ai",
+          "agent",
+          "gave",
           "polic",
           "fake",
           "tip",
           "unsolv",
-          "murder"
+          "murder",
+          "case"
         ]
       },
       {
-        "score": 0.595,
+        "score": 0.531,
         "blocked": "time-window",
-        "hours_apart": 34.6,
+        "hours_apart": 35,
         "a": {
           "id": "hn:50039318",
           "source": "hn-algolia",
@@ -540,68 +532,21 @@
           "at": "2026-10-11T02:41:19Z"
         },
         "b": {
-          "id": "gnews:b38ea6563b355e3d",
+          "id": "gnews:2484f7ae098b6280",
           "source": "gnews-rss",
-          "title": "Anthropic AI Model Went Rogue, Submitted Fake Unsolved Murder Tip - WSJ",
-          "at": "2026-10-12T13:18:58Z"
+          "title": "Claude provided false tip in unsolved murder case, Anthropic says - ABA Journal",
+          "at": "2026-10-12T13:44:00Z"
         },
         "shared": [
-          "rogu",
           "anthropic",
-          "ai",
-          "fake",
           "tip",
           "unsolv",
-          "murder"
+          "murder",
+          "case"
         ]
       },
       {
-        "score": 0.558,
-        "blocked": "time-window",
-        "hours_apart": 42.4,
-        "a": {
-          "id": "hn:50035886",
-          "source": "hn-algolia",
-          "title": "Nvidia in talks to acquire US 'open' model startup Reflection AI",
-          "at": "2026-10-10T18:48:35Z"
-        },
-        "b": {
-          "id": "gnews:16b831c522073cde",
-          "source": "gnews-rss",
-          "title": "Nvidia Negotiates Investment or Acquisition of Open Source Startup Reflection AI - Yahoo Finance",
-          "at": "2026-10-12T13:10:10Z"
-        },
-        "shared": [
-          "nvidia",
-          "acquir",
-          "startup",
-          "reflection",
-          "ai"
-        ]
-      },
-      {
-        "score": 0.45,
-        "blocked": "thin-overlap",
-        "hours_apart": 46.2,
-        "a": {
-          "id": "hn:50033644",
-          "source": "hn-algolia",
-          "title": "Is Anthropic a Good Business?",
-          "at": "2026-10-10T15:01:34Z"
-        },
-        "b": {
-          "id": "gnews:71efa09fca8f4a3b",
-          "source": "gnews-rss",
-          "title": "HCLTech partners with Anthropic to set up dedicated agentic AI business unit - Firstpost",
-          "at": "2026-10-12T13:10:37Z"
-        },
-        "shared": [
-          "anthropic",
-          "business"
-        ]
-      },
-      {
-        "score": 0.429,
+        "score": 0.424,
         "blocked": "time-window",
         "hours_apart": 108.6,
         "a": {
@@ -624,7 +569,7 @@
         ]
       },
       {
-        "score": 0.4,
+        "score": 0.403,
         "blocked": "time-window",
         "hours_apart": 124.9,
         "a": {
@@ -645,26 +590,68 @@
         ]
       },
       {
-        "score": 0.398,
-        "blocked": "time-window",
-        "hours_apart": 42.9,
+        "score": 0.358,
+        "blocked": "below-threshold",
+        "hours_apart": 20.7,
         "a": {
-          "id": "hn:50035550",
+          "id": "hn:50047538",
           "source": "hn-algolia",
-          "title": "Anthropic discloses 2 months old fake tip to police among new rogue AI incidents",
-          "at": "2026-10-10T18:10:54Z"
+          "title": "Anthropic's Claude submits false tip on a Philadelphia unsolved homicide case",
+          "at": "2026-10-11T20:33:39Z"
         },
         "b": {
-          "id": "gnews:7da058519777c621",
+          "id": "gnews:5ac32f8b8f8489f2",
           "source": "gnews-rss",
-          "title": "AI sent fake tip on unsolved murder to Philadelphia police, Anthropic says - Baltimore Sun",
-          "at": "2026-10-12T13:04:32Z"
+          "title": "Anthropic AI Agent Gave Police A Fake Tip-Off In An Unsolved Murder Case - IFLScience",
+          "at": "2026-10-12T17:15:29Z"
         },
         "shared": [
           "anthropic",
-          "fake",
           "tip",
-          "polic",
+          "unsolv",
+          "case"
+        ]
+      },
+      {
+        "score": 0.335,
+        "blocked": "thin-overlap",
+        "hours_apart": 22.8,
+        "a": {
+          "id": "hn:50046117",
+          "source": "hn-algolia",
+          "title": "Anthropic is out with new nonsense about Claude",
+          "at": "2026-10-11T18:16:54Z"
+        },
+        "b": {
+          "id": "gnews:136aeb4f3507d437",
+          "source": "gnews-rss",
+          "title": "Anthropic Says Claude Can End Chats: Full Details - JournalArta",
+          "at": "2026-10-12T17:06:56Z"
+        },
+        "shared": [
+          "anthropic",
+          "claude"
+        ]
+      },
+      {
+        "score": 0.32,
+        "blocked": "time-window",
+        "hours_apart": 47.1,
+        "a": {
+          "id": "hn:50035886",
+          "source": "hn-algolia",
+          "title": "Nvidia in talks to acquire US 'open' model startup Reflection AI",
+          "at": "2026-10-10T18:48:35Z"
+        },
+        "b": {
+          "id": "gnews:daf0172e46f78102",
+          "source": "gnews-rss",
+          "title": "Amazon and Nvidia considering AI startup deals: Reports - CNBC",
+          "at": "2026-10-12T17:53:10Z"
+        },
+        "shared": [
+          "nvidia",
+          "startup",
           "ai"
         ]
       }
@@ -674,76 +661,76 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 2,
+      "streak_ok": 3,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 112,
+      "streak_ok": 113,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 112,
+      "streak_ok": 113,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 112,
+      "streak_ok": 113,
       "streak_fail": 0,
-      "items_last": 33
+      "items_last": 29
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 112,
+      "streak_ok": 113,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 112,
+      "streak_ok": 113,
       "streak_fail": 0,
-      "items_last": 57
+      "items_last": 59
     },
     {
       "id": "openalex",
       "state": "flaky",
-      "streak_ok": 24,
+      "streak_ok": 25,
       "streak_fail": 0,
       "items_last": 4
     },
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 16,
+      "streak_ok": 17,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 112,
+      "streak_ok": 113,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 112,
+      "streak_ok": 113,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.004963611111111111,
+    "hours": 0.004905,
     "stale": false
   },
   "hf": {
@@ -836,7 +823,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 57,
+    "count": 59,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -857,9 +844,15 @@
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
+        "id": "hn:50051583",
+        "tag": "rest",
+        "score": 232,
+        "text": "Research Firm Calls Anthropic's IPO 'Unprecedented Test of Investor Gullibity'"
+      },
+      {
         "id": "hn:50039092",
         "tag": "rest",
-        "score": 199,
+        "score": 205,
         "text": "500B tokens later: Letting AI agents decompile a first-person shooter"
       },
       {
@@ -867,12 +860,6 @@
         "tag": "rest",
         "score": 176,
         "text": "Nvidia in talks to acquire US 'open' model startup Reflection AI"
-      },
-      {
-        "id": "hn:50051583",
-        "tag": "rest",
-        "score": 167,
-        "text": "Research Firm Calls Anthropic's IPO 'Unprecedented Test of Investor Gullibity'"
       }
     ]
   },
@@ -935,32 +922,32 @@
     "feeds_soft_fail": [],
     "sample": [
       {
+        "id": "rss:nvidia-dev:1c636df798811a20",
+        "lab": "nvidia-dev",
+        "tag": "rest",
+        "title": "ReplaySSM: Rethinking State Storage for Faster Hybrid-Model Decoding",
+        "link": "https://developer.nvidia.com/blog/replayssm-rethinking-state-storage-for-faster-hybrid-model-decoding/"
+      },
+      {
+        "id": "rss:ms-research:62e45a8e96d139f2",
+        "lab": "ms-research",
+        "tag": "rest",
+        "title": "Simulating student learning for better AI tutoring",
+        "link": "https://www.microsoft.com/en-us/research/blog/simulating-student-learning-for-better-ai-tutoring/"
+      },
+      {
+        "id": "rss:nvidia:d684459236d7a96a",
+        "lab": "nvidia",
+        "tag": "rest",
+        "title": "OCP Global Summit: Amid Ecosystem Adoption, NVIDIA Opens Vera Rubin Architecture to Help Scale AI Factories Worldwide",
+        "link": "https://blogs.nvidia.com/blog/ocp-global-summit-vera-rubin-scale-ai-factories/"
+      },
+      {
         "id": "rss:huggingface:e05551817b225bef",
         "lab": "huggingface",
         "tag": "rest",
         "title": "Impactful scheduling for GPU clusters",
         "link": "https://huggingface.co/blog/allenai/impactful-scheduling"
-      },
-      {
-        "id": "rss:openai:570fe3204556675e",
-        "lab": "openai",
-        "tag": "rest",
-        "title": "Sophos cuts threat investigation time by 96% with OpenAI Daybreak",
-        "link": "https://openai.com/index/sophos"
-      },
-      {
-        "id": "rss:openai:9bf93d58cc35db99",
-        "lab": "openai",
-        "tag": "companion",
-        "title": "Asana cuts model costs 76x in browser tests with GPT-6.1 Sol",
-        "link": "https://openai.com/index/asana-browser-agent"
-      },
-      {
-        "id": "rss:nvidia:dfd05486e53d5871",
-        "lab": "nvidia",
-        "tag": "rest",
-        "title": "Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents",
-        "link": "https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents/"
       }
     ]
   },
@@ -1025,47 +1012,31 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 33,
-    "pool": 306,
+    "items": 29,
+    "pool": 316,
     "corroborators": [
+      {
+        "id": "gnews:ca65bb58b16bab49",
+        "anchor_id": "rss:nvidia:d684459236d7a96a",
+        "score": 0.952,
+        "title": "Amid Ecosystem Adoption, NVIDIA Opens Vera Rubin Architecture to Help Scale AI Factories Worldwide - NVIDIA Blog",
+        "publisher": "NVIDIA Blog",
+        "self_repost": true
+      },
+      {
+        "id": "gnews:2484f7ae098b6280",
+        "anchor_id": "hn:50047538",
+        "score": 0.673,
+        "title": "Claude provided false tip in unsolved murder case, Anthropic says - ABA Journal",
+        "publisher": "ABA Journal",
+        "self_repost": false
+      },
       {
         "id": "gnews:142edcf73667931d",
         "anchor_id": "hn:50035886",
-        "score": 0.971,
+        "score": 0.966,
         "title": "Will NVIDIA Acquire US Open-Model Startup Reflection AI? - AI Magazine",
         "publisher": "AI Magazine",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:25f3bfa5088aefd8",
-        "anchor_id": "hn:50035886",
-        "score": 0.952,
-        "title": "Nvidia in talks to buy ‘open’ model startup Reflection AI: FT - Seeking Alpha",
-        "publisher": "Seeking Alpha",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:ba5cca9c28d4febe",
-        "anchor_id": "hn:50035886",
-        "score": 0.804,
-        "title": "Nvidia in talks to acquire US ‘open’ model start-up Reflection AI - Financial Times",
-        "publisher": "Financial Times",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:ec415f8d79411f8c",
-        "anchor_id": "hn:50047538",
-        "score": 1,
-        "title": "Anthropic's Claude AI submits false tip on Philadelphia unsolved homicide case - Japan Today",
-        "publisher": "Japan Today",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:b46500ba9709613c",
-        "anchor_id": "hn:50047538",
-        "score": 1,
-        "title": "Anthropic’s Claude AI submits a false tip on a Philadelphia unsolved homicide case - AP News",
-        "publisher": "AP News",
         "self_repost": false
       }
     ],
@@ -1095,24 +1066,24 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:b38ea6563b355e3d",
-        "title": "Anthropic AI Model Went Rogue, Submitted Fake Unsolved Murder Tip - WSJ",
-        "publisher": "WSJ",
-        "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOdC1Yb1VaRzVmWnNoRmpLRFF4cWtUZXNyMjYtVzItMEJIYWhGWUpsUXRtWEJmaDVpZ1lGSXE3WGFYWU94cUFwcTRZZnQzVFBsaktQVjQ3WmJMMFVyQnlTS3NtUEMzVkY1WmNoU1dmdW1LWVB5YXJ1amROdEVIWVRhSFNLdldjVkMwcVRjaHJoOGVwVFBDbmxCdHlqTGIwc2px?oc=5",
+        "id": "gnews:ac0fc24af3d3b018",
+        "title": "Chatbot developer Anthropic seeks PA — but only humans need apply - The Times",
+        "publisher": "The Times",
+        "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNdWtGRDhhcGxFWVgtUzhBZnVOYURNeWw4RVdCQWlZSmlvaTJRV0lKVHRmMWNrcHdwUU8yUk9sbFUxRUpYcW54R2VnTnpSSmxsWHFGNG1xQTdCN09vV1BNa19NSm9xa0x0Z19mdXNaaFFDVkRfTGxkSUFCQzhhTG84T3MzZm9URllqR19HeW85Wmtnb29pOFg3ekgzUkh5Zw?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:c0043edd82b54f79",
-        "title": "Anthropic tests new model under Claude Opus 5.5 - TestingCatalog AI News",
-        "publisher": "TestingCatalog AI News",
-        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNZk5rMkFNTS1wZXNfelhfbmhIdjhFTk9tSzNRU0ZzeFhuaF9DSDR5dEFwcm1yWTJmcHFPYVlWLTZWaFdPZ1RqWGVaaHdXWWxyZXhmSU9kRjhpaDNmdDhDQ2ZhRnM2SmNsYVVIbWN5T0F4VEdKbDhyVDFkbTlFSmhFRWFnLWU1MGF4ZTZzYXp4bTBWMmlMemlnQw?oc=5",
+        "id": "gnews:48f88deb0c71439c",
+        "title": "IREN Rebounds on Reported Anthropic Deal as Microsoft Unveils Maia 300 AI Chip - BigGo Finance",
+        "publisher": "BigGo Finance",
+        "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1GNUx6R3d0bzNqaXE5blNxSE1Kd2JpeHVZX056MmI1MkFuZGpOSG43ZVpJWjBfRUZYX3M3b1Y2TDVQQlM4eVlFM1hPaTMtSHlYQlJVWjhCX2s1WGlyRUQ4RzVXV0M1S09EdDdja3JvZm5kOE1XMWc?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:59af3a474bf5ccfc",
-        "title": "IREN Stock Price Forecast: Multi-Year AI Cloud Deal With Anthropic May Push Stock Above $50 - TradingKey",
-        "publisher": "TradingKey",
-        "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNdmkyaFFzcERGVkhuNEYyZWxZb3BYdXBydHdFRVRGbnJERVQzdUR5R1dya1k4REp3bVN4aXdVaWJHMFUyb1RjeXVyRXhuM1A5ZHN4UkZ4bnhnbDVVZThGRC1DZC1fbWNGN1U0NHZUVmk4MGxya3BEYXBDZzZyOTk0TEs5QXRKTFhsLUhoNE1iU0lodlhlZkE1eXJyS1loc2xYQ3c3V2hUaEgySHBlbEE?oc=5",
+        "id": "gnews:daf0172e46f78102",
+        "title": "Amazon and Nvidia considering AI startup deals: Reports - CNBC",
+        "publisher": "CNBC",
+        "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQZ3ZTd1JwbXJaNjZ5OGNCTzRqNEJvc3hmOGVmVHZGalplaGk2blB4MnlGVDlqSElQclMxc0ptSzNHYkE4NTBpOUJIV0Nob3FfbDhlUmFoQ2F2aGFWWXBxamxIM3JPOWRHd0cyVTlta0FlRGktdzVPTmdVUVplNVB1Zks4ZkNOZDF0SkUydmRkRDZ6T0pGN3UwVGxoeGY3UQ?oc=5",
         "tag": "rest"
       }
     ]

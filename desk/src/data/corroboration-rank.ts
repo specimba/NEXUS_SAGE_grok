@@ -3,8 +3,8 @@ import type { MovedRow, RankSnapshot } from "@/lib/corroboration";
 
 export const RANK_CURRENT: RankSnapshot = {
   "schema": 1,
-  "at": "2026-10-12T13:22:13.897Z",
-  "crawl_at": "2026-10-12T13:21:56Z",
+  "at": "2026-10-12T18:23:53.694Z",
+  "crawl_at": "2026-10-12T18:23:36Z",
   "lead_id": "hf-incident",
   "rows": [
     {
@@ -67,8 +67,8 @@ export const RANK_CURRENT: RankSnapshot = {
 
 export const RANK_PREV: RankSnapshot | null = {
   "schema": 1,
-  "at": "2026-10-12T08:22:01.487Z",
-  "crawl_at": "2026-10-12T08:21:44Z",
+  "at": "2026-10-12T13:22:13.897Z",
+  "crawl_at": "2026-10-12T13:21:56Z",
   "lead_id": "hf-incident",
   "rows": [
     {
@@ -96,6 +96,7 @@ export const RANK_PREV: RankSnapshot | null = {
       ],
       "crawl_hits": [
         "cl:hn:50042051",
+        "cl:hn:50036740",
         "cl:rss:nvidia:6e9bdaa4a319db62"
       ],
       "mult": 1.45,
