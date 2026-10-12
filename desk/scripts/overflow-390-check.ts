@@ -122,6 +122,27 @@ for (const lane of LANES) {
     for (const it of r2?.items ?? []) fails.push(`voice(fold open): text right edge ${it.right}px > ${W} · <${it.tag}> "${it.text}"`);
   }
 }
+// PASS-C2: the read-only Setup view (?view=setup, lazy chunk) obeys the same 390 rules — keyword folds opened too.
+{
+  const u = new URL(base);
+  u.searchParams.set("view", "setup");
+  await cdp("Page.navigate", { url: `${u.href}#brief` });
+  for (let i = 0; i < 150; i++) { if ((await evalv("document.readyState")) === "complete") break; await sleep(200); }
+  const got = await evalv(`(async () => {
+    for (let i = 0; i < 50 && !document.querySelector(".sage-setup"); i++) await new Promise((r) => setTimeout(r, 200));
+    const v = document.querySelector(".sage-setup"); if (!v) return "missing";
+    v.querySelectorAll("details").forEach((d) => (d.open = true));
+    await new Promise((r) => setTimeout(r, 600));
+    return v.getAttribute("data-config-hash") || "nohash";
+  })()`);
+  if (got === "missing") fails.push("setup: ?view=setup did not render the Setup view (lazy chunk)");
+  else {
+    const r = await evalv(probe);
+    if (r && r.scrollW > W) fails.push(`setup: horizontal scroll (scrollWidth ${r.scrollW} > ${W})`);
+    for (const it of r?.items ?? []) fails.push(`setup: text right edge ${it.right}px > ${W} · <${it.tag}> "${it.text}"`);
+    console.log(`  setup: config_hash ${got} · keyword folds open`);
+  }
+}
 if (fails.length) { console.error(`overflow-390 FAIL (${fails.length}) at ${base}`); for (const f of fails) console.error(" -", f); done(1); }
-console.log(`overflow-390 OK · ${LANES.length} lanes at ${W}px · exempt: ${EXEMPT_CLASSES.join(",")} · ${base}`);
+console.log(`overflow-390 OK · ${LANES.length} lanes + setup view at ${W}px · exempt: ${EXEMPT_CLASSES.join(",")} · ${base}`);
 done(0);

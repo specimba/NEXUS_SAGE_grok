@@ -62,12 +62,14 @@ import {
   resolveRssCacheDir,
   toShelfItems as rssToShelfItems,
   type LabRssItem,
+  LAB_FEEDS,
 } from "../src/lib/rss-labs";
 import {
   fetchRssSecurity,
   resolveSecRssCacheDir,
   toSecShelfItems,
   type SecurityRssItem,
+  SECURITY_FEEDS,
 } from "../src/lib/rss-security";
 import {
   fetchGithubShelf,
@@ -78,7 +80,6 @@ import {
 import {
   fetchGnewsRss,
   GNEWS_CORROBORATORS_PER_ITEM,
-  GNEWS_POOL_CAP,
   GNEWS_RECENT_DAYS,
   resolveGnewsCacheDir,
   resetGnewsTickState,
@@ -129,6 +130,9 @@ import { crawlSourceRow, renderCrawlSourceTable, stopwatch, totalMs, type CrawlS
 import { markSeen, parseSeenIndex } from "../src/lib/seen-index";
 import { STALE_GUARD_HOURS } from "../src/lib/crawl-staleness";
 import { runConcurrent, runWithBudget, SOURCE_BUDGET_MS, type SourceRun } from "../src/lib/crawl-budget";
+import { applySageConfig, loadSageConfig, type LoadedSageConfig } from "../src/lib/sage-config-disk";
+import { offSources, type SourceId } from "../src/lib/sage-config";
+import { renderSageDeskConfigTs, renderSageSetupTs, softMeterSourceId } from "../src/lib/sage-setup";
 
 const root = resolve(import.meta.dir, "..");
 const dryRun = process.argv.includes("--dry-run");
@@ -323,19 +327,34 @@ ${body},
 
 function renderSoftFailMetersTs(
   stamp: string,
-  extra: { gmail: { soft: boolean; ok: boolean; detail: string } },
+  extra: { gmail: { soft: boolean; ok: boolean; detail: string }; off?: ReadonlySet<SourceId>; configInvalid?: boolean },
 ): string {
+  const off = extra.off ?? new Set<SourceId>();
   const gmailState = extra.gmail.soft ? "soft" : "ok";
   const gmailDetail = extra.gmail.detail;
   // Pass E: X-session soft from committed taste snap (login_wall / empty / taste stale >14d).
   const xMeter = tasteSoftMeter(X_TASTE, Date.parse(stamp) || Date.now());
+  // PASS-C2: a source switched off in config shows `off` (not soft-fail); a bad config adds `config invalid`.
+  const chipOff = (chip: string) => [...off].some((id) => softMeterSourceId(id) === chip);
+  const xOff = chipOff("x_session");
   const aggregate = [
-    ...(extra.gmail.soft ? [`Gmail ${gmailDetail}`] : []),
-    ...(xMeter.state === "soft" ? [`X-session ${xMeter.detail}`] : []),
+    ...(extra.gmail.soft && !chipOff("gmail") ? [`Gmail ${gmailDetail}`] : []),
+    ...(xMeter.state === "soft" && !xOff ? [`X-session ${xMeter.detail}`] : []),
+    ...(extra.configInvalid ? ["config invalid"] : []),
   ];
-  const softCount = (extra.gmail.soft ? 1 : 0) + (xMeter.state === "soft" ? 1 : 0);
+  const softCount =
+    (extra.gmail.soft && !chipOff("gmail") ? 1 : 0) + (xMeter.state === "soft" && !xOff ? 1 : 0) + (extra.configInvalid ? 1 : 0);
+  const hasOff = off.size > 0;
+  const st = (chip: string, state: string) => (chipOff(chip) ? `"off" as SoftFailState` : state);
+  const dt = (chip: string, detail: string) => (chipOff(chip) ? `"off"` : detail);
+  const extraChips = [
+    ...(chipOff("arxiv") ? [`    { id: "arxiv", label: "arXiv", state: "off" as SoftFailState, detail: "off" },`] : []),
+    ...(chipOff("sec_rss") ? [`    { id: "sec_rss", label: "Sec RSS", state: "off" as SoftFailState, detail: "off" },`] : []),
+    ...(chipOff("wikidata") ? [`    { id: "wikidata", label: "Wikidata", state: "off" as SoftFailState, detail: "off" },`] : []),
+    ...(extra.configInvalid ? [`    { id: "config", label: "Config", state: "soft" as SoftFailState, detail: "config invalid" },`] : []),
+  ];
   return `/** A4 soft-fail meters — snapshot from ingest (Pass F Gmail · Pass E X-session). Pulse/rail only; never Brief. */
-export type SoftFailState = "ok" | "soft" | "deny";
+export type SoftFailState = "ok" | "soft" | "deny"${hasOff ? ` | "off"` : ""};
 
 export type SoftFailChip = {
   id: string;
@@ -357,22 +376,23 @@ export const SOFT_FAIL_METERS: SoftFailMeters = {
   stamped_at: ${JSON.stringify(stamp)},
   briefEligible: false,
   providers: [
-    { id: "hn", label: "HN", state: "ok", detail: "ok" },
-    { id: "hf", label: "HF", state: "ok", detail: "ok" },
-    { id: "rss", label: "RSS", state: "ok", detail: "ok" },
-    { id: "gnews", label: "GNews", state: "ok", detail: "landed" },
-    { id: "gmail", label: "Gmail", state: ${JSON.stringify(gmailState)} as SoftFailState, detail: ${JSON.stringify(gmailDetail)} },
-    { id: "openalex", label: "OpenAlex", state: "ok", detail: "ok" },
-    { id: "crossref", label: "Crossref", state: "ok", detail: "ok" },
-    { id: "github", label: "GitHub", state: "ok", detail: "ok" },
-    { id: "x_session", label: "X-session", state: ${JSON.stringify(xMeter.state)} as SoftFailState, detail: ${JSON.stringify(xMeter.detail)} },
-  ],
+    { id: "hn", label: "HN", state: ${st("hn", `"ok"`)}, detail: ${dt("hn", `"ok"`)} },
+    { id: "hf", label: "HF", state: ${st("hf", `"ok"`)}, detail: ${dt("hf", `"ok"`)} },
+    { id: "rss", label: "RSS", state: ${st("rss", `"ok"`)}, detail: ${dt("rss", `"ok"`)} },
+    { id: "gnews", label: "GNews", state: ${st("gnews", `"ok"`)}, detail: ${dt("gnews", `"landed"`)} },
+    { id: "gmail", label: "Gmail", state: ${st("gmail", `${JSON.stringify(gmailState)} as SoftFailState`)}, detail: ${dt("gmail", JSON.stringify(gmailDetail))} },
+    { id: "openalex", label: "OpenAlex", state: ${st("openalex", `"ok"`)}, detail: ${dt("openalex", `"ok"`)} },
+    { id: "crossref", label: "Crossref", state: ${st("crossref", `"ok"`)}, detail: ${dt("crossref", `"ok"`)} },
+    { id: "github", label: "GitHub", state: ${st("github", `"ok"`)}, detail: ${dt("github", `"ok"`)} },
+    { id: "x_session", label: "X-session", state: ${st("x_session", `${JSON.stringify(xMeter.state)} as SoftFailState`)}, detail: ${dt("x_session", JSON.stringify(xMeter.detail))} },
+${extraChips.map((l) => `${l}\n`).join("")}  ],
   aggregate: ${JSON.stringify(aggregate)},
   deny: ["paid X", "Bluesky", "scrape farms"],
   soft_count: ${softCount},
 } as const;
 `;
 }
+
 
 function renderGmailNewsTs(rows: GmailNewsHit[], stamp: string): string {
   const body = rows
@@ -502,7 +522,6 @@ function patchCurrentJson(path: string, stamp: string) {
 }
 
 /** Beat 6: Papers table shows ≥14 rows — keep top 24 of the same single HF daily_papers response (no new requests). */
-const PAPERS_KEEP = 24;
 
 async function fetchHfPapers(fetchImpl: typeof fetch = fetch): Promise<Paper[]> {
   const res = await fetchImpl(HF_DAILY_PAPERS_URL, {
@@ -544,6 +563,22 @@ async function main() {
   const swWall = stopwatch();
   const ms: Record<string, number> = {};
   console.log(`SAGE ingest P3 · stamp ${stamp} · STALE_HOURS=${STALE_HOURS}`);
+
+  // PASS-C2: config by commit — validated at crawl start; invalid → last good + `config invalid` meter, exit 0.
+  const sageCfg: LoadedSageConfig = loadSageConfig(root, { write: true, at: stamp });
+  applySageConfig(sageCfg.config);
+  const S = sageCfg.config.sources;
+  const off = new Set<SourceId>(offSources(sageCfg.config));
+  console.log(
+    `Config: ${sageCfg.status} (${sageCfg.used}) config_hash=${sageCfg.config_hash}${off.size ? ` off=${[...off].join(",")}` : ""}`,
+  );
+  for (const e of sageCfg.errors) console.log(`  config invalid: ${e}`);
+  for (const w of sageCfg.warnings) console.log(`  config warning: ${w}`);
+  /** A source switched off in config never runs (0 requests); its block sees an "off" error and its rows are dropped below. */
+  const runSource = <T,>(cfgId: SourceId, id: string, fn: Parameters<typeof runWithBudget<T>>[1]): Promise<SourceRun<T>> =>
+    off.has(cfgId)
+      ? Promise.resolve({ id, status: "error", error: "off (config)", duration_ms: 0, budget_ms: 0 } as SourceRun<T>)
+      : runWithBudget<T>(id, fn);
 
   const since = buildHandleQueries()[0]?.query.match(/since:(\d{4}-\d{2}-\d{2})/)?.[1] ?? "";
   const handleQs = buildHandleQueries(3);
@@ -600,10 +635,10 @@ async function main() {
   const independent = runConcurrent([
     // Dedupe v2 freshness: last-48h window + one OR-entity recency sweep (free Algolia only).
     () =>
-      runWithBudget("hn", (c) =>
+      runSource("hn", "hn", (c) =>
         fetchHnPulse({
           cacheDir: resolveHnCacheDir(root),
-          hitsPerPage: 20,
+          hitsPerPage: S.hn.cap,
           recentHours: HN_RECENT_WINDOW_HOURS,
           recentSweep: true,
           aiOnly: true,
@@ -611,47 +646,50 @@ async function main() {
         }),
       ),
     () =>
-      runWithBudget("rss_labs", (c) =>
+      runSource("lab_rss", "rss_labs", (c) =>
         fetchRssLabs({
           cacheDir: resolveRssCacheDir(root),
-          maxPerFeed: 12,
+          maxPerFeed: S.lab_rss.cap_per_feed,
+          feeds: LAB_FEEDS.filter((f) => S.lab_rss.feeds.includes(f.lab)),
+          feedTimeoutMs: S.lab_rss.timeout_s * 1000,
           fetchImpl: c.fetch,
         }),
       ),
     // Beat 5: standing (≤2) + lab-name (≤2) queries, last 2 days, pool ≤32 (round-robin per query).
     () =>
-      runWithBudget("gnews", (c) =>
+      runSource("gnews", "gnews", (c) =>
         fetchGnewsRss({
           cacheDir: resolveGnewsCacheDir(root),
-          displayCap: GNEWS_POOL_CAP,
+          displayCap: S.gnews.cap,
           labQueries: true,
           recentDays: GNEWS_RECENT_DAYS,
           fetchImpl: c.fetch,
         }),
       ),
     () =>
-      runWithBudget("rss_security", (c) =>
+      runSource("sec_rss", "rss_security", (c) =>
         fetchRssSecurity({
           cacheDir: resolveSecRssCacheDir(root),
-          maxPerFeed: 12,
+          maxPerFeed: S.sec_rss.cap_per_feed,
+          feeds: SECURITY_FEEDS.filter((f) => S.sec_rss.feeds.includes(f.lab)),
           fetchImpl: c.fetch,
         }),
       ),
-    () => runWithBudget("github", (c) => fetchGithubShelf({ cacheDir: resolveGithubCacheDir(root), fetchImpl: c.fetch })),
-    () => runWithBudget("wikidata", (c) => fetchWikidataDeny({ cacheDir: resolveWikidataCacheDir(root), fetchImpl: c.fetch })),
+    () => runSource("github", "github", (c) => fetchGithubShelf({ cacheDir: resolveGithubCacheDir(root), perPage: S.github.cap, fetchImpl: c.fetch })),
+    () => runSource("wikidata", "wikidata", (c) => fetchWikidataDeny({ cacheDir: resolveWikidataCacheDir(root), fetchImpl: c.fetch })),
   ] as const);
 
   const swPapersLane = stopwatch();
   let hfOk = false;
   let hfLiveCount = 0;
   let hfFailReason: string | undefined;
-  const hfRun = await runWithBudget("hf", (c) => fetchHfPapers(c.fetch));
+  const hfRun = await runSource("hf_papers", "hf", (c) => fetchHfPapers(c.fetch));
   ms.hf = hfRun.duration_ms;
   try {
     const live = unwrap(hfRun);
     hfLiveCount = live.length;
     const keptAgent = papers.filter(isAgentPaper);
-    papers = mergeDailyPapers(live, { keptAgent, limit: PAPERS_KEEP });
+    papers = mergeDailyPapers(live, { keptAgent, limit: S.hf_papers.cap });
     hfOk = true;
     console.log(`HF: ${live.length} live → ${papers.length} kept (displacement rule applied)`);
   } catch (err) {
@@ -667,7 +705,7 @@ async function main() {
   let arxivShelf: { href: string; label: string; reason: "arxiv-shelf" }[] = [];
   let arxivFailReason: string | undefined;
   const arxivIds = papers.map((p) => p.id);
-  const arxivRun = await runWithBudget("arxiv", async (c) => {
+  const arxivRun = await runSource("arxiv", "arxiv", async (c) => {
     const enrichments = await fetchArxivByIds(arxivIds, {
       cacheDir: resolveArxivCacheDir(root),
       maxResults: 25,
@@ -743,7 +781,7 @@ async function main() {
   let openalexAuth: "anon" | "key" = "anon";
   const sourceStatePath = resolve(root, "artifacts/sage/source-state.json");
   const openalexPapers = papers;
-  const openalexRun = await runWithBudget("openalex", (c) =>
+  const openalexRun = await runSource("openalex", "openalex", (c) =>
     fetchOpenAlexEnrich({
       papers: openalexPapers,
       cacheDir: resolveOpenAlexCacheDir(root),
@@ -816,7 +854,7 @@ async function main() {
   let crossrefMode: string = "bibliographic";
   let crossrefMergeNotes: string[] = [];
   const crossrefPapers = papers;
-  const crossrefRun = await runWithBudget("crossref", (c) =>
+  const crossrefRun = await runSource("crossref", "crossref", (c) =>
     fetchCrossrefEnrich({
       papers: crossrefPapers,
       cacheDir: resolveCrossrefCacheDir(root),
@@ -1035,7 +1073,7 @@ async function main() {
   }
   // A timed-out GNews keeps the committed rows (no live rows to stamp); other soft-fails behave as before.
 
-  const gnewsLive = (gnewsOk || gnewsSoftFail) && !timedOut.has("gnews");
+  let gnewsLive = (gnewsOk || gnewsSoftFail) && !timedOut.has("gnews");
 
   // Pass F — Gmail keyword news → Pulse only (never Brief). Soft-fail on auth/timeout; ≤15s.
   let gmailOk = false;
@@ -1048,7 +1086,9 @@ async function main() {
   ms.gmail_news = 0;
   // PASS-Q1: Gmail is box-only. In CI (SAGE_GMAIL_BOX_ONLY=1) no transport is touched and the committed snapshot stays.
   const gmailBoxOnly = process.env.SAGE_GMAIL_BOX_ONLY === "1";
-  if (gmailBoxOnly) {
+  if (off.has("gmail")) {
+    console.log("Gmail news: off (config) — 0 requests, rows dropped");
+  } else if (gmailBoxOnly) {
     gmailSoftFail = true;
     gmailSoftFailReason = "box-only";
     console.log(`Gmail news: box-only (CI) — committed snapshot kept (${GMAIL_NEWS.length} rows)`);
@@ -1205,6 +1245,16 @@ async function main() {
     );
   }
 
+  // PASS-C2: a source switched off in config is ABSENT (no committed fallback rows either) — meter `off`.
+  if (off.has("hn")) { hnRows = []; hnOk = true; }
+  if (off.has("lab_rss")) { rssPulse = []; rssShelf = []; rssOk = true; }
+  if (off.has("sec_rss")) { secPulse = []; secShelf = []; secOk = true; }
+  if (off.has("gnews")) { gnewsRows = []; gnewsPool = []; gnewsLive = true; }
+  if (off.has("gmail")) { gmailRows = []; gmailSoftFail = false; }
+  if (off.has("github")) githubShelf = [];
+  if (off.has("arxiv")) arxivShelf = [];
+  if (off.has("wikidata")) wikidataHints = [];
+
   const urls = loadUrlList();
   const scored = scoreUrlList(urls);
   const toolkitShelf = scored.shelf.length
@@ -1282,7 +1332,7 @@ async function main() {
       at: toIso(r.published),
       publisher: r.publisher,
     })),
-    ...(gmailOk || gmailRows.length ? gmailRows : GMAIL_NEWS).map((r) => ({
+    ...(gmailOk || gmailRows.length || off.has("gmail") ? gmailRows : GMAIL_NEWS).map((r) => ({
       id: r.id,
       source: "gmail-news" as const,
       title: r.title,
@@ -1395,6 +1445,12 @@ async function main() {
     { id: "wikidata", ok: wikidataOk && !wikidataSoftFail, items: wikidataHints.length, reason: wikidataSoftFailReason ?? "not ok" },
   ];
   const healthPath = resolve(root, "artifacts/sage/source-health.json");
+  // PASS-C2: an off source is not a failure — it leaves the ledger untouched (meter shows `off`).
+  const OUTCOME_CFG: Record<string, SourceId> = { hf: "hf_papers", rss_labs: "lab_rss", rss_security: "sec_rss" };
+  for (let i = outcomes.length - 1; i >= 0; i--) {
+    const cid = (OUTCOME_CFG[outcomes[i]!.id] ?? outcomes[i]!.id) as SourceId;
+    if (off.has(cid)) outcomes.splice(i, 1);
+  }
   const ledger = updateLedger(parseLedger(readJson(healthPath)), outcomes, stamp);
 
   // Per-source crawl log: rows fetched · wall ms · ok/fail/paused (ingest-last.json → crawl_sources[]).
@@ -1460,10 +1516,24 @@ async function main() {
     writeText(resolve(root, "src/data/gnews-rss.ts"), renderGnewsRssTs(gnewsRows, stamp, rowMeta));
   }
   // Pass F: always refresh the module (empty on soft-fail with no cache) so the desk matches the stamp.
-  if (!gmailBoxOnly) writeText(resolve(root, "src/data/gmail-news.ts"), renderGmailNewsTs(gmailRows, stamp));
+  if (!gmailBoxOnly || off.has("gmail")) writeText(resolve(root, "src/data/gmail-news.ts"), renderGmailNewsTs(gmailRows, stamp));
   writeText(resolve(root, "src/data/soft-fail-meters.ts"), renderSoftFailMetersTs(stamp, {
     gmail: { soft: gmailSoftFail, ok: gmailOk, detail: gmailSoftFail ? (gmailSoftFailReason ?? "soft") : gmailOk ? `${gmailRows.length} landed` : "empty" },
+    off,
+    configInvalid: sageCfg.status === "invalid",
   }));
+  // PASS-C2: desk-side knobs (tiny, First Load) + the lazy Setup view payload (never First Load).
+  writeText(
+    resolve(root, "src/data/sage-desk-config.ts"),
+    renderSageDeskConfigTs(sageCfg, { items: X_TASTE.items, pulseTitles: clusters.map((c) => c.title) }),
+  );
+  writeText(
+    resolve(root, "src/data/sage-setup.ts"),
+    renderSageSetupTs(sageCfg, {
+      stamp,
+      rows: crawlSources.map((r) => ({ id: r.id, rows: r.rows, status: r.status, reason: r.reason ?? null })),
+    }),
+  );
   writeText(seenPath, `${JSON.stringify(seenIndex, null, 2)}\n`);
   writeText(healthPath, `${JSON.stringify(ledger, null, 2)}\n`);
   writeText(resolve(root, "src/data/source-health.ts"), renderSourceHealthTs(healthRows, stamp));
@@ -1474,6 +1544,9 @@ async function main() {
     cycle: "003",
     lead_id: "hf-incident",
     stamped_at: stamp,
+    /** PASS-C2: which config this crawl ran (sha256 of the canonical effective config, 12 hex). */
+    config_hash: sageCfg.config_hash,
+    config_status: sageCfg.status,
     /** One row per source: rows fetched · duration_ms · status ok|fail|paused · paused_until (ISO UTC). */
     crawl_sources: crawlSources,
     crawl_timing: {

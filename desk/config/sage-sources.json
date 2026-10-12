@@ -1,0 +1,161 @@
+{
+  "schema": 1,
+  "sources": {
+    "hn": {
+      "on": true,
+      "cap": 20
+    },
+    "hf_papers": {
+      "on": true,
+      "cap": 24
+    },
+    "lab_rss": {
+      "on": true,
+      "cap_per_feed": 12,
+      "timeout_s": 10,
+      "feeds": [
+        "openai",
+        "deepmind",
+        "google-ai",
+        "huggingface",
+        "mistral",
+        "nvidia",
+        "nvidia-dev",
+        "ms-research",
+        "google-research"
+      ]
+    },
+    "sec_rss": {
+      "on": true,
+      "cap_per_feed": 12,
+      "feeds": [
+        "trailofbits",
+        "fox-it",
+        "projectzero"
+      ]
+    },
+    "gnews": {
+      "on": true,
+      "cap": 32
+    },
+    "github": {
+      "on": true,
+      "cap": 5
+    },
+    "openalex": {
+      "on": true
+    },
+    "crossref": {
+      "on": true
+    },
+    "arxiv": {
+      "on": true
+    },
+    "wikidata": {
+      "on": true
+    },
+    "gmail": {
+      "on": true,
+      "fetch_cap": 24,
+      "emit_cap": 12,
+      "window_days": 14
+    },
+    "x_taste": {
+      "on": true,
+      "visible_cap": 6
+    }
+  },
+  "keywords": {
+    "ai_terms": [
+      "ai",
+      "ais",
+      "agi",
+      "small models?",
+      "vector (db|database)s?",
+      "artificial intelligence",
+      "machine learning",
+      "deep learning",
+      "ml",
+      "neural",
+      "transformers?",
+      "agents?",
+      "agentic",
+      "inference",
+      "embeddings?",
+      "fine-?tun\\w*",
+      "rag",
+      "diffusion",
+      "multimodal",
+      "text-to-speech",
+      "tts",
+      "speech-to-text",
+      "stt",
+      "prompts?",
+      "evals?",
+      "alignment",
+      "reasoning models?",
+      "quantiz\\w*",
+      "quants?",
+      "gguf",
+      "llama\\.cpp",
+      "open[- ]weights?",
+      "foundation models?",
+      "frontier models?",
+      "language models?",
+      "chatbots?",
+      "copilot",
+      "vibe cod\\w*",
+      "mcp",
+      "generative",
+      "(video|image|text|code|music|speech|3d) generation",
+      "computer vision",
+      "reinforcement learning",
+      "robot(ics|s)?",
+      "humanoids?",
+      "(transfer|federated|contrastive|representation|few-shot|zero-shot|in-context|self-supervised|multi-task) learning",
+      "tool[- ]use",
+      "graphrag",
+      "swe-\\w+",
+      "earth-2"
+    ],
+    "hn_sweep": [
+      "OpenAI",
+      "Anthropic",
+      "Claude",
+      "Gemini",
+      "Google",
+      "DeepMind",
+      "Nvidia",
+      "Mistral",
+      "Hugging Face",
+      "GPT"
+    ],
+    "gmail_seed": [
+      "AI",
+      "newsletter",
+      "tech",
+      "LLM",
+      "intelligence",
+      "hack",
+      "security",
+      "paper"
+    ],
+    "politics_deny": [
+      "trump",
+      "maga",
+      "biden",
+      "harris",
+      "vance",
+      "democrat(?:s|ic)?",
+      "republicans?",
+      "gop",
+      "dnc",
+      "rnc",
+      "partisan"
+    ]
+  },
+  "taste": {
+    "weight": 0,
+    "max": 0.3
+  }
+}

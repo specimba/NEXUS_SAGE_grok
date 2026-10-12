@@ -5,8 +5,42 @@
  * e.g. a Steve Jobs iPhone 4 Antennagate Q&A or an NVIDIA "… Launches on GeForce NOW" game post.
  */
 
-export const AI_TERMS =
+export let AI_TERMS =
   /(?<!\w)a\.i\.(?!\w)|\b\d+(\.\d+)?b[- ]param\w*|\b(ai|ais|agi|small models?|vector (db|database)s?|artificial intelligence|machine learning|deep learning|ml|neural|transformers?|agents?|agentic|inference|embeddings?|fine-?tun\w*|rag|diffusion|multimodal|text-to-speech|tts|speech-to-text|stt|prompts?|evals?|alignment|reasoning models?|quantiz\w*|quants?|gguf|llama\.cpp|open[- ]weights?|foundation models?|frontier models?|language models?|chatbots?|copilot|vibe cod\w*|mcp|generative|(video|image|text|code|music|speech|3d) generation|computer vision|reinforcement learning|robot(ics|s)?|humanoids?|(transfer|federated|contrastive|representation|few-shot|zero-shot|in-context|self-supervised|multi-task) learning|tool[- ]use|graphrag|swe-\w+|earth-2)\b|(llm|vlm|gpt)s?\b|gpt-/i;
+
+/**
+ * PASS-C2: the word list inside `\b( … )\b` is the config-editable part (`keywords.ai_terms` in
+ * desk/config/sage-sources.json); each entry is a regex fragment. The `a.i.` / `7b-param` / `llm|vlm|gpt` edges
+ * stay in code. The default list is read off the literal above, so the seed rebuilds the exact pre-C2 regex.
+ * Crawl/rank only (tree-shaken out of the browser bundle).
+ */
+const AI_TERMS_HEAD = "(?<!\\w)a\\.i\\.(?!\\w)|\\b\\d+(\\.\\d+)?b[- ]param\\w*|\\b(";
+const AI_TERMS_TAIL = ")\\b|(llm|vlm|gpt)s?\\b|gpt-";
+const AI_TERMS_LITERAL = AI_TERMS;
+export function aiTermsDefault(): string[] {
+  const s = AI_TERMS_LITERAL.source;
+  const inner = s.slice(AI_TERMS_HEAD.length, s.length - AI_TERMS_TAIL.length);
+  const out: string[] = [];
+  let depth = 0;
+  let cur = "";
+  for (const ch of inner) {
+    if (ch === "(") depth++;
+    if (ch === ")") depth--;
+    if (ch === "|" && depth === 0) {
+      out.push(cur);
+      cur = "";
+    } else cur += ch;
+  }
+  out.push(cur);
+  return out;
+}
+export function buildAiTerms(terms: readonly string[]): RegExp {
+  return new RegExp(`${AI_TERMS_HEAD}${terms.join("|")}${AI_TERMS_TAIL}`, "i");
+}
+/** PASS-C2: crawl start applies `keywords.ai_terms` (validated). No args → the code default. */
+export function configureAiTerms(terms?: readonly string[]): void {
+  AI_TERMS = terms ? buildAiTerms(terms) : AI_TERMS_LITERAL;
+}
 
 export const AI_NAMES =
   /\b(openai|anthropic|deepmind|hugging ?face|mistral|deepseek|qwen|claude|gemini|gemma|llama|grok|xai|chatgpt|codex|sora|nemotron|glm|kimi|opus|sonnet|haiku|perplexity|cohere|metr|midjourney|stability ai|whisper|jev|cursor|ollama|vllm|pytorch|tensorflow|jax|nano banana|cuda|tensorrt)\b/i;

@@ -30,9 +30,13 @@ import { CYCLE } from "@/data/cycle";
 import { buildLiveSnapshot, renderUnlockModule, type DigestUnlockSnapshot } from "@/lib/digest-unlock";
 import { applyPick, currentLead, groupFirstAt, leadExcludeReason, decidePick, istanbulDate, readLeadHistory, yesterdayLead, type LeadHistory } from "@/lib/lead-pick";
 import { bucketWindows, countCompanies, countOtherLabs, heatCells, heatLabel, upsertCrawl, type HeatFile } from "@/lib/topic-heat";
+import { applySageConfig, loadSageConfig } from "@/lib/sage-config-disk";
 import { buildWire, readWireSnapshot, wireCounts, wireHeader, wireMark, type WireSnapshot } from "@/lib/wire";
 
 const desk = resolve(import.meta.dir, "..");
+// PASS-C2: the lead pick's partisan-politics list + AI terms follow the same validated config as the crawl
+// (read-only here — ingest already wrote last-good / meters for this crawl).
+applySageConfig(loadSageConfig(desk, { write: false }).config);
 const dir = resolve(desk, "artifacts/sage");
 const lastPath = resolve(dir, "rank-last.json");
 const prevPath = resolve(dir, "rank-prev.json");

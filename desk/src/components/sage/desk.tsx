@@ -1,5 +1,5 @@
 "use client";
-import type { SyntheticEvent } from "react";
+import type { ReactNode, SyntheticEvent } from "react";
 import { createContext, Fragment, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { CYCLE, WAVES } from "@/data/cycle";
@@ -27,7 +27,8 @@ import {
 } from "@/data/desk-view";
 import { crawlItemIds, inflateClusters, inflateMembers, memberAt, memberItems, stripPublisher, xRows } from "@/lib/desk-view";
 import { X_TASTE } from "@/data/x-taste";
-import { TASTE_VISIBLE_CAP, tasteSoftMeter } from "@/lib/x-taste-meter";
+import { tasteSoftMeter } from "@/lib/x-taste-meter";
+import { SAGE_DESK_CONFIG } from "@/data/sage-desk-config";
 import { DIGEST_UNLOCK } from "@/data/digest-unlock";
 import { resolveUnlock, withLeadView, type UnlockView, type UnlockRow } from "@/lib/digest-unlock";
 import { DIGEST_CADENCE } from "@/data/digest-cadence";
@@ -44,6 +45,13 @@ import { SOFT_FAIL_METERS } from "@/data/soft-fail-meters";
 import { isDigestDue, nextDue, PACK_KEY } from "@/lib/digest-cadence-gate";
 import type { UnlockRow as ArchiveRow } from "@/lib/digest-unlock";
 
+/** PASS-C2: read-only Setup view (?view=setup) is a lazy chunk — never in First Load. */
+const loadSetup = () => import("@/components/sage/setup-view");
+const SETUP_VIEW = "setup";
+const TASTE_CAP = SAGE_DESK_CONFIG.taste_visible_cap;
+/** PASS-C2: taste shelf order / off from config (ingest writes item indexes; null ⇒ snapshot order). */
+const TASTE_IDX = SAGE_DESK_CONFIG.taste_idx;
+const TASTE_SHOWN = TASTE_IDX ? TASTE_IDX.map((i) => X_TASTE.items[i]!) : X_TASTE.items;
 /** Pass A2: Sep archive payload is a lazy chunk — never in First Load. */
 const loadArchive = () => import("@/lib/archive-003");
 import { crawlAgeHours } from "@/lib/x-pulse";
@@ -282,9 +290,12 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
 
   // ── Beat 11 · lead log view (?view=leadlog, read after mount ⇒ static HTML never differs) ──
   const [logOpen, setLogOpen] = useState(false);
+  // PASS-C2 · ?view=setup: read after mount (static HTML never differs); the lazy chunk loads only then.
+  const [Setup, setSetup] = useState<null | (() => ReactNode)>(null);
   useEffect(() => {
     const read = () => setLogOpen(viewFromSearch(window.location.search) === LEADLOG_VIEW);
     read();
+    if (viewFromSearch(window.location.search) === SETUP_VIEW) loadSetup().then((m) => setSetup(() => m.SetupView));
     window.addEventListener("popstate", read);
     return () => window.removeEventListener("popstate", read);
   }, []);
@@ -555,6 +566,7 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
             <span className="tabular-nums">policy {CYCLE.leadPolicy} · pins {CYCLE.pins.length}/3</span>
           </div>
           <div className="relative z-10 p-3 md:p-4">
+            {Setup ? <Setup /> : null}
             <DeskKeysCtx.Provider value={keysCtx}>
             {lane === "brief" ? (
               <LeadLogCtx.Provider value={leadLogState}>
@@ -639,6 +651,9 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
       >
         <p className="desk-build-stamp font-mono text-kicker uppercase tracking-kicker tabular-nums">
           <span className="desk-keys-hint">? keys</span>
+          <a className="desk-keys-hint desk-setup-link" href="?view=setup">
+            setup
+          </a>
           <span
             className="desk-build-stamp-text"
             data-sage-stamp={stamp.text}
@@ -1327,7 +1342,8 @@ export function Pulse() {
     (a, b) => HEALTH_ORDER.indexOf(a.id) - HEALTH_ORDER.indexOf(b.id),
   );
   const tasteMeter = tasteSoftMeter(X_TASTE);
-  const tasteItems = tasteAll ? X_TASTE.items : X_TASTE.items.slice(0, TASTE_VISIBLE_CAP);
+  const tasteShown = TASTE_SHOWN;
+  const tasteItems = tasteAll ? tasteShown : tasteShown.slice(0, TASTE_CAP);
 
   return (
     <div className="pulse-v5" data-baseline={baseline ? "1" : undefined} data-drawer={drawerRow ? "1" : undefined}>
@@ -1552,9 +1568,9 @@ export function Pulse() {
               ))}
             </ul>
           )}
-          {X_TASTE.items.length > TASTE_VISIBLE_CAP ? (
+          {tasteShown.length > TASTE_CAP ? (
             <button type="button" className="pulse-v5-more focus-phosphor" onClick={() => setTasteAll((v) => !v)}>
-              {tasteAll ? "fewer taste" : `+${X_TASTE.items.length - TASTE_VISIBLE_CAP} more taste`}
+              {tasteAll ? "fewer taste" : `+${tasteShown.length - TASTE_CAP} more taste`}
             </button>
           ) : null}
           <p className="pulse-v5-taste-kicker tabular-nums">

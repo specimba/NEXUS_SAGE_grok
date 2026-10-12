@@ -8,6 +8,9 @@ import type { XTasteSnap } from "@/data/x-taste";
 /** Visible Taste shelf rows before fold (Pass E: 5–8). */
 export const TASTE_VISIBLE_CAP = 6;
 
+/** PASS-C2 `taste.weight` ceiling (Pulse taste shelf order only). */
+export const TASTE_WEIGHT_MAX = 0.3;
+
 /** Soft `taste stale` if capture older than this (Pass E). */
 export const TASTE_STALE_MS = 14 * 24 * 60 * 60 * 1000;
 
@@ -33,4 +36,24 @@ export function tasteSoftMeter(
     return { id: "x_session", label: "X-session", state: "soft", detail: "taste stale" };
   }
   return { id: "x_session", label: "X-session", state: "ok", detail: "landed" };
+}
+
+/**
+ * Taste shelf order (Pulse rail only). weight 0 ⇒ the snapshot order, untouched. weight > 0 lifts taste items
+ * that share a word (≥ 4 letters) with a current Pulse headline: score = position − weight × items × overlap.
+ * Never feeds Pulse UP, Wire, the lead pick or Brief (those never read this).
+ */
+export function orderTasteShelf<T extends { text: string }>(items: readonly T[], weight: number, pulseTitles: readonly string[]): T[] {
+  const w = Math.min(TASTE_WEIGHT_MAX, Math.max(0, Number.isFinite(weight) ? weight : 0));
+  if (w === 0 || items.length < 2) return [...items];
+  const words = (s: string) => new Set(s.toLowerCase().match(/[a-z0-9][a-z0-9.-]{3,}/g) ?? []);
+  const pulse = new Set<string>();
+  for (const t of pulseTitles) for (const x of words(t)) pulse.add(x);
+  const scored = items.map((it, i) => {
+    let overlap = 0;
+    for (const x of words(it.text)) if (pulse.has(x)) overlap++;
+    return { it, i, score: i - w * items.length * Math.min(overlap, 3) };
+  });
+  scored.sort((a, b) => a.score - b.score || a.i - b.i);
+  return scored.map((s) => s.it);
 }

@@ -46,6 +46,11 @@ export const HN_RECENT_SWEEP_TERMS = [
   "Hugging Face",
   "GPT",
 ] as const;
+/** PASS-C2: `keywords.hn_sweep` override (validated at crawl start). Default = HN_RECENT_SWEEP_TERMS. */
+let hnSweepTerms: readonly string[] = HN_RECENT_SWEEP_TERMS;
+export function configureHnSweepTerms(terms: readonly string[] = HN_RECENT_SWEEP_TERMS): void {
+  hnSweepTerms = terms;
+}
 export const HN_RECENT_SWEEP_MIN_POINTS = 3;
 /** Sweep pages (each ≤ HN_HITS_PER_PAGE_MAX hits, throttled ≤1 req/2s). */
 export const HN_RECENT_SWEEP_PAGES = 2;
@@ -536,7 +541,7 @@ export async function fetchHnPulse(
 
   let recent_sweep: FetchHnResult["recent_sweep"] = null;
   if (opts.recentSweep && recentHours && !opts.forceSoftFail) {
-    const q = HN_RECENT_SWEEP_TERMS.join(" ");
+    const q = hnSweepTerms.join(" ");
     let hitsTotal = 0;
     let failReason: string | undefined;
     for (let page = 0; page < HN_RECENT_SWEEP_PAGES; page++) {

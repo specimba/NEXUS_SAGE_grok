@@ -3027,3 +3027,36 @@ a.story-drawer-rowlink:focus-visible .story-drawer-open {
   /* Voice script card at 390: the single HELD kicker gets air from the wrapped meta line and the title. */
   .lane-voice [data-unlock-kicker] { margin-block: 0.375rem; }
 }
+
+/* PASS-C2 · read-only Setup view (?view=setup) — wraps at 390, no truncation. */
+.sage-setup-line,
+.sage-setup-errors,
+.sage-setup-sources,
+.sage-setup-kw {
+  padding: 0.3rem 0.6rem;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: var(--text-kicker);
+  letter-spacing: var(--tracking-kicker);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+.sage-setup-muted { color: var(--muted-foreground); }
+.sage-setup-errors { color: var(--pip-amber); list-style: none; }
+.sage-setup-sources { list-style: none; margin: 0; }
+.sage-setup-src {
+  display: grid;
+  grid-template-columns: minmax(5.5rem, 1fr) 2.2rem 3rem 5rem minmax(0, 2.4fr);
+  gap: 0 0.5rem;
+  padding: 0.12rem 0;
+  border-bottom: 1px dashed var(--border);
+  min-width: 0;
+}
+.sage-setup-src > span { min-width: 0; overflow-wrap: anywhere; }
+.sage-setup-colhead { color: var(--muted-foreground); text-transform: uppercase; }
+.sage-setup-kw summary { cursor: pointer; color: var(--phosphor); }
+.sage-setup-terms { color: var(--muted-foreground); padding: 0.2rem 0 0.3rem 0.8rem; }
+.desk-setup-link { margin-left: 0.75rem; color: var(--muted-foreground); text-decoration: underline dotted; }
+@media (max-width: 767px) {
+  .sage-setup-src { grid-template-columns: minmax(0, 1fr) 2rem 2.6rem 4.6rem; }
+  .sage-setup-caps { grid-column: 1 / -1; padding-left: 0.8rem; color: var(--muted-foreground); }
+}

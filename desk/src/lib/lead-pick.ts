@@ -151,7 +151,11 @@ export const POLITICS_LEAD_TERMS = [
   "partisan",
 ] as const;
 
-const POLITICS_RE = new RegExp(`\\b(?:${POLITICS_LEAD_TERMS.join("|")})\\b`, "i");
+let POLITICS_RE = new RegExp(`\\b(?:${POLITICS_LEAD_TERMS.join("|")})\\b`, "i");
+/** PASS-C2: `keywords.politics_deny` override (crawl/rank only; validated). Default = POLITICS_LEAD_TERMS. */
+export function configurePoliticsTerms(terms: readonly string[] = POLITICS_LEAD_TERMS): void {
+  POLITICS_RE = new RegExp(`\\b(?:${terms.join("|")})\\b`, "i");
+}
 
 export function politicsLeadReason(title: string): string | null {
   const m = POLITICS_RE.exec(String(title ?? ""));

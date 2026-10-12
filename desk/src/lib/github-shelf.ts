@@ -323,6 +323,8 @@ export type FetchGithubOpts = {
   now?: number;
   /** Test: force soft-fail without network. */
   forceSoftFail?: 403 | 429;
+  /** PASS-C2 `github.cap` (validated ≤ 2 × GITHUB_PER_PAGE). */
+  perPage?: number;
   /** Optional fetch override (tests). Never sends Authorization. */
   fetchImpl?: typeof fetch;
   /** Allow >1 search in tests only — production always 1. */
@@ -487,7 +489,7 @@ export async function searchRepos(
 
   const url =
     `${GITHUB_SEARCH_API}?q=${encodeURIComponent(query)}` +
-    `&sort=updated&order=desc&per_page=${GITHUB_PER_PAGE}`;
+    `&sort=updated&order=desc&per_page=${opts.perPage ?? GITHUB_PER_PAGE}`;
 
   searchesThisTick += 1;
   try {

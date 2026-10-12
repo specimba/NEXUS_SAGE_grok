@@ -96,9 +96,40 @@ export function queryHash(q: string = GMAIL_QUERY): string {
   return createHash("sha1").update(q).digest("hex").slice(0, 12);
 }
 
+/**
+ * PASS-C2 gmail config (crawl start, validated): fetch/emit caps, newer_than window, seed keywords.
+ * Defaults = the pre-C2 constants, so the canonical query and caps are unchanged until config edits them.
+ */
+const gmailCfg = {
+  fetchCap: GMAIL_FETCH_CAP as number,
+  emitCap: GMAIL_EMIT_CAP as number,
+  windowDays: 14,
+  seed: GMAIL_SEED_KEYWORDS as readonly string[],
+};
+export function configureGmail(c: { fetchCap?: number; emitCap?: number; windowDays?: number; seed?: readonly string[] } = {}): void {
+  gmailCfg.fetchCap = c.fetchCap ?? GMAIL_FETCH_CAP;
+  gmailCfg.emitCap = c.emitCap ?? GMAIL_EMIT_CAP;
+  gmailCfg.windowDays = c.windowDays ?? 14;
+  gmailCfg.seed = c.seed ?? GMAIL_SEED_KEYWORDS;
+}
+export function gmailCaps(): { fetchCap: number; emitCap: number; windowDays: number } {
+  return { fetchCap: gmailCfg.fetchCap, emitCap: gmailCfg.emitCap, windowDays: gmailCfg.windowDays };
+}
+
+/**
+ * Canonical query, plus PASS-C2 edits: seed words not in the default seed are OR-added as a subject clause,
+ * and the newer_than window follows `gmail.window_days`. The canonical clauses cover the default seed, so a
+ * seed word removed in config is still matched by them (the fixed clauses are code, not config).
+ */
 export function buildGmailQuery(): string {
-  // Seed coverage check is a test concern; this returns the canonical query.
-  return GMAIL_QUERY;
+  const extra = gmailCfg.seed.filter((k) => !(GMAIL_SEED_KEYWORDS as readonly string[]).includes(k));
+  let q = GMAIL_QUERY;
+  if (extra.length) {
+    const terms = extra.map((k) => (/\s/.test(k) ? `"${k.replace(/"/g, "")}"` : k)).join(" OR ");
+    q = q.replace(/\)\s*newer_than:/, ` OR subject:(${terms}))` + " newer_than:");
+  }
+  if (gmailCfg.windowDays !== 14) q = q.replace(/newer_than:14d/, `newer_than:${gmailCfg.windowDays}d`);
+  return q;
 }
 
 export function publisherFromSender(sender: string): string {
@@ -232,7 +263,7 @@ function densityZero(subject: string, snippet: string) {
 }
 
 /** Dedupe by message-id; keep highest qi. Cap emit at GMAIL_EMIT_CAP, sorted qi then freshness. */
-export function rankAndEmit(hits: GmailNewsHit[], cap = GMAIL_EMIT_CAP): GmailNewsHit[] {
+export function rankAndEmit(hits: GmailNewsHit[], cap = gmailCfg.emitCap): GmailNewsHit[] {
   const byId = new Map<string, GmailNewsHit>();
   for (const h of hits) {
     const prev = byId.get(h.messageId);
@@ -324,7 +355,7 @@ export function ingestSearchPayload(
   opts: { cacheDir?: string; now?: number; query?: string } = {},
 ): GmailNewsResult {
   const t0 = Date.now();
-  const query = opts.query ?? GMAIL_QUERY;
+  const query = opts.query ?? buildGmailQuery();
   const now = opts.now ?? Date.now();
   const dir = opts.cacheDir;
   const raw: GmailRawMessage[] = [];
@@ -342,9 +373,9 @@ export function ingestSearchPayload(
       });
     }
   }
-  const fetched = Math.min(raw.length, GMAIL_FETCH_CAP);
+  const fetched = Math.min(raw.length, gmailCfg.fetchCap);
   const hits: GmailNewsHit[] = [];
-  for (const m of raw.slice(0, GMAIL_FETCH_CAP)) {
+  for (const m of raw.slice(0, gmailCfg.fetchCap)) {
     const hit = toHit(m, now);
     if (!hit) continue;
     hits.push(hit);
@@ -396,7 +427,7 @@ export async function runGmailNews(opts: {
   timeoutMs?: number;
 }): Promise<GmailNewsResult> {
   const t0 = Date.now();
-  const query = GMAIL_QUERY;
+  const query = buildGmailQuery();
   const qh = queryHash(query);
   const dir = opts.cacheDir ?? cacheDir();
   const timeoutMs = opts.timeoutMs ?? GMAIL_SOFT_TIMEOUT_MS;
@@ -476,13 +507,13 @@ export function envTokenFetcher(token: string): GmailFetcher {
   return async (query, signal) => {
     const listUrl = new URL("https://gmail.googleapis.com/gmail/v1/users/me/threads");
     listUrl.searchParams.set("q", query);
-    listUrl.searchParams.set("maxResults", String(GMAIL_FETCH_CAP));
+    listUrl.searchParams.set("maxResults", String(gmailCfg.fetchCap));
     const listRes = await fetch(listUrl, { signal, headers: { Authorization: `Bearer ${token}` } });
     if (listRes.status === 401) throw new Error("HTTP 401");
     if (!listRes.ok) throw new Error(`HTTP ${listRes.status}`);
     const list = (await listRes.json()) as { threads?: { id: string }[] };
     const threads: Array<{ id: string; messages: GmailRawMessage[]; viewUrl?: string }> = [];
-    for (const t of (list.threads ?? []).slice(0, GMAIL_FETCH_CAP)) {
+    for (const t of (list.threads ?? []).slice(0, gmailCfg.fetchCap)) {
       const getUrl = `https://gmail.googleapis.com/gmail/v1/users/me/threads/${t.id}?format=metadata&metadataHeaders=Subject&metadataHeaders=From&metadataHeaders=Date`;
       const gr = await fetch(getUrl, { signal, headers: { Authorization: `Bearer ${token}` } });
       if (!gr.ok) continue;
