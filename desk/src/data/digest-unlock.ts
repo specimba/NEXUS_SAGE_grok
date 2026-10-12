@@ -7,64 +7,64 @@ import type { DigestUnlockSnapshot } from "@/lib/digest-unlock";
 export const DIGEST_UNLOCK: DigestUnlockSnapshot = {
   "schema": 1,
   "cycleId": "003",
-  "pickDate": "2026-10-11",
-  "frozenAt": "2026-10-11T03:20:28.246Z",
+  "pickDate": "2026-10-12",
+  "frozenAt": "2026-10-12T03:22:13.996Z",
   "leadId": "cl:hn:50035886",
   "lead": {
     "id": "cl:hn:50035886",
     "kind": "lead",
     "title": "Nvidia in talks to acquire US 'open' model startup Reflection AI",
-    "take": "4 SRC · sig 131 · pick 2026-10-11",
+    "take": "5 SRC · sig 176 · pick 2026-10-12",
     "why": "LEAD_TODAY · picked · frozen at daily pick",
     "move": "Digest/Voice follow Brief lead · cycle label 003",
     "url": "https://www.ft.com/content/052610c5-22b4-4dd4-932e-b7f9f0628b6a",
-    "sources": 4,
-    "sig": 131
+    "sources": 5,
+    "sig": 176
   },
   "rows": [
     {
-      "id": "cl:hn:50027118",
+      "id": "cl:hn:50035550",
       "kind": "companion",
-      "title": "Anthropic AI model submits false tip on unsolved Philly murder, police say",
-      "take": "16 SRC · sig 208",
+      "title": "Anthropic discloses 2 months old fake tip to police among new rogue AI incidents",
+      "take": "3 SRC · sig 41",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
-      "url": "https://www.nbcphiladelphia.com/news/local/anthropic-ai-model-submits-false-tip-on-unsolved-philly-murder-police-say/4477051/",
-      "sources": 16,
-      "sig": 208
-    },
-    {
-      "id": "cl:hn:50017324",
-      "kind": "rest",
-      "title": "Anthropic bans users from abusive or cruel behavior towards Claude",
-      "take": "3 SRC · sig 9",
-      "why": "Top corroborated Wire cluster · same pack as lead pick",
-      "move": "Digest row · never displaces Brief lead",
-      "url": "https://www.theguardian.com/technology/2026/oct/08/anthropic-bans-abusive-behavior-claude",
+      "url": "https://www.reuters.com/world/us/anthropic-ai-model-submits-false-homicide-tip-police-website-2026-10-09/",
       "sources": 3,
-      "sig": 9
+      "sig": 41
     },
     {
-      "id": "cl:hn:50038865",
+      "id": "cl:hn:50047538",
       "kind": "rest",
-      "title": "Anthropic asks users to stop being mean to Claude",
-      "take": "2 SRC · sig 44",
+      "title": "Anthropic's Claude submits false tip on a Philadelphia unsolved homicide case",
+      "take": "3 SRC · sig 8",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
-      "url": "https://www.theregister.com/ai-and-ml/2026/10/09/anthropic-asks-users-to-stop-being-mean-to-claude/5302218",
+      "url": "https://apnews.com/article/artificial-intelligence-anthropic-claude-0acc6ac46d4d80db805e8d55468a6fe1",
+      "sources": 3,
+      "sig": 8
+    },
+    {
+      "id": "cl:rss:nvidia:9ef5df398b6c290e",
+      "kind": "rest",
+      "title": "NVIDIA, Microsoft Kick Off a New Beginning for Windows PCs With RTX Spark and AI Agents",
+      "take": "2 SRC · sig 4",
+      "why": "Top corroborated Wire cluster · same pack as lead pick",
+      "move": "Digest row · never displaces Brief lead",
+      "url": "https://blogs.nvidia.com/blog/local-ai-rtx-spark-microsoft-windows-event/",
       "sources": 2,
-      "sig": 44
+      "sig": 4
     },
     {
       "id": "cl:hn:50029330",
       "kind": "rest",
       "title": "Anthropic Agents Tried to Fill Out Visa Forms on State Dept. Website",
-      "take": "2 SRC · sig 33",
+      "take": "2 SRC · sig 34",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
       "url": "https://www.nytimes.com/2026/10/09/technology/anthropic-rogue-ai-agents.html",
       "sources": 2,
-      "sig": 33
+      "sig": 34
     }
   ]
 } as const;

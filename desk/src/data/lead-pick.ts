@@ -2,6 +2,33 @@
 import type { LeadEntry } from "@/lib/lead-pick";
 
 export const LEAD_TODAY: LeadEntry | null = {
+  "date": "2026-10-12",
+  "at": "2026-10-12T03:22:13.996Z",
+  "crawl_at": "2026-10-12T03:21:52Z",
+  "pick_slot": "06:21",
+  "excluded": [
+    {
+      "cluster_id": "cl:rss:nvidia:9ef5df398b6c290e",
+      "headline": "NVIDIA, Microsoft Kick Off a New Beginning for Windows PCs With RTX Spark and AI Agents",
+      "reason": "age>=36h"
+    },
+    {
+      "cluster_id": "cl:hn:50029330",
+      "headline": "Anthropic Agents Tried to Fill Out Visa Forms on State Dept. Website",
+      "reason": "age>=36h"
+    }
+  ],
+  "cluster_id": "cl:hn:50035886",
+  "headline": "Nvidia in talks to acquire US 'open' model startup Reflection AI",
+  "url": "https://www.ft.com/content/052610c5-22b4-4dd4-932e-b7f9f0628b6a",
+  "sources": 5,
+  "sig": 176,
+  "reason": "picked",
+  "first_at": "2026-10-10T18:14:28.000Z",
+  "age_band": "24–36h"
+};
+
+export const LEAD_YESTERDAY: LeadEntry | null = {
   "date": "2026-10-11",
   "at": "2026-10-11T03:20:28.246Z",
   "crawl_at": "2026-10-11T03:20:06Z",
@@ -49,57 +76,6 @@ export const LEAD_TODAY: LeadEntry | null = {
   "sig": 131,
   "reason": "picked",
   "first_at": "2026-10-10T18:14:28.000Z"
-};
-
-export const LEAD_YESTERDAY: LeadEntry | null = {
-  "date": "2026-10-10",
-  "at": "2026-10-10T15:14:16.526Z",
-  "crawl_at": "2026-10-10T15:14:07Z",
-  "catch_up": true,
-  "excluded": [
-    {
-      "cluster_id": "cl:hn:50008187",
-      "headline": "OpenAI annualised revenues $20B less than previously signalled",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:hn:50013972",
-      "headline": "OpenAI Safety Researchers Fired",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:gnews:24c8282971995657",
-      "headline": "Google's Gemini 4 \"Carbon\" model is reportedly matching Anthropic's Opus 5.5 coding performance",
-      "reason": "GNW_ONLY"
-    },
-    {
-      "cluster_id": "cl:hn:50023260",
-      "headline": "'Breathtaking,' 'Devastating': Mathematics Reels After New OpenAI Release",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:rss:huggingface:88e871d5a8d26738",
-      "headline": "Multimodal open d1 decision models for the edge",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:rss:huggingface:16b7810afb00bdc0",
-      "headline": "Introducing Falcon ASR",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:hn:50009239",
-      "headline": "USA Today sues OpenAI for copyright infringement over AI training",
-      "reason": "age>=24h"
-    }
-  ],
-  "cluster_id": "cl:hn:50030776",
-  "headline": "The hazy OpenAI growth metric driving Wall Street",
-  "url": "https://www.ft.com/content/62653892-2333-4953-a8d5-cfd760ae3257",
-  "sources": 2,
-  "sig": 4,
-  "reason": "picked",
-  "first_at": "2026-10-09T20:57:10.000Z"
 };
 
 export const LEAD_HELD = false;
