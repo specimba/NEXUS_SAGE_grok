@@ -7,64 +7,42 @@ import type { DigestUnlockSnapshot } from "@/lib/digest-unlock";
 export const DIGEST_UNLOCK: DigestUnlockSnapshot = {
   "schema": 1,
   "cycleId": "003",
-  "pickDate": "2026-10-12",
-  "frozenAt": "2026-10-12T03:22:13.996Z",
-  "leadId": "cl:hn:50035886",
+  "pickDate": "2026-10-13",
+  "frozenAt": "2026-10-13T08:23:39.958Z",
+  "leadId": "cl:hn:50056918",
   "lead": {
-    "id": "cl:hn:50035886",
+    "id": "cl:hn:50056918",
     "kind": "lead",
-    "title": "Nvidia in talks to acquire US 'open' model startup Reflection AI",
-    "take": "5 SRC · sig 176 · pick 2026-10-12",
+    "title": "Five possible back-doors into LLM search results",
+    "take": "2 SRC · sig 2 · pick 2026-10-13",
     "why": "LEAD_TODAY · picked · frozen at daily pick",
     "move": "Digest/Voice follow Brief lead · cycle label 003",
-    "url": "https://www.ft.com/content/052610c5-22b4-4dd4-932e-b7f9f0628b6a",
-    "sources": 5,
-    "sig": 176
+    "url": "https://www.unite.ai/five-possible-back-doors-into-llm-search-results/",
+    "sources": 2,
+    "sig": 2
   },
   "rows": [
     {
-      "id": "cl:hn:50035550",
+      "id": "cl:hn:50059523",
       "kind": "companion",
-      "title": "Anthropic discloses 2 months old fake tip to police among new rogue AI incidents",
-      "take": "3 SRC · sig 41",
+      "title": "AI coding agents generate more code, but not more software",
+      "take": "2 SRC · sig 332",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
-      "url": "https://www.reuters.com/world/us/anthropic-ai-model-submits-false-homicide-tip-police-website-2026-10-09/",
-      "sources": 3,
-      "sig": 41
-    },
-    {
-      "id": "cl:hn:50047538",
-      "kind": "rest",
-      "title": "Anthropic's Claude submits false tip on a Philadelphia unsolved homicide case",
-      "take": "3 SRC · sig 8",
-      "why": "Top corroborated Wire cluster · same pack as lead pick",
-      "move": "Digest row · never displaces Brief lead",
-      "url": "https://apnews.com/article/artificial-intelligence-anthropic-claude-0acc6ac46d4d80db805e8d55468a6fe1",
-      "sources": 3,
-      "sig": 8
+      "url": "https://arstechnica.com/ai/2026/10/ai-coding-agents-generate-more-code-but-not-more-software/",
+      "sources": 2,
+      "sig": 332
     },
     {
       "id": "cl:rss:nvidia:9ef5df398b6c290e",
       "kind": "rest",
       "title": "NVIDIA, Microsoft Kick Off a New Beginning for Windows PCs With RTX Spark and AI Agents",
-      "take": "2 SRC · sig 4",
+      "take": "2 SRC · sig 5",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
       "url": "https://blogs.nvidia.com/blog/local-ai-rtx-spark-microsoft-windows-event/",
       "sources": 2,
-      "sig": 4
-    },
-    {
-      "id": "cl:hn:50029330",
-      "kind": "rest",
-      "title": "Anthropic Agents Tried to Fill Out Visa Forms on State Dept. Website",
-      "take": "2 SRC · sig 34",
-      "why": "Top corroborated Wire cluster · same pack as lead pick",
-      "move": "Digest row · never displaces Brief lead",
-      "url": "https://www.nytimes.com/2026/10/09/technology/anthropic-rogue-ai-agents.html",
-      "sources": 2,
-      "sig": 34
+      "sig": 5
     }
   ]
 } as const;

@@ -2,14 +2,14 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-12T18:23:36Z",
+  "stamped_at": "2026-10-13T08:23:23Z",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 142,
+      "duration_ms": 156,
       "paused_until": null,
       "reason": null
     },
@@ -18,7 +18,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 3166,
+      "duration_ms": 3204,
       "paused_until": null,
       "reason": null
     },
@@ -26,8 +26,8 @@
       "id": "openalex",
       "label": "OpenAlex",
       "status": "ok",
-      "rows": 4,
-      "duration_ms": 359,
+      "rows": 3,
+      "duration_ms": 506,
       "paused_until": null,
       "reason": null
     },
@@ -35,8 +35,8 @@
       "id": "crossref",
       "label": "Crossref",
       "status": "ok",
-      "rows": 1,
-      "duration_ms": 136,
+      "rows": 0,
+      "duration_ms": 499,
       "paused_until": null,
       "reason": null
     },
@@ -44,8 +44,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 59,
-      "duration_ms": 8271,
+      "rows": 71,
+      "duration_ms": 8367,
       "paused_until": null,
       "reason": null
     },
@@ -54,7 +54,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 16854,
+      "duration_ms": 16281,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +63,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 4136,
+      "duration_ms": 4183,
       "paused_until": null,
       "reason": null
     },
@@ -72,7 +72,7 @@
       "label": "Google News",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 6325,
+      "duration_ms": 6364,
       "paused_until": null,
       "reason": null
     },
@@ -80,8 +80,8 @@
       "id": "github",
       "label": "GitHub",
       "status": "ok",
-      "rows": 3,
-      "duration_ms": 313,
+      "rows": 2,
+      "duration_ms": 317,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +90,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4426,
+      "duration_ms": 4414,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 44128,
-    "sources_wall_ms": 16854,
-    "papers_lane_ms": 3809,
-    "slowest_source_ms": 16854,
+    "sources_ms": 44291,
+    "sources_wall_ms": 16282,
+    "papers_lane_ms": 4372,
+    "slowest_source_ms": 16281,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -114,9 +114,9 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 17269,
-    "startup_ms": 42,
-    "main_ms": 17279
+    "wall_ms": 16782,
+    "startup_ms": 43,
+    "main_ms": 16794
   },
   "multi_source_independent": 3,
   "stale_hours": 6,
@@ -125,17 +125,17 @@
     "multi_source_independent": 3,
     "multi_source_raw": 4,
     "self_reposts": 1,
-    "items_in": 230,
-    "clusters_out": 222,
-    "collapsed": 8,
+    "items_in": 242,
+    "clusters_out": 236,
+    "collapsed": 6,
     "multi_source": 3,
-    "multi_member": 8,
+    "multi_member": 5,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 39,
+    "new_items": 62,
     "per_source": {
-      "hn-algolia": 59,
+      "hn-algolia": 71,
       "rss-lab": 104,
       "rss-security": 28,
       "gnews-rss": 29,
@@ -143,52 +143,59 @@
     },
     "multi_source_clusters": [
       {
-        "title": "Anthropic's Claude submits false tip on a Philadelphia unsolved homicide case",
+        "title": "AI coding agents generate more code, but not more software",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 2,
-        "score": 0.674,
+        "size": 3,
+        "score": 1,
         "members": [
           {
-            "id": "hn:50047538",
+            "id": "hn:50059523",
             "source": "hn-algolia",
-            "title": "Anthropic's Claude submits false tip on a Philadelphia unsolved homicide case",
-            "at": "2026-10-11T20:33:39Z",
+            "title": "AI coding agents generate more code, but not more software",
+            "at": "2026-10-12T17:14:01Z",
             "publisher": null
           },
           {
-            "id": "gnews:2484f7ae098b6280",
+            "id": "hn:50050448",
+            "source": "hn-algolia",
+            "title": "AI coding agents generate more code, but not more software",
+            "at": "2026-10-12T02:10:20Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:a3cf2d7725b7242b",
             "source": "gnews-rss",
-            "title": "Claude provided false tip in unsolved murder case, Anthropic says - ABA Journal",
-            "at": "2026-10-12T13:44:00Z",
-            "publisher": "ABA Journal"
+            "title": "AI Coding Agents Add 30% More Code, Not Software [2026] - https://tech-insider.org/",
+            "at": "2026-10-12T22:57:41Z",
+            "publisher": "https://tech-insider.org/"
           }
         ]
       },
       {
-        "title": "Nvidia in talks to acquire US 'open' model startup Reflection AI",
+        "title": "Five possible back-doors into LLM search results",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.963,
+        "score": 1,
         "members": [
           {
-            "id": "hn:50035886",
+            "id": "hn:50056918",
             "source": "hn-algolia",
-            "title": "Nvidia in talks to acquire US 'open' model startup Reflection AI",
-            "at": "2026-10-10T18:48:35Z",
+            "title": "Five possible back-doors into LLM search results",
+            "at": "2026-10-12T14:24:53Z",
             "publisher": null
           },
           {
-            "id": "gnews:142edcf73667931d",
+            "id": "gnews:2727f5561e782358",
             "source": "gnews-rss",
-            "title": "Will NVIDIA Acquire US Open-Model Startup Reflection AI? - AI Magazine",
-            "at": "2026-10-12T09:06:46Z",
-            "publisher": "AI Magazine"
+            "title": "Five Possible Back-Doors into LLM Search Results - Unite.AI",
+            "at": "2026-10-12T12:52:30Z",
+            "publisher": "Unite.AI"
           }
         ]
       },
@@ -220,7 +227,7 @@
     ],
     "self_repost_clusters": [
       {
-        "title": "OCP Global Summit: Amid Ecosystem Adoption, NVIDIA Opens Vera Rubin Architecture to Help Scale AI Factories Worldwide",
+        "title": "Simulating student learning for better AI tutoring",
         "sources": [
           "rss-lab"
         ],
@@ -230,9 +237,9 @@
         ],
         "self_reposts": [
           {
-            "id": "gnews:ca65bb58b16bab49",
-            "publisher": "NVIDIA Blog",
-            "title": "Amid Ecosystem Adoption, NVIDIA Opens Vera Rubin Architecture to Help Scale AI Factories Worldwide - NVIDIA Blog"
+            "id": "gnews:1c1b15aa32fef800",
+            "publisher": "Microsoft",
+            "title": "Simulating student learning for better AI tutoring - Microsoft"
           }
         ]
       }
@@ -252,28 +259,28 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "LinkedIn",
-          "title": "Microsoft and Amazon chip away at Nvidia’s dominance - LinkedIn"
+          "publisher": "The Kenyan Wall Street",
+          "title": "Microsoft to Close Nairobi Africa Development Centre - The Kenyan Wall Street"
         },
         {
-          "publisher": "Pasquale Pillitteri",
-          "title": "Runway unveils Project Continuum, the computer without apps - Pasquale Pillitteri"
+          "publisher": "Techpoint Africa",
+          "title": "Microsoft’s Nairobi hub faces uncertainty two years after Lagos engineering closure - Techpoint Africa"
         },
         {
-          "publisher": "TradingView",
-          "title": "Why Shopify (SHOP) Stock Is Up Today - TradingView"
+          "publisher": "streamlinefeed.co.ke",
+          "title": "Microsoft Acknowledges Kenya Engineering Changes as ADC Closure Reported - streamlinefeed.co.ke"
+        },
+        {
+          "publisher": "36 Kr",
+          "title": "A Long-Established Collaborative Bridge Between Liang Wenfeng and Winverse - 36 Kr"
+        },
+        {
+          "publisher": "The Eastleigh Voice",
+          "title": "Microsoft job cuts threaten Nairobi engineering hub as restructuring looms - The Eastleigh Voice"
         },
         {
           "publisher": "digitimes",
-          "title": "Interview: Microsoft's Maia GM on Maia 300, Taiwan and HBM supply - digitimes"
-        },
-        {
-          "publisher": "Quanta Magazine",
-          "title": "Is ‘Attention’ the Essence of Intelligence? - Quanta Magazine"
-        },
-        {
-          "publisher": "digitimes",
-          "title": "Microsoft's Maia 300 rack: 96 accelerators, HBM4, mostly liquid-cooled - digitimes"
+          "title": "Nanya Technology's LTAs cover up to 70% of capacity as Pingtung 3D IC plant targets 2H28 production - digitimes"
         }
       ],
       "gnews_pool_dropped": 0,
@@ -281,192 +288,181 @@
     },
     "gnews_near_misses": [
       {
-        "score": 0.896,
+        "score": 0.499,
         "blocked": "time-window",
-        "hours_apart": 38.6,
+        "hours_apart": 161.3,
         "a": {
-          "id": "hn:50039318",
-          "source": "hn-algolia",
-          "title": "Rogue Anthropic AI agent gave police fake tip in unsolved murder case",
-          "at": "2026-10-11T02:41:19Z"
+          "id": "gnews:40e5546f1ff5cbe4",
+          "source": "gnews-rss",
+          "title": "Does ChatGPT Watermark Text? Claude, Gemini and Copilot Compared - Pasquale Pillitteri",
+          "at": "2026-10-13T07:29:46Z"
         },
         "b": {
-          "id": "gnews:5ac32f8b8f8489f2",
-          "source": "gnews-rss",
-          "title": "Anthropic AI Agent Gave Police A Fake Tip-Off In An Unsolved Murder Case - IFLScience",
-          "at": "2026-10-12T17:15:29Z"
+          "id": "gmail:1a1118c601f1cb6a",
+          "source": "gmail-news",
+          "title": "OpenAI Starts Watermarking ChatGPT Text",
+          "at": "2026-10-06T14:09:34Z"
         },
         "shared": [
-          "anthropic",
+          "chatgpt",
+          "watermark",
+          "text"
+        ]
+      },
+      {
+        "score": 0.459,
+        "blocked": "thin-overlap",
+        "hours_apart": 40.7,
+        "a": {
+          "id": "hn:50043904",
+          "source": "hn-algolia",
+          "title": "Does Claude Have Rights?",
+          "at": "2026-10-11T14:50:31Z"
+        },
+        "b": {
+          "id": "gnews:40e5546f1ff5cbe4",
+          "source": "gnews-rss",
+          "title": "Does ChatGPT Watermark Text? Claude, Gemini and Copilot Compared - Pasquale Pillitteri",
+          "at": "2026-10-13T07:29:46Z"
+        },
+        "shared": [
+          "doe",
+          "claude"
+        ]
+      },
+      {
+        "score": 0.451,
+        "blocked": "time-window",
+        "hours_apart": 155.3,
+        "a": {
+          "id": "gnews:1ffe0378d5ccc5f4",
+          "source": "gnews-rss",
+          "title": "Large Language Models Can Write Poetry But Can’t Step Beyond the Factory Fence: Yanxin Technology Integrates \"Symbol + Behavior + Connection\" 3 Technical Routes into RISC-V Chips to Develop Plug-and-Play Robot Brains - 36 Kr",
+          "at": "2026-10-13T06:11:36Z"
+        },
+        "b": {
+          "id": "gmail:1a112914bb745ca0",
+          "source": "gmail-news",
+          "title": "This AI that can't write",
+          "at": "2026-10-06T18:54:34Z"
+        },
+        "shared": [
+          "writ",
+          "t"
+        ]
+      },
+      {
+        "score": 0.327,
+        "blocked": "thin-overlap",
+        "hours_apart": 151.9,
+        "a": {
+          "id": "gmail:1a111c040bbfe878",
+          "source": "gmail-news",
+          "title": "30 Free AI Automation Tools in 2026",
+          "at": "2026-10-06T15:01:46Z"
+        },
+        "b": {
+          "id": "gnews:a3cf2d7725b7242b",
+          "source": "gnews-rss",
+          "title": "AI Coding Agents Add 30% More Code, Not Software [2026] - https://tech-insider.org/",
+          "at": "2026-10-12T22:57:41Z"
+        },
+        "shared": [
+          "30",
           "ai",
-          "agent",
-          "gave",
-          "polic",
-          "fake",
-          "tip",
-          "unsolv",
-          "murder",
-          "case"
-        ]
-      },
-      {
-        "score": 0.531,
-        "blocked": "time-window",
-        "hours_apart": 35,
-        "a": {
-          "id": "hn:50039318",
-          "source": "hn-algolia",
-          "title": "Rogue Anthropic AI agent gave police fake tip in unsolved murder case",
-          "at": "2026-10-11T02:41:19Z"
-        },
-        "b": {
-          "id": "gnews:2484f7ae098b6280",
-          "source": "gnews-rss",
-          "title": "Claude provided false tip in unsolved murder case, Anthropic says - ABA Journal",
-          "at": "2026-10-12T13:44:00Z"
-        },
-        "shared": [
-          "anthropic",
-          "tip",
-          "unsolv",
-          "murder",
-          "case"
-        ]
-      },
-      {
-        "score": 0.358,
-        "blocked": "below-threshold",
-        "hours_apart": 20.7,
-        "a": {
-          "id": "hn:50047538",
-          "source": "hn-algolia",
-          "title": "Anthropic's Claude submits false tip on a Philadelphia unsolved homicide case",
-          "at": "2026-10-11T20:33:39Z"
-        },
-        "b": {
-          "id": "gnews:5ac32f8b8f8489f2",
-          "source": "gnews-rss",
-          "title": "Anthropic AI Agent Gave Police A Fake Tip-Off In An Unsolved Murder Case - IFLScience",
-          "at": "2026-10-12T17:15:29Z"
-        },
-        "shared": [
-          "anthropic",
-          "tip",
-          "unsolv",
-          "case"
-        ]
-      },
-      {
-        "score": 0.335,
-        "blocked": "thin-overlap",
-        "hours_apart": 22.8,
-        "a": {
-          "id": "hn:50046117",
-          "source": "hn-algolia",
-          "title": "Anthropic is out with new nonsense about Claude",
-          "at": "2026-10-11T18:16:54Z"
-        },
-        "b": {
-          "id": "gnews:136aeb4f3507d437",
-          "source": "gnews-rss",
-          "title": "Anthropic Says Claude Can End Chats: Full Details - JournalArta",
-          "at": "2026-10-12T17:06:56Z"
-        },
-        "shared": [
-          "anthropic",
-          "claude"
-        ]
-      },
-      {
-        "score": 0.32,
-        "blocked": "time-window",
-        "hours_apart": 47.1,
-        "a": {
-          "id": "hn:50035886",
-          "source": "hn-algolia",
-          "title": "Nvidia in talks to acquire US 'open' model startup Reflection AI",
-          "at": "2026-10-10T18:48:35Z"
-        },
-        "b": {
-          "id": "gnews:daf0172e46f78102",
-          "source": "gnews-rss",
-          "title": "Amazon and Nvidia considering AI startup deals: Reports - CNBC",
-          "at": "2026-10-12T17:53:10Z"
-        },
-        "shared": [
-          "nvidia",
-          "startup",
-          "ai"
-        ]
-      },
-      {
-        "score": 0.32,
-        "blocked": "thin-overlap",
-        "hours_apart": 19.5,
-        "a": {
-          "id": "hn:50046117",
-          "source": "hn-algolia",
-          "title": "Anthropic is out with new nonsense about Claude",
-          "at": "2026-10-11T18:16:54Z"
-        },
-        "b": {
-          "id": "gnews:2484f7ae098b6280",
-          "source": "gnews-rss",
-          "title": "Claude provided false tip in unsolved murder case, Anthropic says - ABA Journal",
-          "at": "2026-10-12T13:44:00Z"
-        },
-        "shared": [
-          "anthropic",
-          "claude"
+          "2026"
         ]
       },
       {
         "score": 0.292,
-        "blocked": "thin-overlap",
-        "hours_apart": 14.7,
+        "blocked": "time-window",
+        "hours_apart": 1504.3,
         "a": {
-          "id": "hn:50050540",
-          "source": "hn-algolia",
-          "title": "Nvidia, Microsoft Launch Windows PCs with RTX Spark and AI Agents",
-          "at": "2026-10-12T02:20:35Z"
+          "id": "rss:mistral:c1e2b11cbf4853bf",
+          "source": "rss-lab",
+          "title": "In-region inference, open models, and new European infrastructure for sovereign AI.",
+          "at": "2026-08-11T12:00:27Z"
         },
         "b": {
-          "id": "gnews:cf32287e4ea0f0f8",
+          "id": "gnews:89ba88fa0d0ac17a",
           "source": "gnews-rss",
-          "title": "Microsoft Bets On In-House Maia Chips for AI From 2027 To Loosen Nvidia’s Grip - NDTV Profit",
-          "at": "2026-10-12T17:05:01Z"
+          "title": "Mistral Touts 'Le Chonk' as Capable European Sovereign Model - BankInfoSecurity",
+          "at": "2026-10-13T04:15:37Z"
         },
         "shared": [
-          "nvidia",
-          "microsoft",
+          "model",
+          "european",
+          "sovereign"
+        ]
+      },
+      {
+        "score": 0.278,
+        "blocked": "below-threshold",
+        "hours_apart": 16.2,
+        "a": {
+          "id": "hn:50057341",
+          "source": "hn-algolia",
+          "title": "Are There Better Languages for Programming with LLMs?",
+          "at": "2026-10-12T14:56:05Z"
+        },
+        "b": {
+          "id": "gnews:595bf1d6c110f0c8",
+          "source": "gnews-rss",
+          "title": "Large Language Model (LLM) Market to Reach USD 148.8 Billion - openPR.com",
+          "at": "2026-10-13T07:05:52Z"
+        },
+        "shared": [
+          "languag",
+          "llm"
+        ]
+      },
+      {
+        "score": 0.268,
+        "blocked": "time-window",
+        "hours_apart": 830.7,
+        "a": {
+          "id": "rss:mistral:7db995c30f47deac",
+          "source": "rss-lab",
+          "title": "Mistral raises €3B to make sovereign, open-weight AI the technology frontier",
+          "at": "2026-09-08T12:00:22Z"
+        },
+        "b": {
+          "id": "gnews:9092ce0aa7bfae54",
+          "source": "gnews-rss",
+          "title": "Ecosia drops Mistral AI models for Chinese open-weight alternatives - digitimes",
+          "at": "2026-10-13T02:45:21Z"
+        },
+        "shared": [
+          "mistral",
+          "openweight",
           "ai"
         ]
       },
       {
-        "score": 0.287,
-        "blocked": "time-window",
-        "hours_apart": 35.8,
+        "score": 0.252,
+        "blocked": "thin-overlap",
+        "hours_apart": 248,
         "a": {
-          "id": "hn:50039630",
-          "source": "hn-algolia",
-          "title": "AI agents in a stand-up call",
-          "at": "2026-10-11T03:42:47Z"
+          "id": "rss:google-ai:6a7bb4e3e69d69f5",
+          "source": "rss-lab",
+          "title": "The latest AI news we announced in September 2026",
+          "at": "2026-10-02T15:00:00Z"
         },
         "b": {
-          "id": "gnews:c02331f0925dd4a7",
+          "id": "gnews:a3cf2d7725b7242b",
           "source": "gnews-rss",
-          "title": "Yann LeCun Calls AI Slowdown Demands 'Theatrical' - 조선일보",
-          "at": "2026-10-12T15:33:26Z"
+          "title": "AI Coding Agents Add 30% More Code, Not Software [2026] - https://tech-insider.org/",
+          "at": "2026-10-12T22:57:41Z"
         },
         "shared": [
           "ai",
-          "call"
+          "2026"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.916,
+        "score": 0.913,
         "blocked": "time-window",
         "hours_apart": 103.6,
         "a": {
@@ -493,83 +489,71 @@
         ]
       },
       {
-        "score": 0.896,
+        "score": 0.499,
         "blocked": "time-window",
-        "hours_apart": 38.6,
+        "hours_apart": 161.3,
         "a": {
-          "id": "hn:50039318",
-          "source": "hn-algolia",
-          "title": "Rogue Anthropic AI agent gave police fake tip in unsolved murder case",
-          "at": "2026-10-11T02:41:19Z"
-        },
-        "b": {
-          "id": "gnews:5ac32f8b8f8489f2",
+          "id": "gnews:40e5546f1ff5cbe4",
           "source": "gnews-rss",
-          "title": "Anthropic AI Agent Gave Police A Fake Tip-Off In An Unsolved Murder Case - IFLScience",
-          "at": "2026-10-12T17:15:29Z"
+          "title": "Does ChatGPT Watermark Text? Claude, Gemini and Copilot Compared - Pasquale Pillitteri",
+          "at": "2026-10-13T07:29:46Z"
+        },
+        "b": {
+          "id": "gmail:1a1118c601f1cb6a",
+          "source": "gmail-news",
+          "title": "OpenAI Starts Watermarking ChatGPT Text",
+          "at": "2026-10-06T14:09:34Z"
         },
         "shared": [
-          "anthropic",
-          "ai",
-          "agent",
-          "gave",
-          "polic",
-          "fake",
-          "tip",
-          "unsolv",
-          "murder",
-          "case"
+          "chatgpt",
+          "watermark",
+          "text"
         ]
       },
       {
-        "score": 0.531,
-        "blocked": "time-window",
-        "hours_apart": 35,
+        "score": 0.459,
+        "blocked": "thin-overlap",
+        "hours_apart": 40.7,
         "a": {
-          "id": "hn:50039318",
+          "id": "hn:50043904",
           "source": "hn-algolia",
-          "title": "Rogue Anthropic AI agent gave police fake tip in unsolved murder case",
-          "at": "2026-10-11T02:41:19Z"
+          "title": "Does Claude Have Rights?",
+          "at": "2026-10-11T14:50:31Z"
         },
         "b": {
-          "id": "gnews:2484f7ae098b6280",
+          "id": "gnews:40e5546f1ff5cbe4",
           "source": "gnews-rss",
-          "title": "Claude provided false tip in unsolved murder case, Anthropic says - ABA Journal",
-          "at": "2026-10-12T13:44:00Z"
+          "title": "Does ChatGPT Watermark Text? Claude, Gemini and Copilot Compared - Pasquale Pillitteri",
+          "at": "2026-10-13T07:29:46Z"
         },
         "shared": [
-          "anthropic",
-          "tip",
-          "unsolv",
-          "murder",
-          "case"
+          "doe",
+          "claude"
         ]
       },
       {
-        "score": 0.424,
+        "score": 0.451,
         "blocked": "time-window",
-        "hours_apart": 108.6,
+        "hours_apart": 155.3,
         "a": {
-          "id": "hn:50051746",
-          "source": "hn-algolia",
-          "title": "Decision 3.0: open, multimodal SOTA decision models from 0.6B to 27B",
-          "at": "2026-10-12T05:33:18Z"
+          "id": "gnews:1ffe0378d5ccc5f4",
+          "source": "gnews-rss",
+          "title": "Large Language Models Can Write Poetry But Can’t Step Beyond the Factory Fence: Yanxin Technology Integrates \"Symbol + Behavior + Connection\" 3 Technical Routes into RISC-V Chips to Develop Plug-and-Play Robot Brains - 36 Kr",
+          "at": "2026-10-13T06:11:36Z"
         },
         "b": {
-          "id": "rss:huggingface:88e871d5a8d26738",
-          "source": "rss-lab",
-          "title": "Multimodal open d1 decision models for the edge",
-          "at": "2026-10-07T16:54:33Z"
+          "id": "gmail:1a112914bb745ca0",
+          "source": "gmail-news",
+          "title": "This AI that can't write",
+          "at": "2026-10-06T18:54:34Z"
         },
         "shared": [
-          "decision",
-          "open",
-          "multimodal",
-          "model"
+          "writ",
+          "t"
         ]
       },
       {
-        "score": 0.403,
+        "score": 0.364,
         "blocked": "time-window",
         "hours_apart": 124.9,
         "a": {
@@ -590,69 +574,66 @@
         ]
       },
       {
-        "score": 0.358,
-        "blocked": "below-threshold",
-        "hours_apart": 20.7,
-        "a": {
-          "id": "hn:50047538",
-          "source": "hn-algolia",
-          "title": "Anthropic's Claude submits false tip on a Philadelphia unsolved homicide case",
-          "at": "2026-10-11T20:33:39Z"
-        },
-        "b": {
-          "id": "gnews:5ac32f8b8f8489f2",
-          "source": "gnews-rss",
-          "title": "Anthropic AI Agent Gave Police A Fake Tip-Off In An Unsolved Murder Case - IFLScience",
-          "at": "2026-10-12T17:15:29Z"
-        },
-        "shared": [
-          "anthropic",
-          "tip",
-          "unsolv",
-          "case"
-        ]
-      },
-      {
-        "score": 0.335,
-        "blocked": "thin-overlap",
-        "hours_apart": 22.8,
-        "a": {
-          "id": "hn:50046117",
-          "source": "hn-algolia",
-          "title": "Anthropic is out with new nonsense about Claude",
-          "at": "2026-10-11T18:16:54Z"
-        },
-        "b": {
-          "id": "gnews:136aeb4f3507d437",
-          "source": "gnews-rss",
-          "title": "Anthropic Says Claude Can End Chats: Full Details - JournalArta",
-          "at": "2026-10-12T17:06:56Z"
-        },
-        "shared": [
-          "anthropic",
-          "claude"
-        ]
-      },
-      {
-        "score": 0.32,
+        "score": 0.354,
         "blocked": "time-window",
-        "hours_apart": 47.1,
+        "hours_apart": 148.5,
         "a": {
-          "id": "hn:50035886",
+          "id": "hn:50064444",
           "source": "hn-algolia",
-          "title": "Nvidia in talks to acquire US 'open' model startup Reflection AI",
-          "at": "2026-10-10T18:48:35Z"
+          "title": "A shared, verifiable fix database that AI agents read and write themselves",
+          "at": "2026-10-12T23:22:00Z"
         },
         "b": {
-          "id": "gnews:daf0172e46f78102",
-          "source": "gnews-rss",
-          "title": "Amazon and Nvidia considering AI startup deals: Reports - CNBC",
-          "at": "2026-10-12T17:53:10Z"
+          "id": "gmail:1a112914bb745ca0",
+          "source": "gmail-news",
+          "title": "This AI that can't write",
+          "at": "2026-10-06T18:54:34Z"
         },
         "shared": [
-          "nvidia",
-          "startup",
-          "ai"
+          "ai",
+          "writ"
+        ]
+      },
+      {
+        "score": 0.343,
+        "blocked": "thin-overlap",
+        "hours_apart": 125,
+        "a": {
+          "id": "hn:50064428",
+          "source": "hn-algolia",
+          "title": "Llmtobinary – get an LLM to write machine code",
+          "at": "2026-10-12T23:19:51Z"
+        },
+        "b": {
+          "id": "rss:nvidia-dev:1fd6b880e95ea139",
+          "source": "rss-lab",
+          "title": "The Machines that Make the Machines",
+          "at": "2026-10-07T18:21:03Z"
+        },
+        "shared": [
+          "machin"
+        ]
+      },
+      {
+        "score": 0.327,
+        "blocked": "thin-overlap",
+        "hours_apart": 151.9,
+        "a": {
+          "id": "gmail:1a111c040bbfe878",
+          "source": "gmail-news",
+          "title": "30 Free AI Automation Tools in 2026",
+          "at": "2026-10-06T15:01:46Z"
+        },
+        "b": {
+          "id": "gnews:a3cf2d7725b7242b",
+          "source": "gnews-rss",
+          "title": "AI Coding Agents Add 30% More Code, Not Software [2026] - https://tech-insider.org/",
+          "at": "2026-10-12T22:57:41Z"
+        },
+        "shared": [
+          "30",
+          "ai",
+          "2026"
         ]
       }
     ]
@@ -661,76 +642,76 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 3,
+      "streak_ok": 4,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 113,
+      "streak_ok": 114,
       "streak_fail": 0,
-      "items_last": 1
+      "items_last": 0
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 113,
+      "streak_ok": 114,
       "streak_fail": 0,
-      "items_last": 3
+      "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 113,
+      "streak_ok": 114,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 113,
+      "streak_ok": 114,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 113,
+      "streak_ok": 114,
       "streak_fail": 0,
-      "items_last": 59
+      "items_last": 71
     },
     {
       "id": "openalex",
-      "state": "flaky",
-      "streak_ok": 25,
+      "state": "ok",
+      "streak_ok": 26,
       "streak_fail": 0,
-      "items_last": 4
+      "items_last": 3
     },
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 17,
+      "streak_ok": 18,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 113,
+      "streak_ok": 114,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 113,
+      "streak_ok": 114,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.004905,
+    "hours": 0.004698611111111111,
     "stale": false
   },
   "hf": {
@@ -751,9 +732,9 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "enriched": 4,
+    "enriched": 3,
     "secondary": 3,
-    "query": "LLM agent sandbox",
+    "query": "Hugging Face agent",
     "mode": "search",
     "from_cache": false,
     "searches": 1,
@@ -769,34 +750,34 @@
     "url": "https://api.openalex.org/works",
     "sample": [
       {
-        "id": "2610.12341",
-        "openalexId": "https://openalex.org/W4416036585",
-        "year": 2025,
-        "doi": "https://doi.org/10.18653/v1/2025.emnlp-main.466",
-        "enrichOnly": false
-      },
-      {
-        "id": "W7171516088",
-        "openalexId": "https://openalex.org/W7171516088",
+        "id": "W7171617880",
+        "openalexId": "https://openalex.org/W7171617880",
         "year": 2026,
-        "doi": "https://doi.org/10.48550/arxiv.2607.23933",
+        "doi": "https://doi.org/10.5281/zenodo.21686546",
         "enrichOnly": true
       },
       {
-        "id": "W7204032694",
-        "openalexId": "https://openalex.org/W7204032694",
+        "id": "W7171936549",
+        "openalexId": "https://openalex.org/W7171936549",
         "year": 2026,
-        "doi": "https://doi.org/10.1007/978-981-92-4805-6_13",
+        "doi": "https://doi.org/10.5281/zenodo.21715175",
+        "enrichOnly": true
+      },
+      {
+        "id": "W7203931864",
+        "openalexId": "https://openalex.org/W7203931864",
+        "year": 2026,
+        "doi": "https://doi.org/10.5281/zenodo.22043399",
         "enrichOnly": true
       }
     ]
   },
   "crossref": {
-    "ok": true,
+    "ok": false,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "enriched": 1,
-    "query": "doi:10.1007/978-981-92-4805-6_13",
+    "enriched": 0,
+    "query": "doi:10.5281/zenodo.21686546",
     "mode": "filter",
     "from_cache": false,
     "searches": 1,
@@ -804,38 +785,26 @@
     "pulse_lead": false,
     "papers_enrich_only": true,
     "url": "https://api.crossref.org/works",
-    "merge_notes": [
-      "doi_collision keep=10.48550/arxiv.2607.23933 crossref=10.1007/978-981-92-4805-6_13 paper=W7171516088 (non-destructive; openalexId preserved)"
-    ],
-    "sample": [
-      {
-        "id": "W7171516088",
-        "crossrefDoi": "https://doi.org/10.1007/978-981-92-4805-6_13",
-        "issued": "2026-08-24",
-        "type": "book-chapter",
-        "openalexId": "https://openalex.org/W7171516088",
-        "doi": "https://doi.org/10.48550/arxiv.2607.23933",
-        "enrichOnly": false
-      }
-    ]
+    "merge_notes": [],
+    "sample": []
   },
   "hn": {
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 59,
+    "count": 71,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
     "queries_run": [
-      "Hugging Face",
       "agents",
-      "eval"
+      "eval",
+      "LLM"
     ],
     "queries_ok": [
-      "Hugging Face",
       "agents",
-      "eval"
+      "eval",
+      "LLM"
     ],
     "queries_soft_fail": [],
     "recent_hours": 48,
@@ -844,22 +813,22 @@
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
+        "id": "hn:50047422",
+        "tag": "rest",
+        "score": 694,
+        "text": "The gap in shared understanding of LLM capability is widening"
+      },
+      {
+        "id": "hn:50059523",
+        "tag": "rest",
+        "score": 332,
+        "text": "AI coding agents generate more code, but not more software"
+      },
+      {
         "id": "hn:50051583",
         "tag": "rest",
-        "score": 232,
+        "score": 240,
         "text": "Research Firm Calls Anthropic's IPO 'Unprecedented Test of Investor Gullibity'"
-      },
-      {
-        "id": "hn:50039092",
-        "tag": "rest",
-        "score": 205,
-        "text": "500B tokens later: Letting AI agents decompile a first-person shooter"
-      },
-      {
-        "id": "hn:50035886",
-        "tag": "rest",
-        "score": 176,
-        "text": "Nvidia in talks to acquire US 'open' model startup Reflection AI"
       }
     ]
   },
@@ -922,6 +891,13 @@
     "feeds_soft_fail": [],
     "sample": [
       {
+        "id": "rss:nvidia:4efda8b229f529e5",
+        "lab": "nvidia",
+        "tag": "rest",
+        "title": "From Earth to Orbit, France’s Ecosystem Delivers Agentic Computing at Scale With NVIDIA",
+        "link": "https://blogs.nvidia.com/blog/france-ecosystem-agentic-computing/"
+      },
+      {
         "id": "rss:nvidia-dev:1c636df798811a20",
         "lab": "nvidia-dev",
         "tag": "rest",
@@ -941,13 +917,6 @@
         "tag": "rest",
         "title": "OCP Global Summit: Amid Ecosystem Adoption, NVIDIA Opens Vera Rubin Architecture to Help Scale AI Factories Worldwide",
         "link": "https://blogs.nvidia.com/blog/ocp-global-summit-vera-rubin-scale-ai-factories/"
-      },
-      {
-        "id": "rss:huggingface:e05551817b225bef",
-        "lab": "huggingface",
-        "tag": "rest",
-        "title": "Impactful scheduling for GPU clusters",
-        "link": "https://huggingface.co/blog/allenai/impactful-scheduling"
       }
     ]
   },
@@ -1013,30 +982,30 @@
     "queries_attempted": 4,
     "queries_ok": 4,
     "items": 29,
-    "pool": 316,
+    "pool": 270,
     "corroborators": [
       {
-        "id": "gnews:ca65bb58b16bab49",
-        "anchor_id": "rss:nvidia:d684459236d7a96a",
-        "score": 0.952,
-        "title": "Amid Ecosystem Adoption, NVIDIA Opens Vera Rubin Architecture to Help Scale AI Factories Worldwide - NVIDIA Blog",
-        "publisher": "NVIDIA Blog",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:2484f7ae098b6280",
-        "anchor_id": "hn:50047538",
-        "score": 0.673,
-        "title": "Claude provided false tip in unsolved murder case, Anthropic says - ABA Journal",
-        "publisher": "ABA Journal",
+        "id": "gnews:a3cf2d7725b7242b",
+        "anchor_id": "hn:50059523",
+        "score": 0.624,
+        "title": "AI Coding Agents Add 30% More Code, Not Software [2026] - https://tech-insider.org/",
+        "publisher": "https://tech-insider.org/",
         "self_repost": false
       },
       {
-        "id": "gnews:142edcf73667931d",
-        "anchor_id": "hn:50035886",
-        "score": 0.966,
-        "title": "Will NVIDIA Acquire US Open-Model Startup Reflection AI? - AI Magazine",
-        "publisher": "AI Magazine",
+        "id": "gnews:1c1b15aa32fef800",
+        "anchor_id": "rss:ms-research:62e45a8e96d139f2",
+        "score": 1,
+        "title": "Simulating student learning for better AI tutoring - Microsoft",
+        "publisher": "Microsoft",
+        "self_repost": true
+      },
+      {
+        "id": "gnews:2727f5561e782358",
+        "anchor_id": "hn:50056918",
+        "score": 1,
+        "title": "Five Possible Back-Doors into LLM Search Results - Unite.AI",
+        "publisher": "Unite.AI",
         "self_repost": false
       }
     ],
@@ -1052,38 +1021,38 @@
     "pulse_only": true,
     "url_template": "https://news.google.com/rss/search?q={QUERY}&hl=en-US&gl=US&ceid=US:en",
     "queried": [
-      "Anthropic",
       "large language model",
-      "NVIDIA AI",
-      "Mistral AI"
+      "AI agent",
+      "Mistral AI",
+      "Microsoft Research"
     ],
     "queries_ok_list": [
-      "Anthropic",
       "large language model",
-      "NVIDIA AI",
-      "Mistral AI"
+      "AI agent",
+      "Mistral AI",
+      "Microsoft Research"
     ],
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:ac0fc24af3d3b018",
-        "title": "Chatbot developer Anthropic seeks PA — but only humans need apply - The Times",
-        "publisher": "The Times",
-        "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNdWtGRDhhcGxFWVgtUzhBZnVOYURNeWw4RVdCQWlZSmlvaTJRV0lKVHRmMWNrcHdwUU8yUk9sbFUxRUpYcW54R2VnTnpSSmxsWHFGNG1xQTdCN09vV1BNa19NSm9xa0x0Z19mdXNaaFFDVkRfTGxkSUFCQzhhTG84T3MzZm9URllqR19HeW85Wmtnb29pOFg3ekgzUkh5Zw?oc=5",
+        "id": "gnews:bec40c349b3dcff1",
+        "title": "TCL shows flagship 5G router with AI agent for network optimisation - Telecompaper",
+        "publisher": "Telecompaper",
+        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOcnpRREdENUY4RERFTFhER0lsRTVoSTRmc2dsdnAwcmNvTUk0V2ZyT05uU19oVnV6Tkk5ajBTQnlNR3pJOTZ5cEdDS0ZtMnd6dmVXZXk5Zlk2aTUyMTJ3VXVzUFd6LWVVLVpsOWVwSnRzQVIxYklpdThfdnhJTnhfaHJOenQ2LUZNd1hQZEpSaFZOWnVQX3BXSkc4WVItenBsRmlNTHMtd1RXUE5sWFhJ?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:48f88deb0c71439c",
-        "title": "IREN Rebounds on Reported Anthropic Deal as Microsoft Unveils Maia 300 AI Chip - BigGo Finance",
-        "publisher": "BigGo Finance",
-        "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1GNUx6R3d0bzNqaXE5blNxSE1Kd2JpeHVZX056MmI1MkFuZGpOSG43ZVpJWjBfRUZYX3M3b1Y2TDVQQlM4eVlFM1hPaTMtSHlYQlJVWjhCX2s1WGlyRUQ4RzVXV0M1S09EdDdja3JvZm5kOE1XMWc?oc=5",
+        "id": "gnews:074c1d4836b9d2d8",
+        "title": "Microsoft Stock: Finally, Found Its AI Angle (NASDAQ:MSFT) - Seeking Alpha",
+        "publisher": "Seeking Alpha",
+        "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPNzhmVEY4RUVRUVVRcGlUWjJvcnNIbUJtSVM5bllnVE9UQUpUVXhuejRTZWFWeHJnMktXelBwVUtvVmoxZ3FOUFBfTHpiOVM3dkxnMmVqR1BTWnBIc0xjT3RfMVdHczV3UmQzWU51RWg2WnROMlF4d0stTEREMEZMcEs5MA?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:daf0172e46f78102",
-        "title": "Amazon and Nvidia considering AI startup deals: Reports - CNBC",
-        "publisher": "CNBC",
-        "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQZ3ZTd1JwbXJaNjZ5OGNCTzRqNEJvc3hmOGVmVHZGalplaGk2blB4MnlGVDlqSElQclMxc0ptSzNHYkE4NTBpOUJIV0Nob3FfbDhlUmFoQ2F2aGFWWXBxamxIM3JPOWRHd0cyVTlta0FlRGktdzVPTmdVUVplNVB1Zks4ZkNOZDF0SkUydmRkRDZ6T0pGN3UwVGxoeGY3UQ?oc=5",
+        "id": "gnews:433ac95efee51369",
+        "title": "Meta’s Muse AI agent is a clever little bastard - Fast Company",
+        "publisher": "Fast Company",
+        "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPam80SjNpUEpWdDg0eFFrYVR4dzdydlVnNG95Z0lBZkxweVBNYXFnWlJpOTVleEhLYVJVVGxETzZJZFlvRVh0ZlpKOU9kTGcwb3MwLV9kVjUxV0JGd1RTMWlMSmd0V0tuY1cycmZwTFJsbDFPMTBlZlB3NzdHLTJURU9YaWk?oc=5",
         "tag": "rest"
       }
     ]
@@ -1113,8 +1082,8 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "query": "agent sandbox escape",
-    "shelf": 3,
+    "query": "LLM red team toolkit",
+    "shelf": 2,
     "from_cache": false,
     "searches": 1,
     "rate_limit_remaining": 9,
@@ -1124,21 +1093,17 @@
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
-        "label": "hyperlight-dev/hyperagent",
-        "href": "https://github.com/hyperlight-dev/hyperagent"
+        "label": "Erentass6/aegis-llm",
+        "href": "https://github.com/Erentass6/aegis-llm"
       },
       {
-        "label": "pchi1606/template-provenance-sandbox-escapes",
-        "href": "https://github.com/pchi1606/template-provenance-sandbox-escapes"
-      },
-      {
-        "label": "NodeCanopy/agents-escaped-sandbox",
-        "href": "https://github.com/NodeCanopy/agents-escaped-sandbox"
+        "label": "seikaikyo/ai-red-team",
+        "href": "https://github.com/seikaikyo/ai-red-team"
       }
     ]
   },
   "shelf": {
-    "count": 20,
+    "count": 19,
     "brief": false
   },
   "wikidata": {
@@ -1146,9 +1111,9 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "seeds": [
-      "Hugging Face",
       "METR",
-      "OpenAI"
+      "OpenAI",
+      "DeepMind"
     ],
     "searches": 3,
     "from_cache": false,
@@ -1158,22 +1123,11 @@
     "url": "https://www.wikidata.org/w/api.php",
     "hints": [
       {
-        "seed": "Hugging Face",
-        "qid": "Q108943604",
-        "label": "Hugging Face",
-        "description": "American company",
-        "status": "matched",
-        "source": "wikidata",
-        "briefEligible": false,
-        "pulseLeadEligible": false,
-        "denyGroundingOnly": true
-      },
-      {
         "seed": "METR",
-        "qid": "Q135185153",
-        "label": "Model Evaluation and Threat Research",
-        "description": "AI model evaluation nonprofit",
-        "status": "matched",
+        "qid": "Q11573",
+        "label": "metre",
+        "description": "SI unit of length",
+        "status": "rejected_false_friend",
         "source": "wikidata",
         "briefEligible": false,
         "pulseLeadEligible": false,
@@ -1184,6 +1138,17 @@
         "qid": "Q21708200",
         "label": "OpenAI",
         "description": "American artificial intelligence research organization",
+        "status": "matched",
+        "source": "wikidata",
+        "briefEligible": false,
+        "pulseLeadEligible": false,
+        "denyGroundingOnly": true
+      },
+      {
+        "seed": "DeepMind",
+        "qid": "Q15733006",
+        "label": "Google DeepMind",
+        "description": "artificial intelligence company owned by Google",
         "status": "matched",
         "source": "wikidata",
         "briefEligible": false,

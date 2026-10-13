@@ -2,6 +2,29 @@
 import type { LeadEntry } from "@/lib/lead-pick";
 
 export const LEAD_TODAY: LeadEntry | null = {
+  "date": "2026-10-13",
+  "at": "2026-10-13T08:23:39.958Z",
+  "crawl_at": "2026-10-13T08:23:23Z",
+  "catch_up": true,
+  "pick_slot": "11:23",
+  "excluded": [
+    {
+      "cluster_id": "cl:rss:nvidia:9ef5df398b6c290e",
+      "headline": "NVIDIA, Microsoft Kick Off a New Beginning for Windows PCs With RTX Spark and AI Agents",
+      "reason": "age>=36h"
+    }
+  ],
+  "cluster_id": "cl:hn:50056918",
+  "headline": "Five possible back-doors into LLM search results",
+  "url": "https://www.unite.ai/five-possible-back-doors-into-llm-search-results/",
+  "sources": 2,
+  "sig": 2,
+  "reason": "picked",
+  "first_at": "2026-10-12T12:52:30.000Z",
+  "age_band": "<24h"
+};
+
+export const LEAD_YESTERDAY: LeadEntry | null = {
   "date": "2026-10-12",
   "at": "2026-10-12T03:22:13.996Z",
   "crawl_at": "2026-10-12T03:21:52Z",
@@ -28,57 +51,7 @@ export const LEAD_TODAY: LeadEntry | null = {
   "age_band": "24–36h"
 };
 
-export const LEAD_YESTERDAY: LeadEntry | null = {
-  "date": "2026-10-11",
-  "at": "2026-10-11T03:20:28.246Z",
-  "crawl_at": "2026-10-11T03:20:06Z",
-  "excluded": [
-    {
-      "cluster_id": "cl:hn:50027118",
-      "headline": "Anthropic AI model submits false tip on unsolved Philly murder, police say",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:hn:50017324",
-      "headline": "Anthropic bans users from abusive or cruel behavior towards Claude",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:gnews:cf310697bb33263c",
-      "headline": "Gemini Tarot Horoscope Today, October 11, 2026: Discomfort will decrease, lifestyle will improve",
-      "reason": "GNW_ONLY"
-    },
-    {
-      "cluster_id": "cl:hn:50038865",
-      "headline": "Anthropic asks users to stop being mean to Claude",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:hn:50032330",
-      "headline": "Microsoft and Anthropic play invoice tennis with startup's $17,600 Claude bill",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:hn:50030778",
-      "headline": "Anthropic can't reliably control its AI agents, cuts internet access",
-      "reason": "age>=24h"
-    },
-    {
-      "cluster_id": "cl:rss:huggingface:88e871d5a8d26738",
-      "headline": "Multimodal open d1 decision models for the edge",
-      "reason": "age>=24h"
-    }
-  ],
-  "cluster_id": "cl:hn:50035886",
-  "headline": "Nvidia in talks to acquire US 'open' model startup Reflection AI",
-  "url": "https://www.ft.com/content/052610c5-22b4-4dd4-932e-b7f9f0628b6a",
-  "sources": 4,
-  "sig": 131,
-  "reason": "picked",
-  "first_at": "2026-10-10T18:14:28.000Z"
-};
-
 export const LEAD_HELD = false;
 
 /** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is >48h old (PASS-L). */
-export const LEAD_FIRST_AT: string | null = "2026-10-10T18:14:28.000Z";
+export const LEAD_FIRST_AT: string | null = "2026-10-12T12:52:30.000Z";

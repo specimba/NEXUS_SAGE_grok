@@ -1,41 +1,31 @@
 # SAGE digest pack
-compiled 2026-10-12T13:22:14.018Z
-source free-ingest digest refresh 2026-10-12T13:22:14.018Z · cycle 003 · lead hf-incident · unlock:live
+compiled 2026-10-13T08:23:40.128Z
+source free-ingest digest refresh 2026-10-13T08:23:40.128Z · cycle 003 · lead hf-incident · unlock:live
 lead_policy unlock — no new HF primary 03 Sep
 
 ## Lead
-Nvidia in talks to acquire US 'open' model startup Reflection AI [high]
-5 SRC · sig 176 · pick 2026-10-12
+Five possible back-doors into LLM search results [high]
+2 SRC · sig 2 · pick 2026-10-13
 MOVE Digest/Voice follow Brief lead · cycle label 003
 UNLOCK IF Next 06:11 Istanbul pick
 
 ## Files
-### [lead / other / high] Nvidia in talks to acquire US 'open' model startup Reflection AI
-5 SRC · sig 176 · pick 2026-10-12
+### [lead / other / high] Five possible back-doors into LLM search results
+2 SRC · sig 2 · pick 2026-10-13
 - stamp live
-- frozen 2026-10-12T03:22:13.996Z
-- pick 2026-10-12
+- frozen 2026-10-13T08:23:39.958Z
+- pick 2026-10-13
 1. Follow LEAD_TODAY · never invent
 2. Cycle label stays 003
 Done when: Digest lead equals Brief LEAD_TODAY title
 
-### [companion / other / medium] Anthropic discloses 2 months old fake tip to police among new rogue AI incidents
-3 SRC · sig 41
-- 3 SRC
-Done when: Listed under Digest lead
-
-### [rest / other / medium] Anthropic's Claude submits false tip on a Philadelphia unsolved homicide case
-3 SRC · sig 8
-- 3 SRC
-Done when: Listed under Digest lead
-
-### [rest / other / medium] NVIDIA, Microsoft Kick Off a New Beginning for Windows PCs With RTX Spark and AI Agents
-2 SRC · sig 4
+### [companion / other / medium] AI coding agents generate more code, but not more software
+2 SRC · sig 332
 - 2 SRC
 Done when: Listed under Digest lead
 
-### [rest / other / medium] Anthropic Agents Tried to Fill Out Visa Forms on State Dept. Website
-2 SRC · sig 34
+### [rest / other / medium] NVIDIA, Microsoft Kick Off a New Beginning for Windows PCs With RTX Spark and AI Agents
+2 SRC · sig 5
 - 2 SRC
 Done when: Listed under Digest lead
 
