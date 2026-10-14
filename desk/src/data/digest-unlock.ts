@@ -7,42 +7,42 @@ import type { DigestUnlockSnapshot } from "@/lib/digest-unlock";
 export const DIGEST_UNLOCK: DigestUnlockSnapshot = {
   "schema": 1,
   "cycleId": "003",
-  "pickDate": "2026-10-13",
-  "frozenAt": "2026-10-13T08:23:39.958Z",
-  "leadId": "cl:hn:50056918",
+  "pickDate": "2026-10-14",
+  "frozenAt": "2026-10-14T08:23:18.042Z",
+  "leadId": "cl:rss:deepmind:8b1ab1df41ac00d8",
   "lead": {
-    "id": "cl:hn:50056918",
+    "id": "cl:rss:deepmind:8b1ab1df41ac00d8",
     "kind": "lead",
-    "title": "Five possible back-doors into LLM search results",
-    "take": "2 SRC · sig 2 · pick 2026-10-13",
+    "title": "Developing Gemini 4 Argon responsibly and safely",
+    "take": "9 SRC · sig 1254 · pick 2026-10-14",
     "why": "LEAD_TODAY · picked · frozen at daily pick",
     "move": "Digest/Voice follow Brief lead · cycle label 003",
-    "url": "https://www.unite.ai/five-possible-back-doors-into-llm-search-results/",
-    "sources": 2,
-    "sig": 2
+    "url": "https://deepmind.google/blog/developing-gemini-4-argon-responsibly-and-safely/",
+    "sources": 9,
+    "sig": 1254
   },
   "rows": [
     {
-      "id": "cl:hn:50059523",
+      "id": "cl:hn:50062687",
       "kind": "companion",
-      "title": "AI coding agents generate more code, but not more software",
-      "take": "2 SRC · sig 332",
+      "title": "I Got My Muse AI Agent to Sext Me–and Meta Says That's Fine",
+      "take": "2 SRC · sig 3",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
-      "url": "https://arstechnica.com/ai/2026/10/ai-coding-agents-generate-more-code-but-not-more-software/",
+      "url": "https://www.wired.com/story/i-got-my-muse-ai-agent-to-sext-me-and-meta-says-thats-totally-fine/",
       "sources": 2,
-      "sig": 332
+      "sig": 3
     },
     {
-      "id": "cl:rss:nvidia:9ef5df398b6c290e",
+      "id": "cl:hn:50060381",
       "kind": "rest",
-      "title": "NVIDIA, Microsoft Kick Off a New Beginning for Windows PCs With RTX Spark and AI Agents",
-      "take": "2 SRC · sig 5",
+      "title": "Mark Zuckerberg says Meta reached AI 'frontier' and rejects calls for slowdown",
+      "take": "2 SRC · sig 7",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
-      "url": "https://blogs.nvidia.com/blog/local-ai-rtx-spark-microsoft-windows-event/",
+      "url": "https://www.ft.com/content/fca23e77-be57-4d7e-ae61-74ff299e25cb",
       "sources": 2,
-      "sig": 5
+      "sig": 7
     }
   ]
 } as const;

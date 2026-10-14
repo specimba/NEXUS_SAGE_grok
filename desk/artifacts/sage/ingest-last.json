@@ -2,14 +2,16 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-13T08:23:23Z",
+  "stamped_at": "2026-10-14T08:22:59Z",
+  "config_hash": "813e5ce035c3",
+  "config_status": "ok",
   "crawl_sources": [
     {
       "id": "hf",
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 156,
+      "duration_ms": 189,
       "paused_until": null,
       "reason": null
     },
@@ -17,8 +19,8 @@
       "id": "arxiv",
       "label": "arXiv",
       "status": "ok",
-      "rows": 29,
-      "duration_ms": 3204,
+      "rows": 27,
+      "duration_ms": 3028,
       "paused_until": null,
       "reason": null
     },
@@ -27,7 +29,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 506,
+      "duration_ms": 359,
       "paused_until": null,
       "reason": null
     },
@@ -35,8 +37,8 @@
       "id": "crossref",
       "label": "Crossref",
       "status": "ok",
-      "rows": 0,
-      "duration_ms": 499,
+      "rows": 1,
+      "duration_ms": 1767,
       "paused_until": null,
       "reason": null
     },
@@ -44,8 +46,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 71,
-      "duration_ms": 8367,
+      "rows": 70,
+      "duration_ms": 8260,
       "paused_until": null,
       "reason": null
     },
@@ -53,8 +55,8 @@
       "id": "rss_labs",
       "label": "lab RSS",
       "status": "ok",
-      "rows": 104,
-      "duration_ms": 16281,
+      "rows": 105,
+      "duration_ms": 17596,
       "paused_until": null,
       "reason": null
     },
@@ -63,7 +65,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 4183,
+      "duration_ms": 4595,
       "paused_until": null,
       "reason": null
     },
@@ -71,8 +73,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 29,
-      "duration_ms": 6364,
+      "rows": 35,
+      "duration_ms": 6367,
       "paused_until": null,
       "reason": null
     },
@@ -80,8 +82,8 @@
       "id": "github",
       "label": "GitHub",
       "status": "ok",
-      "rows": 2,
-      "duration_ms": 317,
+      "rows": 4,
+      "duration_ms": 284,
       "paused_until": null,
       "reason": null
     },
@@ -90,16 +92,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4414,
+      "duration_ms": 4472,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 44291,
-    "sources_wall_ms": 16282,
-    "papers_lane_ms": 4372,
-    "slowest_source_ms": 16281,
+    "sources_ms": 46917,
+    "sources_wall_ms": 17596,
+    "papers_lane_ms": 5351,
+    "slowest_source_ms": 17596,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -114,118 +116,265 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 16782,
-    "startup_ms": 43,
-    "main_ms": 16794
+    "wall_ms": 18001,
+    "startup_ms": 49,
+    "main_ms": 18013
   },
   "multi_source_independent": 3,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
     "multi_source_independent": 3,
-    "multi_source_raw": 4,
-    "self_reposts": 1,
-    "items_in": 242,
-    "clusters_out": 236,
-    "collapsed": 6,
+    "multi_source_raw": 6,
+    "self_reposts": 4,
+    "items_in": 248,
+    "clusters_out": 223,
+    "collapsed": 25,
     "multi_source": 3,
-    "multi_member": 5,
+    "multi_member": 8,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 62,
+    "new_items": 95,
     "per_source": {
-      "hn-algolia": 71,
-      "rss-lab": 104,
+      "hn-algolia": 70,
+      "rss-lab": 105,
       "rss-security": 28,
-      "gnews-rss": 29,
+      "gnews-rss": 35,
       "gmail-news": 10
     },
     "multi_source_clusters": [
       {
-        "title": "AI coding agents generate more code, but not more software",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 3,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:50059523",
-            "source": "hn-algolia",
-            "title": "AI coding agents generate more code, but not more software",
-            "at": "2026-10-12T17:14:01Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:50050448",
-            "source": "hn-algolia",
-            "title": "AI coding agents generate more code, but not more software",
-            "at": "2026-10-12T02:10:20Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:a3cf2d7725b7242b",
-            "source": "gnews-rss",
-            "title": "AI Coding Agents Add 30% More Code, Not Software [2026] - https://tech-insider.org/",
-            "at": "2026-10-12T22:57:41Z",
-            "publisher": "https://tech-insider.org/"
-          }
-        ]
-      },
-      {
-        "title": "Five possible back-doors into LLM search results",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:50056918",
-            "source": "hn-algolia",
-            "title": "Five possible back-doors into LLM search results",
-            "at": "2026-10-12T14:24:53Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:2727f5561e782358",
-            "source": "gnews-rss",
-            "title": "Five Possible Back-Doors into LLM Search Results - Unite.AI",
-            "at": "2026-10-12T12:52:30Z",
-            "publisher": "Unite.AI"
-          }
-        ]
-      },
-      {
-        "title": "NVIDIA, Microsoft Kick Off a New Beginning for Windows PCs With RTX Spark and AI Agents",
+        "title": "Developing Gemini 4 Argon responsibly and safely",
         "sources": [
           "rss-lab",
-          "hn-algolia"
+          "hn-algolia",
+          "gnews-rss"
         ],
-        "size": 2,
+        "size": 16,
         "score": 1,
         "members": [
           {
-            "id": "hn:50050540",
+            "id": "hn:50073879",
             "source": "hn-algolia",
-            "title": "Nvidia, Microsoft Launch Windows PCs with RTX Spark and AI Agents",
-            "at": "2026-10-12T02:20:35Z",
+            "title": "Gemini 4 Argon",
+            "at": "2026-10-13T16:03:16Z",
             "publisher": null
           },
           {
-            "id": "rss:nvidia:9ef5df398b6c290e",
+            "id": "hn:50074869",
+            "source": "hn-algolia",
+            "title": "Gemini 4 Argon for Robotics",
+            "at": "2026-10-13T16:55:47Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:50073898",
+            "source": "hn-algolia",
+            "title": "Gemini 4 Argon Model Card",
+            "at": "2026-10-13T16:04:30Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:50073780",
+            "source": "hn-algolia",
+            "title": "Gemini 4 Argon in Google Antigravity",
+            "at": "2026-10-13T15:57:49Z",
+            "publisher": null
+          },
+          {
+            "id": "rss:deepmind:8b1ab1df41ac00d8",
             "source": "rss-lab",
-            "title": "NVIDIA, Microsoft Kick Off a New Beginning for Windows PCs With RTX Spark and AI Agents",
-            "at": "2026-10-07T18:45:28Z",
-            "publisher": "nvidia"
+            "title": "Developing Gemini 4 Argon responsibly and safely",
+            "at": "2026-10-13T19:43:07Z",
+            "publisher": "deepmind"
+          },
+          {
+            "id": "rss:deepmind:94cc08977f17740f",
+            "source": "rss-lab",
+            "title": "Gemini 4 Argon for Robotics",
+            "at": "2026-10-13T16:01:58Z",
+            "publisher": "deepmind"
+          },
+          {
+            "id": "rss:deepmind:851107eacfc8ba0f",
+            "source": "rss-lab",
+            "title": "Gemini 4 Argon: Built to solve your hardest problems",
+            "at": "2026-10-13T16:01:52Z",
+            "publisher": "deepmind"
+          },
+          {
+            "id": "rss:google-ai:74c9e10c02543c49",
+            "source": "rss-lab",
+            "title": "Gemini 4 Argon: Built to solve your hardest problems",
+            "at": "2026-10-13T16:00:00Z",
+            "publisher": "google-ai"
+          },
+          {
+            "id": "gnews:afeba60e273880f3",
+            "source": "gnews-rss",
+            "title": "Google's Most Powerful AI Model, Gemini 4 Argon, Is Now on Your Phone: Here's How to Access It? - Mashable India",
+            "at": "2026-10-14T06:54:56Z",
+            "publisher": "Mashable India"
+          },
+          {
+            "id": "gnews:de2224bfb7bdac0f",
+            "source": "gnews-rss",
+            "title": "Elon Musk congratulates CEOs and execs after Google CEO Sundar Pichai announces Gemini 4 Argon; says 'vas - The Times of India",
+            "at": "2026-10-14T05:02:00Z",
+            "publisher": "The Times of India"
+          },
+          {
+            "id": "gnews:9c6e7f903f9e2e94",
+            "source": "gnews-rss",
+            "title": "Google launches Gemini 4 Argon, targets complex coding, cybersecurity and scientific research - The Tribune",
+            "at": "2026-10-14T03:11:15Z",
+            "publisher": "The Tribune"
+          },
+          {
+            "id": "gnews:8e7e056ae67bc45d",
+            "source": "gnews-rss",
+            "title": "Gemini 4 Argon In Google Search Via AI Mode - Search Engine Roundtable",
+            "at": "2026-10-13T16:13:00Z",
+            "publisher": "Search Engine Roundtable"
+          },
+          {
+            "id": "gnews:2fc19415f770721a",
+            "source": "gnews-rss",
+            "title": "Google launches Gemini 4 Argon AI for mobile and search - NewsBytes",
+            "at": "2026-10-13T16:25:25Z",
+            "publisher": "NewsBytes"
+          },
+          {
+            "id": "gnews:0e6013ee1c8d2d84",
+            "source": "gnews-rss",
+            "title": "Google launches Gemini 4 Argon AI model for coding, research and complex tasks - Moneycontrol.com",
+            "at": "2026-10-13T17:15:43Z",
+            "publisher": "Moneycontrol.com"
+          },
+          {
+            "id": "gnews:aa87206b93a988d1",
+            "source": "gnews-rss",
+            "title": "Google Gemini 4 Argon rolls out for developers, enterprises, Google AI subscribers in Antigravity, Gemini - The Times of India",
+            "at": "2026-10-13T16:36:00Z",
+            "publisher": "The Times of India"
+          },
+          {
+            "id": "gnews:3bbb9a4f8d63eee3",
+            "source": "gnews-rss",
+            "title": "Gemini 4 Argon: Built to solve your hardest problems - blog.google",
+            "at": "2026-10-13T16:16:01Z",
+            "publisher": "blog.google",
+            "self_repost": true
+          }
+        ]
+      },
+      {
+        "title": "I Got My Muse AI Agent to Sext Me–and Meta Says That's Fine",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 0.98,
+        "members": [
+          {
+            "id": "hn:50062687",
+            "source": "hn-algolia",
+            "title": "I Got My Muse AI Agent to Sext Me–and Meta Says That's Fine",
+            "at": "2026-10-12T20:35:47Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:c1900bebbcec7af1",
+            "source": "gnews-rss",
+            "title": "I Got My Muse AI Agent to Sext Me—and Meta Says That’s Totally Fine - WIRED",
+            "at": "2026-10-12T20:13:00Z",
+            "publisher": "WIRED"
+          }
+        ]
+      },
+      {
+        "title": "Mark Zuckerberg says Meta reached AI 'frontier' and rejects calls for slowdown",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 0.685,
+        "members": [
+          {
+            "id": "hn:50060381",
+            "source": "hn-algolia",
+            "title": "Mark Zuckerberg says Meta reached AI 'frontier' and rejects calls for slowdown",
+            "at": "2026-10-12T18:08:42Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:57b1cc7cb4f527c5",
+            "source": "gnews-rss",
+            "title": "Zuckerberg says Meta has reached the AI frontier and rejects calls to slow down - Crypto Briefing",
+            "at": "2026-10-12T17:10:38Z",
+            "publisher": "Crypto Briefing"
           }
         ]
       }
     ],
     "self_repost_clusters": [
+      {
+        "title": "Developing Gemini 4 Argon responsibly and safely",
+        "sources": [
+          "rss-lab",
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:3bbb9a4f8d63eee3",
+            "publisher": "blog.google",
+            "title": "Gemini 4 Argon: Built to solve your hardest problems - blog.google"
+          }
+        ]
+      },
+      {
+        "title": "European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operations",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:9532f8dcc85577e3",
+            "publisher": "NVIDIA Blog",
+            "title": "European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operations - NVIDIA Blog"
+          }
+        ]
+      },
+      {
+        "title": "How to Rewrite Apache Spark UDFs for GPU Acceleration with AI Agents",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:7cad4aa4762db978",
+            "publisher": "NVIDIA Developer",
+            "title": "How to Rewrite Apache Spark UDFs for GPU Acceleration with AI Agents - NVIDIA Developer"
+          }
+        ]
+      },
       {
         "title": "Simulating student learning for better AI tutoring",
         "sources": [
@@ -250,390 +399,402 @@
           "lab": "nvidia",
           "title": "Rally Up: ‘Gears of War: E-Day’ Launches on GeForce NOW",
           "reason": "category:GeForce NOW"
-        },
-        {
-          "lab": "nvidia",
-          "title": "Fall Into 25 New Games on GeForce NOW This October",
-          "reason": "category:GeForce NOW"
         }
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "The Kenyan Wall Street",
-          "title": "Microsoft to Close Nairobi Africa Development Centre - The Kenyan Wall Street"
+          "publisher": "CyberSecurityNews",
+          "title": "Hackers Abuse Google Search to Attacks ITadmins with Weaponized PuTTY Installer - CyberSecurityNews"
         },
         {
-          "publisher": "Techpoint Africa",
-          "title": "Microsoft’s Nairobi hub faces uncertainty two years after Lagos engineering closure - Techpoint Africa"
+          "publisher": "The Hacker News",
+          "title": "Four-Byte Write and Timing Bug Let Researchers Run Code in Windows SmartScreen Enclave - The Hacker News"
         },
         {
-          "publisher": "streamlinefeed.co.ke",
-          "title": "Microsoft Acknowledges Kenya Engineering Changes as ADC Closure Reported - streamlinefeed.co.ke"
+          "publisher": "Startup Fortune",
+          "title": "Fish Audio releases Drama 3, a free voice model that beats ElevenLabs on pronunciation - Startup Fortune"
         },
         {
-          "publisher": "36 Kr",
-          "title": "A Long-Established Collaborative Bridge Between Liang Wenfeng and Winverse - 36 Kr"
+          "publisher": "LatestLY",
+          "title": "Business News - LatestLY"
         },
         {
-          "publisher": "The Eastleigh Voice",
-          "title": "Microsoft job cuts threaten Nairobi engineering hub as restructuring looms - The Eastleigh Voice"
+          "publisher": "DTiNews",
+          "title": "Microsoft lays off staff in Vietnam - DTiNews"
         },
         {
-          "publisher": "digitimes",
-          "title": "Nanya Technology's LTAs cover up to 70% of capacity as Pingtung 3D IC plant targets 2H28 production - digitimes"
+          "publisher": "SussexWorld",
+          "title": "Former NHS nurse opens women-only strength studio in Horsham - SussexWorld"
+        },
+        {
+          "publisher": "OrcaRouter",
+          "title": "MiniCPM-V 4.7's 3B Active Claim, Measured From the Weights - OrcaRouter"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 22
+      "hn_dropped": 25
     },
     "gnews_near_misses": [
       {
-        "score": 0.499,
-        "blocked": "time-window",
-        "hours_apart": 161.3,
-        "a": {
-          "id": "gnews:40e5546f1ff5cbe4",
-          "source": "gnews-rss",
-          "title": "Does ChatGPT Watermark Text? Claude, Gemini and Copilot Compared - Pasquale Pillitteri",
-          "at": "2026-10-13T07:29:46Z"
-        },
-        "b": {
-          "id": "gmail:1a1118c601f1cb6a",
-          "source": "gmail-news",
-          "title": "OpenAI Starts Watermarking ChatGPT Text",
-          "at": "2026-10-06T14:09:34Z"
-        },
-        "shared": [
-          "chatgpt",
-          "watermark",
-          "text"
-        ]
-      },
-      {
-        "score": 0.459,
+        "score": 0.647,
         "blocked": "thin-overlap",
-        "hours_apart": 40.7,
+        "hours_apart": 0.3,
         "a": {
-          "id": "hn:50043904",
+          "id": "hn:50073780",
           "source": "hn-algolia",
-          "title": "Does Claude Have Rights?",
-          "at": "2026-10-11T14:50:31Z"
+          "title": "Gemini 4 Argon in Google Antigravity",
+          "at": "2026-10-13T15:57:49Z"
         },
         "b": {
-          "id": "gnews:40e5546f1ff5cbe4",
+          "id": "gnews:8e7e056ae67bc45d",
           "source": "gnews-rss",
-          "title": "Does ChatGPT Watermark Text? Claude, Gemini and Copilot Compared - Pasquale Pillitteri",
-          "at": "2026-10-13T07:29:46Z"
+          "title": "Gemini 4 Argon In Google Search Via AI Mode - Search Engine Roundtable",
+          "at": "2026-10-13T16:13:00Z"
         },
         "shared": [
-          "doe",
-          "claude"
+          "gemini",
+          "4",
+          "argon",
+          "google"
         ]
       },
       {
-        "score": 0.451,
-        "blocked": "time-window",
-        "hours_apart": 155.3,
-        "a": {
-          "id": "gnews:1ffe0378d5ccc5f4",
-          "source": "gnews-rss",
-          "title": "Large Language Models Can Write Poetry But Can’t Step Beyond the Factory Fence: Yanxin Technology Integrates \"Symbol + Behavior + Connection\" 3 Technical Routes into RISC-V Chips to Develop Plug-and-Play Robot Brains - 36 Kr",
-          "at": "2026-10-13T06:11:36Z"
-        },
-        "b": {
-          "id": "gmail:1a112914bb745ca0",
-          "source": "gmail-news",
-          "title": "This AI that can't write",
-          "at": "2026-10-06T18:54:34Z"
-        },
-        "shared": [
-          "writ",
-          "t"
-        ]
-      },
-      {
-        "score": 0.327,
+        "score": 0.647,
         "blocked": "thin-overlap",
-        "hours_apart": 151.9,
+        "hours_apart": 0.5,
         "a": {
-          "id": "gmail:1a111c040bbfe878",
-          "source": "gmail-news",
-          "title": "30 Free AI Automation Tools in 2026",
-          "at": "2026-10-06T15:01:46Z"
-        },
-        "b": {
-          "id": "gnews:a3cf2d7725b7242b",
-          "source": "gnews-rss",
-          "title": "AI Coding Agents Add 30% More Code, Not Software [2026] - https://tech-insider.org/",
-          "at": "2026-10-12T22:57:41Z"
-        },
-        "shared": [
-          "30",
-          "ai",
-          "2026"
-        ]
-      },
-      {
-        "score": 0.292,
-        "blocked": "time-window",
-        "hours_apart": 1504.3,
-        "a": {
-          "id": "rss:mistral:c1e2b11cbf4853bf",
-          "source": "rss-lab",
-          "title": "In-region inference, open models, and new European infrastructure for sovereign AI.",
-          "at": "2026-08-11T12:00:27Z"
-        },
-        "b": {
-          "id": "gnews:89ba88fa0d0ac17a",
-          "source": "gnews-rss",
-          "title": "Mistral Touts 'Le Chonk' as Capable European Sovereign Model - BankInfoSecurity",
-          "at": "2026-10-13T04:15:37Z"
-        },
-        "shared": [
-          "model",
-          "european",
-          "sovereign"
-        ]
-      },
-      {
-        "score": 0.278,
-        "blocked": "below-threshold",
-        "hours_apart": 16.2,
-        "a": {
-          "id": "hn:50057341",
+          "id": "hn:50073780",
           "source": "hn-algolia",
-          "title": "Are There Better Languages for Programming with LLMs?",
-          "at": "2026-10-12T14:56:05Z"
+          "title": "Gemini 4 Argon in Google Antigravity",
+          "at": "2026-10-13T15:57:49Z"
         },
         "b": {
-          "id": "gnews:595bf1d6c110f0c8",
+          "id": "gnews:2fc19415f770721a",
           "source": "gnews-rss",
-          "title": "Large Language Model (LLM) Market to Reach USD 148.8 Billion - openPR.com",
-          "at": "2026-10-13T07:05:52Z"
+          "title": "Google launches Gemini 4 Argon AI for mobile and search - NewsBytes",
+          "at": "2026-10-13T16:25:25Z"
         },
         "shared": [
-          "languag",
-          "llm"
+          "gemini",
+          "4",
+          "argon",
+          "google"
         ]
       },
       {
-        "score": 0.268,
-        "blocked": "time-window",
-        "hours_apart": 830.7,
-        "a": {
-          "id": "rss:mistral:7db995c30f47deac",
-          "source": "rss-lab",
-          "title": "Mistral raises €3B to make sovereign, open-weight AI the technology frontier",
-          "at": "2026-09-08T12:00:22Z"
-        },
-        "b": {
-          "id": "gnews:9092ce0aa7bfae54",
-          "source": "gnews-rss",
-          "title": "Ecosia drops Mistral AI models for Chinese open-weight alternatives - digitimes",
-          "at": "2026-10-13T02:45:21Z"
-        },
-        "shared": [
-          "mistral",
-          "openweight",
-          "ai"
-        ]
-      },
-      {
-        "score": 0.252,
+        "score": 0.607,
         "blocked": "thin-overlap",
-        "hours_apart": 248,
+        "hours_apart": 35,
         "a": {
-          "id": "rss:google-ai:6a7bb4e3e69d69f5",
-          "source": "rss-lab",
-          "title": "The latest AI news we announced in September 2026",
-          "at": "2026-10-02T15:00:00Z"
+          "id": "hn:50060500",
+          "source": "hn-algolia",
+          "title": "Just say no to OpenAI and Anthropic",
+          "at": "2026-10-12T18:17:29Z"
         },
         "b": {
-          "id": "gnews:a3cf2d7725b7242b",
+          "id": "gnews:590fa057a83328d0",
           "source": "gnews-rss",
-          "title": "AI Coding Agents Add 30% More Code, Not Software [2026] - https://tech-insider.org/",
-          "at": "2026-10-12T22:57:41Z"
+          "title": "Meta launches Muse Wonder AI models to challenge OpenAI, Anthropic - TechGig",
+          "at": "2026-10-14T05:16:31Z"
         },
         "shared": [
-          "ai",
-          "2026"
+          "openai",
+          "anthropic"
+        ]
+      },
+      {
+        "score": 0.6,
+        "blocked": "thin-overlap",
+        "hours_apart": 15,
+        "a": {
+          "id": "hn:50073780",
+          "source": "hn-algolia",
+          "title": "Gemini 4 Argon in Google Antigravity",
+          "at": "2026-10-13T15:57:49Z"
+        },
+        "b": {
+          "id": "gnews:afeba60e273880f3",
+          "source": "gnews-rss",
+          "title": "Google's Most Powerful AI Model, Gemini 4 Argon, Is Now on Your Phone: Here's How to Access It? - Mashable India",
+          "at": "2026-10-14T06:54:56Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon",
+          "google"
+        ]
+      },
+      {
+        "score": 0.591,
+        "blocked": "thin-overlap",
+        "hours_apart": 1.3,
+        "a": {
+          "id": "hn:50073780",
+          "source": "hn-algolia",
+          "title": "Gemini 4 Argon in Google Antigravity",
+          "at": "2026-10-13T15:57:49Z"
+        },
+        "b": {
+          "id": "gnews:0e6013ee1c8d2d84",
+          "source": "gnews-rss",
+          "title": "Google launches Gemini 4 Argon AI model for coding, research and complex tasks - Moneycontrol.com",
+          "at": "2026-10-13T17:15:43Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon",
+          "google"
+        ]
+      },
+      {
+        "score": 0.571,
+        "blocked": "thin-overlap",
+        "hours_apart": 11.2,
+        "a": {
+          "id": "hn:50073780",
+          "source": "hn-algolia",
+          "title": "Gemini 4 Argon in Google Antigravity",
+          "at": "2026-10-13T15:57:49Z"
+        },
+        "b": {
+          "id": "gnews:9c6e7f903f9e2e94",
+          "source": "gnews-rss",
+          "title": "Google launches Gemini 4 Argon, targets complex coding, cybersecurity and scientific research - The Tribune",
+          "at": "2026-10-14T03:11:15Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon",
+          "google"
+        ]
+      },
+      {
+        "score": 0.535,
+        "blocked": "thin-overlap",
+        "hours_apart": 13.1,
+        "a": {
+          "id": "hn:50073780",
+          "source": "hn-algolia",
+          "title": "Gemini 4 Argon in Google Antigravity",
+          "at": "2026-10-13T15:57:49Z"
+        },
+        "b": {
+          "id": "gnews:de2224bfb7bdac0f",
+          "source": "gnews-rss",
+          "title": "Elon Musk congratulates CEOs and execs after Google CEO Sundar Pichai announces Gemini 4 Argon; says 'vas - The Times of India",
+          "at": "2026-10-14T05:02:00Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon",
+          "google"
+        ]
+      },
+      {
+        "score": 0.533,
+        "blocked": "thin-overlap",
+        "hours_apart": 0.7,
+        "a": {
+          "id": "hn:50074869",
+          "source": "hn-algolia",
+          "title": "Gemini 4 Argon for Robotics",
+          "at": "2026-10-13T16:55:47Z"
+        },
+        "b": {
+          "id": "gnews:8e7e056ae67bc45d",
+          "source": "gnews-rss",
+          "title": "Gemini 4 Argon In Google Search Via AI Mode - Search Engine Roundtable",
+          "at": "2026-10-13T16:13:00Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.913,
+        "score": 0.697,
         "blocked": "time-window",
-        "hours_apart": 103.6,
+        "hours_apart": 308,
         "a": {
-          "id": "hn:50050540",
+          "id": "hn:50073879",
           "source": "hn-algolia",
-          "title": "Nvidia, Microsoft Launch Windows PCs with RTX Spark and AI Agents",
-          "at": "2026-10-12T02:20:35Z"
+          "title": "Gemini 4 Argon",
+          "at": "2026-10-13T16:03:16Z"
         },
         "b": {
-          "id": "rss:nvidia:9ef5df398b6c290e",
+          "id": "rss:deepmind:ce56aa83d0064ef1",
           "source": "rss-lab",
-          "title": "NVIDIA, Microsoft Kick Off a New Beginning for Windows PCs With RTX Spark and AI Agents",
-          "at": "2026-10-07T18:45:28Z"
+          "title": "Gemini 4 Argon: our next era of frontier intelligence",
+          "at": "2026-09-30T20:01:45Z"
         },
         "shared": [
-          "nvidia",
-          "microsoft",
-          "window",
-          "pcs",
-          "rtx",
-          "spark",
-          "ai",
-          "agent"
+          "gemini",
+          "4",
+          "argon"
         ]
       },
       {
-        "score": 0.499,
-        "blocked": "time-window",
-        "hours_apart": 161.3,
-        "a": {
-          "id": "gnews:40e5546f1ff5cbe4",
-          "source": "gnews-rss",
-          "title": "Does ChatGPT Watermark Text? Claude, Gemini and Copilot Compared - Pasquale Pillitteri",
-          "at": "2026-10-13T07:29:46Z"
-        },
-        "b": {
-          "id": "gmail:1a1118c601f1cb6a",
-          "source": "gmail-news",
-          "title": "OpenAI Starts Watermarking ChatGPT Text",
-          "at": "2026-10-06T14:09:34Z"
-        },
-        "shared": [
-          "chatgpt",
-          "watermark",
-          "text"
-        ]
-      },
-      {
-        "score": 0.459,
+        "score": 0.647,
         "blocked": "thin-overlap",
-        "hours_apart": 40.7,
+        "hours_apart": 0.3,
         "a": {
-          "id": "hn:50043904",
+          "id": "hn:50073780",
           "source": "hn-algolia",
-          "title": "Does Claude Have Rights?",
-          "at": "2026-10-11T14:50:31Z"
+          "title": "Gemini 4 Argon in Google Antigravity",
+          "at": "2026-10-13T15:57:49Z"
         },
         "b": {
-          "id": "gnews:40e5546f1ff5cbe4",
+          "id": "gnews:8e7e056ae67bc45d",
           "source": "gnews-rss",
-          "title": "Does ChatGPT Watermark Text? Claude, Gemini and Copilot Compared - Pasquale Pillitteri",
-          "at": "2026-10-13T07:29:46Z"
+          "title": "Gemini 4 Argon In Google Search Via AI Mode - Search Engine Roundtable",
+          "at": "2026-10-13T16:13:00Z"
         },
         "shared": [
-          "doe",
-          "claude"
+          "gemini",
+          "4",
+          "argon",
+          "google"
         ]
       },
       {
-        "score": 0.451,
-        "blocked": "time-window",
-        "hours_apart": 155.3,
-        "a": {
-          "id": "gnews:1ffe0378d5ccc5f4",
-          "source": "gnews-rss",
-          "title": "Large Language Models Can Write Poetry But Can’t Step Beyond the Factory Fence: Yanxin Technology Integrates \"Symbol + Behavior + Connection\" 3 Technical Routes into RISC-V Chips to Develop Plug-and-Play Robot Brains - 36 Kr",
-          "at": "2026-10-13T06:11:36Z"
-        },
-        "b": {
-          "id": "gmail:1a112914bb745ca0",
-          "source": "gmail-news",
-          "title": "This AI that can't write",
-          "at": "2026-10-06T18:54:34Z"
-        },
-        "shared": [
-          "writ",
-          "t"
-        ]
-      },
-      {
-        "score": 0.364,
-        "blocked": "time-window",
-        "hours_apart": 124.9,
-        "a": {
-          "id": "hn:50049388",
-          "source": "hn-algolia",
-          "title": "Show HN: Plimsoll, a self-hosted sandbox for code your AI agent writes",
-          "at": "2026-10-11T23:47:59Z"
-        },
-        "b": {
-          "id": "gmail:1a112914bb745ca0",
-          "source": "gmail-news",
-          "title": "This AI that can't write",
-          "at": "2026-10-06T18:54:34Z"
-        },
-        "shared": [
-          "ai",
-          "writ"
-        ]
-      },
-      {
-        "score": 0.354,
-        "blocked": "time-window",
-        "hours_apart": 148.5,
-        "a": {
-          "id": "hn:50064444",
-          "source": "hn-algolia",
-          "title": "A shared, verifiable fix database that AI agents read and write themselves",
-          "at": "2026-10-12T23:22:00Z"
-        },
-        "b": {
-          "id": "gmail:1a112914bb745ca0",
-          "source": "gmail-news",
-          "title": "This AI that can't write",
-          "at": "2026-10-06T18:54:34Z"
-        },
-        "shared": [
-          "ai",
-          "writ"
-        ]
-      },
-      {
-        "score": 0.343,
+        "score": 0.647,
         "blocked": "thin-overlap",
-        "hours_apart": 125,
+        "hours_apart": 0.5,
         "a": {
-          "id": "hn:50064428",
+          "id": "hn:50073780",
           "source": "hn-algolia",
-          "title": "Llmtobinary – get an LLM to write machine code",
-          "at": "2026-10-12T23:19:51Z"
+          "title": "Gemini 4 Argon in Google Antigravity",
+          "at": "2026-10-13T15:57:49Z"
         },
         "b": {
-          "id": "rss:nvidia-dev:1fd6b880e95ea139",
+          "id": "gnews:2fc19415f770721a",
+          "source": "gnews-rss",
+          "title": "Google launches Gemini 4 Argon AI for mobile and search - NewsBytes",
+          "at": "2026-10-13T16:25:25Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon",
+          "google"
+        ]
+      },
+      {
+        "score": 0.607,
+        "blocked": "thin-overlap",
+        "hours_apart": 35,
+        "a": {
+          "id": "hn:50060500",
+          "source": "hn-algolia",
+          "title": "Just say no to OpenAI and Anthropic",
+          "at": "2026-10-12T18:17:29Z"
+        },
+        "b": {
+          "id": "gnews:590fa057a83328d0",
+          "source": "gnews-rss",
+          "title": "Meta launches Muse Wonder AI models to challenge OpenAI, Anthropic - TechGig",
+          "at": "2026-10-14T05:16:31Z"
+        },
+        "shared": [
+          "openai",
+          "anthropic"
+        ]
+      },
+      {
+        "score": 0.6,
+        "blocked": "thin-overlap",
+        "hours_apart": 15,
+        "a": {
+          "id": "hn:50073780",
+          "source": "hn-algolia",
+          "title": "Gemini 4 Argon in Google Antigravity",
+          "at": "2026-10-13T15:57:49Z"
+        },
+        "b": {
+          "id": "gnews:afeba60e273880f3",
+          "source": "gnews-rss",
+          "title": "Google's Most Powerful AI Model, Gemini 4 Argon, Is Now on Your Phone: Here's How to Access It? - Mashable India",
+          "at": "2026-10-14T06:54:56Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon",
+          "google"
+        ]
+      },
+      {
+        "score": 0.591,
+        "blocked": "thin-overlap",
+        "hours_apart": 1.3,
+        "a": {
+          "id": "hn:50073780",
+          "source": "hn-algolia",
+          "title": "Gemini 4 Argon in Google Antigravity",
+          "at": "2026-10-13T15:57:49Z"
+        },
+        "b": {
+          "id": "gnews:0e6013ee1c8d2d84",
+          "source": "gnews-rss",
+          "title": "Google launches Gemini 4 Argon AI model for coding, research and complex tasks - Moneycontrol.com",
+          "at": "2026-10-13T17:15:43Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon",
+          "google"
+        ]
+      },
+      {
+        "score": 0.58,
+        "blocked": "thin-overlap",
+        "hours_apart": 0.1,
+        "a": {
+          "id": "hn:50073780",
+          "source": "hn-algolia",
+          "title": "Gemini 4 Argon in Google Antigravity",
+          "at": "2026-10-13T15:57:49Z"
+        },
+        "b": {
+          "id": "rss:deepmind:94cc08977f17740f",
           "source": "rss-lab",
-          "title": "The Machines that Make the Machines",
-          "at": "2026-10-07T18:21:03Z"
+          "title": "Gemini 4 Argon for Robotics",
+          "at": "2026-10-13T16:01:58Z"
         },
         "shared": [
-          "machin"
+          "gemini",
+          "4",
+          "argon"
         ]
       },
       {
-        "score": 0.327,
+        "score": 0.577,
         "blocked": "thin-overlap",
-        "hours_apart": 151.9,
+        "hours_apart": 0,
         "a": {
-          "id": "gmail:1a111c040bbfe878",
-          "source": "gmail-news",
-          "title": "30 Free AI Automation Tools in 2026",
-          "at": "2026-10-06T15:01:46Z"
+          "id": "hn:50073898",
+          "source": "hn-algolia",
+          "title": "Gemini 4 Argon Model Card",
+          "at": "2026-10-13T16:04:30Z"
         },
         "b": {
-          "id": "gnews:a3cf2d7725b7242b",
-          "source": "gnews-rss",
-          "title": "AI Coding Agents Add 30% More Code, Not Software [2026] - https://tech-insider.org/",
-          "at": "2026-10-12T22:57:41Z"
+          "id": "rss:deepmind:94cc08977f17740f",
+          "source": "rss-lab",
+          "title": "Gemini 4 Argon for Robotics",
+          "at": "2026-10-13T16:01:58Z"
         },
         "shared": [
-          "30",
-          "ai",
-          "2026"
+          "gemini",
+          "4",
+          "argon"
         ]
       }
     ]
@@ -642,76 +803,76 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 4,
+      "streak_ok": 5,
       "streak_fail": 0,
-      "items_last": 29
+      "items_last": 27
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 114,
+      "streak_ok": 115,
       "streak_fail": 0,
-      "items_last": 0
+      "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 114,
+      "streak_ok": 115,
       "streak_fail": 0,
-      "items_last": 2
+      "items_last": 4
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 114,
+      "streak_ok": 115,
       "streak_fail": 0,
-      "items_last": 29
+      "items_last": 35
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 114,
+      "streak_ok": 115,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 114,
+      "streak_ok": 115,
       "streak_fail": 0,
-      "items_last": 71
+      "items_last": 70
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 26,
+      "streak_ok": 27,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 18,
+      "streak_ok": 19,
       "streak_fail": 0,
-      "items_last": 104
+      "items_last": 105
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 114,
+      "streak_ok": 115,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 114,
+      "streak_ok": 115,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.004698611111111111,
+    "hours": 0.005276388888888889,
     "stale": false
   },
   "hf": {
@@ -722,7 +883,7 @@
   "arxiv": {
     "ok": true,
     "enriched": 24,
-    "shelf": 5,
+    "shelf": 3,
     "timed_out": false,
     "budget_ms": 20000,
     "brief": false,
@@ -734,7 +895,7 @@
     "soft_fail_reason": null,
     "enriched": 3,
     "secondary": 3,
-    "query": "Hugging Face agent",
+    "query": "LLM agent",
     "mode": "search",
     "from_cache": false,
     "searches": 1,
@@ -750,34 +911,34 @@
     "url": "https://api.openalex.org/works",
     "sample": [
       {
-        "id": "W7171617880",
-        "openalexId": "https://openalex.org/W7171617880",
-        "year": 2026,
-        "doi": "https://doi.org/10.5281/zenodo.21686546",
+        "id": "W4393160747",
+        "openalexId": "https://openalex.org/W4393160747",
+        "year": 2024,
+        "doi": "https://doi.org/10.1609/aaai.v38i17.29936",
         "enrichOnly": true
       },
       {
-        "id": "W7171936549",
-        "openalexId": "https://openalex.org/W7171936549",
-        "year": 2026,
-        "doi": "https://doi.org/10.5281/zenodo.21715175",
+        "id": "W4412877164",
+        "openalexId": "https://openalex.org/W4412877164",
+        "year": 2025,
+        "doi": "https://doi.org/10.1145/3711896.3736570",
         "enrichOnly": true
       },
       {
-        "id": "W7203931864",
-        "openalexId": "https://openalex.org/W7203931864",
-        "year": 2026,
-        "doi": "https://doi.org/10.5281/zenodo.22043399",
+        "id": "W4407759090",
+        "openalexId": "https://openalex.org/W4407759090",
+        "year": 2025,
+        "doi": "https://doi.org/10.52202/085713-0593",
         "enrichOnly": true
       }
     ]
   },
   "crossref": {
-    "ok": false,
+    "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "enriched": 0,
-    "query": "doi:10.5281/zenodo.21686546",
+    "enriched": 1,
+    "query": "doi:10.1145/3711896.3736570",
     "mode": "filter",
     "from_cache": false,
     "searches": 1,
@@ -786,49 +947,59 @@
     "papers_enrich_only": true,
     "url": "https://api.crossref.org/works",
     "merge_notes": [],
-    "sample": []
+    "sample": [
+      {
+        "id": "W4412877164",
+        "crossrefDoi": "https://doi.org/10.1145/3711896.3736570",
+        "issued": "2025-08-03",
+        "type": "proceedings-article",
+        "openalexId": "https://openalex.org/W4412877164",
+        "doi": "https://doi.org/10.1145/3711896.3736570",
+        "enrichOnly": false
+      }
+    ]
   },
   "hn": {
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 71,
+    "count": 70,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
     "queries_run": [
-      "agents",
       "eval",
-      "LLM"
+      "LLM",
+      "METR"
     ],
     "queries_ok": [
-      "agents",
       "eval",
-      "LLM"
+      "LLM",
+      "METR"
     ],
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 22,
+    "ai_dropped": 25,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
-        "id": "hn:50047422",
+        "id": "hn:50073879",
         "tag": "rest",
-        "score": 694,
-        "text": "The gap in shared understanding of LLM capability is widening"
+        "score": 1254,
+        "text": "Gemini 4 Argon"
       },
       {
-        "id": "hn:50059523",
+        "id": "hn:50073633",
         "tag": "rest",
-        "score": 332,
-        "text": "AI coding agents generate more code, but not more software"
+        "score": 745,
+        "text": "Redesigning source control at Anthropic"
       },
       {
-        "id": "hn:50051583",
+        "id": "hn:50078141",
         "tag": "rest",
-        "score": 240,
-        "text": "Research Firm Calls Anthropic's IPO 'Unprecedented Test of Investor Gullibity'"
+        "score": 553,
+        "text": "OpenAI engineer arrested in bugging of executive conference room"
       }
     ]
   },
@@ -836,7 +1007,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 104,
+    "count": 105,
     "shelf": 0,
     "brief": false,
     "pulse_only": true,
@@ -891,32 +1062,32 @@
     "feeds_soft_fail": [],
     "sample": [
       {
-        "id": "rss:nvidia:4efda8b229f529e5",
+        "id": "rss:nvidia:23625ff39e9b17b7",
         "lab": "nvidia",
         "tag": "rest",
-        "title": "From Earth to Orbit, France’s Ecosystem Delivers Agentic Computing at Scale With NVIDIA",
-        "link": "https://blogs.nvidia.com/blog/france-ecosystem-agentic-computing/"
+        "title": "From Enterprise to Earthshot: UK’s Ecosystem Moves From Ambition to Application With NVIDIA",
+        "link": "https://blogs.nvidia.com/blog/uk-ecosystem-deployment/"
       },
       {
-        "id": "rss:nvidia-dev:1c636df798811a20",
+        "id": "rss:nvidia:9e8d19434b13b76f",
+        "lab": "nvidia",
+        "tag": "rest",
+        "title": "European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operations",
+        "link": "https://blogs.nvidia.com/blog/european-cities-agents-urban-operations/"
+      },
+      {
+        "id": "rss:deepmind:36a7e1c23fbbe3b1",
+        "lab": "deepmind",
+        "tag": "rest",
+        "title": "Google DeepMind and Singapore Government collaborate to build fine-tuned AI model for scam detection",
+        "link": "https://deepmind.google/blog/on-device-ai-scam-detection-mddi/"
+      },
+      {
+        "id": "rss:nvidia-dev:d8d6fe578b2298da",
         "lab": "nvidia-dev",
         "tag": "rest",
-        "title": "ReplaySSM: Rethinking State Storage for Faster Hybrid-Model Decoding",
-        "link": "https://developer.nvidia.com/blog/replayssm-rethinking-state-storage-for-faster-hybrid-model-decoding/"
-      },
-      {
-        "id": "rss:ms-research:62e45a8e96d139f2",
-        "lab": "ms-research",
-        "tag": "rest",
-        "title": "Simulating student learning for better AI tutoring",
-        "link": "https://www.microsoft.com/en-us/research/blog/simulating-student-learning-for-better-ai-tutoring/"
-      },
-      {
-        "id": "rss:nvidia:d684459236d7a96a",
-        "lab": "nvidia",
-        "tag": "rest",
-        "title": "OCP Global Summit: Amid Ecosystem Adoption, NVIDIA Opens Vera Rubin Architecture to Help Scale AI Factories Worldwide",
-        "link": "https://blogs.nvidia.com/blog/ocp-global-summit-vera-rubin-scale-ai-factories/"
+        "title": "How to Rewrite Apache Spark UDFs for GPU Acceleration with AI Agents",
+        "link": "https://developer.nvidia.com/blog/rewrite-apache-spark-udfs-gpu-acceleration-ai-agents/"
       }
     ]
   },
@@ -946,6 +1117,13 @@
     ],
     "sample": [
       {
+        "id": "rss-sec:fox-it:53fb98f2d458276a",
+        "lab": "fox-it",
+        "tag": "rest",
+        "title": "Releasing the Cobalt Strike Beacon Corpus",
+        "link": "https://blog.fox-it.com/2026/10/13/releasing-the-cobalt-strike-beacon-corpus/"
+      },
+      {
         "id": "rss-sec:projectzero:c26302aa2cbe872f",
         "lab": "projectzero",
         "tag": "rest",
@@ -965,13 +1143,6 @@
         "tag": "rest",
         "title": "Don't let TEEs break your MPC",
         "link": "https://blog.trailofbits.com/2026/09/25/dont-let-tees-break-your-mpc/"
-      },
-      {
-        "id": "rss-sec:trailofbits:070eb6728548fcc6",
-        "lab": "trailofbits",
-        "tag": "rest",
-        "title": "SAML: A fractal of bad design",
-        "link": "https://blog.trailofbits.com/2026/09/21/saml-a-fractal-of-bad-design/"
       }
     ]
   },
@@ -981,15 +1152,79 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 29,
-    "pool": 270,
+    "items": 35,
+    "pool": 257,
     "corroborators": [
       {
-        "id": "gnews:a3cf2d7725b7242b",
-        "anchor_id": "hn:50059523",
-        "score": 0.624,
-        "title": "AI Coding Agents Add 30% More Code, Not Software [2026] - https://tech-insider.org/",
-        "publisher": "https://tech-insider.org/",
+        "id": "gnews:9532f8dcc85577e3",
+        "anchor_id": "rss:nvidia:9e8d19434b13b76f",
+        "score": 1,
+        "title": "European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operations - NVIDIA Blog",
+        "publisher": "NVIDIA Blog",
+        "self_repost": true
+      },
+      {
+        "id": "gnews:8e7e056ae67bc45d",
+        "anchor_id": "hn:50073879",
+        "score": 0.771,
+        "title": "Gemini 4 Argon In Google Search Via AI Mode - Search Engine Roundtable",
+        "publisher": "Search Engine Roundtable",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:2fc19415f770721a",
+        "anchor_id": "hn:50073879",
+        "score": 0.76,
+        "title": "Google launches Gemini 4 Argon AI for mobile and search - NewsBytes",
+        "publisher": "NewsBytes",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:0e6013ee1c8d2d84",
+        "anchor_id": "hn:50073879",
+        "score": 0.69,
+        "title": "Google launches Gemini 4 Argon AI model for coding, research and complex tasks - Moneycontrol.com",
+        "publisher": "Moneycontrol.com",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:7cad4aa4762db978",
+        "anchor_id": "rss:nvidia-dev:d8d6fe578b2298da",
+        "score": 1,
+        "title": "How to Rewrite Apache Spark UDFs for GPU Acceleration with AI Agents - NVIDIA Developer",
+        "publisher": "NVIDIA Developer",
+        "self_repost": true
+      },
+      {
+        "id": "gnews:aa87206b93a988d1",
+        "anchor_id": "hn:50073780",
+        "score": 0.83,
+        "title": "Google Gemini 4 Argon rolls out for developers, enterprises, Google AI subscribers in Antigravity, Gemini - The Times of India",
+        "publisher": "The Times of India",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:3bbb9a4f8d63eee3",
+        "anchor_id": "rss:deepmind:851107eacfc8ba0f",
+        "score": 1,
+        "title": "Gemini 4 Argon: Built to solve your hardest problems - blog.google",
+        "publisher": "blog.google",
+        "self_repost": true
+      },
+      {
+        "id": "gnews:c1900bebbcec7af1",
+        "anchor_id": "hn:50062687",
+        "score": 0.975,
+        "title": "I Got My Muse AI Agent to Sext Me—and Meta Says That’s Totally Fine - WIRED",
+        "publisher": "WIRED",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:57b1cc7cb4f527c5",
+        "anchor_id": "hn:50060381",
+        "score": 0.688,
+        "title": "Zuckerberg says Meta has reached the AI frontier and rejects calls to slow down - Crypto Briefing",
+        "publisher": "Crypto Briefing",
         "self_repost": false
       },
       {
@@ -999,14 +1234,6 @@
         "title": "Simulating student learning for better AI tutoring - Microsoft",
         "publisher": "Microsoft",
         "self_repost": true
-      },
-      {
-        "id": "gnews:2727f5561e782358",
-        "anchor_id": "hn:50056918",
-        "score": 1,
-        "title": "Five Possible Back-Doors into LLM Search Results - Unite.AI",
-        "publisher": "Unite.AI",
-        "self_repost": false
       }
     ],
     "http_status": 200,
@@ -1021,38 +1248,38 @@
     "pulse_only": true,
     "url_template": "https://news.google.com/rss/search?q={QUERY}&hl=en-US&gl=US&ceid=US:en",
     "queried": [
-      "large language model",
       "AI agent",
-      "Mistral AI",
-      "Microsoft Research"
+      "open weights",
+      "Microsoft Research",
+      "Google Research"
     ],
     "queries_ok_list": [
-      "large language model",
       "AI agent",
-      "Mistral AI",
-      "Microsoft Research"
+      "open weights",
+      "Microsoft Research",
+      "Google Research"
     ],
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:bec40c349b3dcff1",
-        "title": "TCL shows flagship 5G router with AI agent for network optimisation - Telecompaper",
-        "publisher": "Telecompaper",
-        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOcnpRREdENUY4RERFTFhER0lsRTVoSTRmc2dsdnAwcmNvTUk0V2ZyT05uU19oVnV6Tkk5ajBTQnlNR3pJOTZ5cEdDS0ZtMnd6dmVXZXk5Zlk2aTUyMTJ3VXVzUFd6LWVVLVpsOWVwSnRzQVIxYklpdThfdnhJTnhfaHJOenQ2LUZNd1hQZEpSaFZOWnVQX3BXSkc4WVItenBsRmlNTHMtd1RXUE5sWFhJ?oc=5",
+        "id": "gnews:ba4425bcd9ec6c6f",
+        "title": "Ripple and Privy Just Gave AI Agents Their Own Wallets on the XRP Ledger - Forkast News",
+        "publisher": "Forkast News",
+        "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQcDVSeDd1QV9VXzZkUFY2bU05S3ZSWHMzWms4amlhTkN4WHhGaFc5UmNmdVYtWF9Mb2VPMy1NTWNXaHM0bFh6ZjlKNlNtZ2dTV0xrWjFzeE9QRWVfeEdGbUUxSERRV1ZCblRkTmp0RkY5MEdpR2hkWUpiYnNjMzBYUzZGY1plZkNvb1BIY0J6VmdaSldaOXd3MlNB?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:074c1d4836b9d2d8",
-        "title": "Microsoft Stock: Finally, Found Its AI Angle (NASDAQ:MSFT) - Seeking Alpha",
-        "publisher": "Seeking Alpha",
-        "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPNzhmVEY4RUVRUVVRcGlUWjJvcnNIbUJtSVM5bllnVE9UQUpUVXhuejRTZWFWeHJnMktXelBwVUtvVmoxZ3FOUFBfTHpiOVM3dkxnMmVqR1BTWnBIc0xjT3RfMVdHczV3UmQzWU51RWg2WnROMlF4d0stTEREMEZMcEs5MA?oc=5",
+        "id": "gnews:402061f6c878b508",
+        "title": "CES 2027 Ushers in the 'Age of Intelligence' — AI Agents, Physical AI, and Quantum Take Center Stage - BigGo Finance",
+        "publisher": "BigGo Finance",
+        "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9KMDY3aFhlS00yTWRiemUxUjBTc1RtUERKRFg4TF90RXVuaXRQN2I3Z2NWSlBqcDduRXdiSUR3TDhCQXNySnh5ZElrb0l1MEN1a2tabUpOVXpmYkpDZ2ZtTElrbHlKd05JN29OdE5ETlBxbXZCcXc?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:433ac95efee51369",
-        "title": "Meta’s Muse AI agent is a clever little bastard - Fast Company",
-        "publisher": "Fast Company",
-        "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPam80SjNpUEpWdDg0eFFrYVR4dzdydlVnNG95Z0lBZkxweVBNYXFnWlJpOTVleEhLYVJVVGxETzZJZFlvRVh0ZlpKOU9kTGcwb3MwLV9kVjUxV0JGd1RTMWlMSmd0V0tuY1cycmZwTFJsbDFPMTBlZlB3NzdHLTJURU9YaWk?oc=5",
+        "id": "gnews:ad03c4f89d6c7e03",
+        "title": "Nvidia Commits $250 Million to UK AI Agent Safety Research Over Five Years - marketscreener.com",
+        "publisher": "marketscreener.com",
+        "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPNTJXN0tWM0lsZmJUd2xQNGl3STc0RE10dFVfS2hhX2NaT0NYUWJnODJEUktGMUtzbnltZEJNdFVPNXZKWTZCV3IxU3F2MTBhVVEwandUUmFnVmNUZXh5R2JmaGp3R3RWVUd0cG9fS0xZMXVGRjNPZnNjYUpmUFlrdFVWRGVNbWg3UjFqUzlwckF0THE1d1l2ZlhKdzc1ZTBKSTROaFNDVzNTcURyV2xGOUxYekdBX0FiS0RkWDBTUjUwTmFO?oc=5",
         "tag": "rest"
       }
     ]
@@ -1082,8 +1309,8 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "query": "LLM red team toolkit",
-    "shelf": 2,
+    "query": "LLM agent eval harness",
+    "shelf": 4,
     "from_cache": false,
     "searches": 1,
     "rate_limit_remaining": 9,
@@ -1093,12 +1320,16 @@
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
-        "label": "Erentass6/aegis-llm",
-        "href": "https://github.com/Erentass6/aegis-llm"
+        "label": "waldiez/slm-callsite-eval",
+        "href": "https://github.com/waldiez/slm-callsite-eval"
       },
       {
-        "label": "seikaikyo/ai-red-team",
-        "href": "https://github.com/seikaikyo/ai-red-team"
+        "label": "smadduri9/codeagent",
+        "href": "https://github.com/smadduri9/codeagent"
+      },
+      {
+        "label": "threadbearer/ksa-agent-evals",
+        "href": "https://github.com/threadbearer/ksa-agent-evals"
       }
     ]
   },
@@ -1111,9 +1342,9 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "seeds": [
-      "METR",
       "OpenAI",
-      "DeepMind"
+      "DeepMind",
+      "Anthropic"
     ],
     "searches": 3,
     "from_cache": false,
@@ -1122,17 +1353,6 @@
     "deny_grounding_only": true,
     "url": "https://www.wikidata.org/w/api.php",
     "hints": [
-      {
-        "seed": "METR",
-        "qid": "Q11573",
-        "label": "metre",
-        "description": "SI unit of length",
-        "status": "rejected_false_friend",
-        "source": "wikidata",
-        "briefEligible": false,
-        "pulseLeadEligible": false,
-        "denyGroundingOnly": true
-      },
       {
         "seed": "OpenAI",
         "qid": "Q21708200",
@@ -1149,6 +1369,17 @@
         "qid": "Q15733006",
         "label": "Google DeepMind",
         "description": "artificial intelligence company owned by Google",
+        "status": "matched",
+        "source": "wikidata",
+        "briefEligible": false,
+        "pulseLeadEligible": false,
+        "denyGroundingOnly": true
+      },
+      {
+        "seed": "Anthropic",
+        "qid": "Q116758847",
+        "label": "Anthropic",
+        "description": "American artificial intelligence corporation",
         "status": "matched",
         "source": "wikidata",
         "briefEligible": false,

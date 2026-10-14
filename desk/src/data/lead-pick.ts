@@ -2,6 +2,34 @@
 import type { LeadEntry } from "@/lib/lead-pick";
 
 export const LEAD_TODAY: LeadEntry | null = {
+  "date": "2026-10-14",
+  "at": "2026-10-14T08:23:18.042Z",
+  "crawl_at": "2026-10-14T08:22:59Z",
+  "catch_up": true,
+  "pick_slot": "11:22",
+  "excluded": [
+    {
+      "cluster_id": "cl:hn:50062687",
+      "headline": "I Got My Muse AI Agent to Sext Me–and Meta Says That's Fine",
+      "reason": "age>=36h"
+    },
+    {
+      "cluster_id": "cl:hn:50060381",
+      "headline": "Mark Zuckerberg says Meta reached AI 'frontier' and rejects calls for slowdown",
+      "reason": "age>=36h"
+    }
+  ],
+  "cluster_id": "cl:rss:deepmind:8b1ab1df41ac00d8",
+  "headline": "Developing Gemini 4 Argon responsibly and safely",
+  "url": "https://deepmind.google/blog/developing-gemini-4-argon-responsibly-and-safely/",
+  "sources": 9,
+  "sig": 1254,
+  "reason": "picked",
+  "first_at": "2026-10-13T15:57:49.000Z",
+  "age_band": "<24h"
+};
+
+export const LEAD_YESTERDAY: LeadEntry | null = {
   "date": "2026-10-13",
   "at": "2026-10-13T08:23:39.958Z",
   "crawl_at": "2026-10-13T08:23:23Z",
@@ -24,34 +52,7 @@ export const LEAD_TODAY: LeadEntry | null = {
   "age_band": "<24h"
 };
 
-export const LEAD_YESTERDAY: LeadEntry | null = {
-  "date": "2026-10-12",
-  "at": "2026-10-12T03:22:13.996Z",
-  "crawl_at": "2026-10-12T03:21:52Z",
-  "pick_slot": "06:21",
-  "excluded": [
-    {
-      "cluster_id": "cl:rss:nvidia:9ef5df398b6c290e",
-      "headline": "NVIDIA, Microsoft Kick Off a New Beginning for Windows PCs With RTX Spark and AI Agents",
-      "reason": "age>=36h"
-    },
-    {
-      "cluster_id": "cl:hn:50029330",
-      "headline": "Anthropic Agents Tried to Fill Out Visa Forms on State Dept. Website",
-      "reason": "age>=36h"
-    }
-  ],
-  "cluster_id": "cl:hn:50035886",
-  "headline": "Nvidia in talks to acquire US 'open' model startup Reflection AI",
-  "url": "https://www.ft.com/content/052610c5-22b4-4dd4-932e-b7f9f0628b6a",
-  "sources": 5,
-  "sig": 176,
-  "reason": "picked",
-  "first_at": "2026-10-10T18:14:28.000Z",
-  "age_band": "24–36h"
-};
-
 export const LEAD_HELD = false;
 
 /** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is >48h old (PASS-L). */
-export const LEAD_FIRST_AT: string | null = "2026-10-12T12:52:30.000Z";
+export const LEAD_FIRST_AT: string | null = "2026-10-13T15:57:49.000Z";
