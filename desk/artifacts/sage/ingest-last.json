@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-14T17:15:03Z",
+  "stamped_at": "2026-10-14T18:23:11Z",
   "config_hash": "813e5ce035c3",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,25 +11,25 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 153,
+      "duration_ms": 141,
       "paused_until": null,
       "reason": null
     },
     {
       "id": "arxiv",
       "label": "arXiv",
-      "status": "timeout",
-      "rows": 3,
-      "duration_ms": 20000,
+      "status": "ok",
+      "rows": 27,
+      "duration_ms": 3192,
       "paused_until": null,
-      "reason": "timeout after 20000ms budget · last good: 0 cached enrich + 3 kept shelf"
+      "reason": null
     },
     {
       "id": "openalex",
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 818,
+      "duration_ms": 524,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 723,
+      "duration_ms": 161,
       "paused_until": null,
       "reason": null
     },
@@ -46,8 +46,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 65,
-      "duration_ms": 8380,
+      "rows": 63,
+      "duration_ms": 8245,
       "paused_until": null,
       "reason": null
     },
@@ -56,7 +56,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 105,
-      "duration_ms": 18237,
+      "duration_ms": 16901,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 4209,
+      "duration_ms": 4137,
       "paused_until": null,
       "reason": null
     },
@@ -73,8 +73,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 28,
-      "duration_ms": 6362,
+      "rows": 32,
+      "duration_ms": 6408,
       "paused_until": null,
       "reason": null
     },
@@ -82,8 +82,8 @@
       "id": "github",
       "label": "GitHub",
       "status": "ok",
-      "rows": 4,
-      "duration_ms": 412,
+      "rows": 3,
+      "duration_ms": 333,
       "paused_until": null,
       "reason": null
     },
@@ -92,16 +92,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4535,
+      "duration_ms": 4521,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 63829,
-    "sources_wall_ms": 21706,
-    "papers_lane_ms": 21706,
-    "slowest_source_ms": 20000,
+    "sources_ms": 44563,
+    "sources_wall_ms": 16902,
+    "papers_lane_ms": 4025,
+    "slowest_source_ms": 16901,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -115,12 +115,10 @@
       "github": 25000,
       "wikidata": 25000
     },
-    "timed_out": [
-      "arxiv"
-    ],
-    "wall_ms": 22034,
-    "startup_ms": 44,
-    "main_ms": 22046
+    "timed_out": [],
+    "wall_ms": 17327,
+    "startup_ms": 48,
+    "main_ms": 17339
   },
   "multi_source_independent": 2,
   "stale_hours": 6,
@@ -129,20 +127,20 @@
     "multi_source_independent": 2,
     "multi_source_raw": 8,
     "self_reposts": 7,
-    "items_in": 236,
-    "clusters_out": 212,
-    "collapsed": 24,
+    "items_in": 238,
+    "clusters_out": 215,
+    "collapsed": 23,
     "multi_source": 2,
     "multi_member": 11,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 39,
+    "new_items": 18,
     "per_source": {
-      "hn-algolia": 65,
+      "hn-algolia": 63,
       "rss-lab": 105,
       "rss-security": 28,
-      "gnews-rss": 28,
+      "gnews-rss": 32,
       "gmail-news": 10
     },
     "multi_source_clusters": [
@@ -315,23 +313,6 @@
         ]
       },
       {
-        "title": "Putting Earth AI to work: Geospatial agents for our planet's biggest challenges",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:6da1ebdcd82b7e26",
-            "publisher": "Google Research",
-            "title": "Putting Earth AI to work: Geospatial agents for our planet's biggest challenges - Google Research"
-          }
-        ]
-      },
-      {
         "title": "Research@ 2026: 10 ways we're amplifying human ingenuity",
         "sources": [
           "rss-lab"
@@ -345,6 +326,23 @@
             "id": "gnews:f8ecaa1948cee466",
             "publisher": "Google Research",
             "title": "Research@ 2026: 10 ways we're amplifying human ingenuity - Google Research"
+          }
+        ]
+      },
+      {
+        "title": "Putting Earth AI to work: Geospatial agents for our planet's biggest challenges",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:6da1ebdcd82b7e26",
+            "publisher": "Google Research",
+            "title": "Putting Earth AI to work: Geospatial agents for our planet's biggest challenges - Google Research"
           }
         ]
       },
@@ -410,10 +408,6 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "Futurism",
-          "title": "People Are Already Forming Romantic Relationships With Meta’s Muse - Futurism"
-        },
-        {
           "publisher": "UA.NEWS",
           "title": "Microsoft opens tool for 2–6-week weather forecasts — The Verge - UA.NEWS"
         },
@@ -450,10 +444,6 @@
           "title": "Google gives European researchers access to AlphaFold 3 - Techzine Global"
         },
         {
-          "publisher": "Gadget Bridge",
-          "title": "How to remove the Google search bar from your Samsung phone’s home page - Gadget Bridge"
-        },
-        {
           "publisher": "Startup Fortune",
           "title": "Fish Audio releases Drama 3, a free voice model that beats ElevenLabs on pronunciation - Startup Fortune"
         },
@@ -463,11 +453,33 @@
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 28
+      "hn_dropped": 30
     },
     "gnews_near_misses": [
       {
-        "score": 0.663,
+        "score": 0.664,
+        "blocked": "time-window",
+        "hours_apart": 25.2,
+        "a": {
+          "id": "hn:50073879",
+          "source": "hn-algolia",
+          "title": "Gemini 4 Argon",
+          "at": "2026-10-13T16:03:16Z"
+        },
+        "b": {
+          "id": "gnews:29a7b4bda0a49c6e",
+          "source": "gnews-rss",
+          "title": "Gemini 4 Argon Arrives With Big Claims for AI Agents and Scientific Discovery - HPCwire",
+          "at": "2026-10-14T17:17:58Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon"
+        ]
+      },
+      {
+        "score": 0.658,
         "blocked": "thin-overlap",
         "hours_apart": 0.3,
         "a": {
@@ -490,7 +502,7 @@
         ]
       },
       {
-        "score": 0.663,
+        "score": 0.658,
         "blocked": "thin-overlap",
         "hours_apart": 0.5,
         "a": {
@@ -513,7 +525,7 @@
         ]
       },
       {
-        "score": 0.613,
+        "score": 0.608,
         "blocked": "thin-overlap",
         "hours_apart": 15,
         "a": {
@@ -536,28 +548,7 @@
         ]
       },
       {
-        "score": 0.605,
-        "blocked": "thin-overlap",
-        "hours_apart": 35,
-        "a": {
-          "id": "hn:50060500",
-          "source": "hn-algolia",
-          "title": "Just say no to OpenAI and Anthropic",
-          "at": "2026-10-12T18:17:29Z"
-        },
-        "b": {
-          "id": "gnews:590fa057a83328d0",
-          "source": "gnews-rss",
-          "title": "Meta launches Muse Wonder AI models to challenge OpenAI, Anthropic - TechGig",
-          "at": "2026-10-14T05:16:31Z"
-        },
-        "shared": [
-          "openai",
-          "anthropic"
-        ]
-      },
-      {
-        "score": 0.548,
+        "score": 0.543,
         "blocked": "thin-overlap",
         "hours_apart": 0.7,
         "a": {
@@ -579,7 +570,7 @@
         ]
       },
       {
-        "score": 0.548,
+        "score": 0.543,
         "blocked": "thin-overlap",
         "hours_apart": 0.5,
         "a": {
@@ -601,7 +592,7 @@
         ]
       },
       {
-        "score": 0.548,
+        "score": 0.543,
         "blocked": "thin-overlap",
         "hours_apart": 0.2,
         "a": {
@@ -623,7 +614,7 @@
         ]
       },
       {
-        "score": 0.548,
+        "score": 0.543,
         "blocked": "thin-overlap",
         "hours_apart": 0.4,
         "a": {
@@ -669,7 +660,29 @@
         ]
       },
       {
-        "score": 0.663,
+        "score": 0.664,
+        "blocked": "time-window",
+        "hours_apart": 25.2,
+        "a": {
+          "id": "hn:50073879",
+          "source": "hn-algolia",
+          "title": "Gemini 4 Argon",
+          "at": "2026-10-13T16:03:16Z"
+        },
+        "b": {
+          "id": "gnews:29a7b4bda0a49c6e",
+          "source": "gnews-rss",
+          "title": "Gemini 4 Argon Arrives With Big Claims for AI Agents and Scientific Discovery - HPCwire",
+          "at": "2026-10-14T17:17:58Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon"
+        ]
+      },
+      {
+        "score": 0.658,
         "blocked": "thin-overlap",
         "hours_apart": 0.3,
         "a": {
@@ -692,7 +705,7 @@
         ]
       },
       {
-        "score": 0.663,
+        "score": 0.658,
         "blocked": "thin-overlap",
         "hours_apart": 0.5,
         "a": {
@@ -715,7 +728,7 @@
         ]
       },
       {
-        "score": 0.613,
+        "score": 0.608,
         "blocked": "thin-overlap",
         "hours_apart": 15,
         "a": {
@@ -738,28 +751,7 @@
         ]
       },
       {
-        "score": 0.605,
-        "blocked": "thin-overlap",
-        "hours_apart": 35,
-        "a": {
-          "id": "hn:50060500",
-          "source": "hn-algolia",
-          "title": "Just say no to OpenAI and Anthropic",
-          "at": "2026-10-12T18:17:29Z"
-        },
-        "b": {
-          "id": "gnews:590fa057a83328d0",
-          "source": "gnews-rss",
-          "title": "Meta launches Muse Wonder AI models to challenge OpenAI, Anthropic - TechGig",
-          "at": "2026-10-14T05:16:31Z"
-        },
-        "shared": [
-          "openai",
-          "anthropic"
-        ]
-      },
-      {
-        "score": 0.595,
+        "score": 0.589,
         "blocked": "thin-overlap",
         "hours_apart": 0.1,
         "a": {
@@ -781,7 +773,7 @@
         ]
       },
       {
-        "score": 0.593,
+        "score": 0.586,
         "blocked": "thin-overlap",
         "hours_apart": 0,
         "a": {
@@ -803,7 +795,7 @@
         ]
       },
       {
-        "score": 0.554,
+        "score": 0.563,
         "blocked": "below-threshold",
         "hours_apart": 10.4,
         "a": {
@@ -833,76 +825,76 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 0,
-      "streak_fail": 1,
-      "items_last": 3
+      "streak_ok": 1,
+      "streak_fail": 0,
+      "items_last": 27
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 116,
+      "streak_ok": 117,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 116,
+      "streak_ok": 117,
       "streak_fail": 0,
-      "items_last": 4
+      "items_last": 3
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 116,
+      "streak_ok": 117,
       "streak_fail": 0,
-      "items_last": 28
+      "items_last": 32
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 116,
+      "streak_ok": 117,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 116,
+      "streak_ok": 117,
       "streak_fail": 0,
-      "items_last": 65
+      "items_last": 63
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 28,
+      "streak_ok": 29,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 20,
+      "streak_ok": 21,
       "streak_fail": 0,
       "items_last": 105
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 116,
+      "streak_ok": 117,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 116,
+      "streak_ok": 117,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.00614,
+    "hours": 0.004944166666666667,
     "stale": false
   },
   "hf": {
@@ -911,10 +903,10 @@
     "url": "https://huggingface.co/api/daily_papers"
   },
   "arxiv": {
-    "ok": false,
-    "enriched": 0,
+    "ok": true,
+    "enriched": 24,
     "shelf": 3,
-    "timed_out": true,
+    "timed_out": false,
     "budget_ms": 20000,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
@@ -993,7 +985,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 65,
+    "count": 63,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -1010,25 +1002,25 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 28,
+    "ai_dropped": 30,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
         "id": "hn:50073879",
         "tag": "rest",
-        "score": 1407,
+        "score": 1419,
         "text": "Gemini 4 Argon"
       },
       {
         "id": "hn:50073633",
         "tag": "rest",
-        "score": 844,
+        "score": 848,
         "text": "Redesigning source control at Anthropic"
       },
       {
         "id": "hn:50078141",
         "tag": "rest",
-        "score": 627,
+        "score": 631,
         "text": "OpenAI engineer arrested in bugging of executive conference room"
       }
     ]
@@ -1092,18 +1084,18 @@
     "feeds_soft_fail": [],
     "sample": [
       {
-        "id": "rss:google-research:4c456e668ef45cba",
-        "lab": "google-research",
-        "tag": "rest",
-        "title": "Putting Earth AI to work: Geospatial agents for our planet's biggest challenges",
-        "link": "https://research.google/blog/putting-earth-ai-to-work-geospatial-agents-for-our-planets-biggest-challenges/"
-      },
-      {
         "id": "rss:google-research:f366508f96854306",
         "lab": "google-research",
         "tag": "rest",
         "title": "Research@ 2026: 10 ways we're amplifying human ingenuity",
         "link": "https://research.google/blog/research-2026-10-ways-were-amplifying-human-ingenuity/"
+      },
+      {
+        "id": "rss:google-research:4c456e668ef45cba",
+        "lab": "google-research",
+        "tag": "rest",
+        "title": "Putting Earth AI to work: Geospatial agents for our planet's biggest challenges",
+        "link": "https://research.google/blog/putting-earth-ai-to-work-geospatial-agents-for-our-planets-biggest-challenges/"
       },
       {
         "id": "rss:google-research:6c3fa003d587daac",
@@ -1182,9 +1174,25 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 28,
+    "items": 32,
     "pool": 257,
     "corroborators": [
+      {
+        "id": "gnews:847f6b4b5641833d",
+        "anchor_id": "rss:openai:57c3309db5bedcde",
+        "score": 1,
+        "title": "Amp puts AI agents to work beyond code with OpenAI models - OpenAI",
+        "publisher": "OpenAI",
+        "self_repost": true
+      },
+      {
+        "id": "gnews:6da1ebdcd82b7e26",
+        "anchor_id": "rss:google-research:4c456e668ef45cba",
+        "score": 1,
+        "title": "Putting Earth AI to work: Geospatial agents for our planet's biggest challenges - Google Research",
+        "publisher": "Google Research",
+        "self_repost": true
+      },
       {
         "id": "gnews:f8ecaa1948cee466",
         "anchor_id": "rss:google-research:f366508f96854306",
@@ -1228,7 +1236,7 @@
       {
         "id": "gnews:afeba60e273880f3",
         "anchor_id": "hn:50073879",
-        "score": 0.701,
+        "score": 0.7,
         "title": "Google's Most Powerful AI Model, Gemini 4 Argon, Is Now on Your Phone: Here's How to Access It? - Mashable India",
         "publisher": "Mashable India",
         "self_repost": false
@@ -1244,7 +1252,7 @@
       {
         "id": "gnews:aa87206b93a988d1",
         "anchor_id": "hn:50073780",
-        "score": 0.829,
+        "score": 0.828,
         "title": "Google Gemini 4 Argon rolls out for developers, enterprises, Google AI subscribers in Antigravity, Gemini - The Times of India",
         "publisher": "The Times of India",
         "self_repost": false
@@ -1284,24 +1292,24 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:90cae107f9331cf7",
-        "title": "A release gate for AI agent incidents - SD Times",
-        "publisher": "SD Times",
-        "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1NLWE3VFJmMFFQN1VTdy00ekdrYmZfVF9SSEdsZlN1b2JMQl93WFlod1Q1U2hNWldwVnppekFWNEo1b1MtdkhndnBsTEY2VjdUVGpGYVNLSGVkcXI0dVpraXpnc3F3ZHhob19pYXUtVEZhMUVxdVlr?oc=5",
+        "id": "gnews:6f29300b68cf6d49",
+        "title": "Google opens Deep Review AI tool to help researchers catch manuscript errors - R&D World",
+        "publisher": "R&D World",
+        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPQ1hkeDFnLTBJeHl1U1RVeC1FWmZrN3F5WHZqRnBQdDI0cFYyQWtSZkhLNjB4MENUM2ROOXNXNDBVckdQSXR0LWFmdml5Q0VkZFk0LTd2M1JlVTVZSFJ6aTBFZ1hVOFRIcl9zWEN1WnFWQjNWcWZ6Z0w4RExfM2FWR2E1RHZPeFhKY1NtSXMyZjBZVHFHejZkNXNOQ3c2NG5iU0Y3eTNvaUMzQzcyWTl3?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:847f6b4b5641833d",
-        "title": "Amp puts AI agents to work beyond code with OpenAI models - OpenAI",
-        "publisher": "OpenAI",
-        "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1FRTNMUjRTQzRBT1ZmeVlqZ1Q4Q2VVSHppUUM3SThLVGVtb1FNYkRxMDA0NFRzWmxaTWlmdWV6S2hUa2hUaG9sZDJJRW1zWFZraWNaTzJR?oc=5",
+        "id": "gnews:8d1c3c43433cd1d5",
+        "title": "Trust by design: Provenance for the agentic AI era - IAPP",
+        "publisher": "IAPP",
+        "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1VYmNHWGFKYWhaX1lNblV6VVliMzgxbWZaMy00MGVHc0lTR1lwTVgzNy05VHJNN3ZvU1Q4T1duOUNNSXZZcGxPblltdmx0dzNad1NNRzd1QnpGQ1F6ZDEwNGxrQ3RRdDV3Qlh6QmJ5a0lLZXBYeEM0cE9Bd3p4dw?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:21d281555c2bb918",
-        "title": "Google poisoning search results for AI scrapers, rank trackers, new report claims - Mashable",
-        "publisher": "Mashable",
-        "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNYnRRNzlSdExmTEpuZWtLQmxvb2c5OE1aMjlzM1JoVmtsek9uQUpLZlBEQ2cwX1FSLUFNQW8yUlppTndTYXZnNVl6VVlZUjlERG1pdVJYY2pTeVJwQmk0bW9nN2VlZlFyX3E5ajUwM2xhM3pjcFhjWWlCTUZaYUxxbHVWOWx2ZDFCbHc3NklQWEtlVFFOYUkzVGNR?oc=5",
+        "id": "gnews:7c24bfacce5cadb0",
+        "title": "Liquid AI Releases LFM2.5-24B-A2B for Local AI Workflows - TechRepublic",
+        "publisher": "TechRepublic",
+        "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOSTZWMVhOSVlQWHF1WnplQ0tjRmR0eTJqSF84b3lEcXU5ZEl5WGpRbkhhUW9nZmpmUkRqbjI4OHJxT2hobGlaMjVCWXktVkplZFJvWW01NUJZZ3NXOG5RYVNWVFl5RDhxSFlpYzFfSDc5QlBkMkh4Vm14WTV6VV90Yw?oc=5",
         "tag": "rest"
       }
     ]
@@ -1332,7 +1340,7 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "query": "LLM agent eval harness",
-    "shelf": 4,
+    "shelf": 3,
     "from_cache": false,
     "searches": 1,
     "rate_limit_remaining": 9,
@@ -1342,21 +1350,21 @@
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
-        "label": "Areeha2004/roamio-agent",
-        "href": "https://github.com/Areeha2004/roamio-agent"
+        "label": "heyvamshii/Smart-Trip-Planner-Agent",
+        "href": "https://github.com/heyvamshii/Smart-Trip-Planner-Agent"
       },
       {
         "label": "CJ-coding-apps/Multi-Agent-Evolution-Framework",
         "href": "https://github.com/CJ-coding-apps/Multi-Agent-Evolution-Framework"
       },
       {
-        "label": "rreghine/llm-eval-lab",
-        "href": "https://github.com/rreghine/llm-eval-lab"
+        "label": "Areeha2004/roamio-agent",
+        "href": "https://github.com/Areeha2004/roamio-agent"
       }
     ]
   },
   "shelf": {
-    "count": 19,
+    "count": 18,
     "brief": false
   },
   "wikidata": {

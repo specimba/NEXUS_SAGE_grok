@@ -21,8 +21,7 @@ export const SHELF: ShelfItem[] = [
   { href: "https://arxiv.org/abs/2610.18874", label: "arxiv.org/abs/2610.18874", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.18869", label: "arxiv.org/abs/2610.18869", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.18863", label: "arxiv.org/abs/2610.18863", reason: "arxiv-shelf" as const },
-  { href: "https://github.com/Areeha2004/roamio-agent", label: "Areeha2004/roamio-agent", reason: "github-search-shelf" as const },
+  { href: "https://github.com/heyvamshii/Smart-Trip-Planner-Agent", label: "heyvamshii/Smart-Trip-Planner-Agent", reason: "github-search-shelf" as const },
   { href: "https://github.com/CJ-coding-apps/Multi-Agent-Evolution-Framework", label: "CJ-coding-apps/Multi-Agent-Evolution-Framework", reason: "github-search-shelf" as const },
-  { href: "https://github.com/rreghine/llm-eval-lab", label: "rreghine/llm-eval-lab", reason: "github-search-shelf" as const },
-  { href: "https://github.com/Solomonpatrick/pension-qa-evals", label: "Solomonpatrick/pension-qa-evals", reason: "github-search-shelf" as const },
+  { href: "https://github.com/Areeha2004/roamio-agent", label: "Areeha2004/roamio-agent", reason: "github-search-shelf" as const },
 ];
