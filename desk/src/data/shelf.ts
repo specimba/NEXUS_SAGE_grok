@@ -21,8 +21,8 @@ export const SHELF: ShelfItem[] = [
   { href: "https://arxiv.org/abs/2610.18874", label: "arxiv.org/abs/2610.18874", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.18869", label: "arxiv.org/abs/2610.18869", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.18863", label: "arxiv.org/abs/2610.18863", reason: "arxiv-shelf" as const },
-  { href: "https://github.com/waldiez/slm-callsite-eval", label: "waldiez/slm-callsite-eval", reason: "github-search-shelf" as const },
-  { href: "https://github.com/smadduri9/codeagent", label: "smadduri9/codeagent", reason: "github-search-shelf" as const },
-  { href: "https://github.com/threadbearer/ksa-agent-evals", label: "threadbearer/ksa-agent-evals", reason: "github-search-shelf" as const },
-  { href: "https://github.com/naveendas96/agent-eval-harness", label: "naveendas96/agent-eval-harness", reason: "github-search-shelf" as const },
+  { href: "https://github.com/Areeha2004/roamio-agent", label: "Areeha2004/roamio-agent", reason: "github-search-shelf" as const },
+  { href: "https://github.com/CJ-coding-apps/Multi-Agent-Evolution-Framework", label: "CJ-coding-apps/Multi-Agent-Evolution-Framework", reason: "github-search-shelf" as const },
+  { href: "https://github.com/rreghine/llm-eval-lab", label: "rreghine/llm-eval-lab", reason: "github-search-shelf" as const },
+  { href: "https://github.com/Solomonpatrick/pension-qa-evals", label: "Solomonpatrick/pension-qa-evals", reason: "github-search-shelf" as const },
 ];
