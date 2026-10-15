@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Embrace The Red</title>
+    <link>https://embracethered.com/blog/</link>
+    <description>Recent content on Embrace The Red</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>(c) WUNDERWUZZI 2018-2026</copyright>
+    <lastBuildDate>Tue, 13 Oct 2026 15:00:40 -0700</lastBuildDate>
+    <atom:link href="https://embracethered.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Visual Studio Copilot and SSMS Remote Code Execution (CVE-2026-103572)</title>
+      <link>https://embracethered.com/blog/posts/2026/visual-studio-copilot-remote-code-execution/</link>
+      <pubDate>Tue, 13 Oct 2026 15:00:40 -0700</pubDate>
+      <guid>https://embracethered.com/blog/posts/2026/visual-studio-copilot-remote-code-execution/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;A &lt;code&gt;.&lt;/code&gt; is all you need!&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;Today Microsoft &lt;a href=&#34;https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-103572&#34;&gt;shipped the patch&lt;/a&gt; for a vulnerability in Visual Studio Copilot that I reported in August. Microsoft classified it as &lt;code&gt;Important&lt;/code&gt; severity &lt;code&gt;Remote Code Execution&lt;/code&gt; vulnerability.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://embracethered.com/blog/images/2026/sqlcopilot/copilot-vs-rce.png&#34;&gt;&lt;img src=&#34;https://embracethered.com/blog/images/2026/sqlcopilot/copilot-vs-rce.png&#34; alt=&#34;Visual Studio Remote Code Execution&#34;&gt;&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;At the root cause it allows Copilot in Visual Studio or SQL Server Management Studio to &lt;strong&gt;bypass a path validation check and write to its own settings and configuration files&lt;/strong&gt;. This allows Copilot to escape containment restrictions and achieve arbitrary command execution.&lt;/p&gt;</description>
+    </item>
+<item>
+      <title>From SELECT to SYSADMIN with SQL Copilot (CVE-2026-65669)</title>
+      <link>https://embracethered.com/blog/posts/2026/from-select-to-sysadmin-sql-copilot-bluehat-asia/</link>
+      <pubDate>Wed, 30 Sep 2026 14:00:40 -0700</pubDate>
+      <guid>https://embracethered.com/blog/posts/2026/from-select-to-sysadmin-sql-copilot-bluehat-asia/</guid>
+      <description>&lt;p&gt;Two weeks back I presented at BlueHat Asia 2026 about my research on Microsoft&amp;rsquo;s Copilot in SSMS, the SQL Server Management Studio.&lt;/p&gt;&#xA;&lt;p&gt;This post is a write up about the talk, which covered &lt;a href=&#34;https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-65669&#34;&gt;CVE-2026-65669&lt;/a&gt;, a SQL Server Elevation of Privilege Vulnerability rated critical by Microsoft.&lt;/p&gt;&#xA;&lt;p&gt;So, make sure your installations are up-to-date.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://embracethered.com/blog/images/2026/sqlcopilot/johann-bluehat.jpeg&#34;&gt;&lt;img src=&#34;https://embracethered.com/blog/images/2026/sqlcopilot/johann-bluehat.jpeg&#34; alt=&#34;BlueHat 2026 Johann Rehberger Presenting&#34;&gt;&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;The slides of the presentation can be found &lt;a href=&#34;https://embracethered.com/blog/downloads/from-select-to-sysadmin.pdf&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;bluehat-asia-2026-in-singapore&#34;&gt;BlueHat Asia 2026 in Singapore&lt;/h2&gt;&#xA;&lt;p&gt;First, a few words about the conference. I have spoken at BlueHat before, sometime back in 2017, and also two years ago. Both times at Microsoft&amp;rsquo;s Redmond Campus.&lt;/p&gt;</description>
+    </item>
+<item>
+      <title>Breaking Claude Code Opus 5 Auto Mode</title>
+      <link>https://embracethered.com/blog/posts/2026/breaking-claude-code-opus-5-and-automode/</link>
+      <pubDate>Wed, 26 Aug 2026 21:00:00 -0700</pubDate>
+      <guid>https://embracethered.com/blog/posts/2026/breaking-claude-code-opus-5-and-automode/</guid>
+      <description>&lt;p&gt;In this post, we explore how a simple website summary request hijacks &lt;code&gt;Claude Code Opus 5&lt;/code&gt; in &lt;code&gt;Auto Mode&lt;/code&gt; and achieves code execution with 60-80% attack success rate using a small sample size.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://embracethered.com/blog/images/2026/claude-automode/claude-auto-mode-rce.png&#34;&gt;&lt;img src=&#34;https://embracethered.com/blog/images/2026/claude-automode/claude-auto-mode-rce.png&#34; alt=&#34;Breaking Claude Code Opus 5 Auto Mode&#34;&gt;&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;This is interesting because a third-party evaluation commissioned by Anthropic showed a &lt;code&gt;0.00%&lt;/code&gt; prompt injection attack success rate for Opus 5 in Auto Mode.&lt;/p&gt;&#xA;&lt;h2 id=&#34;auto-mode-is-now-the-default-in-claude-code&#34;&gt;Auto Mode Is Now the Default in Claude Code&lt;/h2&gt;&#xA;&lt;p&gt;Auto Mode replaces human approval prompts with a safety classifier. Since mid-August it is the default starting mode for Claude Code.&lt;/p&gt;</description>
+    </item>
+</channel>
+</rss>

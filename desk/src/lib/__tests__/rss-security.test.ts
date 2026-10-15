@@ -22,6 +22,7 @@ const FIX = (name: string) =>
 const TOB = FIX("rss-tob-sample.xml");
 const P0 = FIX("atom-projectzero-sample.xml");
 const FOX = FIX("rss-foxit-remotepe.xml");
+const ETR = FIX("rss-embracethered-sample.xml");
 
 describe("Security RSS parse → schema", () => {
   test("Trail of Bits fixture · briefEligible false · digestRefOk", () => {
@@ -93,15 +94,17 @@ describe("Security RSS parse → schema", () => {
     expect(truncated.includes("Extra entry for capped parse")).toBe(false);
   }, { timeout: 30_000 });
 
-  test("fetchRssSecurity offline fixtures for ToB + Fox-IT + Project Zero", async () => {
+  test("fetchRssSecurity offline fixtures for ToB + Fox-IT + Project Zero + Embrace The Red", async () => {
     const fixtures: Partial<Record<SecurityLabId, string>> = {
       trailofbits: TOB,
       "fox-it": FOX,
       projectzero: P0,
+      embracethered: ETR,
     };
     const r = await fetchRssSecurity({ ...fast(), fixtures });
-    expect(r.feedsOk.length).toBe(3);
+    expect(r.feedsOk.length).toBe(4);
     expect(r.feedsOk.map((f) => f.lab).sort()).toEqual([
+      "embracethered",
       "fox-it",
       "projectzero",
       "trailofbits",
@@ -218,9 +221,9 @@ describe("never Brief · cycle locks · ToB+Fox-IT+P0 · NCC skip", () => {
     ]);
   });
 
-  test("SECURITY_FEEDS are ToB + Fox-IT + Project Zero — NCC out", () => {
+  test("SECURITY_FEEDS are ToB + Fox-IT + Project Zero + Embrace The Red (PASS-S1.2) — NCC out", () => {
     const labs = SECURITY_FEEDS.map((f) => f.lab);
-    expect(labs).toEqual(["trailofbits", "fox-it", "projectzero"]);
+    expect(labs).toEqual(["trailofbits", "fox-it", "projectzero", "embracethered"]);
     expect(labs).not.toContain("ncc");
     const fox = SECURITY_FEEDS.find((f) => f.lab === "fox-it")!;
     expect(fox.urls[0]).toBe("https://blog.fox-it.com/feed/");
@@ -250,5 +253,32 @@ describe("never Brief · cycle locks · ToB+Fox-IT+P0 · NCC skip", () => {
         r.feedsSkipped.some((f) => f.lab === "fox-it"),
     ).toBe(true);
     expect(r.items.every((i) => i.briefEligible === false)).toBe(true);
+  });
+});
+
+describe("PASS-S1.2 — Embrace The Red (one SECURITY_FEEDS entry)", () => {
+  test("registry entry: first-party RSS URL, no streamCap", () => {
+    const etr = SECURITY_FEEDS.find((f) => f.lab === "embracethered")!;
+    expect(etr.urls).toEqual(["https://embracethered.com/blog/index.xml"]);
+    expect(etr.streamCap).toBeFalsy();
+  });
+  test("real feed sample → SEC items: rss-sec:embracethered ids, never Brief, cap_per_feed applies", async () => {
+    const items = toSecurityItems(parseRssOrAtom(ETR), "embracethered");
+    expect(items.length).toBe(3);
+    for (const it of items) {
+      expect(it.id).toMatch(/^rss-sec:embracethered:[0-9a-f]{16}$/);
+      expect(it.source).toBe("rss-security");
+      expect(it.briefEligible).toBe(false);
+      expect(it.link).toContain("embracethered.com/blog/posts/");
+    }
+    expect(items[0]!.title).toContain("Visual Studio Copilot");
+    const r = await fetchRssSecurity({
+      feeds: SECURITY_FEEDS.filter((f) => f.lab === "embracethered"),
+      fixtures: { embracethered: ETR },
+      maxPerFeed: 2,
+      ...fast(),
+    });
+    expect(r.feedsOk).toEqual([{ lab: "embracethered", url: "fixture", count: 2 }]);
+    expect(r.items.length).toBe(2);
   });
 });

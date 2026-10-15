@@ -1,5 +1,5 @@
 /**
- * Security lab RSS — Trail of Bits + Fox-IT + Project Zero.
+ * Security lab RSS — Trail of Bits + Fox-IT + Project Zero + Embrace The Red (PASS-S1.2).
  * NCC stays skip (broken HTML/404). Pulse + shelf + Digest refs · never Brief.
  * Cycle stays 003 · lead hf-incident. Spec: refs/WIRE-SECURITY-RSS.md (Fox-IT extend APPROVED).
  */
@@ -31,6 +31,7 @@ export type SecurityLabId =
   | "fox-it"
   | "ncc"
   | "projectzero"
+  | "embracethered"
   | "google-sec";
 
 export type SecurityRssItem = {
@@ -51,13 +52,13 @@ export type SecurityRssItem = {
 };
 
 export type SecurityFeedDef = {
-  lab: "trailofbits" | "fox-it" | "projectzero";
+  lab: "trailofbits" | "fox-it" | "projectzero" | "embracethered";
   urls: readonly string[];
   /** Large Atom — stream + stop after N entries / byte budget. */
   streamCap?: boolean;
 };
 
-/** Must-wire: ToB + Fox-IT + Project Zero. NCC intentionally absent. */
+/** Must-wire: ToB + Fox-IT + Project Zero; PASS-S1.2 adds Embrace The Red (prompt-injection / agent exploits). NCC intentionally absent. */
 export const SECURITY_FEEDS: readonly SecurityFeedDef[] = [
   {
     lab: "trailofbits",
@@ -72,12 +73,18 @@ export const SECURITY_FEEDS: readonly SecurityFeedDef[] = [
     urls: ["https://projectzero.google/feed.xml"],
     streamCap: true,
   },
+  // PASS-S1.2 (refs/PASS-S1-SCOUT-SOURCES.md): ~312 KB / 233 items — the per-feed cap trims it, no streamCap needed.
+  {
+    lab: "embracethered",
+    urls: ["https://embracethered.com/blog/index.xml"],
+  },
 ] as const;
 
-const LAB_HANDLE: Record<"trailofbits" | "fox-it" | "projectzero", string> = {
+const LAB_HANDLE: Record<SecurityFeedDef["lab"], string> = {
   trailofbits: "trailofbits",
   "fox-it": "foxit",
   projectzero: "projectzero",
+  embracethered: "embracethered",
 };
 
 const DEFAULT_CACHE_DIR = resolve(
@@ -214,7 +221,7 @@ export function toSecurityItems(
   const out: SecurityRssItem[] = [];
   const seen = new Set<string>();
   const handle =
-    lab === "trailofbits" || lab === "fox-it" || lab === "projectzero"
+    lab === "trailofbits" || lab === "fox-it" || lab === "projectzero" || lab === "embracethered"
       ? LAB_HANDLE[lab]
       : lab === "ncc"
         ? "nccgroup"
