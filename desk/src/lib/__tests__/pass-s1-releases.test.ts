@@ -58,7 +58,7 @@ const seenWith = (version: string, emitted_at: string | null = null): ReleasesSe
   feeds: { "llama.cpp": { version, seeded_at: iso(T0 - 72 * H), emitted_at, emitted: [] } },
 });
 const run = (xml: string, seen: ReleasesSeen | undefined, now: number) =>
-  fetchReleasesAtom({ ...fast, feeds: [LLAMA], fixtures: { "llama.cpp": xml }, seen, now });
+  fetchReleasesAtom({ ...fast(), feeds: [LLAMA], fixtures: { "llama.cpp": xml }, seen, now });
 
 describe("S1.3 semver filter", () => {
   test("regex accepts only plain semver", () => {

@@ -79,7 +79,7 @@ describe("S1.1 — registry, parse, AINews recap, chip", () => {
   });
 
   test("real-feed fixtures parse; AINews recap stays ONE item; non-AI posts dropped; cap applies", async () => {
-    const res = await fetchRssAnalyst({ ...fast, fixtures: { simonw: simonXml, "latent-space": latentXml }, now: Date.parse(NOW) });
+    const res = await fetchRssAnalyst({ ...fast(), fixtures: { simonw: simonXml, "latent-space": latentXml }, now: Date.parse(NOW) });
     const recaps = res.items.filter((x) => x.recap);
     expect(recaps.length).toBe(2); // two [AINews] issues in the fixture → two rows, not one per sub-story
     for (const r of recaps) expect(AINEWS_RECAP_RE.test(r.title)).toBe(true);
