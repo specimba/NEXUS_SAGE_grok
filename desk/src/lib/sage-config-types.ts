@@ -2,7 +2,7 @@
 export type SourceId =
   | "hn" | "hf_papers" | "lab_rss" | "sec_rss" | "gnews" | "github"
   | "openalex" | "crossref" | "arxiv" | "wikidata" | "gmail" | "x_taste"
-  | "analyst_rss";
+  | "analyst_rss" | "releases_atom";
 
 export type SageConfig = {
   schema: 1;
@@ -21,6 +21,8 @@ export type SageConfig = {
     x_taste: { on: boolean; visible_cap: number };
     /** PASS-S1.1 analyst feeds (ANL) — registry ids only. */
     analyst_rss: { on: boolean; cap_per_feed: number; timeout_s: number; feeds: string[] };
+    /** PASS-S1.3 GitHub release feeds (REL) — registry ids only; semver minor/major bumps, ≤1/feed/24h. */
+    releases_atom: { on: boolean; cap_per_feed: number; feeds: string[] };
   };
   keywords: { ai_terms: string[]; hn_sweep: string[]; gmail_seed: string[]; politics_deny: string[]; hn_title_queries: string[] };
   taste: { weight: number; max: number };

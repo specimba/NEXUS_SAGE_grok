@@ -32,6 +32,8 @@ export const SOURCE_BUDGET_MS: Readonly<Record<string, number>> = {
   rss_security: DEFAULT_SOURCE_BUDGET_MS,
   /** PASS-S1.1 analyst feeds (2 feeds × 2 s throttle shared with lab RSS). */
   rss_analyst: DEFAULT_SOURCE_BUDGET_MS,
+  /** PASS-S1.3 release Atom feeds (≤4 feeds × 2 s throttle). */
+  releases_atom: DEFAULT_SOURCE_BUDGET_MS,
   gnews: DEFAULT_SOURCE_BUDGET_MS,
   github: DEFAULT_SOURCE_BUDGET_MS,
   wikidata: DEFAULT_SOURCE_BUDGET_MS,

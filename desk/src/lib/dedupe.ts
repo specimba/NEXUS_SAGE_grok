@@ -16,7 +16,7 @@
 
 import { companyOf, isSelfRepost, type Company } from "./publisher-company";
 
-export type PulseSource = "rss-lab" | "hn-algolia" | "rss-security" | "gnews-rss" | "gmail-news" | "rss-analyst";
+export type PulseSource = "rss-lab" | "hn-algolia" | "rss-security" | "gnews-rss" | "gmail-news" | "rss-analyst" | "releases-atom";
 
 export type PulseInput = {
   id: string;
@@ -75,6 +75,8 @@ const LEAD_PRIORITY: Record<PulseSource, number> = {
   "gmail-news": 4, // Pass F: never sole-leads; Pulse-only
   // PASS-S1.1: analysts lead a cluster's headline only over GNews/Gmail (first-party / HN / SEC first).
   "rss-analyst": 2.5,
+  // PASS-S1.3: a release never heads a cluster that has any other member.
+  "releases-atom": 5,
 };
 
 const TRACKING_PARAMS = new Set([

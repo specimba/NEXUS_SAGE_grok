@@ -76,6 +76,15 @@ import {
 import { ANALYST_FEEDS, fetchRssAnalyst, resolveAnalystCacheDir, type AnalystRssItem } from "../src/lib/rss-analyst";
 import { RSS_ANALYST } from "../src/data/rss-analyst";
 import {
+  fetchReleasesAtom,
+  parseReleasesSeen,
+  RELEASE_FEEDS,
+  resolveReleasesCacheDir,
+  resolveReleasesSeenPath,
+  type ReleaseItem,
+} from "../src/lib/releases-atom";
+import { RELEASES_ATOM } from "../src/data/releases-atom";
+import {
   fetchGithubShelf,
   resolveGithubCacheDir,
   resetGithubShelfTickState,
@@ -325,6 +334,32 @@ ${body}];
 `;
 }
 
+function renderReleasesAtomTs(rows: ReleaseItem[], stamp: string, meta?: MetaMap): string {
+  const body = rows
+    .map(
+      (r) =>
+        `  { id: ${JSON.stringify(r.id)}, feed: ${JSON.stringify(r.feed)} as const, title: ${JSON.stringify(r.title)}, link: ${JSON.stringify(r.link)}, published: ${JSON.stringify(r.published)}, tag: ${JSON.stringify(r.tag)}, emitted_at: ${JSON.stringify(r.emitted_at)}, source: "releases-atom" as const${metaTail(meta, r.id)} },\n`,
+    )
+    .join("");
+  return `/** PASS-S1.3 release feeds Pulse (llama.cpp · Ollama · vLLM · Claude Code) — generated/refreshed by bun run ingest. Pulse only (REL); semver minor/major bumps only; never Wire/Brief; never a lead. */
+export type ReleaseAtomRow = {
+  id: string;
+  feed: "llama.cpp" | "ollama" | "vllm" | "claude-code";
+  title: string;
+  link: string;
+  published: string;
+  tag: string;
+  emitted_at: string;
+  source: "releases-atom";
+${META_TYPE_FIELDS}};
+
+export const RELEASES_ATOM_AT: string | null = ${JSON.stringify(stamp)};
+
+export const RELEASES_ATOM: ReleaseAtomRow[] = [
+${body}];
+`;
+}
+
 function renderGnewsRssTs(rows: GnewsRssItem[], stamp: string, meta?: MetaMap): string {
   const body = rows
     .map((r) => {
@@ -380,6 +415,7 @@ function renderSoftFailMetersTs(
     ...(chipOff("sec_rss") ? [`    { id: "sec_rss", label: "Sec RSS", state: "off" as SoftFailState, detail: "off" },`] : []),
     ...(chipOff("wikidata") ? [`    { id: "wikidata", label: "Wikidata", state: "off" as SoftFailState, detail: "off" },`] : []),
     ...(chipOff("anl") ? [`    { id: "anl", label: "ANL", state: "off" as SoftFailState, detail: "off" },`] : []),
+    ...(chipOff("rel") ? [`    { id: "rel", label: "REL", state: "off" as SoftFailState, detail: "off" },`] : []),
     ...(extra.configInvalid ? [`    { id: "config", label: "Config", state: "soft" as SoftFailState, detail: "config invalid" },`] : []),
   ];
   return `/** A4 soft-fail meters — snapshot from ingest (Pass F Gmail · Pass E X-session). Pulse/rail only; never Brief. */
@@ -685,6 +721,17 @@ async function main() {
           fetchImpl: c.fetch,
         }),
       ),
+    // PASS-S1.3: GitHub release Atom feeds (REL) — own budget; config releases_atom; state artifacts/sage/releases-seen.json.
+    () =>
+      runSource("releases_atom", "releases_atom", (c) =>
+        fetchReleasesAtom({
+          cacheDir: resolveReleasesCacheDir(root),
+          cap: S.releases_atom.cap_per_feed,
+          feeds: RELEASE_FEEDS.filter((f) => S.releases_atom.feeds.includes(f.id)),
+          seen: parseReleasesSeen(existsSync(resolveReleasesSeenPath(root)) ? readFileSync(resolveReleasesSeenPath(root), "utf8") : null),
+          fetchImpl: c.fetch,
+        }),
+      ),
     // PASS-S1.4: HN title-scoped queries (keywords.hn_title_queries) — own budget so a slow term never times out the
     // watchlist; merged into the hn rows below (existing cap, objectID dedupe). Off with `hn`.
     () =>
@@ -924,7 +971,7 @@ async function main() {
 
   // Independent sources — awaited here, then processed in the fixed order hn → rss_labs → gnews →
   // rss_security → github → wikidata (same order and logic as the old sequential blocks).
-  const [hnSettled, rssSettled, gnewsSettled, secSettled, githubSettled, wikidataSettled, analystSettled, hnTitleSettled] = await independent;
+  const [hnSettled, rssSettled, gnewsSettled, secSettled, githubSettled, wikidataSettled, analystSettled, releasesSettled, hnTitleSettled] = await independent;
   const sourcesFetchMs = swSources.lap();
   const hnRun = settledRun("hn", hnSettled);
   const rssRun = settledRun("rss_labs", rssSettled);
@@ -934,6 +981,7 @@ async function main() {
   const wikidataRun = settledRun("wikidata", wikidataSettled);
   const hnTitleRun = settledRun("hn_title", hnTitleSettled);
   const analystRun = settledRun("rss_analyst", analystSettled);
+  const releasesRun = settledRun("releases_atom", releasesSettled);
   // HN Algolia AFTER Crossref — Pulse chatter only; never Brief lead/companion / never toolkit Brief pins
   // FREE-PULSE P3: rotate ≤3 queries/tick · soft_fail merge · never Brief · never displace HF
   let hnOk = false;
@@ -1095,6 +1143,39 @@ async function main() {
   } catch (err) {
     anlReason = timedOut.has("rss_analyst") ? String(err) : `exception: ${String(err)}`;
     console.log(`RSS analyst: ${timedOut.has("rss_analyst") ? "TIMEOUT" : "soft_fail"} — continuing with committed rows (${String(err)})`);
+  }
+
+  // PASS-S1.3 release feeds — Pulse only (REL); semver minor/major bumps vs releases-seen.json; first run seeds.
+  let relOk = false;
+  let relReason: string | undefined;
+  let relRows: ReleaseItem[] = [];
+  let relSeen: ReturnType<typeof parseReleasesSeen> | null = null;
+  let relReport: Record<string, unknown> | null = null;
+  ms.releases_atom = releasesRun.duration_ms;
+  try {
+    const rl = unwrap(releasesRun);
+    relRows = rl.items;
+    relOk = rl.ok;
+    relSeen = rl.seen;
+    relReason = rl.soft_fail_reason ?? (rl.ok ? undefined : "no feeds ok");
+    relReport = {
+      ok: rl.ok,
+      soft_fail: rl.soft_fail,
+      soft_fail_reason: rl.soft_fail_reason ?? null,
+      count: rl.items.length,
+      decisions: rl.decisions,
+      feeds: rl.feedsOk,
+      feeds_soft_fail: rl.feedsSoftFail,
+      brief: false,
+      pulse_only: true,
+      filter: "semver ^v?(\\d+)\\.(\\d+)(?:\\.(\\d+))?$ · minor/major bump vs releases-seen.json · ≤1/feed/24h · first run seeds",
+    };
+    console.log(`Releases: ${rl.items.length} Pulse (REL) from ${rl.feedsOk.length} feeds soft_fail=${rl.soft_fail} (brief=false · never a lead)`);
+    for (const d of rl.decisions) console.log(`  rel ${d.feed}: ${d.action} baseline=${d.baseline} newest=${d.newest ?? "—"} emitted=${d.emitted ?? "—"}`);
+    for (const f of rl.feedsSoftFail) console.log(`  rel soft_fail ${f.lab}: ${f.reason}`);
+  } catch (err) {
+    relReason = timedOut.has("releases_atom") ? String(err) : `exception: ${String(err)}`;
+    console.log(`Releases: ${timedOut.has("releases_atom") ? "TIMEOUT" : "soft_fail"} — continuing with committed rows (${String(err)})`);
   }
 
   // Google News RSS AFTER lab RSS — Pulse quiet spice only; never Brief · never sole lead · rotate ≤2/tick
@@ -1344,6 +1425,7 @@ async function main() {
   if (off.has("arxiv")) arxivShelf = [];
   if (off.has("wikidata")) wikidataHints = [];
   if (off.has("analyst_rss")) { anlRows = []; anlOk = true; }
+  if (off.has("releases_atom")) { relRows = []; relOk = true; relSeen = null; }
 
   const urls = loadUrlList();
   const scored = scoreUrlList(urls);
@@ -1438,6 +1520,15 @@ async function main() {
       url: r.link,
       at: toIso(r.published),
       publisher: r.feed,
+    })),
+    // PASS-S1.3: release rows (after analysts; single publisher github.com — never lead, never Wire).
+    ...(relOk ? relRows : RELEASES_ATOM).map((r) => ({
+      id: r.id,
+      source: "releases-atom" as const,
+      title: r.title,
+      url: r.link,
+      at: toIso(r.published),
+      publisher: "github.com",
     })),
   ];
   // Beat 5: GNews corroborators — pool items (beyond the display cap) whose headline directly
@@ -1541,13 +1632,14 @@ async function main() {
     { id: "rss_labs", ok: rssOk, items: rssPulse.length + rssShelf.length, reason: rssSoftFailReason ?? "no feeds ok" },
     { id: "rss_security", ok: secOk, items: secPulse.length + secShelf.length, reason: secFailReason },
     { id: "rss_analyst", ok: anlOk, items: anlRows.length, reason: anlReason },
+    { id: "releases_atom", ok: relOk, items: relRows.length, reason: relReason },
     { id: "gnews", ok: gnewsOk, items: gnewsRows.length, reason: gnewsSoftFailReason ?? "empty" },
     { id: "github", ok: !githubSoftFail, items: githubShelf.length, reason: githubSoftFailReason },
     { id: "wikidata", ok: wikidataOk && !wikidataSoftFail, items: wikidataHints.length, reason: wikidataSoftFailReason ?? "not ok" },
   ];
   const healthPath = resolve(root, "artifacts/sage/source-health.json");
   // PASS-C2: an off source is not a failure — it leaves the ledger untouched (meter shows `off`).
-  const OUTCOME_CFG: Record<string, SourceId> = { hf: "hf_papers", rss_labs: "lab_rss", rss_security: "sec_rss", hn_title: "hn", rss_analyst: "analyst_rss" };
+  const OUTCOME_CFG: Record<string, SourceId> = { hf: "hf_papers", rss_labs: "lab_rss", rss_security: "sec_rss", hn_title: "hn", rss_analyst: "analyst_rss", releases_atom: "releases_atom" };
   for (let i = outcomes.length - 1; i >= 0; i--) {
     const cid = (OUTCOME_CFG[outcomes[i]!.id] ?? outcomes[i]!.id) as SourceId;
     if (off.has(cid)) outcomes.splice(i, 1);
@@ -1568,6 +1660,7 @@ async function main() {
     gnews: "Google News",
     rss_security: "security RSS",
     rss_analyst: "analyst RSS",
+    releases_atom: "releases",
     github: "GitHub",
     wikidata: "Wikidata",
   };
@@ -1620,6 +1713,11 @@ async function main() {
   if (anlOk) {
     writeText(resolve(root, "src/data/rss-analyst.ts"), renderRssAnalystTs(anlRows, stamp, rowMeta));
   }
+  if (relOk) {
+    writeText(resolve(root, "src/data/releases-atom.ts"), renderReleasesAtomTs(relRows, stamp, rowMeta));
+  }
+  // PASS-S1.3 bump baseline — staged by ci-state.sh (kept even when the reader data is unchanged).
+  if (relSeen) writeText(resolveReleasesSeenPath(root), `${JSON.stringify(relSeen, null, 1)}\n`);
   if (gnewsLive) {
     writeText(resolve(root, "src/data/gnews-rss.ts"), renderGnewsRssTs(gnewsRows, stamp, rowMeta));
   }
@@ -1853,6 +1951,7 @@ async function main() {
       })),
     },
     rss_analyst: anlReport,
+    releases_atom: relReport,
     google_news: {
       ok: gnewsOk,
       soft_fail: gnewsSoftFail,

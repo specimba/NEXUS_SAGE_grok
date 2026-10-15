@@ -5,11 +5,14 @@
 #                                 (+ force-added publish-proof.json).
 #                                 changed=false: drop the crawl's data churn but KEEP the fresh last-checked.json
 #                                 (a plain `git checkout -- artifacts/sage` would revert it and checked_at would never advance).
+#                                 PASS-S1.3: releases-seen.json (release bump baseline) is kept the same way, so a seed or
+#                                 an emitted bump is never lost to a no-change run (else every run would re-seed).
 set -euo pipefail
 LC=artifacts/sage/last-checked.json
 RH=artifacts/sage/reader-hash.json
 PP=artifacts/sage/publish-proof.json   # written by pages-publish.sh on a publish attempt (PASS-D D6 / Q1G §2)
 FEED=public/feed.xml                   # PASS-D D1; own pathspec so a missing feed never voids the src/data / artifacts add/revert
+RS=artifacts/sage/releases-seen.json
 case "${1:-}" in
   seed)
     [ -f "$LC" ] && exit 0
@@ -22,11 +25,13 @@ case "${1:-}" in
       [ -e "$FEED" ] && git add -- "$FEED"   # PASS-D D1: the feed rides with its snapshot store
     else
       keep="$(mktemp)"; cp "$LC" "$keep"
+      keep_rs=""; if [ -f "$RS" ]; then keep_rs="$(mktemp)"; cp "$RS" "$keep_rs"; fi
       git checkout -- src/data artifacts/sage 2>/dev/null || true
       git checkout -- "$FEED" 2>/dev/null || true   # PASS-D D1 (safe: reader-hash covers the feed, so a feed change ⇒ changed=true)
       cp "$keep" "$LC"; rm -f "$keep"
+      if [ -n "$keep_rs" ]; then cp "$keep_rs" "$RS"; rm -f "$keep_rs"; fi
       git add -- "$LC"
     fi
-    git add -f -- "$LC"; [ -f "$RH" ] && git add -f -- "$RH"; [ -f "$PP" ] && git add -f -- "$PP"; true ;;
+    git add -f -- "$LC"; [ -f "$RH" ] && git add -f -- "$RH"; [ -f "$PP" ] && git add -f -- "$PP"; [ -f "$RS" ] && git add -f -- "$RS"; true ;;
   *) echo "usage: ci-state.sh seed | stage <true|false>" >&2; exit 2 ;;
 esac

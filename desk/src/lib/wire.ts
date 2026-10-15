@@ -90,6 +90,8 @@ export function wireExcludeReason(c: WireCluster, tasteIds: Set<string> = new Se
   }
   const ids = [c.id, c.lead_id, ...c.member_ids];
   if (c.lead_source === "x" || ids.some((id) => id.startsWith("x:"))) return "x";
+  // PASS-S1.3: a release-led group never joins the Wire / Brief (Pulse REL row only).
+  if (c.lead_source === "releases-atom" || c.lead_id?.startsWith("rel:")) return "release";
   if (ids.some((id) => tasteIds.has(id) || tasteIds.has(id.replace(/^[a-z-]+:/, "")))) return "taste";
   // Lab feeds were already category/path-filtered at ingest (NVIDIA consumer out); HN/GNews/SEC need an AI title/domain.
   if (c.lead_source !== "rss-lab" && !isAiRelevant(c.title, c.url)) return "not-ai";

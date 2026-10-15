@@ -193,6 +193,26 @@ export function nonGnewsPublishers(
  */
 export const ANALYST_ONLY = "analyst-only";
 
+/** PASS-S1.3: a release (rel:) never leads — reason code when a group is headed by a release row. */
+export const RELEASE_LEAD = "release";
+
+/**
+ * PASS-S1.3: releases never lead and never lift a group to a lead — a release-headed group, or a group whose
+ * ≥2-publisher count only holds by counting the release (github.com), is excluded with reason `release`.
+ */
+export function releaseLeadReason(
+  c: Pick<WireCluster, "lead_id" | "member_ids" | "members" | "self_repost_ids">,
+  publishers: Record<string, string> = {},
+  members: Record<string, { publisher?: string }> = {},
+): string | null {
+  if (c.lead_id.startsWith("rel:")) return RELEASE_LEAD;
+  if (!c.member_ids.some((id) => id.startsWith("rel:"))) return null;
+  const pubs = new Set(nonGnewsPublishers(c, publishers, members).filter((k) => !k.startsWith("rel:")));
+  for (const id of [c.lead_id, ...c.member_ids])
+    if (id.startsWith("gnews:")) pubs.add(publisherKey(id, members[id]?.publisher ?? publishers[id]));
+  return pubs.size < LEAD_MIN_SOURCES ? RELEASE_LEAD : null;
+}
+
 /** nonGnewsPublishers minus analyst publishers (`anl:<feed>`). */
 export function nonAnalystPublishers(...args: Parameters<typeof nonGnewsPublishers>): string[] {
   return nonGnewsPublishers(...args).filter((k) => !k.startsWith("anl:"));
@@ -251,6 +271,7 @@ export function leadExcludeReason(c: WireCluster, now: number, opts: LeadOpts = 
     customerDealReason(c.title) ??
     (nonGnewsPublishers(c, opts.publishers, opts.members).length === 0 ? GNW_ONLY : null) ??
     (nonAnalystPublishers(c, opts.publishers, opts.members).length === 0 ? ANALYST_ONLY : null) ??
+    releaseLeadReason(c, opts.publishers, opts.members) ??
     opts.exclude?.(c) ??
     null
   );

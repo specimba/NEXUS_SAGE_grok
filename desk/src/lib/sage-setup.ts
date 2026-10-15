@@ -9,7 +9,7 @@ import { orderTasteShelf } from "./x-taste-meter";
 
 /** Config source id → A4 soft-fail meter chip id. */
 export function softMeterSourceId(id: SourceId): string {
-  const m: Partial<Record<SourceId, string>> = { hf_papers: "hf", lab_rss: "rss", x_taste: "x_session", analyst_rss: "anl" };
+  const m: Partial<Record<SourceId, string>> = { hf_papers: "hf", lab_rss: "rss", x_taste: "x_session", analyst_rss: "anl", releases_atom: "rel" };
   return m[id] ?? id;
 }
 
@@ -28,6 +28,7 @@ export const CRAWL_ROW_ID: Record<SourceId, string | null> = {
   gmail: null,
   x_taste: null,
   analyst_rss: "rss_analyst",
+  releases_atom: "releases_atom",
 };
 
 export type SetupLoaded = {

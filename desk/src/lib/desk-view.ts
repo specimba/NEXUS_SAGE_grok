@@ -47,7 +47,7 @@ export const LINK_MAX = 2048;
 
 export const DESK_VIEW_CAPS = {
   /** Crawl items kept per source (counted over kept stories; a story is dropped whole, oldest first). */
-  items: { hn: 90, gnews: 45, rss: 156, "rss-sec": 40, gmail: 18, anl: 18 } as Record<string, number>,
+  items: { hn: 90, gnews: 45, rss: 156, "rss-sec": 40, gmail: 18, anl: 18, rel: 12 } as Record<string, number>,
   /** Operator X posts (newest kept). */
   xPosts: 12,
   /** Papers (lowest arXiv id = oldest dropped first; feed order kept). */
@@ -107,7 +107,7 @@ export type MemberRow = {
 export type OrphanCluster = SlimCluster & { lead_id: string; i: number };
 
 export function defaultPublisher(id: string): string | undefined {
-  return id.startsWith("rss:") || id.startsWith("rss-sec:") || id.startsWith("anl:") ? id.split(":")[1] : undefined;
+  return id.startsWith("rss:") || id.startsWith("rss-sec:") || id.startsWith("anl:") || id.startsWith("rel:") ? id.split(":")[1] : undefined;
 }
 export function defaultBadge(id: string, publisher: string): string | undefined {
   if (id.startsWith("hn:")) return "HN";
@@ -117,6 +117,7 @@ export function defaultBadge(id: string, publisher: string): string | undefined 
   if (id.startsWith("x:")) return "X";
   if (id.startsWith("gmail:")) return "GML";
   if (id.startsWith("anl:")) return "ANL";
+  if (id.startsWith("rel:")) return "REL";
   return undefined;
 }
 const pubOf = (id: string, r: MemberRow) => r.p ?? defaultPublisher(id)!;

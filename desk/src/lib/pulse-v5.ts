@@ -77,6 +77,7 @@ const SOURCE_BADGE: Record<string, string> = {
   x: "X",
   "gmail-news": "GML",
   "rss-analyst": "ANL",
+  "releases-atom": "REL",
 };
 
 const LAB_BADGE: Record<string, string> = {
@@ -105,6 +106,7 @@ export function memberSource(id: string): string | null {
   if (id.startsWith("x:")) return "x";
   if (id.startsWith("gmail:")) return "gmail-news";
   if (id.startsWith("anl:")) return "rss-analyst";
+  if (id.startsWith("rel:")) return "releases-atom";
   return null;
 }
 
@@ -130,6 +132,8 @@ export function publisherKey(id: string, publisher?: string | null): string {
   if (id.startsWith("gnews:")) return pub ? `pub:${pub}` : id;
   // PASS-S1.1: one publisher per analyst feed (anl:<feed>:…).
   if (id.startsWith("anl:")) return `anl:${id.split(":")[1] ?? pub}`;
+  // PASS-S1.3: every release feed is ONE publisher (github.com) — releases never corroborate each other.
+  if (id.startsWith("rel:")) return "rel:github.com";
   return pub || id;
 }
 

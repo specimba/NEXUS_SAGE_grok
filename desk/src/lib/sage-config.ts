@@ -19,6 +19,7 @@ import { LAB_FEEDS, RSS_MAX_ITEMS_PER_FEED } from "./rss-labs";
 import { SECURITY_FEEDS } from "./rss-security";
 import { RSS_FEED_TIMEOUT_MS } from "./rss-timeout";
 import { ANALYST_FEEDS, ANALYST_RSS_CAP } from "./rss-analyst";
+import { RELEASE_FEEDS, RELEASES_CAP, RELEASES_CAP_MAX } from "./releases-atom";
 import { TASTE_VISIBLE_CAP, TASTE_WEIGHT_MAX } from "./x-taste-meter";
 export { orderTasteShelf, TASTE_WEIGHT_MAX } from "./x-taste-meter";
 
@@ -50,12 +51,13 @@ export type { SageConfig, SourceId } from "./sage-config-types";
 export const SOURCE_IDS: readonly SourceId[] = [
   "hn", "hf_papers", "lab_rss", "sec_rss", "gnews", "github",
   "openalex", "crossref", "arxiv", "wikidata", "gmail", "x_taste",
-  "analyst_rss",
+  "analyst_rss", "releases_atom",
 ] as const;
 
 export const LAB_FEED_IDS: readonly string[] = LAB_FEEDS.map((f) => f.lab);
 export const SEC_FEED_IDS: readonly string[] = SECURITY_FEEDS.map((f) => f.lab);
 export const ANALYST_FEED_IDS: readonly string[] = ANALYST_FEEDS.map((f) => f.id);
+export const RELEASE_FEED_IDS: readonly string[] = RELEASE_FEEDS.map((f) => f.id);
 
 /** Today's code values = the seed. `config/sage-sources.json` committed at C2 land is exactly this. */
 export function defaultSageConfig(): SageConfig {
@@ -75,6 +77,8 @@ export function defaultSageConfig(): SageConfig {
       gmail: { on: true, fetch_cap: GMAIL_FETCH_CAP, emit_cap: GMAIL_EMIT_CAP, window_days: GMAIL_WINDOW_DAYS },
       x_taste: { on: true, visible_cap: TASTE_VISIBLE_CAP },
       analyst_rss: { on: true, cap_per_feed: ANALYST_RSS_CAP, timeout_s: RSS_FEED_TIMEOUT_MS / 1000, feeds: [...ANALYST_FEED_IDS] },
+      // PASS-S1.3: claude-code is in the registry but off by default (patch churn).
+      releases_atom: { on: true, cap_per_feed: RELEASES_CAP, feeds: RELEASE_FEEDS.filter((f) => f.defaultOn).map((f) => f.id) },
     },
     keywords: {
       ai_terms: aiTermsDefault(),
@@ -105,10 +109,12 @@ export function sageCeilings(): Record<string, Record<string, number>> {
     x_taste: { visible_cap: d.x_taste.visible_cap * 2 },
     // PASS-S1.1: cap 6 → ceiling 12; timeout follows the lab ceiling (≤ 15 s).
     analyst_rss: { cap_per_feed: d.analyst_rss.cap_per_feed * 2, timeout_s: LAB_RSS_TIMEOUT_MAX_S },
+    // PASS-S1.3: cap 2 → ceiling 4.
+    releases_atom: { cap_per_feed: RELEASES_CAP_MAX },
   };
 }
 
-const FEED_FIELDS: Record<string, readonly string[]> = { lab_rss: LAB_FEED_IDS, sec_rss: SEC_FEED_IDS, analyst_rss: ANALYST_FEED_IDS };
+const FEED_FIELDS: Record<string, readonly string[]> = { lab_rss: LAB_FEED_IDS, sec_rss: SEC_FEED_IDS, analyst_rss: ANALYST_FEED_IDS, releases_atom: RELEASE_FEED_IDS };
 const SECRET_KEY = /token|secret|cookie|passw|bearer|auth|api[_-]?key|session/i;
 const SECRET_VALUE = /\b(ghp_|gho_|github_pat_|glpat-|xox[abp]-|sk-[a-z0-9]{8}|AKIA[0-9A-Z]{8})/i;
 
