@@ -4,12 +4,12 @@ import type { SageSetupView } from "@/lib/sage-setup";
 export const SAGE_SETUP: SageSetupView = {
   "stamped_at": "2026-10-20T03:20:29Z",
   "config_path": "desk/config/sage-sources.json",
-  "config_hash": "1f71b537b25e",
+  "config_hash": "e3e9003a7d92",
   "status": "ok",
   "used": "committed",
   "errors": [],
-  "since_commit": "2f55be6",
-  "since_at": "2026-10-15T22:44:35Z",
+  "since_commit": "419a3c1",
+  "since_at": "2026-10-15T22:44:52Z",
   "sources": [
     {
       "id": "hn",
@@ -218,6 +218,13 @@ export const SAGE_SETUP: SageSetupView = {
         "prompt injection",
         "Qwen",
         "local model"
+      ]
+    },
+    {
+      "id": "gmail_senders",
+      "terms": [
+        "hello@newsletters.venturebeat.com",
+        "takaramono@tldr.takara.ai"
       ]
     }
   ],

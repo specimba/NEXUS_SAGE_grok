@@ -11,7 +11,7 @@
  */
 import { aiTermsDefault } from "./ai-relevance";
 import { GITHUB_PER_PAGE } from "./github-shelf";
-import { GMAIL_EMIT_CAP, GMAIL_FETCH_CAP, GMAIL_SEED_KEYWORDS } from "./gmail-news";
+import { GMAIL_EMIT_CAP, GMAIL_FETCH_CAP, GMAIL_SEED_KEYWORDS, GMAIL_SENDER_RE, GMAIL_SENDERS_DEFAULT, GMAIL_SENDERS_MAX } from "./gmail-news";
 import { GNEWS_POOL_CAP } from "./gnews-rss";
 import { HN_RECENT_SWEEP_TERMS, HN_TITLE_QUERIES, HN_TITLE_QUERIES_MAX, hnTitleQueryProblem } from "./hn-pulse";
 import { POLITICS_LEAD_TERMS } from "./lead-pick";
@@ -35,12 +35,12 @@ export const GMAIL_WINDOW_DAYS = 14;
 /** Lab RSS per-feed timeout hard ceiling (spec: ≤ 15 s). */
 export const LAB_RSS_TIMEOUT_MAX_S = 15;
 /** Keyword lists the JSON may edit (no new lists by JSON). */
-export const KEYWORD_LIST_IDS = ["ai_terms", "hn_sweep", "gmail_seed", "politics_deny", "hn_title_queries"] as const;
+export const KEYWORD_LIST_IDS = ["ai_terms", "hn_sweep", "gmail_seed", "politics_deny", "hn_title_queries", "gmail_senders"] as const;
 /**
  * PASS-S1.8: lists where EMPTY MEANS OFF (allowed). Every other list (ai_terms, politics_deny, hn_sweep, gmail_seed)
  * must stay non-empty.
  */
-export const KEYWORD_EMPTY_MEANS_OFF: readonly string[] = ["hn_title_queries"];
+export const KEYWORD_EMPTY_MEANS_OFF: readonly string[] = ["hn_title_queries", "gmail_senders"];
 /** Keyword list guard rails (not spec numbers — keep regexes and the HN sweep query small). */
 export const KEYWORD_LIST_MAX = 200;
 export const KEYWORD_LEN_MAX = 120;
@@ -86,6 +86,7 @@ export function defaultSageConfig(): SageConfig {
       gmail_seed: [...GMAIL_SEED_KEYWORDS],
       politics_deny: [...POLITICS_LEAD_TERMS],
       hn_title_queries: [...HN_TITLE_QUERIES],
+      gmail_senders: [...GMAIL_SENDERS_DEFAULT],
     },
     taste: { weight: 0, max: TASTE_WEIGHT_MAX },
   };
@@ -227,6 +228,22 @@ export function validateSageConfig(raw: unknown): ValidateResult {
           }
           if (new Set((v as string[]).map((t) => t.trim().toLowerCase())).size !== v.length) {
             errors.push("keywords.hn_title_queries: duplicate term");
+            continue;
+          }
+        }
+        if (k === "gmail_senders") {
+          // PASS-S1.5: exact addresses only (local@domain), ≤ 20, no duplicates.
+          if (v.length > GMAIL_SENDERS_MAX) {
+            errors.push(`keywords.gmail_senders: more than ${GMAIL_SENDERS_MAX} addresses`);
+            continue;
+          }
+          const badAddr = (v as string[]).filter((t) => !GMAIL_SENDER_RE.test(t.trim()) || t.trim() !== t);
+          if (badAddr.length) {
+            errors.push(`keywords.gmail_senders: not an exact local@domain address: ${badAddr.map((t) => JSON.stringify(t)).join(", ")}`);
+            continue;
+          }
+          if (new Set((v as string[]).map((t) => t.toLowerCase())).size !== v.length) {
+            errors.push("keywords.gmail_senders: duplicate address");
             continue;
           }
         }

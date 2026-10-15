@@ -30,8 +30,25 @@ export const GMAIL_SEED_KEYWORDS = [
   "paper",
 ] as const;
 
-/** Canonical Gmail search (pass mark). Variants allowed; seed set stays covered. */
-export const GMAIL_QUERY = [
+/**
+ * PASS-S1.5 sender trust list (config `keywords.gmail_senders`): exact addresses only. A listed sender gets trust 2
+ * (the code max) and is OR-added to the query as `from:(…)`. It can never lower a built-in trust. No TLDR seed term.
+ */
+export const GMAIL_SENDERS_DEFAULT = ["hello@newsletters.venturebeat.com", "takaramono@tldr.takara.ai"] as const;
+export const GMAIL_SENDERS_MAX = 20;
+/** Exact `local@domain` (no wildcard, no display name, domain has a dot). */
+export const GMAIL_SENDER_RE = /^[a-z0-9._%+-]+@[a-z0-9-]+(?:\.[a-z0-9-]+)+$/i;
+/** Sponsored / webinar mail is dropped for any sender (code rule). */
+export const SPONSORED_SUBJECT = /\b(webinar|learn how|sponsored|partner content)\b/i;
+
+/** ` OR from:(a OR b)` — empty list → "". */
+export function gmailFromClause(senders: readonly string[]): string {
+  const list = senders.map((s) => s.trim().toLowerCase()).filter((s) => GMAIL_SENDER_RE.test(s));
+  return list.length ? ` OR from:(${list.join(" OR ")})` : "";
+}
+
+/** The pre-S1 canonical query (topic clauses only). */
+export const GMAIL_QUERY_TOPICS = [
   "(",
   'subject:(AI OR "artificial intelligence" OR LLM OR "large language" OR GPT OR Claude OR "machine learning" OR ML)',
   ' OR subject:(newsletter OR digest OR weekly OR "daily brief")',
@@ -41,6 +58,9 @@ export const GMAIL_QUERY = [
   " newer_than:14d",
   " -in:spam",
 ].join("");
+
+/** Canonical Gmail search (pass mark): topic clauses OR the default trusted senders. Variants allowed; seed set stays covered. */
+export const GMAIL_QUERY = GMAIL_QUERY_TOPICS.replace(/\)\s*newer_than:/, `${gmailFromClause(GMAIL_SENDERS_DEFAULT)}) newer_than:`);
 
 export type GmailPriority = "P1" | "P2" | "P3";
 
@@ -105,12 +125,19 @@ const gmailCfg = {
   emitCap: GMAIL_EMIT_CAP as number,
   windowDays: 14,
   seed: GMAIL_SEED_KEYWORDS as readonly string[],
+  senders: GMAIL_SENDERS_DEFAULT as readonly string[],
 };
-export function configureGmail(c: { fetchCap?: number; emitCap?: number; windowDays?: number; seed?: readonly string[] } = {}): void {
+export function configureGmail(
+  c: { fetchCap?: number; emitCap?: number; windowDays?: number; seed?: readonly string[]; senders?: readonly string[] } = {},
+): void {
   gmailCfg.fetchCap = c.fetchCap ?? GMAIL_FETCH_CAP;
   gmailCfg.emitCap = c.emitCap ?? GMAIL_EMIT_CAP;
   gmailCfg.windowDays = c.windowDays ?? 14;
   gmailCfg.seed = c.seed ?? GMAIL_SEED_KEYWORDS;
+  gmailCfg.senders = (c.senders ?? GMAIL_SENDERS_DEFAULT).map((s) => s.trim().toLowerCase()).filter((s) => GMAIL_SENDER_RE.test(s));
+}
+export function currentGmailSenders(): readonly string[] {
+  return gmailCfg.senders;
 }
 export function gmailCaps(): { fetchCap: number; emitCap: number; windowDays: number } {
   return { fetchCap: gmailCfg.fetchCap, emitCap: gmailCfg.emitCap, windowDays: gmailCfg.windowDays };
@@ -123,7 +150,7 @@ export function gmailCaps(): { fetchCap: number; emitCap: number; windowDays: nu
  */
 export function buildGmailQuery(): string {
   const extra = gmailCfg.seed.filter((k) => !(GMAIL_SEED_KEYWORDS as readonly string[]).includes(k));
-  let q = GMAIL_QUERY;
+  let q = GMAIL_QUERY_TOPICS.replace(/\)\s*newer_than:/, `${gmailFromClause(gmailCfg.senders)}) newer_than:`);
   if (extra.length) {
     const terms = extra.map((k) => (/\s/.test(k) ? `"${k.replace(/"/g, "")}"` : k)).join(" OR ");
     q = q.replace(/\)\s*newer_than:/, ` OR subject:(${terms}))` + " newer_than:");
@@ -160,6 +187,8 @@ export function isNoise(msg: Pick<GmailRawMessage, "subject" | "sender" | "snipp
   if (NOISE_FROM.test(from)) return true;
   if (NOISE_SUBJECT.test(sub)) return true;
   if (PROMO_SUBJECT.test(sub)) return true;
+  // PASS-S1.5: sponsored / webinar mail — any sender (trusted senders too).
+  if (SPONSORED_SUBJECT.test(sub)) return true;
   // Pure account / OAuth share notices
   if (/google account data|allowed .+ access to some of your google/i.test(String(msg.snippet ?? ""))) return true;
   return false;
@@ -188,7 +217,20 @@ export function topicHitDensity(subject: string, snippet: string): number {
   return n;
 }
 
+/** Bare lower-case address from `Name <a@b>` or `a@b`. */
+export function senderAddress(from: string): string {
+  const s = String(from ?? "").trim();
+  const angle = s.match(/<([^>]+)>/);
+  return (angle ? angle[1]! : s).trim().toLowerCase();
+}
+
 export function senderTrust(from: string): number {
+  // PASS-S1.5: a listed sender (exact address) gets the code max 2 — max(), so the list never lowers a built-in trust.
+  if (gmailCfg.senders.includes(senderAddress(from))) return 2;
+  return builtinSenderTrust(from);
+}
+
+function builtinSenderTrust(from: string): number {
   const f = from.toLowerCase();
   if (/@(substack|beehiiv|axios|theinformation|techstrong|infosecurity|securityweek|ghost\.io|crewai|metr\.|divenewsletter|alvarocintas)/.test(f))
     return 2;

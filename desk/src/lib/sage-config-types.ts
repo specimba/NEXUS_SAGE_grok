@@ -24,6 +24,6 @@ export type SageConfig = {
     /** PASS-S1.3 GitHub release feeds (REL) — registry ids only; semver minor/major bumps, ≤1/feed/24h. */
     releases_atom: { on: boolean; cap_per_feed: number; feeds: string[] };
   };
-  keywords: { ai_terms: string[]; hn_sweep: string[]; gmail_seed: string[]; politics_deny: string[]; hn_title_queries: string[] };
+  keywords: { ai_terms: string[]; hn_sweep: string[]; gmail_seed: string[]; politics_deny: string[]; hn_title_queries: string[]; gmail_senders: string[] };
   taste: { weight: number; max: number };
 };

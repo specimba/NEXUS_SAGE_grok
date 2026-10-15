@@ -109,5 +109,6 @@ export function applySageConfig(c: SageConfig): void {
     emitCap: c.sources.gmail.emit_cap,
     windowDays: c.sources.gmail.window_days,
     seed: c.keywords.gmail_seed,
+    senders: c.keywords.gmail_senders,
   });
 }
