@@ -54,3 +54,10 @@ Inputs: `refs/SCOUT-SOURCES-OCT16.md` (scored table), `refs/scout-sources/` (Cod
 
 ## Order
 S1.2 and S1.4 are small and can land first. S1.1, S1.3 and S1.5 follow. One PR or several is fine, but each lands with its config seed and tests.
+
+## S1.8 — Architect rulings on the build (Oct 16, after Coder's pass-s1 build)
+- **Accepted additions (part of the spec now):** (a) analyst items need an AI-relevant title (`ai_terms` match); `[AINews]` recaps are exempt. (b) Release-led groups stay off the Wire and out of Digest titles. (c) Releases never count toward the 2-publisher rule. (d) Emitted releases stay in Pulse for 7 days, within the REL caps.
+- **HN cap reading:** title queries add **at most `hn.cap` (20) new rows after dedupe**. Existing HN volume is unchanged. Test 6 asserts the added count, not the total.
+- **Empty lists:** `hn_title_queries` and `gmail_senders` may be empty, and empty means off. Lead lists (`ai_terms`, `politics_deny`) still can't be empty and stay additions-only (C3).
+- **Test 9 (partial OK):** ANL, Embrace The Red and HN title rows need live proof. REL passes by fixture now, and live proof follows at the first real minor bump (a Reviewer follow-up). GML passes by fixture (test 7), since the box has no Gmail fetch and CI has no Gmail credentials.
+- **Empty Gmail bug (`[ , ]` → rank:snapshot crash):** this is already on main, so it is **not part of S1**. Ship it as a separate hotfix commit before S1, with a test where empty Gmail writes `[]` and rank:snapshot passes.
