@@ -8,8 +8,10 @@
  */
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { isAiRelevantTitle } from "./ai-relevance";
+import { AI_TERMS } from "./ai-relevance";
+import { HEAT_COMPANIES, OTHER_LABS } from "./topic-heat";
 import {
+  LAB_FEEDS,
   getXml,
   itemId,
   looksLikeHtml,
@@ -63,12 +65,33 @@ function clip(s: string, max = 400): string {
   return s.length <= max ? s : `${s.slice(0, max - 1).trimEnd()}…`;
 }
 
+const escapeRe = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+/**
+ * PASS-S1.8 — the ONLY lab/model names that let an analyst title through without an `ai_terms` match. Fixed code
+ * lists, built once at module load: the lab RSS ids (LAB_FEEDS, `google-ai` → /google[- ]ai/) plus the topic-heat
+ * company/lab regexes (HEAT_COMPANIES + OTHER_LABS). Never config, never free text — applySageConfig does not touch
+ * it (it only rebuilds AI_TERMS from `keywords.ai_terms`). The broad AI_NAMES list is NOT used here.
+ */
+export const ANALYST_KNOWN_NAMES: RegExp = (() => {
+  const labIds = [...new Set(LAB_FEEDS.map((f) => f.lab))].map((id) => escapeRe(id).replace(/-/g, "[- ]?"));
+  const heat = [...HEAT_COMPANIES.filter((c) => c.id !== "other").map((c) => c.re.source), ...Object.values(OTHER_LABS).map((l) => l.re.source)];
+  return new RegExp([`\\b(${labIds.join("|")})\\b`, ...heat.map((h) => `(?:${h})`)].join("|"), "i");
+})();
+Object.freeze(ANALYST_KNOWN_NAMES);
+
+/** Analyst AI gate: an `ai_terms` match (config, validated) OR a fixed-code lab/model name. */
+export function analystAiTitle(title: string): boolean {
+  const t = String(title ?? "");
+  return AI_TERMS.test(t) || ANALYST_KNOWN_NAMES.test(t);
+}
+
 /** Why an analyst entry is not a Pulse row (null = kept): DENY/flatten, or not AI (recaps are always AI). */
 export function analystDropReason(title: string, summary: string, feed: AnalystId): string | null {
   const c = classifyPost({ text: `${title} ${summary}`, handle: feed });
   if (c.flatten || c.class === "flatten" || c.class === "drop") return `deny:${c.class}`;
   if (AINEWS_RECAP_RE.test(title)) return null;
-  return isAiRelevantTitle(title) ? null : "not-ai";
+  return analystAiTitle(title) ? null : "not-ai";
 }
 
 /** Parsed entries → analyst items (one per entry; an AINews recap stays ONE item). Newest first. */

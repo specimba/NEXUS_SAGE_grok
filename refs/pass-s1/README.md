@@ -19,7 +19,7 @@ Each feature commit seeds its config and regenerates `src/data/sage-setup.ts`. I
 
 ## Tests
 - Before (b4c8f44): 702 pass / 0 fail. See `tests-before-b4c8f44.txt`.
-- After: 782 pass / 0 fail. See `tests-after.txt`.
+- After: 784 pass / 0 fail (incl. §S1.8 analyst name-list tests). See `tests-after.txt`.
 - S1 and hotfix files only: 94 pass. See `tests-s1-acceptance.txt`.
 
 | # | Test | File |
@@ -32,11 +32,13 @@ Each feature commit seeds its config and regenerates `src/data/sage-setup.ts`. I
 | 7 | Gmail | pass-s1-gmail-senders |
 | 8 | Soft-fail | pass-s1-acceptance |
 | 9 | Box live check | Below (partial, accepted by the Architect) |
+| S1.8 | Analyst AI title: known-lab title passes, non-AI fails; name list fixed in code, untouched by config | pass-s1-analyst |
 | Hotfix | Empty Gmail renders `[]`; rank:snapshot runs on it | gmail-empty-hotfix |
 
 ## First Load (`node scripts/first-load.cjs .next-pages`, cap 185000, target ≤182000)
 - Before (b4c8f44, committed data): **178,598 B**. See `build-before.txt`.
 - After (0be8194, committed data): **178,759 B**, which is **+161 B** and within ±200 B. See `build-after.txt`.
+- After the analyst name-list refactor (§S1.8 Architect ruling, built 01:52 +03): **178,759 B**, unchanged (crawl-side code only). See `build-s18.txt`.
 - The pre-§S1.8 build (f57393e) came to 178,756 B.
 - The fixture build with live ANL and REL rows came to 178,566 B. See `build-fixture.txt`.
 
@@ -90,3 +92,10 @@ Shown live on the box:
 Not shown live:
 - **REL Pulse rows.** A real first run only seeds, so rows appear only after a later minor bump. They are shown through the fixture baselines.
 - **GML VentureBeat row.** This box has no Gmail fetcher (soft_fail), so the row cannot be shown. The behaviour is covered by test 7.
+
+## §S1.8 analyst AI title — fixed-code names only
+`analystDropReason` no longer uses `isAiRelevantTitle` (whose AI_NAMES list is broader). It uses `analystAiTitle` =
+`AI_TERMS` (the validated `keywords.ai_terms`, the spec's "ai_terms match") OR `ANALYST_KNOWN_NAMES`, a frozen regex
+built once at module load from `LAB_FEEDS` lab ids plus the topic-heat `HEAT_COMPANIES` / `OTHER_LABS` regexes. No config
+key feeds it. Note: the topic-heat regexes include company words (google, alphabet, nvidia, geforce, meta, alibaba,
+xiaomi), so those pass the analyst gate too; taken literally from the ruling.

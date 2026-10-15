@@ -9,7 +9,8 @@ import { ANALYST_ONLY, decidePick, leadExcludeReason, nonAnalystPublishers } fro
 import { clusterItems, type PulseInput } from "@/lib/dedupe";
 import { defaultBadge, defaultPublisher } from "@/lib/desk-view";
 import { publisherKey, type PulseMemberInfo } from "@/lib/pulse-v5";
-import { AINEWS_RECAP_RE, ANALYST_FEEDS, ANALYST_RSS_CAP, analystDropReason, fetchRssAnalyst } from "@/lib/rss-analyst";
+import { AINEWS_RECAP_RE, ANALYST_FEEDS, ANALYST_KNOWN_NAMES, ANALYST_RSS_CAP, analystAiTitle, analystDropReason, fetchRssAnalyst } from "@/lib/rss-analyst";
+import { applySageConfig } from "@/lib/sage-config-disk";
 import { defaultSageConfig, validateSageConfig } from "@/lib/sage-config";
 import { fast } from "./tmp-cache";
 
@@ -120,5 +121,34 @@ describe("S1.7 #1 (S1.1 part) — analyst_rss validator", () => {
     const c = defaultSageConfig() as unknown as { sources: { lab_rss: { feeds: string[] } } };
     c.sources.lab_rss.feeds = [...c.sources.lab_rss.feeds, "simonw"];
     expect(validateSageConfig(c).ok).toBe(false);
+  });
+});
+
+describe("S1.8 — analyst AI title: ai_terms OR a fixed-code lab/model name (never config / free text)", () => {
+  test("a known-lab title passes; a non-AI title fails", () => {
+    // Real simonw titles (fixture): no AI term, but a lab name from the fixed code lists.
+    expect(analystAiTitle("Anthropic tells investors quarterly revenue up nearly 50% to $16.8bn ahead of IPO")).toBe(true);
+    expect(analystDropReason("Redesigning source control at Anthropic", "", "simonw")).toBeNull();
+    expect(analystAiTitle("Mistral ships a new office in Paris")).toBe(true); // lab RSS id
+    expect(analystAiTitle("DeepSeek posts quarterly update")).toBe(true); // topic-heat OTHER_LABS
+    // Non-AI titles fail.
+    expect(analystAiTitle("Tree Appreciator")).toBe(false);
+    expect(analystDropReason("Chirp Pong", "", "simonw")).toBe("not-ai");
+    // Names only in the broad AI_NAMES list (not lab ids / topic-heat) do not pass the analyst gate on their own.
+    expect(analystAiTitle("Cursor raises a new round")).toBe(false);
+  });
+  test("the name list is fixed at load: built from LAB_FEEDS + topic-heat, frozen, untouched by config", () => {
+    expect(Object.isFrozen(ANALYST_KNOWN_NAMES)).toBe(true);
+    const before = ANALYST_KNOWN_NAMES.source;
+    const c = defaultSageConfig();
+    c.keywords.ai_terms = [...c.keywords.ai_terms, "treeappreciator"];
+    c.keywords.politics_deny = [...c.keywords.politics_deny, "cursor"];
+    applySageConfig(c);
+    expect(ANALYST_KNOWN_NAMES.source).toBe(before);
+    expect(ANALYST_KNOWN_NAMES.test("Cursor raises a new round")).toBe(false);
+    // config ai_terms (the spec's "ai_terms match") is the only editable path
+    expect(analystAiTitle("treeappreciator club")).toBe(true);
+    applySageConfig(defaultSageConfig());
+    expect(analystAiTitle("treeappreciator club")).toBe(false);
   });
 });
