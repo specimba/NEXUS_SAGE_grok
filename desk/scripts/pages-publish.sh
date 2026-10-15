@@ -153,7 +153,8 @@ if [ "${#fails[@]}" -eq 0 ] && [ "${PAGES_SKIP_LOCAL_FONTCHECK:-0}" != "1" ]; th
 fi
 # 2h. overflow-390 (headless). SAGE_OVERFLOW_390=auto (CI): run only if non-data code changed since the main SHA in the
 #     last gh-pages "publish main@<sha>" commit (data-only crawls skip it; they keep the First Load gate above).
-#     Not rendered (ci/, desk/scripts/, tests, *.md) doesn't count. Code changed + no Chrome ⇒ fail closed, never a silent skip. Unknown base SHA ⇒ treated as code changed.
+#     Not rendered (ci/, desk/scripts/, tests, *.md) doesn't count. Code changed + no Chrome ⇒ SAGE_CHROME_INSTALL=1 fetches
+#     chrome-headless-shell (scripts/ci-chrome.sh); still no Chrome / install failed ⇒ fail closed, never a silent skip. Unknown base SHA ⇒ treated as code changed.
 #     Default (box): not run here — scripts/visual-check.mjs runs it.
 if [ "${#fails[@]}" -eq 0 ] && [ "${SAGE_OVERFLOW_390:-off}" = "auto" ]; then
   git -C "$REPO" fetch -q --depth=1 origin "+refs/heads/$BRANCH:refs/remotes/origin/$BRANCH" 2>/dev/null || true
@@ -173,14 +174,32 @@ if [ "${#fails[@]}" -eq 0 ] && [ "${SAGE_OVERFLOW_390:-off}" = "auto" ]; then
   fi
   if [ "$code_changed" = 0 ]; then
     log "overflow-390 skipped — $why"
-  elif ! have_chrome; then
-    fails+=("overflow-390 required ($why) but no headless Chrome (CHROME_BIN/google-chrome) in this runner — run visual:check on the box and publish from there")
   else
-    log "overflow-390 running — $why"
-    serve_out
-    ( cd "$DESK" && bun scripts/overflow-390-check.ts "http://127.0.0.1:$sport$BASE/" ) > /tmp/pages-overflow-390.log 2>&1 \
-      || fails+=("overflow-390 failed: $(head -4 /tmp/pages-overflow-390.log | tr '\n' ' ')")
-    stop_out
+    # CI (SAGE_CHROME_INSTALL=1): fetch chrome-headless-shell on demand (scripts/ci-chrome.sh) — only on this code-changed
+    # path, so data-only runs install nothing. Install failure ⇒ CHECK FAIL (fail closed), never a silent skip.
+    install_fail=""
+    if ! have_chrome && [ "${SAGE_CHROME_INSTALL:-0}" = "1" ]; then
+      ti=$(date +%s); cbin=""
+      if cbin="$(bash "$DESK/scripts/ci-chrome.sh" 2>/tmp/pages-chrome-install.log | tail -1)" && [ -x "$cbin" ]; then
+        export CHROME_BIN="$cbin"; log "headless Chrome for overflow-390 ready in $(( $(date +%s) - ti ))s — $(tail -1 /tmp/pages-chrome-install.log)"
+      else
+        install_fail="$(grep -E 'FAIL' /tmp/pages-chrome-install.log | tail -2 | tr '\n' ' ' || true)"
+        [ -n "$install_fail" ] || install_fail="$(tail -2 /tmp/pages-chrome-install.log | tr '\n' ' ')"
+      fi
+    fi
+    if ! have_chrome; then
+      if [ -n "$install_fail" ]; then
+        fails+=("overflow-390 required ($why) but the headless Chrome install failed: $install_fail(log /tmp/pages-chrome-install.log) — run visual:check on the box and publish from there")
+      else
+        fails+=("overflow-390 required ($why) but no headless Chrome (CHROME_BIN/google-chrome) in this runner — run visual:check on the box and publish from there")
+      fi
+    else
+      log "overflow-390 running — $why"
+      serve_out
+      ( cd "$DESK" && bun scripts/overflow-390-check.ts "http://127.0.0.1:$sport$BASE/" ) > /tmp/pages-overflow-390.log 2>&1 \
+        || fails+=("overflow-390 failed: $(head -4 /tmp/pages-overflow-390.log | tr '\n' ' ')")
+      stop_out
+    fi
   fi
 fi
 

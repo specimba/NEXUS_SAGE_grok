@@ -30,9 +30,16 @@ variables:
   SAGE_CI: "1"
   SAGE_FONT_CHECK: static
   SAGE_OVERFLOW_390: auto
+  # ...and only on that code-changed path, pages-publish.sh fetches a pinned chrome-headless-shell (scripts/ci-chrome.sh:
+  # 124 MB Chrome for Testing zip + 13 libs via apt, ~15-30 s) into $CI_PROJECT_DIR/.chrome-hs and points CHROME_BIN at it.
+  # Data-only runs install nothing. Deliberately NOT a GitLab cache (it would be pulled/pushed on all ~120 runs a month).
+  # Install failure = CHECK FAIL, nothing published.
+  SAGE_CHROME_INSTALL: "1"
+  SAGE_CHROME_VERSION: "155.0.8059.79"
 
 crawl:
-  # oven/bun images ship without git, so: pinned node bookworm (has git, curl) + bun 1.4.2 from the npm cache. No apt.
+  # oven/bun images ship without git, so: pinned node bookworm (has git, curl, unzip) + bun 1.4.2 from the npm cache.
+  # apt only on code-change runs (chrome-headless-shell libs, see SAGE_CHROME_INSTALL).
   image: node:22.12-bookworm
   timeout: 6m
   interruptible: false
