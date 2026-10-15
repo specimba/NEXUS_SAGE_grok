@@ -156,6 +156,10 @@ fi
 #     Not rendered (ci/, desk/scripts/, tests, *.md) doesn't count. Code changed + no Chrome ⇒ SAGE_CHROME_INSTALL=1 fetches
 #     chrome-headless-shell (scripts/ci-chrome.sh); still no Chrome / install failed ⇒ fail closed, never a silent skip. Unknown base SHA ⇒ treated as code changed.
 #     Default (box): not run here — scripts/visual-check.mjs runs it.
+# publish-proof.json fields (PASS-D D6 / Q1G §2 amend); written below on every publish attempt, pass or fail.
+ov390="skipped"; ov_why="SAGE_OVERFLOW_390=${SAGE_OVERFLOW_390:-off} (box: visual:check runs it)"; chrome_install_s=""
+font_gate="${SAGE_FONT_CHECK:-browser}"; [ "${PAGES_SKIP_LOCAL_FONTCHECK:-0}" = "1" ] && font_gate="skipped"
+[ "${#fails[@]}" -eq 0 ] || ov_why="not reached: an earlier check failed"
 if [ "${#fails[@]}" -eq 0 ] && [ "${SAGE_OVERFLOW_390:-off}" = "auto" ]; then
   git -C "$REPO" fetch -q --depth=1 origin "+refs/heads/$BRANCH:refs/remotes/origin/$BRANCH" 2>/dev/null || true
   pub_sha="$(git -C "$REPO" log -1 --format=%s "origin/$BRANCH" 2>/dev/null | grep -oE 'main@[0-9a-f]{7,40}' | cut -d@ -f2 || true)"
@@ -172,6 +176,7 @@ if [ "${#fails[@]}" -eq 0 ] && [ "${SAGE_OVERFLOW_390:-off}" = "auto" ]; then
       else why="code changed since main@$pub_sha: $(echo "$changed_code" | head -5 | tr '\n' ' ')"; fi
     else why="main@$pub_sha not fetchable"; fi
   fi
+  ov_why="$why"
   if [ "$code_changed" = 0 ]; then
     log "overflow-390 skipped — $why"
   else
@@ -181,13 +186,16 @@ if [ "${#fails[@]}" -eq 0 ] && [ "${SAGE_OVERFLOW_390:-off}" = "auto" ]; then
     if ! have_chrome && [ "${SAGE_CHROME_INSTALL:-0}" = "1" ]; then
       ti=$(date +%s); cbin=""
       if cbin="$(bash "$DESK/scripts/ci-chrome.sh" 2>/tmp/pages-chrome-install.log | tail -1)" && [ -x "$cbin" ]; then
-        export CHROME_BIN="$cbin"; log "headless Chrome for overflow-390 ready in $(( $(date +%s) - ti ))s — $(tail -1 /tmp/pages-chrome-install.log)"
+        chrome_install_s=$(( $(date +%s) - ti ))
+        export CHROME_BIN="$cbin"; log "headless Chrome for overflow-390 ready in ${chrome_install_s}s — $(tail -1 /tmp/pages-chrome-install.log)"
       else
+        chrome_install_s=$(( $(date +%s) - ti ))
         install_fail="$(grep -E 'FAIL' /tmp/pages-chrome-install.log | tail -2 | tr '\n' ' ' || true)"
         [ -n "$install_fail" ] || install_fail="$(tail -2 /tmp/pages-chrome-install.log | tr '\n' ' ')"
       fi
     fi
     if ! have_chrome; then
+      ov390="ran-fail"
       if [ -n "$install_fail" ]; then
         fails+=("overflow-390 required ($why) but the headless Chrome install failed: $install_fail(log /tmp/pages-chrome-install.log) — run visual:check on the box and publish from there")
       else
@@ -196,12 +204,41 @@ if [ "${#fails[@]}" -eq 0 ] && [ "${SAGE_OVERFLOW_390:-off}" = "auto" ]; then
     else
       log "overflow-390 running — $why"
       serve_out
+      ov390="ran-pass"
       ( cd "$DESK" && bun scripts/overflow-390-check.ts "http://127.0.0.1:$sport$BASE/" ) > /tmp/pages-overflow-390.log 2>&1 \
-        || fails+=("overflow-390 failed: $(head -4 /tmp/pages-overflow-390.log | tr '\n' ' ')")
+        || { ov390="ran-fail"; fails+=("overflow-390 failed: $(head -4 /tmp/pages-overflow-390.log | tr '\n' ' ')"); }
+      # Chrome is here anyway (code-changed run): add the real-browser font gate on top of the static one (2g still gated).
+      if [ "$font_gate" = "static" ]; then
+        font_gate="static+browser"
+        ( cd "$DESK" && bun scripts/font-check.ts "http://127.0.0.1:$sport$BASE/" ) > /tmp/pages-font-check-browser.log 2>&1 \
+          || fails+=("browser font-check on $OUT under $BASE failed: $(head -4 /tmp/pages-font-check-browser.log | tr '\n' ' ')")
+        log "$(tail -1 /tmp/pages-font-check-browser.log)"
+      fi
       stop_out
     fi
   fi
 fi
+
+# publish-proof.json: committed by ci-state.sh stage true; on a failed attempt it stays in the job artifacts only.
+PROOF="$DESK/artifacts/sage/publish-proof.json"; mkdir -p "$(dirname "$PROOF")"
+fl_bytes="$(grep -oE 'first-load / = [0-9]+' /tmp/pages-first-load.log 2>/dev/null | grep -oE '[0-9]+$' || true)"
+P_MAIN="$(git -C "$REPO" rev-parse HEAD)" P_CRAWL="$(grep -oE 'CRAWL_AT = "[^"]+"' "$DESK/src/data/x-crawl.ts" | cut -d'"' -f2 || true)" \
+P_OV="$ov390" P_OVWHY="$ov_why" P_FL="$fl_bytes" P_CIS="$chrome_install_s" P_FONT="$font_gate" P_FAILS="${#fails[@]}" \
+P_CHROME_BIN="$( [ -n "$chrome_install_s" ] && have_chrome && command -v "$CHROME_BIN" || true)" P_CHROME_VER="${SAGE_CHROME_VERSION:-}" \
+P_CHROME_ZIP="${SAGE_CHROME_SHA256:-}" PROOF="$PROOF" bun -e '
+  const fs = require("fs"), cp = require("child_process"), e = process.env;
+  let prev = null; try { prev = JSON.parse(fs.readFileSync(e.PROOF, "utf8")); } catch {}
+  const num = (v) => (v === undefined || v === "" ? null : Number(v));
+  const bin = e.P_CHROME_BIN || "";
+  const chrome = bin ? { version: (() => { try { return cp.execFileSync(bin, ["--version"], { encoding: "utf8" }).trim(); } catch { return null; } })(),
+    pinned: e.P_CHROME_VER || null, zip_sha256: e.P_CHROME_ZIP || null,
+    bin_sha256: require("crypto").createHash("sha256").update(fs.readFileSync(bin)).digest("hex") } : null;
+  const out = { main_sha: e.P_MAIN, crawl_at: e.P_CRAWL || null, at: new Date().toISOString(), result: Number(e.P_FAILS) ? "check-fail" : "verified",
+    overflow_390: e.P_OV, overflow_why: e.P_OVWHY, font_check: e.P_FONT,
+    first_load_bytes: num(e.P_FL), first_load_prev_bytes: prev?.first_load_bytes ?? null,
+    chrome_install_s: num(e.P_CIS), chrome };
+  fs.writeFileSync(e.PROOF, JSON.stringify(out, null, 2) + "\n");
+' || log "WARN: could not write $PROOF"
 
 if [ "${#fails[@]}" -gt 0 ]; then
   for f in "${fails[@]}"; do echo "pages-publish CHECK FAIL: $f" >&2; done

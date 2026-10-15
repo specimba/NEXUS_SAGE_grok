@@ -7,6 +7,7 @@
 set -euo pipefail
 LC=artifacts/sage/last-checked.json
 RH=artifacts/sage/reader-hash.json
+PP=artifacts/sage/publish-proof.json   # written by pages-publish.sh on a publish attempt (PASS-D D6 / Q1G §2)
 case "${1:-}" in
   seed)
     [ -f "$LC" ] && exit 0
@@ -22,6 +23,6 @@ case "${1:-}" in
       cp "$keep" "$LC"; rm -f "$keep"
       git add -- "$LC"
     fi
-    git add -f -- "$LC"; [ -f "$RH" ] && git add -f -- "$RH"; true ;;
+    git add -f -- "$LC"; [ -f "$RH" ] && git add -f -- "$RH"; [ -f "$PP" ] && git add -f -- "$PP"; true ;;
   *) echo "usage: ci-state.sh seed | stage <true|false>" >&2; exit 2 ;;
 esac

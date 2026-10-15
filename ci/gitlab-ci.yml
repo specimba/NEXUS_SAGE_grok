@@ -31,11 +31,14 @@ variables:
   SAGE_FONT_CHECK: static
   SAGE_OVERFLOW_390: auto
   # ...and only on that code-changed path, pages-publish.sh fetches a pinned chrome-headless-shell (scripts/ci-chrome.sh:
-  # 124 MB Chrome for Testing zip + 13 libs via apt, ~15-30 s) into $CI_PROJECT_DIR/.chrome-hs and points CHROME_BIN at it.
+  # 124 MB Chrome for Testing zip, sha256-pinned in the script, + 13 libs via apt from Debian's signed repos) into
+  # $CI_PROJECT_DIR/.chrome-hs and points CHROME_BIN at it; the browser font-check then also runs on top of the static one.
+  # Install seconds land in publish-proof.json (chrome_install_s). Q1G §2 amend: >60 s twice in a month ⇒ cached artifact.
   # Data-only runs install nothing. Deliberately NOT a GitLab cache (it would be pulled/pushed on all ~120 runs a month).
   # Install failure = CHECK FAIL, nothing published.
   SAGE_CHROME_INSTALL: "1"
   SAGE_CHROME_VERSION: "155.0.8059.79"
+  SAGE_CHROME_SHA256: "4cea4c32b501aa43cc2b81eb45734af991a6a82feded48380d6dfaf96642a1c1"
 
 crawl:
   # oven/bun images ship without git, so: pinned node bookworm (has git, curl, unzip) + bun 1.4.2 from the npm cache.
@@ -127,4 +130,5 @@ crawl:
       - repo/desk/artifacts/sage/digest-last.json
       - repo/desk/artifacts/sage/reader-hash.json
       - repo/desk/artifacts/sage/last-checked.json
+      - repo/desk/artifacts/sage/publish-proof.json   # chrome_install_s, overflow_390, font_check (kept on failed runs too)
       - repo/logs/crawl.log
