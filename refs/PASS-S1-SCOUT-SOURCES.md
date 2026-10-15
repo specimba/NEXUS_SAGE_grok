@@ -3,7 +3,7 @@
 Owner: Coder builds · Reviewer gates · Architect spec. Free only, no new credentials, no new CI minutes beyond fetch time inside the 6m job.
 Inputs: `refs/SCOUT-SOURCES-OCT16.md` (scored table), `refs/scout-sources/` (Coder's proof that the C2 validator rejects these as config-only; 7 feed URLs return 200; HN title queries checked).
 **Why a code pass:** the C2 contract says JSON can't add providers, feed ids or lists. That's still right, so each item below adds code (registry, ceiling, validator id) first. After that, the C3 editor can turn them on, off and cap them like any other source.
-**Out of scope / locks kept:** Reddit stays **DENY** (WIRE-LAB-HF-RSS-P2), and so do METR's 6.8 MB feed, CISA, the other rows, paid X, and Bluesky. No source in this pass may become a Brief lead on its own.
+**Out of scope / locks kept:** Reddit stays **DENY** (WIRE-LAB-HF-RSS-P2), and paid X and Bluesky stay DENY. METR, CISA and Scout's other rows are deferred, not denied: they can come in a later pass. No source in this pass may become a Brief lead on its own.
 
 ## S1.1 — Analyst feeds: Simon Willison and Latent Space (new kind, not "lab")
 - `rss-labs.ts` stays **first-party only**. Add a sibling registry `ANALYST_FEEDS` in `src/lib/rss-analyst.ts`, reusing the RSS fetch/parse/timeout helpers. Entries: `simonw` → `https://simonwillison.net/atom/everything/`, and `latent-space` → `https://www.latent.space/feed`.
