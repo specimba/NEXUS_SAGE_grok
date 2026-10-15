@@ -7,7 +7,11 @@
  *   bun scripts/watchdog.ts --pre      → pre-crawl check: warn-only, never blocks; a missing last-checked.json is a cold start ("watchdog: first run", exit 0).
  *                                        Without --pre (post-crawl) a missing file still FAILs.
  *   Crawl-stamp mismatch live vs main: --pre → WARN, exit 0. Post-crawl → FAIL unless live is NEWER than this run's crawl.
- * Env: WATCHDOG_NOW (ISO, fixtures) · WATCHDOG_LIVE_URL (default the Pages URL; "off" skips the live compare).
+ *   Missed slot (Q1G): --pre with checked_at older than WATCHDOG_MAX_AGE_H still WARNs and exits 0 (the crawl runs and
+ *   heals the desk), but appends the reason to WATCHDOG_MISSED (a job-local file). The job's LAST step,
+ *   `bun scripts/watchdog.ts --missed-slot`, exits 1 if that file is non-empty ⇒ red job ⇒ GitLab's failure email.
+ *   --missed-slot reads nothing else (no live fetch, no retries).
+ * Env: WATCHDOG_MISSED (path; unset = no missed-slot marker) · WATCHDOG_NOW (ISO, fixtures) · WATCHDOG_LIVE_URL (default the Pages URL; "off" skips the live compare).
  */
 import { appendFileSync, existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
@@ -20,6 +24,15 @@ const LIVE = process.env.WATCHDOG_LIVE_URL ?? "https://specimba.github.io/NEXUS_
 const fails: string[] = [];
 
 const PRE = process.argv.includes("--pre");
+const MISSED = process.env.WATCHDOG_MISSED ?? "";
+if (process.argv.includes("--missed-slot")) {
+  const why = MISSED && existsSync(MISSED) ? readFileSync(MISSED, "utf8").trim() : "";
+  if (why) {
+    for (const l of why.split("\n")) console.error(`watchdog FAIL: missed slot — ${l} (this run crawled and published; failing so GitLab emails)`);
+    process.exit(1);
+  }
+  process.exit(0);
+}
 if (PRE && !existsSync(checkedPath)) {
   console.log("watchdog: first run");
   if (process.env.GITHUB_OUTPUT) appendFileSync(process.env.GITHUB_OUTPUT, `healthy=true\n`);
@@ -29,7 +42,11 @@ const lc = existsSync(checkedPath) ? JSON.parse(readFileSync(checkedPath, "utf8"
 if (!lc) fails.push(`no ${checkedPath}`);
 else {
   const age = (now - Date.parse(lc.checked_at)) / 3_600_000;
-  if (!Number.isFinite(age) || age > MAX_H) fails.push(`checked_at ${lc.checked_at} is ${age.toFixed(1)}h old (> ${MAX_H}h)`);
+  if (!Number.isFinite(age) || age > MAX_H) {
+    const msg = `checked_at ${lc.checked_at} is ${age.toFixed(1)}h old (> ${MAX_H}h)`;
+    fails.push(msg);
+    if (PRE && MISSED) appendFileSync(MISSED, `pre-crawl ${msg}\n`);
+  }
   if (lc.gate_error) fails.push(`hash gate errored: ${lc.gate_error}`);
   const h = (lc.soft_history ?? []) as ({ soft: number; total: number } | null)[];
   if (h.length >= 2 && h.slice(0, 2).every((x) => x && x.total > 0 && x.soft * 2 >= x.total))
