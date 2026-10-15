@@ -1092,6 +1092,7 @@ function Brief() {
 
 const HEALTH_LABEL: Record<string, string> = {
   hn: "HN",
+  hn_title: "HNT",
   gnews: "GNW",
   rss_labs: "LAB",
   rss_security: "SEC",
@@ -1103,7 +1104,7 @@ const HEALTH_LABEL: Record<string, string> = {
   wikidata: "WD",
 };
 
-const HEALTH_ORDER = ["hn", "gnews", "rss_labs", "rss_security", "hf", "arxiv", "crossref", "openalex", "github", "wikidata"];
+const HEALTH_ORDER = ["hn", "hn_title", "gnews", "rss_labs", "rss_security", "hf", "arxiv", "crossref", "openalex", "github", "wikidata"];
 
 function useMembers(): Record<string, PulseMemberInfo> {
   return MEMBERS;

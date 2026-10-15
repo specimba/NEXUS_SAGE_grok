@@ -13,7 +13,7 @@ import { aiTermsDefault } from "./ai-relevance";
 import { GITHUB_PER_PAGE } from "./github-shelf";
 import { GMAIL_EMIT_CAP, GMAIL_FETCH_CAP, GMAIL_SEED_KEYWORDS } from "./gmail-news";
 import { GNEWS_POOL_CAP } from "./gnews-rss";
-import { HN_RECENT_SWEEP_TERMS } from "./hn-pulse";
+import { HN_RECENT_SWEEP_TERMS, HN_TITLE_QUERIES, HN_TITLE_QUERIES_MAX, hnTitleQueryProblem } from "./hn-pulse";
 import { POLITICS_LEAD_TERMS } from "./lead-pick";
 import { LAB_FEEDS, RSS_MAX_ITEMS_PER_FEED } from "./rss-labs";
 import { SECURITY_FEEDS } from "./rss-security";
@@ -32,6 +32,13 @@ export const HN_HITS_PER_PAGE = 20;
 export const GMAIL_WINDOW_DAYS = 14;
 /** Lab RSS per-feed timeout hard ceiling (spec: ≤ 15 s). */
 export const LAB_RSS_TIMEOUT_MAX_S = 15;
+/** Keyword lists the JSON may edit (no new lists by JSON). */
+export const KEYWORD_LIST_IDS = ["ai_terms", "hn_sweep", "gmail_seed", "politics_deny", "hn_title_queries"] as const;
+/**
+ * PASS-S1.8: lists where EMPTY MEANS OFF (allowed). Every other list (ai_terms, politics_deny, hn_sweep, gmail_seed)
+ * must stay non-empty.
+ */
+export const KEYWORD_EMPTY_MEANS_OFF: readonly string[] = ["hn_title_queries"];
 /** Keyword list guard rails (not spec numbers — keep regexes and the HN sweep query small). */
 export const KEYWORD_LIST_MAX = 200;
 export const KEYWORD_LEN_MAX = 120;
@@ -70,6 +77,7 @@ export function defaultSageConfig(): SageConfig {
       hn_sweep: [...HN_RECENT_SWEEP_TERMS],
       gmail_seed: [...GMAIL_SEED_KEYWORDS],
       politics_deny: [...POLITICS_LEAD_TERMS],
+      hn_title_queries: [...HN_TITLE_QUERIES],
     },
     taste: { weight: 0, max: TASTE_WEIGHT_MAX },
   };
@@ -180,11 +188,11 @@ export function validateSageConfig(raw: unknown): ValidateResult {
     if (!isObj(raw.keywords)) errors.push("keywords must be an object");
     else {
       for (const [k, v] of Object.entries(raw.keywords)) {
-        if (!["ai_terms", "hn_sweep", "gmail_seed", "politics_deny"].includes(k)) {
+        if (!(KEYWORD_LIST_IDS as readonly string[]).includes(k)) {
           errors.push(`unknown keyword list "${k}"`);
           continue;
         }
-        if (!Array.isArray(v) || v.length === 0) {
+        if (!Array.isArray(v) || (v.length === 0 && !KEYWORD_EMPTY_MEANS_OFF.includes(k))) {
           errors.push(`keywords.${k} must be a non-empty list`);
           continue;
         }
@@ -193,6 +201,22 @@ export function validateSageConfig(raw: unknown): ValidateResult {
         if (bad.length) {
           errors.push(`keywords.${k}: entries must be non-empty strings ≤ ${KEYWORD_LEN_MAX} chars`);
           continue;
+        }
+        if (k === "hn_title_queries") {
+          // PASS-S1.4: ≤ 8 plain terms (≤ 40 chars, no regex, no banned/incident nouns), no duplicates.
+          if (v.length > HN_TITLE_QUERIES_MAX) {
+            errors.push(`keywords.hn_title_queries: more than ${HN_TITLE_QUERIES_MAX} terms`);
+            continue;
+          }
+          const probs = (v as string[]).map((t) => [t, hnTitleQueryProblem(t)] as const).filter(([, p]) => p);
+          if (probs.length) {
+            errors.push(`keywords.hn_title_queries: ${probs.map(([t, p]) => `${JSON.stringify(t)} ${p}`).join("; ")}`);
+            continue;
+          }
+          if (new Set((v as string[]).map((t) => t.trim().toLowerCase())).size !== v.length) {
+            errors.push("keywords.hn_title_queries: duplicate term");
+            continue;
+          }
         }
         if (k === "ai_terms" || k === "politics_deny") {
           // Regex fragments (same as the code lists): each must compile on its own.

@@ -4,12 +4,12 @@ import type { SageSetupView } from "@/lib/sage-setup";
 export const SAGE_SETUP: SageSetupView = {
   "stamped_at": "2026-10-20T03:20:29Z",
   "config_path": "desk/config/sage-sources.json",
-  "config_hash": "7fe7473d0aed",
+  "config_hash": "efcffd3174ab",
   "status": "ok",
   "used": "committed",
   "errors": [],
-  "since_commit": "0908c23",
-  "since_at": "2026-10-15T22:43:37Z",
+  "since_commit": "489f43c",
+  "since_at": "2026-10-15T22:43:58Z",
   "sources": [
     {
       "id": "hn",
@@ -194,6 +194,16 @@ export const SAGE_SETUP: SageSetupView = {
         "dnc",
         "rnc",
         "partisan"
+      ]
+    },
+    {
+      "id": "hn_title_queries",
+      "terms": [
+        "agent",
+        "open weights",
+        "prompt injection",
+        "Qwen",
+        "local model"
       ]
     }
   ],

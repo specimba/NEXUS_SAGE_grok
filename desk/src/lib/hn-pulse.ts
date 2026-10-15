@@ -52,6 +52,38 @@ export function configureHnSweepTerms(terms: readonly string[] = HN_RECENT_SWEEP
   hnSweepTerms = terms;
 }
 export const HN_RECENT_SWEEP_MIN_POINTS = 3;
+
+/**
+ * PASS-S1.4 — HN title-scoped queries (`keywords.hn_title_queries`). Plain terms, one Algolia request per term
+ * per crawl, `restrictSearchableAttributes=title` + last 48h + points ≥ 10. Hits merge into the existing `hn`
+ * cap (deduped by objectID against the watchlist + sweep); no new cap, no new SRC chip, not a lead list.
+ */
+export const HN_TITLE_QUERIES = ["agent", "open weights", "prompt injection", "Qwen", "local model"] as const;
+export const HN_TITLE_QUERIES_MAX = 8;
+export const HN_TITLE_QUERY_LEN_MAX = 40;
+export const HN_TITLE_WINDOW_HOURS = 48;
+export const HN_TITLE_MIN_POINTS = 10;
+/** Regex metacharacters — a title query is a plain search term, never a pattern. */
+export const HN_TITLE_QUERY_BAD_CHARS = /[\\^$*?()[\]{}|]/;
+let hnTitleQueries: readonly string[] = HN_TITLE_QUERIES;
+export function configureHnTitleQueries(terms: readonly string[] = HN_TITLE_QUERIES): void {
+  hnTitleQueries = terms;
+}
+export function currentHnTitleQueries(): readonly string[] {
+  return hnTitleQueries;
+}
+/** Why a title query is not allowed (null = ok): plain text ≤ 40 chars, no regex, no banned/incident nouns. */
+export function hnTitleQueryProblem(q: unknown): string | null {
+  if (typeof q !== "string" || !q.trim()) return "must be a non-empty string";
+  if (q.length > HN_TITLE_QUERY_LEN_MAX) return `longer than ${HN_TITLE_QUERY_LEN_MAX} chars`;
+  if (HN_TITLE_QUERY_BAD_CHARS.test(q)) return "plain text only (no regex)";
+  try {
+    assertHnStandingSafe(q.trim());
+  } catch (e) {
+    return String((e as Error).message ?? e);
+  }
+  return null;
+}
 /** Sweep pages (each ≤ HN_HITS_PER_PAGE_MAX hits, throttled ≤1 req/2s). */
 export const HN_RECENT_SWEEP_PAGES = 2;
 
@@ -403,17 +435,21 @@ export function hnRecentFilter(now: number, hours: number): string {
 export function hnSearchUrl(
   query: string,
   hitsPerPage: number,
-  opts: { now?: number; recentHours?: number; optionalWords?: boolean; minPoints?: number } = {},
+  opts: { now?: number; recentHours?: number; optionalWords?: boolean; minPoints?: number; titleOnly?: boolean } = {},
 ): string {
   let url =
     `${HN_ALGOLIA_API}?query=${encodeURIComponent(query)}` +
     `&tags=story&hitsPerPage=${clampHitsPerPage(hitsPerPage)}`;
   if (opts.optionalWords) url += `&optionalWords=${encodeURIComponent(query)}`;
+  // PASS-S1.4: title-scoped search — match the headline only, last 48h, points ≥ 10 (fixed, not configurable).
+  if (opts.titleOnly) url += "&restrictSearchableAttributes=title";
+  const recentHours = opts.titleOnly ? HN_TITLE_WINDOW_HOURS : opts.recentHours;
+  const minPoints = opts.titleOnly ? HN_TITLE_MIN_POINTS : opts.minPoints;
   const filters: string[] = [];
-  if (opts.recentHours && opts.recentHours > 0) {
-    filters.push(hnRecentFilter(opts.now ?? Date.now(), opts.recentHours));
+  if (recentHours && recentHours > 0) {
+    filters.push(hnRecentFilter(opts.now ?? Date.now(), recentHours));
   }
-  if (opts.minPoints && opts.minPoints > 0) filters.push(`points>=${opts.minPoints}`);
+  if (minPoints && minPoints > 0) filters.push(`points>=${minPoints}`);
   if (filters.length) url += `&numericFilters=${encodeURIComponent(filters.join(","))}`;
   return url;
 }
@@ -634,4 +670,123 @@ export function hnQueriesSafe(queries: readonly string[] = HN_WATCHLIST_QUERIES)
   } catch {
     return false;
   }
+}
+
+export type FetchHnTitleOpts = {
+  cacheDir?: string;
+  /** hitsPerPage per term = the `hn` cap (clamped ≤ 20). */
+  hitsPerPage?: number;
+  queries?: readonly string[];
+  now?: number;
+  fetchImpl?: typeof fetch;
+  /** Inject Algolia JSON per term (tests / offline). Terms without a fixture are not fetched. */
+  fixtures?: Record<string, HnAlgoliaResponse>;
+  /** Beat 5 AI-relevance gate (ingest passes true, same as the watchlist rows). */
+  aiOnly?: boolean;
+  minIntervalMs?: number;
+  sleep?: Pace["sleep"];
+};
+
+export type FetchHnTitleResult = {
+  candidates: HnPulseCandidate[];
+  queries_run: string[];
+  queries_ok: string[];
+  queries_soft_fail: HnQuerySoftFail[];
+  hits: number;
+  ai_dropped: number;
+  ok: boolean;
+  soft_fail: boolean;
+  soft_fail_reason?: string;
+  from_cache: boolean;
+  /** PASS-S1.8: true when `keywords.hn_title_queries` is empty — empty means off (no request, no meter). */
+  off?: boolean;
+};
+
+/**
+ * PASS-S1.4 — one title-scoped Algolia request per `keywords.hn_title_queries` term (≤ 8). Cache 30m per term.
+ * Same politeness / classifyPost / AI gate as the watchlist. A failed term soft-fails alone; never Brief.
+ */
+export async function fetchHnTitleQueries(opts: FetchHnTitleOpts = {}): Promise<FetchHnTitleResult> {
+  const cacheDir = opts.cacheDir ?? DEFAULT_CACHE_DIR;
+  const hitsPerPage = clampHitsPerPage(opts.hitsPerPage ?? HN_HITS_PER_PAGE_MAX);
+  const now = opts.now ?? Date.now();
+  const fetchImpl = opts.fetchImpl ?? fetch;
+  const pace: Pace = { minIntervalMs: opts.minIntervalMs, sleep: opts.sleep };
+  const queries = [...new Set((opts.queries ?? hnTitleQueries).map((q) => q.trim()).filter((q) => q && !hnTitleQueryProblem(q)))].slice(0, HN_TITLE_QUERIES_MAX);
+  // PASS-S1.8: an empty list means off — no request, nothing merged, not a soft-fail.
+  if (!queries.length) {
+    return { candidates: [], queries_run: [], queries_ok: [], queries_soft_fail: [], hits: 0, ai_dropped: 0, ok: true, soft_fail: false, from_cache: false, off: true };
+  }
+  const allHits: HnAlgoliaHit[] = [];
+  const seen = new Set<string>();
+  const queries_ok: string[] = [];
+  const queries_soft_fail: HnQuerySoftFail[] = [];
+  let from_cache = false;
+  for (const query of queries) {
+    let payload: HnAlgoliaResponse | null = null;
+    if (opts.fixtures) {
+      payload = opts.fixtures[query] ?? null;
+      if (!payload) {
+        queries_soft_fail.push({ query, reason: "no fixture", soft_fail: true });
+        continue;
+      }
+    } else {
+      const cacheKey = `title|${query}|recent${HN_TITLE_WINDOW_HOURS}h|p${HN_TITLE_MIN_POINTS}`;
+      payload = readCache(cacheDir, cacheKey, now);
+      if (payload) from_cache = true;
+      else {
+        try {
+          const res = await getJson(hnSearchUrl(query, hitsPerPage, { now, titleOnly: true }), fetchImpl, pace);
+          if (!res.ok) {
+            queries_soft_fail.push({ query, reason: `HTTP ${res.status}`, soft_fail: true });
+            continue;
+          }
+          payload = res.body;
+          writeCache(cacheDir, cacheKey, payload, now);
+        } catch (err) {
+          const name = (err as Error)?.name;
+          const reason = name === "TimeoutError" || name === "AbortError" ? "timeout" : `network: ${String(err)}`;
+          queries_soft_fail.push({ query, reason, soft_fail: true });
+          continue;
+        }
+      }
+    }
+    queries_ok.push(query);
+    for (const h of parseHnHits(payload)) {
+      if (seen.has(h.objectID)) continue;
+      seen.add(h.objectID);
+      allHits.push(h);
+    }
+  }
+  const fresh = filterRecentHits(allHits, now, HN_TITLE_WINDOW_HOURS).filter((h) => (h.points ?? 0) >= HN_TITLE_MIN_POINTS);
+  const relevant = opts.aiOnly ? fresh.filter((h) => isHnAiRelevant(String(h.title ?? ""), h.url || h.story_url)) : fresh;
+  const soft_fail = queries_soft_fail.length > 0;
+  return {
+    candidates: toPulseCandidates(relevant),
+    queries_run: queries,
+    queries_ok,
+    queries_soft_fail,
+    hits: allHits.length,
+    ai_dropped: fresh.length - relevant.length,
+    ok: queries_ok.length > 0,
+    soft_fail,
+    soft_fail_reason: softFailReasonFromQueries(queries_soft_fail),
+    from_cache,
+  };
+}
+
+/**
+ * PASS-S1.4 merge: title hits join the live HN rows deduped by objectID (= the `hn:<objectID>` id) against the
+ * watchlist + sweep, and only up to the `hn` cap of new rows (the existing cap — no new one). Order: existing rows
+ * first (unchanged), then title hits by points desc, then id.
+ */
+export function mergeHnTitleHits(
+  rows: readonly HnPulseCandidate[],
+  title: readonly HnPulseCandidate[],
+  cap: number,
+): { rows: HnPulseCandidate[]; added: HnPulseCandidate[]; duplicates: number } {
+  const have = new Set(rows.map((r) => r.id));
+  const fresh = title.filter((t) => !have.has(t.id));
+  const added = [...fresh].sort((a, b) => b.score - a.score || a.id.localeCompare(b.id)).slice(0, Math.max(0, cap));
+  return { rows: [...rows, ...added], added, duplicates: title.length - fresh.length };
 }

@@ -19,6 +19,6 @@ export type SageConfig = {
     gmail: { on: boolean; fetch_cap: number; emit_cap: number; window_days: number };
     x_taste: { on: boolean; visible_cap: number };
   };
-  keywords: { ai_terms: string[]; hn_sweep: string[]; gmail_seed: string[]; politics_deny: string[] };
+  keywords: { ai_terms: string[]; hn_sweep: string[]; gmail_seed: string[]; politics_deny: string[]; hn_title_queries: string[] };
   taste: { weight: number; max: number };
 };

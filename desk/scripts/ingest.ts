@@ -53,7 +53,9 @@ import {
 } from "../src/lib/crossref-enrich";
 import {
   fetchHnPulse,
+  fetchHnTitleQueries,
   HN_RECENT_WINDOW_HOURS,
+  mergeHnTitleHits,
   resolveHnCacheDir,
   type HnPulseCandidate,
 } from "../src/lib/hn-pulse";
@@ -642,6 +644,12 @@ async function main() {
       ),
     () => runSource("github", "github", (c) => fetchGithubShelf({ cacheDir: resolveGithubCacheDir(root), perPage: S.github.cap, fetchImpl: c.fetch })),
     () => runSource("wikidata", "wikidata", (c) => fetchWikidataDeny({ cacheDir: resolveWikidataCacheDir(root), fetchImpl: c.fetch })),
+    // PASS-S1.4: HN title-scoped queries (keywords.hn_title_queries) — own budget so a slow term never times out the
+    // watchlist; merged into the hn rows below (existing cap, objectID dedupe). Off with `hn`.
+    () =>
+      runSource("hn", "hn_title", (c) =>
+        fetchHnTitleQueries({ cacheDir: resolveHnCacheDir(root), hitsPerPage: S.hn.cap, aiOnly: true, fetchImpl: c.fetch }),
+      ),
   ] as const);
 
   const swPapersLane = stopwatch();
@@ -875,7 +883,7 @@ async function main() {
 
   // Independent sources — awaited here, then processed in the fixed order hn → rss_labs → gnews →
   // rss_security → github → wikidata (same order and logic as the old sequential blocks).
-  const [hnSettled, rssSettled, gnewsSettled, secSettled, githubSettled, wikidataSettled] = await independent;
+  const [hnSettled, rssSettled, gnewsSettled, secSettled, githubSettled, wikidataSettled, hnTitleSettled] = await independent;
   const sourcesFetchMs = swSources.lap();
   const hnRun = settledRun("hn", hnSettled);
   const rssRun = settledRun("rss_labs", rssSettled);
@@ -883,6 +891,7 @@ async function main() {
   const secRun = settledRun("rss_security", secSettled);
   const githubRun = settledRun("github", githubSettled);
   const wikidataRun = settledRun("wikidata", wikidataSettled);
+  const hnTitleRun = settledRun("hn_title", hnTitleSettled);
   // HN Algolia AFTER Crossref — Pulse chatter only; never Brief lead/companion / never toolkit Brief pins
   // FREE-PULSE P3: rotate ≤3 queries/tick · soft_fail merge · never Brief · never displace HF
   let hnOk = false;
@@ -924,6 +933,44 @@ async function main() {
     hnSoftFail = true;
     hnSoftFailReason = timedOut.has("hn") ? String(err) : `exception: ${String(err)}`;
     console.log(`HN: ${timedOut.has("hn") ? "TIMEOUT" : "soft_fail"} — continuing with committed Pulse (${String(err)})`);
+  }
+
+  // PASS-S1.4: HN title-scoped hits → merged into the live HN rows (dedupe by objectID, ≤ hn cap new rows).
+  // Soft-fail alone (HNT meter); never touches the watchlist rows; skipped when HN itself fell back to committed rows.
+  let hnTitleOk = false;
+  let hnTitleReason: string | undefined;
+  let hnTitleAdded = 0;
+  let hnTitleOff = false;
+  let hnTitleReport: Record<string, unknown> | null = null;
+  ms.hn_title = hnTitleRun.duration_ms;
+  try {
+    const ht = unwrap(hnTitleRun);
+    hnTitleOff = ht.off === true;
+    const merged = hnOk ? mergeHnTitleHits(hnRows, ht.candidates, S.hn.cap) : { rows: hnRows, added: [], duplicates: 0 };
+    hnRows = merged.rows;
+    hnTitleAdded = merged.added.length;
+    hnTitleOk = ht.ok;
+    hnTitleReason = ht.soft_fail_reason ?? (ht.ok ? undefined : "no term ok");
+    hnTitleReport = {
+      ok: ht.ok,
+      soft_fail: ht.soft_fail,
+      soft_fail_reason: ht.soft_fail_reason ?? null,
+      queries_run: ht.queries_run,
+      queries_ok: ht.queries_ok,
+      hits: ht.hits,
+      candidates: ht.candidates.length,
+      ai_dropped: ht.ai_dropped,
+      duplicates: merged.duplicates,
+      added: hnTitleAdded,
+      cap: S.hn.cap,
+      merged_into_live_hn: hnOk,
+    };
+    console.log(
+      ht.off ? "HN title: off (keywords.hn_title_queries empty — no requests)" : `HN title: terms=${ht.queries_run.length} ok=${ht.queries_ok.length} hits=${ht.hits} candidates=${ht.candidates.length} dup=${merged.duplicates} added=${hnTitleAdded} (≤ hn cap ${S.hn.cap})${ht.soft_fail ? ` soft_fail=${ht.soft_fail_reason}` : ""}`,
+    );
+  } catch (err) {
+    hnTitleReason = timedOut.has("hn_title") ? String(err) : `exception: ${String(err)}`;
+    console.log(`HN title: ${timedOut.has("hn_title") ? "TIMEOUT" : "soft_fail"} — watchlist rows unchanged (${String(err)})`);
   }
 
   // Lab RSS AFTER HN — Pulse/shelf only; never Brief lead / never cycle 004 / never displace HF
@@ -1403,6 +1450,7 @@ async function main() {
     },
     { id: "crossref", ok: !crossrefSoftFail, items: crossrefCount, reason: crossrefSoftFailReason },
     { id: "hn", ok: hnOk, items: hnRows.length, reason: hnSoftFailReason ?? "no candidates" },
+    { id: "hn_title", ok: hnTitleOk, items: hnTitleAdded, reason: hnTitleReason },
     { id: "rss_labs", ok: rssOk, items: rssPulse.length + rssShelf.length, reason: rssSoftFailReason ?? "no feeds ok" },
     { id: "rss_security", ok: secOk, items: secPulse.length + secShelf.length, reason: secFailReason },
     { id: "gnews", ok: gnewsOk, items: gnewsRows.length, reason: gnewsSoftFailReason ?? "empty" },
@@ -1411,10 +1459,12 @@ async function main() {
   ];
   const healthPath = resolve(root, "artifacts/sage/source-health.json");
   // PASS-C2: an off source is not a failure — it leaves the ledger untouched (meter shows `off`).
-  const OUTCOME_CFG: Record<string, SourceId> = { hf: "hf_papers", rss_labs: "lab_rss", rss_security: "sec_rss" };
+  const OUTCOME_CFG: Record<string, SourceId> = { hf: "hf_papers", rss_labs: "lab_rss", rss_security: "sec_rss", hn_title: "hn" };
   for (let i = outcomes.length - 1; i >= 0; i--) {
     const cid = (OUTCOME_CFG[outcomes[i]!.id] ?? outcomes[i]!.id) as SourceId;
     if (off.has(cid)) outcomes.splice(i, 1);
+    // PASS-S1.8: empty keywords.hn_title_queries = off — no HNT meter row this crawl (ledger untouched).
+    else if (outcomes[i]!.id === "hn_title" && hnTitleOff) outcomes.splice(i, 1);
   }
   const ledger = updateLedger(parseLedger(readJson(healthPath)), outcomes, stamp);
 
@@ -1425,6 +1475,7 @@ async function main() {
     openalex: "OpenAlex",
     crossref: "Crossref",
     hn: "HN",
+    hn_title: "HN title",
     rss_labs: "lab RSS",
     gnews: "Google News",
     rss_security: "security RSS",
@@ -1671,6 +1722,7 @@ async function main() {
       ai_only: true,
       ai_dropped: hnAiDropped,
       url: "https://hn.algolia.com/api/v1/search",
+      title_queries: hnTitleReport,
       sample: hnRows.slice(0, 3).map((h) => ({ id: h.id, tag: h.tag, score: h.score, text: h.text })),
     },
     rss: {

@@ -26,6 +26,8 @@ export const SOURCE_BUDGET_MS: Readonly<Record<string, number>> = {
   openalex: DEFAULT_SOURCE_BUDGET_MS,
   crossref: DEFAULT_SOURCE_BUDGET_MS,
   hn: 30_000,
+  /** PASS-S1.4 title-scoped HN terms (≤ 8 × 2 s throttle). */
+  hn_title: DEFAULT_SOURCE_BUDGET_MS,
   rss_labs: 30_000,
   rss_security: DEFAULT_SOURCE_BUDGET_MS,
   gnews: DEFAULT_SOURCE_BUDGET_MS,

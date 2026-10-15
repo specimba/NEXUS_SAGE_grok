@@ -10,7 +10,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { configureAiTerms } from "./ai-relevance";
 import { configureGmail } from "./gmail-news";
-import { configureHnSweepTerms } from "./hn-pulse";
+import { configureHnSweepTerms, configureHnTitleQueries } from "./hn-pulse";
 import { configurePoliticsTerms } from "./lead-pick";
 import {
   canonicalJson,
@@ -102,6 +102,7 @@ export function loadSageConfig(
 export function applySageConfig(c: SageConfig): void {
   configureAiTerms(c.keywords.ai_terms);
   configureHnSweepTerms(c.keywords.hn_sweep);
+  configureHnTitleQueries(c.keywords.hn_title_queries);
   configurePoliticsTerms(c.keywords.politics_deny);
   configureGmail({
     fetchCap: c.sources.gmail.fetch_cap,
