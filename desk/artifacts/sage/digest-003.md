@@ -1,31 +1,31 @@
 # SAGE digest pack
-compiled 2026-10-14T17:15:25.283Z
-source free-ingest digest refresh 2026-10-14T17:15:25.283Z · cycle 003 · lead hf-incident · unlock:live
+compiled 2026-10-15T03:21:37.262Z
+source free-ingest digest refresh 2026-10-15T03:21:37.262Z · cycle 003 · lead hf-incident · unlock:live
 lead_policy unlock — no new HF primary 03 Sep
 
 ## Lead
-Developing Gemini 4 Argon responsibly and safely [high]
-9 SRC · sig 1254 · pick 2026-10-14
+Fish Audio Drama 3: an open-weight, directable TTS model [high]
+2 SRC · sig 7 · pick 2026-10-15
 MOVE Digest/Voice follow Brief lead · cycle label 003
 UNLOCK IF Next 06:11 Istanbul pick
 
 ## Files
-### [lead / other / high] Developing Gemini 4 Argon responsibly and safely
-9 SRC · sig 1254 · pick 2026-10-14
+### [lead / other / high] Fish Audio Drama 3: an open-weight, directable TTS model
+2 SRC · sig 7 · pick 2026-10-15
 - stamp live
-- frozen 2026-10-14T08:23:18.042Z
-- pick 2026-10-14
+- frozen 2026-10-15T03:21:37.108Z
+- pick 2026-10-15
 1. Follow LEAD_TODAY · never invent
 2. Cycle label stays 003
 Done when: Digest lead equals Brief LEAD_TODAY title
 
-### [companion / other / medium] I Got My Muse AI Agent to Sext Me–and Meta Says That's Fine
-2 SRC · sig 3
-- 2 SRC
+### [companion / other / medium] Developing Gemini 4 Argon responsibly and safely
+7 SRC · sig 1439
+- 7 SRC
 Done when: Listed under Digest lead
 
-### [rest / other / medium] Mark Zuckerberg says Meta reached AI 'frontier' and rejects calls for slowdown
-2 SRC · sig 7
+### [rest / other / medium] Google DeepMind and Singapore Government collaborate to build fine-tuned AI model for scam detection
+2 SRC · sig 3
 - 2 SRC
 Done when: Listed under Digest lead
 

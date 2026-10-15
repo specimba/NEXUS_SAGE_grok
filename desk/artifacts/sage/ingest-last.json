@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-14T18:23:11Z",
+  "stamped_at": "2026-10-15T03:21:16Z",
   "config_hash": "813e5ce035c3",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,25 +11,25 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 141,
+      "duration_ms": 104,
       "paused_until": null,
       "reason": null
     },
     {
       "id": "arxiv",
       "label": "arXiv",
-      "status": "ok",
-      "rows": 27,
-      "duration_ms": 3192,
+      "status": "timeout",
+      "rows": 3,
+      "duration_ms": 20000,
       "paused_until": null,
-      "reason": null
+      "reason": "timeout after 20000ms budget · last good: 0 cached enrich + 3 kept shelf"
     },
     {
       "id": "openalex",
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 524,
+      "duration_ms": 375,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 161,
+      "duration_ms": 135,
       "paused_until": null,
       "reason": null
     },
@@ -46,8 +46,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 63,
-      "duration_ms": 8245,
+      "rows": 53,
+      "duration_ms": 8307,
       "paused_until": null,
       "reason": null
     },
@@ -56,7 +56,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 105,
-      "duration_ms": 16901,
+      "duration_ms": 16337,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 4137,
+      "duration_ms": 4149,
       "paused_until": null,
       "reason": null
     },
@@ -73,8 +73,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 32,
-      "duration_ms": 6408,
+      "rows": 34,
+      "duration_ms": 6525,
       "paused_until": null,
       "reason": null
     },
@@ -82,8 +82,8 @@
       "id": "github",
       "label": "GitHub",
       "status": "ok",
-      "rows": 3,
-      "duration_ms": 333,
+      "rows": 1,
+      "duration_ms": 307,
       "paused_until": null,
       "reason": null
     },
@@ -92,16 +92,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4521,
+      "duration_ms": 4378,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 44563,
-    "sources_wall_ms": 16902,
-    "papers_lane_ms": 4025,
-    "slowest_source_ms": 16901,
+    "sources_ms": 60617,
+    "sources_wall_ms": 20626,
+    "papers_lane_ms": 20626,
+    "slowest_source_ms": 20000,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -115,32 +115,34 @@
       "github": 25000,
       "wikidata": 25000
     },
-    "timed_out": [],
-    "wall_ms": 17327,
-    "startup_ms": 48,
-    "main_ms": 17339
+    "timed_out": [
+      "arxiv"
+    ],
+    "wall_ms": 20999,
+    "startup_ms": 47,
+    "main_ms": 21010
   },
-  "multi_source_independent": 2,
+  "multi_source_independent": 3,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 2,
-    "multi_source_raw": 8,
-    "self_reposts": 7,
-    "items_in": 238,
-    "clusters_out": 215,
-    "collapsed": 23,
-    "multi_source": 2,
-    "multi_member": 11,
+    "multi_source_independent": 3,
+    "multi_source_raw": 6,
+    "self_reposts": 6,
+    "items_in": 230,
+    "clusters_out": 206,
+    "collapsed": 24,
+    "multi_source": 3,
+    "multi_member": 10,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 18,
+    "new_items": 31,
     "per_source": {
-      "hn-algolia": 63,
+      "hn-algolia": 53,
       "rss-lab": 105,
       "rss-security": 28,
-      "gnews-rss": 32,
+      "gnews-rss": 34,
       "gmail-news": 10
     },
     "multi_source_clusters": [
@@ -151,7 +153,7 @@
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 13,
+        "size": 15,
         "score": 1,
         "members": [
           {
@@ -218,25 +220,26 @@
             "publisher": "Search Engine Roundtable"
           },
           {
-            "id": "gnews:2fc19415f770721a",
+            "id": "gnews:4f7812a083c73627",
             "source": "gnews-rss",
-            "title": "Google launches Gemini 4 Argon AI for mobile and search - NewsBytes",
-            "at": "2026-10-13T16:25:25Z",
-            "publisher": "NewsBytes"
+            "title": "Hands-on with Gemini 4 Argon and Its 1 Million Tokens - Geeky Gadgets",
+            "at": "2026-10-14T07:49:55Z",
+            "publisher": "Geeky Gadgets"
           },
           {
-            "id": "gnews:afeba60e273880f3",
+            "id": "gnews:9aef1746f407b190",
             "source": "gnews-rss",
-            "title": "Google's Most Powerful AI Model, Gemini 4 Argon, Is Now on Your Phone: Here's How to Access It? - Mashable India",
-            "at": "2026-10-14T06:54:56Z",
-            "publisher": "Mashable India"
+            "title": "Google Releases Gemini 4 Argon AI Model for Developers and Businesses - Binance",
+            "at": "2026-10-14T04:43:14Z",
+            "publisher": "Binance"
           },
           {
-            "id": "gnews:aa87206b93a988d1",
+            "id": "gnews:22a28c51b41fb6fa",
             "source": "gnews-rss",
-            "title": "Google Gemini 4 Argon rolls out for developers, enterprises, Google AI subscribers in Antigravity, Gemini - The Times of India",
-            "at": "2026-10-13T16:36:00Z",
-            "publisher": "The Times of India"
+            "title": "Gemini 4 Argon: Built to solve your hardest problems - blog.google",
+            "at": "2026-10-13T19:08:36Z",
+            "publisher": "blog.google",
+            "self_repost": true
           },
           {
             "id": "gnews:3bbb9a4f8d63eee3",
@@ -245,6 +248,46 @@
             "at": "2026-10-13T16:16:01Z",
             "publisher": "blog.google",
             "self_repost": true
+          },
+          {
+            "id": "gnews:4b0e63ffca984e24",
+            "source": "gnews-rss",
+            "title": "Gemini 4 Argon: Built to solve your hardest problems - Google DeepMind",
+            "at": "2026-10-13T16:16:01Z",
+            "publisher": "Google DeepMind",
+            "self_repost": true
+          },
+          {
+            "id": "gnews:aa87206b93a988d1",
+            "source": "gnews-rss",
+            "title": "Google Gemini 4 Argon rolls out for developers, enterprises, Google AI subscribers in Antigravity, Gemini - The Times of India",
+            "at": "2026-10-13T16:36:00Z",
+            "publisher": "The Times of India"
+          }
+        ]
+      },
+      {
+        "title": "Fish Audio Drama 3: an open-weight, directable TTS model",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 0.711,
+        "members": [
+          {
+            "id": "hn:50085198",
+            "source": "hn-algolia",
+            "title": "Fish Audio Drama 3: an open-weight, directable TTS model",
+            "at": "2026-10-14T10:15:32Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:e7d4b59d4ae5e9f8",
+            "source": "gnews-rss",
+            "title": "Fish Audio Releases Drama 3, a 35B Open-Weight MoE Text-to-Speech Model - MarkTechPost",
+            "at": "2026-10-14T22:52:17Z",
+            "publisher": "MarkTechPost"
           }
         ]
       },
@@ -289,26 +332,19 @@
         ],
         "self_reposts": [
           {
+            "id": "gnews:22a28c51b41fb6fa",
+            "publisher": "blog.google",
+            "title": "Gemini 4 Argon: Built to solve your hardest problems - blog.google"
+          },
+          {
             "id": "gnews:3bbb9a4f8d63eee3",
             "publisher": "blog.google",
             "title": "Gemini 4 Argon: Built to solve your hardest problems - blog.google"
-          }
-        ]
-      },
-      {
-        "title": "Amp puts AI agents to work beyond code with OpenAI models",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
+          },
           {
-            "id": "gnews:847f6b4b5641833d",
-            "publisher": "OpenAI",
-            "title": "Amp puts AI agents to work beyond code with OpenAI models - OpenAI"
+            "id": "gnews:4b0e63ffca984e24",
+            "publisher": "Google DeepMind",
+            "title": "Gemini 4 Argon: Built to solve your hardest problems - Google DeepMind"
           }
         ]
       },
@@ -362,40 +398,6 @@
             "title": "Analyzing technical documents with Deep Review - Google Research"
           }
         ]
-      },
-      {
-        "title": "Optimizing Agent Reliability and Tool Calling Efficiency for Chip Design Using NVIDIA NeMo Gym",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:3cdd44d04d139ab4",
-            "publisher": "NVIDIA Developer",
-            "title": "Optimizing Agent Reliability and Tool Calling Efficiency for Chip Design Using NVIDIA NeMo Gym - NVIDIA Developer"
-          }
-        ]
-      },
-      {
-        "title": "European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operations",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:9532f8dcc85577e3",
-            "publisher": "NVIDIA Blog",
-            "title": "European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operations - NVIDIA Blog"
-          }
-        ]
       }
     ],
     "ai_relevance": {
@@ -408,8 +410,24 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "UA.NEWS",
-          "title": "Microsoft opens tool for 2–6-week weather forecasts — The Verge - UA.NEWS"
+          "publisher": "tech-insider.org",
+          "title": "LFM2.5-24B (2B Active): Run It Locally [2026] - tech-insider.org"
+        },
+        {
+          "publisher": "OrcaRouter",
+          "title": "UserRepGen-4B: Microsoft Shipped It Without a Word - OrcaRouter"
+        },
+        {
+          "publisher": "매일경제",
+          "title": "\"In 2030 a scientist will play a similar role as a supervisor leading graduate students and postdoctoral researchers.\" - 매일경제"
+        },
+        {
+          "publisher": "HPCwire",
+          "title": "Linux Foundation Launches BUILD Foundation for Large-Scale, Multi-Language Build and Test Systems - HPCwire"
+        },
+        {
+          "publisher": "OrcaRouter",
+          "title": "Ultramarine 1 Flash: $0.13 a Task, Weights Coming Soon - OrcaRouter"
         },
         {
           "publisher": "blog.google",
@@ -417,69 +435,19 @@
         },
         {
           "publisher": "Google Research",
-          "title": "Research@ 2026: 10 ways we're amplifying human ingenuity - Google Research"
-        },
-        {
-          "publisher": "Google Research",
           "title": "Analyzing technical documents with Deep Review - Google Research"
         },
         {
-          "publisher": "Petri IT Knowledgebase",
-          "title": "Research Shows Vulnerability in Microsoft VBS Enclave Component - Petri IT Knowledgebase"
-        },
-        {
-          "publisher": "Search Engine Roundtable",
-          "title": "Google Search On URLs: Ranking Factor, Hyphens vs Underscores & Emojis - Search Engine Roundtable"
-        },
-        {
-          "publisher": "SQ Magazine",
-          "title": "Microsoft Takes Down Chinese-Language Phishing Services - SQ Magazine"
-        },
-        {
-          "publisher": "Platte County Record-Times",
-          "title": "Hands-on student research - Platte County Record-Times"
-        },
-        {
-          "publisher": "Techzine Global",
-          "title": "Google gives European researchers access to AlphaFold 3 - Techzine Global"
-        },
-        {
-          "publisher": "Startup Fortune",
-          "title": "Fish Audio releases Drama 3, a free voice model that beats ElevenLabs on pronunciation - Startup Fortune"
-        },
-        {
-          "publisher": "OrcaRouter",
-          "title": "Fish Audio Drama 3 Preview vs. Sesame Preview im Vergleich - OrcaRouter"
+          "publisher": "Google Research",
+          "title": "Research@ 2026: 10 ways we're amplifying human ingenuity - Google Research"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 30
+      "hn_dropped": 23
     },
     "gnews_near_misses": [
       {
-        "score": 0.664,
-        "blocked": "time-window",
-        "hours_apart": 25.2,
-        "a": {
-          "id": "hn:50073879",
-          "source": "hn-algolia",
-          "title": "Gemini 4 Argon",
-          "at": "2026-10-13T16:03:16Z"
-        },
-        "b": {
-          "id": "gnews:29a7b4bda0a49c6e",
-          "source": "gnews-rss",
-          "title": "Gemini 4 Argon Arrives With Big Claims for AI Agents and Scientific Discovery - HPCwire",
-          "at": "2026-10-14T17:17:58Z"
-        },
-        "shared": [
-          "gemini",
-          "4",
-          "argon"
-        ]
-      },
-      {
-        "score": 0.658,
+        "score": 0.648,
         "blocked": "thin-overlap",
         "hours_apart": 0.3,
         "a": {
@@ -502,32 +470,9 @@
         ]
       },
       {
-        "score": 0.658,
-        "blocked": "thin-overlap",
-        "hours_apart": 0.5,
-        "a": {
-          "id": "hn:50073780",
-          "source": "hn-algolia",
-          "title": "Gemini 4 Argon in Google Antigravity",
-          "at": "2026-10-13T15:57:49Z"
-        },
-        "b": {
-          "id": "gnews:2fc19415f770721a",
-          "source": "gnews-rss",
-          "title": "Google launches Gemini 4 Argon AI for mobile and search - NewsBytes",
-          "at": "2026-10-13T16:25:25Z"
-        },
-        "shared": [
-          "gemini",
-          "4",
-          "argon",
-          "google"
-        ]
-      },
-      {
         "score": 0.608,
         "blocked": "thin-overlap",
-        "hours_apart": 15,
+        "hours_apart": 12.8,
         "a": {
           "id": "hn:50073780",
           "source": "hn-algolia",
@@ -535,10 +480,10 @@
           "at": "2026-10-13T15:57:49Z"
         },
         "b": {
-          "id": "gnews:afeba60e273880f3",
+          "id": "gnews:9aef1746f407b190",
           "source": "gnews-rss",
-          "title": "Google's Most Powerful AI Model, Gemini 4 Argon, Is Now on Your Phone: Here's How to Access It? - Mashable India",
-          "at": "2026-10-14T06:54:56Z"
+          "title": "Google Releases Gemini 4 Argon AI Model for Developers and Businesses - Binance",
+          "at": "2026-10-14T04:43:14Z"
         },
         "shared": [
           "gemini",
@@ -548,7 +493,7 @@
         ]
       },
       {
-        "score": 0.543,
+        "score": 0.54,
         "blocked": "thin-overlap",
         "hours_apart": 0.7,
         "a": {
@@ -570,29 +515,7 @@
         ]
       },
       {
-        "score": 0.543,
-        "blocked": "thin-overlap",
-        "hours_apart": 0.5,
-        "a": {
-          "id": "hn:50074869",
-          "source": "hn-algolia",
-          "title": "Gemini 4 Argon for Robotics",
-          "at": "2026-10-13T16:55:47Z"
-        },
-        "b": {
-          "id": "gnews:2fc19415f770721a",
-          "source": "gnews-rss",
-          "title": "Google launches Gemini 4 Argon AI for mobile and search - NewsBytes",
-          "at": "2026-10-13T16:25:25Z"
-        },
-        "shared": [
-          "gemini",
-          "4",
-          "argon"
-        ]
-      },
-      {
-        "score": 0.543,
+        "score": 0.54,
         "blocked": "thin-overlap",
         "hours_apart": 0.2,
         "a": {
@@ -614,20 +537,87 @@
         ]
       },
       {
-        "score": 0.543,
-        "blocked": "thin-overlap",
-        "hours_apart": 0.4,
+        "score": 0.535,
+        "blocked": "below-threshold",
+        "hours_apart": 12.6,
         "a": {
-          "id": "rss:deepmind:94cc08977f17740f",
-          "source": "rss-lab",
-          "title": "Gemini 4 Argon for Robotics",
-          "at": "2026-10-13T16:01:58Z"
+          "id": "hn:50073898",
+          "source": "hn-algolia",
+          "title": "Gemini 4 Argon Model Card",
+          "at": "2026-10-13T16:04:30Z"
         },
         "b": {
-          "id": "gnews:2fc19415f770721a",
+          "id": "gnews:9aef1746f407b190",
           "source": "gnews-rss",
-          "title": "Google launches Gemini 4 Argon AI for mobile and search - NewsBytes",
-          "at": "2026-10-13T16:25:25Z"
+          "title": "Google Releases Gemini 4 Argon AI Model for Developers and Businesses - Binance",
+          "at": "2026-10-14T04:43:14Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon",
+          "model"
+        ]
+      },
+      {
+        "score": 0.53,
+        "blocked": "thin-overlap",
+        "hours_apart": 2.2,
+        "a": {
+          "id": "hn:50074869",
+          "source": "hn-algolia",
+          "title": "Gemini 4 Argon for Robotics",
+          "at": "2026-10-13T16:55:47Z"
+        },
+        "b": {
+          "id": "gnews:22a28c51b41fb6fa",
+          "source": "gnews-rss",
+          "title": "Gemini 4 Argon: Built to solve your hardest problems - blog.google",
+          "at": "2026-10-13T19:08:36Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon"
+        ]
+      },
+      {
+        "score": 0.53,
+        "blocked": "thin-overlap",
+        "hours_apart": 0.7,
+        "a": {
+          "id": "hn:50074869",
+          "source": "hn-algolia",
+          "title": "Gemini 4 Argon for Robotics",
+          "at": "2026-10-13T16:55:47Z"
+        },
+        "b": {
+          "id": "gnews:3bbb9a4f8d63eee3",
+          "source": "gnews-rss",
+          "title": "Gemini 4 Argon: Built to solve your hardest problems - blog.google",
+          "at": "2026-10-13T16:16:01Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon"
+        ]
+      },
+      {
+        "score": 0.53,
+        "blocked": "thin-overlap",
+        "hours_apart": 0.7,
+        "a": {
+          "id": "hn:50074869",
+          "source": "hn-algolia",
+          "title": "Gemini 4 Argon for Robotics",
+          "at": "2026-10-13T16:55:47Z"
+        },
+        "b": {
+          "id": "gnews:4b0e63ffca984e24",
+          "source": "gnews-rss",
+          "title": "Gemini 4 Argon: Built to solve your hardest problems - Google DeepMind",
+          "at": "2026-10-13T16:16:01Z"
         },
         "shared": [
           "gemini",
@@ -638,7 +628,7 @@
     ],
     "near_misses": [
       {
-        "score": 0.704,
+        "score": 0.7,
         "blocked": "time-window",
         "hours_apart": 308,
         "a": {
@@ -660,29 +650,7 @@
         ]
       },
       {
-        "score": 0.664,
-        "blocked": "time-window",
-        "hours_apart": 25.2,
-        "a": {
-          "id": "hn:50073879",
-          "source": "hn-algolia",
-          "title": "Gemini 4 Argon",
-          "at": "2026-10-13T16:03:16Z"
-        },
-        "b": {
-          "id": "gnews:29a7b4bda0a49c6e",
-          "source": "gnews-rss",
-          "title": "Gemini 4 Argon Arrives With Big Claims for AI Agents and Scientific Discovery - HPCwire",
-          "at": "2026-10-14T17:17:58Z"
-        },
-        "shared": [
-          "gemini",
-          "4",
-          "argon"
-        ]
-      },
-      {
-        "score": 0.658,
+        "score": 0.648,
         "blocked": "thin-overlap",
         "hours_apart": 0.3,
         "a": {
@@ -705,32 +673,9 @@
         ]
       },
       {
-        "score": 0.658,
-        "blocked": "thin-overlap",
-        "hours_apart": 0.5,
-        "a": {
-          "id": "hn:50073780",
-          "source": "hn-algolia",
-          "title": "Gemini 4 Argon in Google Antigravity",
-          "at": "2026-10-13T15:57:49Z"
-        },
-        "b": {
-          "id": "gnews:2fc19415f770721a",
-          "source": "gnews-rss",
-          "title": "Google launches Gemini 4 Argon AI for mobile and search - NewsBytes",
-          "at": "2026-10-13T16:25:25Z"
-        },
-        "shared": [
-          "gemini",
-          "4",
-          "argon",
-          "google"
-        ]
-      },
-      {
         "score": 0.608,
         "blocked": "thin-overlap",
-        "hours_apart": 15,
+        "hours_apart": 12.8,
         "a": {
           "id": "hn:50073780",
           "source": "hn-algolia",
@@ -738,10 +683,10 @@
           "at": "2026-10-13T15:57:49Z"
         },
         "b": {
-          "id": "gnews:afeba60e273880f3",
+          "id": "gnews:9aef1746f407b190",
           "source": "gnews-rss",
-          "title": "Google's Most Powerful AI Model, Gemini 4 Argon, Is Now on Your Phone: Here's How to Access It? - Mashable India",
-          "at": "2026-10-14T06:54:56Z"
+          "title": "Google Releases Gemini 4 Argon AI Model for Developers and Businesses - Binance",
+          "at": "2026-10-14T04:43:14Z"
         },
         "shared": [
           "gemini",
@@ -751,7 +696,7 @@
         ]
       },
       {
-        "score": 0.589,
+        "score": 0.588,
         "blocked": "thin-overlap",
         "hours_apart": 0.1,
         "a": {
@@ -773,7 +718,7 @@
         ]
       },
       {
-        "score": 0.586,
+        "score": 0.582,
         "blocked": "thin-overlap",
         "hours_apart": 0,
         "a": {
@@ -795,7 +740,7 @@
         ]
       },
       {
-        "score": 0.563,
+        "score": 0.548,
         "blocked": "below-threshold",
         "hours_apart": 10.4,
         "a": {
@@ -818,6 +763,50 @@
           "scam",
           "detection"
         ]
+      },
+      {
+        "score": 0.54,
+        "blocked": "thin-overlap",
+        "hours_apart": 0.7,
+        "a": {
+          "id": "hn:50074869",
+          "source": "hn-algolia",
+          "title": "Gemini 4 Argon for Robotics",
+          "at": "2026-10-13T16:55:47Z"
+        },
+        "b": {
+          "id": "gnews:8e7e056ae67bc45d",
+          "source": "gnews-rss",
+          "title": "Gemini 4 Argon In Google Search Via AI Mode - Search Engine Roundtable",
+          "at": "2026-10-13T16:13:00Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon"
+        ]
+      },
+      {
+        "score": 0.54,
+        "blocked": "thin-overlap",
+        "hours_apart": 0.2,
+        "a": {
+          "id": "rss:deepmind:94cc08977f17740f",
+          "source": "rss-lab",
+          "title": "Gemini 4 Argon for Robotics",
+          "at": "2026-10-13T16:01:58Z"
+        },
+        "b": {
+          "id": "gnews:8e7e056ae67bc45d",
+          "source": "gnews-rss",
+          "title": "Gemini 4 Argon In Google Search Via AI Mode - Search Engine Roundtable",
+          "at": "2026-10-13T16:13:00Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon"
+        ]
       }
     ]
   },
@@ -825,76 +814,76 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 1,
-      "streak_fail": 0,
-      "items_last": 27
+      "streak_ok": 0,
+      "streak_fail": 1,
+      "items_last": 3
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 117,
+      "streak_ok": 118,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 117,
+      "streak_ok": 118,
       "streak_fail": 0,
-      "items_last": 3
+      "items_last": 1
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 117,
+      "streak_ok": 118,
       "streak_fail": 0,
-      "items_last": 32
+      "items_last": 34
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 117,
+      "streak_ok": 118,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 117,
+      "streak_ok": 118,
       "streak_fail": 0,
-      "items_last": 63
+      "items_last": 53
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 29,
+      "streak_ok": 30,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 21,
+      "streak_ok": 22,
       "streak_fail": 0,
       "items_last": 105
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 117,
+      "streak_ok": 118,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 117,
+      "streak_ok": 118,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.004944166666666667,
+    "hours": 0.005850833333333334,
     "stale": false
   },
   "hf": {
@@ -903,10 +892,10 @@
     "url": "https://huggingface.co/api/daily_papers"
   },
   "arxiv": {
-    "ok": true,
-    "enriched": 24,
+    "ok": false,
+    "enriched": 0,
     "shelf": 3,
-    "timed_out": false,
+    "timed_out": true,
     "budget_ms": 20000,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
@@ -917,7 +906,7 @@
     "soft_fail_reason": null,
     "enriched": 3,
     "secondary": 3,
-    "query": "LLM agent",
+    "query": "LLM agent sandbox",
     "mode": "search",
     "from_cache": false,
     "searches": 1,
@@ -933,24 +922,24 @@
     "url": "https://api.openalex.org/works",
     "sample": [
       {
-        "id": "W4393160747",
-        "openalexId": "https://openalex.org/W4393160747",
-        "year": 2024,
-        "doi": "https://doi.org/10.1609/aaai.v38i17.29936",
+        "id": "W7171516088",
+        "openalexId": "https://openalex.org/W7171516088",
+        "year": 2026,
+        "doi": "https://doi.org/10.48550/arxiv.2607.23933",
         "enrichOnly": true
       },
       {
-        "id": "W4412877164",
-        "openalexId": "https://openalex.org/W4412877164",
-        "year": 2025,
-        "doi": "https://doi.org/10.1145/3711896.3736570",
+        "id": "W7204032694",
+        "openalexId": "https://openalex.org/W7204032694",
+        "year": 2026,
+        "doi": "https://doi.org/10.1007/978-981-92-4805-6_13",
         "enrichOnly": true
       },
       {
-        "id": "W4407759090",
-        "openalexId": "https://openalex.org/W4407759090",
-        "year": 2025,
-        "doi": "https://doi.org/10.52202/085713-0593",
+        "id": "W7221316450",
+        "openalexId": "https://openalex.org/W7221316450",
+        "year": 2026,
+        "doi": "https://doi.org/10.1038/s41746-026-03348-0",
         "enrichOnly": true
       }
     ]
@@ -960,7 +949,7 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "enriched": 1,
-    "query": "doi:10.1145/3711896.3736570",
+    "query": "doi:10.1007/978-981-92-4805-6_13",
     "mode": "filter",
     "from_cache": false,
     "searches": 1,
@@ -968,15 +957,17 @@
     "pulse_lead": false,
     "papers_enrich_only": true,
     "url": "https://api.crossref.org/works",
-    "merge_notes": [],
+    "merge_notes": [
+      "doi_collision keep=10.48550/arxiv.2607.23933 crossref=10.1007/978-981-92-4805-6_13 paper=W7171516088 (non-destructive; openalexId preserved)"
+    ],
     "sample": [
       {
-        "id": "W4412877164",
-        "crossrefDoi": "https://doi.org/10.1145/3711896.3736570",
-        "issued": "2025-08-03",
-        "type": "proceedings-article",
-        "openalexId": "https://openalex.org/W4412877164",
-        "doi": "https://doi.org/10.1145/3711896.3736570",
+        "id": "W7171516088",
+        "crossrefDoi": "https://doi.org/10.1007/978-981-92-4805-6_13",
+        "issued": "2026-08-24",
+        "type": "book-chapter",
+        "openalexId": "https://openalex.org/W7171516088",
+        "doi": "https://doi.org/10.48550/arxiv.2607.23933",
         "enrichOnly": false
       }
     ]
@@ -985,42 +976,42 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 63,
+    "count": 53,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
     "queries_run": [
-      "eval",
       "LLM",
-      "METR"
+      "METR",
+      "ML security"
     ],
     "queries_ok": [
-      "eval",
       "LLM",
-      "METR"
+      "METR",
+      "ML security"
     ],
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 30,
+    "ai_dropped": 23,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
         "id": "hn:50073879",
         "tag": "rest",
-        "score": 1419,
+        "score": 1439,
         "text": "Gemini 4 Argon"
       },
       {
         "id": "hn:50073633",
         "tag": "rest",
-        "score": 848,
+        "score": 869,
         "text": "Redesigning source control at Anthropic"
       },
       {
         "id": "hn:50078141",
         "tag": "rest",
-        "score": 631,
+        "score": 645,
         "text": "OpenAI engineer arrested in bugging of executive conference room"
       }
     ]
@@ -1174,22 +1165,14 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 32,
-    "pool": 257,
+    "items": 34,
+    "pool": 244,
     "corroborators": [
       {
-        "id": "gnews:847f6b4b5641833d",
-        "anchor_id": "rss:openai:57c3309db5bedcde",
+        "id": "gnews:a1fdd94cbf05b59e",
+        "anchor_id": "rss:google-research:6c3fa003d587daac",
         "score": 1,
-        "title": "Amp puts AI agents to work beyond code with OpenAI models - OpenAI",
-        "publisher": "OpenAI",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:6da1ebdcd82b7e26",
-        "anchor_id": "rss:google-research:4c456e668ef45cba",
-        "score": 1,
-        "title": "Putting Earth AI to work: Geospatial agents for our planet's biggest challenges - Google Research",
+        "title": "Analyzing technical documents with Deep Review - Google Research",
         "publisher": "Google Research",
         "self_repost": true
       },
@@ -1202,60 +1185,44 @@
         "self_repost": true
       },
       {
-        "id": "gnews:a1fdd94cbf05b59e",
-        "anchor_id": "rss:google-research:6c3fa003d587daac",
+        "id": "gnews:6da1ebdcd82b7e26",
+        "anchor_id": "rss:google-research:4c456e668ef45cba",
         "score": 1,
-        "title": "Analyzing technical documents with Deep Review - Google Research",
+        "title": "Putting Earth AI to work: Geospatial agents for our planet's biggest challenges - Google Research",
         "publisher": "Google Research",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:3cdd44d04d139ab4",
-        "anchor_id": "rss:nvidia-dev:9a38741ef849cd18",
-        "score": 1,
-        "title": "Optimizing Agent Reliability and Tool Calling Efficiency for Chip Design Using NVIDIA NeMo Gym - NVIDIA Developer",
-        "publisher": "NVIDIA Developer",
         "self_repost": true
       },
       {
         "id": "gnews:8e7e056ae67bc45d",
         "anchor_id": "hn:50073879",
-        "score": 0.764,
+        "score": 0.76,
         "title": "Gemini 4 Argon In Google Search Via AI Mode - Search Engine Roundtable",
         "publisher": "Search Engine Roundtable",
         "self_repost": false
       },
       {
-        "id": "gnews:2fc19415f770721a",
+        "id": "gnews:4f7812a083c73627",
         "anchor_id": "hn:50073879",
-        "score": 0.757,
-        "title": "Google launches Gemini 4 Argon AI for mobile and search - NewsBytes",
-        "publisher": "NewsBytes",
+        "score": 0.72,
+        "title": "Hands-on with Gemini 4 Argon and Its 1 Million Tokens - Geeky Gadgets",
+        "publisher": "Geeky Gadgets",
         "self_repost": false
       },
       {
-        "id": "gnews:afeba60e273880f3",
+        "id": "gnews:9aef1746f407b190",
         "anchor_id": "hn:50073879",
-        "score": 0.7,
-        "title": "Google's Most Powerful AI Model, Gemini 4 Argon, Is Now on Your Phone: Here's How to Access It? - Mashable India",
-        "publisher": "Mashable India",
+        "score": 0.719,
+        "title": "Google Releases Gemini 4 Argon AI Model for Developers and Businesses - Binance",
+        "publisher": "Binance",
         "self_repost": false
       },
       {
-        "id": "gnews:9532f8dcc85577e3",
-        "anchor_id": "rss:nvidia:9e8d19434b13b76f",
+        "id": "gnews:22a28c51b41fb6fa",
+        "anchor_id": "rss:deepmind:851107eacfc8ba0f",
         "score": 1,
-        "title": "European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operations - NVIDIA Blog",
-        "publisher": "NVIDIA Blog",
+        "title": "Gemini 4 Argon: Built to solve your hardest problems - blog.google",
+        "publisher": "blog.google",
         "self_repost": true
-      },
-      {
-        "id": "gnews:aa87206b93a988d1",
-        "anchor_id": "hn:50073780",
-        "score": 0.828,
-        "title": "Google Gemini 4 Argon rolls out for developers, enterprises, Google AI subscribers in Antigravity, Gemini - The Times of India",
-        "publisher": "The Times of India",
-        "self_repost": false
       },
       {
         "id": "gnews:3bbb9a4f8d63eee3",
@@ -1264,6 +1231,22 @@
         "title": "Gemini 4 Argon: Built to solve your hardest problems - blog.google",
         "publisher": "blog.google",
         "self_repost": true
+      },
+      {
+        "id": "gnews:4b0e63ffca984e24",
+        "anchor_id": "rss:deepmind:851107eacfc8ba0f",
+        "score": 1,
+        "title": "Gemini 4 Argon: Built to solve your hardest problems - Google DeepMind",
+        "publisher": "Google DeepMind",
+        "self_repost": true
+      },
+      {
+        "id": "gnews:aa87206b93a988d1",
+        "anchor_id": "hn:50073780",
+        "score": 0.817,
+        "title": "Google Gemini 4 Argon rolls out for developers, enterprises, Google AI subscribers in Antigravity, Gemini - The Times of India",
+        "publisher": "The Times of India",
+        "self_repost": false
       }
     ],
     "http_status": 200,
@@ -1278,38 +1261,38 @@
     "pulse_only": true,
     "url_template": "https://news.google.com/rss/search?q={QUERY}&hl=en-US&gl=US&ceid=US:en",
     "queried": [
-      "AI agent",
       "open weights",
-      "Microsoft Research",
-      "Google Research"
+      "Hugging Face",
+      "Google Research",
+      "Google DeepMind"
     ],
     "queries_ok_list": [
-      "AI agent",
       "open weights",
-      "Microsoft Research",
-      "Google Research"
+      "Hugging Face",
+      "Google Research",
+      "Google DeepMind"
     ],
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:6f29300b68cf6d49",
-        "title": "Google opens Deep Review AI tool to help researchers catch manuscript errors - R&D World",
-        "publisher": "R&D World",
-        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPQ1hkeDFnLTBJeHl1U1RVeC1FWmZrN3F5WHZqRnBQdDI0cFYyQWtSZkhLNjB4MENUM2ROOXNXNDBVckdQSXR0LWFmdml5Q0VkZFk0LTd2M1JlVTVZSFJ6aTBFZ1hVOFRIcl9zWEN1WnFWQjNWcWZ6Z0w4RExfM2FWR2E1RHZPeFhKY1NtSXMyZjBZVHFHejZkNXNOQ3c2NG5iU0Y3eTNvaUMzQzcyWTl3?oc=5",
+        "id": "gnews:50f363801818978c",
+        "title": "Google, GovTech develop on-device AI model to detect scams in Singapore - Marketing-Interactive",
+        "publisher": "Marketing-Interactive",
+        "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPcnZBTGp6OWZxSzY4Y2ZEZVV3ZndNSHlIRkxnNTkyd3VILW1aVG9MS09ITmVHSnZfclN1bHoxd2ZzUTNJUG5pWHFfWXg5cG1uMm9QcUtxTVFyblg0NkxTeGtVQVVoYldQR1Qya3VpajRSdWhUTTlZMl9WSzZSZ0Fvc1VOVkcwYy1xTDBja20yQVFkV2lGc1JkNnhwb3d2bTI5S1dteVVyRVc3X3dZ?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:8d1c3c43433cd1d5",
-        "title": "Trust by design: Provenance for the agentic AI era - IAPP",
-        "publisher": "IAPP",
-        "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1VYmNHWGFKYWhaX1lNblV6VVliMzgxbWZaMy00MGVHc0lTR1lwTVgzNy05VHJNN3ZvU1Q4T1duOUNNSXZZcGxPblltdmx0dzNad1NNRzd1QnpGQ1F6ZDEwNGxrQ3RRdDV3Qlh6QmJ5a0lLZXBYeEM0cE9Bd3p4dw?oc=5",
+        "id": "gnews:8d3f42845e5c5717",
+        "title": "OpenAI CFO Sarah Friar Warns Companies Over Chinese AI Cyber Risks - LatestLY",
+        "publisher": "LatestLY",
+        "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOajlTc0dvakk4UGFjekthTU9zSktUb09xakNQY25jQWJhY085bWhjamZ2S1lyZloyRmhrai1LMlJzRkU1Ml9BcjQ2cWNsREUtXzc5UzZkNHprVjNRdTRDZDhEcGVmYWNWSjFjdkdZcXQ0MFRWV3l3SVVXcUFqYm1wbHlMejVISHI5cjZ3Qk9za21iTXNZYjBGQ2tQNXozRm4wUXRjRG9jT21YdF9Qbi1naUQyaTBBZ9IBuwFBVV95cUxNWVAtc3FYLWxXaUF1XzNfa0hqcVdzOHI2d3RwZzZUVFdhUGxfMG42MFZEM0pCSGhhdFlpLU96SkM1MXU2WGh0NE5RNXJaTUJxcDVMM2pZM2Q0ZUF1eDhMRVBiUXg1bzdBRmxrck8zR2NMR0FHT0lGVF9aVVB6RVdTZEZhVHhFbURHSGprTTNYeGQ5RUUyUllsdTVMTE52OS1ldHZBZVFzZHU0VjljUnVTTmlUMWEwbkhydDlB?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:7c24bfacce5cadb0",
-        "title": "Liquid AI Releases LFM2.5-24B-A2B for Local AI Workflows - TechRepublic",
-        "publisher": "TechRepublic",
-        "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOSTZWMVhOSVlQWHF1WnplQ0tjRmR0eTJqSF84b3lEcXU5ZEl5WGpRbkhhUW9nZmpmUkRqbjI4OHJxT2hobGlaMjVCWXktVkplZFJvWW01NUJZZ3NXOG5RYVNWVFl5RDhxSFlpYzFfSDc5QlBkMkh4Vm14WTV6VV90Yw?oc=5",
+        "id": "gnews:779f1813d07374fc",
+        "title": "Google DeepMind's Hassabis calls AI hacks 'early warning shots' - Awani International",
+        "publisher": "Awani International",
+        "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQYV9WV2pBbllsQ011bDVOTmNDWldQWXp2Qk9wTEVpUF9VcEtyYTBSeVluZ2NrM05fM1pnUzBFUFA5UmVERW52NFVkM2ltRmZSTS1ESDltdTRJYUc4dzRjcmRDN0JneXU3SlJ4ZlRtQ3YyaFRjNjR2LVEzVGtRb2V0eEhCcGlrVlBzNHIzQ0xEbWhhWGxKdzZwekNpNGxRWS05STRaNXVkQzh0Y3Z1X2FGOTJROA?oc=5",
         "tag": "rest"
       }
     ]
@@ -1339,8 +1322,8 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "query": "LLM agent eval harness",
-    "shelf": 3,
+    "query": "OWASP LLM",
+    "shelf": 1,
     "from_cache": false,
     "searches": 1,
     "rate_limit_remaining": 9,
@@ -1350,21 +1333,13 @@
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
-        "label": "heyvamshii/Smart-Trip-Planner-Agent",
-        "href": "https://github.com/heyvamshii/Smart-Trip-Planner-Agent"
-      },
-      {
-        "label": "CJ-coding-apps/Multi-Agent-Evolution-Framework",
-        "href": "https://github.com/CJ-coding-apps/Multi-Agent-Evolution-Framework"
-      },
-      {
-        "label": "Areeha2004/roamio-agent",
-        "href": "https://github.com/Areeha2004/roamio-agent"
+        "label": "Athithya-Sakthivel/secure-llm-deploy",
+        "href": "https://github.com/Athithya-Sakthivel/secure-llm-deploy"
       }
     ]
   },
   "shelf": {
-    "count": 18,
+    "count": 16,
     "brief": false
   },
   "wikidata": {
@@ -1372,9 +1347,9 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "seeds": [
-      "OpenAI",
       "DeepMind",
-      "Anthropic"
+      "Anthropic",
+      "Meta AI"
     ],
     "searches": 3,
     "from_cache": false,
@@ -1383,17 +1358,6 @@
     "deny_grounding_only": true,
     "url": "https://www.wikidata.org/w/api.php",
     "hints": [
-      {
-        "seed": "OpenAI",
-        "qid": "Q21708200",
-        "label": "OpenAI",
-        "description": "American artificial intelligence research organization",
-        "status": "matched",
-        "source": "wikidata",
-        "briefEligible": false,
-        "pulseLeadEligible": false,
-        "denyGroundingOnly": true
-      },
       {
         "seed": "DeepMind",
         "qid": "Q15733006",
@@ -1410,6 +1374,17 @@
         "qid": "Q116758847",
         "label": "Anthropic",
         "description": "American artificial intelligence corporation",
+        "status": "matched",
+        "source": "wikidata",
+        "briefEligible": false,
+        "pulseLeadEligible": false,
+        "denyGroundingOnly": true
+      },
+      {
+        "seed": "Meta AI",
+        "qid": "Q112114913",
+        "label": "Meta AI",
+        "description": "artificial intelligence laboratory owned by Meta",
         "status": "matched",
         "source": "wikidata",
         "briefEligible": false,
