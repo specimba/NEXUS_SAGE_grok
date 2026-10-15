@@ -9,7 +9,8 @@
  *
  * Pure (no node:fs) — the crawl-start loader lives in sage-config-disk.ts.
  */
-import { aiTermsDefault } from "./ai-relevance";
+import { AI_TERMS_HEAD, AI_TERMS_TAIL, aiTermsDefault } from "./ai-relevance";
+import { validateWithRules, type SageLimits, type ValidateResult } from "./sage-config-rules";
 import { GITHUB_PER_PAGE } from "./github-shelf";
 import { GMAIL_EMIT_CAP, GMAIL_FETCH_CAP, GMAIL_SEED_KEYWORDS, GMAIL_SENDER_RE, GMAIL_SENDERS_DEFAULT, GMAIL_SENDERS_MAX } from "./gmail-news";
 import { GNEWS_POOL_CAP } from "./gnews-rss";
@@ -115,184 +116,37 @@ export function sageCeilings(): Record<string, Record<string, number>> {
   };
 }
 
-const FEED_FIELDS: Record<string, readonly string[]> = { lab_rss: LAB_FEED_IDS, sec_rss: SEC_FEED_IDS, analyst_rss: ANALYST_FEED_IDS, releases_atom: RELEASE_FEED_IDS };
-const SECRET_KEY = /token|secret|cookie|passw|bearer|auth|api[_-]?key|session/i;
-const SECRET_VALUE = /\b(ghp_|gho_|github_pat_|glpat-|xox[abp]-|sk-[a-z0-9]{8}|AKIA[0-9A-Z]{8})/i;
-
-export type ValidateResult = { ok: true; config: SageConfig; warnings: string[] } | { ok: false; errors: string[] };
-
-function isObj(v: unknown): v is Record<string, unknown> {
-  return typeof v === "object" && v !== null && !Array.isArray(v);
+/** PASS-C3.1: every rule input from code — the CI path. The browser gets the same object via SAGE_SETUP.limits. */
+export function limitsFromCode(): SageLimits {
+  return {
+    schema: SAGE_CONFIG_SCHEMA,
+    source_ids: [...SOURCE_IDS],
+    defaults: defaultSageConfig(),
+    ceilings: sageCeilings(),
+    feeds: { lab_rss: [...LAB_FEED_IDS], sec_rss: [...SEC_FEED_IDS], analyst_rss: [...ANALYST_FEED_IDS], releases_atom: [...RELEASE_FEED_IDS] },
+    keyword_lists: [...KEYWORD_LIST_IDS],
+    regex_lists: {
+      ai_terms: { head: AI_TERMS_HEAD, tail: AI_TERMS_TAIL },
+      politics_deny: { head: "\\b(?:", tail: ")\\b" },
+    },
+    baseline: { ai_terms: aiTermsDefault(), politics_deny: [...POLITICS_LEAD_TERMS] },
+    keyword_list_max: KEYWORD_LIST_MAX,
+    keyword_len_max: KEYWORD_LEN_MAX,
+    taste_max: TASTE_WEIGHT_MAX,
+    box_only: ["gmail", "x_taste"],
+  };
 }
 
-function scanSecrets(v: unknown, path: string, errors: string[]) {
-  if (typeof v === "string") {
-    if (SECRET_VALUE.test(v)) errors.push(`${path}: looks like a secret value`);
-  } else if (Array.isArray(v)) {
-    v.forEach((x, i) => scanSecrets(x, `${path}[${i}]`, errors));
-  } else if (isObj(v)) {
-    for (const [k, x] of Object.entries(v)) {
-      if (SECRET_KEY.test(k)) errors.push(`${path}.${k}: secret-like key not allowed in config`);
-      scanSecrets(x, `${path}.${k}`, errors);
-    }
-  }
-}
+export type { ValidateResult } from "./sage-config-rules";
+export { canonicalJson, fileJson } from "./sage-config-rules";
 
 /**
- * Validate a parsed config. Missing optional fields inherit the code default (so a short file is fine);
- * anything unknown or out of bounds rejects the whole file. `taste.weight` outside 0–0.3 is clamped (spec:
- * "clamped"), with a warning — it is not a reject.
+ * Validate a parsed config (CI / crawl start) = validateWithRules(raw, limitsFromCode()). Missing optional fields
+ * inherit the code default; anything unknown or out of bounds rejects the whole file. `taste.weight` outside 0–0.3
+ * is clamped with a warning. PASS-C3: ai_terms / politics_deny are additions-only against the code baseline.
  */
 export function validateSageConfig(raw: unknown): ValidateResult {
-  const errors: string[] = [];
-  const warnings: string[] = [];
-  const out = defaultSageConfig();
-  if (!isObj(raw)) return { ok: false, errors: ["config is not a JSON object"] };
-  scanSecrets(raw, "$", errors);
-  for (const k of Object.keys(raw)) {
-    if (!["schema", "sources", "keywords", "taste", "$comment"].includes(k)) errors.push(`unknown top-level key "${k}"`);
-  }
-  if (raw.schema !== SAGE_CONFIG_SCHEMA) errors.push(`schema must be ${SAGE_CONFIG_SCHEMA}`);
-
-  const ceil = sageCeilings();
-  if (raw.sources !== undefined) {
-    if (!isObj(raw.sources)) errors.push("sources must be an object");
-    else {
-      for (const [id, v] of Object.entries(raw.sources)) {
-        if (!(SOURCE_IDS as readonly string[]).includes(id)) {
-          errors.push(`unknown source "${id}" (no new providers by JSON)`);
-          continue;
-        }
-        if (!isObj(v)) {
-          errors.push(`sources.${id} must be an object`);
-          continue;
-        }
-        const target = out.sources[id as SourceId] as Record<string, unknown>;
-        for (const [field, val] of Object.entries(v)) {
-          const where = `sources.${id}.${field}`;
-          if (field === "on") {
-            if (typeof val !== "boolean") errors.push(`${where} must be true/false`);
-            else target.on = val;
-          } else if (field === "feeds" && FEED_FIELDS[id]) {
-            if (!Array.isArray(val) || val.length === 0) {
-              errors.push(`${where} must be a non-empty list (use "on": false to drop the source)`);
-              continue;
-            }
-            const wired = FEED_FIELDS[id]!;
-            const bad = val.filter((f) => typeof f !== "string" || !wired.includes(f));
-            if (bad.length) errors.push(`${where}: feed id(s) not wired in code: ${bad.map(String).join(", ")}`);
-            else if (new Set(val).size !== val.length) errors.push(`${where}: duplicate feed id`);
-            else target.feeds = [...val];
-          } else if (field in (ceil[id] ?? {})) {
-            const max = ceil[id]![field]!;
-            if (typeof val !== "number" || !Number.isInteger(val)) errors.push(`${where} must be an integer`);
-            else if (val < 1) errors.push(`${where} must be ≥ 1 (use "on": false to drop the source)`);
-            else if (val > max) errors.push(`${where}=${val} over the code ceiling ${max}`);
-            else target[field] = val;
-          } else {
-            errors.push(`unknown field ${where}`);
-          }
-        }
-      }
-    }
-  }
-
-  if (raw.keywords !== undefined) {
-    if (!isObj(raw.keywords)) errors.push("keywords must be an object");
-    else {
-      for (const [k, v] of Object.entries(raw.keywords)) {
-        if (!(KEYWORD_LIST_IDS as readonly string[]).includes(k)) {
-          errors.push(`unknown keyword list "${k}"`);
-          continue;
-        }
-        if (!Array.isArray(v) || (v.length === 0 && !KEYWORD_EMPTY_MEANS_OFF.includes(k))) {
-          errors.push(`keywords.${k} must be a non-empty list`);
-          continue;
-        }
-        if (v.length > KEYWORD_LIST_MAX) errors.push(`keywords.${k}: more than ${KEYWORD_LIST_MAX} entries`);
-        const bad = v.filter((t) => typeof t !== "string" || !t.trim() || t.length > KEYWORD_LEN_MAX);
-        if (bad.length) {
-          errors.push(`keywords.${k}: entries must be non-empty strings ≤ ${KEYWORD_LEN_MAX} chars`);
-          continue;
-        }
-        if (k === "hn_title_queries") {
-          // PASS-S1.4: ≤ 8 plain terms (≤ 40 chars, no regex, no banned/incident nouns), no duplicates.
-          if (v.length > HN_TITLE_QUERIES_MAX) {
-            errors.push(`keywords.hn_title_queries: more than ${HN_TITLE_QUERIES_MAX} terms`);
-            continue;
-          }
-          const probs = (v as string[]).map((t) => [t, hnTitleQueryProblem(t)] as const).filter(([, p]) => p);
-          if (probs.length) {
-            errors.push(`keywords.hn_title_queries: ${probs.map(([t, p]) => `${JSON.stringify(t)} ${p}`).join("; ")}`);
-            continue;
-          }
-          if (new Set((v as string[]).map((t) => t.trim().toLowerCase())).size !== v.length) {
-            errors.push("keywords.hn_title_queries: duplicate term");
-            continue;
-          }
-        }
-        if (k === "gmail_senders") {
-          // PASS-S1.5: exact addresses only (local@domain), ≤ 20, no duplicates.
-          if (v.length > GMAIL_SENDERS_MAX) {
-            errors.push(`keywords.gmail_senders: more than ${GMAIL_SENDERS_MAX} addresses`);
-            continue;
-          }
-          const badAddr = (v as string[]).filter((t) => !GMAIL_SENDER_RE.test(t.trim()) || t.trim() !== t);
-          if (badAddr.length) {
-            errors.push(`keywords.gmail_senders: not an exact local@domain address: ${badAddr.map((t) => JSON.stringify(t)).join(", ")}`);
-            continue;
-          }
-          if (new Set((v as string[]).map((t) => t.toLowerCase())).size !== v.length) {
-            errors.push("keywords.gmail_senders: duplicate address");
-            continue;
-          }
-        }
-        if (k === "ai_terms" || k === "politics_deny") {
-          // Regex fragments (same as the code lists): each must compile on its own.
-          for (const t of v as string[]) {
-            try {
-              new RegExp(`(?:${t})`, "i");
-            } catch {
-              errors.push(`keywords.${k}: invalid regex fragment ${JSON.stringify(t)}`);
-            }
-          }
-        }
-        out.keywords[k as keyof SageConfig["keywords"]] = [...(v as string[])];
-      }
-    }
-  }
-
-  if (raw.taste !== undefined) {
-    if (!isObj(raw.taste)) errors.push("taste must be an object");
-    else {
-      for (const [k, v] of Object.entries(raw.taste)) {
-        if (k === "weight") {
-          if (typeof v !== "number" || !Number.isFinite(v)) errors.push("taste.weight must be a number");
-          else {
-            const w = Math.min(TASTE_WEIGHT_MAX, Math.max(0, v));
-            if (w !== v) warnings.push(`taste.weight ${v} clamped to ${w}`);
-            out.taste.weight = w;
-          }
-        } else if (k === "max") {
-          if (v !== TASTE_WEIGHT_MAX) errors.push(`taste.max is fixed in code at ${TASTE_WEIGHT_MAX}`);
-        } else errors.push(`unknown field taste.${k}`);
-      }
-    }
-  }
-
-  return errors.length ? { ok: false, errors } : { ok: true, config: out, warnings };
-}
-
-/** Stable JSON (sorted keys) — the input to config_hash. */
-export function canonicalJson(v: unknown): string {
-  if (Array.isArray(v)) return `[${v.map(canonicalJson).join(",")}]`;
-  if (isObj(v)) {
-    return `{${Object.keys(v)
-      .sort()
-      .map((k) => `${JSON.stringify(k)}:${canonicalJson(v[k])}`)
-      .join(",")}}`;
-  }
-  return JSON.stringify(v);
+  return validateWithRules(raw, limitsFromCode());
 }
 
 /** Sources that are switched off in a (validated) config. */

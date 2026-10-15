@@ -6,6 +6,7 @@
  */
 import type { SageConfig, SourceId } from "./sage-config-types";
 import { orderTasteShelf } from "./x-taste-meter";
+import type { SageLimits } from "./sage-config-rules";
 
 /** Config source id → A4 soft-fail meter chip id. */
 export function softMeterSourceId(id: SourceId): string {
@@ -61,7 +62,16 @@ export type SageSetupView = {
   sources: SetupSourceRow[];
   keywords: { id: string; terms: string[] }[];
   taste: { weight: number; max: number };
+  /** PASS-C3.1 (scripts/desk-view.ts + ingest): the rule inputs from code, for the browser editor. */
+  limits?: SageLimits;
+  /** PASS-C3.1: the committed desk/config/sage-sources.json as parsed (null = unreadable / bad JSON). */
+  config?: unknown;
+  /** PASS-C3.1: sha256 of the committed file bytes (the draft's base_hash). */
+  file_hash?: string;
 };
+
+/** PASS-C3.1 editor fields (written next to the C2 view; see sage-config-disk.ts setupEditFields). */
+export type SetupEditFields = { limits: SageLimits; config: unknown; file_hash: string };
 
 function capsText(id: SourceId, c: SageConfig): string {
   const s = c.sources[id] as Record<string, unknown>;
@@ -100,16 +110,43 @@ export function buildSetupView(
   };
 }
 
+/**
+ * The ?view=setup module. PASS-C3: the editor fields repeat the code defaults several times (limits.defaults, the
+ * baseline lists, the committed config, the C2 keyword lists), so every repeat of a defaults sub-tree is emitted as a
+ * reference to one `D` const — same values, ~half the lazy-chunk bytes. Deterministic (same input ⇒ same text).
+ */
+export function renderSageSetupModule(v: SageSetupView): string {
+  const D = v.limits?.defaults;
+  const refs = new Map<string, string>();
+  const walk = (x: unknown, path: string) => {
+    if (typeof x !== "object" || x === null) return;
+    const k = JSON.stringify(x);
+    if (k.length > 24 && !refs.has(k)) refs.set(k, path);
+    for (const [key, y] of Object.entries(x)) walk(y, Array.isArray(x) ? `${path}[${key}]` : `${path}.${key}`);
+  };
+  if (D) walk(D, "D");
+  const ser = (x: unknown, ind: string, top = false, noRef = false): string => {
+    if (typeof x !== "object" || x === null) return JSON.stringify(x);
+    const ref = top || noRef ? undefined : refs.get(JSON.stringify(x));
+    if (ref) return ref;
+    const next = `${ind}  `;
+    if (Array.isArray(x)) return x.length ? `[\n${x.map((y) => next + ser(y, next, false, noRef)).join(",\n")}\n${ind}]` : "[]";
+    const e = Object.entries(x).filter(([, y]) => y !== undefined);
+    return e.length ? `{\n${e.map(([k, y]) => `${next}${JSON.stringify(k)}: ${ser(y, next, false, noRef)}`).join(",\n")}\n${ind}}` : "{}";
+  };
+  return `/** PASS-C2/C3 ?view=setup payload — written by ingest + scripts/desk-view.ts. LAZY chunk only (dynamic import); never First Load. */
+import type { SageSetupView } from "@/lib/sage-setup";
+${D ? `\n/** Code defaults — referenced below wherever the same values repeat. */\nconst D: NonNullable<SageSetupView["limits"]>["defaults"] = ${ser(D, "", true, true)};\n` : ""}
+export const SAGE_SETUP: SageSetupView = ${ser(v, "", true)};
+`;
+}
+
 export function renderSageSetupTs(
   l: SetupLoaded,
   crawl: { stamp: string; rows: { id: string; rows: number; status: string; reason: string | null }[] },
+  edit?: SetupEditFields,
 ): string {
-  const v = buildSetupView(l, crawl);
-  return `/** PASS-C2 ?view=setup payload — written by ingest. LAZY chunk only (dynamic import); never First Load. */
-import type { SageSetupView } from "@/lib/sage-setup";
-
-export const SAGE_SETUP: SageSetupView = ${JSON.stringify(v, null, 2)};
-`;
+  return renderSageSetupModule({ ...buildSetupView(l, crawl), ...(edit ?? {}) });
 }
 
 export type SageDeskConfig = { taste_on: boolean; taste_visible_cap: number; taste_weight: number; taste_idx: number[] | null };

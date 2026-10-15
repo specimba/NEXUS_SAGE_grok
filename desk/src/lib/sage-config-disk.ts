@@ -17,9 +17,11 @@ import {
   defaultSageConfig,
   SAGE_CONFIG_LAST_GOOD_PATH,
   SAGE_CONFIG_PATH,
+  limitsFromCode,
   validateSageConfig,
   type SageConfig,
 } from "./sage-config";
+import type { SetupEditFields } from "./sage-setup";
 
 export type LoadedSageConfig = {
   config: SageConfig;
@@ -111,4 +113,17 @@ export function applySageConfig(c: SageConfig): void {
     seed: c.keywords.gmail_seed,
     senders: c.keywords.gmail_senders,
   });
+}
+
+/** PASS-C3.1: SAGE_SETUP.limits / .config / .file_hash — the committed file as-is (bytes hashed, JSON parsed) + code limits. */
+export function setupEditFields(root: string, configPath = SAGE_CONFIG_PATH): SetupEditFields {
+  const p = resolve(root, configPath);
+  const bytes = existsSync(p) ? readFileSync(p) : Buffer.alloc(0);
+  let config: unknown = null;
+  try {
+    config = JSON.parse(bytes.toString("utf8"));
+  } catch {
+    config = null;
+  }
+  return { limits: limitsFromCode(), config, file_hash: createHash("sha256").update(bytes).digest("hex") };
 }

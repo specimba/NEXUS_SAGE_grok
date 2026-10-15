@@ -145,7 +145,7 @@ import { markSeen, parseSeenIndex } from "../src/lib/seen-index";
 import { CRAWL_TAPE_PATH, parseCrawlTape, recordCrawl } from "../src/lib/day-tape";
 import { STALE_GUARD_HOURS } from "../src/lib/crawl-staleness";
 import { runConcurrent, runWithBudget, SOURCE_BUDGET_MS, type SourceRun } from "../src/lib/crawl-budget";
-import { applySageConfig, loadSageConfig, type LoadedSageConfig } from "../src/lib/sage-config-disk";
+import { applySageConfig, loadSageConfig, setupEditFields, type LoadedSageConfig } from "../src/lib/sage-config-disk";
 import { offSources, type SourceId } from "../src/lib/sage-config";
 import { renderSageDeskConfigTs, renderSageSetupTs, softMeterSourceId } from "../src/lib/sage-setup";
 
@@ -1739,7 +1739,7 @@ async function main() {
     renderSageSetupTs(sageCfg, {
       stamp,
       rows: crawlSources.map((r) => ({ id: r.id, rows: r.rows, status: r.status, reason: r.reason ?? null })),
-    }),
+    }, setupEditFields(root)),
   );
   writeText(seenPath, `${JSON.stringify(seenIndex, null, 2)}\n`);
   // UX-NEXT-3 §2 day tape: this crawl's stamp + new-cluster count (first_seen = stamp), rolling CRAWL_TAPE_KEEP.

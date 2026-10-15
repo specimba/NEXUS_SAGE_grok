@@ -286,19 +286,27 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
     window.addEventListener("hashchange", onHash);
     return () => window.removeEventListener("hashchange", onHash);
   }, []);
+  // PASS-C2/C3 · ?view=setup: read after mount and on popstate (static HTML never differs); lazy chunk only then.
+  const [Setup, setSetup] = useState<null | (() => ReactNode)>(null);
   const go = useCallback((id: Lane) => {
     setLane(id);
-    if (typeof window !== "undefined") window.location.hash = id;
+    setSetup(null);
+    const { pathname, search } = window.location;
+    // A lane tab leaves Setup (PASS-C3: it takes over the lane) — drop ?view=setup, keep Back working.
+    if (viewFromSearch(search) === SETUP_VIEW) window.history.pushState(null, "", `${pathname}${withView(search, null)}#${id}`);
+    else window.location.hash = id;
   }, []);
 
   // ── Beat 11 · lead log view (?view=leadlog, read after mount ⇒ static HTML never differs) ──
   const [logOpen, setLogOpen] = useState(false);
-  // PASS-C2 · ?view=setup: read after mount (static HTML never differs); the lazy chunk loads only then.
-  const [Setup, setSetup] = useState<null | (() => ReactNode)>(null);
   useEffect(() => {
-    const read = () => setLogOpen(viewFromSearch(window.location.search) === LEADLOG_VIEW);
+    const read = () => {
+      const v = viewFromSearch(window.location.search);
+      setLogOpen(v === LEADLOG_VIEW);
+      if (v === SETUP_VIEW) loadSetup().then((m) => setSetup(() => m.SetupView));
+      else setSetup(null);
+    };
     read();
-    if (viewFromSearch(window.location.search) === SETUP_VIEW) loadSetup().then((m) => setSetup(() => m.SetupView));
     window.addEventListener("popstate", read);
     return () => window.removeEventListener("popstate", read);
   }, []);
@@ -538,7 +546,7 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
             </div>
           </div>
           <nav className="desk-lane" aria-label="Lanes">
-            {laneTabs(lane, laneReady).map((t) => (
+            {laneTabs(lane, laneReady).map(({ active, ...t }) => ({ ...t, active: active && !Setup })).map((t) => (
               <button
                 key={t.id}
                 type="button"
@@ -560,7 +568,7 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
         <div className="desk-stage sage-ticks relative overflow-hidden">
           <div className="crt-rain" aria-hidden />
           <div className="desk-stage-rail relative z-10">
-            <span className="block-cursor">&gt; lane · {lane}</span>
+            <span className="block-cursor">&gt; lane · {Setup ? SETUP_VIEW : lane}</span>
             {q && !filterOpen ? (
               <button type="button" className="desk-filter-chip focus-phosphor" onClick={clearFilter} aria-label={`Clear filter ${q}`}>
                 filter: {q} ×
@@ -569,7 +577,7 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
             <span className="tabular-nums">policy {CYCLE.leadPolicy} · pins {CYCLE.pins.length}/3</span>
           </div>
           <div className="relative z-10 p-3 md:p-4">
-            {Setup ? <Setup /> : null}
+            {Setup ? <Setup /> : (
             <DeskKeysCtx.Provider value={keysCtx}>
             {lane === "brief" ? (
               <LeadLogCtx.Provider value={leadLogState}>
@@ -582,6 +590,7 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
             {lane === "voice" ? <Voice /> : null}
             {lane === "governance" ? <Gov /> : null}
             </DeskKeysCtx.Provider>
+            )}
           </div>
         </div>
       </main>

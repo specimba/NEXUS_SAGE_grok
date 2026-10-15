@@ -1,69 +1,89 @@
 "use client";
 /**
- * PASS-C2 — read-only Setup view (`?view=setup`). Lazy chunk: desk.tsx dynamic-imports this file only when the
- * URL asks for it, so neither the component nor the SAGE_SETUP payload is in First Load. No edit controls.
+ * PASS-C2 → UX-NEXT-3 idea 3 — Setup as a patch bay (`?view=setup`), read-only. Lazy chunk: desk.tsx dynamic-imports
+ * this file only when the URL asks for it, so neither the component nor SAGE_SETUP is in First Load.
+ * PASS-C3: the `edit` chip (pushState `&edit=1`, re-read on popstate) lazy-loads setup-editor.tsx — the only place
+ * with controls. This file stays control-free: edit desk/config/sage-sources.json by commit.
  */
+import { useEffect, useState, type ComponentType } from "react";
 import { SAGE_SETUP } from "@/data/sage-setup";
 import { IST_LABEL, istDateTime } from "@/lib/ist-time";
+import { setupRoute } from "@/lib/setup-route";
+import type { SageSetupView } from "@/lib/sage-setup";
+import { bayCounts, ReadOnlyBay } from "./setup-bay";
+
+type EditorProps = { s: SageSetupView };
+const loadEditor = () => import("./setup-editor");
 
 export function SetupView() {
   const s = SAGE_SETUP;
+  const [edit, setEdit] = useState(false);
+  const [Editor, setEditor] = useState<null | ComponentType<EditorProps>>(null);
+  useEffect(() => {
+    const read = () => setEdit(setupRoute(window.location.search).edit);
+    read();
+    window.addEventListener("popstate", read);
+    return () => window.removeEventListener("popstate", read);
+  }, []);
+  useEffect(() => {
+    if (edit && !Editor && s.limits) loadEditor().then((m) => setEditor(() => m.SetupEditor));
+  }, [edit, Editor, s.limits]);
+  const toggle = () => {
+    const p = new URLSearchParams(window.location.search);
+    if (edit) p.delete("edit");
+    else p.set("edit", "1");
+    window.history.pushState(window.history.state, "", window.location.pathname + "?" + p + window.location.hash);
+    setEdit(!edit);
+  };
+  const c = bayCounts(s.sources);
+  const editing = edit && !!Editor;
   return (
-    <section className="leadlog sage-setup sage-panel" aria-label="Setup · active crawl config" data-config-hash={s.config_hash}>
+    <section className="leadlog sage-setup sage-panel" aria-label="Setup · active crawl config" data-config-hash={s.config_hash} data-edit={editing ? "1" : "0"}>
       <header className="leadlog-head">
-        <span className="leadlog-kicker">SETUP · config</span>
+        <span className="leadlog-kicker">SETUP · patch bay{editing ? " · draft" : ""}</span>
         <span className="leadlog-meta tabular-nums">
           hash {s.config_hash} · {s.status === "ok" ? "ok" : <span className="sage-deny">config invalid · {s.used}</span>}
         </span>
-        {/* Close = the desk without ?view (plain link: keeps the close logic out of First Load). */}
-        <a className="leadlog-close focus-phosphor" href="./" aria-label="Close setup view">
+        {/* Close = Brief without ?view (plain link: keeps the close logic out of First Load). */}
+        <a className="leadlog-close focus-phosphor" href="./#brief" aria-label="Close setup view">
           close
         </a>
       </header>
-      <p className="sage-setup-line tabular-nums">
-        {s.since_commit ? `since ${s.since_commit}` : "since: next crawl records it"}
-        {s.since_at ? ` · ${istDateTime(s.since_at)} ${IST_LABEL}` : ""}
-        {s.stamped_at ? ` · crawl ${istDateTime(s.stamped_at)} ${IST_LABEL}` : ""}
-      </p>
-      {s.errors.length ? (
-        <ul className="sage-setup-errors">
+      <div className="bay-sum tabular-nums">
+        <span>
+          <b>{c.sources}</b> sources
+        </span>
+        <span>
+          <b>{c.live}</b> live
+        </span>
+        <span className="bay-sum-dim">{c.boxOnly} box-only</span>
+        <span className={c.softFail ? "bay-sum-warn" : "bay-sum-dim"}>{c.softFail} soft-fail</span>
+        <span>
+          <b>{c.rows}</b> rows last crawl
+        </span>
+        <span className="bay-sum-dim">
+          {s.since_commit ? `since ${s.since_commit}` : "since: next crawl records it"}
+          {s.since_at ? ` · ${istDateTime(s.since_at).slice(5)} ${IST_LABEL}` : ""}
+        </span>
+        {s.limits ? (
+          <button type="button" className="bay-edit focus-phosphor" onClick={toggle} aria-pressed={edit} title="draft a config change (copy JSON → GitHub PR)">
+            {edit ? "done" : "edit"}
+          </button>
+        ) : null}
+      </div>
+      {!editing && s.errors.length ? (
+        <ul className="sage-setup-errors" aria-label="config invalid">
           {s.errors.map((e) => (
             <li key={e}>{e}</li>
           ))}
         </ul>
       ) : null}
-      <ul className="sage-setup-sources" aria-label="Sources">
-        <li className="sage-setup-src sage-setup-colhead" aria-hidden>
-          <span>source</span>
-          <span>on</span>
-          <span>last</span>
-          <span>state</span>
-          <span className="sage-setup-caps">caps</span>
-        </li>
-        {s.sources.map((r) => (
-          <li key={r.id} className="sage-setup-src tabular-nums" data-source={r.id} data-state={r.state}>
-            <span>{r.id}</span>
-            <span>{r.on ? "on" : "off"}</span>
-            <span>{r.last_rows ?? "—"}</span>
-            <span className={r.state === "soft-fail" || r.state === "off" ? "sage-deny" : undefined}>{r.state}</span>
-            <span className="sage-setup-caps">{r.caps}</span>
-          </li>
-        ))}
-      </ul>
-      <div className="sage-setup-kw">
-        {s.keywords.map((k) => (
-          <details key={k.id}>
-            <summary className="tabular-nums">
-              {k.id} · {k.terms.length}
-            </summary>
-            <p className="sage-setup-terms">{k.terms.join(" · ")}</p>
-          </details>
-        ))}
-      </div>
-      <p className="sage-setup-line tabular-nums">
-        taste weight {s.taste.weight} (max {s.taste.max}) · Pulse taste shelf order only
-      </p>
-      <p className="sage-setup-line sage-setup-muted">edit desk/config/sage-sources.json by commit</p>
+      {editing && Editor ? <Editor s={s} /> : <ReadOnlyBay s={s} />}
+      {editing ? null : (
+        <p className="bay-foot tabular-nums">
+          edit desk/config/sage-sources.json by commit{s.stamped_at ? ` · crawl ${istDateTime(s.stamped_at)} ${IST_LABEL}` : ""}
+        </p>
+      )}
     </section>
   );
 }

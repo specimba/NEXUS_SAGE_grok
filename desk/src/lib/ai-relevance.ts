@@ -14,8 +14,8 @@ export let AI_TERMS =
  * stay in code. The default list is read off the literal above, so the seed rebuilds the exact pre-C2 regex.
  * Crawl/rank only (tree-shaken out of the browser bundle).
  */
-const AI_TERMS_HEAD = "(?<!\\w)a\\.i\\.(?!\\w)|\\b\\d+(\\.\\d+)?b[- ]param\\w*|\\b(";
-const AI_TERMS_TAIL = ")\\b|(llm|vlm|gpt)s?\\b|gpt-";
+export const AI_TERMS_HEAD = "(?<!\\w)a\\.i\\.(?!\\w)|\\b\\d+(\\.\\d+)?b[- ]param\\w*|\\b(";
+export const AI_TERMS_TAIL = ")\\b|(llm|vlm|gpt)s?\\b|gpt-";
 const AI_TERMS_LITERAL = AI_TERMS;
 export function aiTermsDefault(): string[] {
   const s = AI_TERMS_LITERAL.source;

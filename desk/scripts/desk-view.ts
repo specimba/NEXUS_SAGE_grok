@@ -6,7 +6,7 @@
  * the modules ingest + rank-snapshot just wrote. Deterministic: same raw modules ⇒ byte-identical output.
  * Size is fixed by DESK_VIEW_CAPS (src/lib/desk-view.ts) and LEAD_LOG_CAPS (src/lib/lead-log.ts), not by the crawl.
  *   bun scripts/desk-view.ts          write (only when the content changed)
- *   bun scripts/desk-view.ts --check  exit 1 if either file is not what the raw modules produce
+ *   bun scripts/desk-view.ts --check  exit 1 if any generated file (incl. src/data/sage-setup.ts limits/config/file_hash) is not what the raw modules produce
  *   bun scripts/desk-view.ts --report what the caps trimmed from THIS crawl (why, how old) + lead-log days; writes
  *                                     nothing, always exit 0 — live-data checks are a report, never a test
  */
@@ -19,6 +19,9 @@ import { rawDeskViewInputs } from "@/lib/desk-view-inputs";
 import { fitDeskView } from "@/lib/desk-view-module";
 import { renderDeskViewPapersModule } from "@/lib/desk-view-module";
 import { renderLeadLogModule } from "@/lib/lead-log-module";
+import { SAGE_SETUP } from "@/data/sage-setup";
+import { setupEditFields } from "@/lib/sage-config-disk";
+import { renderSageSetupModule } from "@/lib/sage-setup";
 
 const desk = resolve(import.meta.dir, "..");
 const historyPath = resolve(desk, "artifacts/sage/lead-history.json");
@@ -31,6 +34,8 @@ const files = [
   { name: "src/data/desk-view.ts", body: fit.body },
   { name: "src/data/desk-view-papers.ts", body: renderDeskViewPapersModule(fit.view, extras) },
   { name: "src/data/lead-log-view.ts", body: logBody },
+  // PASS-C3.1: the Setup editor's rule inputs (limits from code, committed config + its file hash) next to the C2 view.
+  { name: "src/data/sage-setup.ts", body: renderSageSetupModule({ ...SAGE_SETUP, ...setupEditFields(desk) }) },
 ].map((f) => ({ ...f, path: resolve(desk, f.name) }));
 const stale = files.filter((f) => (existsSync(f.path) ? readFileSync(f.path, "utf8") : null) !== f.body);
 const v = fit.view;

@@ -122,27 +122,44 @@ for (const lane of LANES) {
     for (const it of r2?.items ?? []) fails.push(`voice(fold open): text right edge ${it.right}px > ${W} · <${it.tag}> "${it.text}"`);
   }
 }
-// PASS-C2: the read-only Setup view (?view=setup, lazy chunk) obeys the same 390 rules — keyword folds opened too.
-{
+// PASS-C2 → UX-NEXT-3/PASS-C3: the Setup patch bay (?view=setup, lazy chunk; every `+N more` opened) and the editor
+// (&edit=1, own lazy chunk; draft bar) obey the same 390 rules; ids never break mid-word; the draft bar stays inside 390.
+for (const edit of [false, true]) {
   const u = new URL(base);
   u.searchParams.set("view", "setup");
+  if (edit) u.searchParams.set("edit", "1");
+  const tag = edit ? "setup&edit" : "setup";
   await cdp("Page.navigate", { url: `${u.href}#brief` });
   for (let i = 0; i < 150; i++) { if ((await evalv("document.readyState")) === "complete") break; await sleep(200); }
   const got = await evalv(`(async () => {
-    for (let i = 0; i < 50 && !document.querySelector(".sage-setup"); i++) await new Promise((r) => setTimeout(r, 200));
-    const v = document.querySelector(".sage-setup"); if (!v) return "missing";
+    const sel = ${JSON.stringify(edit ? ".sage-setup .bay-draft" : ".sage-setup .bay-grid")};
+    for (let i = 0; i < 75 && !document.querySelector(sel); i++) await new Promise((r) => setTimeout(r, 200));
+    const v = document.querySelector(".sage-setup"); if (!v || !document.querySelector(sel)) return "missing";
     v.querySelectorAll("details").forEach((d) => (d.open = true));
+    v.querySelectorAll(".bay-more").forEach((b) => b.click());
     await new Promise((r) => setTimeout(r, 600));
     return v.getAttribute("data-config-hash") || "nohash";
   })()`);
-  if (got === "missing") fails.push("setup: ?view=setup did not render the Setup view (lazy chunk)");
+  if (got === "missing") fails.push(`${tag}: ?view=${tag} did not render (lazy chunk)`);
   else {
     const r = await evalv(probe);
-    if (r && r.scrollW > W) fails.push(`setup: horizontal scroll (scrollWidth ${r.scrollW} > ${W})`);
-    for (const it of r?.items ?? []) fails.push(`setup: text right edge ${it.right}px > ${W} · <${it.tag}> "${it.text}"`);
-    console.log(`  setup: config_hash ${got} · keyword folds open`);
+    if (r && r.scrollW > W) fails.push(`${tag}: horizontal scroll (scrollWidth ${r.scrollW} > ${W})`);
+    for (const it of r?.items ?? []) fails.push(`${tag}: text right edge ${it.right}px > ${W} · <${it.tag}> "${it.text}"`);
+    const geo = await evalv(`(() => {
+      const out = [];
+      for (const el of document.querySelectorAll(".bay-id")) {
+        const g = document.createRange(); g.selectNodeContents(el);
+        const tops = new Set([...g.getClientRects()].filter((q) => q.width > 1).map((q) => Math.round(q.top)));
+        if (tops.size > 1) out.push("id breaks mid-word: " + el.textContent);
+      }
+      const bar = document.querySelector(".bay-draft");
+      if (bar) { const q = bar.getBoundingClientRect(); if (q.left < 0 || q.right > ${W}) out.push("draft bar outside 390: " + q.left.toFixed(1) + "…" + q.right.toFixed(1)); }
+      return { out, mods: document.querySelectorAll(".bay-mod").length, chips: document.querySelectorAll(".bay-chips > span").length };
+    })()`);
+    for (const o of geo?.out ?? []) fails.push(`${tag}: ${o}`);
+    console.log(`  ${tag}: config_hash ${got} · ${geo?.mods} modules · ${geo?.chips} chips (all open)`);
   }
 }
 if (fails.length) { console.error(`overflow-390 FAIL (${fails.length}) at ${base}`); for (const f of fails) console.error(" -", f); done(1); }
-console.log(`overflow-390 OK · ${LANES.length} lanes + setup view at ${W}px · exempt: ${EXEMPT_CLASSES.join(",")} · ${base}`);
+console.log(`overflow-390 OK · ${LANES.length} lanes + setup bay + setup editor at ${W}px · exempt: ${EXEMPT_CLASSES.join(",")} · ${base}`);
 done(0);

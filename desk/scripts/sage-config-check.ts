@@ -7,7 +7,7 @@
  */
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { loadSageConfig } from "../src/lib/sage-config-disk";
+import { loadSageConfig, setupEditFields } from "../src/lib/sage-config-disk";
 import { renderSageDeskConfigTs, renderSageSetupTs } from "../src/lib/sage-setup";
 import { X_TASTE } from "../src/data/x-taste";
 import { PULSE_CLUSTERS } from "../src/data/pulse-clusters";
@@ -24,7 +24,7 @@ if (process.argv.includes("--emit")) {
   const last = existsSync(ingestPath) ? JSON.parse(readFileSync(ingestPath, "utf8")) : {};
   const rows = (last.crawl_sources ?? []) as { id: string; rows: number; status: string; reason: string | null }[];
   writeFileSync(resolve(root, "src/data/sage-desk-config.ts"), renderSageDeskConfigTs(l, { items: X_TASTE.items, pulseTitles: PULSE_CLUSTERS.map((c) => c.title) }));
-  writeFileSync(resolve(root, "src/data/sage-setup.ts"), renderSageSetupTs(l, { stamp: String(last.stamped_at ?? ""), rows }));
+  writeFileSync(resolve(root, "src/data/sage-setup.ts"), renderSageSetupTs(l, { stamp: String(last.stamped_at ?? ""), rows }, setupEditFields(root)));
   console.log("  wrote src/data/sage-desk-config.ts + src/data/sage-setup.ts");
 }
 process.exit(l.status === "ok" ? 0 : 1);

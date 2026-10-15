@@ -153,6 +153,8 @@ if [ "${#fails[@]}" -eq 0 ] && [ "${PAGES_SKIP_LOCAL_FONTCHECK:-0}" != "1" ]; th
 fi
 # 2h. overflow-390 (headless). SAGE_OVERFLOW_390=auto (CI): run only if non-data code changed since the main SHA in the
 #     last gh-pages "publish main@<sha>" commit (data-only crawls skip it; they keep the First Load gate above).
+#     PASS-C3 11a: desk/config/sage-sources.json is DATA too — bounded by the C2 ceilings, its rendering covered at build
+#     time by the Setup overflow-390 pass + the max-size fixture (scripts/setup-max-fixture.ts) — so a config merge publishes.
 #     Not rendered (ci/, desk/scripts/, tests, *.md) doesn't count. Code changed + no Chrome ⇒ SAGE_CHROME_INSTALL=1 fetches
 #     chrome-headless-shell (scripts/ci-chrome.sh); still no Chrome / install failed ⇒ fail closed, never a silent skip. Unknown base SHA ⇒ treated as code changed.
 #     Default (box): not run here — scripts/visual-check.mjs runs it.
@@ -171,13 +173,15 @@ if [ "${#fails[@]}" -eq 0 ] && [ "${SAGE_OVERFLOW_390:-off}" = "auto" ]; then
     if [ -n "$full" ]; then
       changed_code="$(git -C "$REPO" diff --name-only "$full" HEAD -- . ':(exclude)desk/src/data' ':(exclude)desk/artifacts' \
         ':(exclude)packs' ':(exclude)desk/packs' ':(exclude)logs' ':(exclude)refs' \
-        ':(exclude)ci' ':(exclude)desk/scripts' ':(exclude)desk/src/lib/__tests__' ':(exclude)desk/public/feed.xml' ':(exclude,glob)**/*.md' || echo '?diff-failed')"
+        ':(exclude)ci' ':(exclude)desk/scripts' ':(exclude)desk/src/lib/__tests__' ':(exclude)desk/public/feed.xml' ':(exclude,glob)**/*.md' \
+        ':(exclude)desk/config/sage-sources.json' || echo '?diff-failed')"
       if [ -z "$changed_code" ]; then code_changed=0; why="data-only since main@$pub_sha"
       else why="code changed since main@$pub_sha: $(echo "$changed_code" | head -5 | tr '\n' ' ')"; fi
     else why="main@$pub_sha not fetchable"; fi
   fi
   ov_why="$why"
   if [ "$code_changed" = 0 ]; then
+    ov390="skipped"
     log "overflow-390 skipped — $why"
   else
     # CI (SAGE_CHROME_INSTALL=1): fetch chrome-headless-shell on demand (scripts/ci-chrome.sh) — only on this code-changed
