@@ -23,5 +23,6 @@ export const SHELF: ShelfItem[] = [
   { href: "https://arxiv.org/abs/2610.20597", label: "arxiv.org/abs/2610.20597", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.20588", label: "arxiv.org/abs/2610.20588", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.20587", label: "arxiv.org/abs/2610.20587", reason: "arxiv-shelf" as const },
-  { href: "https://github.com/sunilmehta-si/agentic-code-review-tool", label: "sunilmehta-si/agentic-code-review-tool", reason: "github-search-shelf" as const },
+  { href: "https://github.com/jamiesonmcneil/ai-governance-framework", label: "jamiesonmcneil/ai-governance-framework", reason: "github-search-shelf" as const },
+  { href: "https://github.com/Narendra-17/LLM-Shield", label: "Narendra-17/LLM-Shield", reason: "github-search-shelf" as const },
 ];
