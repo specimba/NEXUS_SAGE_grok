@@ -11,6 +11,7 @@ import type { SourceHealthRow } from "@/lib/source-health";
 import type { HeatWindow } from "@/lib/topic-heat";
 import type { WireRow } from "@/lib/wire";
 import type { DayTapeSlot } from "@/lib/day-tape";
+import type { LeadClosest } from "@/lib/lead-pick";
 
 export type DeskViewStamps = {
   CRAWL_AT: string;
@@ -27,6 +28,10 @@ export type DeskViewExtras = {
   LEAD_FIRST_AT: string | null;
   LEAD_TODAY: SlimLead | null;
   LEAD_YESTERDAY: SlimLead | null;
+  /** UX-1: HELD days only — the closest ruled-out candidate (never Gmail / X / Taste). */
+  LEAD_CLOSEST: LeadClosest | null;
+  /** UX-1: date of the latest real pick (never a HELD entry). */
+  LEAD_LAST_PICK: string | null;
   RANK_CURRENT: Omit<RankSnapshot, "at">;
   RANK_PREV: Omit<RankSnapshot, "at"> | null;
   RANK_MOVED: readonly MovedRow[];
@@ -67,6 +72,7 @@ export function renderDeskViewModule(view: DeskView, x: DeskViewExtras): string 
  */
 import type { MovedRow, RankSnapshot } from "@/lib/corroboration";
 import type { DeskViewTrim, MemberRow, OrphanCluster, SlimLead, XRef } from "@/lib/desk-view";
+import type { LeadClosest } from "@/lib/lead-pick";
 import type { SourceHealthRow } from "@/lib/source-health";
 import type { HeatWindow } from "@/lib/topic-heat";
 import type { WireRow } from "@/lib/wire";
@@ -87,6 +93,8 @@ export const LEAD_HELD: boolean = ${j(x.LEAD_HELD)};
 export const LEAD_FIRST_AT: string | null = ${j(x.LEAD_FIRST_AT)};
 export const LEAD_TODAY: SlimLead | null = ${j(x.LEAD_TODAY)};
 export const LEAD_YESTERDAY: SlimLead | null = ${j(x.LEAD_YESTERDAY)};
+export const LEAD_CLOSEST: LeadClosest | null = ${j(x.LEAD_CLOSEST)};
+export const LEAD_LAST_PICK: string | null = ${j(x.LEAD_LAST_PICK)};
 
 /** Day tape: yesterday's last crawl + today's crawls (at · new clusters · pick). Reader-hash ignores this line. */
 export const DAY_TAPE: DayTapeSlot[] = ${j(x.DAY_TAPE ?? [])};

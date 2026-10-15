@@ -15,11 +15,12 @@ import { SOURCE_HEALTH, SOURCE_HEALTH_AT } from "@/data/source-health";
 import { WIRE_CRAWL_AT, WIRE_PREV_CRAWL_AT, WIRE_ROWS } from "@/data/wire";
 import { TOPIC_HEAT_AT, TOPIC_HEAT_WINDOWS } from "@/data/topic-heat";
 import { RANK_CURRENT, RANK_MOVED, RANK_PREV } from "@/data/corroboration-rank";
-import { LEAD_FIRST_AT, LEAD_HELD, LEAD_TODAY, LEAD_YESTERDAY } from "@/data/lead-pick";
+import { LEAD_FIRST_AT, LEAD_HELD, LEAD_LAST_PICK, LEAD_TODAY, LEAD_YESTERDAY } from "@/data/lead-pick";
+import { leadClosest, ownPublisherLabel, pubLabel, type LeadEntry } from "@/lib/lead-pick";
 import { SHELF } from "@/data/shelf";
 import { PAPERS } from "@/data/papers";
 import { memberInfo } from "@/lib/member-info";
-import { slimLead, type DeskViewInput } from "@/lib/desk-view";
+import { slimLead, type DeskViewInput, type SlimLead } from "@/lib/desk-view";
 import type { DeskViewExtras } from "@/lib/desk-view-module";
 import type { PaperInput } from "@/lib/pulse-v5";
 import { existsSync, readFileSync } from "node:fs";
@@ -45,6 +46,19 @@ const noAt = <T extends { at?: unknown }>(s: T | null) => {
   return rest;
 };
 
+/**
+ * UX-1 gate rail: the lead's own-publisher label. The pick-time `pub` crawl field when recorded; else the live group (same
+ * rule); else the lead item named by the cluster id (cl:<lead id>) when it is not a Google News item; else none.
+ */
+export function withPub(e: LeadEntry | null): SlimLead | null {
+  const s = slimLead(e);
+  if (!s || s.pub || s.reason !== "picked" || !s.cluster_id) return s;
+  const c = PULSE_CLUSTERS.find((x) => x.id === s.cluster_id);
+  const leadId = s.cluster_id.startsWith("cl:") ? s.cluster_id.slice(3) : "";
+  const pub = c ? ownPublisherLabel(c) : leadId && !/^(?:gnews|anl|rel):/.test(leadId) ? pubLabel(leadId) : null;
+  return pub ? { ...s, pub } : s;
+}
+
 export function rawDeskViewInputs(tape: CrawlTapeLog = readCrawlTape()): { input: DeskViewInput; extras: DeskViewExtras } {
   const itemIds = [...HN_PULSE.map((h) => h.id), ...GNEWS_RSS.map((g) => g.id), ...RSS_LABS.map((r) => r.id), ...RSS_SECURITY.map((r) => r.id), ...GMAIL_NEWS.map((g) => g.id), ...RSS_ANALYST.map((a) => a.id), ...RELEASES_ATOM.map((r) => r.id)];
   const members = memberInfo();
@@ -64,8 +78,10 @@ export function rawDeskViewInputs(tape: CrawlTapeLog = readCrawlTape()): { input
       stamps: { CRAWL_AT, PULSE_CLUSTERS_AT, SOURCE_HEALTH_AT, WIRE_CRAWL_AT, WIRE_PREV_CRAWL_AT, TOPIC_HEAT_AT },
       LEAD_HELD,
       LEAD_FIRST_AT,
-      LEAD_TODAY: slimLead(LEAD_TODAY),
+      LEAD_TODAY: withPub(LEAD_TODAY),
       LEAD_YESTERDAY: slimLead(LEAD_YESTERDAY),
+      LEAD_CLOSEST: leadClosest(LEAD_TODAY),
+      LEAD_LAST_PICK,
       RANK_CURRENT: noAt(RANK_CURRENT)!,
       RANK_PREV: noAt(RANK_PREV),
       RANK_MOVED,

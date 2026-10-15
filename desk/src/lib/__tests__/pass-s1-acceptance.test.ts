@@ -142,7 +142,15 @@ describe("S1.7 #2 — old sources unchanged (new blocks off via the real config 
     // Same inputs the old crawl produced → same pipeline output, byte for byte.
     const inputs = [...merged.rows.map((r) => fixture.inputs.find((x) => x.id === r.id)!), ...fixture.inputs.filter((x) => x.source !== "hn-algolia")];
     expect(new Set(inputs.map((x) => x.id))).toEqual(new Set(fixture.inputs.map((x) => x.id)));
-    const now = `${JSON.stringify(oldSourcesPipeline({ ...fixture, inputs: fixture.inputs.filter((x) => inputs.includes(x)) }), null, 1)}\n`;
+    // UX-1 clearance plate (stacked after S1) adds pick-time crawl fields only: excluded[].sources/age_h/pub + entry.pub.
+    // Strip exactly those so cluster ids, Wire and the lead still compare byte-for-byte with the pre-S1 golden.
+    const out = oldSourcesPipeline({ ...fixture, inputs: fixture.inputs.filter((x) => inputs.includes(x)) }) as { pick?: { entry?: Record<string, unknown> & { excluded?: Record<string, unknown>[] } } };
+    const e = out.pick?.entry;
+    if (e) {
+      delete e.pub;
+      for (const x of e.excluded ?? []) for (const k of ["sources", "age_h", "pub"]) delete x[k];
+    }
+    const now = `${JSON.stringify(out, null, 1)}\n`;
     expect(createHash("sha256").update(now).digest("hex")).toBe(createHash("sha256").update(goldenText).digest("hex"));
     expect(now).toBe(goldenText);
   });

@@ -30,7 +30,7 @@ import { X_TASTE } from "@/data/x-taste";
 import { diffSnapshots, rankBelowLead, toSnapshot, type RankSnapshot } from "@/lib/corroboration";
 import { CYCLE } from "@/data/cycle";
 import { buildLiveSnapshot, renderUnlockModule, type DigestUnlockSnapshot } from "@/lib/digest-unlock";
-import { applyPick, currentLead, groupFirstAt, leadExcludeReason, decidePick, istanbulDate, readLeadHistory, yesterdayLead, type LeadHistory } from "@/lib/lead-pick";
+import { applyPick, currentLead, groupFirstAt, leadExcludeReason, decidePick, istanbulDate, lastPickDate, readLeadHistory, yesterdayLead, type LeadHistory } from "@/lib/lead-pick";
 import { bucketWindows, countCompanies, countOtherLabs, heatCells, heatLabel, upsertCrawl, type HeatFile } from "@/lib/topic-heat";
 import { applySageConfig, loadSageConfig } from "@/lib/sage-config-disk";
 import { buildWire, readWireSnapshot, wireCounts, wireHeader, wireMark, type WireSnapshot } from "@/lib/wire";
@@ -184,6 +184,9 @@ export const LEAD_HELD = ${leadNow?.reason === "held"};
 
 /** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is >48h old (PASS-L). */
 export const LEAD_FIRST_AT: string | null = ${JSON.stringify(leadFirstAt)};
+
+/** Date of the latest real pick (never a HELD entry) — the HELD card's "last pick" (UX-1). */
+export const LEAD_LAST_PICK: string | null = ${JSON.stringify(lastPickDate(history))};
 `,
 );
 console.log(

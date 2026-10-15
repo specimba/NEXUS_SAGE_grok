@@ -7,8 +7,10 @@ import { CYCLE, WAVES } from "@/data/cycle";
 import {
   CRAWL_AT,
   DAY_TAPE,
+  LEAD_CLOSEST,
   LEAD_FIRST_AT,
   LEAD_HELD,
+  LEAD_LAST_PICK,
   LEAD_TODAY,
   LEAD_YESTERDAY,
   MEMBER_ROWS,
@@ -34,7 +36,8 @@ import { DIGEST_UNLOCK } from "@/data/digest-unlock";
 import { resolveUnlock, withLeadView, type UnlockView, type UnlockRow } from "@/lib/digest-unlock";
 import { DIGEST_CADENCE } from "@/data/digest-cadence";
 import { groupFirstAt, leadAgeBand, leadAgeHours } from "@/lib/lead-pick";
-import { LEAD_HELD_TEXT, leadHeldText, leadView, nextCrawlSlotHHMM, type LeadView } from "@/lib/lead-view";
+import { leadHeldText, leadView, nextCrawlSlotHHMM, type LeadView } from "@/lib/lead-view";
+import { burn, closestGates, nextLeadSlot, staleGates, type Gate } from "@/lib/take-plate";
 import { IST_LABEL, istDateTime, istHHMM, istHHMMSS, istMMDD } from "@/lib/ist-time";
 import { useCheckedAt, useNow } from "@/lib/use-now";
 import { archiveFoldLabel } from "@/lib/archive-fold";
@@ -826,6 +829,91 @@ function LeadInline({ view }: { view: LeadView }) {
   );
 }
 
+/** UX-1 gate rail: one chip per pick gate; `data-pass="0"` = the failed gate (the only amber on the card). */
+function TakeGates({ gates, label }: { gates: Gate[]; label: string }) {
+  return (
+    <div className="take-gates" aria-label={label}>
+      {gates.map((g) => (
+        <span key={g.k} className="take-gate" data-pass={g.pass ? "1" : "0"}>
+          {g.label} <i>{g.note}</i>
+        </span>
+      ))}
+    </div>
+  );
+}
+
+const hhmm = (ms: number) => istanbulHHMM(new Date(ms).toISOString());
+
+/** UX-1 sticky / retry bar: segmented meter that fills from `from` to the next slot `to` (no new timer — `now` is useNow). */
+function TakeBurn({ from, to, now, a, b }: { from: number; to: number; now: number; a: string; b: string }) {
+  const { pct, left } = burn(from, to, now);
+  return (
+    <div className="take-burn" data-burn={pct} aria-label={`${a} ${hhmm(from)}, ${b} ${hhmm(to)} UTC+3, ${left} left`}>
+      <span>
+        {a} <b>{hhmm(from)}</b>
+      </span>
+      <span className="take-burn-bar" aria-hidden="true">
+        <span className="take-burn-fill" style={{ width: `${pct}%` }} />
+      </span>
+      <span>
+        {b} <b>{hhmm(to)}</b> · {left}
+      </span>
+    </div>
+  );
+}
+
+/**
+ * UX-1 HELD → SIGNAL HOLD test card. `held`: nothing cleared the gates — the closest candidate (LEAD_CLOSEST, never
+ * Gmail / X / Taste) with its rail, the failed gate amber. `stale`: the carried lead itself, fresh gate failed (>48h).
+ */
+function TakeHold({ lv, lead, now, openLog }: { lv: LeadView; lead: NonNullable<typeof LEAD_TODAY>; now: number; openLog: () => void }) {
+  const stale = lv.reason === "stale";
+  const from = stale ? Date.parse(LEAD_FIRST_AT ?? "") + 48 * 3_600_000 : Date.parse(LEAD_CLOSEST?.at ?? lead.at);
+  const cand = stale ? lead.headline : LEAD_CLOSEST?.headline;
+  return (
+    <>
+      <div className="take-hold-plate" role="status">
+        <div className="take-hold-bars" aria-hidden="true">
+          {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => (
+            <span key={i} />
+          ))}
+        </div>
+        <p className="take-hold-title font-display">SIGNAL HOLD</p>
+        <p className="take-hold-why" title={leadHeldText(lv.reason)} {...(stale ? { "data-lead-stale": "1" } : { "data-lead-held": "1" })}>
+          {stale ? <>{leadHeldText("stale")} · fresh gate closed</> : `no lead today · nothing cleared the gates at ${hhmm(from)}`}
+        </p>
+        {cand ? (
+          <p className="take-hold-cand">
+            {stale ? "carried lead" : "closest candidate"}
+            <q className="sage-headline" data-lead-closest="1">
+              {cand}
+            </q>
+          </p>
+        ) : null}
+        <TakeGates
+          gates={stale ? staleGates(lead) : closestGates(LEAD_CLOSEST)}
+          label={stale ? "Why the lead is held: story older than 48h" : "Why the closest candidate did not clear: the amber gate failed"}
+        />
+      </div>
+      {Number.isFinite(from) ? <TakeBurn from={from} to={nextLeadSlot(now, lead.date, !stale)} now={now} a="held" b="next try" /> : null}
+      <a
+        className="take-hold-last focus-phosphor"
+        href={`?view=${LEADLOG_VIEW}#brief`}
+        data-leadlog-link="1"
+        aria-label={`Last pick ${LEAD_LAST_PICK ?? lead.date}${stale ? "" : `: ${lead.headline}`} — open the lead log`}
+        onClick={(e) => {
+          if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || e.button !== 0) return;
+          e.preventDefault();
+          openLog();
+        }}
+      >
+        <span>last pick · {LEAD_LAST_PICK ?? lead.date} → log</span>
+        {!stale && lead.headline ? <span className="take-hold-last-head">{lead.headline}</span> : null}
+      </a>
+    </>
+  );
+}
+
 /** Beat 11 — lead log state handed from Desk (URL `?view=leadlog`) to the Brief. */
 type LeadLogState = { leadLog: LeadLog; logOpen: boolean; openLog: () => void; closeLog: () => void };
 const LeadLogCtx = createContext<LeadLogState>({ leadLog: EMPTY_LOG, logOpen: false, openLog: () => {}, closeLog: () => {} });
@@ -836,14 +924,14 @@ function Brief() {
   // Lead staleness: crawl stamp on first render (SSR/static-stable), then the wall clock.
   // 48h lead-age (PASS-L safety net) HELD check runs in the browser after mount (static HTML ships only LEAD_FIRST_AT).
   const leadNow = useNow();
-  const leadAge = leadNow == null ? null : leadAgeHours(LEAD_FIRST_AT, leadNow);
   // HELD (no qualifying story at the pick, e.g. every candidate GNW_ONLY) or lead story >48h old → HELD plate,
   // never the carried headline as if it were today's lead. Same source of truth as the status bar / INGEST line.
   const lv = leadViewAt(leadNow);
   const lead = lv.held ? null : LEAD_TODAY;
   const staleLead = lv.held ? LEAD_TODAY : null;
-  // Next crawl slot (02/06/10/14/18/22 :11 Istanbul): wall clock after mount, crawl stamp in static HTML.
-  const nextTry = nextCrawlSlotHHMM(leadNow ?? Date.parse(CRAWL_AT));
+  // UX-1 time bars: wall clock after mount, crawl stamp in static HTML (same clock as before — no new timer).
+  const nowMs = leadNow ?? Date.parse(CRAWL_AT);
+  const nextTry = nextCrawlSlotHHMM(nowMs); // UX-NEXT-3 §2 day tape "next" slot (the plate itself uses the time bars)
   const chkAt = useCheckedAt(CRAWL_AT);
   const age = leadNow == null ? null : crawlAgeHours(chkAt, leadNow);
   const waveMax = 956;
@@ -897,6 +985,7 @@ function Brief() {
         className={cn(
           "sage-panel sage-ticks sage-bento-hero sage-take px-3 py-3 lg:col-span-6 lg:row-span-1",
           lv.held ? "sage-take-held" : "sage-take-inverse",
+          staleLead && "take-hold",
         )}
         aria-label="Brief take story"
         data-lead-state={lv.held ? lv.reason : "lead"}
@@ -909,31 +998,12 @@ function Brief() {
               : staleLead
                 ? lv.reason === "stale"
                   ? `held · lead ${staleLead.date}`
-                  : `held · last pick ${LEAD_YESTERDAY?.date ?? staleLead.date}`
+                  : `held · last pick ${LEAD_LAST_PICK ?? staleLead.date}`
                 : "no pick yet"}
           </span>
         </div>
         {staleLead ? (
-          <>
-            {lv.reason === "held" ? (
-              <p
-                className="sage-lead-held font-mono text-kicker uppercase tracking-kicker tabular-nums"
-                data-lead-held="1"
-                title="a lead needs ≥2 SRC incl. one non-Google-News publisher · every crawl from 06:00 retries until one qualifies"
-              >
-                {LEAD_HELD_TEXT} · <span className="whitespace-nowrap">next try {nextTry}</span>
-              </p>
-            ) : (
-              <p className="sage-lead-held font-mono text-kicker uppercase tracking-kicker tabular-nums" data-lead-stale="1" title={leadAge != null ? `lead ${Math.floor(leadAge)}h old` : undefined}>
-                {leadHeldText("stale")} · <span className="whitespace-nowrap">next try {nextTry}</span>
-              </p>
-            )}
-            {staleLead.headline ? (
-              <h2 className="sage-take-held-title font-display text-lg normal-case tracking-normal md:text-xl" data-lead-carried="1">
-                {staleLead.headline}
-              </h2>
-            ) : null}
-          </>
+          <TakeHold lv={lv} lead={staleLead} now={nowMs} openLog={openLog} />
         ) : (
         <>
         <div className="sage-take-plate">
@@ -948,10 +1018,23 @@ function Brief() {
           </h2>
         </div>
         {lead && lead.reason !== "seed" ? (
-          <p className="sage-take-meta font-mono text-kicker uppercase tracking-kicker tabular-nums">
-            <span className="sage-src-chip sage-src-chip-multi">{lead.sources} SRC</span>
-            {" "}· sig {lead.sig ?? "—"} · <span data-lead-band="1">{leadBand(lead)}</span> · picked {istanbulHHMM(lead.at)} UTC+3{lead.forced ? " · manual" : ""} · sticky till next pick
-          </p>
+          <>
+            <div className="take-gates" aria-label="Why this is the lead: cleared 3 of 3 gates">
+              <span className="take-gate" data-pass="1">
+                {lead.sources} SRC <i>≥2</i>
+              </span>
+              <span className="take-gate" data-pass="1">
+                {lead.pub ? `${lead.pub} ` : null}
+                <i>own publisher</i>
+              </span>
+              <span className="take-gate" data-pass="1">
+                <span data-lead-band="1">{leadBand(lead)}</span> <i>fresh</i>
+              </span>
+              <span className="take-gate take-gate-sig">sig {lead.sig ?? "—"}</span>
+              {lead.forced ? <span className="take-gate take-gate-sig">manual</span> : null}
+            </div>
+            <TakeBurn from={Date.parse(lead.at)} to={nextLeadSlot(nowMs, lead.date, false)} now={nowMs} a="picked" b="next pick" />
+          </>
         ) : (
           <ul className="sage-take-body max-w-prose space-y-1.5 text-sm">
             {CYCLE.exec.slice(1).map((line) => (
@@ -963,9 +1046,9 @@ function Brief() {
         )}
         </>
         )}
-        {/* The Yesterday row is the only way into the log. When it would repeat the HELD plate's headline (or there is
-            no yesterday), keep the row with just a right-aligned → LOG (≥44px tap) — same spot every day. */}
-        {!LEAD_YESTERDAY || (lv.held && LEAD_YESTERDAY.headline === staleLead?.headline) ? (
+        {/* Picked: the Yesterday row is the way into the log (no yesterday → just a right-aligned → LOG, ≥44px tap).
+            HELD: the SIGNAL HOLD card's own "last pick · date → log" row replaces it (UX-1). */}
+        {staleLead ? null : !LEAD_YESTERDAY ? (
           <a
             className="sage-take-yesterday sage-take-yesterday-link sage-take-yesterday-goonly focus-phosphor text-sm"
             href={`?view=${LEADLOG_VIEW}#brief`}

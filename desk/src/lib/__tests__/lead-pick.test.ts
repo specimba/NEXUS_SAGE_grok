@@ -138,7 +138,7 @@ describe("daily lead pick — partisan-politics exclusion", () => {
     expect(d.action).toBe("picked");
     if (d.action !== "picked") return;
     expect(d.entry.cluster_id).toBe("cl:hn:49835056");
-    expect(d.entry.excluded).toEqual([{ cluster_id: "cl:hn:49829312", headline: axios.title, reason: "politics:trump" }]);
+    expect(d.entry.excluded).toMatchObject([{ cluster_id: "cl:hn:49829312", headline: axios.title, reason: "politics:trump" }]); // UX-1: + sources / age_h / pub crawl fields
   });
 });
 
@@ -311,7 +311,7 @@ describe("Beat 5 — Google News confirms, never leads (GNW_ONLY)", () => {
     expect(d.action).toBe("held");
     if (d.action !== "held") throw new Error("expected held");
     expect(d.entry.reason).toBe("held");
-    expect(d.entry.excluded).toEqual([{ cluster_id: "cl:gnews:a1", headline: "OpenAI signs cloud deal with bank", reason: GNW_ONLY }]);
+    expect(d.entry.excluded).toMatchObject([{ cluster_id: "cl:gnews:a1", headline: "OpenAI signs cloud deal with bank", reason: GNW_ONLY }]); // UX-1: + sources / age_h / pub crawl fields
   });
 
   test("catch-up path (14:11, no pick for the date) applies the same rule", () => {
@@ -379,7 +379,7 @@ describe("HELD never locks the date — retries each ≥06:00 crawl, locks only 
     const held = h.entries.filter((e) => e.date === "2026-09-25");
     expect(held.length).toBe(1);
     expect(held[0]!.attempts!.map((a) => a.crawl_at)).toEqual([T1416, T1811]);
-    expect(held[0]!.attempts![1]!.excluded).toEqual([{ cluster_id: "cl:gnews:5", headline: gnwOnly.title, reason: GNW_ONLY }]);
+    expect(held[0]!.attempts![1]!.excluded).toMatchObject([{ cluster_id: "cl:gnews:5", headline: gnwOnly.title, reason: GNW_ONLY }]); // UX-1: + sources / age_h / pub crawl fields
     expect(held[0]!.excluded).toEqual(held[0]!.attempts![1]!.excluded);
     expect(held[0]!.cluster_id).toBe("cl:hn:1"); // still carries yesterday's lead
   });

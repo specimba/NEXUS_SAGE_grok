@@ -1,0 +1,6 @@
+First Load JS for / (node scripts/first-load.cjs .next-pages, PAGES=1 static export, cap 185000 B, budget ≤182000 B)
+before  origin/main fbd9be8           178603 B  (build 01:50 UTC+3, build-before.txt)
+after   ux-clearance (this commit)     179189 B  (build 02:01 UTC+3, build-after.txt)
+delta                                  +586 B   (spec estimate +~0.6 kB)
+HELD fixture builds (before-held / after-held / after-age / after-none) skip only the pages-coherence data check,
+because the fixture rewrites the LEAD_* lines of src/data/desk-view.ts on purpose; nothing else differs.

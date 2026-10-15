@@ -113,7 +113,9 @@ describe("desk wiring", () => {
       expect(cells.length).toBe(1);
       for (const c of cells) expect(c).toBe(LEAD_HELD_TEXT);
       if (LEAD_HELD && LEAD_TODAY?.headline) for (const c of cells) expect(c).not.toContain(LEAD_TODAY.headline.slice(0, 20));
-      expect(h).toMatch(/HELD · no qualifying story · (?:<span[^>]*>)?next try \d\d:11/);
+      // UX-1: SIGNAL HOLD card — the retry bar names the next try slot.
+      expect(h).toMatch(/data-lead-held="1"/);
+      expect(h).toMatch(/next try <b>\d\d:11<\/b>/);
     } else {
       for (const c of cells) expect(c).not.toBe(LEAD_HELD_TEXT);
       expect(h).not.toContain('data-lead-held="1"');

@@ -80,7 +80,7 @@ describe("investing / listicle noise", () => {
     expect(d.action).toBe("picked");
     if (d.action !== "picked") return;
     expect(d.entry.cluster_id).toBe("cl:gnews:alphabet");
-    expect(d.entry.excluded).toEqual([{ cluster_id: "cl:gnews:stocks", headline: "3 AI Stocks to Watch", reason: "noise:investing" }]);
+    expect(d.entry.excluded).toMatchObject([{ cluster_id: "cl:gnews:stocks", headline: "3 AI Stocks to Watch", reason: "noise:investing" }]); // UX-1: + sources / age_h / pub crawl fields
   });
 
   test("generated Wire has no investing noise", () => {

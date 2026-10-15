@@ -1,7 +1,7 @@
 #!/usr/bin/env bun
 /**
  * 390 gate (UX catch on 5026544): headless Chrome over CDP, no npm deps.
- *   bun scripts/overflow-390-check.ts [url]
+ *   bun scripts/overflow-390-check.ts [url] [--now <ISO>]   (--now fakes the page clock, e.g. the stale-lead SIGNAL HOLD card)
  * On every lane (#brief … #governance) at a 390×844 mobile viewport, fails (exit 1) if any visible text
  * run's right edge (Range client rects over text nodes — so text clipped inside overflow-hidden boxes
  * still counts; text-overflow: ellipsis is exempt only when its own box ends ≤390) extends past x=390,
@@ -44,6 +44,8 @@ const cdp = (method: string, params: Record<string, unknown> = {}) => new Promis
 const evalv = async (expression: string) => (await cdp("Runtime.evaluate", { expression, returnByValue: true, awaitPromise: true }))?.result?.value;
 
 await cdp("Page.enable");
+const NOW = process.argv.includes("--now") ? Date.parse(process.argv[process.argv.indexOf("--now") + 1]) : NaN;
+if (!Number.isNaN(NOW)) await cdp("Page.addScriptToEvaluateOnNewDocument", { source: `{const off=${NOW}-Date.now();const D=Date;Date=class extends D{constructor(...a){super(...(a.length?a:[D.now()+off]))}static now(){return D.now()+off}};}` });
 await cdp("Emulation.setDeviceMetricsOverride", { width: W, height: 844, deviceScaleFactor: 2, mobile: true });
 const probe = `(() => {
   const EX = ${JSON.stringify(EXEMPT_CLASSES)}, W = ${W}, out = [], HEAD = ${JSON.stringify(HEADLINE_SEL)}, ROWS = ${JSON.stringify(ROW_ALLOW)};

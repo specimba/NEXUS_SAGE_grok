@@ -1,0 +1,39 @@
+bun test v1.4.2 (744846f84)
+
+src/lib/__tests__/clearance-plate.test.ts:
+(pass) UX-1 crawl fields (lead-pick) > ruled-out records carry N SRC, whole-hour age and own publisher; a pick records its own publisher [12.01ms]
+(pass) UX-1 crawl fields (lead-pick) > own-publisher label: lead item first, GNews and self-reposts never count [0.08ms]
+(pass) UX-1 crawl fields (lead-pick) > last pick date skips HELD entries (two HELD days in a row still name the real pick) [0.10ms]
+(pass) UX-1 crawl fields (lead-pick) > closest candidate = first ruled-out record of the LATEST attempt; null on picked days [1.24ms]
+(pass) UX-1 crawl fields (lead-pick) > no Gmail or X-taste item can ever be the closest candidate [0.23ms]
+(pass) UX-1 gate rail: exactly one amber gate — the failing one > GNW_ONLY → amber pub [0.17ms]
+(pass) UX-1 gate rail: exactly one amber gate — the failing one > age>=36h → amber fresh [0.01ms]
+(pass) UX-1 gate rail: exactly one amber gate — the failing one > no-time → amber fresh
+(pass) UX-1 gate rail: exactly one amber gate — the failing one > politics:trump → amber rule
+(pass) UX-1 gate rail: exactly one amber gate — the failing one > noise:investing → amber rule
+(pass) UX-1 gate rail: exactly one amber gate — the failing one > noise:customer-deal → amber rule
+(pass) UX-1 gate rail: exactly one amber gate — the failing one > GNW_ONLY rail matches the mock: 4 SRC ≥2 · GNW only ✗ own publisher · 3h fresh [0.05ms]
+(pass) UX-1 gate rail: exactly one amber gate — the failing one > older history rows without the new fields never guess: 2+ SRC, <36h, publisher gate left out [0.03ms]
+(pass) UX-1 gate rail: exactly one amber gate — the failing one > nothing reached 2 SRC → a single amber <2 SRC gate [0.01ms]
+(pass) UX-1 gate rail: exactly one amber gate — the failing one > stale: the carried lead fails only the fresh gate (>48h) [0.05ms]
+(pass) UX-1 time bar: next lead slot + fill = elapsed / total > 2026-10-16T00:16:00 · 2026-10-15 · held=%s → 2026-10-16 06:11 [0.13ms]
+(pass) UX-1 time bar: next lead slot + fill = elapsed / total > 2026-10-15T23:00:00 · 2026-10-15 · held=%s → 2026-10-16 06:11 [0.01ms]
+(pass) UX-1 time bar: next lead slot + fill = elapsed / total > 2026-10-16T10:00:00 · 2026-10-15 · held=%s → 2026-10-16 10:11
+(pass) UX-1 time bar: next lead slot + fill = elapsed / total > 2026-10-16T21:30:00 · 2026-10-15 · held=%s → 2026-10-16 22:11
+(pass) UX-1 time bar: next lead slot + fill = elapsed / total > 2026-10-16T08:39:00 · 2026-10-16 · held=%s → 2026-10-16 10:11
+(pass) UX-1 time bar: next lead slot + fill = elapsed / total > 2026-10-16T18:30:00 · 2026-10-16 · held=%s → 2026-10-17 06:11
+(pass) UX-1 time bar: next lead slot + fill = elapsed / total > 2026-10-16T14:11:00 · 2026-10-16 · held=%s → 2026-10-16 18:11
+(pass) UX-1 time bar: next lead slot + fill = elapsed / total > 2026-10-16T05:00:00 · 2026-10-16 · held=%s → 2026-10-16 06:11
+(pass) UX-1 time bar: next lead slot + fill = elapsed / total > fill = elapsed / total, labelled with the time left [0.11ms]
+(pass) UX-1 fixtures from real crawl data (HELD) > gnw: the real crawl minus its eligible stories → HELD, closest = a real GNews-only group with its real N SRC [14.73ms]
+(pass) UX-1 fixtures from real crawl data (HELD) > age: closest failed the fresh gate; none: nothing reached 2 SRC → no candidate [16.09ms]
+(pass) UX-1 fixtures from real crawl data (HELD) > generated desk-view (real crawl, picked day): pub HN from the lead's own item, no closest, last pick = lead date [0.16ms]
+(pass) UX-1 desk wiring + CSS > picked plate: gate rail (3 gates + sig) and time bar replace the meta line; Yesterday row stays [0.20ms]
+(pass) UX-1 desk wiring + CSS > HELD card: SIGNAL HOLD, candidate headline wraps (headline class, no clamp), last pick → log is the log link [0.10ms]
+(pass) UX-1 desk wiring + CSS > time bars use useNow (no new timer) [0.05ms]
+(pass) UX-1 desk wiring + CSS > CSS: Skin V2 vars only, the only amber is the failed gate, ≥44px last-pick tap, candidate wraps [0.79ms]
+
+ 31 pass
+ 0 fail
+ 96 expect() calls
+Ran 31 tests across 1 file. [67.00ms]

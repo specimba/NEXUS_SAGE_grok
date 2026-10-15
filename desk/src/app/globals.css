@@ -3151,3 +3151,51 @@ button.bay-sw:not(:disabled){cursor:pointer}
 .desk-stage:has(.bay-draft){overflow:clip}
 @media (max-width:1023px){.bay-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:767px){.bay-carts{grid-template-columns:minmax(0,1fr)}.bay-taste{grid-template-columns:auto minmax(0,1fr)}.bay-taste>span:last-child{text-align:right}.bay-taste-track,.bay-taste-range{grid-column:1/-1;grid-row:2}.bay-rows b{font-size:1.35rem}.bay-id{font-size:.8rem;letter-spacing:.02em;overflow-wrap:normal}.bay-mod-head{gap:.35rem}.bay-sw{gap:.2rem}.bay-sw::before{width:1.1rem}.bay-wide{display:none}.bay-mod{padding:.45rem .45rem .5rem}.bay-draft{margin-inline:0}.bay-step{flex-wrap:wrap}.bay-step i{flex-basis:100%}}
+@media (max-width: 767px) {
+  .sage-setup-src { grid-template-columns: minmax(0, 1fr) 2rem 2.6rem 4.6rem; }
+  .sage-setup-caps { grid-column: 1 / -1; padding-left: 0.8rem; color: var(--muted-foreground); }
+}
+
+/* UX-1 clearance plate (refs/UX-NEXT-3.md §1, mock refs/ux-next-3/after-lead-*): gate rail + time bar; HELD → SIGNAL HOLD card.
+   Skin V2 vars only; the failed gate is the only amber on the card. */
+.take-gates{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.7rem;font-family:var(--font-mono),ui-monospace,monospace;font-size:var(--text-kicker);letter-spacing:var(--tracking-kicker);text-transform:uppercase}
+.take-gate{display:inline-flex;align-items:center;gap:.45rem;padding:.22rem .55rem;border:1px solid var(--phosphor);color:var(--phosphor-bright);background:color-mix(in srgb,var(--phosphor) 10%,transparent);white-space:nowrap}
+.take-gate::before{content:"";flex:none;width:.55rem;height:.55rem;background:var(--phosphor-bright);box-shadow:0 0 8px var(--phosphor)}
+.take-gate i{font-style:normal;color:var(--muted-foreground)}
+.take-gate[data-pass="0"]{border-color:var(--pip-amber);color:var(--pip-amber);background:transparent}
+.take-gate[data-pass="0"]::before{background:transparent;border:1px solid var(--pip-amber);box-shadow:none}
+.take-gate[data-pass="0"] i{color:var(--pip-amber)}
+.take-gate-sig{border-style:dashed;border-color:var(--phosphor-dim);color:var(--phosphor);background:transparent}
+.take-gate-sig::before{display:none}
+.take-burn{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:.4rem .7rem;margin-top:.6rem;font-family:var(--font-mono),ui-monospace,monospace;font-size:var(--text-kicker);letter-spacing:var(--tracking-kicker);text-transform:uppercase;color:var(--muted-foreground)}
+.take-burn b{font-weight:400;color:var(--phosphor)}
+.take-burn-bar{position:relative;height:8px;background:repeating-linear-gradient(90deg,var(--phosphor-deep) 0 7px,transparent 7px 9px);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--phosphor) 25%,transparent)}
+.take-burn-fill{position:absolute;inset:0 auto 0 0;background:repeating-linear-gradient(90deg,var(--phosphor-bright) 0 7px,transparent 7px 9px);filter:drop-shadow(0 0 4px var(--phosphor))}
+@media (max-width:767px){.take-burn{grid-template-columns:minmax(0,1fr) auto}.take-burn-bar{grid-column:1/-1;grid-row:2}.take-gate{white-space:normal}}
+/* HELD → SIGNAL HOLD test card */
+.brief-v5 .sage-take.take-hold{background:var(--bg-deep);border:1px solid var(--phosphor);box-shadow:0 0 0 1px var(--phosphor-dim),inset 0 0 50px color-mix(in srgb,var(--phosphor) 6%,transparent)}
+.take-hold-plate{position:relative;margin-top:.65rem;padding:.8rem .85rem .85rem;border:1px dashed var(--phosphor);background:repeating-linear-gradient(0deg,color-mix(in srgb,var(--phosphor) 9%,transparent) 0 1px,transparent 1px 3px),var(--bg-deep);overflow:hidden}
+.take-hold-bars{display:grid;grid-template-columns:repeat(8,1fr);height:22px;margin-bottom:.7rem}
+.take-hold-bars span{display:block}
+.take-hold-bars span:nth-child(1){background:var(--phosphor-bright)}
+.take-hold-bars span:nth-child(2){background:color-mix(in srgb,var(--phosphor-bright) 80%,transparent)}
+.take-hold-bars span:nth-child(3){background:var(--phosphor)}
+.take-hold-bars span:nth-child(4){background:color-mix(in srgb,var(--phosphor) 65%,transparent)}
+.take-hold-bars span:nth-child(5){background:color-mix(in srgb,var(--phosphor) 42%,transparent)}
+.take-hold-bars span:nth-child(6){background:var(--phosphor-dim)}
+.take-hold-bars span:nth-child(7){background:var(--phosphor-deep)}
+.take-hold-bars span:nth-child(8){background:repeating-linear-gradient(90deg,var(--phosphor) 0 1px,transparent 1px 3px)}
+.take-hold-title{font-family:var(--font-display),ui-monospace,monospace;font-size:2.1rem;line-height:1;letter-spacing:.08em;color:var(--phosphor-bright);text-shadow:0 0 14px var(--phosphor-glow)}
+.take-hold-title::after{content:"▮";margin-left:.25rem;color:var(--phosphor);animation:none}
+.take-hold-why{margin-top:.4rem;font-family:var(--font-mono),ui-monospace,monospace;font-size:var(--text-kicker);letter-spacing:var(--tracking-kicker);text-transform:uppercase;color:var(--phosphor)}
+.take-hold-cand{margin-top:.75rem;font-family:var(--font-mono),ui-monospace,monospace;font-size:var(--text-kicker);letter-spacing:var(--tracking-kicker);text-transform:uppercase;color:var(--muted-foreground)}
+.take-hold-cand q{display:block;margin-top:.2rem;text-transform:none;letter-spacing:0;font-size:.875rem;color:var(--phosphor);quotes:none}
+.take-hold-last{display:block;margin-top:.65rem;padding-top:.5rem;border-top:1px solid var(--border);font-size:.875rem;color:var(--muted-foreground);text-decoration:none}
+.take-hold-last span{font-family:var(--font-mono),ui-monospace,monospace;font-size:var(--text-kicker);letter-spacing:var(--tracking-kicker);text-transform:uppercase;color:var(--phosphor)}
+@media (max-width:767px){.take-hold-title{font-size:1.75rem}}
+/* build additions: the gate rail sits on the inverse plate's dark band; last-pick row is a ≥44px tap; headlines wrap, never clamp */
+.take-hold-cand q{overflow-wrap:anywhere}
+.take-hold-last{min-height:44px}
+.take-hold-last:hover span:first-child{text-decoration:underline}
+.take-hold-last .take-hold-last-head{display:block;margin-top:.15rem;font-family:inherit;font-size:.875rem;letter-spacing:0;text-transform:none;color:var(--muted-foreground);overflow-wrap:anywhere}
+

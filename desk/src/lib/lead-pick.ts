@@ -18,7 +18,7 @@
  * Pure helpers; IO lives in scripts/rank-snapshot.ts (artifacts/sage/lead-history.json).
  */
 import { investingNoiseReason, wireCandidates, type WireCluster, type WireOpts } from "@/lib/wire";
-import { publisherKey, selfRepostIds } from "@/lib/pulse-v5";
+import { labBadge, publisherKey, selfRepostIds } from "@/lib/pulse-v5";
 import { HEAT_COMPANIES, OTHER_LABS } from "@/lib/topic-heat";
 
 
@@ -56,7 +56,9 @@ export type LeadEntry = {
   /** Forced re-pick on a date that already had one: the cluster it replaced. */
   supersedes?: string | null;
   /** Wire-eligible (≥2 SRC) groups ruled out as lead at this pick, with the reason (age>=24h, politics:…). */
-  excluded?: { cluster_id: string; headline: string; reason: string }[];
+  excluded?: LeadExcluded[];
+  /** UX-1 clearance plate: label of the story's own (non-Google-News) publisher at pick time, e.g. "HN". */
+  pub?: string;
   /** PASS-L L5: story age band at pick time. */
   age_band?: LeadAgeBand;
   /** PASS-L: Istanbul HH:MM of the crawl start that made this entry (pick slot). */
@@ -65,7 +67,13 @@ export type LeadEntry = {
   attempts?: HeldAttempt[];
 };
 
-export type HeldAttempt = { at: string; crawl_at: string; crawl_started_at?: string; excluded: { cluster_id: string; headline: string; reason: string }[] };
+/**
+ * One ruled-out candidate. UX-1 clearance plate crawl fields (optional; older history rows lack them): `sources` = N SRC,
+ * `age_h` = whole hours of story age (earliest item) at the pick, `pub` = own-publisher label (absent = none / GNews only).
+ */
+export type LeadExcluded = { cluster_id: string; headline: string; reason: string; sources?: number; age_h?: number; pub?: string };
+
+export type HeldAttempt = { at: string; crawl_at: string; crawl_started_at?: string; excluded: LeadExcluded[] };
 
 export type LeadHistory = { schema: 1; entries: LeadEntry[] };
 
@@ -184,6 +192,26 @@ export function nonGnewsPublishers(
     out.add(publisherKey(id, members[id]?.publisher ?? publishers[id] ?? memberPub.get(id)));
   }
   return [...out];
+}
+
+/** Short label for one own-publisher item id: HN, SEC, lab badge (rss:<lab>:…), GML, else the id prefix. */
+export function pubLabel(id: string): string {
+  if (id.startsWith("hn:")) return "HN";
+  if (id.startsWith("rss-sec:")) return "SEC";
+  if (id.startsWith("rss:")) return labBadge(id.split(":")[1] ?? "");
+  if (id.startsWith("gmail:")) return "GML";
+  return (id.split(":")[0] || id).toUpperCase();
+}
+
+/**
+ * UX-1: label of the group's first own (non-Google-News, non-self-repost) publisher, lead item first; null = none.
+ * PASS-S1: analyst (anl:) and release (rel:) items are never the own publisher (they can't make a lead either).
+ */
+export function ownPublisherLabel(c: Pick<WireCluster, "lead_id" | "member_ids" | "members" | "self_repost_ids">): string | null {
+  const selfIds = selfRepostIds(c);
+  selfIds.delete(c.lead_id);
+  for (const id of [c.lead_id, ...c.member_ids]) if (!selfIds.has(id) && !/^(?:gnews|anl|rel):/.test(id)) return pubLabel(id);
+  return null;
 }
 
 /**
@@ -310,6 +338,34 @@ export function yesterdayLead(h: LeadHistory): LeadEntry | null {
   return [...h.entries].reverse().find((e) => e.date < cur.date) ?? null;
 }
 
+/** UX-1: Istanbul date of the latest real pick (picked or seed; never a HELD entry) — the HELD card's "last pick". */
+export function lastPickDate(h: LeadHistory): string | null {
+  return [...h.entries].reverse().find((e) => e.reason !== "held")?.date ?? null;
+}
+
+/** UX-1 HELD card: the closest candidate of a HELD day (from the latest attempt's ruled-out list). */
+export type LeadClosest = { headline: string; reason: string; sources?: number; age_h?: number; pub?: string; at: string };
+
+/** Never a Gmail / X / Taste item (box-only or operator signal), even if a ruled-out list carries one. */
+const CLOSEST_DENY = /^(?:cl:)?(?:gmail|x|taste)[:-]/;
+
+/** HELD entries only (null otherwise): first ruled-out candidate of the latest attempt that may be shown, with that attempt's time. */
+export function leadClosest(e: LeadEntry | null): LeadClosest | null {
+  if (!e || e.reason !== "held") return null;
+  const last = e.attempts?.[e.attempts.length - 1];
+  const list = last?.excluded ?? e.excluded ?? [];
+  const c = list.find((x) => !CLOSEST_DENY.test(x.cluster_id) && x.pub !== "GML" && !x.reason.startsWith("taste"));
+  if (!c) return null;
+  return {
+    headline: c.headline,
+    reason: c.reason,
+    ...(c.sources != null ? { sources: c.sources } : {}),
+    ...(c.age_h != null ? { age_h: c.age_h } : {}),
+    ...(c.pub ? { pub: c.pub } : {}),
+    at: last?.at ?? e.at,
+  };
+}
+
 export type PickDecision =
   | { action: "none"; why: "already-picked" | "outside-window" | "retry-closed" }
   | { action: "picked"; entry: LeadEntry }
@@ -336,8 +392,20 @@ export function decidePick(
   const byId = new Map(clusters.map((c) => [c.id, c]));
   const excluded = wireCandidates(clusters, { ...opts, keepNoise: true })
     .filter((c) => c.sources >= LEAD_MIN_SOURCES)
-    .map((c) => ({ cluster_id: c.id, headline: c.title, reason: leadExcludeReason(byId.get(c.id)!, now, opts) }))
-    .filter((e): e is { cluster_id: string; headline: string; reason: string } => e.reason !== null);
+    .map((c) => {
+      const g = byId.get(c.id)!;
+      const first = groupFirstAt(g, opts.memberAt);
+      const pub = ownPublisherLabel(g);
+      return {
+        cluster_id: c.id,
+        headline: c.title,
+        reason: leadExcludeReason(g, now, opts),
+        sources: c.sources,
+        ...(Number.isFinite(first) ? { age_h: Math.floor((now - first) / 3_600_000) } : {}),
+        ...(pub ? { pub } : {}),
+      };
+    })
+    .filter((e): e is typeof e & { reason: string } => e.reason !== null) as LeadExcluded[];
   const base = {
     date,
     at: opts.at,
@@ -361,6 +429,7 @@ export function decidePick(
         sources: top.sources,
         sig: top.score,
         reason: "picked",
+        ...(ownPublisherLabel(byId.get(top.id)!) ? { pub: ownPublisherLabel(byId.get(top.id)!)! } : {}),
         ...(Number.isFinite(first) ? { first_at: new Date(first).toISOString(), age_band: leadAgeBand((now - first) / 3_600_000)! } : {}),
       },
     };
