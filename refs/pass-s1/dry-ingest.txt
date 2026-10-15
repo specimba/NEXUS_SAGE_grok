@@ -1,0 +1,165 @@
+SAGE ingest P3 · stamp 2026-10-15T21:59:44Z · STALE_HOURS=6
+Config: ok (committed) config_hash=e3e9003a7d92
+Watchlist plan (curation only, no live X): 17 handles (weight≥3) + 6 semantic classes since 2026-10-14
+  handle OpenAI w=5 :: from:OpenAI -filter:replies since:2026-10-14
+  handle AnthropicAI w=5 :: from:AnthropicAI -filter:replies since:2026-10-14
+  handle sama w=4 :: from:sama -filter:replies since:2026-10-14
+  class agents :: (agents) -filter:replies since:2026-10-14
+  class safety :: (safety) -filter:replies since:2026-10-14
+  class openweights :: (openweights) -filter:replies since:2026-10-14
+  class papers :: (papers) -filter:replies since:2026-10-14
+  class cyber :: (cyber) -filter:replies since:2026-10-14
+  class capital :: (capital) -filter:replies since:2026-10-14
+X: disabled (Free providers only — no X_BEARER_TOKEN / api.x.com / Zapier. Watchlist is curation (buildHandleQueries + SEMANTIC_CLASSES plan-only). Live ingest: HF daily_papers + arXiv Atom enrich + HN Algolia Pulse + lab RSS + security RSS + GitHub unauth shelf + toolkit shelf. See refs/FREE-PROVIDERS.md.)
+HF: 50 live → 24 kept (displacement rule applied)
+GitHub shelf: live query="OWASP LLM" → 5 hits / 0 shelf (remaining=9)
+arXiv: enriched 24/24 paper ids (cache+live)
+arXiv shelf: 5 search hits (shelfOnly, off Brief)
+OpenAlex: enriched=3 secondary=3 mode=search cache=false retries=0 brief=false pulse_lead=false
+Crossref: enriched=1 mode=filter cache=false brief=false pulse_lead=false notes=1
+  crossref note: doi_collision keep=10.48550/arxiv.2607.23933 crossref=10.1007/978-981-92-4805-6_13 paper=W7171516088 (non-destructive; openalexId preserved)
+HN: 54 Pulse candidates queries=3 soft_fail=false (classifyPost filtered; brief=false; rotate≤3)
+  hn ai_relevance dropped=22 :: AdFection: Targeted ads turned into a pipeline f | Meta is meddling with Brazilian democracy | Calls for Ban as Reform Politician Use Meta Glas | Nvidia, Apple, Google, Microsoft, Amazon, Meta g | Meta Censors over 1,080 Pro-Lula Accounts During | Meta's Smart Glasses May Have Been Recording Peo | Metagenomic testing: technique that finds almost | Meta Muse Charm | Building a post-quantum certificate authority wi | Metal alloys that unexpectedly resist extreme co | Show HN: Mnemify – 3D terrain map merging Conflu | Show HN: Swift Render – programmatic video with 
+  hn recent_hours=48 sweep=ok(hits=40)
+  hn queries_run: LLM · METR · ML security
+  hn hn:50094694 [rest] score=414 :: Anthropic's Scion is heavily inspired by Mononoke
+  hn hn:50106738 [rest] score=210 :: More on Anthropic's Scion ripping off Mononoke
+  hn hn:50090443 [rest] score=163 :: Why do LLM pelicans look like this?
+HN title: terms=5 ok=5 hits=23 candidates=18 dup=5 added=13 (≤ hn cap 20)
+  rss lab_relevance dropped=2 :: nvidia[category:GeForce NOW]: Dial Up the Cloud: NVIDIA DLSS 4.5 Controls Arri | nvidia[category:GeForce NOW]: Rally Up: ‘Gears of War: E-Day’ Launches on GeFo
+RSS labs: 104 Pulse (of 106, 2 consumer drops) + 0 shelf from 9 feeds soft_fail=false (brief=false · never HF displace)
+  rss openai @ https://openai.com/news/rss.xml → 12 items
+  rss deepmind @ https://deepmind.google/blog/rss.xml → 12 items
+  rss google-ai @ https://blog.google/technology/ai/rss/ → 12 items
+  rss huggingface @ https://huggingface.co/blog/feed.xml → 12 items
+  rss mistral @ https://mistral.ai/rss.xml → 12 items
+  rss nvidia @ https://blogs.nvidia.com/feed/ → 12 items
+  rss nvidia-dev @ https://developer.nvidia.com/blog/feed → 12 items
+  rss ms-research @ https://www.microsoft.com/en-us/research/blog/feed/ → 10 items
+  rss google-research @ https://research.google/blog/rss/ → 12 items
+  rss huggingface [rest] :: Granite Switch 4.1: Chat, Decisions, and Speech from One Endpoint
+  rss openai [rest] :: Bringing GPT-Rosalind to academic research labs
+  rss nvidia-dev [rest] :: NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal R
+RSS analyst: 9 Pulse (ANL) from 2 feeds, 3 dropped (not-ai/deny) soft_fail=false (brief=false · lead needs a non-analyst publisher)
+  anl simonw @ https://simonwillison.net/atom/everything/ → 4 items
+  anl latent-space @ https://www.latent.space/feed → 5 items
+  anl drop simonw[not-ai]: Chirp Pong
+  anl drop simonw[not-ai]: Tree Appreciator
+  anl drop latent-space[not-ai]: Lab-in-the-Loop at Compute Speed — Ian Quigley, Leash Bio
+Releases: 0 Pulse (REL) from 3 feeds soft_fail=false (brief=false · never a lead)
+  rel llama.cpp: seed baseline=(none) newest=v0.7.0 emitted=—
+  rel ollama: seed baseline=(none) newest=v0.40.5 emitted=—
+  rel vllm: seed baseline=(none) newest=v0.31.0 emitted=—
+  gnews ai_relevance dropped=6 shown (pool ungated: corroborators inherit anchor relevance) :: Muse Spark Open Arrives With a Two-Mac, Terabyte | Meta Releases Muse Spark Open With Mac Studio Op | Bringing the magic: Google breaks open a bottlen | How we're helping the world prepare for natural  | Google Search Console Data Is Running Days Behin | TIME has named Google SynthID one of the Best In
+GNews: 26 spice cards queries=4 ok=4 soft_fail=false (brief=false · pulse_lead=false · rotate≤2)
+  gnews queries_run: open weights · Hugging Face · Google Research · Google DeepMind
+  gnews [rest] Channels Television :: Meta Launches New ‘Open’ AI Model To Rival Chinese Competition - Channel
+  gnews [rest] iPhone in Canada :: Apple and Meta Join Forces to Run Massive AI Model on the Mac - iPhone i
+  gnews [rest] 디지털투데이 :: Meta teams up with Apple on local AI as Muse Spark Open runs on Macs - 디
+Gmail news: 0 Pulse (fetched=0) soft_fail=true (no Gmail fetcher / empty cache) from_cache=false (brief=false · pulse_only)
+RSS security: 40 Pulse + 0 shelf from 4 feeds (brief=false)
+  rss-sec trailofbits @ https://blog.trailofbits.com/feed/ → 12 items
+  rss-sec fox-it @ https://blog.fox-it.com/feed/ → 10 items
+  rss-sec projectzero @ https://projectzero.google/feed.xml → 6 items
+  rss-sec embracethered @ https://embracethered.com/blog/index.xml → 12 items
+  rss-sec trailofbits [rest] :: Package managers have an integrity problem
+  rss-sec embracethered [rest] :: Visual Studio Copilot and SSMS Remote Code Execution (CVE-2026-103572)
+  rss-sec fox-it [rest] :: Releasing the Cobalt Strike Beacon Corpus
+GitHub shelf: query="OWASP LLM" hits=5 shelf=0 cache=false searches=1 brief=false
+Wikidata DENY: seeds=DeepMind,Anthropic,Meta AI hints=3 cache=false searches=3 brief=false
+  wd DeepMind [matched] qid=Q15733006 :: Google DeepMind
+  wd Anthropic [matched] qid=Q116758847 :: Anthropic
+  wd Meta AI [matched] qid=Q112114913 :: Meta AI
+URL list: src/data/x-taste.ts (8 taste urls, captured 2026-09-11T09:32:00Z)
+URL score: shelf=0 pulse=8 rest=0 drop=0 arxivShelf=5 rssShelf=0 secShelf=0 githubShelf=0
+GNews corroborators: pool=257 picked=16 (≤3/anchor, direct v2 match only)
+  corroborates hn:50108036 score=1 SELF(0 src) :: Bringing the magic: Google breaks open a bottleneck in quantum computing - blog.
+  corroborates hn:50109627 score=1 :: Apple and Meta team up to make Muse AI model run on Mac computers - CNBC
+  corroborates hn:50109627 score=0.88 :: Meta and Apple team up to make Muse AI models run better on Macs - The Verge
+  corroborates hn:50109627 score=0.848 :: Apple and Meta team up to run open-weight Muse model on Macs - Mezha.net
+  corroborates hn:50106622 score=0.713 :: New 5.6B-Parameter FLUX 3 Image Klein Debuts as Open-Weights Release - Unite.AI
+  corroborates hn:50106622 score=0.645 :: Black Forest Labs Expands Access to Frontier Visual Intelligence With Open Weigh
+  corroborates hn:50106622 score=0.619 :: Black Forest Labs' open-weights image model FLUX 3 Image Klein runs on consumer 
+  corroborates hn:50104542 score=0.84 :: NVIDIA Nemotron 3.5 Super VL: 120B Open AI Model - https://tech-insider.org/
+  corroborates hn:50104542 score=0.603 :: Nvidia Releases Nemotron 3.5 Super VL to Widen the Open-Weight AI Field - Startu
+  corroborates rss:nvidia:599b981c923a3fd6 score=1 SELF(0 src) :: Open From Data Center to Desktop: NVIDIA Expands Nemotron Family With Highest Ef
+  corroborates rss:nvidia-dev:9f5aca4e4d9dbf53 score=1 SELF(0 src) :: NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning
+  corroborates hn:50085198 score=0.69 :: Fish Audio Releases Drama 3, a 35B Open-Weight MoE Text-to-Speech Model - MarkTe
+Dedupe: items_in=272 clusters_out=247 collapsed=25 multi_source=5 (independent; raw=11 self_reposts=7) multi_member=14 threshold=0.6
+  multi [rss-lab+hn-algolia+gnews-rss] x6 score=1 :: NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning
+  multi [hn-algolia+gnews-rss] x6 score=1 :: Apple and Meta team up to make Muse AI model run on Mac computers
+  multi [hn-algolia+gnews-rss] x4 score=0.697 :: Flux 3 Image Klein
+  multi [hn-algolia+gnews-rss] x3 score=0.72 :: Fish Audio Drama 3: an open-weight, directable TTS model
+  multi [rss-lab+hn-algolia] x2 score=1 :: Google DeepMind and Singapore Government collaborate to build fine-tuned AI mode
+  self-repost only [hn-algolia+gnews-rss→hn-algolia] x2 :: Bringing the magic: Google breaks open a bottleneck in quantum computing
+  self-repost only [rss-lab+gnews-rss→rss-lab] x2 :: Accelerating the search for antimicrobial peptides with Google Antigravity
+  self-repost only [rss-lab+gnews-rss→rss-lab] x2 :: Open From Data Center to Desktop: NVIDIA Expands Nemotron Family With Highest Ef
+  self-repost only [rss-lab+gnews-rss→rss-lab] x2 :: Putting Earth AI to work: Geospatial agents for our planet's biggest challenges
+  self-repost only [rss-lab+gnews-rss→rss-lab] x2 :: Analyzing technical documents with Deep Review
+  self-repost only [rss-lab+gnews-rss→rss-lab] x2 :: Research@ 2026: 10 ways we're amplifying human ingenuity
+  same-source [gnews-rss] x2 score=1 :: Mace Ai founders on what OpenAI's Hugging Face breach means for business
+  same-source [hn-algolia] x2 score=1 :: Bringing the magic: Google breaks open a bottleneck in quantum computing
+  same-source [rss-lab] x2 score=1 :: Accelerating the search for antimicrobial peptides with Google Antigravi
+  same-source [rss-lab] x2 score=1 :: Open From Data Center to Desktop: NVIDIA Expands Nemotron Family With Hi
+  same-source [hn-algolia] x2 score=0.907 :: Anthropic revenue jumps to $16.8B in third quarter
+  gnews near-miss 0.597 time-window h=214.7 [gnews-rss] Google Says AI Isn't Building Itself Yet—Even Though It  ‖ [gmail-news] This AI that can't write
+  gnews near-miss 0.593 below h=0.2 [hn-algolia] Nvidia Nemotron 3.5 Super VL 120B A12B ‖ [gnews-rss] NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents w
+  gnews near-miss 0.592 below h=0.8 [hn-algolia] Nvidia Nemotron 3.5 Super VL 120B A12B ‖ [gnews-rss] Nvidia Releases Nemotron 3.5 Super VL to Widen the Open-
+  gnews near-miss 0.582 below h=2.1 [rss-lab] NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents w ‖ [gnews-rss] NVIDIA Nemotron 3.5 Super VL: 120B Open AI Model - https
+  gnews near-miss 0.574 below h=19.5 [rss-lab] Welcome Muse Spark Open: open-weight frontier multimodal ‖ [gnews-rss] Meta releases Muse Spark Open, an 816B model with open w
+  gnews near-miss 0.573 below h=2.4 [hn-algolia] Muse Spark Open 816B-A42B ‖ [gnews-rss] Meta releases Muse Spark Open, an 816B model with open w
+  gnews near-miss 0.566 below h=0.9 [rss-lab] Open From Data Center to Desktop: NVIDIA Expands Nemotro ‖ [gnews-rss] NVIDIA Nemotron 3.5 Super VL: 120B Open AI Model - https
+  gnews near-miss 0.533 below h=0.7 [hn-algolia] Apple and Meta team up to make Muse AI model run on Mac  ‖ [gnews-rss] Apple and Meta Join Forces to Run Massive AI Model on th
+  near-miss 0.781 short-title h=3.9 [hn-algolia] Mistral Timestral ‖ [rss-lab] Introducing Timestral
+  near-miss 0.775 time-window h=30.9 [hn-algolia] LFM2.5-24B-A2B: Built for fast on-device agents ‖ [rss-lab] Run fast, private agents on-device with LFM2.5-24B-A2B
+  near-miss 0.597 time-window h=214.7 [gnews-rss] Google Says AI Isn't Building Itself Yet—Even Though It  ‖ [gmail-news] This AI that can't write
+  near-miss 0.593 below h=3.2 [hn-algolia] Nvidia Nemotron 3.5 Super VL 120B A12B ‖ [rss-lab] NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents w
+  near-miss 0.593 below h=0.2 [hn-algolia] Nvidia Nemotron 3.5 Super VL 120B A12B ‖ [gnews-rss] NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents w
+  near-miss 0.592 below h=0.8 [hn-algolia] Nvidia Nemotron 3.5 Super VL 120B A12B ‖ [gnews-rss] Nvidia Releases Nemotron 3.5 Super VL to Widen the Open-
+  near-miss 0.582 below h=2.1 [rss-lab] NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents w ‖ [gnews-rss] NVIDIA Nemotron 3.5 Super VL: 120B Open AI Model - https
+  near-miss 0.574 below h=19.5 [rss-lab] Welcome Muse Spark Open: open-weight frontier multimodal ‖ [gnews-rss] Meta releases Muse Spark Open, an 816B model with open w
+Seen-index: 3005 keys · new this crawl=69
+Crawl sources (per-source rows · ms · status):
+  source         status   rows      ms  share  note
+  HF papers      ok         50     163   0.2%
+  arXiv          ok         29    3221   4.8%
+  OpenAlex       ok          3     516   0.8%
+  Crossref       ok          1     284   0.4%
+  HN             ok         67    8378  12.5%
+  HN title       ok         13    8299  12.3%
+  lab RSS        ok        104   19553  29.1%
+  security RSS   ok         40    6178   9.2%
+  analyst RSS    ok          9    2156   3.2%
+  releases       ok          0    6916  10.3%
+  Google News    ok         42    6553   9.7%
+  GitHub         ok          0     301   0.4%
+  Wikidata       ok          3    4697   7.0%
+  sources total                  67215  (ingest wall 20061 ms)
+Source health: arxiv=flaky(ok4/fail0,n=29) crossref=ok(ok122/fail0,n=1) github=ok(ok122/fail0,n=0) gnews=ok(ok122/fail0,n=42) hf=ok(ok122/fail0,n=50) hn=ok(ok122/fail0,n=67) hn_title=ok(ok1/fail0,n=13) openalex=ok(ok34/fail0,n=3) releases_atom=ok(ok1/fail0,n=0) rss_analyst=ok(ok1/fail0,n=9) rss_labs=flaky(ok26/fail0,n=104) rss_security=ok(ok122/fail0,n=40) wikidata=ok(ok122/fail0,n=3)
+[dry-run] would write /workspace/nexus-sage-s1/desk/src/data/x-crawl.ts (3307 bytes)
+[dry-run] would write /workspace/nexus-sage-s1/desk/artifacts/sage/CURRENT.json (721 bytes)
+[dry-run] would write /workspace/nexus-sage-s1/desk/src/data/papers.ts (30398 bytes)
+[dry-run] would write /workspace/nexus-sage-s1/desk/src/data/shelf.ts (2911 bytes)
+[dry-run] would write /workspace/nexus-sage-s1/desk/src/data/hn-pulse.ts (24844 bytes)
+[dry-run] would write /workspace/nexus-sage-s1/desk/src/data/rss-labs.ts (59578 bytes)
+[dry-run] would write /workspace/nexus-sage-s1/desk/src/data/rss-security.ts (34444 bytes)
+[dry-run] would write /workspace/nexus-sage-s1/desk/src/data/rss-analyst.ts (6877 bytes)
+[dry-run] would write /workspace/nexus-sage-s1/desk/src/data/releases-atom.ts (812 bytes)
+[dry-run] would write /workspace/nexus-sage-s1/desk/artifacts/sage/releases-seen.json (404 bytes)
+[dry-run] would write /workspace/nexus-sage-s1/desk/src/data/gnews-rss.ts (33574 bytes)
+[dry-run] would write /workspace/nexus-sage-s1/desk/src/data/gmail-news.ts (523 bytes)
+[dry-run] would write /workspace/nexus-sage-s1/desk/src/data/soft-fail-meters.ts (1395 bytes)
+[dry-run] would write /workspace/nexus-sage-s1/desk/src/data/sage-desk-config.ts (342 bytes)
+[dry-run] would write /workspace/nexus-sage-s1/desk/src/data/sage-setup.ts (4748 bytes)
+[dry-run] would write /workspace/nexus-sage-s1/desk/artifacts/sage/seen-index.json (1199616 bytes)
+[dry-run] would write /workspace/nexus-sage-s1/desk/artifacts/sage/source-health.json (34915 bytes)
+[dry-run] would write /workspace/nexus-sage-s1/desk/src/data/source-health.ts (3164 bytes)
+[dry-run] would write /workspace/nexus-sage-s1/desk/src/data/pulse-clusters.ts (139272 bytes)
+[dry-run] would write /workspace/nexus-sage-s1/desk/artifacts/sage/ingest-last.json (50395 bytes)
+Timing: startup=38ms · sources=67215ms · main=20072ms · process_up=20112ms
+STALE proof: fresh stamp age 0.01h ≤ 6h (banner clear)
+Done. Pulse reads CRAWL_AT; banner uses crawlAgeHours + .sage-stale.
+
+real	0m20.134s
+user	0m1.027s
+sys	0m0.197s

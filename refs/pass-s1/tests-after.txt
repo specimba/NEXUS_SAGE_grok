@@ -1,0 +1,1003 @@
+bun test v1.4.2 (744846f84)
+
+src/lib/__tests__/arxiv-enrich.test.ts:
+(pass) parseAtomEntries → schema > fixture Atom maps to ArxivEnrichment schema [1.75ms]
+(pass) parseAtomEntries → schema > normalizeArxivId strips version and URL [0.04ms]
+(pass) parseAtomEntries → schema > malformed entry id is skipped [0.07ms]
+(pass) id merge onto Papers > applyArxivEnrichment fills abstract + pdf without displacing ids [0.41ms]
+(pass) id merge onto Papers > fetchArxivByIds with fixtureAtom enriches known HF id [0.83ms]
+(pass) id merge onto Papers > gen/sim merge still keeps agent paper after enrich [0.50ms]
+(pass) never Brief pin > enrichments are shelfOnly and not Brief-eligible [0.12ms]
+(pass) never Brief pin > toShelfItems never emits Brief pin ids / lead [0.22ms]
+(pass) never Brief pin > Brief pin set unchanged (hf-incident lead, cycle 003) [0.11ms]
+
+src/lib/__tests__/pages-deploy.test.ts:
+(pass) GitHub Pages build (PAGES=1 → /NEXUS_SAGE_grok, desk/out-pages) > next.config: basePath + out-pages only when PAGES=1; site URL env; no metadataBase [0.22ms]
+(pass) GitHub Pages build (PAGES=1 → /NEXUS_SAGE_grok, desk/out-pages) > layout: favicon carries the base path; OG / canonical are absolute from SAGE_SITE_URL; no metadataBase [0.06ms]
+(pass) GitHub Pages build (PAGES=1 → /NEXUS_SAGE_grok, desk/out-pages) > font vars sit on <html> (not <body>) so @theme --font-mono resolves at :root [0.04ms]
+(pass) GitHub Pages build (PAGES=1 → /NEXUS_SAGE_grok, desk/out-pages) > pages-publish.sh: fail-closed checks, .nojekyll, fast-forward only, never force [0.52ms]
+(pass) GitHub Pages build (PAGES=1 → /NEXUS_SAGE_grok, desk/out-pages) > out-pages is gitignored [0.04ms]
+
+src/lib/__tests__/pages-asset-check.test.ts:
+(pass) pages-asset-check (pre-push gate: HTML font classes ⊆ its linked CSS; no missing _next/static) > clean tree passes [1.81ms]
+(pass) pages-asset-check (pre-push gate: HTML font classes ⊆ its linked CSS; no missing _next/static) > f286e1c shape fails: HTML class absent from the (present, 200) linked CSS [0.46ms]
+(pass) pages-asset-check (pre-push gate: HTML font classes ⊆ its linked CSS; no missing _next/static) > class defined only in an UNLINKED css still fails [0.44ms]
+(pass) pages-asset-check (pre-push gate: HTML font classes ⊆ its linked CSS; no missing _next/static) > class used by a linked JS chunk must be defined too [0.81ms]
+(pass) pages-asset-check (pre-push gate: HTML font classes ⊆ its linked CSS; no missing _next/static) > missing linked CSS, missing font media and missing RSC chunk all fail [1.07ms]
+(pass) pages-asset-check (pre-push gate: HTML font classes ⊆ its linked CSS; no missing _next/static) > basePath is stripped; :3000 tree (no basePath) works [0.46ms]
+(pass) pages-asset-check (pre-push gate: HTML font classes ⊆ its linked CSS; no missing _next/static) > pages-publish.sh compiles in .next-pages (wipes out-pages + .next-pages only; :3000 .next parked, never wiped) and gates before push [0.18ms]
+
+src/lib/__tests__/tz-render.test.ts:
+(pass) Istanbul clock times (Intl, host TZ ignored) > formatters [8.49ms]
+(pass) Istanbul clock times (Intl, host TZ ignored) > static desk HTML under TZ=UTC shows Istanbul times — identical to TZ=Asia/Tokyo [146.92ms]
+
+src/lib/__tests__/noise.test.ts:
+(pass) investing / listicle noise > listicle and stock-tip headlines are noise [0.24ms]
+(pass) investing / listicle noise > ticker rule does not catch ordinary headlines with colons or acronyms [0.13ms]
+(pass) investing / listicle noise > real business news stays eligible: valuations, funding, IPO, deals [0.03ms]
+(pass) investing / listicle noise > noise rows stay out of the Wire (backfilled) and never lead; Alphabet stake story stays eligible [1.89ms]
+(pass) investing / listicle noise > pick records noise:investing for excluded candidates [0.74ms]
+(pass) investing / listicle noise > generated Wire has no investing noise [0.05ms]
+
+src/lib/__tests__/pack-failclosed.test.ts:
+(pass) P2 fail-closed F1–F5 > F1: pack:export with CURRENT missing → exit ≠ 0 [33.66ms]
+(pass) P2 fail-closed F1–F5 > F2: import with tampered file hash → exit ≠ 0 · desk CURRENT unchanged [60.09ms]
+(pass) P2 fail-closed F1–F5 > F3: import inventing cycle 004 / wrong lead → exit ≠ 0 [43.71ms]
+(pass) P2 fail-closed F1–F5 > F4: import Sol=Astra / lock flatten → exit ≠ 0 [89.99ms]
+(pass) P2 fail-closed F1–F5 > F5: secrets / .env / bearer ban — helpers + live pack scan [30.26ms]
+(pass) P2 fail-closed F1–F5 > helpers: validateManifestSchema / validateLocks / verifyManifestHashes unit rejects [0.96ms]
+
+src/lib/__tests__/hn-pulse.test.ts:
+(pass) HN Algolia parse → Pulse schema > fixture hit maps to Pulse candidate [0.70ms]
+(pass) HN Algolia parse → Pulse schema > fetchHnPulse with fixtureJson offline [0.70ms]
+(pass) HN Algolia parse → Pulse schema > hitsPerPage hard-capped at 20 [0.02ms]
+(pass) HN Algolia parse → Pulse schema > queryHash is stable [0.06ms]
+(pass) classifyPost / DENY → tag or drop > Nvidia HF acquire hit is Pulse OK chatter, not Brief [0.06ms]
+(pass) classifyPost / DENY → tag or drop > Astra agents compromised Hugging Face → DENY / flatten drop [0.04ms]
+(pass) classifyPost / DENY → tag or drop > Sol = Astra / Sol is Astra → DENY flatten drop [0.09ms]
+(pass) classifyPost / DENY → tag or drop > Bloomberg sources rumor → rumor tag, never Brief [0.08ms]
+(pass) classifyPost / DENY → tag or drop > toolkit GitHub URL in HN hit → drop from Pulse (off Brief) [0.06ms]
+(pass) never Brief · cycle locks > HN candidates never Brief-eligible; pin set unchanged [0.07ms]
+(pass) never Brief · cycle locks > standing queries are Scout P3 watchlist — no Sol/Astra/incident [0.69ms]
+(pass) P3 rotate ≤3/tick · soft_fail merge > pickHnQueriesForTick returns ≤3 and rotates [0.27ms]
+(pass) P3 rotate ≤3/tick · soft_fail merge > fetchHnPulse rotates ≤3 queries per tick (fetchImpl) [2.56ms]
+HN: soft_fail query="Anthropic" — HTTP 503 (continue merge)
+(pass) P3 rotate ≤3/tick · soft_fail merge > one query 5xx soft_fails that query only · merge continues · never Brief [0.97ms]
+HN: soft_fail query="LLM" — HTTP 500
+HN: soft_fail query="OpenAI" — HTTP 500
+HN: soft_fail query="Anthropic" — HTTP 500
+(pass) P3 rotate ≤3/tick · soft_fail merge > forceSoftFail all queries → soft_fail · empty candidates · exit-path ok [0.23ms]
+(pass) P3 rotate ≤3/tick · soft_fail merge > paid X / Bluesky stay DENY · no standing Bluesky query [0.11ms]
+(pass) HN freshness (dedupe v2 re-land) > hnSearchUrl adds created_at_i window + points filter + optionalWords [0.25ms]
+(pass) HN freshness (dedupe v2 re-land) > filterRecentHits drops months-old stories, keeps undated [0.10ms]
+(pass) HN freshness (dedupe v2 re-land) > recentHours + recentSweep: window on every request, sweep pages, stale hits dropped [1.02ms]
+(pass) HN AI-relevance gate (Beat 5) > must-reject: Antennagate + generic company-only titles [0.47ms]
+(pass) HN AI-relevance gate (Beat 5) > keeps AI terms, lab/model names, AI lab domains [0.12ms]
+(pass) HN AI-relevance gate (Beat 5) > fetchHnPulse aiOnly drops non-AI hits and reports count [0.62ms]
+
+src/lib/__tests__/beat6.test.ts:
+(pass) lane tabs — exactly one active, always the current lane > all 6 lanes: active index = lane index [0.17ms]
+(pass) lane tabs — exactly one active, always the current lane > before the hash is read no tab is filled (SSR brief default never paints on voice) [0.08ms]
+(pass) lane tabs — exactly one active, always the current lane > CSS: inactive tabs never get a fill from hover/focus; background is not transitioned [0.44ms]
+(pass) lane tabs — exactly one active, always the current lane > CSS: no amber anywhere on the tab row; inactive numbers are var(--muted-foreground) on every lane [1.02ms]
+(pass) papers row builder > columns: up · year · badges lit by enrich · abs/pdf · doi [0.67ms]
+(pass) papers row builder > live data carries ≥14 rows for the 1280×800 pass mark [1.65ms]
+(pass) self_repost members (0 sources, SELF badge) > fixture with self_repost: GNews repost is SELF, not a source; row is single-source [0.22ms]
+(pass) self_repost members (0 sources, SELF badge) > field absent ⇒ unchanged behaviour (real cross-source cluster) [0.09ms]
+(pass) self_repost members (0 sources, SELF badge) > self_repost_ids form is honoured too [0.07ms]
+
+src/lib/__tests__/gmail-empty-hotfix.test.ts:
+(pass) hotfix — empty Gmail renders [] (not a sparse [ , ]) > empty rows → `= [\n];` and a real empty array [3.31ms]
+(pass) hotfix — empty Gmail renders [] (not a sparse [ , ]) > non-empty output unchanged (rows joined, trailing comma) [0.76ms]
+(pass) hotfix — empty Gmail renders [] (not a sparse [ , ]) > rank:snapshot runs on an empty Gmail module (copy of the desk, real script) [226.49ms]
+
+src/lib/__tests__/ops-status.test.ts:
+(pass) OPS status block (replaced, not appended) > running the update twice leaves exactly one block [0.66ms]
+(pass) OPS status block (replaced, not appended) > duplicate blocks collapse to one, placed where the first was [0.49ms]
+(pass) OPS status block (replaced, not appended) > missing file is a no-op [0.08ms]
+(pass) OPS status block (replaced, not appended) > lastA2Result reads the last terminal A2 line [0.05ms]
+
+src/lib/__tests__/build-footer.test.ts:
+(pass) B2 build stamp footer > source commit: CF_PAGES_COMMIT_SHA wins, else git rev-parse HEAD [47.10ms]
+(pass) B2 build stamp footer > crawl commit: SAGE_CRAWL_COMMIT wins, else the last commit touching artifacts/sage/CURRENT.json [43.40ms]
+(pass) B2 build stamp footer > repo URL is a constant (never git remote — an HTTPS remote can carry a token) [21.49ms]
+(pass) B2 build stamp footer > format + Istanbul clock + links [0.32ms]
+(pass) B2 build stamp footer > CSS: --muted-foreground, no hex [0.18ms]
+
+src/lib/__tests__/pass-e-session-taste.test.ts:
+(pass) Pass E session taste > fixture skip / login_wall → empty items, soft meter, no invent [1.02ms]
+(pass) Pass E session taste > likes present on taste item ignored for Pulse UP [0.46ms]
+(pass) Pass E session taste > mirror-on-WROTE: module equals disk ids/counts after emit [0.89ms]
+(pass) Pass E session taste > sync-from-disk soft when missing — keep committed module, no invent [0.44ms]
+(pass) Pass E session taste > stale >14d → soft taste stale without inventing items [0.43ms]
+(pass) Pass E session taste > never Brief: type locks + diskToSnap force false even if disk lies [0.40ms]
+(pass) Pass E session taste > coherence fails closed on ids drift [0.48ms]
+(pass) Pass E session taste > visible cap is within 5–8 [0.24ms]
+(pass) Pass E session taste > committed X_TASTE eligibility locks [0.23ms]
+
+src/lib/__tests__/ingest.test.ts:
+(pass) HF paper displacement > isGenSimPaper detects StudentSim and DreamX [0.03ms]
+(pass) HF paper displacement > isAgentPaper detects Repo-To-Skill [0.03ms]
+(pass) HF paper displacement > gen/sim top does NOT displace kept agent papers [0.11ms]
+(pass) HF paper displacement > DreamX top still keeps agent paper [0.04ms]
+(pass) HF paper displacement > without gen/sim top, plain upvote cut applies [0.03ms]
+(pass) STALE banner logic > age > 6h is STALE (Pulse .sage-stale gate) [0.05ms]
+(pass) STALE banner logic > fresh crawl under 6h is not STALE [0.01ms]
+(pass) toolkit shelf — off Brief > OWASP / scanner URLs classify as shelf [0.04ms]
+(pass) toolkit shelf — off Brief > toolkit links are not Brief-eligible [0.12ms]
+(pass) toolkit shelf — off Brief > scoreUrlList shelves toolkit and pulses X [0.07ms]
+(pass) X query builders > six semantic classes, no incident nouns [0.08ms]
+(pass) X query builders > per-handle queries for weight ≥ 3 [0.10ms]
+(pass) free providers lock > xIngestEnv never enables live paid X [0.04ms]
+
+src/lib/__tests__/publisher-company.test.ts:
+(pass) publisher/domain → company map > company domains [0.15ms]
+(pass) publisher/domain → company map > Google News publishers: brand names and bare domains; mentions never match [0.24ms]
+(pass) publisher/domain → company map > GNews item company comes from <source>, not the news.google.com link [0.06ms]
+(pass) publisher/domain → company map > NVIDIA repost counts 0; TechCrunch / Al Jazeera count 1 [0.07ms]
+(pass) corroboration shares the map > company blog + company-affiliated handle collapse to one source; outlets add one each [0.30ms]
+(pass) corroboration shares the map > a crawl cluster led by the item's own company adds 0; its independent GNews class still counts [0.14ms]
+
+src/lib/__tests__/pass-c-dates.test.ts:
+(pass) Pass C paper DATE > HF/arXiv published wins over Crossref issued and arXiv id month [0.29ms]
+(pass) Pass C paper DATE > OpenAlex publication_date before Crossref; Crossref before arXiv id fallback [0.13ms]
+(pass) Pass C paper DATE > arXiv id YYMM → first-of-month MM-DD; never invents today [0.16ms]
+(pass) Pass C paper DATE > date-only midnight stays honest (show the day) [0.05ms]
+(pass) Pass C istMMDD > formats Istanbul MM-DD; unparseable → — [0.03ms]
+
+src/lib/__tests__/pass-s1-acceptance.test.ts:
+(pass) S1.7 #1 — validator: new config accepted, every bad edit rejected > committed sage-sources.json (with the new blocks + lists) is accepted and canonical [1.27ms]
+(pass) S1.7 #1 — validator: new config accepted, every bad edit rejected > rejects: unknown analyst id [0.22ms]
+(pass) S1.7 #1 — validator: new config accepted, every bad edit rejected > rejects: unknown release id [0.19ms]
+(pass) S1.7 #1 — validator: new config accepted, every bad edit rejected > rejects: unknown security id [0.15ms]
+(pass) S1.7 #1 — validator: new config accepted, every bad edit rejected > rejects: analyst cap over ceiling (13 > 12) [0.15ms]
+(pass) S1.7 #1 — validator: new config accepted, every bad edit rejected > rejects: release cap over ceiling (5 > 4) [0.14ms]
+(pass) S1.7 #1 — validator: new config accepted, every bad edit rejected > rejects: regex in hn_title_queries [0.27ms]
+(pass) S1.7 #1 — validator: new config accepted, every bad edit rejected > rejects: hn_title_queries > 8 terms [0.15ms]
+(pass) S1.7 #1 — validator: new config accepted, every bad edit rejected > rejects: hn_title_queries term > 40 chars [0.12ms]
+(pass) S1.7 #1 — validator: new config accepted, every bad edit rejected > rejects: malformed sender address [0.14ms]
+(pass) S1.7 #1 — validator: new config accepted, every bad edit rejected > rejects: sender with display name [0.13ms]
+(pass) S1.7 #1 — validator: new config accepted, every bad edit rejected > rejects: > 20 senders [0.16ms]
+(pass) S1.7 #1 — validator: new config accepted, every bad edit rejected > S1.8: empty hn_title_queries / gmail_senders accepted (empty = off); empty ai_terms / politics_deny rejected [0.59ms]
+(pass) S1.7 #1 — validator: new config accepted, every bad edit rejected > accepts: ceilings exactly, claude-code on, editable title queries, 20 senders [0.24ms]
+(pass) S1.7 #1 — validator: new config accepted, every bad edit rejected > C3 parity note: no C3 editor on main — the server validator is the only path (both paths = this one) [0.01ms]
+(pass) S1.7 #2 — old sources unchanged (new blocks off via the real config switches) > fixture is a pre-S1 crawl: no anl:/rel: inputs, no embracethered rows [0.28ms]
+(pass) S1.7 #2 — old sources unchanged (new blocks off via the real config switches) > the all-off config is valid; the crawl gates read it as off [0.29ms]
+(pass) S1.7 #2 — old sources unchanged (new blocks off via the real config switches) > with the real switches off: cluster ids, Wire and the lead are byte-identical to the pre-S1 golden (b4c8f44) [105.76ms]
+RSS-ANL[simonw]: soft_fail — timeout 10000ms
+RSS-ANL[latent-space]: soft_fail — timeout 10000ms
+REL[llama.cpp]: soft_fail — timeout 10000ms
+REL[ollama]: soft_fail — timeout 10000ms
+REL[vllm]: soft_fail — timeout 10000ms
+REL[claude-code]: soft_fail — timeout 10000ms
+RSS-SEC[embracethered]: fetch failed — TimeoutError: The operation timed out.
+(pass) S1.7 #8 — each new feed timing out is a soft-fail meter, not a crawl failure > per-feed timeout → soft_fail result (no throw) for analyst, release, security (embracethered) and HN title [3.28ms]
+(pass) S1.7 #8 — each new feed timing out is a soft-fail meter, not a crawl failure > rss_analyst: a hung feed is cut at its budget → status timeout → TIMEOUT row + failed health cell (crawl continues) [121.38ms]
+(pass) S1.7 #8 — each new feed timing out is a soft-fail meter, not a crawl failure > releases_atom: a hung feed is cut at its budget → status timeout → TIMEOUT row + failed health cell (crawl continues) [132.32ms]
+(pass) S1.7 #8 — each new feed timing out is a soft-fail meter, not a crawl failure > hn_title: a hung feed is cut at its budget → status timeout → TIMEOUT row + failed health cell (crawl continues) [120.38ms]
+(pass) S1.7 #8 — each new feed timing out is a soft-fail meter, not a crawl failure > meters + health strip know the new sources (ANL / REL / HNT cells) [0.66ms]
+
+src/lib/__tests__/desk-view-cap-fixture.test.ts:
+(pass) desk-view caps on a fixed fixture (oldest first · pins never dropped · link cap) > row + link caps (drop 0): a 708-char GNews link is kept whole; a >2048-char link drops even the NEWEST story; over-cap source sheds its oldest unpinned [0.74ms]
+(pass) desk-view caps on a fixed fixture (oldest first · pins never dropped · link cap) > budget drops take the oldest unpinned survivors, ties broken by id [0.06ms]
+(pass) desk-view caps on a fixed fixture (oldest first · pins never dropped · link cap) > pinned stories survive everything — even the oldest one and one with an over-long link [0.34ms]
+(pass) desk-view caps on a fixed fixture (oldest first · pins never dropped · link cap) > deterministic: input order does not change the result [0.07ms]
+(pass) lead-log cap on a fixed 12-day history (LEAD_LOG_CAPS.days = 10) > cap is 10 days; the fixture has more, newest first [0.03ms]
+(pass) lead-log cap on a fixed 12-day history (LEAD_LOG_CAPS.days = 10) > the tape keeps the newest 10 days, each exactly as the full history renders it [0.66ms]
+(pass) lead-log cap on a fixed 12-day history (LEAD_LOG_CAPS.days = 10) > golden tape text (header reads 10 days; HELD 09-27 explained line by line) [0.30ms]
+
+src/lib/__tests__/rss-security.test.ts:
+(pass) Security RSS parse → schema > Trail of Bits fixture · briefEligible false · digestRefOk [1.27ms]
+(pass) Security RSS parse → schema > ToB toolkit GitHub URL → shelfOnly, off Brief [0.34ms]
+(pass) Security RSS parse → schema > Project Zero Atom fixture (projectzero.google) [0.57ms]
+(pass) Security RSS parse → schema > Fox-IT RemotePE fixture · briefEligible false · never Brief [0.36ms]
+(pass) Security RSS parse → schema > parseRssOrAtomCapped stops at max entries [0.16ms]
+(pass) Security RSS parse → schema > fetchRssSecurity offline fixtures for ToB + Fox-IT + Project Zero + Embrace The Red [1.07ms]
+(pass) classifyPost / DENY on security RSS > Astra compromised Hugging Face → flatten drop [0.05ms]
+(pass) classifyPost / DENY on security RSS > Sol = Astra → DENY flatten drop [0.03ms]
+(pass) classifyPost / DENY on security RSS > exploit how-to sensationalism → rumor tag, never Brief [0.06ms]
+(pass) classifyPost / DENY on security RSS > civilizations / announced deal → drop [0.03ms]
+(pass) never Brief · cycle locks · ToB+Fox-IT+P0 · NCC skip > all fixture items briefEligible false; pin set unchanged [0.41ms]
+(pass) never Brief · cycle locks · ToB+Fox-IT+P0 · NCC skip > SECURITY_FEEDS are ToB + Fox-IT + Project Zero + Embrace The Red (PASS-S1.2) — NCC out [0.11ms]
+(pass) never Brief · cycle locks · ToB+Fox-IT+P0 · NCC skip > bad XML fail-closed → empty parse [0.02ms]
+(pass) never Brief · cycle locks · ToB+Fox-IT+P0 · NCC skip > Fox-IT empty channel soft-continues · brief still false [0.10ms]
+(pass) PASS-S1.2 — Embrace The Red (one SECURITY_FEEDS entry) > registry entry: first-party RSS URL, no streamCap [0.02ms]
+(pass) PASS-S1.2 — Embrace The Red (one SECURITY_FEEDS entry) > real feed sample → SEC items: rss-sec:embracethered ids, never Brief, cap_per_feed applies [0.65ms]
+
+src/lib/__tests__/digest-pack.test.ts:
+(pass) digest-pack schema > DIGEST_ITEMS match DigestItem schema [0.13ms]
+(pass) digest-pack schema > exactly one lead; lead files hf-incident [0.03ms]
+(pass) digest-pack schema > JSON round-trip preserves schema + ids [0.29ms]
+(pass) digest-pack schema > renderPlan kept items only; renderReport round-trips markdown markers [0.23ms]
+(pass) digest-pack schema > nextDue cadence [0.06ms]
+
+src/lib/__tests__/pace.test.ts:
+(pass) request pacing is injectable (tests never sleep on wall time) > default interval: sleeps the remaining gap through the injected sleep [0.10ms]
+(pass) request pacing is injectable (tests never sleep on wall time) > minIntervalMs 0 or a first request never sleeps [0.06ms]
+(pass) request pacing is injectable (tests never sleep on wall time) > no test writes a cache into artifacts/sage (scratch dirs come from tmp-cache.ts) [1.96ms]
+
+src/lib/__tests__/wikidata-deny.test.ts:
+(pass) Wikidata DENY fixtures — false-friend reject > Persistent Sol → reject solar-physics Q34104679 · Brief=false [0.43ms]
+(pass) Wikidata DENY fixtures — false-friend reject > Sol short query → reject solar/given-name false friends · Brief=false [0.06ms]
+(pass) Wikidata DENY fixtures — false-friend reject > Astra → reject AstraZeneca Q731938 · Brief=false [0.08ms]
+(pass) Wikidata DENY fixtures — false-friend reject > METR short → metre/museum rejectQids · Brief=false [0.05ms]
+(pass) Wikidata DENY fixtures — allowlist match > Hugging Face → Q108943604 matched · never Brief [0.07ms]
+(pass) Wikidata DENY fixtures — allowlist match > METR deepen → Q135185153 eval nonprofit · never Brief [2.14ms]
+(pass) Wikidata DENY fixtures — allowlist match > HF SAS Q118182434 not allowlisted · Hub Q131939003 is [0.06ms]
+(pass) toDenyHints + soft-fail + Brief=false > toDenyHints maps Sol+Astra rejects [0.12ms]
+(pass) toDenyHints + soft-fail + Brief=false > forceSoftFail 429 → soft_fail · Brief=false · ingest continues [0.47ms]
+(pass) toDenyHints + soft-fail + Brief=false > forceSoftFail 503 → soft_fail path [0.05ms]
+(pass) toDenyHints + soft-fail + Brief=false > HTTP 403 fetch → soft_fail · briefEligible false [0.41ms]
+(pass) toDenyHints + soft-fail + Brief=false > fixturesBySeed offline path · Sol rejected · HF matched · brief false [0.24ms]
+(pass) rate / rotate / locks / Scout SoT > ≤3 seeds per tick rotate · core four first [0.05ms]
+(pass) rate / rotate / locks / Scout SoT > rejectQids present on core seeds (Scout REJECT table) [0.03ms]
+(pass) rate / rotate / locks / Scout SoT > reject before allowlist — allowlisted Q-id still rejected if in rejectQids [0.05ms]
+(pass) rate / rotate / locks / Scout SoT > exact allowlist only — never invent non-allowlisted org [0.03ms]
+(pass) rate / rotate / locks / Scout SoT > wbsearchentities URL + UA contract [0.04ms]
+(pass) rate / rotate / locks / Scout SoT > pins unchanged — cycle 003 / lead hf-incident [0.02ms]
+(pass) rate / rotate / locks / Scout SoT > unresolved when empty search — never invent [0.03ms]
+
+src/lib/__tests__/openalex-pause.test.ts:
+OpenAlex: soft-fail HTTP 429 — no retry · paused_until=2026-09-25T23:59:45Z (HTTP 429 Retry-After 40965) · streak=1
+(pass) OpenAlex Retry-After pause > 429 with Retry-After seconds → paused_until = now + seconds, persisted, 1 request, no retry [1.55ms]
+(pass) OpenAlex Retry-After pause > 429 with Retry-After HTTP-date → that instant [0.13ms]
+OpenAlex: soft-fail HTTP 429 — no retry · paused_until=2026-09-26T00:00:00Z (HTTP 429 no Retry-After → next midnight UTC) · streak=1
+(pass) OpenAlex Retry-After pause > 429 without Retry-After → next midnight UTC [0.41ms]
+OpenAlex: soft-fail HTTP 503 — skip enrich · streak=1
+OpenAlex: soft-fail HTTP 503 — skip enrich · streak=2
+OpenAlex: soft-fail HTTP 503 — no retry · paused_until=2026-09-26T20:37:00Z (3 consecutive failures → 24h) · streak=3
+(pass) OpenAlex Retry-After pause > 3 consecutive failures (5xx) → 24h pause; 1–2 failures do not pause [0.51ms]
+(pass) OpenAlex Retry-After pause > 3rd failure being a 429: the later of Retry-After and 24h wins [0.16ms]
+OpenAlex: PAUSED until 2026-09-26T00:59:45Z (HTTP 429 Retry-After 40965) — skipped, 0 requests
+(pass) OpenAlex Retry-After pause > paused source makes NO request (no retry, no cache read) and reports status paused [0.37ms]
+(pass) OpenAlex Retry-After pause > pause expires → request again; success clears the pause and the streak [0.88ms]
+(pass) OpenAlex Retry-After pause > an anonymous-IP pause does not bind a keyed run (key has its own budget) [0.14ms]
+(pass) optional OPENALEX_API_KEY > no env var → no Authorization header (behaves as today) [0.39ms]
+(pass) optional OPENALEX_API_KEY > env var set → Authorization: Bearer <key>; key not in URL, result, logs or state file [0.93ms]
+(pass) per-source crawl log + health status > crawlSourceRow status ok / fail / paused and table render [0.46ms]
+(pass) per-source crawl log + health status > health ledger: paused skip leaves streaks/history alone; row status paused + paused_until [0.36ms]
+
+src/lib/__tests__/x-pulse.test.ts:
+(pass) applyHydrate > never writes 0 over a real likes count [0.08ms]
+(pass) applyHydrate > never writes 0 over a real views count [0.01ms]
+(pass) applyHydrate > allows first hydrate from zero/missing [0.01ms]
+(pass) crawlAgeHours > STALE when age > 6h [0.02ms]
+(pass) crawlAgeHours > not STALE under 6h [0.01ms]
+(pass) emergingTopics > two-handle rule — single handle excluded [0.14ms]
+(pass) scorePost > returns finite score [0.10ms]
+
+src/lib/__tests__/openalex-enrich.test.ts:
+(pass) parseOpenAlexWorks → schema (display_name → title) > DOI filter HuggingGPT W4361866031 maps display_name → title · briefEligible false [0.14ms]
+(pass) parseOpenAlexWorks → schema (display_name → title) > fallback search LLM agent sandbox maps display_name → enrichment [0.07ms]
+(pass) parseOpenAlexWorks → schema (display_name → title) > legacy ExpeL fixture still maps [0.07ms]
+(pass) parseOpenAlexWorks → schema (display_name → title) > normalize helpers + DOI filter request builder [0.12ms]
+(pass) parseOpenAlexWorks → schema (display_name → title) > malformed / empty results skipped [0.02ms]
+(pass) mergeOntoPapers · never displace HF agent keeps > DOI/arXiv match attaches HuggingGPT id/year/doi onto existing row [0.23ms]
+(pass) mergeOntoPapers · never displace HF agent keeps > secondary enrich-only never kicks gen/sim-protected agent keeps [0.33ms]
+(pass) mergeOntoPapers · never displace HF agent keeps > secondary rows append when under limit · tagged enrich-only [0.15ms]
+(pass) mergeOntoPapers · never displace HF agent keeps > fuzzy title match [0.05ms]
+(pass) soft-fail 429 · pause instead of backoff · ingest continues > forceSoftFail 429 → soft_fail · empty enrichments · brief false [0.11ms]
+(pass) soft-fail 429 · pause instead of backoff · ingest continues > parseRetryAfterMs helper (display only) [0.06ms]
+OpenAlex: soft-fail HTTP 429 — no retry · paused_until=2026-09-26T00:00:00Z (HTTP 429 no Retry-After → next midnight UTC) · streak=1
+(pass) soft-fail 429 · pause instead of backoff · ingest continues > persistent 429 → exactly 1 request, no sleep/retry, honest soft_fail + paused_until [0.22ms]
+(pass) soft-fail 429 · pause instead of backoff · ingest continues > 200 after a stale pause: success resets state, writes cache [0.31ms]
+(pass) soft-fail 429 · pause instead of backoff · ingest continues > fixture DOI path ok · brief false [0.09ms]
+(pass) soft-fail 429 · pause instead of backoff · ingest continues > second fetch in same tick soft-fails budget [0.29ms]
+(pass) never Brief / never Pulse lead · cycle locks > Brief pin set unchanged (hf-incident lead, cycle 003) [0.09ms]
+(pass) never Brief / never Pulse lead · cycle locks > fallback query rotates across day buckets [0.02ms]
+
+src/lib/__tests__/pass-s1-gmail-senders.test.ts:
+(pass) S1.7 #7 — Gmail sender trust list > VentureBeat mail gets trust 2 (was 1.5 by the built-in hello@ rule) [0.06ms]
+(pass) S1.7 #7 — Gmail sender trust list > a 'Learn how…' subject is dropped (any sender, listed ones too) [0.55ms]
+(pass) S1.7 #7 — Gmail sender trust list > a TLDR mail from a non-listed sender keeps its old trust [0.02ms]
+(pass) S1.7 #7 — Gmail sender trust list > the list can never lower a built-in trust [0.03ms]
+(pass) S1.7 #7 — Gmail sender trust list > query contains both from: addresses; no TLDR seed term [0.07ms]
+(pass) S1.7 #7 — Gmail sender trust list > config drives the from: clause (applySageConfig) [0.17ms]
+(pass) S1.7 #1 (S1.5 part) — gmail_senders validator > defaults validate [0.45ms]
+(pass) S1.7 #1 (S1.5 part) — gmail_senders validator > S1.8: empty list is accepted and means off — no from: clause, no trust raise (built-in trust only) [0.31ms]
+(pass) S1.7 #1 (S1.5 part) — gmail_senders validator > malformed addresses rejected [0.91ms]
+(pass) S1.7 #1 (S1.5 part) — gmail_senders validator > ≤ 20, no duplicates [0.45ms]
+
+src/lib/__tests__/keys.test.ts:
+(pass) Beat 9 keys — bindings > 1–6 switch lanes in LANES order [0.16ms]
+(pass) Beat 9 keys — bindings > j/k, g g, G, Enter, o, Esc, /, ? [0.05ms]
+(pass) Beat 9 keys — bindings > Enter on an element that activates itself (row button, link) is left to that element
+(pass) Beat 9 keys — bindings > key map open: only ? and Esc act [0.02ms]
+(pass) Beat 9 keys — REVIEWER GATE: modifiers > ctrlKey held ⇒ every desk key ignored (Ctrl+1 / Cmd+1 / Alt+1 stay with the browser) [0.04ms]
+(pass) Beat 9 keys — REVIEWER GATE: modifiers > metaKey held ⇒ every desk key ignored (Ctrl+1 / Cmd+1 / Alt+1 stay with the browser) [0.01ms]
+(pass) Beat 9 keys — REVIEWER GATE: modifiers > altKey held ⇒ every desk key ignored (Ctrl+1 / Cmd+1 / Alt+1 stay with the browser) [0.02ms]
+(pass) Beat 9 keys — REVIEWER GATE: modifiers > Ctrl/Cmd/Alt ignored even in the filter prompt and with the key map open [0.03ms]
+(pass) Beat 9 keys — REVIEWER GATE: modifiers > Shift only where the character needs it (?, G, / on TR layout) [0.05ms]
+(pass) Beat 9 keys — REVIEWER GATE: modifiers > IME composition ignored [0.02ms]
+(pass) Beat 9 keys — REVIEWER GATE: typing targets > input / textarea / select / contenteditable are typing targets; buttons and rows are not [0.04ms]
+(pass) Beat 9 keys — REVIEWER GATE: typing targets > while typing every key is ignored — including Esc outside the filter prompt [0.04ms]
+(pass) Beat 9 keys — REVIEWER GATE: typing targets > Esc in the filter prompt clears it; other keys type normally [0.03ms]
+(pass) Beat 9 keys — helpers + wiring > selection step clamps; first press selects the first/last row [0.03ms]
+(pass) Beat 9 keys — helpers + wiring > filter matches headline / source / lab substrings, case-insensitive [0.09ms]
+(pass) Beat 9 keys — helpers + wiring > Beat 10: u jumps to the first since-row (plain key only) [0.04ms]
+(pass) Beat 9 keys — helpers + wiring > key map lists every binding [0.03ms]
+(pass) Beat 9 keys — helpers + wiring > exactly one global keydown listener, removed on unmount; drawer Esc does not double-fire [0.54ms]
+
+src/lib/__tests__/source-pause.test.ts:
+(pass) PAUSED merge (source-state.json → health at build time) > only future paused_until counts [0.12ms]
+(pass) PAUSED merge (source-state.json → health at build time) > missing / empty state = nothing paused [0.02ms]
+(pass) PAUSED merge (source-state.json → health at build time) > browser re-check after mount: a pause that expired since the build is not paused [0.03ms]
+(pass) PAUSED merge (source-state.json → health at build time) > build-stamp.mjs merges pauses in the same prebuild step; desk renders PAUSED · until HH:MM dim [0.49ms]
+
+src/lib/__tests__/secret-gate.test.ts:
+(pass) B3a secret gate > clean site passes [29.48ms]
+(pass) B3a secret gate > planted secret VALUE fails the build and the value is never printed [32.42ms]
+(pass) B3a secret gate > planted secret NAME fails [103.48ms]
+(pass) B3a secret gate > other secret values (GH_PUSH_TOKEN, DEPLOY_HOOK_URL) are gated too [27.67ms]
+(pass) B3a secret gate > Vyce base URL is a WARN by default, fatal only with SECRET_GATE_STRICT_URL=1 [53.45ms]
+(pass) B3a secret gate > missing dir fails closed [2.70ms]
+(pass) B3a secret gate > real out/ export passes (when built) [0.22ms]
+
+src/lib/__tests__/x-hygiene.test.ts:
+(pass) classifyPost > Bloomberg dollar wire is rumor [0.12ms]
+(pass) classifyPost > official Astra from OpenAI is companion, not rumor [0.04ms]
+(pass) classifyPost > flatten flag when Sol and Astra conflated on HF [0.04ms]
+(pass) classifyPost > Sol+HF maps to incident file [0.12ms]
+(pass) classifyPost > Curran tomorrow morning is rumor [0.05ms]
+(pass) banned / rumor / flatten helpers > bannedNounsIn hits civilizations [0.02ms]
+(pass) banned / rumor / flatten helpers > isRumorCopy catches available soon [0.02ms]
+(pass) banned / rumor / flatten helpers > detectFlatten on stigmergy-as-breach [0.06ms]
+(pass) banned / rumor / flatten helpers > Sol≠Astra separation language is not flatten [0.05ms]
+
+src/lib/__tests__/corroboration.test.ts:
+(pass) corroboration multiplier > 1 + 0.15 × (n − 1), capped at ×1.45 [0.09ms]
+(pass) corroboration multiplier > source keys: host, X per handle [0.32ms]
+(pass) rank below lead > more sources rank higher below the lead; lead never displaced [0.51ms]
+(pass) rank below lead > lead stays rank 1 even when a lower item has max corroboration [0.13ms]
+(pass) rank below lead > capped ×1.45 lets a medium item pass a 2-source high item by one slot only [0.26ms]
+(pass) rank below lead > crawl signatures: GPT-6 Astra corroborates astra-depth; Google Project Astra does not [0.15ms]
+(pass) eligibility — nothing briefEligible:false in Brief or Digest > filter drops briefEligible:false and drop kinds [0.35ms]
+(pass) eligibility — nothing briefEligible:false in Brief or Digest > Brief pins, Digest items and the rank snapshot contain no Taste/Pulse/shelf ids [0.50ms]
+(pass) eligibility — nothing briefEligible:false in Brief or Digest > real data: lead pinned hf, lock holds [0.85ms]
+(pass) moved since last crawl > new / up / down / gone vs previous snapshot [0.50ms]
+
+src/lib/__tests__/crawl-staleness.test.ts:
+(pass) staleness guard > threshold is 6h and x-pulse shares it [0.02ms]
+(pass) staleness guard > FRESH at 0h, 4h (one missed-free cycle) and exactly 6h [0.11ms]
+(pass) staleness guard > STALE just past 6h [0.03ms]
+(pass) staleness guard > unparseable stamp is STALE; future stamp clamps to 0h FRESH [0.02ms]
+
+src/lib/__tests__/wire.test.ts:
+(pass) Beat 7 wire — row builder > keeps only ≥2 independent sources; self-repost counts 0 [0.53ms]
+(pass) Beat 7 wire — row builder > never includes briefEligible:false, X, Taste, or non-AI HN/GNews rows [0.33ms]
+(pass) Beat 7 wire — row builder > lab-led clusters skip the title gate (already category-filtered at ingest) [0.12ms]
+(pass) Beat 7 wire — row builder > order: more sources → fresher → higher signal; capped at WIRE_MAX [0.95ms]
+(pass) Beat 7 wire — prev-snapshot diff > NEW / ▲ / ▼ against the previous crawl [0.57ms]
+(pass) Beat 7 wire — prev-snapshot diff > cluster re-keyed (lead changed) still matches prev by shared member [0.10ms]
+(pass) Beat 7 wire — prev-snapshot diff > no prev snapshot: falls back to seen-index is_new, nothing moves [0.17ms]
+(pass) Beat 7 wire — prev-snapshot diff > header: crawl HH:MM in Istanbul (UTC+3) · N new · M moved [0.36ms]
+(pass) Beat 7 wire — daily lead exclusion > current daily lead is never on the Wire; backfills to 5; no fake ▲ from its removal [0.65ms]
+(pass) Beat 7 wire — daily lead exclusion > generated WIRE_ROWS never contain today's daily lead [10.40ms]
+(pass) Beat 7 wire — generated data + placement > generated WIRE_ROWS: 0–5 rows, all ≥2 SRC, no X / taste ids [0.29ms]
+(pass) Beat 7 wire — generated data + placement > Brief renders the Wire under the Take, daily lead in the Take; CSS has no hex [1.42ms]
+
+src/lib/__tests__/gnews-rss.test.ts:
+(pass) Google News RSS parse → Pulse spice schema > sample maps briefEligible + pulseLeadEligible false [2.34ms]
+(pass) Google News RSS parse → Pulse spice schema > Astra / incident headline dropped (never Brief noise) [0.66ms]
+(pass) Google News RSS parse → Pulse spice schema > fetchGnewsRss fixtureXml offline [2.38ms]
+(pass) Google News RSS parse → Pulse spice schema > queryHash stable [0.08ms]
+(pass) Google News RSS parse → Pulse spice schema > buildGnewsSearchUrl always emits hl gl ceid [0.15ms]
+(pass) rotate ≤2/tick · standing ≤6 · ban Sol/Astra > watchlist ≤6 and safe [0.37ms]
+(pass) rotate ≤2/tick · standing ≤6 · ban Sol/Astra > pickGnewsQueriesForTick rotates ≤2 [0.28ms]
+(pass) rotate ≤2/tick · standing ≤6 · ban Sol/Astra > Sol / Astra / jailbreak / Bluesky blocked as standing [3.72ms]
+(pass) rotate ≤2/tick · standing ≤6 · ban Sol/Astra > locks cycle 003 / hf-incident untouched [0.08ms]
+(pass) soft_fail honesty · format-break / empty / 403/429 > HTML body → soft_fail html_body [0.25ms]
+(pass) soft_fail honesty · format-break / empty / 403/429 > empty channel → soft_fail empty_channel [0.13ms]
+GNews: soft_fail query="OpenAI" — HTTP 429
+GNews: soft_fail query="Anthropic" — HTTP 429
+(pass) soft_fail honesty · format-break / empty / 403/429 > HTTP 429 force soft_fail merge · ingest continues shape [0.50ms]
+GNews: soft_fail query="open weights" — HTTP 403
+GNews: soft_fail query="Hugging Face" — HTTP 403
+(pass) soft_fail honesty · format-break / empty / 403/429 > HTTP 403 soft_fail [0.30ms]
+(pass) soft_fail honesty · format-break / empty / 403/429 > one query HTML soft_fail · other fixture ok → merge [0.51ms]
+(pass) soft_fail honesty · format-break / empty / 403/429 > explicit fixtures for both tick queries soft_fail merge [0.59ms]
+(pass) display cap 6–8 · de-dupe > capGnewsDisplay ≤8 [0.58ms]
+(pass) Beat 5 — publisher, lab queries, pool cap, backoff > publisher comes from <source> and the ' — Publisher' suffix strips before matching [0.60ms]
+(pass) Beat 5 — publisher, lab queries, pool cap, backoff > publisherFromTitle fallback when <source> missing [0.19ms]
+(pass) Beat 5 — publisher, lab queries, pool cap, backoff > lab queries: ≤6 allowlist, safe, rotate ≤2 extra per tick with when:2d + distinct cache keys [3.40ms]
+GNews: soft_fail query="Anthropic" — HTTP 429
+(pass) Beat 5 — publisher, lab queries, pool cap, backoff > 429 stops further live requests this tick (polite backoff) [0.65ms]
+(pass) Beat 5 — publisher, lab queries, pool cap, backoff > pool cap ≤ GNEWS_POOL_CAP, round-robin across queries [1.02ms]
+
+src/lib/__tests__/wire-copy-chips.test.ts:
+(pass) WIRE copies — news outlets only > threshold: Dice ≥ 0.8 on normalized tokens (publisher suffix + stopwords dropped) [0.07ms]
+(pass) WIRE copies — news outlets only > near-identical outlet pair within 2h counts ONE source; marked as WIRE copies [0.39ms]
+(pass) WIRE copies — news outlets only > same pair 3h apart counts 2 [0.13ms]
+(pass) WIRE copies — news outlets only > different headlines count 2 (BNP pair: 'inks new Google Cloud deal' vs 'forges agentic AI partnership') [0.05ms]
+(pass) WIRE copies — news outlets only > Gemini 3.8 TTS: HN 4 min after DeepMind's post, same headline → stays 2 SRC (never HN, never lab feeds) [0.09ms]
+(pass) WIRE copies — news outlets only > Gemini 3.8 TTS real case, frozen from the 2026-09-25 crawl: lab post + HN repost stay 2 SRC, no WIRE copy [0.10ms]
+(pass) WIRE copies — news outlets only > HN + news outlet pair with the same headline minutes apart is never deduped (HN is not an outlet) [0.06ms]
+(pass) WIRE copies — news outlets only > dedupe reaches every N SRC consumer: Wire gate, corroboration keys, lead eligibility [0.25ms]
+(pass) SRC chips — Σ chips = N SRC on current data > every Pulse row: chip counts add up to sourceCount; SELF never counted [0.19ms]
+(pass) SRC chips — Σ chips = N SRC on current data > every generated Wire row: N SRC equals the client chip sum (same unit logic both sides) [0.27ms]
+(pass) SRC chips — Σ chips = N SRC on current data > label: HN GNW×2 for 3 SRC [0.03ms]
+(pass) customer-deal announcements — LEAD only, subject must be a non-vendor > BNP Paribas inks new Google Cloud deal → noise:customer-deal [0.36ms]
+(pass) customer-deal announcements — LEAD only, subject must be a non-vendor > vendor as subject stays eligible [0.04ms]
+(pass) customer-deal announcements — LEAD only, subject must be a non-vendor > no deal verb / real model or funding news stays eligible [0.02ms]
+(pass) customer-deal announcements — LEAD only, subject must be a non-vendor > filter applies to the lead only — the same group stays on the Wire [1.40ms]
+
+src/lib/__tests__/rss-feed-timeout.test.ts:
+(pass) RSS per-feed timeout > default cap is 10s [0.02ms]
+RSS[openai]: fetch failed — TimeoutError: The operation timed out.
+RSS[openai]: fetch failed — TimeoutError: The operation timed out.
+RSS[openai]: soft_fail — timeout 50ms
+RSS[deepmind]: fetch failed — TimeoutError: The operation timed out.
+RSS[deepmind]: fetch failed — TimeoutError: The operation timed out.
+RSS[deepmind]: soft_fail — timeout 50ms
+(pass) RSS per-feed timeout > hung feed soft-fails with a timeout reason; crawl continues, no throw [213.28ms]
+
+src/lib/__tests__/static-page.test.ts:
+(pass) static page — no request-time filesystem > app/page.tsx: no node:fs / child_process / process.cwd anywhere in its import graph [4.88ms]
+(pass) static page — no request-time filesystem > app/layout.tsx: no node:fs / child_process / process.cwd anywhere in its import graph [0.05ms]
+(pass) static page — no request-time filesystem > static export: no force-dynamic, build stamp generated in prebuild, request-time readers gone [0.33ms]
+(pass) hard gate — repo-only, fails closed > committed repo data passes (clock pinned 1h after the crawl) [0.41ms]
+(pass) hard gate — repo-only, fails closed > stale beyond SAGE_MAX_DATA_AGE_H (default 72h) fails; override honoured [0.92ms]
+(pass) hard gate — repo-only, fails closed > missing / broken / inconsistent lock and missing data fail [1.27ms]
+(pass) hard gate — repo-only, fails closed > gate has no box-only paths [0.24ms]
+(pass) hard gate — repo-only, fails closed > A1 routine reads the live crawl stamp from data-crawl-at and restarts via bun run start (serve-out) [0.32ms]
+
+src/lib/__tests__/taste-input.test.ts:
+(pass) cloud Taste = committed x-taste.ts (no box-only attachment) > taste urls are exactly the committed X_TASTE entries, in order [0.10ms]
+(pass) cloud Taste = committed x-taste.ts (no box-only attachment) > clean env (temp cwd/HOME, no /workspace/attachments) gives the same entries [12.33ms]
+(pass) cloud Taste = committed x-taste.ts (no box-only attachment) > taste scores into the Pulse lane only (x-status), never shelf/Brief [0.16ms]
+(pass) cloud Taste = committed x-taste.ts (no box-only attachment) > ingest reads no attachment file and no filesystem for Taste [0.27ms]
+
+src/lib/__tests__/lead-pick.test.ts:
+(pass) daily lead pick — window + ranking > pick is due from 06:00 Istanbul on (no upper bound); dates are Istanbul days [0.12ms]
+(pass) daily lead pick — window + ranking > strongest = most independent publishers → SIG → newer; self-repost counts 0 [0.41ms]
+(pass) daily lead pick — window + ranking > never: age ≥36h, <2 SRC, briefEligible:false, Taste/X, non-AI [0.11ms]
+(pass) daily lead pick — age = earliest member item > first item 38h old + 1h-old repost ⇒ ineligible (late repost can't refresh) [0.15ms]
+(pass) daily lead pick — age = earliest member item > exclude predicate is an extension point (none by default) [0.50ms]
+(pass) daily lead pick — partisan-politics exclusion > Axios Trump-allies headline: lead-ineligible but Wire-eligible; UN AI-safety headline: lead-eligible [0.37ms]
+(pass) daily lead pick — partisan-politics exclusion > pick records excluded candidates with their reason [0.19ms]
+(pass) daily lead pick — lead changes only at daily pick, stable across same-day crawls > pick at 06:11, same-day crawls with a stronger story keep the lead; next day re-picks [0.39ms]
+(pass) daily lead pick — lead changes only at daily pick, stable across same-day crawls > before 06:00 nothing is picked unless LEAD_PICK_FORCE [0.11ms]
+(pass) daily lead pick — lead changes only at daily pick, stable across same-day crawls > nothing qualifies ⇒ HELD keeps yesterday's lead [0.16ms]
+(pass) daily lead catch-up — keyed off the crawl's own start time > late cron start (06:40) picks; it is the 06 slot, not a catch-up [0.14ms]
+(pass) daily lead catch-up — keyed off the crawl's own start time > missed 06 crawl ⇒ the 10 (or 14) crawl picks, marked catch_up [0.21ms]
+(pass) daily lead catch-up — keyed off the crawl's own start time > no double pick on the same date (06 picks, 10 and 14 do nothing) [0.15ms]
+(pass) daily lead catch-up — keyed off the crawl's own start time > a crawl that STARTED before 06:00 does not pick even if its stamp lands after 06:00 [0.03ms]
+(pass) daily lead catch-up — keyed off the crawl's own start time > HELD date retries on the next crawl that day; one HELD entry only [0.32ms]
+(pass) daily lead catch-up — keyed off the crawl's own start time > LEAD_PICK_REPICK on a picked date appends a superseding entry (FORCE alone does not) [0.22ms]
+(pass) daily lead catch-up — keyed off the crawl's own start time > Brief stale rule (PASS-L safety net): lead story >48h old ⇒ HELD; 38h is still the lead [0.06ms]
+(pass) Beat 5 — Google News confirms, never leads (GNW_ONLY) > all-GNW group (2 distinct GNews publishers = 2 SRC) is rejected with GNW_ONLY [0.17ms]
+(pass) Beat 5 — Google News confirms, never leads (GNW_ONLY) > GNW + HN group is eligible; GNews publisher still counts toward N SRC [0.12ms]
+(pass) Beat 5 — Google News confirms, never leads (GNW_ONLY) > a lab SELF-repost does not rescue a GNW-only group [0.03ms]
+(pass) Beat 5 — Google News confirms, never leads (GNW_ONLY) > nothing qualifies → HELD; GNW_ONLY recorded in excluded[] for Beat 11 [0.14ms]
+(pass) Beat 5 — Google News confirms, never leads (GNW_ONLY) > catch-up path (14:11, no pick for the date) applies the same rule [0.15ms]
+(pass) Beat 5 — Google News confirms, never leads (GNW_ONLY) > REPICK that finds nothing → HELD carrying the previous DAY's lead, never the superseded GNW-only pick [0.19ms]
+(pass) HELD never locks the date — retries each ≥06:00 crawl, locks only on a real lead > HELD at 14:16 → lead picked at 18:11 (no REPICK) → no change at 22:11 [0.31ms]
+(pass) HELD never locks the date — retries each ≥06:00 crawl, locks only on a real lead > a HELD retry that still finds nothing updates the one HELD entry with its candidate/reason record [0.38ms]
+(pass) HELD never locks the date — retries each ≥06:00 crawl, locks only on a real lead > before 06:00 a crawl neither picks nor retries (HELD stays, no attempt logged) [0.23ms]
+
+src/lib/__tests__/pass-a-digest-unlock.test.ts:
+(pass) Pass A digest unlock > cycle label stays 003; no 004 [0.03ms]
+(pass) Pass A digest unlock > not-HELD fixture: unlock lead equals LEAD_TODAY title, no kicker (not Sep 3 HF swarm) [0.12ms]
+(pass) Pass A digest unlock > HELD fixture: last good titles kept + HELD kicker [0.03ms]
+(pass) Pass A digest unlock > HELD fixture with no last good → archive · 003 fallback (never today's title) [0.44ms]
+(pass) Pass A digest unlock > live data, whichever state the crawl left: unlock is never archive while a last good exists [0.04ms]
+(pass) Pass A digest unlock > Voice rows mirror Digest top rows (same snapshot) [0.04ms]
+(pass) Pass A digest unlock > HELD keeps last good + HELD kicker [0.02ms]
+(pass) Pass A digest unlock > empty history → archive · 003 fallback (never invent) [0.03ms]
+(pass) Pass A digest unlock > GML / taste / RSS-only never become titles [0.07ms]
+(pass) Pass A digest unlock > mid-window freeze: same pickDate keeps titles; new pick swaps [0.07ms]
+(pass) Pass A digest unlock > pack overlay carries unlocked titles; archive baseline retained as drops [0.17ms]
+(pass) Pass A digest unlock > desk chrome: Brief Take title classes + kicker + closed archive fold [0.29ms]
+(pass) Pass A digest unlock > wireToUnlockRows drops RSS/GNews-only [0.06ms]
+
+src/lib/__tests__/pass-l-fresher-lead.test.ts:
+(pass) PASS-L pass marks > #1 best story 30h old, nothing under 24h → picked (tier 24–36h), not HELD [0.65ms]
+(pass) PASS-L pass marks > #2 20h with fewer SRC beats 30h with more SRC (tier first) [0.27ms]
+(pass) PASS-L pass marks > #3 picked 06:11 at 20h is still the lead at 21:11 and next morning; HELD only past 48h [0.38ms]
+(pass) PASS-L pass marks > #4 HELD at 06:11 and 11:11, qualifying story at 16:11 → picked at 16:11; Digest/Voice titles follow; no re-pick after [0.35ms]
+(pass) PASS-L pass marks > #5 a 21:11 crawl on a HELD date does not pick [0.28ms]
+(pass) PASS-L pass marks > #6 kicker shows the age band; lead log records tier + pick slot [0.42ms]
+
+src/lib/__tests__/desk-view-caps.test.ts:
+(pass) desk-view caps — fixed size, oldest dropped first > over the per-source cap: the oldest stories go (whole, with their members), ties broken by id [1.02ms]
+(pass) desk-view caps — fixed size, oldest dropped first > pinned stories (Wire / rank / lead) survive even when they are the oldest; the budget drop skips them too [0.10ms]
+(pass) desk-view caps — fixed size, oldest dropped first > field caps: text past its cap is cut with an ellipsis; an over-long link drops its story (links are never cut) [0.10ms]
+(pass) desk-view caps — fixed size, oldest dropped first > X posts past the cap: newest kept; papers past the cap: lowest arXiv id (oldest) dropped, feed order kept [0.28ms]
+(pass) desk-view caps — fixed size, oldest dropped first > deterministic: the same input renders a byte-identical module (real crawl + synthetic worst case) [689.34ms]
+(pass) desk-view caps — fixed size, oldest dropped first > today's view: no dangling ids, every pinned story kept, gzip within budget [3.60ms]
+(pass) desk-view caps — fixed size, oldest dropped first > synthetic WORST case (every lane at cap, every field at max) is cut to the budget the build proved [639.83ms]
+(pass) desk-view caps — fixed size, oldest dropped first > the client never imports the generator side (zlib / raw modules) [0.54ms]
+(pass) lead-log view — capped holotape (LEAD_LOG_CAPS), lead-history.json untouched > generated lead-log-view.ts is exactly slimLeadLog(buildLeadLog(lead-history.json)) [1.07ms]
+(pass) lead-log view — capped holotape (LEAD_LOG_CAPS), lead-history.json untouched > past the caps: newest days, newest passes, first ✗ lines; text cut with …; only rendered fields kept [3.06ms]
+(pass) lead-log view — capped holotape (LEAD_LOG_CAPS), lead-history.json untouched > worst-case log (every cap full, every field max) has a fixed size [4.99ms]
+
+src/lib/__tests__/seen-index.test.ts:
+(pass) seen-index > first run: everything new with first_seen = stamp [0.24ms]
+(pass) seen-index > first_seen stable across runs; only unseen keys are new [0.09ms]
+(pass) seen-index > keyed by canonical URL: tracking variants are not new [0.08ms]
+(pass) seen-index > absent key keeps first_seen (returns later without being NEW) [0.03ms]
+(pass) seen-index > retention prunes entries unseen for > 30 days; empty keys ignored [0.02ms]
+(pass) seen-index > parseSeenIndex tolerates garbage [0.03ms]
+
+src/lib/__tests__/story-drawer.test.ts:
+(pass) Beat 8 story drawer — coverage list > real Claude enzyme cluster (frozen 22:13Z crawl): HN + Al Jazeera + 1 more, SELF (Anthropic) struck and last [0.29ms]
+(pass) Beat 8 story drawer — coverage list > drawer only for multi-source rows; single-source keeps inline expand [1.51ms]
+(pass) Beat 8 story drawer — coverage list > kicker, footer, lead-less member fallback [0.42ms]
+(pass) Beat 8 story drawer — Beat 9 key surface + URL > next / prev wrap over drawer-capable ids [0.10ms]
+(pass) Beat 8 story drawer — Beat 9 key surface + URL > ?story=<clusterId> round-trips and keeps other params [0.08ms]
+(pass) Beat 8 story drawer — Beat 9 key surface + URL > dialog a11y + hook adds no key handlers; CSS tokens only [0.43ms]
+
+src/lib/__tests__/sage-config.test.ts:
+(pass) PASS-C2 seed — first land = no behaviour change > committed desk/config/sage-sources.json validates and equals today's code values [0.45ms]
+(pass) PASS-C2 seed — first land = no behaviour change > AI_TERMS rebuilt from the default list is the exact pre-C2 regex [0.08ms]
+(pass) PASS-C2 seed — first land = no behaviour change > applying the seeded config leaves query / caps / regexes exactly as before [0.11ms]
+(pass) PASS-C2 seed — first land = no behaviour change > setup + desk-knob modules match the committed config and its hash [3.38ms]
+(pass) PASS-C2 code-enforced ceilings + rejects > ceilings are today × 2 and lab RSS timeout ≤ 15 s [0.07ms]
+(pass) PASS-C2 code-enforced ceilings + rejects > rejects: cap over ceiling [0.20ms]
+(pass) PASS-C2 code-enforced ceilings + rejects > rejects: timeout over 15 s [0.11ms]
+(pass) PASS-C2 code-enforced ceilings + rejects > rejects: unknown feed id [0.11ms]
+(pass) PASS-C2 code-enforced ceilings + rejects > rejects: unknown source [0.09ms]
+(pass) PASS-C2 code-enforced ceilings + rejects > rejects: unknown field [0.10ms]
+(pass) PASS-C2 code-enforced ceilings + rejects > rejects: cap 0 [0.13ms]
+(pass) PASS-C2 code-enforced ceilings + rejects > rejects: non-integer cap [0.12ms]
+(pass) PASS-C2 code-enforced ceilings + rejects > rejects: empty feeds [0.09ms]
+(pass) PASS-C2 code-enforced ceilings + rejects > rejects: bad regex term [0.62ms]
+(pass) PASS-C2 code-enforced ceilings + rejects > rejects: secret key [0.19ms]
+(pass) PASS-C2 code-enforced ceilings + rejects > rejects: secret value [0.15ms]
+(pass) PASS-C2 code-enforced ceilings + rejects > rejects: wrong schema [0.13ms]
+(pass) PASS-C2 code-enforced ceilings + rejects > rejects: taste.max raised [0.11ms]
+(pass) PASS-C2 code-enforced ceilings + rejects > allowed: off, lower caps, feed subset, keyword edits; taste.weight is clamped (not a reject) [0.23ms]
+(pass) PASS-C2 last-good fallback (never crashes, never silent) > valid config is used and mirrored to config-last-good.json [0.72ms]
+(pass) PASS-C2 last-good fallback (never crashes, never silent) > bad JSON → last good used, status invalid [0.83ms]
+(pass) PASS-C2 last-good fallback (never crashes, never silent) > unknown feed → last good used, status invalid [0.76ms]
+(pass) PASS-C2 last-good fallback (never crashes, never silent) > cap over ceiling → last good used, status invalid [0.77ms]
+(pass) PASS-C2 last-good fallback (never crashes, never silent) > missing config and no last good → code defaults, still invalid [0.35ms]
+(pass) PASS-C2 last-good fallback (never crashes, never silent) > ingest wires it: crawl-start load, off sources skipped, config_hash stamped, `config invalid` meter [0.30ms]
+(pass) PASS-C2 keyword lists + taste weight scope > ai_terms / politics / gmail seed edits take effect, then reset [0.26ms]
+(pass) PASS-C2 keyword lists + taste weight scope > taste.weight 0 keeps snapshot order; 0.3 lifts Pulse-overlapping taste items [0.23ms]
+(pass) PASS-C2 keyword lists + taste weight scope > taste.weight never reaches Pulse UP, Wire, the lead pick or Brief (only the desk taste shelf reads it) [0.47ms]
+(pass) PASS-C2 Setup view — lazy, read-only > desk loads setup-view only via dynamic import (0 First Load) [0.26ms]
+(pass) PASS-C2 Setup view — lazy, read-only > view has no edit controls and the muted commit line [0.05ms]
+(pass) PASS-C2 Setup view — lazy, read-only > off source shows state off (not soft-fail) with no row count [0.33ms]
+(pass) PASS-C2 weekly X taste refresh — box only > CI never runs it [0.62ms]
+(pass) PASS-C2 weekly X taste refresh — box only > fresh capture → new captured_at, allowlist applied, stale meter clears [2.41ms]
+(pass) PASS-C2 weekly X taste refresh — box only > login wall → honest skip, last shelf kept, one notify line, stamp written [1.93ms]
+(pass) PASS-C2 weekly X taste refresh — box only > no X creds / refresh in CI config or repo config [0.42ms]
+
+src/lib/__tests__/dedupe.test.ts:
+(pass) canonicalizeUrl > strips utm/ref/fbclid tracking, www, hash, trailing slash [0.08ms]
+(pass) canonicalizeUrl > keeps meaningful query params (sorted) [0.06ms]
+(pass) canonicalizeUrl > AMP variants collapse to canonical [0.07ms]
+(pass) canonicalizeUrl > empty / garbage stays stable [0.05ms]
+(pass) canonicalizeUrl > news.google legacy blob resolves offline to publisher URL [0.09ms]
+(pass) canonicalizeUrl > news.google encrypted blob not resolvable → canonical google URL (oc stripped) [0.05ms]
+(pass) title similarity > strips Google News publisher suffix [0.03ms]
+(pass) title similarity > normalizes case, punctuation, stopwords, keeps version numbers [0.03ms]
+(pass) title similarity > jaccard basics [0.07ms]
+(pass) title similarity > same story across HN and GNews scores ≥ threshold [0.09ms]
+(pass) title similarity > different stories stay below threshold [0.07ms]
+(pass) clusterItems > URL canon + title similarity merge HN + lab RSS + GNews into one cluster [0.40ms]
+(pass) clusterItems > lead prefers lab RSS; GNews never leads a multi-source cluster [0.28ms]
+(pass) clusterItems > GNews-only cluster strips publisher suffix from title [0.13ms]
+(pass) clusterItems > short titles merge only on identical canonical URL [0.13ms]
+(pass) clusterItems > transitive merges and first_seen/is_new = earliest member [0.12ms]
+(pass) clusterItems > deterministic across runs + stats [0.30ms]
+(pass) dedupe v2 — normalization > strips known outlet suffixes even without publisher field [0.02ms]
+(pass) dedupe v2 — normalization > money + versions kept; tickers/aliases fold to entities; light stem + synonyms [0.08ms]
+(pass) dedupe v2 — URL canonicalization > strips utm_*, ref, fbclid, gclid, mc_*, ncid, _hsenc; keeps real params [0.02ms]
+(pass) dedupe v2 — URL canonicalization > Google News: legacy blob decodes to publisher URL; encrypted blob stays unique (title-only match) [0.09ms]
+(pass) dedupe v2 — real pair fixtures (2026-09-24 crawl) > merges: HN post of the DeepMind TTS launch (different URL: blog.google vs deepmind.google) [0.11ms]
+(pass) dedupe v2 — real pair fixtures (2026-09-24 crawl) > merges: Same Private AI Compute post, reworded on HN (title-only, URL removed for the test) [0.06ms]
+(pass) dedupe v2 — real pair fixtures (2026-09-24 crawl) > merges: Identical headline, 30.3h apart (date-only lab timestamp) — near-identical gets 2x window [0.03ms]
+(pass) dedupe v2 — real pair fixtures (2026-09-24 crawl) > merges: Same Akamai–Anthropic deal, different wording + publisher suffixes (Barron's vs Breakingthenews) [0.05ms]
+(pass) dedupe v2 — real pair fixtures (2026-09-24 crawl) > merges: Same story, HN duplicate submissions [0.05ms]
+(pass) dedupe v2 — real pair fixtures (2026-09-24 crawl) > merges: GNews (Mexico Business News) × HN — same UN CEOs call, different wording [0.04ms]
+(pass) dedupe v2 — real pair fixtures (2026-09-24 crawl) > merges: GNews (Al Jazeera) × HN — Claude enzyme discovery, reworded [0.04ms]
+(pass) dedupe v2 — real pair fixtures (2026-09-24 crawl) > merges: GNews (techcrunch.com) × HN — 'bio lab' vs 'biology lab' [0.06ms]
+(pass) dedupe v2 — real pair fixtures (2026-09-24 crawl) > merges: GNews syndication of a lab post with double suffix ' | NVIDIA Technical Blog - NVIDIA Developer' [0.05ms]
+(pass) dedupe v2 — real pair fixtures (2026-09-24 crawl) > merges: Identical entity-only headline (GNews syndication of OpenAI post) [0.04ms]
+(pass) dedupe v2 — real pair fixtures (2026-09-24 crawl) > stays apart: Different Gemini 3.8 Live launches (Avatar vs Extended Thinking) — must never merge, even inside the window [0.07ms]
+(pass) dedupe v2 — real pair fixtures (2026-09-24 crawl) > stays apart: Different Gemini 3.8 products (TTS vs Live Avatar), 24.9h apart [0.02ms]
+(pass) dedupe v2 — real pair fixtures (2026-09-24 crawl) > stays apart: Roundup/opinion vs launch post: only entities + version shared [0.03ms]
+(pass) dedupe v2 — real pair fixtures (2026-09-24 crawl) > stays apart: UN-cooperation remarks vs industry safety body — overlapping entities, different story [0.04ms]
+(pass) dedupe v2 — real pair fixtures (2026-09-24 crawl) > stays apart: Different Anthropic stories (Copilot cost question vs Opus launch) [0.03ms]
+(pass) dedupe v2 — real pair fixtures (2026-09-24 crawl) > stays apart: Conflicting model versions [0.04ms]
+(pass) dedupe v2 — real pair fixtures (2026-09-24 crawl) > stays apart: UN cooperation call vs industry standards body (GNews near-miss) [0.04ms]
+(pass) dedupe v2 — real pair fixtures (2026-09-24 crawl) > Gemini 3.8 Live Avatar ≠ Gemini 3.8 Live Extended Thinking (explicit guard) [0.12ms]
+(pass) dedupe v2 — real pair fixtures (2026-09-24 crawl) > conflicting versions block (GPT-6 vs GPT-5.6) [0.05ms]
+(pass) dedupe v2 — real pair fixtures (2026-09-24 crawl) > whole real batch clusters: positives joined, negatives split [2.01ms]
+(pass) dedupe v2 — time window > inside window merges; outside window blocks [0.13ms]
+(pass) dedupe v2 — time window > near-identical headline gets 2× window, not more [0.06ms]
+(pass) dedupe v2 — time window > missing/garbage published time falls back gracefully (stricter threshold, no crash) [0.06ms]
+(pass) dedupe v2 — diagnostics > topCrossSourcePairs skips same-source pairs and sorts by score [1.85ms]
+(pass) Beat 5 — GNews suffix + corroborators > site-brand suffix tied to publisher strips; unrelated dash segments stay [0.13ms]
+(pass) Beat 5 — GNews suffix + corroborators > identical entity-only headlines merge; different entity-only headlines do not [0.10ms]
+(pass) Beat 5 — GNews suffix + corroborators > pickCorroborators: only direct v2 matches, ≤perAnchor, excludes shown [0.68ms]
+(pass) Beat 5 — GNews suffix + corroborators > GNews never leads a multi-source cluster built from corroborators [0.12ms]
+(pass) company self-reposts count 0 independent sources > NVIDIA repost of NVIDIA's own post: flagged self_repost, counts 0 → not multi-source [0.16ms]
+(pass) company self-reposts count 0 independent sources > TechCrunch covering an HN story counts 1 → multi-source [0.11ms]
+(pass) company self-reposts count 0 independent sources > Anthropic's own GNews copy counts 0, Al Jazeera counts 1 in the same cluster [0.16ms]
+(pass) company self-reposts count 0 independent sources > pickCorroborators marks same-company corroborators self_repost [0.15ms]
+
+src/lib/__tests__/pass-a2-first-load.test.ts:
+(pass) Pass A2 · First Load headroom > desk.tsx never statically imports the Sep archive pack, archive chunk, or Papers rows [0.14ms]
+(pass) Pass A2 · First Load headroom > desk-view.ts (First Load data) carries no PAPERS; desk-view-papers.ts does [0.25ms]
+(pass) Pass A2 · First Load headroom > full budget + 2 kB crawl growth stays ≤ 182 000 B (and under the 185 kB cap) [2.18ms]
+(pass) Pass A2 · First Load headroom > archive fold loads on open, shows a muted loading line, and an 'archive unavailable' fallback [0.09ms]
+
+src/lib/__tests__/gmail-news.test.ts:
+(pass) Pass F gmail-news > query builder covers every seed keyword [0.11ms]
+(pass) Pass F gmail-news > keyword query → ≥1 Pulse row source gmail-news, briefEligible false [0.96ms]
+(pass) Pass F gmail-news > noise (2FA / promo / account share) dropped; qi ranks real news above weak [0.26ms]
+(pass) Pass F gmail-news > dedupe by message-id keeps highest qi; emit cap 12 [0.18ms]
+(pass) Pass F gmail-news > Gmail timeout / 401 → soft meter shape, items from cache or empty, never throws [31.12ms]
+(pass) Pass F gmail-news > retention TTL drops stale cache files [0.32ms]
+(pass) Pass F gmail-news > never Brief: every emitted row has briefEligible false and pulse_only true [0.21ms]
+(pass) Pass F Gmail SRC chip (Architect lock — not GNW) > gmail-news members render distinct GML chip, never GNW [0.20ms]
+
+src/lib/__tests__/pass-q1-reader-hash.test.ts:
+(pass) PASS-Q1 reader_hash gate > stamp-only diff (CRAWL_AT, PACK_AT, captured_at, timings) → hash equal [14.23ms]
+(pass) PASS-Q1 reader_hash gate > item diff → hash differs [12.92ms]
+(pass) PASS-Q1 reader_hash gate > lead diff → hash differs [21.59ms]
+(pass) PASS-Q1 reader_hash gate > stripStamps keeps titles [0.08ms]
+
+src/lib/__tests__/pass-s1-hn-title.test.ts:
+(pass) S1.7 #6 — HN title-scoped queries > hnSearchUrl({ titleOnly }) restricts to the title, last 48h, points ≥ 10 [0.12ms]
+(pass) S1.7 #6 — HN title-scoped queries > default list = Scout's 5; one request per term; < 10 points / older than 48h dropped [3.46ms]
+(pass) S1.7 #6 — HN title-scoped queries > S1.8 #6: title queries ADD ≤ hn.cap (20) new rows after dedupe; existing HN volume is unchanged [1.50ms]
+(pass) S1.7 #6 — HN title-scoped queries > a failing term soft-fails alone (others still merge) [0.31ms]
+(pass) S1.7 #1 (S1.4 part) — keywords.hn_title_queries validator > seed list accepted and freely editable (not additions-only) [0.73ms]
+(pass) S1.7 #1 (S1.4 part) — keywords.hn_title_queries validator > rejects regex [0.36ms]
+(pass) S1.7 #1 (S1.4 part) — keywords.hn_title_queries validator > rejects regex group [0.23ms]
+(pass) S1.7 #1 (S1.4 part) — keywords.hn_title_queries validator > rejects over 40 chars [0.20ms]
+(pass) S1.7 #1 (S1.4 part) — keywords.hn_title_queries validator > rejects more than 8 terms [0.21ms]
+(pass) S1.7 #1 (S1.4 part) — keywords.hn_title_queries validator > rejects banned noun [0.24ms]
+(pass) S1.7 #1 (S1.4 part) — keywords.hn_title_queries validator > rejects duplicate [0.23ms]
+(pass) S1.7 #1 (S1.4 part) — keywords.hn_title_queries validator > S1.8: empty list is accepted and means off — no request, nothing merged, not a soft-fail [0.48ms]
+(pass) S1.7 #1 (S1.4 part) — keywords.hn_title_queries validator > S1.8: ai_terms / politics_deny stay non-empty [0.37ms]
+(pass) S1.7 #1 (S1.4 part) — keywords.hn_title_queries validator > applySageConfig pushes the list into the crawl (default restores) [0.11ms]
+
+src/lib/__tests__/source-health.test.ts:
+(pass) source health ledger > first ok run seeds entry [0.13ms]
+(pass) source health ledger > streaks: ok ok fail fail ok [0.26ms]
+(pass) source health ledger > history rolls to 7 days [5.64ms]
+(pass) source health ledger > sources absent this run keep entry but prune history [0.13ms]
+(pass) source health ledger > pruneHistory drops malformed timestamps [0.05ms]
+(pass) source health ledger > parseLedger tolerates garbage [0.06ms]
+(pass) source health ledger > health state + summary [0.27ms]
+
+src/lib/__tests__/github-shelf.test.ts:
+(pass) GitHub shelf fixtures → classifyUrl shelf only > Query A agent-eval: 2 hits → shelf URLs · briefEligible false [2.50ms]
+(pass) GitHub shelf fixtures → classifyUrl shelf only > Query B OWASP LLM: toolkit + OWASP/Top10 → shelf · never Brief [0.48ms]
+(pass) GitHub shelf fixtures → classifyUrl shelf only > classifier drops non-toolkit GitHub noise [0.07ms]
+GitHub shelf: soft-fail HTTP 403 (forced) — skip
+(pass) soft-fail 403/429 · ingest continues > forceSoftFail 403 → soft_fail true · empty shelf · brief false [0.19ms]
+GitHub shelf: soft-fail HTTP 429 (forced) — skip
+(pass) soft-fail 403/429 · ingest continues > forceSoftFail 429 → soft_fail · stamp path unaffected [0.11ms]
+GitHub shelf: X-RateLimit-Remaining=0 — soft-fail skip (no call)
+(pass) soft-fail 403/429 · ingest continues > X-RateLimit-Remaining=0 → soft-fail without calling fetch [0.29ms]
+GitHub shelf: soft-fail HTTP 403 — skip
+(pass) soft-fail 403/429 · ingest continues > live fetch 403 soft-fails via fetchImpl [0.94ms]
+GitHub shelf: live query="LLM agent eval harness" → 2 hits / 2 shelf (remaining=8)
+GitHub shelf: ≤1 search/ingest already used — soft-fail skip
+(pass) ≤1 search per ingest tick · zero credentials > second searchRepos in same tick soft-fails budget [5.12ms]
+(pass) ≤1 search per ingest tick · zero credentials > headers never include Authorization · GITHUB_TOKEN ignored [0.08ms]
+(pass) ≤1 search per ingest tick · zero credentials > query rotation picks curated strings only [0.05ms]
+(pass) never Brief / Pulse lead · pins unchanged > cycle 003 · lead hf-incident · GitHub never displaces [0.06ms]
+(pass) never Brief / Pulse lead · pins unchanged > fixture hits are not pin ids and never pulseLeadEligible [0.11ms]
+GitHub shelf: cache hit query="LLM agent eval harness" → 2 hits / 2 shelf
+(pass) FREE-PULSE P4 · 24h cache-first · rate stamp > cache hit within 24h skips network · searches=0 · from_cache [0.78ms]
+GitHub shelf: X-RateLimit-Remaining=0 — soft-fail skip (no call)
+(pass) FREE-PULSE P4 · 24h cache-first · rate stamp > stamped Remaining=0 soft_fails without fetch (cross-tick preflight) [0.57ms]
+GitHub shelf: soft-fail HTTP 429 — skip
+(pass) FREE-PULSE P4 · 24h cache-first · rate stamp > HTTP 429 soft_fail stamps remaining · ingest stamp shape honest [3.92ms]
+GitHub shelf: soft-fail missing body — skip
+(pass) FREE-PULSE P4 · 24h cache-first · rate stamp > empty / missing body soft_fails honestly [0.70ms]
+(pass) FREE-PULSE P4 · 24h cache-first · rate stamp > Scout P4: ≤1 search/tick · shelf queries curated · no incident nouns [0.09ms]
+
+src/lib/__tests__/build-lock.test.ts:
+(pass) build lock (desk/.build.lock) > free lock: builds at once [14.42ms]
+(pass) build lock (desk/.build.lock) > held lock: waits, then builds when it is released [1513.57ms]
+(pass) build lock (desk/.build.lock) > held past the timeout: fails loudly (exit 75), builds nothing [1012.70ms]
+(pass) build lock (desk/.build.lock) > NEXUS_BUILD_LOCK_HELD=1 (set by the lock holder): no second flock, no deadlock [19.22ms]
+(pass) build lock (desk/.build.lock) > wiring: every :3000 build path goes through the lock; pages-publish holds it and calls next build directly [1.23ms]
+
+src/lib/__tests__/pass-a1-chrome-honesty.test.ts:
+(pass) Pass A1 chrome honesty > unlock follows Brief LEAD_TODAY when not HELD, keeps last good when HELD; cycle stays 003 [0.23ms]
+(pass) Pass A1 chrome honesty > picked lead from lab RSS is the Digest title (lead-pick already gated ≥2 SRC); rows still gated [0.10ms]
+(pass) Pass A1 chrome honesty > topbar pack display uses DIGEST_CADENCE (digest-last), not Sep PACK_AT [0.44ms]
+(pass) Pass A1 chrome honesty > CYCLE.window + cyc compile stamp muted when unlock live; archive path keeps them [0.45ms]
+(pass) Pass A1 chrome honesty > PACK_SOURCE fancyTWEETS not live provenance when unlock active [0.22ms]
+(pass) Pass A1 chrome honesty > Moved pin follows DIGEST_UNLOCK lead when unlock live; hf-swarm demoted; Brief context pin reads archive [0.35ms]
+(pass) Pass A1 chrome honesty > archive fold stays closed by default (Pass A chrome) [0.23ms]
+(pass) Pass A1 chrome honesty > Digest/Voice HELD kicker follows Brief's runtime lead view; titles unchanged [0.45ms]
+
+src/lib/__tests__/backup-stage.test.ts:
+(pass) backup commit stages a fixed allowlist only > planted feedback/notes/taste-votes are NOT staged; allowlisted crawl/Wire/lead/health files are [172.71ms]
+(pass) backup commit stages a fixed allowlist only > --dry (shadow) stages nothing and lists only allowlisted paths [103.72ms]
+(pass) backup commit stages a fixed allowlist only > allowlist is exact files / one-segment globs — never a directory, never a catch-all [0.33ms]
+(pass) backup commit stages a fixed allowlist only > cf-build.sh stages only via backup-stage.sh (no add -A / add . / directory add) [0.40ms]
+
+src/lib/__tests__/digest-cadence.test.ts:
+(pass) digest cadence (WIRE-DIGEST-CADENCE) > missing digest-last → due; second run within 6h → HOLD [7.89ms]
+(pass) digest cadence (WIRE-DIGEST-CADENCE) > overdue tick writes pack JSON+md; unlocked lead; drop/stigmergy present [4.81ms]
+(pass) digest cadence (WIRE-DIGEST-CADENCE) > no civilizations in non-Dropped lead/companion/rest copy [3.69ms]
+(pass) digest cadence (WIRE-DIGEST-CADENCE) > Brief pins untouched (003 / hf-incident); Astra companion; no 004 [5.06ms]
+(pass) digest cadence (WIRE-DIGEST-CADENCE) > does not require browser localStorage [5.33ms]
+(pass) digest cadence (WIRE-DIGEST-CADENCE) > refresh is append-only on baseline prose (Scout field map) [4.03ms]
+
+src/lib/__tests__/cf-build.test.ts:
+(pass) B3 crawl table > crawl_sources[] path: rows/status/ms, 0 rows → THROTTLED?, paused → PAUSED [0.36ms]
+(pass) B3 crawl table > legacy ingest-last (no crawl_sources[]) falls back to per-source blocks [0.16ms]
+(pass) B3 crawl table > renders the real ingest-last.json without throwing [0.59ms]
+(pass) B3 cf-build.sh static guards > bash -n passes [1.54ms]
+(pass) B3 cf-build.sh static guards > no box-only paths, no xtrace [0.14ms]
+(pass) B3 cf-build.sh static guards > token never echoed, never in a URL or argv [0.29ms]
+(pass) B3 cf-build.sh static guards > SHADOW guard precedes any push; push only after a crawl [0.09ms]
+(pass) B3 cf-build.sh static guards > runs the secret gate and a frozen install, and hooks are no-op safe [0.04ms]
+
+src/lib/__tests__/lead-log.test.ts:
+(pass) Beat 11 lead log builder (artifacts/sage/lead-history.json → holotape) > picked lead: one row with Istanbul pick time, PUBS from the history, ✓ LEAD + ✗ codes on the tape [0.51ms]
+(pass) Beat 11 lead log builder (artifacts/sage/lead-history.json → holotape) > HELD entry with attempts[]: muted HELD row carrying the previous lead, one tape pass per attempt [0.51ms]
+(pass) Beat 11 lead log builder (artifacts/sage/lead-history.json → holotape) > HELD without attempts[] falls back to the entry's own excluded list [0.12ms]
+(pass) Beat 11 lead log builder (artifacts/sage/lead-history.json → holotape) > same-date re-picks: superseded picks are tagged, the day shows the LAST entry [0.21ms]
+(pass) Beat 11 lead log builder (artifacts/sage/lead-history.json → holotape) > reason codes: fixed-width vocabulary, raw reason kept as detail when the code loses it [0.32ms]
+(pass) Beat 11 lead log builder (artifacts/sage/lead-history.json → holotape) > publisher names come from the lead URL host [0.07ms]
+(pass) Beat 11 lead log builder (artifacts/sage/lead-history.json → holotape) > empty / missing / wrong-schema history ⇒ empty log, no throw [0.11ms]
+(pass) Beat 11 lead log builder (artifacts/sage/lead-history.json → holotape) > rebuild rule: the real lead-history.json rebuilds the identical log (data + text), and it ships only slim fields [3.66ms]
+(pass) Beat 11 lead log builder (artifacts/sage/lead-history.json → holotape) > desk wiring: Yesterday line links ?view=leadlog, `l` toggles it, page builds the log at build time [0.60ms]
+(pass) Beat 11 lead log builder (artifacts/sage/lead-history.json → holotape) > Beat 11 CSS: Skin V2 vars only (no hex), nothing dimmer than --muted-foreground, reduced motion instant [0.33ms]
+
+src/lib/__tests__/pass-b-digest-stamp.test.ts:
+(pass) Pass B digest-cadence mirror > emit-on-WROTE: module equals digest-last.json after tick [4.97ms]
+(pass) Pass B digest-cadence mirror > skip-on-HOLD: does not rewrite module to wall-clock now [4.50ms]
+(pass) Pass B digest-cadence mirror > coherence fails closed on forced stale cadence drift [0.85ms]
+(pass) Pass B digest-cadence mirror > soft-fail missing digest-last: keep committed module, no invent [0.49ms]
+(pass) Pass B digest-cadence mirror > renderDigestCadenceTs shape [0.42ms]
+
+src/lib/__tests__/ai-relevance.test.ts:
+(pass) shared AI-relevance gate > GeForce NOW game title is rejected by the title gate (GNews) [0.04ms]
+(pass) shared AI-relevance gate > must-reject: Antennagate (HN) — generic company name alone never qualifies [0.06ms]
+(pass) lab feeds: AI by default; NVIDIA filtered by <category> / path, never title > must-reject: both GeForce NOW game posts [0.26ms]
+(pass) lab feeds: AI by default; NVIDIA filtered by <category> / path, never title > must-keep: RetroChimera / EvoLib (MS Research) — no title check on research-lab feeds [0.05ms]
+(pass) lab feeds: AI by default; NVIDIA filtered by <category> / path, never title > must-keep: NVIDIA data-center / people / research posts (NodeWright, Topograph, Sakeena Fiza, Open Science) [0.14ms]
+(pass) lab feeds: AI by default; NVIDIA filtered by <category> / path, never title > must-keep: NVIDIA dev 'DLSS 5 with 3D-Guided Neural Rendering' (DLSS = neural rendering, AI category) [0.20ms]
+(pass) lab feeds: AI by default; NVIDIA filtered by <category> / path, never title > gaming category + an AI category keeps; gaming-only dev post drops [0.05ms]
+(pass) lab feeds: AI by default; NVIDIA filtered by <category> / path, never title > feed parser reads RSS <category> (CDATA) and Atom term= [0.30ms]
+(pass) title gate (HN / GNews only) > keeps AI posts from general-company feeds [0.03ms]
+(pass) AI-relevance recall on real 2026-09-24 drops > keeps AI research titles without the literal word AI [0.03ms]
+(pass) AI-relevance recall on real 2026-09-24 drops > title gate still rejects game / non-AI titles (GNews) [0.02ms]
+
+src/lib/__tests__/archive-fold-label.test.ts:
+(pass) archive fold header label > reflects open / closed state [0.03ms]
+(pass) archive fold header label > desk renders the label from state, not a hardcoded '· closed' [0.30ms]
+
+src/lib/__tests__/lead-view.test.ts:
+(pass) leadView — one source of truth for Brief plate, status bar, INGEST line > HELD pick ⇒ HELD everywhere, before and after mount; carried headline never shown as the lead [0.09ms]
+(pass) leadView — one source of truth for Brief plate, status bar, INGEST line > a lead for today ⇒ the real headline [0.04ms]
+(pass) leadView — one source of truth for Brief plate, status bar, INGEST line > 48h age check switches only after mount (static HTML keeps the lead; the browser flips to HELD past 48h) [0.07ms]
+(pass) leadView — one source of truth for Brief plate, status bar, INGEST line > no pick at all ⇒ HELD [0.02ms]
+(pass) leadView — one source of truth for Brief plate, status bar, INGEST line > text is exactly 'HELD · no qualifying story' [0.01ms]
+(pass) Phase 2 polish > #1 HELD text depends on the reason; LeadInline and the stale plate use it [0.19ms]
+(pass) Phase 2 polish > #2 stale plate meta shows staleLead.date, never the old last-pick date [0.08ms]
+(pass) Phase 2 polish > #3 <768 Yesterday headline: full width, clamp 2, tagged as an allowed row [0.12ms]
+(pass) Phase 2 polish > #4 Voice MOVE is the lead's single line, never the joined row list [0.14ms]
+(pass) Phase 2 polish > #5 INGEST line has no lead cell [0.04ms]
+(pass) Phase 2 polish > #6 .sage-deny is amber [0.03ms]
+(pass) next try = next crawl slot 02/06/10/14/18/22 :11 Istanbul > 2026-09-25T17:05:00 ⇒ 18:11 [0.14ms]
+(pass) next try = next crawl slot 02/06/10/14/18/22 :11 Istanbul > 2026-09-25T14:16:00 ⇒ 18:11 [0.01ms]
+(pass) next try = next crawl slot 02/06/10/14/18/22 :11 Istanbul > 2026-09-25T18:10:59 ⇒ 18:11
+(pass) next try = next crawl slot 02/06/10/14/18/22 :11 Istanbul > 2026-09-25T18:11:00 ⇒ 22:11
+(pass) next try = next crawl slot 02/06/10/14/18/22 :11 Istanbul > 2026-09-25T22:30:00 ⇒ 02:11
+(pass) next try = next crawl slot 02/06/10/14/18/22 :11 Istanbul > 2026-09-25T00:00:00 ⇒ 02:11
+(pass) next try = next crawl slot 02/06/10/14/18/22 :11 Istanbul > 2026-09-25T02:11:00 ⇒ 06:11
+(pass) next try = next crawl slot 02/06/10/14/18/22 :11 Istanbul > 2026-09-25T09:59:00 ⇒ 10:11
+(pass) desk wiring > empty Wire still renders its crawl stamp and an honest zero line (Pages coherence reads the stamp) [0.12ms]
+(pass) desk wiring > no spot renders LEAD_TODAY.headline directly (all go through leadView) [0.13ms]
+(pass) desk wiring > HELD plate CSS is outlined (no fill), vars only [0.25ms]
+(pass) desk wiring > static export: lead cells follow the built HELD state (branches on out/, never on the live crawl) [0.17ms]
+
+src/lib/__tests__/pulse-v5.test.ts:
+(pass) pulse-v5 baseline guard > > 40% NEW ⇒ baseline [0.06ms]
+(pass) pulse-v5 baseline guard > rare NEW renders from is_new; baseline hides every plate [0.36ms]
+(pass) pulse-v5 baseline guard > current Beat 2 snapshot (first crawl) is baseline [1.69ms]
+(pass) pulse-v5 badges > single-source row (same publisher twice): one badge, no also line [0.15ms]
+(pass) pulse-v5 badges > multi-source cluster leads, carries also badges, max score, SEC flag [0.16ms]
+(pass) pulse-v5 age + health > compact HN-style age [0.10ms]
+(pass) pulse-v5 age + health > ledger state → cell state; OpenAlex fail stays fail [0.07ms]
+(pass) pulse-v5 UP column (Pass D — HN points only) > sigCell: HN points → plain integer; null / non-finite → dim —; never invent 0 [0.07ms]
+(pass) pulse-v5 UP column (Pass D — HN points only) > built rows: HN points → UP; GNews/SEC without HN → — [0.21ms]
+(pass) pulse-v5 UP column (Pass D — HN points only) > fixture: HN points win UP; missing score → —; X likes on a member are ignored [0.16ms]
+
+src/lib/__tests__/since.test.ts:
+(pass) Beat 10 since-you-were-here > first visit ever ⇒ no baseline ⇒ nothing marked [0.08ms]
+(pass) Beat 10 since-you-were-here > session baseline wins over the (tab-leave-updated) stored visit; junk ignored [0.04ms]
+(pass) Beat 10 since-you-were-here > strictly-after first_seen; null first_seen never marked; stable partition [0.12ms]
+(pass) Beat 10 since-you-were-here > lastSeenAt is written on tab leave, never on load [0.34ms]
+
+src/lib/__tests__/crossref-enrich.test.ts:
+(pass) parseCrossrefWorks → schema (HuggingGPT + agent survey) > bibliographic HuggingGPT maps DOI/issued/type · briefEligible false [0.38ms]
+(pass) parseCrossrefWorks → schema (HuggingGPT + agent survey) > filter DOI agent survey maps issued date-parts · briefEligible false [0.15ms]
+(pass) parseCrossrefWorks → schema (HuggingGPT + agent survey) > formatIssuedDateParts + isArxivDoi helpers [0.07ms]
+(pass) parseCrossrefWorks → schema (HuggingGPT + agent survey) > malformed / empty results skipped [0.04ms]
+(pass) buildCrossrefRequest · prefer filter=doi: / bibliographic · never direct arXiv GET > registered DOI → filter=doi: [0.30ms]
+(pass) buildCrossrefRequest · prefer filter=doi: / bibliographic · never direct arXiv GET > arXiv DOI filter redirects to bibliographic (Scout 404 tip) [0.11ms]
+(pass) buildCrossrefRequest · prefer filter=doi: / bibliographic · never direct arXiv GET > papers with registered DOI prefer filter [0.08ms]
+(pass) buildCrossrefRequest · prefer filter=doi: / bibliographic · never direct arXiv GET > arXiv-only papers → bibliographic title [0.08ms]
+(pass) buildCrossrefRequest · prefer filter=doi: / bibliographic · never direct arXiv GET > prefers journal DOI over Zenodo data-repo DOI [0.07ms]
+(pass) mergeOntoPapers · non-destructive vs OpenAlex · never displace HF keeps > title match attaches Crossref DOI without clobbering OpenAlex arXiv doi/id [0.52ms]
+(pass) mergeOntoPapers · non-destructive vs OpenAlex · never displace HF keeps > filter DOI survey attaches onto OpenAlex secondary without clobbering id [0.12ms]
+(pass) mergeOntoPapers · non-destructive vs OpenAlex · never displace HF keeps > never displaces HF agent keeps at capacity [0.33ms]
+(pass) mergeOntoPapers · non-destructive vs OpenAlex · never displace HF keeps > fuzzy title match HuggingGPT [0.07ms]
+(pass) soft-fail 429/5xx/404 · ingest continues · brief=false > forceSoftFail 429 → soft_fail · empty · brief false [0.57ms]
+Crossref: soft-fail HTTP 404 — skip enrich
+(pass) soft-fail 429/5xx/404 · ingest continues · brief=false > live fetch 404 soft-fails via fetchImpl [0.51ms]
+Crossref: soft-fail HTTP 429 — skip enrich
+(pass) soft-fail 429/5xx/404 · ingest continues · brief=false > live fetch 429 soft-fails via fetchImpl [0.20ms]
+(pass) soft-fail 429/5xx/404 · ingest continues · brief=false > fixture path ok · brief false [0.13ms]
+(pass) soft-fail 429/5xx/404 · ingest continues · brief=false > second fetch in same tick soft-fails budget [0.49ms]
+(pass) never Brief / never Pulse lead · cycle locks · HF HTML not wired > Brief pin set unchanged (hf-incident lead, cycle 003) [0.12ms]
+(pass) never Brief / never Pulse lead · cycle locks · HF HTML not wired > ingest-last shape stamps crossref.brief=false [0.13ms]
+
+src/lib/__tests__/topic-heat.test.ts:
+(pass) Beat 10 heat — 4h routine windows (Istanbul 02/06/10/14/18/22) > window starts land on 02/06/10/14/18/22 Istanbul [0.10ms]
+(pass) Beat 10 heat — 4h routine windows (Istanbul 02/06/10/14/18/22) > several hand runs minutes apart collapse to ONE window; the latest crawl in it wins [0.27ms]
+(pass) Beat 10 heat — 4h routine windows (Istanbul 02/06/10/14/18/22) > a missing window renders as a gap (null), never zero or padding [0.34ms]
+(pass) Beat 10 heat — 4h routine windows (Istanbul 02/06/10/14/18/22) > six real windows ⇒ full label; delta vs previous window; only the hottest is hot (tie → biggest rise) [0.23ms]
+(pass) Beat 10 heat — 4h routine windows (Istanbul 02/06/10/14/18/22) > crawls after the latest stamp are ignored; upsert replaces same crawl_at [0.12ms]
+(pass) Beat 10 heat — company matching > headline aliases and lab feeds [0.24ms]
+(pass) Beat 10 heat — company matching > OTHER LABS: one exported map, word-boundary entity match, cluster counts once for the cell [0.40ms]
+(pass) Beat 10 heat — company matching > OTHER LABS can be the single amber cell; drivers come from the latest window; filter OR-matches the group [0.21ms]
+(pass) Beat 10 heat — company matching > a record from before OTHER LABS existed renders that cell as a gap, not a zero [0.10ms]
+(pass) Beat 10 heat — company matching > heat-cell filter matches by company, the same rule as the counts [0.04ms]
+(pass) Beat 10 heat — company matching > generated data file is bucketed and never pads gaps with zeros [0.34ms]
+
+src/lib/__tests__/pass-s1-analyst.test.ts:
+(pass) S1.7 #3 — analyst feeds confirm, never lead alone > simonw + latent-space only → 2 SRC but excluded with reason analyst-only [0.83ms]
+(pass) S1.7 #3 — analyst feeds confirm, never lead alone > the same pair plus one lab publisher → eligible (analysts count toward N SRC) [0.45ms]
+(pass) S1.7 #3 — analyst feeds confirm, never lead alone > analyst + GNews only → still not eligible (GNW_ONLY/analyst-only, never a lead) [0.27ms]
+(pass) S1.1 — registry, parse, AINews recap, chip > registry = simonw + latent-space; cap 6 [0.06ms]
+(pass) S1.1 — registry, parse, AINews recap, chip > real-feed fixtures parse; AINews recap stays ONE item; non-AI posts dropped; cap applies [1.73ms]
+(pass) S1.1 — registry, parse, AINews recap, chip > ANL chip + publisher in the client view [0.03ms]
+(pass) S1.7 #1 (S1.1 part) — analyst_rss validator > defaults validate [0.41ms]
+(pass) S1.7 #1 (S1.1 part) — analyst_rss validator > cap 12 ok, cap 13 rejected [0.27ms]
+(pass) S1.7 #1 (S1.1 part) — analyst_rss validator > unknown analyst feed rejected [0.14ms]
+(pass) S1.7 #1 (S1.1 part) — analyst_rss validator > rss-labs stays first-party (no analyst id accepted in lab_rss) [0.19ms]
+
+src/lib/__tests__/crawl-budget.test.ts:
+(pass) per-source time budgets > arXiv budget is 20 s; every crawl source has a 20–30 s budget [0.23ms]
+arXiv: fetch failed — SourceTimeoutError: timeout after 20000ms budget
+arXiv search: failed — SourceTimeoutError: timeout after 20000ms budget
+(pass) per-source time budgets > hung arXiv fetch soft-fails at its 20 s budget: request aborted, status timeout [7.06ms]
+arXiv: fetch failed — SourceTimeoutError: timeout after 150ms budget
+(pass) per-source time budgets > real clock: a hung source resolves at its budget (not later), even while sleeping in its throttle [250.92ms]
+(pass) per-source time budgets > timeout → last good data: arXiv cache-only enrich still returns cached rows, no network [1.11ms]
+(pass) per-source time budgets > source error is status error (not timeout); success carries the value and duration [0.44ms]
+(pass) per-source time budgets > boundFetch fails fast once the budget signal aborted [0.33ms]
+(pass) concurrent crawl > output is identical whatever order the sources finish in [67.69ms]
+(pass) concurrent crawl > a hung source times out at its budget and the crawl completes with the others [121.19ms]
+(pass) concurrent crawl > sources overlap (wall ≈ slowest, not the sum); a cap of 1 runs them serially, same result order [303.78ms]
+OpenAlex: PAUSED until 2099-01-01T00:00:00Z (HTTP 429 Retry-After 40965) — skipped, 0 requests
+(pass) OpenAlex pause still holds under the concurrent, budgeted crawl > paused OpenAlex: 0 requests, status paused (not timeout) while other sources run alongside [21.13ms]
+OpenAlex: soft-fail HTTP 429 — no retry · paused_until=2026-09-25T23:59:45Z (HTTP 429 Retry-After 40965) · streak=1
+(pass) OpenAlex pause still holds under the concurrent, budgeted crawl > 429 + Retry-After through the budget-bound fetch still persists the pause (1 request, no retry) [0.69ms]
+
+src/lib/__tests__/pass-q1g-state-persist.test.ts:
+(pass) PASS-Q1G state persists across fresh depth-1 clones > run 1 cold start, run 2 sees prev, changed=false, no 'first run', checked_at advances [397.98ms]
+
+src/lib/__tests__/pass-q1-watchdog.test.ts:
+(pass) PASS-Q1 watchdog > healthy → exit 0, silent [13.58ms]
+(pass) PASS-Q1 watchdog > forced stale checked_at → exit 1 [10.12ms]
+(pass) PASS-Q1 watchdog > two half-soft runs → exit 1 [9.59ms]
+(pass) PASS-Q1 watchdog > gate error → exit 1 [10.41ms]
+(pass) PASS-Q1 watchdog > cold start --pre: missing last-checked.json → first run, exit 0 [14.47ms]
+(pass) PASS-Q1 watchdog > post-crawl: missing last-checked.json still FAILs [9.51ms]
+(pass) PASS-Q1 watchdog > --pre: live ≠ main crawl → WARN, exit 0 [23.41ms]
+(pass) PASS-Q1 watchdog > post-crawl: live older than this run's crawl → FAIL [10.25ms]
+(pass) PASS-Q1 watchdog > post-crawl: live NEWER than this run's crawl (box published later) → pass [12.99ms]
+(pass) PASS-Q1 watchdog > post-crawl: live = this run's crawl → pass [9.96ms]
+
+src/lib/__tests__/pass-s1-releases.test.ts:
+(pass) S1.3 semver filter > regex accepts only plain semver [0.14ms]
+(pass) S1.3 semver filter > minor/major bump only [0.05ms]
+(pass) S1.7 #4 — release filter > b11671…b11680 + v0.7.0 with prior v0.6.4 → exactly one item v0.7.0 [0.74ms]
+(pass) S1.7 #4 — release filter > v0.7.1 the next day → none (patch); state baseline stays v0.7.0 [0.52ms]
+(pass) S1.7 #4 — release filter > v0.32.0rc2 → none [0.11ms]
+(pass) S1.7 #4 — release filter > first run → none, and seeds the baseline [0.30ms]
+(pass) S1.7 #4 — release filter > live llama.cpp feed (trimmed, 2026-10-16): seeds silently at v0.7.0 [0.12ms]
+(pass) S1.7 #5 — release rate > two minor bumps in 24h → 1 item (across crawls) [0.21ms]
+(pass) S1.7 #5 — release rate > two minor bumps in one feed read → 1 item (the highest) [0.08ms]
+(pass) S1.7 #5 — release rate > cap_per_feed limits shown rows [0.07ms]
+(pass) S1.3 — never lead, never Wire, REL chip > REL badge, single github.com publisher across feeds [0.03ms]
+(pass) S1.3 — never lead, never Wire, REL chip > release + one HN item → not a lead (reason release); HN heads the cluster [0.41ms]
+(pass) S1.3 — never lead, never Wire, REL chip > a release-led group is kept off the Wire [0.11ms]
+(pass) S1.7 #1 (S1.3 part) — releases_atom validator + seed > defaults: on, cap 2, claude-code off [2.25ms]
+(pass) S1.7 #1 (S1.3 part) — releases_atom validator + seed > cap 4 ok, cap 5 rejected; unknown release id rejected [0.43ms]
+(pass) S1.3 — releases-seen.json persists through ci-state.sh stage false > no-change run keeps the fresh baseline (and last-checked), reverts other data churn [42.70ms]
+(pass) S1.3 — releases-seen.json persists through ci-state.sh stage false > backup allowlist carries releases-seen.json + the two new data modules [0.09ms]
+
+src/lib/__tests__/rss-labs.test.ts:
+(pass) RSS labs parse → schema > OpenAI Daybreak fixture maps briefEligible false [0.45ms]
+(pass) RSS labs parse → schema > OpenAI Astra product post → companion Pulse, never Brief [0.15ms]
+(pass) RSS labs parse → schema > Google AI Fairwind fixture [0.06ms]
+(pass) RSS labs parse → schema > DeepMind empty description still Pulse-eligible [0.11ms]
+(pass) RSS labs parse → schema > HF NeoMME title-only fixture [0.04ms]
+(pass) RSS labs parse → schema > fetchRssLabs offline fixtures for all four labs [4.78ms]
+(pass) classifyPost / DENY on RSS titles > Astra compromised Hugging Face → flatten drop [0.06ms]
+(pass) classifyPost / DENY on RSS titles > Sol = Astra → DENY flatten drop [0.02ms]
+(pass) classifyPost / DENY on RSS titles > civilizations / announced deal → drop [0.02ms]
+(pass) classifyPost / DENY on RSS titles > toolkit GitHub URL in lab post → shelfOnly, off Brief [0.07ms]
+(pass) never Brief · cycle locks · no Anthropic/Meta required > all fixture items briefEligible false; pin set unchanged [0.26ms]
+(pass) never Brief · cycle locks · no Anthropic/Meta required > LAB_FEEDS are first-party only — no anthropic/meta/cohere/xai [5.25ms]
+(pass) never Brief · cycle locks · no Anthropic/Meta required > bad XML fail-closed → empty parse [0.04ms]
+(pass) P2 per-feed soft_fail harden > looksLikeHtml detects Cloudflare/HTML walls [0.03ms]
+RSS[openai]: soft_fail — empty fixture
+(pass) P2 per-feed soft_fail harden > one dead feed (403) ≠ kill ingest · HF/other labs keep [0.44ms]
+RSS[deepmind]: soft_fail — HTML not RSS
+(pass) P2 per-feed soft_fail harden > HTML body soft_fails that feed only [0.27ms]
+RSS[openai]: soft_fail — empty parse
+RSS[deepmind]: soft_fail — empty parse
+(pass) P2 per-feed soft_fail harden > empty / bad XML soft_fail · no crash · never Brief [0.19ms]
+RSS[openai]: HTTP 403 @ https://openai.com/news/rss.xml
+RSS[openai]: soft_fail — HTTP 403
+(pass) P2 per-feed soft_fail harden > fetchImpl HTTP 403 soft_fails feed · others via fixtures keep [0.28ms]
+RSS[openai]: soft_fail — empty fixture
+RSS[deepmind]: soft_fail — empty fixture
+RSS[google-ai]: soft_fail — empty fixture
+RSS[huggingface]: soft_fail — empty fixture
+(pass) P2 per-feed soft_fail harden > all feeds soft_fail → ok=false · empty items · no throw [0.08ms]
+(pass) P2b first-party Phase B soft_fail > LAB_FEEDS wires Scout P2b URLs exactly [0.05ms]
+RSS[mistral]: soft_fail — empty fixture
+RSS[nvidia]: soft_fail — HTML not RSS
+RSS[nvidia-dev]: soft_fail — empty parse
+RSS[ms-research]: soft_fail — empty parse
+RSS[google-research]: soft_fail — empty fixture
+(pass) P2b first-party Phase B soft_fail > new feed ids soft_fail per-feed · Phase A keep · never Brief [0.41ms]
+RSS[mistral]: soft_fail — empty fixture
+RSS[nvidia]: soft_fail — empty fixture
+RSS[nvidia-dev]: soft_fail — empty fixture
+RSS[ms-research]: soft_fail — empty fixture
+RSS[google-research]: soft_fail — empty fixture
+(pass) P2b first-party Phase B soft_fail > P2b-only all soft_fail → ok=false · no throw [0.15ms]
+RSS[mistral]: HTTP 403 @ https://mistral.ai/rss.xml
+RSS[mistral]: soft_fail — HTTP 403
+(pass) P2b first-party Phase B soft_fail > P2b fetchImpl 403 soft_fails that id only [0.24ms]
+
+src/lib/__tests__/cycle-compiler.test.ts:
+(pass) leadPolicy > default unlock keeps hf-incident when no new primary [0.10ms]
+(pass) leadPolicy > non-HF delta does not swap lead [0.03ms]
+(pass) leadPolicy > HF new primary unlocks lead id to that story [0.02ms]
+(pass) selectPins > max 3 pins; companion ≠ second lead; stigmergy dropped [0.23ms]
+(pass) bannedCopy > rejects civilizations [0.01ms]
+(pass) assertCycle > CYCLE 003 passes shape locks [0.28ms]
+(pass) assertCycle > unknown leadPolicy errors [0.07ms]
+(pass) assertCycle > pin budget exceeded errors [0.07ms]
+
+src/lib/__tests__/publishers-age.test.ts:
+(pass) N SRC = distinct independent publishers > publisher keys: HN one publisher, labs by lab, GNews by publisher (case-insensitive), X per handle [0.05ms]
+(pass) N SRC = distinct independent publishers > real Claude enzyme group = 3 SRC (HN + Al Jazeera + Digital Watch; Anthropic self-repost 0) ⇒ ×1.30 [0.40ms]
+(pass) N SRC = distinct independent publishers > same publisher twice counts once; self-repost counts 0 [0.18ms]
+(pass) N SRC = distinct independent publishers > generated Wire uses publisher counts (enzyme 3 SRC, frozen 2016b72 wire row) [0.02ms]
+(pass) N SRC = distinct independent publishers > corroboration crawl hits count per publisher when publishers are given [0.14ms]
+(pass) story age = earliest member item > enzyme group shows its first-item age (>24h at crawl time), not the hours of its freshest repost [0.08ms]
+(pass) story age = earliest member item > Pulse AGE, drawer kicker and Wire age use firstAtIso; status bar shows the lead headline, id only in title [0.36ms]
+
+src/lib/__tests__/desk-view.test.ts:
+(pass) desk-view.ts — slim client view == raw crawl modules > generated file is in sync with the raw modules (bun scripts/desk-view.ts --check) [85.91ms]
+(pass) desk-view.ts — slim client view == raw crawl modules > one crawl: DESK_VIEW_AT = CRAWL_AT = PULSE_CLUSTERS_AT = WIRE_CRAWL_AT = TOPIC_HEAT_AT [0.18ms]
+(pass) desk-view.ts — slim client view == raw crawl modules > DESK_VIEW_TRIMMED counts match what the generated view left out (bookkeeping only) [0.07ms]
+(pass) desk-view.ts — slim client view == raw crawl modules > Pulse rows (clusters + X) are identical as rendered — chips, N SRC, NEW, signal, security, summary [4.87ms]
+(pass) desk-view.ts — slim client view == raw crawl modules > Wire chips: the Wire subset builds the same rows [0.72ms]
+(pass) desk-view.ts — slim client view == raw crawl modules > every cluster field the desk reads survives (only canonical_url / all_sources / score dropped) [1.20ms]
+(pass) desk-view.ts — slim client view == raw crawl modules > member info: same badge / publisher / title / time / url / signal / security; summary only for row leads (≤280) [1.23ms]
+(pass) desk-view.ts — slim client view == raw crawl modules > clipped text is exactly the raw text cut at its cap (prefix + …), never anything else [4.86ms]
+(pass) desk-view.ts — slim client view == raw crawl modules > story ages (MEMBER_AT) and drawer coverage for every cluster are identical [3.05ms]
+(pass) desk-view.ts — slim client view == raw crawl modules > X posts: take / link / time identical (take = head of the member summary, no duplicated text) [0.10ms]
+(pass) desk-view.ts — slim client view == raw crawl modules > Papers rows identical as rendered (abstract shown ≤600 chars) [2.54ms]
+(pass) desk-view.ts — slim client view == raw crawl modules > orphan clusters (lead not a crawl item) keep their position [0.45ms]
+(pass) desk-view.ts — slim client view == raw crawl modules > the desk client imports crawl data only through desk-view (raw crawl modules stay out of the bundle) [0.68ms]
+
+ 781 pass
+ 0 fail
+ 7590 expect() calls
+Ran 781 tests across 74 files. [7.90s]

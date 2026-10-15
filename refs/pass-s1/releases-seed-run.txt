@@ -1,0 +1,50 @@
+# PASS-S1.3 releases seed-run behaviour — live GitHub releases.atom fetched 2026-10-16 ~00:40 TRT (saved, replayed offline)
+config releases_atom = {"on":true,"cap_per_feed":2,"feeds":["llama.cpp","ollama","vllm"]}  (claude-code in registry, off by default)
+feed llama.cpp: 10 entries · tags: v0.7.0 b11671 b11669 b11662 b11658 b11655 b11647 b11645 b11644 b11643
+feed ollama: 10 entries · tags: v0.40.5 v0.40.5-rc2 v0.40.5-rc1 v0.40.5-rc0 v0.40.4 v0.40.4-rc2 v0.40.4-rc1 v0.40.4-rc0 v0.40.3 v0.40.3-rc0
+feed vllm: 10 entries · tags: v0.32.0rc2 v0.32.0rc1 proto-v0.6.0 v0.32.0rc0 proto-v0.5.0 v0.31.1rc0 v0.31.0 v0.31.0rc5 v0.31.0rc4 v0.31.0rc3
+feed claude-code: 10 entries · tags: v2.1.301 v2.1.300 v2.1.299 v2.1.296 v2.1.295 v2.1.294 v2.1.293 v2.1.292 v2.1.291 v2.1.290
+
+## run 1 (no releases-seen.json = first run) @ 2026-10-15T22:00:00.000Z
+  llama.cpp: seed baseline=(none) newest-semver=v0.7.0 emitted=—
+  ollama: seed baseline=(none) newest-semver=v0.40.5 emitted=—
+  vllm: seed baseline=(none) newest-semver=v0.31.0 emitted=—
+  Pulse REL rows: 0
+  releases-seen.json written:
+{
+ "schema": 1,
+ "feeds": {
+  "llama.cpp": {
+   "version": "v0.7.0",
+   "seeded_at": "2026-10-15T22:00:00Z",
+   "emitted_at": null,
+   "emitted": []
+  },
+  "ollama": {
+   "version": "v0.40.5",
+   "seeded_at": "2026-10-15T22:00:00Z",
+   "emitted_at": null,
+   "emitted": []
+  },
+  "vllm": {
+   "version": "v0.31.0",
+   "seeded_at": "2026-10-15T22:00:00Z",
+   "emitted_at": null,
+   "emitted": []
+  }
+ }
+}
+
+## run 2 (+1h, same feeds, state from run 1)
+  llama.cpp: no-bump baseline=v0.7.0 newest-semver=v0.7.0 emitted=—
+  ollama: no-bump baseline=v0.40.5 newest-semver=v0.40.5 emitted=—
+  vllm: no-bump baseline=v0.31.0 newest-semver=v0.31.0 emitted=—
+  Pulse REL rows: 0
+
+## what-if: llama.cpp baseline v0.6.4 (minor bump available) · ollama baseline v0.40.1 (patch only)
+  llama.cpp: bump baseline=v0.6.4 newest-semver=v0.7.0 emitted=v0.7.0
+  ollama: no-bump baseline=v0.40.1 newest-semver=v0.40.5 emitted=—
+  vllm: no-bump baseline=v0.31.0 newest-semver=v0.31.0 emitted=—
+  REL row: rel:llama.cpp:v0.7.0 · "llama.cpp v0.7.0" · https://github.com/ggml-org/llama.cpp/releases/tag/v0.7.0
+
+## with claude-code switched on (first run): llama.cpp=seed@v0.7.0 · ollama=seed@v0.40.5 · vllm=seed@v0.31.0 · claude-code=seed@v2.1.301 rows=0

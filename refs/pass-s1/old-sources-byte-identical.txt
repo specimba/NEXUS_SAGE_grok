@@ -1,0 +1,12 @@
+# PASS-S1 test 2 — old sources byte-identical (refs/PASS-S1-SCOUT-SOURCES.md §S1.7 #2)
+fixture: src/lib/__tests__/fixtures/s1/old-sources-crawl.json — frozen live crawl inputs (pre-S1 sources only), captured on b4c8f44 via scripts/s1-old-sources-golden.ts --capture
+pipeline: clusterItems → buildWire (5 / 99) → leadExcludeReason + groupFirstAt → decidePick (empty history, force) — src/lib/__tests__/s1-pipeline.ts
+
+sha256 fixture : b29318234d68752ef4bfdac6275a7fb999b0bcacd0001588c2cd1b7c8129bdd4
+sha256 golden  : 0e10a6ea539784e1fa72c217023cc36a4ac92cd1938bc094cf405d54f260bbab  (output on base b4c8f44)
+sha256 at 55d69bc (S1.7, after S1.8 + hotfix rebase): 0e10a6ea539784e1fa72c217023cc36a4ac92cd1938bc094cf405d54f260bbab
+
+inputs 236 · clusters 212 · wire rows 5 · lead candidates 7 · pick picked 
+input sources {'hn-algolia': 56, 'rss-lab': 104, 'rss-security': 28, 'gnews-rss': 38, 'gmail-news': 10}
+
+bun test pass-s1-acceptance.test.ts (#2) asserts the same string equality with every S1 addition switched off through the real config (S1.8: blocks on:false, empty hn_title_queries / gmail_senders, ETR unlisted).
