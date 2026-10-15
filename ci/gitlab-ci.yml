@@ -39,6 +39,8 @@ variables:
   SAGE_CHROME_INSTALL: "1"
   SAGE_CHROME_VERSION: "155.0.8059.79"
   SAGE_CHROME_SHA256: "4cea4c32b501aa43cc2b81eb45734af991a6a82feded48380d6dfaf96642a1c1"
+  # PASS-D D6: atom-feed.ts writes its result line here; publish-proof.ts turns it into the crawl.log feed= suffix.
+  ATOM_FEED_STATUS: $CI_PROJECT_DIR/atom-feed.status
 
 crawl:
   # oven/bun images ship without git, so: pinned node bookworm (has git, curl, unzip) + bun 1.4.2 from the npm cache.
@@ -71,6 +73,8 @@ crawl:
     - bun run ingest
     - A2_FORCE_WINDOW=1 bun run a2:tick
     - bun run pack:export
+    # PASS-D D1: morning Atom feed (data-only). After ingest wrote lead-history / wire / papers, before reader-hash (it hashes the feed).
+    - bun scripts/atom-feed.ts || echo "atom-feed: crashed (soft)"
     - export GITHUB_OUTPUT="$CI_PROJECT_DIR/hash.out"; true > "$GITHUB_OUTPUT"
     - bun scripts/reader-hash.ts
     - changed=$(grep -oE '^changed=.*' "$GITHUB_OUTPUT" | tail -1 | cut -d= -f2); echo "changed=$changed"
@@ -86,7 +90,8 @@ crawl:
       crawl="$(grep -oE 'CRAWL_AT = "[^"]+"' src/data/x-crawl.ts | cut -d'"' -f2)"
       dur=$(( $(date +%s) - t0 )); slow=""; [ "$dur" -gt "$SLOW_SECONDS" ] && slow=" slow"
       mkdir -p ../logs
-      echo "$(date -u +%FT%TZ) gitlab pipeline $CI_PIPELINE_ID crawl $crawl changed=$changed ${dur}s$slow" >> ../logs/crawl.log
+      proof="$(bun scripts/publish-proof.ts suffix --changed "$changed" --status "$ATOM_FEED_STATUS")"   # PASS-D D6: feed= ov390= fl=
+      echo "$(date -u +%FT%TZ) gitlab pipeline $CI_PIPELINE_ID crawl $crawl changed=$changed $proof ${dur}s$slow" >> ../logs/crawl.log
       if [ "$changed" = "true" ]; then
         bash scripts/ci-state.sh stage true
         msg="chore(sage): crawl $crawl (gitlab) [skip ci]"
@@ -134,5 +139,5 @@ crawl:
       - repo/desk/artifacts/sage/digest-last.json
       - repo/desk/artifacts/sage/reader-hash.json
       - repo/desk/artifacts/sage/last-checked.json
-      - repo/desk/artifacts/sage/publish-proof.json   # chrome_install_s, overflow_390, font_check (kept on failed runs too)
+      - repo/desk/artifacts/sage/publish-proof.json   # PASS-D D6 + Q1G §2: chrome_install_s, overflow_390, font_check, feed_* (kept on failed runs too)
       - repo/logs/crawl.log

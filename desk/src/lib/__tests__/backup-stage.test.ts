@@ -63,7 +63,7 @@ describe("backup commit stages a fixed allowlist only", () => {
     for (const l of LIST) {
       expect(l.endsWith("/")).toBe(false);
       expect(l).not.toMatch(/\*\*|^\.|\/\*$|\/\*\.(json|ts|md)$/);
-      expect(l).toMatch(/\.(json|ts|md)$/);
+      expect(l).toMatch(/\.(json|ts|md)$|^desk\/public\/feed\.xml$/); // PASS-D: the one generated public file
     }
     expect(LIST).not.toContain("desk/artifacts/sage");
     expect(LIST).not.toContain("desk/src/data");

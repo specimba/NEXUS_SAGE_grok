@@ -171,7 +171,7 @@ if [ "${#fails[@]}" -eq 0 ] && [ "${SAGE_OVERFLOW_390:-off}" = "auto" ]; then
     if [ -n "$full" ]; then
       changed_code="$(git -C "$REPO" diff --name-only "$full" HEAD -- . ':(exclude)desk/src/data' ':(exclude)desk/artifacts' \
         ':(exclude)packs' ':(exclude)desk/packs' ':(exclude)logs' ':(exclude)refs' \
-        ':(exclude)ci' ':(exclude)desk/scripts' ':(exclude)desk/src/lib/__tests__' ':(exclude,glob)**/*.md' || echo '?diff-failed')"
+        ':(exclude)ci' ':(exclude)desk/scripts' ':(exclude)desk/src/lib/__tests__' ':(exclude)desk/public/feed.xml' ':(exclude,glob)**/*.md' || echo '?diff-failed')"
       if [ -z "$changed_code" ]; then code_changed=0; why="data-only since main@$pub_sha"
       else why="code changed since main@$pub_sha: $(echo "$changed_code" | head -5 | tr '\n' ' ')"; fi
     else why="main@$pub_sha not fetchable"; fi
@@ -219,26 +219,13 @@ if [ "${#fails[@]}" -eq 0 ] && [ "${SAGE_OVERFLOW_390:-off}" = "auto" ]; then
   fi
 fi
 
-# publish-proof.json: committed by ci-state.sh stage true; on a failed attempt it stays in the job artifacts only.
-PROOF="$DESK/artifacts/sage/publish-proof.json"; mkdir -p "$(dirname "$PROOF")"
+# publish-proof.json (PASS-D D6 / Q1G §2 amend): ONE writer, scripts/publish-proof.ts — committed by ci-state.sh stage true;
+# on a failed attempt it stays in the job artifacts only.
 fl_bytes="$(grep -oE 'first-load / = [0-9]+' /tmp/pages-first-load.log 2>/dev/null | grep -oE '[0-9]+$' || true)"
-P_MAIN="$(git -C "$REPO" rev-parse HEAD)" P_CRAWL="$(grep -oE 'CRAWL_AT = "[^"]+"' "$DESK/src/data/x-crawl.ts" | cut -d'"' -f2 || true)" \
-P_OV="$ov390" P_OVWHY="$ov_why" P_FL="$fl_bytes" P_CIS="$chrome_install_s" P_FONT="$font_gate" P_FAILS="${#fails[@]}" \
-P_CHROME_BIN="$( [ -n "$chrome_install_s" ] && have_chrome && command -v "$CHROME_BIN" || true)" P_CHROME_VER="${SAGE_CHROME_VERSION:-}" \
-P_CHROME_ZIP="${SAGE_CHROME_SHA256:-}" PROOF="$PROOF" bun -e '
-  const fs = require("fs"), cp = require("child_process"), e = process.env;
-  let prev = null; try { prev = JSON.parse(fs.readFileSync(e.PROOF, "utf8")); } catch {}
-  const num = (v) => (v === undefined || v === "" ? null : Number(v));
-  const bin = e.P_CHROME_BIN || "";
-  const chrome = bin ? { version: (() => { try { return cp.execFileSync(bin, ["--version"], { encoding: "utf8" }).trim(); } catch { return null; } })(),
-    pinned: e.P_CHROME_VER || null, zip_sha256: e.P_CHROME_ZIP || null,
-    bin_sha256: require("crypto").createHash("sha256").update(fs.readFileSync(bin)).digest("hex") } : null;
-  const out = { main_sha: e.P_MAIN, crawl_at: e.P_CRAWL || null, at: new Date().toISOString(), result: Number(e.P_FAILS) ? "check-fail" : "verified",
-    overflow_390: e.P_OV, overflow_why: e.P_OVWHY, font_check: e.P_FONT,
-    first_load_bytes: num(e.P_FL), first_load_prev_bytes: prev?.first_load_bytes ?? null,
-    chrome_install_s: num(e.P_CIS), chrome };
-  fs.writeFileSync(e.PROOF, JSON.stringify(out, null, 2) + "\n");
-' || log "WARN: could not write $PROOF"
+( cd "$DESK" && P_MAIN="$(git -C "$REPO" rev-parse HEAD)" P_CRAWL="$(grep -oE 'CRAWL_AT = "[^"]+"' "$DESK/src/data/x-crawl.ts" | cut -d'"' -f2 || true)" \
+  P_OV="$ov390" P_OVWHY="$ov_why" P_FL="$fl_bytes" P_CIS="$chrome_install_s" P_FONT="$font_gate" P_FAILS="${#fails[@]}" \
+  P_CHROME_BIN="$( [ -n "$chrome_install_s" ] && have_chrome && command -v "$CHROME_BIN" || true)" P_CHROME_VER="${SAGE_CHROME_VERSION:-}" \
+  P_CHROME_ZIP="${SAGE_CHROME_SHA256:-}" bun scripts/publish-proof.ts write ) || log "WARN: could not write publish-proof.json"
 
 if [ "${#fails[@]}" -gt 0 ]; then
   for f in "${fails[@]}"; do echo "pages-publish CHECK FAIL: $f" >&2; done

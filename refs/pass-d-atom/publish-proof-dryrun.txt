@@ -1,0 +1,45 @@
+# scripts/publish-proof.ts dry run in a scratch git repo (real feed.xml + CRAWL_AT; fl = the measured 178674 B; ov390 inputs simulated as on a CI data-only run)
+## 1. data-only publish, feed unchanged vs HEAD (non-pick crawl)
+publish-proof: ov390=skipped fl=178674 (prev -) feed=0a8b724a changed=false
+{
+  "main_sha": "c94fe87b739705f60abe12f509fecbc204beea4f",
+  "crawl_at": "2026-10-15T18:21:26Z",
+  "overflow_390": "skipped",
+  "overflow_why": "data-only since main@<sha>",
+  "first_load_bytes": 178674,
+  "first_load_prev_bytes": null,
+  "feed_sha256": "0a8b724ae1acbbc50222b9901f36649714adf401da5c3c5061b46b26934ed5a3",
+  "feed_entries": 1,
+  "feed_changed": false,
+  "chrome_install_s": null,
+  "result": "verified"
+}
+crawl.log suffix: feed=same ov390=skipped fl=178674
+
+## 2. pick crawl: feed changed vs HEAD
+publish-proof: ov390=skipped fl=178674 (prev 178674) feed=8665b643 changed=true
+  "first_load_bytes": 178674,
+  "first_load_prev_bytes": 178674,
+  "feed_changed": true,
+crawl.log suffix: feed=8665b643 ov390=skipped fl=178674
+
+## 3. reader unchanged run (no publish; proof is not this run's)
+crawl.log suffix: feed=same ov390=skipped fl=-
+
+## 4. atom-feed crashed (no status file)
+crawl.log suffix: feed=skipped ov390=skipped fl=178674
+
+## box build:pages proof (real, PAGES_BUILD_ONLY=1 on beat13 staged tree; not committed)
+{
+  "main_sha": "8c9e2c621a731de81547a00e0b3d40331d7395b5",
+  "crawl_at": "2026-10-15T18:21:26Z",
+  "overflow_390": "skipped",
+  "overflow_why": "SAGE_OVERFLOW_390=off (box: visual:check runs it)",
+  "first_load_bytes": 178674,
+  "first_load_prev_bytes": null,
+  "feed_sha256": "0a8b724ae1acbbc50222b9901f36649714adf401da5c3c5061b46b26934ed5a3",
+  "feed_entries": 1,
+  "feed_changed": true,
+  "chrome_install_s": null,
+  "result": "verified"
+}

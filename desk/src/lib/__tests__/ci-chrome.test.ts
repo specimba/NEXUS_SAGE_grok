@@ -98,12 +98,17 @@ describe("pages-publish.sh + gitlab-ci.yml wiring", () => {
   });
   test("publish-proof.json records chrome_install_s + overflow_390 on every attempt, before the fail exit; staged by ci-state", () => {
     const sh = read("scripts/pages-publish.sh");
-    const proof = sh.indexOf('PROOF="$DESK/artifacts/sage/publish-proof.json"');
+    // PASS-D stack: ONE writer, scripts/publish-proof.ts (the inline `bun -e` block is gone); same fields, plus feed_*.
+    const proof = sh.indexOf("bun scripts/publish-proof.ts write");
     const failExit = sh.indexOf('die "${#fails[@]} check(s) failed');
     expect(proof).toBeGreaterThan(0);
     expect(proof).toBeLessThan(failExit);
+    expect(sh).not.toMatch(/bun -e '\s*\n\s*const fs = require/);
+    for (const v of ['P_OV="$ov390"', 'P_OVWHY="$ov_why"', 'P_FL="$fl_bytes"', 'P_CIS="$chrome_install_s"', 'P_FONT="$font_gate"', "P_CHROME_BIN=", "P_CHROME_VER=", "P_CHROME_ZIP="])
+      expect(sh).toContain(v);
+    const writer = read("scripts/publish-proof.ts");
     for (const k of ["chrome_install_s", "overflow_390", "overflow_why", "first_load_bytes", "first_load_prev_bytes", "bin_sha256", "zip_sha256", "font_check"])
-      expect(sh).toContain(k);
+      expect(writer).toContain(k);
     for (const v of ['ov390="ran-pass"', 'ov390="ran-fail"', 'ov390="skipped"']) expect(sh).toContain(v);
     const st = read("scripts/ci-state.sh");
     expect(st).toContain("PP=artifacts/sage/publish-proof.json");

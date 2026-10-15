@@ -5,13 +5,16 @@
  *   bun scripts/reader-hash.ts --commit published|skipped
  *        → writes artifacts/sage/last-checked.json (checked_at, reader_hash, published_at, data_at, soft history)
  *          and, when published, artifacts/sage/reader-hash.json.
+ *   --desk <dir>  run against another desk root (tests).
+ * PASS-D D1b: public/feed.xml (when present) is hashed too, under the key "public/feed.xml" — a feed-only change publishes.
  * Exit 1 on any gate error (watchdog reads gate_error).
  */
 import { appendFileSync, existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { readerHash } from "@/lib/reader-hash";
 
-const desk = resolve(import.meta.dir, "..");
+const argDesk = process.argv.includes("--desk") ? process.argv[process.argv.indexOf("--desk") + 1] : null;
+const desk = resolve(argDesk || resolve(import.meta.dir, ".."));
 const dataDir = resolve(desk, "src/data");
 const art = resolve(desk, "artifacts/sage");
 const hashPath = resolve(art, "reader-hash.json");
@@ -21,6 +24,8 @@ const readJson = (p: string) => (existsSync(p) ? JSON.parse(readFileSync(p, "utf
 const crawlAt = readFileSync(resolve(dataDir, "x-crawl.ts"), "utf8").match(/export const CRAWL_AT\s*=\s*"([^"]+)"/)?.[1] ?? null;
 const files: Record<string, string> = {};
 for (const f of readdirSync(dataDir).filter((n) => n.endsWith(".ts"))) files[f] = readFileSync(resolve(dataDir, f), "utf8");
+const feedPath = resolve(desk, "public/feed.xml");
+if (existsSync(feedPath)) files["public/feed.xml"] = readFileSync(feedPath, "utf8");
 const hash = readerHash(files, crawlAt);
 const prev = readJson(hashPath)?.reader_hash ?? null;
 const changed = hash !== prev;

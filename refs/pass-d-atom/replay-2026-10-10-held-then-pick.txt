@@ -1,0 +1,15 @@
+# Replay of real Oct 10 crawls through scripts/atom-feed.ts --desk (data files from each crawl commit; store carried)
+## 06:11-slot crawl creates the HELD date (commit 5c0e736, CRAWL_AT 2026-10-10T03:17:55Z)
+atom-feed: wrote public/feed.xml · 1 entry · 1980 B · snapshot 2026-10-10 new held
+feed.xml sha256 2f7d0ca288d5bf22
+
+## next crawl, still HELD (no-op) (commit b029f14, CRAWL_AT 2026-10-10T07:12:37Z)
+atom-feed: unchanged public/feed.xml · 1 entry · 1980 B
+feed.xml sha256 2f7d0ca288d5bf22
+
+## recovery crawl picks (one rewrite) (commit 26b3f29, CRAWL_AT 2026-10-10T15:14:07Z)
+atom-feed: wrote public/feed.xml · 1 entry · 3352 B · snapshot 2026-10-10 held→picked
+feed.xml sha256 915499c05f22a27c
+
+held vs noop: byte-identical
+published: held=<published>2026-10-10T03:18:13Z picked=<published>2026-10-10T03:18:13Z
