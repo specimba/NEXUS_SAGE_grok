@@ -4,8 +4,11 @@ import { resolve } from "node:path";
 import { aiTermsDefault } from "../ai-relevance";
 import { POLITICS_LEAD_TERMS } from "../lead-pick";
 import { defaultSageConfig, KEYWORD_LEN_MAX, KEYWORD_LIST_MAX, limitsFromCode, SAGE_CONFIG_PATH, validateSageConfig, type SageConfig } from "../sage-config";
-import { canonicalJson, fileJson, validateWithRules, type SageLimits } from "../sage-config-rules";
-import { setupEditFields } from "../sage-config-disk";
+import { canonicalJson, fieldMin, fileJson, TIMEOUT_MIN_S, validateWithRules, type SageLimits } from "../sage-config-rules";
+import { capBounds, committedBase, srcVal, stepCap, TIMEOUT_MIN } from "../setup-draft";
+import { spawnSync } from "node:child_process";
+import { createHash } from "node:crypto";
+import { configHash, setupEditFields } from "../sage-config-disk";
 import { renderSageSetupModule } from "../sage-setup";
 import { SAGE_SETUP } from "@/data/sage-setup";
 
@@ -109,10 +112,57 @@ describe("PASS-C3.1 shared rules — browser path = CI path", () => {
     const br = validateWithRules(raw, BROWSER);
     expect(!br.ok && br.errors).toEqual(want);
   });
-  test("8c canonical file: the committed file is exactly its own 2-space JSON + newline (precondition for test 4)", () => {
-    const t = fileText();
-    expect(fileJson(JSON.parse(t))).toBe(t);
-    // canonicalJson stays the sorted compact form — the config_hash input (unchanged from C2)
+  test("8c canonical file: fileJson(parse(committed sage-sources.json)) is byte-equal to the committed file; config_hash stays on canonicalJson", () => {
+    // The committed blob (git HEAD) and the working-tree file, as raw bytes — never a decoded/re-encoded compare.
+    const head = spawnSync("git", ["-C", desk, "show", `HEAD:desk/${SAGE_CONFIG_PATH}`], { encoding: "buffer" });
+    expect(head.status).toBe(0);
+    const committed = head.stdout as Buffer;
+    const disk = readFileSync(resolve(desk, SAGE_CONFIG_PATH));
+    const round = Buffer.from(fileJson(JSON.parse(committed.toString("utf8"))), "utf8");
+    expect(Buffer.compare(round, committed)).toBe(0);
+    expect(round.length).toBe(committed.length);
+    expect(Buffer.compare(Buffer.from(fileJson(JSON.parse(disk.toString("utf8"))), "utf8"), disk)).toBe(0);
+    // config_hash stays the sha256 of canonicalJson (sorted compact) — not of the file bytes / fileJson.
+    const cfg = JSON.parse(committed.toString("utf8")) as SageConfig;
+    expect(configHash(cfg)).toBe(createHash("sha256").update(canonicalJson(cfg)).digest("hex").slice(0, 12));
     expect(canonicalJson({ b: 1, a: [2] })).toBe('{"a":[2],"b":1}');
+  });
+});
+
+describe("PASS-C3 ruling (4): timeout_s floor 3 — CI validator and browser stepper agree (one shared constant)", () => {
+  test("the floor is the shared rules' TIMEOUT_MIN_S = 3; the stepper re-exports it", () => {
+    expect(TIMEOUT_MIN_S).toBe(3);
+    expect(TIMEOUT_MIN).toBe(TIMEOUT_MIN_S);
+    expect(fieldMin("timeout_s")).toBe(3);
+    expect(fieldMin("cap")).toBe(1);
+  });
+  test("parity: for every timeout_s 0…ceiling+1, validateSageConfig (CI) ok ⇔ browser rules ok ⇔ inside the stepper's bounds", () => {
+    for (const [id, fields] of Object.entries(BROWSER.ceilings)) {
+      for (const field of Object.keys(fields)) {
+        const [lo, hi] = capBounds(id, field, BROWSER);
+        expect([id, field, lo]).toEqual([id, field, fieldMin(field)]);
+        for (let v = 0; v <= hi + 1; v++) {
+          const c = defaultSageConfig() as unknown as { sources: Record<string, Record<string, unknown>> };
+          c.sources[id]![field] = v;
+          const ci = validateSageConfig(c);
+          const br = validateWithRules(c, BROWSER);
+          const inBounds = v >= lo && v <= hi;
+          expect([id, field, v, ci.ok]).toEqual([id, field, v, inBounds]);
+          expect([id, field, v, br.ok]).toEqual([id, field, v, inBounds]);
+          if (!ci.ok && !br.ok) expect(br.errors).toEqual(ci.errors);
+        }
+      }
+    }
+  });
+  test("timeout_s 2 is rejected with the same error in both paths; the stepper never goes below 3", () => {
+    const c = withCfg((x) => (x.sources.lab_rss.timeout_s = 2));
+    const ci = validateSageConfig(c);
+    const br = validateWithRules(c, BROWSER);
+    expect(!ci.ok && ci.errors).toEqual(["sources.lab_rss.timeout_s must be ≥ 3"]);
+    expect(!br.ok && br.errors).toEqual(!ci.ok && ci.errors);
+    let d = committedBase(SAGE_SETUP.config, BROWSER);
+    expect(srcVal(d, "lab_rss", "timeout_s", BROWSER)).toBe(10);
+    for (let i = 0; i < 20; i++) d = stepCap(d, "lab_rss", "timeout_s", -1, BROWSER);
+    expect(srcVal(d, "lab_rss", "timeout_s", BROWSER)).toBe(3);
   });
 });

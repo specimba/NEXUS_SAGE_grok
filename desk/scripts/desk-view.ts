@@ -7,6 +7,8 @@
  * Size is fixed by DESK_VIEW_CAPS (src/lib/desk-view.ts) and LEAD_LOG_CAPS (src/lib/lead-log.ts), not by the crawl.
  *   bun scripts/desk-view.ts          write (only when the content changed)
  *   bun scripts/desk-view.ts --check  exit 1 if any generated file (incl. src/data/sage-setup.ts limits/config/file_hash) is not what the raw modules produce
+ *   bun scripts/desk-view.ts --sync-config  PASS-C3 (3), pages-publish step 0a: desk/config changed ⇒ write sage-setup.ts like CI;
+ *                                     refuse + exact command when other generated files are stale too (src/lib/desk-view-config-sync.ts)
  *   bun scripts/desk-view.ts --report what the caps trimmed from THIS crawl (why, how old) + lead-log days; writes
  *                                     nothing, always exit 0 — live-data checks are a report, never a test
  */
@@ -22,6 +24,7 @@ import { renderLeadLogModule } from "@/lib/lead-log-module";
 import { SAGE_SETUP } from "@/data/sage-setup";
 import { setupEditFields } from "@/lib/sage-config-disk";
 import { renderSageSetupModule } from "@/lib/sage-setup";
+import { configSyncDecision } from "@/lib/desk-view-config-sync";
 
 const desk = resolve(import.meta.dir, "..");
 const historyPath = resolve(desk, "artifacts/sage/lead-history.json");
@@ -70,6 +73,28 @@ if (process.argv.includes("--report")) {
     console.log(`  lead log: ${full.days.length} days in history · tape shows ${shown.length} (cap ${LEAD_LOG_CAPS.days}) ${shown.at(-1)?.date ?? ""}…${shown[0]?.date ?? ""}${full.days.length > shown.length ? ` · off tape: ${full.days.slice(LEAD_LOG_CAPS.days).map((d) => d.date).join(" ")}` : ""}`);
   }
   console.log(`  generated files ${stale.length ? `STALE: ${stale.map((f) => f.name).join(" + ")}` : "in sync"}`);
+} else if (process.argv.includes("--sync-config")) {
+  const d = configSyncDecision({ stale: stale.map((f) => f.name), setupFileHash: SAGE_SETUP.file_hash, diskFileHash: setupEditFields(desk).file_hash, desk });
+  if (d.action === "fail") {
+    console.error(d.msg);
+    process.exit(1);
+  }
+  if (d.action === "write") {
+    console.log(d.msg);
+    const cmd = `cd ${desk} && bun scripts/desk-view.ts && bun scripts/desk-view.ts --check`;
+    try {
+      for (const f of stale) writeFileSync(f.path, f.body);
+    } catch (e) {
+      console.error(`desk-view config-sync: write failed (${e instanceof Error ? e.message : String(e)}). Run: ${cmd}`);
+      process.exit(1);
+    }
+    const again = stale.filter((f) => readFileSync(f.path, "utf8") !== f.body);
+    if (again.length) {
+      console.error(`desk-view config-sync: ${again.map((f) => f.name).join(" + ")} still stale after write. Run: ${cmd}`);
+      process.exit(1);
+    }
+    console.log(`desk-view written (${stale.map((f) => f.name.replace("src/data/", "")).join(", ")}) — commit it with the config change`);
+  } else console.log(d.msg);
 } else if (process.argv.includes("--check")) {
   if (stale.length) {
     console.error(`desk-view STALE — ${stale.map((f) => f.name).join(" + ")} ≠ raw modules (crawl ${at}); run bun scripts/desk-view.ts`);

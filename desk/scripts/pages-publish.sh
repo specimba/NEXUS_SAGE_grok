@@ -44,6 +44,14 @@ release_lock() { if { true >&9; } 2>/dev/null; then flock -u 9 2>/dev/null || tr
 # Matches the next binary (".../.bin/next build", "npx next build"), not any shell line that merely mentions it.
 if pgrep -f '(^|[/ ])[n]ext build( |$)' >/dev/null 2>&1; then die "another 'next build' is running — one build at a time"; fi
 
+# ── 0a. PASS-C3 ruling (3): desk/config changed ⇒ regenerate like CI (desk-view write mode) BEFORE the --check below.
+#     CI's crawl writes desk-view every run (rank-snapshot); a box publish after a config merge did not, so sage-setup.ts
+#     (config / file_hash) was stale and 0b failed. Writes ONLY when the config hash moved and sage-setup.ts is the only
+#     stale file; anything else stale ⇒ fail here with the exact command (never a silent skip, never a hidden postingest).
+sync_out="$( cd "$DESK" && bun scripts/desk-view.ts --sync-config 2>&1 )" \
+  || die "desk/config sync: ${sync_out:-desk-view --sync-config exited non-zero with no output — run: cd $DESK && bun scripts/desk-view.ts && bun scripts/desk-view.ts --check} — nothing built or pushed"
+log "$sync_out"
+
 # ── 0b. one crawl: header CRAWL_AT must equal the Wire / Pulse / heat snapshot (skipped postingest stays off Pages) ──
 ( cd "$DESK" && bun scripts/pages-coherence.ts ) || die "data incoherent — header crawl ≠ Wire snapshot; nothing built or pushed"
 
@@ -181,7 +189,6 @@ if [ "${#fails[@]}" -eq 0 ] && [ "${SAGE_OVERFLOW_390:-off}" = "auto" ]; then
   fi
   ov_why="$why"
   if [ "$code_changed" = 0 ]; then
-    ov390="skipped"
     log "overflow-390 skipped — $why"
   else
     # CI (SAGE_CHROME_INSTALL=1): fetch chrome-headless-shell on demand (scripts/ci-chrome.sh) — only on this code-changed

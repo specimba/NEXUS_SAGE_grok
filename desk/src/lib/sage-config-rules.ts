@@ -13,7 +13,7 @@ export type SageLimits = {
   source_ids: string[];
   /** Code defaults (missing optional fields inherit these). */
   defaults: SageConfig;
-  /** Numeric field → hard ceiling, per source (min is 1; timeout_s min is `timeout_min`). */
+  /** Numeric field → hard ceiling, per source (min is `fieldMin(field)`: 1, or TIMEOUT_MIN_S for timeout_s). */
   ceilings: Record<string, Record<string, number>>;
   /** Feed-list fields: source → wired feed ids. */
   feeds: Record<string, string[]>;
@@ -28,6 +28,13 @@ export type SageLimits = {
   /** Sources the browser editor never changes (box-only; edit by commit). */
   box_only: string[];
 };
+
+/**
+ * PASS-C3 ruling (4): the timeout_s floor (seconds), shared by the CI validator (validateSageConfig) and the browser
+ * stepper (setup-draft capBounds) — one constant, so they cannot disagree. Every other numeric field's floor is 1.
+ */
+export const TIMEOUT_MIN_S = 3;
+export const fieldMin = (field: string): number => (field === "timeout_s" ? TIMEOUT_MIN_S : 1);
 
 export type ValidateResult = { ok: true; config: SageConfig; warnings: string[] } | { ok: false; errors: string[] };
 
@@ -111,7 +118,8 @@ export function validateWithRules(raw: unknown, limits: SageLimits): ValidateRes
           } else if (field in (ceil[id] || {})) {
             const max = ceil[id]![field]!;
             if (typeof val !== "number" || !Number.isInteger(val)) errors.push(where + " must be an integer");
-            else if (val < 1) errors.push(where + " must be ≥ 1 (use \"on\": false to drop the source)");
+            else if (val < fieldMin(field))
+              errors.push(where + (fieldMin(field) === 1 ? " must be ≥ 1 (use \"on\": false to drop the source)" : " must be ≥ " + fieldMin(field)));
             else if (val > max) errors.push(where + "=" + val + " over the code ceiling " + max);
             else target[field] = val;
           } else {

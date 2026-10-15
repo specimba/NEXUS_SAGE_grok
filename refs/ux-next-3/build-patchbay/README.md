@@ -27,3 +27,14 @@ The branch `ux-patch-bay` was cut from origin/main b4c8f44. Everything here was 
 - pair-mockup-vs-build-{1280,390}.png: the mockup `refs/ux-next-3/after-setup-*` next to the build.
 - pair-before-after-{1280,390}.png.
 - maxfix-setup-390.png and maxfix-edit-390.png: the max-size fixture.
+
+## Architect ruling (follow-up commit on ux-patch-bay)
+Built on the box 01:55 +03 (`build-ruling.txt`, `chunks-ruling.txt`); no builds between :05 and :35.
+- **Lazy budget waiver (1), for the PR:** combined editor budget = editor chunk **11,945 B** raw (4,732 B gz) + editor data in the bay chunk (C3.1 `limits` / `config` / `file_hash`, minified) **1,633 B** = **13,578 B ≤ 14 kB**. The bay chunk itself is unchanged at 10,824 B (same content hash).
+- **First Load:** **178,679 B** (b516be1: 178,680 B; origin/main b4c8f44: 178,593 B) → **+86 B vs main**, within ±200 B.
+- **8c (2):** asserts `fileJson(JSON.parse(committed))` is byte-equal (Buffer compare, same length) to the committed blob `git show HEAD:desk/config/sage-sources.json`, and to the working-tree file. `config_hash` is still sha256(canonicalJson) — asserted.
+- **Box publish config sync (3):** `pages-publish.sh` step 0a runs `bun scripts/desk-view.ts --sync-config` before the 0b coherence `--check`. If desk/config's file_hash moved and only `src/data/sage-setup.ts` is stale, it writes like CI does (desk-view write mode). If other generated files are stale too, it refuses and dies with the exact command (`cd <desk> && bun run rank:snapshot && bun scripts/desk-view.ts --check`). A write error or an empty output also dies with a command. Tests: `pages-publish-config-sync.test.ts`. Live proof (edit config → write → `--check` + coherence OK; plus the refuse case), restored afterwards: `config-sync-proof.txt`.
+- **timeout_s floor (4):** `TIMEOUT_MIN_S = 3` / `fieldMin()` in `sage-config-rules.ts`. The CI validator and the stepper (`setup-draft` `TIMEOUT_MIN`, `capBounds`) use it. Parity test: for every ceilinged field and every value 0…ceiling+1, CI ok ⇔ browser ok ⇔ within the stepper's bounds, with identical errors. `timeout_s = 2` → `sources.lab_rss.timeout_s must be ≥ 3`.
+- **crawl.log suffix (5):** the PASS-D D6 single format `feed=<sha8|same|skipped> ov390=<skipped|pass|fail> fl=<bytes|->`. pages-publish uses the PASS-D `ov390` vocabulary (`skipped|ran-pass|ran-fail`) and the same `fl_bytes` grep. It writes `feed=skipped …`, since this branch has no feed, and the proof file is removed at the start of each run. The gitlab-ci `echo … changed=$changed $proof ${dur}s$slow` line is byte-identical to beat13-on-chrome's. Only the `proof=` source line differs (on merge, take PASS-D's `publish-proof.ts suffix`). Tests: `crawl-log-suffix.test.ts`.
+- **8e (6):** unchanged.
+- **Tests:** 746 → **756 pass**, 0 fail (`tests-after.txt`). visual:check was not rerun: no rendered UI changed. The stepper floor was already 3 and the bay chunk is byte-identical.

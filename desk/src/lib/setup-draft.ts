@@ -5,11 +5,12 @@
  * Box-only sources (limits.box_only) always come from the committed file — a tampered localStorage cannot change them.
  * PASS-S1 note: new source blocks / lists render from limits (source_ids, ceilings, feeds, keyword_lists) — no edits here.
  */
-import { fileJson, isObj, validateWithRules, type SageLimits, type ValidateResult } from "./sage-config-rules";
+import { fieldMin, fileJson, isObj, TIMEOUT_MIN_S, validateWithRules, type SageLimits, type ValidateResult } from "./sage-config-rules";
 
 export const DRAFT_KEY = "sage-setup-draft-v1";
 export const GITHUB_EDIT_URL = "https://github.com/specimba/NEXUS_SAGE_grok/edit/main/desk/config/sage-sources.json";
-export const TIMEOUT_MIN = 3;
+/** PASS-C3 (4): the floor lives in the shared rules (sage-config-rules TIMEOUT_MIN_S) — validator and stepper agree. */
+export const TIMEOUT_MIN = TIMEOUT_MIN_S;
 
 type Obj = Record<string, unknown>;
 export type Draft = Obj;
@@ -100,7 +101,7 @@ export function toggleOn(d: Draft, id: string, limits: SageLimits): Draft {
 }
 
 export function capBounds(id: string, field: string, limits: SageLimits): [number, number] {
-  return [field === "timeout_s" ? TIMEOUT_MIN : 1, (limits.ceilings[id] || {})[field] || 1];
+  return [fieldMin(field), (limits.ceilings[id] || {})[field] || 1];
 }
 
 /** Stepper: value ± delta, clamped to [min, ceiling] — never writes an out-of-bounds number. */

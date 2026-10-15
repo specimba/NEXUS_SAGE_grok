@@ -1,0 +1,16 @@
+== 1. in sync
+desk-view config-sync: in sync (config file_hash a5b183b04c73)
+rc=0
+== 2. desk/config edited (hn_sweep += "patchbay-proof"), only sage-setup.ts stale
+desk-view STALE — src/data/sage-setup.ts ≠ raw modules (crawl 2026-10-15T18:21:26Z); run bun scripts/desk-view.ts
+check-before rc=1
+desk-view config-sync: desk/config changed (file_hash a5b183b04c73 → c167a2a7e9b1) — regenerating src/data/sage-setup.ts (write mode, as CI does)
+desk-view written (sage-setup.ts) — commit it with the config change
+sync rc=0
+desk-view OK (in sync) · crawl 2026-10-15T18:21:26Z · 218 members · 187 clusters · 27 papers · 95.2 KB · gz 35449/35500 B · trimmed 25 stories / 25 items / 0 X / 0 papers · lead log 11.1 KB
+check-after rc=0
+pages-coherence OK: crawl 2026-10-15T18:21:26Z
+coherence rc=0
+== 3. config edited again AND desk-view.ts hand-edited (other generated file stale) → refuse with exact command
+desk-view config-sync: desk/config changed (file_hash c167a2a7e9b1 → aa1a13544d0e) AND src/data/desk-view.ts stale vs raw modules — not regenerating in publish (would hide a skipped postingest). Run: cd <desk> && bun run rank:snapshot && bun scripts/desk-view.ts --check
+sync rc=1
