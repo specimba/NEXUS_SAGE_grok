@@ -21,9 +21,9 @@
 | Item | Rule |
 |------|------|
 | Slots | **4/day**: `11 6,11,16,21 * * *`, schedule timezone **Europe/Istanbul**. 06:11 stays the lead-pick run. |
-| Overnight | 21:11 → 06:11 gap is 9h. Watchdog stale threshold moves to **10h**. |
+| Overnight | 21:11 → 06:11 gap is 9h. **Amended Oct 16: the watchdog is slot-based, not a fixed 10h.** `--pre` computes the previous scheduled slot before this run's start (06:11/11:11/16:11/21:11 Europe/Istanbul) and fails if the last `checked_at` < that slot − 10 min. One missed slot is always caught, both daytime (06:12 → 16:11) and overnight. Late-starting GitLab runs are fine: a run that started late still checks in after its own slot. The fixed 10h rule is retired. Tests: a missed 11:11 fails at 16:11; a missed 21:11 fails at 06:11; all slots present passes; a late 11:40 check-in passes at 16:11. |
 | Job | One job `crawl`. No separate watchdog job (each job pays setup). |
-| Image | Pinned image that already has `git`. No apt installs on data-only runs. **Amended Oct 16 (Architect sign-off on 6f33c25):** code-changed runs only (non-data diff vs last published main SHA, a few a month) may fetch the pinned chrome-headless-shell (`SAGE_CHROME_VERSION`, HTTPS from Chrome for Testing) plus its libs via `apt-get --no-install-recommends`, for the overflow-390 gate. Conditions: install time is logged in `publish-proof.json` (`chrome_install_s`); the run must still finish inside `timeout: 6m`; install failure = check fail and nothing is published; no GitLab cache for the browser; if two code-changed runs in a month exceed 60s of install, move to a cached artifact instead. |
+| Image | Pinned image that already has `git`. No apt installs on data-only runs. **Amended Oct 16 (Architect sign-off on 6f33c25):** code-changed runs only (non-data diff vs last published main SHA, a few a month) may fetch the pinned chrome-headless-shell (`SAGE_CHROME_VERSION`, HTTPS from Chrome for Testing) plus its libs via `apt-get --no-install-recommends`, for the overflow-390 gate. Conditions: install time is logged in `publish-proof.json` (`chrome_install_s`); the run must still finish inside `timeout: 6m`; install failure = check fail and nothing is published; no GitLab cache for the browser; if two code-changed runs in a month exceed 60s of install, move to a cached artifact instead. Oct 16: Chrome itself comes from the pinned CfT zip **with a sha256 check** (mismatch = check fail), and apt installs libs only; both OK. The 60s trigger counts **GitLab** `chrome_install_s` only; the 69s box timing is noted but doesn't count. |
 | Cache | GitLab `cache:` for bun install cache, keyed on `bun.lockb`, plus Next build cache (`desk/.next/cache`). |
 | Clone | `git clone --depth 1` main. gh-pages fetched depth 1 **only** when publishing. |
 | Speed cuts | Lab RSS per-feed timeout **≤10s** (was 48.5s of an 88s ingest); drop the dead feed if it keeps timing out. No `:3000` rebuild. No per-crawl ref-doc stamps (one `logs/crawl.log` line). |
@@ -42,7 +42,7 @@
 
 ## 4. Watchdog (failure-only, inside the same job)
 
-- `desk/scripts/watchdog.ts` runs **first** (checks the previous run's `checked_at` against the 10h threshold, which catches a missed slot) and **last** (checks this run: gh-pages crawl = main crawl after a publish, soft-fail ratio, hash gate error).
+- `desk/scripts/watchdog.ts` runs **first** (checks the previous run's `checked_at` against the previous scheduled slot (slot-based rule in §2), which catches any single missed slot) and **last** (checks this run: gh-pages crawl = main crawl after a publish, soft-fail ratio, hash gate error).
 - Healthy → silent. Failure → job fails, and GitLab emails the owner on failed pipelines (free, default). No room posts, no agent wakes, no GitHub issue (would need another token scope).
 - Known gap: if GitLab stops running schedules completely, nothing alerts until the next run. Accept for now.
 
