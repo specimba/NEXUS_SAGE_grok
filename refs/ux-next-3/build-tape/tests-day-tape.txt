@@ -1,0 +1,28 @@
+bun test v1.4.2 (744846f84)
+
+src/lib/__tests__/day-tape.test.ts:
+(pass) crawl field: crawl-tape.json > recordCrawl appends oldest-first, replaces a rerun of the same stamp, keeps the newest CRAWL_TAPE_KEEP [0.65ms]
+(pass) crawl field: crawl-tape.json > parseCrawlTape drops malformed entries and sorts [0.34ms]
+(pass) crawl field: crawl-tape.json > ingest records the crawl stamp with the first_seen = stamp cluster count [0.62ms]
+(pass) crawl field: crawl-tape.json > the committed seed is real history: every entry matches a crawl stamp with its is_new count [0.33ms]
+(pass) desk field: DAY_TAPE > yesterday's last crawl + today's crawls; PICK on the slot whose time = LEAD_TODAY.pick_slot [7.28ms]
+(pass) desk field: DAY_TAPE > HELD day: the pick slot carries held, never pick [0.12ms]
+(pass) desk field: DAY_TAPE > stale / no pick today and the cycle seed mark no slot [0.14ms]
+(pass) desk field: DAY_TAPE > NOW = CRAWL_AT with the current crawl's own count; no log ⇒ just the current crawl (nothing invented) [0.06ms]
+(pass) desk field: DAY_TAPE > never more than 5 crawl slots: yesterday, pick and NOW survive, then the newest [0.18ms]
+(pass) desk field: DAY_TAPE > generated desk-view.ts carries DAY_TAPE from the committed log + LEAD_TODAY [2.80ms]
+(pass) desk field: DAY_TAPE > reader-hash: a crawl whose only change is the tape hashes equal [1.12ms]
+(pass) tape view + states > edition date, overnight (first crawl today), today total [0.35ms]
+(pass) tape view + states > bars rank by new (log scale, 0 ⇒ no bar) [0.08ms]
+(pass) tape view + states > picked day: prev · pick · · · now · next, summary says picked HH:MM [7.00ms]
+(pass) tape view + states > HELD day: hollow held tag on the pick slot, summary says held, NEXT = the plate's next try [1.48ms]
+(pass) tape view + states > stale day: no pick slot; held flag ⇒ summary held, else no pick yet [2.28ms]
+(pass) tape view + states > next pick slot: 06:11 after a pick; HELD retries only 06:00–20:59 [0.07ms]
+(pass) tape view + states > ▲ you sits under the last slot at/before the since baseline; none on a first visit or before the tape [0.62ms]
+(pass) tape view + states > pick and NOW on the same crawl: one pick tag, flagged now [0.34ms]
+(pass) tape view + states > empty tape renders nothing [0.08ms]
+
+ 20 pass
+ 0 fail
+ 69 expect() calls
+Ran 20 tests across 1 file. [67.00ms]

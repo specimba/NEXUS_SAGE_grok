@@ -22,6 +22,20 @@ import { memberInfo } from "@/lib/member-info";
 import { slimLead, type DeskViewInput } from "@/lib/desk-view";
 import type { DeskViewExtras } from "@/lib/desk-view-module";
 import type { PaperInput } from "@/lib/pulse-v5";
+import { existsSync, readFileSync } from "node:fs";
+import { resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+import { buildDayTape, CRAWL_TAPE_PATH, parseCrawlTape, type CrawlTapeLog } from "@/lib/day-tape";
+
+/** artifacts/sage/crawl-tape.json (missing / unreadable ⇒ empty log ⇒ the tape is just the current crawl). */
+export function readCrawlTape(desk = fileURLToPath(new URL("../..", import.meta.url))): CrawlTapeLog {
+  const p = resolve(desk, CRAWL_TAPE_PATH);
+  try {
+    return parseCrawlTape(existsSync(p) ? JSON.parse(readFileSync(p, "utf8")) : null);
+  } catch {
+    return parseCrawlTape(null);
+  }
+}
 
 /** Rank snapshots minus `at` (the snapshot's wall-clock write time — never rendered; keeps reruns byte-identical). */
 const noAt = <T extends { at?: unknown }>(s: T | null) => {
@@ -31,7 +45,7 @@ const noAt = <T extends { at?: unknown }>(s: T | null) => {
   return rest;
 };
 
-export function rawDeskViewInputs(): { input: DeskViewInput; extras: DeskViewExtras } {
+export function rawDeskViewInputs(tape: CrawlTapeLog = readCrawlTape()): { input: DeskViewInput; extras: DeskViewExtras } {
   const itemIds = [...HN_PULSE.map((h) => h.id), ...GNEWS_RSS.map((g) => g.id), ...RSS_LABS.map((r) => r.id), ...RSS_SECURITY.map((r) => r.id), ...GMAIL_NEWS.map((g) => g.id), ...RSS_ANALYST.map((a) => a.id), ...RELEASES_ATOM.map((r) => r.id)];
   const members = memberInfo();
   // The client recovers the crawl-item list as "every member id not under x:" (crawlItemIds) — make sure that holds.
@@ -59,6 +73,7 @@ export function rawDeskViewInputs(): { input: DeskViewInput; extras: DeskViewExt
       TOPIC_HEAT_WINDOWS,
       SOURCE_HEALTH,
       SHELF,
+      DAY_TAPE: buildDayTape(tape, CRAWL_AT, PULSE_CLUSTERS.filter((c) => c.first_seen === PULSE_CLUSTERS_AT).length, LEAD_TODAY),
     },
   };
 }

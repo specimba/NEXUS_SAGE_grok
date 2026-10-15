@@ -6,6 +6,7 @@ import { CYCLE, WAVES } from "@/data/cycle";
 // Crawl data comes ONLY from the generated slim view (OPT win 3); raw src/data crawl modules never reach the client.
 import {
   CRAWL_AT,
+  DAY_TAPE,
   LEAD_FIRST_AT,
   LEAD_HELD,
   LEAD_TODAY,
@@ -88,6 +89,8 @@ import { companyFilterMatch, deltaText, heatCells, heatLabel } from "@/lib/topic
 import { isTypingTarget, KEY_MAP, matchesFilter, resolveKey, stepSelection } from "@/lib/keys";
 import { writeStoryParam } from "@/lib/story-drawer";
 import { LeadLogPanel } from "@/components/sage/lead-log";
+import { DayTape } from "@/components/sage/day-tape";
+import { nextPickSlot } from "@/lib/day-tape";
 import type { LeadLog } from "@/lib/lead-log";
 
 /** Beat 11 — `?view=leadlog` opens the holotape inside the Brief (no new lane tab). */
@@ -820,6 +823,7 @@ const LeadLogCtx = createContext<LeadLogState>({ leadLog: EMPTY_LOG, logOpen: fa
 
 function Brief() {
   const { leadLog, logOpen, openLog, closeLog } = useContext(LeadLogCtx);
+  const { since } = useDeskKeys();
   // Lead staleness: crawl stamp on first render (SSR/static-stable), then the wall clock.
   // 48h lead-age (PASS-L safety net) HELD check runs in the browser after mount (static HTML ships only LEAD_FIRST_AT).
   const leadNow = useNow();
@@ -843,6 +847,7 @@ function Brief() {
   return (
     <>
     {logOpen ? <LeadLogPanel log={leadLog} onClose={closeLog} /> : null}
+    <DayTape tape={DAY_TAPE} crawlAt={CRAWL_AT} since={since} next={nextPickSlot(lv.held, nextTry)} held={lv.held} />
     <div className="brief-v5 grid gap-2 lg:grid-cols-12 lg:grid-rows-[auto_auto_auto]">
       {/* Left · Pip-Boy needle rail */}
       <aside

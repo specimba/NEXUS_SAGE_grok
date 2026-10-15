@@ -10,6 +10,7 @@ import { buildDeskView, droppableStories, DESK_VIEW_CAPS, type DeskView, type De
 import type { SourceHealthRow } from "@/lib/source-health";
 import type { HeatWindow } from "@/lib/topic-heat";
 import type { WireRow } from "@/lib/wire";
+import type { DayTapeSlot } from "@/lib/day-tape";
 
 export type DeskViewStamps = {
   CRAWL_AT: string;
@@ -33,6 +34,8 @@ export type DeskViewExtras = {
   TOPIC_HEAT_WINDOWS: readonly HeatWindow[];
   SOURCE_HEALTH: readonly SourceHealthRow[];
   SHELF: readonly { href: string; label: string; reason: string }[];
+  /** UX-NEXT-3 §2 day tape (src/lib/day-tape.ts buildDayTape). Optional so older fixtures still render. */
+  DAY_TAPE?: readonly DayTapeSlot[];
 };
 
 export const gzBytes = (s: string) => gzipSync(s, { level: 9 }).length;
@@ -67,6 +70,7 @@ import type { DeskViewTrim, MemberRow, OrphanCluster, SlimLead, XRef } from "@/l
 import type { SourceHealthRow } from "@/lib/source-health";
 import type { HeatWindow } from "@/lib/topic-heat";
 import type { WireRow } from "@/lib/wire";
+import type { DayTapeSlot } from "@/lib/day-tape";
 
 export const DESK_VIEW_AT = ${j(s.PULSE_CLUSTERS_AT)};
 export const CRAWL_AT = ${j(s.CRAWL_AT)};
@@ -83,6 +87,9 @@ export const LEAD_HELD: boolean = ${j(x.LEAD_HELD)};
 export const LEAD_FIRST_AT: string | null = ${j(x.LEAD_FIRST_AT)};
 export const LEAD_TODAY: SlimLead | null = ${j(x.LEAD_TODAY)};
 export const LEAD_YESTERDAY: SlimLead | null = ${j(x.LEAD_YESTERDAY)};
+
+/** Day tape: yesterday's last crawl + today's crawls (at · new clusters · pick). Reader-hash ignores this line. */
+export const DAY_TAPE: DayTapeSlot[] = ${j(x.DAY_TAPE ?? [])};
 
 export const RANK_CURRENT: Omit<RankSnapshot, "at"> = ${j(x.RANK_CURRENT)};
 export const RANK_PREV: Omit<RankSnapshot, "at"> | null = ${j(x.RANK_PREV)};

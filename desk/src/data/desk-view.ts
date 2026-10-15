@@ -9,6 +9,7 @@ import type { DeskViewTrim, MemberRow, OrphanCluster, SlimLead, XRef } from "@/l
 import type { SourceHealthRow } from "@/lib/source-health";
 import type { HeatWindow } from "@/lib/topic-heat";
 import type { WireRow } from "@/lib/wire";
+import type { DayTapeSlot } from "@/lib/day-tape";
 
 export const DESK_VIEW_AT = "2026-10-21T03:20:27Z";
 export const CRAWL_AT = "2026-10-21T03:20:27Z";
@@ -25,6 +26,9 @@ export const LEAD_HELD: boolean = false;
 export const LEAD_FIRST_AT: string | null = "2026-10-20T16:40:24.000Z";
 export const LEAD_TODAY: SlimLead | null = {"date":"2026-10-21","at":"2026-10-21T03:20:48.810Z","pick_slot":"06:20","cluster_id":"cl:hn:50169053","headline":"Google open-sources TorchTPU, a native PyTorch back end for TPUs","url":"https://github.com/google-pytorch/torch_tpu","sources":3,"sig":278,"reason":"picked","age_band":"<24h"};
 export const LEAD_YESTERDAY: SlimLead | null = {"date":"2026-10-20","at":"2026-10-20T03:20:50.370Z","pick_slot":"06:20","cluster_id":"cl:hn:50155578","headline":"AI agents are only as good as the personal information you share","url":"https://apnews.com/article/meta-muse-openai-dot-ai-privacy-449734d41d3750aad7038b761faa49c9","sources":4,"sig":3,"reason":"picked","age_band":"<24h"};
+
+/** Day tape: yesterday's last crawl + today's crawls (at · new clusters · pick). Reader-hash ignores this line. */
+export const DAY_TAPE: DayTapeSlot[] = [{"at":"2026-10-19T13:27:06Z","new":25},{"at":"2026-10-21T03:20:27Z","new":27,"pick":"pick"}];
 
 export const RANK_CURRENT: Omit<RankSnapshot, "at"> = {"schema":1,"crawl_at":"2026-10-21T03:20:27Z","lead_id":"hf-incident","rows":[{"id":"hf-swarm","rank":1,"base_rank":1,"sources":2,"source_keys":["crawl:hn","x:@dwarkesh_sp"],"crawl_hits":["cl:hn:50170876"],"mult":1,"lead":true},{"id":"astra-depth","rank":2,"base_rank":2,"sources":2,"source_keys":["x:@amir","x:@steph_palazzolo"],"crawl_hits":[],"mult":1.15,"lead":false},{"id":"aisle-curl","rank":3,"base_rank":3,"sources":1,"source_keys":["co:aisle"],"crawl_hits":[],"mult":1,"lead":false},{"id":"harness-papers","rank":4,"base_rank":4,"sources":1,"source_keys":["x:@dair_ai"],"crawl_hits":[],"mult":1,"lead":false}]};
 export const RANK_PREV: Omit<RankSnapshot, "at"> | null = {"schema":1,"crawl_at":"2026-10-20T22:37:32Z","lead_id":"hf-incident","rows":[{"id":"hf-swarm","rank":1,"base_rank":1,"sources":2,"source_keys":["crawl:hn","x:@dwarkesh_sp"],"crawl_hits":["cl:hn:50170876"],"mult":1,"lead":true},{"id":"astra-depth","rank":2,"base_rank":2,"sources":2,"source_keys":["x:@amir","x:@steph_palazzolo"],"crawl_hits":[],"mult":1.15,"lead":false},{"id":"aisle-curl","rank":3,"base_rank":3,"sources":1,"source_keys":["co:aisle"],"crawl_hits":[],"mult":1,"lead":false},{"id":"harness-papers","rank":4,"base_rank":4,"sources":1,"source_keys":["x:@dair_ai"],"crawl_hits":[],"mult":1,"lead":false}]};
