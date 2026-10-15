@@ -54,7 +54,7 @@ export type UnlockView = DigestUnlockSnapshot & {
 const TITLE_DENY_ID =
   /^(gmail:|cl:gmail:|taste:|cl:taste:|x:|cl:x:)/i;
 const TITLE_DENY_SOURCE =
-  /^(gmail-news|x-taste|x-watchlist|rss-lab|rss-security|gnews-rss)$/i;
+  /^(gmail-news|x-taste|x-watchlist|rss-lab|rss-security|gnews-rss|rss-analyst)$/i;
 
 /**
  * True when a story may be a Digest/Voice title (Brief-lead / Wire path).
@@ -75,13 +75,14 @@ export function titleEligible(input: {
   const members = input.member_ids ?? [];
   // Pass A: GML / taste / RSS / GNews-only never become Digest/Voice titles.
   // A title needs ≥1 HN/paper/arxiv member, or a non-deny lead id (e.g. already-picked LEAD_TODAY).
-  const denyMember = (m: string) => /^(gmail:|taste:|x:|rss:|gnews:)/i.test(m);
+  // PASS-S1: analyst (anl:) rows are lone-RSS-like — never a title on their own.
+  const denyMember = (m: string) => /^(gmail:|taste:|x:|rss:|gnews:|anl:)/i.test(m);
   if (members.length) {
     const hasStrong = members.some((m) => /^(hn:|paper:|arxiv:)/i.test(m));
     if (!hasStrong && members.every(denyMember)) return false;
   } else {
     // No members: allow LEAD_TODAY-style ids (cl:hn:…); deny bare gmail/rss/gnews/taste.
-    if (/^(gmail:|cl:gmail:|taste:|cl:taste:|x:|cl:x:|rss:|cl:rss:|gnews:|cl:gnews:)/i.test(id)) {
+    if (/^(gmail:|cl:gmail:|taste:|cl:taste:|x:|cl:x:|rss:|cl:rss:|gnews:|cl:gnews:|anl:|cl:anl:)/i.test(id)) {
       return false;
     }
   }

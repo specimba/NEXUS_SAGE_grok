@@ -76,6 +76,7 @@ const SOURCE_BADGE: Record<string, string> = {
   "rss-security": "SEC",
   x: "X",
   "gmail-news": "GML",
+  "rss-analyst": "ANL",
 };
 
 const LAB_BADGE: Record<string, string> = {
@@ -103,6 +104,7 @@ export function memberSource(id: string): string | null {
   if (id.startsWith("rss:")) return "rss-lab";
   if (id.startsWith("x:")) return "x";
   if (id.startsWith("gmail:")) return "gmail-news";
+  if (id.startsWith("anl:")) return "rss-analyst";
   return null;
 }
 
@@ -126,6 +128,8 @@ export function publisherKey(id: string, publisher?: string | null): string {
     return lab ? `lab:${lab}` : pub || id;
   }
   if (id.startsWith("gnews:")) return pub ? `pub:${pub}` : id;
+  // PASS-S1.1: one publisher per analyst feed (anl:<feed>:…).
+  if (id.startsWith("anl:")) return `anl:${id.split(":")[1] ?? pub}`;
   return pub || id;
 }
 

@@ -187,6 +187,18 @@ export function nonGnewsPublishers(
 }
 
 /**
+ * PASS-S1.1 rule: analyst feeds (Simon Willison, Latent Space/AINews) CONFIRM a story and count toward N SRC, but a
+ * lead needs ≥1 independent publisher that is neither an analyst nor Google News. Two analysts alone (Simon + an
+ * AINews recap) can't make a lead. Reason code recorded in lead-history `excluded[]`.
+ */
+export const ANALYST_ONLY = "analyst-only";
+
+/** nonGnewsPublishers minus analyst publishers (`anl:<feed>`). */
+export function nonAnalystPublishers(...args: Parameters<typeof nonGnewsPublishers>): string[] {
+  return nonGnewsPublishers(...args).filter((k) => !k.startsWith("anl:"));
+}
+
+/**
  * Customer-deal announcements (LEAD only — they stay on the Wire and in Pulse): a deal verb AND a buying-side
  * subject (text before the verb) that is NOT a tracked lab / AI vendor. "BNP Paribas inks new Google Cloud
  * deal…" → filtered; "Anthropic signs compute deal with Google" → eligible. Never a plain keyword match.
@@ -238,6 +250,7 @@ export function leadExcludeReason(c: WireCluster, now: number, opts: LeadOpts = 
     investingNoiseReason(c.title) ??
     customerDealReason(c.title) ??
     (nonGnewsPublishers(c, opts.publishers, opts.members).length === 0 ? GNW_ONLY : null) ??
+    (nonAnalystPublishers(c, opts.publishers, opts.members).length === 0 ? ANALYST_ONLY : null) ??
     opts.exclude?.(c) ??
     null
   );

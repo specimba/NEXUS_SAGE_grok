@@ -336,7 +336,8 @@ function cachePath(cacheDir: string, lab: string): string {
   return resolve(cacheDir, `${lab}.xml`);
 }
 
-function readCache(
+/** Cached feed XML (6h TTL). Shared with the PASS-S1 analyst feeds (rss-analyst.ts). */
+export function readCache(
   cacheDir: string,
   lab: string,
   now = Date.now(),
@@ -357,7 +358,7 @@ function readCache(
   }
 }
 
-function writeCache(cacheDir: string, lab: string, xml: string, now = Date.now()) {
+export function writeCache(cacheDir: string, lab: string, xml: string, now = Date.now()) {
   mkdirSync(cacheDir, { recursive: true });
   const iso = new Date(now).toISOString().replace(/\.\d{3}Z$/, "Z");
   writeFileSync(cachePath(cacheDir, lab), `<!-- cached_at:${iso} -->\n${xml}`);
@@ -382,7 +383,8 @@ export function looksLikeHtml(body: string): boolean {
   );
 }
 
-async function getXml(
+/** Throttled (≤1 req/2s, shared lab+analyst) GET with the per-feed timeout; HTML walls → not ok. */
+export async function getXml(
   url: string,
   fetchImpl: typeof fetch = fetch,
   pace?: Pace,

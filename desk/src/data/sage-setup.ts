@@ -4,12 +4,12 @@ import type { SageSetupView } from "@/lib/sage-setup";
 export const SAGE_SETUP: SageSetupView = {
   "stamped_at": "2026-10-20T03:20:29Z",
   "config_path": "desk/config/sage-sources.json",
-  "config_hash": "efcffd3174ab",
+  "config_hash": "73282beec242",
   "status": "ok",
   "used": "committed",
   "errors": [],
-  "since_commit": "489f43c",
-  "since_at": "2026-10-15T22:43:58Z",
+  "since_commit": "3cb1b6d",
+  "since_at": "2026-10-15T22:44:24Z",
   "sources": [
     {
       "id": "hn",
@@ -94,6 +94,13 @@ export const SAGE_SETUP: SageSetupView = {
       "caps": "visible_cap 6",
       "last_rows": null,
       "state": "box-only"
+    },
+    {
+      "id": "analyst_rss",
+      "on": true,
+      "caps": "cap_per_feed 6 · timeout_s 10 · feeds 2",
+      "last_rows": null,
+      "state": "—"
     }
   ],
   "keywords": [

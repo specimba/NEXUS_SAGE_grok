@@ -24,6 +24,7 @@ import { memberInfo } from "@/lib/member-info";
 import { HN_PULSE } from "@/data/hn-pulse";
 import { RSS_LABS } from "@/data/rss-labs";
 import { RSS_SECURITY } from "@/data/rss-security";
+import { RSS_ANALYST } from "@/data/rss-analyst";
 import { X_TASTE } from "@/data/x-taste";
 import { diffSnapshots, rankBelowLead, toSnapshot, type RankSnapshot } from "@/lib/corroboration";
 import { CYCLE } from "@/data/cycle";
@@ -57,6 +58,7 @@ const publishers: Record<string, string> = {};
 for (const g of GNEWS_RSS) if (g.publisher) publishers[g.id] = g.publisher;
 for (const r of RSS_LABS) publishers[r.id] = r.lab;
 for (const r of RSS_SECURITY) publishers[r.id] = r.lab;
+for (const a of RSS_ANALYST) publishers[a.id] = a.feed;
 const members = memberInfo();
 const pubClusters = PULSE_CLUSTERS.map((c) => ({
   ...c,
@@ -141,6 +143,7 @@ for (const h of HN_PULSE) memberAt[h.id] = h.at;
 for (const g of GNEWS_RSS) memberAt[g.id] = g.published;
 for (const r of RSS_LABS) memberAt[r.id] = r.published;
 for (const r of RSS_SECURITY) memberAt[r.id] = r.published;
+for (const a of RSS_ANALYST) memberAt[a.id] = a.published;
 const pickNow = Date.parse(PULSE_CLUSTERS_AT);
 for (const c of leadCandidatesAll(PULSE_CLUSTERS, pickNow, { scores, memberAt, publishers, members, tasteIds: X_TASTE.items.map((t) => t.id) }))
   console.log(`  lead-cand ${c.id.padEnd(28)} ${c.sources} SRC sig ${c.score ?? "—"} first ${c.first} age ${c.ageH}h ${c.reason ?? "ELIGIBLE"} · ${c.title.slice(0, 60)}`);

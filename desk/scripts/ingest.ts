@@ -73,6 +73,8 @@ import {
   type SecurityRssItem,
   SECURITY_FEEDS,
 } from "../src/lib/rss-security";
+import { ANALYST_FEEDS, fetchRssAnalyst, resolveAnalystCacheDir, type AnalystRssItem } from "../src/lib/rss-analyst";
+import { RSS_ANALYST } from "../src/data/rss-analyst";
 import {
   fetchGithubShelf,
   resolveGithubCacheDir,
@@ -296,6 +298,33 @@ ${body ? `${body},\n` : ""}];
 }
 
 
+function renderRssAnalystTs(rows: AnalystRssItem[], stamp: string, meta?: MetaMap): string {
+  const body = rows
+    .map(
+      (r) =>
+        `  { id: ${JSON.stringify(r.id)}, feed: ${JSON.stringify(r.feed)} as const, title: ${JSON.stringify(r.title)}, link: ${JSON.stringify(r.link)}, published: ${JSON.stringify(r.published)}, summary: ${JSON.stringify(r.summary)}, source: "rss-analyst" as const, recap: ${r.recap}, tag: ${JSON.stringify(r.tag)} as const${metaTail(meta, r.id)} },\n`,
+    )
+    .join("");
+  return `/** PASS-S1.1 analyst RSS Pulse (Simon Willison · Latent Space/AINews) — generated/refreshed by bun run ingest. Pulse only (ANL); never Brief; never a lead on its own. */
+export type RssAnalystRow = {
+  id: string;
+  feed: "simonw" | "latent-space";
+  title: string;
+  link: string;
+  published: string;
+  summary: string;
+  source: "rss-analyst";
+  recap: boolean;
+  tag: "rest" | "rumor" | "companion" | "incident";
+${META_TYPE_FIELDS}};
+
+export const RSS_ANALYST_AT: string | null = ${JSON.stringify(stamp)};
+
+export const RSS_ANALYST: RssAnalystRow[] = [
+${body}];
+`;
+}
+
 function renderGnewsRssTs(rows: GnewsRssItem[], stamp: string, meta?: MetaMap): string {
   const body = rows
     .map((r) => {
@@ -350,6 +379,7 @@ function renderSoftFailMetersTs(
     ...(chipOff("arxiv") ? [`    { id: "arxiv", label: "arXiv", state: "off" as SoftFailState, detail: "off" },`] : []),
     ...(chipOff("sec_rss") ? [`    { id: "sec_rss", label: "Sec RSS", state: "off" as SoftFailState, detail: "off" },`] : []),
     ...(chipOff("wikidata") ? [`    { id: "wikidata", label: "Wikidata", state: "off" as SoftFailState, detail: "off" },`] : []),
+    ...(chipOff("anl") ? [`    { id: "anl", label: "ANL", state: "off" as SoftFailState, detail: "off" },`] : []),
     ...(extra.configInvalid ? [`    { id: "config", label: "Config", state: "soft" as SoftFailState, detail: "config invalid" },`] : []),
   ];
   return `/** A4 soft-fail meters — snapshot from ingest (Pass F Gmail · Pass E X-session). Pulse/rail only; never Brief. */
@@ -644,6 +674,17 @@ async function main() {
       ),
     () => runSource("github", "github", (c) => fetchGithubShelf({ cacheDir: resolveGithubCacheDir(root), perPage: S.github.cap, fetchImpl: c.fetch })),
     () => runSource("wikidata", "wikidata", (c) => fetchWikidataDeny({ cacheDir: resolveWikidataCacheDir(root), fetchImpl: c.fetch })),
+    // PASS-S1.1: analyst feeds (ANL) — own budget; config analyst_rss.
+    () =>
+      runSource("analyst_rss", "rss_analyst", (c) =>
+        fetchRssAnalyst({
+          cacheDir: resolveAnalystCacheDir(root),
+          maxPerFeed: S.analyst_rss.cap_per_feed,
+          feeds: ANALYST_FEEDS.filter((f) => S.analyst_rss.feeds.includes(f.id)),
+          feedTimeoutMs: S.analyst_rss.timeout_s * 1000,
+          fetchImpl: c.fetch,
+        }),
+      ),
     // PASS-S1.4: HN title-scoped queries (keywords.hn_title_queries) — own budget so a slow term never times out the
     // watchlist; merged into the hn rows below (existing cap, objectID dedupe). Off with `hn`.
     () =>
@@ -883,7 +924,7 @@ async function main() {
 
   // Independent sources — awaited here, then processed in the fixed order hn → rss_labs → gnews →
   // rss_security → github → wikidata (same order and logic as the old sequential blocks).
-  const [hnSettled, rssSettled, gnewsSettled, secSettled, githubSettled, wikidataSettled, hnTitleSettled] = await independent;
+  const [hnSettled, rssSettled, gnewsSettled, secSettled, githubSettled, wikidataSettled, analystSettled, hnTitleSettled] = await independent;
   const sourcesFetchMs = swSources.lap();
   const hnRun = settledRun("hn", hnSettled);
   const rssRun = settledRun("rss_labs", rssSettled);
@@ -892,6 +933,7 @@ async function main() {
   const githubRun = settledRun("github", githubSettled);
   const wikidataRun = settledRun("wikidata", wikidataSettled);
   const hnTitleRun = settledRun("hn_title", hnTitleSettled);
+  const analystRun = settledRun("rss_analyst", analystSettled);
   // HN Algolia AFTER Crossref — Pulse chatter only; never Brief lead/companion / never toolkit Brief pins
   // FREE-PULSE P3: rotate ≤3 queries/tick · soft_fail merge · never Brief · never displace HF
   let hnOk = false;
@@ -1019,6 +1061,41 @@ async function main() {
     );
   }
 
+
+  // PASS-S1.1 analyst RSS AFTER lab RSS — Pulse only (ANL); corroborates, never a lead on its own (lead-pick analyst-only).
+  let anlOk = false;
+  let anlReason: string | undefined;
+  let anlRows: AnalystRssItem[] = [];
+  let anlReport: Record<string, unknown> | null = null;
+  ms.rss_analyst = analystRun.duration_ms;
+  try {
+    const an = unwrap(analystRun);
+    anlRows = an.items;
+    anlOk = an.ok;
+    anlReason = an.soft_fail_reason ?? (an.ok ? undefined : "no feeds ok");
+    anlReport = {
+      ok: an.ok,
+      soft_fail: an.soft_fail,
+      soft_fail_reason: an.soft_fail_reason ?? null,
+      count: an.items.length,
+      feeds: an.feedsOk,
+      feeds_soft_fail: an.feedsSoftFail,
+      dropped: an.dropped.slice(0, 12),
+      brief: false,
+      pulse_only: true,
+      lead_rule: "analyst-only groups excluded",
+      sample: an.items.slice(0, 4).map((r) => ({ id: r.id, feed: r.feed, recap: r.recap, title: r.title, link: r.link })),
+    };
+    console.log(
+      `RSS analyst: ${an.items.length} Pulse (ANL) from ${an.feedsOk.length} feeds, ${an.dropped.length} dropped (not-ai/deny) soft_fail=${an.soft_fail} (brief=false · lead needs a non-analyst publisher)`,
+    );
+    for (const f of an.feedsOk) console.log(`  anl ${f.feed} @ ${f.url} → ${f.count} items`);
+    for (const f of an.feedsSoftFail) console.log(`  anl soft_fail ${f.lab}: ${f.reason}`);
+    for (const d of an.dropped.slice(0, 6)) console.log(`  anl drop ${d.feed}[${d.reason}]: ${d.title.slice(0, 60)}`);
+  } catch (err) {
+    anlReason = timedOut.has("rss_analyst") ? String(err) : `exception: ${String(err)}`;
+    console.log(`RSS analyst: ${timedOut.has("rss_analyst") ? "TIMEOUT" : "soft_fail"} — continuing with committed rows (${String(err)})`);
+  }
 
   // Google News RSS AFTER lab RSS — Pulse quiet spice only; never Brief · never sole lead · rotate ≤2/tick
   // FREE-PULSE P5: soft_fail format-break/empty/403/429 · locks 003/hf-incident · no 004 · paid X/Bluesky DENY
@@ -1266,6 +1343,7 @@ async function main() {
   if (off.has("github")) githubShelf = [];
   if (off.has("arxiv")) arxivShelf = [];
   if (off.has("wikidata")) wikidataHints = [];
+  if (off.has("analyst_rss")) { anlRows = []; anlOk = true; }
 
   const urls = loadUrlList();
   const scored = scoreUrlList(urls);
@@ -1351,6 +1429,15 @@ async function main() {
       url: r.link,
       at: toIso(r.published),
       publisher: r.publisher,
+    })),
+    // PASS-S1.1: analyst rows (last, so old-source input order is untouched; committed rows on soft-fail, like lab RSS).
+    ...(anlOk ? anlRows : RSS_ANALYST).map((r) => ({
+      id: r.id,
+      source: "rss-analyst" as const,
+      title: r.title,
+      url: r.link,
+      at: toIso(r.published),
+      publisher: r.feed,
     })),
   ];
   // Beat 5: GNews corroborators — pool items (beyond the display cap) whose headline directly
@@ -1453,13 +1540,14 @@ async function main() {
     { id: "hn_title", ok: hnTitleOk, items: hnTitleAdded, reason: hnTitleReason },
     { id: "rss_labs", ok: rssOk, items: rssPulse.length + rssShelf.length, reason: rssSoftFailReason ?? "no feeds ok" },
     { id: "rss_security", ok: secOk, items: secPulse.length + secShelf.length, reason: secFailReason },
+    { id: "rss_analyst", ok: anlOk, items: anlRows.length, reason: anlReason },
     { id: "gnews", ok: gnewsOk, items: gnewsRows.length, reason: gnewsSoftFailReason ?? "empty" },
     { id: "github", ok: !githubSoftFail, items: githubShelf.length, reason: githubSoftFailReason },
     { id: "wikidata", ok: wikidataOk && !wikidataSoftFail, items: wikidataHints.length, reason: wikidataSoftFailReason ?? "not ok" },
   ];
   const healthPath = resolve(root, "artifacts/sage/source-health.json");
   // PASS-C2: an off source is not a failure — it leaves the ledger untouched (meter shows `off`).
-  const OUTCOME_CFG: Record<string, SourceId> = { hf: "hf_papers", rss_labs: "lab_rss", rss_security: "sec_rss", hn_title: "hn" };
+  const OUTCOME_CFG: Record<string, SourceId> = { hf: "hf_papers", rss_labs: "lab_rss", rss_security: "sec_rss", hn_title: "hn", rss_analyst: "analyst_rss" };
   for (let i = outcomes.length - 1; i >= 0; i--) {
     const cid = (OUTCOME_CFG[outcomes[i]!.id] ?? outcomes[i]!.id) as SourceId;
     if (off.has(cid)) outcomes.splice(i, 1);
@@ -1479,6 +1567,7 @@ async function main() {
     rss_labs: "lab RSS",
     gnews: "Google News",
     rss_security: "security RSS",
+    rss_analyst: "analyst RSS",
     github: "GitHub",
     wikidata: "Wikidata",
   };
@@ -1527,6 +1616,9 @@ async function main() {
       resolve(root, "src/data/rss-security.ts"),
       renderRssSecurityTs(secPulse, stamp, rowMeta),
     );
+  }
+  if (anlOk) {
+    writeText(resolve(root, "src/data/rss-analyst.ts"), renderRssAnalystTs(anlRows, stamp, rowMeta));
   }
   if (gnewsLive) {
     writeText(resolve(root, "src/data/gnews-rss.ts"), renderGnewsRssTs(gnewsRows, stamp, rowMeta));
@@ -1760,6 +1852,7 @@ async function main() {
         link: r.link,
       })),
     },
+    rss_analyst: anlReport,
     google_news: {
       ok: gnewsOk,
       soft_fail: gnewsSoftFail,

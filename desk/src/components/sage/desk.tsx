@@ -1096,6 +1096,7 @@ const HEALTH_LABEL: Record<string, string> = {
   gnews: "GNW",
   rss_labs: "LAB",
   rss_security: "SEC",
+  rss_analyst: "ANL",
   hf: "HF",
   arxiv: "ARX",
   crossref: "XREF",
@@ -1104,7 +1105,7 @@ const HEALTH_LABEL: Record<string, string> = {
   wikidata: "WD",
 };
 
-const HEALTH_ORDER = ["hn", "hn_title", "gnews", "rss_labs", "rss_security", "hf", "arxiv", "crossref", "openalex", "github", "wikidata"];
+const HEALTH_ORDER = ["hn", "hn_title", "gnews", "rss_labs", "rss_security", "rss_analyst", "hf", "arxiv", "crossref", "openalex", "github", "wikidata"];
 
 function useMembers(): Record<string, PulseMemberInfo> {
   return MEMBERS;

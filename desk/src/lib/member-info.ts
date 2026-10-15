@@ -9,6 +9,7 @@ import { HN_PULSE } from "@/data/hn-pulse";
 import { RSS_LABS } from "@/data/rss-labs";
 import { RSS_SECURITY } from "@/data/rss-security";
 import { GMAIL_NEWS } from "@/data/gmail-news";
+import { RSS_ANALYST } from "@/data/rss-analyst";
 import { labBadge, type PulseMemberInfo } from "@/lib/pulse-v5";
 
 let cache: Record<string, PulseMemberInfo> | null = null;
@@ -24,6 +25,8 @@ export function memberInfo(): Record<string, PulseMemberInfo> {
     m[s.id] = { badge: "SEC", publisher: s.lab, summary: s.summary || undefined, url: s.link, security: true, title: s.title, at: s.published };
   for (const g of GMAIL_NEWS)
     m[g.id] = { badge: "GML", publisher: g.publisher || "gmail", summary: g.summary || undefined, url: g.link, title: g.title, at: g.published };
+  for (const a of RSS_ANALYST)
+    m[a.id] = { badge: "ANL", publisher: a.feed, summary: a.summary || undefined, url: a.link, title: a.title, at: a.published };
   for (const p of CRAWL)
     m[`x:${p.id}`] = { badge: "X", publisher: `@${p.handle}`, score: p.likes, summary: `${p.take} — ${p.text}`, url: p.href };
   cache = m;
