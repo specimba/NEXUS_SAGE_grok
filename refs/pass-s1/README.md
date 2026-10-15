@@ -11,14 +11,16 @@ Rebased per the Architect's §S1.8 ruling: hotfix first, then S1 with S1.2 and S
 | 419a3c1 | S1.3 `releases_atom`: REL chip, releases-seen.json |
 | e8e5004 | S1.5 `keywords.gmail_senders` (empty = off), sponsored-subject drop |
 | 55d69bc | S1.7 acceptance tests 1, 2, 8; test 2 switches everything off through the real config |
-| (this) | Proof |
+| d404787 | Proof |
+| 0be8194 | §S1.8(c): a release never counts toward the Wire's 2-source rule either (lead rule already excluded it) |
+| (this) | Proof refresh |
 
 Each feature commit seeds its config and regenerates `src/data/sage-setup.ts`. Its `since_commit` is the commit's real parent SHA.
 
 ## Tests
 - Before (b4c8f44): 702 pass / 0 fail. See `tests-before-b4c8f44.txt`.
-- After: 781 pass / 0 fail. See `tests-after.txt`.
-- S1 and hotfix files only: 93 pass. See `tests-s1-acceptance.txt`.
+- After: 782 pass / 0 fail. See `tests-after.txt`.
+- S1 and hotfix files only: 94 pass. See `tests-s1-acceptance.txt`.
 
 | # | Test | File |
 |---|---|---|
@@ -34,7 +36,7 @@ Each feature commit seeds its config and regenerates `src/data/sage-setup.ts`. I
 
 ## First Load (`node scripts/first-load.cjs .next-pages`, cap 185000, target ≤182000)
 - Before (b4c8f44, committed data): **178,598 B**. See `build-before.txt`.
-- After (55d69bc, committed data): **178,759 B**, which is **+161 B** and within ±200 B. See `build-after.txt`.
+- After (0be8194, committed data): **178,759 B**, which is **+161 B** and within ±200 B. See `build-after.txt`.
 - The pre-§S1.8 build (f57393e) came to 178,756 B.
 - The fixture build with live ANL and REL rows came to 178,566 B. See `build-fixture.txt`.
 
