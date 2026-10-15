@@ -108,8 +108,10 @@ export function wireCandidates(clusters: WireCluster[], opts: WireOpts = {}): Wi
   const { rows } = buildRows(kept, info);
   const out: WireCandidate[] = [];
   for (const r of rows) {
-    if (r.sourceCount < WIRE_MIN_SOURCES) continue;
     const c = byId.get(r.id)!;
+    // PASS-S1.8(c): a release (one publisher, github.com) never counts toward the 2-source rule.
+    const relPub = c.member_ids.some((id) => id.startsWith("rel:")) || c.lead_id.startsWith("rel:") ? 1 : 0;
+    if (r.sourceCount - relPub < WIRE_MIN_SOURCES) continue;
     let score: number | null = null;
     for (const id of c.member_ids) {
       const s = opts.scores?.[id];

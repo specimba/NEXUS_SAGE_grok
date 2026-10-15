@@ -20,7 +20,7 @@ import {
   type ReleasesSeen,
 } from "@/lib/releases-atom";
 import { defaultSageConfig, validateSageConfig } from "@/lib/sage-config";
-import { wireExcludeReason } from "@/lib/wire";
+import { wireCandidates, wireExcludeReason } from "@/lib/wire";
 import { fast } from "./tmp-cache";
 
 const LLAMA = RELEASE_FEEDS.find((f) => f.id === "llama.cpp")!;
@@ -155,6 +155,15 @@ describe("S1.3 — never lead, never Wire, REL chip", () => {
     const [c] = clusterItems([rel, hn], { stamp: iso(T0) }).map((x) => ({ ...x, first_seen: null, is_new: false }));
     expect(c!.lead_id).toBe("hn:1");
     expect(leadExcludeReason(c!, T0, {})).toBe(RELEASE_LEAD);
+  });
+  test("S1.8(c): release + one HN item is NOT a Wire row (the release does not count toward 2 sources); + a lab item is", () => {
+    const [c] = clusterItems([rel, hn], { stamp: iso(T0) }).map((x) => ({ ...x, first_seen: null, is_new: false }));
+    expect(wireCandidates([c!], {})).toEqual([]);
+    const lab: PulseInput = { ...rel, id: "rss:ollama-blog:x1", source: "rss-lab", url: "https://ollama.com/blog/mlx", publisher: "ollama" };
+    const [c2] = clusterItems([rel, hn, lab], { stamp: iso(T0) }).map((x) => ({ ...x, first_seen: null, is_new: false }));
+    const w = wireCandidates([c2!], {});
+    expect(w.length).toBe(1);
+    expect(w[0]!.sources).toBe(3); // N SRC display still shows every publisher
   });
   test("a release-led group is kept off the Wire", () => {
     const [c] = clusterItems([rel], { stamp: iso(T0) }).map((x) => ({ ...x, first_seen: null, is_new: false }));
