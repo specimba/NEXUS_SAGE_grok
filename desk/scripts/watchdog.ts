@@ -1,34 +1,61 @@
 #!/usr/bin/env bun
 /**
  * PASS-Q1 §3 — one watchdog, failure-only. Plain bun, no LLM, no posts.
- *   bun scripts/watchdog.ts            → exit 0 silent when healthy; exit 1 + reasons on stderr otherwise.
- * Fails when: last-checked.json checked_at older than 8h (WATCHDOG_MAX_AGE_H) · live gh-pages crawl ≠ main crawl after a
- * published run · last two runs both soft-failed ≥ half the sources · the hash gate errored.
- *   bun scripts/watchdog.ts --pre      → pre-crawl check: warn-only, never blocks; a missing last-checked.json is a cold start ("watchdog: first run", exit 0).
- *                                        Without --pre (post-crawl) a missing file still FAILs.
- *   Crawl-stamp mismatch live vs main: --pre → WARN, exit 0. Post-crawl → FAIL unless live is NEWER than this run's crawl.
- *   Missed slot (Q1G): --pre with checked_at older than WATCHDOG_MAX_AGE_H still WARNs and exits 0 (the crawl runs and
- *   heals the desk), but appends the reason to WATCHDOG_MISSED (a job-local file). The job's LAST step,
- *   `bun scripts/watchdog.ts --missed-slot`, exits 1 if that file is non-empty ⇒ red job ⇒ GitLab's failure email.
- *   --missed-slot reads nothing else (no live fetch, no retries).
- * Env: WATCHDOG_MISSED (path; unset = no missed-slot marker) · WATCHDOG_NOW (ISO, fixtures) · WATCHDOG_LIVE_URL (default the Pages URL; "off" skips the live compare).
+ *   bun scripts/watchdog.ts            → post-crawl: exit 0 silent when healthy; exit 1 + reasons on stderr otherwise.
+ * Fails when: checked_at earlier than THIS run's slot − 10 min (this run never checked in) · live gh-pages crawl ≠ main
+ * crawl after a published run · last two runs both soft-failed ≥ half the sources · the hash gate errored.
+ *   Slots (Q1G §2, amended Oct 16 — slot-based, the fixed 10h rule is retired): 06:11 · 11:11 · 16:11 · 21:11 Europe/Istanbul.
+ *   "This run's slot" = the latest slot ≤ now (+2 min skew); "the previous slot" = the one before it (crosses midnight).
+ *   bun scripts/watchdog.ts --pre      → pre-crawl. MISSED SLOT: last checked_at < previous slot − 10 min ⇒ prints
+ *                                        "watchdog FAIL (pre): missed slot …", appends it to WATCHDOG_MISSED, exits 2.
+ *                                        Everything else stays warn-only (exit 0): live≠main mismatch, gate error, soft ratio.
+ *                                        Missing last-checked.json = cold start ("watchdog: first run", exit 0).
+ *     Why exit 2 + a deferred job failure instead of stopping the job: if --pre aborted the crawl, checked_at would never
+ *     advance and every later slot would fail too (the desk would stay stale until someone intervened). The yml runs
+ *     `watchdog.ts --pre || [ $? = 2 ]` (only exit 2 is tolerated), the crawl + publish heal the desk, and the job's LAST
+ *     step `watchdog.ts --missed-slot` exits 1 on a non-empty WATCHDOG_MISSED ⇒ red job ⇒ GitLab's failure email.
+ *   bun scripts/watchdog.ts --missed-slot → reads only WATCHDOG_MISSED (no live fetch, no retries).
+ *   Without --pre (post-crawl) a missing file still FAILs. Live mismatch post-crawl → FAIL unless live is NEWER than this run's crawl.
+ * Env: WATCHDOG_MISSED (path; unset = no marker) · WATCHDOG_NOW (ISO, fixtures) · WATCHDOG_LIVE_URL (default the Pages URL; "off" skips the live compare).
  */
 import { appendFileSync, existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 const desk = resolve(import.meta.dir, "..");
 const checkedPath = process.env.WATCHDOG_CHECKED ?? resolve(desk, "artifacts/sage/last-checked.json");
-const MAX_H = Number(process.env.WATCHDOG_MAX_AGE_H ?? "8");
 const now = process.env.WATCHDOG_NOW ? Date.parse(process.env.WATCHDOG_NOW) : Date.now();
 const LIVE = process.env.WATCHDOG_LIVE_URL ?? "https://specimba.github.io/NEXUS_SAGE_grok/";
 const fails: string[] = [];
+
+// ── slots (Europe/Istanbul wall clock; offset read via Intl so a future DST rule can't skew it) ──
+const SLOTS = [[6, 11], [11, 11], [16, 11], [21, 11]] as const;
+const GRACE_MS = 10 * 60_000;
+const SKEW_MS = 2 * 60_000;
+const tzOffsetMs = (t: number) => {
+  const p = Object.fromEntries(new Intl.DateTimeFormat("en-US", { timeZone: "Europe/Istanbul", hourCycle: "h23", year: "numeric",
+    month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit" }).formatToParts(t).map((x) => [x.type, x.value]));
+  return Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour, +p.minute, +p.second) - Math.floor(t / 1000) * 1000;
+};
+/** All slot instants (UTC ms) on the TRT calendar days around t, ascending. */
+const slotsAround = (t: number) => {
+  const off = tzOffsetMs(t), local = new Date(t + off), out: number[] = [];
+  for (let d = -2; d <= 1; d++) for (const [h, m] of SLOTS) {
+    const wall = Date.UTC(local.getUTCFullYear(), local.getUTCMonth(), local.getUTCDate() + d, h, m);
+    out.push(wall - tzOffsetMs(wall - off));
+  }
+  return out.sort((a, b) => a - b);
+};
+const fmtTrt = (t: number) => new Date(t + tzOffsetMs(t)).toISOString().slice(0, 16).replace("T", " ") + " TRT";
+const all = slotsAround(now);
+const ownIdx = all.findLastIndex((s) => s <= now + SKEW_MS);
+const ownSlot = all[ownIdx], prevSlot = all[ownIdx - 1];
 
 const PRE = process.argv.includes("--pre");
 const MISSED = process.env.WATCHDOG_MISSED ?? "";
 if (process.argv.includes("--missed-slot")) {
   const why = MISSED && existsSync(MISSED) ? readFileSync(MISSED, "utf8").trim() : "";
   if (why) {
-    for (const l of why.split("\n")) console.error(`watchdog FAIL: missed slot — ${l} (this run crawled and published; failing so GitLab emails)`);
+    for (const l of why.split("\n")) console.error(`watchdog FAIL: ${l} (this run still crawled; failing now so GitLab emails)`);
     process.exit(1);
   }
   process.exit(0);
@@ -38,14 +65,17 @@ if (PRE && !existsSync(checkedPath)) {
   if (process.env.GITHUB_OUTPUT) appendFileSync(process.env.GITHUB_OUTPUT, `healthy=true\n`);
   process.exit(0);
 }
+let missed = "";
 const lc = existsSync(checkedPath) ? JSON.parse(readFileSync(checkedPath, "utf8")) : null;
 if (!lc) fails.push(`no ${checkedPath}`);
 else {
-  const age = (now - Date.parse(lc.checked_at)) / 3_600_000;
-  if (!Number.isFinite(age) || age > MAX_H) {
-    const msg = `checked_at ${lc.checked_at} is ${age.toFixed(1)}h old (> ${MAX_H}h)`;
-    fails.push(msg);
-    if (PRE && MISSED) appendFileSync(MISSED, `pre-crawl ${msg}\n`);
+  const at = Date.parse(lc.checked_at);
+  // --pre: the PREVIOUS slot must have checked in. Post-crawl: THIS run's slot must have (checked_at was just refreshed).
+  const slot = PRE ? prevSlot : ownSlot;
+  if (!Number.isFinite(at) || at < slot - GRACE_MS) {
+    const msg = `missed slot ${fmtTrt(slot)}: last checked_at ${lc.checked_at} is before ${fmtTrt(slot - GRACE_MS)}`;
+    if (PRE) missed = msg;
+    else fails.push(msg);
   }
   if (lc.gate_error) fails.push(`hash gate errored: ${lc.gate_error}`);
   const h = (lc.soft_history ?? []) as ({ soft: number; total: number } | null)[];
@@ -68,10 +98,15 @@ else {
     }
   }
 }
-if (process.env.GITHUB_OUTPUT) appendFileSync(process.env.GITHUB_OUTPUT, `healthy=${fails.length === 0}\n`);
-if (fails.length && PRE) {
-  // Pre-crawl: never block the crawl. A box crawl or a missed slot can leave main/live out of step; the crawl itself fixes that.
+if (process.env.GITHUB_OUTPUT) appendFileSync(process.env.GITHUB_OUTPUT, `healthy=${fails.length === 0 && !missed}\n`);
+if (PRE) {
+  // Pre-crawl: only a missed slot is a failure (exit 2, deferred to the job's last step); the rest warns. Never exit 1 here.
   for (const f of fails) console.warn(`watchdog WARN (pre): ${f}`);
+  if (missed) {
+    console.error(`watchdog FAIL (pre): ${missed}`);
+    if (MISSED) appendFileSync(MISSED, `pre-crawl ${missed}\n`);
+    process.exit(2);
+  }
   process.exit(0);
 }
 if (fails.length) {

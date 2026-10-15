@@ -74,54 +74,92 @@ describe("PASS-Q1 watchdog", () => {
   test("post-crawl: live = this run's crawl → pass", () => {
     expect(runLive(pub, "2026-10-10T08:21:16Z", []).status).toBe(0);
   });
-  describe("missed slot (Q1G): --pre stays warn-only, the last step fails the job", () => {
-    const stale = { checked_at: "2026-10-09T20:00:00Z", last_run: "skipped", soft_history: [], gate_error: null };
+  describe("slot-based missed-slot rule (Q1G §2 amend): --pre exits 2 + marker, the last step fails the job", () => {
+    // Slots 06:11 · 11:11 · 16:11 · 21:11 TRT = 03:11 · 08:11 · 13:11 · 18:11 UTC (TRT = UTC+3).
+    const lcAt = (checked_at: string) => ({ checked_at, last_run: "skipped", soft_history: [], gate_error: null });
     const runM = (args: string[], now: string, lc: object | null, missed: string) => {
       const dir = mkdtempSync(resolve(tmpdir(), "wd-"));
       const p = resolve(dir, "last-checked.json");
       if (lc) writeFileSync(p, JSON.stringify(lc));
-      return spawnSync("bun", [script, ...args], { encoding: "utf8", env: { ...process.env, WATCHDOG_CHECKED: p, WATCHDOG_NOW: now, WATCHDOG_MAX_AGE_H: "10", WATCHDOG_LIVE_URL: "off", GITHUB_OUTPUT: "", WATCHDOG_MISSED: missed } });
+      return spawnSync("bun", [script, ...args], { encoding: "utf8", env: { ...process.env, WATCHDOG_CHECKED: p, WATCHDOG_NOW: now, WATCHDOG_LIVE_URL: "off", GITHUB_OUTPUT: "", WATCHDOG_MISSED: missed } });
     };
     const marker = () => resolve(mkdtempSync(resolve(tmpdir(), "wd-m-")), "watchdog-missed.txt");
-    test("--pre, checked_at 10.5h old → WARN + exit 0, marker written; --missed-slot then exits 1", () => {
+    test("a missed 11:11 fails at 16:11 (daytime, 06:12 → 16:11 is under 10h)", () => {
       const m = marker();
-      const pre = runM(["--pre"], "2026-10-10T06:30:00Z", stale, m);
-      expect(pre.status).toBe(0);
-      expect(pre.stderr).toContain("watchdog WARN (pre): checked_at 2026-10-09T20:00:00Z is 10.5h old (> 10h)");
-      expect(readFileSync(m, "utf8")).toContain("pre-crawl checked_at 2026-10-09T20:00:00Z is 10.5h old");
-      // post-crawl the run has refreshed checked_at, so only the marker can fail the job
-      const last = runM(["--missed-slot"], "2026-10-10T06:35:00Z", { ...stale, checked_at: "2026-10-10T06:34:00Z" }, m);
+      const pre = runM(["--pre"], "2026-10-14T13:11:40Z", lcAt("2026-10-14T03:12:30Z"), m);
+      expect(pre.status).toBe(2);
+      expect(pre.stderr).toContain("watchdog FAIL (pre): missed slot 2026-10-14 11:11 TRT: last checked_at 2026-10-14T03:12:30Z is before 2026-10-14 11:01 TRT");
+      expect(readFileSync(m, "utf8")).toContain("pre-crawl missed slot 2026-10-14 11:11 TRT");
+      // the crawl then refreshes checked_at; only the marker fails the job at the last step
+      const last = runM(["--missed-slot"], "2026-10-14T13:13:00Z", lcAt("2026-10-14T13:12:50Z"), m);
       expect(last.status).toBe(1);
-      expect(last.stderr).toContain("watchdog FAIL: missed slot — pre-crawl checked_at 2026-10-09T20:00:00Z is 10.5h old");
+      expect(last.stderr).toContain("watchdog FAIL: pre-crawl missed slot 2026-10-14 11:11 TRT");
     });
-    test("--pre, 9.9h old (the 21:11 → 06:11 overnight gap) → no marker; --missed-slot exits 0 silently", () => {
+    test("a missed 21:11 fails at 06:11 (crossing midnight)", () => {
       const m = marker();
-      const pre = runM(["--pre"], "2026-10-10T05:54:00Z", stale, m);
-      expect(pre.status).toBe(0);
-      expect(existsSync(m)).toBe(false);
-      const last = runM(["--missed-slot"], "2026-10-10T06:00:00Z", stale, m);
-      expect(last.status).toBe(0);
-      expect(last.stdout + last.stderr).toBe("");
+      const pre = runM(["--pre"], "2026-10-15T03:11:40Z", lcAt("2026-10-14T13:12:30Z"), m);
+      expect(pre.status).toBe(2);
+      expect(pre.stderr).toContain("missed slot 2026-10-14 21:11 TRT");
+      expect(readFileSync(m, "utf8")).toContain("2026-10-14 21:11 TRT");
     });
-    test("cold start --pre writes no marker; WATCHDOG_MISSED unset never fails --missed-slot", () => {
+    test("all slots present passes at every slot, overnight included (exit 0, no marker, silent)", () => {
+      const cases: [string, string][] = [
+        ["2026-10-15T03:11:40Z", "2026-10-14T18:12:40Z"], // 06:11, last 21:12 (prev day)
+        ["2026-10-15T08:11:40Z", "2026-10-15T03:12:40Z"], // 11:11, last 06:12
+        ["2026-10-15T13:11:40Z", "2026-10-15T08:12:40Z"], // 16:11, last 11:12
+        ["2026-10-15T18:11:40Z", "2026-10-15T13:12:40Z"], // 21:11, last 16:12
+      ];
+      for (const [now, at] of cases) {
+        const m = marker();
+        const r = runM(["--pre"], now, lcAt(at), m);
+        expect(r.status).toBe(0);
+        expect(r.stdout + r.stderr).toBe("");
+        expect(existsSync(m)).toBe(false);
+      }
+      expect(runM(["--missed-slot"], "2026-10-15T18:13:00Z", lcAt("2026-10-15T18:12:40Z"), marker()).status).toBe(0);
+    });
+    test("a late 11:40 check-in passes at 16:11", () => {
       const m = marker();
-      expect(runM(["--pre"], "2026-10-10T06:30:00Z", null, m).status).toBe(0);
+      const r = runM(["--pre"], "2026-10-15T13:11:40Z", lcAt("2026-10-15T08:40:00Z"), m);
+      expect(r.status).toBe(0);
       expect(existsSync(m)).toBe(false);
-      expect(runM(["--missed-slot"], "2026-10-10T06:30:00Z", stale, "").status).toBe(0);
     });
-    test("--pre with other failures (gate error) stays warn-only and does not mark a missed slot", () => {
+    test("10-minute grace edge: 11:01:00 passes, 11:00:59 fails (at 16:11); a late-started run still uses its own slot", () => {
+      expect(runM(["--pre"], "2026-10-15T13:11:40Z", lcAt("2026-10-15T08:01:00Z"), marker()).status).toBe(0);
+      expect(runM(["--pre"], "2026-10-15T13:11:40Z", lcAt("2026-10-15T07:59:59Z"), marker()).status).toBe(2);
+      // the 16:11 job started 40 min late (16:51): previous slot is still 11:11
+      expect(runM(["--pre"], "2026-10-15T13:51:00Z", lcAt("2026-10-15T08:12:40Z"), marker()).status).toBe(0);
+    });
+    test("cold start: no last-checked.json → 'watchdog: first run', exit 0, no marker", () => {
       const m = marker();
-      const pre = runM(["--pre"], "2026-10-10T00:00:00Z", { ...stale, gate_error: "boom" }, m);
-      expect(pre.status).toBe(0);
+      const r = runM(["--pre"], "2026-10-15T13:11:40Z", null, m);
+      expect(r.status).toBe(0);
+      expect(r.stdout).toContain("watchdog: first run");
       expect(existsSync(m)).toBe(false);
     });
-    test("yml: marker reset before --pre, --missed-slot is the last script step", () => {
+    test("--pre: other problems (gate error, soft ratio) stay warn-only — exit 0, no marker", () => {
+      const m = marker();
+      const r = runM(["--pre"], "2026-10-15T13:11:40Z", { ...lcAt("2026-10-15T08:12:40Z"), gate_error: "boom", soft_history: [{ soft: 6, total: 10 }, { soft: 5, total: 10 }] }, m);
+      expect(r.status).toBe(0);
+      expect(r.stderr).toContain("watchdog WARN (pre): hash gate errored: boom");
+      expect(existsSync(m)).toBe(false);
+    });
+    test("post-crawl: this run's own slot must have checked in; WATCHDOG_MISSED unset never fails --missed-slot", () => {
+      expect(runM([], "2026-10-15T13:13:00Z", lcAt("2026-10-15T13:12:50Z"), "").status).toBe(0);
+      const stale = runM([], "2026-10-15T13:13:00Z", lcAt("2026-10-15T08:12:40Z"), "");
+      expect(stale.status).toBe(1);
+      expect(stale.stderr).toContain("watchdog FAIL: missed slot 2026-10-15 16:11 TRT");
+      expect(runM(["--missed-slot"], "2026-10-15T13:13:00Z", lcAt("2026-10-15T08:12:40Z"), "").status).toBe(0);
+    });
+    test("yml: fixed 10h retired; marker reset; only exit 2 tolerated on --pre; --missed-slot is the last step", () => {
       const ci = readFileSync(resolve(import.meta.dir, "../../../../ci/gitlab-ci.yml"), "utf8");
+      expect(ci).not.toContain("WATCHDOG_MAX_AGE_H");
       expect(ci).toContain("WATCHDOG_MISSED: $CI_PROJECT_DIR/watchdog-missed.txt");
-      expect(ci).toContain('rm -f "$WATCHDOG_MISSED"; bun scripts/watchdog.ts --pre');
-      const script = ci.slice(ci.indexOf("  script:"), ci.indexOf("  after_script:"));
-      const steps = script.split("\n").filter((l) => /^    - /.test(l));
+      expect(ci).toContain('rm -f "$WATCHDOG_MISSED"; bun scripts/watchdog.ts --pre || [ $? = 2 ]');
+      const sc = ci.slice(ci.indexOf("  script:"), ci.indexOf("  after_script:"));
+      const steps = sc.split("\n").filter((l) => /^    - /.test(l));
       expect(steps[steps.length - 1]).toBe("    - bun scripts/watchdog.ts --missed-slot");
+      expect(readFileSync(script, "utf8")).not.toContain("WATCHDOG_MAX_AGE_H");
     });
   });
 });
