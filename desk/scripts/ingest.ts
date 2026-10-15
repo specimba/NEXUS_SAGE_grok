@@ -92,6 +92,7 @@ import {
   tokenFromEnv,
   type GmailNewsHit,
 } from "../src/lib/gmail-news";
+import { renderGmailNewsTs } from "../src/lib/gmail-news-render";
 import {
   fetchWikidataDeny,
   resetWikidataDenyTickState,
@@ -238,8 +239,7 @@ ${META_TYPE_FIELDS}};
 export const HN_PULSE_AT = ${JSON.stringify(stamp)};
 
 export const HN_PULSE: HnPulseRow[] = [
-${body},
-];
+${body ? `${body},\n` : ""}];
 `;
 }
 
@@ -264,8 +264,7 @@ ${META_TYPE_FIELDS}};
 export const RSS_LABS_AT = ${JSON.stringify(stamp)};
 
 export const RSS_LABS: RssLabRow[] = [
-${body},
-];
+${body ? `${body},\n` : ""}];
 `;
 }
 
@@ -290,8 +289,7 @@ ${META_TYPE_FIELDS}};
 export const RSS_SECURITY_AT = ${JSON.stringify(stamp)};
 
 export const RSS_SECURITY: RssSecurityRow[] = [
-${body},
-];
+${body ? `${body},\n` : ""}];
 `;
 }
 
@@ -318,8 +316,7 @@ ${META_TYPE_FIELDS}};
 export const GNEWS_RSS_AT = ${JSON.stringify(stamp)};
 
 export const GNEWS_RSS: GnewsRssRow[] = [
-${body},
-];
+${body ? `${body},\n` : ""}];
 `;
 }
 
@@ -394,36 +391,6 @@ ${extraChips.map((l) => `${l}\n`).join("")}  ],
 }
 
 
-function renderGmailNewsTs(rows: GmailNewsHit[], stamp: string): string {
-  const body = rows
-    .map((r) => {
-      return `  { id: ${JSON.stringify(r.id)}, title: ${JSON.stringify(r.title)}, link: ${JSON.stringify(r.link)}, published: ${JSON.stringify(r.published)}, summary: ${JSON.stringify(r.summary)}, publisher: ${JSON.stringify(r.publisher)}, from: ${JSON.stringify(r.from)}, source: "gmail-news" as const, qi: ${r.qi}, priority: ${JSON.stringify(r.priority)} as const, tag: ${JSON.stringify(r.tag)} as const, briefEligible: false as const, pulse_only: true as const }`;
-    })
-    .join(",\n");
-  return `/** Pass F Gmail news Pulse — generated/refreshed by bun run ingest. Pulse-only; never Brief. */
-export type GmailNewsRow = {
-  id: string;
-  title: string;
-  link: string;
-  published: string;
-  summary: string;
-  publisher: string;
-  from: string;
-  source: "gmail-news";
-  qi: number;
-  priority: "P1" | "P2" | "P3";
-  tag: "rest" | "rumor" | "companion" | "incident";
-  briefEligible: false;
-  pulse_only: true;
-};
-
-export const GMAIL_NEWS_AT = ${JSON.stringify(stamp)};
-
-export const GMAIL_NEWS: GmailNewsRow[] = [
-${body},
-];
-`;
-}
 
 function renderPulseClustersTs(
   clusters: PulseCluster[],
@@ -484,8 +451,7 @@ export const PULSE_CLUSTERS_AT = ${JSON.stringify(stamp)};
 export const PULSE_CLUSTER_STATS = ${JSON.stringify({ ...stats, threshold: DEDUPE_THRESHOLD, window_hours: DEDUPE_WINDOW_HOURS })} as const;
 
 export const PULSE_CLUSTERS: PulseClusterRow[] = [
-${body},
-];
+${body ? `${body},\n` : ""}];
 `;
 }
 
@@ -497,8 +463,7 @@ import type { SourceHealthRow } from "@/lib/source-health";
 export const SOURCE_HEALTH_AT = ${JSON.stringify(stamp)};
 
 export const SOURCE_HEALTH: SourceHealthRow[] = [
-${body},
-];
+${body ? `${body},\n` : ""}];
 `;
 }
 
