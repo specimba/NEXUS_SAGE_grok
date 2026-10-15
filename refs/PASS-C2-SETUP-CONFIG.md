@@ -63,7 +63,7 @@ Rules:
 2. A fixture config turning a source off → that source is absent and its meter shows `off` (not soft-fail).
 3. An unknown feed id, a cap over the ceiling, or bad JSON → rejected, last-good used, `config invalid` meter shown, crawl exit 0.
 4. `taste.weight` changes only the Pulse taste shelf order. `UP`, Wire, the lead and Brief are identical under weight 0 vs 0.3.
-5. The Setup view matches the committed config and `config_hash`. It loads as a lazy chunk under basePath with a 200. First Load is unchanged ±200 B.
+5. The Setup view matches the committed config and `config_hash`. It loads as a lazy chunk under basePath with a 200. First Load is unchanged ±200 B. *(Oct 16 Architect waiver: the landed +256 B (56 B over) is accepted. It is well under the 185,000 B gate. The ±200 B rule stays for later passes.)*
 6. The weekly taste routine produces a fresh `captured_at` (or an honest skip) and the stale meter clears after a fresh capture.
 7. No secret in the config, repo or CI. secret-gate passes. overflow-390 passes.
 

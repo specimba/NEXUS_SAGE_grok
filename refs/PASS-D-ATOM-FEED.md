@@ -10,12 +10,15 @@ Each morning the 06:11 GitLab crawl publishes one new Atom entry, "the morning e
 
 No page code changes, no `<link rel="alternate">` in `layout.tsx` (that is a page change and comes later with its own gate), no new service, no new CI minutes.
 
-## D1 — Where it is generated and stored
-- New script `desk/scripts/atom-feed.ts`, run in the crawl job **after** `desk-view.ts` and **before** `reader-hash.ts`.
+## D1 — Where it is generated, stored, committed (amended after Reviewer)
+- New script `desk/scripts/atom-feed.ts`. **gitlab-ci.yml step** (in `crawl.script`, right after `- bun run pack:export` and before `- export GITHUB_OUTPUT=…`):
+  `- bun scripts/atom-feed.ts || echo "atom-feed: crashed (soft)"`
+  It runs after ingest has written `lead-history.json`, `src/data/wire.ts` and `src/data/papers.ts`, and **before** `reader-hash.ts`, so the hash sees the new feed.
 - Snapshot store `desk/artifacts/sage/morning-editions.json` (`{schema:1, editions:[…]}`), append-only for past dates.
-- Output `desk/public/feed.xml`, a **tracked** file. Being under tracked `desk/public` already satisfies pages-publish check 2e (no allowlist change in the publish script).
-- Add both paths to `desk/scripts/backup-allowlist.txt` so the `[skip ci]` crawl commit may stage them.
-- Add `':(exclude)desk/public/feed.xml'` to the `changed_code` pathspec in `pages-publish.sh` §2h, so a feed change counts as data and `SAGE_OVERFLOW_390=auto` stays skipped. That pathspec edit is the only script change outside the generator.
+- Output `desk/public/feed.xml`, a **tracked** file. Being under tracked `desk/public` already satisfies pages-publish check 2e.
+- **Commit path (blocking fix a)**: `desk/scripts/ci-state.sh stage true` becomes `git add -- src/data artifacts/sage public/feed.xml`. `stage false` also reverts it: `git checkout -- src/data artifacts/sage public/feed.xml`. That's safe because reader-hash covers the feed (D1b), so a feed change always means `changed=true`. Also add `desk/public/feed.xml` and `desk/artifacts/sage/morning-editions.json` to `desk/scripts/backup-allowlist.txt` for the box `cf-build.sh` path.
+- **D1b — reader-hash covers the feed**: `reader-hash.ts` adds `public/feed.xml` (when present) to its `files` map under the key `public/feed.xml`. A feed-only change triggers a publish. Since the feed is byte-identical on non-pick crawls, it adds no publishes.
+- Add `':(exclude)desk/public/feed.xml'` to the `changed_code` pathspec in `pages-publish.sh` §2h, so a feed change counts as data and `SAGE_OVERFLOW_390=auto` stays skipped.
 
 ## D2 — What an edition is
 One edition per Istanbul date, keyed by `lead-history.json`'s entry for that date. It is frozen at pick time, matching PASS-L L2:
@@ -28,11 +31,13 @@ One edition per Istanbul date, keyed by `lead-history.json`'s entry for that dat
 When it writes:
 - When the crawl creates today's lead-history entry (06:11 normally, or the catch-up/HELD crawl that first lands the date), it snapshots it.
 - When a HELD date later picks (11:11 or 16:11 recovery, PASS-L L3), it rewrites **that same date's** snapshot once: same `id`, newer `updated`. That is the only allowed rewrite.
+- `published` is **stored** in the snapshot when it is first written, and set to the lead-history entry's `at` (crawl data, never `Date.now()`). A HELD→pick rewrite keeps `published` and moves `updated` to the new entry's `at`.
 - On every other crawl, the run is a no-op. `feed.xml` must stay **byte-identical**, with no `now()`, no crawl time and no counters in the XML, so there are no spurious publishes or commits.
 
 ## D3 — Atom shape (RFC 4287)
 - Feed: `<id>tag:specimba.github.io,2026:nexus-sage/feed</id>`, `<title>NEXUS SAGE · Morning edition</title>`, `<updated>` = newest entry's `updated`, `<link rel="self" href="…/feed.xml"/>`, `<link rel="alternate" href="https://specimba.github.io/NEXUS_SAGE_grok/"/>`, `<author><name>NEXUS SAGE</name></author>`.
-- Entry: `<id>tag:specimba.github.io,2026:nexus-sage/morning/YYYY-MM-DD</id>` (permanent), `<title>` = "Oct 15 · <lead headline>" or "Oct 15 · HELD", `<updated>` = the pick or HELD entry `at` (RFC 3339 UTC), `<published>` = the first snapshot time, `<link rel="alternate">` = lead url (or the site on HELD days), and `<content type="html">` holding escaped HTML (lead, Wire `<ol>`, papers `<ol>`). Use plain tags only, with no scripts, styles or images.
+- Entry: `<id>tag:specimba.github.io,2026:nexus-sage/morning/YYYY-MM-DD</id>` (permanent), `<title>` = "Oct 15 · <lead headline>" or "Oct 15 · HELD", `<updated>` = the pick or HELD entry `at` (RFC 3339 UTC), `<published>` = the stored snapshot `published` (D2), `<link rel="alternate">` = lead url (or the site on HELD days), and `<content type="html">` (lead, Wire `<ol>`, papers `<ol>`). Use plain tags only, with no scripts, styles or images.
+- **Double escaping for `type="html"`**: first HTML-escape each text value and attribute (`&<>"'`) while building the HTML string, then XML-escape the whole HTML string into the element. So the headline `R&D` appears in feed.xml as `R&amp;amp;D`, and `<li>` as `&lt;li&gt;`. Titles are `type="text"` and escaped **once**. No CDATA.
 - Keep the last **14** editions, newest first. File ≤ **64 KB**; if it's over, drop the oldest entries until it fits.
 - All text is XML-escaped (`& < > " '`), and all links are absolute `https://`. Invalid URLs are dropped (row kept, no link), never emitted raw.
 
@@ -47,16 +52,28 @@ When it writes:
 4. **HELD then 16:11 pick**: same `<id>`, `updated` advances, and the entry count is unchanged.
 5. **Idempotent**: running twice on the same inputs gives byte-identical output; a non-pick crawl (12:11 fixture) leaves `feed.xml` unchanged.
 6. **Frozen past**: changing today's wire fixture doesn't alter yesterday's entry content.
-7. **Escaping**: a headline `R&D <beta> "x"` round-trips escaped; a `javascript:` url is dropped.
+7. **Escaping (exact strings)**: with headline `R&D <beta> "x"`:
+   - the entry `<title>` contains exactly `R&amp;D &lt;beta&gt; &quot;x&quot;` (single);
+   - `<content>` contains exactly `&lt;li&gt;R&amp;amp;D &amp;lt;beta&amp;gt; &amp;quot;x&amp;quot;` (double);
+   - an href `https://a.b/?x=1&y=2` appears in content exactly as `href=&quot;https://a.b/?x=1&amp;amp;y=2&quot;`;
+   - a `javascript:` url is dropped (row kept, no `href`).
 8. **No private lanes**: a fixture with a Gmail item and an X-taste item, both with high scores, shows neither in the output.
 9. **Caps**: 20 editions are trimmed to 14, and the size is ≤ 65,536 B.
 10. **Soft fail**: a corrupt lead-history yields exit 0, the prior feed.xml intact, and the log line present.
+11. **Stored published**: rewriting HELD→pick keeps `<published>` byte-equal to the first write; no test result depends on the wall clock (run with a faked clock 2 days ahead, same output).
+12. **ci-state**: with feed.xml modified, `stage true` stages it and `stage false` reverts it (fixture git repo).
+13. **reader-hash**: changing only `public/feed.xml` flips `changed=true`; identical feed keeps `changed=false`.
 
-## D6 — Live acceptance (Reviewer, after the first 06:11 run post-merge)
-- `curl -sI …/feed.xml` returns 200 with an xml content-type, and the body starts `<?xml` with the `http://www.w3.org/2005/Atom` namespace.
-- [W3C Feed Validator](https://validator.w3.org/feed/) run once by URL: valid (warnings OK, errors not). Paste the result line in the room.
-- The job log shows `overflow-390: skipped (data-only…)` on that run; First Load is unchanged (no page code touched).
-- The entry date and lead match the Brief's lead for that date. The next non-pick crawl's commit doesn't touch feed.xml.
+## D6 — Proof written to the repo (blocking fix c; the GitLab job log is private)
+- `pages-publish.sh` writes `desk/artifacts/sage/publish-proof.json` on every publish attempt, and `stage true` commits it (force-add like `last-checked.json`):
+  `{ "main_sha", "crawl_at", "overflow_390": "skipped"|"ran-pass"|"ran-fail", "overflow_why", "first_load_bytes", "first_load_prev_bytes", "feed_sha256", "feed_entries", "feed_changed": bool, "chrome_install_s": number|null }`.
+  `first_load_bytes` comes from the same `first-load.cjs` read used in gate 2f2. `first_load_prev_bytes` is the previous proof's value.
+- The `logs/crawl.log` line gets a suffix: `feed=<sha8|same|skipped> ov390=<skipped|pass|fail> fl=<bytes>`.
+- **Reviewer live acceptance** (after the first 06:11 run post-merge, all from public sources):
+  1. `curl -sI https://specimba.github.io/NEXUS_SAGE_grok/feed.xml` returns 200 with an xml content-type, and the body starts `<?xml` with the `http://www.w3.org/2005/Atom` namespace.
+  2. The [W3C Feed Validator](https://validator.w3.org/feed/) is run once by URL and comes back valid (warnings OK, errors not). Paste the result line in the room.
+  3. The committed `publish-proof.json` for that run shows `overflow_390:"skipped"`, `feed_changed:true`, and `first_load_bytes == first_load_prev_bytes` (no page code). The crawl.log line matches.
+  4. The entry date and lead match the Brief's lead for that date. The next non-pick crawl's proof shows `feed_changed:false` and its commit does not touch feed.xml.
 
 ## Out of scope
 morning.html, the `<link rel=alternate>` in page head, an RSS 2.0 twin, email/push delivery, any paid service, and cycle `004`.

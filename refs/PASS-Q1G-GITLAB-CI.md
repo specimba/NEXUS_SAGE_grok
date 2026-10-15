@@ -23,7 +23,7 @@
 | Slots | **4/day**: `11 6,11,16,21 * * *`, schedule timezone **Europe/Istanbul**. 06:11 stays the lead-pick run. |
 | Overnight | 21:11 → 06:11 gap is 9h. Watchdog stale threshold moves to **10h**. |
 | Job | One job `crawl`. No separate watchdog job (each job pays setup). |
-| Image | Pinned bun image that already has `git`. No apt installs per run. |
+| Image | Pinned image that already has `git`. No apt installs on data-only runs. **Amended Oct 16 (Architect sign-off on 6f33c25):** code-changed runs only (non-data diff vs last published main SHA, a few a month) may fetch the pinned chrome-headless-shell (`SAGE_CHROME_VERSION`, HTTPS from Chrome for Testing) plus its libs via `apt-get --no-install-recommends`, for the overflow-390 gate. Conditions: install time is logged in `publish-proof.json` (`chrome_install_s`); the run must still finish inside `timeout: 6m`; install failure = check fail and nothing is published; no GitLab cache for the browser; if two code-changed runs in a month exceed 60s of install, move to a cached artifact instead. |
 | Cache | GitLab `cache:` for bun install cache, keyed on `bun.lockb`, plus Next build cache (`desk/.next/cache`). |
 | Clone | `git clone --depth 1` main. gh-pages fetched depth 1 **only** when publishing. |
 | Speed cuts | Lab RSS per-feed timeout **≤10s** (was 48.5s of an 88s ingest); drop the dead feed if it keeps timing out. No `:3000` rebuild. No per-crawl ref-doc stamps (one `logs/crawl.log` line). |
