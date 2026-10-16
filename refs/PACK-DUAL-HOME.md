@@ -1,32 +1,32 @@
 # Pack dual-home — latest export
 
-**UTC:** 20261016T072018Z  
-**Pack:** `sage-pack-003-20261016T072018Z.tar.gz`
+**UTC:** 20261016T093518Z  
+**Pack:** `sage-pack-003-20261016T093518Z.tar.gz`
 
 | Home | Path |
 |------|------|
-| Primary (VM) | `/workspace/nexus-sage/packs/sage-pack-003-20261016T072018Z.tar.gz` |
-| Desk mirror | `/workspace/nexus-sage/desk/packs/sage-pack-003-20261016T072018Z.tar.gz` |
-| Operator | Windows `Downloads\nexus-sage-packs\` or Drive — see `P2-EXPORT-IMPORT.md` |
+| Primary (VM) | `/workspace/nexus-sage/packs/sage-pack-003-20261016T093518Z.tar.gz` |
+| Desk mirror | `/workspace/nexus-sage/desk/packs/sage-pack-003-20261016T093518Z.tar.gz` |
+| Operator | Windows `Downloads\\nexus-sage-packs\\` or Drive — see `P2-EXPORT-IMPORT.md` |
 
 **Locks:** cycle `003` · lead `hf-incident` · `sol_ne_astra` · no `004` without primary  
 
-**Digest cadence:** unchanged by A1 (Brief pins / digest tick not mutated)  
+**Digest cadence:** A2 WROTE · pack_id `2026-10-16T09`  
 
 **Crawl / ingest:** `2026-10-16T07:20:03Z`  
 
-**sha256 (archive):** `1ca345f198bd2b7a3c91f2a2f502bc207534c968b712863800e43d9029a16679`  
-**manifest sha256:** `1593fc2228e0d0d533bd6e36321d718b0a7ffa89c1275bdac568048ae6a5328e`  
+**sha256 (archive):** `f9c3395f70aa31f09ec7dcd129b2c973ddb77467aed87a1fde68a8140cff8f6d`  
+**manifest sha256:** `see archive`  
 
-**Commands:** `bun run pack:export` · `bun run pack:import -- <path>` · `bun run digest:tick` · `bun run ingest` · `FORCE=1 bun scripts/a1-stale-ingest.mjs`
+**Commands:** `bun run pack:export` · `bun run a2:tick` · `bun run digest:tick` · `bun run ingest`
 
-**A1 note:** FORCE=1 dry-run · pre-age ~3.97h · Mon–Fri daytime only (~09:00–17:00 VM/local intent) — no overnight @every firehose; standing cron AFTER Reviewer PASS  
+**A2 note:** unattended DUE→WROTE→dual-home · Istanbul weekday window (+09:00 catch-up) · no overnight  
 
-**Soft-fails:** none
+**Soft-fails:** (see ingest-last / freeze note — A2 does not ingest)
 
 ### Reviewer stamp — pending
 
-(Factual dual-home above from Coder A1 auto-ingest. Reviewer owns PASS/FAIL stamp.)
+(Factual dual-home above from Coder A2 auto-export. Reviewer owns PASS/FAIL stamp.)
 
 
 ### Reviewer stamp — 2026-09-06T06:46Z (Reviewer Gürok)

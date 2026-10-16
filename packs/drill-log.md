@@ -1,28 +1,27 @@
 # P2 home 2b drill-log — operator off-box
 
-**UTC refreshed:** 2026-10-16T07:21:56Z  
-**Pack id:** `sage-pack-003-20261016T072018Z`  
+**UTC refreshed:** 2026-10-16T09:35:18Z  
+**Pack id:** `sage-pack-003-20261016T093518Z`  
 **Cycle / lead:** `003` / `hf-incident`  
 
 ## Homes
 
 | Home | Path | Status |
 |------|------|--------|
-| 1 · VM primary | `/workspace/nexus-sage/packs/sage-pack-003-20261016T072018Z.tar.gz` | OK |
-| 2a · desk mirror | `/workspace/nexus-sage/desk/packs/sage-pack-003-20261016T072018Z.tar.gz` | OK |
-| 2b · operator PC | `C:\Users\speci.000\Downloads\nexus-sage-packs\sage-pack-003-20261016T072018Z.tar.gz` | PENDING (no re-ask) |
+| 1 · VM primary | `/workspace/nexus-sage/packs/sage-pack-003-20261016T093518Z.tar.gz` | OK |
+| 2a · desk mirror | `/workspace/nexus-sage/desk/packs/sage-pack-003-20261016T093518Z.tar.gz` | OK |
+| 2b · operator PC | `C:\Users\speci.000\Downloads\nexus-sage-packs\sage-pack-003-20261016T093518Z.tar.gz` | PENDING (no re-ask) |
 
 ## Checksums (VM)
 
 ```
-sha256  1ca345f198bd2b7a3c91f2a2f502bc207534c968b712863800e43d9029a16679
+sha256  f9c3395f70aa31f09ec7dcd129b2c973ddb77467aed87a1fde68a8140cff8f6d
 ```
 
 ## Notes
-- A1 STALE auto-ingest FORCE=1 dry-run · crawl `2026-10-16T07:20:03Z` · pre-age ~3.97h
-- Dual-home pack `sage-pack-003-20261016T072018Z` identical both homes
-- Freeze ON · cycle 003 / hf-incident · no digest 004 · no craft · no WIRE · no paid X
-- Manifest sha256 `1593fc2228e0d0d533bd6e36321d718b0a7ffa89c1275bdac568048ae6a5328e`
-- Soft-fails: none
-- Weekday window: Mon–Fri daytime only (~09:00–17:00 VM/local intent) — no overnight @every firehose; standing cron AFTER Reviewer PASS
+- A2 unattended DUE→WROTE→dual-home · digest pack_id `2026-10-16T09`
+- Dual-home pack `sage-pack-003-20261016T093518Z` identical both homes
+- Freeze ON · cycle 003 / hf-incident · no digest 004 · no craft · no WIRE · no paid X · Bluesky DENY
+- Manifest sha256 `see archive`
+- Window: Europe/Istanbul Mon–Fri 09–16 (+ 09:00 catch-up)
 - Reviewer stamp pending (Coder factual only)
