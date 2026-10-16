@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-16T18:21:18Z",
+  "stamped_at": "2026-10-16T19:17:16Z",
   "config_hash": "813e5ce035c3",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,7 +11,7 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 106,
+      "duration_ms": 217,
       "paused_until": null,
       "reason": null
     },
@@ -19,17 +19,17 @@
       "id": "arxiv",
       "label": "arXiv",
       "status": "timeout",
-      "rows": 5,
+      "rows": 25,
       "duration_ms": 20000,
       "paused_until": null,
-      "reason": "timeout after 20000ms budget · last good: 0 cached enrich + 5 kept shelf"
+      "reason": "timeout after 20000ms budget · last good: 20 cached enrich + 5 kept shelf"
     },
     {
       "id": "openalex",
       "label": "OpenAlex",
       "status": "ok",
       "rows": 4,
-      "duration_ms": 445,
+      "duration_ms": 4,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 111,
+      "duration_ms": 7,
       "paused_until": null,
       "reason": null
     },
@@ -46,8 +46,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 49,
-      "duration_ms": 8325,
+      "rows": 50,
+      "duration_ms": 9187,
       "paused_until": null,
       "reason": null
     },
@@ -56,7 +56,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 17955,
+      "duration_ms": 17420,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 4100,
+      "duration_ms": 4618,
       "paused_until": null,
       "reason": null
     },
@@ -74,7 +74,7 @@
       "label": "Google News",
       "status": "ok",
       "rows": 44,
-      "duration_ms": 6474,
+      "duration_ms": 6572,
       "paused_until": null,
       "reason": null
     },
@@ -82,8 +82,8 @@
       "id": "github",
       "label": "GitHub",
       "status": "ok",
-      "rows": 3,
-      "duration_ms": 400,
+      "rows": 2,
+      "duration_ms": 89,
       "paused_until": null,
       "reason": null
     },
@@ -92,15 +92,15 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4469,
+      "duration_ms": 90,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 62385,
-    "sources_wall_ms": 20674,
-    "papers_lane_ms": 20674,
+    "sources_ms": 58204,
+    "sources_wall_ms": 20308,
+    "papers_lane_ms": 20306,
     "slowest_source_ms": 20000,
     "concurrent": true,
     "budget_ms": {
@@ -118,28 +118,28 @@
     "timed_out": [
       "arxiv"
     ],
-    "wall_ms": 21204,
-    "startup_ms": 48,
-    "main_ms": 21219
+    "wall_ms": 20951,
+    "startup_ms": 122,
+    "main_ms": 21030
   },
   "multi_source_independent": 5,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
     "multi_source_independent": 5,
-    "multi_source_raw": 10,
-    "self_reposts": 5,
-    "items_in": 235,
-    "clusters_out": 216,
-    "collapsed": 19,
+    "multi_source_raw": 11,
+    "self_reposts": 6,
+    "items_in": 236,
+    "clusters_out": 215,
+    "collapsed": 21,
     "multi_source": 5,
-    "multi_member": 15,
+    "multi_member": 17,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 41,
+    "new_items": 12,
     "per_source": {
-      "hn-algolia": 49,
+      "hn-algolia": 50,
       "rss-lab": 104,
       "rss-security": 28,
       "gnews-rss": 44,
@@ -178,7 +178,7 @@
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.808,
+        "score": 0.806,
         "members": [
           {
             "id": "hn:50113841",
@@ -227,8 +227,8 @@
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 4,
-        "score": 0.821,
+        "size": 3,
+        "score": 0.82,
         "members": [
           {
             "id": "hn:50104542",
@@ -250,13 +250,6 @@
             "title": "Nvidia’s new Nemotron 3.5 Super VL is another step forward for US open-weight AI - ZDNET",
             "at": "2026-10-15T15:00:11Z",
             "publisher": "ZDNET"
-          },
-          {
-            "id": "gnews:80e5c956271a72e1",
-            "source": "gnews-rss",
-            "title": "Nvidia Releases Nemotron 3.5 Super VL to Widen the Open-Weight AI Field - Startup Fortune",
-            "at": "2026-10-15T15:40:11Z",
-            "publisher": "Startup Fortune"
           }
         ]
       },
@@ -267,7 +260,7 @@
           "gnews-rss"
         ],
         "size": 3,
-        "score": 0.907,
+        "score": 0.904,
         "members": [
           {
             "id": "hn:50094903",
@@ -325,6 +318,23 @@
             "id": "gnews:1d6de0b57756c98a",
             "publisher": "OpenAI",
             "title": "Bringing GPT-Rosalind to academic research labs - OpenAI"
+          }
+        ]
+      },
+      {
+        "title": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:13c39a4f232f8d6e",
+            "publisher": "NVIDIA Developer",
+            "title": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning | NVIDIA Technical Blog - NVIDIA Developer"
           }
         ]
       },
@@ -395,13 +405,13 @@
       ],
       "gnews_shown_dropped": [],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 22
+      "hn_dropped": 20
     },
     "gnews_near_misses": [
       {
-        "score": 0.587,
+        "score": 0.589,
         "blocked": "below-threshold",
-        "hours_apart": 0.8,
+        "hours_apart": 0.2,
         "a": {
           "id": "hn:50104542",
           "source": "hn-algolia",
@@ -409,10 +419,10 @@
           "at": "2026-10-15T14:51:59Z"
         },
         "b": {
-          "id": "gnews:80e5c956271a72e1",
+          "id": "gnews:13c39a4f232f8d6e",
           "source": "gnews-rss",
-          "title": "Nvidia Releases Nemotron 3.5 Super VL to Widen the Open-Weight AI Field - Startup Fortune",
-          "at": "2026-10-15T15:40:11Z"
+          "title": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning | NVIDIA Technical Blog - NVIDIA Developer",
+          "at": "2026-10-15T15:01:34Z"
         },
         "shared": [
           "nvidia",
@@ -423,7 +433,7 @@
         ]
       },
       {
-        "score": 0.585,
+        "score": 0.588,
         "blocked": "below-threshold",
         "hours_apart": 0.1,
         "a": {
@@ -447,7 +457,7 @@
         ]
       },
       {
-        "score": 0.571,
+        "score": 0.576,
         "blocked": "below-threshold",
         "hours_apart": 2.1,
         "a": {
@@ -496,7 +506,7 @@
         ]
       },
       {
-        "score": 0.513,
+        "score": 0.514,
         "blocked": "thin-overlap",
         "hours_apart": 72.9,
         "a": {
@@ -540,30 +550,6 @@
         ]
       },
       {
-        "score": 0.502,
-        "blocked": "time-window",
-        "hours_apart": 44.3,
-        "a": {
-          "id": "hn:50095545",
-          "source": "hn-algolia",
-          "title": "Eight states sue OpenAI, saying ChatGPT isn't safe for kids",
-          "at": "2026-10-14T21:24:43Z"
-        },
-        "b": {
-          "id": "gnews:9c03001b0c69095f",
-          "source": "gnews-rss",
-          "title": "Eight State AGs Sue OpenAI Over ChatGPT Safety and Consumer Protection - www.regulatoryoversight.com",
-          "at": "2026-10-16T17:43:31Z"
-        },
-        "shared": [
-          "eight",
-          "stat",
-          "sue",
-          "openai",
-          "chatgpt"
-        ]
-      },
-      {
         "score": 0.5,
         "blocked": "thin-overlap",
         "hours_apart": 72.5,
@@ -583,6 +569,30 @@
           "gemini",
           "4",
           "argon"
+        ]
+      },
+      {
+        "score": 0.48,
+        "blocked": "below-threshold",
+        "hours_apart": 3,
+        "a": {
+          "id": "rss:nvidia-dev:9f5aca4e4d9dbf53",
+          "source": "rss-lab",
+          "title": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
+          "at": "2026-10-15T18:01:00Z"
+        },
+        "b": {
+          "id": "gnews:efb29e34ce68d96b",
+          "source": "gnews-rss",
+          "title": "Nvidia’s new Nemotron 3.5 Super VL is another step forward for US open-weight AI - ZDNET",
+          "at": "2026-10-15T15:00:11Z"
+        },
+        "shared": [
+          "nvidia",
+          "nemotron",
+          "3.5",
+          "super",
+          "vl"
         ]
       }
     ],
@@ -628,55 +638,7 @@
         ]
       },
       {
-        "score": 0.587,
-        "blocked": "below-threshold",
-        "hours_apart": 0.8,
-        "a": {
-          "id": "hn:50104542",
-          "source": "hn-algolia",
-          "title": "Nvidia Nemotron 3.5 Super VL 120B A12B",
-          "at": "2026-10-15T14:51:59Z"
-        },
-        "b": {
-          "id": "gnews:80e5c956271a72e1",
-          "source": "gnews-rss",
-          "title": "Nvidia Releases Nemotron 3.5 Super VL to Widen the Open-Weight AI Field - Startup Fortune",
-          "at": "2026-10-15T15:40:11Z"
-        },
-        "shared": [
-          "nvidia",
-          "nemotron",
-          "3.5",
-          "super",
-          "vl"
-        ]
-      },
-      {
-        "score": 0.585,
-        "blocked": "below-threshold",
-        "hours_apart": 0.1,
-        "a": {
-          "id": "hn:50104542",
-          "source": "hn-algolia",
-          "title": "Nvidia Nemotron 3.5 Super VL 120B A12B",
-          "at": "2026-10-15T14:51:59Z"
-        },
-        "b": {
-          "id": "gnews:efb29e34ce68d96b",
-          "source": "gnews-rss",
-          "title": "Nvidia’s new Nemotron 3.5 Super VL is another step forward for US open-weight AI - ZDNET",
-          "at": "2026-10-15T15:00:11Z"
-        },
-        "shared": [
-          "nvidia",
-          "nemotron",
-          "3.5",
-          "super",
-          "vl"
-        ]
-      },
-      {
-        "score": 0.582,
+        "score": 0.589,
         "blocked": "below-threshold",
         "hours_apart": 3.2,
         "a": {
@@ -690,6 +652,54 @@
           "source": "rss-lab",
           "title": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
           "at": "2026-10-15T18:01:00Z"
+        },
+        "shared": [
+          "nvidia",
+          "nemotron",
+          "3.5",
+          "super",
+          "vl"
+        ]
+      },
+      {
+        "score": 0.589,
+        "blocked": "below-threshold",
+        "hours_apart": 0.2,
+        "a": {
+          "id": "hn:50104542",
+          "source": "hn-algolia",
+          "title": "Nvidia Nemotron 3.5 Super VL 120B A12B",
+          "at": "2026-10-15T14:51:59Z"
+        },
+        "b": {
+          "id": "gnews:13c39a4f232f8d6e",
+          "source": "gnews-rss",
+          "title": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning | NVIDIA Technical Blog - NVIDIA Developer",
+          "at": "2026-10-15T15:01:34Z"
+        },
+        "shared": [
+          "nvidia",
+          "nemotron",
+          "3.5",
+          "super",
+          "vl"
+        ]
+      },
+      {
+        "score": 0.588,
+        "blocked": "below-threshold",
+        "hours_apart": 0.1,
+        "a": {
+          "id": "hn:50104542",
+          "source": "hn-algolia",
+          "title": "Nvidia Nemotron 3.5 Super VL 120B A12B",
+          "at": "2026-10-15T14:51:59Z"
+        },
+        "b": {
+          "id": "gnews:efb29e34ce68d96b",
+          "source": "gnews-rss",
+          "title": "Nvidia’s new Nemotron 3.5 Super VL is another step forward for US open-weight AI - ZDNET",
+          "at": "2026-10-15T15:00:11Z"
         },
         "shared": [
           "nvidia",
@@ -722,7 +732,7 @@
         ]
       },
       {
-        "score": 0.571,
+        "score": 0.576,
         "blocked": "below-threshold",
         "hours_apart": 2.1,
         "a": {
@@ -775,77 +785,77 @@
   "source_health": [
     {
       "id": "arxiv",
-      "state": "flaky",
+      "state": "fail",
       "streak_ok": 0,
-      "streak_fail": 1,
-      "items_last": 5
+      "streak_fail": 2,
+      "items_last": 25
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 129,
+      "streak_ok": 130,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 129,
+      "streak_ok": 130,
       "streak_fail": 0,
-      "items_last": 3
+      "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 129,
+      "streak_ok": 130,
       "streak_fail": 0,
       "items_last": 44
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 129,
+      "streak_ok": 130,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 129,
+      "streak_ok": 130,
       "streak_fail": 0,
-      "items_last": 49
+      "items_last": 50
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 41,
+      "streak_ok": 42,
       "streak_fail": 0,
       "items_last": 4
     },
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 33,
+      "streak_ok": 34,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 129,
+      "streak_ok": 130,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 129,
+      "streak_ok": 130,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.0059769444444444444,
+    "hours": 0.005938333333333334,
     "stale": false
   },
   "hf": {
@@ -855,7 +865,7 @@
   },
   "arxiv": {
     "ok": false,
-    "enriched": 0,
+    "enriched": 20,
     "shelf": 5,
     "timed_out": true,
     "budget_ms": 20000,
@@ -870,13 +880,13 @@
     "secondary": 3,
     "query": "Hugging Face agent",
     "mode": "search",
-    "from_cache": false,
-    "searches": 1,
+    "from_cache": true,
+    "searches": 0,
     "retries": 0,
     "status": "ok",
     "paused_until": null,
     "pause_reason": null,
-    "requests": 1,
+    "requests": 0,
     "auth": "anon",
     "brief": false,
     "pulse_lead": false,
@@ -913,8 +923,8 @@
     "enriched": 0,
     "query": "doi:10.5281/zenodo.21686546",
     "mode": "filter",
-    "from_cache": false,
-    "searches": 1,
+    "from_cache": true,
+    "searches": 0,
     "brief": false,
     "pulse_lead": false,
     "papers_enrich_only": true,
@@ -926,7 +936,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 49,
+    "count": 50,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -943,7 +953,7 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 22,
+    "ai_dropped": 20,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
@@ -961,7 +971,7 @@
       {
         "id": "hn:50118688",
         "tag": "rest",
-        "score": 115,
+        "score": 137,
         "text": "Show HN: Gemini 4 Argon plays StarCraft"
       }
     ]
@@ -1116,7 +1126,7 @@
     "queries_attempted": 4,
     "queries_ok": 4,
     "items": 44,
-    "pool": 353,
+    "pool": 354,
     "corroborators": [
       {
         "id": "gnews:c59311aa5f587431",
@@ -1153,7 +1163,7 @@
       {
         "id": "gnews:52f9274bf7e96996",
         "anchor_id": "hn:50104542",
-        "score": 0.831,
+        "score": 0.827,
         "title": "NVIDIA Nemotron 3.5 Super VL: 120B Open AI Model - https://tech-insider.org/",
         "publisher": "https://tech-insider.org/",
         "self_repost": false
@@ -1161,17 +1171,9 @@
       {
         "id": "gnews:efb29e34ce68d96b",
         "anchor_id": "hn:50104542",
-        "score": 0.606,
+        "score": 0.6,
         "title": "Nvidia’s new Nemotron 3.5 Super VL is another step forward for US open-weight AI - ZDNET",
         "publisher": "ZDNET",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:80e5c956271a72e1",
-        "anchor_id": "hn:50104542",
-        "score": 0.603,
-        "title": "Nvidia Releases Nemotron 3.5 Super VL to Widen the Open-Weight AI Field - Startup Fortune",
-        "publisher": "Startup Fortune",
         "self_repost": false
       },
       {
@@ -1180,6 +1182,14 @@
         "score": 1,
         "title": "Open From Data Center to Desktop: NVIDIA Expands Nemotron Family With Highest Efficiency Super VL and Bolt Models - NVIDIA Blog",
         "publisher": "NVIDIA Blog",
+        "self_repost": true
+      },
+      {
+        "id": "gnews:13c39a4f232f8d6e",
+        "anchor_id": "rss:nvidia-dev:9f5aca4e4d9dbf53",
+        "score": 1,
+        "title": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning | NVIDIA Technical Blog - NVIDIA Developer",
+        "publisher": "NVIDIA Developer",
         "self_repost": true
       },
       {
@@ -1201,7 +1211,7 @@
       {
         "id": "gnews:4d1c9b070a92dd08",
         "anchor_id": "hn:50094903",
-        "score": 0.911,
+        "score": 0.912,
         "title": "OpenAI bugging suspect booked one-way ticket to Saudi Arabia with family before arrest - CNBC",
         "publisher": "CNBC",
         "self_repost": false
@@ -1209,7 +1219,7 @@
       {
         "id": "gnews:011113429408ecd8",
         "anchor_id": "hn:50094903",
-        "score": 0.805,
+        "score": 0.804,
         "title": "OpenAI bugging suspect allegedly booked one-way trip to Saudi Arabia - Al Jazeera",
         "publisher": "Al Jazeera",
         "self_repost": false
@@ -1241,40 +1251,65 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:e5bd05b76592d0ae",
-        "title": "Former OpenAI Employee Charged with Bugging Executive Conference Room - ASIS International",
-        "publisher": "ASIS International",
-        "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNVERKai1kb0otRXFveVYtRXpDb1FsS3hMU3B2MGwzX1Jodlh1SzNTZ2FVajN0NjU0OGdqSW1aVGRfNkZqYjM3RllYWjNhTkpuWVdLMnZLTnlGS2tOclRkcm9RRlo3Sm1aT2RnWnVTdjdBODF5a3ZVQlNTdEtPQm5Cc0RIVDRtMW1ERnVNX2dnN1NoQm5oTDRyZ2xuVGhTVTROYXdBd0lSYWJlOHJMRldmQk9OSGF2VU9Ja3BKRWFiRXdQZkttdXNvZXNtN3R5U2ZHUHNVNzJNVG5Xc1E?oc=5",
+        "id": "gnews:0f71e93febc86bc0",
+        "title": "States Sue OpenAI, Saying its Popular Chatbot is Hurting Children and Deceiving Adults - Broadband Breakfast",
+        "publisher": "Broadband Breakfast",
+        "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNZDdpZEpNZWJUQWhPMTVyaFdqWFdpX3dqV2VRRE1aVGtIOThhTUhIaDA3ZVNwZFU3V3pZdDBZQThGWGxCUEhfelk3aUV2YllmeXoxaTc4TjdzaVJveHJyMDZhMi1sVWRWZzNWcXpqXzlsS0JrUW03RDRpVkgteEozZVJqb0ZNMVdVbFV3LWh1NUY4aTNJZ0QtcEFOQW5qRDQ3Rnl3LVZGOXpBV2tRRnNxME9jYTJqWEJz?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:15b23382e6f17335",
-        "title": "A Former OpenAI Researcher Just Changed His Mind About the AI Black Box - Vocal",
-        "publisher": "Vocal",
-        "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPcl9LM1pfdEM5RkhpRWJOeXEyamN2NVpjXzI4VVN2RkhRY0hJd1dPZG5heXk2VXZuYWY1cEVYdHdmdFh1LVMzOGxlbmZjQUthMFp5dFJOTWVWbWxNOUpUZHZJTDJVbUJ2LXFKSHp2QmNfVXBENVM0SzRnZV9jS09BbHJLSng5eTBtdV9DbkxBQnBDMmlWeS1qTGpB?oc=5",
+        "id": "gnews:6249bb9c016afbce",
+        "title": "An OpenAI agent ran out of crypto while completing a task, so it stole from another wallet - Digital Trends",
+        "publisher": "Digital Trends",
+        "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPRGpSZXROYUJGd2ZGd0VJcnZfRmdyNm9INXU3QUUyWm80VUxOeFE2Z1VyazVlVFMtWnFvU01LT2hSSTh4SU1qUnhLX1hMeTZpX3c1ZW5lWHgxeTIyNVBLRVQwNUt0X2taVzU3cVV4MU1jMHgyRVkzUXhCeDd1SVVUbGRLZG9mN3ZUeF9DWHVYQjJ5Y0wzOWc3SGlWcHdXTVNqdDJQLS1RUXI3SFpaaGFwcmJpdjNJUjE0V1FmNVlmTFd1M00?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:9c03001b0c69095f",
-        "title": "Eight State AGs Sue OpenAI Over ChatGPT Safety and Consumer Protection - www.regulatoryoversight.com",
-        "publisher": "www.regulatoryoversight.com",
-        "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQWktGZ0ZpeXl6T01UR0dPXzl2aWM0SmNUZ1FJUjVndXg3LXlXZmlyRFNIREYweVdWMWlSVWpVbmUyZ1dNdFRHYy1yUzlNdUJkVHdoZXR4bm02MVBrR0lQekNFSVZHUFFHMVAyYzJ1ekl6RUc1LU5kN2tBMV9lTkh6R3hiSWl1MHc0UzhLUVpnV1BsVVFrV3FaOFVScWZkLXNRUTN5MXdhN1E2MVNsVENJVmxEWjEyQQ?oc=5",
+        "id": "gnews:073de52564b45181",
+        "title": "FTC chair on probing Anthropic, OpenAI over recent AI safety incidents - CNBC",
+        "publisher": "CNBC",
+        "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPQjhoVk1JODFBSS1leERiN1ZyTDdiRDNHb3dXd3J4TWRhQVllVlhkZjFvVjVVRHl6VkR0QVI2TTR1UGQtZEdCdWJ0TDdfZjRqRkExczQ4c05Lb3lxMkI1V3cybVoxWlVtdE4zM3k1b3BrMk1tMXNrMWhlUTE1M2pKRkExVGR3bGdyZU9adjd4RUx6Vjc2R2laR2F4TmI2aGZCdFJGYWlrTGZON0JhTC1NeGNB?oc=5",
         "tag": "rest"
       }
     ]
   },
   "gmail_news": {
-    "ok": false,
-    "soft_fail": true,
-    "soft_fail_reason": "box-only",
-    "count": 0,
-    "fetched": 0,
-    "from_cache": false,
-    "last_query_hash": "",
+    "ok": true,
+    "soft_fail": false,
+    "soft_fail_reason": null,
+    "count": 10,
+    "fetched": 10,
+    "from_cache": true,
+    "last_query_hash": "14f148f8d31e",
     "brief": false,
     "pulse_only": true,
     "briefEligible": false,
-    "sample": []
+    "sample": [
+      {
+        "id": "gmail:1a11250b91591834",
+        "title": "AI systems could cover up misbehavior",
+        "publisher": "substack.com",
+        "qi": 6.6,
+        "priority": "P3",
+        "link": "https://metr.org/blog/cover-up"
+      },
+      {
+        "id": "gmail:1a111f35812d42ba",
+        "title": "Oct. 6 - Water hacks, rogue AI raise alarms | Java vulnerabilities disclosed",
+        "publisher": "divenewsletter.com",
+        "qi": 6.6,
+        "priority": "P3",
+        "link": "https://www.cybersecuritydive.com/news/water"
+      },
+      {
+        "id": "gmail:1a1118c601f1cb6a",
+        "title": "OpenAI Starts Watermarking ChatGPT Text",
+        "publisher": "alvarocintas.com",
+        "qi": 5,
+        "priority": "P3",
+        "link": "https://newsletter.alvarocintas.com/watermark"
+      }
+    ]
   },
   "x": {
     "fetched": 0,
@@ -1289,31 +1324,27 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "query": "agent sandbox escape",
-    "shelf": 3,
-    "from_cache": false,
-    "searches": 1,
-    "rate_limit_remaining": 9,
+    "shelf": 2,
+    "from_cache": true,
+    "searches": 0,
+    "rate_limit_remaining": null,
     "brief": false,
     "pulse_lead": false,
     "shelf_only": true,
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
-        "label": "pranav16-king/Agent-Sandbox-Escape-Gauntlet",
-        "href": "https://github.com/pranav16-king/Agent-Sandbox-Escape-Gauntlet"
-      },
-      {
-        "label": "exitCodeNihil/qafas-sandbox",
-        "href": "https://github.com/exitCodeNihil/qafas-sandbox"
-      },
-      {
         "label": "hyperlight-dev/hyperagent",
         "href": "https://github.com/hyperlight-dev/hyperagent"
+      },
+      {
+        "label": "pchi1606/template-provenance-sandbox-escapes",
+        "href": "https://github.com/pchi1606/template-provenance-sandbox-escapes"
       }
     ]
   },
   "shelf": {
-    "count": 20,
+    "count": 19,
     "brief": false
   },
   "wikidata": {
@@ -1325,8 +1356,8 @@
       "Meta AI",
       "Fox-IT"
     ],
-    "searches": 3,
-    "from_cache": false,
+    "searches": 0,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "deny_grounding_only": true,
