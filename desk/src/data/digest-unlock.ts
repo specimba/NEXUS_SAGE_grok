@@ -7,42 +7,64 @@ import type { DigestUnlockSnapshot } from "@/lib/digest-unlock";
 export const DIGEST_UNLOCK: DigestUnlockSnapshot = {
   "schema": 1,
   "cycleId": "003",
-  "pickDate": "2026-10-15",
-  "frozenAt": "2026-10-15T03:21:37.108Z",
-  "leadId": "cl:hn:50085198",
+  "pickDate": "2026-10-16",
+  "frozenAt": "2026-10-16T03:15:43.042Z",
+  "leadId": "cl:hn:50104542",
   "lead": {
-    "id": "cl:hn:50085198",
+    "id": "cl:hn:50104542",
     "kind": "lead",
-    "title": "Fish Audio Drama 3: an open-weight, directable TTS model",
-    "take": "2 SRC · sig 7 · pick 2026-10-15",
+    "title": "Nvidia Nemotron 3.5 Super VL 120B A12B",
+    "take": "3 SRC · sig 4 · pick 2026-10-16",
     "why": "LEAD_TODAY · picked · frozen at daily pick",
     "move": "Digest/Voice follow Brief lead · cycle label 003",
-    "url": "https://huggingface.co/fishaudio/drama-3",
-    "sources": 2,
-    "sig": 7
+    "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
+    "sources": 3,
+    "sig": 4
   },
   "rows": [
     {
-      "id": "cl:rss:deepmind:8b1ab1df41ac00d8",
+      "id": "cl:hn:50094903",
       "kind": "companion",
-      "title": "Developing Gemini 4 Argon responsibly and safely",
-      "take": "7 SRC · sig 1439",
+      "title": "OpenAI bugging suspect booked one-way ticket to Saudi Arabia",
+      "take": "4 SRC · sig 8",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
-      "url": "https://deepmind.google/blog/developing-gemini-4-argon-responsibly-and-safely/",
-      "sources": 7,
-      "sig": 1439
+      "url": "https://www.cnbc.com/2026/10/14/openai-alfozan-recording-raed-ventures.html",
+      "sources": 4,
+      "sig": 8
     },
     {
-      "id": "cl:rss:deepmind:36a7e1c23fbbe3b1",
+      "id": "cl:hn:50095545",
       "kind": "rest",
-      "title": "Google DeepMind and Singapore Government collaborate to build fine-tuned AI model for scam detection",
-      "take": "2 SRC · sig 3",
+      "title": "Eight states sue OpenAI, saying ChatGPT isn't safe for kids",
+      "take": "3 SRC · sig 7",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
-      "url": "https://deepmind.google/blog/on-device-ai-scam-detection-mddi/",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/1011500/openai-state-lawsuits-chatgpt-safety",
+      "sources": 3,
+      "sig": 7
+    },
+    {
+      "id": "cl:hn:50112925",
+      "kind": "rest",
+      "title": "OpenAI, Meta caution US judiciary about risk of 'deepfake' evidence",
+      "take": "2 SRC · sig 4",
+      "why": "Top corroborated Wire cluster · same pack as lead pick",
+      "move": "Digest row · never displaces Brief lead",
+      "url": "https://www.reuters.com/legal/government/openai-meta-caution-us-judiciary-about-risk-deepfake-evidence-2026-10-15/",
       "sources": 2,
-      "sig": 3
+      "sig": 4
+    },
+    {
+      "id": "cl:hn:50090707",
+      "kind": "rest",
+      "title": "OpenAI: Employee who left for Apple took files about unreleased device",
+      "take": "2 SRC · sig 22",
+      "why": "Top corroborated Wire cluster · same pack as lead pick",
+      "move": "Digest row · never displaces Brief lead",
+      "url": "https://www.reuters.com/business/retail-consumer/openai-employee-who-left-apple-took-files-about-unreleased-device-openai-alleges-2026-10-14/",
+      "sources": 2,
+      "sig": 22
     }
   ]
 } as const;

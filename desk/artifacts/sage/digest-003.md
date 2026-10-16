@@ -1,31 +1,41 @@
 # SAGE digest pack
-compiled 2026-10-15T13:22:29.385Z
-source free-ingest digest refresh 2026-10-15T13:22:29.385Z · cycle 003 · lead hf-incident · unlock:live
+compiled 2026-10-16T03:16:30.778Z
+source free-ingest digest refresh 2026-10-16T03:16:30.778Z · cycle 003 · lead hf-incident · unlock:live
 lead_policy unlock — no new HF primary 03 Sep
 
 ## Lead
-Fish Audio Drama 3: an open-weight, directable TTS model [high]
-2 SRC · sig 7 · pick 2026-10-15
+Nvidia Nemotron 3.5 Super VL 120B A12B [high]
+3 SRC · sig 4 · pick 2026-10-16
 MOVE Digest/Voice follow Brief lead · cycle label 003
 UNLOCK IF Next 06:11 Istanbul pick
 
 ## Files
-### [lead / other / high] Fish Audio Drama 3: an open-weight, directable TTS model
-2 SRC · sig 7 · pick 2026-10-15
+### [lead / other / high] Nvidia Nemotron 3.5 Super VL 120B A12B
+3 SRC · sig 4 · pick 2026-10-16
 - stamp live
-- frozen 2026-10-15T03:21:37.108Z
-- pick 2026-10-15
+- frozen 2026-10-16T03:15:43.042Z
+- pick 2026-10-16
 1. Follow LEAD_TODAY · never invent
 2. Cycle label stays 003
 Done when: Digest lead equals Brief LEAD_TODAY title
 
-### [companion / other / medium] Developing Gemini 4 Argon responsibly and safely
-7 SRC · sig 1439
-- 7 SRC
+### [companion / other / medium] OpenAI bugging suspect booked one-way ticket to Saudi Arabia
+4 SRC · sig 8
+- 4 SRC
 Done when: Listed under Digest lead
 
-### [rest / other / medium] Google DeepMind and Singapore Government collaborate to build fine-tuned AI model for scam detection
-2 SRC · sig 3
+### [rest / other / medium] Eight states sue OpenAI, saying ChatGPT isn't safe for kids
+3 SRC · sig 7
+- 3 SRC
+Done when: Listed under Digest lead
+
+### [rest / other / medium] OpenAI, Meta caution US judiciary about risk of 'deepfake' evidence
+2 SRC · sig 4
+- 2 SRC
+Done when: Listed under Digest lead
+
+### [rest / other / medium] OpenAI: Employee who left for Apple took files about unreleased device
+2 SRC · sig 22
 - 2 SRC
 Done when: Listed under Digest lead
 

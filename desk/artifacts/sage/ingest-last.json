@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-15T18:21:26Z",
+  "stamped_at": "2026-10-16T03:15:21Z",
   "config_hash": "813e5ce035c3",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,25 +11,25 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 133,
+      "duration_ms": 307,
       "paused_until": null,
       "reason": null
     },
     {
       "id": "arxiv",
       "label": "arXiv",
-      "status": "ok",
-      "rows": 29,
-      "duration_ms": 3209,
+      "status": "timeout",
+      "rows": 5,
+      "duration_ms": 20001,
       "paused_until": null,
-      "reason": null
+      "reason": "timeout after 20000ms budget · last good: 0 cached enrich + 5 kept shelf"
     },
     {
       "id": "openalex",
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 647,
+      "duration_ms": 571,
       "paused_until": null,
       "reason": null
     },
@@ -37,8 +37,8 @@
       "id": "crossref",
       "label": "Crossref",
       "status": "ok",
-      "rows": 1,
-      "duration_ms": 188,
+      "rows": 0,
+      "duration_ms": 318,
       "paused_until": null,
       "reason": null
     },
@@ -46,8 +46,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 56,
-      "duration_ms": 8321,
+      "rows": 39,
+      "duration_ms": 8383,
       "paused_until": null,
       "reason": null
     },
@@ -56,7 +56,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 16263,
+      "duration_ms": 16548,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 4212,
+      "duration_ms": 4417,
       "paused_until": null,
       "reason": null
     },
@@ -73,8 +73,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 38,
-      "duration_ms": 6542,
+      "rows": 42,
+      "duration_ms": 6561,
       "paused_until": null,
       "reason": null
     },
@@ -83,7 +83,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 2,
-      "duration_ms": 287,
+      "duration_ms": 377,
       "paused_until": null,
       "reason": null
     },
@@ -92,16 +92,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4544,
+      "duration_ms": 4634,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 44346,
-    "sources_wall_ms": 16264,
-    "papers_lane_ms": 4184,
-    "slowest_source_ms": 16263,
+    "sources_ms": 62117,
+    "sources_wall_ms": 21209,
+    "papers_lane_ms": 21208,
+    "slowest_source_ms": 20001,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -115,71 +115,130 @@
       "github": 25000,
       "wikidata": 25000
     },
-    "timed_out": [],
-    "wall_ms": 16636,
-    "startup_ms": 41,
-    "main_ms": 16649
+    "timed_out": [
+      "arxiv"
+    ],
+    "wall_ms": 21583,
+    "startup_ms": 112,
+    "main_ms": 21601
   },
-  "multi_source_independent": 4,
+  "multi_source_independent": 6,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 4,
-    "multi_source_raw": 10,
+    "multi_source_independent": 6,
+    "multi_source_raw": 12,
     "self_reposts": 6,
-    "items_in": 236,
-    "clusters_out": 212,
-    "collapsed": 24,
-    "multi_source": 4,
-    "multi_member": 16,
+    "items_in": 223,
+    "clusters_out": 204,
+    "collapsed": 19,
+    "multi_source": 6,
+    "multi_member": 15,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 55,
+    "new_items": 53,
     "per_source": {
-      "hn-algolia": 56,
+      "hn-algolia": 39,
       "rss-lab": 104,
       "rss-security": 28,
-      "gnews-rss": 38,
+      "gnews-rss": 42,
       "gmail-news": 10
     },
     "multi_source_clusters": [
       {
-        "title": "Flux 3 Image Klein",
+        "title": "Eight states sue OpenAI, saying ChatGPT isn't safe for kids",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 3,
+        "score": 0.625,
+        "members": [
+          {
+            "id": "hn:50095545",
+            "source": "hn-algolia",
+            "title": "Eight states sue OpenAI, saying ChatGPT isn't safe for kids",
+            "at": "2026-10-14T21:24:43Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:98ffe2e05f9a80c6",
+            "source": "gnews-rss",
+            "title": "Eight States Sue OpenAI Over ChatGPT Safety Risks - Law360",
+            "at": "2026-10-16T02:05:47Z",
+            "publisher": "Law360"
+          },
+          {
+            "id": "gnews:880808af3ed706ec",
+            "source": "gnews-rss",
+            "title": "Eight states sue OpenAI saying ChatGPT hurt kids and lied to adults - Fortune",
+            "at": "2026-10-15T19:07:00Z",
+            "publisher": "Fortune"
+          }
+        ]
+      },
+      {
+        "title": "OpenAI, Meta caution US judiciary about risk of 'deepfake' evidence",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:50112925",
+            "source": "hn-algolia",
+            "title": "OpenAI, Meta caution US judiciary about risk of 'deepfake' evidence",
+            "at": "2026-10-16T02:00:20Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:9fd908b5147f70a0",
+            "source": "gnews-rss",
+            "title": "OpenAI, Meta caution US judiciary about risk of 'deepfake' evidence - Reuters",
+            "at": "2026-10-15T21:02:42Z",
+            "publisher": "Reuters"
+          }
+        ]
+      },
+      {
+        "title": "OpenAI bugging suspect booked one-way ticket to Saudi Arabia",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
         "size": 4,
-        "score": 0.7,
+        "score": 0.904,
         "members": [
           {
-            "id": "hn:50106622",
+            "id": "hn:50094903",
             "source": "hn-algolia",
-            "title": "Flux 3 Image Klein",
-            "at": "2026-10-15T16:58:36Z",
+            "title": "OpenAI bugging suspect booked one-way ticket to Saudi Arabia",
+            "at": "2026-10-14T20:42:44Z",
             "publisher": null
           },
           {
-            "id": "gnews:3806cc89cb46ac57",
+            "id": "gnews:4d1c9b070a92dd08",
             "source": "gnews-rss",
-            "title": "New 5.6B-Parameter FLUX 3 Image Klein Debuts as Open-Weights Release - Unite.AI",
-            "at": "2026-10-15T15:15:05Z",
-            "publisher": "Unite.AI"
+            "title": "OpenAI bugging suspect booked one-way ticket to Saudi Arabia with family before arrest - CNBC",
+            "at": "2026-10-14T20:16:22Z",
+            "publisher": "CNBC"
           },
           {
-            "id": "gnews:300ca5db2e7cc4ad",
+            "id": "gnews:011113429408ecd8",
             "source": "gnews-rss",
-            "title": "Black Forest Labs Expands Access to Frontier Visual Intelligence With Open Weights Release of FLUX 3 Image Klein - The Manila Times",
-            "at": "2026-10-15T15:08:41Z",
-            "publisher": "The Manila Times"
+            "title": "OpenAI bugging suspect allegedly booked one-way trip to Saudi Arabia - Al Jazeera",
+            "at": "2026-10-15T11:55:29Z",
+            "publisher": "Al Jazeera"
           },
           {
-            "id": "gnews:ca100d79b5d1bff1",
+            "id": "gnews:e4f235d974d9b760",
             "source": "gnews-rss",
-            "title": "Black Forest Labs' open-weights image model FLUX 3 Image Klein runs on consumer GPUs with just 8 GB of VRAM - The Decoder",
-            "at": "2026-10-15T17:02:58Z",
-            "publisher": "The Decoder"
+            "title": "OpenAI engineer arrested by FBI for allegedly bugging conference room had booked one-way flight to Saudi Arabia - New York Post",
+            "at": "2026-10-15T17:11:00Z",
+            "publisher": "New York Post"
           }
         ]
       },
@@ -190,7 +249,7 @@
           "gnews-rss"
         ],
         "size": 3,
-        "score": 0.728,
+        "score": 0.818,
         "members": [
           {
             "id": "hn:50104542",
@@ -202,48 +261,41 @@
           {
             "id": "gnews:52f9274bf7e96996",
             "source": "gnews-rss",
-            "title": "NVIDIA Nemotron 3.5 Super VL: 120B Params, 5x Faster [2026] - https://tech-insider.org/",
+            "title": "NVIDIA Nemotron 3.5 Super VL: 120B Open AI Model - https://tech-insider.org/",
             "at": "2026-10-15T15:56:48Z",
             "publisher": "https://tech-insider.org/"
           },
           {
-            "id": "gnews:31306192e680f8f6",
+            "id": "gnews:80e5c956271a72e1",
             "source": "gnews-rss",
-            "title": "NVIDIA Announces The 120B Nemotron 3.5 Super VL Model For AI Agents And 2 Tiny 4 GB And 24 GB Edge Models Under The Nemotron 3.5 Bolt Umbrella - Wccftech",
-            "at": "2026-10-15T15:00:00Z",
-            "publisher": "Wccftech"
+            "title": "Nvidia Releases Nemotron 3.5 Super VL to Widen the Open-Weight AI Field - Startup Fortune",
+            "at": "2026-10-15T15:40:11Z",
+            "publisher": "Startup Fortune"
           }
         ]
       },
       {
-        "title": "Fish Audio Drama 3: an open-weight, directable TTS model",
+        "title": "OpenAI: Employee who left for Apple took files about unreleased device",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 3,
-        "score": 0.723,
+        "size": 2,
+        "score": 1,
         "members": [
           {
-            "id": "hn:50085198",
+            "id": "hn:50090707",
             "source": "hn-algolia",
-            "title": "Fish Audio Drama 3: an open-weight, directable TTS model",
-            "at": "2026-10-14T10:15:32Z",
+            "title": "OpenAI: Employee who left for Apple took files about unreleased device",
+            "at": "2026-10-14T16:47:21Z",
             "publisher": null
           },
           {
-            "id": "gnews:e7d4b59d4ae5e9f8",
+            "id": "gnews:7f093ce99947c1ab",
             "source": "gnews-rss",
-            "title": "Fish Audio Releases Drama 3, a 35B Open-Weight MoE Text-to-Speech Model - MarkTechPost",
-            "at": "2026-10-14T22:52:17Z",
-            "publisher": "MarkTechPost"
-          },
-          {
-            "id": "gnews:35f15dbebbd78bb5",
-            "source": "gnews-rss",
-            "title": "Fish Audio Releases Open Source Drama 3 Text-to-Speech Model - https://www.ababnews.com/",
-            "at": "2026-10-15T03:25:51Z",
-            "publisher": "https://www.ababnews.com/"
+            "title": "OpenAI employee who left for Apple took files about unreleased device, OpenAI alleges - Reuters",
+            "at": "2026-10-14T15:21:00Z",
+            "publisher": "Reuters"
           }
         ]
       },
@@ -274,6 +326,23 @@
       }
     ],
     "self_repost_clusters": [
+      {
+        "title": "Bringing GPT-Rosalind to academic research labs",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:1d6de0b57756c98a",
+            "publisher": "OpenAI",
+            "title": "Bringing GPT-Rosalind to academic research labs - OpenAI"
+          }
+        ]
+      },
       {
         "title": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
         "sources": [
@@ -326,7 +395,7 @@
         ]
       },
       {
-        "title": "Putting Earth AI to work: Geospatial agents for our planet's biggest challenges",
+        "title": "How Third Moment Research runs 10,000 agents for 36+ hours",
         "sources": [
           "rss-lab"
         ],
@@ -336,14 +405,14 @@
         ],
         "self_reposts": [
           {
-            "id": "gnews:6da1ebdcd82b7e26",
-            "publisher": "Google Research",
-            "title": "Putting Earth AI to work: Geospatial agents for our planet's biggest challenges - Google Research"
+            "id": "gnews:1c835f729d8c8e3f",
+            "publisher": "OpenAI",
+            "title": "How Third Moment Research runs 10,000 agents for 36+ hours - OpenAI"
           }
         ]
       },
       {
-        "title": "Analyzing technical documents with Deep Review",
+        "title": "The EU’s next chapter in AI is agentic",
         "sources": [
           "rss-lab"
         ],
@@ -353,26 +422,9 @@
         ],
         "self_reposts": [
           {
-            "id": "gnews:a1fdd94cbf05b59e",
-            "publisher": "Google Research",
-            "title": "Analyzing technical documents with Deep Review - Google Research"
-          }
-        ]
-      },
-      {
-        "title": "Research@ 2026: 10 ways we're amplifying human ingenuity",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:f8ecaa1948cee466",
-            "publisher": "Google Research",
-            "title": "Research@ 2026: 10 ways we're amplifying human ingenuity - Google Research"
+            "id": "gnews:f9318d002249a851",
+            "publisher": "OpenAI",
+            "title": "The EU’s next chapter in AI is agentic - OpenAI"
           }
         ]
       }
@@ -392,32 +444,52 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "ALM Corp",
-          "title": "Google Search Console Data Is Running Days Behind (Oct 2026) - ALM Corp"
+          "publisher": "Howl.link",
+          "title": "Supermuse (@0xSupermuse) on X - Howl.link"
         },
         {
-          "publisher": "Search Engine Roundtable",
-          "title": "Universal Cart Launches In Google Search (U.S.) - Search Engine Roundtable"
+          "publisher": "The New York Times",
+          "title": "Judge Refuses to Reverse Penalties Against Crypto Firm With Ties to Trump Family - The New York Times"
         },
         {
-          "publisher": "South China Morning Post",
-          "title": "Opinion | How could a superintelligence take over the world? Let me count the ways - South China Morning Post"
-        },
-        {
-          "publisher": "Search Engine Roundtable",
-          "title": "Google Testing New Search Bar In Google App - Search Engine Roundtable"
+          "publisher": "The Washington Post",
+          "title": "A brewing Pacific storm could become one of the planet’s strongest this year - The Washington Post"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 21
+      "hn_dropped": 27
     },
     "gnews_near_misses": [
       {
-        "score": 0.6,
+        "score": 0.637,
+        "blocked": "time-window",
+        "hours_apart": 28.7,
+        "a": {
+          "id": "hn:50095545",
+          "source": "hn-algolia",
+          "title": "Eight states sue OpenAI, saying ChatGPT isn't safe for kids",
+          "at": "2026-10-14T21:24:43Z"
+        },
+        "b": {
+          "id": "gnews:98ffe2e05f9a80c6",
+          "source": "gnews-rss",
+          "title": "Eight States Sue OpenAI Over ChatGPT Safety Risks - Law360",
+          "at": "2026-10-16T02:05:47Z"
+        },
+        "shared": [
+          "eight",
+          "stat",
+          "sue",
+          "openai",
+          "chatgpt"
+        ]
+      },
+      {
+        "score": 0.595,
         "blocked": "time-window",
         "hours_apart": 214.7,
         "a": {
-          "id": "gnews:db22d05bfac341cf",
+          "id": "gnews:908e601f29829c01",
           "source": "gnews-rss",
           "title": "Google Says AI Isn't Building Itself Yet—Even Though It Writes 75% of the Code - Decrypt",
           "at": "2026-10-15T17:36:05Z"
@@ -435,29 +507,7 @@
         ]
       },
       {
-        "score": 0.6,
-        "blocked": "time-window",
-        "hours_apart": 214.7,
-        "a": {
-          "id": "gnews:2c2bbac9275fecfc",
-          "source": "gnews-rss",
-          "title": "Google Says AI Isn't Building Itself Yet—Even Though It Writes 75% of the Code - Yahoo Tech",
-          "at": "2026-10-15T17:36:05Z"
-        },
-        "b": {
-          "id": "gmail:1a112914bb745ca0",
-          "source": "gmail-news",
-          "title": "This AI that can't write",
-          "at": "2026-10-06T18:54:34Z"
-        },
-        "shared": [
-          "ai",
-          "t",
-          "writ"
-        ]
-      },
-      {
-        "score": 0.595,
+        "score": 0.589,
         "blocked": "below-threshold",
         "hours_apart": 0.2,
         "a": {
@@ -481,7 +531,31 @@
         ]
       },
       {
-        "score": 0.472,
+        "score": 0.585,
+        "blocked": "below-threshold",
+        "hours_apart": 0.8,
+        "a": {
+          "id": "hn:50104542",
+          "source": "hn-algolia",
+          "title": "Nvidia Nemotron 3.5 Super VL 120B A12B",
+          "at": "2026-10-15T14:51:59Z"
+        },
+        "b": {
+          "id": "gnews:80e5c956271a72e1",
+          "source": "gnews-rss",
+          "title": "Nvidia Releases Nemotron 3.5 Super VL to Widen the Open-Weight AI Field - Startup Fortune",
+          "at": "2026-10-15T15:40:11Z"
+        },
+        "shared": [
+          "nvidia",
+          "nemotron",
+          "3.5",
+          "super",
+          "vl"
+        ]
+      },
+      {
+        "score": 0.573,
         "blocked": "below-threshold",
         "hours_apart": 2.1,
         "a": {
@@ -493,7 +567,7 @@
         "b": {
           "id": "gnews:52f9274bf7e96996",
           "source": "gnews-rss",
-          "title": "NVIDIA Nemotron 3.5 Super VL: 120B Params, 5x Faster [2026] - https://tech-insider.org/",
+          "title": "NVIDIA Nemotron 3.5 Super VL: 120B Open AI Model - https://tech-insider.org/",
           "at": "2026-10-15T15:56:48Z"
         },
         "shared": [
@@ -505,105 +579,126 @@
         ]
       },
       {
-        "score": 0.47,
+        "score": 0.568,
         "blocked": "below-threshold",
-        "hours_apart": 3,
+        "hours_apart": 0.9,
         "a": {
-          "id": "rss:nvidia-dev:9f5aca4e4d9dbf53",
+          "id": "rss:nvidia:599b981c923a3fd6",
           "source": "rss-lab",
-          "title": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
-          "at": "2026-10-15T18:01:00Z"
+          "title": "Open From Data Center to Desktop: NVIDIA Expands Nemotron Family With Highest Efficiency Super VL and Bolt Models",
+          "at": "2026-10-15T15:00:24Z"
         },
         "b": {
-          "id": "gnews:31306192e680f8f6",
+          "id": "gnews:52f9274bf7e96996",
           "source": "gnews-rss",
-          "title": "NVIDIA Announces The 120B Nemotron 3.5 Super VL Model For AI Agents And 2 Tiny 4 GB And 24 GB Edge Models Under The Nemotron 3.5 Bolt Umbrella - Wccftech",
-          "at": "2026-10-15T15:00:00Z"
+          "title": "NVIDIA Nemotron 3.5 Super VL: 120B Open AI Model - https://tech-insider.org/",
+          "at": "2026-10-15T15:56:48Z"
         },
         "shared": [
+          "open",
           "nvidia",
           "nemotron",
-          "3.5",
           "super",
           "vl",
-          "agent"
+          "model"
         ]
       },
       {
-        "score": 0.45,
-        "blocked": "below-threshold",
-        "hours_apart": 0.5,
-        "a": {
-          "id": "hn:50106693",
-          "source": "hn-algolia",
-          "title": "Muse Spark Open 816B-A42B",
-          "at": "2026-10-15T17:03:03Z"
-        },
-        "b": {
-          "id": "gnews:8bd734df089de3d4",
-          "source": "gnews-rss",
-          "title": "Meta’s 816B-Parameter Muse Spark Open Weights Are Now Public - Unite.AI",
-          "at": "2026-10-15T17:35:16Z"
-        },
-        "shared": [
-          "muse",
-          "spark",
-          "816b"
-        ]
-      },
-      {
-        "score": 0.443,
+        "score": 0.566,
         "blocked": "below-threshold",
         "hours_apart": 0.2,
         "a": {
-          "id": "hn:50104542",
+          "id": "hn:50111454",
           "source": "hn-algolia",
-          "title": "Nvidia Nemotron 3.5 Super VL 120B A12B",
-          "at": "2026-10-15T14:51:59Z"
+          "title": "ChatGPT can peek at your Chrome tabs now",
+          "at": "2026-10-15T22:47:41Z"
         },
         "b": {
-          "id": "gnews:6ecd71bf14709680",
+          "id": "gnews:a3c696199c1a5248",
           "source": "gnews-rss",
-          "title": "Open From Data Center to Desktop: NVIDIA Expands Nemotron Family With Highest Efficiency Super VL and Bolt Models - NVIDIA Blog",
-          "at": "2026-10-15T15:03:57Z"
+          "title": "OpenAI Brings Computer Use to Chrome With ChatGPT Tab Controls - Unite.AI",
+          "at": "2026-10-15T23:02:01Z"
         },
         "shared": [
-          "nvidia",
-          "nemotron",
-          "super",
-          "vl"
+          "chatgpt",
+          "chrom",
+          "tab"
         ]
       },
       {
-        "score": 0.426,
-        "blocked": "below-threshold",
-        "hours_apart": 0.4,
+        "score": 0.519,
+        "blocked": "thin-overlap",
+        "hours_apart": 57.1,
         "a": {
-          "id": "rss:deepmind:ad09b0946a60b7ff",
+          "id": "rss:deepmind:94cc08977f17740f",
           "source": "rss-lab",
-          "title": "Accelerating the search for antimicrobial peptides with Google Antigravity",
-          "at": "2026-10-15T16:08:03Z"
+          "title": "Gemini 4 Argon for Robotics",
+          "at": "2026-10-13T16:01:58Z"
         },
         "b": {
-          "id": "gnews:e9433af11ea7ef23",
+          "id": "gnews:79937b629ced8408",
           "source": "gnews-rss",
-          "title": "Google DeepMind Walkthrough Details Antimicrobial Peptide Discovery - Unite.AI",
-          "at": "2026-10-15T16:34:13Z"
+          "title": "Gemini 4 Argon is now rolling out to Google’s Antigravity for AI Pro subscribers - 9to5Google",
+          "at": "2026-10-16T01:10:00Z"
         },
         "shared": [
-          "antimicrobial",
-          "peptid",
-          "google"
+          "gemini",
+          "4",
+          "argon"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.6,
+        "score": 0.782,
+        "blocked": "short-title",
+        "hours_apart": 3.9,
+        "a": {
+          "id": "hn:50105524",
+          "source": "hn-algolia",
+          "title": "Mistral Timestral",
+          "at": "2026-10-15T15:55:37Z"
+        },
+        "b": {
+          "id": "rss:mistral:51edf4c643816e6f",
+          "source": "rss-lab",
+          "title": "Introducing Timestral",
+          "at": "2026-10-15T12:00:00Z"
+        },
+        "shared": [
+          "timestral"
+        ]
+      },
+      {
+        "score": 0.637,
+        "blocked": "time-window",
+        "hours_apart": 28.7,
+        "a": {
+          "id": "hn:50095545",
+          "source": "hn-algolia",
+          "title": "Eight states sue OpenAI, saying ChatGPT isn't safe for kids",
+          "at": "2026-10-14T21:24:43Z"
+        },
+        "b": {
+          "id": "gnews:98ffe2e05f9a80c6",
+          "source": "gnews-rss",
+          "title": "Eight States Sue OpenAI Over ChatGPT Safety Risks - Law360",
+          "at": "2026-10-16T02:05:47Z"
+        },
+        "shared": [
+          "eight",
+          "stat",
+          "sue",
+          "openai",
+          "chatgpt"
+        ]
+      },
+      {
+        "score": 0.595,
         "blocked": "time-window",
         "hours_apart": 214.7,
         "a": {
-          "id": "gnews:db22d05bfac341cf",
+          "id": "gnews:908e601f29829c01",
           "source": "gnews-rss",
           "title": "Google Says AI Isn't Building Itself Yet—Even Though It Writes 75% of the Code - Decrypt",
           "at": "2026-10-15T17:36:05Z"
@@ -621,29 +716,7 @@
         ]
       },
       {
-        "score": 0.6,
-        "blocked": "time-window",
-        "hours_apart": 214.7,
-        "a": {
-          "id": "gnews:2c2bbac9275fecfc",
-          "source": "gnews-rss",
-          "title": "Google Says AI Isn't Building Itself Yet—Even Though It Writes 75% of the Code - Yahoo Tech",
-          "at": "2026-10-15T17:36:05Z"
-        },
-        "b": {
-          "id": "gmail:1a112914bb745ca0",
-          "source": "gmail-news",
-          "title": "This AI that can't write",
-          "at": "2026-10-06T18:54:34Z"
-        },
-        "shared": [
-          "ai",
-          "t",
-          "writ"
-        ]
-      },
-      {
-        "score": 0.595,
+        "score": 0.589,
         "blocked": "below-threshold",
         "hours_apart": 3.2,
         "a": {
@@ -667,7 +740,7 @@
         ]
       },
       {
-        "score": 0.595,
+        "score": 0.589,
         "blocked": "below-threshold",
         "hours_apart": 0.2,
         "a": {
@@ -691,32 +764,31 @@
         ]
       },
       {
-        "score": 0.554,
+        "score": 0.585,
         "blocked": "below-threshold",
-        "hours_apart": 10.4,
+        "hours_apart": 0.8,
         "a": {
-          "id": "hn:50086596",
+          "id": "hn:50104542",
           "source": "hn-algolia",
-          "title": "DeepMind and Singapore fine-tune an on-device Gemma model for scam detection",
-          "at": "2026-10-14T12:24:44Z"
+          "title": "Nvidia Nemotron 3.5 Super VL 120B A12B",
+          "at": "2026-10-15T14:51:59Z"
         },
         "b": {
-          "id": "rss:deepmind:36a7e1c23fbbe3b1",
-          "source": "rss-lab",
-          "title": "Google DeepMind and Singapore Government collaborate to build fine-tuned AI model for scam detection",
-          "at": "2026-10-14T02:00:14Z"
+          "id": "gnews:80e5c956271a72e1",
+          "source": "gnews-rss",
+          "title": "Nvidia Releases Nemotron 3.5 Super VL to Widen the Open-Weight AI Field - Startup Fortune",
+          "at": "2026-10-15T15:40:11Z"
         },
         "shared": [
-          "deepmind",
-          "singapor",
-          "fine",
-          "model",
-          "scam",
-          "detection"
+          "nvidia",
+          "nemotron",
+          "3.5",
+          "super",
+          "vl"
         ]
       },
       {
-        "score": 0.472,
+        "score": 0.573,
         "blocked": "below-threshold",
         "hours_apart": 2.1,
         "a": {
@@ -728,7 +800,7 @@
         "b": {
           "id": "gnews:52f9274bf7e96996",
           "source": "gnews-rss",
-          "title": "NVIDIA Nemotron 3.5 Super VL: 120B Params, 5x Faster [2026] - https://tech-insider.org/",
+          "title": "NVIDIA Nemotron 3.5 Super VL: 120B Open AI Model - https://tech-insider.org/",
           "at": "2026-10-15T15:56:48Z"
         },
         "shared": [
@@ -740,50 +812,28 @@
         ]
       },
       {
-        "score": 0.47,
+        "score": 0.568,
         "blocked": "below-threshold",
-        "hours_apart": 3,
+        "hours_apart": 0.9,
         "a": {
-          "id": "rss:nvidia-dev:9f5aca4e4d9dbf53",
+          "id": "rss:nvidia:599b981c923a3fd6",
           "source": "rss-lab",
-          "title": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
-          "at": "2026-10-15T18:01:00Z"
+          "title": "Open From Data Center to Desktop: NVIDIA Expands Nemotron Family With Highest Efficiency Super VL and Bolt Models",
+          "at": "2026-10-15T15:00:24Z"
         },
         "b": {
-          "id": "gnews:31306192e680f8f6",
+          "id": "gnews:52f9274bf7e96996",
           "source": "gnews-rss",
-          "title": "NVIDIA Announces The 120B Nemotron 3.5 Super VL Model For AI Agents And 2 Tiny 4 GB And 24 GB Edge Models Under The Nemotron 3.5 Bolt Umbrella - Wccftech",
-          "at": "2026-10-15T15:00:00Z"
+          "title": "NVIDIA Nemotron 3.5 Super VL: 120B Open AI Model - https://tech-insider.org/",
+          "at": "2026-10-15T15:56:48Z"
         },
         "shared": [
+          "open",
           "nvidia",
           "nemotron",
-          "3.5",
           "super",
           "vl",
-          "agent"
-        ]
-      },
-      {
-        "score": 0.45,
-        "blocked": "below-threshold",
-        "hours_apart": 0.5,
-        "a": {
-          "id": "hn:50106693",
-          "source": "hn-algolia",
-          "title": "Muse Spark Open 816B-A42B",
-          "at": "2026-10-15T17:03:03Z"
-        },
-        "b": {
-          "id": "gnews:8bd734df089de3d4",
-          "source": "gnews-rss",
-          "title": "Meta’s 816B-Parameter Muse Spark Open Weights Are Now Public - Unite.AI",
-          "at": "2026-10-15T17:35:16Z"
-        },
-        "shared": [
-          "muse",
-          "spark",
-          "816b"
+          "model"
         ]
       }
     ]
@@ -792,76 +842,76 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 3,
-      "streak_fail": 0,
-      "items_last": 29
+      "streak_ok": 0,
+      "streak_fail": 1,
+      "items_last": 5
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 121,
+      "streak_ok": 122,
       "streak_fail": 0,
-      "items_last": 1
+      "items_last": 0
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 121,
+      "streak_ok": 122,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 121,
+      "streak_ok": 122,
       "streak_fail": 0,
-      "items_last": 38
+      "items_last": 42
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 121,
+      "streak_ok": 122,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 121,
+      "streak_ok": 122,
       "streak_fail": 0,
-      "items_last": 56
+      "items_last": 39
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 33,
+      "streak_ok": 34,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 25,
+      "streak_ok": 26,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 121,
+      "streak_ok": 122,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 121,
+      "streak_ok": 122,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.004829444444444444,
+    "hours": 0.006103333333333333,
     "stale": false
   },
   "hf": {
@@ -870,10 +920,10 @@
     "url": "https://huggingface.co/api/daily_papers"
   },
   "arxiv": {
-    "ok": true,
-    "enriched": 24,
+    "ok": false,
+    "enriched": 0,
     "shelf": 5,
-    "timed_out": false,
+    "timed_out": true,
     "budget_ms": 20000,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
@@ -884,7 +934,7 @@
     "soft_fail_reason": null,
     "enriched": 3,
     "secondary": 3,
-    "query": "LLM agent sandbox",
+    "query": "Hugging Face agent",
     "mode": "search",
     "from_cache": false,
     "searches": 1,
@@ -900,34 +950,34 @@
     "url": "https://api.openalex.org/works",
     "sample": [
       {
-        "id": "W7171516088",
-        "openalexId": "https://openalex.org/W7171516088",
+        "id": "W7171617880",
+        "openalexId": "https://openalex.org/W7171617880",
         "year": 2026,
-        "doi": "https://doi.org/10.48550/arxiv.2607.23933",
+        "doi": "https://doi.org/10.5281/zenodo.21686546",
         "enrichOnly": true
       },
       {
-        "id": "W7204032694",
-        "openalexId": "https://openalex.org/W7204032694",
+        "id": "W7171936549",
+        "openalexId": "https://openalex.org/W7171936549",
         "year": 2026,
-        "doi": "https://doi.org/10.1007/978-981-92-4805-6_13",
+        "doi": "https://doi.org/10.5281/zenodo.21715175",
         "enrichOnly": true
       },
       {
-        "id": "W7221316450",
-        "openalexId": "https://openalex.org/W7221316450",
+        "id": "W7203931864",
+        "openalexId": "https://openalex.org/W7203931864",
         "year": 2026,
-        "doi": "https://doi.org/10.1038/s41746-026-03348-0",
+        "doi": "https://doi.org/10.5281/zenodo.22043399",
         "enrichOnly": true
       }
     ]
   },
   "crossref": {
-    "ok": true,
+    "ok": false,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "enriched": 1,
-    "query": "doi:10.1007/978-981-92-4805-6_13",
+    "enriched": 0,
+    "query": "doi:10.5281/zenodo.21686546",
     "mode": "filter",
     "from_cache": false,
     "searches": 1,
@@ -935,62 +985,50 @@
     "pulse_lead": false,
     "papers_enrich_only": true,
     "url": "https://api.crossref.org/works",
-    "merge_notes": [
-      "doi_collision keep=10.48550/arxiv.2607.23933 crossref=10.1007/978-981-92-4805-6_13 paper=W7171516088 (non-destructive; openalexId preserved)"
-    ],
-    "sample": [
-      {
-        "id": "W7171516088",
-        "crossrefDoi": "https://doi.org/10.1007/978-981-92-4805-6_13",
-        "issued": "2026-08-24",
-        "type": "book-chapter",
-        "openalexId": "https://openalex.org/W7171516088",
-        "doi": "https://doi.org/10.48550/arxiv.2607.23933",
-        "enrichOnly": false
-      }
-    ]
+    "merge_notes": [],
+    "sample": []
   },
   "hn": {
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 56,
+    "count": 39,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
     "queries_run": [
-      "LLM",
       "METR",
-      "ML security"
+      "ML security",
+      "open weights"
     ],
     "queries_ok": [
-      "LLM",
       "METR",
-      "ML security"
+      "ML security",
+      "open weights"
     ],
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 21,
+    "ai_dropped": 27,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
-        "id": "hn:50078141",
-        "tag": "rest",
-        "score": 650,
-        "text": "OpenAI engineer arrested in bugging of executive conference room"
-      },
-      {
         "id": "hn:50094694",
         "tag": "rest",
-        "score": 409,
+        "score": 417,
         "text": "Anthropic's Scion is heavily inspired by Mononoke"
       },
       {
-        "id": "hn:50090443",
+        "id": "hn:50106738",
         "tag": "rest",
-        "score": 163,
-        "text": "Why do LLM pelicans look like this?"
+        "score": 231,
+        "text": "More on Anthropic's Scion ripping off Mononoke"
+      },
+      {
+        "id": "hn:50082962",
+        "tag": "rest",
+        "score": 74,
+        "text": "Anthropic conjures threat that doesn't exist yet to stoke fears of AI apocalypse"
       }
     ]
   },
@@ -1053,32 +1091,32 @@
     "feeds_soft_fail": [],
     "sample": [
       {
+        "id": "rss:huggingface:138e9b7e7d974724",
+        "lab": "huggingface",
+        "tag": "rest",
+        "title": "Scaling Indic Pretraining: 2.8 Trillion Tokens and an Open Data Generation Pipeline",
+        "link": "https://huggingface.co/blog/nvidia/scaling-indic-pretraining"
+      },
+      {
+        "id": "rss:huggingface:d330643595776f9f",
+        "lab": "huggingface",
+        "tag": "rest",
+        "title": "Granite Switch 4.1: Chat, Decisions, and Speech from One Endpoint",
+        "link": "https://huggingface.co/blog/ibm-granite/granite-switch-4-1"
+      },
+      {
+        "id": "rss:openai:32165ee6af8945a5",
+        "lab": "openai",
+        "tag": "rest",
+        "title": "Bringing GPT-Rosalind to academic research labs",
+        "link": "https://openai.com/index/introducing-the-rosalind-academic-plan"
+      },
+      {
         "id": "rss:nvidia-dev:9f5aca4e4d9dbf53",
         "lab": "nvidia-dev",
         "tag": "rest",
         "title": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
         "link": "https://developer.nvidia.com/blog/nvidia-nemotron-3-5-super-vl-powers-specialized-agents-with-multimodal-reasoning/"
-      },
-      {
-        "id": "rss:nvidia-dev:5a4b829f93341bf2",
-        "lab": "nvidia-dev",
-        "tag": "rest",
-        "title": "Scale Agentic Coding Workflows with Meta’s Muse Spark Open on NVIDIA GB300 NVL72",
-        "link": "https://developer.nvidia.com/blog/scale-agentic-coding-workflows-with-metas-muse-spark-open-on-nvidia-gb300-nvl72/"
-      },
-      {
-        "id": "rss:nvidia:640799e7dc996a35",
-        "lab": "nvidia",
-        "tag": "rest",
-        "title": "Be There for the Beginning: Celebrate the Launch of NVIDIA RTX Spark",
-        "link": "https://blogs.nvidia.com/blog/local-ai-rtx-spark-launch-event-invite/"
-      },
-      {
-        "id": "rss:deepmind:ad09b0946a60b7ff",
-        "lab": "deepmind",
-        "tag": "rest",
-        "title": "Accelerating the search for antimicrobial peptides with Google Antigravity",
-        "link": "https://deepmind.google/blog/accelerating-antimicrobial-discovery/"
       }
     ]
   },
@@ -1143,87 +1181,111 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 38,
-    "pool": 248,
+    "items": 42,
+    "pool": 349,
     "corroborators": [
       {
-        "id": "gnews:3806cc89cb46ac57",
-        "anchor_id": "hn:50106622",
-        "score": 0.71,
-        "title": "New 5.6B-Parameter FLUX 3 Image Klein Debuts as Open-Weights Release - Unite.AI",
-        "publisher": "Unite.AI",
+        "id": "gnews:1d6de0b57756c98a",
+        "anchor_id": "rss:openai:32165ee6af8945a5",
+        "score": 1,
+        "title": "Bringing GPT-Rosalind to academic research labs - OpenAI",
+        "publisher": "OpenAI",
+        "self_repost": true
+      },
+      {
+        "id": "gnews:9fd908b5147f70a0",
+        "anchor_id": "hn:50112925",
+        "score": 1,
+        "title": "OpenAI, Meta caution US judiciary about risk of 'deepfake' evidence - Reuters",
+        "publisher": "Reuters",
         "self_repost": false
       },
       {
-        "id": "gnews:300ca5db2e7cc4ad",
-        "anchor_id": "hn:50106622",
-        "score": 0.642,
-        "title": "Black Forest Labs Expands Access to Frontier Visual Intelligence With Open Weights Release of FLUX 3 Image Klein - The Manila Times",
-        "publisher": "The Manila Times",
+        "id": "gnews:880808af3ed706ec",
+        "anchor_id": "hn:50095545",
+        "score": 0.603,
+        "title": "Eight states sue OpenAI saying ChatGPT hurt kids and lied to adults - Fortune",
+        "publisher": "Fortune",
         "self_repost": false
       },
       {
-        "id": "gnews:ca100d79b5d1bff1",
-        "anchor_id": "hn:50106622",
-        "score": 0.619,
-        "title": "Black Forest Labs' open-weights image model FLUX 3 Image Klein runs on consumer GPUs with just 8 GB of VRAM - The Decoder",
-        "publisher": "The Decoder",
+        "id": "gnews:4d1c9b070a92dd08",
+        "anchor_id": "hn:50094903",
+        "score": 0.909,
+        "title": "OpenAI bugging suspect booked one-way ticket to Saudi Arabia with family before arrest - CNBC",
+        "publisher": "CNBC",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:011113429408ecd8",
+        "anchor_id": "hn:50094903",
+        "score": 0.812,
+        "title": "OpenAI bugging suspect allegedly booked one-way trip to Saudi Arabia - Al Jazeera",
+        "publisher": "Al Jazeera",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:e4f235d974d9b760",
+        "anchor_id": "hn:50094903",
+        "score": 0.601,
+        "title": "OpenAI engineer arrested by FBI for allegedly bugging conference room had booked one-way flight to Saudi Arabia - New York Post",
+        "publisher": "New York Post",
         "self_repost": false
       },
       {
         "id": "gnews:52f9274bf7e96996",
         "anchor_id": "hn:50104542",
-        "score": 0.73,
-        "title": "NVIDIA Nemotron 3.5 Super VL: 120B Params, 5x Faster [2026] - https://tech-insider.org/",
+        "score": 0.827,
+        "title": "NVIDIA Nemotron 3.5 Super VL: 120B Open AI Model - https://tech-insider.org/",
         "publisher": "https://tech-insider.org/",
         "self_repost": false
       },
       {
-        "id": "gnews:31306192e680f8f6",
+        "id": "gnews:80e5c956271a72e1",
         "anchor_id": "hn:50104542",
-        "score": 0.638,
-        "title": "NVIDIA Announces The 120B Nemotron 3.5 Super VL Model For AI Agents And 2 Tiny 4 GB And 24 GB Edge Models Under The Nemotron 3.5 Bolt Umbrella - Wccftech",
-        "publisher": "Wccftech",
+        "score": 0.6,
+        "title": "Nvidia Releases Nemotron 3.5 Super VL to Widen the Open-Weight AI Field - Startup Fortune",
+        "publisher": "Startup Fortune",
         "self_repost": false
       },
       {
-        "id": "gnews:e7d4b59d4ae5e9f8",
-        "anchor_id": "hn:50085198",
-        "score": 0.688,
-        "title": "Fish Audio Releases Drama 3, a 35B Open-Weight MoE Text-to-Speech Model - MarkTechPost",
-        "publisher": "MarkTechPost",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:35f15dbebbd78bb5",
-        "anchor_id": "hn:50085198",
-        "score": 0.678,
-        "title": "Fish Audio Releases Open Source Drama 3 Text-to-Speech Model - https://www.ababnews.com/",
-        "publisher": "https://www.ababnews.com/",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:a1fdd94cbf05b59e",
-        "anchor_id": "rss:google-research:6c3fa003d587daac",
+        "id": "gnews:6ecd71bf14709680",
+        "anchor_id": "rss:nvidia:599b981c923a3fd6",
         "score": 1,
-        "title": "Analyzing technical documents with Deep Review - Google Research",
-        "publisher": "Google Research",
+        "title": "Open From Data Center to Desktop: NVIDIA Expands Nemotron Family With Highest Efficiency Super VL and Bolt Models - NVIDIA Blog",
+        "publisher": "NVIDIA Blog",
         "self_repost": true
       },
       {
-        "id": "gnews:6da1ebdcd82b7e26",
-        "anchor_id": "rss:google-research:4c456e668ef45cba",
+        "id": "gnews:13c39a4f232f8d6e",
+        "anchor_id": "rss:nvidia-dev:9f5aca4e4d9dbf53",
         "score": 1,
-        "title": "Putting Earth AI to work: Geospatial agents for our planet's biggest challenges - Google Research",
-        "publisher": "Google Research",
+        "title": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning | NVIDIA Technical Blog - NVIDIA Developer",
+        "publisher": "NVIDIA Developer",
         "self_repost": true
       },
       {
-        "id": "gnews:f8ecaa1948cee466",
-        "anchor_id": "rss:google-research:f366508f96854306",
+        "id": "gnews:7f093ce99947c1ab",
+        "anchor_id": "hn:50090707",
         "score": 1,
-        "title": "Research@ 2026: 10 ways we're amplifying human ingenuity - Google Research",
-        "publisher": "Google Research",
+        "title": "OpenAI employee who left for Apple took files about unreleased device, OpenAI alleges - Reuters",
+        "publisher": "Reuters",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:1c835f729d8c8e3f",
+        "anchor_id": "rss:openai:a8b8c31de898145e",
+        "score": 1,
+        "title": "How Third Moment Research runs 10,000 agents for 36+ hours - OpenAI",
+        "publisher": "OpenAI",
+        "self_repost": true
+      },
+      {
+        "id": "gnews:f9318d002249a851",
+        "anchor_id": "rss:openai:200a5d3dd39c6bfb",
+        "score": 1,
+        "title": "The EU’s next chapter in AI is agentic - OpenAI",
+        "publisher": "OpenAI",
         "self_repost": true
       }
     ],
@@ -1239,54 +1301,79 @@
     "pulse_only": true,
     "url_template": "https://news.google.com/rss/search?q={QUERY}&hl=en-US&gl=US&ceid=US:en",
     "queried": [
-      "open weights",
       "Hugging Face",
-      "Google Research",
-      "Google DeepMind"
+      "OpenAI",
+      "Google DeepMind",
+      "Gemini"
     ],
     "queries_ok_list": [
-      "open weights",
       "Hugging Face",
-      "Google Research",
-      "Google DeepMind"
+      "OpenAI",
+      "Google DeepMind",
+      "Gemini"
     ],
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:ed149eb8c4791405",
-        "title": "Meta Unveils Open-Weight AI Model Muse Spark Open, Teams Up With Apple in Rare Move - TradingKey",
-        "publisher": "TradingKey",
-        "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPa1N1MzE2X2NMbHlIT0pQU19remd4SXg1ZEhzTmZPZ3BIVUItM1JsZkFVVXVVanVMUzA2Z2p1MHZzS3hHQ05UeUIxQW80VEJndERLNXAxQmt2SGhvZDNFcHEzdG8xeGJ5eEtMOVJRcFR4OTZhbk1henBSZHVBbFBqak1wTTE2X0R1LUpCQ1FYTV9zQ3M1bThMeXU5dkFEbjRoMTZoTFd0WlVfR3loR0RkRGVkT294LWhIbGdhNmpJVnhCcGlZV05JSQ?oc=5",
+        "id": "gnews:35c63b4b3a4f88c9",
+        "title": "OpenAI's 2026 Revenue Estimate Just Got Cut by $20 Billion. Anthropic's Quarterly Revenue Just Climbed to $16.8 Billion. - The Motley Fool",
+        "publisher": "The Motley Fool",
+        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQM3I4UTVHd0xyUFVEcnB3VmR6QnhFb0M5WUppR3pUd1R3Wi1WOExHT2E2ODVuODU2M21QWmQ4ZmczTVlfa3hPWTNPeEFtdUdHazlEUFp6Znh0Y1l6aHlmUWo3NHYyams0dUVBVU9RelRUa2ZOZTI1SjZJeXRJSGhSTlhubDU5UmxjbTVHX3g4by1ZdDN3UzZMag?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:31da07e8e8445af5",
-        "title": "Apple and Meta team up to run open-weight Muse model on Macs - Mezha.net",
-        "publisher": "Mezha.net",
-        "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE56Tl82MGRGbzgwYTg3cW5rMWtrZVZoNm16cmhCYVU5RHFtUTBnMnVSY2dsRndLdXQ3UmM0VWpEUWV1Tko3eGlDa19EU1k2R21wMUp4c1RQZDlReEdXRU90MkUyN3lGQUVoV2V5ZGlBYWF5NWdnR2VqU1ZhYjF1dw?oc=5",
+        "id": "gnews:7bbdc48ba7819a70",
+        "title": "Winklevosses' Crypto Co. Gemini Can't Ditch CFTC Settlement - Law360",
+        "publisher": "Law360",
+        "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPUERGTUdEN3FSc2t2LUl1UWdFMmRKLUVicGNwM1VycW9jcjNXNkNpUUlKSVVBNEo0YmR2eVBvdk9UMXh3dVNtM21jcVZaMUFtZkFtUThqSldXNFc1a3U5TVdMM3UxRDFhMlF2SHNsdTZKdUljSlNCQVctTy1zUzB1djlDOGtyTEV5VXFoa3MyZ1IxWWtPZEdsMXVzOGxYME1vNnlEZVFsN3lrdVVxdDdFVTR30gFWQVVfeXFMT1VtQlRyRDRSTVd4dGdPcVNEamxNX3BtNmNMc01LRE1NM0hoUHhwV212b0ZRbGM1UUNwZ1BaclVpdk9XdWtReTZzaVM3RFk3NC1IVDEtSFE?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:ebf1e947a0dc1ea3",
-        "title": "Google DeepMind finds no acceleration in AI research progress - Crypto Briefing",
-        "publisher": "Crypto Briefing",
-        "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9lcjZ4SmJTVm1manVtUzVybFhoWFlXd3daUm1qbmFfQk5wVFljYlprYmkxY2FrRl9tZ0dXOWpkS05RUm9LTDBCUnJVdWlDNnVUVnFJUTYzREN5TDZJYXZwVGtkVTkxX3U3VDcwV2xDMWZDeU1nU1AtcVFaTQ?oc=5",
+        "id": "gnews:98ffe2e05f9a80c6",
+        "title": "Eight States Sue OpenAI Over ChatGPT Safety Risks - Law360",
+        "publisher": "Law360",
+        "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNRWpva3lGT2hwMjBMQXZWQmMwdkZHUkFjcV9VUFdkTjdEbUFxWFljcTVRaDFiREx2OVJMRENyRm9OY1dRZlBTVWVhUVFQN0pYMEl3X0xnbW5pZWxfMmtPUFJHS2NUMldPSmVhOURIR1RSdmxUemVwaEo2YmgxeXJoZ0tXakdIRm1qVjIyYXREZl84Y2vSAVZBVV95cUxPZERDRXFwQ0hqdzAxdldNSW9SUUgyVmFac2ZHeXV3ZVBESUxCVm96TEtVRTlNT3hBT2pPU3hseUp6d1FlcGZPV2xXTnA3NE1NNDNXdVIzdw?oc=5",
         "tag": "rest"
       }
     ]
   },
   "gmail_news": {
-    "ok": false,
-    "soft_fail": true,
-    "soft_fail_reason": "box-only",
-    "count": 0,
-    "fetched": 0,
-    "from_cache": false,
-    "last_query_hash": "",
+    "ok": true,
+    "soft_fail": false,
+    "soft_fail_reason": null,
+    "count": 10,
+    "fetched": 10,
+    "from_cache": true,
+    "last_query_hash": "14f148f8d31e",
     "brief": false,
     "pulse_only": true,
     "briefEligible": false,
-    "sample": []
+    "sample": [
+      {
+        "id": "gmail:1a11250b91591834",
+        "title": "AI systems could cover up misbehavior",
+        "publisher": "substack.com",
+        "qi": 6.6,
+        "priority": "P3",
+        "link": "https://metr.org/blog/cover-up"
+      },
+      {
+        "id": "gmail:1a111f35812d42ba",
+        "title": "Oct. 6 - Water hacks, rogue AI raise alarms | Java vulnerabilities disclosed",
+        "publisher": "divenewsletter.com",
+        "qi": 6.6,
+        "priority": "P3",
+        "link": "https://www.cybersecuritydive.com/news/water"
+      },
+      {
+        "id": "gmail:1a1118c601f1cb6a",
+        "title": "OpenAI Starts Watermarking ChatGPT Text",
+        "publisher": "alvarocintas.com",
+        "qi": 5,
+        "priority": "P3",
+        "link": "https://newsletter.alvarocintas.com/watermark"
+      }
+    ]
   },
   "x": {
     "fetched": 0,
@@ -1300,23 +1387,23 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "query": "OWASP LLM",
+    "query": "agent sandbox escape",
     "shelf": 2,
     "from_cache": false,
     "searches": 1,
-    "rate_limit_remaining": 6,
+    "rate_limit_remaining": 9,
     "brief": false,
     "pulse_lead": false,
     "shelf_only": true,
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
-        "label": "alexandrmotologa/redteamlens",
-        "href": "https://github.com/alexandrmotologa/redteamlens"
+        "label": "hyperlight-dev/hyperagent",
+        "href": "https://github.com/hyperlight-dev/hyperagent"
       },
       {
-        "label": "isaca0315/owasp-llm-top10",
-        "href": "https://github.com/isaca0315/owasp-llm-top10"
+        "label": "pchi1606/template-provenance-sandbox-escapes",
+        "href": "https://github.com/pchi1606/template-provenance-sandbox-escapes"
       }
     ]
   },
@@ -1329,9 +1416,9 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "seeds": [
-      "DeepMind",
       "Anthropic",
-      "Meta AI"
+      "Meta AI",
+      "Fox-IT"
     ],
     "searches": 3,
     "from_cache": false,
@@ -1340,17 +1427,6 @@
     "deny_grounding_only": true,
     "url": "https://www.wikidata.org/w/api.php",
     "hints": [
-      {
-        "seed": "DeepMind",
-        "qid": "Q15733006",
-        "label": "Google DeepMind",
-        "description": "artificial intelligence company owned by Google",
-        "status": "matched",
-        "source": "wikidata",
-        "briefEligible": false,
-        "pulseLeadEligible": false,
-        "denyGroundingOnly": true
-      },
       {
         "seed": "Anthropic",
         "qid": "Q116758847",
@@ -1367,6 +1443,17 @@
         "qid": "Q112114913",
         "label": "Meta AI",
         "description": "artificial intelligence laboratory owned by Meta",
+        "status": "matched",
+        "source": "wikidata",
+        "briefEligible": false,
+        "pulseLeadEligible": false,
+        "denyGroundingOnly": true
+      },
+      {
+        "seed": "Fox-IT",
+        "qid": "Q5476521",
+        "label": "Fox-IT",
+        "description": "information security company in the Netherlands",
         "status": "matched",
         "source": "wikidata",
         "briefEligible": false,

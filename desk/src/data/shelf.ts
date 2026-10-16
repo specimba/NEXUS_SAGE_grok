@@ -23,6 +23,6 @@ export const SHELF: ShelfItem[] = [
   { href: "https://arxiv.org/abs/2610.20597", label: "arxiv.org/abs/2610.20597", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.20588", label: "arxiv.org/abs/2610.20588", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.20587", label: "arxiv.org/abs/2610.20587", reason: "arxiv-shelf" as const },
-  { href: "https://github.com/alexandrmotologa/redteamlens", label: "alexandrmotologa/redteamlens", reason: "github-search-shelf" as const },
-  { href: "https://github.com/isaca0315/owasp-llm-top10", label: "isaca0315/owasp-llm-top10", reason: "github-search-shelf" as const },
+  { href: "https://github.com/hyperlight-dev/hyperagent", label: "hyperlight-dev/hyperagent", reason: "github-search-shelf" as const },
+  { href: "https://github.com/pchi1606/template-provenance-sandbox-escapes", label: "pchi1606/template-provenance-sandbox-escapes", reason: "github-search-shelf" as const },
 ];
