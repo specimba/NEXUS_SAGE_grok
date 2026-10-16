@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-16T03:21:44Z",
+  "stamped_at": "2026-10-16T07:20:03Z",
   "config_hash": "813e5ce035c3",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,25 +11,25 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 141,
+      "duration_ms": 325,
       "paused_until": null,
       "reason": null
     },
     {
       "id": "arxiv",
       "label": "arXiv",
-      "status": "timeout",
-      "rows": 5,
-      "duration_ms": 20000,
+      "status": "ok",
+      "rows": 29,
+      "duration_ms": 3302,
       "paused_until": null,
-      "reason": "timeout after 20000ms budget · last good: 0 cached enrich + 5 kept shelf"
+      "reason": null
     },
     {
       "id": "openalex",
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 400,
+      "duration_ms": 11,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 155,
+      "duration_ms": 3,
       "paused_until": null,
       "reason": null
     },
@@ -46,8 +46,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 39,
-      "duration_ms": 8254,
+      "rows": 40,
+      "duration_ms": 9078,
       "paused_until": null,
       "reason": null
     },
@@ -56,7 +56,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 16258,
+      "duration_ms": 312,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 4102,
+      "duration_ms": 313,
       "paused_until": null,
       "reason": null
     },
@@ -73,8 +73,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 40,
-      "duration_ms": 6413,
+      "rows": 43,
+      "duration_ms": 313,
       "paused_until": null,
       "reason": null
     },
@@ -83,7 +83,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 2,
-      "duration_ms": 322,
+      "duration_ms": 313,
       "paused_until": null,
       "reason": null
     },
@@ -92,16 +92,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4397,
+      "duration_ms": 313,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 60442,
-    "sources_wall_ms": 20706,
-    "papers_lane_ms": 20706,
-    "slowest_source_ms": 20000,
+    "sources_ms": 14283,
+    "sources_wall_ms": 9081,
+    "papers_lane_ms": 3655,
+    "slowest_source_ms": 9078,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -115,37 +115,60 @@
       "github": 25000,
       "wikidata": 25000
     },
-    "timed_out": [
-      "arxiv"
-    ],
-    "wall_ms": 21072,
-    "startup_ms": 43,
-    "main_ms": 21083
+    "timed_out": [],
+    "wall_ms": 14584,
+    "startup_ms": 84,
+    "main_ms": 14606
   },
-  "multi_source_independent": 5,
+  "multi_source_independent": 7,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 5,
-    "multi_source_raw": 12,
-    "self_reposts": 7,
-    "items_in": 221,
-    "clusters_out": 204,
-    "collapsed": 17,
-    "multi_source": 5,
-    "multi_member": 14,
+    "multi_source_independent": 7,
+    "multi_source_raw": 13,
+    "self_reposts": 6,
+    "items_in": 225,
+    "clusters_out": 206,
+    "collapsed": 19,
+    "multi_source": 7,
+    "multi_member": 16,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 3,
+    "new_items": 6,
     "per_source": {
-      "hn-algolia": 39,
+      "hn-algolia": 40,
       "rss-lab": 104,
       "rss-security": 28,
-      "gnews-rss": 40,
+      "gnews-rss": 43,
       "gmail-news": 10
     },
     "multi_source_clusters": [
+      {
+        "title": "Sergey Brin says Google's AI models are reaching recursive self-improvement",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 0.798,
+        "members": [
+          {
+            "id": "hn:50113841",
+            "source": "hn-algolia",
+            "title": "Sergey Brin says Google's AI models are reaching recursive self-improvement",
+            "at": "2026-10-16T03:49:35Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:29afc3ceeab3a474",
+            "source": "gnews-rss",
+            "title": "Sergey Brin says Google's AI models are reaching a critical moment of self-improvement - Business Insider",
+            "at": "2026-10-15T12:53:00Z",
+            "publisher": "Business Insider"
+          }
+        ]
+      },
       {
         "title": "OpenAI, Meta caution US judiciary about risk of 'deepfake' evidence",
         "sources": [
@@ -168,6 +191,31 @@
             "title": "OpenAI, Meta caution US judiciary about risk of 'deepfake' evidence - Reuters",
             "at": "2026-10-15T21:02:42Z",
             "publisher": "Reuters"
+          }
+        ]
+      },
+      {
+        "title": "FTC probes Anthropic, OpenAI after Trump dismissed AI fears as \"hoax\"",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:50108600",
+            "source": "hn-algolia",
+            "title": "FTC probes Anthropic, OpenAI after Trump dismissed AI fears as \"hoax\"",
+            "at": "2026-10-15T19:02:19Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:9722f34fdc556fc2",
+            "source": "gnews-rss",
+            "title": "Report: FTC probes Anthropic, OpenAI after Trump dismissed AI fears as “hoax” - Ars Technica",
+            "at": "2026-10-15T15:43:24Z",
+            "publisher": "Ars Technica"
           }
         ]
       },
@@ -217,7 +265,7 @@
           "gnews-rss"
         ],
         "size": 3,
-        "score": 0.818,
+        "score": 0.82,
         "members": [
           {
             "id": "hn:50104542",
@@ -294,23 +342,6 @@
       }
     ],
     "self_repost_clusters": [
-      {
-        "title": "Sullivan & Cromwell brings legal expertise into agreement review",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:c59311aa5f587431",
-            "publisher": "OpenAI",
-            "title": "Sullivan & Cromwell brings legal expertise into agreement review - OpenAI"
-          }
-        ]
-      },
       {
         "title": "Bringing GPT-Rosalind to academic research labs",
         "sources": [
@@ -429,10 +460,6 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "BigGo Finance",
-          "title": "Chinese-made Step 5 Preview goes open source: 600B sparse MoE model takes No. 2 on OpenRouter weekly chart - BigGo Finance"
-        },
-        {
           "publisher": "Howl.link",
           "title": "Supermuse (@0xSupermuse) on X - Howl.link"
         },
@@ -449,30 +476,6 @@
       "hn_dropped": 27
     },
     "gnews_near_misses": [
-      {
-        "score": 0.653,
-        "blocked": "time-window",
-        "hours_apart": 28.7,
-        "a": {
-          "id": "hn:50095545",
-          "source": "hn-algolia",
-          "title": "Eight states sue OpenAI, saying ChatGPT isn't safe for kids",
-          "at": "2026-10-14T21:24:43Z"
-        },
-        "b": {
-          "id": "gnews:98ffe2e05f9a80c6",
-          "source": "gnews-rss",
-          "title": "Eight States Sue OpenAI Over ChatGPT Safety Risks - Law360",
-          "at": "2026-10-16T02:05:47Z"
-        },
-        "shared": [
-          "eight",
-          "stat",
-          "sue",
-          "openai",
-          "chatgpt"
-        ]
-      },
       {
         "score": 0.594,
         "blocked": "time-window",
@@ -496,7 +499,7 @@
         ]
       },
       {
-        "score": 0.589,
+        "score": 0.59,
         "blocked": "below-threshold",
         "hours_apart": 0.2,
         "a": {
@@ -544,7 +547,7 @@
         ]
       },
       {
-        "score": 0.573,
+        "score": 0.575,
         "blocked": "below-threshold",
         "hours_apart": 2.1,
         "a": {
@@ -565,6 +568,28 @@
           "3.5",
           "super",
           "vl"
+        ]
+      },
+      {
+        "score": 0.571,
+        "blocked": "below-threshold",
+        "hours_apart": 0.2,
+        "a": {
+          "id": "hn:50111454",
+          "source": "hn-algolia",
+          "title": "ChatGPT can peek at your Chrome tabs now",
+          "at": "2026-10-15T22:47:41Z"
+        },
+        "b": {
+          "id": "gnews:a3c696199c1a5248",
+          "source": "gnews-rss",
+          "title": "OpenAI Brings Computer Use to Chrome With ChatGPT Tab Controls - Unite.AI",
+          "at": "2026-10-15T23:02:01Z"
+        },
+        "shared": [
+          "chatgpt",
+          "chrom",
+          "tab"
         ]
       },
       {
@@ -593,7 +618,7 @@
         ]
       },
       {
-        "score": 0.519,
+        "score": 0.52,
         "blocked": "thin-overlap",
         "hours_apart": 57.1,
         "a": {
@@ -615,38 +640,40 @@
         ]
       },
       {
-        "score": 0.482,
-        "blocked": "thin-overlap",
-        "hours_apart": 57.1,
+        "score": 0.487,
+        "blocked": "below-threshold",
+        "hours_apart": 9.4,
         "a": {
-          "id": "rss:deepmind:94cc08977f17740f",
-          "source": "rss-lab",
-          "title": "Gemini 4 Argon for Robotics",
-          "at": "2026-10-13T16:01:58Z"
+          "id": "hn:50113841",
+          "source": "hn-algolia",
+          "title": "Sergey Brin says Google's AI models are reaching recursive self-improvement",
+          "at": "2026-10-16T03:49:35Z"
         },
         "b": {
-          "id": "gnews:dfdc0124d08936cc",
+          "id": "gnews:e57ba5f50cb03f2a",
           "source": "gnews-rss",
-          "title": "Google Expands Gemini 4 Argon Access, Introductory API Rates Rise After Nov. 30 - JournalArta",
-          "at": "2026-10-16T01:08:36Z"
+          "title": "Sergey Brin Says Google's AI Is Entering a Self-Improving 'Flywheel' - BigGo Finance",
+          "at": "2026-10-15T18:26:00Z"
         },
         "shared": [
-          "gemini",
-          "4",
-          "argon"
+          "sergey",
+          "brin",
+          "google",
+          "ai",
+          "self"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.782,
+        "score": 0.6,
         "blocked": "short-title",
-        "hours_apart": 3.9,
+        "hours_apart": 17.9,
         "a": {
-          "id": "hn:50105524",
+          "id": "hn:50114589",
           "source": "hn-algolia",
-          "title": "Mistral Timestral",
-          "at": "2026-10-15T15:55:37Z"
+          "title": "Timestral open weight timeseries foundation models from Mistral",
+          "at": "2026-10-16T05:54:00Z"
         },
         "b": {
           "id": "rss:mistral:51edf4c643816e6f",
@@ -656,30 +683,6 @@
         },
         "shared": [
           "timestral"
-        ]
-      },
-      {
-        "score": 0.653,
-        "blocked": "time-window",
-        "hours_apart": 28.7,
-        "a": {
-          "id": "hn:50095545",
-          "source": "hn-algolia",
-          "title": "Eight states sue OpenAI, saying ChatGPT isn't safe for kids",
-          "at": "2026-10-14T21:24:43Z"
-        },
-        "b": {
-          "id": "gnews:98ffe2e05f9a80c6",
-          "source": "gnews-rss",
-          "title": "Eight States Sue OpenAI Over ChatGPT Safety Risks - Law360",
-          "at": "2026-10-16T02:05:47Z"
-        },
-        "shared": [
-          "eight",
-          "stat",
-          "sue",
-          "openai",
-          "chatgpt"
         ]
       },
       {
@@ -705,7 +708,7 @@
         ]
       },
       {
-        "score": 0.589,
+        "score": 0.59,
         "blocked": "below-threshold",
         "hours_apart": 3.2,
         "a": {
@@ -729,7 +732,7 @@
         ]
       },
       {
-        "score": 0.589,
+        "score": 0.59,
         "blocked": "below-threshold",
         "hours_apart": 0.2,
         "a": {
@@ -777,7 +780,7 @@
         ]
       },
       {
-        "score": 0.573,
+        "score": 0.575,
         "blocked": "below-threshold",
         "hours_apart": 2.1,
         "a": {
@@ -798,6 +801,28 @@
           "3.5",
           "super",
           "vl"
+        ]
+      },
+      {
+        "score": 0.571,
+        "blocked": "below-threshold",
+        "hours_apart": 0.2,
+        "a": {
+          "id": "hn:50111454",
+          "source": "hn-algolia",
+          "title": "ChatGPT can peek at your Chrome tabs now",
+          "at": "2026-10-15T22:47:41Z"
+        },
+        "b": {
+          "id": "gnews:a3c696199c1a5248",
+          "source": "gnews-rss",
+          "title": "OpenAI Brings Computer Use to Chrome With ChatGPT Tab Controls - Unite.AI",
+          "at": "2026-10-15T23:02:01Z"
+        },
+        "shared": [
+          "chatgpt",
+          "chrom",
+          "tab"
         ]
       },
       {
@@ -830,77 +855,77 @@
   "source_health": [
     {
       "id": "arxiv",
-      "state": "fail",
-      "streak_ok": 0,
-      "streak_fail": 2,
-      "items_last": 5
+      "state": "flaky",
+      "streak_ok": 1,
+      "streak_fail": 0,
+      "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 123,
+      "streak_ok": 124,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 123,
+      "streak_ok": 124,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 123,
+      "streak_ok": 124,
       "streak_fail": 0,
-      "items_last": 40
+      "items_last": 43
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 123,
+      "streak_ok": 124,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 123,
+      "streak_ok": 124,
       "streak_fail": 0,
-      "items_last": 39
+      "items_last": 40
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 35,
+      "streak_ok": 36,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 27,
+      "streak_ok": 28,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 123,
+      "streak_ok": 124,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 123,
+      "streak_ok": 124,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.005865555555555555,
+    "hours": 0.004104722222222222,
     "stale": false
   },
   "hf": {
@@ -909,10 +934,10 @@
     "url": "https://huggingface.co/api/daily_papers"
   },
   "arxiv": {
-    "ok": false,
-    "enriched": 0,
+    "ok": true,
+    "enriched": 24,
     "shelf": 5,
-    "timed_out": true,
+    "timed_out": false,
     "budget_ms": 20000,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
@@ -925,13 +950,13 @@
     "secondary": 3,
     "query": "Hugging Face agent",
     "mode": "search",
-    "from_cache": false,
-    "searches": 1,
+    "from_cache": true,
+    "searches": 0,
     "retries": 0,
     "status": "ok",
     "paused_until": null,
     "pause_reason": null,
-    "requests": 1,
+    "requests": 0,
     "auth": "anon",
     "brief": false,
     "pulse_lead": false,
@@ -968,8 +993,8 @@
     "enriched": 0,
     "query": "doi:10.5281/zenodo.21686546",
     "mode": "filter",
-    "from_cache": false,
-    "searches": 1,
+    "from_cache": true,
+    "searches": 0,
     "brief": false,
     "pulse_lead": false,
     "papers_enrich_only": true,
@@ -981,7 +1006,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 39,
+    "count": 40,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -1004,20 +1029,20 @@
       {
         "id": "hn:50094694",
         "tag": "rest",
-        "score": 417,
+        "score": 420,
         "text": "Anthropic's Scion is heavily inspired by Mononoke"
       },
       {
         "id": "hn:50106738",
         "tag": "rest",
-        "score": 232,
+        "score": 238,
         "text": "More on Anthropic's Scion ripping off Mononoke"
       },
       {
-        "id": "hn:50082962",
+        "id": "hn:50085114",
         "tag": "rest",
-        "score": 74,
-        "text": "Anthropic conjures threat that doesn't exist yet to stoke fears of AI apocalypse"
+        "score": 40,
+        "text": "Ask HN: Why do people say \"I built it\" when we should say \"Claude built it\"?"
       }
     ]
   },
@@ -1033,47 +1058,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "https://openai.com/news/rss.xml",
+        "url": "(cache:openai)",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "https://deepmind.google/blog/rss.xml",
+        "url": "(cache:deepmind)",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "https://blog.google/technology/ai/rss/",
+        "url": "(cache:google-ai)",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "https://huggingface.co/blog/feed.xml",
+        "url": "(cache:huggingface)",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "https://mistral.ai/rss.xml",
+        "url": "(cache:mistral)",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "https://blogs.nvidia.com/feed/",
+        "url": "(cache:nvidia)",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "https://developer.nvidia.com/blog/feed",
+        "url": "(cache:nvidia-dev)",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
+        "url": "(cache:ms-research)",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "https://research.google/blog/rss/",
+        "url": "(cache:google-research)",
         "count": 12
       }
     ],
@@ -1119,17 +1144,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "https://blog.trailofbits.com/feed/",
+        "url": "(cache:trailofbits)",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "https://blog.fox-it.com/feed/",
+        "url": "(cache:fox-it)",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "https://projectzero.google/feed.xml",
+        "url": "(cache:projectzero)",
         "count": 6
       }
     ],
@@ -1170,7 +1195,7 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 40,
+    "items": 43,
     "pool": 349,
     "corroborators": [
       {
@@ -1200,7 +1225,7 @@
       {
         "id": "gnews:011113429408ecd8",
         "anchor_id": "hn:50094903",
-        "score": 0.81,
+        "score": 0.812,
         "title": "OpenAI bugging suspect allegedly booked one-way trip to Saudi Arabia - Al Jazeera",
         "publisher": "Al Jazeera",
         "self_repost": false
@@ -1216,7 +1241,7 @@
       {
         "id": "gnews:52f9274bf7e96996",
         "anchor_id": "hn:50104542",
-        "score": 0.827,
+        "score": 0.828,
         "title": "NVIDIA Nemotron 3.5 Super VL: 120B Open AI Model - https://tech-insider.org/",
         "publisher": "https://tech-insider.org/",
         "self_repost": false
@@ -1227,6 +1252,14 @@
         "score": 0.6,
         "title": "Nvidia Releases Nemotron 3.5 Super VL to Widen the Open-Weight AI Field - Startup Fortune",
         "publisher": "Startup Fortune",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:9722f34fdc556fc2",
+        "anchor_id": "hn:50108600",
+        "score": 1,
+        "title": "Report: FTC probes Anthropic, OpenAI after Trump dismissed AI fears as “hoax” - Ars Technica",
+        "publisher": "Ars Technica",
         "self_repost": false
       },
       {
@@ -1244,6 +1277,14 @@
         "title": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning | NVIDIA Technical Blog - NVIDIA Developer",
         "publisher": "NVIDIA Developer",
         "self_repost": true
+      },
+      {
+        "id": "gnews:29afc3ceeab3a474",
+        "anchor_id": "hn:50113841",
+        "score": 0.775,
+        "title": "Sergey Brin says Google's AI models are reaching a critical moment of self-improvement - Business Insider",
+        "publisher": "Business Insider",
+        "self_repost": false
       },
       {
         "id": "gnews:7f093ce99947c1ab",
@@ -1271,9 +1312,9 @@
       }
     ],
     "http_status": 200,
-    "content_type": "application/xml; charset=utf-8",
+    "content_type": null,
     "format": "rss2",
-    "from_cache": false,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1303,10 +1344,10 @@
         "tag": "rest"
       },
       {
-        "id": "gnews:b2c14ba8a1ef35d6",
+        "id": "gnews:7bbdc48ba7819a70",
         "title": "Winklevosses' Crypto Co. Gemini Can't Ditch CFTC Settlement - Law360",
         "publisher": "Law360",
-        "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9VbUJUckQ0Uk1XeHRnT3FTRGpsTV9wbTZjTHNNS0RNTTNIaFB4cFdtdm9GUWxjNVFDcGdQWnJVaXZPV3VrUXk2c2lTN0RZNzQtSFQxLUhR0gFWQVVfeXFMT1VtQlRyRDRSTVd4dGdPcVNEamxNX3BtNmNMc01LRE1NM0hoUHhwV212b0ZRbGM1UUNwZ1BaclVpdk9XdWtReTZzaVM3RFk3NC1IVDEtSFE?oc=5",
+        "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPUERGTUdEN3FSc2t2LUl1UWdFMmRKLUVicGNwM1VycW9jcjNXNkNpUUlKSVVBNEo0YmR2eVBvdk9UMXh3dVNtM21jcVZaMUFtZkFtUThqSldXNFc1a3U5TVdMM3UxRDFhMlF2SHNsdTZKdUljSlNCQVctTy1zUzB1djlDOGtyTEV5VXFoa3MyZ1IxWWtPZEdsMXVzOGxYME1vNnlEZVFsN3lrdVVxdDdFVTR30gFWQVVfeXFMT1VtQlRyRDRSTVd4dGdPcVNEamxNX3BtNmNMc01LRE1NM0hoUHhwV212b0ZRbGM1UUNwZ1BaclVpdk9XdWtReTZzaVM3RFk3NC1IVDEtSFE?oc=5",
         "tag": "rest"
       },
       {
@@ -1319,17 +1360,42 @@
     ]
   },
   "gmail_news": {
-    "ok": false,
-    "soft_fail": true,
-    "soft_fail_reason": "box-only",
-    "count": 0,
-    "fetched": 0,
-    "from_cache": false,
-    "last_query_hash": "",
+    "ok": true,
+    "soft_fail": false,
+    "soft_fail_reason": null,
+    "count": 10,
+    "fetched": 10,
+    "from_cache": true,
+    "last_query_hash": "14f148f8d31e",
     "brief": false,
     "pulse_only": true,
     "briefEligible": false,
-    "sample": []
+    "sample": [
+      {
+        "id": "gmail:1a11250b91591834",
+        "title": "AI systems could cover up misbehavior",
+        "publisher": "substack.com",
+        "qi": 6.6,
+        "priority": "P3",
+        "link": "https://metr.org/blog/cover-up"
+      },
+      {
+        "id": "gmail:1a111f35812d42ba",
+        "title": "Oct. 6 - Water hacks, rogue AI raise alarms | Java vulnerabilities disclosed",
+        "publisher": "divenewsletter.com",
+        "qi": 6.6,
+        "priority": "P3",
+        "link": "https://www.cybersecuritydive.com/news/water"
+      },
+      {
+        "id": "gmail:1a1118c601f1cb6a",
+        "title": "OpenAI Starts Watermarking ChatGPT Text",
+        "publisher": "alvarocintas.com",
+        "qi": 5,
+        "priority": "P3",
+        "link": "https://newsletter.alvarocintas.com/watermark"
+      }
+    ]
   },
   "x": {
     "fetched": 0,
@@ -1345,9 +1411,9 @@
     "soft_fail_reason": null,
     "query": "agent sandbox escape",
     "shelf": 2,
-    "from_cache": false,
-    "searches": 1,
-    "rate_limit_remaining": 9,
+    "from_cache": true,
+    "searches": 0,
+    "rate_limit_remaining": null,
     "brief": false,
     "pulse_lead": false,
     "shelf_only": true,
@@ -1376,8 +1442,8 @@
       "Meta AI",
       "Fox-IT"
     ],
-    "searches": 3,
-    "from_cache": false,
+    "searches": 0,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "deny_grounding_only": true,

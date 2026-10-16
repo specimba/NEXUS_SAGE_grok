@@ -16,7 +16,7 @@ export type RssLabRow = {
   cluster_id?: string;
 };
 
-export const RSS_LABS_AT = "2026-10-16T03:21:44Z";
+export const RSS_LABS_AT = "2026-10-16T07:20:03Z";
 
 export const RSS_LABS: RssLabRow[] = [
   { id: "rss:huggingface:138e9b7e7d974724", lab: "huggingface" as const, title: "Scaling Indic Pretraining: 2.8 Trillion Tokens and an Open Data Generation Pipeline", link: "https://huggingface.co/blog/nvidia/scaling-indic-pretraining", published: "2026-10-16T01:44:47Z", summary: "", source: "rss-lab" as const, tag: "rest" as const, first_seen: "2026-10-16T03:15:21Z", is_new: false, cluster_id: "cl:rss:huggingface:138e9b7e7d974724" },
