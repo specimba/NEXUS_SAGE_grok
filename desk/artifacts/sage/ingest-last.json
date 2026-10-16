@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-16T07:20:03Z",
+  "stamped_at": "2026-10-16T08:21:23Z",
   "config_hash": "813e5ce035c3",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,7 +11,7 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 325,
+      "duration_ms": 152,
       "paused_until": null,
       "reason": null
     },
@@ -20,7 +20,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 3302,
+      "duration_ms": 3944,
       "paused_until": null,
       "reason": null
     },
@@ -29,7 +29,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 11,
+      "duration_ms": 345,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 3,
+      "duration_ms": 123,
       "paused_until": null,
       "reason": null
     },
@@ -47,7 +47,7 @@
       "label": "HN",
       "status": "ok",
       "rows": 40,
-      "duration_ms": 9078,
+      "duration_ms": 8335,
       "paused_until": null,
       "reason": null
     },
@@ -56,7 +56,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 104,
-      "duration_ms": 312,
+      "duration_ms": 16869,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 313,
+      "duration_ms": 4266,
       "paused_until": null,
       "reason": null
     },
@@ -73,8 +73,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 43,
-      "duration_ms": 313,
+      "rows": 44,
+      "duration_ms": 6428,
       "paused_until": null,
       "reason": null
     },
@@ -82,8 +82,8 @@
       "id": "github",
       "label": "GitHub",
       "status": "ok",
-      "rows": 2,
-      "duration_ms": 313,
+      "rows": 3,
+      "duration_ms": 345,
       "paused_until": null,
       "reason": null
     },
@@ -92,16 +92,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 313,
+      "duration_ms": 4774,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 14283,
-    "sources_wall_ms": 9081,
-    "papers_lane_ms": 3655,
-    "slowest_source_ms": 9078,
+    "sources_ms": 45581,
+    "sources_wall_ms": 16870,
+    "papers_lane_ms": 4569,
+    "slowest_source_ms": 16869,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -116,9 +116,9 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 14584,
-    "startup_ms": 84,
-    "main_ms": 14606
+    "wall_ms": 17255,
+    "startup_ms": 43,
+    "main_ms": 17269
   },
   "multi_source_independent": 7,
   "stale_hours": 6,
@@ -127,23 +127,55 @@
     "multi_source_independent": 7,
     "multi_source_raw": 13,
     "self_reposts": 6,
-    "items_in": 225,
+    "items_in": 226,
     "clusters_out": 206,
-    "collapsed": 19,
+    "collapsed": 20,
     "multi_source": 7,
-    "multi_member": 16,
+    "multi_member": 17,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 6,
+    "new_items": 28,
     "per_source": {
       "hn-algolia": 40,
       "rss-lab": 104,
       "rss-security": 28,
-      "gnews-rss": 43,
+      "gnews-rss": 44,
       "gmail-news": 10
     },
     "multi_source_clusters": [
+      {
+        "title": "Nvidia Nemotron 3.5 Super VL 120B A12B",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 3,
+        "score": 0.817,
+        "members": [
+          {
+            "id": "hn:50104542",
+            "source": "hn-algolia",
+            "title": "Nvidia Nemotron 3.5 Super VL 120B A12B",
+            "at": "2026-10-15T14:51:59Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:52f9274bf7e96996",
+            "source": "gnews-rss",
+            "title": "NVIDIA Nemotron 3.5 Super VL: 120B Open AI Model - https://tech-insider.org/",
+            "at": "2026-10-15T15:56:48Z",
+            "publisher": "https://tech-insider.org/"
+          },
+          {
+            "id": "gnews:94756bebc864b991",
+            "source": "gnews-rss",
+            "title": "NVIDIA Nemotron 3.5 Super VL 120B vs Gemini 3.1 Pro Preview: one of these numbers is eight months old - OrcaRouter",
+            "at": "2026-10-16T05:49:05Z",
+            "publisher": "OrcaRouter"
+          }
+        ]
+      },
       {
         "title": "Sergey Brin says Google's AI models are reaching recursive self-improvement",
         "sources": [
@@ -151,7 +183,7 @@
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.798,
+        "score": 0.799,
         "members": [
           {
             "id": "hn:50113841",
@@ -226,7 +258,7 @@
           "gnews-rss"
         ],
         "size": 4,
-        "score": 0.904,
+        "score": 0.903,
         "members": [
           {
             "id": "hn:50094903",
@@ -255,38 +287,6 @@
             "title": "OpenAI engineer arrested by FBI for allegedly bugging conference room had booked one-way flight to Saudi Arabia - New York Post",
             "at": "2026-10-15T17:11:00Z",
             "publisher": "New York Post"
-          }
-        ]
-      },
-      {
-        "title": "Nvidia Nemotron 3.5 Super VL 120B A12B",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 3,
-        "score": 0.82,
-        "members": [
-          {
-            "id": "hn:50104542",
-            "source": "hn-algolia",
-            "title": "Nvidia Nemotron 3.5 Super VL 120B A12B",
-            "at": "2026-10-15T14:51:59Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:52f9274bf7e96996",
-            "source": "gnews-rss",
-            "title": "NVIDIA Nemotron 3.5 Super VL: 120B Open AI Model - https://tech-insider.org/",
-            "at": "2026-10-15T15:56:48Z",
-            "publisher": "https://tech-insider.org/"
-          },
-          {
-            "id": "gnews:80e5c956271a72e1",
-            "source": "gnews-rss",
-            "title": "Nvidia Releases Nemotron 3.5 Super VL to Widen the Open-Weight AI Field - Startup Fortune",
-            "at": "2026-10-15T15:40:11Z",
-            "publisher": "Startup Fortune"
           }
         ]
       },
@@ -343,6 +343,23 @@
     ],
     "self_repost_clusters": [
       {
+        "title": "Sullivan & Cromwell brings legal expertise into agreement review",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:c59311aa5f587431",
+            "publisher": "OpenAI",
+            "title": "Sullivan & Cromwell brings legal expertise into agreement review - OpenAI"
+          }
+        ]
+      },
+      {
         "title": "Bringing GPT-Rosalind to academic research labs",
         "sources": [
           "rss-lab"
@@ -356,23 +373,6 @@
             "id": "gnews:1d6de0b57756c98a",
             "publisher": "OpenAI",
             "title": "Bringing GPT-Rosalind to academic research labs - OpenAI"
-          }
-        ]
-      },
-      {
-        "title": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:13c39a4f232f8d6e",
-            "publisher": "NVIDIA Developer",
-            "title": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning | NVIDIA Technical Blog - NVIDIA Developer"
           }
         ]
       },
@@ -460,12 +460,12 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "Howl.link",
-          "title": "Supermuse (@0xSupermuse) on X - Howl.link"
+          "publisher": "The Hindu",
+          "title": "Meta releases weights for Muse Spark Open - The Hindu"
         },
         {
-          "publisher": "The New York Times",
-          "title": "Judge Refuses to Reverse Penalties Against Crypto Firm With Ties to Trump Family - The New York Times"
+          "publisher": "36Kr",
+          "title": "This Domestic Model Ranking 2nd Globally on OpenRouter Weekly Leaderboard Is Now Officially Open-Sourced - 36Kr"
         },
         {
           "publisher": "The Washington Post",
@@ -477,77 +477,7 @@
     },
     "gnews_near_misses": [
       {
-        "score": 0.594,
-        "blocked": "time-window",
-        "hours_apart": 214.7,
-        "a": {
-          "id": "gnews:908e601f29829c01",
-          "source": "gnews-rss",
-          "title": "Google Says AI Isn't Building Itself Yet—Even Though It Writes 75% of the Code - Decrypt",
-          "at": "2026-10-15T17:36:05Z"
-        },
-        "b": {
-          "id": "gmail:1a112914bb745ca0",
-          "source": "gmail-news",
-          "title": "This AI that can't write",
-          "at": "2026-10-06T18:54:34Z"
-        },
-        "shared": [
-          "ai",
-          "t",
-          "writ"
-        ]
-      },
-      {
-        "score": 0.59,
-        "blocked": "below-threshold",
-        "hours_apart": 0.2,
-        "a": {
-          "id": "hn:50104542",
-          "source": "hn-algolia",
-          "title": "Nvidia Nemotron 3.5 Super VL 120B A12B",
-          "at": "2026-10-15T14:51:59Z"
-        },
-        "b": {
-          "id": "gnews:13c39a4f232f8d6e",
-          "source": "gnews-rss",
-          "title": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning | NVIDIA Technical Blog - NVIDIA Developer",
-          "at": "2026-10-15T15:01:34Z"
-        },
-        "shared": [
-          "nvidia",
-          "nemotron",
-          "3.5",
-          "super",
-          "vl"
-        ]
-      },
-      {
-        "score": 0.585,
-        "blocked": "below-threshold",
-        "hours_apart": 0.8,
-        "a": {
-          "id": "hn:50104542",
-          "source": "hn-algolia",
-          "title": "Nvidia Nemotron 3.5 Super VL 120B A12B",
-          "at": "2026-10-15T14:51:59Z"
-        },
-        "b": {
-          "id": "gnews:80e5c956271a72e1",
-          "source": "gnews-rss",
-          "title": "Nvidia Releases Nemotron 3.5 Super VL to Widen the Open-Weight AI Field - Startup Fortune",
-          "at": "2026-10-15T15:40:11Z"
-        },
-        "shared": [
-          "nvidia",
-          "nemotron",
-          "3.5",
-          "super",
-          "vl"
-        ]
-      },
-      {
-        "score": 0.575,
+        "score": 0.576,
         "blocked": "below-threshold",
         "hours_apart": 2.1,
         "a": {
@@ -571,29 +501,7 @@
         ]
       },
       {
-        "score": 0.571,
-        "blocked": "below-threshold",
-        "hours_apart": 0.2,
-        "a": {
-          "id": "hn:50111454",
-          "source": "hn-algolia",
-          "title": "ChatGPT can peek at your Chrome tabs now",
-          "at": "2026-10-15T22:47:41Z"
-        },
-        "b": {
-          "id": "gnews:a3c696199c1a5248",
-          "source": "gnews-rss",
-          "title": "OpenAI Brings Computer Use to Chrome With ChatGPT Tab Controls - Unite.AI",
-          "at": "2026-10-15T23:02:01Z"
-        },
-        "shared": [
-          "chatgpt",
-          "chrom",
-          "tab"
-        ]
-      },
-      {
-        "score": 0.567,
+        "score": 0.575,
         "blocked": "below-threshold",
         "hours_apart": 0.9,
         "a": {
@@ -618,9 +526,9 @@
         ]
       },
       {
-        "score": 0.52,
+        "score": 0.513,
         "blocked": "thin-overlap",
-        "hours_apart": 57.1,
+        "hours_apart": 62,
         "a": {
           "id": "rss:deepmind:94cc08977f17740f",
           "source": "rss-lab",
@@ -628,10 +536,10 @@
           "at": "2026-10-13T16:01:58Z"
         },
         "b": {
-          "id": "gnews:79937b629ced8408",
+          "id": "gnews:4e84e3352a0350a0",
           "source": "gnews-rss",
-          "title": "Gemini 4 Argon is now rolling out to Google’s Antigravity for AI Pro subscribers - 9to5Google",
-          "at": "2026-10-16T01:10:00Z"
+          "title": "Nemotron 3.5 Bolt 74B vs Gemini 4 Argon: gated access - OrcaRouter",
+          "at": "2026-10-16T06:04:50Z"
         },
         "shared": [
           "gemini",
@@ -640,33 +548,142 @@
         ]
       },
       {
-        "score": 0.487,
-        "blocked": "below-threshold",
-        "hours_apart": 9.4,
+        "score": 0.51,
+        "blocked": "thin-overlap",
+        "hours_apart": 63.3,
         "a": {
-          "id": "hn:50113841",
-          "source": "hn-algolia",
-          "title": "Sergey Brin says Google's AI models are reaching recursive self-improvement",
-          "at": "2026-10-16T03:49:35Z"
+          "id": "rss:deepmind:94cc08977f17740f",
+          "source": "rss-lab",
+          "title": "Gemini 4 Argon for Robotics",
+          "at": "2026-10-13T16:01:58Z"
         },
         "b": {
-          "id": "gnews:e57ba5f50cb03f2a",
+          "id": "gnews:b2e3e86e3fe7a768",
           "source": "gnews-rss",
-          "title": "Sergey Brin Says Google's AI Is Entering a Self-Improving 'Flywheel' - BigGo Finance",
-          "at": "2026-10-15T18:26:00Z"
+          "title": "Google Starts Limited Release Of Gemini 4 Argon To Security Teams - CIO Africa",
+          "at": "2026-10-16T07:19:04Z"
         },
         "shared": [
-          "sergey",
-          "brin",
-          "google",
-          "ai",
-          "self"
+          "gemini",
+          "4",
+          "argon"
+        ]
+      },
+      {
+        "score": 0.479,
+        "blocked": "thin-overlap",
+        "hours_apart": 14.8,
+        "a": {
+          "id": "hn:50104922",
+          "source": "hn-algolia",
+          "title": "Nvidia/Nvidia-Nemotron-3.5-Bolt-74B-A9B-24GB",
+          "at": "2026-10-15T15:17:01Z"
+        },
+        "b": {
+          "id": "gnews:4e84e3352a0350a0",
+          "source": "gnews-rss",
+          "title": "Nemotron 3.5 Bolt 74B vs Gemini 4 Argon: gated access - OrcaRouter",
+          "at": "2026-10-16T06:04:50Z"
+        },
+        "shared": [
+          "nemotron",
+          "3.5",
+          "bolt",
+          "74b"
+        ]
+      },
+      {
+        "score": 0.474,
+        "blocked": "thin-overlap",
+        "hours_apart": 63,
+        "a": {
+          "id": "rss:deepmind:94cc08977f17740f",
+          "source": "rss-lab",
+          "title": "Gemini 4 Argon for Robotics",
+          "at": "2026-10-13T16:01:58Z"
+        },
+        "b": {
+          "id": "gnews:73de799a301b10be",
+          "source": "gnews-rss",
+          "title": "Key facts: GOOG: Search/Ads $63.3B; Cloud $24.8B $8.8B; Gemini 4 Argon - TradingView",
+          "at": "2026-10-16T07:00:00Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon"
+        ]
+      },
+      {
+        "score": 0.47,
+        "blocked": "below-threshold",
+        "hours_apart": 13.7,
+        "a": {
+          "id": "rss:nvidia:599b981c923a3fd6",
+          "source": "rss-lab",
+          "title": "Open From Data Center to Desktop: NVIDIA Expands Nemotron Family With Highest Efficiency Super VL and Bolt Models",
+          "at": "2026-10-15T15:00:24Z"
+        },
+        "b": {
+          "id": "gnews:61895ff905caefe4",
+          "source": "gnews-rss",
+          "title": "Nvidia launches open Nemotron model for enterprise AI agents - Tech in Asia",
+          "at": "2026-10-16T04:44:00Z"
+        },
+        "shared": [
+          "open",
+          "nvidia",
+          "nemotron",
+          "model"
+        ]
+      },
+      {
+        "score": 0.447,
+        "blocked": "below-threshold",
+        "hours_apart": 0.2,
+        "a": {
+          "id": "hn:50104542",
+          "source": "hn-algolia",
+          "title": "Nvidia Nemotron 3.5 Super VL 120B A12B",
+          "at": "2026-10-15T14:51:59Z"
+        },
+        "b": {
+          "id": "gnews:6ecd71bf14709680",
+          "source": "gnews-rss",
+          "title": "Open From Data Center to Desktop: NVIDIA Expands Nemotron Family With Highest Efficiency Super VL and Bolt Models - NVIDIA Blog",
+          "at": "2026-10-15T15:03:57Z"
+        },
+        "shared": [
+          "nvidia",
+          "nemotron",
+          "super",
+          "vl"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.6,
+        "score": 0.776,
+        "blocked": "short-title",
+        "hours_apart": 3.9,
+        "a": {
+          "id": "hn:50105524",
+          "source": "hn-algolia",
+          "title": "Mistral Timestral",
+          "at": "2026-10-15T15:55:37Z"
+        },
+        "b": {
+          "id": "rss:mistral:51edf4c643816e6f",
+          "source": "rss-lab",
+          "title": "Introducing Timestral",
+          "at": "2026-10-15T12:00:00Z"
+        },
+        "shared": [
+          "timestral"
+        ]
+      },
+      {
+        "score": 0.594,
         "blocked": "short-title",
         "hours_apart": 17.9,
         "a": {
@@ -686,29 +703,7 @@
         ]
       },
       {
-        "score": 0.594,
-        "blocked": "time-window",
-        "hours_apart": 214.7,
-        "a": {
-          "id": "gnews:908e601f29829c01",
-          "source": "gnews-rss",
-          "title": "Google Says AI Isn't Building Itself Yet—Even Though It Writes 75% of the Code - Decrypt",
-          "at": "2026-10-15T17:36:05Z"
-        },
-        "b": {
-          "id": "gmail:1a112914bb745ca0",
-          "source": "gmail-news",
-          "title": "This AI that can't write",
-          "at": "2026-10-06T18:54:34Z"
-        },
-        "shared": [
-          "ai",
-          "t",
-          "writ"
-        ]
-      },
-      {
-        "score": 0.59,
+        "score": 0.589,
         "blocked": "below-threshold",
         "hours_apart": 3.2,
         "a": {
@@ -732,55 +727,7 @@
         ]
       },
       {
-        "score": 0.59,
-        "blocked": "below-threshold",
-        "hours_apart": 0.2,
-        "a": {
-          "id": "hn:50104542",
-          "source": "hn-algolia",
-          "title": "Nvidia Nemotron 3.5 Super VL 120B A12B",
-          "at": "2026-10-15T14:51:59Z"
-        },
-        "b": {
-          "id": "gnews:13c39a4f232f8d6e",
-          "source": "gnews-rss",
-          "title": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning | NVIDIA Technical Blog - NVIDIA Developer",
-          "at": "2026-10-15T15:01:34Z"
-        },
-        "shared": [
-          "nvidia",
-          "nemotron",
-          "3.5",
-          "super",
-          "vl"
-        ]
-      },
-      {
-        "score": 0.585,
-        "blocked": "below-threshold",
-        "hours_apart": 0.8,
-        "a": {
-          "id": "hn:50104542",
-          "source": "hn-algolia",
-          "title": "Nvidia Nemotron 3.5 Super VL 120B A12B",
-          "at": "2026-10-15T14:51:59Z"
-        },
-        "b": {
-          "id": "gnews:80e5c956271a72e1",
-          "source": "gnews-rss",
-          "title": "Nvidia Releases Nemotron 3.5 Super VL to Widen the Open-Weight AI Field - Startup Fortune",
-          "at": "2026-10-15T15:40:11Z"
-        },
-        "shared": [
-          "nvidia",
-          "nemotron",
-          "3.5",
-          "super",
-          "vl"
-        ]
-      },
-      {
-        "score": 0.575,
+        "score": 0.576,
         "blocked": "below-threshold",
         "hours_apart": 2.1,
         "a": {
@@ -804,29 +751,7 @@
         ]
       },
       {
-        "score": 0.571,
-        "blocked": "below-threshold",
-        "hours_apart": 0.2,
-        "a": {
-          "id": "hn:50111454",
-          "source": "hn-algolia",
-          "title": "ChatGPT can peek at your Chrome tabs now",
-          "at": "2026-10-15T22:47:41Z"
-        },
-        "b": {
-          "id": "gnews:a3c696199c1a5248",
-          "source": "gnews-rss",
-          "title": "OpenAI Brings Computer Use to Chrome With ChatGPT Tab Controls - Unite.AI",
-          "at": "2026-10-15T23:02:01Z"
-        },
-        "shared": [
-          "chatgpt",
-          "chrom",
-          "tab"
-        ]
-      },
-      {
-        "score": 0.567,
+        "score": 0.575,
         "blocked": "below-threshold",
         "hours_apart": 0.9,
         "a": {
@@ -849,6 +774,75 @@
           "vl",
           "model"
         ]
+      },
+      {
+        "score": 0.546,
+        "blocked": "below-threshold",
+        "hours_apart": 10.4,
+        "a": {
+          "id": "hn:50086596",
+          "source": "hn-algolia",
+          "title": "DeepMind and Singapore fine-tune an on-device Gemma model for scam detection",
+          "at": "2026-10-14T12:24:44Z"
+        },
+        "b": {
+          "id": "rss:deepmind:36a7e1c23fbbe3b1",
+          "source": "rss-lab",
+          "title": "Google DeepMind and Singapore Government collaborate to build fine-tuned AI model for scam detection",
+          "at": "2026-10-14T02:00:14Z"
+        },
+        "shared": [
+          "deepmind",
+          "singapor",
+          "fine",
+          "model",
+          "scam",
+          "detection"
+        ]
+      },
+      {
+        "score": 0.513,
+        "blocked": "thin-overlap",
+        "hours_apart": 62,
+        "a": {
+          "id": "rss:deepmind:94cc08977f17740f",
+          "source": "rss-lab",
+          "title": "Gemini 4 Argon for Robotics",
+          "at": "2026-10-13T16:01:58Z"
+        },
+        "b": {
+          "id": "gnews:4e84e3352a0350a0",
+          "source": "gnews-rss",
+          "title": "Nemotron 3.5 Bolt 74B vs Gemini 4 Argon: gated access - OrcaRouter",
+          "at": "2026-10-16T06:04:50Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon"
+        ]
+      },
+      {
+        "score": 0.51,
+        "blocked": "thin-overlap",
+        "hours_apart": 63.3,
+        "a": {
+          "id": "rss:deepmind:94cc08977f17740f",
+          "source": "rss-lab",
+          "title": "Gemini 4 Argon for Robotics",
+          "at": "2026-10-13T16:01:58Z"
+        },
+        "b": {
+          "id": "gnews:b2e3e86e3fe7a768",
+          "source": "gnews-rss",
+          "title": "Google Starts Limited Release Of Gemini 4 Argon To Security Teams - CIO Africa",
+          "at": "2026-10-16T07:19:04Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon"
+        ]
       }
     ]
   },
@@ -856,76 +850,76 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 1,
+      "streak_ok": 2,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 124,
+      "streak_ok": 125,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 124,
+      "streak_ok": 125,
       "streak_fail": 0,
-      "items_last": 2
+      "items_last": 3
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 124,
+      "streak_ok": 125,
       "streak_fail": 0,
-      "items_last": 43
+      "items_last": 44
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 124,
+      "streak_ok": 125,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 124,
+      "streak_ok": 125,
       "streak_fail": 0,
       "items_last": 40
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 36,
+      "streak_ok": 37,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 28,
+      "streak_ok": 29,
       "streak_fail": 0,
       "items_last": 104
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 124,
+      "streak_ok": 125,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 124,
+      "streak_ok": 125,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.004104722222222222,
+    "hours": 0.004960833333333334,
     "stale": false
   },
   "hf": {
@@ -950,13 +944,13 @@
     "secondary": 3,
     "query": "Hugging Face agent",
     "mode": "search",
-    "from_cache": true,
-    "searches": 0,
+    "from_cache": false,
+    "searches": 1,
     "retries": 0,
     "status": "ok",
     "paused_until": null,
     "pause_reason": null,
-    "requests": 0,
+    "requests": 1,
     "auth": "anon",
     "brief": false,
     "pulse_lead": false,
@@ -993,8 +987,8 @@
     "enriched": 0,
     "query": "doi:10.5281/zenodo.21686546",
     "mode": "filter",
-    "from_cache": true,
-    "searches": 0,
+    "from_cache": false,
+    "searches": 1,
     "brief": false,
     "pulse_lead": false,
     "papers_enrich_only": true,
@@ -1035,7 +1029,7 @@
       {
         "id": "hn:50106738",
         "tag": "rest",
-        "score": 238,
+        "score": 241,
         "text": "More on Anthropic's Scion ripping off Mononoke"
       },
       {
@@ -1058,47 +1052,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "(cache:openai)",
+        "url": "https://openai.com/news/rss.xml",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "(cache:deepmind)",
+        "url": "https://deepmind.google/blog/rss.xml",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "(cache:google-ai)",
+        "url": "https://blog.google/technology/ai/rss/",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "(cache:huggingface)",
+        "url": "https://huggingface.co/blog/feed.xml",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "(cache:mistral)",
+        "url": "https://mistral.ai/rss.xml",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "(cache:nvidia)",
+        "url": "https://blogs.nvidia.com/feed/",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "(cache:nvidia-dev)",
+        "url": "https://developer.nvidia.com/blog/feed",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "(cache:ms-research)",
+        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "(cache:google-research)",
+        "url": "https://research.google/blog/rss/",
         "count": 12
       }
     ],
@@ -1144,17 +1138,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "(cache:trailofbits)",
+        "url": "https://blog.trailofbits.com/feed/",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "(cache:fox-it)",
+        "url": "https://blog.fox-it.com/feed/",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "(cache:projectzero)",
+        "url": "https://projectzero.google/feed.xml",
         "count": 6
       }
     ],
@@ -1195,9 +1189,33 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 43,
-    "pool": 349,
+    "items": 44,
+    "pool": 354,
     "corroborators": [
+      {
+        "id": "gnews:52f9274bf7e96996",
+        "anchor_id": "hn:50104542",
+        "score": 0.817,
+        "title": "NVIDIA Nemotron 3.5 Super VL: 120B Open AI Model - https://tech-insider.org/",
+        "publisher": "https://tech-insider.org/",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:94756bebc864b991",
+        "anchor_id": "hn:50104542",
+        "score": 0.661,
+        "title": "NVIDIA Nemotron 3.5 Super VL 120B vs Gemini 3.1 Pro Preview: one of these numbers is eight months old - OrcaRouter",
+        "publisher": "OrcaRouter",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:c59311aa5f587431",
+        "anchor_id": "rss:openai:94eadcab22c41e35",
+        "score": 1,
+        "title": "Sullivan & Cromwell brings legal expertise into agreement review - OpenAI",
+        "publisher": "OpenAI",
+        "self_repost": true
+      },
       {
         "id": "gnews:1d6de0b57756c98a",
         "anchor_id": "rss:openai:32165ee6af8945a5",
@@ -1217,7 +1235,7 @@
       {
         "id": "gnews:4d1c9b070a92dd08",
         "anchor_id": "hn:50094903",
-        "score": 0.909,
+        "score": 0.908,
         "title": "OpenAI bugging suspect booked one-way ticket to Saudi Arabia with family before arrest - CNBC",
         "publisher": "CNBC",
         "self_repost": false
@@ -1225,7 +1243,7 @@
       {
         "id": "gnews:011113429408ecd8",
         "anchor_id": "hn:50094903",
-        "score": 0.812,
+        "score": 0.811,
         "title": "OpenAI bugging suspect allegedly booked one-way trip to Saudi Arabia - Al Jazeera",
         "publisher": "Al Jazeera",
         "self_repost": false
@@ -1233,26 +1251,18 @@
       {
         "id": "gnews:e4f235d974d9b760",
         "anchor_id": "hn:50094903",
-        "score": 0.601,
+        "score": 0.6,
         "title": "OpenAI engineer arrested by FBI for allegedly bugging conference room had booked one-way flight to Saudi Arabia - New York Post",
         "publisher": "New York Post",
         "self_repost": false
       },
       {
-        "id": "gnews:52f9274bf7e96996",
-        "anchor_id": "hn:50104542",
-        "score": 0.828,
-        "title": "NVIDIA Nemotron 3.5 Super VL: 120B Open AI Model - https://tech-insider.org/",
-        "publisher": "https://tech-insider.org/",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:80e5c956271a72e1",
-        "anchor_id": "hn:50104542",
-        "score": 0.6,
-        "title": "Nvidia Releases Nemotron 3.5 Super VL to Widen the Open-Weight AI Field - Startup Fortune",
-        "publisher": "Startup Fortune",
-        "self_repost": false
+        "id": "gnews:9a63c7350ea704ad",
+        "anchor_id": "rss:deepmind:ad09b0946a60b7ff",
+        "score": 1,
+        "title": "Accelerating the search for antimicrobial peptides with Google Antigravity - Google DeepMind",
+        "publisher": "Google DeepMind",
+        "self_repost": true
       },
       {
         "id": "gnews:9722f34fdc556fc2",
@@ -1271,17 +1281,9 @@
         "self_repost": true
       },
       {
-        "id": "gnews:13c39a4f232f8d6e",
-        "anchor_id": "rss:nvidia-dev:9f5aca4e4d9dbf53",
-        "score": 1,
-        "title": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning | NVIDIA Technical Blog - NVIDIA Developer",
-        "publisher": "NVIDIA Developer",
-        "self_repost": true
-      },
-      {
         "id": "gnews:29afc3ceeab3a474",
         "anchor_id": "hn:50113841",
-        "score": 0.775,
+        "score": 0.774,
         "title": "Sergey Brin says Google's AI models are reaching a critical moment of self-improvement - Business Insider",
         "publisher": "Business Insider",
         "self_repost": false
@@ -1312,9 +1314,9 @@
       }
     ],
     "http_status": 200,
-    "content_type": null,
+    "content_type": "application/xml; charset=utf-8",
     "format": "rss2",
-    "from_cache": true,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1337,65 +1339,40 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:35c63b4b3a4f88c9",
-        "title": "OpenAI's 2026 Revenue Estimate Just Got Cut by $20 Billion. Anthropic's Quarterly Revenue Just Climbed to $16.8 Billion. - The Motley Fool",
-        "publisher": "The Motley Fool",
-        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQM3I4UTVHd0xyUFVEcnB3VmR6QnhFb0M5WUppR3pUd1R3Wi1WOExHT2E2ODVuODU2M21QWmQ4ZmczTVlfa3hPWTNPeEFtdUdHazlEUFp6Znh0Y1l6aHlmUWo3NHYyams0dUVBVU9RelRUa2ZOZTI1SjZJeXRJSGhSTlhubDU5UmxjbTVHX3g4by1ZdDN3UzZMag?oc=5",
+        "id": "gnews:d177d83470222bf5",
+        "title": "Google Removes Gemini Pro Models From the $4.99 AI Plus Plan Starting November 13 - gHacks",
+        "publisher": "gHacks",
+        "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOc0NoXzdJc3lZWC01cW95UDFqaG1hQ0xXU1VMSUpkVnl0LW9lWUo3c3FfeHdJZHBJT09PcGp4Ml9pNnladnpNTTVBUmtJVFJhZFdXMWlkT0VNWUg4elNpWWxBV3JHTW5Sd19vZzlZQkQ0R3NRdm9xMUgyTVFGdkxWNENNZ1VEWmhuY2hxcEhMbzdRLTgyMVNxZDR1Mlp2aGhoSWVFNUMxX1lDbGJmNUZEcV9WQ1ZpUQ?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:7bbdc48ba7819a70",
-        "title": "Winklevosses' Crypto Co. Gemini Can't Ditch CFTC Settlement - Law360",
-        "publisher": "Law360",
-        "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPUERGTUdEN3FSc2t2LUl1UWdFMmRKLUVicGNwM1VycW9jcjNXNkNpUUlKSVVBNEo0YmR2eVBvdk9UMXh3dVNtM21jcVZaMUFtZkFtUThqSldXNFc1a3U5TVdMM3UxRDFhMlF2SHNsdTZKdUljSlNCQVctTy1zUzB1djlDOGtyTEV5VXFoa3MyZ1IxWWtPZEdsMXVzOGxYME1vNnlEZVFsN3lrdVVxdDdFVTR30gFWQVVfeXFMT1VtQlRyRDRSTVd4dGdPcVNEamxNX3BtNmNMc01LRE1NM0hoUHhwV212b0ZRbGM1UUNwZ1BaclVpdk9XdWtReTZzaVM3RFk3NC1IVDEtSFE?oc=5",
+        "id": "gnews:7374340949c95e61",
+        "title": "OpenAI AI Model Collides with Crypto Ethics - OneSafe",
+        "publisher": "OneSafe",
+        "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5adlhCbUx5ZFgwaUdZdGMtMFJNQjh1OEUyNUI0eGlRRDRZdDRDbFZHZHBuRjdZaURfQ096RHhEQkFqeVFmYmZxdlBlNWNHMTkyc0dkTEszNmZHZ1o0NUVGNEJQQ1cyaGRk?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:98ffe2e05f9a80c6",
-        "title": "Eight States Sue OpenAI Over ChatGPT Safety Risks - Law360",
-        "publisher": "Law360",
-        "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNRWpva3lGT2hwMjBMQXZWQmMwdkZHUkFjcV9VUFdkTjdEbUFxWFljcTVRaDFiREx2OVJMRENyRm9OY1dRZlBTVWVhUVFQN0pYMEl3X0xnbW5pZWxfMmtPUFJHS2NUMldPSmVhOURIR1RSdmxUemVwaEo2YmgxeXJoZ0tXakdIRm1qVjIyYXREZl84Y2vSAVZBVV95cUxPZERDRXFwQ0hqdzAxdldNSW9SUUgyVmFac2ZHeXV3ZVBESUxCVm96TEtVRTlNT3hBT2pPU3hseUp6d1FlcGZPV2xXTnA3NE1NNDNXdVIzdw?oc=5",
+        "id": "gnews:652dd85089715006",
+        "title": "Nemotron 3.5 Bolt vs Gemini 3.1 Pro: One Shipped This Week, One Never Left Preview - OrcaRouter",
+        "publisher": "OrcaRouter",
+        "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE41YUhaYmlFZmQtY2FJbk9CQUN0R2pWV1k3VkZvLW9fZHpaWVp3S09VMUhXWVJUb2M4ZnZ3RFgwbkQ1NjdRWDVTWW5Ld2FaUUZGQnpjajBOZDdBZlV6aDB4WEtxdjVyaTBaZnlEdHQzSlF6c3Fv?oc=5",
         "tag": "rest"
       }
     ]
   },
   "gmail_news": {
-    "ok": true,
-    "soft_fail": false,
-    "soft_fail_reason": null,
-    "count": 10,
-    "fetched": 10,
-    "from_cache": true,
-    "last_query_hash": "14f148f8d31e",
+    "ok": false,
+    "soft_fail": true,
+    "soft_fail_reason": "box-only",
+    "count": 0,
+    "fetched": 0,
+    "from_cache": false,
+    "last_query_hash": "",
     "brief": false,
     "pulse_only": true,
     "briefEligible": false,
-    "sample": [
-      {
-        "id": "gmail:1a11250b91591834",
-        "title": "AI systems could cover up misbehavior",
-        "publisher": "substack.com",
-        "qi": 6.6,
-        "priority": "P3",
-        "link": "https://metr.org/blog/cover-up"
-      },
-      {
-        "id": "gmail:1a111f35812d42ba",
-        "title": "Oct. 6 - Water hacks, rogue AI raise alarms | Java vulnerabilities disclosed",
-        "publisher": "divenewsletter.com",
-        "qi": 6.6,
-        "priority": "P3",
-        "link": "https://www.cybersecuritydive.com/news/water"
-      },
-      {
-        "id": "gmail:1a1118c601f1cb6a",
-        "title": "OpenAI Starts Watermarking ChatGPT Text",
-        "publisher": "alvarocintas.com",
-        "qi": 5,
-        "priority": "P3",
-        "link": "https://newsletter.alvarocintas.com/watermark"
-      }
-    ]
+    "sample": []
   },
   "x": {
     "fetched": 0,
@@ -1410,27 +1387,31 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "query": "agent sandbox escape",
-    "shelf": 2,
-    "from_cache": true,
-    "searches": 0,
-    "rate_limit_remaining": null,
+    "shelf": 3,
+    "from_cache": false,
+    "searches": 1,
+    "rate_limit_remaining": 9,
     "brief": false,
     "pulse_lead": false,
     "shelf_only": true,
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
-        "label": "hyperlight-dev/hyperagent",
-        "href": "https://github.com/hyperlight-dev/hyperagent"
+        "label": "pranav16-king/Agent-Sandbox-Escape-Gauntlet",
+        "href": "https://github.com/pranav16-king/Agent-Sandbox-Escape-Gauntlet"
       },
       {
-        "label": "pchi1606/template-provenance-sandbox-escapes",
-        "href": "https://github.com/pchi1606/template-provenance-sandbox-escapes"
+        "label": "exitCodeNihil/qafas-sandbox",
+        "href": "https://github.com/exitCodeNihil/qafas-sandbox"
+      },
+      {
+        "label": "hyperlight-dev/hyperagent",
+        "href": "https://github.com/hyperlight-dev/hyperagent"
       }
     ]
   },
   "shelf": {
-    "count": 19,
+    "count": 20,
     "brief": false
   },
   "wikidata": {
@@ -1442,8 +1423,8 @@
       "Meta AI",
       "Fox-IT"
     ],
-    "searches": 0,
-    "from_cache": true,
+    "searches": 3,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "deny_grounding_only": true,
