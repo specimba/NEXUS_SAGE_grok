@@ -16,7 +16,7 @@ export type RssSecurityRow = {
   cluster_id?: string;
 };
 
-export const RSS_SECURITY_AT = "2026-10-16T13:26:56Z";
+export const RSS_SECURITY_AT = "2026-10-16T15:27:33Z";
 
 export const RSS_SECURITY: RssSecurityRow[] = [
   { id: "rss-sec:trailofbits:664a99950228d053", lab: "trailofbits" as const, title: "Package managers have an integrity problem", link: "https://blog.trailofbits.com/2026/10/14/package-managers-have-an-integrity-problem/", published: "2026-10-14T11:00:00Z", summary: "I tested 25 of the most popular package managers to check whether they detect a compromised package repository injecting malicious code into legitimate packages. This code integrity problem could be solved using cryptographic hashes or signatures, but many package managers are still vulnerable to this threat. Of the 25 package managers reviewed 1 , fewer than half used lockfiles that checked for…", source: "rss-security" as const, tag: "rest" as const, first_seen: "2026-10-14T17:15:03Z", is_new: false, cluster_id: "cl:rss-sec:trailofbits:664a99950228d053" },
