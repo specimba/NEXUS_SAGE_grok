@@ -1,41 +1,36 @@
 # SAGE digest pack
-compiled 2026-10-16T18:21:39.737Z
-source free-ingest digest refresh 2026-10-16T18:21:39.737Z · cycle 003 · lead hf-incident · unlock:live
+compiled 2026-10-17T03:21:37.318Z
+source free-ingest digest refresh 2026-10-17T03:21:37.318Z · cycle 003 · lead hf-incident · unlock:live
 lead_policy unlock — no new HF primary 03 Sep
 
 ## Lead
-Nvidia Nemotron 3.5 Super VL 120B A12B [high]
-3 SRC · sig 4 · pick 2026-10-16
+Anthropic assigned highest junk credit rating in June [high]
+2 SRC · sig 224 · pick 2026-10-17
 MOVE Digest/Voice follow Brief lead · cycle label 003
 UNLOCK IF Next 06:11 Istanbul pick
 
 ## Files
-### [lead / other / high] Nvidia Nemotron 3.5 Super VL 120B A12B
-3 SRC · sig 4 · pick 2026-10-16
+### [lead / other / high] Anthropic assigned highest junk credit rating in June
+2 SRC · sig 224 · pick 2026-10-17
 - stamp live
-- frozen 2026-10-16T03:15:43.042Z
-- pick 2026-10-16
+- frozen 2026-10-17T03:21:37.176Z
+- pick 2026-10-17
 1. Follow LEAD_TODAY · never invent
 2. Cycle label stays 003
 Done when: Digest lead equals Brief LEAD_TODAY title
 
-### [companion / other / medium] OpenAI bugging suspect booked one-way ticket to Saudi Arabia
-4 SRC · sig 8
-- 4 SRC
-Done when: Listed under Digest lead
-
-### [rest / other / medium] Eight states sue OpenAI, saying ChatGPT isn't safe for kids
-3 SRC · sig 7
+### [companion / other / medium] NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning
+3 SRC · sig 4
 - 3 SRC
 Done when: Listed under Digest lead
 
-### [rest / other / medium] OpenAI, Meta caution US judiciary about risk of 'deepfake' evidence
-2 SRC · sig 4
+### [rest / other / medium] Granite Switch 4.1: Chat, Decisions, and Speech from One Endpoint
+2 SRC · sig 3
 - 2 SRC
 Done when: Listed under Digest lead
 
-### [rest / other / medium] OpenAI: Employee who left for Apple took files about unreleased device
-2 SRC · sig 22
+### [rest / other / medium] Designing more efficient quantum circuits with Claude
+2 SRC · sig 108
 - 2 SRC
 Done when: Listed under Digest lead
 

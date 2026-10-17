@@ -7,64 +7,53 @@ import type { DigestUnlockSnapshot } from "@/lib/digest-unlock";
 export const DIGEST_UNLOCK: DigestUnlockSnapshot = {
   "schema": 1,
   "cycleId": "003",
-  "pickDate": "2026-10-16",
-  "frozenAt": "2026-10-16T03:15:43.042Z",
-  "leadId": "cl:hn:50104542",
+  "pickDate": "2026-10-17",
+  "frozenAt": "2026-10-17T03:21:37.176Z",
+  "leadId": "cl:hn:50122112",
   "lead": {
-    "id": "cl:hn:50104542",
+    "id": "cl:hn:50122112",
     "kind": "lead",
-    "title": "Nvidia Nemotron 3.5 Super VL 120B A12B",
-    "take": "3 SRC · sig 4 · pick 2026-10-16",
+    "title": "Anthropic assigned highest junk credit rating in June",
+    "take": "2 SRC · sig 224 · pick 2026-10-17",
     "why": "LEAD_TODAY · picked · frozen at daily pick",
     "move": "Digest/Voice follow Brief lead · cycle label 003",
-    "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
-    "sources": 3,
-    "sig": 4
+    "url": "https://www.ft.com/content/5a310aee-f555-4266-874c-b1b4db20186d",
+    "sources": 2,
+    "sig": 224
   },
   "rows": [
     {
-      "id": "cl:hn:50094903",
+      "id": "cl:rss:nvidia-dev:9f5aca4e4d9dbf53",
       "kind": "companion",
-      "title": "OpenAI bugging suspect booked one-way ticket to Saudi Arabia",
-      "take": "4 SRC · sig 8",
+      "title": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
+      "take": "3 SRC · sig 4",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
-      "url": "https://www.cnbc.com/2026/10/14/openai-alfozan-recording-raed-ventures.html",
-      "sources": 4,
-      "sig": 8
-    },
-    {
-      "id": "cl:hn:50095545",
-      "kind": "rest",
-      "title": "Eight states sue OpenAI, saying ChatGPT isn't safe for kids",
-      "take": "3 SRC · sig 7",
-      "why": "Top corroborated Wire cluster · same pack as lead pick",
-      "move": "Digest row · never displaces Brief lead",
-      "url": "https://www.theverge.com/ai-artificial-intelligence/1011500/openai-state-lawsuits-chatgpt-safety",
+      "url": "https://developer.nvidia.com/blog/nvidia-nemotron-3-5-super-vl-powers-specialized-agents-with-multimodal-reasoning/",
       "sources": 3,
-      "sig": 7
-    },
-    {
-      "id": "cl:hn:50112925",
-      "kind": "rest",
-      "title": "OpenAI, Meta caution US judiciary about risk of 'deepfake' evidence",
-      "take": "2 SRC · sig 4",
-      "why": "Top corroborated Wire cluster · same pack as lead pick",
-      "move": "Digest row · never displaces Brief lead",
-      "url": "https://www.reuters.com/legal/government/openai-meta-caution-us-judiciary-about-risk-deepfake-evidence-2026-10-15/",
-      "sources": 2,
       "sig": 4
     },
     {
-      "id": "cl:hn:50090707",
+      "id": "cl:rss:huggingface:d330643595776f9f",
       "kind": "rest",
-      "title": "OpenAI: Employee who left for Apple took files about unreleased device",
-      "take": "2 SRC · sig 22",
+      "title": "Granite Switch 4.1: Chat, Decisions, and Speech from One Endpoint",
+      "take": "2 SRC · sig 3",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
-      "url": "https://www.reuters.com/business/retail-consumer/openai-employee-who-left-apple-took-files-about-unreleased-device-openai-alleges-2026-10-14/",
+      "url": "https://huggingface.co/blog/ibm-granite/granite-switch-4-1",
       "sources": 2,
-      "sig": 22
+      "sig": 3
+    },
+    {
+      "id": "cl:hn:50121939",
+      "kind": "rest",
+      "title": "Designing more efficient quantum circuits with Claude",
+      "take": "2 SRC · sig 108",
+      "why": "Top corroborated Wire cluster · same pack as lead pick",
+      "move": "Digest row · never displaces Brief lead",
+      "url": "https://www.anthropic.com/research/designing-efficient-quantum-circuits",
+      "sources": 2,
+      "sig": 108
     }
   ]
 } as const;
