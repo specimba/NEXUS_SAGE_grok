@@ -22,6 +22,7 @@ export const SHELF: ShelfItem[] = [
   { href: "https://arxiv.org/abs/2610.22367", label: "arxiv.org/abs/2610.22367", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.22364", label: "arxiv.org/abs/2610.22364", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.22358", label: "arxiv.org/abs/2610.22358", reason: "arxiv-shelf" as const },
+  { href: "https://github.com/hajar6883/bank-reports-agent", label: "hajar6883/bank-reports-agent", reason: "github-search-shelf" as const },
+  { href: "https://github.com/Pawinski/agent-eval-harness", label: "Pawinski/agent-eval-harness", reason: "github-search-shelf" as const },
   { href: "https://github.com/princeVerma73/dispute-agent", label: "princeVerma73/dispute-agent", reason: "github-search-shelf" as const },
-  { href: "https://github.com/rlwillen0121/identity-eval-harness", label: "rlwillen0121/identity-eval-harness", reason: "github-search-shelf" as const },
 ];

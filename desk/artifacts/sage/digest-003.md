@@ -1,27 +1,32 @@
 # SAGE digest pack
-compiled 2026-10-18T03:23:32.423Z
-source free-ingest digest refresh 2026-10-18T03:23:32.423Z · cycle 003 · lead hf-incident · unlock:held
+compiled 2026-10-18T13:21:27.466Z
+source free-ingest digest refresh 2026-10-18T13:21:27.466Z · cycle 003 · lead hf-incident · unlock:live
 lead_policy unlock — no new HF primary 03 Sep
 
 ## Lead
-Anthropic assigned highest junk credit rating in June [high]
-2 SRC · sig 224 · pick 2026-10-17
+Anthropic pitches its own AI safety bill to lawmakers [high]
+3 SRC · sig 6 · pick 2026-10-18
 MOVE Digest/Voice follow Brief lead · cycle label 003
 UNLOCK IF Next 06:11 Istanbul pick
 
 ## Files
-### [lead / other / high] Anthropic assigned highest junk credit rating in June
-2 SRC · sig 224 · pick 2026-10-17
-- stamp HELD
-- frozen 2026-10-17T03:21:37.176Z
-- pick 2026-10-17
+### [lead / other / high] Anthropic pitches its own AI safety bill to lawmakers
+3 SRC · sig 6 · pick 2026-10-18
+- stamp live
+- frozen 2026-10-18T08:37:21.046Z
+- pick 2026-10-18
 1. Follow LEAD_TODAY · never invent
 2. Cycle label stays 003
 Done when: Digest lead equals Brief LEAD_TODAY title
 
-### [companion / other / medium] NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning
-3 SRC · sig 4
-- 3 SRC
+### [companion / other / medium] Introducing Beam: Reflection’s 501B open-weight model
+2 SRC · sig 12
+- 2 SRC
+Done when: Listed under Digest lead
+
+### [rest / other / medium] Anthropic offers Blackstone double-digit yield in latest chip financing
+2 SRC · sig 5
+- 2 SRC
 Done when: Listed under Digest lead
 
 ### [rest / other / medium] Granite Switch 4.1: Chat, Decisions, and Speech from One Endpoint
@@ -29,8 +34,8 @@ Done when: Listed under Digest lead
 - 2 SRC
 Done when: Listed under Digest lead
 
-### [rest / other / medium] Designing more efficient quantum circuits with Claude
-2 SRC · sig 108
+### [rest / other / medium] Anthropic assigned highest junk credit rating in June
+2 SRC · sig 290
 - 2 SRC
 Done when: Listed under Digest lead
 

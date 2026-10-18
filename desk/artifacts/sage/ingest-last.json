@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-18T08:37:04Z",
+  "stamped_at": "2026-10-18T13:21:08Z",
   "config_hash": "813e5ce035c3",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,7 +11,7 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 113,
+      "duration_ms": 130,
       "paused_until": null,
       "reason": null
     },
@@ -20,7 +20,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 3187,
+      "duration_ms": 3229,
       "paused_until": null,
       "reason": null
     },
@@ -29,7 +29,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 450,
+      "duration_ms": 402,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 189,
+      "duration_ms": 258,
       "paused_until": null,
       "reason": null
     },
@@ -46,8 +46,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 61,
-      "duration_ms": 8261,
+      "rows": 64,
+      "duration_ms": 8257,
       "paused_until": null,
       "reason": null
     },
@@ -56,7 +56,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 105,
-      "duration_ms": 16197,
+      "duration_ms": 17939,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 4422,
+      "duration_ms": 4291,
       "paused_until": null,
       "reason": null
     },
@@ -73,8 +73,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 43,
-      "duration_ms": 6295,
+      "rows": 40,
+      "duration_ms": 6326,
       "paused_until": null,
       "reason": null
     },
@@ -82,8 +82,8 @@
       "id": "github",
       "label": "GitHub",
       "status": "ok",
-      "rows": 2,
-      "duration_ms": 283,
+      "rows": 3,
+      "duration_ms": 264,
       "paused_until": null,
       "reason": null
     },
@@ -92,16 +92,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4423,
+      "duration_ms": 4404,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 43820,
-    "sources_wall_ms": 16198,
-    "papers_lane_ms": 3946,
-    "slowest_source_ms": 16197,
+    "sources_ms": 45500,
+    "sources_wall_ms": 17940,
+    "papers_lane_ms": 4026,
+    "slowest_source_ms": 17939,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -116,31 +116,31 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 16611,
+    "wall_ms": 18322,
     "startup_ms": 45,
-    "main_ms": 16625
+    "main_ms": 18336
   },
-  "multi_source_independent": 8,
+  "multi_source_independent": 6,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 8,
-    "multi_source_raw": 14,
-    "self_reposts": 6,
+    "multi_source_independent": 6,
+    "multi_source_raw": 11,
+    "self_reposts": 5,
     "items_in": 247,
-    "clusters_out": 225,
-    "collapsed": 22,
-    "multi_source": 8,
-    "multi_member": 16,
+    "clusters_out": 226,
+    "collapsed": 21,
+    "multi_source": 6,
+    "multi_member": 14,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 32,
+    "new_items": 23,
     "per_source": {
-      "hn-algolia": 61,
+      "hn-algolia": 64,
       "rss-lab": 105,
       "rss-security": 28,
-      "gnews-rss": 43,
+      "gnews-rss": 40,
       "gmail-news": 10
     },
     "multi_source_clusters": [
@@ -150,7 +150,7 @@
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 4,
+        "size": 5,
         "score": 1,
         "members": [
           {
@@ -159,6 +159,13 @@
             "title": "Anthropic pitches its own AI safety bill to lawmakers",
             "at": "2026-10-17T19:15:11Z",
             "publisher": null
+          },
+          {
+            "id": "gnews:3cee3ba2253eec78",
+            "source": "gnews-rss",
+            "title": "Anthropic Pitches AI Safety Bill to Lawmakers - Deccan Chronicle",
+            "at": "2026-10-18T10:34:14Z",
+            "publisher": "Deccan Chronicle"
           },
           {
             "id": "gnews:e7f186808373fda0",
@@ -170,9 +177,9 @@
           {
             "id": "gnews:9ac15dc0a80bcc26",
             "source": "gnews-rss",
-            "title": "Anthropic Pitches AI Safety Bill to Lawmakers, Politico Says - Bloomberg.com",
+            "title": "Anthropic Pitches AI Safety Bill to Lawmakers, Politico Says - Bloomberg",
             "at": "2026-10-16T23:16:18Z",
-            "publisher": "Bloomberg.com"
+            "publisher": "Bloomberg"
           },
           {
             "id": "gnews:af69884d636d041a",
@@ -184,13 +191,45 @@
         ]
       },
       {
+        "title": "DeepSeek-v4.1-Flash-1017",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 3,
+        "score": 0.821,
+        "members": [
+          {
+            "id": "hn:50129045",
+            "source": "hn-algolia",
+            "title": "DeepSeek-v4.1-Flash-1017",
+            "at": "2026-10-17T08:21:25Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:50129993",
+            "source": "hn-algolia",
+            "title": "The fastest DeepSeek v4.1 flash 1017 – Day 0",
+            "at": "2026-10-17T11:07:08Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:d5fcbd23045884f5",
+            "source": "gnews-rss",
+            "title": "DeepSeek V4.1-Flash-1017 Hits 77.0 on DeepSWE [2026] - shattered.io",
+            "at": "2026-10-17T12:20:21Z",
+            "publisher": "shattered.io"
+          }
+        ]
+      },
+      {
         "title": "Introducing Beam: Reflection’s 501B open-weight model",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.717,
+        "score": 0.716,
         "members": [
           {
             "id": "hn:50118213",
@@ -273,63 +312,6 @@
         ]
       },
       {
-        "title": "Anthropic assigned highest junk credit rating in June",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 0.835,
-        "members": [
-          {
-            "id": "hn:50122112",
-            "source": "hn-algolia",
-            "title": "Anthropic assigned highest junk credit rating in June",
-            "at": "2026-10-16T18:11:42Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:0048ffbdcf8d6901",
-            "source": "gnews-rss",
-            "title": "Anthropic secured highest junk credit rating in June - Yahoo Finance",
-            "at": "2026-10-16T10:35:37Z",
-            "publisher": "Yahoo Finance"
-          }
-        ]
-      },
-      {
-        "title": "China unveils draft export controls on AI, open-weight models, and chips",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 3,
-        "score": 0.697,
-        "members": [
-          {
-            "id": "hn:50121439",
-            "source": "hn-algolia",
-            "title": "China unveils draft export controls on AI, open-weight models, and chips",
-            "at": "2026-10-16T17:24:41Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:50121646",
-            "source": "hn-algolia",
-            "title": "China proposes export controls on open weight models",
-            "at": "2026-10-16T17:39:03Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:3ce54d5cbd1e2787",
-            "source": "gnews-rss",
-            "title": "China proposes export controls on advanced AI, from model weights to agents - Crypto Briefing",
-            "at": "2026-10-16T10:36:25Z",
-            "publisher": "Crypto Briefing"
-          }
-        ]
-      },
-      {
         "title": "Welcome Beam: a 501B open model you can own, customize, and scale",
         "sources": [
           "rss-lab",
@@ -353,58 +335,9 @@
             "publisher": "huggingface"
           }
         ]
-      },
-      {
-        "title": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
-        "sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "size": 3,
-        "score": 0.727,
-        "members": [
-          {
-            "id": "rss:nvidia-dev:9f5aca4e4d9dbf53",
-            "source": "rss-lab",
-            "title": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
-            "at": "2026-10-15T18:01:00Z",
-            "publisher": "nvidia-dev"
-          },
-          {
-            "id": "rss:nvidia:599b981c923a3fd6",
-            "source": "rss-lab",
-            "title": "Open From Data Center to Desktop: NVIDIA Expands Nemotron Family With Highest Efficiency Super VL and Bolt Models",
-            "at": "2026-10-15T15:00:24Z",
-            "publisher": "nvidia"
-          },
-          {
-            "id": "gnews:5541f99ed12cf594",
-            "source": "gnews-rss",
-            "title": "Nvidia launches Nemotron 3.5 Super VL and Bolt for AI agents - Techzine Global",
-            "at": "2026-10-16T08:39:05Z",
-            "publisher": "Techzine Global"
-          }
-        ]
       }
     ],
     "self_repost_clusters": [
-      {
-        "title": "RTX Spark Ignites Global Celebration as New Windows PCs Arrive",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:0b9f8ff998a353c9",
-            "publisher": "NVIDIA Blog",
-            "title": "RTX Spark Ignites Global Celebration as New Windows PCs Arrive - NVIDIA Blog"
-          }
-        ]
-      },
       {
         "title": "How employment is changing at Anthropic",
         "sources": [
@@ -419,6 +352,23 @@
             "id": "gnews:c8c1b67b88b62da7",
             "publisher": "Anthropic",
             "title": "How employment is changing at Anthropic - Anthropic"
+          }
+        ]
+      },
+      {
+        "title": "RTX Spark Ignites Global Celebration as New Windows PCs Arrive",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:0b9f8ff998a353c9",
+            "publisher": "NVIDIA Blog",
+            "title": "RTX Spark Ignites Global Celebration as New Windows PCs Arrive - NVIDIA Blog"
           }
         ]
       },
@@ -472,23 +422,6 @@
             "title": "Code, Test, and Deploy on One Machine with NVIDIA RTX Spark | NVIDIA Technical Blog - NVIDIA Developer"
           }
         ]
-      },
-      {
-        "title": "Be There for the Beginning: Celebrate the Launch of NVIDIA RTX Spark",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:5f285361b192f904",
-            "publisher": "NVIDIA Newsroom",
-            "title": "NVIDIA RTX Spark PCs Available Today — A New Beginning for Windows PCs - NVIDIA Newsroom"
-          }
-        ]
       }
     ],
     "ai_relevance": {
@@ -501,56 +434,55 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "Healthcare Digital",
-          "title": "Danaher and NVIDIA Partner to Accelerate Autonomous Science - Healthcare Digital"
+          "publisher": "Make Tech Easier",
+          "title": "NVIDIA RTX Spark laptops go on sale from $2,399, pairing a Blackwell RTX GPU and a Grace CPU on one superchip. - Make Tech Easier"
         },
         {
-          "publisher": "Electric Cars Report",
-          "title": "Mercedes-Benz and NVIDIA Expand Partnership to Advance Autonomous Driving - Electric Cars Report"
+          "publisher": "بوابة التكنولوجيا المالية",
+          "title": "Mercedes-Benz and NVIDIA Expand Partnership to Develop Next-Generation Automated Driving Systems - بوابة التكنولوجيا المالية"
         },
         {
-          "publisher": "KuCoin",
-          "title": "Nvidia vs. Apple Stock: Which Is the Better Buy in 2026? - KuCoin"
+          "publisher": "Tech Critter",
+          "title": "NVIDIA RTX Spark laptops are now available globally; Waves of support delivered via software updates - Tech Critter"
+        },
+        {
+          "publisher": "NoobFeed",
+          "title": "ASUS Arc Pro B70 Debuts With 32GB Big Battlemage GPU - NoobFeed"
         },
         {
           "publisher": "NVIDIA Blog",
           "title": "NVIDIA Lands in Europe for GTC Berlin - NVIDIA Blog"
-        },
-        {
-          "publisher": "Digital Watch Observatory",
-          "title": "European Commission launches RAISE pledging initiative - Digital Watch Observatory"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 17
+      "hn_dropped": 15
     },
     "gnews_near_misses": [
       {
-        "score": 0.458,
-        "blocked": "below-threshold",
-        "hours_apart": 6.8,
+        "score": 0.487,
+        "blocked": "thin-overlap",
+        "hours_apart": 1.2,
         "a": {
-          "id": "hn:50121439",
+          "id": "hn:50129993",
           "source": "hn-algolia",
-          "title": "China unveils draft export controls on AI, open-weight models, and chips",
-          "at": "2026-10-16T17:24:41Z"
+          "title": "The fastest DeepSeek v4.1 flash 1017 – Day 0",
+          "at": "2026-10-17T11:07:08Z"
         },
         "b": {
-          "id": "gnews:3ce54d5cbd1e2787",
+          "id": "gnews:d5fcbd23045884f5",
           "source": "gnews-rss",
-          "title": "China proposes export controls on advanced AI, from model weights to agents - Crypto Briefing",
-          "at": "2026-10-16T10:36:25Z"
+          "title": "DeepSeek V4.1-Flash-1017 Hits 77.0 on DeepSWE [2026] - shattered.io",
+          "at": "2026-10-17T12:20:21Z"
         },
         "shared": [
-          "china",
-          "export",
-          "control",
-          "ai",
-          "model"
+          "deepseek",
+          "v4.1",
+          "flash",
+          "1017"
         ]
       },
       {
-        "score": 0.431,
+        "score": 0.433,
         "blocked": "thin-overlap",
         "hours_apart": 270.6,
         "a": {
@@ -570,30 +502,29 @@
         ]
       },
       {
-        "score": 0.429,
+        "score": 0.431,
         "blocked": "time-window",
-        "hours_apart": 32.9,
+        "hours_apart": 40.5,
         "a": {
-          "id": "rss:nvidia:ea214a232a5ba774",
-          "source": "rss-lab",
-          "title": "RTX Spark Ignites Global Celebration as New Windows PCs Arrive",
-          "at": "2026-10-17T21:00:13Z"
+          "id": "hn:50122951",
+          "source": "hn-algolia",
+          "title": "How the Claude Code team does code review",
+          "at": "2026-10-16T19:04:47Z"
         },
         "b": {
-          "id": "gnews:5f285361b192f904",
+          "id": "gnews:426e16631fbd9cc6",
           "source": "gnews-rss",
-          "title": "NVIDIA RTX Spark PCs Available Today — A New Beginning for Windows PCs - NVIDIA Newsroom",
-          "at": "2026-10-16T12:03:57Z"
+          "title": "Anthropic Reveals 90% of Claude’s Code Was Written by AI, Streamlining the Review Process - KuCoin",
+          "at": "2026-10-18T11:32:48Z"
         },
         "shared": [
-          "rtx",
-          "spark",
-          "window",
-          "pcs"
+          "claude",
+          "code",
+          "review"
         ]
       },
       {
-        "score": 0.424,
+        "score": 0.423,
         "blocked": "thin-overlap",
         "hours_apart": 19.7,
         "a": {
@@ -614,28 +545,7 @@
         ]
       },
       {
-        "score": 0.422,
-        "blocked": "time-window",
-        "hours_apart": 268.2,
-        "a": {
-          "id": "gnews:9210a7265683f27d",
-          "source": "gnews-rss",
-          "title": "Letting AI agents write econometric code - CEPR",
-          "at": "2026-10-17T23:09:22Z"
-        },
-        "b": {
-          "id": "gmail:1a112914bb745ca0",
-          "source": "gmail-news",
-          "title": "This AI that can't write",
-          "at": "2026-10-06T18:54:34Z"
-        },
-        "shared": [
-          "ai",
-          "writ"
-        ]
-      },
-      {
-        "score": 0.417,
+        "score": 0.419,
         "blocked": "thin-overlap",
         "hours_apart": 1298.6,
         "a": {
@@ -655,29 +565,7 @@
         ]
       },
       {
-        "score": 0.397,
-        "blocked": "below-threshold",
-        "hours_apart": 16.1,
-        "a": {
-          "id": "hn:50127369",
-          "source": "hn-algolia",
-          "title": "China to Restrict Open-Weights Model Exports",
-          "at": "2026-10-17T02:41:30Z"
-        },
-        "b": {
-          "id": "gnews:3ce54d5cbd1e2787",
-          "source": "gnews-rss",
-          "title": "China proposes export controls on advanced AI, from model weights to agents - Crypto Briefing",
-          "at": "2026-10-16T10:36:25Z"
-        },
-        "shared": [
-          "china",
-          "model",
-          "export"
-        ]
-      },
-      {
-        "score": 0.395,
+        "score": 0.399,
         "blocked": "time-window",
         "hours_apart": 24.1,
         "a": {
@@ -697,11 +585,54 @@
           "rtx",
           "spark"
         ]
+      },
+      {
+        "score": 0.395,
+        "blocked": "below-threshold",
+        "hours_apart": 16.2,
+        "a": {
+          "id": "hn:50134131",
+          "source": "hn-algolia",
+          "title": "Anthropic pitches its own AI safety bill to lawmakers",
+          "at": "2026-10-17T19:15:11Z"
+        },
+        "b": {
+          "id": "gnews:ab2ddad704977074",
+          "source": "gnews-rss",
+          "title": "Anthropic’s proposed AI safety bill only kicks in if 50 deaths or $1 billion in damages are on the line — proposal would effectively make the Commerce Department the only agency capable of stopping an AI model - Tom's Hardware",
+          "at": "2026-10-18T11:25:00Z"
+        },
+        "shared": [
+          "anthropic",
+          "ai",
+          "safety",
+          "bill"
+        ]
+      },
+      {
+        "score": 0.369,
+        "blocked": "thin-overlap",
+        "hours_apart": 25.2,
+        "a": {
+          "id": "hn:50121490",
+          "source": "hn-algolia",
+          "title": "CERN and Mistral join forces to accelerate AI for science",
+          "at": "2026-10-16T17:27:12Z"
+        },
+        "b": {
+          "id": "gnews:d2e4fc9b0e4e1d0d",
+          "source": "gnews-rss",
+          "title": "Mistral Models - Universidad de Córdoba (UCO)",
+          "at": "2026-10-17T18:39:16Z"
+        },
+        "shared": [
+          "mistral"
+        ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.609,
+        "score": 0.611,
         "blocked": "thin-overlap",
         "hours_apart": 70.3,
         "a": {
@@ -723,7 +654,7 @@
         ]
       },
       {
-        "score": 0.485,
+        "score": 0.488,
         "blocked": "thin-overlap",
         "hours_apart": 13.6,
         "a": {
@@ -745,31 +676,30 @@
         ]
       },
       {
-        "score": 0.458,
-        "blocked": "below-threshold",
-        "hours_apart": 6.8,
+        "score": 0.487,
+        "blocked": "thin-overlap",
+        "hours_apart": 1.2,
         "a": {
-          "id": "hn:50121439",
+          "id": "hn:50129993",
           "source": "hn-algolia",
-          "title": "China unveils draft export controls on AI, open-weight models, and chips",
-          "at": "2026-10-16T17:24:41Z"
+          "title": "The fastest DeepSeek v4.1 flash 1017 – Day 0",
+          "at": "2026-10-17T11:07:08Z"
         },
         "b": {
-          "id": "gnews:3ce54d5cbd1e2787",
+          "id": "gnews:d5fcbd23045884f5",
           "source": "gnews-rss",
-          "title": "China proposes export controls on advanced AI, from model weights to agents - Crypto Briefing",
-          "at": "2026-10-16T10:36:25Z"
+          "title": "DeepSeek V4.1-Flash-1017 Hits 77.0 on DeepSWE [2026] - shattered.io",
+          "at": "2026-10-17T12:20:21Z"
         },
         "shared": [
-          "china",
-          "export",
-          "control",
-          "ai",
-          "model"
+          "deepseek",
+          "v4.1",
+          "flash",
+          "1017"
         ]
       },
       {
-        "score": 0.442,
+        "score": 0.444,
         "blocked": "thin-overlap",
         "hours_apart": 66.6,
         "a": {
@@ -791,7 +721,7 @@
         ]
       },
       {
-        "score": 0.436,
+        "score": 0.438,
         "blocked": "thin-overlap",
         "hours_apart": 70.3,
         "a": {
@@ -813,7 +743,7 @@
         ]
       },
       {
-        "score": 0.436,
+        "score": 0.438,
         "blocked": "thin-overlap",
         "hours_apart": 70.3,
         "a": {
@@ -835,7 +765,7 @@
         ]
       },
       {
-        "score": 0.433,
+        "score": 0.436,
         "blocked": "thin-overlap",
         "hours_apart": 378.3,
         "a": {
@@ -857,7 +787,7 @@
         ]
       },
       {
-        "score": 0.431,
+        "score": 0.433,
         "blocked": "thin-overlap",
         "hours_apart": 270.6,
         "a": {
@@ -882,76 +812,76 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 5,
+      "streak_ok": 6,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 136,
+      "streak_ok": 137,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 136,
+      "streak_ok": 137,
       "streak_fail": 0,
-      "items_last": 2
+      "items_last": 3
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 136,
+      "streak_ok": 137,
       "streak_fail": 0,
-      "items_last": 43
+      "items_last": 40
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 136,
+      "streak_ok": 137,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 136,
+      "streak_ok": 137,
       "streak_fail": 0,
-      "items_last": 61
+      "items_last": 64
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 48,
+      "streak_ok": 49,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 40,
+      "streak_ok": 41,
       "streak_fail": 0,
       "items_last": 105
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 136,
+      "streak_ok": 137,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 136,
+      "streak_ok": 137,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.004722777777777778,
+    "hours": 0.0053575,
     "stale": false
   },
   "hf": {
@@ -1044,7 +974,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 61,
+    "count": 64,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -1061,25 +991,25 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 17,
+    "ai_dropped": 15,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
         "id": "hn:50122800",
         "tag": "rest",
-        "score": 1034,
+        "score": 1041,
         "text": "Claude reveals ECDSA curve origins"
       },
       {
         "id": "hn:50129045",
         "tag": "rest",
-        "score": 844,
+        "score": 895,
         "text": "DeepSeek-v4.1-Flash-1017"
       },
       {
         "id": "hn:50121179",
         "tag": "rest",
-        "score": 605,
+        "score": 611,
         "text": "90% of US working hours are spent on tasks not covered well by AI benchmarks"
       }
     ]
@@ -1233,13 +1163,13 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 43,
-    "pool": 315,
+    "items": 40,
+    "pool": 312,
     "corroborators": [
       {
         "id": "gnews:e7f186808373fda0",
         "anchor_id": "hn:50134131",
-        "score": 0.951,
+        "score": 0.948,
         "title": "Anthropic quietly pitches its own AI safety bill to lawmakers - Politico",
         "publisher": "Politico",
         "self_repost": false
@@ -1247,15 +1177,15 @@
       {
         "id": "gnews:9ac15dc0a80bcc26",
         "anchor_id": "hn:50134131",
-        "score": 0.947,
-        "title": "Anthropic Pitches AI Safety Bill to Lawmakers, Politico Says - Bloomberg.com",
-        "publisher": "Bloomberg.com",
+        "score": 0.943,
+        "title": "Anthropic Pitches AI Safety Bill to Lawmakers, Politico Says - Bloomberg",
+        "publisher": "Bloomberg",
         "self_repost": false
       },
       {
         "id": "gnews:af69884d636d041a",
         "anchor_id": "hn:50134131",
-        "score": 0.947,
+        "score": 0.943,
         "title": "Anthropic Pitches AI Safety Bill to Lawmakers, Politico Says - Yahoo Finance",
         "publisher": "Yahoo Finance",
         "self_repost": false
@@ -1269,9 +1199,17 @@
         "self_repost": true
       },
       {
+        "id": "gnews:d5fcbd23045884f5",
+        "anchor_id": "hn:50129045",
+        "score": 0.797,
+        "title": "DeepSeek V4.1-Flash-1017 Hits 77.0 on DeepSWE [2026] - shattered.io",
+        "publisher": "shattered.io",
+        "self_repost": false
+      },
+      {
         "id": "gnews:cdebe1371c78f0b1",
         "anchor_id": "hn:50118213",
-        "score": 0.735,
+        "score": 0.732,
         "title": "Reflection Beam Open Weights: 501B Params, Apache 2.0 - https://tech-insider.org/",
         "publisher": "https://tech-insider.org/",
         "self_repost": false
@@ -1287,7 +1225,7 @@
       {
         "id": "gnews:a7013fe8ef4d3432",
         "anchor_id": "hn:50128784",
-        "score": 0.851,
+        "score": 0.848,
         "title": "Anthropic offers Blackstone double-digit yield in chip-financing deal, FT reports - Yahoo Finance",
         "publisher": "Yahoo Finance",
         "self_repost": false
@@ -1295,7 +1233,7 @@
       {
         "id": "gnews:0321b0c3e80efa2d",
         "anchor_id": "hn:50128784",
-        "score": 0.851,
+        "score": 0.848,
         "title": "Anthropic offers Blackstone double-digit yield in chip-financing deal, FT reports - Reuters",
         "publisher": "Reuters",
         "self_repost": false
@@ -1326,43 +1264,11 @@
       },
       {
         "id": "gnews:c8c1b67b88b62da7",
-        "anchor_id": "hn:50127555",
+        "anchor_id": "hn:50139873",
         "score": 1,
         "title": "How employment is changing at Anthropic - Anthropic",
         "publisher": "Anthropic",
         "self_repost": true
-      },
-      {
-        "id": "gnews:5f285361b192f904",
-        "anchor_id": "rss:nvidia:640799e7dc996a35",
-        "score": 0.603,
-        "title": "NVIDIA RTX Spark PCs Available Today — A New Beginning for Windows PCs - NVIDIA Newsroom",
-        "publisher": "NVIDIA Newsroom",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:3ce54d5cbd1e2787",
-        "anchor_id": "hn:50121646",
-        "score": 0.674,
-        "title": "China proposes export controls on advanced AI, from model weights to agents - Crypto Briefing",
-        "publisher": "Crypto Briefing",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:0048ffbdcf8d6901",
-        "anchor_id": "hn:50122112",
-        "score": 0.822,
-        "title": "Anthropic secured highest junk credit rating in June - Yahoo Finance",
-        "publisher": "Yahoo Finance",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:5541f99ed12cf594",
-        "anchor_id": "rss:nvidia-dev:9f5aca4e4d9dbf53",
-        "score": 0.735,
-        "title": "Nvidia launches Nemotron 3.5 Super VL and Bolt for AI agents - Techzine Global",
-        "publisher": "Techzine Global",
-        "self_repost": false
       }
     ],
     "http_status": 200,
@@ -1391,24 +1297,24 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:84a9cd02d322834f",
-        "title": "Anthropic proposes AI models can be blocked only if they risk $1 billion damage or 50 deaths - India Today",
-        "publisher": "India Today",
-        "link": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxNVDJYZDY2ZjNJTEJFYnR2bExXTEFIZU5TeTNUMmMyU2FlU2NTZmdxTFdZNXdaWWNPOEpKVXRRNm5TalpKMk81Nkw3QjRGaUpoOUJVUFY5MWRwbldVVjJfaGkyRC12Qm9GODhaZWd0Z0ZEQkNuQ2lPYlhKLWo3cl9way1LOUpoWDR4czlHSUp6amNOa1BiS1M0YUhjNzZhWE8yeFU0Z1BaTGViWk5ldnBJRlpFY1lQeHA3bzkydDdBcFFLRDBxV0FZN21qODU0eDQ4TUkzeC1DZFZrVEdROWNheE1vTmMzMnloSlZOMGxPZUFwSUZO0gH0AUFVX3lxTE1UMlhkNjZmM0lMQkVidHZsTFdMQUhlTlN5M1QyYzJTYWVTY1NmZ3FMV1k1d1pZY084SkpVdFE2blNqWkoyTzU2TDdCNEZpSmg5QlVQVjkxZHBuV1VWMl9oaTJELXZCb0Y4OFplZ3RnRkRCQ25DaU9iWEotajdyX3BrLUs5SmhYNHhzOUdJSnpqY05rUGJLUzRhSGM3NmFYTzJ4VTRnUFpMZWJaTmV2cElGWkVjWVB4cDdvOTJ0N0FwUUtEMHFXQVk3bWo4NTR4NDhNSTN4LUNkVmtUR1E5Y2F4TW9OYzMyeWhKVk4wbE9lQXBJRk4?oc=5",
+        "id": "gnews:5a30c6dbd8259119",
+        "title": "What Anthropic Doesn’t Want You To Know - More Perfect Union | Substack",
+        "publisher": "More Perfect Union | Substack",
+        "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE91aFlDUUlBUGxoVXJmS0lwelZvQUF0NUp2Wm94Z3g1c1A5NHdycjBxQ2U2MmJtSlNxbjFQOGhnQjZiYnNfZnd4TE0xVUVkcXdVZl9KTmVRMWFWSzUyajBmR3VTVXRCSmhXeFFsbnNfckU1Uk93Z2E4?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:31db25a98c97407f",
-        "title": "Anthropic Studies AI Agents That Could Bargain Over Prices and Contracts - The420.in",
-        "publisher": "The420.in",
-        "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBTUjNQMUFBa2c0UXRhR2hpTHR3TEZ6YjVDQndVUUpZTTU3Q1BDSkFUek9LWm9aMjBKRjJJemI1MV9lQy1lSnRGRERGbGh5alpIc1kyNl9YcHNNYUNlSlloMkFVNE9QR1FxWng4YUU5RQ?oc=5",
+        "id": "gnews:c2c16a9b19d49a37",
+        "title": "Disney’s $60 Million Character.AI Deal, Meta’s Brazil Scrutiny and Anthropic’s IPO Ambitions: This Week in Tech - Benzinga",
+        "publisher": "Benzinga",
+        "link": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxPS1FMRk9jN3Z2NmxwSFh4WXJ1WVhOSVdtVXBZSGQtaGU2Nl92cExfWXhkTWZRczFpVVJqYU1WNTc0ZmJrUWZoQXB1TnB6QzJ1a0VueDF2MXUzNTh2ZGdka1JLaXRNN2NPajVLUVJ1OVQwWDVKbE5Wa3p6R25hNWVILXZjcEhQcUs4VmFXUlhUdVpSVDhEVk0tUW55V21ub2VrRVNCc1FuVjNiVlozbnNFQ1R6dVdnZHgtR3hzcWZBSENaRXBGV3MyNUNZV212djVEdWVIaElpZmJ0Y1ZsVnVzQ2lFYTVjX0VqbmVUbGg3VQ?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:a3c824ea55c88370",
-        "title": "Can AI Get You A Better Deal? Anthropic Is Exploring The Rules For Bot Bargaining - NDTV Profit",
-        "publisher": "NDTV Profit",
-        "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQaGNfYk55MGkwSzluWU85ZzVjN1NpR0JGNlNiV0diWi1FNHVkUlBiRmZEaml6YkdLODBjM0RmQWtJV3FHR0J1aVVWMHlaVFF5dE8yZ0lEWEMyT1ZSUkxjTmwyOWN3MTlDLXlSbXc2MV9KTkh6amdEMFpQX0FVN3hRa3R6VUl3ZWFrNnc3UlljRHlzcmJkLU5tUk9DZ0NDYXl0OXdyUzhCMU5hamJCQ3lfUUNpaktsbVpjWDhWZkdiMlpLVTNOSkHSAc4BQVVfeXFMUEp6aVNNZGFOckhKR2laSjUwQkxMOG9WNEdoeVRqeXlWZ01LUDhZV1luMDFlUXlDalhFRUN0cEZJbWRFVmdiNWVEOVFjY1EwZUFLeXFGRHllcC1kS2tKMTVya2kyVE5EUFpPRlQ4cVJTYjdWTnF3YWJEdGtHZEVNaFBvb1ZlWF8wTjBIU28zYTZSc3hDUXFtdjBtZ05WX1hDZHVBb2x3N1hmVl9RSFJIS2ttX2ljTmRmd1lCUTBkZV82QmVlUjktN0ZTZFFaMXc?oc=5",
+        "id": "gnews:ac11619a15d1b78e",
+        "title": "NVIDIA and Cisco Introduce New Pluggable Optics Form Factor to Scale AI Factories - semivision",
+        "publisher": "semivision",
+        "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNZXR4LTdLOGVrSGJPVlVZb3FNcVlPNFZqQ0c4UVNvNXlfMmZWVTdWUWRvS1Q4MFl0SkdLaVlmX1hQcTR2aGdiOExmaVFFcG5sb2JnT05pcGZYY09hS0FMby1FeFFaSWNWMHJ6N2piRFR0SkVib3g1YWZPQllxNi1OZHFaQmg4N1ZT?oc=5",
         "tag": "rest"
       }
     ]
@@ -1439,7 +1345,7 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "query": "LLM agent eval harness",
-    "shelf": 2,
+    "shelf": 3,
     "from_cache": false,
     "searches": 1,
     "rate_limit_remaining": 9,
@@ -1449,17 +1355,21 @@
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
-        "label": "princeVerma73/dispute-agent",
-        "href": "https://github.com/princeVerma73/dispute-agent"
+        "label": "hajar6883/bank-reports-agent",
+        "href": "https://github.com/hajar6883/bank-reports-agent"
       },
       {
-        "label": "rlwillen0121/identity-eval-harness",
-        "href": "https://github.com/rlwillen0121/identity-eval-harness"
+        "label": "Pawinski/agent-eval-harness",
+        "href": "https://github.com/Pawinski/agent-eval-harness"
+      },
+      {
+        "label": "princeVerma73/dispute-agent",
+        "href": "https://github.com/princeVerma73/dispute-agent"
       }
     ]
   },
   "shelf": {
-    "count": 18,
+    "count": 19,
     "brief": false
   },
   "wikidata": {
