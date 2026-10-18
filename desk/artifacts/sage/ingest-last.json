@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-17T18:26:50Z",
+  "stamped_at": "2026-10-18T03:23:13Z",
   "config_hash": "813e5ce035c3",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,7 +11,7 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 113,
+      "duration_ms": 142,
       "paused_until": null,
       "reason": null
     },
@@ -20,7 +20,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 3185,
+      "duration_ms": 3211,
       "paused_until": null,
       "reason": null
     },
@@ -29,7 +29,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 492,
+      "duration_ms": 601,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 184,
+      "duration_ms": 110,
       "paused_until": null,
       "reason": null
     },
@@ -46,8 +46,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 54,
-      "duration_ms": 8346,
+      "rows": 64,
+      "duration_ms": 8291,
       "paused_until": null,
       "reason": null
     },
@@ -55,8 +55,8 @@
       "id": "rss_labs",
       "label": "lab RSS",
       "status": "ok",
-      "rows": 104,
-      "duration_ms": 17938,
+      "rows": 105,
+      "duration_ms": 18189,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 4156,
+      "duration_ms": 4144,
       "paused_until": null,
       "reason": null
     },
@@ -73,8 +73,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 37,
-      "duration_ms": 6424,
+      "rows": 36,
+      "duration_ms": 6326,
       "paused_until": null,
       "reason": null
     },
@@ -82,8 +82,8 @@
       "id": "github",
       "label": "GitHub",
       "status": "ok",
-      "rows": 3,
-      "duration_ms": 279,
+      "rows": 4,
+      "duration_ms": 285,
       "paused_until": null,
       "reason": null
     },
@@ -92,16 +92,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4448,
+      "duration_ms": 4376,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 45565,
-    "sources_wall_ms": 17939,
-    "papers_lane_ms": 3980,
-    "slowest_source_ms": 17938,
+    "sources_ms": 45675,
+    "sources_wall_ms": 18190,
+    "papers_lane_ms": 4071,
+    "slowest_source_ms": 18189,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -116,56 +116,56 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 18436,
-    "startup_ms": 49,
-    "main_ms": 18452
+    "wall_ms": 18638,
+    "startup_ms": 48,
+    "main_ms": 18653
   },
-  "multi_source_independent": 5,
+  "multi_source_independent": 7,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 5,
-    "multi_source_raw": 12,
-    "self_reposts": 7,
-    "items_in": 233,
-    "clusters_out": 215,
-    "collapsed": 18,
-    "multi_source": 5,
+    "multi_source_independent": 7,
+    "multi_source_raw": 13,
+    "self_reposts": 6,
+    "items_in": 243,
+    "clusters_out": 224,
+    "collapsed": 19,
+    "multi_source": 7,
     "multi_member": 17,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 35,
+    "new_items": 46,
     "per_source": {
-      "hn-algolia": 54,
-      "rss-lab": 104,
+      "hn-algolia": 64,
+      "rss-lab": 105,
       "rss-security": 28,
-      "gnews-rss": 37,
+      "gnews-rss": 36,
       "gmail-news": 10
     },
     "multi_source_clusters": [
       {
-        "title": "OpenAI models hacked a crypto wallet and breached more websites",
+        "title": "Introducing Beam: Reflection’s 501B open-weight model",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
         "size": 2,
-        "score": 1,
+        "score": 0.718,
         "members": [
           {
-            "id": "hn:50128736",
+            "id": "hn:50118213",
             "source": "hn-algolia",
-            "title": "OpenAI models hacked a crypto wallet and breached more websites",
-            "at": "2026-10-17T07:16:11Z",
+            "title": "Introducing Beam: Reflection’s 501B open-weight model",
+            "at": "2026-10-16T13:34:30Z",
             "publisher": null
           },
           {
-            "id": "gnews:5d8f1ce0c27d82b3",
+            "id": "gnews:cdebe1371c78f0b1",
             "source": "gnews-rss",
-            "title": "OpenAI models hacked a crypto wallet and breached more websites - Ars Technica",
-            "at": "2026-10-16T20:59:01Z",
-            "publisher": "Ars Technica"
+            "title": "Reflection Beam Open Weights: 501B Params, Apache 2.0 - https://tech-insider.org/",
+            "at": "2026-10-17T09:49:30Z",
+            "publisher": "https://tech-insider.org/"
           }
         ]
       },
@@ -220,6 +220,38 @@
         ]
       },
       {
+        "title": "China unveils draft export controls on AI, open-weight models, and chips",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 3,
+        "score": 0.701,
+        "members": [
+          {
+            "id": "hn:50121439",
+            "source": "hn-algolia",
+            "title": "China unveils draft export controls on AI, open-weight models, and chips",
+            "at": "2026-10-16T17:24:41Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:50121646",
+            "source": "hn-algolia",
+            "title": "China proposes export controls on open weight models",
+            "at": "2026-10-16T17:39:03Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:3ce54d5cbd1e2787",
+            "source": "gnews-rss",
+            "title": "China proposes export controls on advanced AI, from model weights to agents - Crypto Briefing",
+            "at": "2026-10-16T10:36:25Z",
+            "publisher": "Crypto Briefing"
+          }
+        ]
+      },
+      {
         "title": "Welcome Beam: a 501B open model you can own, customize, and scale",
         "sources": [
           "rss-lab",
@@ -245,32 +277,81 @@
         ]
       },
       {
-        "title": "OpenAI, Meta caution US judiciary about risk of 'deepfake' evidence",
+        "title": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
         "sources": [
-          "hn-algolia",
+          "rss-lab",
           "gnews-rss"
+        ],
+        "size": 3,
+        "score": 0.728,
+        "members": [
+          {
+            "id": "rss:nvidia-dev:9f5aca4e4d9dbf53",
+            "source": "rss-lab",
+            "title": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
+            "at": "2026-10-15T18:01:00Z",
+            "publisher": "nvidia-dev"
+          },
+          {
+            "id": "rss:nvidia:599b981c923a3fd6",
+            "source": "rss-lab",
+            "title": "Open From Data Center to Desktop: NVIDIA Expands Nemotron Family With Highest Efficiency Super VL and Bolt Models",
+            "at": "2026-10-15T15:00:24Z",
+            "publisher": "nvidia"
+          },
+          {
+            "id": "gnews:5541f99ed12cf594",
+            "source": "gnews-rss",
+            "title": "Nvidia launches Nemotron 3.5 Super VL and Bolt for AI agents - Techzine Global",
+            "at": "2026-10-16T08:39:05Z",
+            "publisher": "Techzine Global"
+          }
+        ]
+      },
+      {
+        "title": "Introducing Timestral",
+        "sources": [
+          "rss-lab",
+          "hn-algolia"
         ],
         "size": 2,
         "score": 1,
         "members": [
           {
-            "id": "hn:50112925",
+            "id": "hn:50115465",
             "source": "hn-algolia",
-            "title": "OpenAI, Meta caution US judiciary about risk of 'deepfake' evidence",
-            "at": "2026-10-16T02:00:20Z",
+            "title": "Mistral announces Timestral: SOTA time-series foundation models",
+            "at": "2026-10-16T07:57:26Z",
             "publisher": null
           },
           {
-            "id": "gnews:9fd908b5147f70a0",
-            "source": "gnews-rss",
-            "title": "OpenAI, Meta caution US judiciary about risk of 'deepfake' evidence - Reuters",
-            "at": "2026-10-15T21:02:42Z",
-            "publisher": "Reuters"
+            "id": "rss:mistral:51edf4c643816e6f",
+            "source": "rss-lab",
+            "title": "Introducing Timestral",
+            "at": "2026-10-15T12:00:00Z",
+            "publisher": "mistral"
           }
         ]
       }
     ],
     "self_repost_clusters": [
+      {
+        "title": "RTX Spark Ignites Global Celebration as New Windows PCs Arrive",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:0b9f8ff998a353c9",
+            "publisher": "NVIDIA Blog",
+            "title": "RTX Spark Ignites Global Celebration as New Windows PCs Arrive - NVIDIA Blog"
+          }
+        ]
+      },
       {
         "title": "How employment is changing at Anthropic",
         "sources": [
@@ -289,23 +370,6 @@
         ]
       },
       {
-        "title": "How Itaú is building generative AI for its entire customer base",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:03a09d4108e95317",
-            "publisher": "OpenAI",
-            "title": "How Itaú is building generative AI for its entire customer base - OpenAI"
-          }
-        ]
-      },
-      {
         "title": "Claude reveals ECDSA curve origins",
         "sources": [
           "hn-algolia"
@@ -319,23 +383,6 @@
             "id": "gnews:844e3c1fee61cbb1",
             "publisher": "Anthropic",
             "title": "Claude reveals ECDSA curve origins - Anthropic"
-          }
-        ]
-      },
-      {
-        "title": "Stack Overflow for Agents triples signups with ChatGPT plugin",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:3fb9bf19fdbeac30",
-            "publisher": "OpenAI",
-            "title": "Stack Overflow for Agents triples signups with ChatGPT plugin - OpenAI"
           }
         ]
       },
@@ -374,7 +421,7 @@
         ]
       },
       {
-        "title": "Bringing GPT-Rosalind to academic research labs",
+        "title": "Be There for the Beginning: Celebrate the Launch of NVIDIA RTX Spark",
         "sources": [
           "rss-lab"
         ],
@@ -384,9 +431,9 @@
         ],
         "self_reposts": [
           {
-            "id": "gnews:1d6de0b57756c98a",
-            "publisher": "OpenAI",
-            "title": "Bringing GPT-Rosalind to academic research labs - OpenAI"
+            "id": "gnews:5f285361b192f904",
+            "publisher": "NVIDIA Newsroom",
+            "title": "NVIDIA RTX Spark PCs Available Today — A New Beginning for Windows PCs - NVIDIA Newsroom"
           }
         ]
       }
@@ -397,43 +444,42 @@
           "lab": "nvidia",
           "title": "Dial Up the Cloud: NVIDIA DLSS 4.5 Controls Arrive on GeForce NOW",
           "reason": "category:GeForce NOW"
-        },
-        {
-          "lab": "nvidia",
-          "title": "Rally Up: ‘Gears of War: E-Day’ Launches on GeForce NOW",
-          "reason": "category:GeForce NOW"
         }
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "Yahoo Finance",
-          "title": "Nvidia (NVDA) Trades Far Below Its Usual Multiple, Is Customer Debt the Real Risk? - Yahoo Finance"
+          "publisher": "Simply Wall Street",
+          "title": "Nvidia (NVDA) Stock Trades Below Fair Value On Cash Flow - Simply Wall Street"
         },
         {
-          "publisher": "The Economic Times",
-          "title": "One decision that made Jensen Huang worth $185 billion: Nvidia nearly went bankrupt in 1996, then a risky - The Economic Times"
-        },
-        {
-          "publisher": "Startup Fortune",
-          "title": "Nvidia says the RTX 5090 is not dead but admits supply is tight - Startup Fortune"
+          "publisher": "The Globe and Mail",
+          "title": "$3,000 Split Across Nvidia, Broadcom, and TSMC Could Be Worth This Much by 2030 - The Globe and Mail"
         },
         {
           "publisher": "Yahoo Finance",
-          "title": "Martin Shkreli Says New Photonic Chips Could Run Circles Around Nvidia - Yahoo Finance"
+          "title": "$3,000 Split Across Nvidia, Broadcom, and TSMC Could Be Worth This Much by 2030 - Yahoo Finance"
         },
         {
-          "publisher": "24/7 Wall St.",
-          "title": "Martin Shkreli Says New Photonic Chips Could Run Circles Around Nvidia - 24/7 Wall St."
+          "publisher": "NVIDIA Blog",
+          "title": "NVIDIA Lands in Europe for GTC Berlin - NVIDIA Blog"
+        },
+        {
+          "publisher": "Digital Watch Observatory",
+          "title": "European Commission launches RAISE pledging initiative - Digital Watch Observatory"
+        },
+        {
+          "publisher": "App Economy Insights",
+          "title": "📊 PRO: This Week in Visuals - App Economy Insights"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 17
+      "hn_dropped": 16
     },
     "gnews_near_misses": [
       {
-        "score": 0.512,
+        "score": 0.598,
         "blocked": "below-threshold",
-        "hours_apart": 21.4,
+        "hours_apart": 14.2,
         "a": {
           "id": "hn:50121939",
           "source": "hn-algolia",
@@ -441,41 +487,131 @@
           "at": "2026-10-16T18:00:18Z"
         },
         "b": {
-          "id": "gnews:4ad4fd8dec35bb9b",
+          "id": "gnews:f1ac3aaaf28d1bd6",
           "source": "gnews-rss",
-          "title": "Anthropic's Claude Improves Quantum Optimization Designs - Quantum Zeitgeist",
-          "at": "2026-10-17T15:22:30Z"
+          "title": "Anthropic’s Claude Designs Leaner Quantum Circuits, Reducing Resources Needed for Key Calculations - The Quantum Insider",
+          "at": "2026-10-17T08:12:06Z"
         },
         "shared": [
           "design",
           "quantum",
+          "circuit",
           "claude"
         ]
       },
       {
-        "score": 0.498,
-        "blocked": "thin-overlap",
-        "hours_apart": 97.3,
+        "score": 0.442,
+        "blocked": "below-threshold",
+        "hours_apart": 6.8,
         "a": {
-          "id": "rss:deepmind:94cc08977f17740f",
-          "source": "rss-lab",
-          "title": "Gemini 4 Argon for Robotics",
-          "at": "2026-10-13T16:01:58Z"
+          "id": "hn:50121439",
+          "source": "hn-algolia",
+          "title": "China unveils draft export controls on AI, open-weight models, and chips",
+          "at": "2026-10-16T17:24:41Z"
         },
         "b": {
-          "id": "gnews:c4673fc1ccda9a83",
+          "id": "gnews:3ce54d5cbd1e2787",
           "source": "gnews-rss",
-          "title": "New Gemini 4 Argon Released. It Builds Realistic 3D Simulations and Analyzes Video Frame by Frame - Наша Ніва",
-          "at": "2026-10-17T17:18:58Z"
+          "title": "China proposes export controls on advanced AI, from model weights to agents - Crypto Briefing",
+          "at": "2026-10-16T10:36:25Z"
         },
         "shared": [
-          "gemini",
-          "4",
-          "argon"
+          "china",
+          "export",
+          "control",
+          "ai",
+          "model"
         ]
       },
       {
-        "score": 0.409,
+        "score": 0.423,
+        "blocked": "thin-overlap",
+        "hours_apart": 19.7,
+        "a": {
+          "id": "hn:50118549",
+          "source": "hn-algolia",
+          "title": "Reflection AI Launches Beam, Now on Hugging Face",
+          "at": "2026-10-16T14:05:10Z"
+        },
+        "b": {
+          "id": "gnews:cdebe1371c78f0b1",
+          "source": "gnews-rss",
+          "title": "Reflection Beam Open Weights: 501B Params, Apache 2.0 - https://tech-insider.org/",
+          "at": "2026-10-17T09:49:30Z"
+        },
+        "shared": [
+          "reflection",
+          "beam"
+        ]
+      },
+      {
+        "score": 0.423,
+        "blocked": "time-window",
+        "hours_apart": 32.9,
+        "a": {
+          "id": "rss:nvidia:ea214a232a5ba774",
+          "source": "rss-lab",
+          "title": "RTX Spark Ignites Global Celebration as New Windows PCs Arrive",
+          "at": "2026-10-17T21:00:13Z"
+        },
+        "b": {
+          "id": "gnews:5f285361b192f904",
+          "source": "gnews-rss",
+          "title": "NVIDIA RTX Spark PCs Available Today — A New Beginning for Windows PCs - NVIDIA Newsroom",
+          "at": "2026-10-16T12:03:57Z"
+        },
+        "shared": [
+          "rtx",
+          "spark",
+          "window",
+          "pcs"
+        ]
+      },
+      {
+        "score": 0.423,
+        "blocked": "time-window",
+        "hours_apart": 268.2,
+        "a": {
+          "id": "gnews:9210a7265683f27d",
+          "source": "gnews-rss",
+          "title": "Letting AI agents write econometric code - CEPR",
+          "at": "2026-10-17T23:09:22Z"
+        },
+        "b": {
+          "id": "gmail:1a112914bb745ca0",
+          "source": "gmail-news",
+          "title": "This AI that can't write",
+          "at": "2026-10-06T18:54:34Z"
+        },
+        "shared": [
+          "ai",
+          "writ"
+        ]
+      },
+      {
+        "score": 0.396,
+        "blocked": "below-threshold",
+        "hours_apart": 16.1,
+        "a": {
+          "id": "hn:50127369",
+          "source": "hn-algolia",
+          "title": "China to Restrict Open-Weights Model Exports",
+          "at": "2026-10-17T02:41:30Z"
+        },
+        "b": {
+          "id": "gnews:3ce54d5cbd1e2787",
+          "source": "gnews-rss",
+          "title": "China proposes export controls on advanced AI, from model weights to agents - Crypto Briefing",
+          "at": "2026-10-16T10:36:25Z"
+        },
+        "shared": [
+          "china",
+          "model",
+          "export"
+        ]
+      },
+      {
+        "score": 0.387,
         "blocked": "time-window",
         "hours_apart": 24.1,
         "a": {
@@ -498,139 +634,31 @@
       },
       {
         "score": 0.386,
-        "blocked": "thin-overlap",
-        "hours_apart": 27,
-        "a": {
-          "id": "hn:50118688",
-          "source": "hn-algolia",
-          "title": "Show HN: Gemini 4 Argon plays StarCraft",
-          "at": "2026-10-16T14:18:44Z"
-        },
-        "b": {
-          "id": "gnews:c4673fc1ccda9a83",
-          "source": "gnews-rss",
-          "title": "New Gemini 4 Argon Released. It Builds Realistic 3D Simulations and Analyzes Video Frame by Frame - Наша Ніва",
-          "at": "2026-10-17T17:18:58Z"
-        },
-        "shared": [
-          "gemini",
-          "4",
-          "argon"
-        ]
-      },
-      {
-        "score": 0.365,
         "blocked": "time-window",
-        "hours_apart": 99.1,
+        "hours_apart": 33.1,
         "a": {
-          "id": "rss:nvidia-dev:592d88a7a6f3222f",
+          "id": "rss:nvidia-dev:3a44cf0b79fe9cae",
           "source": "rss-lab",
-          "title": "NVIDIA Run:ai Is Now Open Source as Part of NVIDIA DSX AI Factory Platform",
-          "at": "2026-10-13T14:19:40Z"
+          "title": "Code, Test, and Deploy on One Machine with NVIDIA RTX Spark",
+          "at": "2026-10-16T17:00:00Z"
         },
         "b": {
-          "id": "gnews:f42ec843aac60b71",
+          "id": "gnews:e4820e6a79ea5c76",
           "source": "gnews-rss",
-          "title": "Monetize360: AI Factory Monetization Now Available on NVIDIA DSX Air - EIN News",
-          "at": "2026-10-17T17:28:00Z"
+          "title": "Nvidia RTX Spark Gaming Tests: Are These New AI Laptops Good for Play, Too? - PCMag",
+          "at": "2026-10-18T02:06:51Z"
         },
         "shared": [
+          "test",
           "nvidia",
-          "ai",
-          "dsx",
-          "factory"
-        ]
-      },
-      {
-        "score": 0.319,
-        "blocked": "thin-overlap",
-        "hours_apart": 93.6,
-        "a": {
-          "id": "rss:deepmind:8b1ab1df41ac00d8",
-          "source": "rss-lab",
-          "title": "Developing Gemini 4 Argon responsibly and safely",
-          "at": "2026-10-13T19:43:07Z"
-        },
-        "b": {
-          "id": "gnews:c4673fc1ccda9a83",
-          "source": "gnews-rss",
-          "title": "New Gemini 4 Argon Released. It Builds Realistic 3D Simulations and Analyzes Video Frame by Frame - Наша Ніва",
-          "at": "2026-10-17T17:18:58Z"
-        },
-        "shared": [
-          "gemini",
-          "4",
-          "argon"
-        ]
-      },
-      {
-        "score": 0.304,
-        "blocked": "thin-overlap",
-        "hours_apart": 97.3,
-        "a": {
-          "id": "rss:deepmind:851107eacfc8ba0f",
-          "source": "rss-lab",
-          "title": "Gemini 4 Argon: Built to solve your hardest problems",
-          "at": "2026-10-13T16:01:52Z"
-        },
-        "b": {
-          "id": "gnews:c4673fc1ccda9a83",
-          "source": "gnews-rss",
-          "title": "New Gemini 4 Argon Released. It Builds Realistic 3D Simulations and Analyzes Video Frame by Frame - Наша Ніва",
-          "at": "2026-10-17T17:18:58Z"
-        },
-        "shared": [
-          "gemini",
-          "4",
-          "argon"
-        ]
-      },
-      {
-        "score": 0.304,
-        "blocked": "thin-overlap",
-        "hours_apart": 97.3,
-        "a": {
-          "id": "rss:google-ai:74c9e10c02543c49",
-          "source": "rss-lab",
-          "title": "Gemini 4 Argon: Built to solve your hardest problems",
-          "at": "2026-10-13T16:00:00Z"
-        },
-        "b": {
-          "id": "gnews:c4673fc1ccda9a83",
-          "source": "gnews-rss",
-          "title": "New Gemini 4 Argon Released. It Builds Realistic 3D Simulations and Analyzes Video Frame by Frame - Наша Ніва",
-          "at": "2026-10-17T17:18:58Z"
-        },
-        "shared": [
-          "gemini",
-          "4",
-          "argon"
+          "rtx",
+          "spark"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.601,
-        "blocked": "short-title",
-        "hours_apart": 17.9,
-        "a": {
-          "id": "hn:50114589",
-          "source": "hn-algolia",
-          "title": "Timestral open weight timeseries foundation models from Mistral",
-          "at": "2026-10-16T05:54:00Z"
-        },
-        "b": {
-          "id": "rss:mistral:51edf4c643816e6f",
-          "source": "rss-lab",
-          "title": "Introducing Timestral",
-          "at": "2026-10-15T12:00:00Z"
-        },
-        "shared": [
-          "timestral"
-        ]
-      },
-      {
-        "score": 0.596,
+        "score": 0.61,
         "blocked": "thin-overlap",
         "hours_apart": 70.3,
         "a": {
@@ -652,9 +680,9 @@
         ]
       },
       {
-        "score": 0.512,
+        "score": 0.598,
         "blocked": "below-threshold",
-        "hours_apart": 21.4,
+        "hours_apart": 14.2,
         "a": {
           "id": "hn:50121939",
           "source": "hn-algolia",
@@ -662,41 +690,60 @@
           "at": "2026-10-16T18:00:18Z"
         },
         "b": {
-          "id": "gnews:4ad4fd8dec35bb9b",
+          "id": "gnews:f1ac3aaaf28d1bd6",
           "source": "gnews-rss",
-          "title": "Anthropic's Claude Improves Quantum Optimization Designs - Quantum Zeitgeist",
-          "at": "2026-10-17T15:22:30Z"
+          "title": "Anthropic’s Claude Designs Leaner Quantum Circuits, Reducing Resources Needed for Key Calculations - The Quantum Insider",
+          "at": "2026-10-17T08:12:06Z"
         },
         "shared": [
           "design",
           "quantum",
+          "circuit",
           "claude"
         ]
       },
       {
-        "score": 0.498,
-        "blocked": "thin-overlap",
-        "hours_apart": 97.3,
+        "score": 0.597,
+        "blocked": "short-title",
+        "hours_apart": 17.9,
         "a": {
-          "id": "rss:deepmind:94cc08977f17740f",
-          "source": "rss-lab",
-          "title": "Gemini 4 Argon for Robotics",
-          "at": "2026-10-13T16:01:58Z"
+          "id": "hn:50114589",
+          "source": "hn-algolia",
+          "title": "Timestral open weight timeseries foundation models from Mistral",
+          "at": "2026-10-16T05:54:00Z"
         },
         "b": {
-          "id": "gnews:c4673fc1ccda9a83",
-          "source": "gnews-rss",
-          "title": "New Gemini 4 Argon Released. It Builds Realistic 3D Simulations and Analyzes Video Frame by Frame - Наша Ніва",
-          "at": "2026-10-17T17:18:58Z"
+          "id": "rss:mistral:51edf4c643816e6f",
+          "source": "rss-lab",
+          "title": "Introducing Timestral",
+          "at": "2026-10-15T12:00:00Z"
         },
         "shared": [
-          "gemini",
-          "4",
-          "argon"
+          "timestral"
         ]
       },
       {
-        "score": 0.489,
+        "score": 0.574,
+        "blocked": "short-title",
+        "hours_apart": 20,
+        "a": {
+          "id": "hn:50115465",
+          "source": "hn-algolia",
+          "title": "Mistral announces Timestral: SOTA time-series foundation models",
+          "at": "2026-10-16T07:57:26Z"
+        },
+        "b": {
+          "id": "rss:mistral:51edf4c643816e6f",
+          "source": "rss-lab",
+          "title": "Introducing Timestral",
+          "at": "2026-10-15T12:00:00Z"
+        },
+        "shared": [
+          "timestral"
+        ]
+      },
+      {
+        "score": 0.486,
         "blocked": "thin-overlap",
         "hours_apart": 13.6,
         "a": {
@@ -718,7 +765,7 @@
         ]
       },
       {
-        "score": 0.428,
+        "score": 0.445,
         "blocked": "thin-overlap",
         "hours_apart": 66.6,
         "a": {
@@ -740,7 +787,31 @@
         ]
       },
       {
-        "score": 0.422,
+        "score": 0.442,
+        "blocked": "below-threshold",
+        "hours_apart": 6.8,
+        "a": {
+          "id": "hn:50121439",
+          "source": "hn-algolia",
+          "title": "China unveils draft export controls on AI, open-weight models, and chips",
+          "at": "2026-10-16T17:24:41Z"
+        },
+        "b": {
+          "id": "gnews:3ce54d5cbd1e2787",
+          "source": "gnews-rss",
+          "title": "China proposes export controls on advanced AI, from model weights to agents - Crypto Briefing",
+          "at": "2026-10-16T10:36:25Z"
+        },
+        "shared": [
+          "china",
+          "export",
+          "control",
+          "ai",
+          "model"
+        ]
+      },
+      {
+        "score": 0.439,
         "blocked": "thin-overlap",
         "hours_apart": 70.3,
         "a": {
@@ -760,28 +831,6 @@
           "4",
           "argon"
         ]
-      },
-      {
-        "score": 0.422,
-        "blocked": "thin-overlap",
-        "hours_apart": 70.3,
-        "a": {
-          "id": "hn:50118688",
-          "source": "hn-algolia",
-          "title": "Show HN: Gemini 4 Argon plays StarCraft",
-          "at": "2026-10-16T14:18:44Z"
-        },
-        "b": {
-          "id": "rss:google-ai:74c9e10c02543c49",
-          "source": "rss-lab",
-          "title": "Gemini 4 Argon: Built to solve your hardest problems",
-          "at": "2026-10-13T16:00:00Z"
-        },
-        "shared": [
-          "gemini",
-          "4",
-          "argon"
-        ]
       }
     ]
   },
@@ -789,76 +838,76 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 3,
+      "streak_ok": 4,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 134,
+      "streak_ok": 135,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 134,
+      "streak_ok": 135,
       "streak_fail": 0,
-      "items_last": 3
+      "items_last": 4
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 134,
+      "streak_ok": 135,
       "streak_fail": 0,
-      "items_last": 37
+      "items_last": 36
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 134,
+      "streak_ok": 135,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 134,
+      "streak_ok": 135,
       "streak_fail": 0,
-      "items_last": 54
+      "items_last": 64
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 46,
+      "streak_ok": 47,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 38,
+      "streak_ok": 39,
       "streak_fail": 0,
-      "items_last": 104
+      "items_last": 105
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 134,
+      "streak_ok": 135,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 134,
+      "streak_ok": 135,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.005184166666666667,
+    "hours": 0.005335555555555555,
     "stale": false
   },
   "hf": {
@@ -881,7 +930,7 @@
     "soft_fail_reason": null,
     "enriched": 3,
     "secondary": 3,
-    "query": "LLM agent",
+    "query": "LLM agent sandbox",
     "mode": "search",
     "from_cache": false,
     "searches": 1,
@@ -897,24 +946,24 @@
     "url": "https://api.openalex.org/works",
     "sample": [
       {
-        "id": "W4393160747",
-        "openalexId": "https://openalex.org/W4393160747",
-        "year": 2024,
-        "doi": "https://doi.org/10.1609/aaai.v38i17.29936",
+        "id": "W7171516088",
+        "openalexId": "https://openalex.org/W7171516088",
+        "year": 2026,
+        "doi": "https://doi.org/10.48550/arxiv.2607.23933",
         "enrichOnly": true
       },
       {
-        "id": "W4412877164",
-        "openalexId": "https://openalex.org/W4412877164",
-        "year": 2025,
-        "doi": "https://doi.org/10.1145/3711896.3736570",
+        "id": "W7204032694",
+        "openalexId": "https://openalex.org/W7204032694",
+        "year": 2026,
+        "doi": "https://doi.org/10.1007/978-981-92-4805-6_13",
         "enrichOnly": true
       },
       {
-        "id": "W4391620956",
-        "openalexId": "https://openalex.org/W4391620956",
-        "year": 2024,
-        "doi": "https://doi.org/10.48550/arxiv.2402.02716",
+        "id": "W7221316450",
+        "openalexId": "https://openalex.org/W7221316450",
+        "year": 2026,
+        "doi": "https://doi.org/10.1038/s41746-026-03348-0",
         "enrichOnly": true
       }
     ]
@@ -924,7 +973,7 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "enriched": 1,
-    "query": "doi:10.1145/3711896.3736570",
+    "query": "doi:10.1007/978-981-92-4805-6_13",
     "mode": "filter",
     "from_cache": false,
     "searches": 1,
@@ -932,15 +981,17 @@
     "pulse_lead": false,
     "papers_enrich_only": true,
     "url": "https://api.crossref.org/works",
-    "merge_notes": [],
+    "merge_notes": [
+      "doi_collision keep=10.48550/arxiv.2607.23933 crossref=10.1007/978-981-92-4805-6_13 paper=W7171516088 (non-destructive; openalexId preserved)"
+    ],
     "sample": [
       {
-        "id": "W4412877164",
-        "crossrefDoi": "https://doi.org/10.1145/3711896.3736570",
-        "issued": "2025-08-03",
-        "type": "proceedings-article",
-        "openalexId": "https://openalex.org/W4412877164",
-        "doi": "https://doi.org/10.1145/3711896.3736570",
+        "id": "W7171516088",
+        "crossrefDoi": "https://doi.org/10.1007/978-981-92-4805-6_13",
+        "issued": "2026-08-24",
+        "type": "book-chapter",
+        "openalexId": "https://openalex.org/W7171516088",
+        "doi": "https://doi.org/10.48550/arxiv.2607.23933",
         "enrichOnly": false
       }
     ]
@@ -949,43 +1000,43 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 54,
+    "count": 64,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
     "queries_run": [
-      "ML security",
       "open weights",
-      "inference"
+      "inference",
+      "benchmark"
     ],
     "queries_ok": [
-      "ML security",
       "open weights",
-      "inference"
+      "inference",
+      "benchmark"
     ],
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 17,
+    "ai_dropped": 16,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
         "id": "hn:50122800",
         "tag": "rest",
-        "score": 990,
+        "score": 1026,
         "text": "Claude reveals ECDSA curve origins"
       },
       {
         "id": "hn:50129045",
         "tag": "rest",
-        "score": 477,
+        "score": 738,
         "text": "DeepSeek-v4.1-Flash-1017"
       },
       {
-        "id": "hn:50122951",
+        "id": "hn:50121179",
         "tag": "rest",
-        "score": 444,
-        "text": "How the Claude Code team does code review"
+        "score": 599,
+        "text": "90% of US working hours are spent on tasks not covered well by AI benchmarks"
       }
     ]
   },
@@ -993,7 +1044,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 104,
+    "count": 105,
     "shelf": 0,
     "brief": false,
     "pulse_only": true,
@@ -1048,6 +1099,13 @@
     "feeds_soft_fail": [],
     "sample": [
       {
+        "id": "rss:nvidia:ea214a232a5ba774",
+        "lab": "nvidia",
+        "tag": "rest",
+        "title": "RTX Spark Ignites Global Celebration as New Windows PCs Arrive",
+        "link": "https://blogs.nvidia.com/blog/local-ai-rtx-spark-windows-laptops-celebration/"
+      },
+      {
         "id": "rss:openai:9732b2763df5a67a",
         "lab": "openai",
         "tag": "rest",
@@ -1067,13 +1125,6 @@
         "tag": "rest",
         "title": "Code, Test, and Deploy on One Machine with NVIDIA RTX Spark",
         "link": "https://developer.nvidia.com/blog/code-test-and-deploy-on-one-machine-with-nvidia-rtx-spark/"
-      },
-      {
-        "id": "rss:huggingface:138e9b7e7d974724",
-        "lab": "huggingface",
-        "tag": "rest",
-        "title": "Scaling Indic Pretraining: 2.8 Trillion Tokens and an Open Data Generation Pipeline",
-        "link": "https://huggingface.co/blog/nvidia/scaling-indic-pretraining"
       }
     ]
   },
@@ -1138,31 +1189,15 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 37,
-    "pool": 389,
+    "items": 36,
+    "pool": 317,
     "corroborators": [
       {
-        "id": "gnews:03a09d4108e95317",
-        "anchor_id": "rss:openai:9732b2763df5a67a",
+        "id": "gnews:0b9f8ff998a353c9",
+        "anchor_id": "rss:nvidia:ea214a232a5ba774",
         "score": 1,
-        "title": "How Itaú is building generative AI for its entire customer base - OpenAI",
-        "publisher": "OpenAI",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:5d8f1ce0c27d82b3",
-        "anchor_id": "hn:50128736",
-        "score": 1,
-        "title": "OpenAI models hacked a crypto wallet and breached more websites - Ars Technica",
-        "publisher": "Ars Technica",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:3fb9bf19fdbeac30",
-        "anchor_id": "rss:openai:9e63539289a31c86",
-        "score": 1,
-        "title": "Stack Overflow for Agents triples signups with ChatGPT plugin - OpenAI",
-        "publisher": "OpenAI",
+        "title": "RTX Spark Ignites Global Celebration as New Windows PCs Arrive - NVIDIA Blog",
+        "publisher": "NVIDIA Blog",
         "self_repost": true
       },
       {
@@ -1172,6 +1207,14 @@
         "title": "Designing more efficient quantum circuits with Claude - Anthropic",
         "publisher": "Anthropic",
         "self_repost": true
+      },
+      {
+        "id": "gnews:f1ac3aaaf28d1bd6",
+        "anchor_id": "hn:50121939",
+        "score": 0.6,
+        "title": "Anthropic’s Claude Designs Leaner Quantum Circuits, Reducing Resources Needed for Key Calculations - The Quantum Insider",
+        "publisher": "The Quantum Insider",
+        "self_repost": false
       },
       {
         "id": "gnews:94e6f65cd023fcad",
@@ -1198,27 +1241,35 @@
         "self_repost": true
       },
       {
+        "id": "gnews:5f285361b192f904",
+        "anchor_id": "rss:nvidia:640799e7dc996a35",
+        "score": 0.603,
+        "title": "NVIDIA RTX Spark PCs Available Today — A New Beginning for Windows PCs - NVIDIA Newsroom",
+        "publisher": "NVIDIA Newsroom",
+        "self_repost": true
+      },
+      {
+        "id": "gnews:3ce54d5cbd1e2787",
+        "anchor_id": "hn:50121646",
+        "score": 0.67,
+        "title": "China proposes export controls on advanced AI, from model weights to agents - Crypto Briefing",
+        "publisher": "Crypto Briefing",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:5541f99ed12cf594",
+        "anchor_id": "rss:nvidia-dev:9f5aca4e4d9dbf53",
+        "score": 0.736,
+        "title": "Nvidia launches Nemotron 3.5 Super VL and Bolt for AI agents - Techzine Global",
+        "publisher": "Techzine Global",
+        "self_repost": false
+      },
+      {
         "id": "gnews:3e477ac0b5a06869",
         "anchor_id": "hn:50122112",
         "score": 1,
         "title": "Anthropic assigned highest junk credit rating in June - Financial Times",
         "publisher": "Financial Times",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:1d6de0b57756c98a",
-        "anchor_id": "rss:openai:32165ee6af8945a5",
-        "score": 1,
-        "title": "Bringing GPT-Rosalind to academic research labs - OpenAI",
-        "publisher": "OpenAI",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:9fd908b5147f70a0",
-        "anchor_id": "hn:50112925",
-        "score": 1,
-        "title": "OpenAI, Meta caution US judiciary about risk of 'deepfake' evidence - Reuters",
-        "publisher": "Reuters",
         "self_repost": false
       }
     ],
@@ -1234,38 +1285,38 @@
     "pulse_only": true,
     "url_template": "https://news.google.com/rss/search?q={QUERY}&hl=en-US&gl=US&ceid=US:en",
     "queried": [
-      "OpenAI",
       "Anthropic",
-      "Gemini",
-      "NVIDIA AI"
+      "large language model",
+      "NVIDIA AI",
+      "Mistral AI"
     ],
     "queries_ok_list": [
-      "OpenAI",
       "Anthropic",
-      "Gemini",
-      "NVIDIA AI"
+      "large language model",
+      "NVIDIA AI",
+      "Mistral AI"
     ],
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:599aab3ae7e6b671",
-        "title": "NVIDIA AI Courses and Certifications, the Complete DLI Guide for 2026 - Pasquale Pillitteri",
-        "publisher": "Pasquale Pillitteri",
-        "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOVlZLdlBrMzNwNGc5aWNMSlk4aV8wSlZEY0s4WTFxLW1jakVxSG8yQVlVLVJtcWMtUWhhSjhxM0RtRDZkSmZ0dkVmUFZmaVVSU3ptOTZwN1BFMVRYR2JhMnhHM2dBbzJTVklGdENNb0JGRnBTOC1sa1dpR1FDc3RuMjY4VlNqZ0N1WmYtcXNOVQ?oc=5",
+        "id": "gnews:08c7d38d64bca362",
+        "title": "Nvidia Pushes Deeper Into AI Agents, Open Source Infrastructure And Model Optimisation Across Latest Developer Updates – SMBtech - SMBtech",
+        "publisher": "SMBtech",
+        "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxQX1lKQmlxbWEtdGoxS0VUc1BINDROdHZvRjdrbnpVOHc3MC1Fdy1CejQ0MXBoN083RU9LWnhVOThPdzdLdXRXenpIaGdkSTFQV1pmMXVsSENRNEVSX1ZLUU5lQlVFQTd3UzZzNGEtMU54UTlQUjJzNXV4Mi1aaEwzRUl5eWVxQ19STzl1eEJfWEY2R3dJdGJJYmY4NUZfVGxjX25EdGhxZ1ZPSjdJdWQtSGh5NHM1REFONlhNX1JZQ1QxOXJ6c2JUMFBMWFZURktZQjFFbnIxZ0p4QQ?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:38ae3147f95fe1f7",
-        "title": "Google's Gemini AI helped disprove a 60 year old fusion physics conjecture - Startup Fortune",
-        "publisher": "Startup Fortune",
-        "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNcU9FV04yMlNqdzNMVjlzNG5BYVdFdU1SRmdxOHlxNnF1Y185ajgyODRaZzljUGZuc1Ayd2RXTGMwcXdOWF90YklWSXRlMW9WSjNWNXlGRV9jeGFjeDVRZDFSU0c0dWNOZjF1VENuOTZZeUI1QkRGd3VjTWFQcFpmT3VuWUE2dG83ZWoxbFJoNXBMc2JCaEJDZlNJcHkwU2J3ZUNV?oc=5",
+        "id": "gnews:e4820e6a79ea5c76",
+        "title": "Nvidia RTX Spark Gaming Tests: Are These New AI Laptops Good for Play, Too? - PCMag",
+        "publisher": "PCMag",
+        "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOajBJb0RBeWdvMDJHNm1RSWxhSzhmNzRDdkdHckNtczRMTVJkdk9yM3RFS0RZckZIWmZTdWd0WHhvT2NvUkt6VjlYRHJzY0lqUXJWbHg2ZEJTZEhjQlU2Zm1QSmZVSjRLcUx6Wm5ya2U0TUloM3M4d294U2czSXFCZGVrNmsxczJpNkNvLTR1blQ5SUxXZUd3SUVKVWdxYjNw?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:b8ae4de108d54b52",
-        "title": "Anthropic Pitches US Lawmakers on Bill to Block Dangerous AI Models - The420.in",
-        "publisher": "The420.in",
-        "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5hUlZ3bkgwTDZScnNrcFBWZDltSFJLdFg3Rmg4LTIyVzJKeHN5VmJRdHFFUFoyTWNqU1A0eTFteXN3LW5SajVadUE3NW9yMlBrLUtzVWVoRkZrR3djdkxVV21zWVJfRFJyWF9hNTFydw?oc=5",
+        "id": "gnews:e8aac6b470b0761c",
+        "title": "NVIDIA RTX Spark vs MacBook Pro — Which Laptop Wins for Local AI? - ThePCEnthusiast",
+        "publisher": "ThePCEnthusiast",
+        "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE5jMGlWT2pMTFNkcjY4SGhMU2JoZG1tSExNOWtkZnRRdmVna08xYWlyNWVBS0ZUNVhkUkJQbnZINFNJSEtCODZHZ2RLSm13OXdJSVpsTTE3Sm42QjZpX3E0U0dzLVRKbTRtZ0ptUlBaZUZ1REZNV21fag?oc=5",
         "tag": "rest"
       }
     ]
@@ -1295,8 +1346,8 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "query": "LLM red team toolkit",
-    "shelf": 3,
+    "query": "LLM agent eval harness",
+    "shelf": 4,
     "from_cache": false,
     "searches": 1,
     "rate_limit_remaining": 9,
@@ -1306,21 +1357,21 @@
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
-        "label": "md-fazle-rabbi/fazle-ai-red-team-toolkit",
-        "href": "https://github.com/md-fazle-rabbi/fazle-ai-red-team-toolkit"
+        "label": "eschraufnagel/trial-prescreening-agent",
+        "href": "https://github.com/eschraufnagel/trial-prescreening-agent"
       },
       {
-        "label": "seikaikyo/ai-red-team",
-        "href": "https://github.com/seikaikyo/ai-red-team"
+        "label": "OhovoTech/ai-llm-agent-evaluation-agent-evaluation-harness",
+        "href": "https://github.com/OhovoTech/ai-llm-agent-evaluation-agent-evaluation-harness"
       },
       {
-        "label": "Erentass6/aegis-llm",
-        "href": "https://github.com/Erentass6/aegis-llm"
+        "label": "matheo97/agent-platform-lab",
+        "href": "https://github.com/matheo97/agent-platform-lab"
       }
     ]
   },
   "shelf": {
-    "count": 19,
+    "count": 20,
     "brief": false
   },
   "wikidata": {
@@ -1328,9 +1379,9 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "seeds": [
-      "Meta AI",
       "Fox-IT",
-      "Project Zero"
+      "Project Zero",
+      "OWASP"
     ],
     "searches": 3,
     "from_cache": false,
@@ -1339,17 +1390,6 @@
     "deny_grounding_only": true,
     "url": "https://www.wikidata.org/w/api.php",
     "hints": [
-      {
-        "seed": "Meta AI",
-        "qid": "Q112114913",
-        "label": "Meta AI",
-        "description": "artificial intelligence laboratory owned by Meta",
-        "status": "matched",
-        "source": "wikidata",
-        "briefEligible": false,
-        "pulseLeadEligible": false,
-        "denyGroundingOnly": true
-      },
       {
         "seed": "Fox-IT",
         "qid": "Q5476521",
@@ -1366,6 +1406,17 @@
         "qid": "Q18859887",
         "label": "Project Zero",
         "description": "security analysis team employed by Google",
+        "status": "matched",
+        "source": "wikidata",
+        "briefEligible": false,
+        "pulseLeadEligible": false,
+        "denyGroundingOnly": true
+      },
+      {
+        "seed": "OWASP",
+        "qid": "Q379297",
+        "label": "OWASP",
+        "description": "computer security organization",
         "status": "matched",
         "source": "wikidata",
         "briefEligible": false,

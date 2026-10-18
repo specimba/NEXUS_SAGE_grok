@@ -2,6 +2,111 @@
 import type { LeadEntry } from "@/lib/lead-pick";
 
 export const LEAD_TODAY: LeadEntry | null = {
+  "date": "2026-10-18",
+  "at": "2026-10-18T03:23:32.255Z",
+  "crawl_at": "2026-10-18T03:23:13Z",
+  "pick_slot": "06:23",
+  "excluded": [
+    {
+      "cluster_id": "cl:rss:nvidia-dev:9f5aca4e4d9dbf53",
+      "headline": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
+      "reason": "age>=36h"
+    },
+    {
+      "cluster_id": "cl:hn:50118213",
+      "headline": "Introducing Beam: Reflection’s 501B open-weight model",
+      "reason": "age>=36h"
+    },
+    {
+      "cluster_id": "cl:rss:huggingface:d330643595776f9f",
+      "headline": "Granite Switch 4.1: Chat, Decisions, and Speech from One Endpoint",
+      "reason": "age>=36h"
+    },
+    {
+      "cluster_id": "cl:hn:50122112",
+      "headline": "Anthropic assigned highest junk credit rating in June",
+      "reason": "age>=36h"
+    },
+    {
+      "cluster_id": "cl:hn:50121439",
+      "headline": "China unveils draft export controls on AI, open-weight models, and chips",
+      "reason": "age>=36h"
+    },
+    {
+      "cluster_id": "cl:rss:huggingface:c9a6184923cc1a58",
+      "headline": "Welcome Beam: a 501B open model you can own, customize, and scale",
+      "reason": "age>=36h"
+    },
+    {
+      "cluster_id": "cl:rss:mistral:51edf4c643816e6f",
+      "headline": "Introducing Timestral",
+      "reason": "age>=36h"
+    },
+    {
+      "cluster_id": "cl:rss:deepmind:851107eacfc8ba0f",
+      "headline": "Gemini 4 Argon: Built to solve your hardest problems",
+      "reason": "age>=36h"
+    }
+  ],
+  "cluster_id": "cl:hn:50122112",
+  "headline": "Anthropic assigned highest junk credit rating in June",
+  "url": "https://www.ft.com/content/5a310aee-f555-4266-874c-b1b4db20186d",
+  "sources": 2,
+  "sig": 224,
+  "first_at": "2026-10-16T04:00:18.000Z",
+  "reason": "held",
+  "note": "no qualifying story",
+  "attempts": [
+    {
+      "at": "2026-10-18T03:23:32.255Z",
+      "crawl_at": "2026-10-18T03:23:13Z",
+      "excluded": [
+        {
+          "cluster_id": "cl:rss:nvidia-dev:9f5aca4e4d9dbf53",
+          "headline": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
+          "reason": "age>=36h"
+        },
+        {
+          "cluster_id": "cl:hn:50118213",
+          "headline": "Introducing Beam: Reflection’s 501B open-weight model",
+          "reason": "age>=36h"
+        },
+        {
+          "cluster_id": "cl:rss:huggingface:d330643595776f9f",
+          "headline": "Granite Switch 4.1: Chat, Decisions, and Speech from One Endpoint",
+          "reason": "age>=36h"
+        },
+        {
+          "cluster_id": "cl:hn:50122112",
+          "headline": "Anthropic assigned highest junk credit rating in June",
+          "reason": "age>=36h"
+        },
+        {
+          "cluster_id": "cl:hn:50121439",
+          "headline": "China unveils draft export controls on AI, open-weight models, and chips",
+          "reason": "age>=36h"
+        },
+        {
+          "cluster_id": "cl:rss:huggingface:c9a6184923cc1a58",
+          "headline": "Welcome Beam: a 501B open model you can own, customize, and scale",
+          "reason": "age>=36h"
+        },
+        {
+          "cluster_id": "cl:rss:mistral:51edf4c643816e6f",
+          "headline": "Introducing Timestral",
+          "reason": "age>=36h"
+        },
+        {
+          "cluster_id": "cl:rss:deepmind:851107eacfc8ba0f",
+          "headline": "Gemini 4 Argon: Built to solve your hardest problems",
+          "reason": "age>=36h"
+        }
+      ]
+    }
+  ]
+};
+
+export const LEAD_YESTERDAY: LeadEntry | null = {
   "date": "2026-10-17",
   "at": "2026-10-17T03:21:37.176Z",
   "crawl_at": "2026-10-17T03:21:15Z",
@@ -38,34 +143,7 @@ export const LEAD_TODAY: LeadEntry | null = {
   "age_band": "<24h"
 };
 
-export const LEAD_YESTERDAY: LeadEntry | null = {
-  "date": "2026-10-16",
-  "at": "2026-10-16T03:15:43.042Z",
-  "crawl_at": "2026-10-16T03:15:21Z",
-  "pick_slot": "06:15",
-  "excluded": [
-    {
-      "cluster_id": "cl:rss:deepmind:36a7e1c23fbbe3b1",
-      "headline": "Google DeepMind and Singapore Government collaborate to build fine-tuned AI model for scam detection",
-      "reason": "age>=36h"
-    },
-    {
-      "cluster_id": "cl:rss:deepmind:851107eacfc8ba0f",
-      "headline": "Gemini 4 Argon: Built to solve your hardest problems",
-      "reason": "age>=36h"
-    }
-  ],
-  "cluster_id": "cl:hn:50104542",
-  "headline": "Nvidia Nemotron 3.5 Super VL 120B A12B",
-  "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
-  "sources": 3,
-  "sig": 4,
-  "reason": "picked",
-  "first_at": "2026-10-15T14:51:59.000Z",
-  "age_band": "<24h"
-};
-
-export const LEAD_HELD = false;
+export const LEAD_HELD = true;
 
 /** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is >48h old (PASS-L). */
 export const LEAD_FIRST_AT: string | null = "2026-10-16T04:00:18.000Z";

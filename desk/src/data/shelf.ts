@@ -22,7 +22,8 @@ export const SHELF: ShelfItem[] = [
   { href: "https://arxiv.org/abs/2610.22367", label: "arxiv.org/abs/2610.22367", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.22364", label: "arxiv.org/abs/2610.22364", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.22358", label: "arxiv.org/abs/2610.22358", reason: "arxiv-shelf" as const },
-  { href: "https://github.com/md-fazle-rabbi/fazle-ai-red-team-toolkit", label: "md-fazle-rabbi/fazle-ai-red-team-toolkit", reason: "github-search-shelf" as const },
-  { href: "https://github.com/seikaikyo/ai-red-team", label: "seikaikyo/ai-red-team", reason: "github-search-shelf" as const },
-  { href: "https://github.com/Erentass6/aegis-llm", label: "Erentass6/aegis-llm", reason: "github-search-shelf" as const },
+  { href: "https://github.com/eschraufnagel/trial-prescreening-agent", label: "eschraufnagel/trial-prescreening-agent", reason: "github-search-shelf" as const },
+  { href: "https://github.com/OhovoTech/ai-llm-agent-evaluation-agent-evaluation-harness", label: "OhovoTech/ai-llm-agent-evaluation-agent-evaluation-harness", reason: "github-search-shelf" as const },
+  { href: "https://github.com/matheo97/agent-platform-lab", label: "matheo97/agent-platform-lab", reason: "github-search-shelf" as const },
+  { href: "https://github.com/aayushgupta6720-ops/support-rag-agent", label: "aayushgupta6720-ops/support-rag-agent", reason: "github-search-shelf" as const },
 ];
