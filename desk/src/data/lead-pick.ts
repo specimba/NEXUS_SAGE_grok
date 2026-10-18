@@ -3,9 +3,10 @@ import type { LeadEntry } from "@/lib/lead-pick";
 
 export const LEAD_TODAY: LeadEntry | null = {
   "date": "2026-10-18",
-  "at": "2026-10-18T03:23:32.255Z",
-  "crawl_at": "2026-10-18T03:23:13Z",
-  "pick_slot": "06:23",
+  "at": "2026-10-18T08:37:21.046Z",
+  "crawl_at": "2026-10-18T08:37:04Z",
+  "catch_up": true,
+  "pick_slot": "11:37",
   "excluded": [
     {
       "cluster_id": "cl:rss:nvidia-dev:9f5aca4e4d9dbf53",
@@ -38,72 +39,19 @@ export const LEAD_TODAY: LeadEntry | null = {
       "reason": "age>=36h"
     },
     {
-      "cluster_id": "cl:rss:mistral:51edf4c643816e6f",
-      "headline": "Introducing Timestral",
-      "reason": "age>=36h"
-    },
-    {
       "cluster_id": "cl:rss:deepmind:851107eacfc8ba0f",
       "headline": "Gemini 4 Argon: Built to solve your hardest problems",
       "reason": "age>=36h"
     }
   ],
-  "cluster_id": "cl:hn:50122112",
-  "headline": "Anthropic assigned highest junk credit rating in June",
-  "url": "https://www.ft.com/content/5a310aee-f555-4266-874c-b1b4db20186d",
-  "sources": 2,
-  "sig": 224,
-  "first_at": "2026-10-16T04:00:18.000Z",
-  "reason": "held",
-  "note": "no qualifying story",
-  "attempts": [
-    {
-      "at": "2026-10-18T03:23:32.255Z",
-      "crawl_at": "2026-10-18T03:23:13Z",
-      "excluded": [
-        {
-          "cluster_id": "cl:rss:nvidia-dev:9f5aca4e4d9dbf53",
-          "headline": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
-          "reason": "age>=36h"
-        },
-        {
-          "cluster_id": "cl:hn:50118213",
-          "headline": "Introducing Beam: Reflection’s 501B open-weight model",
-          "reason": "age>=36h"
-        },
-        {
-          "cluster_id": "cl:rss:huggingface:d330643595776f9f",
-          "headline": "Granite Switch 4.1: Chat, Decisions, and Speech from One Endpoint",
-          "reason": "age>=36h"
-        },
-        {
-          "cluster_id": "cl:hn:50122112",
-          "headline": "Anthropic assigned highest junk credit rating in June",
-          "reason": "age>=36h"
-        },
-        {
-          "cluster_id": "cl:hn:50121439",
-          "headline": "China unveils draft export controls on AI, open-weight models, and chips",
-          "reason": "age>=36h"
-        },
-        {
-          "cluster_id": "cl:rss:huggingface:c9a6184923cc1a58",
-          "headline": "Welcome Beam: a 501B open model you can own, customize, and scale",
-          "reason": "age>=36h"
-        },
-        {
-          "cluster_id": "cl:rss:mistral:51edf4c643816e6f",
-          "headline": "Introducing Timestral",
-          "reason": "age>=36h"
-        },
-        {
-          "cluster_id": "cl:rss:deepmind:851107eacfc8ba0f",
-          "headline": "Gemini 4 Argon: Built to solve your hardest problems",
-          "reason": "age>=36h"
-        }
-      ]
-    }
-  ]
+  "cluster_id": "cl:hn:50134131",
+  "headline": "Anthropic pitches its own AI safety bill to lawmakers",
+  "url": "https://www.politico.com/news/2026/10/16/anthropic-ai-safety-01124654",
+  "sources": 3,
+  "sig": 6,
+  "reason": "picked",
+  "first_at": "2026-10-16T21:45:00.000Z",
+  "age_band": "24–36h"
 };
 
 export const LEAD_YESTERDAY: LeadEntry | null = {
@@ -143,7 +91,7 @@ export const LEAD_YESTERDAY: LeadEntry | null = {
   "age_band": "<24h"
 };
 
-export const LEAD_HELD = true;
+export const LEAD_HELD = false;
 
 /** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is >48h old (PASS-L). */
-export const LEAD_FIRST_AT: string | null = "2026-10-16T04:00:18.000Z";
+export const LEAD_FIRST_AT: string | null = "2026-10-16T21:45:00.000Z";

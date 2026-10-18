@@ -7,31 +7,42 @@ import type { DigestUnlockSnapshot } from "@/lib/digest-unlock";
 export const DIGEST_UNLOCK: DigestUnlockSnapshot = {
   "schema": 1,
   "cycleId": "003",
-  "pickDate": "2026-10-17",
-  "frozenAt": "2026-10-17T03:21:37.176Z",
-  "leadId": "cl:hn:50122112",
+  "pickDate": "2026-10-18",
+  "frozenAt": "2026-10-18T08:37:21.046Z",
+  "leadId": "cl:hn:50134131",
   "lead": {
-    "id": "cl:hn:50122112",
+    "id": "cl:hn:50134131",
     "kind": "lead",
-    "title": "Anthropic assigned highest junk credit rating in June",
-    "take": "2 SRC · sig 224 · pick 2026-10-17",
+    "title": "Anthropic pitches its own AI safety bill to lawmakers",
+    "take": "3 SRC · sig 6 · pick 2026-10-18",
     "why": "LEAD_TODAY · picked · frozen at daily pick",
     "move": "Digest/Voice follow Brief lead · cycle label 003",
-    "url": "https://www.ft.com/content/5a310aee-f555-4266-874c-b1b4db20186d",
-    "sources": 2,
-    "sig": 224
+    "url": "https://www.politico.com/news/2026/10/16/anthropic-ai-safety-01124654",
+    "sources": 3,
+    "sig": 6
   },
   "rows": [
     {
-      "id": "cl:rss:nvidia-dev:9f5aca4e4d9dbf53",
+      "id": "cl:hn:50118213",
       "kind": "companion",
-      "title": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
-      "take": "3 SRC · sig 4",
+      "title": "Introducing Beam: Reflection’s 501B open-weight model",
+      "take": "2 SRC · sig 12",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
-      "url": "https://developer.nvidia.com/blog/nvidia-nemotron-3-5-super-vl-powers-specialized-agents-with-multimodal-reasoning/",
-      "sources": 3,
-      "sig": 4
+      "url": "https://reflection.ai/blog/beam-is-available",
+      "sources": 2,
+      "sig": 12
+    },
+    {
+      "id": "cl:hn:50128784",
+      "kind": "rest",
+      "title": "Anthropic offers Blackstone double-digit yield in latest chip financing",
+      "take": "2 SRC · sig 5",
+      "why": "Top corroborated Wire cluster · same pack as lead pick",
+      "move": "Digest row · never displaces Brief lead",
+      "url": "https://www.ft.com/content/cb4034e1-475f-40b9-a5f9-256e91aacb89",
+      "sources": 2,
+      "sig": 5
     },
     {
       "id": "cl:rss:huggingface:d330643595776f9f",
@@ -45,15 +56,15 @@ export const DIGEST_UNLOCK: DigestUnlockSnapshot = {
       "sig": 3
     },
     {
-      "id": "cl:hn:50121939",
+      "id": "cl:hn:50122112",
       "kind": "rest",
-      "title": "Designing more efficient quantum circuits with Claude",
-      "take": "2 SRC · sig 108",
+      "title": "Anthropic assigned highest junk credit rating in June",
+      "take": "2 SRC · sig 290",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
-      "url": "https://www.anthropic.com/research/designing-efficient-quantum-circuits",
+      "url": "https://www.ft.com/content/5a310aee-f555-4266-874c-b1b4db20186d",
       "sources": 2,
-      "sig": 108
+      "sig": 290
     }
   ]
 } as const;
