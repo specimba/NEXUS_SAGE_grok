@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-19T03:28:35Z",
+  "stamped_at": "2026-10-19T08:21:43Z",
   "config_hash": "813e5ce035c3",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,25 +11,25 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 111,
+      "duration_ms": 122,
       "paused_until": null,
       "reason": null
     },
     {
       "id": "arxiv",
       "label": "arXiv",
-      "status": "timeout",
-      "rows": 4,
-      "duration_ms": 20000,
+      "status": "ok",
+      "rows": 28,
+      "duration_ms": 3167,
       "paused_until": null,
-      "reason": "timeout after 20000ms budget · last good: 0 cached enrich + 4 kept shelf"
+      "reason": null
     },
     {
       "id": "openalex",
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 411,
+      "duration_ms": 419,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 107,
+      "duration_ms": 1363,
       "paused_until": null,
       "reason": null
     },
@@ -46,8 +46,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 46,
-      "duration_ms": 8284,
+      "rows": 41,
+      "duration_ms": 8262,
       "paused_until": null,
       "reason": null
     },
@@ -56,7 +56,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 105,
-      "duration_ms": 17695,
+      "duration_ms": 17985,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 4143,
+      "duration_ms": 4095,
       "paused_until": null,
       "reason": null
     },
@@ -73,8 +73,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 26,
-      "duration_ms": 6354,
+      "rows": 23,
+      "duration_ms": 6327,
       "paused_until": null,
       "reason": null
     },
@@ -83,7 +83,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 272,
+      "duration_ms": 342,
       "paused_until": null,
       "reason": null
     },
@@ -92,16 +92,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4353,
+      "duration_ms": 4374,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 61730,
-    "sources_wall_ms": 20640,
-    "papers_lane_ms": 20640,
-    "slowest_source_ms": 20000,
+    "sources_ms": 46456,
+    "sources_wall_ms": 17986,
+    "papers_lane_ms": 5077,
+    "slowest_source_ms": 17985,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -115,34 +115,32 @@
       "github": 25000,
       "wikidata": 25000
     },
-    "timed_out": [
-      "arxiv"
-    ],
-    "wall_ms": 20999,
-    "startup_ms": 48,
-    "main_ms": 21013
+    "timed_out": [],
+    "wall_ms": 18314,
+    "startup_ms": 47,
+    "main_ms": 18331
   },
-  "multi_source_independent": 2,
+  "multi_source_independent": 1,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 2,
-    "multi_source_raw": 2,
+    "multi_source_independent": 1,
+    "multi_source_raw": 1,
     "self_reposts": 0,
-    "items_in": 215,
-    "clusters_out": 207,
-    "collapsed": 8,
-    "multi_source": 2,
-    "multi_member": 6,
+    "items_in": 207,
+    "clusters_out": 201,
+    "collapsed": 6,
+    "multi_source": 1,
+    "multi_member": 5,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 31,
+    "new_items": 25,
     "per_source": {
-      "hn-algolia": 46,
+      "hn-algolia": 41,
       "rss-lab": 105,
       "rss-security": 28,
-      "gnews-rss": 26,
+      "gnews-rss": 23,
       "gmail-news": 10
     },
     "multi_source_clusters": [
@@ -170,38 +168,6 @@
             "publisher": "nvidia-dev"
           }
         ]
-      },
-      {
-        "title": "DeepSeek-v4.1-Flash-1017",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 3,
-        "score": 0.809,
-        "members": [
-          {
-            "id": "hn:50129045",
-            "source": "hn-algolia",
-            "title": "DeepSeek-v4.1-Flash-1017",
-            "at": "2026-10-17T08:21:25Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:50129993",
-            "source": "hn-algolia",
-            "title": "The fastest DeepSeek v4.1 flash 1017 – Day 0",
-            "at": "2026-10-17T11:07:08Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:d5fcbd23045884f5",
-            "source": "gnews-rss",
-            "title": "DeepSeek V4.1-Flash-1017 Hits 77.0 on DeepSWE [2026] - shattered.io",
-            "at": "2026-10-17T12:20:21Z",
-            "publisher": "shattered.io"
-          }
-        ]
       }
     ],
     "self_repost_clusters": [],
@@ -215,61 +181,46 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "36Kr",
-          "title": "People Who Left ByteDance: 36 Entrepreneurs Who Took Away Both ByteDance's Methods and Work Boundaries - 36Kr"
+          "publisher": "Startups Magazine",
+          "title": "European tech investment in Q3 2026: from growth capital to public markets - Startups Magazine"
         },
         {
-          "publisher": "How-To Geek",
-          "title": "I changed one hidden Windows setting, and my laptop saw 36% less battery drain - How-To Geek"
+          "publisher": "openPR.com",
+          "title": "Cloud Storage Market Is Going to Boom |• Amazon Web Services • Microsoft Azure • Google Cloud - openPR.com"
         },
         {
-          "publisher": "The Daily Star",
-          "title": "Editors’ Council condemns journalist Alif murder - The Daily Star"
+          "publisher": "ad-hoc-news.de",
+          "title": "CCB deploys large models while China Construction Bank stock sits 1.75 percent below its high - ad-hoc-news.de"
         },
         {
-          "publisher": "NoobFeed",
-          "title": "XBOX Exclusives Could Be Coming back as Microsoft Surveys Insiders - NoobFeed"
+          "publisher": "Tech Times",
+          "title": "SK Hynix Debuts CXL Computational Memory on XCENA MX1; Samsung Commits as Foundry - Tech Times"
         },
         {
-          "publisher": "Realtor.com",
-          "title": "The Ex-Microsoft Exec Who Outbid Cher for an Antique Archway Is Selling His $9.75 Million Seattle Estate - Realtor.com"
+          "publisher": "Analytics India Magazine",
+          "title": "Utho Cloud Opens B300 GPU Bookings Ahead of February 2027 Rollout - Analytics India Magazine"
         },
         {
-          "publisher": "PPC Land",
-          "title": "Apple and Meta team up to run Meta's 816B Muse model on two Mac Studios - PPC Land"
+          "publisher": "Menafn",
+          "title": "Stocktwits Tech Watch: Netflix And Meta Report Earnings As Nvidia, Oracle Product Events Loom - Menafn"
         },
         {
-          "publisher": "The European Business Review",
-          "title": "Tax-Free Tech Stocks: Europe’s Only Path to Technology Sovereignty - The European Business Review"
+          "publisher": "theinsurer.com",
+          "title": "Verisk's Guin: Beyond historical data – the new science of European extratropical cyclone modelling - theinsurer.com"
+        },
+        {
+          "publisher": "TradingView",
+          "title": "Stocktwits Tech Watch: Netflix And Meta Report Earnings As Nvidia, Oracle Product Events Loom - TradingView"
+        },
+        {
+          "publisher": "Luxembourg Times",
+          "title": "Private market investors shrug off Luxembourg capital gains shake-up - Luxembourg Times"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 22
+      "hn_dropped": 23
     },
     "gnews_near_misses": [
-      {
-        "score": 0.748,
-        "blocked": "time-window",
-        "hours_apart": 35.4,
-        "a": {
-          "id": "hn:50129045",
-          "source": "hn-algolia",
-          "title": "DeepSeek-v4.1-Flash-1017",
-          "at": "2026-10-17T08:21:25Z"
-        },
-        "b": {
-          "id": "gnews:9a026917d0ad78a4",
-          "source": "gnews-rss",
-          "title": "DeepSeek V4.1-Flash-1017: HLE Score Hits 42.6 [2026] - shattered.io",
-          "at": "2026-10-18T19:42:44Z"
-        },
-        "shared": [
-          "deepseek",
-          "v4.1",
-          "flash",
-          "1017"
-        ]
-      },
       {
         "score": 0.547,
         "blocked": "time-window",
@@ -281,7 +232,7 @@
           "at": "2026-10-15T12:00:00Z"
         },
         "b": {
-          "id": "gnews:6c2cf3d968fe0343",
+          "id": "gnews:c26f1e4f4e9717ad",
           "source": "gnews-rss",
           "title": "Mistral AI Releases Timestral: A 209M Forecasting Model Family That Outperforms Google’s TimesFM-3 - MarkTechPost",
           "at": "2026-10-19T01:18:17Z"
@@ -291,9 +242,9 @@
         ]
       },
       {
-        "score": 0.469,
+        "score": 0.423,
         "blocked": "thin-overlap",
-        "hours_apart": 1.2,
+        "hours_apart": 38.7,
         "a": {
           "id": "hn:50129993",
           "source": "hn-algolia",
@@ -301,10 +252,10 @@
           "at": "2026-10-17T11:07:08Z"
         },
         "b": {
-          "id": "gnews:d5fcbd23045884f5",
+          "id": "gnews:95c3394d0cb46456",
           "source": "gnews-rss",
-          "title": "DeepSeek V4.1-Flash-1017 Hits 77.0 on DeepSWE [2026] - shattered.io",
-          "at": "2026-10-17T12:20:21Z"
+          "title": "A super-cheap Chinese-made AI model, 'DeepSeek-V4.1-Flash-1017,' has emerged that surpasses GPT-6 Astra in coding benchmarks. - GIGAZINE",
+          "at": "2026-10-19T01:47:00Z"
         },
         "shared": [
           "deepseek",
@@ -314,113 +265,136 @@
         ]
       },
       {
-        "score": 0.453,
-        "blocked": "thin-overlap",
-        "hours_apart": 32.6,
-        "a": {
-          "id": "hn:50129993",
-          "source": "hn-algolia",
-          "title": "The fastest DeepSeek v4.1 flash 1017 – Day 0",
-          "at": "2026-10-17T11:07:08Z"
-        },
-        "b": {
-          "id": "gnews:9a026917d0ad78a4",
-          "source": "gnews-rss",
-          "title": "DeepSeek V4.1-Flash-1017: HLE Score Hits 42.6 [2026] - shattered.io",
-          "at": "2026-10-18T19:42:44Z"
-        },
-        "shared": [
-          "deepseek",
-          "v4.1",
-          "flash",
-          "1017"
-        ]
-      },
-      {
-        "score": 0.297,
+        "score": 0.337,
         "blocked": "time-window",
-        "hours_apart": 121.5,
+        "hours_apart": 133,
         "a": {
-          "id": "rss:openai:200a5d3dd39c6bfb",
+          "id": "rss:nvidia-dev:592d88a7a6f3222f",
           "source": "rss-lab",
-          "title": "The EU’s next chapter in AI is agentic",
-          "at": "2026-10-14T00:00:00Z"
+          "title": "NVIDIA Run:ai Is Now Open Source as Part of NVIDIA DSX AI Factory Platform",
+          "at": "2026-10-13T14:19:40Z"
         },
         "b": {
-          "id": "gnews:bf1edc90422656f5",
+          "id": "gnews:e133d350c2562bf3",
           "source": "gnews-rss",
-          "title": "FPT and NVIDIA Expand Nemotron-Personas-Vietnam Dataset by 10X Times to Power the Next Wave of Agentic AI - Japan Wire by Kyodo News",
-          "at": "2026-10-19T01:32:00Z"
+          "title": "NVIDIA Open Sources Run:ai Under Apache 2.0 for Kubernetes GPU Orchestration - MarkTechPost",
+          "at": "2026-10-19T03:19:18Z"
         },
         "shared": [
-          "next",
+          "nvidia",
+          "run",
           "ai",
-          "agentic"
+          "opensourc"
         ]
       },
       {
-        "score": 0.292,
+        "score": 0.249,
         "blocked": "time-window",
-        "hours_apart": 274.9,
+        "hours_apart": 125.8,
         "a": {
-          "id": "rss:google-ai:b6aec8c05cfc3e2f",
+          "id": "rss:nvidia-dev:d8d6fe578b2298da",
           "source": "rss-lab",
-          "title": "Introducing Playground: Create and play custom games",
-          "at": "2026-10-07T12:00:00Z"
+          "title": "How to Rewrite Apache Spark UDFs for GPU Acceleration with AI Agents",
+          "at": "2026-10-13T21:33:21Z"
         },
         "b": {
-          "id": "gnews:3b644a955f8e2722",
+          "id": "gnews:e133d350c2562bf3",
           "source": "gnews-rss",
-          "title": "AI Opens New Era of User-Created Games - 조선일보",
-          "at": "2026-10-18T22:54:13Z"
+          "title": "NVIDIA Open Sources Run:ai Under Apache 2.0 for Kubernetes GPU Orchestration - MarkTechPost",
+          "at": "2026-10-19T03:19:18Z"
         },
         "shared": [
-          "creat",
-          "game"
+          "apach",
+          "gpu",
+          "ai"
         ]
       },
       {
-        "score": 0.285,
-        "blocked": "thin-overlap",
-        "hours_apart": 10.9,
+        "score": 0.246,
+        "blocked": "time-window",
+        "hours_apart": 122,
         "a": {
-          "id": "hn:50141490",
-          "source": "hn-algolia",
-          "title": "Nvidia Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
-          "at": "2026-10-18T14:37:26Z"
+          "id": "rss:nvidia:9e8d19434b13b76f",
+          "source": "rss-lab",
+          "title": "European Cities Deploy NVIDIA-Powered AI Agents to Run Smarter Urban Operations",
+          "at": "2026-10-14T06:00:28Z"
         },
         "b": {
-          "id": "gnews:bf1edc90422656f5",
+          "id": "gnews:429880e2c9a7c370",
           "source": "gnews-rss",
-          "title": "FPT and NVIDIA Expand Nemotron-Personas-Vietnam Dataset by 10X Times to Power the Next Wave of Agentic AI - Japan Wire by Kyodo News",
-          "at": "2026-10-19T01:32:00Z"
+          "title": "AI Agents Are Going to Work at City Hall - PYMNTS.com",
+          "at": "2026-10-19T08:03:09Z"
         },
         "shared": [
-          "nvidia",
-          "nemotron",
-          "power"
+          "city",
+          "ai",
+          "agent"
         ]
       },
       {
-        "score": 0.285,
-        "blocked": "thin-overlap",
-        "hours_apart": 79.5,
+        "score": 0.24,
+        "blocked": "time-window",
+        "hours_apart": 116.1,
         "a": {
-          "id": "rss:nvidia-dev:9f5aca4e4d9dbf53",
+          "id": "rss:openai:57c3309db5bedcde",
           "source": "rss-lab",
-          "title": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
-          "at": "2026-10-15T18:01:00Z"
+          "title": "Amp puts AI agents to work beyond code with OpenAI models",
+          "at": "2026-10-14T12:00:00Z"
         },
         "b": {
-          "id": "gnews:bf1edc90422656f5",
+          "id": "gnews:429880e2c9a7c370",
           "source": "gnews-rss",
-          "title": "FPT and NVIDIA Expand Nemotron-Personas-Vietnam Dataset by 10X Times to Power the Next Wave of Agentic AI - Japan Wire by Kyodo News",
-          "at": "2026-10-19T01:32:00Z"
+          "title": "AI Agents Are Going to Work at City Hall - PYMNTS.com",
+          "at": "2026-10-19T08:03:09Z"
         },
         "shared": [
-          "nvidia",
-          "nemotron",
-          "power"
+          "ai",
+          "agent",
+          "work"
+        ]
+      },
+      {
+        "score": 0.239,
+        "blocked": "time-window",
+        "hours_apart": 280,
+        "a": {
+          "id": "rss:nvidia-dev:cdbf7413fbf9a74f",
+          "source": "rss-lab",
+          "title": "Validate AI Factory Changes with Digital Twins and AI Agents",
+          "at": "2026-10-07T16:00:00Z"
+        },
+        "b": {
+          "id": "gnews:248a16117e23cf0a",
+          "source": "gnews-rss",
+          "title": "AI Agents as Employees: An HR Model for the Digital Workforce - E3-Magazin",
+          "at": "2026-10-19T08:00:00Z"
+        },
+        "shared": [
+          "ai",
+          "digital",
+          "agent"
+        ]
+      },
+      {
+        "score": 0.231,
+        "blocked": "time-window",
+        "hours_apart": 111.8,
+        "a": {
+          "id": "rss:google-research:4c456e668ef45cba",
+          "source": "rss-lab",
+          "title": "Putting Earth AI to work: Geospatial agents for our planet's biggest challenges",
+          "at": "2026-10-14T16:14:00Z"
+        },
+        "b": {
+          "id": "gnews:429880e2c9a7c370",
+          "source": "gnews-rss",
+          "title": "AI Agents Are Going to Work at City Hall - PYMNTS.com",
+          "at": "2026-10-19T08:03:09Z"
+        },
+        "shared": [
+          "ai",
+          "work",
+          "agent"
         ]
       }
     ],
@@ -455,29 +429,6 @@
         ]
       },
       {
-        "score": 0.748,
-        "blocked": "time-window",
-        "hours_apart": 35.4,
-        "a": {
-          "id": "hn:50129045",
-          "source": "hn-algolia",
-          "title": "DeepSeek-v4.1-Flash-1017",
-          "at": "2026-10-17T08:21:25Z"
-        },
-        "b": {
-          "id": "gnews:9a026917d0ad78a4",
-          "source": "gnews-rss",
-          "title": "DeepSeek V4.1-Flash-1017: HLE Score Hits 42.6 [2026] - shattered.io",
-          "at": "2026-10-18T19:42:44Z"
-        },
-        "shared": [
-          "deepseek",
-          "v4.1",
-          "flash",
-          "1017"
-        ]
-      },
-      {
         "score": 0.547,
         "blocked": "time-window",
         "hours_apart": 85.3,
@@ -488,7 +439,7 @@
           "at": "2026-10-15T12:00:00Z"
         },
         "b": {
-          "id": "gnews:6c2cf3d968fe0343",
+          "id": "gnews:c26f1e4f4e9717ad",
           "source": "gnews-rss",
           "title": "Mistral AI Releases Timestral: A 209M Forecasting Model Family That Outperforms Google’s TimesFM-3 - MarkTechPost",
           "at": "2026-10-19T01:18:17Z"
@@ -498,9 +449,9 @@
         ]
       },
       {
-        "score": 0.469,
+        "score": 0.423,
         "blocked": "thin-overlap",
-        "hours_apart": 1.2,
+        "hours_apart": 38.7,
         "a": {
           "id": "hn:50129993",
           "source": "hn-algolia",
@@ -508,10 +459,10 @@
           "at": "2026-10-17T11:07:08Z"
         },
         "b": {
-          "id": "gnews:d5fcbd23045884f5",
+          "id": "gnews:95c3394d0cb46456",
           "source": "gnews-rss",
-          "title": "DeepSeek V4.1-Flash-1017 Hits 77.0 on DeepSWE [2026] - shattered.io",
-          "at": "2026-10-17T12:20:21Z"
+          "title": "A super-cheap Chinese-made AI model, 'DeepSeek-V4.1-Flash-1017,' has emerged that surpasses GPT-6 Astra in coding benchmarks. - GIGAZINE",
+          "at": "2026-10-19T01:47:00Z"
         },
         "shared": [
           "deepseek",
@@ -521,30 +472,7 @@
         ]
       },
       {
-        "score": 0.453,
-        "blocked": "thin-overlap",
-        "hours_apart": 32.6,
-        "a": {
-          "id": "hn:50129993",
-          "source": "hn-algolia",
-          "title": "The fastest DeepSeek v4.1 flash 1017 – Day 0",
-          "at": "2026-10-17T11:07:08Z"
-        },
-        "b": {
-          "id": "gnews:9a026917d0ad78a4",
-          "source": "gnews-rss",
-          "title": "DeepSeek V4.1-Flash-1017: HLE Score Hits 42.6 [2026] - shattered.io",
-          "at": "2026-10-18T19:42:44Z"
-        },
-        "shared": [
-          "deepseek",
-          "v4.1",
-          "flash",
-          "1017"
-        ]
-      },
-      {
-        "score": 0.387,
+        "score": 0.388,
         "blocked": "time-window",
         "hours_apart": 71.6,
         "a": {
@@ -564,6 +492,29 @@
           "nemotron",
           "super",
           "vl"
+        ]
+      },
+      {
+        "score": 0.337,
+        "blocked": "time-window",
+        "hours_apart": 133,
+        "a": {
+          "id": "rss:nvidia-dev:592d88a7a6f3222f",
+          "source": "rss-lab",
+          "title": "NVIDIA Run:ai Is Now Open Source as Part of NVIDIA DSX AI Factory Platform",
+          "at": "2026-10-13T14:19:40Z"
+        },
+        "b": {
+          "id": "gnews:e133d350c2562bf3",
+          "source": "gnews-rss",
+          "title": "NVIDIA Open Sources Run:ai Under Apache 2.0 for Kubernetes GPU Orchestration - MarkTechPost",
+          "at": "2026-10-19T03:19:18Z"
+        },
+        "shared": [
+          "nvidia",
+          "run",
+          "ai",
+          "opensourc"
         ]
       },
       {
@@ -589,25 +540,44 @@
         ]
       },
       {
-        "score": 0.297,
-        "blocked": "time-window",
-        "hours_apart": 121.5,
+        "score": 0.296,
+        "blocked": "thin-overlap",
+        "hours_apart": 297.1,
         "a": {
-          "id": "rss:openai:200a5d3dd39c6bfb",
-          "source": "rss-lab",
-          "title": "The EU’s next chapter in AI is agentic",
-          "at": "2026-10-14T00:00:00Z"
+          "id": "hn:50142323",
+          "source": "hn-algolia",
+          "title": "Torvalds use Claude for bottleneck fix, but race discovered",
+          "at": "2026-10-18T16:08:48Z"
         },
         "b": {
-          "id": "gnews:bf1edc90422656f5",
-          "source": "gnews-rss",
-          "title": "FPT and NVIDIA Expand Nemotron-Personas-Vietnam Dataset by 10X Times to Power the Next Wave of Agentic AI - Japan Wire by Kyodo News",
-          "at": "2026-10-19T01:32:00Z"
+          "id": "rss-sec:projectzero:c26302aa2cbe872f",
+          "source": "rss-security",
+          "title": "How to fix a bug in a fix",
+          "at": "2026-10-06T07:00:00Z"
         },
         "shared": [
-          "next",
-          "ai",
-          "agentic"
+          "fix"
+        ]
+      },
+      {
+        "score": 0.27,
+        "blocked": "time-window",
+        "hours_apart": 264.5,
+        "a": {
+          "id": "hn:50132502",
+          "source": "hn-algolia",
+          "title": "OpenAI discloses four more rogue incidents",
+          "at": "2026-10-17T16:31:12Z"
+        },
+        "b": {
+          "id": "gmail:1a111f35812d42ba",
+          "source": "gmail-news",
+          "title": "Oct. 6 - Water hacks, rogue AI raise alarms | Java vulnerabilities disclosed",
+          "at": "2026-10-06T16:01:57Z"
+        },
+        "shared": [
+          "disclos",
+          "rogu"
         ]
       }
     ]
@@ -616,76 +586,76 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 0,
-      "streak_fail": 1,
-      "items_last": 4
+      "streak_ok": 1,
+      "streak_fail": 0,
+      "items_last": 28
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 139,
+      "streak_ok": 140,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 139,
+      "streak_ok": 140,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 139,
+      "streak_ok": 140,
       "streak_fail": 0,
-      "items_last": 26
+      "items_last": 23
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 139,
+      "streak_ok": 140,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 139,
+      "streak_ok": 140,
       "streak_fail": 0,
-      "items_last": 46
+      "items_last": 41
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 51,
+      "streak_ok": 52,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 43,
+      "streak_ok": 44,
       "streak_fail": 0,
       "items_last": 105
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 139,
+      "streak_ok": 140,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 139,
+      "streak_ok": 140,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.006052777777777778,
+    "hours": 0.005331111111111111,
     "stale": false
   },
   "hf": {
@@ -694,10 +664,10 @@
     "url": "https://huggingface.co/api/daily_papers"
   },
   "arxiv": {
-    "ok": false,
-    "enriched": 0,
+    "ok": true,
+    "enriched": 24,
     "shelf": 4,
-    "timed_out": true,
+    "timed_out": false,
     "budget_ms": 20000,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
@@ -766,7 +736,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 46,
+    "count": 41,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -783,19 +753,13 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 22,
+    "ai_dropped": 23,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
-        "id": "hn:50129045",
-        "tag": "rest",
-        "score": 938,
-        "text": "DeepSeek-v4.1-Flash-1017"
-      },
-      {
         "id": "hn:50141429",
         "tag": "rest",
-        "score": 157,
+        "score": 162,
         "text": "Anthropic's proposed AI safety bill only kicks in if 50 deaths or $1B in damages"
       },
       {
@@ -803,6 +767,12 @@
         "tag": "rest",
         "score": 130,
         "text": "OpenAI discloses four more rogue incidents"
+      },
+      {
+        "id": "hn:50139873",
+        "tag": "rest",
+        "score": 112,
+        "text": "How employment is changing at Anthropic"
       }
     ]
   },
@@ -955,18 +925,9 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 26,
-    "pool": 240,
-    "corroborators": [
-      {
-        "id": "gnews:d5fcbd23045884f5",
-        "anchor_id": "hn:50129045",
-        "score": 0.79,
-        "title": "DeepSeek V4.1-Flash-1017 Hits 77.0 on DeepSWE [2026] - shattered.io",
-        "publisher": "shattered.io",
-        "self_repost": false
-      }
-    ],
+    "items": 23,
+    "pool": 236,
+    "corroborators": [],
     "http_status": 200,
     "content_type": "application/xml; charset=utf-8",
     "format": "rss2",
@@ -993,24 +954,24 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:c7c942fec99eb617",
-        "title": "How to Price an AI Agent Proof of Concept Before It's Free - Startup Fortune",
-        "publisher": "Startup Fortune",
-        "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPX1RneWpYcGR6UFB1eEhsZk51bi11YnVRRk0tbVVZM1VnaVRpaWhSQm1FT2t4U0QxbXBacUdoWVZZdWYySmJGS0VSNmJuaWdJNDBjbVV1OVNQX09pMnpDQ1ZGX0xUY0wwRzNiOVNmYjE5enE2SUdNZUxBc1JIX3l6eml6aVRaSEIzUmtDNERR?oc=5",
+        "id": "gnews:40fc6cb2172985e5",
+        "title": "World brings biometric proof of human to banking and AI agents - Biometric Update",
+        "publisher": "Biometric Update",
+        "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQc0xYcnJUMFRrSFJ3eXFNQzRiSHRCanRQbkNGOGMtbFFvbGhTT1BGbmxaMFllZ0dtYzZhQWx2NEhJSkctbEQ4X01WT1o5cWdYQW5WVEJ5VkNmM21ZejZBaWtFYlVmaGVfWmRWUVRZZTdZcEdsNEtESzNOYXBCZXhaeVdtRG8wY2ZLcWd3dXZINF9VSEJoYVVUM3d1T19DcDZnWmVj?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:20675591fd9df337",
-        "title": "Report finds just 26% of enterprises are well prepared to manage AI agent conflicts - FutureCIO",
-        "publisher": "FutureCIO",
-        "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOUkZJTGktZ0ZVbEZ2QUZWZ3BOYU9hRm1QcWxJUGVhb3RWcE12aXdTbTFxX1kwYl9hY1JZSFNUT3R2MlVoVktmX2ZZQ0FqUXBIeUV4TWxqMnBXYzR4SjRmRmlSX3JMb0swRmM0ZjhWNUltdGVQbGtQODRMSWk4WV9uaXdGUU1qS0NYX3NXcC04TXFwaDlFY25oMjhlMEpqZVdLbGNNSFRiazZGUQ?oc=5",
+        "id": "gnews:4c8bab6cb25ca8ba",
+        "title": "AI Agents Could Fill Treasury’s Looming Talent Gap - PYMNTS.com",
+        "publisher": "PYMNTS.com",
+        "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQdEhfSmJReHdoQkluZ2xMVkFqS1R6eEItcDRzLW5jdUQ3MlJvUU1jRnplWEVJY3ByZDhvSGtnNEFqVzlGYlFRZDJEYVhmd1hSc3BkNUtJYzRfejZFTzJyTFRHNEkyQ0ZZbE5nVHVJRW9hNGtkVW1Eb1ZPUmV6V1MwdTdlU0RIRm5QaG4zS01fa1dlWTZ4c3ZlMzdZSTgxZjdrazJBZXQ2N1JJbXM?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:7c5c06de6d6124b6",
-        "title": "WeChat is quietly becoming AI-driven. - 36Kr",
-        "publisher": "36Kr",
-        "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5XbmRxMmhvUkdobEVUMlI1SVlSMldXY29oVHAxUXMtX214NTAzMHN0QUpKQ2YxcjdTemV6NmJYME5qd19BU1UwcTk1bTVpUVBaMTNj?oc=5",
+        "id": "gnews:2b40df4d115cb7b0",
+        "title": "Governance, accountability key to scaling AI-driven autonomous payments - UOB - TNGlobal",
+        "publisher": "TNGlobal",
+        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOaU53a3BsY1NrbU1TR2g0R0NvWnRVUl9GNEhPWnlrSEJ6OHBmSnpIMXJIR3doQ2tfZldoQXo3X2gtQllINGg1dUlMdzR4akp4Ym9iQ0dvWmFCS0dNbEVuMVZOdEdQY0cwTXdLY1l3bUZHa1R5ZkkxUERHS1ZCd094cEo2LTBjblR1TmQ0dnZULV9qeW9jRTYybDJ4SHlXNXdlMElkb1lhc19wNmRSRF9R?oc=5",
         "tag": "rest"
       }
     ]
@@ -1051,8 +1012,8 @@
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
-        "label": "TarunSinghChauhan/multi-agent-code-review",
-        "href": "https://github.com/TarunSinghChauhan/multi-agent-code-review"
+        "label": "LochanSharmaa/llm-xploitlab",
+        "href": "https://github.com/LochanSharmaa/llm-xploitlab"
       }
     ]
   },

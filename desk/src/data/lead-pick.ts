@@ -13,11 +13,6 @@ export const LEAD_TODAY: LeadEntry | null = {
       "reason": "age>=36h"
     },
     {
-      "cluster_id": "cl:hn:50129045",
-      "headline": "DeepSeek-v4.1-Flash-1017",
-      "reason": "age>=36h"
-    },
-    {
       "cluster_id": "cl:rss:deepmind:851107eacfc8ba0f",
       "headline": "Gemini 4 Argon: Built to solve your hardest problems",
       "reason": "age>=36h"
@@ -44,6 +39,22 @@ export const LEAD_TODAY: LeadEntry | null = {
         {
           "cluster_id": "cl:hn:50129045",
           "headline": "DeepSeek-v4.1-Flash-1017",
+          "reason": "age>=36h"
+        },
+        {
+          "cluster_id": "cl:rss:deepmind:851107eacfc8ba0f",
+          "headline": "Gemini 4 Argon: Built to solve your hardest problems",
+          "reason": "age>=36h"
+        }
+      ]
+    },
+    {
+      "at": "2026-10-19T08:22:02.237Z",
+      "crawl_at": "2026-10-19T08:21:43Z",
+      "excluded": [
+        {
+          "cluster_id": "cl:rss:nvidia-dev:9f5aca4e4d9dbf53",
+          "headline": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
           "reason": "age>=36h"
         },
         {
