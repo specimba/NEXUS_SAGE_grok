@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-19T15:43:04Z",
+  "stamped_at": "2026-10-19T18:20:45Z",
   "config_hash": "813e5ce035c3",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,7 +11,7 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 77,
+      "duration_ms": 129,
       "paused_until": null,
       "reason": null
     },
@@ -20,7 +20,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 3263,
+      "duration_ms": 11237,
       "paused_until": null,
       "reason": null
     },
@@ -29,7 +29,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 330,
+      "duration_ms": 372,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 162,
+      "duration_ms": 122,
       "paused_until": null,
       "reason": null
     },
@@ -46,8 +46,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 43,
-      "duration_ms": 8292,
+      "rows": 45,
+      "duration_ms": 8268,
       "paused_until": null,
       "reason": null
     },
@@ -56,7 +56,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 105,
-      "duration_ms": 16721,
+      "duration_ms": 17964,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 4205,
+      "duration_ms": 4174,
       "paused_until": null,
       "reason": null
     },
@@ -73,8 +73,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 23,
-      "duration_ms": 6473,
+      "rows": 26,
+      "duration_ms": 6388,
       "paused_until": null,
       "reason": null
     },
@@ -82,8 +82,8 @@
       "id": "github",
       "label": "GitHub",
       "status": "ok",
-      "rows": 1,
-      "duration_ms": 393,
+      "rows": 0,
+      "duration_ms": 349,
       "paused_until": null,
       "reason": null
     },
@@ -92,16 +92,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4396,
+      "duration_ms": 4409,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 44312,
-    "sources_wall_ms": 16722,
-    "papers_lane_ms": 3846,
-    "slowest_source_ms": 16721,
+    "sources_ms": 53412,
+    "sources_wall_ms": 17965,
+    "papers_lane_ms": 11866,
+    "slowest_source_ms": 17964,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -116,9 +116,9 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 17086,
-    "startup_ms": 49,
-    "main_ms": 17113
+    "wall_ms": 18320,
+    "startup_ms": 48,
+    "main_ms": 18334
   },
   "multi_source_independent": 1,
   "stale_hours": 6,
@@ -127,20 +127,20 @@
     "multi_source_independent": 1,
     "multi_source_raw": 1,
     "self_reposts": 0,
-    "items_in": 209,
-    "clusters_out": 203,
-    "collapsed": 6,
+    "items_in": 214,
+    "clusters_out": 204,
+    "collapsed": 10,
     "multi_source": 1,
-    "multi_member": 5,
+    "multi_member": 8,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 22,
+    "new_items": 28,
     "per_source": {
-      "hn-algolia": 43,
+      "hn-algolia": 45,
       "rss-lab": 105,
       "rss-security": 28,
-      "gnews-rss": 23,
+      "gnews-rss": 26,
       "gmail-news": 10
     },
     "multi_source_clusters": [
@@ -156,7 +156,7 @@
           {
             "id": "hn:50150434",
             "source": "hn-algolia",
-            "title": "Timestral: Mistral release time-series foundation models",
+            "title": "Timestral: Mistral's time-series foundation models",
             "at": "2026-10-19T09:59:32Z",
             "publisher": null
           },
@@ -181,48 +181,59 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "CXOToday.com",
-          "title": "Check Point Q3 2026 Audit: Microsoft Impersonated in 33% of Global Brand Phishing Attacks - CXOToday.com"
+          "publisher": "Tech Times",
+          "title": "MAI-Base-2 Pretraining Complete: Four Innovations Behind Microsoft's 4–12× Efficiency Claim - Tech Times"
+        },
+        {
+          "publisher": "Voice of Alexandria",
+          "title": "Inception Launches Mercury 3, Setting a New Pareto Frontier in Speed and Intelligence - Voice of Alexandria"
+        },
+        {
+          "publisher": "Cybersecurity Dive",
+          "title": "ConnectWise suspends Cloud Backup service as hacker targets Microsoft 365 users - Cybersecurity Dive"
+        },
+        {
+          "publisher": "FourWeekMBA",
+          "title": "Microsoft Subsidiaries: The Companies Microsoft Owns (2026) - FourWeekMBA"
+        },
+        {
+          "publisher": "Globes - Israel Business News",
+          "title": "Amnon Shashua’s doubleAI unveils code execution model - Globes - Israel Business News"
         },
         {
           "publisher": "Luxembourg Times",
           "title": "Private market investors shrug off Luxembourg capital gains shake-up - Luxembourg Times"
-        },
-        {
-          "publisher": "News Ghana",
-          "title": "Microsoft behind a third of brand phishing, Check Point says - News Ghana"
-        },
-        {
-          "publisher": "Investor's Business Daily",
-          "title": "Neoclouds: Goldman Sachs Upgrades CoreWeave. Microsoft Shelves Nscale Project. - Investor's Business Daily"
-        },
-        {
-          "publisher": "KDnuggets",
-          "title": "LangChain vs. LlamaIndex vs. Building From Scratch: Here’s What I Suggest - KDnuggets"
-        },
-        {
-          "publisher": "www.thehawk.in",
-          "title": "Microsoft accounts for 33 pc of brand phishing attacks in Q3, Apple, Google trail: Report - www.thehawk.in"
-        },
-        {
-          "publisher": "Stock Titan",
-          "title": "Deutsche Telekom's new service records, transcribes and summarizes business calls - Stock Titan"
-        },
-        {
-          "publisher": "Passionate In Marketing",
-          "title": "Utho Cloud Opens NVIDIA B300 GPU Reservations in India - Passionate In Marketing"
-        },
-        {
-          "publisher": "Yahoo Finance Singapore",
-          "title": "Tenstorrent Announces a $1.5B Series E at a $6.2B Valuation - Yahoo Finance Singapore"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 25
+      "hn_dropped": 23
     },
     "gnews_near_misses": [
       {
-        "score": 0.563,
+        "score": 0.593,
+        "blocked": "below-threshold",
+        "hours_apart": 5.8,
+        "a": {
+          "id": "hn:50150434",
+          "source": "hn-algolia",
+          "title": "Timestral: Mistral's time-series foundation models",
+          "at": "2026-10-19T09:59:32Z"
+        },
+        "b": {
+          "id": "gnews:b95b19109ad6718e",
+          "source": "gnews-rss",
+          "title": "With Timestral, Mistral Takes On Austria’s NXAI in Time-Series A.I. - www.trendingtopics.eu",
+          "at": "2026-10-19T15:44:55Z"
+        },
+        "shared": [
+          "timestral",
+          "mistral",
+          "time",
+          "sery"
+        ]
+      },
+      {
+        "score": 0.562,
         "blocked": "time-window",
         "hours_apart": 98.8,
         "a": {
@@ -242,13 +253,53 @@
         ]
       },
       {
-        "score": 0.314,
+        "score": 0.56,
+        "blocked": "time-window",
+        "hours_apart": 99.8,
+        "a": {
+          "id": "rss:mistral:51edf4c643816e6f",
+          "source": "rss-lab",
+          "title": "Introducing Timestral",
+          "at": "2026-10-15T12:00:00Z"
+        },
+        "b": {
+          "id": "gnews:bc52132d6a2f97e9",
+          "source": "gnews-rss",
+          "title": "Mistral Timestral 209M Beats Google TimesFM-3 [2026] - https://tech-insider.org/",
+          "at": "2026-10-19T15:47:55Z"
+        },
+        "shared": [
+          "timestral"
+        ]
+      },
+      {
+        "score": 0.552,
+        "blocked": "time-window",
+        "hours_apart": 99.7,
+        "a": {
+          "id": "rss:mistral:51edf4c643816e6f",
+          "source": "rss-lab",
+          "title": "Introducing Timestral",
+          "at": "2026-10-15T12:00:00Z"
+        },
+        "b": {
+          "id": "gnews:b95b19109ad6718e",
+          "source": "gnews-rss",
+          "title": "With Timestral, Mistral Takes On Austria’s NXAI in Time-Series A.I. - www.trendingtopics.eu",
+          "at": "2026-10-19T15:44:55Z"
+        },
+        "shared": [
+          "timestral"
+        ]
+      },
+      {
+        "score": 0.351,
         "blocked": "below-threshold",
         "hours_apart": 4.8,
         "a": {
           "id": "hn:50150434",
           "source": "hn-algolia",
-          "title": "Timestral: Mistral release time-series foundation models",
+          "title": "Timestral: Mistral's time-series foundation models",
           "at": "2026-10-19T09:59:32Z"
         },
         "b": {
@@ -264,140 +315,102 @@
         ]
       },
       {
-        "score": 0.291,
+        "score": 0.336,
         "blocked": "time-window",
-        "hours_apart": 287.6,
+        "hours_apart": 97.8,
         "a": {
-          "id": "rss:nvidia-dev:cdbf7413fbf9a74f",
+          "id": "rss:nvidia:599b981c923a3fd6",
           "source": "rss-lab",
-          "title": "Validate AI Factory Changes with Digital Twins and AI Agents",
-          "at": "2026-10-07T16:00:00Z"
+          "title": "Open From Data Center to Desktop: NVIDIA Expands Nemotron Family With Highest Efficiency Super VL and Bolt Models",
+          "at": "2026-10-15T15:00:24Z"
         },
         "b": {
-          "id": "gnews:e60225a4e6d126fc",
+          "id": "gnews:8faeb986ef6e17b0",
           "source": "gnews-rss",
-          "title": "Microsoft Secures AI Agents With Digital IDs - 조선일보",
-          "at": "2026-10-19T15:38:55Z"
+          "title": "Nemotron 3.5 Makes Nvidia’s Open A.I. Model Twice as Smart - www.trendingtopics.eu",
+          "at": "2026-10-19T16:47:22Z"
         },
         "shared": [
-          "ai",
-          "digital",
-          "agent"
-        ]
-      },
-      {
-        "score": 0.279,
-        "blocked": "time-window",
-        "hours_apart": 307,
-        "a": {
-          "id": "gnews:2014bcaacf04ae11",
-          "source": "gnews-rss",
-          "title": "Nvidia-backed doubleAI launches AI model that cuts compute costs - Quartz",
-          "at": "2026-10-19T12:37:15Z"
-        },
-        "b": {
-          "id": "gmail:1a1124990d6345ac",
-          "source": "gmail-news",
-          "title": "Can Microsoft Help Customers Cut Back on Claude?",
-          "at": "2026-10-06T17:36:12Z"
-        },
-        "shared": [
-          "back",
-          "cut"
-        ]
-      },
-      {
-        "score": 0.268,
-        "blocked": "thin-overlap",
-        "hours_apart": 314.3,
-        "a": {
-          "id": "rss:mistral:1ef243007176e85c",
-          "source": "rss-lab",
-          "title": "Introducing Mistral Large 4",
-          "at": "2026-10-06T12:00:27Z"
-        },
-        "b": {
-          "id": "gnews:3d39a4bb08c07c18",
-          "source": "gnews-rss",
-          "title": "Intel Unveils 480GB GPU for Large Scale AI Inference - SuaraGarut.ID",
-          "at": "2026-10-19T14:19:12Z"
-        },
-        "shared": [
-          "larg"
-        ]
-      },
-      {
-        "score": 0.228,
-        "blocked": "thin-overlap",
-        "hours_apart": 28.8,
-        "a": {
-          "id": "hn:50139873",
-          "source": "hn-algolia",
-          "title": "How employment is changing at Anthropic",
-          "at": "2026-10-18T10:49:26Z"
-        },
-        "b": {
-          "id": "gnews:95ba177264a8c6d4",
-          "source": "gnews-rss",
-          "title": "Review AI-Generated UI Changes with Storybook & Chromatic - SitePoint",
-          "at": "2026-10-19T15:40:06Z"
-        },
-        "shared": [
-          "chang"
-        ]
-      },
-      {
-        "score": 0.222,
-        "blocked": "thin-overlap",
-        "hours_apart": 103.6,
-        "a": {
-          "id": "rss:nvidia:634c961cdd8d2c6e",
-          "source": "rss-lab",
-          "title": "The Nordics and NVIDIA Show What’s Possible When a Region Commits to Advanced Computing",
-          "at": "2026-10-15T05:00:12Z"
-        },
-        "b": {
-          "id": "gnews:2014bcaacf04ae11",
-          "source": "gnews-rss",
-          "title": "Nvidia-backed doubleAI launches AI model that cuts compute costs - Quartz",
-          "at": "2026-10-19T12:37:15Z"
-        },
-        "shared": [
+          "open",
           "nvidia",
-          "comput"
+          "nemotron",
+          "model"
         ]
       },
       {
-        "score": 0.222,
+        "score": 0.291,
         "blocked": "thin-overlap",
-        "hours_apart": 408.1,
+        "hours_apart": 286.4,
         "a": {
-          "id": "rss:google-ai:6a7bb4e3e69d69f5",
+          "id": "rss:nvidia-dev:1fd6b880e95ea139",
           "source": "rss-lab",
-          "title": "The latest AI news we announced in September 2026",
-          "at": "2026-10-02T15:00:00Z"
+          "title": "The Machines that Make the Machines",
+          "at": "2026-10-07T18:21:03Z"
         },
         "b": {
-          "id": "gnews:d13cd427033382b1",
+          "id": "gnews:8faeb986ef6e17b0",
           "source": "gnews-rss",
-          "title": "Calix unveils AI agent and platform updates at ConneXions 2026 - StreetInsider",
-          "at": "2026-10-19T15:07:44Z"
+          "title": "Nemotron 3.5 Makes Nvidia’s Open A.I. Model Twice as Smart - www.trendingtopics.eu",
+          "at": "2026-10-19T16:47:22Z"
         },
         "shared": [
-          "ai",
-          "2026"
+          "make"
+        ]
+      },
+      {
+        "score": 0.287,
+        "blocked": "time-window",
+        "hours_apart": 310.6,
+        "a": {
+          "id": "gnews:e6ebea5de640f736",
+          "source": "gnews-rss",
+          "title": "Big Banks Won’t Let Outside AI Agents Move Money - PYMNTS.com",
+          "at": "2026-10-19T17:33:31Z"
+        },
+        "b": {
+          "id": "gmail:1a112914bb745ca0",
+          "source": "gmail-news",
+          "title": "This AI that can't write",
+          "at": "2026-10-06T18:54:34Z"
+        },
+        "shared": [
+          "t",
+          "ai"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.574,
+        "score": 0.593,
+        "blocked": "below-threshold",
+        "hours_apart": 5.8,
+        "a": {
+          "id": "hn:50150434",
+          "source": "hn-algolia",
+          "title": "Timestral: Mistral's time-series foundation models",
+          "at": "2026-10-19T09:59:32Z"
+        },
+        "b": {
+          "id": "gnews:b95b19109ad6718e",
+          "source": "gnews-rss",
+          "title": "With Timestral, Mistral Takes On Austria’s NXAI in Time-Series A.I. - www.trendingtopics.eu",
+          "at": "2026-10-19T15:44:55Z"
+        },
+        "shared": [
+          "timestral",
+          "mistral",
+          "time",
+          "sery"
+        ]
+      },
+      {
+        "score": 0.583,
         "blocked": "time-window",
         "hours_apart": 94,
         "a": {
           "id": "hn:50150434",
           "source": "hn-algolia",
-          "title": "Timestral: Mistral release time-series foundation models",
+          "title": "Timestral: Mistral's time-series foundation models",
           "at": "2026-10-19T09:59:32Z"
         },
         "b": {
@@ -411,7 +424,7 @@
         ]
       },
       {
-        "score": 0.563,
+        "score": 0.562,
         "blocked": "time-window",
         "hours_apart": 98.8,
         "a": {
@@ -431,29 +444,92 @@
         ]
       },
       {
-        "score": 0.346,
+        "score": 0.56,
         "blocked": "time-window",
-        "hours_apart": 815.5,
+        "hours_apart": 99.8,
         "a": {
-          "id": "hn:50153630",
-          "source": "hn-algolia",
-          "title": "CERN and Mistral join forces to accelerate AI for science",
-          "at": "2026-10-19T15:28:24Z"
+          "id": "rss:mistral:51edf4c643816e6f",
+          "source": "rss-lab",
+          "title": "Introducing Timestral",
+          "at": "2026-10-15T12:00:00Z"
         },
         "b": {
-          "id": "rss:google-ai:6fff55fdf7cb614f",
-          "source": "rss-lab",
-          "title": "Building AI to accelerate science and improve lives",
-          "at": "2026-09-15T16:00:00Z"
+          "id": "gnews:bc52132d6a2f97e9",
+          "source": "gnews-rss",
+          "title": "Mistral Timestral 209M Beats Google TimesFM-3 [2026] - https://tech-insider.org/",
+          "at": "2026-10-19T15:47:55Z"
         },
         "shared": [
-          "accelerat",
-          "ai",
-          "scienc"
+          "timestral"
         ]
       },
       {
-        "score": 0.317,
+        "score": 0.552,
+        "blocked": "time-window",
+        "hours_apart": 99.7,
+        "a": {
+          "id": "rss:mistral:51edf4c643816e6f",
+          "source": "rss-lab",
+          "title": "Introducing Timestral",
+          "at": "2026-10-15T12:00:00Z"
+        },
+        "b": {
+          "id": "gnews:b95b19109ad6718e",
+          "source": "gnews-rss",
+          "title": "With Timestral, Mistral Takes On Austria’s NXAI in Time-Series A.I. - www.trendingtopics.eu",
+          "at": "2026-10-19T15:44:55Z"
+        },
+        "shared": [
+          "timestral"
+        ]
+      },
+      {
+        "score": 0.351,
+        "blocked": "below-threshold",
+        "hours_apart": 4.8,
+        "a": {
+          "id": "hn:50150434",
+          "source": "hn-algolia",
+          "title": "Timestral: Mistral's time-series foundation models",
+          "at": "2026-10-19T09:59:32Z"
+        },
+        "b": {
+          "id": "gnews:7ef64f7c849ae27e",
+          "source": "gnews-rss",
+          "title": "Mistral Timestral: 209M Model Beats TimesFM-3 [2026] - shattered.io",
+          "at": "2026-10-19T14:46:03Z"
+        },
+        "shared": [
+          "timestral",
+          "mistral",
+          "model"
+        ]
+      },
+      {
+        "score": 0.336,
+        "blocked": "time-window",
+        "hours_apart": 97.8,
+        "a": {
+          "id": "rss:nvidia:599b981c923a3fd6",
+          "source": "rss-lab",
+          "title": "Open From Data Center to Desktop: NVIDIA Expands Nemotron Family With Highest Efficiency Super VL and Bolt Models",
+          "at": "2026-10-15T15:00:24Z"
+        },
+        "b": {
+          "id": "gnews:8faeb986ef6e17b0",
+          "source": "gnews-rss",
+          "title": "Nemotron 3.5 Makes Nvidia’s Open A.I. Model Twice as Smart - www.trendingtopics.eu",
+          "at": "2026-10-19T16:47:22Z"
+        },
+        "shared": [
+          "open",
+          "nvidia",
+          "nemotron",
+          "model"
+        ]
+      },
+      {
+        "score": 0.316,
         "blocked": "thin-overlap",
         "hours_apart": 91.9,
         "a": {
@@ -473,91 +549,6 @@
           "deepmind",
           "ai"
         ]
-      },
-      {
-        "score": 0.314,
-        "blocked": "below-threshold",
-        "hours_apart": 4.8,
-        "a": {
-          "id": "hn:50150434",
-          "source": "hn-algolia",
-          "title": "Timestral: Mistral release time-series foundation models",
-          "at": "2026-10-19T09:59:32Z"
-        },
-        "b": {
-          "id": "gnews:7ef64f7c849ae27e",
-          "source": "gnews-rss",
-          "title": "Mistral Timestral: 209M Model Beats TimesFM-3 [2026] - shattered.io",
-          "at": "2026-10-19T14:46:03Z"
-        },
-        "shared": [
-          "timestral",
-          "mistral",
-          "model"
-        ]
-      },
-      {
-        "score": 0.294,
-        "blocked": "thin-overlap",
-        "hours_apart": 297.1,
-        "a": {
-          "id": "hn:50142323",
-          "source": "hn-algolia",
-          "title": "Torvalds use Claude for bottleneck fix, but race discovered",
-          "at": "2026-10-18T16:08:48Z"
-        },
-        "b": {
-          "id": "rss-sec:projectzero:c26302aa2cbe872f",
-          "source": "rss-security",
-          "title": "How to fix a bug in a fix",
-          "at": "2026-10-06T07:00:00Z"
-        },
-        "shared": [
-          "fix"
-        ]
-      },
-      {
-        "score": 0.291,
-        "blocked": "time-window",
-        "hours_apart": 287.6,
-        "a": {
-          "id": "rss:nvidia-dev:cdbf7413fbf9a74f",
-          "source": "rss-lab",
-          "title": "Validate AI Factory Changes with Digital Twins and AI Agents",
-          "at": "2026-10-07T16:00:00Z"
-        },
-        "b": {
-          "id": "gnews:e60225a4e6d126fc",
-          "source": "gnews-rss",
-          "title": "Microsoft Secures AI Agents With Digital IDs - 조선일보",
-          "at": "2026-10-19T15:38:55Z"
-        },
-        "shared": [
-          "ai",
-          "digital",
-          "agent"
-        ]
-      },
-      {
-        "score": 0.279,
-        "blocked": "time-window",
-        "hours_apart": 307,
-        "a": {
-          "id": "gnews:2014bcaacf04ae11",
-          "source": "gnews-rss",
-          "title": "Nvidia-backed doubleAI launches AI model that cuts compute costs - Quartz",
-          "at": "2026-10-19T12:37:15Z"
-        },
-        "b": {
-          "id": "gmail:1a1124990d6345ac",
-          "source": "gmail-news",
-          "title": "Can Microsoft Help Customers Cut Back on Claude?",
-          "at": "2026-10-06T17:36:12Z"
-        },
-        "shared": [
-          "back",
-          "cut"
-        ]
       }
     ]
   },
@@ -565,76 +556,76 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 1,
+      "streak_ok": 2,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 142,
+      "streak_ok": 143,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 142,
+      "streak_ok": 143,
       "streak_fail": 0,
-      "items_last": 1
+      "items_last": 0
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 142,
+      "streak_ok": 143,
       "streak_fail": 0,
-      "items_last": 23
+      "items_last": 26
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 142,
+      "streak_ok": 143,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 142,
+      "streak_ok": 143,
       "streak_fail": 0,
-      "items_last": 43
+      "items_last": 45
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 54,
+      "streak_ok": 55,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 46,
+      "streak_ok": 47,
       "streak_fail": 0,
       "items_last": 105
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 142,
+      "streak_ok": 143,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 142,
+      "streak_ok": 143,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.004790555555555556,
+    "hours": 0.005103333333333333,
     "stale": false
   },
   "hf": {
@@ -715,7 +706,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 43,
+    "count": 45,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -732,26 +723,26 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 25,
+    "ai_dropped": 23,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
         "id": "hn:50150434",
         "tag": "rest",
-        "score": 301,
-        "text": "Timestral: Mistral release time-series foundation models"
+        "score": 407,
+        "text": "Timestral: Mistral's time-series foundation models"
+      },
+      {
+        "id": "hn:50153630",
+        "tag": "rest",
+        "score": 210,
+        "text": "CERN and Mistral sign a statement of intent to establish a strategic partnership"
       },
       {
         "id": "hn:50141429",
         "tag": "rest",
-        "score": 168,
+        "score": 170,
         "text": "Anthropic's proposed AI safety bill only kicks in if 50 deaths or $1B in damages"
-      },
-      {
-        "id": "hn:50139873",
-        "tag": "rest",
-        "score": 139,
-        "text": "How employment is changing at Anthropic"
       }
     ]
   },
@@ -814,6 +805,13 @@
     "feeds_soft_fail": [],
     "sample": [
       {
+        "id": "rss:nvidia-dev:f8538cc6e1f581e3",
+        "lab": "nvidia-dev",
+        "tag": "rest",
+        "title": "Accelerating Mamba-2 with High-Performance Forward Pass Kernels in NVIDIA CUDA Tile",
+        "link": "https://developer.nvidia.com/blog/accelerating-mamba-2-with-high-performance-forward-pass-kernels-in-nvidia-cuda-tile/"
+      },
+      {
         "id": "rss:nvidia:a30d79bf039558b5",
         "lab": "nvidia",
         "tag": "rest",
@@ -833,13 +831,6 @@
         "tag": "rest",
         "title": "How Itaú is building generative AI for its entire customer base",
         "link": "https://openai.com/index/itau-generative-ai"
-      },
-      {
-        "id": "rss:google-research:dd1029b4b030aba3",
-        "lab": "google-research",
-        "tag": "rest",
-        "title": "Grounding AI agents in biological reality: Building blocks for autonomous wet labs",
-        "link": "https://research.google/blog/grounding-ai-agents-in-biological-reality-building-blocks-for-autonomous-wet-labs/"
       }
     ]
   },
@@ -904,8 +895,8 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 23,
-    "pool": 264,
+    "items": 26,
+    "pool": 271,
     "corroborators": [],
     "http_status": 200,
     "content_type": "application/xml; charset=utf-8",
@@ -933,65 +924,40 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:f76b4e31a6987cea",
-        "title": "Straiker Brings Independent AI Agent Red-Teaming to Workday Agent Passport - VMblog",
-        "publisher": "VMblog",
-        "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOTlNLNDJpd3c4dGhDZkRzMUptLS1pNEZ2TDBMdEpJZDdtN19IbEtYTkJ0cmh5TXhyWGxfWm04UXgtejEzc2xWMVYtZWtidjlwSEwxSk5SSlZtQ3E5SUhoSFg4aXlJYUhZT0xOOFpHZmdEeFNqSUdFRU40cVdwVlZ5cDI5ZU1qR3haVGxJdWdadEcwMW5EVTVPeUI3cXFRTHpy?oc=5",
+        "id": "gnews:b74a558ebd82df1d",
+        "title": "Ten National AI Strategies Compared: Who Is Building, Who Is Stuck - AI Insider",
+        "publisher": "AI Insider",
+        "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOWjVtRF9qMnRsVEVxajlVOU9COEJDbmp4UGRNNW5FX2toMEctZl9IRG1JSE1hRjlST2pYa2lHMW9yeVowNEZOWVFKX3NkS3FCR2o5bENyMXF3cklFUU1oV1kydWZ5Z29pVTZwT2k2aWR3bDJmbFhJZ0M3Yldyc3JDYzBVeEhnampwczdKYTlpU0Y3SnVsVzJOVi05MzBmY2VOSXNQMg?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:95ba177264a8c6d4",
-        "title": "Review AI-Generated UI Changes with Storybook & Chromatic - SitePoint",
-        "publisher": "SitePoint",
-        "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5HWXRUbVBfRXplWlh0UFdWZ1hRcl9PRmJ4UzJUcDVWWDJZV29OX29hNi1wRThBMUJmREMtVXF1eTd2U09HV2wwdGNYRlRnQ1BoMVE4Um9vT2dRWkZocmpjMjIzbENaeGhQ?oc=5",
+        "id": "gnews:40cac2eab0560bb4",
+        "title": "The Intelligent Spend Shift: How Card Platforms Can Prepare for Agentic Commerce - PYMNTS.com",
+        "publisher": "PYMNTS.com",
+        "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNRzU3ZTJxQmhRQWYyVFNRNXprU0RrMlplVU1IenFsbE1yTUx0aVF0SExseEtTOWY2bDRSWmFmbFRNQnBnZ0R3MUlWNzBnMUlMVjNPb2dYeXd4WENjeC14ZDdIN0p3Q1RxWk94Qzg4ME5YX2tibk5YNlplaGUxYTJPUC1xb3M3N0JDTWp1NWlFXzhJU2JGLUpJU2w3bmlKMGVzY1BVR0gzM2M1Uy0ycktZeVJtRG04NFhSS1E?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:e60225a4e6d126fc",
-        "title": "Microsoft Secures AI Agents With Digital IDs - 조선일보",
-        "publisher": "조선일보",
-        "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOWmxjVDAtUnNBS0RlTFVfcFc1T0NIWVpJRm1lMHlNd0d4UXFZdHdtWjA3VGdubUdkdHNfM3cyTnNGSy1FcW1hQjZ5WFR6NlhMaVVNbEswYjE2Qi0wcWN3cWZ5bndHY1RHMmN1SVZveGw1M2ZmUkQ5MWQ0YTlrZzhQTlZ0bjhVOTky?oc=5",
+        "id": "gnews:ad4b8ce48245f12b",
+        "title": "AI agent governance at scale: The four pillars every enterprise needs - Omaha World-Herald",
+        "publisher": "Omaha World-Herald",
+        "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOaDA4TVNCaDMtYjg3YlFfa2ZrX3hOdUE1WWdkZ2FuTlBleGV4VGNPdTIwUE0tOEtVR3AtQUpfcUJqN3dDOEpBUFdLbXQwYzhpVFZWQVJDY2dNTk1ERk1IRWNzRTRrNm1HbEJuTWk0V2NISmR5aWVXMWJmRkdmRGFLcDlHXzR5ZC1fdHkxMlFqRG40bkJtM2xnWW5n?oc=5",
         "tag": "rest"
       }
     ]
   },
   "gmail_news": {
-    "ok": true,
-    "soft_fail": false,
-    "soft_fail_reason": null,
-    "count": 10,
-    "fetched": 10,
-    "from_cache": true,
-    "last_query_hash": "14f148f8d31e",
+    "ok": false,
+    "soft_fail": true,
+    "soft_fail_reason": "box-only",
+    "count": 0,
+    "fetched": 0,
+    "from_cache": false,
+    "last_query_hash": "",
     "brief": false,
     "pulse_only": true,
     "briefEligible": false,
-    "sample": [
-      {
-        "id": "gmail:1a11250b91591834",
-        "title": "AI systems could cover up misbehavior",
-        "publisher": "substack.com",
-        "qi": 6.6,
-        "priority": "P3",
-        "link": "https://metr.org/blog/cover-up"
-      },
-      {
-        "id": "gmail:1a111f35812d42ba",
-        "title": "Oct. 6 - Water hacks, rogue AI raise alarms | Java vulnerabilities disclosed",
-        "publisher": "divenewsletter.com",
-        "qi": 6.6,
-        "priority": "P3",
-        "link": "https://www.cybersecuritydive.com/news/water"
-      },
-      {
-        "id": "gmail:1a1118c601f1cb6a",
-        "title": "OpenAI Starts Watermarking ChatGPT Text",
-        "publisher": "alvarocintas.com",
-        "qi": 5,
-        "priority": "P3",
-        "link": "https://newsletter.alvarocintas.com/watermark"
-      }
-    ]
+    "sample": []
   },
   "x": {
     "fetched": 0,
@@ -1006,7 +972,7 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "query": "OWASP LLM",
-    "shelf": 1,
+    "shelf": 0,
     "from_cache": false,
     "searches": 1,
     "rate_limit_remaining": 9,
@@ -1014,15 +980,10 @@
     "pulse_lead": false,
     "shelf_only": true,
     "url": "https://api.github.com/search/repositories",
-    "sample": [
-      {
-        "label": "Mihirajmera/agent-access-review",
-        "href": "https://github.com/Mihirajmera/agent-access-review"
-      }
-    ]
+    "sample": []
   },
   "shelf": {
-    "count": 18,
+    "count": 17,
     "brief": false
   },
   "wikidata": {
