@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-19T13:27:06Z",
+  "stamped_at": "2026-10-19T15:43:04Z",
   "config_hash": "813e5ce035c3",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,25 +11,25 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 111,
+      "duration_ms": 77,
       "paused_until": null,
       "reason": null
     },
     {
       "id": "arxiv",
       "label": "arXiv",
-      "status": "timeout",
-      "rows": 4,
-      "duration_ms": 20000,
+      "status": "ok",
+      "rows": 29,
+      "duration_ms": 3263,
       "paused_until": null,
-      "reason": "timeout after 20000ms budget · last good: 0 cached enrich + 4 kept shelf"
+      "reason": null
     },
     {
       "id": "openalex",
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 676,
+      "duration_ms": 330,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 451,
+      "duration_ms": 162,
       "paused_until": null,
       "reason": null
     },
@@ -47,7 +47,7 @@
       "label": "HN",
       "status": "ok",
       "rows": 43,
-      "duration_ms": 8287,
+      "duration_ms": 8292,
       "paused_until": null,
       "reason": null
     },
@@ -56,7 +56,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 105,
-      "duration_ms": 16918,
+      "duration_ms": 16721,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 4089,
+      "duration_ms": 4205,
       "paused_until": null,
       "reason": null
     },
@@ -73,8 +73,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 21,
-      "duration_ms": 6350,
+      "rows": 23,
+      "duration_ms": 6473,
       "paused_until": null,
       "reason": null
     },
@@ -82,8 +82,8 @@
       "id": "github",
       "label": "GitHub",
       "status": "ok",
-      "rows": 2,
-      "duration_ms": 353,
+      "rows": 1,
+      "duration_ms": 393,
       "paused_until": null,
       "reason": null
     },
@@ -92,16 +92,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4394,
+      "duration_ms": 4396,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 61629,
-    "sources_wall_ms": 21249,
-    "papers_lane_ms": 21249,
-    "slowest_source_ms": 20000,
+    "sources_ms": 44312,
+    "sources_wall_ms": 16722,
+    "papers_lane_ms": 3846,
+    "slowest_source_ms": 16721,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -115,34 +115,32 @@
       "github": 25000,
       "wikidata": 25000
     },
-    "timed_out": [
-      "arxiv"
-    ],
-    "wall_ms": 21608,
+    "timed_out": [],
+    "wall_ms": 17086,
     "startup_ms": 49,
-    "main_ms": 21624
+    "main_ms": 17113
   },
-  "multi_source_independent": 2,
+  "multi_source_independent": 1,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 2,
-    "multi_source_raw": 2,
+    "multi_source_independent": 1,
+    "multi_source_raw": 1,
     "self_reposts": 0,
-    "items_in": 207,
-    "clusters_out": 199,
-    "collapsed": 8,
-    "multi_source": 2,
-    "multi_member": 7,
+    "items_in": 209,
+    "clusters_out": 203,
+    "collapsed": 6,
+    "multi_source": 1,
+    "multi_member": 5,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 26,
+    "new_items": 22,
     "per_source": {
       "hn-algolia": 43,
       "rss-lab": 105,
       "rss-security": 28,
-      "gnews-rss": 21,
+      "gnews-rss": 23,
       "gmail-news": 10
     },
     "multi_source_clusters": [
@@ -170,31 +168,6 @@
             "publisher": "mistral"
           }
         ]
-      },
-      {
-        "title": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
-        "sources": [
-          "rss-lab",
-          "hn-algolia"
-        ],
-        "size": 2,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:50141490",
-            "source": "hn-algolia",
-            "title": "Nvidia Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
-            "at": "2026-10-18T14:37:26Z",
-            "publisher": null
-          },
-          {
-            "id": "rss:nvidia-dev:9f5aca4e4d9dbf53",
-            "source": "rss-lab",
-            "title": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
-            "at": "2026-10-15T18:01:00Z",
-            "publisher": "nvidia-dev"
-          }
-        ]
       }
     ],
     "self_repost_clusters": [],
@@ -208,62 +181,118 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "EIN Presswire",
-          "title": "Voice over Internet Protocol (VoIP) Market Expected to Reach $305.11 Billion by 2030 with a 16% CAGR Growth Rate - EIN Presswire"
-        },
-        {
-          "publisher": "Yahoo Finance",
-          "title": "UK Watchdog Proposes Strategic Market Status For Microsoft Business Software - Yahoo Finance"
-        },
-        {
-          "publisher": "Passionate In Marketing",
-          "title": "Utho Cloud Opens NVIDIA B300 GPU Reservations in India - Passionate In Marketing"
-        },
-        {
-          "publisher": "EIN News",
-          "title": "Operational Efficiency Improvements Contribute 2.1%Annual Growth as Leading Driver in the Automation As A Service Market - EIN News"
+          "publisher": "CXOToday.com",
+          "title": "Check Point Q3 2026 Audit: Microsoft Impersonated in 33% of Global Brand Phishing Attacks - CXOToday.com"
         },
         {
           "publisher": "Luxembourg Times",
           "title": "Private market investors shrug off Luxembourg capital gains shake-up - Luxembourg Times"
         },
         {
-          "publisher": "RAND",
-          "title": "Incorporating Equity into Decision-Support Models - RAND"
+          "publisher": "News Ghana",
+          "title": "Microsoft behind a third of brand phishing, Check Point says - News Ghana"
         },
         {
-          "publisher": "Benzinga",
-          "title": "Microsoft To Rally Around 25%? Here Are 10 Top Analyst Forecasts For Monday - Benzinga"
+          "publisher": "Investor's Business Daily",
+          "title": "Neoclouds: Goldman Sachs Upgrades CoreWeave. Microsoft Shelves Nscale Project. - Investor's Business Daily"
         },
         {
-          "publisher": "Search Engine Journal",
-          "title": "The New Rules Of Journalist Outreach, Based On Millions Of Emails - Search Engine Journal"
+          "publisher": "KDnuggets",
+          "title": "LangChain vs. LlamaIndex vs. Building From Scratch: Here’s What I Suggest - KDnuggets"
+        },
+        {
+          "publisher": "www.thehawk.in",
+          "title": "Microsoft accounts for 33 pc of brand phishing attacks in Q3, Apple, Google trail: Report - www.thehawk.in"
+        },
+        {
+          "publisher": "Stock Titan",
+          "title": "Deutsche Telekom's new service records, transcribes and summarizes business calls - Stock Titan"
+        },
+        {
+          "publisher": "Passionate In Marketing",
+          "title": "Utho Cloud Opens NVIDIA B300 GPU Reservations in India - Passionate In Marketing"
         },
         {
           "publisher": "Yahoo Finance Singapore",
           "title": "Tenstorrent Announces a $1.5B Series E at a $6.2B Valuation - Yahoo Finance Singapore"
-        },
-        {
-          "publisher": "the-tech.kz",
-          "title": "Who controls the next technology cycle - the-tech.kz"
-        },
-        {
-          "publisher": "openPR.com",
-          "title": "France Data Center Market Size to Reach USD 19.55 Billion by 2034 at 10.66% CAGR - openPR.com"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 24
+      "hn_dropped": 25
     },
     "gnews_near_misses": [
       {
-        "score": 0.373,
+        "score": 0.563,
+        "blocked": "time-window",
+        "hours_apart": 98.8,
+        "a": {
+          "id": "rss:mistral:51edf4c643816e6f",
+          "source": "rss-lab",
+          "title": "Introducing Timestral",
+          "at": "2026-10-15T12:00:00Z"
+        },
+        "b": {
+          "id": "gnews:7ef64f7c849ae27e",
+          "source": "gnews-rss",
+          "title": "Mistral Timestral: 209M Model Beats TimesFM-3 [2026] - shattered.io",
+          "at": "2026-10-19T14:46:03Z"
+        },
+        "shared": [
+          "timestral"
+        ]
+      },
+      {
+        "score": 0.314,
+        "blocked": "below-threshold",
+        "hours_apart": 4.8,
+        "a": {
+          "id": "hn:50150434",
+          "source": "hn-algolia",
+          "title": "Timestral: Mistral release time-series foundation models",
+          "at": "2026-10-19T09:59:32Z"
+        },
+        "b": {
+          "id": "gnews:7ef64f7c849ae27e",
+          "source": "gnews-rss",
+          "title": "Mistral Timestral: 209M Model Beats TimesFM-3 [2026] - shattered.io",
+          "at": "2026-10-19T14:46:03Z"
+        },
+        "shared": [
+          "timestral",
+          "mistral",
+          "model"
+        ]
+      },
+      {
+        "score": 0.291,
+        "blocked": "time-window",
+        "hours_apart": 287.6,
+        "a": {
+          "id": "rss:nvidia-dev:cdbf7413fbf9a74f",
+          "source": "rss-lab",
+          "title": "Validate AI Factory Changes with Digital Twins and AI Agents",
+          "at": "2026-10-07T16:00:00Z"
+        },
+        "b": {
+          "id": "gnews:e60225a4e6d126fc",
+          "source": "gnews-rss",
+          "title": "Microsoft Secures AI Agents With Digital IDs - 조선일보",
+          "at": "2026-10-19T15:38:55Z"
+        },
+        "shared": [
+          "ai",
+          "digital",
+          "agent"
+        ]
+      },
+      {
+        "score": 0.279,
         "blocked": "time-window",
         "hours_apart": 307,
         "a": {
           "id": "gnews:2014bcaacf04ae11",
           "source": "gnews-rss",
-          "title": "Nvidia-backed doubleAI says its AI model cut an early customer's compute costs 67% - Quartz",
+          "title": "Nvidia-backed doubleAI launches AI model that cuts compute costs - Quartz",
           "at": "2026-10-19T12:37:15Z"
         },
         "b": {
@@ -274,35 +303,33 @@
         },
         "shared": [
           "back",
-          "cut",
-          "customer"
+          "cut"
         ]
       },
       {
-        "score": 0.25,
-        "blocked": "time-window",
-        "hours_apart": 813,
+        "score": 0.268,
+        "blocked": "thin-overlap",
+        "hours_apart": 314.3,
         "a": {
-          "id": "rss:google-ai:50f1fa34d3c31e12",
+          "id": "rss:mistral:1ef243007176e85c",
           "source": "rss-lab",
-          "title": "AI for everyone in every language",
-          "at": "2026-09-15T16:00:00Z"
+          "title": "Introducing Mistral Large 4",
+          "at": "2026-10-06T12:00:27Z"
         },
         "b": {
-          "id": "gnews:85b4450ba709543c",
+          "id": "gnews:3d39a4bb08c07c18",
           "source": "gnews-rss",
-          "title": "Liminal Expands MCP Access to Every Customer and Broadens What AI Agents Can Reach - StreetInsider",
-          "at": "2026-10-19T13:02:11Z"
+          "title": "Intel Unveils 480GB GPU for Large Scale AI Inference - SuaraGarut.ID",
+          "at": "2026-10-19T14:19:12Z"
         },
         "shared": [
-          "ai",
-          "every"
+          "larg"
         ]
       },
       {
-        "score": 0.247,
+        "score": 0.228,
         "blocked": "thin-overlap",
-        "hours_apart": 25.3,
+        "hours_apart": 28.8,
         "a": {
           "id": "hn:50139873",
           "source": "hn-algolia",
@@ -310,151 +337,61 @@
           "at": "2026-10-18T10:49:26Z"
         },
         "b": {
-          "id": "gnews:bcbcb912cecba52b",
+          "id": "gnews:95ba177264a8c6d4",
           "source": "gnews-rss",
-          "title": "Microsoft's New AI Chip Could Change the Economics of AI - MarketBeat",
-          "at": "2026-10-19T12:06:57Z"
+          "title": "Review AI-Generated UI Changes with Storybook & Chromatic - SitePoint",
+          "at": "2026-10-19T15:40:06Z"
         },
         "shared": [
           "chang"
         ]
       },
       {
-        "score": 0.228,
-        "blocked": "time-window",
-        "hours_apart": 305.3,
-        "a": {
-          "id": "gnews:00696b6348ecb630",
-          "source": "gnews-rss",
-          "title": "BrandAxis Launches Pay As You Go AI Visibility Tracking to Help Agencies and Businesses Cut LLM Tracking Costs - The Des Moines Register",
-          "at": "2026-10-19T10:51:53Z"
-        },
-        "b": {
-          "id": "gmail:1a1124990d6345ac",
-          "source": "gmail-news",
-          "title": "Can Microsoft Help Customers Cut Back on Claude?",
-          "at": "2026-10-06T17:36:12Z"
-        },
-        "shared": [
-          "help",
-          "cut"
-        ]
-      },
-      {
-        "score": 0.216,
+        "score": 0.222,
         "blocked": "thin-overlap",
-        "hours_apart": 3820.3,
+        "hours_apart": 103.6,
         "a": {
-          "id": "rss-sec:projectzero:801995cb0a47fffb",
-          "source": "rss-security",
-          "title": "A 0-click exploit chain for the Pixel 10: When a Door Closes, a Window Opens",
-          "at": "2026-05-13T07:00:00Z"
+          "id": "rss:nvidia:634c961cdd8d2c6e",
+          "source": "rss-lab",
+          "title": "The Nordics and NVIDIA Show What’s Possible When a Region Commits to Advanced Computing",
+          "at": "2026-10-15T05:00:12Z"
         },
         "b": {
-          "id": "gnews:8f808189e94cd96a",
+          "id": "gnews:2014bcaacf04ae11",
           "source": "gnews-rss",
-          "title": "The Gap That No LLM Can Close - SAP News Center",
-          "at": "2026-10-19T11:17:24Z"
+          "title": "Nvidia-backed doubleAI launches AI model that cuts compute costs - Quartz",
+          "at": "2026-10-19T12:37:15Z"
         },
         "shared": [
-          "clos"
+          "nvidia",
+          "comput"
         ]
       },
       {
-        "score": 0.212,
-        "blocked": "time-window",
-        "hours_apart": 284.1,
+        "score": 0.222,
+        "blocked": "thin-overlap",
+        "hours_apart": 408.1,
         "a": {
-          "id": "rss:nvidia-dev:cdbf7413fbf9a74f",
+          "id": "rss:google-ai:6a7bb4e3e69d69f5",
           "source": "rss-lab",
-          "title": "Validate AI Factory Changes with Digital Twins and AI Agents",
-          "at": "2026-10-07T16:00:00Z"
+          "title": "The latest AI news we announced in September 2026",
+          "at": "2026-10-02T15:00:00Z"
         },
         "b": {
-          "id": "gnews:bcbcb912cecba52b",
+          "id": "gnews:d13cd427033382b1",
           "source": "gnews-rss",
-          "title": "Microsoft's New AI Chip Could Change the Economics of AI - MarketBeat",
-          "at": "2026-10-19T12:06:57Z"
+          "title": "Calix unveils AI agent and platform updates at ConneXions 2026 - StreetInsider",
+          "at": "2026-10-19T15:07:44Z"
         },
         "shared": [
           "ai",
-          "chang"
-        ]
-      },
-      {
-        "score": 0.212,
-        "blocked": "time-window",
-        "hours_apart": 619,
-        "a": {
-          "id": "rss:google-ai:1ccf342131e2aeec",
-          "source": "rss-lab",
-          "title": "Google Beam expands with new regions, partners, and customers",
-          "at": "2026-09-23T18:00:00Z"
-        },
-        "b": {
-          "id": "gnews:85b4450ba709543c",
-          "source": "gnews-rss",
-          "title": "Liminal Expands MCP Access to Every Customer and Broadens What AI Agents Can Reach - StreetInsider",
-          "at": "2026-10-19T13:02:11Z"
-        },
-        "shared": [
-          "expand",
-          "customer"
-        ]
-      },
-      {
-        "score": 0.211,
-        "blocked": "thin-overlap",
-        "hours_apart": 15.6,
-        "a": {
-          "id": "hn:50144588",
-          "source": "hn-algolia",
-          "title": "Leviathan LLM Inference",
-          "at": "2026-10-18T19:38:37Z"
-        },
-        "b": {
-          "id": "gnews:8f808189e94cd96a",
-          "source": "gnews-rss",
-          "title": "The Gap That No LLM Can Close - SAP News Center",
-          "at": "2026-10-19T11:17:24Z"
-        },
-        "shared": [
-          "llm"
+          "2026"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 1,
-        "blocked": "time-window",
-        "hours_apart": 68.6,
-        "a": {
-          "id": "hn:50141490",
-          "source": "hn-algolia",
-          "title": "Nvidia Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
-          "at": "2026-10-18T14:37:26Z"
-        },
-        "b": {
-          "id": "rss:nvidia-dev:9f5aca4e4d9dbf53",
-          "source": "rss-lab",
-          "title": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
-          "at": "2026-10-15T18:01:00Z"
-        },
-        "shared": [
-          "nvidia",
-          "nemotron",
-          "3.5",
-          "super",
-          "vl",
-          "power",
-          "specializ",
-          "agent",
-          "multimodal",
-          "reason"
-        ]
-      },
-      {
-        "score": 0.579,
+        "score": 0.574,
         "blocked": "time-window",
         "hours_apart": 94,
         "a": {
@@ -474,52 +411,49 @@
         ]
       },
       {
-        "score": 0.393,
+        "score": 0.563,
         "blocked": "time-window",
-        "hours_apart": 71.6,
+        "hours_apart": 98.8,
         "a": {
-          "id": "hn:50141490",
-          "source": "hn-algolia",
-          "title": "Nvidia Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
-          "at": "2026-10-18T14:37:26Z"
-        },
-        "b": {
-          "id": "rss:nvidia:599b981c923a3fd6",
+          "id": "rss:mistral:51edf4c643816e6f",
           "source": "rss-lab",
-          "title": "Open From Data Center to Desktop: NVIDIA Expands Nemotron Family With Highest Efficiency Super VL and Bolt Models",
-          "at": "2026-10-15T15:00:24Z"
-        },
-        "shared": [
-          "nvidia",
-          "nemotron",
-          "super",
-          "vl"
-        ]
-      },
-      {
-        "score": 0.373,
-        "blocked": "time-window",
-        "hours_apart": 307,
-        "a": {
-          "id": "gnews:2014bcaacf04ae11",
-          "source": "gnews-rss",
-          "title": "Nvidia-backed doubleAI says its AI model cut an early customer's compute costs 67% - Quartz",
-          "at": "2026-10-19T12:37:15Z"
+          "title": "Introducing Timestral",
+          "at": "2026-10-15T12:00:00Z"
         },
         "b": {
-          "id": "gmail:1a1124990d6345ac",
-          "source": "gmail-news",
-          "title": "Can Microsoft Help Customers Cut Back on Claude?",
-          "at": "2026-10-06T17:36:12Z"
+          "id": "gnews:7ef64f7c849ae27e",
+          "source": "gnews-rss",
+          "title": "Mistral Timestral: 209M Model Beats TimesFM-3 [2026] - shattered.io",
+          "at": "2026-10-19T14:46:03Z"
         },
         "shared": [
-          "back",
-          "cut",
-          "customer"
+          "timestral"
         ]
       },
       {
-        "score": 0.319,
+        "score": 0.346,
+        "blocked": "time-window",
+        "hours_apart": 815.5,
+        "a": {
+          "id": "hn:50153630",
+          "source": "hn-algolia",
+          "title": "CERN and Mistral join forces to accelerate AI for science",
+          "at": "2026-10-19T15:28:24Z"
+        },
+        "b": {
+          "id": "rss:google-ai:6fff55fdf7cb614f",
+          "source": "rss-lab",
+          "title": "Building AI to accelerate science and improve lives",
+          "at": "2026-09-15T16:00:00Z"
+        },
+        "shared": [
+          "accelerat",
+          "ai",
+          "scienc"
+        ]
+      },
+      {
+        "score": 0.317,
         "blocked": "thin-overlap",
         "hours_apart": 91.9,
         "a": {
@@ -541,7 +475,29 @@
         ]
       },
       {
-        "score": 0.295,
+        "score": 0.314,
+        "blocked": "below-threshold",
+        "hours_apart": 4.8,
+        "a": {
+          "id": "hn:50150434",
+          "source": "hn-algolia",
+          "title": "Timestral: Mistral release time-series foundation models",
+          "at": "2026-10-19T09:59:32Z"
+        },
+        "b": {
+          "id": "gnews:7ef64f7c849ae27e",
+          "source": "gnews-rss",
+          "title": "Mistral Timestral: 209M Model Beats TimesFM-3 [2026] - shattered.io",
+          "at": "2026-10-19T14:46:03Z"
+        },
+        "shared": [
+          "timestral",
+          "mistral",
+          "model"
+        ]
+      },
+      {
+        "score": 0.294,
         "blocked": "thin-overlap",
         "hours_apart": 297.1,
         "a": {
@@ -561,35 +517,36 @@
         ]
       },
       {
-        "score": 0.276,
+        "score": 0.291,
         "blocked": "time-window",
-        "hours_apart": 264.5,
+        "hours_apart": 287.6,
         "a": {
-          "id": "hn:50132502",
-          "source": "hn-algolia",
-          "title": "OpenAI discloses four more rogue incidents",
-          "at": "2026-10-17T16:31:12Z"
+          "id": "rss:nvidia-dev:cdbf7413fbf9a74f",
+          "source": "rss-lab",
+          "title": "Validate AI Factory Changes with Digital Twins and AI Agents",
+          "at": "2026-10-07T16:00:00Z"
         },
         "b": {
-          "id": "gmail:1a111f35812d42ba",
-          "source": "gmail-news",
-          "title": "Oct. 6 - Water hacks, rogue AI raise alarms | Java vulnerabilities disclosed",
-          "at": "2026-10-06T16:01:57Z"
+          "id": "gnews:e60225a4e6d126fc",
+          "source": "gnews-rss",
+          "title": "Microsoft Secures AI Agents With Digital IDs - 조선일보",
+          "at": "2026-10-19T15:38:55Z"
         },
         "shared": [
-          "disclos",
-          "rogu"
+          "ai",
+          "digital",
+          "agent"
         ]
       },
       {
-        "score": 0.264,
-        "blocked": "thin-overlap",
-        "hours_apart": 291.3,
+        "score": 0.279,
+        "blocked": "time-window",
+        "hours_apart": 307,
         "a": {
-          "id": "hn:50145380",
-          "source": "hn-algolia",
-          "title": "Show HN: Rubi – A knowledge graph that cuts how much Claude Code re-reads",
-          "at": "2026-10-18T20:54:43Z"
+          "id": "gnews:2014bcaacf04ae11",
+          "source": "gnews-rss",
+          "title": "Nvidia-backed doubleAI launches AI model that cuts compute costs - Quartz",
+          "at": "2026-10-19T12:37:15Z"
         },
         "b": {
           "id": "gmail:1a1124990d6345ac",
@@ -598,8 +555,8 @@
           "at": "2026-10-06T17:36:12Z"
         },
         "shared": [
-          "cut",
-          "claude"
+          "back",
+          "cut"
         ]
       }
     ]
@@ -608,76 +565,76 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 0,
-      "streak_fail": 1,
-      "items_last": 4
+      "streak_ok": 1,
+      "streak_fail": 0,
+      "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 141,
+      "streak_ok": 142,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 141,
+      "streak_ok": 142,
       "streak_fail": 0,
-      "items_last": 2
+      "items_last": 1
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 141,
+      "streak_ok": 142,
       "streak_fail": 0,
-      "items_last": 21
+      "items_last": 23
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 141,
+      "streak_ok": 142,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 141,
+      "streak_ok": 142,
       "streak_fail": 0,
       "items_last": 43
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 53,
+      "streak_ok": 54,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 45,
+      "streak_ok": 46,
       "streak_fail": 0,
       "items_last": 105
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 141,
+      "streak_ok": 142,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 141,
+      "streak_ok": 142,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.006131944444444444,
+    "hours": 0.004790555555555556,
     "stale": false
   },
   "hf": {
@@ -686,10 +643,10 @@
     "url": "https://huggingface.co/api/daily_papers"
   },
   "arxiv": {
-    "ok": false,
-    "enriched": 0,
-    "shelf": 4,
-    "timed_out": true,
+    "ok": true,
+    "enriched": 24,
+    "shelf": 5,
+    "timed_out": false,
     "budget_ms": 20000,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
@@ -775,25 +732,25 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 24,
+    "ai_dropped": 25,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
-        "id": "hn:50141429",
-        "tag": "rest",
-        "score": 166,
-        "text": "Anthropic's proposed AI safety bill only kicks in if 50 deaths or $1B in damages"
-      },
-      {
         "id": "hn:50150434",
         "tag": "rest",
-        "score": 165,
+        "score": 301,
         "text": "Timestral: Mistral release time-series foundation models"
+      },
+      {
+        "id": "hn:50141429",
+        "tag": "rest",
+        "score": 168,
+        "text": "Anthropic's proposed AI safety bill only kicks in if 50 deaths or $1B in damages"
       },
       {
         "id": "hn:50139873",
         "tag": "rest",
-        "score": 135,
+        "score": 139,
         "text": "How employment is changing at Anthropic"
       }
     ]
@@ -857,6 +814,13 @@
     "feeds_soft_fail": [],
     "sample": [
       {
+        "id": "rss:nvidia:a30d79bf039558b5",
+        "lab": "nvidia",
+        "tag": "rest",
+        "title": "NVIDIA Advances Agentic Security for Media, From European Public Service Broadcasting to Global Content Production",
+        "link": "https://blogs.nvidia.com/blog/media-agentic-security-european-public-service-broadcasting-global-content-production/"
+      },
+      {
         "id": "rss:nvidia:ea214a232a5ba774",
         "lab": "nvidia",
         "tag": "rest",
@@ -876,13 +840,6 @@
         "tag": "rest",
         "title": "Grounding AI agents in biological reality: Building blocks for autonomous wet labs",
         "link": "https://research.google/blog/grounding-ai-agents-in-biological-reality-building-blocks-for-autonomous-wet-labs/"
-      },
-      {
-        "id": "rss:nvidia-dev:3a44cf0b79fe9cae",
-        "lab": "nvidia-dev",
-        "tag": "rest",
-        "title": "Code, Test, and Deploy on One Machine with NVIDIA RTX Spark",
-        "link": "https://developer.nvidia.com/blog/code-test-and-deploy-on-one-machine-with-nvidia-rtx-spark/"
       }
     ]
   },
@@ -947,8 +904,8 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 21,
-    "pool": 258,
+    "items": 23,
+    "pool": 264,
     "corroborators": [],
     "http_status": 200,
     "content_type": "application/xml; charset=utf-8",
@@ -976,40 +933,65 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:ac672c72a06ab660",
-        "title": "DE-CIX claims AI-agent network management first - Computer Weekly",
-        "publisher": "Computer Weekly",
-        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxPdTFlLVljQm9TaFJrQWVycW84dW1KTHBPSmdXMUhpbTFhX09tODliTVdwV0VpUEMySGhwLXcxZWQyV0ZnT0tuVXIwUlduckMtMEJDVm0zdWdqNDVQRDRoV0pmcVR5cGRjS0tUOUNWcDMtSlQyY0tmU1V1M0VJZEhrSFJWQkpXSEcxRVFmNlluT0dkcWozenJ5dQ?oc=5",
+        "id": "gnews:f76b4e31a6987cea",
+        "title": "Straiker Brings Independent AI Agent Red-Teaming to Workday Agent Passport - VMblog",
+        "publisher": "VMblog",
+        "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOTlNLNDJpd3c4dGhDZkRzMUptLS1pNEZ2TDBMdEpJZDdtN19IbEtYTkJ0cmh5TXhyWGxfWm04UXgtejEzc2xWMVYtZWtidjlwSEwxSk5SSlZtQ3E5SUhoSFg4aXlJYUhZT0xOOFpHZmdEeFNqSUdFRU40cVdwVlZ5cDI5ZU1qR3haVGxJdWdadEcwMW5EVTVPeUI3cXFRTHpy?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:5131b2b139a16f16",
-        "title": "Microsoft Maia 300 Boosts AI Efficiency and Lowers Costs - TradingPedia",
-        "publisher": "TradingPedia",
-        "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxObUNCNDhORTdXVWF6NXhZREdaM1NRbXUxOTBma1h3eW5tQXVyX1l4UElvMy1HaXg5aDFLdkJaY2NpMVNZTW8zRnZ6ZUVVb0FWME53bmp0Z3F6R1lSUkxQSHNUQUdoU3FwenVGXzZDRk5iUF9sc0VNMWlQQm1wRmZOMXBTSXJLTnpSQ1lwZVdUZmg1NERNbjZJeVVwbXlFUQ?oc=5",
+        "id": "gnews:95ba177264a8c6d4",
+        "title": "Review AI-Generated UI Changes with Storybook & Chromatic - SitePoint",
+        "publisher": "SitePoint",
+        "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5HWXRUbVBfRXplWlh0UFdWZ1hRcl9PRmJ4UzJUcDVWWDJZV29OX29hNi1wRThBMUJmREMtVXF1eTd2U09HV2wwdGNYRlRnQ1BoMVE4Um9vT2dRWkZocmpjMjIzbENaeGhQ?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:1233cb61f0c82d84",
-        "title": "SandboxAQ Expands Switch AI to Give Enterprises Greater Choice, Control, and Accountability Across Their Agentic AI Workforce - PR Newswire",
-        "publisher": "PR Newswire",
-        "link": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxPQzRFdjBkbUh2QkYxVFZGVGZ1aGpWaEtpc1Z3SkhJdUlkQzU5UnRMZ1hvazZnVEcta0NYV09uZFRsUnIxWUtZb2lNd0xnZ2NSbXFCNzZSRnFQV3JzbFNqY2RfMEVFUjBMcXI3VzNuT1VLUFNtNDF4ejl0ZXJ0M05pV1Z5RTR0NGZ3Z2QxWDRQNTBWSEw2VjBUUTViRGtEVERJSk1iYTZqeUZCX3VaeFJ6NTZrelljTWtVd1o1NjZwM3o4NXhzUy1RckszamQ1RnNnTXphT0VKakJSRE9tNmRRR2Z6aDRVSURQaGhrZEFVNEFOdWlQWGp1aHFqY2d1NmswTGRrSEFvWUZ2TTA?oc=5",
+        "id": "gnews:e60225a4e6d126fc",
+        "title": "Microsoft Secures AI Agents With Digital IDs - 조선일보",
+        "publisher": "조선일보",
+        "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOWmxjVDAtUnNBS0RlTFVfcFc1T0NIWVpJRm1lMHlNd0d4UXFZdHdtWjA3VGdubUdkdHNfM3cyTnNGSy1FcW1hQjZ5WFR6NlhMaVVNbEswYjE2Qi0wcWN3cWZ5bndHY1RHMmN1SVZveGw1M2ZmUkQ5MWQ0YTlrZzhQTlZ0bjhVOTky?oc=5",
         "tag": "rest"
       }
     ]
   },
   "gmail_news": {
-    "ok": false,
-    "soft_fail": true,
-    "soft_fail_reason": "box-only",
-    "count": 0,
-    "fetched": 0,
-    "from_cache": false,
-    "last_query_hash": "",
+    "ok": true,
+    "soft_fail": false,
+    "soft_fail_reason": null,
+    "count": 10,
+    "fetched": 10,
+    "from_cache": true,
+    "last_query_hash": "14f148f8d31e",
     "brief": false,
     "pulse_only": true,
     "briefEligible": false,
-    "sample": []
+    "sample": [
+      {
+        "id": "gmail:1a11250b91591834",
+        "title": "AI systems could cover up misbehavior",
+        "publisher": "substack.com",
+        "qi": 6.6,
+        "priority": "P3",
+        "link": "https://metr.org/blog/cover-up"
+      },
+      {
+        "id": "gmail:1a111f35812d42ba",
+        "title": "Oct. 6 - Water hacks, rogue AI raise alarms | Java vulnerabilities disclosed",
+        "publisher": "divenewsletter.com",
+        "qi": 6.6,
+        "priority": "P3",
+        "link": "https://www.cybersecuritydive.com/news/water"
+      },
+      {
+        "id": "gmail:1a1118c601f1cb6a",
+        "title": "OpenAI Starts Watermarking ChatGPT Text",
+        "publisher": "alvarocintas.com",
+        "qi": 5,
+        "priority": "P3",
+        "link": "https://newsletter.alvarocintas.com/watermark"
+      }
+    ]
   },
   "x": {
     "fetched": 0,
@@ -1024,7 +1006,7 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "query": "OWASP LLM",
-    "shelf": 2,
+    "shelf": 1,
     "from_cache": false,
     "searches": 1,
     "rate_limit_remaining": 9,
@@ -1034,12 +1016,8 @@
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
-        "label": "shaikn6/llm-safety-auditor",
-        "href": "https://github.com/shaikn6/llm-safety-auditor"
-      },
-      {
-        "label": "sparavano/fintech-llm-security-assessment",
-        "href": "https://github.com/sparavano/fintech-llm-security-assessment"
+        "label": "Mihirajmera/agent-access-review",
+        "href": "https://github.com/Mihirajmera/agent-access-review"
       }
     ]
   },

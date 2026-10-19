@@ -2,7 +2,7 @@
 import type { SageSetupView } from "@/lib/sage-setup";
 
 export const SAGE_SETUP: SageSetupView = {
-  "stamped_at": "2026-10-19T13:27:06Z",
+  "stamped_at": "2026-10-19T15:43:04Z",
   "config_path": "desk/config/sage-sources.json",
   "config_hash": "813e5ce035c3",
   "status": "ok",
@@ -43,14 +43,14 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "gnews",
       "on": true,
       "caps": "cap 32",
-      "last_rows": 21,
+      "last_rows": 23,
       "state": "ok"
     },
     {
       "id": "github",
       "on": true,
       "caps": "cap 5",
-      "last_rows": 2,
+      "last_rows": 1,
       "state": "ok"
     },
     {
@@ -71,8 +71,8 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "arxiv",
       "on": true,
       "caps": "—",
-      "last_rows": 4,
-      "state": "soft-fail"
+      "last_rows": 29,
+      "state": "ok"
     },
     {
       "id": "wikidata",
