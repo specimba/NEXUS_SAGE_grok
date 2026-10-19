@@ -68,11 +68,15 @@ describe("crawl field: crawl-tape.json", () => {
     const src = readFileSync(join(DESK, "scripts/ingest.ts"), "utf8");
     expect(src).toContain("recordCrawl(parseCrawlTape(readJson(tapePath)), stamp, clusters.filter((c) => c.first_seen === stamp).length)");
   });
-  test("the committed seed is real history: every entry matches a crawl stamp with its is_new count", () => {
+  test("the committed seed is real history: its last entry is the committed crawl stamp with its is_new count", () => {
+    // Seed re-run on the rebase onto 101922c (scripts/day-tape-backfill.ts --write, git history); ingest appends from then on,
+    // so the invariant that survives every crawl is: newest entry = PULSE_CLUSTERS_AT with that crawl's is_new count.
     const seed = parseCrawlTape(JSON.parse(readFileSync(join(DESK, "artifacts/sage/crawl-tape.json"), "utf8")));
     expect(seed.crawls.length).toBeGreaterThan(0);
     expect(seed.crawls.length).toBeLessThanOrEqual(CRAWL_TAPE_KEEP);
-    for (const c of REAL.crawls.slice(1)) expect(seed.crawls).toContainEqual(c);
+    const pc = readFileSync(join(DESK, "src/data/pulse-clusters.ts"), "utf8");
+    const at = /export const PULSE_CLUSTERS_AT = "([^"]+)"/.exec(pc)?.[1];
+    expect(seed.crawls.at(-1)).toEqual({ at: at!, new: (pc.match(/"is_new":true/g) ?? []).length });
   });
 });
 
