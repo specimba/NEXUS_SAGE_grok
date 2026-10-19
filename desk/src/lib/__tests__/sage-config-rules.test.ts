@@ -5,6 +5,8 @@ import { aiTermsDefault } from "../ai-relevance";
 import { POLITICS_LEAD_TERMS } from "../lead-pick";
 import { defaultSageConfig, KEYWORD_LEN_MAX, KEYWORD_LIST_MAX, limitsFromCode, SAGE_CONFIG_PATH, validateSageConfig, type SageConfig } from "../sage-config";
 import { canonicalJson, fieldMin, fileJson, TIMEOUT_MIN_S, validateWithRules, type SageLimits } from "../sage-config-rules";
+import { GMAIL_SENDERS_MAX } from "../gmail-news";
+import { HN_TITLE_QUERIES_MAX, HN_TITLE_QUERY_LEN_MAX, hnTitleQueryProblem } from "../hn-pulse";
 import { capBounds, committedBase, srcVal, stepCap, TIMEOUT_MIN } from "../setup-draft";
 import { spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
@@ -52,7 +54,60 @@ const FIXTURES: [string, unknown][] = [
   ["8a politics added", withCfg((c) => c.keywords.politics_deny.push("filibuster"))],
   ["too many terms", withCfg((c) => (c.keywords.hn_sweep = Array.from({ length: KEYWORD_LIST_MAX + 1 }, (_, i) => `t${i}`)))],
   ["term too long", withCfg((c) => c.keywords.hn_sweep.push("x".repeat(KEYWORD_LEN_MAX + 1)))],
+  // PASS-S1 fields (S1.1/S1.3 feeds, S1.4 hn_title_queries, S1.5 gmail_senders, S1.8 empty = off) — same result both paths.
+  ["S1.1 unknown analyst feed", withCfg((c) => c.sources.analyst_rss.feeds.push("stratechery"))],
+  ["S1.1 analyst off", withCfg((c) => (c.sources.analyst_rss.on = false))],
+  ["S1.3 unknown release feed", withCfg((c) => c.sources.releases_atom.feeds.push("pytorch"))],
+  ["S1.4 hn title ok", withCfg((c) => (c.keywords.hn_title_queries = ["agent", "open weights"]))],
+  ["S1.4 hn title over max", withCfg((c) => (c.keywords.hn_title_queries = Array.from({ length: HN_TITLE_QUERIES_MAX + 1 }, (_, i) => `q${i}`)))],
+  ["S1.4 hn title regex", withCfg((c) => (c.keywords.hn_title_queries = ["agent|tool"]))],
+  ["S1.4 hn title banned", withCfg((c) => (c.keywords.hn_title_queries = ["Jailbreak"]))],
+  ["S1.4 hn title incident", withCfg((c) => (c.keywords.hn_title_queries = ["HF Swarm leak"]))],
+  ["S1.4 hn title too long", withCfg((c) => (c.keywords.hn_title_queries = ["x".repeat(HN_TITLE_QUERY_LEN_MAX + 1)]))],
+  ["S1.4 hn title duplicate", withCfg((c) => (c.keywords.hn_title_queries = ["Qwen", "qwen "]))],
+  ["S1.8 hn title empty = off", withCfg((c) => (c.keywords.hn_title_queries = []))],
+  ["S1.5 senders ok", withCfg((c) => (c.keywords.gmail_senders = ["hello@newsletters.venturebeat.com"]))],
+  ["S1.5 senders over max", withCfg((c) => (c.keywords.gmail_senders = Array.from({ length: GMAIL_SENDERS_MAX + 1 }, (_, i) => `n${i}@x.com`)))],
+  ["S1.5 sender not exact", withCfg((c) => (c.keywords.gmail_senders = ["venturebeat.com", " a@b.com"]))],
+  ["S1.5 sender duplicate", withCfg((c) => (c.keywords.gmail_senders = ["A@b.com", "a@b.com"]))],
+  ["S1.8 senders empty = off", withCfg((c) => (c.keywords.gmail_senders = []))],
+  ["S1.8 hn_sweep empty still rejected", withCfg((c) => (c.keywords.hn_sweep = []))],
 ];
+
+describe("PASS-S1 × C3: S1 checks live in validateWithRules (browser = CI = the S1 helpers)", () => {
+  test("S1 fixtures: expected errors, identical in both paths", () => {
+    const err = (raw: unknown) => {
+      const r = validateWithRules(raw, BROWSER);
+      expect(validateSageConfig(raw)).toEqual(r);
+      return r.ok ? [] : r.errors;
+    };
+    expect(err(withCfg((c) => (c.keywords.hn_title_queries = ["agent|tool"])))).toEqual(['keywords.hn_title_queries: "agent|tool" plain text only (no regex)']);
+    expect(err(withCfg((c) => (c.keywords.hn_title_queries = ["Jailbreak"])))).toEqual(['keywords.hn_title_queries: "Jailbreak" HN standing search must not include banned noun: jailbreak']);
+    expect(err(withCfg((c) => (c.keywords.hn_title_queries = ["Qwen", "qwen "])))).toEqual(["keywords.hn_title_queries: duplicate term"]);
+    expect(err(withCfg((c) => (c.keywords.gmail_senders = ["venturebeat.com", " a@b.com"])))).toEqual(['keywords.gmail_senders: not an exact local@domain address: "venturebeat.com", " a@b.com"']);
+    expect(err(withCfg((c) => (c.keywords.gmail_senders = ["A@b.com", "a@b.com"])))).toEqual(["keywords.gmail_senders: duplicate address"]);
+    expect(err(withCfg((c) => (c.keywords.gmail_senders = [])))).toEqual([]);
+    expect(err(withCfg((c) => (c.keywords.hn_title_queries = [])))).toEqual([]);
+    expect(err(withCfg((c) => (c.keywords.hn_sweep = [])))).toEqual(["keywords.hn_sweep must be a non-empty list"]);
+  });
+  test("plain-term rule (data in limits) = hn-pulse hnTitleQueryProblem, term by term", () => {
+    const terms = ["agent", "open weights", "Qwen", "agent|tool", "a*", "Jailbreak", "persistent sol", "Sol", "hf breach", "hf-breach",
+      "HF Swarm leak", "eval board news", "x".repeat(HN_TITLE_QUERY_LEN_MAX), "x".repeat(HN_TITLE_QUERY_LEN_MAX + 1), " bluesky "];
+    for (const t of terms) {
+      const p = hnTitleQueryProblem(t);
+      const r = validateWithRules(withCfg((c) => (c.keywords.hn_title_queries = [t])), BROWSER);
+      expect([t, r.ok ? null : r.errors]).toEqual([t, p ? [`keywords.hn_title_queries: ${JSON.stringify(t)} ${p}`] : null]);
+    }
+  });
+  test("SAGE_SETUP.limits carries the S1 rules (feeds, lists, empty = off)", () => {
+    expect(BROWSER.feeds.analyst_rss).toEqual(limitsFromCode().feeds.analyst_rss);
+    expect(BROWSER.feeds.releases_atom).toEqual(limitsFromCode().feeds.releases_atom);
+    expect(BROWSER.keyword_lists).toContain("hn_title_queries");
+    expect(BROWSER.keyword_lists).toContain("gmail_senders");
+    expect(BROWSER.empty_means_off).toEqual(["hn_title_queries", "gmail_senders"]);
+    expect(Object.keys(BROWSER.list_rules).sort()).toEqual(["gmail_senders", "hn_title_queries"]);
+  });
+});
 
 describe("PASS-C3.1 shared rules — browser path = CI path", () => {
   test("SAGE_SETUP.limits is exactly limitsFromCode() (same numbers + both baseline lists)", () => {

@@ -195,20 +195,20 @@ const D: NonNullable<SageSetupView["limits"]>["defaults"] = {
 };
 
 export const SAGE_SETUP: SageSetupView = {
-  "stamped_at": "2026-10-15T18:21:26Z",
+  "stamped_at": "2026-10-19T13:27:06Z",
   "config_path": "desk/config/sage-sources.json",
-  "config_hash": "813e5ce035c3",
+  "config_hash": "e3e9003a7d92",
   "status": "ok",
   "used": "committed",
   "errors": [],
-  "since_commit": "0a9d704",
-  "since_at": "2026-10-14T08:22:59Z",
+  "since_commit": "419a3c1",
+  "since_at": "2026-10-15T22:44:52Z",
   "sources": [
     {
       "id": "hn",
       "on": true,
       "caps": "cap 20",
-      "last_rows": 56,
+      "last_rows": 43,
       "state": "ok"
     },
     {
@@ -222,13 +222,13 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "lab_rss",
       "on": true,
       "caps": "cap_per_feed 12 · timeout_s 10 · feeds 9",
-      "last_rows": 104,
+      "last_rows": 105,
       "state": "ok"
     },
     {
       "id": "sec_rss",
       "on": true,
-      "caps": "cap_per_feed 12 · feeds 3",
+      "caps": "cap_per_feed 12 · feeds 4",
       "last_rows": 28,
       "state": "ok"
     },
@@ -236,7 +236,7 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "gnews",
       "on": true,
       "caps": "cap 32",
-      "last_rows": 38,
+      "last_rows": 21,
       "state": "ok"
     },
     {
@@ -257,15 +257,15 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "crossref",
       "on": true,
       "caps": "—",
-      "last_rows": 1,
+      "last_rows": 0,
       "state": "ok"
     },
     {
       "id": "arxiv",
       "on": true,
       "caps": "—",
-      "last_rows": 29,
-      "state": "ok"
+      "last_rows": 4,
+      "state": "soft-fail"
     },
     {
       "id": "wikidata",
@@ -287,6 +287,20 @@ export const SAGE_SETUP: SageSetupView = {
       "caps": "visible_cap 6",
       "last_rows": null,
       "state": "box-only"
+    },
+    {
+      "id": "analyst_rss",
+      "on": true,
+      "caps": "cap_per_feed 6 · timeout_s 10 · feeds 2",
+      "last_rows": null,
+      "state": "—"
+    },
+    {
+      "id": "releases_atom",
+      "on": true,
+      "caps": "cap_per_feed 2 · feeds 3",
+      "last_rows": null,
+      "state": "—"
     }
   ],
   "keywords": [
@@ -305,6 +319,14 @@ export const SAGE_SETUP: SageSetupView = {
     {
       "id": "politics_deny",
       "terms": D.keywords.politics_deny
+    },
+    {
+      "id": "hn_title_queries",
+      "terms": D.keywords.hn_title_queries
+    },
+    {
+      "id": "gmail_senders",
+      "terms": D.keywords.gmail_senders
     }
   ],
   "taste": {
@@ -409,7 +431,41 @@ export const SAGE_SETUP: SageSetupView = {
     "box_only": [
       "gmail",
       "x_taste"
-    ]
+    ],
+    "empty_means_off": [
+      "hn_title_queries",
+      "gmail_senders"
+    ],
+    "list_rules": {
+      "hn_title_queries": {
+        "kind": "plain",
+        "max": 8,
+        "len_max": 40,
+        "bad_chars": "[\\\\^$*?()[\\]{}|]",
+        "incident": [
+          "artifactory",
+          "production rce",
+          "hf swarm",
+          "cluster-admin",
+          "eval board",
+          "persistent-sol",
+          "metr wave"
+        ],
+        "ban": [
+          "sol",
+          "astra",
+          "persistent sol",
+          "hf breach",
+          "jailbreak",
+          "bluesky"
+        ]
+      },
+      "gmail_senders": {
+        "kind": "address",
+        "max": 20,
+        "pattern": "^[a-z0-9._%+-]+@[a-z0-9-]+(?:\\.[a-z0-9-]+)+$"
+      }
+    }
   },
   "config": D,
   "file_hash": "9e8aa501e4fa88fcfe52ecaf9180829f25788f0f9f9e1f9c89adc81f13b777c0"

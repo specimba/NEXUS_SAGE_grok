@@ -3,7 +3,8 @@
  * (crawl-start validateSageConfig). NO imports from ingest libs (lead-pick, gmail-news, rss-*, …): every number,
  * id list and baseline term arrives in `limits` — from code at crawl time (sage-config.ts limitsFromCode) and from
  * SAGE_SETUP.limits (written by scripts/desk-view.ts from the same code) in the browser.
- * PASS-S1 note: new source blocks / keyword lists slot in through limits.source_ids / ceilings / feeds / keyword_lists.
+ * PASS-S1: new source blocks / keyword lists slot in through limits.source_ids / ceilings / feeds / keyword_lists; the S1.4/S1.5
+ * term checks and the S1.8 empty-means-off lists ride in limits.list_rules / limits.empty_means_off.
  */
 import type { SageConfig } from "./sage-config-types";
 
@@ -27,7 +28,48 @@ export type SageLimits = {
   taste_max: number;
   /** Sources the browser editor never changes (box-only; edit by commit). */
   box_only: string[];
+  /** PASS-S1.8: keyword lists where an EMPTY list means "off" (allowed); every other list must stay non-empty. */
+  empty_means_off: string[];
+  /** PASS-S1.4 / S1.5: per-list term rules (plain HN title terms, exact Gmail sender addresses). */
+  list_rules: Record<string, ListRule>;
 };
+
+/**
+ * PASS-S1 term rules, as data (the browser has no hn-pulse / gmail-news). `plain` = HN title queries
+ * (hnTitleQueryProblem); `address` = Gmail sender trust list (GMAIL_SENDER_RE, exact, no surrounding space).
+ */
+export type ListRule =
+  | { kind: "plain"; max: number; len_max: number; bad_chars: string; incident: string[]; ban: string[] }
+  | { kind: "address"; max: number; pattern: string };
+
+/** Same text and order as hn-pulse hnTitleQueryProblem (null = ok). */
+function plainTermProblem(q: string, r: Extract<ListRule, { kind: "plain" }>): string | null {
+  if (!q.trim()) return "must be a non-empty string";
+  if (q.length > r.len_max) return "longer than " + r.len_max + " chars";
+  if (new RegExp(r.bad_chars).test(q)) return "plain text only (no regex)";
+  const t = q.trim();
+  const lowerQ = t.toLowerCase();
+  for (const n of r.incident) if (lowerQ.includes(n.toLowerCase())) return "standing search must not include incident noun: " + n;
+  for (const ban of r.ban) if (lowerQ === ban || lowerQ === ban.replace(/\s+/g, "-")) return "HN standing search must not include banned noun: " + ban;
+  return null;
+}
+
+/** PASS-S1 list rule → the one error for this list (null = ok). Same strings as the pre-C3 validateSageConfig. */
+export function listRuleError(k: string, terms: string[], r: ListRule): string | null {
+  if (r.kind === "plain") {
+    if (terms.length > r.max) return "keywords." + k + ": more than " + r.max + " terms";
+    const probs = terms.map((t) => [t, plainTermProblem(t, r)] as const).filter(([, p]) => p);
+    if (probs.length) return "keywords." + k + ": " + probs.map(([t, p]) => JSON.stringify(t) + " " + p).join("; ");
+    if (new Set(terms.map((t) => t.trim().toLowerCase())).size !== terms.length) return "keywords." + k + ": duplicate term";
+    return null;
+  }
+  if (terms.length > r.max) return "keywords." + k + ": more than " + r.max + " addresses";
+  const re = new RegExp(r.pattern, "i");
+  const bad = terms.filter((t) => !re.test(t.trim()) || t.trim() !== t);
+  if (bad.length) return "keywords." + k + ": not an exact local@domain address: " + bad.map((t) => JSON.stringify(t)).join(", ");
+  if (new Set(terms.map((t) => t.toLowerCase())).size !== terms.length) return "keywords." + k + ": duplicate address";
+  return null;
+}
 
 /**
  * PASS-C3 ruling (4): the timeout_s floor (seconds), shared by the CI validator (validateSageConfig) and the browser
@@ -138,7 +180,7 @@ export function validateWithRules(raw: unknown, limits: SageLimits): ValidateRes
           errors.push("unknown keyword list \"" + k + "\"");
           continue;
         }
-        if (!Array.isArray(v) || v.length === 0) {
+        if (!Array.isArray(v) || (v.length === 0 && !(limits.empty_means_off || []).includes(k))) {
           errors.push("keywords." + k + " must be a non-empty list");
           continue;
         }
@@ -149,6 +191,14 @@ export function validateWithRules(raw: unknown, limits: SageLimits): ValidateRes
           continue;
         }
         const terms = v as string[];
+        const rule = (limits.list_rules || {})[k];
+        if (rule) {
+          const e = listRuleError(k, terms, rule);
+          if (e) {
+            errors.push(e);
+            continue;
+          }
+        }
         const rx = limits.regex_lists[k];
         if (rx) {
           let termsOk = true;

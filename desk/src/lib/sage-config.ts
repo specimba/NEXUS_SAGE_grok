@@ -14,7 +14,8 @@ import { validateWithRules, type SageLimits, type ValidateResult } from "./sage-
 import { GITHUB_PER_PAGE } from "./github-shelf";
 import { GMAIL_EMIT_CAP, GMAIL_FETCH_CAP, GMAIL_SEED_KEYWORDS, GMAIL_SENDER_RE, GMAIL_SENDERS_DEFAULT, GMAIL_SENDERS_MAX } from "./gmail-news";
 import { GNEWS_POOL_CAP } from "./gnews-rss";
-import { HN_RECENT_SWEEP_TERMS, HN_TITLE_QUERIES, HN_TITLE_QUERIES_MAX, hnTitleQueryProblem } from "./hn-pulse";
+import { HN_RECENT_SWEEP_TERMS, HN_STANDING_BAN, HN_TITLE_QUERIES, HN_TITLE_QUERIES_MAX, HN_TITLE_QUERY_BAD_CHARS, HN_TITLE_QUERY_LEN_MAX } from "./hn-pulse";
+import { INCIDENT_NOUNS } from "./ingest/queries";
 import { POLITICS_LEAD_TERMS } from "./lead-pick";
 import { LAB_FEEDS, RSS_MAX_ITEMS_PER_FEED } from "./rss-labs";
 import { SECURITY_FEEDS } from "./rss-security";
@@ -134,6 +135,18 @@ export function limitsFromCode(): SageLimits {
     keyword_len_max: KEYWORD_LEN_MAX,
     taste_max: TASTE_WEIGHT_MAX,
     box_only: ["gmail", "x_taste"],
+    empty_means_off: [...KEYWORD_EMPTY_MEANS_OFF],
+    list_rules: {
+      hn_title_queries: {
+        kind: "plain",
+        max: HN_TITLE_QUERIES_MAX,
+        len_max: HN_TITLE_QUERY_LEN_MAX,
+        bad_chars: HN_TITLE_QUERY_BAD_CHARS.source,
+        incident: [...INCIDENT_NOUNS],
+        ban: [...HN_STANDING_BAN],
+      },
+      gmail_senders: { kind: "address", max: GMAIL_SENDERS_MAX, pattern: GMAIL_SENDER_RE.source },
+    },
   };
 }
 
