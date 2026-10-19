@@ -22,5 +22,6 @@ export const SHELF: ShelfItem[] = [
   { href: "https://arxiv.org/abs/2610.23847", label: "arxiv.org/abs/2610.23847", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.23845", label: "arxiv.org/abs/2610.23845", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.23834", label: "arxiv.org/abs/2610.23834", reason: "arxiv-shelf" as const },
-  { href: "https://github.com/LochanSharmaa/llm-xploitlab", label: "LochanSharmaa/llm-xploitlab", reason: "github-search-shelf" as const },
+  { href: "https://github.com/shaikn6/llm-safety-auditor", label: "shaikn6/llm-safety-auditor", reason: "github-search-shelf" as const },
+  { href: "https://github.com/sparavano/fintech-llm-security-assessment", label: "sparavano/fintech-llm-security-assessment", reason: "github-search-shelf" as const },
 ];
