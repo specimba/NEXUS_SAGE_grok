@@ -16,7 +16,7 @@ export type RssLabRow = {
   cluster_id?: string;
 };
 
-export const RSS_LABS_AT = "2026-10-18T18:22:02Z";
+export const RSS_LABS_AT = "2026-10-19T03:28:35Z";
 
 export const RSS_LABS: RssLabRow[] = [
   { id: "rss:nvidia:ea214a232a5ba774", lab: "nvidia" as const, title: "RTX Spark Ignites Global Celebration as New Windows PCs Arrive", link: "https://blogs.nvidia.com/blog/local-ai-rtx-spark-windows-laptops-celebration/", published: "2026-10-17T21:00:13Z", summary: "NVIDIA RTX Spark laptops are now available, bringing NVIDIA Blackwell RTX graphics, up to 128GB of unified memory and the full NVIDIA AI platform to slim, premium Windows PCs. Starting at $2,399, laptops from ASUS, Dell, HP, Lenovo, Microsoft and MSI bring powerful local AI, content creation and gaming capabilities to a portable device, with […]", source: "rss-lab" as const, tag: "rest" as const, first_seen: "2026-10-18T03:23:13Z", is_new: false, cluster_id: "cl:rss:nvidia:ea214a232a5ba774" },

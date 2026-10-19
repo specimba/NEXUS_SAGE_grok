@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-18T18:22:02Z",
+  "stamped_at": "2026-10-19T03:28:35Z",
   "config_hash": "813e5ce035c3",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,25 +11,25 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 185,
+      "duration_ms": 111,
       "paused_until": null,
       "reason": null
     },
     {
       "id": "arxiv",
       "label": "arXiv",
-      "status": "ok",
-      "rows": 28,
-      "duration_ms": 3193,
+      "status": "timeout",
+      "rows": 4,
+      "duration_ms": 20000,
       "paused_until": null,
-      "reason": null
+      "reason": "timeout after 20000ms budget · last good: 0 cached enrich + 4 kept shelf"
     },
     {
       "id": "openalex",
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 419,
+      "duration_ms": 411,
       "paused_until": null,
       "reason": null
     },
@@ -37,8 +37,8 @@
       "id": "crossref",
       "label": "Crossref",
       "status": "ok",
-      "rows": 1,
-      "duration_ms": 118,
+      "rows": 0,
+      "duration_ms": 107,
       "paused_until": null,
       "reason": null
     },
@@ -46,8 +46,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 53,
-      "duration_ms": 8277,
+      "rows": 46,
+      "duration_ms": 8284,
       "paused_until": null,
       "reason": null
     },
@@ -56,7 +56,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 105,
-      "duration_ms": 16745,
+      "duration_ms": 17695,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 4374,
+      "duration_ms": 4143,
       "paused_until": null,
       "reason": null
     },
@@ -73,8 +73,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 34,
-      "duration_ms": 6328,
+      "rows": 26,
+      "duration_ms": 6354,
       "paused_until": null,
       "reason": null
     },
@@ -82,8 +82,8 @@
       "id": "github",
       "label": "GitHub",
       "status": "ok",
-      "rows": 3,
-      "duration_ms": 307,
+      "rows": 1,
+      "duration_ms": 272,
       "paused_until": null,
       "reason": null
     },
@@ -92,16 +92,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4507,
+      "duration_ms": 4353,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 44453,
-    "sources_wall_ms": 16746,
-    "papers_lane_ms": 3921,
-    "slowest_source_ms": 16745,
+    "sources_ms": 61730,
+    "sources_wall_ms": 20640,
+    "papers_lane_ms": 20640,
+    "slowest_source_ms": 20000,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -115,32 +115,34 @@
       "github": 25000,
       "wikidata": 25000
     },
-    "timed_out": [],
-    "wall_ms": 17178,
+    "timed_out": [
+      "arxiv"
+    ],
+    "wall_ms": 20999,
     "startup_ms": 48,
-    "main_ms": 17194
+    "main_ms": 21013
   },
-  "multi_source_independent": 7,
+  "multi_source_independent": 2,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 7,
-    "multi_source_raw": 8,
-    "self_reposts": 1,
-    "items_in": 230,
-    "clusters_out": 211,
-    "collapsed": 19,
-    "multi_source": 7,
-    "multi_member": 12,
+    "multi_source_independent": 2,
+    "multi_source_raw": 2,
+    "self_reposts": 0,
+    "items_in": 215,
+    "clusters_out": 207,
+    "collapsed": 8,
+    "multi_source": 2,
+    "multi_member": 6,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 26,
+    "new_items": 31,
     "per_source": {
-      "hn-algolia": 53,
+      "hn-algolia": 46,
       "rss-lab": 105,
       "rss-security": 28,
-      "gnews-rss": 34,
+      "gnews-rss": 26,
       "gmail-news": 10
     },
     "multi_source_clusters": [
@@ -170,91 +172,13 @@
         ]
       },
       {
-        "title": "Anthropic's proposed AI safety bill only kicks in if 50 deaths or $1B in damages",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 3,
-        "score": 0.791,
-        "members": [
-          {
-            "id": "hn:50141429",
-            "source": "hn-algolia",
-            "title": "Anthropic's proposed AI safety bill only kicks in if 50 deaths or $1B in damages",
-            "at": "2026-10-18T14:30:27Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:ab2ddad704977074",
-            "source": "gnews-rss",
-            "title": "Anthropic’s proposed AI safety bill only kicks in if 50 deaths or $1 billion in damages are on the line — proposal would effectively make the Commerce Department the only agency capable of stopping an AI model - Tom's Hardware",
-            "at": "2026-10-18T11:25:00Z",
-            "publisher": "Tom's Hardware"
-          },
-          {
-            "id": "gnews:a6f8d1fc742497ca",
-            "source": "gnews-rss",
-            "title": "Anthropic proposes AI models can be blocked only if they risk $1 billion damage or 50 deaths - India Today",
-            "at": "2026-10-18T08:34:19Z",
-            "publisher": "India Today"
-          }
-        ]
-      },
-      {
-        "title": "Anthropic pitches its own AI safety bill to lawmakers",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 5,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:50134131",
-            "source": "hn-algolia",
-            "title": "Anthropic pitches its own AI safety bill to lawmakers",
-            "at": "2026-10-17T19:15:11Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:50125348",
-            "source": "hn-algolia",
-            "title": "Anthropic pitches its own AI safety bill to lawmakers",
-            "at": "2026-10-16T22:03:04Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:3cee3ba2253eec78",
-            "source": "gnews-rss",
-            "title": "Anthropic Pitches AI Safety Bill to Lawmakers - Deccan Chronicle",
-            "at": "2026-10-18T10:34:14Z",
-            "publisher": "Deccan Chronicle"
-          },
-          {
-            "id": "gnews:e7f186808373fda0",
-            "source": "gnews-rss",
-            "title": "Anthropic quietly pitches its own AI safety bill to lawmakers - Politico",
-            "at": "2026-10-16T21:45:00Z",
-            "publisher": "Politico"
-          },
-          {
-            "id": "gnews:9ac15dc0a80bcc26",
-            "source": "gnews-rss",
-            "title": "Anthropic Pitches AI Safety Bill to Lawmakers, Politico Says - Bloomberg.com",
-            "at": "2026-10-16T23:16:18Z",
-            "publisher": "Bloomberg.com"
-          }
-        ]
-      },
-      {
         "title": "DeepSeek-v4.1-Flash-1017",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
         "size": 3,
-        "score": 0.817,
+        "score": 0.809,
         "members": [
           {
             "id": "hn:50129045",
@@ -278,116 +202,9 @@
             "publisher": "shattered.io"
           }
         ]
-      },
-      {
-        "title": "Anthropic offers Blackstone double-digit yield in latest chip financing",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 4,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:50128784",
-            "source": "hn-algolia",
-            "title": "Anthropic offers Blackstone double-digit yield in latest chip financing",
-            "at": "2026-10-17T07:24:59Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:3559774b2d812570",
-            "source": "gnews-rss",
-            "title": "Anthropic offers Blackstone double-digit yield in latest chip financing - Financial Times",
-            "at": "2026-10-17T00:49:04Z",
-            "publisher": "Financial Times"
-          },
-          {
-            "id": "gnews:a7013fe8ef4d3432",
-            "source": "gnews-rss",
-            "title": "Anthropic offers Blackstone double-digit yield in chip-financing deal, FT reports - Yahoo Finance",
-            "at": "2026-10-17T01:01:00Z",
-            "publisher": "Yahoo Finance"
-          },
-          {
-            "id": "gnews:0321b0c3e80efa2d",
-            "source": "gnews-rss",
-            "title": "Anthropic offers Blackstone double-digit yield in chip-financing deal, FT reports - Reuters",
-            "at": "2026-10-17T00:57:00Z",
-            "publisher": "Reuters"
-          }
-        ]
-      },
-      {
-        "title": "Bringing GPT-Rosalind to academic research labs",
-        "sources": [
-          "rss-lab",
-          "hn-algolia"
-        ],
-        "size": 2,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:50122811",
-            "source": "hn-algolia",
-            "title": "GPT‑Rosalind: dedicated life sciences model for academic research labs",
-            "at": "2026-10-16T18:56:52Z",
-            "publisher": null
-          },
-          {
-            "id": "rss:openai:32165ee6af8945a5",
-            "source": "rss-lab",
-            "title": "Bringing GPT-Rosalind to academic research labs",
-            "at": "2026-10-15T19:00:00Z",
-            "publisher": "openai"
-          }
-        ]
-      },
-      {
-        "title": "Granite Switch 4.1: Chat, Decisions, and Speech from One Endpoint",
-        "sources": [
-          "rss-lab",
-          "hn-algolia"
-        ],
-        "size": 2,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:50122630",
-            "source": "hn-algolia",
-            "title": "Granite Switch 4.1: Chat, Decisions, and Speech from One Endpoint",
-            "at": "2026-10-16T18:46:06Z",
-            "publisher": null
-          },
-          {
-            "id": "rss:huggingface:d330643595776f9f",
-            "source": "rss-lab",
-            "title": "Granite Switch 4.1: Chat, Decisions, and Speech from One Endpoint",
-            "at": "2026-10-15T20:34:01Z",
-            "publisher": "huggingface"
-          }
-        ]
       }
     ],
-    "self_repost_clusters": [
-      {
-        "title": "RTX Spark Ignites Global Celebration as New Windows PCs Arrive",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:0b9f8ff998a353c9",
-            "publisher": "NVIDIA Blog",
-            "title": "RTX Spark Ignites Global Celebration as New Windows PCs Arrive - NVIDIA Blog"
-          }
-        ]
-      }
-    ],
+    "self_repost_clusters": [],
     "ai_relevance": {
       "rss_lab_dropped": [
         {
@@ -398,20 +215,24 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "The Globe and Mail",
-          "title": "History Says Nvidia Stock Does This in November. Here's the 1 Thing That Could Break the Pattern. - The Globe and Mail"
+          "publisher": "36Kr",
+          "title": "People Who Left ByteDance: 36 Entrepreneurs Who Took Away Both ByteDance's Methods and Work Boundaries - 36Kr"
         },
         {
-          "publisher": "https://tech-insider.org/",
-          "title": "NVIDIA RTX Spark Laptops Debut at $2,599 [2026] - https://tech-insider.org/"
+          "publisher": "How-To Geek",
+          "title": "I changed one hidden Windows setting, and my laptop saw 36% less battery drain - How-To Geek"
         },
         {
-          "publisher": "The Information",
-          "title": "Neocloud Shakeout Looms, and Nvidia Has a Lot to Lose - The Information"
+          "publisher": "The Daily Star",
+          "title": "Editors’ Council condemns journalist Alif murder - The Daily Star"
         },
         {
-          "publisher": "Startup Fortune",
-          "title": "Two pallets of Nvidia RTX 5090 cards vanish at a Brazilian airport - Startup Fortune"
+          "publisher": "NoobFeed",
+          "title": "XBOX Exclusives Could Be Coming back as Microsoft Surveys Insiders - NoobFeed"
+        },
+        {
+          "publisher": "Realtor.com",
+          "title": "The Ex-Microsoft Exec Who Outbid Cher for an Antique Archway Is Selling His $9.75 Million Seattle Estate - Realtor.com"
         },
         {
           "publisher": "PPC Land",
@@ -420,22 +241,57 @@
         {
           "publisher": "The European Business Review",
           "title": "Tax-Free Tech Stocks: Europe’s Only Path to Technology Sovereignty - The European Business Review"
-        },
-        {
-          "publisher": "jawlah.co",
-          "title": "TrustedRouter raises $6 million in seed round to challenge OpenRouter on data security - jawlah.co"
-        },
-        {
-          "publisher": "NoobFeed",
-          "title": "ASUS Arc Pro B70 Debuts With 32GB Big Battlemage GPU - NoobFeed"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 19
+      "hn_dropped": 22
     },
     "gnews_near_misses": [
       {
-        "score": 0.482,
+        "score": 0.748,
+        "blocked": "time-window",
+        "hours_apart": 35.4,
+        "a": {
+          "id": "hn:50129045",
+          "source": "hn-algolia",
+          "title": "DeepSeek-v4.1-Flash-1017",
+          "at": "2026-10-17T08:21:25Z"
+        },
+        "b": {
+          "id": "gnews:9a026917d0ad78a4",
+          "source": "gnews-rss",
+          "title": "DeepSeek V4.1-Flash-1017: HLE Score Hits 42.6 [2026] - shattered.io",
+          "at": "2026-10-18T19:42:44Z"
+        },
+        "shared": [
+          "deepseek",
+          "v4.1",
+          "flash",
+          "1017"
+        ]
+      },
+      {
+        "score": 0.547,
+        "blocked": "time-window",
+        "hours_apart": 85.3,
+        "a": {
+          "id": "rss:mistral:51edf4c643816e6f",
+          "source": "rss-lab",
+          "title": "Introducing Timestral",
+          "at": "2026-10-15T12:00:00Z"
+        },
+        "b": {
+          "id": "gnews:6c2cf3d968fe0343",
+          "source": "gnews-rss",
+          "title": "Mistral AI Releases Timestral: A 209M Forecasting Model Family That Outperforms Google’s TimesFM-3 - MarkTechPost",
+          "at": "2026-10-19T01:18:17Z"
+        },
+        "shared": [
+          "timestral"
+        ]
+      },
+      {
+        "score": 0.469,
         "blocked": "thin-overlap",
         "hours_apart": 1.2,
         "a": {
@@ -458,163 +314,113 @@
         ]
       },
       {
-        "score": 0.441,
-        "blocked": "below-threshold",
-        "hours_apart": 22,
+        "score": 0.453,
+        "blocked": "thin-overlap",
+        "hours_apart": 32.6,
         "a": {
-          "id": "hn:50134131",
+          "id": "hn:50129993",
           "source": "hn-algolia",
-          "title": "Anthropic pitches its own AI safety bill to lawmakers",
-          "at": "2026-10-17T19:15:11Z"
+          "title": "The fastest DeepSeek v4.1 flash 1017 – Day 0",
+          "at": "2026-10-17T11:07:08Z"
         },
         "b": {
-          "id": "gnews:d3cf3332a083abf7",
+          "id": "gnews:9a026917d0ad78a4",
           "source": "gnews-rss",
-          "title": "Anthropic Proposes AI Safety Bill Giving US Government Power to Block High-Risk Models - PYMNTS.com",
-          "at": "2026-10-18T17:13:57Z"
+          "title": "DeepSeek V4.1-Flash-1017: HLE Score Hits 42.6 [2026] - shattered.io",
+          "at": "2026-10-18T19:42:44Z"
         },
         "shared": [
-          "anthropic",
-          "ai",
-          "safety",
-          "bill"
+          "deepseek",
+          "v4.1",
+          "flash",
+          "1017"
         ]
       },
       {
-        "score": 0.441,
+        "score": 0.297,
         "blocked": "time-window",
-        "hours_apart": 43.2,
+        "hours_apart": 121.5,
         "a": {
-          "id": "hn:50125348",
-          "source": "hn-algolia",
-          "title": "Anthropic pitches its own AI safety bill to lawmakers",
-          "at": "2026-10-16T22:03:04Z"
-        },
-        "b": {
-          "id": "gnews:d3cf3332a083abf7",
-          "source": "gnews-rss",
-          "title": "Anthropic Proposes AI Safety Bill Giving US Government Power to Block High-Risk Models - PYMNTS.com",
-          "at": "2026-10-18T17:13:57Z"
-        },
-        "shared": [
-          "anthropic",
-          "ai",
-          "safety",
-          "bill"
-        ]
-      },
-      {
-        "score": 0.437,
-        "blocked": "below-threshold",
-        "hours_apart": 3.9,
-        "a": {
-          "id": "hn:50141429",
-          "source": "hn-algolia",
-          "title": "Anthropic's proposed AI safety bill only kicks in if 50 deaths or $1B in damages",
-          "at": "2026-10-18T14:30:27Z"
-        },
-        "b": {
-          "id": "gnews:3cee3ba2253eec78",
-          "source": "gnews-rss",
-          "title": "Anthropic Pitches AI Safety Bill to Lawmakers - Deccan Chronicle",
-          "at": "2026-10-18T10:34:14Z"
-        },
-        "shared": [
-          "anthropic",
-          "ai",
-          "safety",
-          "bill"
-        ]
-      },
-      {
-        "score": 0.39,
-        "blocked": "below-threshold",
-        "hours_apart": 16.2,
-        "a": {
-          "id": "hn:50134131",
-          "source": "hn-algolia",
-          "title": "Anthropic pitches its own AI safety bill to lawmakers",
-          "at": "2026-10-17T19:15:11Z"
-        },
-        "b": {
-          "id": "gnews:ab2ddad704977074",
-          "source": "gnews-rss",
-          "title": "Anthropic’s proposed AI safety bill only kicks in if 50 deaths or $1 billion in damages are on the line — proposal would effectively make the Commerce Department the only agency capable of stopping an AI model - Tom's Hardware",
-          "at": "2026-10-18T11:25:00Z"
-        },
-        "shared": [
-          "anthropic",
-          "ai",
-          "safety",
-          "bill"
-        ]
-      },
-      {
-        "score": 0.39,
-        "blocked": "time-window",
-        "hours_apart": 37.4,
-        "a": {
-          "id": "hn:50125348",
-          "source": "hn-algolia",
-          "title": "Anthropic pitches its own AI safety bill to lawmakers",
-          "at": "2026-10-16T22:03:04Z"
-        },
-        "b": {
-          "id": "gnews:ab2ddad704977074",
-          "source": "gnews-rss",
-          "title": "Anthropic’s proposed AI safety bill only kicks in if 50 deaths or $1 billion in damages are on the line — proposal would effectively make the Commerce Department the only agency capable of stopping an AI model - Tom's Hardware",
-          "at": "2026-10-18T11:25:00Z"
-        },
-        "shared": [
-          "anthropic",
-          "ai",
-          "safety",
-          "bill"
-        ]
-      },
-      {
-        "score": 0.372,
-        "blocked": "time-window",
-        "hours_apart": 71,
-        "a": {
-          "id": "rss:nvidia:640799e7dc996a35",
+          "id": "rss:openai:200a5d3dd39c6bfb",
           "source": "rss-lab",
-          "title": "Be There for the Beginning: Celebrate the Launch of NVIDIA RTX Spark",
-          "at": "2026-10-15T17:00:23Z"
+          "title": "The EU’s next chapter in AI is agentic",
+          "at": "2026-10-14T00:00:00Z"
         },
         "b": {
-          "id": "gnews:73b9c1a6a8306d45",
+          "id": "gnews:bf1edc90422656f5",
           "source": "gnews-rss",
-          "title": "NVIDIA RTX Spark Undercuts $18,600 AI Workstations by 86% [2026] - tech-insider.org",
-          "at": "2026-10-18T16:00:26Z"
+          "title": "FPT and NVIDIA Expand Nemotron-Personas-Vietnam Dataset by 10X Times to Power the Next Wave of Agentic AI - Japan Wire by Kyodo News",
+          "at": "2026-10-19T01:32:00Z"
+        },
+        "shared": [
+          "next",
+          "ai",
+          "agentic"
+        ]
+      },
+      {
+        "score": 0.292,
+        "blocked": "time-window",
+        "hours_apart": 274.9,
+        "a": {
+          "id": "rss:google-ai:b6aec8c05cfc3e2f",
+          "source": "rss-lab",
+          "title": "Introducing Playground: Create and play custom games",
+          "at": "2026-10-07T12:00:00Z"
+        },
+        "b": {
+          "id": "gnews:3b644a955f8e2722",
+          "source": "gnews-rss",
+          "title": "AI Opens New Era of User-Created Games - 조선일보",
+          "at": "2026-10-18T22:54:13Z"
+        },
+        "shared": [
+          "creat",
+          "game"
+        ]
+      },
+      {
+        "score": 0.285,
+        "blocked": "thin-overlap",
+        "hours_apart": 10.9,
+        "a": {
+          "id": "hn:50141490",
+          "source": "hn-algolia",
+          "title": "Nvidia Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
+          "at": "2026-10-18T14:37:26Z"
+        },
+        "b": {
+          "id": "gnews:bf1edc90422656f5",
+          "source": "gnews-rss",
+          "title": "FPT and NVIDIA Expand Nemotron-Personas-Vietnam Dataset by 10X Times to Power the Next Wave of Agentic AI - Japan Wire by Kyodo News",
+          "at": "2026-10-19T01:32:00Z"
         },
         "shared": [
           "nvidia",
-          "rtx",
-          "spark"
+          "nemotron",
+          "power"
         ]
       },
       {
-        "score": 0.362,
-        "blocked": "time-window",
-        "hours_apart": 40.8,
+        "score": 0.285,
+        "blocked": "thin-overlap",
+        "hours_apart": 79.5,
         "a": {
-          "id": "hn:50141429",
-          "source": "hn-algolia",
-          "title": "Anthropic's proposed AI safety bill only kicks in if 50 deaths or $1B in damages",
-          "at": "2026-10-18T14:30:27Z"
+          "id": "rss:nvidia-dev:9f5aca4e4d9dbf53",
+          "source": "rss-lab",
+          "title": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
+          "at": "2026-10-15T18:01:00Z"
         },
         "b": {
-          "id": "gnews:e7f186808373fda0",
+          "id": "gnews:bf1edc90422656f5",
           "source": "gnews-rss",
-          "title": "Anthropic quietly pitches its own AI safety bill to lawmakers - Politico",
-          "at": "2026-10-16T21:45:00Z"
+          "title": "FPT and NVIDIA Expand Nemotron-Personas-Vietnam Dataset by 10X Times to Power the Next Wave of Agentic AI - Japan Wire by Kyodo News",
+          "at": "2026-10-19T01:32:00Z"
         },
         "shared": [
-          "anthropic",
-          "ai",
-          "safety",
-          "bill"
+          "nvidia",
+          "nemotron",
+          "power"
         ]
       }
     ],
@@ -649,7 +455,50 @@
         ]
       },
       {
-        "score": 0.482,
+        "score": 0.748,
+        "blocked": "time-window",
+        "hours_apart": 35.4,
+        "a": {
+          "id": "hn:50129045",
+          "source": "hn-algolia",
+          "title": "DeepSeek-v4.1-Flash-1017",
+          "at": "2026-10-17T08:21:25Z"
+        },
+        "b": {
+          "id": "gnews:9a026917d0ad78a4",
+          "source": "gnews-rss",
+          "title": "DeepSeek V4.1-Flash-1017: HLE Score Hits 42.6 [2026] - shattered.io",
+          "at": "2026-10-18T19:42:44Z"
+        },
+        "shared": [
+          "deepseek",
+          "v4.1",
+          "flash",
+          "1017"
+        ]
+      },
+      {
+        "score": 0.547,
+        "blocked": "time-window",
+        "hours_apart": 85.3,
+        "a": {
+          "id": "rss:mistral:51edf4c643816e6f",
+          "source": "rss-lab",
+          "title": "Introducing Timestral",
+          "at": "2026-10-15T12:00:00Z"
+        },
+        "b": {
+          "id": "gnews:6c2cf3d968fe0343",
+          "source": "gnews-rss",
+          "title": "Mistral AI Releases Timestral: A 209M Forecasting Model Family That Outperforms Google’s TimesFM-3 - MarkTechPost",
+          "at": "2026-10-19T01:18:17Z"
+        },
+        "shared": [
+          "timestral"
+        ]
+      },
+      {
+        "score": 0.469,
         "blocked": "thin-overlap",
         "hours_apart": 1.2,
         "a": {
@@ -672,122 +521,30 @@
         ]
       },
       {
-        "score": 0.441,
-        "blocked": "below-threshold",
-        "hours_apart": 22,
+        "score": 0.453,
+        "blocked": "thin-overlap",
+        "hours_apart": 32.6,
         "a": {
-          "id": "hn:50134131",
+          "id": "hn:50129993",
           "source": "hn-algolia",
-          "title": "Anthropic pitches its own AI safety bill to lawmakers",
-          "at": "2026-10-17T19:15:11Z"
+          "title": "The fastest DeepSeek v4.1 flash 1017 – Day 0",
+          "at": "2026-10-17T11:07:08Z"
         },
         "b": {
-          "id": "gnews:d3cf3332a083abf7",
+          "id": "gnews:9a026917d0ad78a4",
           "source": "gnews-rss",
-          "title": "Anthropic Proposes AI Safety Bill Giving US Government Power to Block High-Risk Models - PYMNTS.com",
-          "at": "2026-10-18T17:13:57Z"
+          "title": "DeepSeek V4.1-Flash-1017: HLE Score Hits 42.6 [2026] - shattered.io",
+          "at": "2026-10-18T19:42:44Z"
         },
         "shared": [
-          "anthropic",
-          "ai",
-          "safety",
-          "bill"
+          "deepseek",
+          "v4.1",
+          "flash",
+          "1017"
         ]
       },
       {
-        "score": 0.441,
-        "blocked": "time-window",
-        "hours_apart": 43.2,
-        "a": {
-          "id": "hn:50125348",
-          "source": "hn-algolia",
-          "title": "Anthropic pitches its own AI safety bill to lawmakers",
-          "at": "2026-10-16T22:03:04Z"
-        },
-        "b": {
-          "id": "gnews:d3cf3332a083abf7",
-          "source": "gnews-rss",
-          "title": "Anthropic Proposes AI Safety Bill Giving US Government Power to Block High-Risk Models - PYMNTS.com",
-          "at": "2026-10-18T17:13:57Z"
-        },
-        "shared": [
-          "anthropic",
-          "ai",
-          "safety",
-          "bill"
-        ]
-      },
-      {
-        "score": 0.437,
-        "blocked": "below-threshold",
-        "hours_apart": 3.9,
-        "a": {
-          "id": "hn:50141429",
-          "source": "hn-algolia",
-          "title": "Anthropic's proposed AI safety bill only kicks in if 50 deaths or $1B in damages",
-          "at": "2026-10-18T14:30:27Z"
-        },
-        "b": {
-          "id": "gnews:3cee3ba2253eec78",
-          "source": "gnews-rss",
-          "title": "Anthropic Pitches AI Safety Bill to Lawmakers - Deccan Chronicle",
-          "at": "2026-10-18T10:34:14Z"
-        },
-        "shared": [
-          "anthropic",
-          "ai",
-          "safety",
-          "bill"
-        ]
-      },
-      {
-        "score": 0.39,
-        "blocked": "below-threshold",
-        "hours_apart": 16.2,
-        "a": {
-          "id": "hn:50134131",
-          "source": "hn-algolia",
-          "title": "Anthropic pitches its own AI safety bill to lawmakers",
-          "at": "2026-10-17T19:15:11Z"
-        },
-        "b": {
-          "id": "gnews:ab2ddad704977074",
-          "source": "gnews-rss",
-          "title": "Anthropic’s proposed AI safety bill only kicks in if 50 deaths or $1 billion in damages are on the line — proposal would effectively make the Commerce Department the only agency capable of stopping an AI model - Tom's Hardware",
-          "at": "2026-10-18T11:25:00Z"
-        },
-        "shared": [
-          "anthropic",
-          "ai",
-          "safety",
-          "bill"
-        ]
-      },
-      {
-        "score": 0.39,
-        "blocked": "time-window",
-        "hours_apart": 37.4,
-        "a": {
-          "id": "hn:50125348",
-          "source": "hn-algolia",
-          "title": "Anthropic pitches its own AI safety bill to lawmakers",
-          "at": "2026-10-16T22:03:04Z"
-        },
-        "b": {
-          "id": "gnews:ab2ddad704977074",
-          "source": "gnews-rss",
-          "title": "Anthropic’s proposed AI safety bill only kicks in if 50 deaths or $1 billion in damages are on the line — proposal would effectively make the Commerce Department the only agency capable of stopping an AI model - Tom's Hardware",
-          "at": "2026-10-18T11:25:00Z"
-        },
-        "shared": [
-          "anthropic",
-          "ai",
-          "safety",
-          "bill"
-        ]
-      },
-      {
-        "score": 0.389,
+        "score": 0.387,
         "blocked": "time-window",
         "hours_apart": 71.6,
         "a": {
@@ -808,6 +565,50 @@
           "super",
           "vl"
         ]
+      },
+      {
+        "score": 0.317,
+        "blocked": "thin-overlap",
+        "hours_apart": 91.9,
+        "a": {
+          "id": "hn:50135502",
+          "source": "hn-algolia",
+          "title": "Google DeepMind's New Resident Philosopher Tackles AI Ethics",
+          "at": "2026-10-17T21:54:10Z"
+        },
+        "b": {
+          "id": "rss:deepmind:36a7e1c23fbbe3b1",
+          "source": "rss-lab",
+          "title": "Google DeepMind and Singapore Government collaborate to build fine-tuned AI model for scam detection",
+          "at": "2026-10-14T02:00:14Z"
+        },
+        "shared": [
+          "google",
+          "deepmind",
+          "ai"
+        ]
+      },
+      {
+        "score": 0.297,
+        "blocked": "time-window",
+        "hours_apart": 121.5,
+        "a": {
+          "id": "rss:openai:200a5d3dd39c6bfb",
+          "source": "rss-lab",
+          "title": "The EU’s next chapter in AI is agentic",
+          "at": "2026-10-14T00:00:00Z"
+        },
+        "b": {
+          "id": "gnews:bf1edc90422656f5",
+          "source": "gnews-rss",
+          "title": "FPT and NVIDIA Expand Nemotron-Personas-Vietnam Dataset by 10X Times to Power the Next Wave of Agentic AI - Japan Wire by Kyodo News",
+          "at": "2026-10-19T01:32:00Z"
+        },
+        "shared": [
+          "next",
+          "ai",
+          "agentic"
+        ]
       }
     ]
   },
@@ -815,76 +616,76 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 7,
-      "streak_fail": 0,
-      "items_last": 28
+      "streak_ok": 0,
+      "streak_fail": 1,
+      "items_last": 4
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 138,
+      "streak_ok": 139,
       "streak_fail": 0,
-      "items_last": 1
+      "items_last": 0
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 138,
+      "streak_ok": 139,
       "streak_fail": 0,
-      "items_last": 3
+      "items_last": 1
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 138,
+      "streak_ok": 139,
       "streak_fail": 0,
-      "items_last": 34
+      "items_last": 26
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 138,
+      "streak_ok": 139,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 138,
+      "streak_ok": 139,
       "streak_fail": 0,
-      "items_last": 53
+      "items_last": 46
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 50,
+      "streak_ok": 51,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 42,
+      "streak_ok": 43,
       "streak_fail": 0,
       "items_last": 105
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 138,
+      "streak_ok": 139,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 138,
+      "streak_ok": 139,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.005004722222222222,
+    "hours": 0.006052777777777778,
     "stale": false
   },
   "hf": {
@@ -893,10 +694,10 @@
     "url": "https://huggingface.co/api/daily_papers"
   },
   "arxiv": {
-    "ok": true,
-    "enriched": 24,
+    "ok": false,
+    "enriched": 0,
     "shelf": 4,
-    "timed_out": false,
+    "timed_out": true,
     "budget_ms": 20000,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
@@ -907,7 +708,7 @@
     "soft_fail_reason": null,
     "enriched": 3,
     "secondary": 3,
-    "query": "LLM agent sandbox",
+    "query": "Hugging Face agent",
     "mode": "search",
     "from_cache": false,
     "searches": 1,
@@ -923,34 +724,34 @@
     "url": "https://api.openalex.org/works",
     "sample": [
       {
-        "id": "W7171516088",
-        "openalexId": "https://openalex.org/W7171516088",
+        "id": "W7171617880",
+        "openalexId": "https://openalex.org/W7171617880",
         "year": 2026,
-        "doi": "https://doi.org/10.48550/arxiv.2607.23933",
+        "doi": "https://doi.org/10.5281/zenodo.21686546",
         "enrichOnly": true
       },
       {
-        "id": "W7204032694",
-        "openalexId": "https://openalex.org/W7204032694",
+        "id": "W7171936549",
+        "openalexId": "https://openalex.org/W7171936549",
         "year": 2026,
-        "doi": "https://doi.org/10.1007/978-981-92-4805-6_13",
+        "doi": "https://doi.org/10.5281/zenodo.21715175",
         "enrichOnly": true
       },
       {
-        "id": "W7221316450",
-        "openalexId": "https://openalex.org/W7221316450",
+        "id": "W7203931864",
+        "openalexId": "https://openalex.org/W7203931864",
         "year": 2026,
-        "doi": "https://doi.org/10.1038/s41746-026-03348-0",
+        "doi": "https://doi.org/10.5281/zenodo.22043399",
         "enrichOnly": true
       }
     ]
   },
   "crossref": {
-    "ok": true,
+    "ok": false,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "enriched": 1,
-    "query": "doi:10.1007/978-981-92-4805-6_13",
+    "enriched": 0,
+    "query": "doi:10.5281/zenodo.21686546",
     "mode": "filter",
     "from_cache": false,
     "searches": 1,
@@ -958,62 +759,50 @@
     "pulse_lead": false,
     "papers_enrich_only": true,
     "url": "https://api.crossref.org/works",
-    "merge_notes": [
-      "doi_collision keep=10.48550/arxiv.2607.23933 crossref=10.1007/978-981-92-4805-6_13 paper=W7171516088 (non-destructive; openalexId preserved)"
-    ],
-    "sample": [
-      {
-        "id": "W7171516088",
-        "crossrefDoi": "https://doi.org/10.1007/978-981-92-4805-6_13",
-        "issued": "2026-08-24",
-        "type": "book-chapter",
-        "openalexId": "https://openalex.org/W7171516088",
-        "doi": "https://doi.org/10.48550/arxiv.2607.23933",
-        "enrichOnly": false
-      }
-    ]
+    "merge_notes": [],
+    "sample": []
   },
   "hn": {
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 53,
+    "count": 46,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
     "queries_run": [
-      "open weights",
       "inference",
-      "benchmark"
+      "benchmark",
+      "agent tooling"
     ],
     "queries_ok": [
-      "open weights",
       "inference",
-      "benchmark"
+      "benchmark",
+      "agent tooling"
     ],
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 19,
+    "ai_dropped": 22,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
-        "id": "hn:50122800",
-        "tag": "rest",
-        "score": 1046,
-        "text": "Claude reveals ECDSA curve origins"
-      },
-      {
         "id": "hn:50129045",
         "tag": "rest",
-        "score": 925,
+        "score": 938,
         "text": "DeepSeek-v4.1-Flash-1017"
       },
       {
-        "id": "hn:50122951",
+        "id": "hn:50141429",
         "tag": "rest",
-        "score": 468,
-        "text": "How the Claude Code team does code review"
+        "score": 157,
+        "text": "Anthropic's proposed AI safety bill only kicks in if 50 deaths or $1B in damages"
+      },
+      {
+        "id": "hn:50132502",
+        "tag": "rest",
+        "score": 130,
+        "text": "OpenAI discloses four more rogue incidents"
       }
     ]
   },
@@ -1166,87 +955,15 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 34,
-    "pool": 302,
+    "items": 26,
+    "pool": 240,
     "corroborators": [
-      {
-        "id": "gnews:ab2ddad704977074",
-        "anchor_id": "hn:50141429",
-        "score": 0.785,
-        "title": "Anthropic’s proposed AI safety bill only kicks in if 50 deaths or $1 billion in damages are on the line — proposal would effectively make the Commerce Department the only agency capable of stopping an AI model - Tom's Hardware",
-        "publisher": "Tom's Hardware",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:a6f8d1fc742497ca",
-        "anchor_id": "hn:50141429",
-        "score": 0.734,
-        "title": "Anthropic proposes AI models can be blocked only if they risk $1 billion damage or 50 deaths - India Today",
-        "publisher": "India Today",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:3cee3ba2253eec78",
-        "anchor_id": "hn:50134131",
-        "score": 1,
-        "title": "Anthropic Pitches AI Safety Bill to Lawmakers - Deccan Chronicle",
-        "publisher": "Deccan Chronicle",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:e7f186808373fda0",
-        "anchor_id": "hn:50134131",
-        "score": 0.946,
-        "title": "Anthropic quietly pitches its own AI safety bill to lawmakers - Politico",
-        "publisher": "Politico",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:9ac15dc0a80bcc26",
-        "anchor_id": "hn:50134131",
-        "score": 0.935,
-        "title": "Anthropic Pitches AI Safety Bill to Lawmakers, Politico Says - Bloomberg.com",
-        "publisher": "Bloomberg.com",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:0b9f8ff998a353c9",
-        "anchor_id": "rss:nvidia:ea214a232a5ba774",
-        "score": 1,
-        "title": "RTX Spark Ignites Global Celebration as New Windows PCs Arrive - NVIDIA Blog",
-        "publisher": "NVIDIA Blog",
-        "self_repost": true
-      },
       {
         "id": "gnews:d5fcbd23045884f5",
         "anchor_id": "hn:50129045",
-        "score": 0.795,
+        "score": 0.79,
         "title": "DeepSeek V4.1-Flash-1017 Hits 77.0 on DeepSWE [2026] - shattered.io",
         "publisher": "shattered.io",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:3559774b2d812570",
-        "anchor_id": "hn:50128784",
-        "score": 1,
-        "title": "Anthropic offers Blackstone double-digit yield in latest chip financing - Financial Times",
-        "publisher": "Financial Times",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:a7013fe8ef4d3432",
-        "anchor_id": "hn:50128784",
-        "score": 0.85,
-        "title": "Anthropic offers Blackstone double-digit yield in chip-financing deal, FT reports - Yahoo Finance",
-        "publisher": "Yahoo Finance",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:0321b0c3e80efa2d",
-        "anchor_id": "hn:50128784",
-        "score": 0.85,
-        "title": "Anthropic offers Blackstone double-digit yield in chip-financing deal, FT reports - Reuters",
-        "publisher": "Reuters",
         "self_repost": false
       }
     ],
@@ -1262,38 +979,38 @@
     "pulse_only": true,
     "url_template": "https://news.google.com/rss/search?q={QUERY}&hl=en-US&gl=US&ceid=US:en",
     "queried": [
-      "Anthropic",
       "large language model",
-      "NVIDIA AI",
-      "Mistral AI"
+      "AI agent",
+      "Mistral AI",
+      "Microsoft Research"
     ],
     "queries_ok_list": [
-      "Anthropic",
       "large language model",
-      "NVIDIA AI",
-      "Mistral AI"
+      "AI agent",
+      "Mistral AI",
+      "Microsoft Research"
     ],
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:ca29f8c1af7cf816",
-        "title": "Anthropic to commit 5% stake to new public benefit fund - StreetInsider",
-        "publisher": "StreetInsider",
-        "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPSzN5N2N6Uld4WndIZ19hTDVQRG5IMndVVXk0MlpIN0w2S2ZpUFd5SHVqb1l2YXViT1FHanRFaXZrb3hmUkhTZkROb0tpTThrRGV1cjJrOThvVnJPaHd0Zm0zdF9HVmVTUklOOXE3T3JmVTFIdzlHZlQtOEJJb3paQUVyc2FxQWU1TlVPWXp3WEw5c2ZlSGZPeHJaV0FndFRWSVprakZNUDdnUUt0eGc?oc=5",
+        "id": "gnews:c7c942fec99eb617",
+        "title": "How to Price an AI Agent Proof of Concept Before It's Free - Startup Fortune",
+        "publisher": "Startup Fortune",
+        "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPX1RneWpYcGR6UFB1eEhsZk51bi11YnVRRk0tbVVZM1VnaVRpaWhSQm1FT2t4U0QxbXBacUdoWVZZdWYySmJGS0VSNmJuaWdJNDBjbVV1OVNQX09pMnpDQ1ZGX0xUY0wwRzNiOVNmYjE5enE2SUdNZUxBc1JIX3l6eml6aVRaSEIzUmtDNERR?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:d6e8b437314dddc0",
-        "title": "Anthropic Plans to Shift Some Shares Into New ‘Public Good’ Fund - Bloomberg.com",
-        "publisher": "Bloomberg.com",
-        "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxORmMyNWxod0hjdmwxeU0tdEk1dGpOSXdfSVdrLXdIVjB2LVR5YlpmZFhMZnlYcDNRNV9zRTcxY3piNFAzZm5mMThxeXJmVW5rMHFUSkpkQjc2NkJNWG0zUHE4RUNuV2w0RGFTQXlVQ0RtQ2VJbVdfVjE2Nmg4aDdFYXBVZGlhVzRmV3U4bXQzMHgtR1hqcl94YnRJNTVqRjVsT1h0SjJvVDUtZTdDSHJwWWxHbw?oc=5",
+        "id": "gnews:20675591fd9df337",
+        "title": "Report finds just 26% of enterprises are well prepared to manage AI agent conflicts - FutureCIO",
+        "publisher": "FutureCIO",
+        "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOUkZJTGktZ0ZVbEZ2QUZWZ3BOYU9hRm1QcWxJUGVhb3RWcE12aXdTbTFxX1kwYl9hY1JZSFNUT3R2MlVoVktmX2ZZQ0FqUXBIeUV4TWxqMnBXYzR4SjRmRmlSX3JMb0swRmM0ZjhWNUltdGVQbGtQODRMSWk4WV9uaXdGUU1qS0NYX3NXcC04TXFwaDlFY25oMjhlMEpqZVdLbGNNSFRiazZGUQ?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:d3cf3332a083abf7",
-        "title": "Anthropic Proposes AI Safety Bill Giving US Government Power to Block High-Risk Models - PYMNTS.com",
-        "publisher": "PYMNTS.com",
-        "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNeGR1Q09aVFd3bDNOMjNHVGc3RW43c1UxQVppX0F3NTVsMjZVbGFXVnhfN1BsVnNTazlGUHg1b1ZtdVFQcVhHTVFMc1hJMnpBWXpLWTRmeUZJSFVjU2xjXzBfaDZNVVhOQTlPdjF6NXVnVVJrQ0NER09jem8ybmU0YTNXS29fN2doaXZnbnRILXV3NG5mREdRckFQbE1iRk9hay15Q01BeDZwY2ZtdWdBcHlvcEdjbGQzMV9VMg?oc=5",
+        "id": "gnews:7c5c06de6d6124b6",
+        "title": "WeChat is quietly becoming AI-driven. - 36Kr",
+        "publisher": "36Kr",
+        "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5XbmRxMmhvUkdobEVUMlI1SVlSMldXY29oVHAxUXMtX214NTAzMHN0QUpKQ2YxcjdTemV6NmJYME5qd19BU1UwcTk1bTVpUVBaMTNj?oc=5",
         "tag": "rest"
       }
     ]
@@ -1323,8 +1040,8 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "query": "LLM agent eval harness",
-    "shelf": 3,
+    "query": "OWASP LLM",
+    "shelf": 1,
     "from_cache": false,
     "searches": 1,
     "rate_limit_remaining": 9,
@@ -1334,21 +1051,13 @@
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
-        "label": "Pawinski/agent-eval-harness",
-        "href": "https://github.com/Pawinski/agent-eval-harness"
-      },
-      {
-        "label": "princeVerma73/dispute-agent",
-        "href": "https://github.com/princeVerma73/dispute-agent"
-      },
-      {
-        "label": "eschraufnagel/trial-prescreening-agent",
-        "href": "https://github.com/eschraufnagel/trial-prescreening-agent"
+        "label": "TarunSinghChauhan/multi-agent-code-review",
+        "href": "https://github.com/TarunSinghChauhan/multi-agent-code-review"
       }
     ]
   },
   "shelf": {
-    "count": 19,
+    "count": 17,
     "brief": false
   },
   "wikidata": {
@@ -1356,9 +1065,9 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "seeds": [
-      "Fox-IT",
       "Project Zero",
-      "OWASP"
+      "OWASP",
+      "NIST"
     ],
     "searches": 3,
     "from_cache": false,
@@ -1367,17 +1076,6 @@
     "deny_grounding_only": true,
     "url": "https://www.wikidata.org/w/api.php",
     "hints": [
-      {
-        "seed": "Fox-IT",
-        "qid": "Q5476521",
-        "label": "Fox-IT",
-        "description": "information security company in the Netherlands",
-        "status": "matched",
-        "source": "wikidata",
-        "briefEligible": false,
-        "pulseLeadEligible": false,
-        "denyGroundingOnly": true
-      },
       {
         "seed": "Project Zero",
         "qid": "Q18859887",
@@ -1394,6 +1092,17 @@
         "qid": "Q379297",
         "label": "OWASP",
         "description": "computer security organization",
+        "status": "matched",
+        "source": "wikidata",
+        "briefEligible": false,
+        "pulseLeadEligible": false,
+        "denyGroundingOnly": true
+      },
+      {
+        "seed": "NIST",
+        "qid": "Q176691",
+        "label": "National Institute of Standards and Technology",
+        "description": "measurement standards laboratory in the United States",
         "status": "matched",
         "source": "wikidata",
         "briefEligible": false,

@@ -2,6 +2,61 @@
 import type { LeadEntry } from "@/lib/lead-pick";
 
 export const LEAD_TODAY: LeadEntry | null = {
+  "date": "2026-10-19",
+  "at": "2026-10-19T03:28:56.837Z",
+  "crawl_at": "2026-10-19T03:28:35Z",
+  "pick_slot": "06:28",
+  "excluded": [
+    {
+      "cluster_id": "cl:rss:nvidia-dev:9f5aca4e4d9dbf53",
+      "headline": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
+      "reason": "age>=36h"
+    },
+    {
+      "cluster_id": "cl:hn:50129045",
+      "headline": "DeepSeek-v4.1-Flash-1017",
+      "reason": "age>=36h"
+    },
+    {
+      "cluster_id": "cl:rss:deepmind:851107eacfc8ba0f",
+      "headline": "Gemini 4 Argon: Built to solve your hardest problems",
+      "reason": "age>=36h"
+    }
+  ],
+  "cluster_id": "cl:hn:50134131",
+  "headline": "Anthropic pitches its own AI safety bill to lawmakers",
+  "url": "https://www.politico.com/news/2026/10/16/anthropic-ai-safety-01124654",
+  "sources": 3,
+  "sig": 6,
+  "first_at": "2026-10-16T21:45:00.000Z",
+  "reason": "held",
+  "note": "no qualifying story",
+  "attempts": [
+    {
+      "at": "2026-10-19T03:28:56.837Z",
+      "crawl_at": "2026-10-19T03:28:35Z",
+      "excluded": [
+        {
+          "cluster_id": "cl:rss:nvidia-dev:9f5aca4e4d9dbf53",
+          "headline": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
+          "reason": "age>=36h"
+        },
+        {
+          "cluster_id": "cl:hn:50129045",
+          "headline": "DeepSeek-v4.1-Flash-1017",
+          "reason": "age>=36h"
+        },
+        {
+          "cluster_id": "cl:rss:deepmind:851107eacfc8ba0f",
+          "headline": "Gemini 4 Argon: Built to solve your hardest problems",
+          "reason": "age>=36h"
+        }
+      ]
+    }
+  ]
+};
+
+export const LEAD_YESTERDAY: LeadEntry | null = {
   "date": "2026-10-18",
   "at": "2026-10-18T08:37:21.046Z",
   "crawl_at": "2026-10-18T08:37:04Z",
@@ -54,44 +109,7 @@ export const LEAD_TODAY: LeadEntry | null = {
   "age_band": "24–36h"
 };
 
-export const LEAD_YESTERDAY: LeadEntry | null = {
-  "date": "2026-10-17",
-  "at": "2026-10-17T03:21:37.176Z",
-  "crawl_at": "2026-10-17T03:21:15Z",
-  "pick_slot": "06:21",
-  "excluded": [
-    {
-      "cluster_id": "cl:gnews:b7fef17fc5795adb",
-      "headline": "Anthropic offers Blackstone a double-digit yield to fund its chip habit",
-      "reason": "GNW_ONLY"
-    },
-    {
-      "cluster_id": "cl:gnews:c040c260bb7b5555",
-      "headline": "Gemini Tarot Horoscope Today, October 17, 2026: Today will be excellent, success will be achieved in work",
-      "reason": "GNW_ONLY"
-    },
-    {
-      "cluster_id": "cl:rss:nvidia-dev:9f5aca4e4d9dbf53",
-      "headline": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
-      "reason": "age>=36h"
-    },
-    {
-      "cluster_id": "cl:rss:deepmind:851107eacfc8ba0f",
-      "headline": "Gemini 4 Argon: Built to solve your hardest problems",
-      "reason": "age>=36h"
-    }
-  ],
-  "cluster_id": "cl:hn:50122112",
-  "headline": "Anthropic assigned highest junk credit rating in June",
-  "url": "https://www.ft.com/content/5a310aee-f555-4266-874c-b1b4db20186d",
-  "sources": 2,
-  "sig": 224,
-  "reason": "picked",
-  "first_at": "2026-10-16T04:00:18.000Z",
-  "age_band": "<24h"
-};
-
-export const LEAD_HELD = false;
+export const LEAD_HELD = true;
 
 /** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is >48h old (PASS-L). */
 export const LEAD_FIRST_AT: string | null = "2026-10-16T21:45:00.000Z";
