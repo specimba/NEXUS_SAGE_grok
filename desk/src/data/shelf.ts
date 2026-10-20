@@ -19,9 +19,11 @@ export const SHELF: ShelfItem[] = [
   { href: "https://owasp.org/www-community/Virtual_Patching_Best_Practices", label: "owasp.org/www-community/Virtual_Patching_Best_Practices", reason: "toolkit" as const },
   { href: "https://cheatsheetseries.owasp.org/cheatsheets/Virtual_Patching_Cheat_Sheet.html", label: "cheatsheetseries.owasp.org/cheatsheets/Virtual_Patching_Cheat_Sheet.html", reason: "toolkit" as const },
   { href: "https://arxiv.org/abs/2610.26863", label: "arxiv.org/abs/2610.26863", reason: "arxiv-shelf" as const },
+  { href: "https://arxiv.org/abs/2610.26860", label: "arxiv.org/abs/2610.26860", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.26861", label: "arxiv.org/abs/2610.26861", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.26856", label: "arxiv.org/abs/2610.26856", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.26852", label: "arxiv.org/abs/2610.26852", reason: "arxiv-shelf" as const },
+  { href: "https://github.com/exitCodeNihil/qafas-sandbox", label: "exitCodeNihil/qafas-sandbox", reason: "github-search-shelf" as const },
   { href: "https://github.com/controlplaneio/sandbox-probe", label: "controlplaneio/sandbox-probe", reason: "github-search-shelf" as const },
   { href: "https://github.com/hyperlight-dev/hyperagent", label: "hyperlight-dev/hyperagent", reason: "github-search-shelf" as const },
 ];

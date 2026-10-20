@@ -2,7 +2,7 @@
 import type { SageSetupView } from "@/lib/sage-setup";
 
 export const SAGE_SETUP: SageSetupView = {
-  "stamped_at": "2026-10-20T15:16:01Z",
+  "stamped_at": "2026-10-20T22:37:32Z",
   "config_path": "desk/config/sage-sources.json",
   "config_hash": "e3e9003a7d92",
   "status": "ok",
@@ -15,7 +15,7 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "hn",
       "on": true,
       "caps": "cap 20",
-      "last_rows": 58,
+      "last_rows": 66,
       "state": "ok"
     },
     {
@@ -43,14 +43,14 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "gnews",
       "on": true,
       "caps": "cap 32",
-      "last_rows": 16,
+      "last_rows": 24,
       "state": "ok"
     },
     {
       "id": "github",
       "on": true,
       "caps": "cap 5",
-      "last_rows": 2,
+      "last_rows": 3,
       "state": "ok"
     },
     {
@@ -71,7 +71,7 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "arxiv",
       "on": true,
       "caps": "—",
-      "last_rows": 28,
+      "last_rows": 29,
       "state": "ok"
     },
     {
@@ -99,7 +99,7 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "analyst_rss",
       "on": true,
       "caps": "cap_per_feed 6 · timeout_s 10 · feeds 2",
-      "last_rows": 7,
+      "last_rows": 8,
       "state": "ok"
     },
     {

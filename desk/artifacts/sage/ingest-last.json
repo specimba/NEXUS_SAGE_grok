@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-20T15:16:01Z",
+  "stamped_at": "2026-10-20T22:37:32Z",
   "config_hash": "e3e9003a7d92",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,7 +11,7 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 76,
+      "duration_ms": 285,
       "paused_until": null,
       "reason": null
     },
@@ -19,7 +19,7 @@
       "id": "arxiv",
       "label": "arXiv",
       "status": "ok",
-      "rows": 28,
+      "rows": 29,
       "duration_ms": 3209,
       "paused_until": null,
       "reason": null
@@ -29,7 +29,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 5,
-      "duration_ms": 3,
+      "duration_ms": 514,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 2,
+      "duration_ms": 398,
       "paused_until": null,
       "reason": null
     },
@@ -46,8 +46,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 58,
-      "duration_ms": 8303,
+      "rows": 66,
+      "duration_ms": 8375,
       "paused_until": null,
       "reason": null
     },
@@ -56,7 +56,7 @@
       "label": "HN title",
       "status": "ok",
       "rows": 9,
-      "duration_ms": 8247,
+      "duration_ms": 8211,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 105,
-      "duration_ms": 17714,
+      "duration_ms": 16858,
       "paused_until": null,
       "reason": null
     },
@@ -74,7 +74,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 40,
-      "duration_ms": 6096,
+      "duration_ms": 6122,
       "paused_until": null,
       "reason": null
     },
@@ -82,8 +82,8 @@
       "id": "rss_analyst",
       "label": "analyst RSS",
       "status": "ok",
-      "rows": 7,
-      "duration_ms": 2206,
+      "rows": 8,
+      "duration_ms": 2189,
       "paused_until": null,
       "reason": null
     },
@@ -92,7 +92,7 @@
       "label": "releases",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 4058,
+      "duration_ms": 5024,
       "paused_until": null,
       "reason": null
     },
@@ -100,8 +100,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 16,
-      "duration_ms": 2389,
+      "rows": 24,
+      "duration_ms": 6416,
       "paused_until": null,
       "reason": null
     },
@@ -109,8 +109,8 @@
       "id": "github",
       "label": "GitHub",
       "status": "ok",
-      "rows": 2,
-      "duration_ms": 17,
+      "rows": 3,
+      "duration_ms": 370,
       "paused_until": null,
       "reason": null
     },
@@ -119,16 +119,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 17,
+      "duration_ms": 4480,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 52337,
-    "sources_wall_ms": 17716,
-    "papers_lane_ms": 3298,
-    "slowest_source_ms": 17714,
+    "sources_ms": 62451,
+    "sources_wall_ms": 16859,
+    "papers_lane_ms": 4411,
+    "slowest_source_ms": 16858,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -146,33 +146,33 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 18068,
-    "startup_ms": 46,
-    "main_ms": 18091
+    "wall_ms": 17296,
+    "startup_ms": 55,
+    "main_ms": 17313
   },
-  "multi_source_independent": 2,
+  "multi_source_independent": 3,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 2,
-    "multi_source_raw": 2,
+    "multi_source_independent": 3,
+    "multi_source_raw": 3,
     "self_reposts": 0,
-    "items_in": 236,
-    "clusters_out": 228,
-    "collapsed": 8,
-    "multi_source": 2,
-    "multi_member": 5,
+    "items_in": 253,
+    "clusters_out": 243,
+    "collapsed": 10,
+    "multi_source": 3,
+    "multi_member": 7,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 18,
+    "new_items": 48,
     "per_source": {
-      "hn-algolia": 58,
+      "hn-algolia": 66,
       "rss-lab": 105,
       "rss-security": 40,
-      "gnews-rss": 16,
+      "gnews-rss": 24,
       "gmail-news": 10,
-      "rss-analyst": 7
+      "rss-analyst": 8
     },
     "multi_source_clusters": [
       {
@@ -181,9 +181,16 @@
           "rss-lab",
           "hn-algolia"
         ],
-        "size": 4,
+        "size": 3,
         "score": 1,
         "members": [
+          {
+            "id": "hn:50169955",
+            "source": "hn-algolia",
+            "title": "Advanced coding in low-resource programming languages",
+            "at": "2026-10-20T17:43:11Z",
+            "publisher": null
+          },
           {
             "id": "hn:50159639",
             "source": "hn-algolia",
@@ -192,25 +199,43 @@
             "publisher": null
           },
           {
-            "id": "hn:50162354",
-            "source": "hn-algolia",
-            "title": "Advancing coding in low‑resource programming languages",
-            "at": "2026-10-20T07:06:02Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:50159090",
-            "source": "hn-algolia",
-            "title": "Advancing Coding in Low-Resource Programming Languages",
-            "at": "2026-10-19T22:48:41Z",
-            "publisher": null
-          },
-          {
             "id": "rss:openai:1dbe22633003a2af",
             "source": "rss-lab",
             "title": "Advancing coding in low‑resource programming languages",
             "at": "2026-10-19T12:00:00Z",
             "publisher": "openai"
+          }
+        ]
+      },
+      {
+        "title": "Gemini 4 Argon: Built to solve your hardest problems",
+        "sources": [
+          "rss-lab",
+          "hn-algolia"
+        ],
+        "size": 3,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:50168983",
+            "source": "hn-algolia",
+            "title": "Gemini 4 Argon is now available for everyone",
+            "at": "2026-10-20T16:36:24Z",
+            "publisher": null
+          },
+          {
+            "id": "rss:deepmind:851107eacfc8ba0f",
+            "source": "rss-lab",
+            "title": "Gemini 4 Argon: Built to solve your hardest problems",
+            "at": "2026-10-13T16:01:52Z",
+            "publisher": "deepmind"
+          },
+          {
+            "id": "rss:google-ai:74c9e10c02543c49",
+            "source": "rss-lab",
+            "title": "Gemini 4 Argon: Built to solve your hardest problems",
+            "at": "2026-10-13T16:00:00Z",
+            "publisher": "google-ai"
           }
         ]
       },
@@ -251,6 +276,18 @@
       ],
       "gnews_shown_dropped": [
         {
+          "publisher": "Hospitality Net",
+          "title": "Google will show unreleased APAC travel search data - Hospitality Net"
+        },
+        {
+          "publisher": "Investor's Business Daily",
+          "title": "Microsoft Stock Strength Sets Up Strategy For A Fast Double-Digit Return - Investor's Business Daily"
+        },
+        {
+          "publisher": "https://tech-insider.org/",
+          "title": "Synaptics Astra SR200: 400 GOPS Chips Debut [2026] - https://tech-insider.org/"
+        },
+        {
           "publisher": "Microsoft Source",
           "title": "SickKids and Microsoft Canada join together to help teams diagnose faster, treat smarter and predict better - Microsoft Source"
         },
@@ -269,60 +306,60 @@
         {
           "publisher": "Pasquale Pillitteri",
           "title": "Is the Xbox Kinect really used in CT scanners? What the studies say - Pasquale Pillitteri"
-        },
-        {
-          "publisher": "NeoTeo",
-          "title": "How to Set Up Two Factor Authentication the Right Way - NeoTeo"
-        },
-        {
-          "publisher": "Search Engine Roundtable",
-          "title": "Google Search Testing Removing Horizontal Rule Line Under Search Tabs - Search Engine Roundtable"
-        },
-        {
-          "publisher": "Forkast News",
-          "title": "The Model Follows You Into the Contract: Three Regimes Now Reach Past the Weights to the Whole Stack - Forkast News"
-        },
-        {
-          "publisher": "zeera wireless",
-          "title": "Can Mac mini Run Muse Spark Open? Mac Studio RAM Requirements Explained - zeera wireless"
-        },
-        {
-          "publisher": "The Sunday Guardian",
-          "title": "Google Outage: Is Google Down Today? Users Experience Issues with Website, Content Loading & Search – Check Latest Update & Google Downdetector Status - The Sunday Guardian"
-        },
-        {
-          "publisher": "Morning Ag Clips",
-          "title": "Sul Ross State University Establishes Endowed Groundwater Research Fellowship With Support From Google.org - Morning Ag Clips"
-        },
-        {
-          "publisher": "Hospitality Net",
-          "title": "Google will show unreleased APAC travel search data - Hospitality Net"
-        },
-        {
-          "publisher": "TAPinto",
-          "title": "Livingston's Big L Club Hosts Celebratory Activities Honoring 2026 Hall of Fame Inductees - TAPinto"
-        },
-        {
-          "publisher": "TAPinto",
-          "title": "Boys Soccer: Livingston Defeats Woodbridge, 4-1 - TAPinto"
-        },
-        {
-          "publisher": "Business Standard",
-          "title": "Apple's 'Pro and tell' event next week: OLED MacBook Pro, more expected - Business Standard"
-        },
-        {
-          "publisher": "DQ",
-          "title": "NVIDIA expands advanced technology access for Europe’s scientific community via open learning resources, collaborations, and compute - DQ"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 27
+      "hn_dropped": 22
     },
     "gnews_near_misses": [
       {
-        "score": 0.357,
+        "score": 0.638,
+        "blocked": "short-title",
+        "hours_apart": 10.1,
+        "a": {
+          "id": "rss:mistral:cb0bf0e1617ea810",
+          "source": "rss-lab",
+          "title": "Voxtral 3",
+          "at": "2026-10-20T12:00:22Z"
+        },
+        "b": {
+          "id": "gnews:d4a6cf13f5b492cc",
+          "source": "gnews-rss",
+          "title": "Voxtral 3 TTS vs Voxtral 4B TTS: Open Weights or Closed API - OrcaRouter",
+          "at": "2026-10-20T22:05:56Z"
+        },
+        "shared": [
+          "voxtral",
+          "3"
+        ]
+      },
+      {
+        "score": 0.4,
+        "blocked": "time-window",
+        "hours_apart": 124.3,
+        "a": {
+          "id": "rss:nvidia-dev:9f5aca4e4d9dbf53",
+          "source": "rss-lab",
+          "title": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
+          "at": "2026-10-15T18:01:00Z"
+        },
+        "b": {
+          "id": "gnews:50c10be442cb5504",
+          "source": "gnews-rss",
+          "title": "Nemotron 3.5 Super VL Matches Inkling Small at Half the Size - OrcaRouter",
+          "at": "2026-10-20T22:20:01Z"
+        },
+        "shared": [
+          "nemotron",
+          "3.5",
+          "super",
+          "vl"
+        ]
+      },
+      {
+        "score": 0.338,
         "blocked": "thin-overlap",
-        "hours_apart": 304.8,
+        "hours_apart": 305.6,
         "a": {
           "id": "rss:nvidia-dev:1fd6b880e95ea139",
           "source": "rss-lab",
@@ -333,59 +370,16 @@
           "id": "gnews:3b7bf19a4a4128be",
           "source": "gnews-rss",
           "title": "Predicting weather subseasons with machine learning - Harvard University",
-          "at": "2026-10-20T11:07:01Z"
+          "at": "2026-10-20T12:00:00Z"
         },
         "shared": [
           "machin"
         ]
       },
       {
-        "score": 0.313,
+        "score": 0.312,
         "blocked": "thin-overlap",
-        "hours_apart": 160.1,
-        "a": {
-          "id": "rss:deepmind:94cc08977f17740f",
-          "source": "rss-lab",
-          "title": "Gemini 4 Argon for Robotics",
-          "at": "2026-10-13T16:01:58Z"
-        },
-        "b": {
-          "id": "gnews:e597e2dd877ddc62",
-          "source": "gnews-rss",
-          "title": "Google Gemini 4 Agents Beat Minecraft with No Human Help - ProPakistani",
-          "at": "2026-10-20T08:05:31Z"
-        },
-        "shared": [
-          "gemini",
-          "4"
-        ]
-      },
-      {
-        "score": 0.282,
-        "blocked": "below-threshold",
-        "hours_apart": 20.9,
-        "a": {
-          "id": "hn:50155578",
-          "source": "hn-algolia",
-          "title": "AI agents are only as good as the personal information you share",
-          "at": "2026-10-19T17:54:04Z"
-        },
-        "b": {
-          "id": "gnews:cd7832788f0bb3db",
-          "source": "gnews-rss",
-          "title": "Your AI Agent Is Only as Smart as Your Data Pipeline - HackerNoon",
-          "at": "2026-10-20T14:46:13Z"
-        },
-        "shared": [
-          "ai",
-          "agent",
-          "only"
-        ]
-      },
-      {
-        "score": 0.273,
-        "blocked": "thin-overlap",
-        "hours_apart": 308.4,
+        "hours_apart": 315.7,
         "a": {
           "id": "rss:nvidia-dev:1fd6b880e95ea139",
           "source": "rss-lab",
@@ -393,126 +387,146 @@
           "at": "2026-10-07T18:21:03Z"
         },
         "b": {
-          "id": "gnews:d1e2d15bd4f5674f",
+          "id": "gnews:4c7260e5123a43cb",
           "source": "gnews-rss",
-          "title": "The Cost of Letting AI Agents Make Too Many Decisions - HackerNoon",
-          "at": "2026-10-20T14:46:13Z"
+          "title": "News agency looks at the rise in machine-driven attacks on “secure” data - Walter Bradley Center for Natural and Artificial Intelligence",
+          "at": "2026-10-20T22:00:39Z"
         },
         "shared": [
-          "make"
+          "machin"
         ]
       },
       {
-        "score": 0.267,
-        "blocked": "below-threshold",
-        "hours_apart": 4.5,
-        "a": {
-          "id": "hn:50163896",
-          "source": "hn-algolia",
-          "title": "Show HN: Make AI coding agents verify its own work",
-          "at": "2026-10-20T10:20:33Z"
-        },
-        "b": {
-          "id": "gnews:1f05895648d9d02c",
-          "source": "gnews-rss",
-          "title": "Can AI Agents Help Small Work Truck Fleets Do More With Less? - Work Truck Online",
-          "at": "2026-10-20T14:51:30Z"
-        },
-        "shared": [
-          "ai",
-          "agent",
-          "work"
-        ]
-      },
-      {
-        "score": 0.265,
+        "score": 0.274,
         "blocked": "time-window",
-        "hours_apart": 109,
+        "hours_apart": 127.3,
         "a": {
-          "id": "rss:huggingface:138e9b7e7d974724",
+          "id": "rss:nvidia:599b981c923a3fd6",
           "source": "rss-lab",
-          "title": "Scaling Indic Pretraining: 2.8 Trillion Tokens and an Open Data Generation Pipeline",
-          "at": "2026-10-16T01:44:47Z"
+          "title": "Open From Data Center to Desktop: NVIDIA Expands Nemotron Family With Highest Efficiency Super VL and Bolt Models",
+          "at": "2026-10-15T15:00:24Z"
         },
         "b": {
-          "id": "gnews:cd7832788f0bb3db",
+          "id": "gnews:50c10be442cb5504",
           "source": "gnews-rss",
-          "title": "Your AI Agent Is Only as Smart as Your Data Pipeline - HackerNoon",
-          "at": "2026-10-20T14:46:13Z"
+          "title": "Nemotron 3.5 Super VL Matches Inkling Small at Half the Size - OrcaRouter",
+          "at": "2026-10-20T22:20:01Z"
         },
         "shared": [
-          "data",
-          "pipelin"
+          "nemotron",
+          "super",
+          "vl"
         ]
       },
       {
-        "score": 0.264,
-        "blocked": "below-threshold",
-        "hours_apart": 4.4,
-        "a": {
-          "id": "hn:50163896",
-          "source": "hn-algolia",
-          "title": "Show HN: Make AI coding agents verify its own work",
-          "at": "2026-10-20T10:20:33Z"
-        },
-        "b": {
-          "id": "gnews:d1e2d15bd4f5674f",
-          "source": "gnews-rss",
-          "title": "The Cost of Letting AI Agents Make Too Many Decisions - HackerNoon",
-          "at": "2026-10-20T14:46:13Z"
-        },
-        "shared": [
-          "make",
-          "ai",
-          "agent"
-        ]
-      },
-      {
-        "score": 0.245,
+        "score": 0.258,
         "blocked": "thin-overlap",
-        "hours_apart": 12.1,
+        "hours_apart": 9.1,
         "a": {
-          "id": "hn:50154244",
-          "source": "hn-algolia",
-          "title": "DeepSeek banned from U.S. federal civilian agencies under new DHS order",
-          "at": "2026-10-19T16:16:46Z"
+          "id": "rss:mistral:cb0bf0e1617ea810",
+          "source": "rss-lab",
+          "title": "Voxtral 3",
+          "at": "2026-10-20T12:00:22Z"
         },
         "b": {
-          "id": "gnews:73f76cc4deeda361",
+          "id": "gnews:66c533aed62b4184",
           "source": "gnews-rss",
-          "title": "DeepSeek Federal Ban Opens the Door for 5 US Rivals [2026] - https://tech-insider.org/",
-          "at": "2026-10-20T04:21:44Z"
+          "title": "Personal AI Agents Including Meta's Muse Identify Themselves Less Than 3% of Time While Handling Sensitive Transactions at Scale - VMblog",
+          "at": "2026-10-20T21:04:42Z"
         },
         "shared": [
-          "deepseek",
-          "federal"
+          "3"
+        ]
+      },
+      {
+        "score": 0.253,
+        "blocked": "thin-overlap",
+        "hours_apart": 654.7,
+        "a": {
+          "id": "rss:deepmind:81481aa316e38773",
+          "source": "rss-lab",
+          "title": "Gemini 3.8 text-to-speech says hello",
+          "at": "2026-09-23T15:25:14Z"
+        },
+        "b": {
+          "id": "gnews:d4a6cf13f5b492cc",
+          "source": "gnews-rss",
+          "title": "Voxtral 3 TTS vs Voxtral 4B TTS: Open Weights or Closed API - OrcaRouter",
+          "at": "2026-10-20T22:05:56Z"
+        },
+        "shared": [
+          "texttospeech"
+        ]
+      },
+      {
+        "score": 0.252,
+        "blocked": "time-window",
+        "hours_apart": 123.1,
+        "a": {
+          "id": "rss:nvidia-dev:5a4b829f93341bf2",
+          "source": "rss-lab",
+          "title": "Scale Agentic Coding Workflows with Meta’s Muse Spark Open on NVIDIA GB300 NVL72",
+          "at": "2026-10-15T18:00:01Z"
+        },
+        "b": {
+          "id": "gnews:66c533aed62b4184",
+          "source": "gnews-rss",
+          "title": "Personal AI Agents Including Meta's Muse Identify Themselves Less Than 3% of Time While Handling Sensitive Transactions at Scale - VMblog",
+          "at": "2026-10-20T21:04:42Z"
+        },
+        "shared": [
+          "scal",
+          "meta",
+          "muse"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.725,
-        "blocked": "time-window",
-        "hours_apart": 97.5,
+        "score": 0.638,
+        "blocked": "short-title",
+        "hours_apart": 10.1,
         "a": {
-          "id": "hn:50157667",
-          "source": "hn-algolia",
-          "title": "GPT Rosalind",
-          "at": "2026-10-19T20:31:13Z"
+          "id": "rss:mistral:cb0bf0e1617ea810",
+          "source": "rss-lab",
+          "title": "Voxtral 3",
+          "at": "2026-10-20T12:00:22Z"
         },
         "b": {
-          "id": "rss:openai:32165ee6af8945a5",
-          "source": "rss-lab",
-          "title": "Bringing GPT-Rosalind to academic research labs",
-          "at": "2026-10-15T19:00:00Z"
+          "id": "gnews:d4a6cf13f5b492cc",
+          "source": "gnews-rss",
+          "title": "Voxtral 3 TTS vs Voxtral 4B TTS: Open Weights or Closed API - OrcaRouter",
+          "at": "2026-10-20T22:05:56Z"
         },
         "shared": [
-          "gpt",
-          "rosalind"
+          "voxtral",
+          "3"
         ]
       },
       {
-        "score": 0.594,
+        "score": 0.612,
+        "blocked": "thin-overlap",
+        "hours_apart": 168.6,
+        "a": {
+          "id": "hn:50168983",
+          "source": "hn-algolia",
+          "title": "Gemini 4 Argon is now available for everyone",
+          "at": "2026-10-20T16:36:24Z"
+        },
+        "b": {
+          "id": "rss:deepmind:94cc08977f17740f",
+          "source": "rss-lab",
+          "title": "Gemini 4 Argon for Robotics",
+          "at": "2026-10-13T16:01:58Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon"
+        ]
+      },
+      {
+        "score": 0.599,
         "blocked": "time-window",
         "hours_apart": 94,
         "a": {
@@ -532,7 +546,95 @@
         ]
       },
       {
-        "score": 0.417,
+        "score": 0.445,
+        "blocked": "thin-overlap",
+        "hours_apart": 164.9,
+        "a": {
+          "id": "hn:50168983",
+          "source": "hn-algolia",
+          "title": "Gemini 4 Argon is now available for everyone",
+          "at": "2026-10-20T16:36:24Z"
+        },
+        "b": {
+          "id": "rss:deepmind:8b1ab1df41ac00d8",
+          "source": "rss-lab",
+          "title": "Developing Gemini 4 Argon responsibly and safely",
+          "at": "2026-10-13T19:43:07Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon"
+        ]
+      },
+      {
+        "score": 0.439,
+        "blocked": "thin-overlap",
+        "hours_apart": 168.6,
+        "a": {
+          "id": "hn:50168983",
+          "source": "hn-algolia",
+          "title": "Gemini 4 Argon is now available for everyone",
+          "at": "2026-10-20T16:36:24Z"
+        },
+        "b": {
+          "id": "rss:deepmind:851107eacfc8ba0f",
+          "source": "rss-lab",
+          "title": "Gemini 4 Argon: Built to solve your hardest problems",
+          "at": "2026-10-13T16:01:52Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon"
+        ]
+      },
+      {
+        "score": 0.439,
+        "blocked": "thin-overlap",
+        "hours_apart": 168.6,
+        "a": {
+          "id": "hn:50168983",
+          "source": "hn-algolia",
+          "title": "Gemini 4 Argon is now available for everyone",
+          "at": "2026-10-20T16:36:24Z"
+        },
+        "b": {
+          "id": "rss:google-ai:74c9e10c02543c49",
+          "source": "rss-lab",
+          "title": "Gemini 4 Argon: Built to solve your hardest problems",
+          "at": "2026-10-13T16:00:00Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon"
+        ]
+      },
+      {
+        "score": 0.435,
+        "blocked": "thin-overlap",
+        "hours_apart": 476.6,
+        "a": {
+          "id": "hn:50168983",
+          "source": "hn-algolia",
+          "title": "Gemini 4 Argon is now available for everyone",
+          "at": "2026-10-20T16:36:24Z"
+        },
+        "b": {
+          "id": "rss:deepmind:ce56aa83d0064ef1",
+          "source": "rss-lab",
+          "title": "Gemini 4 Argon: our next era of frontier intelligence",
+          "at": "2026-09-30T20:01:45Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon"
+        ]
+      },
+      {
+        "score": 0.415,
         "blocked": "time-window",
         "hours_apart": 306.1,
         "a": {
@@ -551,109 +653,6 @@
           "ai",
           "writ"
         ]
-      },
-      {
-        "score": 0.357,
-        "blocked": "thin-overlap",
-        "hours_apart": 304.8,
-        "a": {
-          "id": "rss:nvidia-dev:1fd6b880e95ea139",
-          "source": "rss-lab",
-          "title": "The Machines that Make the Machines",
-          "at": "2026-10-07T18:21:03Z"
-        },
-        "b": {
-          "id": "gnews:3b7bf19a4a4128be",
-          "source": "gnews-rss",
-          "title": "Predicting weather subseasons with machine learning - Harvard University",
-          "at": "2026-10-20T11:07:01Z"
-        },
-        "shared": [
-          "machin"
-        ]
-      },
-      {
-        "score": 0.338,
-        "blocked": "time-window",
-        "hours_apart": 1269.1,
-        "a": {
-          "id": "hn:50147159",
-          "source": "hn-algolia",
-          "title": "Anthropic's Own Staff Can't Use Claude Code's 'Bypass Permissions' Mode",
-          "at": "2026-10-19T01:03:50Z"
-        },
-        "b": {
-          "id": "rss-sec:embracethered:ec3f36b4902a2296",
-          "source": "rss-security",
-          "title": "Breaking Claude Code Opus 5 Auto Mode",
-          "at": "2026-08-27T04:00:00Z"
-        },
-        "shared": [
-          "claude",
-          "code",
-          "mode"
-        ]
-      },
-      {
-        "score": 0.325,
-        "blocked": "thin-overlap",
-        "hours_apart": 297.1,
-        "a": {
-          "id": "hn:50142323",
-          "source": "hn-algolia",
-          "title": "Torvalds use Claude for bottleneck fix, but race discovered",
-          "at": "2026-10-18T16:08:48Z"
-        },
-        "b": {
-          "id": "rss-sec:projectzero:c26302aa2cbe872f",
-          "source": "rss-security",
-          "title": "How to fix a bug in a fix",
-          "at": "2026-10-06T07:00:00Z"
-        },
-        "shared": [
-          "fix"
-        ]
-      },
-      {
-        "score": 0.313,
-        "blocked": "thin-overlap",
-        "hours_apart": 160.1,
-        "a": {
-          "id": "rss:deepmind:94cc08977f17740f",
-          "source": "rss-lab",
-          "title": "Gemini 4 Argon for Robotics",
-          "at": "2026-10-13T16:01:58Z"
-        },
-        "b": {
-          "id": "gnews:e597e2dd877ddc62",
-          "source": "gnews-rss",
-          "title": "Google Gemini 4 Agents Beat Minecraft with No Human Help - ProPakistani",
-          "at": "2026-10-20T08:05:31Z"
-        },
-        "shared": [
-          "gemini",
-          "4"
-        ]
-      },
-      {
-        "score": 0.299,
-        "blocked": "thin-overlap",
-        "hours_apart": 304,
-        "a": {
-          "id": "hn:50163896",
-          "source": "hn-algolia",
-          "title": "Show HN: Make AI coding agents verify its own work",
-          "at": "2026-10-20T10:20:33Z"
-        },
-        "b": {
-          "id": "rss:nvidia-dev:1fd6b880e95ea139",
-          "source": "rss-lab",
-          "title": "The Machines that Make the Machines",
-          "at": "2026-10-07T18:21:03Z"
-        },
-        "shared": [
-          "make"
-        ]
       }
     ]
   },
@@ -661,97 +660,97 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 3,
+      "streak_ok": 4,
       "streak_fail": 0,
-      "items_last": 28
+      "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 149,
+      "streak_ok": 150,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 149,
+      "streak_ok": 150,
       "streak_fail": 0,
-      "items_last": 2
+      "items_last": 3
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 149,
+      "streak_ok": 150,
       "streak_fail": 0,
-      "items_last": 16
+      "items_last": 24
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 149,
+      "streak_ok": 150,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 149,
+      "streak_ok": 150,
       "streak_fail": 0,
-      "items_last": 58
+      "items_last": 66
     },
     {
       "id": "hn_title",
       "state": "ok",
-      "streak_ok": 3,
+      "streak_ok": 4,
       "streak_fail": 0,
       "items_last": 9
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 61,
+      "streak_ok": 62,
       "streak_fail": 0,
       "items_last": 5
     },
     {
       "id": "releases_atom",
       "state": "ok",
-      "streak_ok": 3,
+      "streak_ok": 4,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "rss_analyst",
       "state": "ok",
-      "streak_ok": 3,
+      "streak_ok": 4,
       "streak_fail": 0,
-      "items_last": 7
+      "items_last": 8
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 53,
+      "streak_ok": 54,
       "streak_fail": 0,
       "items_last": 105
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 149,
+      "streak_ok": 150,
       "streak_fail": 0,
       "items_last": 40
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 149,
+      "streak_ok": 150,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.0052025,
+    "hours": 0.004991944444444445,
     "stale": false
   },
   "hf": {
@@ -762,7 +761,7 @@
   "arxiv": {
     "ok": true,
     "enriched": 24,
-    "shelf": 4,
+    "shelf": 5,
     "timed_out": false,
     "budget_ms": 20000,
     "brief": false,
@@ -776,13 +775,13 @@
     "secondary": 3,
     "query": "LLM agent",
     "mode": "search",
-    "from_cache": true,
-    "searches": 0,
+    "from_cache": false,
+    "searches": 1,
     "retries": 0,
     "status": "ok",
     "paused_until": null,
     "pause_reason": null,
-    "requests": 0,
+    "requests": 1,
     "auth": "anon",
     "brief": false,
     "pulse_lead": false,
@@ -790,17 +789,17 @@
     "url": "https://api.openalex.org/works",
     "sample": [
       {
-        "id": "2610.06830",
-        "openalexId": "https://openalex.org/W4407759090",
-        "year": 2025,
-        "doi": "https://doi.org/10.52202/085713-0593",
-        "enrichOnly": false
-      },
-      {
         "id": "2610.25950",
         "openalexId": "https://openalex.org/W4412877164",
         "year": 2025,
         "doi": "https://doi.org/10.1145/3711896.3736570",
+        "enrichOnly": false
+      },
+      {
+        "id": "2610.06830",
+        "openalexId": "https://openalex.org/W4407759090",
+        "year": 2025,
+        "doi": "https://doi.org/10.52202/085713-0593",
         "enrichOnly": false
       },
       {
@@ -819,8 +818,8 @@
     "enriched": 1,
     "query": "doi:10.1145/3711896.3736570",
     "mode": "filter",
-    "from_cache": true,
-    "searches": 0,
+    "from_cache": false,
+    "searches": 1,
     "brief": false,
     "pulse_lead": false,
     "papers_enrich_only": true,
@@ -842,7 +841,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 58,
+    "count": 66,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -859,7 +858,7 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 27,
+    "ai_dropped": 22,
     "url": "https://hn.algolia.com/api/v1/search",
     "title_queries": {
       "ok": true,
@@ -879,10 +878,10 @@
         "Qwen",
         "local model"
       ],
-      "hits": 13,
-      "candidates": 10,
-      "ai_dropped": 1,
-      "duplicates": 1,
+      "hits": 14,
+      "candidates": 11,
+      "ai_dropped": 2,
+      "duplicates": 2,
       "added": 9,
       "cap": 20,
       "merged_into_live_hn": true
@@ -891,20 +890,20 @@
       {
         "id": "hn:50150434",
         "tag": "rest",
-        "score": 600,
+        "score": 614,
         "text": "Timestral: Mistral's time-series foundation models"
       },
       {
         "id": "hn:50153630",
         "tag": "rest",
-        "score": 354,
+        "score": 355,
         "text": "CERN and Mistral sign a statement of intent to establish a strategic partnership"
       },
       {
-        "id": "hn:50148855",
+        "id": "hn:50169053",
         "tag": "rest",
-        "score": 159,
-        "text": "Tmux and Claude Code: Sessions, Send-Keys, and the Ceiling"
+        "score": 214,
+        "text": "Google open-sources TorchTPU, a native PyTorch back end for TPUs"
       }
     ]
   },
@@ -967,32 +966,32 @@
     "feeds_soft_fail": [],
     "sample": [
       {
-        "id": "rss:nvidia:794f06903a780c87",
-        "lab": "nvidia",
-        "tag": "rest",
-        "title": "Spain-Based Startups Advance Regional Innovation With Barcelona Supercomputing Center",
-        "link": "https://blogs.nvidia.com/blog/spain-startups-barcelona-supercomputing-center/"
-      },
-      {
-        "id": "rss:huggingface:41fb25a47d12d204",
+        "id": "rss:huggingface:e8a8161ff83426ef",
         "lab": "huggingface",
         "tag": "rest",
-        "title": "AnyLanguageModel 1.0: One Year of Local Models on Apple Platforms",
-        "link": "https://huggingface.co/blog/anylanguagemodel-1-0"
+        "title": "NVIDIA Cosmos3-H-Dreams: Bringing Clinical Surgery to Life Through Generative Simulation",
+        "link": "https://huggingface.co/blog/nvidia/cosmos3-h-dreams"
       },
       {
-        "id": "rss:huggingface:c2b4b68d7e0027f0",
+        "id": "rss:huggingface:ef73bf2ace8ac671",
         "lab": "huggingface",
         "tag": "rest",
-        "title": "MPS in PyTorch 2.15",
-        "link": "https://huggingface.co/blog/mps-pytorch-2-15"
+        "title": "FairStress: A deeper evaluation of fairness in LLM decision-making",
+        "link": "https://huggingface.co/blog/allenai/fairstress"
       },
       {
-        "id": "rss:nvidia:99795439c0b38083",
-        "lab": "nvidia",
+        "id": "rss:huggingface:536f23cd94f13984",
+        "lab": "huggingface",
         "tag": "rest",
-        "title": "Germany Wants to Lead the World in Industrial AI: How NVIDIA Will Help",
-        "link": "https://blogs.nvidia.com/blog/germany-wants-to-lead-the-world-in-industrial-ai-how-nvidia-will-help/"
+        "title": "ALTK-Evolve: How learned memory tops the τ²-bench leaderboard on customer service tasks without a frontier model",
+        "link": "https://huggingface.co/blog/ibm-research/altk-evolve-bc"
+      },
+      {
+        "id": "rss:mistral:cb0bf0e1617ea810",
+        "lab": "mistral",
+        "tag": "rest",
+        "title": "Voxtral 3",
+        "link": "https://mistral.ai/news/voxtral-3/"
       }
     ]
   },
@@ -1060,12 +1059,12 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 7,
+    "count": 8,
     "feeds": [
       {
         "feed": "simonw",
         "url": "https://simonwillison.net/atom/everything/",
-        "count": 2
+        "count": 3
       },
       {
         "feed": "latent-space",
@@ -1091,13 +1090,8 @@
         "reason": "not-ai"
       },
       {
-        "feed": "simonw",
-        "title": "Quoting Addy Osmani, Morgan Westlee Lunt, and Qing Wang",
-        "reason": "not-ai"
-      },
-      {
         "feed": "latent-space",
-        "title": "Lab-in-the-Loop at Compute Speed — Ian Quigley, Leash Bio",
+        "title": "The Programmable Data Center — Evan Conrad, SF Compute",
         "reason": "not-ai"
       }
     ],
@@ -1105,6 +1099,13 @@
     "pulse_only": true,
     "lead_rule": "analyst-only groups excluded",
     "sample": [
+      {
+        "id": "anl:simonw:7fa30abfca2c7ff1",
+        "feed": "simonw",
+        "recap": false,
+        "title": "Battle Drones - a vibe coded RTS with audio-based multiplayer",
+        "link": "https://simonwillison.net/2026/Oct/20/battledrones/"
+      },
       {
         "id": "anl:latent-space:996b48d3900b31c6",
         "feed": "latent-space",
@@ -1125,13 +1126,6 @@
         "recap": false,
         "title": "llm-echo 0.5",
         "link": "https://simonwillison.net/2026/Oct/18/llm-echo/"
-      },
-      {
-        "id": "anl:latent-space:66a8784860f53e77",
-        "feed": "latent-space",
-        "recap": true,
-        "title": "[AINews] High Taste Testers Ep. 1",
-        "link": "https://www.latent.space/p/ainews-high-taste-testers-ep-1"
       }
     ]
   },
@@ -1191,13 +1185,13 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 16,
-    "pool": 251,
+    "items": 24,
+    "pool": 240,
     "corroborators": [],
     "http_status": 200,
     "content_type": "application/xml; charset=utf-8",
     "format": "rss2",
-    "from_cache": true,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -1220,65 +1214,40 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:25bad7e7f2e8e976",
-        "title": "An AI Agent Joined a Listserv of Top Internet Researchers. The Reply-All Chaos Is Still Unfolding - WIRED",
-        "publisher": "WIRED",
-        "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQbWhNWkVpbGtfZ0FYeWRMNE56dlFjcWRKaU12ejNrYmdUR3VRN0VIWHNfQ2J5V29IUDV0a05zUC00U2pJUWNrdGp0amFSVHExdTF6cnJnMWVqc0FYZGlqRmZ3aVJuSjNaMVBsTEo3UG1iQzFHQXBEUzJmSnZCSmVZWldHNHo2ay1aVG5qdmZ4dGhKdmNNZ1l0SEdYLVJWUFkxVlI2TGJqcjY4NVBaQVlQc01IcEx4X3p2RGlmcDM2RFJWeDA?oc=5",
+        "id": "gnews:029cd5113f4280de",
+        "title": "Fibo 2.0 Takes the Open-Weights Image-Editing Lead at 8B Parameters — Read the Interval, Not the Rank - OrcaRouter",
+        "publisher": "OrcaRouter",
+        "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBlQl8tSjBRMFI1SndpR2lpU09ZR2tMYjQ0SzJBTUhUZ2FmQlFLOTVyN1BYc29Ra0tPNzhKdHo0YVRtcmVzLVZGWV95aDZHb0JnWDREV2FMMDNLRjRDbkdxcXRMYjN6R1V5ZnNUWnJOaWhzNGFEZGl6WndCc240UQ?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:a36a5e2ec2f18344",
-        "title": "ThreatLocker CEO On Launch Of New AI Agent Controls: ‘Massive Opportunities For MSPs’ - CRN",
-        "publisher": "CRN",
-        "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOaXFnNUd1R0t6STJLNTJWVnQ3NUVfQWVmalg2NUxJSVBOSllFekJPcHQ5bGN0bzA5YXlPdHVyWlZWcDg2M0E4WWVRekFxR3Axd2VWQm8ySzlmQ2tOVi1TUEZCUzFGUW5jUFA1aFhNSkRRU0EydENrVklyU1NpZXVkTmZXV2g1U216RzE2UXVyMHAtdEVSV3piSjJKZ2ZMbXVPd0FMdF9GaXNuMVo0cllzV3hFY2NVOUpXMnRjYlJR?oc=5",
+        "id": "gnews:50c10be442cb5504",
+        "title": "Nemotron 3.5 Super VL Matches Inkling Small at Half the Size - OrcaRouter",
+        "publisher": "OrcaRouter",
+        "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOYUZRay1lS3kxeFZ6TDZYNkJoTmxFaFJTVjNUQmJLc1g1U182dlNUaVhCUWdRVHh6ZUFkdzBBMVFTRlphaTFZMlJKS3k2bmVpNzU5X2c2aHdRQUc1NUJMRzYyRkVPYmZ1QjF0dndrYmwzRGdMNW1wVjlxdlpCUWJJUk1B?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:02e27b82c8cee298",
-        "title": "AI Agent Liability: Who Pays When One Gets It Wrong? - Forbes",
-        "publisher": "Forbes",
-        "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNRHJfRGljUWo4X3ZDVExUMUFXSFp4WTI0MTNLekowWUM4VVY0ZHFTMC1BX0dqMnh4clI4a3FzV3ZrMkFNUzRjbXRRSmFxUWNsakJ4dFpRMFJDSWk2cnBaMGF6TnlwTEpqMHIzMzJvb3d3R2xuUldtanVwWUlPUTFzUXFXN01DRkR4NDhMT1NsQWdtdzNwTFNDX0tTalo4MzZlLTdJWVdtdFdZVk9hcjNSR2lB?oc=5",
+        "id": "gnews:252ca27daca88aa3",
+        "title": "AI shall not pass - Tech Brew",
+        "publisher": "Tech Brew",
+        "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBqenFhQVlpMnNac3M0VnAxNzRTVnFJNTFuRmpjS05hWmlpeXp0S2N5TFR2TUlfSnZ1WjN2a3VUYzFMZTM3S1k5OWUxOUhpN2x4T3czVjN1UENETS1jbHdNcGlITDdMd016dHhwNUlscw?oc=5",
         "tag": "rest"
       }
     ]
   },
   "gmail_news": {
-    "ok": true,
-    "soft_fail": false,
-    "soft_fail_reason": null,
-    "count": 10,
-    "fetched": 10,
-    "from_cache": true,
-    "last_query_hash": "dcc96519c3fc",
+    "ok": false,
+    "soft_fail": true,
+    "soft_fail_reason": "box-only",
+    "count": 0,
+    "fetched": 0,
+    "from_cache": false,
+    "last_query_hash": "",
     "brief": false,
     "pulse_only": true,
     "briefEligible": false,
-    "sample": [
-      {
-        "id": "gmail:1a11250b91591834",
-        "title": "AI systems could cover up misbehavior",
-        "publisher": "substack.com",
-        "qi": 6.6,
-        "priority": "P3",
-        "link": "https://metr.org/blog/cover-up"
-      },
-      {
-        "id": "gmail:1a111f35812d42ba",
-        "title": "Oct. 6 - Water hacks, rogue AI raise alarms | Java vulnerabilities disclosed",
-        "publisher": "divenewsletter.com",
-        "qi": 6.6,
-        "priority": "P3",
-        "link": "https://www.cybersecuritydive.com/news/water"
-      },
-      {
-        "id": "gmail:1a1118c601f1cb6a",
-        "title": "OpenAI Starts Watermarking ChatGPT Text",
-        "publisher": "alvarocintas.com",
-        "qi": 5,
-        "priority": "P3",
-        "link": "https://newsletter.alvarocintas.com/watermark"
-      }
-    ]
+    "sample": []
   },
   "x": {
     "fetched": 0,
@@ -1293,15 +1262,19 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "query": "agent sandbox escape",
-    "shelf": 2,
-    "from_cache": true,
-    "searches": 0,
-    "rate_limit_remaining": null,
+    "shelf": 3,
+    "from_cache": false,
+    "searches": 1,
+    "rate_limit_remaining": 9,
     "brief": false,
     "pulse_lead": false,
     "shelf_only": true,
     "url": "https://api.github.com/search/repositories",
     "sample": [
+      {
+        "label": "exitCodeNihil/qafas-sandbox",
+        "href": "https://github.com/exitCodeNihil/qafas-sandbox"
+      },
       {
         "label": "controlplaneio/sandbox-probe",
         "href": "https://github.com/controlplaneio/sandbox-probe"
@@ -1313,7 +1286,7 @@
     ]
   },
   "shelf": {
-    "count": 18,
+    "count": 20,
     "brief": false
   },
   "wikidata": {
@@ -1325,8 +1298,8 @@
       "NIST",
       "MITRE"
     ],
-    "searches": 0,
-    "from_cache": true,
+    "searches": 3,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "deny_grounding_only": true,
