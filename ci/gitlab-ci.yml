@@ -74,7 +74,7 @@ crawl:
     - A2_FORCE_WINDOW=1 bun run a2:tick
     - bun run pack:export
     # PASS-D D1: morning Atom feed (data-only). After ingest wrote lead-history / wire / papers, before reader-hash (it hashes the feed).
-    - bun scripts/atom-feed.ts || echo "atom-feed: crashed (soft)"
+    - 'bun scripts/atom-feed.ts || echo "atom-feed: crashed (soft)"'
     - export GITHUB_OUTPUT="$CI_PROJECT_DIR/hash.out"; true > "$GITHUB_OUTPUT"
     - bun scripts/reader-hash.ts
     - changed=$(grep -oE '^changed=.*' "$GITHUB_OUTPUT" | tail -1 | cut -d= -f2); echo "changed=$changed"
