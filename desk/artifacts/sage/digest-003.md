@@ -1,41 +1,31 @@
 # SAGE digest pack
-compiled 2026-10-19T23:15:44.680Z
-source free-ingest digest refresh 2026-10-19T23:15:44.680Z · cycle 003 · lead hf-incident · unlock:held
+compiled 2026-10-20T06:05:50.437Z
+source free-ingest digest refresh 2026-10-20T06:05:50.437Z · cycle 003 · lead hf-incident · unlock:live
 lead_policy unlock — no new HF primary 03 Sep
 
 ## Lead
-Anthropic pitches its own AI safety bill to lawmakers [high]
-3 SRC · sig 6 · pick 2026-10-18
+AI agents are only as good as the personal information you share [high]
+3 SRC · sig 3 · pick 2026-10-20
 MOVE Digest/Voice follow Brief lead · cycle label 003
 UNLOCK IF Next 06:11 Istanbul pick
 
 ## Files
-### [lead / other / high] Anthropic pitches its own AI safety bill to lawmakers
-3 SRC · sig 6 · pick 2026-10-18
-- stamp HELD
-- frozen 2026-10-18T08:37:21.046Z
-- pick 2026-10-18
+### [lead / other / high] AI agents are only as good as the personal information you share
+3 SRC · sig 3 · pick 2026-10-20
+- stamp live
+- frozen 2026-10-20T03:20:08.933Z
+- pick 2026-10-20
 1. Follow LEAD_TODAY · never invent
 2. Cycle label stays 003
 Done when: Digest lead equals Brief LEAD_TODAY title
 
-### [companion / other / medium] Introducing Beam: Reflection’s 501B open-weight model
-2 SRC · sig 12
-- 2 SRC
-Done when: Listed under Digest lead
-
-### [rest / other / medium] Anthropic offers Blackstone double-digit yield in latest chip financing
-2 SRC · sig 5
-- 2 SRC
-Done when: Listed under Digest lead
-
-### [rest / other / medium] Granite Switch 4.1: Chat, Decisions, and Speech from One Endpoint
+### [companion / other / medium] Advancing Coding in Low-Resource Programming Languages
 2 SRC · sig 3
 - 2 SRC
 Done when: Listed under Digest lead
 
-### [rest / other / medium] Anthropic assigned highest junk credit rating in June
-2 SRC · sig 290
+### [rest / other / medium] Introducing Timestral
+2 SRC · sig 563
 - 2 SRC
 Done when: Listed under Digest lead
 
