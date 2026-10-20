@@ -15,6 +15,8 @@ import { HN_PULSE } from "@/data/hn-pulse";
 import { RSS_LABS } from "@/data/rss-labs";
 import { RSS_SECURITY } from "@/data/rss-security";
 import { GMAIL_NEWS } from "@/data/gmail-news";
+import { RSS_ANALYST } from "@/data/rss-analyst";
+import { RELEASES_ATOM } from "@/data/releases-atom";
 import { PULSE_CLUSTERS, PULSE_CLUSTERS_AT } from "@/data/pulse-clusters";
 import { PAPERS } from "@/data/papers";
 import { WIRE_CRAWL_AT, WIRE_ROWS } from "@/data/wire";
@@ -48,6 +50,8 @@ for (const g of GNEWS_RSS) RAW_AT[g.id] = g.published;
 for (const r of RSS_LABS) RAW_AT[r.id] = r.published;
 for (const r of RSS_SECURITY) RAW_AT[r.id] = r.published;
 for (const g of GMAIL_NEWS) RAW_AT[g.id] = g.published;
+for (const a of RSS_ANALYST) RAW_AT[a.id] = a.published;
+for (const r of RELEASES_ATOM) RAW_AT[r.id] = r.published;
 const RAW_ITEMS: Record<string, MemberItem> = {};
 for (const h of HN_PULSE) RAW_ITEMS[h.id] = { title: h.text, publisher: `hn/${h.author}`, badge: "HN", at: h.at, url: h.url };
 for (const g of GNEWS_RSS)
@@ -55,6 +59,8 @@ for (const g of GNEWS_RSS)
 for (const r of RSS_LABS) RAW_ITEMS[r.id] = { title: r.title, publisher: r.lab, badge: labBadge(r.lab), at: r.published, url: r.link };
 for (const r of RSS_SECURITY) RAW_ITEMS[r.id] = { title: r.title, publisher: r.lab, badge: "SEC", at: r.published, url: r.link };
 for (const g of GMAIL_NEWS) RAW_ITEMS[g.id] = { title: g.title, publisher: g.publisher || "gmail", badge: "GML", at: g.published, url: g.link };
+for (const a of RSS_ANALYST) RAW_ITEMS[a.id] = { title: a.title, publisher: a.feed, badge: "ANL", at: a.published, url: a.link };
+for (const r of RELEASES_ATOM) RAW_ITEMS[r.id] = { title: r.title, publisher: r.feed, badge: "REL", at: r.published, url: r.link };
 // The generator clips over-long text to DESK_VIEW_CAPS.chars (a field cap, not a drop: the 15:14 crawl carried a 203-char
 // GNews title). Compare against the raw modules with those SAME caps applied, so the check holds for any crawl.
 const CC = DESK_VIEW_CAPS.chars;
