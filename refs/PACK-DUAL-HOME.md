@@ -1,26 +1,26 @@
 # Pack dual-home — latest export
 
-**UTC:** 20261020T071355Z  
-**Pack:** `sage-pack-003-20261020T071355Z.tar.gz`
+**UTC:** 20261020T112020Z  
+**Pack:** `sage-pack-003-20261020T112020Z.tar.gz`
 
 | Home | Path |
 |------|------|
-| Primary (VM) | `/workspace/nexus-sage/packs/sage-pack-003-20261020T071355Z.tar.gz` |
-| Desk mirror | `/workspace/nexus-sage/desk/packs/sage-pack-003-20261020T071355Z.tar.gz` |
+| Primary (VM) | `/workspace/nexus-sage/packs/sage-pack-003-20261020T112020Z.tar.gz` |
+| Desk mirror | `/workspace/nexus-sage/desk/packs/sage-pack-003-20261020T112020Z.tar.gz` |
 | Operator | Windows `Downloads\nexus-sage-packs\` or Drive — see `P2-EXPORT-IMPORT.md` |
 
 **Locks:** cycle `003` · lead `hf-incident` · `sol_ne_astra` · no `004` without primary  
 
 **Digest cadence:** unchanged by A1 (Brief pins / digest tick not mutated)  
 
-**Crawl / ingest:** `2026-10-20T07:13:37Z`  
+**Crawl / ingest:** `2026-10-20T11:20:09Z`  
 
-**sha256 (archive):** `e21706f2894ee39310a5328ef7c610d0417670af3e8acf7f49a9a434489fba22`  
-**manifest sha256:** `4ccca382b739a9a8b9e529ddc9de8c320a00d9cff457b131f26533a2c1d77e0a`  
+**sha256 (archive):** `dea9cf37ae2e0bf597aeb187201c818ee5812f45f497ec2a381c0f489b96cce1`  
+**manifest sha256:** `a24858dd32ee7898eeca999f9c2fd316ecf5053bb91c614a0f39e00cc09799af`  
 
 **Commands:** `bun run pack:export` · `bun run pack:import -- <path>` · `bun run digest:tick` · `bun run ingest` · `FORCE=1 bun scripts/a1-stale-ingest.mjs`
 
-**A1 note:** FORCE=1 dry-run · pre-age ~3.89h · Mon–Fri daytime only (~09:00–17:00 VM/local intent) — no overnight @every firehose; standing cron AFTER Reviewer PASS  
+**A1 note:** FORCE=1 dry-run · pre-age ~4.11h · Mon–Fri daytime only (~09:00–17:00 VM/local intent) — no overnight @every firehose; standing cron AFTER Reviewer PASS  
 
 **Soft-fails:** none
 
