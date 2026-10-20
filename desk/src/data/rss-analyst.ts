@@ -17,7 +17,7 @@ export type RssAnalystRow = {
   cluster_id?: string;
 };
 
-export const RSS_ANALYST_AT: string | null = "2026-10-20T11:20:09Z";
+export const RSS_ANALYST_AT: string | null = "2026-10-20T15:16:01Z";
 
 export const RSS_ANALYST: RssAnalystRow[] = [
   { id: "anl:latent-space:996b48d3900b31c6", feed: "latent-space" as const, title: "[AINews] not much happened today", link: "https://www.latent.space/p/ainews-not-much-happened-today-f09", published: "2026-10-20T05:21:52Z", summary: "Congrats to DeepSeek V4.1 Flash 1017, MiniMax M3.1 Flash, and Mercury 3 (details below) but they’re not going to be in super wide use just yet.", source: "rss-analyst" as const, recap: true, tag: "rest" as const, first_seen: "2026-10-20T07:13:37Z", is_new: false, cluster_id: "cl:anl:latent-space:996b48d3900b31c6" },

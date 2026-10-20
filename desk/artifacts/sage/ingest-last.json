@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-20T11:20:09Z",
+  "stamped_at": "2026-10-20T15:16:01Z",
   "config_hash": "e3e9003a7d92",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,7 +11,7 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 203,
+      "duration_ms": 76,
       "paused_until": null,
       "reason": null
     },
@@ -20,7 +20,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 9621,
+      "duration_ms": 3209,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 6,
+      "duration_ms": 2,
       "paused_until": null,
       "reason": null
     },
@@ -46,8 +46,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 56,
-      "duration_ms": 8674,
+      "rows": 58,
+      "duration_ms": 8303,
       "paused_until": null,
       "reason": null
     },
@@ -55,8 +55,8 @@
       "id": "hn_title",
       "label": "HN title",
       "status": "ok",
-      "rows": 10,
-      "duration_ms": 8436,
+      "rows": 9,
+      "duration_ms": 8247,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 105,
-      "duration_ms": 197,
+      "duration_ms": 17714,
       "paused_until": null,
       "reason": null
     },
@@ -74,7 +74,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 40,
-      "duration_ms": 197,
+      "duration_ms": 6096,
       "paused_until": null,
       "reason": null
     },
@@ -83,7 +83,7 @@
       "label": "analyst RSS",
       "status": "ok",
       "rows": 7,
-      "duration_ms": 197,
+      "duration_ms": 2206,
       "paused_until": null,
       "reason": null
     },
@@ -92,7 +92,7 @@
       "label": "releases",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 197,
+      "duration_ms": 4058,
       "paused_until": null,
       "reason": null
     },
@@ -100,8 +100,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 23,
-      "duration_ms": 2582,
+      "rows": 16,
+      "duration_ms": 2389,
       "paused_until": null,
       "reason": null
     },
@@ -110,7 +110,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 2,
-      "duration_ms": 197,
+      "duration_ms": 17,
       "paused_until": null,
       "reason": null
     },
@@ -119,16 +119,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 197,
+      "duration_ms": 17,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 30707,
-    "sources_wall_ms": 9837,
-    "papers_lane_ms": 9837,
-    "slowest_source_ms": 9621,
+    "sources_ms": 52337,
+    "sources_wall_ms": 17716,
+    "papers_lane_ms": 3298,
+    "slowest_source_ms": 17714,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -146,31 +146,31 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 10299,
-    "startup_ms": 51,
-    "main_ms": 10317
+    "wall_ms": 18068,
+    "startup_ms": 46,
+    "main_ms": 18091
   },
-  "multi_source_independent": 3,
+  "multi_source_independent": 2,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 3,
-    "multi_source_raw": 3,
+    "multi_source_independent": 2,
+    "multi_source_raw": 2,
     "self_reposts": 0,
-    "items_in": 241,
-    "clusters_out": 229,
-    "collapsed": 12,
-    "multi_source": 3,
-    "multi_member": 7,
+    "items_in": 236,
+    "clusters_out": 228,
+    "collapsed": 8,
+    "multi_source": 2,
+    "multi_member": 5,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 7,
+    "new_items": 18,
     "per_source": {
-      "hn-algolia": 56,
+      "hn-algolia": 58,
       "rss-lab": 105,
       "rss-security": 40,
-      "gnews-rss": 23,
+      "gnews-rss": 16,
       "gmail-news": 10,
       "rss-analyst": 7
     },
@@ -215,45 +215,6 @@
         ]
       },
       {
-        "title": "AI agents are only as good as the personal information you share",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 4,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:50155578",
-            "source": "hn-algolia",
-            "title": "AI agents are only as good as the personal information you share",
-            "at": "2026-10-19T17:54:04Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:fb0fe071c5c2a56e",
-            "source": "gnews-rss",
-            "title": "AI agents are only as good as the personal information you share - KZTV10",
-            "at": "2026-10-19T15:43:47Z",
-            "publisher": "KZTV10"
-          },
-          {
-            "id": "gnews:2efb88321db26bba",
-            "source": "gnews-rss",
-            "title": "AI agents are only as good as the personal information you share - KIVI-TV",
-            "at": "2026-10-19T15:43:47Z",
-            "publisher": "KIVI-TV"
-          },
-          {
-            "id": "gnews:021d53a5293f2bd9",
-            "source": "gnews-rss",
-            "title": "AI agents are only as good as the personal information you share. That raises privacy concerns - Charleston Gazette-Mail",
-            "at": "2026-10-19T20:00:00Z",
-            "publisher": "Charleston Gazette-Mail"
-          }
-        ]
-      },
-      {
         "title": "Introducing Timestral",
         "sources": [
           "rss-lab",
@@ -289,6 +250,30 @@
         }
       ],
       "gnews_shown_dropped": [
+        {
+          "publisher": "Microsoft Source",
+          "title": "SickKids and Microsoft Canada join together to help teams diagnose faster, treat smarter and predict better - Microsoft Source"
+        },
+        {
+          "publisher": "The Globe and Mail",
+          "title": "Informatica Boosts Salesforce's Data Edge: Can It Unlock More Growth? - The Globe and Mail"
+        },
+        {
+          "publisher": "Hackread",
+          "title": "Scammers Abuse Frame.io Notifications to Steal Microsoft 365 Credentials - Hackread"
+        },
+        {
+          "publisher": "PR Newswire UK",
+          "title": "CAS collaborates with Microsoft to enable faster innovation in pharmaceutical, life sciences, and chemical industries - PR Newswire UK"
+        },
+        {
+          "publisher": "Pasquale Pillitteri",
+          "title": "Is the Xbox Kinect really used in CT scanners? What the studies say - Pasquale Pillitteri"
+        },
+        {
+          "publisher": "NeoTeo",
+          "title": "How to Set Up Two Factor Authentication the Right Way - NeoTeo"
+        },
         {
           "publisher": "Search Engine Roundtable",
           "title": "Google Search Testing Removing Horizontal Rule Line Under Search Tabs - Search Engine Roundtable"
@@ -328,22 +313,34 @@
         {
           "publisher": "DQ",
           "title": "NVIDIA expands advanced technology access for Europe’s scientific community via open learning resources, collaborations, and compute - DQ"
-        },
-        {
-          "publisher": "FourWeekMBA",
-          "title": "Microsoft Subsidiaries: The Companies Microsoft Owns (2026) - FourWeekMBA"
-        },
-        {
-          "publisher": "Dark Reading",
-          "title": "Researchers Infiltrate Microsoft Tech Support Scam Operation - Dark Reading"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 28
+      "hn_dropped": 27
     },
     "gnews_near_misses": [
       {
-        "score": 0.315,
+        "score": 0.357,
+        "blocked": "thin-overlap",
+        "hours_apart": 304.8,
+        "a": {
+          "id": "rss:nvidia-dev:1fd6b880e95ea139",
+          "source": "rss-lab",
+          "title": "The Machines that Make the Machines",
+          "at": "2026-10-07T18:21:03Z"
+        },
+        "b": {
+          "id": "gnews:3b7bf19a4a4128be",
+          "source": "gnews-rss",
+          "title": "Predicting weather subseasons with machine learning - Harvard University",
+          "at": "2026-10-20T11:07:01Z"
+        },
+        "shared": [
+          "machin"
+        ]
+      },
+      {
+        "score": 0.313,
         "blocked": "thin-overlap",
         "hours_apart": 160.1,
         "a": {
@@ -364,137 +361,114 @@
         ]
       },
       {
-        "score": 0.297,
-        "blocked": "time-window",
-        "hours_apart": 138,
+        "score": 0.282,
+        "blocked": "below-threshold",
+        "hours_apart": 20.9,
         "a": {
-          "id": "rss:openai:57c3309db5bedcde",
-          "source": "rss-lab",
-          "title": "Amp puts AI agents to work beyond code with OpenAI models",
-          "at": "2026-10-14T12:00:00Z"
+          "id": "hn:50155578",
+          "source": "hn-algolia",
+          "title": "AI agents are only as good as the personal information you share",
+          "at": "2026-10-19T17:54:04Z"
         },
         "b": {
-          "id": "gnews:810f44fea3fae986",
+          "id": "gnews:cd7832788f0bb3db",
           "source": "gnews-rss",
-          "title": "Beyond Chatbots: The Rise of AI Agents - - Metro State University",
-          "at": "2026-10-20T06:01:02Z"
+          "title": "Your AI Agent Is Only as Smart as Your Data Pipeline - HackerNoon",
+          "at": "2026-10-20T14:46:13Z"
         },
         "shared": [
           "ai",
           "agent",
-          "beyond"
+          "only"
         ]
       },
       {
-        "score": 0.284,
-        "blocked": "below-threshold",
-        "hours_apart": 4.2,
+        "score": 0.273,
+        "blocked": "thin-overlap",
+        "hours_apart": 308.4,
         "a": {
-          "id": "hn:50151080",
-          "source": "hn-algolia",
-          "title": "AI firm Anthropic to commit 5% of shares to fund for 'public good'",
-          "at": "2026-10-19T11:31:19Z"
+          "id": "rss:nvidia-dev:1fd6b880e95ea139",
+          "source": "rss-lab",
+          "title": "The Machines that Make the Machines",
+          "at": "2026-10-07T18:21:03Z"
         },
         "b": {
-          "id": "gnews:fb0fe071c5c2a56e",
+          "id": "gnews:d1e2d15bd4f5674f",
           "source": "gnews-rss",
-          "title": "AI agents are only as good as the personal information you share - KZTV10",
-          "at": "2026-10-19T15:43:47Z"
+          "title": "The Cost of Letting AI Agents Make Too Many Decisions - HackerNoon",
+          "at": "2026-10-20T14:46:13Z"
         },
         "shared": [
-          "ai",
-          "shar",
-          "good"
-        ]
-      },
-      {
-        "score": 0.284,
-        "blocked": "below-threshold",
-        "hours_apart": 4.2,
-        "a": {
-          "id": "hn:50151080",
-          "source": "hn-algolia",
-          "title": "AI firm Anthropic to commit 5% of shares to fund for 'public good'",
-          "at": "2026-10-19T11:31:19Z"
-        },
-        "b": {
-          "id": "gnews:2efb88321db26bba",
-          "source": "gnews-rss",
-          "title": "AI agents are only as good as the personal information you share - KIVI-TV",
-          "at": "2026-10-19T15:43:47Z"
-        },
-        "shared": [
-          "ai",
-          "shar",
-          "good"
+          "make"
         ]
       },
       {
         "score": 0.267,
-        "blocked": "thin-overlap",
-        "hours_apart": 323.9,
+        "blocked": "below-threshold",
+        "hours_apart": 4.5,
         "a": {
-          "id": "gnews:c87fb33fa3747079",
-          "source": "gnews-rss",
-          "title": "Microsoft-IITP program helps Korean AI talents tap into global research resources - The Korea Times",
-          "at": "2026-10-20T05:30:03Z"
+          "id": "hn:50163896",
+          "source": "hn-algolia",
+          "title": "Show HN: Make AI coding agents verify its own work",
+          "at": "2026-10-20T10:20:33Z"
         },
         "b": {
-          "id": "gmail:1a1124990d6345ac",
-          "source": "gmail-news",
-          "title": "Can Microsoft Help Customers Cut Back on Claude?",
-          "at": "2026-10-06T17:36:12Z"
+          "id": "gnews:1f05895648d9d02c",
+          "source": "gnews-rss",
+          "title": "Can AI Agents Help Small Work Truck Fleets Do More With Less? - Work Truck Online",
+          "at": "2026-10-20T14:51:30Z"
         },
         "shared": [
-          "microsoft",
-          "help"
+          "ai",
+          "agent",
+          "work"
         ]
       },
       {
-        "score": 0.263,
+        "score": 0.265,
         "blocked": "time-window",
-        "hours_apart": 104.1,
+        "hours_apart": 109,
         "a": {
-          "id": "rss:ms-research:0aba1d84e25be9dd",
+          "id": "rss:huggingface:138e9b7e7d974724",
           "source": "rss-lab",
-          "title": "Proof-based general-purpose computing with Magnetar",
-          "at": "2026-10-15T16:00:00Z"
+          "title": "Scaling Indic Pretraining: 2.8 Trillion Tokens and an Open Data Generation Pipeline",
+          "at": "2026-10-16T01:44:47Z"
         },
         "b": {
-          "id": "gnews:a946f8ae92b6e4c5",
+          "id": "gnews:cd7832788f0bb3db",
           "source": "gnews-rss",
-          "title": "Choosing between domain-specific and general purpose AI models - Manufacturers' Monthly",
-          "at": "2026-10-20T00:07:18Z"
+          "title": "Your AI Agent Is Only as Smart as Your Data Pipeline - HackerNoon",
+          "at": "2026-10-20T14:46:13Z"
         },
         "shared": [
-          "general",
-          "purpos"
+          "data",
+          "pipelin"
         ]
       },
       {
-        "score": 0.248,
-        "blocked": "time-window",
-        "hours_apart": 512.5,
+        "score": 0.264,
+        "blocked": "below-threshold",
+        "hours_apart": 4.4,
         "a": {
-          "id": "rss:ms-research:7c3a151fcf98b380",
-          "source": "rss-lab",
-          "title": "One year in: How Microsoft Research Asia – Singapore is advancing research, partnership and talent for real-world impact",
-          "at": "2026-09-28T21:00:00Z"
+          "id": "hn:50163896",
+          "source": "hn-algolia",
+          "title": "Show HN: Make AI coding agents verify its own work",
+          "at": "2026-10-20T10:20:33Z"
         },
         "b": {
-          "id": "gnews:c87fb33fa3747079",
+          "id": "gnews:d1e2d15bd4f5674f",
           "source": "gnews-rss",
-          "title": "Microsoft-IITP program helps Korean AI talents tap into global research resources - The Korea Times",
-          "at": "2026-10-20T05:30:03Z"
+          "title": "The Cost of Letting AI Agents Make Too Many Decisions - HackerNoon",
+          "at": "2026-10-20T14:46:13Z"
         },
         "shared": [
-          "microsoft",
-          "research",
-          "talent"
+          "make",
+          "ai",
+          "agent"
         ]
       },
       {
-        "score": 0.247,
+        "score": 0.245,
         "blocked": "thin-overlap",
         "hours_apart": 12.1,
         "a": {
@@ -558,7 +532,7 @@
         ]
       },
       {
-        "score": 0.415,
+        "score": 0.417,
         "blocked": "time-window",
         "hours_apart": 306.1,
         "a": {
@@ -579,28 +553,27 @@
         ]
       },
       {
-        "score": 0.349,
-        "blocked": "time-window",
-        "hours_apart": 3800,
+        "score": 0.357,
+        "blocked": "thin-overlap",
+        "hours_apart": 304.8,
         "a": {
-          "id": "hn:50141657",
-          "source": "hn-algolia",
-          "title": "Websites are closing their doors to AI agents",
-          "at": "2026-10-18T14:58:10Z"
+          "id": "rss:nvidia-dev:1fd6b880e95ea139",
+          "source": "rss-lab",
+          "title": "The Machines that Make the Machines",
+          "at": "2026-10-07T18:21:03Z"
         },
         "b": {
-          "id": "rss-sec:projectzero:801995cb0a47fffb",
-          "source": "rss-security",
-          "title": "A 0-click exploit chain for the Pixel 10: When a Door Closes, a Window Opens",
-          "at": "2026-05-13T07:00:00Z"
+          "id": "gnews:3b7bf19a4a4128be",
+          "source": "gnews-rss",
+          "title": "Predicting weather subseasons with machine learning - Harvard University",
+          "at": "2026-10-20T11:07:01Z"
         },
         "shared": [
-          "clos",
-          "door"
+          "machin"
         ]
       },
       {
-        "score": 0.342,
+        "score": 0.338,
         "blocked": "time-window",
         "hours_apart": 1269.1,
         "a": {
@@ -642,7 +615,7 @@
         ]
       },
       {
-        "score": 0.315,
+        "score": 0.313,
         "blocked": "thin-overlap",
         "hours_apart": 160.1,
         "a": {
@@ -663,25 +636,23 @@
         ]
       },
       {
-        "score": 0.297,
-        "blocked": "time-window",
-        "hours_apart": 138,
+        "score": 0.299,
+        "blocked": "thin-overlap",
+        "hours_apart": 304,
         "a": {
-          "id": "rss:openai:57c3309db5bedcde",
-          "source": "rss-lab",
-          "title": "Amp puts AI agents to work beyond code with OpenAI models",
-          "at": "2026-10-14T12:00:00Z"
+          "id": "hn:50163896",
+          "source": "hn-algolia",
+          "title": "Show HN: Make AI coding agents verify its own work",
+          "at": "2026-10-20T10:20:33Z"
         },
         "b": {
-          "id": "gnews:810f44fea3fae986",
-          "source": "gnews-rss",
-          "title": "Beyond Chatbots: The Rise of AI Agents - - Metro State University",
-          "at": "2026-10-20T06:01:02Z"
+          "id": "rss:nvidia-dev:1fd6b880e95ea139",
+          "source": "rss-lab",
+          "title": "The Machines that Make the Machines",
+          "at": "2026-10-07T18:21:03Z"
         },
         "shared": [
-          "ai",
-          "agent",
-          "beyond"
+          "make"
         ]
       }
     ]
@@ -690,97 +661,97 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 2,
+      "streak_ok": 3,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 148,
+      "streak_ok": 149,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 148,
+      "streak_ok": 149,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 148,
+      "streak_ok": 149,
       "streak_fail": 0,
-      "items_last": 23
+      "items_last": 16
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 148,
+      "streak_ok": 149,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 148,
+      "streak_ok": 149,
       "streak_fail": 0,
-      "items_last": 56
+      "items_last": 58
     },
     {
       "id": "hn_title",
       "state": "ok",
-      "streak_ok": 2,
+      "streak_ok": 3,
       "streak_fail": 0,
-      "items_last": 10
+      "items_last": 9
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 60,
+      "streak_ok": 61,
       "streak_fail": 0,
       "items_last": 5
     },
     {
       "id": "releases_atom",
       "state": "ok",
-      "streak_ok": 2,
+      "streak_ok": 3,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "rss_analyst",
       "state": "ok",
-      "streak_ok": 2,
+      "streak_ok": 3,
       "streak_fail": 0,
       "items_last": 7
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 52,
+      "streak_ok": 53,
       "streak_fail": 0,
       "items_last": 105
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 148,
+      "streak_ok": 149,
       "streak_fail": 0,
       "items_last": 40
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 148,
+      "streak_ok": 149,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.0030533333333333332,
+    "hours": 0.0052025,
     "stale": false
   },
   "hf": {
@@ -871,7 +842,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 56,
+    "count": 58,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -888,7 +859,7 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 28,
+    "ai_dropped": 27,
     "url": "https://hn.algolia.com/api/v1/search",
     "title_queries": {
       "ok": true,
@@ -908,11 +879,11 @@
         "Qwen",
         "local model"
       ],
-      "hits": 14,
-      "candidates": 11,
+      "hits": 13,
+      "candidates": 10,
       "ai_dropped": 1,
       "duplicates": 1,
-      "added": 10,
+      "added": 9,
       "cap": 20,
       "merged_into_live_hn": true
     },
@@ -920,20 +891,20 @@
       {
         "id": "hn:50150434",
         "tag": "rest",
-        "score": 590,
+        "score": 600,
         "text": "Timestral: Mistral's time-series foundation models"
       },
       {
         "id": "hn:50153630",
         "tag": "rest",
-        "score": 345,
+        "score": 354,
         "text": "CERN and Mistral sign a statement of intent to establish a strategic partnership"
       },
       {
-        "id": "hn:50141429",
+        "id": "hn:50148855",
         "tag": "rest",
-        "score": 171,
-        "text": "Anthropic's proposed AI safety bill only kicks in if 50 deaths or $1B in damages"
+        "score": 159,
+        "text": "Tmux and Claude Code: Sessions, Send-Keys, and the Ceiling"
       }
     ]
   },
@@ -949,47 +920,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "(cache:openai)",
+        "url": "https://openai.com/news/rss.xml",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "(cache:deepmind)",
+        "url": "https://deepmind.google/blog/rss.xml",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "(cache:google-ai)",
+        "url": "https://blog.google/technology/ai/rss/",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "(cache:huggingface)",
+        "url": "https://huggingface.co/blog/feed.xml",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "(cache:mistral)",
+        "url": "https://mistral.ai/rss.xml",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "(cache:nvidia)",
+        "url": "https://blogs.nvidia.com/feed/",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "(cache:nvidia-dev)",
+        "url": "https://developer.nvidia.com/blog/feed",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "(cache:ms-research)",
+        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "(cache:google-research)",
+        "url": "https://research.google/blog/rss/",
         "count": 12
       }
     ],
@@ -1003,25 +974,25 @@
         "link": "https://blogs.nvidia.com/blog/spain-startups-barcelona-supercomputing-center/"
       },
       {
+        "id": "rss:huggingface:41fb25a47d12d204",
+        "lab": "huggingface",
+        "tag": "rest",
+        "title": "AnyLanguageModel 1.0: One Year of Local Models on Apple Platforms",
+        "link": "https://huggingface.co/blog/anylanguagemodel-1-0"
+      },
+      {
+        "id": "rss:huggingface:c2b4b68d7e0027f0",
+        "lab": "huggingface",
+        "tag": "rest",
+        "title": "MPS in PyTorch 2.15",
+        "link": "https://huggingface.co/blog/mps-pytorch-2-15"
+      },
+      {
         "id": "rss:nvidia:99795439c0b38083",
         "lab": "nvidia",
         "tag": "rest",
         "title": "Germany Wants to Lead the World in Industrial AI: How NVIDIA Will Help",
         "link": "https://blogs.nvidia.com/blog/germany-wants-to-lead-the-world-in-industrial-ai-how-nvidia-will-help/"
-      },
-      {
-        "id": "rss:nvidia-dev:f8538cc6e1f581e3",
-        "lab": "nvidia-dev",
-        "tag": "rest",
-        "title": "Accelerating Mamba-2 with High-Performance Forward Pass Kernels in NVIDIA CUDA Tile",
-        "link": "https://developer.nvidia.com/blog/accelerating-mamba-2-with-high-performance-forward-pass-kernels-in-nvidia-cuda-tile/"
-      },
-      {
-        "id": "rss:nvidia:a30d79bf039558b5",
-        "lab": "nvidia",
-        "tag": "rest",
-        "title": "NVIDIA Advances Agentic Security for Media, From European Public Service Broadcasting to Global Content Production",
-        "link": "https://blogs.nvidia.com/blog/media-agentic-security-european-public-service-broadcasting-global-content-production/"
       }
     ]
   },
@@ -1035,22 +1006,22 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "(cache:trailofbits)",
+        "url": "https://blog.trailofbits.com/feed/",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "(cache:fox-it)",
+        "url": "https://blog.fox-it.com/feed/",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "(cache:projectzero)",
+        "url": "https://projectzero.google/feed.xml",
         "count": 6
       },
       {
         "lab": "embracethered",
-        "url": "(cache:embracethered)",
+        "url": "https://embracethered.com/blog/index.xml",
         "count": 12
       }
     ],
@@ -1093,12 +1064,12 @@
     "feeds": [
       {
         "feed": "simonw",
-        "url": "(cache:simonw)",
+        "url": "https://simonwillison.net/atom/everything/",
         "count": 2
       },
       {
         "feed": "latent-space",
-        "url": "(cache:latent-space)",
+        "url": "https://www.latent.space/feed",
         "count": 5
       }
     ],
@@ -1195,17 +1166,17 @@
     "feeds": [
       {
         "feed": "llama.cpp",
-        "url": "(cache:llama.cpp)",
+        "url": "https://github.com/ggml-org/llama.cpp/releases.atom",
         "entries": 10
       },
       {
         "feed": "ollama",
-        "url": "(cache:ollama)",
+        "url": "https://github.com/ollama/ollama/releases.atom",
         "entries": 10
       },
       {
         "feed": "vllm",
-        "url": "(cache:vllm)",
+        "url": "https://github.com/vllm-project/vllm/releases.atom",
         "entries": 10
       }
     ],
@@ -1220,34 +1191,9 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 23,
-    "pool": 260,
-    "corroborators": [
-      {
-        "id": "gnews:fb0fe071c5c2a56e",
-        "anchor_id": "hn:50155578",
-        "score": 1,
-        "title": "AI agents are only as good as the personal information you share - KZTV10",
-        "publisher": "KZTV10",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:2efb88321db26bba",
-        "anchor_id": "hn:50155578",
-        "score": 1,
-        "title": "AI agents are only as good as the personal information you share - KIVI-TV",
-        "publisher": "KIVI-TV",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:021d53a5293f2bd9",
-        "anchor_id": "hn:50155578",
-        "score": 0.824,
-        "title": "AI agents are only as good as the personal information you share. That raises privacy concerns - Charleston Gazette-Mail",
-        "publisher": "Charleston Gazette-Mail",
-        "self_repost": false
-      }
-    ],
+    "items": 16,
+    "pool": 251,
+    "corroborators": [],
     "http_status": 200,
     "content_type": "application/xml; charset=utf-8",
     "format": "rss2",
@@ -1274,24 +1220,24 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:e597e2dd877ddc62",
-        "title": "Google Gemini 4 Agents Beat Minecraft with No Human Help - ProPakistani",
-        "publisher": "ProPakistani",
-        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPSmlIcUpVY0hPRFFLb3I4bFhHa3E3RnlwVDRMSWdSUEdGdmlnMEM3UHJhck15MkJqcVJsTmF6azJfQ2ZBd2ZSdTZDZFhIRjc1c19wZTFNalh6cWJRVW1JMEhTbXc5dW1QNjRvTm9Sc2NYZjktMkZfbGJ2OVZLaDRKc041dmhqRUN2X18tUUdWaEJwTlBIREs40gGcAUFVX3lxTE5YY1lZSF82VmJFOVZBMEljWlp3Q1Q0N3JOWXNWaUZYeWxPRXBkb0pOaW53Z1hFVkl5M1psbFFrLWJISVRMNGdEVDVMb1VMUXZOTTFoQ0FSUkd3SlFOUDFXVENiaWxHbHdnbFdUSUxJYmhYRFBBZVQyT3ZwOHhncmJYR3Z3RTRocFRxTVFGMERlQkx0SEh3Yk9FdFpiWQ?oc=5",
+        "id": "gnews:25bad7e7f2e8e976",
+        "title": "An AI Agent Joined a Listserv of Top Internet Researchers. The Reply-All Chaos Is Still Unfolding - WIRED",
+        "publisher": "WIRED",
+        "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQbWhNWkVpbGtfZ0FYeWRMNE56dlFjcWRKaU12ejNrYmdUR3VRN0VIWHNfQ2J5V29IUDV0a05zUC00U2pJUWNrdGp0amFSVHExdTF6cnJnMWVqc0FYZGlqRmZ3aVJuSjNaMVBsTEo3UG1iQzFHQXBEUzJmSnZCSmVZWldHNHo2ay1aVG5qdmZ4dGhKdmNNZ1l0SEdYLVJWUFkxVlI2TGJqcjY4NVBaQVlQc01IcEx4X3p2RGlmcDM2RFJWeDA?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:d5e22f136b2a5f52",
-        "title": "Only Listicles Launches Brand Mention Service For Visibility Across ChatGPT, Google AI Overviews and Perplexity - The Tennessean",
-        "publisher": "The Tennessean",
-        "link": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxPOGYzbXlMR0VpR25uU2xYVEZwZEdlWUZ2TUFDdERqV2JtN1M3c3E1ZG1MVFNqT3FncUJxNDhKXzhPbjlCNjloakJTSEc3dm5WSUtpMmdldjUxZ1Q4eU5UOTFuMjFNWW1ZeTRjbUVpanc0Snc5TW5GTHAwb0dhbHlqUS1LTjZIZFpjU25ZWFJ6VHJ3dW9DaUk2Y0V5QW16aTN5ZG9QVFNxNkdGMjU1Z182TUhUNDZmalc5b1hrQ3hQWjZZTVk1VUFhV1pkcnVzT2hMQVpKbVd2eFNtTXlQSVIxTEUzUHlmMW15d0c3MXRmSU84dFpJQ3R2VA?oc=5",
+        "id": "gnews:a36a5e2ec2f18344",
+        "title": "ThreatLocker CEO On Launch Of New AI Agent Controls: ‘Massive Opportunities For MSPs’ - CRN",
+        "publisher": "CRN",
+        "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOaXFnNUd1R0t6STJLNTJWVnQ3NUVfQWVmalg2NUxJSVBOSllFekJPcHQ5bGN0bzA5YXlPdHVyWlZWcDg2M0E4WWVRekFxR3Axd2VWQm8ySzlmQ2tOVi1TUEZCUzFGUW5jUFA1aFhNSkRRU0EydENrVklyU1NpZXVkTmZXV2g1U216RzE2UXVyMHAtdEVSV3piSjJKZ2ZMbXVPd0FMdF9GaXNuMVo0cllzV3hFY2NVOUpXMnRjYlJR?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:8d55278c84d23157",
-        "title": "AI could deliver up to 5X productivity gains in chip design, Socionext expects. - Stock Titan",
-        "publisher": "Stock Titan",
-        "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQMzBZSnNwNjByR0ZBNFBjaGo4OUhGVUduNDkxRmV4dGNjTFNxRDhyODZxb3pxN2tmcnhCUkVzN1dTQUhUTXIzcjItUWNwLVlpcS1WRXpHbXpIRmxkSzZOUkZ6MXR2ZE9sS1RZUlJ6Q0E5akp5V3VsRVRpeml4N0ZHNGozR183TVNaZ1h4dTJFUVZENVZJWW9Neks5dmpUQ0RIWkNHazZ1ZWdCVEZNVFJmN1FZNTRJVXVmWElwNkxB?oc=5",
+        "id": "gnews:02e27b82c8cee298",
+        "title": "AI Agent Liability: Who Pays When One Gets It Wrong? - Forbes",
+        "publisher": "Forbes",
+        "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNRHJfRGljUWo4X3ZDVExUMUFXSFp4WTI0MTNLekowWUM4VVY0ZHFTMC1BX0dqMnh4clI4a3FzV3ZrMkFNUzRjbXRRSmFxUWNsakJ4dFpRMFJDSWk2cnBaMGF6TnlwTEpqMHIzMzJvb3d3R2xuUldtanVwWUlPUTFzUXFXN01DRkR4NDhMT1NsQWdtdzNwTFNDX0tTalo4MzZlLTdJWVdtdFdZVk9hcjNSR2lB?oc=5",
         "tag": "rest"
       }
     ]
