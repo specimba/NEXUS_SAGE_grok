@@ -7,64 +7,42 @@ import type { DigestUnlockSnapshot } from "@/lib/digest-unlock";
 export const DIGEST_UNLOCK: DigestUnlockSnapshot = {
   "schema": 1,
   "cycleId": "003",
-  "pickDate": "2026-10-18",
-  "frozenAt": "2026-10-18T08:37:21.046Z",
-  "leadId": "cl:hn:50134131",
+  "pickDate": "2026-10-20",
+  "frozenAt": "2026-10-20T03:20:08.933Z",
+  "leadId": "cl:hn:50155578",
   "lead": {
-    "id": "cl:hn:50134131",
+    "id": "cl:hn:50155578",
     "kind": "lead",
-    "title": "Anthropic pitches its own AI safety bill to lawmakers",
-    "take": "3 SRC · sig 6 · pick 2026-10-18",
+    "title": "AI agents are only as good as the personal information you share",
+    "take": "3 SRC · sig 3 · pick 2026-10-20",
     "why": "LEAD_TODAY · picked · frozen at daily pick",
     "move": "Digest/Voice follow Brief lead · cycle label 003",
-    "url": "https://www.politico.com/news/2026/10/16/anthropic-ai-safety-01124654",
+    "url": "https://apnews.com/article/meta-muse-openai-dot-ai-privacy-449734d41d3750aad7038b761faa49c9",
     "sources": 3,
-    "sig": 6
+    "sig": 3
   },
   "rows": [
     {
-      "id": "cl:hn:50118213",
+      "id": "cl:rss:openai:1dbe22633003a2af",
       "kind": "companion",
-      "title": "Introducing Beam: Reflection’s 501B open-weight model",
-      "take": "2 SRC · sig 12",
-      "why": "Top corroborated Wire cluster · same pack as lead pick",
-      "move": "Digest row · never displaces Brief lead",
-      "url": "https://reflection.ai/blog/beam-is-available",
-      "sources": 2,
-      "sig": 12
-    },
-    {
-      "id": "cl:hn:50128784",
-      "kind": "rest",
-      "title": "Anthropic offers Blackstone double-digit yield in latest chip financing",
-      "take": "2 SRC · sig 5",
-      "why": "Top corroborated Wire cluster · same pack as lead pick",
-      "move": "Digest row · never displaces Brief lead",
-      "url": "https://www.ft.com/content/cb4034e1-475f-40b9-a5f9-256e91aacb89",
-      "sources": 2,
-      "sig": 5
-    },
-    {
-      "id": "cl:rss:huggingface:d330643595776f9f",
-      "kind": "rest",
-      "title": "Granite Switch 4.1: Chat, Decisions, and Speech from One Endpoint",
+      "title": "Advancing Coding in Low-Resource Programming Languages",
       "take": "2 SRC · sig 3",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
-      "url": "https://huggingface.co/blog/ibm-granite/granite-switch-4-1",
+      "url": "https://openai.com/index/low-resource-programming-languages",
       "sources": 2,
       "sig": 3
     },
     {
-      "id": "cl:hn:50122112",
+      "id": "cl:rss:mistral:51edf4c643816e6f",
       "kind": "rest",
-      "title": "Anthropic assigned highest junk credit rating in June",
-      "take": "2 SRC · sig 290",
+      "title": "Introducing Timestral",
+      "take": "2 SRC · sig 563",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
-      "url": "https://www.ft.com/content/5a310aee-f555-4266-874c-b1b4db20186d",
+      "url": "https://mistral.ai/news/timestral/",
       "sources": 2,
-      "sig": 290
+      "sig": 563
     }
   ]
 } as const;

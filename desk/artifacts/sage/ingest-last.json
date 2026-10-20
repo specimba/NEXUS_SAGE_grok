@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-19T23:14:45Z",
+  "stamped_at": "2026-10-20T03:19:47Z",
   "config_hash": "813e5ce035c3",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,25 +11,25 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 70,
+      "duration_ms": 100,
       "paused_until": null,
       "reason": null
     },
     {
       "id": "arxiv",
       "label": "arXiv",
-      "status": "ok",
-      "rows": 29,
-      "duration_ms": 3252,
+      "status": "timeout",
+      "rows": 22,
+      "duration_ms": 20001,
       "paused_until": null,
-      "reason": null
+      "reason": "timeout after 20000ms budget · last good: 17 cached enrich + 5 kept shelf"
     },
     {
       "id": "openalex",
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 3,
+      "duration_ms": 204,
       "paused_until": null,
       "reason": null
     },
@@ -37,8 +37,8 @@
       "id": "crossref",
       "label": "Crossref",
       "status": "ok",
-      "rows": 0,
-      "duration_ms": 2,
+      "rows": 1,
+      "duration_ms": 426,
       "paused_until": null,
       "reason": null
     },
@@ -46,8 +46,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 45,
-      "duration_ms": 8275,
+      "rows": 51,
+      "duration_ms": 8410,
       "paused_until": null,
       "reason": null
     },
@@ -56,7 +56,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 105,
-      "duration_ms": 17754,
+      "duration_ms": 96,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 4164,
+      "duration_ms": 96,
       "paused_until": null,
       "reason": null
     },
@@ -73,8 +73,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 24,
-      "duration_ms": 6388,
+      "rows": 25,
+      "duration_ms": 2473,
       "paused_until": null,
       "reason": null
     },
@@ -82,8 +82,8 @@
       "id": "github",
       "label": "GitHub",
       "status": "ok",
-      "rows": 1,
-      "duration_ms": 12,
+      "rows": 2,
+      "duration_ms": 391,
       "paused_until": null,
       "reason": null
     },
@@ -92,16 +92,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 13,
+      "duration_ms": 183,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 39933,
-    "sources_wall_ms": 17755,
-    "papers_lane_ms": 3336,
-    "slowest_source_ms": 17754,
+    "sources_ms": 32380,
+    "sources_wall_ms": 20742,
+    "papers_lane_ms": 20742,
+    "slowest_source_ms": 20001,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -115,35 +115,108 @@
       "github": 25000,
       "wikidata": 25000
     },
-    "timed_out": [],
-    "wall_ms": 18162,
-    "startup_ms": 31,
-    "main_ms": 18194
+    "timed_out": [
+      "arxiv"
+    ],
+    "wall_ms": 21011,
+    "startup_ms": 27,
+    "main_ms": 21030
   },
-  "multi_source_independent": 1,
+  "multi_source_independent": 3,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 1,
-    "multi_source_raw": 1,
+    "multi_source_independent": 3,
+    "multi_source_raw": 3,
     "self_reposts": 0,
-    "items_in": 212,
-    "clusters_out": 205,
-    "collapsed": 7,
-    "multi_source": 1,
-    "multi_member": 6,
+    "items_in": 219,
+    "clusters_out": 207,
+    "collapsed": 12,
+    "multi_source": 3,
+    "multi_member": 8,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 33,
+    "new_items": 25,
     "per_source": {
-      "hn-algolia": 45,
+      "hn-algolia": 51,
       "rss-lab": 105,
       "rss-security": 28,
-      "gnews-rss": 24,
+      "gnews-rss": 25,
       "gmail-news": 10
     },
     "multi_source_clusters": [
+      {
+        "title": "Advancing Coding in Low-Resource Programming Languages",
+        "sources": [
+          "rss-lab",
+          "hn-algolia"
+        ],
+        "size": 3,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:50159639",
+            "source": "hn-algolia",
+            "title": "Advancing coding in low‑resource programming languages",
+            "at": "2026-10-20T00:03:40Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:50159090",
+            "source": "hn-algolia",
+            "title": "Advancing Coding in Low-Resource Programming Languages",
+            "at": "2026-10-19T22:48:41Z",
+            "publisher": null
+          },
+          {
+            "id": "rss:openai:1dbe22633003a2af",
+            "source": "rss-lab",
+            "title": "Advancing Coding in Low-Resource Programming Languages",
+            "at": "2026-10-19T12:00:00Z",
+            "publisher": "openai"
+          }
+        ]
+      },
+      {
+        "title": "AI agents are only as good as the personal information you share",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 4,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:50155578",
+            "source": "hn-algolia",
+            "title": "AI agents are only as good as the personal information you share",
+            "at": "2026-10-19T17:54:04Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:2efb88321db26bba",
+            "source": "gnews-rss",
+            "title": "AI agents are only as good as the personal information you share - KIVI-TV",
+            "at": "2026-10-19T15:43:47Z",
+            "publisher": "KIVI-TV"
+          },
+          {
+            "id": "gnews:b12fc113e7c07479",
+            "source": "gnews-rss",
+            "title": "AI agents are only as good as the personal information you share. That raises privacy concerns - Trentonian",
+            "at": "2026-10-19T15:50:01Z",
+            "publisher": "Trentonian"
+          },
+          {
+            "id": "gnews:f6601879511682f2",
+            "source": "gnews-rss",
+            "title": "AI agents are only as good as the personal information you share. That raises privacy concerns - Daily Democrat",
+            "at": "2026-10-19T15:49:53Z",
+            "publisher": "Daily Democrat"
+          }
+        ]
+      },
       {
         "title": "Introducing Timestral",
         "sources": [
@@ -181,12 +254,20 @@
       ],
       "gnews_shown_dropped": [
         {
+          "publisher": "shattered.io",
+          "title": "MiniMax M3.1 Flash Was Space Bunny, Cuts Costs 70% [2026] - shattered.io"
+        },
+        {
           "publisher": "Dark Reading",
           "title": "Researchers Infiltrate Microsoft Tech Support Scam Operation - Dark Reading"
         },
         {
           "publisher": "SC Media",
           "title": "Attackers compromise Microsoft 365 credential via ConnectWise Cloud Backup - SC Media"
+        },
+        {
+          "publisher": "Techlicious",
+          "title": "Google can now use insights from your Gmail and Photos to target ads - Techlicious"
         },
         {
           "publisher": "Reason Magazine",
@@ -197,6 +278,10 @@
           "title": "Check Point Q3 2026 Audit: Microsoft Impersonated in 33% of Global Brand Phishing Attacks - CXOToday.com"
         },
         {
+          "publisher": "IPWatchdog",
+          "title": "CAFC Agrees Google Failed to Show Unpatentability of Claims for Merging Search Engine Results - IPWatchdog"
+        },
+        {
           "publisher": "London Daily News",
           "title": "Founder of British medtech startup makes history as first woman and youngest winner of the US$100,000 Nigeria Prize for Science and Innovation - London Daily News"
         },
@@ -205,20 +290,66 @@
           "title": "Microsoft accounts for 33 pc of brand phishing attacks in Q3, Apple, Google trail: Report - The Hawk"
         },
         {
-          "publisher": "Observer",
-          "title": "Mozilla CEO Anthony Enzor-DeMeo Wants to Challenge Chrome—and Rely Less on Google - Observer"
-        },
-        {
-          "publisher": "Business Wire",
-          "title": "Inception Launches Mercury 3, Setting a New Pareto Frontier in Speed and Intelligence - Business Wire"
+          "publisher": "News Anyway",
+          "title": "Clocks go back on Sunday: Britons search far more for how to set a watch than an oven, research suggests - News Anyway"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 29
+      "hn_dropped": 21
     },
     "gnews_near_misses": [
       {
-        "score": 0.295,
+        "score": 0.531,
+        "blocked": "time-window",
+        "hours_apart": 102,
+        "a": {
+          "id": "rss:nvidia-dev:9f5aca4e4d9dbf53",
+          "source": "rss-lab",
+          "title": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
+          "at": "2026-10-15T18:01:00Z"
+        },
+        "b": {
+          "id": "gnews:74153eccbe1314d9",
+          "source": "gnews-rss",
+          "title": "Nvidia Launches Nemotron 3.5 Super VL and Bolt Open-Weight Models for Enterprise Agents: how 6 outlets framed it - NewsCord",
+          "at": "2026-10-20T00:03:33Z"
+        },
+        "shared": [
+          "nvidia",
+          "nemotron",
+          "3.5",
+          "super",
+          "vl",
+          "agent"
+        ]
+      },
+      {
+        "score": 0.437,
+        "blocked": "time-window",
+        "hours_apart": 105.1,
+        "a": {
+          "id": "rss:nvidia:599b981c923a3fd6",
+          "source": "rss-lab",
+          "title": "Open From Data Center to Desktop: NVIDIA Expands Nemotron Family With Highest Efficiency Super VL and Bolt Models",
+          "at": "2026-10-15T15:00:24Z"
+        },
+        "b": {
+          "id": "gnews:74153eccbe1314d9",
+          "source": "gnews-rss",
+          "title": "Nvidia Launches Nemotron 3.5 Super VL and Bolt Open-Weight Models for Enterprise Agents: how 6 outlets framed it - NewsCord",
+          "at": "2026-10-20T00:03:33Z"
+        },
+        "shared": [
+          "nvidia",
+          "nemotron",
+          "super",
+          "vl",
+          "bolt",
+          "model"
+        ]
+      },
+      {
+        "score": 0.294,
         "blocked": "time-window",
         "hours_apart": 315.2,
         "a": {
@@ -239,48 +370,29 @@
         ]
       },
       {
-        "score": 0.265,
-        "blocked": "thin-overlap",
-        "hours_apart": 10,
+        "score": 0.278,
+        "blocked": "below-threshold",
+        "hours_apart": 4.2,
         "a": {
-          "id": "hn:50151376",
+          "id": "hn:50151080",
           "source": "hn-algolia",
-          "title": "The obscure trust looming over Anthropic's IPO",
-          "at": "2026-10-19T12:06:03Z"
+          "title": "AI firm Anthropic to commit 5% of shares to fund for 'public good'",
+          "at": "2026-10-19T11:31:19Z"
         },
         "b": {
-          "id": "gnews:beab7fca31164ee6",
+          "id": "gnews:2efb88321db26bba",
           "source": "gnews-rss",
-          "title": "Eric Schmidt’s 1% Anthropic stake sets up massive windfall ahead of IPO -Bloomberg By Investing.com - Investing.com South Africa",
-          "at": "2026-10-19T22:08:32Z"
+          "title": "AI agents are only as good as the personal information you share - KIVI-TV",
+          "at": "2026-10-19T15:43:47Z"
         },
         "shared": [
-          "anthropic",
-          "ipo"
+          "ai",
+          "shar",
+          "good"
         ]
       },
       {
-        "score": 0.265,
-        "blocked": "thin-overlap",
-        "hours_apart": 4.4,
-        "a": {
-          "id": "hn:50157667",
-          "source": "hn-algolia",
-          "title": "GPT Rosalind",
-          "at": "2026-10-19T20:31:13Z"
-        },
-        "b": {
-          "id": "gnews:ee84dfe1b007c3e8",
-          "source": "gnews-rss",
-          "title": "Microsoft's Pamela Fox Tests GPT-5.5 vs Kimi, DeepSeek and Mistral: Swapping AI Models Is Easy Until You Actually Measure Them - BigGo Finance",
-          "at": "2026-10-19T16:08:00Z"
-        },
-        "shared": [
-          "gpt"
-        ]
-      },
-      {
-        "score": 0.264,
+        "score": 0.271,
         "blocked": "time-window",
         "hours_apart": 822.5,
         "a": {
@@ -301,94 +413,72 @@
         ]
       },
       {
-        "score": 0.222,
+        "score": 0.258,
         "blocked": "thin-overlap",
-        "hours_apart": 8.8,
+        "hours_apart": 629.8,
         "a": {
-          "id": "hn:50150434",
-          "source": "hn-algolia",
-          "title": "Timestral: Mistral's time-series foundation models",
-          "at": "2026-10-19T09:59:32Z"
-        },
-        "b": {
-          "id": "gnews:c90b52ab6fd94eec",
-          "source": "gnews-rss",
-          "title": "Mistral CEO says 'whoever controls AI models controls the ecosystem' - ET Enterprise AI",
-          "at": "2026-10-19T18:46:44Z"
-        },
-        "shared": [
-          "mistral",
-          "model"
-        ]
-      },
-      {
-        "score": 0.218,
-        "blocked": "time-window",
-        "hours_apart": 822.4,
-        "a": {
-          "id": "rss:google-ai:50f1fa34d3c31e12",
+          "id": "rss:google-ai:1ccf342131e2aeec",
           "source": "rss-lab",
-          "title": "AI for everyone in every language",
-          "at": "2026-09-15T16:00:00Z"
+          "title": "Google Beam expands with new regions, partners, and customers",
+          "at": "2026-09-23T18:00:00Z"
         },
         "b": {
-          "id": "gnews:36d8f6e93b299659",
+          "id": "gnews:90cafca07a2665d4",
           "source": "gnews-rss",
-          "title": "Notable Launches Flow Compass to Give Healthcare Operators Plain-Language Control of Their AI Workforce - HIT Consultant",
-          "at": "2026-10-19T22:22:06Z"
-        },
-        "shared": [
-          "ai",
-          "languag"
-        ]
-      },
-      {
-        "score": 0.208,
-        "blocked": "thin-overlap",
-        "hours_apart": 825.7,
-        "a": {
-          "id": "rss:google-ai:b21c5e1ffc812be8",
-          "source": "rss-lab",
-          "title": "New insights from Google’s AI & Economy ATLAS",
-          "at": "2026-09-15T13:00:00Z"
-        },
-        "b": {
-          "id": "gnews:103a562500f3b07c",
-          "source": "gnews-rss",
-          "title": "Cognizant puts 18,000 staff behind Google’s Gemini in AI agent push - The Next Web",
-          "at": "2026-10-19T22:41:54Z"
+          "title": "Google expands AI tools for teachers and researchers | ETIH EdTech News - EdTech Innovation Hub",
+          "at": "2026-10-19T23:46:55Z"
         },
         "shared": [
           "google",
-          "ai"
+          "expand"
         ]
       },
       {
-        "score": 0.193,
-        "blocked": "time-window",
-        "hours_apart": 318.4,
+        "score": 0.24,
+        "blocked": "thin-overlap",
+        "hours_apart": 625.6,
         "a": {
-          "id": "gnews:525deefe9b377045",
-          "source": "gnews-rss",
-          "title": "AI agent governance at scale: The four pillars every enterprise needs - News Channel 3-12",
-          "at": "2026-10-19T22:32:53Z"
+          "id": "rss:google-ai:1ccf342131e2aeec",
+          "source": "rss-lab",
+          "title": "Google Beam expands with new regions, partners, and customers",
+          "at": "2026-09-23T18:00:00Z"
         },
         "b": {
-          "id": "gmail:1a111f73929284cc",
-          "source": "gmail-news",
-          "title": "Today's Signal: AWS governs agents, AI governance faces scrutiny",
-          "at": "2026-10-06T16:06:17Z"
+          "id": "gnews:69f897f41c423729",
+          "source": "gnews-rss",
+          "title": "AI Is Reshaping Local Search but Small Businesses Need Google to Win Customers, Research Finds - WBOC TV",
+          "at": "2026-10-19T19:35:03Z"
         },
         "shared": [
-          "ai",
-          "agent",
-          "governanc"
+          "google",
+          "customer"
+        ]
+      },
+      {
+        "score": 0.24,
+        "blocked": "thin-overlap",
+        "hours_apart": 625.5,
+        "a": {
+          "id": "rss:google-ai:1ccf342131e2aeec",
+          "source": "rss-lab",
+          "title": "Google Beam expands with new regions, partners, and customers",
+          "at": "2026-09-23T18:00:00Z"
+        },
+        "b": {
+          "id": "gnews:564b4c2e7289c0aa",
+          "source": "gnews-rss",
+          "title": "AI Is Reshaping Local Search but Small Businesses Need Google to Win Customers, Research Finds - openPR.com",
+          "at": "2026-10-19T19:32:07Z"
+        },
+        "shared": [
+          "google",
+          "customer"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.717,
+        "score": 0.726,
         "blocked": "time-window",
         "hours_apart": 97.5,
         "a": {
@@ -409,7 +499,7 @@
         ]
       },
       {
-        "score": 0.596,
+        "score": 0.595,
         "blocked": "time-window",
         "hours_apart": 94,
         "a": {
@@ -429,27 +519,57 @@
         ]
       },
       {
-        "score": 0.315,
-        "blocked": "thin-overlap",
-        "hours_apart": 325.3,
+        "score": 0.531,
+        "blocked": "time-window",
+        "hours_apart": 102,
         "a": {
-          "id": "hn:50157524",
-          "source": "hn-algolia",
-          "title": "Ex OpenAI engineer accused of planting bug was in contact with Saudi royals",
-          "at": "2026-10-19T20:18:42Z"
+          "id": "rss:nvidia-dev:9f5aca4e4d9dbf53",
+          "source": "rss-lab",
+          "title": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
+          "at": "2026-10-15T18:01:00Z"
         },
         "b": {
-          "id": "rss-sec:projectzero:c26302aa2cbe872f",
-          "source": "rss-security",
-          "title": "How to fix a bug in a fix",
-          "at": "2026-10-06T07:00:00Z"
+          "id": "gnews:74153eccbe1314d9",
+          "source": "gnews-rss",
+          "title": "Nvidia Launches Nemotron 3.5 Super VL and Bolt Open-Weight Models for Enterprise Agents: how 6 outlets framed it - NewsCord",
+          "at": "2026-10-20T00:03:33Z"
         },
         "shared": [
-          "bug"
+          "nvidia",
+          "nemotron",
+          "3.5",
+          "super",
+          "vl",
+          "agent"
         ]
       },
       {
-        "score": 0.297,
+        "score": 0.437,
+        "blocked": "time-window",
+        "hours_apart": 105.1,
+        "a": {
+          "id": "rss:nvidia:599b981c923a3fd6",
+          "source": "rss-lab",
+          "title": "Open From Data Center to Desktop: NVIDIA Expands Nemotron Family With Highest Efficiency Super VL and Bolt Models",
+          "at": "2026-10-15T15:00:24Z"
+        },
+        "b": {
+          "id": "gnews:74153eccbe1314d9",
+          "source": "gnews-rss",
+          "title": "Nvidia Launches Nemotron 3.5 Super VL and Bolt Open-Weight Models for Enterprise Agents: how 6 outlets framed it - NewsCord",
+          "at": "2026-10-20T00:03:33Z"
+        },
+        "shared": [
+          "nvidia",
+          "nemotron",
+          "super",
+          "vl",
+          "bolt",
+          "model"
+        ]
+      },
+      {
+        "score": 0.313,
         "blocked": "thin-overlap",
         "hours_apart": 297.1,
         "a": {
@@ -469,14 +589,34 @@
         ]
       },
       {
-        "score": 0.295,
+        "score": 0.304,
         "blocked": "thin-overlap",
-        "hours_apart": 289.4,
+        "hours_apart": 325.3,
         "a": {
-          "id": "hn:50157098",
+          "id": "hn:50157524",
           "source": "hn-algolia",
-          "title": "What is still hard to become good at as AI makes coding easier?",
-          "at": "2026-10-19T19:43:46Z"
+          "title": "Ex OpenAI engineer accused of planting bug was in contact with Saudi royals",
+          "at": "2026-10-19T20:18:42Z"
+        },
+        "b": {
+          "id": "rss-sec:projectzero:c26302aa2cbe872f",
+          "source": "rss-security",
+          "title": "How to fix a bug in a fix",
+          "at": "2026-10-06T07:00:00Z"
+        },
+        "shared": [
+          "bug"
+        ]
+      },
+      {
+        "score": 0.298,
+        "blocked": "thin-overlap",
+        "hours_apart": 284.4,
+        "a": {
+          "id": "hn:50153101",
+          "source": "hn-algolia",
+          "title": "Replit makes OpenAI its default over Anthropic, CEO says",
+          "at": "2026-10-19T14:43:27Z"
         },
         "b": {
           "id": "rss:nvidia-dev:1fd6b880e95ea139",
@@ -489,7 +629,7 @@
         ]
       },
       {
-        "score": 0.295,
+        "score": 0.294,
         "blocked": "time-window",
         "hours_apart": 315.2,
         "a": {
@@ -508,47 +648,6 @@
           "ai",
           "t"
         ]
-      },
-      {
-        "score": 0.288,
-        "blocked": "thin-overlap",
-        "hours_apart": 326.3,
-        "a": {
-          "id": "hn:50158230",
-          "source": "hn-algolia",
-          "title": "Show HN: Claude Code skills and hooks that prove a fix's test fails without it",
-          "at": "2026-10-19T21:20:23Z"
-        },
-        "b": {
-          "id": "rss-sec:projectzero:c26302aa2cbe872f",
-          "source": "rss-security",
-          "title": "How to fix a bug in a fix",
-          "at": "2026-10-06T07:00:00Z"
-        },
-        "shared": [
-          "fix"
-        ]
-      },
-      {
-        "score": 0.265,
-        "blocked": "thin-overlap",
-        "hours_apart": 10,
-        "a": {
-          "id": "hn:50151376",
-          "source": "hn-algolia",
-          "title": "The obscure trust looming over Anthropic's IPO",
-          "at": "2026-10-19T12:06:03Z"
-        },
-        "b": {
-          "id": "gnews:beab7fca31164ee6",
-          "source": "gnews-rss",
-          "title": "Eric Schmidt’s 1% Anthropic stake sets up massive windfall ahead of IPO -Bloomberg By Investing.com - Investing.com South Africa",
-          "at": "2026-10-19T22:08:32Z"
-        },
-        "shared": [
-          "anthropic",
-          "ipo"
-        ]
       }
     ]
   },
@@ -556,76 +655,76 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 4,
-      "streak_fail": 0,
-      "items_last": 29
+      "streak_ok": 0,
+      "streak_fail": 1,
+      "items_last": 22
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 145,
-      "streak_fail": 0,
-      "items_last": 0
-    },
-    {
-      "id": "github",
-      "state": "ok",
-      "streak_ok": 145,
+      "streak_ok": 146,
       "streak_fail": 0,
       "items_last": 1
     },
     {
+      "id": "github",
+      "state": "ok",
+      "streak_ok": 146,
+      "streak_fail": 0,
+      "items_last": 2
+    },
+    {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 145,
+      "streak_ok": 146,
       "streak_fail": 0,
-      "items_last": 24
+      "items_last": 25
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 145,
+      "streak_ok": 146,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 145,
+      "streak_ok": 146,
       "streak_fail": 0,
-      "items_last": 45
+      "items_last": 51
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 57,
+      "streak_ok": 58,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 49,
+      "streak_ok": 50,
       "streak_fail": 0,
       "items_last": 105
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 145,
+      "streak_ok": 146,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 145,
+      "streak_ok": 146,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.005298055555555556,
+    "hours": 0.006081111111111111,
     "stale": false
   },
   "hf": {
@@ -634,10 +733,10 @@
     "url": "https://huggingface.co/api/daily_papers"
   },
   "arxiv": {
-    "ok": true,
-    "enriched": 24,
+    "ok": false,
+    "enriched": 17,
     "shelf": 5,
-    "timed_out": false,
+    "timed_out": true,
     "budget_ms": 20000,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
@@ -648,15 +747,15 @@
     "soft_fail_reason": null,
     "enriched": 3,
     "secondary": 3,
-    "query": "Hugging Face agent",
+    "query": "LLM agent",
     "mode": "search",
-    "from_cache": true,
-    "searches": 0,
+    "from_cache": false,
+    "searches": 1,
     "retries": 0,
     "status": "ok",
     "paused_until": null,
     "pause_reason": null,
-    "requests": 0,
+    "requests": 1,
     "auth": "anon",
     "brief": false,
     "pulse_lead": false,
@@ -664,78 +763,88 @@
     "url": "https://api.openalex.org/works",
     "sample": [
       {
-        "id": "W7171617880",
-        "openalexId": "https://openalex.org/W7171617880",
-        "year": 2026,
-        "doi": "https://doi.org/10.5281/zenodo.21686546",
+        "id": "W4393160747",
+        "openalexId": "https://openalex.org/W4393160747",
+        "year": 2024,
+        "doi": "https://doi.org/10.1609/aaai.v38i17.29936",
         "enrichOnly": true
       },
       {
-        "id": "W7171936549",
-        "openalexId": "https://openalex.org/W7171936549",
-        "year": 2026,
-        "doi": "https://doi.org/10.5281/zenodo.21715175",
+        "id": "W4412877164",
+        "openalexId": "https://openalex.org/W4412877164",
+        "year": 2025,
+        "doi": "https://doi.org/10.1145/3711896.3736570",
         "enrichOnly": true
       },
       {
-        "id": "W7203931864",
-        "openalexId": "https://openalex.org/W7203931864",
-        "year": 2026,
-        "doi": "https://doi.org/10.5281/zenodo.22043399",
+        "id": "W4391620956",
+        "openalexId": "https://openalex.org/W4391620956",
+        "year": 2024,
+        "doi": "https://doi.org/10.48550/arxiv.2402.02716",
         "enrichOnly": true
       }
     ]
   },
   "crossref": {
-    "ok": false,
+    "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "enriched": 0,
-    "query": "doi:10.5281/zenodo.21686546",
+    "enriched": 1,
+    "query": "doi:10.1145/3711896.3736570",
     "mode": "filter",
-    "from_cache": true,
-    "searches": 0,
+    "from_cache": false,
+    "searches": 1,
     "brief": false,
     "pulse_lead": false,
     "papers_enrich_only": true,
     "url": "https://api.crossref.org/works",
     "merge_notes": [],
-    "sample": []
+    "sample": [
+      {
+        "id": "W4412877164",
+        "crossrefDoi": "https://doi.org/10.1145/3711896.3736570",
+        "issued": "2025-08-03",
+        "type": "proceedings-article",
+        "openalexId": "https://openalex.org/W4412877164",
+        "doi": "https://doi.org/10.1145/3711896.3736570",
+        "enrichOnly": false
+      }
+    ]
   },
   "hn": {
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 45,
+    "count": 51,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
     "queries_run": [
-      "inference",
       "benchmark",
-      "agent tooling"
+      "agent tooling",
+      "OpenAI"
     ],
     "queries_ok": [
-      "inference",
       "benchmark",
-      "agent tooling"
+      "agent tooling",
+      "OpenAI"
     ],
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 29,
+    "ai_dropped": 21,
     "url": "https://hn.algolia.com/api/v1/search",
     "sample": [
       {
         "id": "hn:50150434",
         "tag": "rest",
-        "score": 522,
+        "score": 563,
         "text": "Timestral: Mistral's time-series foundation models"
       },
       {
         "id": "hn:50153630",
         "tag": "rest",
-        "score": 301,
+        "score": 321,
         "text": "CERN and Mistral sign a statement of intent to establish a strategic partnership"
       },
       {
@@ -758,47 +867,47 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "https://openai.com/news/rss.xml",
+        "url": "(cache:openai)",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "https://deepmind.google/blog/rss.xml",
+        "url": "(cache:deepmind)",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "https://blog.google/technology/ai/rss/",
+        "url": "(cache:google-ai)",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "https://huggingface.co/blog/feed.xml",
+        "url": "(cache:huggingface)",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "https://mistral.ai/rss.xml",
+        "url": "(cache:mistral)",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "https://blogs.nvidia.com/feed/",
+        "url": "(cache:nvidia)",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "https://developer.nvidia.com/blog/feed",
+        "url": "(cache:nvidia-dev)",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
+        "url": "(cache:ms-research)",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "https://research.google/blog/rss/",
+        "url": "(cache:google-research)",
         "count": 12
       }
     ],
@@ -844,17 +953,17 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "https://blog.trailofbits.com/feed/",
+        "url": "(cache:trailofbits)",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "https://blog.fox-it.com/feed/",
+        "url": "(cache:fox-it)",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "https://projectzero.google/feed.xml",
+        "url": "(cache:projectzero)",
         "count": 6
       }
     ],
@@ -895,13 +1004,38 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 24,
-    "pool": 269,
-    "corroborators": [],
+    "items": 25,
+    "pool": 265,
+    "corroborators": [
+      {
+        "id": "gnews:2efb88321db26bba",
+        "anchor_id": "hn:50155578",
+        "score": 1,
+        "title": "AI agents are only as good as the personal information you share - KIVI-TV",
+        "publisher": "KIVI-TV",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:b12fc113e7c07479",
+        "anchor_id": "hn:50155578",
+        "score": 0.828,
+        "title": "AI agents are only as good as the personal information you share. That raises privacy concerns - Trentonian",
+        "publisher": "Trentonian",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:f6601879511682f2",
+        "anchor_id": "hn:50155578",
+        "score": 0.828,
+        "title": "AI agents are only as good as the personal information you share. That raises privacy concerns - Daily Democrat",
+        "publisher": "Daily Democrat",
+        "self_repost": false
+      }
+    ],
     "http_status": 200,
     "content_type": "application/xml; charset=utf-8",
     "format": "rss2",
-    "from_cache": false,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "briefEligible": false,
@@ -910,38 +1044,38 @@
     "pulse_only": true,
     "url_template": "https://news.google.com/rss/search?q={QUERY}&hl=en-US&gl=US&ceid=US:en",
     "queried": [
-      "large language model",
       "AI agent",
-      "Mistral AI",
-      "Microsoft Research"
+      "open weights",
+      "Microsoft Research",
+      "Google Research"
     ],
     "queries_ok_list": [
-      "large language model",
       "AI agent",
-      "Mistral AI",
-      "Microsoft Research"
+      "open weights",
+      "Microsoft Research",
+      "Google Research"
     ],
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:3a07b6d02cc0651b",
-        "title": "AI Agent Cuts Centalion’s Trade Finance Amendment Time 80% - PYMNTS.com",
-        "publisher": "PYMNTS.com",
-        "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPN1dJYXdTX3Vlb21YVVF2cGpZYnU3X0VleU9TMTlpQVI5MHQ2bTZFczlxRnVwd3NzbTlDX0t3b090dzd4ZTIyclNscDg4QzBfYTVGbWVYS3hnbE85SURCTWVzcUVuQU5wQzZ1TDB2SFdYZVREN25NTjhzVm5GdllfZFVjdkM5NkkzZnFHWXRCUV94WkJIWlJfc19NRlBPZXUwRUlBMTY5WjlwNmhpUENfS0lBc3o?oc=5",
+        "id": "gnews:c50a19d9d7266a77",
+        "title": "Cloudflare launches AI model that extracts information from emails, receipt photos in under 1 second - 디지털투데이",
+        "publisher": "디지털투데이",
+        "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQR2d4VTV5clBUX1c2TFRKREhkUXQ0aWlRMjYwY3h0Q3AyRnpDZDhrUXlGbUpYZGxIYjN4cjkyQ2ZPSFlfVElLNGxOX3RnVmpsQnJiTGlPdEhiZGtOZUdwbXdRRjZHUWVpc1JkZG5TbHlHQkhQZXppYnJWaUV3T3l3alZYR2JUbUhORmhoeHhjbzJDcDA2U09oMHRuQnEzRXRqQUhQSHhDREc4c01VTlgtR3lwQzI5UndrVzJEME5XSUw1TWV2azBpS0ZOMWZMSHZfaU05eVpXMVczU2FBRUl1dA?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:679d33b0c0c0de0e",
-        "title": "Former Google CEO Eric Schmidt’s 1% Anthropic stake set to pay massive windfall - Moneycontrol.com",
-        "publisher": "Moneycontrol.com",
-        "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxPdEFJVkVWN21CalpMa1gxM1NjM3FVcldhNUc1TXc3bWRmYXRPNWxZVDZrNkpBOTdTb21OWWNlMDYydFhWSzRqeldpQndodE1OZTNDVll3VF9HOHQzNXNPZE44eFdVOGx3XzdYNUtPWFp2UTV1R2JoMHhza21qaVVWNHJUNEpKTHVLcURmdlZlaEV6R3pSbmpGZUtvX2M4cjNuY2t4RFBYQWNLSnNTYjd5bW9qaGVoRm0yTlhobm9KWFVkVHpiS3RoZDV1anh3LW16ci1zdHJtSDEyUmh5d3fSAeMBQVVfeXFMT3lSSTZUd0Q1ZjdjeVRteFpMMU9BVC1lRzhOWnduWVdCcVJNMlMzQUtVT3dMN09sSlNEdDdNRThpTG5UWFpkZ1BHWUlCMU1XYkhOTjlsMTRVYll6QTY4NWRaMENuOWh6SEctTzFFbU9POU41ZUNjdThCWmZwQWctRi1yS0VsVXRCVFFVaGg5b2NjZ1J1ZXBHT3R1X0xYTjhrTTBucGg2MmNGZXdNelpyZ18xelViSWFhaGFqck0xcVJ1ZFZwcXQteVJ4UWVNUWZUVFlDZ3p2VnUybzlRQXNfaUhMb1U?oc=5",
+        "id": "gnews:7cbe9374e1282667",
+        "title": "Ant Group Open-Sources Ming-3.0-tts, Small Speech Models With Voice Design and Fine Control - Pandaily",
+        "publisher": "Pandaily",
+        "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQbkJUSG1NOTVfWUpqTlRpWHI3dkV1SG5BaDRpRzJpZTRBQlU4YkxqMzhISm1FRGExTW0zRExVUktMNzN4c0IzZmlaTV9PTnlrV1dhZlE0aFdiZ0FreVZ3SkJxZ2p5N3RBZGtvZ0ZzTzVPcTVkNldDZkVXRFptbnoxY1R1ejVzZHJLel9nc25fVGt2WUI3UXNhUllTQQ?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:8b2afb25e7f3b6e0",
-        "title": "GTIA launches managed intelligence alliance for SMB AI - ChannelLife Australia",
-        "publisher": "ChannelLife Australia",
-        "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNTmRJdjVyOXFrTDZRLUlGQXQwZkZCUGtac1l1RFZhYjBqbkQ3QzhWVHFXS2ZFdld4WnFWbnJnU0x4UHVadktpdGJMZ2IzeXVKRUlFcm5zQ2hXcG5PLU9tQlJ3Z1NoNVpLalQxb2J1SGpaVm1NUGxUbGFmSTJvOG1EYTVZNU9ST3VCb3NmZ2pmZXE?oc=5",
+        "id": "gnews:8430d776c7290afe",
+        "title": "Meta’s open-weight gambit points to AI’s changing global play - The Indian Express",
+        "publisher": "The Indian Express",
+        "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNcVZaTmY2bUV5OTVOdklYeFJkM2dtVGV4TDg3SkdPUERKY3E3N1NwaV9Gdm1wX1drSEVCRF9wVk1yQWhwdWJ1eFc2NDZralJ6ZmtocVhxS1h2UXVGaVVNbTc5eWUzRDhFc3dsYzZFQWxKZG5RT2lRLXA5Rzd0TFlGMVVTdHFzaHB5NDI5SWpRdzlaU3BxSTNsZFNHdVd1cmZpQ0YxVHNzOFlod9IBsAFBVV95cUxQekJVS1NBc2w1N3RvVWpJN3pXcmZ6a1JWeFk5ekZIbkhpQ0xrQ1hoQUl1b0lqZ3pwTHVwbEVQZU13LUpNT19KcUM5RDRobzc3MUlyeFB1d2hLb0ZyUDM3c2g1WDM4Tm1pT3FSNEptT3VBNUJkZnIzSTNHMXZrejIxNldOMVpYTGZ4bzZxSjNHUVhOY2ZJLTN1M0ZDYURNTnNvWmZxeXlDYVoxWmtDaElfeQ?oc=5",
         "tag": "rest"
       }
     ]
@@ -996,24 +1130,28 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "query": "OWASP LLM",
-    "shelf": 1,
-    "from_cache": true,
-    "searches": 0,
-    "rate_limit_remaining": null,
+    "query": "agent sandbox escape",
+    "shelf": 2,
+    "from_cache": false,
+    "searches": 1,
+    "rate_limit_remaining": 9,
     "brief": false,
     "pulse_lead": false,
     "shelf_only": true,
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
-        "label": "Mihirajmera/agent-access-review",
-        "href": "https://github.com/Mihirajmera/agent-access-review"
+        "label": "controlplaneio/sandbox-probe",
+        "href": "https://github.com/controlplaneio/sandbox-probe"
+      },
+      {
+        "label": "hyperlight-dev/hyperagent",
+        "href": "https://github.com/hyperlight-dev/hyperagent"
       }
     ]
   },
   "shelf": {
-    "count": 18,
+    "count": 19,
     "brief": false
   },
   "wikidata": {
@@ -1021,28 +1159,17 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "seeds": [
-      "Project Zero",
       "OWASP",
-      "NIST"
+      "NIST",
+      "MITRE"
     ],
-    "searches": 0,
-    "from_cache": true,
+    "searches": 1,
+    "from_cache": false,
     "brief": false,
     "pulse_lead": false,
     "deny_grounding_only": true,
     "url": "https://www.wikidata.org/w/api.php",
     "hints": [
-      {
-        "seed": "Project Zero",
-        "qid": "Q18859887",
-        "label": "Project Zero",
-        "description": "security analysis team employed by Google",
-        "status": "matched",
-        "source": "wikidata",
-        "briefEligible": false,
-        "pulseLeadEligible": false,
-        "denyGroundingOnly": true
-      },
       {
         "seed": "OWASP",
         "qid": "Q379297",
@@ -1059,6 +1186,17 @@
         "qid": "Q176691",
         "label": "National Institute of Standards and Technology",
         "description": "measurement standards laboratory in the United States",
+        "status": "matched",
+        "source": "wikidata",
+        "briefEligible": false,
+        "pulseLeadEligible": false,
+        "denyGroundingOnly": true
+      },
+      {
+        "seed": "MITRE",
+        "qid": "Q627039",
+        "label": "MITRE Corporation",
+        "description": "company",
         "status": "matched",
         "source": "wikidata",
         "briefEligible": false,
