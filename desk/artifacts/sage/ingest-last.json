@@ -2,8 +2,8 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-20T03:20:29Z",
-  "config_hash": "813e5ce035c3",
+  "stamped_at": "2026-10-20T07:13:37Z",
+  "config_hash": "e3e9003a7d92",
   "config_status": "ok",
   "crawl_sources": [
     {
@@ -11,25 +11,25 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 120,
+      "duration_ms": 95,
       "paused_until": null,
       "reason": null
     },
     {
       "id": "arxiv",
       "label": "arXiv",
-      "status": "timeout",
-      "rows": 5,
-      "duration_ms": 20000,
+      "status": "ok",
+      "rows": 28,
+      "duration_ms": 3250,
       "paused_until": null,
-      "reason": "timeout after 20000ms budget · last good: 0 cached enrich + 5 kept shelf"
+      "reason": null
     },
     {
       "id": "openalex",
       "label": "OpenAlex",
       "status": "ok",
-      "rows": 3,
-      "duration_ms": 368,
+      "rows": 5,
+      "duration_ms": 3,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 209,
+      "duration_ms": 4,
       "paused_until": null,
       "reason": null
     },
@@ -46,8 +46,17 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 51,
-      "duration_ms": 8397,
+      "rows": 61,
+      "duration_ms": 8295,
+      "paused_until": null,
+      "reason": null
+    },
+    {
+      "id": "hn_title",
+      "label": "HN title",
+      "status": "ok",
+      "rows": 9,
+      "duration_ms": 8244,
       "paused_until": null,
       "reason": null
     },
@@ -56,7 +65,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 105,
-      "duration_ms": 17828,
+      "duration_ms": 16704,
       "paused_until": null,
       "reason": null
     },
@@ -64,8 +73,26 @@
       "id": "rss_security",
       "label": "security RSS",
       "status": "ok",
-      "rows": 28,
-      "duration_ms": 4107,
+      "rows": 40,
+      "duration_ms": 6136,
+      "paused_until": null,
+      "reason": null
+    },
+    {
+      "id": "rss_analyst",
+      "label": "analyst RSS",
+      "status": "ok",
+      "rows": 7,
+      "duration_ms": 2168,
+      "paused_until": null,
+      "reason": null
+    },
+    {
+      "id": "releases_atom",
+      "label": "releases",
+      "status": "ok",
+      "rows": 0,
+      "duration_ms": 5042,
       "paused_until": null,
       "reason": null
     },
@@ -73,8 +100,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 28,
-      "duration_ms": 6492,
+      "rows": 29,
+      "duration_ms": 2385,
       "paused_until": null,
       "reason": null
     },
@@ -83,7 +110,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 2,
-      "duration_ms": 340,
+      "duration_ms": 40,
       "paused_until": null,
       "reason": null
     },
@@ -92,16 +119,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4433,
+      "duration_ms": 40,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 62294,
-    "sources_wall_ms": 20709,
-    "papers_lane_ms": 20709,
-    "slowest_source_ms": 20000,
+    "sources_ms": 52406,
+    "sources_wall_ms": 16705,
+    "papers_lane_ms": 3360,
+    "slowest_source_ms": 16704,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -109,18 +136,19 @@
       "openalex": 25000,
       "crossref": 25000,
       "hn": 30000,
+      "hn_title": 25000,
       "rss_labs": 30000,
       "rss_security": 25000,
+      "rss_analyst": 25000,
+      "releases_atom": 25000,
       "gnews": 25000,
       "github": 25000,
       "wikidata": 25000
     },
-    "timed_out": [
-      "arxiv"
-    ],
-    "wall_ms": 21089,
-    "startup_ms": 48,
-    "main_ms": 21107
+    "timed_out": [],
+    "wall_ms": 17418,
+    "startup_ms": 53,
+    "main_ms": 17503
   },
   "multi_source_independent": 3,
   "stale_hours": 6,
@@ -129,21 +157,22 @@
     "multi_source_independent": 3,
     "multi_source_raw": 3,
     "self_reposts": 0,
-    "items_in": 222,
-    "clusters_out": 209,
-    "collapsed": 13,
+    "items_in": 252,
+    "clusters_out": 238,
+    "collapsed": 14,
     "multi_source": 3,
-    "multi_member": 9,
+    "multi_member": 8,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 38,
+    "new_items": 47,
     "per_source": {
-      "hn-algolia": 51,
+      "hn-algolia": 61,
       "rss-lab": 105,
-      "rss-security": 28,
-      "gnews-rss": 28,
-      "gmail-news": 10
+      "rss-security": 40,
+      "gnews-rss": 29,
+      "gmail-news": 10,
+      "rss-analyst": 7
     },
     "multi_source_clusters": [
       {
@@ -152,7 +181,7 @@
           "rss-lab",
           "hn-algolia"
         ],
-        "size": 3,
+        "size": 5,
         "score": 1,
         "members": [
           {
@@ -167,6 +196,20 @@
             "source": "hn-algolia",
             "title": "Advancing Coding in Low-Resource Programming Languages",
             "at": "2026-10-19T22:48:41Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:50162354",
+            "source": "hn-algolia",
+            "title": "Advancing coding in low‑resource programming languages",
+            "at": "2026-10-20T07:06:02Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:50162135",
+            "source": "hn-algolia",
+            "title": "Advancing coding in low‑resource programming languages",
+            "at": "2026-10-20T06:32:37Z",
             "publisher": null
           },
           {
@@ -195,6 +238,13 @@
             "publisher": null
           },
           {
+            "id": "gnews:fb0fe071c5c2a56e",
+            "source": "gnews-rss",
+            "title": "AI agents are only as good as the personal information you share - KZTV10",
+            "at": "2026-10-19T15:43:47Z",
+            "publisher": "KZTV10"
+          },
+          {
             "id": "gnews:2efb88321db26bba",
             "source": "gnews-rss",
             "title": "AI agents are only as good as the personal information you share - KIVI-TV",
@@ -202,18 +252,11 @@
             "publisher": "KIVI-TV"
           },
           {
-            "id": "gnews:013fdeac4e6a3326",
+            "id": "gnews:021d53a5293f2bd9",
             "source": "gnews-rss",
-            "title": "AI agents are only as good as the personal information you share. That raises privacy concerns - Santa Fe New Mexican",
-            "at": "2026-10-19T19:05:00Z",
-            "publisher": "Santa Fe New Mexican"
-          },
-          {
-            "id": "gnews:b12fc113e7c07479",
-            "source": "gnews-rss",
-            "title": "AI agents are only as good as the personal information you share. That raises privacy concerns - Trentonian",
-            "at": "2026-10-19T15:50:01Z",
-            "publisher": "Trentonian"
+            "title": "AI agents are only as good as the personal information you share. That raises privacy concerns - Charleston Gazette-Mail",
+            "at": "2026-10-19T20:00:00Z",
+            "publisher": "Charleston Gazette-Mail"
           }
         ]
       },
@@ -258,20 +301,16 @@
           "title": "MiniMax M3.1 Flash Was Space Bunny, Cuts Costs 70% [2026] - shattered.io"
         },
         {
+          "publisher": "FourWeekMBA",
+          "title": "Microsoft Subsidiaries: The Companies Microsoft Owns (2026) - FourWeekMBA"
+        },
+        {
           "publisher": "Dark Reading",
           "title": "Researchers Infiltrate Microsoft Tech Support Scam Operation - Dark Reading"
         },
         {
-          "publisher": "SC Media",
-          "title": "Attackers compromise Microsoft 365 credential via ConnectWise Cloud Backup - SC Media"
-        },
-        {
           "publisher": "Techlicious",
           "title": "Google can now use insights from your Gmail and Photos to target ads - Techlicious"
-        },
-        {
-          "publisher": "Reason Magazine",
-          "title": "Britain Wants To Punish Microsoft for Being Too Successful - Reason Magazine"
         },
         {
           "publisher": "IPWatchdog",
@@ -280,18 +319,14 @@
         {
           "publisher": "News Anyway",
           "title": "Clocks go back on Sunday: Britons search far more for how to set a watch than an oven, research suggests - News Anyway"
-        },
-        {
-          "publisher": "Techlicious",
-          "title": "Google can now use insights from your Gmail and Photos to target ads - Techlicious"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 21
+      "hn_dropped": 20
     },
     "gnews_near_misses": [
       {
-        "score": 0.531,
+        "score": 0.536,
         "blocked": "time-window",
         "hours_apart": 102,
         "a": {
@@ -316,7 +351,7 @@
         ]
       },
       {
-        "score": 0.505,
+        "score": 0.502,
         "blocked": "time-window",
         "hours_apart": 34.7,
         "a": {
@@ -339,7 +374,7 @@
         ]
       },
       {
-        "score": 0.436,
+        "score": 0.439,
         "blocked": "time-window",
         "hours_apart": 105.1,
         "a": {
@@ -364,7 +399,51 @@
         ]
       },
       {
-        "score": 0.276,
+        "score": 0.296,
+        "blocked": "time-window",
+        "hours_apart": 138,
+        "a": {
+          "id": "rss:openai:57c3309db5bedcde",
+          "source": "rss-lab",
+          "title": "Amp puts AI agents to work beyond code with OpenAI models",
+          "at": "2026-10-14T12:00:00Z"
+        },
+        "b": {
+          "id": "gnews:810f44fea3fae986",
+          "source": "gnews-rss",
+          "title": "Beyond Chatbots: The Rise of AI Agents - - Metro State University",
+          "at": "2026-10-20T06:01:02Z"
+        },
+        "shared": [
+          "ai",
+          "agent",
+          "beyond"
+        ]
+      },
+      {
+        "score": 0.284,
+        "blocked": "below-threshold",
+        "hours_apart": 4.2,
+        "a": {
+          "id": "hn:50151080",
+          "source": "hn-algolia",
+          "title": "AI firm Anthropic to commit 5% of shares to fund for 'public good'",
+          "at": "2026-10-19T11:31:19Z"
+        },
+        "b": {
+          "id": "gnews:fb0fe071c5c2a56e",
+          "source": "gnews-rss",
+          "title": "AI agents are only as good as the personal information you share - KZTV10",
+          "at": "2026-10-19T15:43:47Z"
+        },
+        "shared": [
+          "ai",
+          "shar",
+          "good"
+        ]
+      },
+      {
+        "score": 0.284,
         "blocked": "below-threshold",
         "hours_apart": 4.2,
         "a": {
@@ -386,28 +465,28 @@
         ]
       },
       {
-        "score": 0.262,
-        "blocked": "time-window",
-        "hours_apart": 820.2,
+        "score": 0.276,
+        "blocked": "thin-overlap",
+        "hours_apart": 323.9,
         "a": {
-          "id": "rss:google-ai:50f1fa34d3c31e12",
-          "source": "rss-lab",
-          "title": "AI for everyone in every language",
-          "at": "2026-09-15T16:00:00Z"
+          "id": "gnews:c87fb33fa3747079",
+          "source": "gnews-rss",
+          "title": "Microsoft-IITP program helps Korean AI talents tap into global research resources - The Korea Times",
+          "at": "2026-10-20T05:30:03Z"
         },
         "b": {
-          "id": "gnews:ed10c5312849c0ca",
-          "source": "gnews-rss",
-          "title": "Exa says its new search engine for AI agents beats every rival on eight benchmarks - Startup Fortune",
-          "at": "2026-10-19T20:10:06Z"
+          "id": "gmail:1a1124990d6345ac",
+          "source": "gmail-news",
+          "title": "Can Microsoft Help Customers Cut Back on Claude?",
+          "at": "2026-10-06T17:36:12Z"
         },
         "shared": [
-          "ai",
-          "every"
+          "microsoft",
+          "help"
         ]
       },
       {
-        "score": 0.258,
+        "score": 0.263,
         "blocked": "time-window",
         "hours_apart": 104.1,
         "a": {
@@ -426,53 +505,11 @@
           "general",
           "purpos"
         ]
-      },
-      {
-        "score": 0.258,
-        "blocked": "thin-overlap",
-        "hours_apart": 629.8,
-        "a": {
-          "id": "rss:google-ai:1ccf342131e2aeec",
-          "source": "rss-lab",
-          "title": "Google Beam expands with new regions, partners, and customers",
-          "at": "2026-09-23T18:00:00Z"
-        },
-        "b": {
-          "id": "gnews:90cafca07a2665d4",
-          "source": "gnews-rss",
-          "title": "Google expands AI tools for teachers and researchers | ETIH EdTech News - EdTech Innovation Hub",
-          "at": "2026-10-19T23:46:55Z"
-        },
-        "shared": [
-          "google",
-          "expand"
-        ]
-      },
-      {
-        "score": 0.245,
-        "blocked": "thin-overlap",
-        "hours_apart": 625.6,
-        "a": {
-          "id": "rss:google-ai:1ccf342131e2aeec",
-          "source": "rss-lab",
-          "title": "Google Beam expands with new regions, partners, and customers",
-          "at": "2026-09-23T18:00:00Z"
-        },
-        "b": {
-          "id": "gnews:69f897f41c423729",
-          "source": "gnews-rss",
-          "title": "AI Is Reshaping Local Search but Small Businesses Need Google to Win Customers, Research Finds - WBOC TV",
-          "at": "2026-10-19T19:35:03Z"
-        },
-        "shared": [
-          "google",
-          "customer"
-        ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.727,
+        "score": 0.726,
         "blocked": "time-window",
         "hours_apart": 97.5,
         "a": {
@@ -493,7 +530,7 @@
         ]
       },
       {
-        "score": 0.592,
+        "score": 0.595,
         "blocked": "time-window",
         "hours_apart": 94,
         "a": {
@@ -513,7 +550,7 @@
         ]
       },
       {
-        "score": 0.531,
+        "score": 0.536,
         "blocked": "time-window",
         "hours_apart": 102,
         "a": {
@@ -538,7 +575,7 @@
         ]
       },
       {
-        "score": 0.505,
+        "score": 0.502,
         "blocked": "time-window",
         "hours_apart": 34.7,
         "a": {
@@ -561,7 +598,7 @@
         ]
       },
       {
-        "score": 0.436,
+        "score": 0.439,
         "blocked": "time-window",
         "hours_apart": 105.1,
         "a": {
@@ -586,63 +623,67 @@
         ]
       },
       {
-        "score": 0.313,
-        "blocked": "thin-overlap",
-        "hours_apart": 297.1,
+        "score": 0.413,
+        "blocked": "time-window",
+        "hours_apart": 306.1,
         "a": {
-          "id": "hn:50142323",
+          "id": "hn:50151928",
           "source": "hn-algolia",
-          "title": "Torvalds use Claude for bottleneck fix, but race discovered",
-          "at": "2026-10-18T16:08:48Z"
+          "title": "Show HN: Qwen3-4B with the AI writing tics trained out",
+          "at": "2026-10-19T13:00:47Z"
         },
         "b": {
-          "id": "rss-sec:projectzero:c26302aa2cbe872f",
-          "source": "rss-security",
-          "title": "How to fix a bug in a fix",
-          "at": "2026-10-06T07:00:00Z"
+          "id": "gmail:1a112914bb745ca0",
+          "source": "gmail-news",
+          "title": "This AI that can't write",
+          "at": "2026-10-06T18:54:34Z"
         },
         "shared": [
-          "fix"
+          "ai",
+          "writ"
         ]
       },
       {
-        "score": 0.304,
-        "blocked": "thin-overlap",
-        "hours_apart": 325.3,
+        "score": 0.357,
+        "blocked": "time-window",
+        "hours_apart": 3800,
         "a": {
-          "id": "hn:50157524",
+          "id": "hn:50141657",
           "source": "hn-algolia",
-          "title": "Ex OpenAI engineer accused of planting bug was in contact with Saudi royals",
-          "at": "2026-10-19T20:18:42Z"
+          "title": "Websites are closing their doors to AI agents",
+          "at": "2026-10-18T14:58:10Z"
         },
         "b": {
-          "id": "rss-sec:projectzero:c26302aa2cbe872f",
+          "id": "rss-sec:projectzero:801995cb0a47fffb",
           "source": "rss-security",
-          "title": "How to fix a bug in a fix",
-          "at": "2026-10-06T07:00:00Z"
+          "title": "A 0-click exploit chain for the Pixel 10: When a Door Closes, a Window Opens",
+          "at": "2026-05-13T07:00:00Z"
         },
         "shared": [
-          "bug"
+          "clos",
+          "door"
         ]
       },
       {
-        "score": 0.296,
-        "blocked": "thin-overlap",
-        "hours_apart": 284.4,
+        "score": 0.338,
+        "blocked": "time-window",
+        "hours_apart": 1269.1,
         "a": {
-          "id": "hn:50153101",
+          "id": "hn:50147159",
           "source": "hn-algolia",
-          "title": "Replit makes OpenAI its default over Anthropic, CEO says",
-          "at": "2026-10-19T14:43:27Z"
+          "title": "Anthropic's Own Staff Can't Use Claude Code's 'Bypass Permissions' Mode",
+          "at": "2026-10-19T01:03:50Z"
         },
         "b": {
-          "id": "rss:nvidia-dev:1fd6b880e95ea139",
-          "source": "rss-lab",
-          "title": "The Machines that Make the Machines",
-          "at": "2026-10-07T18:21:03Z"
+          "id": "rss-sec:embracethered:ec3f36b4902a2296",
+          "source": "rss-security",
+          "title": "Breaking Claude Code Opus 5 Auto Mode",
+          "at": "2026-08-27T04:00:00Z"
         },
         "shared": [
-          "make"
+          "claude",
+          "code",
+          "mode"
         ]
       }
     ]
@@ -651,76 +692,97 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 0,
-      "streak_fail": 1,
-      "items_last": 5
+      "streak_ok": 1,
+      "streak_fail": 0,
+      "items_last": 28
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 146,
+      "streak_ok": 147,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 146,
+      "streak_ok": 147,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 146,
+      "streak_ok": 147,
       "streak_fail": 0,
-      "items_last": 28
+      "items_last": 29
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 146,
+      "streak_ok": 147,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 146,
+      "streak_ok": 147,
       "streak_fail": 0,
-      "items_last": 51
+      "items_last": 61
+    },
+    {
+      "id": "hn_title",
+      "state": "ok",
+      "streak_ok": 1,
+      "streak_fail": 0,
+      "items_last": 9
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 58,
+      "streak_ok": 59,
       "streak_fail": 0,
-      "items_last": 3
+      "items_last": 5
+    },
+    {
+      "id": "releases_atom",
+      "state": "ok",
+      "streak_ok": 1,
+      "streak_fail": 0,
+      "items_last": 0
+    },
+    {
+      "id": "rss_analyst",
+      "state": "ok",
+      "streak_ok": 1,
+      "streak_fail": 0,
+      "items_last": 7
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 50,
+      "streak_ok": 51,
       "streak_fail": 0,
       "items_last": 105
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 146,
+      "streak_ok": 147,
       "streak_fail": 0,
-      "items_last": 28
+      "items_last": 40
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 146,
+      "streak_ok": 147,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.0059230555555555555,
+    "hours": 0.005078333333333333,
     "stale": false
   },
   "hf": {
@@ -729,10 +791,10 @@
     "url": "https://huggingface.co/api/daily_papers"
   },
   "arxiv": {
-    "ok": false,
-    "enriched": 0,
-    "shelf": 5,
-    "timed_out": true,
+    "ok": true,
+    "enriched": 24,
+    "shelf": 4,
+    "timed_out": false,
     "budget_ms": 20000,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
@@ -741,17 +803,17 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "enriched": 3,
+    "enriched": 5,
     "secondary": 3,
     "query": "LLM agent",
     "mode": "search",
-    "from_cache": false,
-    "searches": 1,
+    "from_cache": true,
+    "searches": 0,
     "retries": 0,
     "status": "ok",
     "paused_until": null,
     "pause_reason": null,
-    "requests": 1,
+    "requests": 0,
     "auth": "anon",
     "brief": false,
     "pulse_lead": false,
@@ -759,24 +821,24 @@
     "url": "https://api.openalex.org/works",
     "sample": [
       {
+        "id": "2610.06830",
+        "openalexId": "https://openalex.org/W4407759090",
+        "year": 2025,
+        "doi": "https://doi.org/10.52202/085713-0593",
+        "enrichOnly": false
+      },
+      {
+        "id": "2610.25950",
+        "openalexId": "https://openalex.org/W4412877164",
+        "year": 2025,
+        "doi": "https://doi.org/10.1145/3711896.3736570",
+        "enrichOnly": false
+      },
+      {
         "id": "W4393160747",
         "openalexId": "https://openalex.org/W4393160747",
         "year": 2024,
         "doi": "https://doi.org/10.1609/aaai.v38i17.29936",
-        "enrichOnly": true
-      },
-      {
-        "id": "W4412877164",
-        "openalexId": "https://openalex.org/W4412877164",
-        "year": 2025,
-        "doi": "https://doi.org/10.1145/3711896.3736570",
-        "enrichOnly": true
-      },
-      {
-        "id": "W4391620956",
-        "openalexId": "https://openalex.org/W4391620956",
-        "year": 2024,
-        "doi": "https://doi.org/10.48550/arxiv.2402.02716",
         "enrichOnly": true
       }
     ]
@@ -788,8 +850,8 @@
     "enriched": 1,
     "query": "doi:10.1145/3711896.3736570",
     "mode": "filter",
-    "from_cache": false,
-    "searches": 1,
+    "from_cache": true,
+    "searches": 0,
     "brief": false,
     "pulse_lead": false,
     "papers_enrich_only": true,
@@ -797,7 +859,7 @@
     "merge_notes": [],
     "sample": [
       {
-        "id": "W4412877164",
+        "id": "2610.25950",
         "crossrefDoi": "https://doi.org/10.1145/3711896.3736570",
         "issued": "2025-08-03",
         "type": "proceedings-article",
@@ -811,7 +873,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 51,
+    "count": 61,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -828,19 +890,45 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 21,
+    "ai_dropped": 20,
     "url": "https://hn.algolia.com/api/v1/search",
+    "title_queries": {
+      "ok": true,
+      "soft_fail": false,
+      "soft_fail_reason": null,
+      "queries_run": [
+        "agent",
+        "open weights",
+        "prompt injection",
+        "Qwen",
+        "local model"
+      ],
+      "queries_ok": [
+        "agent",
+        "open weights",
+        "prompt injection",
+        "Qwen",
+        "local model"
+      ],
+      "hits": 13,
+      "candidates": 10,
+      "ai_dropped": 1,
+      "duplicates": 1,
+      "added": 9,
+      "cap": 20,
+      "merged_into_live_hn": true
+    },
     "sample": [
       {
         "id": "hn:50150434",
         "tag": "rest",
-        "score": 563,
+        "score": 578,
         "text": "Timestral: Mistral's time-series foundation models"
       },
       {
         "id": "hn:50153630",
         "tag": "rest",
-        "score": 321,
+        "score": 333,
         "text": "CERN and Mistral sign a statement of intent to establish a strategic partnership"
       },
       {
@@ -863,52 +951,59 @@
     "feeds": [
       {
         "lab": "openai",
-        "url": "(cache:openai)",
+        "url": "https://openai.com/news/rss.xml",
         "count": 12
       },
       {
         "lab": "deepmind",
-        "url": "(cache:deepmind)",
+        "url": "https://deepmind.google/blog/rss.xml",
         "count": 12
       },
       {
         "lab": "google-ai",
-        "url": "(cache:google-ai)",
+        "url": "https://blog.google/technology/ai/rss/",
         "count": 12
       },
       {
         "lab": "huggingface",
-        "url": "(cache:huggingface)",
+        "url": "https://huggingface.co/blog/feed.xml",
         "count": 12
       },
       {
         "lab": "mistral",
-        "url": "(cache:mistral)",
+        "url": "https://mistral.ai/rss.xml",
         "count": 12
       },
       {
         "lab": "nvidia",
-        "url": "(cache:nvidia)",
+        "url": "https://blogs.nvidia.com/feed/",
         "count": 12
       },
       {
         "lab": "nvidia-dev",
-        "url": "(cache:nvidia-dev)",
+        "url": "https://developer.nvidia.com/blog/feed",
         "count": 12
       },
       {
         "lab": "ms-research",
-        "url": "(cache:ms-research)",
+        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
         "count": 10
       },
       {
         "lab": "google-research",
-        "url": "(cache:google-research)",
+        "url": "https://research.google/blog/rss/",
         "count": 12
       }
     ],
     "feeds_soft_fail": [],
     "sample": [
+      {
+        "id": "rss:nvidia:794f06903a780c87",
+        "lab": "nvidia",
+        "tag": "rest",
+        "title": "Spain-Based Startups Advance Regional Innovation With Barcelona Supercomputing Center",
+        "link": "https://blogs.nvidia.com/blog/spain-startups-barcelona-supercomputing-center/"
+      },
       {
         "id": "rss:nvidia:99795439c0b38083",
         "lab": "nvidia",
@@ -929,19 +1024,12 @@
         "tag": "rest",
         "title": "NVIDIA Advances Agentic Security for Media, From European Public Service Broadcasting to Global Content Production",
         "link": "https://blogs.nvidia.com/blog/media-agentic-security-european-public-service-broadcasting-global-content-production/"
-      },
-      {
-        "id": "rss:openai:1dbe22633003a2af",
-        "lab": "openai",
-        "tag": "rest",
-        "title": "Advancing coding in low‑resource programming languages",
-        "link": "https://openai.com/index/low-resource-programming-languages"
       }
     ]
   },
   "rss_security": {
     "ok": true,
-    "count": 28,
+    "count": 40,
     "shelf": 0,
     "brief": false,
     "pulse_only": true,
@@ -949,18 +1037,23 @@
     "feeds": [
       {
         "lab": "trailofbits",
-        "url": "(cache:trailofbits)",
+        "url": "https://blog.trailofbits.com/feed/",
         "count": 12
       },
       {
         "lab": "fox-it",
-        "url": "(cache:fox-it)",
+        "url": "https://blog.fox-it.com/feed/",
         "count": 10
       },
       {
         "lab": "projectzero",
-        "url": "(cache:projectzero)",
+        "url": "https://projectzero.google/feed.xml",
         "count": 6
+      },
+      {
+        "lab": "embracethered",
+        "url": "https://embracethered.com/blog/index.xml",
+        "count": 12
       }
     ],
     "sample": [
@@ -970,6 +1063,13 @@
         "tag": "rest",
         "title": "Package managers have an integrity problem",
         "link": "https://blog.trailofbits.com/2026/10/14/package-managers-have-an-integrity-problem/"
+      },
+      {
+        "id": "rss-sec:embracethered:4c2e71e50d02ddf9",
+        "lab": "embracethered",
+        "tag": "rest",
+        "title": "Visual Studio Copilot and SSMS Remote Code Execution (CVE-2026-103572)",
+        "link": "https://embracethered.com/blog/posts/2026/visual-studio-copilot-remote-code-execution/"
       },
       {
         "id": "rss-sec:fox-it:53fb98f2d458276a",
@@ -984,15 +1084,137 @@
         "tag": "rest",
         "title": "How to fix a bug in a fix",
         "link": "https://projectzero.google/2026/10/emergency-patching.html"
-      },
-      {
-        "id": "rss-sec:trailofbits:f8144ece9a9d92ce",
-        "lab": "trailofbits",
-        "tag": "rest",
-        "title": "SequenceHash: multihashing for the rest of us",
-        "link": "https://blog.trailofbits.com/2026/10/02/sequencehash-multihashing-for-the-rest-of-us/"
       }
     ]
+  },
+  "rss_analyst": {
+    "ok": true,
+    "soft_fail": false,
+    "soft_fail_reason": null,
+    "count": 7,
+    "feeds": [
+      {
+        "feed": "simonw",
+        "url": "https://simonwillison.net/atom/everything/",
+        "count": 2
+      },
+      {
+        "feed": "latent-space",
+        "url": "https://www.latent.space/feed",
+        "count": 5
+      }
+    ],
+    "feeds_soft_fail": [],
+    "dropped": [
+      {
+        "feed": "simonw",
+        "title": "My obituary for programming",
+        "reason": "not-ai"
+      },
+      {
+        "feed": "simonw",
+        "title": "Inline rendering with document​.currentScript",
+        "reason": "not-ai"
+      },
+      {
+        "feed": "simonw",
+        "title": "web-edit 0.1a2",
+        "reason": "not-ai"
+      },
+      {
+        "feed": "simonw",
+        "title": "Quoting Addy Osmani, Morgan Westlee Lunt, and Qing Wang",
+        "reason": "not-ai"
+      },
+      {
+        "feed": "latent-space",
+        "title": "Lab-in-the-Loop at Compute Speed — Ian Quigley, Leash Bio",
+        "reason": "not-ai"
+      }
+    ],
+    "brief": false,
+    "pulse_only": true,
+    "lead_rule": "analyst-only groups excluded",
+    "sample": [
+      {
+        "id": "anl:latent-space:996b48d3900b31c6",
+        "feed": "latent-space",
+        "recap": true,
+        "title": "[AINews] not much happened today",
+        "link": "https://www.latent.space/p/ainews-not-much-happened-today-f09"
+      },
+      {
+        "id": "anl:simonw:ae7b31dc246e2760",
+        "feed": "simonw",
+        "recap": false,
+        "title": "llm-tools-datasette 0.1.1",
+        "link": "https://simonwillison.net/2026/Oct/18/llm-tools-datasette/"
+      },
+      {
+        "id": "anl:simonw:9d2417f40cde50f0",
+        "feed": "simonw",
+        "recap": false,
+        "title": "llm-echo 0.5",
+        "link": "https://simonwillison.net/2026/Oct/18/llm-echo/"
+      },
+      {
+        "id": "anl:latent-space:66a8784860f53e77",
+        "feed": "latent-space",
+        "recap": true,
+        "title": "[AINews] High Taste Testers Ep. 1",
+        "link": "https://www.latent.space/p/ainews-high-taste-testers-ep-1"
+      }
+    ]
+  },
+  "releases_atom": {
+    "ok": true,
+    "soft_fail": false,
+    "soft_fail_reason": null,
+    "count": 0,
+    "decisions": [
+      {
+        "feed": "llama.cpp",
+        "action": "no-semver",
+        "newest": null,
+        "emitted": null,
+        "baseline": "(none)"
+      },
+      {
+        "feed": "ollama",
+        "action": "seed",
+        "newest": "v0.40.6",
+        "emitted": null,
+        "baseline": "(none)"
+      },
+      {
+        "feed": "vllm",
+        "action": "seed",
+        "newest": "v0.32.0",
+        "emitted": null,
+        "baseline": "(none)"
+      }
+    ],
+    "feeds": [
+      {
+        "feed": "llama.cpp",
+        "url": "https://github.com/ggml-org/llama.cpp/releases.atom",
+        "entries": 10
+      },
+      {
+        "feed": "ollama",
+        "url": "https://github.com/ollama/ollama/releases.atom",
+        "entries": 10
+      },
+      {
+        "feed": "vllm",
+        "url": "https://github.com/vllm-project/vllm/releases.atom",
+        "entries": 10
+      }
+    ],
+    "feeds_soft_fail": [],
+    "brief": false,
+    "pulse_only": true,
+    "filter": "semver ^v?(\\d+)\\.(\\d+)(?:\\.(\\d+))?$ · minor/major bump vs releases-seen.json · ≤1/feed/24h · first run seeds"
   },
   "google_news": {
     "ok": true,
@@ -1000,9 +1222,17 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 28,
-    "pool": 264,
+    "items": 29,
+    "pool": 262,
     "corroborators": [
+      {
+        "id": "gnews:fb0fe071c5c2a56e",
+        "anchor_id": "hn:50155578",
+        "score": 1,
+        "title": "AI agents are only as good as the personal information you share - KZTV10",
+        "publisher": "KZTV10",
+        "self_repost": false
+      },
       {
         "id": "gnews:2efb88321db26bba",
         "anchor_id": "hn:50155578",
@@ -1012,19 +1242,11 @@
         "self_repost": false
       },
       {
-        "id": "gnews:013fdeac4e6a3326",
+        "id": "gnews:021d53a5293f2bd9",
         "anchor_id": "hn:50155578",
-        "score": 0.826,
-        "title": "AI agents are only as good as the personal information you share. That raises privacy concerns - Santa Fe New Mexican",
-        "publisher": "Santa Fe New Mexican",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:b12fc113e7c07479",
-        "anchor_id": "hn:50155578",
-        "score": 0.826,
-        "title": "AI agents are only as good as the personal information you share. That raises privacy concerns - Trentonian",
-        "publisher": "Trentonian",
+        "score": 0.824,
+        "title": "AI agents are only as good as the personal information you share. That raises privacy concerns - Charleston Gazette-Mail",
+        "publisher": "Charleston Gazette-Mail",
         "self_repost": false
       }
     ],
@@ -1054,40 +1276,65 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:9a83076e3b915264",
-        "title": "Chrome DevTools 154 Adds AI Agent Controls [2026] - shattered.io",
-        "publisher": "shattered.io",
-        "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE50S3NmMGpsbEpOUnVRdWdBdGhrQjN5Qko2YkYzaThhMjJsUGVQUXRzazhOWkRJNE9IRE9rNnhKam0tOGlXNlBJTnE0OXRxQnduUGNwa0VYZDZNTkZEZHYxWVYzSElDU0xNNHdBUkkzV2x6QQ?oc=5",
+        "id": "gnews:8d55278c84d23157",
+        "title": "AI could deliver up to 5X productivity gains in chip design, Socionext expects. - Stock Titan",
+        "publisher": "Stock Titan",
+        "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQMzBZSnNwNjByR0ZBNFBjaGo4OUhGVUduNDkxRmV4dGNjTFNxRDhyODZxb3pxN2tmcnhCUkVzN1dTQUhUTXIzcjItUWNwLVlpcS1WRXpHbXpIRmxkSzZOUkZ6MXR2ZE9sS1RZUlJ6Q0E5akp5V3VsRVRpeml4N0ZHNGozR183TVNaZ1h4dTJFUVZENVZJWW9Neks5dmpUQ0RIWkNHazZ1ZWdCVEZNVFJmN1FZNTRJVXVmWElwNkxB?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:f93fe7064c46f850",
-        "title": "IBM previews agentic data integration for watsonx.data - Omdia",
-        "publisher": "Omdia",
-        "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNVHJPQTVWaTc2SW0yS3pQMW81Z2pmZ3R5ZWRmUU9PMG5Mckl5X0x6Nml1OE4xci1ZVlh3T1kxSHNSb0hJeTlsVlNDR0FrR1NuaFZoY0cxMUY3d3h4LXcwNy1yY2o4RmhGdWUzVE1yN2NHc21NdjJtTUg3NjhFT2g0ajNxSVl3Tlhfd2JOdnZGYTlCUHNtQ3B4aWVaQXd2WG5IalE?oc=5",
+        "id": "gnews:d2938695677c2003",
+        "title": "Beyond Now launches Wave AI Framework to activate AI agent collaboration across CSPs’ revenue lifecycle - EIN News",
+        "publisher": "EIN News",
+        "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxNdTBGQXY4MFVpbzBMWjhoRXhISTlKU3hWeWNCY0N3OFp4YXcxTGJnc2thTVU4Z3daWmNYMHNsZzZlVFp5ek13eWFzWFY5SFJyYXN2VHdvVTBYeVdHWlB1NDdRZzhVeWZDb0l6amRTc25ObXVMUWZ5UnlPTnZuNTZoWTNicGd1SEtNQkF1QlpHQjAwRmttd1JWY3g0d3h5YXItOWtPcnZWMmx5ZDVtc3JleUtDUDZyeE1SZ0JFZzFtWUZMcF9hc2cwRV9YZk03eV9uSm5JSUQyTEhUWVVo?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:c50a19d9d7266a77",
-        "title": "Cloudflare launches AI model that extracts information from emails, receipt photos in under 1 second - 디지털투데이",
-        "publisher": "디지털투데이",
-        "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQR2d4VTV5clBUX1c2TFRKREhkUXQ0aWlRMjYwY3h0Q3AyRnpDZDhrUXlGbUpYZGxIYjN4cjkyQ2ZPSFlfVElLNGxOX3RnVmpsQnJiTGlPdEhiZGtOZUdwbXdRRjZHUWVpc1JkZG5TbHlHQkhQZXppYnJWaUV3T3l3alZYR2JUbUhORmhoeHhjbzJDcDA2U09oMHRuQnEzRXRqQUhQSHhDREc4c01VTlgtR3lwQzI5UndrVzJEME5XSUw1TWV2azBpS0ZOMWZMSHZfaU05eVpXMVczU2FBRUl1dA?oc=5",
+        "id": "gnews:68fa7581d2a9015c",
+        "title": "New BSV standard lets humans control AI agents’ spending - CoinGeek",
+        "publisher": "CoinGeek",
+        "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPYXd1bmxZVGxVSldYM0ZTUVg1RXNFS01Bc3JxdWQ2V0VuVVVPQUJpTFZPSThjTXVPWWNrcXZIRjdybnZ6WlF0QnkzNXRKeEJMd1dyQ3hyMy1QT2pMWHpsamF6SkJPTzhyV0lYLUUydXFDcUpCZ211NXRTeFl6X3J6ZWUwaw?oc=5",
         "tag": "rest"
       }
     ]
   },
   "gmail_news": {
-    "ok": false,
-    "soft_fail": true,
-    "soft_fail_reason": "box-only",
-    "count": 0,
-    "fetched": 0,
-    "from_cache": false,
-    "last_query_hash": "",
+    "ok": true,
+    "soft_fail": false,
+    "soft_fail_reason": null,
+    "count": 10,
+    "fetched": 10,
+    "from_cache": true,
+    "last_query_hash": "dcc96519c3fc",
     "brief": false,
     "pulse_only": true,
     "briefEligible": false,
-    "sample": []
+    "sample": [
+      {
+        "id": "gmail:1a11250b91591834",
+        "title": "AI systems could cover up misbehavior",
+        "publisher": "substack.com",
+        "qi": 6.6,
+        "priority": "P3",
+        "link": "https://metr.org/blog/cover-up"
+      },
+      {
+        "id": "gmail:1a111f35812d42ba",
+        "title": "Oct. 6 - Water hacks, rogue AI raise alarms | Java vulnerabilities disclosed",
+        "publisher": "divenewsletter.com",
+        "qi": 6.6,
+        "priority": "P3",
+        "link": "https://www.cybersecuritydive.com/news/water"
+      },
+      {
+        "id": "gmail:1a1118c601f1cb6a",
+        "title": "OpenAI Starts Watermarking ChatGPT Text",
+        "publisher": "alvarocintas.com",
+        "qi": 5,
+        "priority": "P3",
+        "link": "https://newsletter.alvarocintas.com/watermark"
+      }
+    ]
   },
   "x": {
     "fetched": 0,
@@ -1103,9 +1350,9 @@
     "soft_fail_reason": null,
     "query": "agent sandbox escape",
     "shelf": 2,
-    "from_cache": false,
-    "searches": 1,
-    "rate_limit_remaining": 9,
+    "from_cache": true,
+    "searches": 0,
+    "rate_limit_remaining": null,
     "brief": false,
     "pulse_lead": false,
     "shelf_only": true,
@@ -1122,7 +1369,7 @@
     ]
   },
   "shelf": {
-    "count": 19,
+    "count": 18,
     "brief": false
   },
   "wikidata": {
@@ -1134,8 +1381,8 @@
       "NIST",
       "MITRE"
     ],
-    "searches": 3,
-    "from_cache": false,
+    "searches": 0,
+    "from_cache": true,
     "brief": false,
     "pulse_lead": false,
     "deny_grounding_only": true,

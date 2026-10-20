@@ -10,12 +10,13 @@ export type ReleaseAtomRow = {
   source: "releases-atom";
   /** Beat 2 seen-index: first crawl stamp this canonical URL appeared. */
   first_seen?: string;
-  /** True when first_seen equals this crawl's stamp. */
+  /** Beat 2: first seen in the current crawl. */
   is_new?: boolean;
-  /** Beat 2 dedupe: the Pulse cluster this row belongs to. */
+  /** Beat 2 cross-source dedupe cluster id (see pulse-clusters.ts). */
   cluster_id?: string;
 };
 
-export const RELEASES_ATOM_AT: string | null = null;
+export const RELEASES_ATOM_AT: string | null = "2026-10-20T07:13:37Z";
 
-export const RELEASES_ATOM: ReleaseAtomRow[] = [];
+export const RELEASES_ATOM: ReleaseAtomRow[] = [
+];

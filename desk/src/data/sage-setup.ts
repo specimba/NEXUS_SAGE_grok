@@ -2,20 +2,20 @@
 import type { SageSetupView } from "@/lib/sage-setup";
 
 export const SAGE_SETUP: SageSetupView = {
-  "stamped_at": "2026-10-20T03:20:29Z",
+  "stamped_at": "2026-10-20T07:13:37Z",
   "config_path": "desk/config/sage-sources.json",
   "config_hash": "e3e9003a7d92",
   "status": "ok",
   "used": "committed",
   "errors": [],
-  "since_commit": "419a3c1",
-  "since_at": "2026-10-15T22:44:52Z",
+  "since_commit": "8dbb554",
+  "since_at": "2026-10-20T07:13:37Z",
   "sources": [
     {
       "id": "hn",
       "on": true,
       "caps": "cap 20",
-      "last_rows": 51,
+      "last_rows": 61,
       "state": "ok"
     },
     {
@@ -36,14 +36,14 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "sec_rss",
       "on": true,
       "caps": "cap_per_feed 12 · feeds 4",
-      "last_rows": 28,
+      "last_rows": 40,
       "state": "ok"
     },
     {
       "id": "gnews",
       "on": true,
       "caps": "cap 32",
-      "last_rows": 28,
+      "last_rows": 29,
       "state": "ok"
     },
     {
@@ -57,7 +57,7 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "openalex",
       "on": true,
       "caps": "—",
-      "last_rows": 3,
+      "last_rows": 5,
       "state": "ok"
     },
     {
@@ -71,8 +71,8 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "arxiv",
       "on": true,
       "caps": "—",
-      "last_rows": 5,
-      "state": "soft-fail"
+      "last_rows": 28,
+      "state": "ok"
     },
     {
       "id": "wikidata",
@@ -99,15 +99,15 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "analyst_rss",
       "on": true,
       "caps": "cap_per_feed 6 · timeout_s 10 · feeds 2",
-      "last_rows": null,
-      "state": "—"
+      "last_rows": 7,
+      "state": "ok"
     },
     {
       "id": "releases_atom",
       "on": true,
       "caps": "cap_per_feed 2 · feeds 3",
-      "last_rows": null,
-      "state": "—"
+      "last_rows": 0,
+      "state": "ok"
     }
   ],
   "keywords": [
