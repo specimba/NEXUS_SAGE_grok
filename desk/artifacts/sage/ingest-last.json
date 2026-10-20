@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-20T03:19:47Z",
+  "stamped_at": "2026-10-20T03:20:29Z",
   "config_hash": "813e5ce035c3",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,7 +11,7 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 100,
+      "duration_ms": 120,
       "paused_until": null,
       "reason": null
     },
@@ -19,17 +19,17 @@
       "id": "arxiv",
       "label": "arXiv",
       "status": "timeout",
-      "rows": 22,
-      "duration_ms": 20001,
+      "rows": 5,
+      "duration_ms": 20000,
       "paused_until": null,
-      "reason": "timeout after 20000ms budget · last good: 17 cached enrich + 5 kept shelf"
+      "reason": "timeout after 20000ms budget · last good: 0 cached enrich + 5 kept shelf"
     },
     {
       "id": "openalex",
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 204,
+      "duration_ms": 368,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 426,
+      "duration_ms": 209,
       "paused_until": null,
       "reason": null
     },
@@ -47,7 +47,7 @@
       "label": "HN",
       "status": "ok",
       "rows": 51,
-      "duration_ms": 8410,
+      "duration_ms": 8397,
       "paused_until": null,
       "reason": null
     },
@@ -56,7 +56,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 105,
-      "duration_ms": 96,
+      "duration_ms": 17828,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 96,
+      "duration_ms": 4107,
       "paused_until": null,
       "reason": null
     },
@@ -73,8 +73,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 25,
-      "duration_ms": 2473,
+      "rows": 28,
+      "duration_ms": 6492,
       "paused_until": null,
       "reason": null
     },
@@ -83,7 +83,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 2,
-      "duration_ms": 391,
+      "duration_ms": 340,
       "paused_until": null,
       "reason": null
     },
@@ -92,16 +92,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 183,
+      "duration_ms": 4433,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 32380,
-    "sources_wall_ms": 20742,
-    "papers_lane_ms": 20742,
-    "slowest_source_ms": 20001,
+    "sources_ms": 62294,
+    "sources_wall_ms": 20709,
+    "papers_lane_ms": 20709,
+    "slowest_source_ms": 20000,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -118,9 +118,9 @@
     "timed_out": [
       "arxiv"
     ],
-    "wall_ms": 21011,
-    "startup_ms": 27,
-    "main_ms": 21030
+    "wall_ms": 21089,
+    "startup_ms": 48,
+    "main_ms": 21107
   },
   "multi_source_independent": 3,
   "stale_hours": 6,
@@ -129,25 +129,25 @@
     "multi_source_independent": 3,
     "multi_source_raw": 3,
     "self_reposts": 0,
-    "items_in": 219,
-    "clusters_out": 207,
-    "collapsed": 12,
+    "items_in": 222,
+    "clusters_out": 209,
+    "collapsed": 13,
     "multi_source": 3,
-    "multi_member": 8,
+    "multi_member": 9,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 25,
+    "new_items": 38,
     "per_source": {
       "hn-algolia": 51,
       "rss-lab": 105,
       "rss-security": 28,
-      "gnews-rss": 25,
+      "gnews-rss": 28,
       "gmail-news": 10
     },
     "multi_source_clusters": [
       {
-        "title": "Advancing Coding in Low-Resource Programming Languages",
+        "title": "Advancing coding in low‑resource programming languages",
         "sources": [
           "rss-lab",
           "hn-algolia"
@@ -172,7 +172,7 @@
           {
             "id": "rss:openai:1dbe22633003a2af",
             "source": "rss-lab",
-            "title": "Advancing Coding in Low-Resource Programming Languages",
+            "title": "Advancing coding in low‑resource programming languages",
             "at": "2026-10-19T12:00:00Z",
             "publisher": "openai"
           }
@@ -202,18 +202,18 @@
             "publisher": "KIVI-TV"
           },
           {
+            "id": "gnews:013fdeac4e6a3326",
+            "source": "gnews-rss",
+            "title": "AI agents are only as good as the personal information you share. That raises privacy concerns - Santa Fe New Mexican",
+            "at": "2026-10-19T19:05:00Z",
+            "publisher": "Santa Fe New Mexican"
+          },
+          {
             "id": "gnews:b12fc113e7c07479",
             "source": "gnews-rss",
             "title": "AI agents are only as good as the personal information you share. That raises privacy concerns - Trentonian",
             "at": "2026-10-19T15:50:01Z",
             "publisher": "Trentonian"
-          },
-          {
-            "id": "gnews:f6601879511682f2",
-            "source": "gnews-rss",
-            "title": "AI agents are only as good as the personal information you share. That raises privacy concerns - Daily Democrat",
-            "at": "2026-10-19T15:49:53Z",
-            "publisher": "Daily Democrat"
           }
         ]
       },
@@ -274,24 +274,16 @@
           "title": "Britain Wants To Punish Microsoft for Being Too Successful - Reason Magazine"
         },
         {
-          "publisher": "CXOToday.com",
-          "title": "Check Point Q3 2026 Audit: Microsoft Impersonated in 33% of Global Brand Phishing Attacks - CXOToday.com"
-        },
-        {
           "publisher": "IPWatchdog",
           "title": "CAFC Agrees Google Failed to Show Unpatentability of Claims for Merging Search Engine Results - IPWatchdog"
         },
         {
-          "publisher": "London Daily News",
-          "title": "Founder of British medtech startup makes history as first woman and youngest winner of the US$100,000 Nigeria Prize for Science and Innovation - London Daily News"
-        },
-        {
-          "publisher": "The Hawk",
-          "title": "Microsoft accounts for 33 pc of brand phishing attacks in Q3, Apple, Google trail: Report - The Hawk"
-        },
-        {
           "publisher": "News Anyway",
           "title": "Clocks go back on Sunday: Britons search far more for how to set a watch than an oven, research suggests - News Anyway"
+        },
+        {
+          "publisher": "Techlicious",
+          "title": "Google can now use insights from your Gmail and Photos to target ads - Techlicious"
         }
       ],
       "gnews_pool_dropped": 0,
@@ -324,7 +316,30 @@
         ]
       },
       {
-        "score": 0.437,
+        "score": 0.505,
+        "blocked": "time-window",
+        "hours_apart": 34.7,
+        "a": {
+          "id": "hn:50139448",
+          "source": "hn-algolia",
+          "title": "Needle: Search Engine Benchmark for Agents",
+          "at": "2026-10-18T09:30:53Z"
+        },
+        "b": {
+          "id": "gnews:ed10c5312849c0ca",
+          "source": "gnews-rss",
+          "title": "Exa says its new search engine for AI agents beats every rival on eight benchmarks - Startup Fortune",
+          "at": "2026-10-19T20:10:06Z"
+        },
+        "shared": [
+          "search",
+          "engin",
+          "benchmark",
+          "agent"
+        ]
+      },
+      {
+        "score": 0.436,
         "blocked": "time-window",
         "hours_apart": 105.1,
         "a": {
@@ -349,28 +364,7 @@
         ]
       },
       {
-        "score": 0.294,
-        "blocked": "time-window",
-        "hours_apart": 315.2,
-        "a": {
-          "id": "gnews:71597e0c311316a8",
-          "source": "gnews-rss",
-          "title": "Microsoft says AI agents are like insider threats as ‘frontier models can’t be trusted’ - TechCrunch",
-          "at": "2026-10-19T22:04:28Z"
-        },
-        "b": {
-          "id": "gmail:1a112914bb745ca0",
-          "source": "gmail-news",
-          "title": "This AI that can't write",
-          "at": "2026-10-06T18:54:34Z"
-        },
-        "shared": [
-          "ai",
-          "t"
-        ]
-      },
-      {
-        "score": 0.278,
+        "score": 0.276,
         "blocked": "below-threshold",
         "hours_apart": 4.2,
         "a": {
@@ -392,9 +386,9 @@
         ]
       },
       {
-        "score": 0.271,
+        "score": 0.262,
         "blocked": "time-window",
-        "hours_apart": 822.5,
+        "hours_apart": 820.2,
         "a": {
           "id": "rss:google-ai:50f1fa34d3c31e12",
           "source": "rss-lab",
@@ -402,14 +396,35 @@
           "at": "2026-09-15T16:00:00Z"
         },
         "b": {
-          "id": "gnews:525deefe9b377045",
+          "id": "gnews:ed10c5312849c0ca",
           "source": "gnews-rss",
-          "title": "AI agent governance at scale: The four pillars every enterprise needs - News Channel 3-12",
-          "at": "2026-10-19T22:32:53Z"
+          "title": "Exa says its new search engine for AI agents beats every rival on eight benchmarks - Startup Fortune",
+          "at": "2026-10-19T20:10:06Z"
         },
         "shared": [
           "ai",
           "every"
+        ]
+      },
+      {
+        "score": 0.258,
+        "blocked": "time-window",
+        "hours_apart": 104.1,
+        "a": {
+          "id": "rss:ms-research:0aba1d84e25be9dd",
+          "source": "rss-lab",
+          "title": "Proof-based general-purpose computing with Magnetar",
+          "at": "2026-10-15T16:00:00Z"
+        },
+        "b": {
+          "id": "gnews:a946f8ae92b6e4c5",
+          "source": "gnews-rss",
+          "title": "Choosing between domain-specific and general purpose AI models - Manufacturers' Monthly",
+          "at": "2026-10-20T00:07:18Z"
+        },
+        "shared": [
+          "general",
+          "purpos"
         ]
       },
       {
@@ -434,7 +449,7 @@
         ]
       },
       {
-        "score": 0.24,
+        "score": 0.245,
         "blocked": "thin-overlap",
         "hours_apart": 625.6,
         "a": {
@@ -453,32 +468,11 @@
           "google",
           "customer"
         ]
-      },
-      {
-        "score": 0.24,
-        "blocked": "thin-overlap",
-        "hours_apart": 625.5,
-        "a": {
-          "id": "rss:google-ai:1ccf342131e2aeec",
-          "source": "rss-lab",
-          "title": "Google Beam expands with new regions, partners, and customers",
-          "at": "2026-09-23T18:00:00Z"
-        },
-        "b": {
-          "id": "gnews:564b4c2e7289c0aa",
-          "source": "gnews-rss",
-          "title": "AI Is Reshaping Local Search but Small Businesses Need Google to Win Customers, Research Finds - openPR.com",
-          "at": "2026-10-19T19:32:07Z"
-        },
-        "shared": [
-          "google",
-          "customer"
-        ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.726,
+        "score": 0.727,
         "blocked": "time-window",
         "hours_apart": 97.5,
         "a": {
@@ -499,7 +493,7 @@
         ]
       },
       {
-        "score": 0.595,
+        "score": 0.592,
         "blocked": "time-window",
         "hours_apart": 94,
         "a": {
@@ -544,7 +538,30 @@
         ]
       },
       {
-        "score": 0.437,
+        "score": 0.505,
+        "blocked": "time-window",
+        "hours_apart": 34.7,
+        "a": {
+          "id": "hn:50139448",
+          "source": "hn-algolia",
+          "title": "Needle: Search Engine Benchmark for Agents",
+          "at": "2026-10-18T09:30:53Z"
+        },
+        "b": {
+          "id": "gnews:ed10c5312849c0ca",
+          "source": "gnews-rss",
+          "title": "Exa says its new search engine for AI agents beats every rival on eight benchmarks - Startup Fortune",
+          "at": "2026-10-19T20:10:06Z"
+        },
+        "shared": [
+          "search",
+          "engin",
+          "benchmark",
+          "agent"
+        ]
+      },
+      {
+        "score": 0.436,
         "blocked": "time-window",
         "hours_apart": 105.1,
         "a": {
@@ -609,7 +626,7 @@
         ]
       },
       {
-        "score": 0.298,
+        "score": 0.296,
         "blocked": "thin-overlap",
         "hours_apart": 284.4,
         "a": {
@@ -627,27 +644,6 @@
         "shared": [
           "make"
         ]
-      },
-      {
-        "score": 0.294,
-        "blocked": "time-window",
-        "hours_apart": 315.2,
-        "a": {
-          "id": "gnews:71597e0c311316a8",
-          "source": "gnews-rss",
-          "title": "Microsoft says AI agents are like insider threats as ‘frontier models can’t be trusted’ - TechCrunch",
-          "at": "2026-10-19T22:04:28Z"
-        },
-        "b": {
-          "id": "gmail:1a112914bb745ca0",
-          "source": "gmail-news",
-          "title": "This AI that can't write",
-          "at": "2026-10-06T18:54:34Z"
-        },
-        "shared": [
-          "ai",
-          "t"
-        ]
       }
     ]
   },
@@ -657,7 +653,7 @@
       "state": "flaky",
       "streak_ok": 0,
       "streak_fail": 1,
-      "items_last": 22
+      "items_last": 5
     },
     {
       "id": "crossref",
@@ -678,7 +674,7 @@
       "state": "ok",
       "streak_ok": 146,
       "streak_fail": 0,
-      "items_last": 25
+      "items_last": 28
     },
     {
       "id": "hf",
@@ -724,7 +720,7 @@
     }
   ],
   "age_check": {
-    "hours": 0.006081111111111111,
+    "hours": 0.0059230555555555555,
     "stale": false
   },
   "hf": {
@@ -734,7 +730,7 @@
   },
   "arxiv": {
     "ok": false,
-    "enriched": 17,
+    "enriched": 0,
     "shelf": 5,
     "timed_out": true,
     "budget_ms": 20000,
@@ -938,7 +934,7 @@
         "id": "rss:openai:1dbe22633003a2af",
         "lab": "openai",
         "tag": "rest",
-        "title": "Advancing Coding in Low-Resource Programming Languages",
+        "title": "Advancing coding in low‑resource programming languages",
         "link": "https://openai.com/index/low-resource-programming-languages"
       }
     ]
@@ -1004,8 +1000,8 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 25,
-    "pool": 265,
+    "items": 28,
+    "pool": 264,
     "corroborators": [
       {
         "id": "gnews:2efb88321db26bba",
@@ -1016,19 +1012,19 @@
         "self_repost": false
       },
       {
-        "id": "gnews:b12fc113e7c07479",
+        "id": "gnews:013fdeac4e6a3326",
         "anchor_id": "hn:50155578",
-        "score": 0.828,
-        "title": "AI agents are only as good as the personal information you share. That raises privacy concerns - Trentonian",
-        "publisher": "Trentonian",
+        "score": 0.826,
+        "title": "AI agents are only as good as the personal information you share. That raises privacy concerns - Santa Fe New Mexican",
+        "publisher": "Santa Fe New Mexican",
         "self_repost": false
       },
       {
-        "id": "gnews:f6601879511682f2",
+        "id": "gnews:b12fc113e7c07479",
         "anchor_id": "hn:50155578",
-        "score": 0.828,
-        "title": "AI agents are only as good as the personal information you share. That raises privacy concerns - Daily Democrat",
-        "publisher": "Daily Democrat",
+        "score": 0.826,
+        "title": "AI agents are only as good as the personal information you share. That raises privacy concerns - Trentonian",
+        "publisher": "Trentonian",
         "self_repost": false
       }
     ],
@@ -1058,65 +1054,40 @@
     "queries_soft_fail": [],
     "sample": [
       {
+        "id": "gnews:9a83076e3b915264",
+        "title": "Chrome DevTools 154 Adds AI Agent Controls [2026] - shattered.io",
+        "publisher": "shattered.io",
+        "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE50S3NmMGpsbEpOUnVRdWdBdGhrQjN5Qko2YkYzaThhMjJsUGVQUXRzazhOWkRJNE9IRE9rNnhKam0tOGlXNlBJTnE0OXRxQnduUGNwa0VYZDZNTkZEZHYxWVYzSElDU0xNNHdBUkkzV2x6QQ?oc=5",
+        "tag": "rest"
+      },
+      {
+        "id": "gnews:f93fe7064c46f850",
+        "title": "IBM previews agentic data integration for watsonx.data - Omdia",
+        "publisher": "Omdia",
+        "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNVHJPQTVWaTc2SW0yS3pQMW81Z2pmZ3R5ZWRmUU9PMG5Mckl5X0x6Nml1OE4xci1ZVlh3T1kxSHNSb0hJeTlsVlNDR0FrR1NuaFZoY0cxMUY3d3h4LXcwNy1yY2o4RmhGdWUzVE1yN2NHc21NdjJtTUg3NjhFT2g0ajNxSVl3Tlhfd2JOdnZGYTlCUHNtQ3B4aWVaQXd2WG5IalE?oc=5",
+        "tag": "rest"
+      },
+      {
         "id": "gnews:c50a19d9d7266a77",
         "title": "Cloudflare launches AI model that extracts information from emails, receipt photos in under 1 second - 디지털투데이",
         "publisher": "디지털투데이",
         "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQR2d4VTV5clBUX1c2TFRKREhkUXQ0aWlRMjYwY3h0Q3AyRnpDZDhrUXlGbUpYZGxIYjN4cjkyQ2ZPSFlfVElLNGxOX3RnVmpsQnJiTGlPdEhiZGtOZUdwbXdRRjZHUWVpc1JkZG5TbHlHQkhQZXppYnJWaUV3T3l3alZYR2JUbUhORmhoeHhjbzJDcDA2U09oMHRuQnEzRXRqQUhQSHhDREc4c01VTlgtR3lwQzI5UndrVzJEME5XSUw1TWV2azBpS0ZOMWZMSHZfaU05eVpXMVczU2FBRUl1dA?oc=5",
         "tag": "rest"
-      },
-      {
-        "id": "gnews:7cbe9374e1282667",
-        "title": "Ant Group Open-Sources Ming-3.0-tts, Small Speech Models With Voice Design and Fine Control - Pandaily",
-        "publisher": "Pandaily",
-        "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQbkJUSG1NOTVfWUpqTlRpWHI3dkV1SG5BaDRpRzJpZTRBQlU4YkxqMzhISm1FRGExTW0zRExVUktMNzN4c0IzZmlaTV9PTnlrV1dhZlE0aFdiZ0FreVZ3SkJxZ2p5N3RBZGtvZ0ZzTzVPcTVkNldDZkVXRFptbnoxY1R1ejVzZHJLel9nc25fVGt2WUI3UXNhUllTQQ?oc=5",
-        "tag": "rest"
-      },
-      {
-        "id": "gnews:8430d776c7290afe",
-        "title": "Meta’s open-weight gambit points to AI’s changing global play - The Indian Express",
-        "publisher": "The Indian Express",
-        "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNcVZaTmY2bUV5OTVOdklYeFJkM2dtVGV4TDg3SkdPUERKY3E3N1NwaV9Gdm1wX1drSEVCRF9wVk1yQWhwdWJ1eFc2NDZralJ6ZmtocVhxS1h2UXVGaVVNbTc5eWUzRDhFc3dsYzZFQWxKZG5RT2lRLXA5Rzd0TFlGMVVTdHFzaHB5NDI5SWpRdzlaU3BxSTNsZFNHdVd1cmZpQ0YxVHNzOFlod9IBsAFBVV95cUxQekJVS1NBc2w1N3RvVWpJN3pXcmZ6a1JWeFk5ekZIbkhpQ0xrQ1hoQUl1b0lqZ3pwTHVwbEVQZU13LUpNT19KcUM5RDRobzc3MUlyeFB1d2hLb0ZyUDM3c2g1WDM4Tm1pT3FSNEptT3VBNUJkZnIzSTNHMXZrejIxNldOMVpYTGZ4bzZxSjNHUVhOY2ZJLTN1M0ZDYURNTnNvWmZxeXlDYVoxWmtDaElfeQ?oc=5",
-        "tag": "rest"
       }
     ]
   },
   "gmail_news": {
-    "ok": true,
-    "soft_fail": false,
-    "soft_fail_reason": null,
-    "count": 10,
-    "fetched": 10,
-    "from_cache": true,
-    "last_query_hash": "14f148f8d31e",
+    "ok": false,
+    "soft_fail": true,
+    "soft_fail_reason": "box-only",
+    "count": 0,
+    "fetched": 0,
+    "from_cache": false,
+    "last_query_hash": "",
     "brief": false,
     "pulse_only": true,
     "briefEligible": false,
-    "sample": [
-      {
-        "id": "gmail:1a11250b91591834",
-        "title": "AI systems could cover up misbehavior",
-        "publisher": "substack.com",
-        "qi": 6.6,
-        "priority": "P3",
-        "link": "https://metr.org/blog/cover-up"
-      },
-      {
-        "id": "gmail:1a111f35812d42ba",
-        "title": "Oct. 6 - Water hacks, rogue AI raise alarms | Java vulnerabilities disclosed",
-        "publisher": "divenewsletter.com",
-        "qi": 6.6,
-        "priority": "P3",
-        "link": "https://www.cybersecuritydive.com/news/water"
-      },
-      {
-        "id": "gmail:1a1118c601f1cb6a",
-        "title": "OpenAI Starts Watermarking ChatGPT Text",
-        "publisher": "alvarocintas.com",
-        "qi": 5,
-        "priority": "P3",
-        "link": "https://newsletter.alvarocintas.com/watermark"
-      }
-    ]
+    "sample": []
   },
   "x": {
     "fetched": 0,
@@ -1163,7 +1134,7 @@
       "NIST",
       "MITRE"
     ],
-    "searches": 1,
+    "searches": 3,
     "from_cache": false,
     "brief": false,
     "pulse_lead": false,
