@@ -2,6 +2,38 @@
 import type { LeadEntry } from "@/lib/lead-pick";
 
 export const LEAD_TODAY: LeadEntry | null = {
+  "date": "2026-10-21",
+  "at": "2026-10-21T03:20:48.810Z",
+  "crawl_at": "2026-10-21T03:20:27Z",
+  "pick_slot": "06:20",
+  "excluded": [
+    {
+      "cluster_id": "cl:rss:deepmind:851107eacfc8ba0f",
+      "headline": "Gemini 4 Argon: Built to solve your hardest problems",
+      "reason": "age>=36h"
+    },
+    {
+      "cluster_id": "cl:rss:openai:1dbe22633003a2af",
+      "headline": "Advancing coding in low‑resource programming languages",
+      "reason": "age>=36h"
+    },
+    {
+      "cluster_id": "cl:rss:mistral:51edf4c643816e6f",
+      "headline": "Introducing Timestral",
+      "reason": "age>=36h"
+    }
+  ],
+  "cluster_id": "cl:hn:50169053",
+  "headline": "Google open-sources TorchTPU, a native PyTorch back end for TPUs",
+  "url": "https://github.com/google-pytorch/torch_tpu",
+  "sources": 3,
+  "sig": 278,
+  "reason": "picked",
+  "first_at": "2026-10-20T16:40:24.000Z",
+  "age_band": "<24h"
+};
+
+export const LEAD_YESTERDAY: LeadEntry | null = {
   "date": "2026-10-20",
   "at": "2026-10-20T03:20:50.370Z",
   "crawl_at": "2026-10-20T03:20:29Z",
@@ -28,110 +60,7 @@ export const LEAD_TODAY: LeadEntry | null = {
   "age_band": "<24h"
 };
 
-export const LEAD_YESTERDAY: LeadEntry | null = {
-  "date": "2026-10-19",
-  "at": "2026-10-19T03:28:56.837Z",
-  "crawl_at": "2026-10-19T03:28:35Z",
-  "pick_slot": "06:28",
-  "excluded": [
-    {
-      "cluster_id": "cl:rss:mistral:51edf4c643816e6f",
-      "headline": "Introducing Timestral",
-      "reason": "age>=36h"
-    },
-    {
-      "cluster_id": "cl:rss:deepmind:851107eacfc8ba0f",
-      "headline": "Gemini 4 Argon: Built to solve your hardest problems",
-      "reason": "age>=36h"
-    }
-  ],
-  "cluster_id": "cl:hn:50134131",
-  "headline": "Anthropic pitches its own AI safety bill to lawmakers",
-  "url": "https://www.politico.com/news/2026/10/16/anthropic-ai-safety-01124654",
-  "sources": 3,
-  "sig": 6,
-  "first_at": "2026-10-16T21:45:00.000Z",
-  "reason": "held",
-  "note": "no qualifying story",
-  "attempts": [
-    {
-      "at": "2026-10-19T03:28:56.837Z",
-      "crawl_at": "2026-10-19T03:28:35Z",
-      "excluded": [
-        {
-          "cluster_id": "cl:rss:nvidia-dev:9f5aca4e4d9dbf53",
-          "headline": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
-          "reason": "age>=36h"
-        },
-        {
-          "cluster_id": "cl:hn:50129045",
-          "headline": "DeepSeek-v4.1-Flash-1017",
-          "reason": "age>=36h"
-        },
-        {
-          "cluster_id": "cl:rss:deepmind:851107eacfc8ba0f",
-          "headline": "Gemini 4 Argon: Built to solve your hardest problems",
-          "reason": "age>=36h"
-        }
-      ]
-    },
-    {
-      "at": "2026-10-19T08:22:02.237Z",
-      "crawl_at": "2026-10-19T08:21:43Z",
-      "excluded": [
-        {
-          "cluster_id": "cl:rss:nvidia-dev:9f5aca4e4d9dbf53",
-          "headline": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
-          "reason": "age>=36h"
-        },
-        {
-          "cluster_id": "cl:rss:deepmind:851107eacfc8ba0f",
-          "headline": "Gemini 4 Argon: Built to solve your hardest problems",
-          "reason": "age>=36h"
-        }
-      ]
-    },
-    {
-      "at": "2026-10-19T13:27:28.119Z",
-      "crawl_at": "2026-10-19T13:27:06Z",
-      "excluded": [
-        {
-          "cluster_id": "cl:rss:mistral:51edf4c643816e6f",
-          "headline": "Introducing Timestral",
-          "reason": "age>=36h"
-        },
-        {
-          "cluster_id": "cl:rss:nvidia-dev:9f5aca4e4d9dbf53",
-          "headline": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
-          "reason": "age>=36h"
-        },
-        {
-          "cluster_id": "cl:rss:deepmind:851107eacfc8ba0f",
-          "headline": "Gemini 4 Argon: Built to solve your hardest problems",
-          "reason": "age>=36h"
-        }
-      ]
-    },
-    {
-      "at": "2026-10-19T15:43:21.308Z",
-      "crawl_at": "2026-10-19T15:43:04Z",
-      "excluded": [
-        {
-          "cluster_id": "cl:rss:mistral:51edf4c643816e6f",
-          "headline": "Introducing Timestral",
-          "reason": "age>=36h"
-        },
-        {
-          "cluster_id": "cl:rss:deepmind:851107eacfc8ba0f",
-          "headline": "Gemini 4 Argon: Built to solve your hardest problems",
-          "reason": "age>=36h"
-        }
-      ]
-    }
-  ]
-};
-
 export const LEAD_HELD = false;
 
 /** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is >48h old (PASS-L). */
-export const LEAD_FIRST_AT: string | null = "2026-10-19T15:43:47.000Z";
+export const LEAD_FIRST_AT: string | null = "2026-10-20T16:40:24.000Z";

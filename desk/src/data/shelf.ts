@@ -23,7 +23,7 @@ export const SHELF: ShelfItem[] = [
   { href: "https://arxiv.org/abs/2610.26861", label: "arxiv.org/abs/2610.26861", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.26856", label: "arxiv.org/abs/2610.26856", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.26852", label: "arxiv.org/abs/2610.26852", reason: "arxiv-shelf" as const },
-  { href: "https://github.com/exitCodeNihil/qafas-sandbox", label: "exitCodeNihil/qafas-sandbox", reason: "github-search-shelf" as const },
-  { href: "https://github.com/controlplaneio/sandbox-probe", label: "controlplaneio/sandbox-probe", reason: "github-search-shelf" as const },
-  { href: "https://github.com/hyperlight-dev/hyperagent", label: "hyperlight-dev/hyperagent", reason: "github-search-shelf" as const },
+  { href: "https://github.com/K11-Software-Solutions/k11techlab-llm-assurance-toolkit", label: "K11-Software-Solutions/k11techlab-llm-assurance-toolkit", reason: "github-search-shelf" as const },
+  { href: "https://github.com/md-fazle-rabbi/fazle-ai-red-team-toolkit", label: "md-fazle-rabbi/fazle-ai-red-team-toolkit", reason: "github-search-shelf" as const },
+  { href: "https://github.com/seikaikyo/ai-red-team", label: "seikaikyo/ai-red-team", reason: "github-search-shelf" as const },
 ];

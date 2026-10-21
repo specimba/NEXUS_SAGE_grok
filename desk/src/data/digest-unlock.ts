@@ -7,42 +7,53 @@ import type { DigestUnlockSnapshot } from "@/lib/digest-unlock";
 export const DIGEST_UNLOCK: DigestUnlockSnapshot = {
   "schema": 1,
   "cycleId": "003",
-  "pickDate": "2026-10-20",
-  "frozenAt": "2026-10-20T03:20:50.370Z",
-  "leadId": "cl:hn:50155578",
+  "pickDate": "2026-10-21",
+  "frozenAt": "2026-10-21T03:20:48.810Z",
+  "leadId": "cl:hn:50169053",
   "lead": {
-    "id": "cl:hn:50155578",
+    "id": "cl:hn:50169053",
     "kind": "lead",
-    "title": "AI agents are only as good as the personal information you share",
-    "take": "4 SRC · sig 3 · pick 2026-10-20",
+    "title": "Google open-sources TorchTPU, a native PyTorch back end for TPUs",
+    "take": "3 SRC · sig 278 · pick 2026-10-21",
     "why": "LEAD_TODAY · picked · frozen at daily pick",
     "move": "Digest/Voice follow Brief lead · cycle label 003",
-    "url": "https://apnews.com/article/meta-muse-openai-dot-ai-privacy-449734d41d3750aad7038b761faa49c9",
-    "sources": 4,
-    "sig": 3
+    "url": "https://github.com/google-pytorch/torch_tpu",
+    "sources": 3,
+    "sig": 278
   },
   "rows": [
     {
-      "id": "cl:rss:openai:1dbe22633003a2af",
+      "id": "cl:rss:deepmind:851107eacfc8ba0f",
       "kind": "companion",
+      "title": "Gemini 4 Argon: Built to solve your hardest problems",
+      "take": "3 SRC · sig 19",
+      "why": "Top corroborated Wire cluster · same pack as lead pick",
+      "move": "Digest row · never displaces Brief lead",
+      "url": "https://deepmind.google/blog/introducing-gemini-4-argon/",
+      "sources": 3,
+      "sig": 19
+    },
+    {
+      "id": "cl:rss:openai:1dbe22633003a2af",
+      "kind": "rest",
       "title": "Advancing coding in low‑resource programming languages",
-      "take": "2 SRC · sig 3",
+      "take": "2 SRC · sig 44",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
       "url": "https://openai.com/index/low-resource-programming-languages",
       "sources": 2,
-      "sig": 3
+      "sig": 44
     },
     {
       "id": "cl:rss:mistral:51edf4c643816e6f",
       "kind": "rest",
       "title": "Introducing Timestral",
-      "take": "2 SRC · sig 563",
+      "take": "2 SRC · sig 614",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
       "url": "https://mistral.ai/news/timestral/",
       "sources": 2,
-      "sig": 563
+      "sig": 614
     }
   ]
 } as const;
