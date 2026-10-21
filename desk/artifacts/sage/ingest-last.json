@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-21T03:20:27Z",
+  "stamped_at": "2026-10-21T08:20:57Z",
   "config_hash": "e3e9003a7d92",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,18 +11,18 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 326,
+      "duration_ms": 185,
       "paused_until": null,
       "reason": null
     },
     {
       "id": "arxiv",
       "label": "arXiv",
-      "status": "timeout",
-      "rows": 5,
-      "duration_ms": 20000,
+      "status": "ok",
+      "rows": 29,
+      "duration_ms": 3171,
       "paused_until": null,
-      "reason": "timeout after 20000ms budget · last good: 0 cached enrich + 5 kept shelf"
+      "reason": null
     },
     {
       "id": "openalex",
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 210,
+      "duration_ms": 1558,
       "paused_until": null,
       "reason": null
     },
@@ -46,8 +46,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 68,
-      "duration_ms": 8324,
+      "rows": 66,
+      "duration_ms": 8319,
       "paused_until": null,
       "reason": null
     },
@@ -55,8 +55,8 @@
       "id": "hn_title",
       "label": "HN title",
       "status": "ok",
-      "rows": 10,
-      "duration_ms": 8249,
+      "rows": 9,
+      "duration_ms": 8214,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 105,
-      "duration_ms": 18092,
+      "duration_ms": 17801,
       "paused_until": null,
       "reason": null
     },
@@ -74,7 +74,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 40,
-      "duration_ms": 6178,
+      "duration_ms": 6416,
       "paused_until": null,
       "reason": null
     },
@@ -83,7 +83,7 @@
       "label": "analyst RSS",
       "status": "ok",
       "rows": 8,
-      "duration_ms": 2218,
+      "duration_ms": 2166,
       "paused_until": null,
       "reason": null
     },
@@ -92,7 +92,7 @@
       "label": "releases",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 5068,
+      "duration_ms": 5196,
       "paused_until": null,
       "reason": null
     },
@@ -100,8 +100,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 26,
-      "duration_ms": 6323,
+      "rows": 29,
+      "duration_ms": 6361,
       "paused_until": null,
       "reason": null
     },
@@ -110,7 +110,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 373,
+      "duration_ms": 334,
       "paused_until": null,
       "reason": null
     },
@@ -119,16 +119,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4480,
+      "duration_ms": 4525,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 80329,
-    "sources_wall_ms": 21042,
-    "papers_lane_ms": 21042,
-    "slowest_source_ms": 20000,
+    "sources_ms": 64734,
+    "sources_wall_ms": 17802,
+    "papers_lane_ms": 5408,
+    "slowest_source_ms": 17801,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -145,38 +145,96 @@
       "github": 25000,
       "wikidata": 25000
     },
-    "timed_out": [
-      "arxiv"
-    ],
-    "wall_ms": 21439,
-    "startup_ms": 51,
-    "main_ms": 21455
+    "timed_out": [],
+    "wall_ms": 18280,
+    "startup_ms": 53,
+    "main_ms": 18297
   },
-  "multi_source_independent": 4,
+  "multi_source_independent": 5,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 4,
-    "multi_source_raw": 4,
+    "multi_source_independent": 5,
+    "multi_source_raw": 5,
     "self_reposts": 0,
-    "items_in": 257,
-    "clusters_out": 245,
-    "collapsed": 12,
-    "multi_source": 4,
-    "multi_member": 9,
+    "items_in": 258,
+    "clusters_out": 240,
+    "collapsed": 18,
+    "multi_source": 5,
+    "multi_member": 10,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 31,
+    "new_items": 19,
     "per_source": {
-      "hn-algolia": 68,
+      "hn-algolia": 66,
       "rss-lab": 105,
       "rss-security": 40,
-      "gnews-rss": 26,
+      "gnews-rss": 29,
       "gmail-news": 10,
       "rss-analyst": 8
     },
     "multi_source_clusters": [
+      {
+        "title": "Google DeepMind says four AI agents beat Minecraft in 27 hours",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 7,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:50176872",
+            "source": "hn-algolia",
+            "title": "Google DeepMind says four AI agents beat Minecraft in 27 hours",
+            "at": "2026-10-21T06:37:47Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:b82884f866fdae91",
+            "source": "gnews-rss",
+            "title": "Google DeepMind Agents Defeat Minecraft Dragon in 27 Hours - SuaraGarut.ID",
+            "at": "2026-10-20T20:43:00Z",
+            "publisher": "SuaraGarut.ID"
+          },
+          {
+            "id": "gnews:69fa16cae2252517",
+            "source": "gnews-rss",
+            "title": "Four Gemini 4 Argon Agents Beat Minecraft’s Ender Dragon — Google Deepmind Minecraft Ai Agents - شبكة تواصل الإخبارية",
+            "at": "2026-10-20T20:35:24Z",
+            "publisher": "شبكة تواصل الإخبارية"
+          },
+          {
+            "id": "gnews:cef785e6f4f90e15",
+            "source": "gnews-rss",
+            "title": "Four Gemini 4 Argon Agents Beat Minecraft’s Ender Dragon — Google Deepmind Minecraft Ai Agents - El-Balad.com",
+            "at": "2026-10-20T20:34:48Z",
+            "publisher": "El-Balad.com"
+          },
+          {
+            "id": "gnews:00358f9254109560",
+            "source": "gnews-rss",
+            "title": "Google DeepMind’s Gemini 4 Argon AI agents beat Minecraft in 27 hours - Storyboard18",
+            "at": "2026-10-20T12:01:02Z",
+            "publisher": "Storyboard18"
+          },
+          {
+            "id": "gnews:beec7a02bfb3dacc",
+            "source": "gnews-rss",
+            "title": "Google DeepMind AI Agents Beat Minecraft… After 27 Hours And 605 ‘Deaths’ - AI Insider",
+            "at": "2026-10-20T11:47:23Z",
+            "publisher": "AI Insider"
+          },
+          {
+            "id": "gnews:053ceb599920ee98",
+            "source": "gnews-rss",
+            "title": "Google DeepMind says four AI agents beat Minecraft in 27 hours by writing 2,783 programs of their own — AI team died 605 times on Easy difficulty and ran up an estimated $520 in tokens - Tom's Hardware",
+            "at": "2026-10-20T10:25:00Z",
+            "publisher": "Tom's Hardware"
+          }
+        ]
+      },
       {
         "title": "Google open-sources TorchTPU, a native PyTorch back end for TPUs",
         "sources": [
@@ -184,7 +242,7 @@
           "gnews-rss"
         ],
         "size": 3,
-        "score": 0.788,
+        "score": 0.778,
         "members": [
           {
             "id": "hn:50169053",
@@ -194,18 +252,18 @@
             "publisher": null
           },
           {
-            "id": "gnews:87cc7b2d4f18b32f",
-            "source": "gnews-rss",
-            "title": "Google open-sources TorchTPU to bring native PyTorch support to its TPUs - Crypto Briefing",
-            "at": "2026-10-20T19:35:34Z",
-            "publisher": "Crypto Briefing"
-          },
-          {
             "id": "gnews:774f765718fe03d1",
             "source": "gnews-rss",
             "title": "Google Open-Sources TorchTPU, Putting Native PyTorch on Its TPUs - Unite.AI",
             "at": "2026-10-20T17:15:02Z",
             "publisher": "Unite.AI"
+          },
+          {
+            "id": "gnews:87cc7b2d4f18b32f",
+            "source": "gnews-rss",
+            "title": "Google open-sources TorchTPU to bring native PyTorch support to its TPUs - Crypto Briefing",
+            "at": "2026-10-20T19:35:34Z",
+            "publisher": "Crypto Briefing"
           }
         ]
       },
@@ -303,6 +361,18 @@
       ],
       "gnews_shown_dropped": [
         {
+          "publisher": "Pandaily",
+          "title": "Xiaomi Open-Sources Xiaomi-Lens-0, a 4B Model That Points to Image Regions Pixel by Pixel - Pandaily"
+        },
+        {
+          "publisher": "MARCA",
+          "title": "Giannis Antetokounmpo Shows Up at a Miami Pickup Game After Google Search - MARCA"
+        },
+        {
+          "publisher": "Digit",
+          "title": "Google, Apple and Mozilla block eMudhra certificates after researchers uncover critical security flaw: How to be safe? - Digit"
+        },
+        {
           "publisher": "Laodong.vn",
           "title": "Google ruled by German court to infringe on privacy - Laodong.vn"
         },
@@ -311,28 +381,20 @@
           "title": "Google will show unreleased APAC travel search data - Hospitality Net"
         },
         {
-          "publisher": "디지털투데이",
-          "title": "Kakao releases two Kanana-2 vision encoder models as open source - 디지털투데이"
-        },
-        {
           "publisher": "Technobezz",
           "title": "How to Clear Search History on iPhone (Safari and Google) - Technobezz"
         },
         {
+          "publisher": "디지털투데이",
+          "title": "Kakao releases two Kanana-2 vision encoder models as open source - 디지털투데이"
+        },
+        {
           "publisher": "How-To Geek",
           "title": "Google Lens solved 5 oddly specific problems that would have taken me ages to Google - How-To Geek"
-        },
-        {
-          "publisher": "https://tech-insider.org/",
-          "title": "Synaptics Astra SR200: 400 GOPS Chips Debut [2026] - https://tech-insider.org/"
-        },
-        {
-          "publisher": "Search Engine Land",
-          "title": "Google expands financial services ad verification to the US and Canada - Search Engine Land"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 12
+      "hn_dropped": 13
     },
     "gnews_near_misses": [
       {
@@ -357,7 +419,75 @@
         ]
       },
       {
+        "score": 0.533,
+        "blocked": "below-threshold",
+        "hours_apart": 11,
+        "a": {
+          "id": "hn:50169053",
+          "source": "hn-algolia",
+          "title": "Google open-sources TorchTPU, a native PyTorch back end for TPUs",
+          "at": "2026-10-20T16:40:24Z"
+        },
+        "b": {
+          "id": "gnews:50b671512a7802b1",
+          "source": "gnews-rss",
+          "title": "Google open-sourced TorchTPU, so PyTorch on TPUs just got a lot easier - Help Net Security",
+          "at": "2026-10-21T03:42:06Z"
+        },
+        "shared": [
+          "google",
+          "opensourc",
+          "torchtpu",
+          "pytorch",
+          "tpus"
+        ]
+      },
+      {
+        "score": 0.507,
+        "blocked": "thin-overlap",
+        "hours_apart": 164,
+        "a": {
+          "id": "rss:deepmind:94cc08977f17740f",
+          "source": "rss-lab",
+          "title": "Gemini 4 Argon for Robotics",
+          "at": "2026-10-13T16:01:58Z"
+        },
+        "b": {
+          "id": "gnews:00358f9254109560",
+          "source": "gnews-rss",
+          "title": "Google DeepMind’s Gemini 4 Argon AI agents beat Minecraft in 27 hours - Storyboard18",
+          "at": "2026-10-20T12:01:02Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon"
+        ]
+      },
+      {
         "score": 0.495,
+        "blocked": "thin-overlap",
+        "hours_apart": 179.6,
+        "a": {
+          "id": "rss:deepmind:94cc08977f17740f",
+          "source": "rss-lab",
+          "title": "Gemini 4 Argon for Robotics",
+          "at": "2026-10-13T16:01:58Z"
+        },
+        "b": {
+          "id": "gnews:a73368c53b7eb785",
+          "source": "gnews-rss",
+          "title": "Google releases Gemini 4 Argon, its new frontier model: Benchmarks, how to try it, and pricing - Mashable",
+          "at": "2026-10-21T03:37:28Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon"
+        ]
+      },
+      {
+        "score": 0.491,
         "blocked": "thin-overlap",
         "hours_apart": 172.6,
         "a": {
@@ -381,6 +511,28 @@
       {
         "score": 0.491,
         "blocked": "thin-overlap",
+        "hours_apart": 172.5,
+        "a": {
+          "id": "rss:deepmind:94cc08977f17740f",
+          "source": "rss-lab",
+          "title": "Gemini 4 Argon for Robotics",
+          "at": "2026-10-13T16:01:58Z"
+        },
+        "b": {
+          "id": "gnews:cef785e6f4f90e15",
+          "source": "gnews-rss",
+          "title": "Four Gemini 4 Argon Agents Beat Minecraft’s Ender Dragon — Google Deepmind Minecraft Ai Agents - El-Balad.com",
+          "at": "2026-10-20T20:34:48Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon"
+        ]
+      },
+      {
+        "score": 0.478,
+        "blocked": "thin-overlap",
         "hours_apart": 174,
         "a": {
           "id": "rss:deepmind:94cc08977f17740f",
@@ -401,7 +553,7 @@
         ]
       },
       {
-        "score": 0.401,
+        "score": 0.405,
         "blocked": "time-window",
         "hours_apart": 124.3,
         "a": {
@@ -421,91 +573,6 @@
           "3.5",
           "super",
           "vl"
-        ]
-      },
-      {
-        "score": 0.393,
-        "blocked": "thin-overlap",
-        "hours_apart": 4,
-        "a": {
-          "id": "hn:50168983",
-          "source": "hn-algolia",
-          "title": "Gemini 4 Argon is now available for everyone",
-          "at": "2026-10-20T16:36:24Z"
-        },
-        "b": {
-          "id": "gnews:69fa16cae2252517",
-          "source": "gnews-rss",
-          "title": "Four Gemini 4 Argon Agents Beat Minecraft’s Ender Dragon — Google Deepmind Minecraft Ai Agents - شبكة تواصل الإخبارية",
-          "at": "2026-10-20T20:35:24Z"
-        },
-        "shared": [
-          "gemini",
-          "4",
-          "argon"
-        ]
-      },
-      {
-        "score": 0.39,
-        "blocked": "thin-overlap",
-        "hours_apart": 5.5,
-        "a": {
-          "id": "hn:50168983",
-          "source": "hn-algolia",
-          "title": "Gemini 4 Argon is now available for everyone",
-          "at": "2026-10-20T16:36:24Z"
-        },
-        "b": {
-          "id": "gnews:f8037577962a143b",
-          "source": "gnews-rss",
-          "title": "Google DeepMind’s Gemini 4 Argon builds a 3D periodic table synced to a song - Crypto Briefing",
-          "at": "2026-10-20T22:04:35Z"
-        },
-        "shared": [
-          "gemini",
-          "4",
-          "argon"
-        ]
-      },
-      {
-        "score": 0.354,
-        "blocked": "below-threshold",
-        "hours_apart": 17.3,
-        "a": {
-          "id": "rss:huggingface:39e60f901a735303",
-          "source": "rss-lab",
-          "title": "Hugging Face ❤️ TorchTPU: TPUs, Natively",
-          "at": "2026-10-20T00:00:00Z"
-        },
-        "b": {
-          "id": "gnews:774f765718fe03d1",
-          "source": "gnews-rss",
-          "title": "Google Open-Sources TorchTPU, Putting Native PyTorch on Its TPUs - Unite.AI",
-          "at": "2026-10-20T17:15:02Z"
-        },
-        "shared": [
-          "torchtpu",
-          "tpus"
-        ]
-      },
-      {
-        "score": 0.345,
-        "blocked": "thin-overlap",
-        "hours_apart": 36.2,
-        "a": {
-          "id": "hn:50153225",
-          "source": "hn-algolia",
-          "title": "Agentic Monitoring",
-          "at": "2026-10-19T14:52:04Z"
-        },
-        "b": {
-          "id": "gnews:295d52f84435f52f",
-          "source": "gnews-rss",
-          "title": "OpenAI says its AI agents disabled their monitoring system, one even lied about it - India Today",
-          "at": "2026-10-21T03:02:58Z"
-        },
-        "shared": [
-          "monitor"
         ]
       }
     ],
@@ -532,7 +599,27 @@
         ]
       },
       {
-        "score": 0.602,
+        "score": 0.596,
+        "blocked": "time-window",
+        "hours_apart": 94,
+        "a": {
+          "id": "hn:50150434",
+          "source": "hn-algolia",
+          "title": "Timestral: Mistral's time-series foundation models",
+          "at": "2026-10-19T09:59:32Z"
+        },
+        "b": {
+          "id": "rss:mistral:51edf4c643816e6f",
+          "source": "rss-lab",
+          "title": "Introducing Timestral",
+          "at": "2026-10-15T12:00:00Z"
+        },
+        "shared": [
+          "timestral"
+        ]
+      },
+      {
+        "score": 0.583,
         "blocked": "thin-overlap",
         "hours_apart": 168.6,
         "a": {
@@ -554,27 +641,75 @@
         ]
       },
       {
-        "score": 0.599,
-        "blocked": "time-window",
-        "hours_apart": 94,
+        "score": 0.533,
+        "blocked": "below-threshold",
+        "hours_apart": 11,
         "a": {
-          "id": "hn:50150434",
+          "id": "hn:50169053",
           "source": "hn-algolia",
-          "title": "Timestral: Mistral's time-series foundation models",
-          "at": "2026-10-19T09:59:32Z"
+          "title": "Google open-sources TorchTPU, a native PyTorch back end for TPUs",
+          "at": "2026-10-20T16:40:24Z"
         },
         "b": {
-          "id": "rss:mistral:51edf4c643816e6f",
-          "source": "rss-lab",
-          "title": "Introducing Timestral",
-          "at": "2026-10-15T12:00:00Z"
+          "id": "gnews:50b671512a7802b1",
+          "source": "gnews-rss",
+          "title": "Google open-sourced TorchTPU, so PyTorch on TPUs just got a lot easier - Help Net Security",
+          "at": "2026-10-21T03:42:06Z"
         },
         "shared": [
-          "timestral"
+          "google",
+          "opensourc",
+          "torchtpu",
+          "pytorch",
+          "tpus"
+        ]
+      },
+      {
+        "score": 0.507,
+        "blocked": "thin-overlap",
+        "hours_apart": 164,
+        "a": {
+          "id": "rss:deepmind:94cc08977f17740f",
+          "source": "rss-lab",
+          "title": "Gemini 4 Argon for Robotics",
+          "at": "2026-10-13T16:01:58Z"
+        },
+        "b": {
+          "id": "gnews:00358f9254109560",
+          "source": "gnews-rss",
+          "title": "Google DeepMind’s Gemini 4 Argon AI agents beat Minecraft in 27 hours - Storyboard18",
+          "at": "2026-10-20T12:01:02Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon"
         ]
       },
       {
         "score": 0.495,
+        "blocked": "thin-overlap",
+        "hours_apart": 179.6,
+        "a": {
+          "id": "rss:deepmind:94cc08977f17740f",
+          "source": "rss-lab",
+          "title": "Gemini 4 Argon for Robotics",
+          "at": "2026-10-13T16:01:58Z"
+        },
+        "b": {
+          "id": "gnews:a73368c53b7eb785",
+          "source": "gnews-rss",
+          "title": "Google releases Gemini 4 Argon, its new frontier model: Benchmarks, how to try it, and pricing - Mashable",
+          "at": "2026-10-21T03:37:28Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon"
+        ]
+      },
+      {
+        "score": 0.491,
         "blocked": "thin-overlap",
         "hours_apart": 172.6,
         "a": {
@@ -598,7 +733,7 @@
       {
         "score": 0.491,
         "blocked": "thin-overlap",
-        "hours_apart": 174,
+        "hours_apart": 172.5,
         "a": {
           "id": "rss:deepmind:94cc08977f17740f",
           "source": "rss-lab",
@@ -606,76 +741,10 @@
           "at": "2026-10-13T16:01:58Z"
         },
         "b": {
-          "id": "gnews:f8037577962a143b",
+          "id": "gnews:cef785e6f4f90e15",
           "source": "gnews-rss",
-          "title": "Google DeepMind’s Gemini 4 Argon builds a 3D periodic table synced to a song - Crypto Briefing",
-          "at": "2026-10-20T22:04:35Z"
-        },
-        "shared": [
-          "gemini",
-          "4",
-          "argon"
-        ]
-      },
-      {
-        "score": 0.441,
-        "blocked": "thin-overlap",
-        "hours_apart": 164.9,
-        "a": {
-          "id": "hn:50168983",
-          "source": "hn-algolia",
-          "title": "Gemini 4 Argon is now available for everyone",
-          "at": "2026-10-20T16:36:24Z"
-        },
-        "b": {
-          "id": "rss:deepmind:8b1ab1df41ac00d8",
-          "source": "rss-lab",
-          "title": "Developing Gemini 4 Argon responsibly and safely",
-          "at": "2026-10-13T19:43:07Z"
-        },
-        "shared": [
-          "gemini",
-          "4",
-          "argon"
-        ]
-      },
-      {
-        "score": 0.436,
-        "blocked": "thin-overlap",
-        "hours_apart": 168.6,
-        "a": {
-          "id": "hn:50168983",
-          "source": "hn-algolia",
-          "title": "Gemini 4 Argon is now available for everyone",
-          "at": "2026-10-20T16:36:24Z"
-        },
-        "b": {
-          "id": "rss:deepmind:851107eacfc8ba0f",
-          "source": "rss-lab",
-          "title": "Gemini 4 Argon: Built to solve your hardest problems",
-          "at": "2026-10-13T16:01:52Z"
-        },
-        "shared": [
-          "gemini",
-          "4",
-          "argon"
-        ]
-      },
-      {
-        "score": 0.436,
-        "blocked": "thin-overlap",
-        "hours_apart": 168.6,
-        "a": {
-          "id": "hn:50168983",
-          "source": "hn-algolia",
-          "title": "Gemini 4 Argon is now available for everyone",
-          "at": "2026-10-20T16:36:24Z"
-        },
-        "b": {
-          "id": "rss:google-ai:74c9e10c02543c49",
-          "source": "rss-lab",
-          "title": "Gemini 4 Argon: Built to solve your hardest problems",
-          "at": "2026-10-13T16:00:00Z"
+          "title": "Four Gemini 4 Argon Agents Beat Minecraft’s Ender Dragon — Google Deepmind Minecraft Ai Agents - El-Balad.com",
+          "at": "2026-10-20T20:34:48Z"
         },
         "shared": [
           "gemini",
@@ -689,97 +758,97 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 0,
-      "streak_fail": 1,
-      "items_last": 5
+      "streak_ok": 1,
+      "streak_fail": 0,
+      "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 151,
+      "streak_ok": 152,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 151,
+      "streak_ok": 152,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 151,
+      "streak_ok": 152,
       "streak_fail": 0,
-      "items_last": 26
+      "items_last": 29
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 151,
+      "streak_ok": 152,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 151,
+      "streak_ok": 152,
       "streak_fail": 0,
-      "items_last": 68
+      "items_last": 66
     },
     {
       "id": "hn_title",
       "state": "ok",
-      "streak_ok": 5,
+      "streak_ok": 6,
       "streak_fail": 0,
-      "items_last": 10
+      "items_last": 9
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 63,
+      "streak_ok": 64,
       "streak_fail": 0,
       "items_last": 4
     },
     {
       "id": "releases_atom",
       "state": "ok",
-      "streak_ok": 5,
+      "streak_ok": 6,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "rss_analyst",
       "state": "ok",
-      "streak_ok": 5,
+      "streak_ok": 6,
       "streak_fail": 0,
       "items_last": 8
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 55,
+      "streak_ok": 56,
       "streak_fail": 0,
       "items_last": 105
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 151,
+      "streak_ok": 152,
       "streak_fail": 0,
       "items_last": 40
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 151,
+      "streak_ok": 152,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.006044444444444444,
+    "hours": 0.00528,
     "stale": false
   },
   "hf": {
@@ -788,10 +857,10 @@
     "url": "https://huggingface.co/api/daily_papers"
   },
   "arxiv": {
-    "ok": false,
-    "enriched": 0,
+    "ok": true,
+    "enriched": 24,
     "shelf": 5,
-    "timed_out": true,
+    "timed_out": false,
     "budget_ms": 20000,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
@@ -872,7 +941,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 68,
+    "count": 66,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -889,7 +958,7 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 12,
+    "ai_dropped": 13,
     "url": "https://hn.algolia.com/api/v1/search",
     "title_queries": {
       "ok": true,
@@ -909,11 +978,11 @@
         "Qwen",
         "local model"
       ],
-      "hits": 14,
-      "candidates": 11,
+      "hits": 13,
+      "candidates": 10,
       "ai_dropped": 2,
       "duplicates": 1,
-      "added": 10,
+      "added": 9,
       "cap": 20,
       "merged_into_live_hn": true
     },
@@ -921,7 +990,7 @@
       {
         "id": "hn:50150434",
         "tag": "rest",
-        "score": 614,
+        "score": 616,
         "text": "Timestral: Mistral's time-series foundation models"
       },
       {
@@ -933,7 +1002,7 @@
       {
         "id": "hn:50169053",
         "tag": "rest",
-        "score": 278,
+        "score": 330,
         "text": "Google open-sources TorchTPU, a native PyTorch back end for TPUs"
       }
     ]
@@ -997,6 +1066,13 @@
     "feeds_soft_fail": [],
     "sample": [
       {
+        "id": "rss:google-ai:c7c1db1d24f97b16",
+        "lab": "google-ai",
+        "tag": "rest",
+        "title": "Southeast Asia’s digital economy to hit $368 billion",
+        "link": "https://blog.google/company-news/inside-google/around-the-globe/google-asia/e-conomy-sea-report-2026/"
+      },
+      {
         "id": "rss:huggingface:e8a8161ff83426ef",
         "lab": "huggingface",
         "tag": "rest",
@@ -1016,13 +1092,6 @@
         "tag": "rest",
         "title": "ALTK-Evolve: How learned memory tops the τ²-bench leaderboard on customer service tasks without a frontier model",
         "link": "https://huggingface.co/blog/ibm-research/altk-evolve-bc"
-      },
-      {
-        "id": "rss:mistral:cb0bf0e1617ea810",
-        "lab": "mistral",
-        "tag": "rest",
-        "title": "Voxtral 3",
-        "link": "https://mistral.ai/news/voxtral-3/"
       }
     ]
   },
@@ -1131,6 +1200,20 @@
     "lead_rule": "analyst-only groups excluded",
     "sample": [
       {
+        "id": "anl:latent-space:9c99dc597b92594a",
+        "feed": "latent-space",
+        "recap": true,
+        "title": "[AINews] DeepSeek DeepInfer: Open Source SOTA Inference running 155T toks/day/cluster making $22m/day at ~80% margin for a 81 day payback",
+        "link": "https://www.latent.space/p/ainews-deepseek-deepinfer-open-source"
+      },
+      {
+        "id": "anl:latent-space:db3c2eda6e56a446",
+        "feed": "latent-space",
+        "recap": false,
+        "title": "AI for the Fortune 2000: How Tenex Builds an AI-Native SDLC — Alex Lieberman & CJ Hess",
+        "link": "https://www.latent.space/p/tenex"
+      },
+      {
         "id": "anl:simonw:7fa30abfca2c7ff1",
         "feed": "simonw",
         "recap": false,
@@ -1143,20 +1226,6 @@
         "recap": true,
         "title": "[AINews] not much happened today",
         "link": "https://www.latent.space/p/ainews-not-much-happened-today-f09"
-      },
-      {
-        "id": "anl:simonw:ae7b31dc246e2760",
-        "feed": "simonw",
-        "recap": false,
-        "title": "llm-tools-datasette 0.1.1",
-        "link": "https://simonwillison.net/2026/Oct/18/llm-tools-datasette/"
-      },
-      {
-        "id": "anl:simonw:9d2417f40cde50f0",
-        "feed": "simonw",
-        "recap": false,
-        "title": "llm-echo 0.5",
-        "link": "https://simonwillison.net/2026/Oct/18/llm-echo/"
       }
     ]
   },
@@ -1176,7 +1245,7 @@
       {
         "feed": "ollama",
         "action": "no-bump",
-        "newest": "v0.40.6",
+        "newest": "v0.40.7",
         "emitted": null,
         "baseline": "v0.40.6"
       },
@@ -1216,15 +1285,47 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 26,
-    "pool": 199,
+    "items": 29,
+    "pool": 198,
     "corroborators": [
       {
         "id": "gnews:774f765718fe03d1",
         "anchor_id": "hn:50169053",
-        "score": 0.763,
+        "score": 0.759,
         "title": "Google Open-Sources TorchTPU, Putting Native PyTorch on Its TPUs - Unite.AI",
         "publisher": "Unite.AI",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:87cc7b2d4f18b32f",
+        "anchor_id": "hn:50169053",
+        "score": 0.699,
+        "title": "Google open-sources TorchTPU to bring native PyTorch support to its TPUs - Crypto Briefing",
+        "publisher": "Crypto Briefing",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:00358f9254109560",
+        "anchor_id": "hn:50176872",
+        "score": 0.836,
+        "title": "Google DeepMind’s Gemini 4 Argon AI agents beat Minecraft in 27 hours - Storyboard18",
+        "publisher": "Storyboard18",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:beec7a02bfb3dacc",
+        "anchor_id": "hn:50176872",
+        "score": 0.825,
+        "title": "Google DeepMind AI Agents Beat Minecraft… After 27 Hours And 605 ‘Deaths’ - AI Insider",
+        "publisher": "AI Insider",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:053ceb599920ee98",
+        "anchor_id": "hn:50176872",
+        "score": 0.727,
+        "title": "Google DeepMind says four AI agents beat Minecraft in 27 hours by writing 2,783 programs of their own — AI team died 605 times on Easy difficulty and ran up an estimated $520 in tokens - Tom's Hardware",
+        "publisher": "Tom's Hardware",
         "self_repost": false
       }
     ],
@@ -1254,24 +1355,24 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:295d52f84435f52f",
-        "title": "OpenAI says its AI agents disabled their monitoring system, one even lied about it - India Today",
-        "publisher": "India Today",
-        "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxPTWU4aE9vU3lfNVhUNkZjU0QzSVVZLWd3WENzdnhkNmpjVVowWlJJQ2o5MkFnWmxTejlTTjJZRjlBYzJlRHRRMTdmWlk2X3liQU5BN2x6MHJRTkxUNUtxTWdfWlB1enBLR29YV3R1TUdLSGlmY3hJUHJySGQwUHZHdEYxM1kxQloySkJETHhyXzQweXF6TjlfT2p0YktLRWc1cTduYXNmTTEtTnlDOFZRNDYwWUkzMF9FNVhNNEZrbkxRMnRCZmIwSGJJVnJ1Q19Qcl9GWWVDTVgxZl9sSWJ6QW1zcTR1OEnSAecBQVVfeXFMT01lOGhPb1N5XzVYVDZGY1NEM0lVWS1nd1hDc3Z4ZDZqY1VaMFpSSUNqOTJBZ1psU3o5U04yWUY5QWMyZUR0UTE3ZlpZNl95YkFOQTdsejByUU5MVDVLcU1nX1pQdXpwS0dvWFd0dU1HS0hpZmN4SVByckhkMFB2R3RGMTNZMUJaMkpCREx4cl80MHlxek45X09qdGJLS0VnNXE3bmFzZk0xLU55QzhWUTQ2MFlJMzBfRTVYTTRGa25MUTJ0QmZiMEhiSVZydUNfUHJfRlllQ01YMWZfbEliekFtc3E0dThJ?oc=5",
+        "id": "gnews:0c1889628d4d9a62",
+        "title": "Krafton Releases Preview of Its Self-Developed LLM \"Raon-1 Mini\" - 아시아경제",
+        "publisher": "아시아경제",
+        "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9PY0RiNWRLNWRSbGNuWTkzUElVRW1wY1BUTEpwMUxfZzk0c3VUV1c0Y1gzU1dMWG0yZUd2d2xPWi13M1ZxX3RsTVNwbHFveVo3am1BTk9DYi15YVJvaGlnOTZvWGc?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:8f901979d678bddb",
-        "title": "LFM2.5-24B-A2B-DSpark Is Live on Hugging Face — Liquid AI Just Hasn't Announced It - OrcaRouter",
-        "publisher": "OrcaRouter",
-        "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9HQzFNMDVNaERNek8xYUx3V0tkSzhwMUk2a1kzUTlwMnRtX1gweENSX1oyOGZVSDVvekpHOVBpaFJoeUZrV1F3c29tNFdxTmhiZ3A3azV4eHU3RHdQRnNQaktVVWdXY0U2TUkzckd3SU12Y1p2?oc=5",
+        "id": "gnews:d5ad598822704710",
+        "title": "Why Google DeepMind Is Working on Jowar | Lila Ibrahim - The Economic Times",
+        "publisher": "The Economic Times",
+        "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOMFd3Z3JMMzg2MU1ON0JmSXdqdFVTczBBczByQzNBNDRfdndubXQ2ZGxfME10cFFaSG1ES3FwUzA0eTJCRVpfWWhpUWJ0aG15a3NDTmN0bWlBNkpHUE82Y0ZuMndXdTFMdDdvVWd6dmJCZlU4Y0lMUEhQNEQ2OEQ2RmI3VWtUNVM0MnVMOTBXb1dTcDA5bnd0WHFUUnZSWDdhc1E0dlQ2SE9YUGd2dmRkZWlTeXE4eG9HaE5LWFd1b9IBxAFBVV95cUxPZVlONTJqSkpHMEpDOUVFZXBjMWp2MWZhWTlyYndwbFZ0LW5oZnJSU1VNcTl6SUZnT3RkRk5sdVhwaENTSEVHeGdPWDFHUFcxXzgzeDVXWGxVUVVkS25lZGl1RERZRndfdjF1YzdXVFVpYml6VXpuWElSd3JBSS1qbTNhS0RoY2hnM2RtMUVzMlB4VlBlb3dXMWdhWE1ub0xBM3lyMERhMDBMQjY4OWF0a1FvWm9wYS1mTkNGWE1DYzgxMWdl?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:7ed088dc0637e876",
-        "title": "DeepSeek Opens DeepInfer, Presses OpenAI, Anthropic [2026] - shattered.io",
-        "publisher": "shattered.io",
-        "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOUERNc0tRaVcxc2JFR2pHQU1JcHRkZk5ySTVXUHlsOFhxaE5mdGJjOTY5ek9HQTFNdzVzQmtpcFY5LTlEako5aHRPSnBXdmg1ZVZ0N0JpRUEyS1dma28xUF9IdEVxRnM1ZjB3eHpMSGhjb1dlc0JvYmtBYjJqQmsxWTN3?oc=5",
+        "id": "gnews:7a47342546297c41",
+        "title": "Ex-DeepMind Graepel Launches Metis Reasoning - Konsulteer",
+        "publisher": "Konsulteer",
+        "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPUDJOaElrdkpabE9pZGJzVEV2ZFRyQlFlOGwxWThHMExCc0FrNExIZmRhTUdVUGNXblg0VHBuV0dMNnF4dW00TVc2VElmZUdPOVZXZ1ZxbzZkdEpPOE9NM3lzd1VqdS1UbE00U0hjYUczYWNja3NrUklnU3pJQnUyc2pkUlpZRzlBMHdlbHc4T3U1dV82eWx6dUlJdTQ3THlHM2pwdTF6cDlPakQxc0pjUVl5dGNNVnFETHc?oc=5",
         "tag": "rest"
       }
     ]
@@ -1312,12 +1413,12 @@
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
-        "label": "K11-Software-Solutions/k11techlab-llm-assurance-toolkit",
-        "href": "https://github.com/K11-Software-Solutions/k11techlab-llm-assurance-toolkit"
-      },
-      {
         "label": "md-fazle-rabbi/fazle-ai-red-team-toolkit",
         "href": "https://github.com/md-fazle-rabbi/fazle-ai-red-team-toolkit"
+      },
+      {
+        "label": "K11-Software-Solutions/k11techlab-llm-assurance-toolkit",
+        "href": "https://github.com/K11-Software-Solutions/k11techlab-llm-assurance-toolkit"
       },
       {
         "label": "seikaikyo/ai-red-team",
