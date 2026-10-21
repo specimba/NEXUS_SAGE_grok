@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-21T08:52:18Z",
+  "stamped_at": "2026-10-21T13:21:09Z",
   "config_hash": "e3e9003a7d92",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,7 +11,7 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 168,
+      "duration_ms": 166,
       "paused_until": null,
       "reason": null
     },
@@ -20,7 +20,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 3019,
+      "duration_ms": 3186,
       "paused_until": null,
       "reason": null
     },
@@ -29,7 +29,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 4,
-      "duration_ms": 370,
+      "duration_ms": 552,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 112,
+      "duration_ms": 1154,
       "paused_until": null,
       "reason": null
     },
@@ -46,8 +46,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 67,
-      "duration_ms": 8287,
+      "rows": 63,
+      "duration_ms": 8286,
       "paused_until": null,
       "reason": null
     },
@@ -55,8 +55,8 @@
       "id": "hn_title",
       "label": "HN title",
       "status": "ok",
-      "rows": 9,
-      "duration_ms": 8190,
+      "rows": 7,
+      "duration_ms": 8196,
       "paused_until": null,
       "reason": null
     },
@@ -64,8 +64,8 @@
       "id": "rss_labs",
       "label": "lab RSS",
       "status": "ok",
-      "rows": 105,
-      "duration_ms": 16955,
+      "rows": 106,
+      "duration_ms": 16386,
       "paused_until": null,
       "reason": null
     },
@@ -74,7 +74,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 40,
-      "duration_ms": 6114,
+      "duration_ms": 6116,
       "paused_until": null,
       "reason": null
     },
@@ -83,7 +83,7 @@
       "label": "analyst RSS",
       "status": "ok",
       "rows": 8,
-      "duration_ms": 2189,
+      "duration_ms": 2217,
       "paused_until": null,
       "reason": null
     },
@@ -92,7 +92,7 @@
       "label": "releases",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 5041,
+      "duration_ms": 5080,
       "paused_until": null,
       "reason": null
     },
@@ -100,8 +100,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 29,
-      "duration_ms": 6345,
+      "rows": 30,
+      "duration_ms": 6390,
       "paused_until": null,
       "reason": null
     },
@@ -110,7 +110,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 353,
+      "duration_ms": 330,
       "paused_until": null,
       "reason": null
     },
@@ -119,16 +119,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4524,
+      "duration_ms": 4594,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 61667,
-    "sources_wall_ms": 16956,
-    "papers_lane_ms": 3676,
-    "slowest_source_ms": 16955,
+    "sources_ms": 62653,
+    "sources_wall_ms": 16387,
+    "papers_lane_ms": 5064,
+    "slowest_source_ms": 16386,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -146,9 +146,9 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 17434,
-    "startup_ms": 55,
-    "main_ms": 17457
+    "wall_ms": 16836,
+    "startup_ms": 54,
+    "main_ms": 16856
   },
   "multi_source_independent": 5,
   "stale_hours": 6,
@@ -157,32 +157,57 @@
     "multi_source_independent": 5,
     "multi_source_raw": 5,
     "self_reposts": 0,
-    "items_in": 259,
-    "clusters_out": 239,
-    "collapsed": 20,
+    "items_in": 257,
+    "clusters_out": 238,
+    "collapsed": 19,
     "multi_source": 5,
-    "multi_member": 10,
+    "multi_member": 12,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 0,
+    "new_items": 42,
     "per_source": {
-      "hn-algolia": 67,
-      "rss-lab": 105,
+      "hn-algolia": 63,
+      "rss-lab": 106,
       "rss-security": 40,
-      "gnews-rss": 29,
+      "gnews-rss": 30,
       "gmail-news": 10,
       "rss-analyst": 8
     },
     "multi_source_clusters": [
+      {
+        "title": "OpenAI models are coming to Google Cloud",
+        "sources": [
+          "rss-lab",
+          "hn-algolia"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:50180079",
+            "source": "hn-algolia",
+            "title": "OpenAI models are coming to Google Cloud",
+            "at": "2026-10-21T12:53:11Z",
+            "publisher": null
+          },
+          {
+            "id": "rss:openai:95dedf578de78f3e",
+            "source": "rss-lab",
+            "title": "OpenAI models are coming to Google Cloud",
+            "at": "2026-10-21T12:00:00Z",
+            "publisher": "openai"
+          }
+        ]
+      },
       {
         "title": "Google DeepMind says four AI agents beat Minecraft in 27 hours",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 7,
-        "score": 1,
+        "size": 4,
+        "score": 0.842,
         "members": [
           {
             "id": "hn:50176872",
@@ -190,27 +215,6 @@
             "title": "Google DeepMind says four AI agents beat Minecraft in 27 hours",
             "at": "2026-10-21T06:37:47Z",
             "publisher": null
-          },
-          {
-            "id": "gnews:b82884f866fdae91",
-            "source": "gnews-rss",
-            "title": "Google DeepMind Agents Defeat Minecraft Dragon in 27 Hours - SuaraGarut.ID",
-            "at": "2026-10-20T20:43:00Z",
-            "publisher": "SuaraGarut.ID"
-          },
-          {
-            "id": "gnews:69fa16cae2252517",
-            "source": "gnews-rss",
-            "title": "Four Gemini 4 Argon Agents Beat Minecraft’s Ender Dragon — Google Deepmind Minecraft Ai Agents - شبكة تواصل الإخبارية",
-            "at": "2026-10-20T20:35:24Z",
-            "publisher": "شبكة تواصل الإخبارية"
-          },
-          {
-            "id": "gnews:cef785e6f4f90e15",
-            "source": "gnews-rss",
-            "title": "Four Gemini 4 Argon Agents Beat Minecraft’s Ender Dragon — Google Deepmind Minecraft Ai Agents - El-Balad.com",
-            "at": "2026-10-20T20:34:48Z",
-            "publisher": "El-Balad.com"
           },
           {
             "id": "gnews:00358f9254109560",
@@ -236,38 +240,6 @@
         ]
       },
       {
-        "title": "Google open-sources TorchTPU, a native PyTorch back end for TPUs",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 3,
-        "score": 0.778,
-        "members": [
-          {
-            "id": "hn:50169053",
-            "source": "hn-algolia",
-            "title": "Google open-sources TorchTPU, a native PyTorch back end for TPUs",
-            "at": "2026-10-20T16:40:24Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:774f765718fe03d1",
-            "source": "gnews-rss",
-            "title": "Google Open-Sources TorchTPU, Putting Native PyTorch on Its TPUs - Unite.AI",
-            "at": "2026-10-20T17:15:02Z",
-            "publisher": "Unite.AI"
-          },
-          {
-            "id": "gnews:87cc7b2d4f18b32f",
-            "source": "gnews-rss",
-            "title": "Google open-sources TorchTPU to bring native PyTorch support to its TPUs - Crypto Briefing",
-            "at": "2026-10-20T19:35:34Z",
-            "publisher": "Crypto Briefing"
-          }
-        ]
-      },
-      {
         "title": "Advancing coding in low‑resource programming languages",
         "sources": [
           "rss-lab",
@@ -289,6 +261,38 @@
             "title": "Advancing coding in low‑resource programming languages",
             "at": "2026-10-19T12:00:00Z",
             "publisher": "openai"
+          }
+        ]
+      },
+      {
+        "title": "Google open-sources TorchTPU, a native PyTorch back end for TPUs",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 3,
+        "score": 0.776,
+        "members": [
+          {
+            "id": "hn:50169053",
+            "source": "hn-algolia",
+            "title": "Google open-sources TorchTPU, a native PyTorch back end for TPUs",
+            "at": "2026-10-20T16:40:24Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:774f765718fe03d1",
+            "source": "gnews-rss",
+            "title": "Google Open-Sources TorchTPU, Putting Native PyTorch on Its TPUs - Unite.AI",
+            "at": "2026-10-20T17:15:02Z",
+            "publisher": "Unite.AI"
+          },
+          {
+            "id": "gnews:4e8c9ec77e8989ce",
+            "source": "gnews-rss",
+            "title": "TorchTPU is now open source: Run native PyTorch on TPUs - Google Cloud",
+            "at": "2026-10-20T11:58:48Z",
+            "publisher": "Google Cloud"
           }
         ]
       },
@@ -323,127 +327,47 @@
             "publisher": "google-ai"
           }
         ]
-      },
-      {
-        "title": "Introducing Timestral",
-        "sources": [
-          "rss-lab",
-          "hn-algolia"
-        ],
-        "size": 2,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:50150434",
-            "source": "hn-algolia",
-            "title": "Timestral: Mistral's time-series foundation models",
-            "at": "2026-10-19T09:59:32Z",
-            "publisher": null
-          },
-          {
-            "id": "rss:mistral:51edf4c643816e6f",
-            "source": "rss-lab",
-            "title": "Introducing Timestral",
-            "at": "2026-10-15T12:00:00Z",
-            "publisher": "mistral"
-          }
-        ]
       }
     ],
     "self_repost_clusters": [],
     "ai_relevance": {
-      "rss_lab_dropped": [
-        {
-          "lab": "nvidia",
-          "title": "Dial Up the Cloud: NVIDIA DLSS 4.5 Controls Arrive on GeForce NOW",
-          "reason": "category:GeForce NOW"
-        }
-      ],
+      "rss_lab_dropped": [],
       "gnews_shown_dropped": [
         {
-          "publisher": "Pandaily",
-          "title": "Xiaomi Open-Sources Xiaomi-Lens-0, a 4B Model That Points to Image Regions Pixel by Pixel - Pandaily"
+          "publisher": "trendingtopics.eu",
+          "title": "Hassabis Now Expects A.G.I. in Two to Three Years - trendingtopics.eu"
+        },
+        {
+          "publisher": "shattered.io",
+          "title": "Beam’s First 13 Days: Reflection’s 501B Bet Tested [2026] - shattered.io"
+        },
+        {
+          "publisher": "Search Engine Roundtable",
+          "title": "Google Search Ranking Volatility & Chatter Heats Up October 20 & 21 - Search Engine Roundtable"
+        },
+        {
+          "publisher": "The Sunday Guardian",
+          "title": "Google Outage Today: Is Google Down Today in the UK? Users Report Search, Gmail, YouTube, Google Maps, Chrome & Login Issues | Google Downdetector Status - The Sunday Guardian"
+        },
+        {
+          "publisher": "Search Engine Journal",
+          "title": "Details Emerge About Google Discover’s SDF Freshness Algorithm - Search Engine Journal"
+        },
+        {
+          "publisher": "Analytics India Magazine",
+          "title": "Chennai to Host One of the World’s Largest AMD GPU Clusters - Analytics India Magazine"
         },
         {
           "publisher": "MARCA",
           "title": "Giannis Antetokounmpo Shows Up at a Miami Pickup Game After Google Search - MARCA"
-        },
-        {
-          "publisher": "Digit",
-          "title": "Google, Apple and Mozilla block eMudhra certificates after researchers uncover critical security flaw: How to be safe? - Digit"
-        },
-        {
-          "publisher": "Laodong.vn",
-          "title": "Google ruled by German court to infringe on privacy - Laodong.vn"
-        },
-        {
-          "publisher": "Hospitality Net",
-          "title": "Google will show unreleased APAC travel search data - Hospitality Net"
-        },
-        {
-          "publisher": "Technobezz",
-          "title": "How to Clear Search History on iPhone (Safari and Google) - Technobezz"
-        },
-        {
-          "publisher": "디지털투데이",
-          "title": "Kakao releases two Kanana-2 vision encoder models as open source - 디지털투데이"
-        },
-        {
-          "publisher": "How-To Geek",
-          "title": "Google Lens solved 5 oddly specific problems that would have taken me ages to Google - How-To Geek"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 12
+      "hn_dropped": 11
     },
     "gnews_near_misses": [
       {
-        "score": 0.644,
-        "blocked": "short-title",
-        "hours_apart": 10.1,
-        "a": {
-          "id": "rss:mistral:cb0bf0e1617ea810",
-          "source": "rss-lab",
-          "title": "Voxtral 3",
-          "at": "2026-10-20T12:00:22Z"
-        },
-        "b": {
-          "id": "gnews:d4a6cf13f5b492cc",
-          "source": "gnews-rss",
-          "title": "Voxtral 3 TTS vs Voxtral 4B TTS: Open Weights or Closed API - OrcaRouter",
-          "at": "2026-10-20T22:05:56Z"
-        },
-        "shared": [
-          "voxtral",
-          "3"
-        ]
-      },
-      {
-        "score": 0.533,
-        "blocked": "below-threshold",
-        "hours_apart": 11,
-        "a": {
-          "id": "hn:50169053",
-          "source": "hn-algolia",
-          "title": "Google open-sources TorchTPU, a native PyTorch back end for TPUs",
-          "at": "2026-10-20T16:40:24Z"
-        },
-        "b": {
-          "id": "gnews:50b671512a7802b1",
-          "source": "gnews-rss",
-          "title": "Google open-sourced TorchTPU, so PyTorch on TPUs just got a lot easier - Help Net Security",
-          "at": "2026-10-21T03:42:06Z"
-        },
-        "shared": [
-          "google",
-          "opensourc",
-          "torchtpu",
-          "pytorch",
-          "tpus"
-        ]
-      },
-      {
-        "score": 0.507,
+        "score": 0.52,
         "blocked": "thin-overlap",
         "hours_apart": 164,
         "a": {
@@ -465,20 +389,64 @@
         ]
       },
       {
-        "score": 0.495,
-        "blocked": "thin-overlap",
-        "hours_apart": 179.6,
+        "score": 0.462,
+        "blocked": "below-threshold",
+        "hours_apart": 1.4,
         "a": {
-          "id": "rss:deepmind:94cc08977f17740f",
-          "source": "rss-lab",
-          "title": "Gemini 4 Argon for Robotics",
-          "at": "2026-10-13T16:01:58Z"
+          "id": "hn:50180079",
+          "source": "hn-algolia",
+          "title": "OpenAI models are coming to Google Cloud",
+          "at": "2026-10-21T12:53:11Z"
         },
         "b": {
-          "id": "gnews:a73368c53b7eb785",
+          "id": "gnews:da4523ca8890557b",
           "source": "gnews-rss",
-          "title": "Google releases Gemini 4 Argon, its new frontier model: Benchmarks, how to try it, and pricing - Mashable",
-          "at": "2026-10-21T03:37:28Z"
+          "title": "Google Cloud, DeepMind, and the EU: A New Model for AI-Driven Science - Cloud Wars",
+          "at": "2026-10-21T11:30:00Z"
+        },
+        "shared": [
+          "model",
+          "google",
+          "cloud"
+        ]
+      },
+      {
+        "score": 0.462,
+        "blocked": "below-threshold",
+        "hours_apart": 0.5,
+        "a": {
+          "id": "rss:openai:95dedf578de78f3e",
+          "source": "rss-lab",
+          "title": "OpenAI models are coming to Google Cloud",
+          "at": "2026-10-21T12:00:00Z"
+        },
+        "b": {
+          "id": "gnews:da4523ca8890557b",
+          "source": "gnews-rss",
+          "title": "Google Cloud, DeepMind, and the EU: A New Model for AI-Driven Science - Cloud Wars",
+          "at": "2026-10-21T11:30:00Z"
+        },
+        "shared": [
+          "model",
+          "google",
+          "cloud"
+        ]
+      },
+      {
+        "score": 0.425,
+        "blocked": "thin-overlap",
+        "hours_apart": 4.6,
+        "a": {
+          "id": "hn:50168983",
+          "source": "hn-algolia",
+          "title": "Gemini 4 Argon is now available for everyone",
+          "at": "2026-10-20T16:36:24Z"
+        },
+        "b": {
+          "id": "gnews:00358f9254109560",
+          "source": "gnews-rss",
+          "title": "Google DeepMind’s Gemini 4 Argon AI agents beat Minecraft in 27 hours - Storyboard18",
+          "at": "2026-10-20T12:01:02Z"
         },
         "shared": [
           "gemini",
@@ -487,73 +455,7 @@
         ]
       },
       {
-        "score": 0.491,
-        "blocked": "thin-overlap",
-        "hours_apart": 172.6,
-        "a": {
-          "id": "rss:deepmind:94cc08977f17740f",
-          "source": "rss-lab",
-          "title": "Gemini 4 Argon for Robotics",
-          "at": "2026-10-13T16:01:58Z"
-        },
-        "b": {
-          "id": "gnews:69fa16cae2252517",
-          "source": "gnews-rss",
-          "title": "Four Gemini 4 Argon Agents Beat Minecraft’s Ender Dragon — Google Deepmind Minecraft Ai Agents - شبكة تواصل الإخبارية",
-          "at": "2026-10-20T20:35:24Z"
-        },
-        "shared": [
-          "gemini",
-          "4",
-          "argon"
-        ]
-      },
-      {
-        "score": 0.491,
-        "blocked": "thin-overlap",
-        "hours_apart": 172.5,
-        "a": {
-          "id": "rss:deepmind:94cc08977f17740f",
-          "source": "rss-lab",
-          "title": "Gemini 4 Argon for Robotics",
-          "at": "2026-10-13T16:01:58Z"
-        },
-        "b": {
-          "id": "gnews:cef785e6f4f90e15",
-          "source": "gnews-rss",
-          "title": "Four Gemini 4 Argon Agents Beat Minecraft’s Ender Dragon — Google Deepmind Minecraft Ai Agents - El-Balad.com",
-          "at": "2026-10-20T20:34:48Z"
-        },
-        "shared": [
-          "gemini",
-          "4",
-          "argon"
-        ]
-      },
-      {
-        "score": 0.478,
-        "blocked": "thin-overlap",
-        "hours_apart": 174,
-        "a": {
-          "id": "rss:deepmind:94cc08977f17740f",
-          "source": "rss-lab",
-          "title": "Gemini 4 Argon for Robotics",
-          "at": "2026-10-13T16:01:58Z"
-        },
-        "b": {
-          "id": "gnews:f8037577962a143b",
-          "source": "gnews-rss",
-          "title": "Google DeepMind’s Gemini 4 Argon builds a 3D periodic table synced to a song - Crypto Briefing",
-          "at": "2026-10-20T22:04:35Z"
-        },
-        "shared": [
-          "gemini",
-          "4",
-          "argon"
-        ]
-      },
-      {
-        "score": 0.405,
+        "score": 0.416,
         "blocked": "time-window",
         "hours_apart": 124.3,
         "a": {
@@ -574,52 +476,76 @@
           "super",
           "vl"
         ]
+      },
+      {
+        "score": 0.366,
+        "blocked": "below-threshold",
+        "hours_apart": 12,
+        "a": {
+          "id": "rss:huggingface:39e60f901a735303",
+          "source": "rss-lab",
+          "title": "Hugging Face ❤️ TorchTPU: TPUs, Natively",
+          "at": "2026-10-20T00:00:00Z"
+        },
+        "b": {
+          "id": "gnews:4e8c9ec77e8989ce",
+          "source": "gnews-rss",
+          "title": "TorchTPU is now open source: Run native PyTorch on TPUs - Google Cloud",
+          "at": "2026-10-20T11:58:48Z"
+        },
+        "shared": [
+          "torchtpu",
+          "tpus"
+        ]
+      },
+      {
+        "score": 0.354,
+        "blocked": "below-threshold",
+        "hours_apart": 17.3,
+        "a": {
+          "id": "rss:huggingface:39e60f901a735303",
+          "source": "rss-lab",
+          "title": "Hugging Face ❤️ TorchTPU: TPUs, Natively",
+          "at": "2026-10-20T00:00:00Z"
+        },
+        "b": {
+          "id": "gnews:774f765718fe03d1",
+          "source": "gnews-rss",
+          "title": "Google Open-Sources TorchTPU, Putting Native PyTorch on Its TPUs - Unite.AI",
+          "at": "2026-10-20T17:15:02Z"
+        },
+        "shared": [
+          "torchtpu",
+          "tpus"
+        ]
+      },
+      {
+        "score": 0.344,
+        "blocked": "time-window",
+        "hours_apart": 177.5,
+        "a": {
+          "id": "rss:deepmind:36a7e1c23fbbe3b1",
+          "source": "rss-lab",
+          "title": "Google DeepMind and Singapore Government collaborate to build fine-tuned AI model for scam detection",
+          "at": "2026-10-14T02:00:14Z"
+        },
+        "b": {
+          "id": "gnews:da4523ca8890557b",
+          "source": "gnews-rss",
+          "title": "Google Cloud, DeepMind, and the EU: A New Model for AI-Driven Science - Cloud Wars",
+          "at": "2026-10-21T11:30:00Z"
+        },
+        "shared": [
+          "google",
+          "deepmind",
+          "ai",
+          "model"
+        ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.644,
-        "blocked": "short-title",
-        "hours_apart": 10.1,
-        "a": {
-          "id": "rss:mistral:cb0bf0e1617ea810",
-          "source": "rss-lab",
-          "title": "Voxtral 3",
-          "at": "2026-10-20T12:00:22Z"
-        },
-        "b": {
-          "id": "gnews:d4a6cf13f5b492cc",
-          "source": "gnews-rss",
-          "title": "Voxtral 3 TTS vs Voxtral 4B TTS: Open Weights or Closed API - OrcaRouter",
-          "at": "2026-10-20T22:05:56Z"
-        },
-        "shared": [
-          "voxtral",
-          "3"
-        ]
-      },
-      {
-        "score": 0.596,
-        "blocked": "time-window",
-        "hours_apart": 94,
-        "a": {
-          "id": "hn:50150434",
-          "source": "hn-algolia",
-          "title": "Timestral: Mistral's time-series foundation models",
-          "at": "2026-10-19T09:59:32Z"
-        },
-        "b": {
-          "id": "rss:mistral:51edf4c643816e6f",
-          "source": "rss-lab",
-          "title": "Introducing Timestral",
-          "at": "2026-10-15T12:00:00Z"
-        },
-        "shared": [
-          "timestral"
-        ]
-      },
-      {
-        "score": 0.584,
+        "score": 0.611,
         "blocked": "thin-overlap",
         "hours_apart": 168.6,
         "a": {
@@ -641,31 +567,7 @@
         ]
       },
       {
-        "score": 0.533,
-        "blocked": "below-threshold",
-        "hours_apart": 11,
-        "a": {
-          "id": "hn:50169053",
-          "source": "hn-algolia",
-          "title": "Google open-sources TorchTPU, a native PyTorch back end for TPUs",
-          "at": "2026-10-20T16:40:24Z"
-        },
-        "b": {
-          "id": "gnews:50b671512a7802b1",
-          "source": "gnews-rss",
-          "title": "Google open-sourced TorchTPU, so PyTorch on TPUs just got a lot easier - Help Net Security",
-          "at": "2026-10-21T03:42:06Z"
-        },
-        "shared": [
-          "google",
-          "opensourc",
-          "torchtpu",
-          "pytorch",
-          "tpus"
-        ]
-      },
-      {
-        "score": 0.507,
+        "score": 0.52,
         "blocked": "thin-overlap",
         "hours_apart": 164,
         "a": {
@@ -687,20 +589,64 @@
         ]
       },
       {
-        "score": 0.495,
-        "blocked": "thin-overlap",
-        "hours_apart": 179.6,
+        "score": 0.462,
+        "blocked": "below-threshold",
+        "hours_apart": 1.4,
         "a": {
-          "id": "rss:deepmind:94cc08977f17740f",
-          "source": "rss-lab",
-          "title": "Gemini 4 Argon for Robotics",
-          "at": "2026-10-13T16:01:58Z"
+          "id": "hn:50180079",
+          "source": "hn-algolia",
+          "title": "OpenAI models are coming to Google Cloud",
+          "at": "2026-10-21T12:53:11Z"
         },
         "b": {
-          "id": "gnews:a73368c53b7eb785",
+          "id": "gnews:da4523ca8890557b",
           "source": "gnews-rss",
-          "title": "Google releases Gemini 4 Argon, its new frontier model: Benchmarks, how to try it, and pricing - Mashable",
-          "at": "2026-10-21T03:37:28Z"
+          "title": "Google Cloud, DeepMind, and the EU: A New Model for AI-Driven Science - Cloud Wars",
+          "at": "2026-10-21T11:30:00Z"
+        },
+        "shared": [
+          "model",
+          "google",
+          "cloud"
+        ]
+      },
+      {
+        "score": 0.462,
+        "blocked": "below-threshold",
+        "hours_apart": 0.5,
+        "a": {
+          "id": "rss:openai:95dedf578de78f3e",
+          "source": "rss-lab",
+          "title": "OpenAI models are coming to Google Cloud",
+          "at": "2026-10-21T12:00:00Z"
+        },
+        "b": {
+          "id": "gnews:da4523ca8890557b",
+          "source": "gnews-rss",
+          "title": "Google Cloud, DeepMind, and the EU: A New Model for AI-Driven Science - Cloud Wars",
+          "at": "2026-10-21T11:30:00Z"
+        },
+        "shared": [
+          "model",
+          "google",
+          "cloud"
+        ]
+      },
+      {
+        "score": 0.458,
+        "blocked": "thin-overlap",
+        "hours_apart": 164.9,
+        "a": {
+          "id": "hn:50168983",
+          "source": "hn-algolia",
+          "title": "Gemini 4 Argon is now available for everyone",
+          "at": "2026-10-20T16:36:24Z"
+        },
+        "b": {
+          "id": "rss:deepmind:8b1ab1df41ac00d8",
+          "source": "rss-lab",
+          "title": "Developing Gemini 4 Argon responsibly and safely",
+          "at": "2026-10-13T19:43:07Z"
         },
         "shared": [
           "gemini",
@@ -709,20 +655,20 @@
         ]
       },
       {
-        "score": 0.491,
+        "score": 0.452,
         "blocked": "thin-overlap",
-        "hours_apart": 172.6,
+        "hours_apart": 168.6,
         "a": {
-          "id": "rss:deepmind:94cc08977f17740f",
-          "source": "rss-lab",
-          "title": "Gemini 4 Argon for Robotics",
-          "at": "2026-10-13T16:01:58Z"
+          "id": "hn:50168983",
+          "source": "hn-algolia",
+          "title": "Gemini 4 Argon is now available for everyone",
+          "at": "2026-10-20T16:36:24Z"
         },
         "b": {
-          "id": "gnews:69fa16cae2252517",
-          "source": "gnews-rss",
-          "title": "Four Gemini 4 Argon Agents Beat Minecraft’s Ender Dragon — Google Deepmind Minecraft Ai Agents - شبكة تواصل الإخبارية",
-          "at": "2026-10-20T20:35:24Z"
+          "id": "rss:deepmind:851107eacfc8ba0f",
+          "source": "rss-lab",
+          "title": "Gemini 4 Argon: Built to solve your hardest problems",
+          "at": "2026-10-13T16:01:52Z"
         },
         "shared": [
           "gemini",
@@ -731,20 +677,42 @@
         ]
       },
       {
-        "score": 0.491,
+        "score": 0.452,
         "blocked": "thin-overlap",
-        "hours_apart": 172.5,
+        "hours_apart": 168.6,
         "a": {
-          "id": "rss:deepmind:94cc08977f17740f",
-          "source": "rss-lab",
-          "title": "Gemini 4 Argon for Robotics",
-          "at": "2026-10-13T16:01:58Z"
+          "id": "hn:50168983",
+          "source": "hn-algolia",
+          "title": "Gemini 4 Argon is now available for everyone",
+          "at": "2026-10-20T16:36:24Z"
         },
         "b": {
-          "id": "gnews:cef785e6f4f90e15",
-          "source": "gnews-rss",
-          "title": "Four Gemini 4 Argon Agents Beat Minecraft’s Ender Dragon — Google Deepmind Minecraft Ai Agents - El-Balad.com",
-          "at": "2026-10-20T20:34:48Z"
+          "id": "rss:google-ai:74c9e10c02543c49",
+          "source": "rss-lab",
+          "title": "Gemini 4 Argon: Built to solve your hardest problems",
+          "at": "2026-10-13T16:00:00Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "argon"
+        ]
+      },
+      {
+        "score": 0.45,
+        "blocked": "thin-overlap",
+        "hours_apart": 476.6,
+        "a": {
+          "id": "hn:50168983",
+          "source": "hn-algolia",
+          "title": "Gemini 4 Argon is now available for everyone",
+          "at": "2026-10-20T16:36:24Z"
+        },
+        "b": {
+          "id": "rss:deepmind:ce56aa83d0064ef1",
+          "source": "rss-lab",
+          "title": "Gemini 4 Argon: our next era of frontier intelligence",
+          "at": "2026-09-30T20:01:45Z"
         },
         "shared": [
           "gemini",
@@ -758,97 +726,97 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 3,
+      "streak_ok": 4,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 154,
+      "streak_ok": 155,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 154,
+      "streak_ok": 155,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 154,
+      "streak_ok": 155,
       "streak_fail": 0,
-      "items_last": 29
+      "items_last": 30
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 154,
+      "streak_ok": 155,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 154,
+      "streak_ok": 155,
       "streak_fail": 0,
-      "items_last": 67
+      "items_last": 63
     },
     {
       "id": "hn_title",
       "state": "ok",
-      "streak_ok": 8,
+      "streak_ok": 9,
       "streak_fail": 0,
-      "items_last": 9
+      "items_last": 7
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 66,
+      "streak_ok": 67,
       "streak_fail": 0,
       "items_last": 4
     },
     {
       "id": "releases_atom",
       "state": "ok",
-      "streak_ok": 8,
+      "streak_ok": 9,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "rss_analyst",
       "state": "ok",
-      "streak_ok": 8,
+      "streak_ok": 9,
       "streak_fail": 0,
       "items_last": 8
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 58,
+      "streak_ok": 59,
       "streak_fail": 0,
-      "items_last": 105
+      "items_last": 106
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 154,
+      "streak_ok": 155,
       "streak_fail": 0,
       "items_last": 40
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 154,
+      "streak_ok": 155,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.005056944444444445,
+    "hours": 0.0048961111111111115,
     "stale": false
   },
   "hf": {
@@ -887,10 +855,10 @@
     "url": "https://api.openalex.org/works",
     "sample": [
       {
-        "id": "2610.27911",
-        "openalexId": "https://openalex.org/W4416036585",
-        "year": 2025,
-        "doi": "https://doi.org/10.18653/v1/2025.emnlp-main.466",
+        "id": "2609.34565",
+        "openalexId": "https://openalex.org/W7221316450",
+        "year": 2026,
+        "doi": "https://doi.org/10.1038/s41746-026-03348-0",
         "enrichOnly": false
       },
       {
@@ -941,7 +909,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 67,
+    "count": 63,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -958,7 +926,7 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 12,
+    "ai_dropped": 11,
     "url": "https://hn.algolia.com/api/v1/search",
     "title_queries": {
       "ok": true,
@@ -978,32 +946,32 @@
         "Qwen",
         "local model"
       ],
-      "hits": 13,
-      "candidates": 10,
-      "ai_dropped": 2,
+      "hits": 11,
+      "candidates": 8,
+      "ai_dropped": 3,
       "duplicates": 1,
-      "added": 9,
+      "added": 7,
       "cap": 20,
       "merged_into_live_hn": true
     },
     "sample": [
       {
-        "id": "hn:50150434",
+        "id": "hn:50169053",
         "tag": "rest",
-        "score": 617,
-        "text": "Timestral: Mistral's time-series foundation models"
+        "score": 360,
+        "text": "Google open-sources TorchTPU, a native PyTorch back end for TPUs"
       },
       {
         "id": "hn:50153630",
         "tag": "rest",
-        "score": 357,
+        "score": 358,
         "text": "CERN and Mistral sign a statement of intent to establish a strategic partnership"
       },
       {
-        "id": "hn:50169053",
+        "id": "hn:50171966",
         "tag": "rest",
-        "score": 333,
-        "text": "Google open-sources TorchTPU, a native PyTorch back end for TPUs"
+        "score": 157,
+        "text": "Anthropic logged net loss of over $80B in first half of 2026"
       }
     ]
   },
@@ -1011,7 +979,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 105,
+    "count": 106,
     "shelf": 0,
     "brief": false,
     "pulse_only": true,
@@ -1066,32 +1034,32 @@
     "feeds_soft_fail": [],
     "sample": [
       {
-        "id": "rss:google-ai:c7c1db1d24f97b16",
-        "lab": "google-ai",
-        "tag": "rest",
-        "title": "Southeast Asia’s digital economy to hit $368 billion",
-        "link": "https://blog.google/company-news/inside-google/around-the-globe/google-asia/e-conomy-sea-report-2026/"
-      },
-      {
-        "id": "rss:huggingface:e8a8161ff83426ef",
+        "id": "rss:huggingface:5c32755a71da49ed",
         "lab": "huggingface",
         "tag": "rest",
-        "title": "NVIDIA Cosmos3-H-Dreams: Bringing Clinical Surgery to Life Through Generative Simulation",
-        "link": "https://huggingface.co/blog/nvidia/cosmos3-h-dreams"
+        "title": "NVIDIA Kumo Forecast Combines Pretrained Time-Series Representations with Historical Pattern Retrieval and Interpretability",
+        "link": "https://huggingface.co/blog/nvidia/kumo-forecast"
       },
       {
-        "id": "rss:huggingface:ef73bf2ace8ac671",
-        "lab": "huggingface",
+        "id": "rss:nvidia-dev:3a9c0cbfe443a941",
+        "lab": "nvidia-dev",
         "tag": "rest",
-        "title": "FairStress: A deeper evaluation of fairness in LLM decision-making",
-        "link": "https://huggingface.co/blog/allenai/fairstress"
+        "title": "Design Proteins with RFD4-Proteina Using Reward-Guided Inference-Time Search",
+        "link": "https://developer.nvidia.com/blog/design-proteins-with-rfd4-proteina-using-reward-guided-inference-time-search/"
       },
       {
-        "id": "rss:huggingface:536f23cd94f13984",
-        "lab": "huggingface",
+        "id": "rss:mistral:6bf82841932d223c",
+        "lab": "mistral",
         "tag": "rest",
-        "title": "ALTK-Evolve: How learned memory tops the τ²-bench leaderboard on customer service tasks without a frontier model",
-        "link": "https://huggingface.co/blog/ibm-research/altk-evolve-bc"
+        "title": "Mistral Advances AI for Engineering with NVIDIA",
+        "link": "https://mistral.ai/news/mistral-nvidia-ai-for-industrial-engineering/"
+      },
+      {
+        "id": "rss:openai:95dedf578de78f3e",
+        "lab": "openai",
+        "tag": "rest",
+        "title": "OpenAI models are coming to Google Cloud",
+        "link": "https://openai.com/index/openai-models-google-cloud"
       }
     ]
   },
@@ -1200,6 +1168,13 @@
     "lead_rule": "analyst-only groups excluded",
     "sample": [
       {
+        "id": "anl:latent-space:1cd487805b8193f0",
+        "feed": "latent-space",
+        "recap": false,
+        "title": "Claude Mods: Flipping the Harness Inside Out",
+        "link": "https://www.latent.space/p/claude-mods"
+      },
+      {
         "id": "anl:latent-space:9c99dc597b92594a",
         "feed": "latent-space",
         "recap": true,
@@ -1219,13 +1194,6 @@
         "recap": false,
         "title": "Battle Drones - a vibe coded RTS with audio-based multiplayer",
         "link": "https://simonwillison.net/2026/Oct/20/battledrones/"
-      },
-      {
-        "id": "anl:latent-space:996b48d3900b31c6",
-        "feed": "latent-space",
-        "recap": true,
-        "title": "[AINews] not much happened today",
-        "link": "https://www.latent.space/p/ainews-not-much-happened-today-f09"
       }
     ]
   },
@@ -1285,29 +1253,13 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 29,
-    "pool": 197,
+    "items": 30,
+    "pool": 166,
     "corroborators": [
-      {
-        "id": "gnews:774f765718fe03d1",
-        "anchor_id": "hn:50169053",
-        "score": 0.759,
-        "title": "Google Open-Sources TorchTPU, Putting Native PyTorch on Its TPUs - Unite.AI",
-        "publisher": "Unite.AI",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:87cc7b2d4f18b32f",
-        "anchor_id": "hn:50169053",
-        "score": 0.699,
-        "title": "Google open-sources TorchTPU to bring native PyTorch support to its TPUs - Crypto Briefing",
-        "publisher": "Crypto Briefing",
-        "self_repost": false
-      },
       {
         "id": "gnews:00358f9254109560",
         "anchor_id": "hn:50176872",
-        "score": 0.838,
+        "score": 0.84,
         "title": "Google DeepMind’s Gemini 4 Argon AI agents beat Minecraft in 27 hours - Storyboard18",
         "publisher": "Storyboard18",
         "self_repost": false
@@ -1315,7 +1267,7 @@
       {
         "id": "gnews:beec7a02bfb3dacc",
         "anchor_id": "hn:50176872",
-        "score": 0.825,
+        "score": 0.829,
         "title": "Google DeepMind AI Agents Beat Minecraft… After 27 Hours And 605 ‘Deaths’ - AI Insider",
         "publisher": "AI Insider",
         "self_repost": false
@@ -1323,9 +1275,25 @@
       {
         "id": "gnews:053ceb599920ee98",
         "anchor_id": "hn:50176872",
-        "score": 0.726,
+        "score": 0.727,
         "title": "Google DeepMind says four AI agents beat Minecraft in 27 hours by writing 2,783 programs of their own — AI team died 605 times on Easy difficulty and ran up an estimated $520 in tokens - Tom's Hardware",
         "publisher": "Tom's Hardware",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:774f765718fe03d1",
+        "anchor_id": "hn:50169053",
+        "score": 0.762,
+        "title": "Google Open-Sources TorchTPU, Putting Native PyTorch on Its TPUs - Unite.AI",
+        "publisher": "Unite.AI",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:4e8c9ec77e8989ce",
+        "anchor_id": "hn:50169053",
+        "score": 0.7,
+        "title": "TorchTPU is now open source: Run native PyTorch on TPUs - Google Cloud",
+        "publisher": "Google Cloud",
         "self_repost": false
       }
     ],
@@ -1355,24 +1323,24 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:0c1889628d4d9a62",
-        "title": "Krafton Releases Preview of Its Self-Developed LLM \"Raon-1 Mini\" - 아시아경제",
-        "publisher": "아시아경제",
-        "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9PY0RiNWRLNWRSbGNuWTkzUElVRW1wY1BUTEpwMUxfZzk0c3VUV1c0Y1gzU1dMWG0yZUd2d2xPWi13M1ZxX3RsTVNwbHFveVo3am1BTk9DYi15YVJvaGlnOTZvWGc?oc=5",
+        "id": "gnews:d343c391aea730cd",
+        "title": "Why AI’s deepest mind believes the world is about to change radically - Livemint",
+        "publisher": "Livemint",
+        "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNOGRfMEdXQ25NMEs5eDZ1YTl5bE9ZQlFPZzB4UGVwVnlDTlh1d3l5dU9SZjVCUmttUThwWENLb0YwZklZdFYtdDV1RE9OOWg3U2dVZEsyRkxhZFduNURHNGlBMnhKV0d1NnoxSUUwVlVzdDZRWTFDM084elVIOUpUMmVQc3ZvZHZmZGJGNzVHaFF0VmE1M3o1S1Y5ZkRyYVc0a2JvX1luQjZFdk02ZEZneFJpZU1Rdkh2MzhHbVNn?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:d5ad598822704710",
-        "title": "Why Google DeepMind Is Working on Jowar | Lila Ibrahim - The Economic Times",
-        "publisher": "The Economic Times",
-        "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOMFd3Z3JMMzg2MU1ON0JmSXdqdFVTczBBczByQzNBNDRfdndubXQ2ZGxfME10cFFaSG1ES3FwUzA0eTJCRVpfWWhpUWJ0aG15a3NDTmN0bWlBNkpHUE82Y0ZuMndXdTFMdDdvVWd6dmJCZlU4Y0lMUEhQNEQ2OEQ2RmI3VWtUNVM0MnVMOTBXb1dTcDA5bnd0WHFUUnZSWDdhc1E0dlQ2SE9YUGd2dmRkZWlTeXE4eG9HaE5LWFd1b9IBxAFBVV95cUxPZVlONTJqSkpHMEpDOUVFZXBjMWp2MWZhWTlyYndwbFZ0LW5oZnJSU1VNcTl6SUZnT3RkRk5sdVhwaENTSEVHeGdPWDFHUFcxXzgzeDVXWGxVUVVkS25lZGl1RERZRndfdjF1YzdXVFVpYml6VXpuWElSd3JBSS1qbTNhS0RoY2hnM2RtMUVzMlB4VlBlb3dXMWdhWE1ub0xBM3lyMERhMDBMQjY4OWF0a1FvWm9wYS1mTkNGWE1DYzgxMWdl?oc=5",
-        "tag": "rest"
+        "id": "gnews:1f637e31f878a772",
+        "title": "Gemini 4 Carbon Projected to Be 400% Cheaper Than GPT Astra - Geeky Gadgets",
+        "publisher": "Geeky Gadgets",
+        "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBMRXhuRUFOOGQzdjh6R3hkY2xIbHpJMk9WY1E3R0Iwc0kwTG1UUlhKMW91bF9aY21RT2E0NXEzRHlKVkdoWDl0d2FqWHVyVHZlOHlraFhlTWRsNWJBbkdRUVNUa2xfSE1iSEFpcWVB?oc=5",
+        "tag": "companion"
       },
       {
-        "id": "gnews:7a47342546297c41",
-        "title": "Ex-DeepMind Graepel Launches Metis Reasoning - Konsulteer",
-        "publisher": "Konsulteer",
-        "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPUDJOaElrdkpabE9pZGJzVEV2ZFRyQlFlOGwxWThHMExCc0FrNExIZmRhTUdVUGNXblg0VHBuV0dMNnF4dW00TVc2VElmZUdPOVZXZ1ZxbzZkdEpPOE9NM3lzd1VqdS1UbE00U0hjYUczYWNja3NrUklnU3pJQnUyc2pkUlpZRzlBMHdlbHc4T3U1dV82eWx6dUlJdTQ3THlHM2pwdTF6cDlPakQxc0pjUVl5dGNNVnFETHc?oc=5",
+        "id": "gnews:4ed77e15ccbe6990",
+        "title": "OpenAI vs Google DeepMind: How the AI drug discovery race is shaping up - Digit",
+        "publisher": "Digit",
+        "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQdTkwMmxQUTlZM21JdTAyeDJMTlQyWnZkMkdJbEFoczFzTkZNaE96TVF1eGw4d0pWdjBUSmZpdkg0X0RwNlNYUnFuUFZMc1VvZThkX3FlbTVsSE9HUG1xUzBwSE5IOFIzaDFXTWZudk9yZi1MM3JiYVNhNV9Va1NUM3dMbHVsNUs0ZjlqMUtzZzNlcGdWLVh6Z296TWViLXh2Vjk3TE9CU3p4S0sxUEtPdnowONIBugFBVV95cUxNalRHUXQ2NkNhUF9HQ0FUM1U1Y2psR1RsQ2hjbUhnUm5MXzd3em80ak9VSEpkZXRpbmZZSmticFZyU1ZlcjRxRTNBUHVXQ0w1c0ctOGVjd0xQQlB5MGFuUEN3NDBsTjlzbmxqZHBsQUxZUlhvamMwS0hVa1B2ZlhQRmZxNEZaLXVULWh3M3R4U0NnVkhKY3llQ0Vnd19EWWVUb2VKM3gzQU84b0hTaVctUnpLelBKRFRJTHc?oc=5",
         "tag": "rest"
       }
     ]
