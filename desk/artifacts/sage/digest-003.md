@@ -1,31 +1,36 @@
 # SAGE digest pack
-compiled 2026-10-21T06:02:57.220Z
-source free-ingest digest refresh 2026-10-21T06:02:57.220Z · cycle 003 · lead hf-incident · unlock:live
+compiled 2026-10-21T12:10:02.422Z
+source free-ingest digest refresh 2026-10-21T12:10:02.422Z · cycle 003 · lead hf-incident · unlock:live
 lead_policy unlock — no new HF primary 03 Sep
 
 ## Lead
-AI agents are only as good as the personal information you share [high]
-4 SRC · sig 3 · pick 2026-10-20
+Google open-sources TorchTPU, a native PyTorch back end for TPUs [high]
+3 SRC · sig 278 · pick 2026-10-21
 MOVE Digest/Voice follow Brief lead · cycle label 003
 UNLOCK IF Next 06:11 Istanbul pick
 
 ## Files
-### [lead / other / high] AI agents are only as good as the personal information you share
-4 SRC · sig 3 · pick 2026-10-20
+### [lead / other / high] Google open-sources TorchTPU, a native PyTorch back end for TPUs
+3 SRC · sig 278 · pick 2026-10-21
 - stamp live
-- frozen 2026-10-20T03:20:50.370Z
-- pick 2026-10-20
+- frozen 2026-10-21T03:20:48.810Z
+- pick 2026-10-21
 1. Follow LEAD_TODAY · never invent
 2. Cycle label stays 003
 Done when: Digest lead equals Brief LEAD_TODAY title
 
-### [companion / other / medium] Advancing coding in low‑resource programming languages
-2 SRC · sig 3
+### [companion / other / medium] Gemini 4 Argon: Built to solve your hardest problems
+3 SRC · sig 19
+- 3 SRC
+Done when: Listed under Digest lead
+
+### [rest / other / medium] Advancing coding in low‑resource programming languages
+2 SRC · sig 44
 - 2 SRC
 Done when: Listed under Digest lead
 
 ### [rest / other / medium] Introducing Timestral
-2 SRC · sig 563
+2 SRC · sig 614
 - 2 SRC
 Done when: Listed under Digest lead
 
