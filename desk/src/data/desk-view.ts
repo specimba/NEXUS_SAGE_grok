@@ -6,6 +6,7 @@
  */
 import type { MovedRow, RankSnapshot } from "@/lib/corroboration";
 import type { DeskViewTrim, MemberRow, OrphanCluster, SlimLead, XRef } from "@/lib/desk-view";
+import type { LeadClosest } from "@/lib/lead-pick";
 import type { SourceHealthRow } from "@/lib/source-health";
 import type { HeatWindow } from "@/lib/topic-heat";
 import type { WireRow } from "@/lib/wire";
@@ -24,8 +25,10 @@ export const DESK_VIEW_TRIMMED: DeskViewTrim = {"stories":38,"items":38,"xPosts"
 
 export const LEAD_HELD: boolean = false;
 export const LEAD_FIRST_AT: string | null = "2026-10-20T16:40:24.000Z";
-export const LEAD_TODAY: SlimLead | null = {"date":"2026-10-21","at":"2026-10-21T03:20:48.810Z","pick_slot":"06:20","cluster_id":"cl:hn:50169053","headline":"Google open-sources TorchTPU, a native PyTorch back end for TPUs","url":"https://github.com/google-pytorch/torch_tpu","sources":3,"sig":278,"reason":"picked","age_band":"<24h"};
+export const LEAD_TODAY: SlimLead | null = {"date":"2026-10-21","at":"2026-10-21T03:20:48.810Z","pick_slot":"06:20","cluster_id":"cl:hn:50169053","headline":"Google open-sources TorchTPU, a native PyTorch back end for TPUs","url":"https://github.com/google-pytorch/torch_tpu","sources":3,"sig":278,"reason":"picked","age_band":"<24h","pub":"HN"};
 export const LEAD_YESTERDAY: SlimLead | null = {"date":"2026-10-20","at":"2026-10-20T03:20:50.370Z","pick_slot":"06:20","cluster_id":"cl:hn:50155578","headline":"AI agents are only as good as the personal information you share","url":"https://apnews.com/article/meta-muse-openai-dot-ai-privacy-449734d41d3750aad7038b761faa49c9","sources":4,"sig":3,"reason":"picked","age_band":"<24h"};
+export const LEAD_CLOSEST: LeadClosest | null = null;
+export const LEAD_LAST_PICK: string | null = "2026-10-21";
 
 /** Day tape: yesterday's last crawl + today's crawls (at · new clusters · pick). Reader-hash ignores this line. */
 export const DAY_TAPE: DayTapeSlot[] = [{"at":"2026-10-20T15:16:01Z","new":18},{"at":"2026-10-20T22:37:32Z","new":46},{"at":"2026-10-21T03:20:27Z","new":27,"pick":"pick"},{"at":"2026-10-21T08:20:57Z","new":14},{"at":"2026-10-21T08:37:28Z","new":2}];

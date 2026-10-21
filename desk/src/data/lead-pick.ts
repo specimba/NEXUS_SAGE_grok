@@ -64,3 +64,6 @@ export const LEAD_HELD = false;
 
 /** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is >48h old (PASS-L). */
 export const LEAD_FIRST_AT: string | null = "2026-10-20T16:40:24.000Z";
+
+/** Date of the latest real pick (never a HELD entry) — the HELD card's "last pick" (UX-1). */
+export const LEAD_LAST_PICK: string | null = "2026-10-21";
