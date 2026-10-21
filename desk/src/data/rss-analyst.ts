@@ -17,7 +17,7 @@ export type RssAnalystRow = {
   cluster_id?: string;
 };
 
-export const RSS_ANALYST_AT: string | null = "2026-10-21T08:37:28Z";
+export const RSS_ANALYST_AT: string | null = "2026-10-21T08:52:18Z";
 
 export const RSS_ANALYST: RssAnalystRow[] = [
   { id: "anl:latent-space:9c99dc597b92594a", feed: "latent-space" as const, title: "[AINews] DeepSeek DeepInfer: Open Source SOTA Inference running 155T toks/day/cluster making $22m/day at ~80% margin for a 81 day payback", link: "https://www.latent.space/p/ainews-deepseek-deepinfer-open-source", published: "2026-10-21T06:54:09Z", summary: "An open source “bomb” drops from China", source: "rss-analyst" as const, recap: true, tag: "rest" as const, first_seen: "2026-10-21T08:20:57Z", is_new: false, cluster_id: "cl:anl:latent-space:9c99dc597b92594a" },

@@ -16,7 +16,7 @@ export type RssLabRow = {
   cluster_id?: string;
 };
 
-export const RSS_LABS_AT = "2026-10-21T08:37:28Z";
+export const RSS_LABS_AT = "2026-10-21T08:52:18Z";
 
 export const RSS_LABS: RssLabRow[] = [
   { id: "rss:google-ai:c7c1db1d24f97b16", lab: "google-ai" as const, title: "Southeast Asia’s digital economy to hit $368 billion", link: "https://blog.google/company-news/inside-google/around-the-globe/google-asia/e-conomy-sea-report-2026/", published: "2026-10-21T04:00:00Z", summary: "Widespread AI adoption is propelling Southeast Asia's digital economy to a projected $368 billion in 2026 and $1 trillion by 2035.", source: "rss-lab" as const, tag: "rest" as const, first_seen: "2026-10-21T08:20:57Z", is_new: false, cluster_id: "cl:rss:google-ai:c7c1db1d24f97b16" },
