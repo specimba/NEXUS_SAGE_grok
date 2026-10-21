@@ -195,7 +195,7 @@ const D: NonNullable<SageSetupView["limits"]>["defaults"] = {
 };
 
 export const SAGE_SETUP: SageSetupView = {
-  "stamped_at": "2026-10-21T13:21:09Z",
+  "stamped_at": "2026-10-21T18:20:35Z",
   "config_path": "desk/config/sage-sources.json",
   "config_hash": "e3e9003a7d92",
   "status": "ok",
@@ -208,7 +208,7 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "hn",
       "on": true,
       "caps": "cap 20",
-      "last_rows": 63,
+      "last_rows": 69,
       "state": "ok"
     },
     {
@@ -236,7 +236,7 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "gnews",
       "on": true,
       "caps": "cap 32",
-      "last_rows": 30,
+      "last_rows": 31,
       "state": "ok"
     },
     {
@@ -264,7 +264,7 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "arxiv",
       "on": true,
       "caps": "—",
-      "last_rows": 29,
+      "last_rows": 28,
       "state": "ok"
     },
     {

@@ -1,6 +1,6 @@
 # SAGE digest pack
-compiled 2026-10-21T12:10:02.422Z
-source free-ingest digest refresh 2026-10-21T12:10:02.422Z · cycle 003 · lead hf-incident · unlock:live
+compiled 2026-10-21T18:20:52.714Z
+source free-ingest digest refresh 2026-10-21T18:20:52.714Z · cycle 003 · lead hf-incident · unlock:live
 lead_policy unlock — no new HF primary 03 Sep
 
 ## Lead
