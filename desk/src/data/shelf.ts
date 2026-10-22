@@ -23,7 +23,6 @@ export const SHELF: ShelfItem[] = [
   { href: "https://arxiv.org/abs/2610.30125", label: "arxiv.org/abs/2610.30125", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.30122", label: "arxiv.org/abs/2610.30122", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.30119", label: "arxiv.org/abs/2610.30119", reason: "arxiv-shelf" as const },
-  { href: "https://github.com/sammist2/invoice-triage-agent", label: "sammist2/invoice-triage-agent", reason: "github-search-shelf" as const },
-  { href: "https://github.com/arrrrny/zuraffa_agent", label: "arrrrny/zuraffa_agent", reason: "github-search-shelf" as const },
-  { href: "https://github.com/guessleej/xHarness", label: "guessleej/xHarness", reason: "github-search-shelf" as const },
+  { href: "https://github.com/ChiragSehra/memory-writer-eval", label: "ChiragSehra/memory-writer-eval", reason: "github-search-shelf" as const },
+  { href: "https://github.com/ansariadeel-hue/agent-eval-sandbox", label: "ansariadeel-hue/agent-eval-sandbox", reason: "github-search-shelf" as const },
 ];
