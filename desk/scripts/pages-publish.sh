@@ -181,7 +181,7 @@ if [ "${#fails[@]}" -eq 0 ] && [ "${SAGE_OVERFLOW_390:-off}" = "auto" ]; then
     if [ -n "$full" ]; then
       changed_code="$(git -C "$REPO" diff --name-only "$full" HEAD -- . ':(exclude)desk/src/data' ':(exclude)desk/artifacts' \
         ':(exclude)packs' ':(exclude)desk/packs' ':(exclude)logs' ':(exclude)refs' \
-        ':(exclude)ci' ':(exclude)desk/scripts' ':(exclude)desk/src/lib/__tests__' ':(exclude)desk/public/feed.xml' ':(exclude,glob)**/*.md' \
+        ':(exclude)ci' ':(exclude)desk/scripts' ':(exclude)desk/src/lib/__tests__' ':(exclude)desk/public/feed.xml' ':(exclude)desk/public/watch.xml' ':(exclude,glob)**/*.md' \
         ':(exclude)desk/config/sage-sources.json' || echo '?diff-failed')"
       if [ -z "$changed_code" ]; then code_changed=0; why="data-only since main@$pub_sha"
       else why="code changed since main@$pub_sha: $(echo "$changed_code" | head -5 | tr '\n' ' ')"; fi

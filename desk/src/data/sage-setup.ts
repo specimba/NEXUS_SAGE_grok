@@ -186,7 +186,8 @@ const D: NonNullable<SageSetupView["limits"]>["defaults"] = {
     "gmail_senders": [
       "hello@newsletters.venturebeat.com",
       "takaramono@tldr.takara.ai"
-    ]
+    ],
+    "watch_terms": []
   },
   "taste": {
     "weight": 0,
@@ -197,7 +198,7 @@ const D: NonNullable<SageSetupView["limits"]>["defaults"] = {
 export const SAGE_SETUP: SageSetupView = {
   "stamped_at": "2026-10-23T08:26:11Z",
   "config_path": "desk/config/sage-sources.json",
-  "config_hash": "e3e9003a7d92",
+  "config_hash": "6dd1c3db6716",
   "status": "ok",
   "used": "committed",
   "errors": [],
@@ -327,6 +328,10 @@ export const SAGE_SETUP: SageSetupView = {
     {
       "id": "gmail_senders",
       "terms": D.keywords.gmail_senders
+    },
+    {
+      "id": "watch_terms",
+      "terms": []
     }
   ],
   "taste": {
@@ -409,7 +414,8 @@ export const SAGE_SETUP: SageSetupView = {
       "gmail_seed",
       "politics_deny",
       "hn_title_queries",
-      "gmail_senders"
+      "gmail_senders",
+      "watch_terms"
     ],
     "regex_lists": {
       "ai_terms": {
@@ -434,7 +440,8 @@ export const SAGE_SETUP: SageSetupView = {
     ],
     "empty_means_off": [
       "hn_title_queries",
-      "gmail_senders"
+      "gmail_senders",
+      "watch_terms"
     ],
     "list_rules": {
       "hn_title_queries": {
@@ -464,9 +471,13 @@ export const SAGE_SETUP: SageSetupView = {
         "kind": "address",
         "max": 20,
         "pattern": "^[a-z0-9._%+-]+@[a-z0-9-]+(?:\\.[a-z0-9-]+)+$"
+      },
+      "watch_terms": {
+        "kind": "watch",
+        "max": 20
       }
     }
   },
   "config": D,
-  "file_hash": "9e8aa501e4fa88fcfe52ecaf9180829f25788f0f9f9e1f9c89adc81f13b777c0"
+  "file_hash": "255b324d2ab0cc5fe506bc309d983da4be914f6a12cdbaf0a021980821f452be"
 };

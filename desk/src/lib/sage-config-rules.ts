@@ -40,7 +40,9 @@ export type SageLimits = {
  */
 export type ListRule =
   | { kind: "plain"; max: number; len_max: number; bad_chars: string; incident: string[]; ban: string[] }
-  | { kind: "address"; max: number; pattern: string };
+  | { kind: "address"; max: number; pattern: string }
+  /** PASS-W W1 watch terms: plain case-insensitive substrings, max N, no duplicates, each passes the "i"/"iu" regex lint. */
+  | { kind: "watch"; max: number };
 
 /** Same text and order as hn-pulse hnTitleQueryProblem (null = ok). */
 function plainTermProblem(q: string, r: Extract<ListRule, { kind: "plain" }>): string | null {
@@ -60,6 +62,15 @@ export function listRuleError(k: string, terms: string[], r: ListRule): string |
     if (terms.length > r.max) return "keywords." + k + ": more than " + r.max + " terms";
     const probs = terms.map((t) => [t, plainTermProblem(t, r)] as const).filter(([, p]) => p);
     if (probs.length) return "keywords." + k + ": " + probs.map(([t, p]) => JSON.stringify(t) + " " + p).join("; ");
+    if (new Set(terms.map((t) => t.trim().toLowerCase())).size !== terms.length) return "keywords." + k + ": duplicate term";
+    return null;
+  }
+  if (r.kind === "watch") {
+    if (terms.length > r.max) return "keywords." + k + ": more than " + r.max + " terms";
+    for (const t of terms) {
+      const e = regexTermError(k, t);
+      if (e) return e;
+    }
     if (new Set(terms.map((t) => t.trim().toLowerCase())).size !== terms.length) return "keywords." + k + ": duplicate term";
     return null;
   }

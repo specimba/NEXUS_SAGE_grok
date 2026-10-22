@@ -439,15 +439,15 @@ describe("PASS-D atom feed (D5)", () => {
     expect(p1.chrome.bin_sha256).toMatch(/^[0-9a-f]{64}$/);
     expect(p1.feed_sha256).toMatch(/^[0-9a-f]{64}$/);
     writeFileSync(join(repo, "status"), "atom-feed: unchanged public/feed.xml · 1 entry\n");
-    expect(pp(["suffix", "--changed", "true", "--status", join(repo, "status")]).stdout.trim()).toBe("feed=same ov390=pass fl=178674");
+    expect(pp(["suffix", "--changed", "true", "--status", join(repo, "status")]).stdout.trim()).toBe("feed=same ov390=pass fl=178674 watch=skipped");
     // run 2: data-only, no Chrome, feed changed; prev first-load carried, check-fail recorded
     writeFileSync(join(desk, "public/feed.xml"), "<feed>two</feed>\n");
     expect(pp(["write"], { ...base, P_OV: "skipped", P_CIS: "", P_FAILS: "1", P_FONT: "static", P_FL: "178675" }).status).toBe(0);
     const p2 = JSON.parse(readFileSync(join(desk, "artifacts/sage/publish-proof.json"), "utf8"));
     expect(p2).toMatchObject({ result: "check-fail", overflow_390: "skipped", chrome_install_s: null, chrome: null, first_load_bytes: 178675, first_load_prev_bytes: 178674, feed_changed: true });
     writeFileSync(join(repo, "status"), "atom-feed: wrote public/feed.xml · 1 entry\n");
-    expect(pp(["suffix", "--changed", "true", "--status", join(repo, "status")]).stdout.trim()).toBe(`feed=${p2.feed_sha256.slice(0, 8)} ov390=skipped fl=178675`);
-    expect(pp(["suffix", "--changed", "false", "--status", join(repo, "status")]).stdout.trim()).toBe("feed=same ov390=skipped fl=-");
+    expect(pp(["suffix", "--changed", "true", "--status", join(repo, "status")]).stdout.trim()).toBe(`feed=${p2.feed_sha256.slice(0, 8)} ov390=skipped fl=178675 watch=skipped`);
+    expect(pp(["suffix", "--changed", "false", "--status", join(repo, "status")]).stdout.trim()).toBe("feed=same ov390=skipped fl=- watch=skipped");
     expect(pp(["suffix", "--changed", "true", "--status", join(repo, "missing")]).stdout.trim()).toMatch(/^feed=skipped /);
   });
 });

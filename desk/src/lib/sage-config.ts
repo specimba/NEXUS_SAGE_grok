@@ -37,12 +37,14 @@ export const GMAIL_WINDOW_DAYS = 14;
 /** Lab RSS per-feed timeout hard ceiling (spec: ≤ 15 s). */
 export const LAB_RSS_TIMEOUT_MAX_S = 15;
 /** Keyword lists the JSON may edit (no new lists by JSON). */
-export const KEYWORD_LIST_IDS = ["ai_terms", "hn_sweep", "gmail_seed", "politics_deny", "hn_title_queries", "gmail_senders"] as const;
+export const KEYWORD_LIST_IDS = ["ai_terms", "hn_sweep", "gmail_seed", "politics_deny", "hn_title_queries", "gmail_senders", "watch_terms"] as const;
 /**
  * PASS-S1.8: lists where EMPTY MEANS OFF (allowed). Every other list (ai_terms, politics_deny, hn_sweep, gmail_seed)
  * must stay non-empty.
  */
-export const KEYWORD_EMPTY_MEANS_OFF: readonly string[] = ["hn_title_queries", "gmail_senders"];
+export const KEYWORD_EMPTY_MEANS_OFF: readonly string[] = ["hn_title_queries", "gmail_senders", "watch_terms"];
+/** PASS-W W1: watch-feed terms ceiling (`[]` = feature off). Each term ≤ KEYWORD_LEN_MAX. */
+export const WATCH_TERMS_MAX = 20;
 /** Keyword list guard rails (not spec numbers — keep regexes and the HN sweep query small). */
 export const KEYWORD_LIST_MAX = 200;
 export const KEYWORD_LEN_MAX = 120;
@@ -89,6 +91,7 @@ export function defaultSageConfig(): SageConfig {
       politics_deny: [...POLITICS_LEAD_TERMS],
       hn_title_queries: [...HN_TITLE_QUERIES],
       gmail_senders: [...GMAIL_SENDERS_DEFAULT],
+      watch_terms: [],
     },
     taste: { weight: 0, max: TASTE_WEIGHT_MAX },
   };
@@ -146,6 +149,7 @@ export function limitsFromCode(): SageLimits {
         ban: [...HN_STANDING_BAN],
       },
       gmail_senders: { kind: "address", max: GMAIL_SENDERS_MAX, pattern: GMAIL_SENDER_RE.source },
+      watch_terms: { kind: "watch", max: WATCH_TERMS_MAX },
     },
   };
 }

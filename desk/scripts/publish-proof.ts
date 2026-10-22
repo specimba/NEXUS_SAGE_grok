@@ -12,6 +12,9 @@
  *   bun scripts/publish-proof.ts suffix --changed <true|false> [--status <atom-feed status file>] [--desk <dir>]
  *       Prints the crawl.log suffix `feed=<sha8|same|skipped> ov390=<skipped|pass|fail> fl=<bytes|->`.
  *       The proof only counts when it is this run's (crawl_at = CRAWL_AT and main_sha = HEAD); otherwise ov390=skipped fl=-.
+ * PASS-W W4: `watch_sha` (sha256 of public/watch.xml or null), `watch_new` / `watch_dropped` (from the atom-feed status
+ *   file's `watch=<new>/<dropped>` line, $ATOM_FEED_STATUS; null when off/skipped/absent); the suffix gains
+ *   `watch=<new>/<dropped>|off|skipped`.
  * Never fails the caller: errors print a WARN and exit 0.
  */
 import { spawnSync } from "node:child_process";
@@ -25,6 +28,13 @@ const desk = resolve(opt("--desk") || resolve(import.meta.dir, ".."));
 const repo = resolve(desk, "..");
 const proofPath = resolve(desk, "artifacts/sage/publish-proof.json");
 const feedPath = resolve(desk, "public/feed.xml");
+const watchPath = resolve(desk, "public/watch.xml");
+/** PASS-W: the `watch=` token of an atom-feed status file ("skipped" when there is none). */
+function watchToken(status: string): string {
+  const m = /^watch=(\d+\/\d+|off)\b/m.exec(status);
+  return m ? m[1]! : "skipped";
+}
+const readStatus = (f: string | null | undefined) => (f && existsSync(f) ? readFileSync(f, "utf8").trim() : "");
 
 type ChromeProof = { version: string | null; pinned: string | null; zip_sha256: string | null; bin_sha256: string } | null;
 type Proof = {
@@ -44,6 +54,9 @@ type Proof = {
   feed_sha256: string | null;
   feed_entries: number;
   feed_changed: boolean;
+  watch_sha: string | null;
+  watch_new: number | null;
+  watch_dropped: number | null;
 };
 
 const readJson = <T>(p: string): T | null => {
@@ -69,6 +82,8 @@ function write() {
   const feed = existsSync(feedPath) ? readFileSync(feedPath) : null;
   const head = git("show", "HEAD:desk/public/feed.xml");
   const committed = head.status === 0 ? head.stdout : null;
+  const wt = watchToken(readStatus(e.ATOM_FEED_STATUS)).split("/");
+  const [wn, wd] = wt.length === 2 ? [Number(wt[0]), Number(wt[1])] : [null, null];
   const ov = e.P_OV === "ran-pass" || e.P_OV === "ran-fail" ? e.P_OV : "skipped";
   const bin = e.P_CHROME_BIN || "";
   let chrome: ChromeProof = null;
@@ -96,6 +111,9 @@ function write() {
     feed_sha256: feed ? createHash("sha256").update(feed).digest("hex") : null,
     feed_entries: feed ? (feed.toString("utf8").match(/<entry>/g) ?? []).length : 0,
     feed_changed: feed ? !(committed && Buffer.compare(committed, feed) === 0) : false,
+    watch_sha: existsSync(watchPath) ? createHash("sha256").update(readFileSync(watchPath)).digest("hex") : null,
+    watch_new: wn,
+    watch_dropped: wd,
   };
   mkdirSync(dirname(proofPath), { recursive: true });
   writeFileSync(proofPath, JSON.stringify(out, null, 2) + "\n");
@@ -105,14 +123,14 @@ function write() {
 function suffix() {
   const changed = opt("--changed") === "true";
   const statusFile = opt("--status");
-  const status = statusFile && existsSync(statusFile) ? readFileSync(statusFile, "utf8").trim() : "";
+  const status = readStatus(statusFile);
   const p = readJson<Proof>(proofPath);
   const headSha = git("rev-parse", "HEAD").stdout.toString().trim();
   const fresh = !!(changed && p && p.crawl_at && p.crawl_at === crawlAtNow() && p.main_sha === headSha);
   const feed = !status || /^atom-feed: skipped/.test(status) ? "skipped" : fresh && p!.feed_changed && p!.feed_sha256 ? p!.feed_sha256.slice(0, 8) : "same";
   const ov = fresh ? ({ skipped: "skipped", "ran-pass": "pass", "ran-fail": "fail" } as const)[p!.overflow_390] ?? "skipped" : "skipped";
   const fl = fresh && p!.first_load_bytes != null ? String(p!.first_load_bytes) : "-";
-  console.log(`feed=${feed} ov390=${ov} fl=${fl}`);
+  console.log(`feed=${feed} ov390=${ov} fl=${fl} watch=${watchToken(status)}`);
 }
 
 try {
@@ -120,7 +138,7 @@ try {
   else if (argv[0] === "suffix") suffix();
   else console.error("usage: publish-proof.ts write | suffix --changed <true|false> [--status <file>] [--desk <dir>]");
 } catch (err) {
-  if (argv[0] === "suffix") console.log("feed=skipped ov390=skipped fl=-");
+  if (argv[0] === "suffix") console.log("feed=skipped ov390=skipped fl=- watch=skipped");
   else console.error(`publish-proof: WARN ${err instanceof Error ? err.message : String(err)}`);
 }
 process.exit(0);

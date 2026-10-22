@@ -104,8 +104,8 @@ describe("PASS-S1 × C3: S1 checks live in validateWithRules (browser = CI = the
     expect(BROWSER.feeds.releases_atom).toEqual(limitsFromCode().feeds.releases_atom);
     expect(BROWSER.keyword_lists).toContain("hn_title_queries");
     expect(BROWSER.keyword_lists).toContain("gmail_senders");
-    expect(BROWSER.empty_means_off).toEqual(["hn_title_queries", "gmail_senders"]);
-    expect(Object.keys(BROWSER.list_rules).sort()).toEqual(["gmail_senders", "hn_title_queries"]);
+    expect(BROWSER.empty_means_off).toEqual(["hn_title_queries", "gmail_senders", "watch_terms"]);
+    expect(Object.keys(BROWSER.list_rules).sort()).toEqual(["gmail_senders", "hn_title_queries", "watch_terms"]);
   });
 });
 
