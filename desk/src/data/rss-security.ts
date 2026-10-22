@@ -16,7 +16,7 @@ export type RssSecurityRow = {
   cluster_id?: string;
 };
 
-export const RSS_SECURITY_AT = "2026-10-22T03:20:52Z";
+export const RSS_SECURITY_AT = "2026-10-22T08:20:36Z";
 
 export const RSS_SECURITY: RssSecurityRow[] = [
   { id: "rss-sec:trailofbits:4fe37299ce183363", lab: "trailofbits" as const, title: "Your AI agent fixed the bug, but what else did it change?", link: "https://blog.trailofbits.com/2026/10/21/your-ai-agent-fixed-the-bug-but-what-else-did-it-change/", published: "2026-10-21T15:00:00Z", summary: "Today we’re publishing patching-bugs and regression-hunt , two plugins that let engineers delegate patch development and regression checks to agents. Our patching-bugs plugin reproduces reported bugs, develops fixes, and tests them. The regression-hunt plugin checks whether any changes break previously working and supported behavior. Engineers can direct the work and review their results; maintai…", source: "rss-security" as const, tag: "rest" as const, first_seen: "2026-10-21T18:20:35Z", is_new: false, cluster_id: "cl:hn:50183253" },

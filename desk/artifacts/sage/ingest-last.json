@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-22T03:20:52Z",
+  "stamped_at": "2026-10-22T08:20:36Z",
   "config_hash": "e3e9003a7d92",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,25 +11,25 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 127,
+      "duration_ms": 131,
       "paused_until": null,
       "reason": null
     },
     {
       "id": "arxiv",
       "label": "arXiv",
-      "status": "timeout",
-      "rows": 4,
-      "duration_ms": 20000,
+      "status": "ok",
+      "rows": 29,
+      "duration_ms": 3233,
       "paused_until": null,
-      "reason": "timeout after 20000ms budget · last good: 0 cached enrich + 4 kept shelf"
+      "reason": null
     },
     {
       "id": "openalex",
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 358,
+      "duration_ms": 444,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 161,
+      "duration_ms": 352,
       "paused_until": null,
       "reason": null
     },
@@ -47,7 +47,7 @@
       "label": "HN",
       "status": "ok",
       "rows": 70,
-      "duration_ms": 8387,
+      "duration_ms": 8256,
       "paused_until": null,
       "reason": null
     },
@@ -55,8 +55,8 @@
       "id": "hn_title",
       "label": "HN title",
       "status": "ok",
-      "rows": 12,
-      "duration_ms": 8198,
+      "rows": 11,
+      "duration_ms": 8249,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 106,
-      "duration_ms": 18130,
+      "duration_ms": 16798,
       "paused_until": null,
       "reason": null
     },
@@ -74,7 +74,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 40,
-      "duration_ms": 6150,
+      "duration_ms": 6133,
       "paused_until": null,
       "reason": null
     },
@@ -83,7 +83,7 @@
       "label": "analyst RSS",
       "status": "ok",
       "rows": 7,
-      "duration_ms": 2208,
+      "duration_ms": 2167,
       "paused_until": null,
       "reason": null
     },
@@ -92,7 +92,7 @@
       "label": "releases",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 4786,
+      "duration_ms": 4961,
       "paused_until": null,
       "reason": null
     },
@@ -100,8 +100,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 64,
-      "duration_ms": 6397,
+      "rows": 67,
+      "duration_ms": 6414,
       "paused_until": null,
       "reason": null
     },
@@ -110,7 +110,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 302,
+      "duration_ms": 635,
       "paused_until": null,
       "reason": null
     },
@@ -119,16 +119,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4298,
+      "duration_ms": 4391,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 79502,
-    "sources_wall_ms": 20656,
-    "papers_lane_ms": 20656,
-    "slowest_source_ms": 20000,
+    "sources_ms": 62164,
+    "sources_wall_ms": 16799,
+    "papers_lane_ms": 4166,
+    "slowest_source_ms": 16798,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -145,34 +145,32 @@
       "github": 25000,
       "wikidata": 25000
     },
-    "timed_out": [
-      "arxiv"
-    ],
-    "wall_ms": 21118,
-    "startup_ms": 45,
-    "main_ms": 21137
+    "timed_out": [],
+    "wall_ms": 17368,
+    "startup_ms": 54,
+    "main_ms": 17389
   },
-  "multi_source_independent": 15,
+  "multi_source_independent": 16,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 15,
-    "multi_source_raw": 19,
-    "self_reposts": 9,
-    "items_in": 297,
-    "clusters_out": 243,
-    "collapsed": 54,
-    "multi_source": 15,
-    "multi_member": 22,
+    "multi_source_independent": 16,
+    "multi_source_raw": 23,
+    "self_reposts": 11,
+    "items_in": 300,
+    "clusters_out": 244,
+    "collapsed": 56,
+    "multi_source": 16,
+    "multi_member": 27,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 70,
+    "new_items": 39,
     "per_source": {
       "hn-algolia": 70,
       "rss-lab": 106,
       "rss-security": 40,
-      "gnews-rss": 64,
+      "gnews-rss": 67,
       "gmail-news": 10,
       "rss-analyst": 7
     },
@@ -209,11 +207,11 @@
             "publisher": "openai"
           },
           {
-            "id": "gnews:98965ce4ddaf688e",
+            "id": "gnews:1f81a2716c2fca18",
             "source": "gnews-rss",
-            "title": "OpenAI to make its most advanced AI models available in Google Cloud - SiliconANGLE",
-            "at": "2026-10-22T00:22:00Z",
-            "publisher": "SiliconANGLE"
+            "title": "OpenAI partners with Google Cloud to offer AI models, codex workflows - Devdiscourse",
+            "at": "2026-10-22T05:25:01Z",
+            "publisher": "Devdiscourse"
           },
           {
             "id": "gnews:13ffca17b7021788",
@@ -230,11 +228,11 @@
             "publisher": "Axios"
           },
           {
-            "id": "gnews:51862208efb8b067",
+            "id": "gnews:620d772817228366",
             "source": "gnews-rss",
-            "title": "OpenAI brings its frontier models to rival Google Cloud - Yahoo Finance",
-            "at": "2026-10-21T12:00:07Z",
-            "publisher": "Yahoo Finance"
+            "title": "Google Cloud adds OpenAI models in private preview - TestingCatalog AI News",
+            "at": "2026-10-21T23:34:15Z",
+            "publisher": "TestingCatalog AI News"
           },
           {
             "id": "gnews:b2fa14a52139bb0d",
@@ -261,12 +259,37 @@
         ]
       },
       {
+        "title": "NVIDIA Kumo Relational Outperforms Supervised Machine Learning on Relational Data, No Training Required",
+        "sources": [
+          "rss-lab",
+          "hn-algolia"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:50191858",
+            "source": "hn-algolia",
+            "title": "Nvidia Kumo Relational",
+            "at": "2026-10-22T06:21:37Z",
+            "publisher": null
+          },
+          {
+            "id": "rss:huggingface:94a5f6526eada9bc",
+            "source": "rss-lab",
+            "title": "NVIDIA Kumo Relational Outperforms Supervised Machine Learning on Relational Data, No Training Required",
+            "at": "2026-10-21T18:26:30Z",
+            "publisher": "huggingface"
+          }
+        ]
+      },
+      {
         "title": "OpenAI Says 2 Internal AI Coding Agents Turned Off Their Own Safeguards",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 4,
+        "size": 3,
         "score": 1,
         "members": [
           {
@@ -277,18 +300,11 @@
             "publisher": null
           },
           {
-            "id": "gnews:44754c6e3cad3952",
+            "id": "gnews:a525558f728f9eca",
             "source": "gnews-rss",
             "title": "OpenAI Says 2 Internal AI Coding Agents Turned Off Their Own Safeguards - PCMag Middle East",
             "at": "2026-10-22T03:06:12Z",
             "publisher": "PCMag Middle East"
-          },
-          {
-            "id": "gnews:f5a652faffb35107",
-            "source": "gnews-rss",
-            "title": "OpenAI Says 2 Internal AI Coding Agents Turned Off Their Own Safeguards - PCMag",
-            "at": "2026-10-21T12:10:11Z",
-            "publisher": "PCMag"
           },
           {
             "id": "gnews:b4fd67bdc7062286",
@@ -337,7 +353,7 @@
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 10,
+        "size": 9,
         "score": 1,
         "members": [
           {
@@ -360,13 +376,6 @@
             "title": "OpenAI says its AI agents disabled their own monitoring - Good Morning America",
             "at": "2026-10-21T19:22:19Z",
             "publisher": "Good Morning America"
-          },
-          {
-            "id": "gnews:b45a2b98c3bf3f31",
-            "source": "gnews-rss",
-            "title": "OpenAI says its AI agents disabled their own safety monitors - Free Malaysia Today",
-            "at": "2026-10-21T15:27:40Z",
-            "publisher": "Free Malaysia Today"
           },
           {
             "id": "gnews:d037d358968e4246",
@@ -585,18 +594,18 @@
             "publisher": null
           },
           {
+            "id": "gnews:5f572e84633ed3f0",
+            "source": "gnews-rss",
+            "title": "Why AI’s Deepest Mind Believes the World Is About to Change Radically - WSJ",
+            "at": "2026-10-21T13:01:10Z",
+            "publisher": "WSJ"
+          },
+          {
             "id": "gnews:d343c391aea730cd",
             "source": "gnews-rss",
             "title": "Why AI’s deepest mind believes the world is about to change radically - Livemint",
             "at": "2026-10-21T12:49:42Z",
             "publisher": "Livemint"
-          },
-          {
-            "id": "gnews:5f572e84633ed3f0",
-            "source": "gnews-rss",
-            "title": "Why AI’s Deepest Mind Believes the World Is About to Change Radically - WSJ",
-            "at": "2026-10-21T07:01:10Z",
-            "publisher": "WSJ"
           }
         ]
       },
@@ -607,7 +616,7 @@
           "gnews-rss"
         ],
         "size": 4,
-        "score": 0.909,
+        "score": 1,
         "members": [
           {
             "id": "hn:50176872",
@@ -615,6 +624,13 @@
             "title": "Google DeepMind says four AI agents beat Minecraft in 27 hours",
             "at": "2026-10-21T06:37:47Z",
             "publisher": null
+          },
+          {
+            "id": "gnews:5c6c54383ce2efed",
+            "source": "gnews-rss",
+            "title": "Google DeepMind AI agents beat Minecraft in 27 hours - TechGig",
+            "at": "2026-10-21T05:50:52Z",
+            "publisher": "TechGig"
           },
           {
             "id": "gnews:80fca9a09168996a",
@@ -629,13 +645,6 @@
             "title": "Google DeepMind’s Gemini 4 Argon AI agents beat Minecraft in 27 hours - Storyboard18",
             "at": "2026-10-20T12:01:02Z",
             "publisher": "Storyboard18"
-          },
-          {
-            "id": "gnews:beec7a02bfb3dacc",
-            "source": "gnews-rss",
-            "title": "Google DeepMind AI Agents Beat Minecraft… After 27 Hours And 605 ‘Deaths’ - AI Insider",
-            "at": "2026-10-20T11:47:23Z",
-            "publisher": "AI Insider"
           }
         ]
       },
@@ -645,7 +654,7 @@
           "rss-lab",
           "gnews-rss"
         ],
-        "size": 4,
+        "size": 3,
         "score": 1,
         "members": [
           {
@@ -663,14 +672,6 @@
             "publisher": "Axios"
           },
           {
-            "id": "gnews:855ec73402114c7e",
-            "source": "gnews-rss",
-            "title": "OpenAI acquires Orchestra Bio - OpenAI",
-            "at": "2026-10-20T18:03:41Z",
-            "publisher": "OpenAI",
-            "self_repost": true
-          },
-          {
             "id": "gnews:f04ec5f82f0255b2",
             "source": "gnews-rss",
             "title": "OpenAI acquires startup Orchestra Bio⁠ to beef up its biotech business - TechCrunch",
@@ -686,7 +687,7 @@
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.693,
+        "score": 0.684,
         "members": [
           {
             "id": "hn:50169053",
@@ -840,24 +841,6 @@
         ]
       },
       {
-        "title": "OpenAI acquires Orchestra Bio",
-        "sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:855ec73402114c7e",
-            "publisher": "OpenAI",
-            "title": "OpenAI acquires Orchestra Bio - OpenAI"
-          }
-        ]
-      },
-      {
         "title": "Cloudflare links vulnerability discovery to defense with OpenAI",
         "sources": [
           "rss-lab"
@@ -909,6 +892,40 @@
         ]
       },
       {
+        "title": "How we built ChatGPT’s novel ad stack for user trust and relevance",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:08189c1beb067bc7",
+            "publisher": "OpenAI",
+            "title": "How we built ChatGPT’s novel ad stack for user trust and relevance - OpenAI"
+          }
+        ]
+      },
+      {
+        "title": "Bringing the Spark to Europe: Local Intelligence Powers Next Wave of Agents",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:31357a975d8b054b",
+            "publisher": "NVIDIA Blog",
+            "title": "Bringing the Spark to Europe: Local Intelligence Powers Next Wave of Agents - NVIDIA Blog"
+          }
+        ]
+      },
+      {
         "title": "Terminal X matches senior investor judgment 88.6% with GPT-6.1",
         "sources": [
           "rss-lab"
@@ -924,6 +941,23 @@
             "title": "Terminal X matches senior investor judgment 88.6% with GPT-6.1 - OpenAI"
           }
         ]
+      },
+      {
+        "title": "Franchisee reconciles cash in 94% less time with ChatGPT Work",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:71fc53caab588a64",
+            "publisher": "OpenAI",
+            "title": "Franchisee reconciles cash in 94% less time with ChatGPT Work - OpenAI"
+          }
+        ]
       }
     ],
     "ai_relevance": {
@@ -935,33 +969,11 @@
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 11
+      "hn_dropped": 9
     },
     "gnews_near_misses": [
       {
-        "score": 0.589,
-        "blocked": "thin-overlap",
-        "hours_apart": 11,
-        "a": {
-          "id": "hn:50181880",
-          "source": "hn-algolia",
-          "title": "OpenAI Models in Google Cloud",
-          "at": "2026-10-21T14:42:30Z"
-        },
-        "b": {
-          "id": "gnews:6c09e5b9f399929b",
-          "source": "gnews-rss",
-          "title": "OpenAI Enters Google Cloud | Rewire News Morning Brief - Moomoo",
-          "at": "2026-10-22T01:40:04Z"
-        },
-        "shared": [
-          "openai",
-          "google",
-          "cloud"
-        ]
-      },
-      {
-        "score": 0.567,
+        "score": 0.574,
         "blocked": "below-threshold",
         "hours_apart": 6.5,
         "a": {
@@ -984,7 +996,7 @@
         ]
       },
       {
-        "score": 0.546,
+        "score": 0.55,
         "blocked": "below-threshold",
         "hours_apart": 4,
         "a": {
@@ -1006,53 +1018,7 @@
         ]
       },
       {
-        "score": 0.542,
-        "blocked": "thin-overlap",
-        "hours_apart": 201.7,
-        "a": {
-          "id": "rss:deepmind:94cc08977f17740f",
-          "source": "rss-lab",
-          "title": "Gemini 4 Argon for Robotics",
-          "at": "2026-10-13T16:01:58Z"
-        },
-        "b": {
-          "id": "gnews:c4b4037485742791",
-          "source": "gnews-rss",
-          "title": "GPT-Rosalind vs Gemini 4 Argon: Gated vs Announced - OrcaRouter",
-          "at": "2026-10-22T01:44:28Z"
-        },
-        "shared": [
-          "gemini",
-          "4",
-          "argon"
-        ]
-      },
-      {
-        "score": 0.528,
-        "blocked": "below-threshold",
-        "hours_apart": 1,
-        "a": {
-          "id": "hn:50186043",
-          "source": "hn-algolia",
-          "title": "Google staff resign in backlash over its AI contracts with military",
-          "at": "2026-10-21T19:14:21Z"
-        },
-        "b": {
-          "id": "gnews:4d144ffee368a631",
-          "source": "gnews-rss",
-          "title": "Google faces exodus after AI workers resign over tech giant's military contracts - LBC",
-          "at": "2026-10-21T20:12:31Z"
-        },
-        "shared": [
-          "google",
-          "resign",
-          "ai",
-          "deal",
-          "military"
-        ]
-      },
-      {
-        "score": 0.493,
+        "score": 0.506,
         "blocked": "thin-overlap",
         "hours_apart": 164,
         "a": {
@@ -1074,20 +1040,42 @@
         ]
       },
       {
-        "score": 0.487,
-        "blocked": "thin-overlap",
-        "hours_apart": 200.7,
+        "score": 0.455,
+        "blocked": "below-threshold",
+        "hours_apart": 1.7,
         "a": {
-          "id": "rss:deepmind:94cc08977f17740f",
-          "source": "rss-lab",
-          "title": "Gemini 4 Argon for Robotics",
-          "at": "2026-10-13T16:01:58Z"
+          "id": "hn:50182551",
+          "source": "hn-algolia",
+          "title": "OpenAI models disable misalignment monitoring and suppress alerts",
+          "at": "2026-10-21T15:21:58Z"
         },
         "b": {
-          "id": "gnews:096836b0548a625b",
+          "id": "gnews:87f3991b234b302a",
           "source": "gnews-rss",
-          "title": "GitLab Duo Adds Gemini 4 Argon, Now 10+ AI Models [2026] - https://tech-insider.org/",
-          "at": "2026-10-22T00:42:54Z"
+          "title": "OpenAI says its AI agents disabled their own safety monitors - ABC News & Headlines – Australian Broadcasting Corporation",
+          "at": "2026-10-21T17:02:54Z"
+        },
+        "shared": [
+          "openai",
+          "disabl",
+          "monitor"
+        ]
+      },
+      {
+        "score": 0.416,
+        "blocked": "thin-overlap",
+        "hours_apart": 4.6,
+        "a": {
+          "id": "hn:50168983",
+          "source": "hn-algolia",
+          "title": "Gemini 4 Argon is now available for everyone",
+          "at": "2026-10-20T16:36:24Z"
+        },
+        "b": {
+          "id": "gnews:00358f9254109560",
+          "source": "gnews-rss",
+          "title": "Google DeepMind’s Gemini 4 Argon AI agents beat Minecraft in 27 hours - Storyboard18",
+          "at": "2026-10-20T12:01:02Z"
         },
         "shared": [
           "gemini",
@@ -1096,25 +1084,70 @@
         ]
       },
       {
-        "score": 0.474,
-        "blocked": "thin-overlap",
-        "hours_apart": 12.8,
+        "score": 0.414,
+        "blocked": "below-threshold",
+        "hours_apart": 4.5,
         "a": {
-          "id": "hn:50180079",
+          "id": "hn:50182551",
           "source": "hn-algolia",
-          "title": "OpenAI models are coming to Google Cloud",
-          "at": "2026-10-21T12:53:11Z"
+          "title": "OpenAI models disable misalignment monitoring and suppress alerts",
+          "at": "2026-10-21T15:21:58Z"
         },
         "b": {
-          "id": "gnews:6c09e5b9f399929b",
+          "id": "gnews:d037d358968e4246",
           "source": "gnews-rss",
-          "title": "OpenAI Enters Google Cloud | Rewire News Morning Brief - Moomoo",
-          "at": "2026-10-22T01:40:04Z"
+          "title": "OpenAI's Agents Disabled Their Own Safety Monitoring Systems - Engadget",
+          "at": "2026-10-21T10:53:21Z"
         },
         "shared": [
           "openai",
-          "google",
-          "cloud"
+          "disabl",
+          "monitor"
+        ]
+      },
+      {
+        "score": 0.412,
+        "blocked": "below-threshold",
+        "hours_apart": 4.7,
+        "a": {
+          "id": "hn:50180734",
+          "source": "hn-algolia",
+          "title": "OpenAI's Agents Disabled Their Own Safety Monitoring Systems",
+          "at": "2026-10-21T13:36:07Z"
+        },
+        "b": {
+          "id": "gnews:8b6852b32a58abea",
+          "source": "gnews-rss",
+          "title": "OpenAI’s most powerful AI models turned off safety monitoring – then lied about it - ZDNET",
+          "at": "2026-10-21T18:15:19Z"
+        },
+        "shared": [
+          "openai",
+          "safety",
+          "monitor"
+        ]
+      },
+      {
+        "score": 0.385,
+        "blocked": "thin-overlap",
+        "hours_apart": 156.1,
+        "a": {
+          "id": "rss:nvidia-dev:9f5aca4e4d9dbf53",
+          "source": "rss-lab",
+          "title": "NVIDIA Nemotron 3.5 Super VL Powers Specialized Agents with Multimodal Reasoning",
+          "at": "2026-10-15T18:01:00Z"
+        },
+        "b": {
+          "id": "gnews:bd4ab83da38abc39",
+          "source": "gnews-rss",
+          "title": "Nvidia Rolls Out Five Free Nemotron 3.5 Retrieval Models to Power Enterprise RAG - BigGo Finance",
+          "at": "2026-10-22T06:05:00Z"
+        },
+        "shared": [
+          "nvidia",
+          "nemotron",
+          "3.5",
+          "power"
         ]
       }
     ],
@@ -1142,7 +1175,7 @@
         ]
       },
       {
-        "score": 0.669,
+        "score": 0.668,
         "blocked": "time-window",
         "hours_apart": 369.1,
         "a": {
@@ -1165,28 +1198,6 @@
       {
         "score": 0.589,
         "blocked": "thin-overlap",
-        "hours_apart": 11,
-        "a": {
-          "id": "hn:50181880",
-          "source": "hn-algolia",
-          "title": "OpenAI Models in Google Cloud",
-          "at": "2026-10-21T14:42:30Z"
-        },
-        "b": {
-          "id": "gnews:6c09e5b9f399929b",
-          "source": "gnews-rss",
-          "title": "OpenAI Enters Google Cloud | Rewire News Morning Brief - Moomoo",
-          "at": "2026-10-22T01:40:04Z"
-        },
-        "shared": [
-          "openai",
-          "google",
-          "cloud"
-        ]
-      },
-      {
-        "score": 0.576,
-        "blocked": "thin-overlap",
         "hours_apart": 168.6,
         "a": {
           "id": "hn:50168983",
@@ -1207,7 +1218,7 @@
         ]
       },
       {
-        "score": 0.567,
+        "score": 0.574,
         "blocked": "below-threshold",
         "hours_apart": 6.5,
         "a": {
@@ -1230,7 +1241,7 @@
         ]
       },
       {
-        "score": 0.546,
+        "score": 0.55,
         "blocked": "below-threshold",
         "hours_apart": 4,
         "a": {
@@ -1252,9 +1263,9 @@
         ]
       },
       {
-        "score": 0.542,
+        "score": 0.506,
         "blocked": "thin-overlap",
-        "hours_apart": 201.7,
+        "hours_apart": 164,
         "a": {
           "id": "rss:deepmind:94cc08977f17740f",
           "source": "rss-lab",
@@ -1262,10 +1273,10 @@
           "at": "2026-10-13T16:01:58Z"
         },
         "b": {
-          "id": "gnews:c4b4037485742791",
+          "id": "gnews:00358f9254109560",
           "source": "gnews-rss",
-          "title": "GPT-Rosalind vs Gemini 4 Argon: Gated vs Announced - OrcaRouter",
-          "at": "2026-10-22T01:44:28Z"
+          "title": "Google DeepMind’s Gemini 4 Argon AI agents beat Minecraft in 27 hours - Storyboard18",
+          "at": "2026-10-20T12:01:02Z"
         },
         "shared": [
           "gemini",
@@ -1274,27 +1285,46 @@
         ]
       },
       {
-        "score": 0.528,
-        "blocked": "below-threshold",
-        "hours_apart": 1,
+        "score": 0.505,
+        "blocked": "time-window",
+        "hours_apart": 354.6,
         "a": {
-          "id": "hn:50186043",
+          "id": "hn:50180599",
           "source": "hn-algolia",
-          "title": "Google staff resign in backlash over its AI contracts with military",
-          "at": "2026-10-21T19:14:21Z"
+          "title": "A free agentic app builder where LLMs only write what deterministic tools can't",
+          "at": "2026-10-21T13:27:54Z"
         },
         "b": {
-          "id": "gnews:4d144ffee368a631",
-          "source": "gnews-rss",
-          "title": "Google faces exodus after AI workers resign over tech giant's military contracts - LBC",
-          "at": "2026-10-21T20:12:31Z"
+          "id": "gmail:1a112914bb745ca0",
+          "source": "gmail-news",
+          "title": "This AI that can't write",
+          "at": "2026-10-06T18:54:34Z"
         },
         "shared": [
-          "google",
-          "resign",
-          "ai",
-          "deal",
-          "military"
+          "writ",
+          "t"
+        ]
+      },
+      {
+        "score": 0.455,
+        "blocked": "below-threshold",
+        "hours_apart": 1.7,
+        "a": {
+          "id": "hn:50182551",
+          "source": "hn-algolia",
+          "title": "OpenAI models disable misalignment monitoring and suppress alerts",
+          "at": "2026-10-21T15:21:58Z"
+        },
+        "b": {
+          "id": "gnews:87f3991b234b302a",
+          "source": "gnews-rss",
+          "title": "OpenAI says its AI agents disabled their own safety monitors - ABC News & Headlines – Australian Broadcasting Corporation",
+          "at": "2026-10-21T17:02:54Z"
+        },
+        "shared": [
+          "openai",
+          "disabl",
+          "monitor"
         ]
       }
     ]
@@ -1303,97 +1333,97 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 0,
-      "streak_fail": 1,
-      "items_last": 4
+      "streak_ok": 1,
+      "streak_fail": 0,
+      "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 157,
+      "streak_ok": 158,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 157,
+      "streak_ok": 158,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 157,
+      "streak_ok": 158,
       "streak_fail": 0,
-      "items_last": 64
+      "items_last": 67
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 157,
+      "streak_ok": 158,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 157,
+      "streak_ok": 158,
       "streak_fail": 0,
       "items_last": 70
     },
     {
       "id": "hn_title",
       "state": "ok",
-      "streak_ok": 11,
+      "streak_ok": 12,
       "streak_fail": 0,
-      "items_last": 12
+      "items_last": 11
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 69,
+      "streak_ok": 70,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "releases_atom",
       "state": "ok",
-      "streak_ok": 11,
+      "streak_ok": 12,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "rss_analyst",
       "state": "ok",
-      "streak_ok": 11,
+      "streak_ok": 12,
       "streak_fail": 0,
       "items_last": 7
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 61,
+      "streak_ok": 62,
       "streak_fail": 0,
       "items_last": 106
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 157,
+      "streak_ok": 158,
       "streak_fail": 0,
       "items_last": 40
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 157,
+      "streak_ok": 158,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.0059052777777777775,
+    "hours": 0.004881944444444445,
     "stale": false
   },
   "hf": {
@@ -1402,10 +1432,10 @@
     "url": "https://huggingface.co/api/daily_papers"
   },
   "arxiv": {
-    "ok": false,
-    "enriched": 0,
-    "shelf": 4,
-    "timed_out": true,
+    "ok": true,
+    "enriched": 24,
+    "shelf": 5,
+    "timed_out": false,
     "budget_ms": 20000,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
@@ -1491,7 +1521,7 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 11,
+    "ai_dropped": 9,
     "url": "https://hn.algolia.com/api/v1/search",
     "title_queries": {
       "ok": true,
@@ -1511,11 +1541,11 @@
         "Qwen",
         "local model"
       ],
-      "hits": 14,
-      "candidates": 13,
+      "hits": 13,
+      "candidates": 12,
       "ai_dropped": 1,
       "duplicates": 1,
-      "added": 12,
+      "added": 11,
       "cap": 20,
       "merged_into_live_hn": true
     },
@@ -1523,19 +1553,19 @@
       {
         "id": "hn:50169053",
         "tag": "rest",
-        "score": 376,
+        "score": 378,
         "text": "Google open-sources TorchTPU, a native PyTorch back end for TPUs"
       },
       {
         "id": "hn:50186037",
         "tag": "rest",
-        "score": 327,
+        "score": 351,
         "text": "Claude Duet"
       },
       {
         "id": "hn:50186129",
         "tag": "rest",
-        "score": 315,
+        "score": 319,
         "text": "Mistral Large 4"
       }
     ]
@@ -1599,32 +1629,32 @@
     "feeds_soft_fail": [],
     "sample": [
       {
-        "id": "rss:openai:3f1a11956436b167",
-        "lab": "openai",
-        "tag": "rest",
-        "title": "Broad access through consistent standards",
-        "link": "https://openai.com/index/broad-access-through-consistent-standards"
-      },
-      {
-        "id": "rss:huggingface:94a5f6526eada9bc",
+        "id": "rss:huggingface:0e5fad3ca5f8a881",
         "lab": "huggingface",
         "tag": "rest",
-        "title": "NVIDIA Kumo Relational Outperforms Supervised Machine Learning on Relational Data, No Training Required",
-        "link": "https://huggingface.co/blog/nvidia/kumo-relational"
+        "title": "Ensemble forecasting with IBM Granite time-series models",
+        "link": "https://huggingface.co/blog/ibm-research/granite-timeseries-ensemble-r1"
       },
       {
-        "id": "rss:huggingface:40a01666d562060b",
-        "lab": "huggingface",
+        "id": "rss:nvidia:78f3851c112d7960",
+        "lab": "nvidia",
         "tag": "rest",
-        "title": "How Specializing the Vocabulary of SLMs Can Cut Inference Cost by 77% in Real Applications",
-        "link": "https://huggingface.co/blog/Dharma-AI/vocabx-vocabulary-specialization"
+        "title": "Leading European Financial Services Organizations Embrace Open Models to Build Proprietary Intelligence",
+        "link": "https://blogs.nvidia.com/blog/european-financial-services-organizations-open-models-proprietary-intelligence/"
       },
       {
-        "id": "rss:openai:39cad894cdd240fb",
-        "lab": "openai",
+        "id": "rss:nvidia:a093903039a75a48",
+        "lab": "nvidia",
         "tag": "rest",
-        "title": "How AT&T is rethinking in-house legal work with OpenAI",
-        "link": "https://openai.com/index/att-legal"
+        "title": "NVIDIA Cosmos Opens New Tools to Train, Evaluate and Deploy World Models",
+        "link": "https://blogs.nvidia.com/blog/cosmos-open-train-evaluate-deploy-world-models/"
+      },
+      {
+        "id": "rss:nvidia:940a760303c9d2aa",
+        "lab": "nvidia",
+        "tag": "rest",
+        "title": "How Companies Are Using NVIDIA DSX to Break the Power Bottleneck",
+        "link": "https://blogs.nvidia.com/blog/dsx-power/"
       }
     ]
   },
@@ -1738,6 +1768,13 @@
     "lead_rule": "analyst-only groups excluded",
     "sample": [
       {
+        "id": "anl:latent-space:4c49390f8994fee2",
+        "feed": "latent-space",
+        "recap": true,
+        "title": "[AINews] OpenAI’s Patch the Planet program is 1 of 2 parties to discover PHP2Shell vulnerabilities in core PHP affecting 70% of the web, using GPT-5.6 Sol; coordinated response over 2 months",
+        "link": "https://www.latent.space/p/ainews-openais-patch-the-planet-program"
+      },
+      {
         "id": "anl:latent-space:1cd487805b8193f0",
         "feed": "latent-space",
         "recap": false,
@@ -1757,13 +1794,6 @@
         "recap": false,
         "title": "AI for the Fortune 2000: How Tenex Builds an AI-Native SDLC — Alex Lieberman & CJ Hess",
         "link": "https://www.latent.space/p/tenex"
-      },
-      {
-        "id": "anl:simonw:7fa30abfca2c7ff1",
-        "feed": "simonw",
-        "recap": false,
-        "title": "Battle Drones - a vibe coded RTS with audio-based multiplayer",
-        "link": "https://simonwillison.net/2026/Oct/20/battledrones/"
       }
     ]
   },
@@ -1823,9 +1853,49 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 64,
-    "pool": 305,
+    "items": 67,
+    "pool": 307,
     "corroborators": [
+      {
+        "id": "gnews:13ffca17b7021788",
+        "anchor_id": "hn:50181880",
+        "score": 0.842,
+        "title": "OpenAI Brings Its Frontier AI Models to Google Cloud - PYMNTS.com",
+        "publisher": "PYMNTS.com",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:5e610a93f896ea4e",
+        "anchor_id": "hn:50181880",
+        "score": 0.801,
+        "title": "OpenAI brings its frontier models to rival Google Cloud - Axios",
+        "publisher": "Axios",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:620d772817228366",
+        "anchor_id": "hn:50181880",
+        "score": 0.79,
+        "title": "Google Cloud adds OpenAI models in private preview - TestingCatalog AI News",
+        "publisher": "TestingCatalog AI News",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:a525558f728f9eca",
+        "anchor_id": "hn:50183655",
+        "score": 1,
+        "title": "OpenAI Says 2 Internal AI Coding Agents Turned Off Their Own Safeguards - PCMag Middle East",
+        "publisher": "PCMag Middle East",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:b4fd67bdc7062286",
+        "anchor_id": "hn:50183655",
+        "score": 0.832,
+        "title": "OpenAI says its agents turned off own safeguards - Al Jazeera",
+        "publisher": "Al Jazeera",
+        "self_repost": false
+      },
       {
         "id": "gnews:c40f0eb7024beba0",
         "anchor_id": "rss:openai:3fe372fb2e8166f0",
@@ -1835,27 +1905,19 @@
         "self_repost": true
       },
       {
-        "id": "gnews:13ffca17b7021788",
-        "anchor_id": "hn:50181880",
-        "score": 0.845,
-        "title": "OpenAI Brings Its Frontier AI Models to Google Cloud - PYMNTS.com",
-        "publisher": "PYMNTS.com",
+        "id": "gnews:e0c74b7a220b62ce",
+        "anchor_id": "hn:50186043",
+        "score": 1,
+        "title": "Google staff resign in backlash over its AI contracts with military - Kahawatungu",
+        "publisher": "Kahawatungu",
         "self_repost": false
       },
       {
-        "id": "gnews:5e610a93f896ea4e",
-        "anchor_id": "hn:50181880",
-        "score": 0.806,
-        "title": "OpenAI brings its frontier models to rival Google Cloud - Axios",
-        "publisher": "Axios",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:51862208efb8b067",
-        "anchor_id": "hn:50181880",
-        "score": 0.806,
-        "title": "OpenAI brings its frontier models to rival Google Cloud - Yahoo Finance",
-        "publisher": "Yahoo Finance",
+        "id": "gnews:342226fe47b05151",
+        "anchor_id": "hn:50186043",
+        "score": 1,
+        "title": "Google staff resign in backlash over its AI contracts with military - BBC",
+        "publisher": "BBC",
         "self_repost": false
       },
       {
@@ -1885,7 +1947,7 @@
       {
         "id": "gnews:0e5aa9dc32286f18",
         "anchor_id": "hn:50180079",
-        "score": 0.789,
+        "score": 0.793,
         "title": "OpenAI GPT models are coming to Google Antigravity ‘soon,’ Cloud ‘in the coming weeks’ - 9to5Google",
         "publisher": "9to5Google",
         "self_repost": false
@@ -1901,7 +1963,7 @@
       {
         "id": "gnews:4f2fef4df805819d",
         "anchor_id": "hn:50180734",
-        "score": 0.928,
+        "score": 0.93,
         "title": "OpenAI says an AI agent lied about disabling its safety monitoring system - The Verge",
         "publisher": "The Verge",
         "self_repost": false
@@ -1909,7 +1971,7 @@
       {
         "id": "gnews:87f3991b234b302a",
         "anchor_id": "hn:50180734",
-        "score": 0.874,
+        "score": 0.876,
         "title": "OpenAI says its AI agents disabled their own safety monitors - ABC News & Headlines – Australian Broadcasting Corporation",
         "publisher": "ABC News & Headlines – Australian Broadcasting Corporation",
         "self_repost": false
@@ -1917,7 +1979,7 @@
       {
         "id": "gnews:74ddc092e26ae826",
         "anchor_id": "hn:50182465",
-        "score": 0.867,
+        "score": 0.87,
         "title": "OpenAI's most powerful AI models disabled their own safety monitoring — and one lied about it - CNBC",
         "publisher": "CNBC",
         "self_repost": false
@@ -1925,7 +1987,7 @@
       {
         "id": "gnews:d4b551649537c7c0",
         "anchor_id": "hn:50182465",
-        "score": 0.819,
+        "score": 0.826,
         "title": "OpenAI agents disabled safety monitoring, one lied about it - BleepingComputer",
         "publisher": "BleepingComputer",
         "self_repost": false
@@ -1933,7 +1995,7 @@
       {
         "id": "gnews:8b6852b32a58abea",
         "anchor_id": "hn:50182465",
-        "score": 0.676,
+        "score": 0.673,
         "title": "OpenAI’s most powerful AI models turned off safety monitoring – then lied about it - ZDNET",
         "publisher": "ZDNET",
         "self_repost": false
@@ -1949,7 +2011,7 @@
       {
         "id": "gnews:b1c08d3416dfa694",
         "anchor_id": "rss:openai:b1215e1aefc04c61",
-        "score": 0.713,
+        "score": 0.717,
         "title": "OpenAI Expands ChatGPT Ads to 26 New Countries - PYMNTS.com",
         "publisher": "PYMNTS.com",
         "self_repost": false
@@ -1957,7 +2019,7 @@
       {
         "id": "gnews:c4c614df4231439f",
         "anchor_id": "rss:openai:b1215e1aefc04c61",
-        "score": 0.713,
+        "score": 0.717,
         "title": "OpenAI expands ChatGPT ads to 26 more countries - Investing.com",
         "publisher": "Investing.com",
         "self_repost": false
@@ -1979,49 +2041,49 @@
         "self_repost": true
       },
       {
-        "id": "gnews:342226fe47b05151",
-        "anchor_id": "hn:50186043",
+        "id": "gnews:08189c1beb067bc7",
+        "anchor_id": "rss:openai:ea92da5c121ecb45",
         "score": 1,
-        "title": "Google staff resign in backlash over its AI contracts with military - BBC",
-        "publisher": "BBC",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:d343c391aea730cd",
-        "anchor_id": "hn:50179413",
-        "score": 0.866,
-        "title": "Why AI’s deepest mind believes the world is about to change radically - Livemint",
-        "publisher": "Livemint",
-        "self_repost": false
+        "title": "How we built ChatGPT’s novel ad stack for user trust and relevance - OpenAI",
+        "publisher": "OpenAI",
+        "self_repost": true
       },
       {
         "id": "gnews:5f572e84633ed3f0",
         "anchor_id": "hn:50179413",
-        "score": 0.866,
+        "score": 0.87,
         "title": "Why AI’s Deepest Mind Believes the World Is About to Change Radically - WSJ",
         "publisher": "WSJ",
         "self_repost": false
       },
       {
-        "id": "gnews:f5a652faffb35107",
-        "anchor_id": "hn:50183655",
-        "score": 1,
-        "title": "OpenAI Says 2 Internal AI Coding Agents Turned Off Their Own Safeguards - PCMag",
-        "publisher": "PCMag",
+        "id": "gnews:d343c391aea730cd",
+        "anchor_id": "hn:50179413",
+        "score": 0.87,
+        "title": "Why AI’s deepest mind believes the world is about to change radically - Livemint",
+        "publisher": "Livemint",
         "self_repost": false
       },
       {
-        "id": "gnews:b4fd67bdc7062286",
-        "anchor_id": "hn:50183655",
-        "score": 0.828,
-        "title": "OpenAI says its agents turned off own safeguards - Al Jazeera",
-        "publisher": "Al Jazeera",
+        "id": "gnews:31357a975d8b054b",
+        "anchor_id": "rss:nvidia:4ff2ab2e9901564e",
+        "score": 1,
+        "title": "Bringing the Spark to Europe: Local Intelligence Powers Next Wave of Agents - NVIDIA Blog",
+        "publisher": "NVIDIA Blog",
+        "self_repost": true
+      },
+      {
+        "id": "gnews:5c6c54383ce2efed",
+        "anchor_id": "hn:50176872",
+        "score": 1,
+        "title": "Google DeepMind AI agents beat Minecraft in 27 hours - TechGig",
+        "publisher": "TechGig",
         "self_repost": false
       },
       {
         "id": "gnews:80fca9a09168996a",
         "anchor_id": "hn:50176872",
-        "score": 0.899,
+        "score": 0.896,
         "title": "Google DeepMind’s AI Agents Beat Minecraft by Coding for 27 Hours - Spiel Times",
         "publisher": "Spiel Times",
         "self_repost": false
@@ -2029,17 +2091,9 @@
       {
         "id": "gnews:00358f9254109560",
         "anchor_id": "hn:50176872",
-        "score": 0.846,
+        "score": 0.841,
         "title": "Google DeepMind’s Gemini 4 Argon AI agents beat Minecraft in 27 hours - Storyboard18",
         "publisher": "Storyboard18",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:beec7a02bfb3dacc",
-        "anchor_id": "hn:50176872",
-        "score": 0.825,
-        "title": "Google DeepMind AI Agents Beat Minecraft… After 27 Hours And 605 ‘Deaths’ - AI Insider",
-        "publisher": "AI Insider",
         "self_repost": false
       },
       {
@@ -2067,25 +2121,25 @@
         "self_repost": false
       },
       {
-        "id": "gnews:855ec73402114c7e",
-        "anchor_id": "rss:openai:1cfb6291fa158d05",
-        "score": 1,
-        "title": "OpenAI acquires Orchestra Bio - OpenAI",
-        "publisher": "OpenAI",
-        "self_repost": true
-      },
-      {
         "id": "gnews:f04ec5f82f0255b2",
         "anchor_id": "rss:openai:1cfb6291fa158d05",
-        "score": 0.762,
+        "score": 0.76,
         "title": "OpenAI acquires startup Orchestra Bio⁠ to beef up its biotech business - TechCrunch",
         "publisher": "TechCrunch",
         "self_repost": false
       },
       {
+        "id": "gnews:71fc53caab588a64",
+        "anchor_id": "rss:openai:1725d137aa3debc0",
+        "score": 1,
+        "title": "Franchisee reconciles cash in 94% less time with ChatGPT Work - OpenAI",
+        "publisher": "OpenAI",
+        "self_repost": true
+      },
+      {
         "id": "gnews:4e8c9ec77e8989ce",
         "anchor_id": "hn:50169053",
-        "score": 0.701,
+        "score": 0.7,
         "title": "TorchTPU is now open source: Run native PyTorch on TPUs - Google Cloud",
         "publisher": "Google Cloud",
         "self_repost": false
@@ -2117,24 +2171,24 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:44754c6e3cad3952",
-        "title": "OpenAI Says 2 Internal AI Coding Agents Turned Off Their Own Safeguards - PCMag Middle East",
-        "publisher": "PCMag Middle East",
-        "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPVUpOaTJYMGJUTlNmSHgwVWtaSTlrckNjM3otT015dkRZZlhTU3RfMVJ1U0ZreTgweGxvSUpiS294Q25TY0ZqVjVSVmRpank4Q0JXc0tSLXFSTzZ0UDFUVi00OWhudFJJVXJOWWpud1VnX2FYSXk3bGJOT01hQzFGeFpIeTJvYWY4THB5VlFpc1BMOGVvbWZ0eVNYSWF6Qm1tM1dTTklZSQ?oc=5",
+        "id": "gnews:37189449c076c575",
+        "title": "AI frenzy drives valuations to billions via two-step venture rounds - https://streamlinefeed.co.ke/",
+        "publisher": "https://streamlinefeed.co.ke/",
+        "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOVGpXYS0wTG5CaHpGVTBERDVjYWVRdXdWR2l4X0pqd2twUUJ2M3g1allPT0hVajhKN1ZueVZCVUxPOUxNRTdxbVItLUZtRloxSVI0YmRHSDd2NW9kTkV2bk1rWnpFVHdBNTA3VjM4TklsMFJMYTNmSVp3dGJNQWVoZktCQ1cxQWNpejREQmtIdFExU2N3bkZSbWl6ckVSdkVjejBJ?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:fc3b616710ed6ef7",
-        "title": "Android Auto Gets Gemini Personal Intelligence: Here's How It Can Help - PCMag Middle East",
-        "publisher": "PCMag Middle East",
-        "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQcTEzc3JlTmpJVDlPemJxMWcxQjQ1SGlYNU5xUU9ha3NaOTVOUVJKZjlvSkM5UURqT3BZNUppai1hVkZWYWlRTzdOX01XaXRBWUM1SzdJdHp3cVk5VFoxcVR4UHZseHRuZ0JHTzhZd3F3dm4wMkZFeUxrUVc1RVRINmhycDhGUk1DemU1WmxTN1VGanBFUm9rN1JzaUxQNTBadkdmQndodTJkdkJy?oc=5",
+        "id": "gnews:8d27d3560679c60d",
+        "title": "On Main Street, Goldman Sachs makes a big bet on AI - NBC News",
+        "publisher": "NBC News",
+        "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNOERqdTZkVDBjdlRfQ0JFV3NpLURsZmtoUGhLMnJtck9PNTgteG9CclotdTMtYm9tYnJORU9HR01uWmFIU3EzS2xEZmJTcDRwQ3Z0RjVXUGlVS1hoZzBsY3R5TFdteGliUF9leFA2d0I5NElnNlQzNkdOekdzcll1cnhGM0JBMC1JZklkN2lqazBROG1lcm40aGtPX0otcmIzTnc?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:1d9235ce1c98deb8",
-        "title": "Blue House Denies AI Reliance Claims in State Affairs Management - 조선일보",
-        "publisher": "조선일보",
-        "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNc09JMmVranl0Ml85NTA4YjBxb3Q4M0JKaDFJbURwa0lHTTh4ZUZQRUh3bHNWVXNwU0pIMnN4ZVlsOW5jaS0xTV91aWNDQ25WclNqQXo5Q1MtSWF4ckJyVkwwR1hacWkzSUJpLTVVVDFydVBhWnpZcWRSRFN0enY1TDdzVHNHZnM5?oc=5",
+        "id": "gnews:8c9785f4c8308935",
+        "title": "Carplay Gemini in Google Maps - Thurrott.com",
+        "publisher": "Thurrott.com",
+        "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOeVRZUUpZOHVVM2lfcFNsc2g2QTN2eF9oV0xVOVZsVVk2R1NuaTNNdkdNSlE3ZDRFY2xIVkZ4ZzFsM0RyS3JsU1ZiTHFNdTQyN0tlN0RGRjdwWFhnUzVuRktadFZDUVpCRTZIRzVPQl80Ukc0RnJGX3BSVzRCbjBSdXVtcXRobjZCVXpPWUstZnljQ3hlZTA4MkxMaGU3RkVJQVdwNlRJTlZuX2o2blFzb3lnN183MF9veEVYZUJ5YnRVYzEtbDhzZE5TMDNxZw?oc=5",
         "tag": "rest"
       }
     ]
@@ -2168,28 +2222,28 @@
     "shelf": 3,
     "from_cache": false,
     "searches": 1,
-    "rate_limit_remaining": 9,
+    "rate_limit_remaining": 2,
     "brief": false,
     "pulse_lead": false,
     "shelf_only": true,
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
+        "label": "sammist2/invoice-triage-agent",
+        "href": "https://github.com/sammist2/invoice-triage-agent"
+      },
+      {
+        "label": "arrrrny/zuraffa_agent",
+        "href": "https://github.com/arrrrny/zuraffa_agent"
+      },
+      {
         "label": "guessleej/xHarness",
         "href": "https://github.com/guessleej/xHarness"
-      },
-      {
-        "label": "FrederikBenirschke/agentic-research-harness",
-        "href": "https://github.com/FrederikBenirschke/agentic-research-harness"
-      },
-      {
-        "label": "niharmaddina/agent-eval",
-        "href": "https://github.com/niharmaddina/agent-eval"
       }
     ]
   },
   "shelf": {
-    "count": 19,
+    "count": 20,
     "brief": false
   },
   "wikidata": {
