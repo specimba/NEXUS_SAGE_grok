@@ -22,7 +22,7 @@ export const SHELF: ShelfItem[] = [
   { href: "https://arxiv.org/abs/2610.28628", label: "arxiv.org/abs/2610.28628", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.28626", label: "arxiv.org/abs/2610.28626", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.28624", label: "arxiv.org/abs/2610.28624", reason: "arxiv-shelf" as const },
-  { href: "https://github.com/md-fazle-rabbi/fazle-ai-red-team-toolkit", label: "md-fazle-rabbi/fazle-ai-red-team-toolkit", reason: "github-search-shelf" as const },
-  { href: "https://github.com/K11-Software-Solutions/k11techlab-llm-assurance-toolkit", label: "K11-Software-Solutions/k11techlab-llm-assurance-toolkit", reason: "github-search-shelf" as const },
-  { href: "https://github.com/seikaikyo/ai-red-team", label: "seikaikyo/ai-red-team", reason: "github-search-shelf" as const },
+  { href: "https://github.com/guessleej/xHarness", label: "guessleej/xHarness", reason: "github-search-shelf" as const },
+  { href: "https://github.com/FrederikBenirschke/agentic-research-harness", label: "FrederikBenirschke/agentic-research-harness", reason: "github-search-shelf" as const },
+  { href: "https://github.com/niharmaddina/agent-eval", label: "niharmaddina/agent-eval", reason: "github-search-shelf" as const },
 ];

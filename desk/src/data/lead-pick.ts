@@ -2,6 +2,72 @@
 import type { LeadEntry } from "@/lib/lead-pick";
 
 export const LEAD_TODAY: LeadEntry | null = {
+  "date": "2026-10-22",
+  "at": "2026-10-22T03:21:13.304Z",
+  "crawl_at": "2026-10-22T03:20:52Z",
+  "pick_slot": "06:20",
+  "excluded": [
+    {
+      "cluster_id": "cl:hn:50176872",
+      "headline": "Google DeepMind says four AI agents beat Minecraft in 27 hours",
+      "reason": "age>=36h",
+      "sources": 4,
+      "age_h": 39,
+      "pub": "HN"
+    },
+    {
+      "cluster_id": "cl:rss:openai:1cfb6291fa158d05",
+      "headline": "OpenAI acquires Orchestra Bio",
+      "reason": "age>=36h",
+      "sources": 3,
+      "age_h": 51,
+      "pub": "OAI"
+    },
+    {
+      "cluster_id": "cl:rss:deepmind:851107eacfc8ba0f",
+      "headline": "Gemini 4 Argon: Built to solve your hardest problems",
+      "reason": "age>=36h",
+      "sources": 3,
+      "age_h": 203,
+      "pub": "DMD"
+    },
+    {
+      "cluster_id": "cl:rss:mistral:1ef243007176e85c",
+      "headline": "Introducing Mistral Large 4",
+      "reason": "age>=36h",
+      "sources": 2,
+      "age_h": 375,
+      "pub": "MIS"
+    },
+    {
+      "cluster_id": "cl:hn:50169053",
+      "headline": "Google open-sources TorchTPU, a native PyTorch back end for TPUs",
+      "reason": "age>=36h",
+      "sources": 2,
+      "age_h": 39,
+      "pub": "HN"
+    },
+    {
+      "cluster_id": "cl:rss:huggingface:c2b4b68d7e0027f0",
+      "headline": "MPS in PyTorch 2.15",
+      "reason": "age>=36h",
+      "sources": 2,
+      "age_h": 51,
+      "pub": "HF"
+    }
+  ],
+  "cluster_id": "cl:hn:50182465",
+  "headline": "OpenAI models disabled their own safety monitoring and lied about it",
+  "url": "https://www.cnbc.com/2026/10/21/openai-ai-models-safety-monitoring.html",
+  "sources": 8,
+  "sig": 3,
+  "reason": "picked",
+  "pub": "HN",
+  "first_at": "2026-10-21T07:03:48.000Z",
+  "age_band": "<24h"
+};
+
+export const LEAD_YESTERDAY: LeadEntry | null = {
   "date": "2026-10-21",
   "at": "2026-10-21T03:20:48.810Z",
   "crawl_at": "2026-10-21T03:20:27Z",
@@ -33,37 +99,10 @@ export const LEAD_TODAY: LeadEntry | null = {
   "age_band": "<24h"
 };
 
-export const LEAD_YESTERDAY: LeadEntry | null = {
-  "date": "2026-10-20",
-  "at": "2026-10-20T03:20:50.370Z",
-  "crawl_at": "2026-10-20T03:20:29Z",
-  "pick_slot": "06:20",
-  "excluded": [
-    {
-      "cluster_id": "cl:rss:mistral:51edf4c643816e6f",
-      "headline": "Introducing Timestral",
-      "reason": "age>=36h"
-    },
-    {
-      "cluster_id": "cl:rss:deepmind:851107eacfc8ba0f",
-      "headline": "Gemini 4 Argon: Built to solve your hardest problems",
-      "reason": "age>=36h"
-    }
-  ],
-  "cluster_id": "cl:hn:50155578",
-  "headline": "AI agents are only as good as the personal information you share",
-  "url": "https://apnews.com/article/meta-muse-openai-dot-ai-privacy-449734d41d3750aad7038b761faa49c9",
-  "sources": 4,
-  "sig": 3,
-  "reason": "picked",
-  "first_at": "2026-10-19T15:43:47.000Z",
-  "age_band": "<24h"
-};
-
 export const LEAD_HELD = false;
 
 /** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is >48h old (PASS-L). */
-export const LEAD_FIRST_AT: string | null = "2026-10-20T16:40:24.000Z";
+export const LEAD_FIRST_AT: string | null = "2026-10-21T07:03:48.000Z";
 
 /** Date of the latest real pick (never a HELD entry) — the HELD card's "last pick" (UX-1). */
-export const LEAD_LAST_PICK: string | null = "2026-10-21";
+export const LEAD_LAST_PICK: string | null = "2026-10-22";

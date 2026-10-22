@@ -7,53 +7,64 @@ import type { DigestUnlockSnapshot } from "@/lib/digest-unlock";
 export const DIGEST_UNLOCK: DigestUnlockSnapshot = {
   "schema": 1,
   "cycleId": "003",
-  "pickDate": "2026-10-21",
-  "frozenAt": "2026-10-21T03:20:48.810Z",
-  "leadId": "cl:hn:50169053",
+  "pickDate": "2026-10-22",
+  "frozenAt": "2026-10-22T03:21:13.304Z",
+  "leadId": "cl:hn:50182465",
   "lead": {
-    "id": "cl:hn:50169053",
+    "id": "cl:hn:50182465",
     "kind": "lead",
-    "title": "Google open-sources TorchTPU, a native PyTorch back end for TPUs",
-    "take": "3 SRC · sig 278 · pick 2026-10-21",
+    "title": "OpenAI models disabled their own safety monitoring and lied about it",
+    "take": "8 SRC · sig 3 · pick 2026-10-22",
     "why": "LEAD_TODAY · picked · frozen at daily pick",
     "move": "Digest/Voice follow Brief lead · cycle label 003",
-    "url": "https://github.com/google-pytorch/torch_tpu",
-    "sources": 3,
-    "sig": 278
+    "url": "https://www.cnbc.com/2026/10/21/openai-ai-models-safety-monitoring.html",
+    "sources": 8,
+    "sig": 3
   },
   "rows": [
     {
-      "id": "cl:rss:deepmind:851107eacfc8ba0f",
+      "id": "cl:rss:openai:95dedf578de78f3e",
       "kind": "companion",
-      "title": "Gemini 4 Argon: Built to solve your hardest problems",
-      "take": "3 SRC · sig 19",
+      "title": "OpenAI models are coming to Google Cloud",
+      "take": "7 SRC · sig 250",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
-      "url": "https://deepmind.google/blog/introducing-gemini-4-argon/",
+      "url": "https://openai.com/index/openai-models-google-cloud",
+      "sources": 7,
+      "sig": 250
+    },
+    {
+      "id": "cl:hn:50183655",
+      "kind": "rest",
+      "title": "OpenAI Says 2 Internal AI Coding Agents Turned Off Their Own Safeguards",
+      "take": "4 SRC · sig 2",
+      "why": "Top corroborated Wire cluster · same pack as lead pick",
+      "move": "Digest row · never displaces Brief lead",
+      "url": "https://www.pcmag.com/news/openai-says-2-internal-ai-coding-agents-turned-off-their-own-safeguards",
+      "sources": 4,
+      "sig": 2
+    },
+    {
+      "id": "cl:hn:50176872",
+      "kind": "rest",
+      "title": "Google DeepMind says four AI agents beat Minecraft in 27 hours",
+      "take": "4 SRC · sig 3",
+      "why": "Top corroborated Wire cluster · same pack as lead pick",
+      "move": "Digest row · never displaces Brief lead",
+      "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/google-deepmind-claims-four-gemini-4-agents-beat-minecraft-in-27-hours-by-writing-2-783-programs-of-their-own-the-ai-team-died-605-times-on-easy-difficulty-and-ran-up-an-estimated-usd520-in-tokens",
+      "sources": 4,
+      "sig": 3
+    },
+    {
+      "id": "cl:hn:50186043",
+      "kind": "rest",
+      "title": "Google staff resign in backlash over its AI contracts with military",
+      "take": "3 SRC · sig 115",
+      "why": "Top corroborated Wire cluster · same pack as lead pick",
+      "move": "Digest row · never displaces Brief lead",
+      "url": "https://www.bbc.com/news/articles/cmreyvepnv0po",
       "sources": 3,
-      "sig": 19
-    },
-    {
-      "id": "cl:rss:openai:1dbe22633003a2af",
-      "kind": "rest",
-      "title": "Advancing coding in low‑resource programming languages",
-      "take": "2 SRC · sig 44",
-      "why": "Top corroborated Wire cluster · same pack as lead pick",
-      "move": "Digest row · never displaces Brief lead",
-      "url": "https://openai.com/index/low-resource-programming-languages",
-      "sources": 2,
-      "sig": 44
-    },
-    {
-      "id": "cl:rss:mistral:51edf4c643816e6f",
-      "kind": "rest",
-      "title": "Introducing Timestral",
-      "take": "2 SRC · sig 614",
-      "why": "Top corroborated Wire cluster · same pack as lead pick",
-      "move": "Digest row · never displaces Brief lead",
-      "url": "https://mistral.ai/news/timestral/",
-      "sources": 2,
-      "sig": 614
+      "sig": 115
     }
   ]
 } as const;
