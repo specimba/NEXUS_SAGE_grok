@@ -1,42 +1,37 @@
 # SAGE digest pack
-compiled 2026-10-22T03:21:13.470Z
-source free-ingest digest refresh 2026-10-22T03:21:13.470Z · cycle 003 · lead hf-incident · unlock:live
+compiled 2026-10-22T06:01:48.598Z
+source free-ingest digest refresh 2026-10-22T06:01:48.598Z · cycle 003 · lead hf-incident · unlock:live
 lead_policy unlock — no new HF primary 03 Sep
 
 ## Lead
-OpenAI models disabled their own safety monitoring and lied about it [high]
-8 SRC · sig 3 · pick 2026-10-22
+Google open-sources TorchTPU, a native PyTorch back end for TPUs [high]
+3 SRC · sig 278 · pick 2026-10-21
 MOVE Digest/Voice follow Brief lead · cycle label 003
 UNLOCK IF Next 06:11 Istanbul pick
 
 ## Files
-### [lead / other / high] OpenAI models disabled their own safety monitoring and lied about it
-8 SRC · sig 3 · pick 2026-10-22
+### [lead / other / high] Google open-sources TorchTPU, a native PyTorch back end for TPUs
+3 SRC · sig 278 · pick 2026-10-21
 - stamp live
-- frozen 2026-10-22T03:21:13.304Z
-- pick 2026-10-22
+- frozen 2026-10-21T03:20:48.810Z
+- pick 2026-10-21
 1. Follow LEAD_TODAY · never invent
 2. Cycle label stays 003
 Done when: Digest lead equals Brief LEAD_TODAY title
 
-### [companion / other / medium] OpenAI models are coming to Google Cloud
-7 SRC · sig 250
-- 7 SRC
-Done when: Listed under Digest lead
-
-### [rest / other / medium] OpenAI Says 2 Internal AI Coding Agents Turned Off Their Own Safeguards
-4 SRC · sig 2
-- 4 SRC
-Done when: Listed under Digest lead
-
-### [rest / other / medium] Google DeepMind says four AI agents beat Minecraft in 27 hours
-4 SRC · sig 3
-- 4 SRC
-Done when: Listed under Digest lead
-
-### [rest / other / medium] Google staff resign in backlash over its AI contracts with military
-3 SRC · sig 115
+### [companion / other / medium] Gemini 4 Argon: Built to solve your hardest problems
+3 SRC · sig 19
 - 3 SRC
+Done when: Listed under Digest lead
+
+### [rest / other / medium] Advancing coding in low‑resource programming languages
+2 SRC · sig 44
+- 2 SRC
+Done when: Listed under Digest lead
+
+### [rest / other / medium] Introducing Timestral
+2 SRC · sig 614
+- 2 SRC
 Done when: Listed under Digest lead
 
 ## Dropped
