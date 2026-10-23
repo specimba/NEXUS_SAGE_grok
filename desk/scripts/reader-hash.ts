@@ -7,6 +7,7 @@
  *          and, when published, artifacts/sage/reader-hash.json.
  *   --desk <dir>  run against another desk root (tests).
  * PASS-D D1b: public/feed.xml (when present) is hashed too, under the key "public/feed.xml" — a feed-only change publishes.
+ * PASS-F2.3c: public/feed.atom (when present) likewise, under "public/feed.atom".
  * PASS-W W4: public/watch.xml (when present) likewise, under "public/watch.xml" — a watch-only change publishes.
  * Exit 1 on any gate error (watchdog reads gate_error).
  */
@@ -27,6 +28,8 @@ const files: Record<string, string> = {};
 for (const f of readdirSync(dataDir).filter((n) => n.endsWith(".ts"))) files[f] = readFileSync(resolve(dataDir, f), "utf8");
 const feedPath = resolve(desk, "public/feed.xml");
 if (existsSync(feedPath)) files["public/feed.xml"] = readFileSync(feedPath, "utf8");
+const atomPath = resolve(desk, "public/feed.atom"); // PASS-F2.3c
+if (existsSync(atomPath)) files["public/feed.atom"] = readFileSync(atomPath, "utf8");
 const watchPath = resolve(desk, "public/watch.xml");
 if (existsSync(watchPath)) files["public/watch.xml"] = readFileSync(watchPath, "utf8");
 const hash = readerHash(files, crawlAt);

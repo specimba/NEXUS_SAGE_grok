@@ -485,10 +485,12 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
             <div>
               <p className="desk-brand block-cursor text-kicker text-phosphor">SAGE://DESK</p>
               <div className="mt-1 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                <h1 className="font-display text-2xl tracking-[0.12em] text-phosphor-bright">
-                  CYC/{CYCLE.id}
-                </h1>
-                <span className="text-sm text-muted" data-cycle-window={unlockLive ? "unlock" : "archive"}>{cycleWindowLabel}</span>
+                <h1 className="font-display text-2xl tracking-[0.12em] text-phosphor-bright">NEXUS SAGE</h1>
+                {/* PASS-F2.3b: internal labels (cycle, pack id, lane code) live here, collapsed; nothing deleted. */}
+                <details className="desk-details text-sm text-muted" data-desk-details>
+                  <summary>desk details</summary>
+                  CYC/{CYCLE.id} · <span data-cycle-window={unlockLive ? "unlock" : "archive"}>{cycleWindowLabel}</span> · pack {DIGEST_CADENCE.pack_id} · Sol≠Astra · rail cyc/{CYCLE.id} board
+                </details>
               </div>
             </div>
             <div className="desk-chips flex flex-wrap items-center gap-2">
@@ -526,7 +528,7 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
             id="desk-ingest-line"
             className={`desk-ingest-line ${ingestOpen ? "block" : "hidden"} font-mono text-kicker uppercase tracking-kicker text-subtle md:block`}
           >
-            ingest · snap {istDateTime(CRAWL_AT)} · pack {istDateTime(packStamp)} {IST_LABEL} · {DIGEST_CADENCE.pack_id}
+            ingest · snap {istDateTime(CRAWL_AT)} · pack {istDateTime(packStamp)} {IST_LABEL}
           </p>
           <div className="desk-ticker" aria-label="What changed">
             <span className="desk-ticker-label">Δ LIVE</span>
@@ -539,8 +541,7 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
               </span>
               <span className="desk-ticker-item">
                 lead{" "}
-                <LeadInline view={leadV} />{" "}
-                · Sol≠Astra
+                <LeadInline view={leadV} />
               </span>
               <span className="desk-ticker-item">
                 wikidata {WIKIDATA_DENY_LAST.hints.filter((h) => h.status === "rejected_false_friend").length} reject · {WIKIDATA_DENY_LAST.hints.filter((h) => h.status === "matched").length} match · brief=false
@@ -954,7 +955,7 @@ function Brief({ tldr }: { tldr?: ReactNode }) {
         className="sage-panel sage-ticks sage-instrument sage-pip-rail flex flex-col gap-1 px-2 py-2 order-last lg:order-none lg:col-span-2 lg:row-span-3"
         aria-label="Cycle 003 board instrument rail"
       >
-        <p className="font-mono text-kicker uppercase tracking-kicker text-primary">rail · cyc/003 board</p>
+        <p className="font-mono text-kicker uppercase tracking-kicker text-primary">rail · board</p>
         {pip.map((g) => (
           <div key={g.id} className="sage-pip-gauge">
             <div className="sage-pip-track" role="img" aria-label={`${g.label} ${g.pct}%`}>
@@ -1099,7 +1100,7 @@ function Brief({ tldr }: { tldr?: ReactNode }) {
           <span className="font-mono text-kicker uppercase tracking-kicker text-subtle">rest</span>
           <span className="font-mono text-kicker uppercase tracking-kicker text-subtle">context</span>
           <span className="ml-auto font-mono text-kicker uppercase tracking-kicker text-subtle">
-            Sol≠Astra · ≠2nd lead
+            ≠2nd lead
           </span>
         </div>
         <ol className="flex flex-col gap-1.5">
@@ -1150,7 +1151,7 @@ function Brief({ tldr }: { tldr?: ReactNode }) {
         className="sage-panel sage-ticks sage-wave-dense overflow-hidden lg:col-span-6 lg:col-start-3"
         aria-label="Three waves"
       >
-        <div className="sage-panel-header">CYC/003 board · three waves</div>
+        <div className="sage-panel-header">board · three waves</div>
         <div className="p-2">
           <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
             METR 1–2 · OpenAI 3 · not civilization chart
@@ -1938,7 +1939,7 @@ function Digest() {
               Report · story
             </p>
             <span className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
-              {item.kind} · cyc/{CYCLE.id} · {unlock.stamp}
+              {item.kind} · {unlock.stamp}
             </span>
           </div>
           <UnlockKicker view={unlock} />
@@ -1967,7 +1968,7 @@ function Digest() {
           >
             <span className="font-mono text-kicker uppercase tracking-kicker text-subtle">items</span>
             <span className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums">
-              {liveRows.length} · unlock · cyc/{CYCLE.id}
+              {liveRows.length} · unlock
             </span>
           </div>
           <ul className="flex flex-col gap-1">
@@ -2030,8 +2031,8 @@ function Digest() {
             </div>
             <p className="mt-2 font-mono text-kicker uppercase tracking-kicker text-subtle" data-pack-source={unlock.stamp === "archive" ? "archive" : "unlock"}>
               {unlock.stamp === "archive"
-                ? `archive · cyc/${CYCLE.id} · Sol≠Astra`
-                : `unlock · ${unlock.leadId ?? unlock.lead.id} · pick ${unlock.pickDate ?? "—"} · cyc/${CYCLE.id} · Sol≠Astra`}
+                ? "archive"
+                : `unlock · ${unlock.leadId ?? unlock.lead.id} · pick ${unlock.pickDate ?? "—"}`}
             </p>
           </div>
         </section>
@@ -2516,7 +2517,7 @@ function Voice() {
               Script · story
             </p>
             <span className="font-mono text-kicker uppercase tracking-kicker text-subtle">
-              lead · cyc/{CYCLE.id} · TAKE→WHY→MOVE
+              lead · TAKE→WHY→MOVE
             </span>
           </div>
           <UnlockKicker view={unlock} />
@@ -2550,7 +2551,7 @@ function Voice() {
           >
             <span className="font-mono text-kicker uppercase tracking-kicker text-subtle">chain</span>
             <span className="font-mono text-kicker uppercase tracking-kicker text-subtle">
-              Ava / Andrew · cyc/{CYCLE.id}
+              Ava / Andrew
             </span>
           </div>
           <div className="sage-panel sage-ticks pin-card-quiet flex flex-col gap-2 px-2.5 py-2">
@@ -2580,7 +2581,7 @@ function Voice() {
             </ul>
           </div>
           <p className="px-1 font-mono text-kicker uppercase tracking-kicker text-subtle">
-            {`Podcast mix offline · unlock · cyc/${CYCLE.id} · Sol≠Astra`}
+            {`Podcast mix offline`}
           </p>
         </div>
 

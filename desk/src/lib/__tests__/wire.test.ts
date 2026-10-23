@@ -174,8 +174,9 @@ describe("Beat 7 wire — generated data + placement", () => {
     // right rail: old hf-incident pin demoted to "cycle 003 context", listed after companion/rest, no lead frame
     expect(brief).toContain("cycle 003 context");
     expect(brief).not.toContain("cycle pin");
-    expect(brief).toContain("rail · cyc/003 board");
-    expect(brief).toContain("CYC/003 board · three waves");
+    // PASS-F2.3b: cycle code moved into the topbar "desk details" (collapsed); the visible labels are plain.
+    expect(brief).toContain("rail · board");
+    expect(brief).toContain("board · three waves");
     expect(brief.slice(0, brief.indexOf("function Pulse") > 0 ? brief.indexOf("function Pulse") : undefined)).not.toContain("sage-lead-frame");
     const css = readFileSync(resolve(import.meta.dir, "../../app/globals.css"), "utf8");
     const block = css.slice(css.indexOf("/* Beat 7 — Brief Wire strip"));

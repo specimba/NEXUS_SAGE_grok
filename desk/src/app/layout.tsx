@@ -30,7 +30,8 @@ export const metadata: Metadata = {
   icons: {
     icon: [{ url: `${BASE_PATH}/favicon.svg`, type: "image/svg+xml" }],
   },
-  alternates: { canonical: `${SITE_URL}/` },
+  // PASS-F2.3c: advertise the Atom-MIME copy (feed.xml stays at its URL for existing subscribers).
+  alternates: { canonical: `${SITE_URL}/`, types: { "application/atom+xml": `${SITE_URL}/feed.atom` } },
   openGraph: {
     url: `${SITE_URL}/`,
     title: "SAGE://DESK",

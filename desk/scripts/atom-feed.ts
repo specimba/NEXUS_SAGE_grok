@@ -9,6 +9,8 @@
  * $ATOM_FEED_STATUS (optional, CI): the result line is also written there, for the crawl.log `feed=` suffix
  *   (removed at start, so a crash leaves no stale status ⇒ scripts/publish-proof.ts reads it as skipped).
  * D4: any missing / unparseable input or generator error ⇒ `atom-feed: skipped (<reason>)`, existing files untouched, exit 0.
+ * PASS-F2.2c/F2.3c: the TL;DR entry (src/data/tldr-24h.ts → artifacts/sage/tldr-feed.json) is entry 1; public/feed.atom is
+ *   written with the same bytes as feed.xml in the same step (Atom MIME on Pages).
  * PASS-W: then, independently (its own try; a watch crash never touches feed.xml and vice versa), the watch feed:
  *   reads config/sage-sources.json keywords.watch_terms (via loadSageConfig, read-only), wire.ts, papers.ts,
  *   releases-atom.ts and artifacts/sage/watch-seen.json; writes watch-seen.json + public/watch.xml (bytes-changed only).
@@ -30,6 +32,8 @@ const p = {
   wire: resolve(desk, "src/data/wire.ts"),
   papers: resolve(desk, "src/data/papers.ts"),
   feed: resolve(desk, "public/feed.xml"),
+  /** PASS-F2.3c: byte-identical copy — GitHub Pages serves .atom as application/atom+xml (.xml is not). */
+  feedAtom: resolve(desk, "public/feed.atom"),
   releases: resolve(desk, "src/data/releases-atom.ts"),
   watchSeen: resolve(desk, "artifacts/sage/watch-seen.json"),
   watch: resolve(desk, "public/watch.xml"),
@@ -117,6 +121,7 @@ async function main(): Promise<string> {
   }
   if (xml == null) return `atom-feed: skipped (no editions yet)${notes.length ? ` · ${notes.join(" · ")}` : ""}`;
   const wrote = writeIfChanged(p.feed, xml);
+  writeIfChanged(p.feedAtom, xml); // PASS-F2.3c: same bytes, same step
   const n = (xml.match(/<entry>/g) ?? []).length;
   return `atom-feed: ${wrote ? "wrote" : "unchanged"} public/feed.xml · ${n} entr${n === 1 ? "y" : "ies"} · ${Buffer.byteLength(xml)} B${notes.length ? ` · ${notes.join(" · ")}` : ""}`;
 }

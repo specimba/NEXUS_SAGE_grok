@@ -18,6 +18,7 @@ import { X_TASTE } from "@/data/x-taste";
 import { memberInfo } from "@/lib/member-info";
 import { istanbulDate } from "@/lib/lead-pick";
 import { buildTldr, type Tldr } from "@/lib/tldr-24h";
+import { plainHeadline } from "@/lib/plain-headline";
 
 export function computeTldr(): Tldr {
   const publishers: Record<string, string> = {};
@@ -28,7 +29,7 @@ export function computeTldr(): Tldr {
   for (const r of RELEASES_ATOM) publishers[r.id] = "github.com";
   const scores: Record<string, number> = {};
   for (const h of HN_PULSE) scores[h.id] = h.score;
-  return buildTldr(PULSE_CLUSTERS, {
+  const t = buildTldr(PULSE_CLUSTERS, {
     crawlAt: PULSE_CLUSTERS_AT,
     date: istanbulDate(PULSE_CLUSTERS_AT),
     publishers,
@@ -36,6 +37,8 @@ export function computeTldr(): Tldr {
     scores,
     tasteIds: X_TASTE.items.map((t) => t.id),
   });
+  // PASS-F2.3a: plain publisher headline (cleaned, never reworded).
+  return { ...t, bullets: t.bullets.map((b) => ({ ...b, title: plainHeadline(b.title) })) };
 }
 
 export function renderTldrModule(t: Tldr): string {
