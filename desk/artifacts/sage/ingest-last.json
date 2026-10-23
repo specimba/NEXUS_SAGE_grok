@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-23T22:52:03Z",
+  "stamped_at": "2026-10-23T22:56:59Z",
   "config_hash": "a116c3b25ffb",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,7 +11,7 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 160,
+      "duration_ms": 140,
       "paused_until": null,
       "reason": null
     },
@@ -20,7 +20,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 3017,
+      "duration_ms": 3019,
       "paused_until": null,
       "reason": null
     },
@@ -29,7 +29,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 340,
+      "duration_ms": 423,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 192,
+      "duration_ms": 307,
       "paused_until": null,
       "reason": null
     },
@@ -46,8 +46,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 74,
-      "duration_ms": 8453,
+      "rows": 73,
+      "duration_ms": 8284,
       "paused_until": null,
       "reason": null
     },
@@ -56,7 +56,7 @@
       "label": "HN title",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 8436,
+      "duration_ms": 8197,
       "paused_until": null,
       "reason": null
     },
@@ -64,8 +64,8 @@
       "id": "rss_labs",
       "label": "lab RSS",
       "status": "ok",
-      "rows": 115,
-      "duration_ms": 19118,
+      "rows": 105,
+      "duration_ms": 19050,
       "paused_until": null,
       "reason": null
     },
@@ -74,7 +74,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 74,
-      "duration_ms": 12101,
+      "duration_ms": 12095,
       "paused_until": null,
       "reason": null
     },
@@ -83,7 +83,7 @@
       "label": "analyst RSS",
       "status": "ok",
       "rows": 6,
-      "duration_ms": 3161,
+      "duration_ms": 3217,
       "paused_until": null,
       "reason": null
     },
@@ -92,7 +92,7 @@
       "label": "releases",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 6840,
+      "duration_ms": 6851,
       "paused_until": null,
       "reason": null
     },
@@ -101,7 +101,7 @@
       "label": "Google News",
       "status": "ok",
       "rows": 54,
-      "duration_ms": 6504,
+      "duration_ms": 6425,
       "paused_until": null,
       "reason": null
     },
@@ -110,7 +110,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 311,
+      "duration_ms": 335,
       "paused_until": null,
       "reason": null
     },
@@ -119,16 +119,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4316,
+      "duration_ms": 4370,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 72949,
-    "sources_wall_ms": 19119,
-    "papers_lane_ms": 3714,
-    "slowest_source_ms": 19118,
+    "sources_ms": 72713,
+    "sources_wall_ms": 19051,
+    "papers_lane_ms": 3896,
+    "slowest_source_ms": 19050,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -146,29 +146,29 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 19838,
-    "startup_ms": 53,
-    "main_ms": 19861
+    "wall_ms": 19747,
+    "startup_ms": 54,
+    "main_ms": 19768
   },
-  "multi_source_independent": 16,
+  "multi_source_independent": 15,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 16,
+    "multi_source_independent": 15,
     "multi_source_raw": 25,
-    "self_reposts": 10,
-    "items_in": 333,
-    "clusters_out": 293,
+    "self_reposts": 11,
+    "items_in": 322,
+    "clusters_out": 282,
     "collapsed": 40,
-    "multi_source": 16,
-    "multi_member": 32,
+    "multi_source": 15,
+    "multi_member": 33,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 49,
+    "new_items": 1,
     "per_source": {
-      "hn-algolia": 74,
-      "rss-lab": 115,
+      "hn-algolia": 73,
+      "rss-lab": 105,
       "rss-security": 74,
       "gnews-rss": 54,
       "gmail-news": 10,
@@ -391,45 +391,13 @@
         ]
       },
       {
-        "title": "MiniMax-M3.1-Flash",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 3,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:50208084",
-            "source": "hn-algolia",
-            "title": "MiniMax-M3.1-Flash",
-            "at": "2026-10-23T12:41:37Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:50203279",
-            "source": "hn-algolia",
-            "title": "MiniMaxAI/MiniMax-M3.1-Flash",
-            "at": "2026-10-23T01:09:50Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:19dd6acc3268c772",
-            "source": "gnews-rss",
-            "title": "MiniMax M3.1 Flash vs Gemini 3.8 Flash: A Gap That Doubles - OrcaRouter",
-            "at": "2026-10-23T05:37:27Z",
-            "publisher": "OrcaRouter"
-          }
-        ]
-      },
-      {
         "title": "Anthropic Public Benefit Report",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.678,
+        "score": 0.676,
         "members": [
           {
             "id": "hn:50207936",
@@ -568,7 +536,7 @@
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.674,
+        "score": 0.671,
         "members": [
           {
             "id": "hn:50188944",
@@ -784,6 +752,23 @@
             "title": "Running Frontier-Class AI Models Across 8 NVIDIA DGX Spark Nodes | NVIDIA Technical Blog - NVIDIA Developer"
           }
         ]
+      },
+      {
+        "title": "What FDE means at OpenAI",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:5e107589d005f271",
+            "publisher": "OpenAI",
+            "title": "What FDE means at OpenAI - OpenAI"
+          }
+        ]
       }
     ],
     "ai_relevance": {
@@ -809,33 +794,11 @@
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 10
+      "hn_dropped": 11
     },
     "gnews_near_misses": [
       {
-        "score": 0.538,
-        "blocked": "below-threshold",
-        "hours_apart": 4.5,
-        "a": {
-          "id": "hn:50203279",
-          "source": "hn-algolia",
-          "title": "MiniMaxAI/MiniMax-M3.1-Flash",
-          "at": "2026-10-23T01:09:50Z"
-        },
-        "b": {
-          "id": "gnews:19dd6acc3268c772",
-          "source": "gnews-rss",
-          "title": "MiniMax M3.1 Flash vs Gemini 3.8 Flash: A Gap That Doubles - OrcaRouter",
-          "at": "2026-10-23T05:37:27Z"
-        },
-        "shared": [
-          "minimax",
-          "m3.1",
-          "flash"
-        ]
-      },
-      {
-        "score": 0.487,
+        "score": 0.489,
         "blocked": "below-threshold",
         "hours_apart": 2.8,
         "a": {
@@ -858,7 +821,7 @@
         ]
       },
       {
-        "score": 0.479,
+        "score": 0.464,
         "blocked": "thin-overlap",
         "hours_apart": 244.2,
         "a": {
@@ -880,7 +843,7 @@
         ]
       },
       {
-        "score": 0.47,
+        "score": 0.455,
         "blocked": "thin-overlap",
         "hours_apart": 244.5,
         "a": {
@@ -902,7 +865,7 @@
         ]
       },
       {
-        "score": 0.443,
+        "score": 0.441,
         "blocked": "below-threshold",
         "hours_apart": 4.3,
         "a": {
@@ -924,7 +887,7 @@
         ]
       },
       {
-        "score": 0.431,
+        "score": 0.43,
         "blocked": "time-window",
         "hours_apart": 46.3,
         "a": {
@@ -947,28 +910,7 @@
         ]
       },
       {
-        "score": 0.405,
-        "blocked": "thin-overlap",
-        "hours_apart": 710.2,
-        "a": {
-          "id": "rss:deepmind:81481aa316e38773",
-          "source": "rss-lab",
-          "title": "Gemini 3.8 text-to-speech says hello",
-          "at": "2026-09-23T15:25:14Z"
-        },
-        "b": {
-          "id": "gnews:19dd6acc3268c772",
-          "source": "gnews-rss",
-          "title": "MiniMax M3.1 Flash vs Gemini 3.8 Flash: A Gap That Doubles - OrcaRouter",
-          "at": "2026-10-23T05:37:27Z"
-        },
-        "shared": [
-          "gemini",
-          "3.8"
-        ]
-      },
-      {
-        "score": 0.386,
+        "score": 0.385,
         "blocked": "thin-overlap",
         "hours_apart": 0.5,
         "a": {
@@ -982,6 +924,50 @@
           "source": "gnews-rss",
           "title": "Anthropic introduces Claude Duet, a proactive AI agent for professionals - SiliconANGLE",
           "at": "2026-10-22T13:20:00Z"
+        },
+        "shared": [
+          "claude",
+          "duet",
+          "anthropic"
+        ]
+      },
+      {
+        "score": 0.385,
+        "blocked": "below-threshold",
+        "hours_apart": 12.6,
+        "a": {
+          "id": "rss:openai:f8c156dba7886826",
+          "source": "rss-lab",
+          "title": "Securing our frontier model training environment",
+          "at": "2026-10-23T10:00:00Z"
+        },
+        "b": {
+          "id": "gnews:225a7c5f514bd50f",
+          "source": "gnews-rss",
+          "title": "OpenAI Says It's Cutting Off Internet Access For Frontier Model Training - Engadget",
+          "at": "2026-10-23T22:37:02Z"
+        },
+        "shared": [
+          "frontier",
+          "model",
+          "train"
+        ]
+      },
+      {
+        "score": 0.348,
+        "blocked": "thin-overlap",
+        "hours_apart": 31.7,
+        "a": {
+          "id": "hn:50195309",
+          "source": "hn-algolia",
+          "title": "I built a \"Claude Duet\" by hand a year ago. Here's what Anthropic got right",
+          "at": "2026-10-22T13:48:52Z"
+        },
+        "b": {
+          "id": "gnews:15e40db1b00e5f3c",
+          "source": "gnews-rss",
+          "title": "Anthropic targets Muse and Dots with new AI agent, Claude Duet - Computerworld",
+          "at": "2026-10-23T21:29:26Z"
         },
         "shared": [
           "claude",
@@ -992,29 +978,7 @@
     ],
     "near_misses": [
       {
-        "score": 0.538,
-        "blocked": "below-threshold",
-        "hours_apart": 4.5,
-        "a": {
-          "id": "hn:50203279",
-          "source": "hn-algolia",
-          "title": "MiniMaxAI/MiniMax-M3.1-Flash",
-          "at": "2026-10-23T01:09:50Z"
-        },
-        "b": {
-          "id": "gnews:19dd6acc3268c772",
-          "source": "gnews-rss",
-          "title": "MiniMax M3.1 Flash vs Gemini 3.8 Flash: A Gap That Doubles - OrcaRouter",
-          "at": "2026-10-23T05:37:27Z"
-        },
-        "shared": [
-          "minimax",
-          "m3.1",
-          "flash"
-        ]
-      },
-      {
-        "score": 0.487,
+        "score": 0.489,
         "blocked": "below-threshold",
         "hours_apart": 2.8,
         "a": {
@@ -1037,7 +1001,7 @@
         ]
       },
       {
-        "score": 0.479,
+        "score": 0.464,
         "blocked": "thin-overlap",
         "hours_apart": 244.2,
         "a": {
@@ -1059,7 +1023,7 @@
         ]
       },
       {
-        "score": 0.47,
+        "score": 0.455,
         "blocked": "thin-overlap",
         "hours_apart": 244.5,
         "a": {
@@ -1081,7 +1045,7 @@
         ]
       },
       {
-        "score": 0.443,
+        "score": 0.441,
         "blocked": "below-threshold",
         "hours_apart": 4.3,
         "a": {
@@ -1103,7 +1067,7 @@
         ]
       },
       {
-        "score": 0.431,
+        "score": 0.43,
         "blocked": "time-window",
         "hours_apart": 46.3,
         "a": {
@@ -1126,28 +1090,30 @@
         ]
       },
       {
-        "score": 0.405,
-        "blocked": "thin-overlap",
-        "hours_apart": 710.2,
+        "score": 0.385,
+        "blocked": "below-threshold",
+        "hours_apart": 1,
         "a": {
-          "id": "rss:deepmind:81481aa316e38773",
-          "source": "rss-lab",
-          "title": "Gemini 3.8 text-to-speech says hello",
-          "at": "2026-09-23T15:25:14Z"
+          "id": "hn:50199846",
+          "source": "hn-algolia",
+          "title": "Banks Are Struggling to Protect Customers from Their Own AI Agents",
+          "at": "2026-10-22T19:23:44Z"
         },
         "b": {
-          "id": "gnews:19dd6acc3268c772",
-          "source": "gnews-rss",
-          "title": "MiniMax M3.1 Flash vs Gemini 3.8 Flash: A Gap That Doubles - OrcaRouter",
-          "at": "2026-10-23T05:37:27Z"
+          "id": "rss:the-decoder:039d4e9e023dd99e",
+          "source": "rss-lab",
+          "title": "Major US banks are locking out AI agents that log in with customer credentials",
+          "at": "2026-10-22T18:26:02Z"
         },
         "shared": [
-          "gemini",
-          "3.8"
+          "bank",
+          "customer",
+          "ai",
+          "agent"
         ]
       },
       {
-        "score": 0.386,
+        "score": 0.385,
         "blocked": "thin-overlap",
         "hours_apart": 0.5,
         "a": {
@@ -1167,6 +1133,28 @@
           "duet",
           "anthropic"
         ]
+      },
+      {
+        "score": 0.385,
+        "blocked": "below-threshold",
+        "hours_apart": 12.6,
+        "a": {
+          "id": "rss:openai:f8c156dba7886826",
+          "source": "rss-lab",
+          "title": "Securing our frontier model training environment",
+          "at": "2026-10-23T10:00:00Z"
+        },
+        "b": {
+          "id": "gnews:225a7c5f514bd50f",
+          "source": "gnews-rss",
+          "title": "OpenAI Says It's Cutting Off Internet Access For Frontier Model Training - Engadget",
+          "at": "2026-10-23T22:37:02Z"
+        },
+        "shared": [
+          "frontier",
+          "model",
+          "train"
+        ]
       }
     ]
   },
@@ -1174,97 +1162,97 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 12,
+      "streak_ok": 13,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 169,
+      "streak_ok": 170,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 169,
+      "streak_ok": 170,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 169,
+      "streak_ok": 170,
       "streak_fail": 0,
       "items_last": 54
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 169,
+      "streak_ok": 170,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 169,
+      "streak_ok": 170,
       "streak_fail": 0,
-      "items_last": 74
+      "items_last": 73
     },
     {
       "id": "hn_title",
       "state": "ok",
-      "streak_ok": 23,
+      "streak_ok": 24,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 81,
+      "streak_ok": 82,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "releases_atom",
       "state": "ok",
-      "streak_ok": 23,
+      "streak_ok": 24,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "rss_analyst",
       "state": "ok",
-      "streak_ok": 23,
+      "streak_ok": 24,
       "streak_fail": 0,
       "items_last": 6
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 73,
+      "streak_ok": 74,
       "streak_fail": 0,
-      "items_last": 115
+      "items_last": 105
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 169,
+      "streak_ok": 170,
       "streak_fail": 0,
       "items_last": 74
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 169,
+      "streak_ok": 170,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.005551944444444444,
+    "hours": 0.005605833333333333,
     "stale": false
   },
   "hf": {
@@ -1355,7 +1343,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 74,
+    "count": 73,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -1372,7 +1360,7 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 10,
+    "ai_dropped": 11,
     "url": "https://hn.algolia.com/api/v1/search",
     "title_queries": {
       "ok": true,
@@ -1404,7 +1392,7 @@
       {
         "id": "hn:50200997",
         "tag": "rest",
-        "score": 583,
+        "score": 584,
         "text": "Ask HN: If the models are so good, why doesn't OpenAI just start 100 companies?"
       },
       {
@@ -1423,9 +1411,9 @@
   },
   "rss": {
     "ok": true,
-    "soft_fail": false,
-    "soft_fail_reason": null,
-    "count": 115,
+    "soft_fail": true,
+    "soft_fail_reason": "ms-research:HTTP 403",
+    "count": 105,
     "shelf": 0,
     "brief": false,
     "pulse_only": true,
@@ -1467,11 +1455,6 @@
         "count": 12
       },
       {
-        "lab": "ms-research",
-        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
-        "count": 10
-      },
-      {
         "lab": "google-research",
         "url": "https://research.google/blog/rss/",
         "count": 12
@@ -1482,7 +1465,13 @@
         "count": 10
       }
     ],
-    "feeds_soft_fail": [],
+    "feeds_soft_fail": [
+      {
+        "lab": "ms-research",
+        "reason": "HTTP 403",
+        "soft_fail": true
+      }
+    ],
     "sample": [
       {
         "id": "rss:the-decoder:3cec67123ef466bd",
@@ -1702,10 +1691,10 @@
       },
       {
         "feed": "codex",
-        "action": "seed",
+        "action": "no-bump",
         "newest": "rust-v0.164.0",
         "emitted": null,
-        "baseline": "(none)"
+        "baseline": "rust-v0.164.0"
       }
     ],
     "feeds": [
@@ -1811,7 +1800,7 @@
       {
         "id": "gnews:4d951b3ab51e0f9b",
         "anchor_id": "rss:nvidia:19fce2b28a327610",
-        "score": 0.736,
+        "score": 0.735,
         "title": "NVIDIA Minerva targets AI factory observability - Developer Tech News",
         "publisher": "Developer Tech News",
         "self_repost": false
@@ -1843,7 +1832,7 @@
       {
         "id": "gnews:92a08b7adf930f57",
         "anchor_id": "hn:50204095",
-        "score": 0.902,
+        "score": 0.9,
         "title": "The Morning Risk Report: The Signal Chats That Cost OpenAI Researchers Their Jobs - WSJ",
         "publisher": "WSJ",
         "self_repost": false
@@ -1865,14 +1854,6 @@
         "self_repost": false
       },
       {
-        "id": "gnews:19dd6acc3268c772",
-        "anchor_id": "hn:50208084",
-        "score": 0.73,
-        "title": "MiniMax M3.1 Flash vs Gemini 3.8 Flash: A Gap That Doubles - OrcaRouter",
-        "publisher": "OrcaRouter",
-        "self_repost": false
-      },
-      {
         "id": "gnews:c0a8aa82fb0adbb1",
         "anchor_id": "rss:openai:1a543055a02f9816",
         "score": 1,
@@ -1883,7 +1864,7 @@
       {
         "id": "gnews:8c7cc8468a424522",
         "anchor_id": "hn:50207936",
-        "score": 0.672,
+        "score": 0.67,
         "title": "Anthropic publishes Public Benefit Report, detailing AI progress and gaps in measuring impact - EdTech Innovation Hub",
         "publisher": "EdTech Innovation Hub",
         "self_repost": false
@@ -1937,6 +1918,14 @@
         "self_repost": true
       },
       {
+        "id": "gnews:5e107589d005f271",
+        "anchor_id": "rss:openai:6400feb681472530",
+        "score": 1,
+        "title": "What FDE means at OpenAI - OpenAI",
+        "publisher": "OpenAI",
+        "self_repost": true
+      },
+      {
         "id": "gnews:7f5d8d453b127633",
         "anchor_id": "hn:50188944",
         "score": 0.678,
@@ -1985,10 +1974,10 @@
         "tag": "rest"
       },
       {
-        "id": "gnews:8ec60e673c05ef58",
-        "title": "Texas attorney general accuses OpenAI of lying about ChatGPT safety and safeguards - Courthouse News",
-        "publisher": "Courthouse News",
-        "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxObXNWNG44YUkyTGJaZGlFeTh5ekpzb3lxTWljUTh0R1B6bVpDQW9iRzctSHFEajhqTVlHWVV5UlZoYkZZdkJ4N0VaN3JzME9fUjFnU3B5T3BYU1ZYOHBIRnBPcEpMZy14dkU3NThBLVJoRlRxa0dLOG10cmNJODZRb24wNUEwclQtV1hpNG4wY1A2M3VreWppT19HNEdEY1FBRVVGRFZhZlpQS3BHdGlmbjNEOUk?oc=5",
+        "id": "gnews:e1ed756fed8f6e19",
+        "title": "Nutanix and Supermicro Take on Runaway AI Costs with Jointly Engineered System for Private Inference - HPCwire",
+        "publisher": "HPCwire",
+        "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxQTWlBcWJ6TEplZDVaVjNBU3NJcTB1Q2tCckhMY3p5M0VEV2JVUTlSQlNHVGVnd1Z1Y3dORW5EYmRma0UwekJnalR0TVV6RW1BczNYdzdNWTVwZ0tSamZjVmoyTzRYa0hSWnEzdWp0NlV4Wmdhb1NHOGZ3VWJiQ1VWOHRVa2JNYTBkLXU0NDBaaHZUcmphdUZ4c2ZISkhoTFhmWlZwWmRBOVQtUlRJLXRrTjRsX01YS19XRVp5NTRBWktlcFRNX2RJcmVBNXNvdFgzdUg0WENaSnhsMU85Z2hqcWlZZkc?oc=5",
         "tag": "rest"
       }
     ]

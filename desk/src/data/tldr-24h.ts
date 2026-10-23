@@ -3,7 +3,7 @@ import type { Tldr } from "@/lib/tldr-24h";
 
 export const TLDR_24H: Tldr = {
   "schema": 1,
-  "crawl_at": "2026-10-23T22:52:03Z",
+  "crawl_at": "2026-10-23T22:56:59Z",
   "date": "2026-10-24",
   "bullets": [
     {
@@ -39,13 +39,6 @@ export const TLDR_24H: Tldr = {
       "title": "NVIDIA Unveils Minerva to Bring End-to-End Observability for AI Factories",
       "url": "https://blogs.nvidia.com/blog/minerva-platform-infrastructure/",
       "at": "2026-10-23T13:13:15Z",
-      "sources": 2
-    },
-    {
-      "id": "cl:hn:50208084",
-      "title": "MiniMax-M3.1-Flash",
-      "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash",
-      "at": "2026-10-23T12:41:37Z",
       "sources": 2
     }
   ],
