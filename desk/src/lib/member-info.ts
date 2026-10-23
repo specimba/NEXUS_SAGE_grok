@@ -29,7 +29,7 @@ export function memberInfo(): Record<string, PulseMemberInfo> {
   for (const a of RSS_ANALYST)
     m[a.id] = { badge: "ANL", publisher: a.feed, summary: a.summary || undefined, url: a.link, title: a.title, at: a.published };
   for (const r of RELEASES_ATOM)
-    m[r.id] = { badge: "REL", publisher: r.feed, url: r.link, title: r.title, at: r.published };
+    m[r.id] = { badge: (r.feed as string) === "hf-trending" ? "HF" : "REL", publisher: r.feed, url: r.link, title: r.title, at: r.published };
   for (const p of CRAWL)
     m[`x:${p.id}`] = { badge: "X", publisher: `@${p.handle}`, score: p.likes, summary: `${p.take} — ${p.text}`, url: p.href };
   cache = m;

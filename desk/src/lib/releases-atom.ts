@@ -16,8 +16,12 @@ import { getXml, looksLikeHtml, parseRssOrAtom, readCache, writeCache, type Feed
 import { RSS_FEED_TIMEOUT_MS } from "./rss-timeout";
 import type { Pace } from "./pace";
 
-export type ReleaseFeedId = "llama.cpp" | "ollama" | "vllm" | "claude-code";
-export type ReleaseFeedDef = { id: ReleaseFeedId; label: string; repo: string; url: string; defaultOn: boolean };
+export type ReleaseFeedId = "llama.cpp" | "ollama" | "vllm" | "claude-code" | "codex" | "hf-trending" | "hf-moonshotai" | "hf-nvidia" | "hf-tencent";
+/**
+ * `tagPrefix`: stripped before the semver test (codex tags `rust-v0.164.0`); prereleases (`-alpha`) never match SEMVER_RE.
+ * `hf`: PASS-F2.2d Hugging Face API feed (src/lib/hf-models.ts), not an Atom feed — fetchReleasesAtom skips it.
+ */
+export type ReleaseFeedDef = { id: ReleaseFeedId; label: string; repo: string; url: string; defaultOn: boolean; tagPrefix?: string; hf?: true };
 
 /** The registry — config `releases_atom.feeds` may only list these ids. claude-code is off by default (patch churn). */
 export const RELEASE_FEEDS: readonly ReleaseFeedDef[] = [
@@ -25,6 +29,12 @@ export const RELEASE_FEEDS: readonly ReleaseFeedDef[] = [
   { id: "ollama", label: "Ollama", repo: "ollama/ollama", url: "https://github.com/ollama/ollama/releases.atom", defaultOn: true },
   { id: "vllm", label: "vLLM", repo: "vllm-project/vllm", url: "https://github.com/vllm-project/vllm/releases.atom", defaultOn: true },
   { id: "claude-code", label: "Claude Code", repo: "anthropics/claude-code", url: "https://github.com/anthropics/claude-code/releases.atom", defaultOn: false },
+  // PASS-F2.2d: Scout Oct 23 #3 (skip_prerelease via SEMVER_RE) + the HF model feeds.
+  { id: "codex", label: "Codex", repo: "openai/codex", url: "https://github.com/openai/codex/releases.atom", defaultOn: true, tagPrefix: "rust-" },
+  { id: "hf-trending", label: "HF trending", repo: "huggingface.co", url: "https://huggingface.co/api/models?sort=trendingScore&limit=20", defaultOn: true, hf: true },
+  { id: "hf-moonshotai", label: "Moonshot AI", repo: "huggingface.co/moonshotai", url: "https://huggingface.co/api/models?author=moonshotai&sort=createdAt&limit=10", defaultOn: true, hf: true },
+  { id: "hf-nvidia", label: "NVIDIA", repo: "huggingface.co/nvidia", url: "https://huggingface.co/api/models?author=nvidia&sort=createdAt&limit=10", defaultOn: true, hf: true },
+  { id: "hf-tencent", label: "Tencent", repo: "huggingface.co/tencent", url: "https://huggingface.co/api/models?author=tencent&sort=createdAt&limit=10", defaultOn: true, hf: true },
 ] as const;
 
 /** Default Pulse rows per feed (ceiling = × 2 = 4). */
@@ -74,7 +84,7 @@ export type ReleaseFeedState = {
   /** Newest-first emitted items, ≤ RELEASES_CAP_MAX. */
   emitted: ReleaseItem[];
 };
-export type ReleasesSeen = { schema: 1; feeds: Partial<Record<ReleaseFeedId, ReleaseFeedState>> };
+export type ReleasesSeen = { schema: 1; feeds: Partial<Record<ReleaseFeedId, ReleaseFeedState>>; /** PASS-F2.2d HF repos seen + last-good rows. */ hf?: { repos: string[]; last: import("./hf-models").HfRow[] } };
 export const emptyReleasesSeen = (): ReleasesSeen => ({ schema: 1, feeds: {} });
 
 /** Tag from the release link (`…/releases/tag/<tag>`), else the Atom id / title tail. */
@@ -111,7 +121,7 @@ export function decideRelease(
   const semver: { e: ParsedFeedEntry; tag: string; v: Semver }[] = [];
   for (const e of entries) {
     const tag = releaseTag(e);
-    const v = parseSemver(tag);
+    const v = parseSemver(feed.tagPrefix && tag.startsWith(feed.tagPrefix) ? tag.slice(feed.tagPrefix.length) : tag);
     if (!v) {
       skipped.push({ tag, reason: "not-semver" });
       continue;
@@ -126,7 +136,7 @@ export function decideRelease(
     }
     return { state: { version: newest.tag, seeded_at: iso(now), emitted_at: null, emitted: [] }, emitted: null, action: "seed", newest: newest.tag, skipped };
   }
-  const base = parseSemver(prev.version);
+  const base = parseSemver(feed.tagPrefix && prev.version.startsWith(feed.tagPrefix) ? prev.version.slice(feed.tagPrefix.length) : prev.version);
   if (!base) {
     // Previous seed found no semver tag — seed now from this crawl.
     if (!newest) return { state: prev, emitted: null, action: "no-semver", newest: null, skipped };
@@ -224,7 +234,7 @@ export type FetchReleasesResult = {
 /** Fetch each enabled feed (sequential, shared throttle, per-feed soft-fail), decide, return rows + next state. */
 export async function fetchReleasesAtom(opts: FetchReleasesOpts = {}): Promise<FetchReleasesResult> {
   const now = opts.now ?? Date.now();
-  const feeds = opts.feeds ?? RELEASE_FEEDS.filter((f) => f.defaultOn);
+  const feeds = (opts.feeds ?? RELEASE_FEEDS.filter((f) => f.defaultOn)).filter((f) => !f.hf);
   const cap = Math.max(0, Math.min(RELEASES_CAP_MAX, opts.cap ?? RELEASES_CAP));
   const cacheDir = opts.cacheDir ?? DEFAULT_CACHE_DIR;
   const timeoutMs = opts.feedTimeoutMs ?? RSS_FEED_TIMEOUT_MS;

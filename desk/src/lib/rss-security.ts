@@ -32,7 +32,10 @@ export type SecurityLabId =
   | "ncc"
   | "projectzero"
   | "embracethered"
-  | "google-sec";
+  | "google-sec"
+  | "unit42"
+  | "securityweek"
+  | "railway";
 
 export type SecurityRssItem = {
   id: string;
@@ -52,10 +55,12 @@ export type SecurityRssItem = {
 };
 
 export type SecurityFeedDef = {
-  lab: "trailofbits" | "fox-it" | "projectzero" | "embracethered";
+  lab: "trailofbits" | "fox-it" | "projectzero" | "embracethered" | "unit42" | "securityweek" | "railway";
   urls: readonly string[];
   /** Large Atom — stream + stop after N entries / byte budget. */
   streamCap?: boolean;
+  /** PASS-F2.2d: keep only titles matching (Railway: product blog, security posts only). */
+  titleFilter?: RegExp;
 };
 
 /** Must-wire: ToB + Fox-IT + Project Zero; PASS-S1.2 adds Embrace The Red (prompt-injection / agent exploits). NCC intentionally absent. */
@@ -78,6 +83,11 @@ export const SECURITY_FEEDS: readonly SecurityFeedDef[] = [
     lab: "embracethered",
     urls: ["https://embracethered.com/blog/index.xml"],
   },
+  // PASS-F2.2d (refs/SCOUT-SOURCES-OCT23.md #1, #4, #5). SecurityWeek is general security: the Wire's AI gate filters it.
+  { lab: "unit42", urls: ["https://unit42.paloaltonetworks.com/feed/"] },
+  { lab: "securityweek", urls: ["https://www.securityweek.com/feed/"] },
+  // 4.8 MB / 234 full-body items ⇒ streamCap; mostly product posts ⇒ security / disclosure / incident titles only.
+  { lab: "railway", urls: ["https://blog.railway.com/rss.xml"], streamCap: true, titleFilter: /security|disclosure|incident/i },
 ] as const;
 
 const LAB_HANDLE: Record<SecurityFeedDef["lab"], string> = {
@@ -85,6 +95,9 @@ const LAB_HANDLE: Record<SecurityFeedDef["lab"], string> = {
   "fox-it": "foxit",
   projectzero: "projectzero",
   embracethered: "embracethered",
+  unit42: "unit42_intel",
+  securityweek: "securityweek",
+  railway: "railway",
 };
 
 const DEFAULT_CACHE_DIR = resolve(
@@ -477,7 +490,7 @@ export async function fetchRssSecurity(
           ? parseRssOrAtomCapped(raw, maxPerFeed)
           : parseRssOrAtom(raw).slice(0, maxPerFeed)
       );
-      const mapped = toSecurityItems(entries, feed.lab);
+      const mapped = toSecurityItems(feed.titleFilter ? entries.filter((e) => feed.titleFilter!.test(e.title ?? "")) : entries, feed.lab);
       for (const it of mapped) {
         if (seenIds.has(it.id)) continue;
         seenIds.add(it.id);
@@ -541,7 +554,7 @@ export async function fetchRssSecurity(
       continue;
     }
 
-    const mapped = toSecurityItems(entries, feed.lab);
+    const mapped = toSecurityItems(feed.titleFilter ? entries.filter((e) => feed.titleFilter!.test(e.title ?? "")) : entries, feed.lab);
     for (const it of mapped) {
       if (seenIds.has(it.id)) continue;
       seenIds.add(it.id);

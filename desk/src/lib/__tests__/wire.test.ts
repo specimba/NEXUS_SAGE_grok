@@ -162,7 +162,7 @@ describe("Beat 7 wire — generated data + placement", () => {
 
   test("Brief renders the Wire under the Take, daily lead in the Take; CSS has no hex", () => {
     const tsx = readFileSync(resolve(import.meta.dir, "../../components/sage/desk.tsx"), "utf8");
-    const brief = tsx.slice(tsx.indexOf("function Brief()"));
+    const brief = tsx.slice(tsx.indexOf("function Brief("));
     const take = brief.indexOf("sage-take-inverse");
     const wire = brief.indexOf("<BriefWire />");
     const pins = brief.indexOf("byCorroboration(CYCLE.pins)");

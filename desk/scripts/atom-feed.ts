@@ -18,7 +18,7 @@
 import { existsSync, readFileSync, renameSync, rmSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { loadSageConfig } from "@/lib/sage-config-disk";
-import { emptyStore, renderAtomFeed, snapshotEditions, type EditionStore } from "./lib/atom-feed";
+import { emptyStore, renderAtomFeed, snapshotEditions, tldrStep, type EditionStore, type TldrFeedEntry } from "./lib/atom-feed";
 import { emptyWatchStore, renderWatchFeed, watchStep, type WatchStore } from "./lib/watch-feed";
 
 const argDesk = process.argv.includes("--desk") ? process.argv[process.argv.indexOf("--desk") + 1] : null;
@@ -33,6 +33,8 @@ const p = {
   releases: resolve(desk, "src/data/releases-atom.ts"),
   watchSeen: resolve(desk, "artifacts/sage/watch-seen.json"),
   watch: resolve(desk, "public/watch.xml"),
+  tldr: resolve(desk, "src/data/tldr-24h.ts"),
+  tldrStore: resolve(desk, "artifacts/sage/tldr-feed.json"),
 };
 
 class Skip extends Error {}
@@ -80,8 +82,34 @@ async function main(): Promise<string> {
   const { store: next, changed } = wireThisCrawl
     ? snapshotEditions(store, history, { crawlAt, wire: wireMod.WIRE_ROWS as never, papers: papersMod.PAPERS as never })
     : { store, changed: [] as string[] };
-  const xml = renderAtomFeed(next);
+  // PASS-F2.2c: the TL;DR entry (first; same id per day, rewritten in place). A missing / bad TL;DR never blocks the feed.
   const notes: string[] = [];
+  let tldrPrev: TldrFeedEntry | null = null;
+  try {
+    if (existsSync(p.tldrStore)) {
+      const j = JSON.parse(readFileSync(p.tldrStore, "utf8"));
+      if (j?.schema === 1 && typeof j.date === "string" && Array.isArray(j.bullets)) tldrPrev = j;
+    }
+  } catch {
+    notes.push("tldr-feed.json unparseable, rebuilt");
+  }
+  let tldr = tldrPrev;
+  if (existsSync(p.tldr)) {
+    try {
+      const mod = (await import(p.tldr)) as { TLDR_24H?: Parameters<typeof tldrStep>[1] };
+      if (mod.TLDR_24H) {
+        const st = tldrStep(tldrPrev, mod.TLDR_24H, crawlAt);
+        tldr = st.entry;
+        if (st.changed && tldr) {
+          writeIfChanged(p.tldrStore, JSON.stringify(tldr, null, 2) + "\n");
+          notes.push(`tldr ${tldr.date} ${tldr.bullets.length} bullets`);
+        }
+      }
+    } catch (e) {
+      notes.push(`tldr skipped (${e instanceof Error ? e.message : String(e)})`);
+    }
+  }
+  const xml = renderAtomFeed(next, tldr);
   if (!wireThisCrawl) notes.push(`wire crawl ${wireMod.WIRE_CRAWL_AT ?? "?"} ≠ CRAWL_AT ${crawlAt}, no snapshot`);
   if (changed.length) {
     writeIfChanged(p.store, JSON.stringify(next, null, 2) + "\n");

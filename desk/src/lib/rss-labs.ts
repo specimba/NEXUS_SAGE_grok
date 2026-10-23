@@ -30,6 +30,7 @@ export type LabId =
   | "nvidia-dev"
   | "ms-research"
   | "google-research"
+  | "the-decoder"
   | "anthropic"
   | "meta";
 
@@ -102,6 +103,11 @@ export const LAB_FEEDS: readonly LabFeedDef[] = [
     lab: "google-research",
     urls: ["https://research.google/blog/rss/"],
   },
+  // PASS-F2.2d (refs/SCOUT-SOURCES-OCT23.md #2): AI-only outlet, ~5/day.
+  {
+    lab: "the-decoder",
+    urls: ["https://the-decoder.com/feed/"],
+  },
 ] as const;
 
 const LAB_HANDLE: Record<Exclude<LabId, "anthropic" | "meta">, string> = {
@@ -114,6 +120,7 @@ const LAB_HANDLE: Record<Exclude<LabId, "anthropic" | "meta">, string> = {
   "nvidia-dev": "nvidiadeveloper",
   "ms-research": "msftresearch",
   "google-research": "googleresearch",
+  "the-decoder": "thedecoderEN",
 };
 
 const DEFAULT_CACHE_DIR = resolve(

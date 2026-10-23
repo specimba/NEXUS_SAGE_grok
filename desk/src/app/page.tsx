@@ -3,6 +3,7 @@ import { BUILD_META } from "@/lib/build-meta";
 // Beat 11 — the client gets the slim log as props. OPT win 3: generated + capped (LEAD_LOG_CAPS) with desk-view from
 // artifacts/sage/lead-history.json, which stays the full record and is no longer imported here.
 import { LEAD_LOG } from "@/data/lead-log-view";
+import { Tldr24 } from "@/components/sage/tldr-24h";
 
 // Static export (B1): CURRENT lock + build id are baked in at build (src/data/build-stamp.ts); no request-time fs.
 
@@ -42,6 +43,7 @@ export default function Home() {
           crawlCommit={BUILD_META.crawlCommit}
           repoUrl={BUILD_META.repoUrl}
           leadLog={LEAD_LOG}
+          tldr={<Tldr24 />}
         />
     </>
   );

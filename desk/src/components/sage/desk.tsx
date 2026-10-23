@@ -138,6 +138,8 @@ type DeskProps = {
   repoUrl?: string;
   /** Beat 11 — slim lead log built at build time from artifacts/sage/lead-history.json (app/page.tsx). */
   leadLog?: LeadLog;
+  /** PASS-F2.2 — Past-24h TL;DR, rendered by the server component (app/page.tsx), shown at the top of the Brief. */
+  tldr?: ReactNode;
 };
 
 /** One chip per source type, ×n when that type has >1 independent publisher; Σ n = N SRC (SELF excluded). */
@@ -275,7 +277,7 @@ function SinceDivider({ base, n }: { base: string; n: number }) {
 
 const EMPTY_LOG: LeadLog = { days: [], lastAt: null };
 
-export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", crawlCommit = "", repoUrl = "", leadLog = EMPTY_LOG }: DeskProps) {
+export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", crawlCommit = "", repoUrl = "", leadLog = EMPTY_LOG, tldr }: DeskProps) {
   const [lane, setLane] = useState<Lane>("brief");
   const [ingestOpen, setIngestOpen] = useState(false);
   // Tabs light only after the hash is read — SSR default "brief" must never paint as filled on another lane.
@@ -584,7 +586,7 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
             <DeskKeysCtx.Provider value={keysCtx}>
             {lane === "brief" ? (
               <LeadLogCtx.Provider value={leadLogState}>
-                <Brief />
+                <Brief tldr={tldr} />
               </LeadLogCtx.Provider>
             ) : null}
             {lane === "pulse" ? <Pulse /> : null}
@@ -918,7 +920,7 @@ function TakeHold({ lv, lead, now, openLog }: { lv: LeadView; lead: NonNullable<
 type LeadLogState = { leadLog: LeadLog; logOpen: boolean; openLog: () => void; closeLog: () => void };
 const LeadLogCtx = createContext<LeadLogState>({ leadLog: EMPTY_LOG, logOpen: false, openLog: () => {}, closeLog: () => {} });
 
-function Brief() {
+function Brief({ tldr }: { tldr?: ReactNode }) {
   const { leadLog, logOpen, openLog, closeLog } = useContext(LeadLogCtx);
   const { since } = useDeskKeys();
   // Lead staleness: crawl stamp on first render (SSR/static-stable), then the wall clock.
@@ -945,6 +947,7 @@ function Brief() {
     <>
     {logOpen ? <LeadLogPanel log={leadLog} onClose={closeLog} /> : null}
     <DayTape tape={DAY_TAPE} crawlAt={CRAWL_AT} since={since} next={nextPickSlot(lv.held, nextTry)} held={lv.held} />
+    {tldr}
     <div className="brief-v5 grid gap-2 lg:grid-cols-12 lg:grid-rows-[auto_auto_auto]">
       {/* Left · Pip-Boy needle rail */}
       <aside

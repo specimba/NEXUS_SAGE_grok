@@ -255,7 +255,7 @@ describe("UX-1 desk wiring + CSS", () => {
     expect(card).toContain('a="held" b="next try"');
   });
   test("time bars use useNow (no new timer)", () => {
-    const brief = tsx.slice(tsx.indexOf("function Brief()"), tsx.indexOf("<BriefWire />"));
+    const brief = tsx.slice(tsx.indexOf("function Brief("), tsx.indexOf("<BriefWire />"));
     expect(brief).toContain("const nowMs = leadNow ?? Date.parse(CRAWL_AT);");
     expect(tsx.slice(tsx.indexOf("function TakeGates"), tsx.indexOf("/** Beat 11 — lead log state"))).not.toMatch(/setInterval|setTimeout|useEffect/);
   });

@@ -83,6 +83,7 @@ import {
   resolveReleasesSeenPath,
   type ReleaseItem,
 } from "../src/lib/releases-atom";
+import { fetchHfJson, runHfModels } from "../src/lib/hf-models";
 import { RELEASES_ATOM } from "../src/data/releases-atom";
 import {
   fetchGithubShelf,
@@ -345,7 +346,7 @@ function renderReleasesAtomTs(rows: ReleaseItem[], stamp: string, meta?: MetaMap
   return `/** PASS-S1.3 release feeds Pulse (llama.cpp · Ollama · vLLM · Claude Code) — generated/refreshed by bun run ingest. Pulse only (REL); semver minor/major bumps only; never Wire/Brief; never a lead. */
 export type ReleaseAtomRow = {
   id: string;
-  feed: "llama.cpp" | "ollama" | "vllm" | "claude-code";
+  feed: "llama.cpp" | "ollama" | "vllm" | "claude-code" | "codex" | "hf-trending" | "hf-moonshotai" | "hf-nvidia" | "hf-tencent";
   title: string;
   link: string;
   published: string;
@@ -724,15 +725,26 @@ async function main() {
       ),
     // PASS-S1.3: GitHub release Atom feeds (REL) — own budget; config releases_atom; state artifacts/sage/releases-seen.json.
     () =>
-      runSource("releases_atom", "releases_atom", (c) =>
-        fetchReleasesAtom({
+      runSource("releases_atom", "releases_atom", async (c) => {
+        const seen = parseReleasesSeen(existsSync(resolveReleasesSeenPath(root)) ? readFileSync(resolveReleasesSeenPath(root), "utf8") : null);
+        const rl = await fetchReleasesAtom({
           cacheDir: resolveReleasesCacheDir(root),
           cap: S.releases_atom.cap_per_feed,
           feeds: RELEASE_FEEDS.filter((f) => S.releases_atom.feeds.includes(f.id)),
-          seen: parseReleasesSeen(existsSync(resolveReleasesSeenPath(root)) ? readFileSync(resolveReleasesSeenPath(root), "utf8") : null),
+          seen,
           fetchImpl: c.fetch,
-        }),
-      ),
+        });
+        // PASS-F2.2d: HF trending + org releases ride the REL lane (own soft-fail, last-good rows in releases-seen.json `hf`).
+        const hf = await runHfModels(S.releases_atom.feeds, seen.hf ?? { repos: [], last: [] }, (u) => fetchHfJson(u, c.fetch), Date.now());
+        for (const f of hf.softFail) console.log(`  hf soft_fail ${f.lab}: ${f.reason} (last-good rows kept)`);
+        return {
+          ...rl,
+          items: [...rl.items, ...(hf.rows as unknown as typeof rl.items)],
+          seen: { ...rl.seen, hf: hf.seen },
+          feedsSoftFail: [...rl.feedsSoftFail, ...hf.softFail.map((f) => ({ ...f, soft_fail: true as const }))],
+          ok: rl.ok || hf.ok,
+        };
+      }),
     // PASS-S1.4: HN title-scoped queries (keywords.hn_title_queries) — own budget so a slow term never times out the
     // watchlist; merged into the hn rows below (existing cap, objectID dedupe). Off with `hn`.
     () =>

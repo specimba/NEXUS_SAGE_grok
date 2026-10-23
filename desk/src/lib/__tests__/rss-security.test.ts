@@ -101,7 +101,8 @@ describe("Security RSS parse → schema", () => {
       projectzero: P0,
       embracethered: ETR,
     };
-    const r = await fetchRssSecurity({ ...fast(), fixtures });
+    // PASS-F2.2d feeds (unit42 / securityweek / railway) have no fixture here — keep this offline test to the S1.2 four.
+    const r = await fetchRssSecurity({ ...fast(), fixtures, feeds: SECURITY_FEEDS.slice(0, 4) });
     expect(r.feedsOk.length).toBe(4);
     expect(r.feedsOk.map((f) => f.lab).sort()).toEqual([
       "embracethered",
@@ -223,7 +224,7 @@ describe("never Brief · cycle locks · ToB+Fox-IT+P0 · NCC skip", () => {
 
   test("SECURITY_FEEDS are ToB + Fox-IT + Project Zero + Embrace The Red (PASS-S1.2) — NCC out", () => {
     const labs = SECURITY_FEEDS.map((f) => f.lab);
-    expect(labs).toEqual(["trailofbits", "fox-it", "projectzero", "embracethered"]);
+    expect(labs).toEqual(["trailofbits", "fox-it", "projectzero", "embracethered", "unit42", "securityweek", "railway"]); // + PASS-F2.2d Scout Oct 23
     expect(labs).not.toContain("ncc");
     const fox = SECURITY_FEEDS.find((f) => f.lab === "fox-it")!;
     expect(fox.urls[0]).toBe("https://blog.fox-it.com/feed/");

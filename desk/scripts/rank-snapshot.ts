@@ -33,6 +33,7 @@ import { buildLiveSnapshot, renderUnlockModule, type DigestUnlockSnapshot } from
 import { applyPick, decideLeadRefresh, leadRefreshLine, currentLead, groupFirstAt, leadExcludeReason, istanbulDate, lastPickDate, readLeadHistory, yesterdayLead, type LeadHistory } from "@/lib/lead-pick";
 import { bucketWindows, countCompanies, countOtherLabs, heatCells, heatLabel, upsertCrawl, type HeatFile } from "@/lib/topic-heat";
 import { applySageConfig, loadSageConfig } from "@/lib/sage-config-disk";
+import { writeTldr } from "./tldr-24h";
 import { buildWire, readWireSnapshot, wireCounts, wireHeader, wireMark, type WireSnapshot } from "@/lib/wire";
 
 const desk = resolve(import.meta.dir, "..");
@@ -242,6 +243,9 @@ console.log(`wire OK ${wireHeader(wire.crawl_at, wire.rows)} prev=${wirePrev?.cr
 for (const r of wire.rows)
   console.log(`  ${wireMark(r).padEnd(4)} #${r.rank} prev ${r.prev_rank ?? "—"} ${r.sources} SRC ${r.id.padEnd(24)} ${r.title.slice(0, 80)}`);
 
+
+// ── PASS-F2.2 · Past-24h TL;DR (Wire-gated rows of the last 24h; deterministic) ──
+console.log(writeTldr(desk));
 
 // ── Pass A · Digest/Voice unlock freeze (only on pick / first write for pick date) ──
 const unlockPath = resolve(dir, "digest-unlock.json");

@@ -179,7 +179,7 @@ describe("S1.7 #1 (S1.3 part) — releases_atom validator + seed", () => {
     return c;
   };
   test("defaults: on, cap 2, claude-code off", () => {
-    expect(defaultSageConfig().sources.releases_atom).toEqual({ on: true, cap_per_feed: 2, feeds: ["llama.cpp", "ollama", "vllm"] });
+    expect(defaultSageConfig().sources.releases_atom).toEqual({ on: true, cap_per_feed: 2, feeds: ["llama.cpp", "ollama", "vllm", "codex", "hf-trending", "hf-moonshotai", "hf-nvidia", "hf-tencent"] }); // + PASS-F2.2d
     expect(validateSageConfig(withBlock({})).ok).toBe(true);
     expect(validateSageConfig(withBlock({ feeds: ["llama.cpp", "ollama", "vllm", "claude-code"] })).ok).toBe(true);
   });

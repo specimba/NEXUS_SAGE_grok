@@ -276,8 +276,9 @@ function entryXml(ed: Edition): string {
   ].join("\n");
 }
 
-function feedXml(eds: Edition[]): string {
-  const updated = eds.reduce((m, e) => (Date.parse(e.updated) > Date.parse(m) ? e.updated : m), eds[0]!.updated);
+function feedXml(eds: Edition[], tldr: TldrFeedEntry | null = null): string {
+  const all = [...(tldr ? [tldr.updated] : []), ...eds.map((e) => e.updated)];
+  const updated = all.reduce((m, u) => (Date.parse(u) > Date.parse(m) ? u : m), all[0]!);
   return [
     `<?xml version="1.0" encoding="utf-8"?>`,
     `<feed xmlns="${ATOM_NS}">`,
@@ -287,22 +288,78 @@ function feedXml(eds: Edition[]): string {
     `  <link rel="self" type="application/atom+xml" href="${escapeXml(FEED_URL)}"/>`,
     `  <link rel="alternate" type="text/html" href="${escapeXml(FEED_SITE_URL)}"/>`,
     `  <author><name>${escapeXml(FEED_AUTHOR)}</name></author>`,
+    ...(tldr ? [tldrXml(tldr)] : []),
     ...eds.map(entryXml),
     `</feed>`,
     ``,
   ].join("\n");
 }
 
-/** Store → feed.xml (newest 14, ≤64 KB by dropping the oldest). null when there is no edition yet. Pure. */
-export function renderAtomFeed(store: EditionStore): string | null {
+// ── PASS-F2.2c — Past-24h TL;DR entry (the deliberate PASS-D exception: rewritten in place, first in the feed) ──
+export const tldrEntryId = (date: string) => `tag:specimba.github.io,2026:nexus-sage/tldr:${date}`;
+export type TldrInput = { date: string; crawl_at: string; quiet: boolean; bullets: { id?: string; title?: string; url?: string | null; sources?: number | null; member_ids?: string[] }[] };
+export type TldrFeedEntry = {
+  schema: 1;
+  date: string;
+  id: string;
+  published: string;
+  updated: string;
+  quiet: boolean;
+  bullets: { headline: string; url: string | null; sources: number }[];
+};
+
+/**
+ * One crawl. Only this crawl's TL;DR counts (crawl_at === CRAWL_AT). Same date + same bullets ⇒ the stored entry, untouched
+ * (byte-identical feed on a no-op crawl). Otherwise: same id for the date, `updated` = this crawl, content rewritten in
+ * place; a new date gets a new id (one TL;DR entry per day). Private lanes never appear.
+ */
+export function tldrStep(prev: TldrFeedEntry | null, t: TldrInput, crawlAt: string): { entry: TldrFeedEntry | null; changed: boolean } {
+  if (!t || t.crawl_at !== crawlAt || !/^\d{4}-\d{2}-\d{2}$/.test(t.date)) return { entry: prev, changed: false };
+  const at = rfc3339(crawlAt);
+  if (!at) return { entry: prev, changed: false };
+  const bullets = (t.bullets ?? [])
+    .filter((b) => b && String(b.title ?? "").trim() && !isPrivateItem(b))
+    .map((b) => ({ headline: String(b.title).trim(), url: safeHttpsUrl(b.url), sources: Number(b.sources) || 0 }));
+  if (prev && prev.date === t.date && prev.quiet === !!t.quiet && JSON.stringify(prev.bullets) === JSON.stringify(bullets)) return { entry: prev, changed: false };
+  const sameDay = prev?.date === t.date;
+  return {
+    entry: { schema: 1, date: t.date, id: tldrEntryId(t.date), published: sameDay ? prev!.published : at, updated: at, quiet: !!t.quiet, bullets },
+    changed: true,
+  };
+}
+
+function tldrXml(t: TldrFeedEntry): string {
+  const link = (text: string, url: string | null) => (url ? `<a href="${escapeHtml(url)}">${escapeHtml(text)}</a>` : escapeHtml(text));
+  const html = [
+    t.bullets.length ? `<ol>${t.bullets.map((b) => `<li>${link(b.headline, b.url)} · ${b.sources} SRC</li>`).join("")}</ol>` : "",
+    t.quiet ? `<p>quiet day</p>` : "",
+  ].join("");
+  return [
+    `  <entry>`,
+    `    <id>${escapeXml(t.id)}</id>`,
+    `    <title type="text">${escapeXml(`${monDay(t.date)} · Past 24 hours`)}</title>`,
+    `    <updated>${escapeXml(t.updated)}</updated>`,
+    `    <published>${escapeXml(t.published)}</published>`,
+    `    <link rel="alternate" type="text/html" href="${escapeXml(FEED_SITE_URL)}"/>`,
+    `    <content type="html">${escapeXml(html)}</content>`,
+    `  </entry>`,
+  ].join("\n");
+}
+
+/**
+ * Store → feed.xml (newest 14, ≤64 KB by dropping the oldest edition). null when there is no edition / TL;DR yet. Pure.
+ * PASS-F2.2c: the TL;DR (when given) is entry 1 and counts toward both caps; frozen editions follow, unchanged.
+ */
+export function renderAtomFeed(store: EditionStore, tldr: TldrFeedEntry | null = null): string | null {
   let eds = [...store.editions]
     .filter((e) => e && rfc3339(e.updated) && rfc3339(e.published))
     .sort((a, b) => b.date.localeCompare(a.date))
-    .slice(0, FEED_MAX_ENTRIES);
-  while (eds.length) {
-    const xml = feedXml(eds);
+    .slice(0, FEED_MAX_ENTRIES - (tldr ? 1 : 0));
+  if (!eds.length && !tldr) return null;
+  while (true) {
+    const xml = feedXml(eds, tldr);
     if (Buffer.byteLength(xml, "utf8") <= FEED_MAX_BYTES) return xml;
+    if (!eds.length) return null;
     eds = eds.slice(0, -1);
   }
-  return null;
 }

@@ -26,7 +26,8 @@ const D: NonNullable<SageSetupView["limits"]>["defaults"] = {
         "nvidia",
         "nvidia-dev",
         "ms-research",
-        "google-research"
+        "google-research",
+        "the-decoder"
       ]
     },
     "sec_rss": {
@@ -36,7 +37,10 @@ const D: NonNullable<SageSetupView["limits"]>["defaults"] = {
         "trailofbits",
         "fox-it",
         "projectzero",
-        "embracethered"
+        "embracethered",
+        "unit42",
+        "securityweek",
+        "railway"
       ]
     },
     "gnews": {
@@ -84,7 +88,12 @@ const D: NonNullable<SageSetupView["limits"]>["defaults"] = {
       "feeds": [
         "llama.cpp",
         "ollama",
-        "vllm"
+        "vllm",
+        "codex",
+        "hf-trending",
+        "hf-moonshotai",
+        "hf-nvidia",
+        "hf-tencent"
       ]
     }
   },
@@ -198,12 +207,12 @@ const D: NonNullable<SageSetupView["limits"]>["defaults"] = {
 export const SAGE_SETUP: SageSetupView = {
   "stamped_at": "2026-10-23T22:36:04Z",
   "config_path": "desk/config/sage-sources.json",
-  "config_hash": "898c7ea45214",
+  "config_hash": "a116c3b25ffb",
   "status": "ok",
   "used": "committed",
   "errors": [],
-  "since_commit": "4ecd91f",
-  "since_at": "2026-10-23T21:36:15Z",
+  "since_commit": "4ec3325",
+  "since_at": "2026-10-23T21:39:15Z",
   "sources": [
     {
       "id": "hn",
@@ -222,14 +231,14 @@ export const SAGE_SETUP: SageSetupView = {
     {
       "id": "lab_rss",
       "on": true,
-      "caps": "cap_per_feed 12 · timeout_s 10 · feeds 9",
+      "caps": "cap_per_feed 12 · timeout_s 10 · feeds 10",
       "last_rows": 105,
       "state": "ok"
     },
     {
       "id": "sec_rss",
       "on": true,
-      "caps": "cap_per_feed 12 · feeds 4",
+      "caps": "cap_per_feed 12 · feeds 7",
       "last_rows": 40,
       "state": "ok"
     },
@@ -299,7 +308,7 @@ export const SAGE_SETUP: SageSetupView = {
     {
       "id": "releases_atom",
       "on": true,
-      "caps": "cap_per_feed 2 · feeds 3",
+      "caps": "cap_per_feed 2 · feeds 8",
       "last_rows": 0,
       "state": "ok"
     }
@@ -421,7 +430,12 @@ export const SAGE_SETUP: SageSetupView = {
         "llama.cpp",
         "ollama",
         "vllm",
-        "claude-code"
+        "claude-code",
+        "codex",
+        "hf-trending",
+        "hf-moonshotai",
+        "hf-nvidia",
+        "hf-tencent"
       ]
     },
     "keyword_lists": [
@@ -527,5 +541,5 @@ export const SAGE_SETUP: SageSetupView = {
       "max": 0.3
     }
   },
-  "file_hash": "ac0864960b0ad626e47959cb7f3a665417f3b6b914935b620506903334a6266c"
+  "file_hash": "e17f3e00c0d18d3982870a11dd157d8c070b43caf2550bc4c171b29f1c0893f6"
 };
