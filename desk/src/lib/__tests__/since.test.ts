@@ -33,8 +33,9 @@ describe("Beat 10 since-you-were-here", () => {
     expect(tsx).toContain('"pagehide"');
     const block = tsx.slice(tsx.indexOf("function useSinceBase"), tsx.indexOf("// end useSinceBase"));
     expect(block.length).toBeGreaterThan(50);
-    // the only localStorage write sits inside the leave handler
-    expect(block.match(/localStorage\.setItem/g)?.length).toBe(1);
+    // PASS-N: the record is written through openVisit; only `leave` moves seen_at (flush keeps it — new-ticks test 1/4/8).
+    expect(block.match(/localStorage\.setItem/g)?.length).toBe(1); // fallback when the lazy chunk never loaded
     expect(block.indexOf("localStorage.setItem")).toBeGreaterThan(block.indexOf("const leave"));
+    expect(block).toContain("if (v) v.leave();");
   });
 });

@@ -8,12 +8,19 @@ export const LAST_SEEN_KEY = "sage.lastSeenAt";
 export const SESSION_BASE_KEY = "sage.sinceBase";
 /** Session marker for "this tab started as a first-ever visit" — stays marker-free across reloads. */
 export const FIRST_VISIT = "first";
+/** PASS-N — screen-reader text of the new-since-last-visit dot. */
+export const TICK_SR = "new since your last visit";
 
 /** Baseline for this tab session: pinned session value, else the stored last visit, else null. */
 export function sinceBase(session: string | null, local: string | null): string | null {
   if (session === FIRST_VISIT) return null;
   const ok = (v: string | null) => (v && Number.isFinite(Date.parse(v)) ? v : null);
-  return ok(session) ?? ok(local);
+  // PASS-N: the stored record may be JSON { seen_at, keys } (legacy = plain ISO).
+  let at = local;
+  try {
+    at = JSON.parse(local!).seen_at ?? null;
+  } catch {}
+  return ok(session) ?? ok(typeof at === "string" ? at : null);
 }
 
 export function isSince(firstSeen: string | null | undefined, base: string | null): boolean {

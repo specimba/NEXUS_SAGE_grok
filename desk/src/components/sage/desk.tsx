@@ -88,6 +88,10 @@ import {
 } from "@/lib/story-drawer";
 import { useStoryDrawer } from "@/lib/use-story-drawer";
 import { FIRST_VISIT, LAST_SEEN_KEY, SESSION_BASE_KEY, partitionSince, sinceBase } from "@/lib/since";
+import { TICK_SR } from "@/lib/since";
+// PASS-N: the tick logic + canonical-URL key live in a lazy chunk (import("@/lib/new-ticks")), never in First Load.
+type Visit = import("@/lib/new-ticks").Visit;
+type TickRow = import("@/lib/new-ticks").TickRow;
 import { companyFilterMatch, deltaText, heatCells, heatLabel } from "@/lib/topic-heat";
 import { isTypingTarget, KEY_MAP, matchesFilter, resolveKey, stepSelection } from "@/lib/keys";
 import { writeStoryParam } from "@/lib/story-drawer";
@@ -212,8 +216,10 @@ type DeskKeys = {
   openStory: (id: string) => void;
   setFilter: (q: string) => void;
   since: string | null;
+  /** PASS-N: this visit's seen-keys baseline (null ⇒ no ticks) + key registration. */
+  visit: Visit | null;
 };
-const DeskKeysCtx = createContext<DeskKeys>({ q: "", report: () => {}, openStory: () => {}, setFilter: () => {}, since: null });
+const DeskKeysCtx = createContext<DeskKeys>({ q: "", report: () => {}, openStory: () => {}, setFilter: () => {}, since: null, visit: null });
 const useDeskKeys = () => useContext(DeskKeysCtx);
 
 const NAV_ROWS = ".desk-stage [data-nav-row]";
@@ -229,9 +235,22 @@ const FIRST_SEEN = new Map<string, string | null>(PULSE_CLUSTERS.map((c) => [c.i
  * (visibilitychange → hidden, pagehide), never on load. The session pins its baseline in
  * sessionStorage so a reload (which fires pagehide) keeps the same markers. First visit ⇒ null.
  */
-function useSinceBase(): string | null {
+function useSinceBase(): [string | null, Visit | null] {
   const [base, setBase] = useState<string | null>(null);
+  const [visit, setVisit] = useState<Visit | null>(null);
   useEffect(() => {
+    let v: Visit | null = null;
+    let live = true;
+    import("@/lib/new-ticks")
+      .then((m) => {
+        let ls: Storage | null = null;
+        try {
+          ls = window.localStorage;
+        } catch {}
+        v = m.openVisit(ls);
+        if (live) setVisit(v);
+      })
+      .catch(() => {});
     let session: string | null = null;
     let local: string | null = null;
     try {
@@ -245,10 +264,13 @@ function useSinceBase(): string | null {
       } catch {}
     }
     setBase(b);
+    // PASS-N: Beat 10's record now carries the on-screen row keys too (same key; still written on leave).
     const leave = () => {
-      try {
-        window.localStorage.setItem(LAST_SEEN_KEY, new Date().toISOString());
-      } catch {}
+      if (v) v.leave();
+      else
+        try {
+          window.localStorage.setItem(LAST_SEEN_KEY, new Date().toISOString());
+        } catch {}
     };
     const onVis = () => {
       if (document.visibilityState === "hidden") leave();
@@ -256,13 +278,35 @@ function useSinceBase(): string | null {
     document.addEventListener("visibilitychange", onVis);
     window.addEventListener("pagehide", leave);
     return () => {
+      live = false;
       document.removeEventListener("visibilitychange", onVis);
       window.removeEventListener("pagehide", leave);
     };
   }, []);
-  return base;
+  return [base, visit];
 }
 // end useSinceBase
+
+/** PASS-N — register a lane's row keys; state written once after render (setTimeout), never on view switch alone. */
+function useNoteKeys(rows: readonly TickRow[]) {
+  const { visit } = useDeskKeys();
+  useEffect(() => {
+    if (!visit) return;
+    visit.note(rows);
+    const t = setTimeout(visit.flush, 0);
+    return () => clearTimeout(t);
+  }, [visit, rows]);
+}
+
+/** PASS-N — amber dot (Beat 10 divider token) before the title; screen readers hear TICK_SR. */
+function NewTick() {
+  return (
+    <span className="since-tick">
+      <span className="sr-only">{TICK_SR}</span>
+    </span>
+  );
+}
+// end NewTick
 
 /** Beat 10 — amber divider under the rows that arrived since the last visit. */
 function SinceDivider({ base, n }: { base: string; n: number }) {
@@ -349,12 +393,12 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
     },
     [go],
   );
-  const since = useSinceBase();
+  const [since, visit] = useSinceBase();
   const setFilter = useCallback((v: string) => {
     setQ(v);
     setFilterOpen(false);
   }, []);
-  const keysCtx = useMemo(() => ({ q, report, openStory, setFilter, since }), [q, report, openStory, setFilter, since]);
+  const keysCtx = useMemo(() => ({ q, report, openStory, setFilter, since, visit }), [q, report, openStory, setFilter, since, visit]);
 
   const navRows = () => [...document.querySelectorAll<HTMLElement>(NAV_ROWS)];
   const select = useCallback((idx: number, focus: boolean) => {
@@ -742,7 +786,8 @@ function BriefWire() {
     const ids = new Set(WIRE_ROWS.map((r) => r.id));
     return new Map(buildRows(PULSE_CLUSTERS.filter((c) => ids.has(c.id)), members).rows.map((r) => [r.id, r]));
   }, [members]);
-  const { q, report, openStory, since } = useDeskKeys();
+  const { q, report, openStory, since, visit } = useDeskKeys();
+  useNoteKeys(WIRE_ROWS);
   const part = useMemo(
     () => partitionSince(WIRE_ROWS.filter((r) => matchesFilter(q, [r.title])), (r) => FIRST_SEEN.get(r.id), since),
     [q, since],
@@ -765,6 +810,7 @@ function BriefWire() {
         {rows.map((r, i) => {
           const mark = wireMark(r);
           const isNewSince = i < part.since.length;
+          const tick = visit?.tick(r, FIRST_SEEN.get(r.id), since, wireRowById.get(r.id)?.leadId);
           return (
             <Fragment key={r.id}>
             <li
@@ -791,6 +837,7 @@ function BriefWire() {
               </span>
               <AgeCell iso={firstAtIso(r)} now={now} />
               <a className="brief-wire-headline focus-phosphor" data-row-clamp="wire" href={r.url} target="_blank" rel="noreferrer">
+                {tick ? <NewTick /> : null}
                 {r.title}
               </a>
               <span className="brief-wire-src" data-src-n={r.sources}>
@@ -1422,7 +1469,8 @@ export function Pulse() {
   const drawerCluster = drawer.openId ? clusterById.get(drawer.openId) : undefined;
   const [showAll, setShowAll] = useState(false);
   const [tasteAll, setTasteAll] = useState(false);
-  const { q, report, since } = useDeskKeys();
+  const { q, report, since, visit } = useDeskKeys();
+  useNoteKeys(rows);
   const part = useMemo(
     () =>
       partitionSince(
@@ -1582,7 +1630,10 @@ export function Pulse() {
                     <span className="pulse-v5-idx tabular-nums">{String(i + 1).padStart(2, "0")}</span>
                     <span>{r.showNew ? <span className="pulse-v5-new">NEW</span> : null}</span>
                     <AgeCell iso={clusterById.get(r.id) ? firstAtIso(clusterById.get(r.id)!) : r.at} now={now} />
-                    <span className="pulse-v5-headline">{stripPublisher(r.title, lead?.publisher ?? "")}</span>
+                    <span className="pulse-v5-headline">
+                      {visit?.tick(r, FIRST_SEEN.get(r.id), since, r.leadId) ? <NewTick /> : null}
+                      {stripPublisher(r.title, lead?.publisher ?? "")}
+                    </span>
                     <span className="pulse-v5-src" data-src-n={r.sourceCount} title={`${r.sourceCount} SRC · ${r.chips.map(chipLabel).join(" ")}`}>
                       <SrcChips chips={r.chips} multi={r.multiSource} max={2} />
                       {r.selfBadges.length ? (
@@ -2213,7 +2264,8 @@ function Papers() {
     };
   }, []);
   const allRows = useMemo(() => (papers ? buildPaperRows(papers as PaperInput[]) : []), [papers]);
-  const { q, report } = useDeskKeys();
+  const { q, report, visit } = useDeskKeys();
+  useNoteKeys(allRows);
   const rows = useMemo(
     () => allRows.filter((p) => matchesFilter(q, [p.title, p.id, ...p.badges.map((b) => b.label)])),
     [allRows, q],
@@ -2259,7 +2311,10 @@ function Papers() {
                   <span className="pulse-v5-idx tabular-nums">{String(i + 1).padStart(2, "0")}</span>
                   <span className="pulse-v5-sig tabular-nums">{p.up}</span>
                   <span className={cn("pulse-v5-age tabular-nums", !p.date && "pulse-v5-sig-dim")}>{p.date ?? "—"}</span>
-                  <span className="pulse-v5-headline">{p.title}</span>
+                  <span className="pulse-v5-headline">
+                    {visit?.paper(p) ? <NewTick /> : null}
+                    {p.title}
+                  </span>
                   <span className="pulse-v5-src">
                     {p.badges.map((b) => (
                       <span key={b.label} className={cn("pulse-v5-badge", b.lit ? "papers-v6-lit" : "pulse-v5-also")}>
