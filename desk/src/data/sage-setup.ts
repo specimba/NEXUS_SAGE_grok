@@ -202,8 +202,8 @@ export const SAGE_SETUP: SageSetupView = {
   "status": "ok",
   "used": "committed",
   "errors": [],
-  "since_commit": "266aaf3",
-  "since_at": "2026-10-23T17:01:49Z",
+  "since_commit": "e04d86a",
+  "since_at": "2026-10-23T17:02:20Z",
   "sources": [
     {
       "id": "hn",
