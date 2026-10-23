@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-23T03:20:26Z",
+  "stamped_at": "2026-10-23T08:26:11Z",
   "config_hash": "e3e9003a7d92",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,7 +11,7 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 160,
+      "duration_ms": 140,
       "paused_until": null,
       "reason": null
     },
@@ -20,7 +20,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 3395,
+      "duration_ms": 3186,
       "paused_until": null,
       "reason": null
     },
@@ -29,7 +29,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 4,
-      "duration_ms": 620,
+      "duration_ms": 423,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 209,
+      "duration_ms": 181,
       "paused_until": null,
       "reason": null
     },
@@ -46,8 +46,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 70,
-      "duration_ms": 8238,
+      "rows": 69,
+      "duration_ms": 8251,
       "paused_until": null,
       "reason": null
     },
@@ -56,7 +56,7 @@
       "label": "HN title",
       "status": "ok",
       "rows": 2,
-      "duration_ms": 8181,
+      "duration_ms": 8201,
       "paused_until": null,
       "reason": null
     },
@@ -64,8 +64,8 @@
       "id": "rss_labs",
       "label": "lab RSS",
       "status": "ok",
-      "rows": 95,
-      "duration_ms": 16380,
+      "rows": 105,
+      "duration_ms": 18027,
       "paused_until": null,
       "reason": null
     },
@@ -74,7 +74,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 40,
-      "duration_ms": 6153,
+      "duration_ms": 6122,
       "paused_until": null,
       "reason": null
     },
@@ -83,7 +83,7 @@
       "label": "analyst RSS",
       "status": "ok",
       "rows": 6,
-      "duration_ms": 2166,
+      "duration_ms": 2161,
       "paused_until": null,
       "reason": null
     },
@@ -92,7 +92,7 @@
       "label": "releases",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 5241,
+      "duration_ms": 4977,
       "paused_until": null,
       "reason": null
     },
@@ -100,8 +100,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 55,
-      "duration_ms": 6625,
+      "rows": 53,
+      "duration_ms": 6460,
       "paused_until": null,
       "reason": null
     },
@@ -109,8 +109,8 @@
       "id": "github",
       "label": "GitHub",
       "status": "ok",
-      "rows": 3,
-      "duration_ms": 358,
+      "rows": 1,
+      "duration_ms": 360,
       "paused_until": null,
       "reason": null
     },
@@ -119,16 +119,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4385,
+      "duration_ms": 4419,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 62111,
-    "sources_wall_ms": 16381,
-    "papers_lane_ms": 4390,
-    "slowest_source_ms": 16380,
+    "sources_ms": 62908,
+    "sources_wall_ms": 18028,
+    "papers_lane_ms": 3937,
+    "slowest_source_ms": 18027,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -146,31 +146,31 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 16940,
-    "startup_ms": 40,
-    "main_ms": 16962
+    "wall_ms": 18599,
+    "startup_ms": 54,
+    "main_ms": 18620
   },
-  "multi_source_independent": 10,
+  "multi_source_independent": 11,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 10,
-    "multi_source_raw": 23,
+    "multi_source_independent": 11,
+    "multi_source_raw": 24,
     "self_reposts": 17,
-    "items_in": 276,
-    "clusters_out": 234,
+    "items_in": 283,
+    "clusters_out": 241,
     "collapsed": 42,
-    "multi_source": 10,
+    "multi_source": 11,
     "multi_member": 30,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 62,
+    "new_items": 36,
     "per_source": {
-      "hn-algolia": 70,
-      "rss-lab": 95,
+      "hn-algolia": 69,
+      "rss-lab": 105,
       "rss-security": 40,
-      "gnews-rss": 55,
+      "gnews-rss": 53,
       "gmail-news": 10,
       "rss-analyst": 6
     },
@@ -238,35 +238,81 @@
         ]
       },
       {
-        "title": "Uber brings ChatGPT Work to all employees with OpenAI",
+        "title": "OpenAI and Poland’s NASK partner to advance AI safety and security",
         "sources": [
           "rss-lab",
           "gnews-rss"
         ],
-        "size": 3,
+        "size": 6,
         "score": 1,
         "members": [
           {
-            "id": "rss:openai:eda525050cea8fce",
+            "id": "rss:openai:1a543055a02f9816",
             "source": "rss-lab",
-            "title": "Uber brings ChatGPT Work to all employees with OpenAI",
-            "at": "2026-10-22T00:00:00Z",
+            "title": "OpenAI and Poland’s NASK partner to advance AI safety and security",
+            "at": "2026-10-23T00:00:00Z",
             "publisher": "openai"
           },
           {
-            "id": "gnews:f13e7e4ad5baa75b",
+            "id": "gnews:5c33ac10cf3202fa",
             "source": "gnews-rss",
-            "title": "Uber brings ChatGPT Work to all employees with OpenAI - OpenAI",
-            "at": "2026-10-22T16:22:38Z",
-            "publisher": "OpenAI",
-            "self_repost": true
+            "title": "OpenAI, Poland's NASK partner on AI safety - Breakingthenews.net",
+            "at": "2026-10-23T07:20:00Z",
+            "publisher": "Breakingthenews.net"
           },
           {
-            "id": "gnews:398e9e22f7a09a07",
+            "id": "gnews:62a38abee58ca721",
             "source": "gnews-rss",
-            "title": "Uber puts all 30,000 employees on ChatGPT Work - TechCrunch",
-            "at": "2026-10-22T16:00:00Z",
-            "publisher": "TechCrunch"
+            "title": "OpenAI and Poland’s NASK collaborate on AI safety research By Reuters - Investing.com",
+            "at": "2026-10-23T06:45:00Z",
+            "publisher": "Investing.com"
+          },
+          {
+            "id": "gnews:c85ffaf4698fcb02",
+            "source": "gnews-rss",
+            "title": "OpenAI and Poland's NASK collaborate on AI safety research - marketscreener.com",
+            "at": "2026-10-23T06:25:46Z",
+            "publisher": "marketscreener.com"
+          },
+          {
+            "id": "gnews:2f694cfb3e92587c",
+            "source": "gnews-rss",
+            "title": "OpenAI and Poland’s NASK collaborate on AI safety research - Reuters",
+            "at": "2026-10-23T06:25:00Z",
+            "publisher": "Reuters"
+          },
+          {
+            "id": "gnews:c0a8aa82fb0adbb1",
+            "source": "gnews-rss",
+            "title": "OpenAI and Poland’s NASK partner to advance AI safety and security - OpenAI",
+            "at": "2026-10-23T05:11:03Z",
+            "publisher": "OpenAI",
+            "self_repost": true
+          }
+        ]
+      },
+      {
+        "title": "OpenAI trims valuation target after pitching higher price",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 0.972,
+        "members": [
+          {
+            "id": "hn:50202402",
+            "source": "hn-algolia",
+            "title": "OpenAI trims valuation target after pitching higher price",
+            "at": "2026-10-22T23:15:44Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:6daf65e38d655505",
+            "source": "gnews-rss",
+            "title": "OpenAI trims valuation target to $1.25tn after pitching higher price - Financial Times",
+            "at": "2026-10-22T21:50:16Z",
+            "publisher": "Financial Times"
           }
         ]
       },
@@ -277,7 +323,7 @@
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.662,
+        "score": 0.671,
         "members": [
           {
             "id": "hn:50188944",
@@ -351,8 +397,8 @@
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 4,
-        "score": 0.949,
+        "size": 3,
+        "score": 0.895,
         "members": [
           {
             "id": "hn:50177795",
@@ -367,13 +413,6 @@
             "title": "Anthropic posts $80B loss in first half of 2026",
             "at": "2026-10-21T18:18:17Z",
             "publisher": null
-          },
-          {
-            "id": "gnews:d75ec2c09739710a",
-            "source": "gnews-rss",
-            "title": "Anthropic posts $80bn loss in first half of 2026: WSJ - Al Jazeera",
-            "at": "2026-10-21T05:52:53Z",
-            "publisher": "Al Jazeera"
           },
           {
             "id": "gnews:80ff1bea39361164",
@@ -523,7 +562,7 @@
         ]
       },
       {
-        "title": "Uber brings ChatGPT Work to all employees with OpenAI",
+        "title": "OpenAI and Poland’s NASK partner to advance AI safety and security",
         "sources": [
           "rss-lab",
           "gnews-rss"
@@ -534,9 +573,9 @@
         ],
         "self_reposts": [
           {
-            "id": "gnews:f13e7e4ad5baa75b",
+            "id": "gnews:c0a8aa82fb0adbb1",
             "publisher": "OpenAI",
-            "title": "Uber brings ChatGPT Work to all employees with OpenAI - OpenAI"
+            "title": "OpenAI and Poland’s NASK partner to advance AI safety and security - OpenAI"
           }
         ]
       },
@@ -596,23 +635,6 @@
         ]
       },
       {
-        "title": "Build more responsive apps with the Decisions API",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:5dfdb5e38e3765d3",
-            "publisher": "OpenAI",
-            "title": "Build more responsive apps with the Decisions API - OpenAI"
-          }
-        ]
-      },
-      {
         "title": "How to Read Data into GPU Memory in Python with NVIDIA GPUDirect Storage",
         "sources": [
           "rss-lab"
@@ -626,6 +648,23 @@
             "id": "gnews:b2c146cbf1135202",
             "publisher": "NVIDIA Developer",
             "title": "How to Read Data into GPU Memory in Python with NVIDIA GPUDirect Storage | NVIDIA Technical Blog - NVIDIA Developer"
+          }
+        ]
+      },
+      {
+        "title": "Uber brings ChatGPT Work to all employees with OpenAI",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:f13e7e4ad5baa75b",
+            "publisher": "OpenAI",
+            "title": "Uber brings ChatGPT Work to all employees with OpenAI - OpenAI"
           }
         ]
       },
@@ -664,6 +703,23 @@
         ]
       },
       {
+        "title": "What FDE means at OpenAI",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:5e107589d005f271",
+            "publisher": "OpenAI",
+            "title": "What FDE means at OpenAI - OpenAI"
+          }
+        ]
+      },
+      {
         "title": "Cloudflare links vulnerability discovery to defense with OpenAI",
         "sources": [
           "rss-lab"
@@ -694,23 +750,6 @@
             "id": "gnews:c2d9307bac05c8a4",
             "publisher": "OpenAI",
             "title": "Broad access through consistent standards - OpenAI"
-          }
-        ]
-      },
-      {
-        "title": "How we built ChatGPT’s novel ad stack for user trust and relevance",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:08189c1beb067bc7",
-            "publisher": "OpenAI",
-            "title": "How we built ChatGPT’s novel ad stack for user trust and relevance - OpenAI"
           }
         ]
       },
@@ -810,39 +849,20 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "shattered.io",
-          "title": "NVIDIA OpenShell Reference Architecture: 4 Layers [2026] - shattered.io"
+          "publisher": "AiThority",
+          "title": "Qblox Advances Hybrid Quantum Computing with Integration of NVIDIA DGX Spark leveraging NVIDIA NVQLink - AiThority"
+        },
+        {
+          "publisher": "SFGATE",
+          "title": "Horoscope for Friday, 10/23/26 by Christopher Renstrom - SFGATE"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 9
+      "hn_dropped": 8
     },
     "gnews_near_misses": [
       {
-        "score": 0.809,
-        "blocked": "time-window",
-        "hours_apart": 35.6,
-        "a": {
-          "id": "hn:50181880",
-          "source": "hn-algolia",
-          "title": "OpenAI Models in Google Cloud",
-          "at": "2026-10-21T14:42:30Z"
-        },
-        "b": {
-          "id": "gnews:e3f37e8c1e6ffed4",
-          "source": "gnews-rss",
-          "title": "Google Cloud to offer OpenAI models through Model Garden - TNGlobal",
-          "at": "2026-10-23T02:19:14Z"
-        },
-        "shared": [
-          "openai",
-          "model",
-          "google",
-          "cloud"
-        ]
-      },
-      {
-        "score": 0.693,
+        "score": 0.686,
         "blocked": "short-title",
         "hours_apart": 18.1,
         "a": {
@@ -863,7 +883,7 @@
         ]
       },
       {
-        "score": 0.693,
+        "score": 0.686,
         "blocked": "short-title",
         "hours_apart": 17.7,
         "a": {
@@ -884,9 +904,9 @@
         ]
       },
       {
-        "score": 0.65,
+        "score": 0.646,
         "blocked": "time-window",
-        "hours_apart": 27.9,
+        "hours_apart": 35.3,
         "a": {
           "id": "hn:50186037",
           "source": "hn-algolia",
@@ -894,10 +914,10 @@
           "at": "2026-10-21T19:14:01Z"
         },
         "b": {
-          "id": "gnews:5dcc605178848a4b",
+          "id": "gnews:c205b36cb69c163b",
           "source": "gnews-rss",
-          "title": "Anthropic unveils Claude Duet, an AI agent for everyday work | ETIH EdTech News - EdTech Innovation Hub",
-          "at": "2026-10-22T23:07:35Z"
+          "title": "Anthropic launches Claude Duet research preview for Pro and Max users - Social Samosa",
+          "at": "2026-10-23T06:29:02Z"
         },
         "shared": [
           "claude",
@@ -905,9 +925,9 @@
         ]
       },
       {
-        "score": 0.65,
+        "score": 0.646,
         "blocked": "time-window",
-        "hours_apart": 27.5,
+        "hours_apart": 34.8,
         "a": {
           "id": "hn:50186455",
           "source": "hn-algolia",
@@ -915,10 +935,10 @@
           "at": "2026-10-21T19:40:18Z"
         },
         "b": {
-          "id": "gnews:5dcc605178848a4b",
+          "id": "gnews:c205b36cb69c163b",
           "source": "gnews-rss",
-          "title": "Anthropic unveils Claude Duet, an AI agent for everyday work | ETIH EdTech News - EdTech Innovation Hub",
-          "at": "2026-10-22T23:07:35Z"
+          "title": "Anthropic launches Claude Duet research preview for Pro and Max users - Social Samosa",
+          "at": "2026-10-23T06:29:02Z"
         },
         "shared": [
           "claude",
@@ -926,72 +946,87 @@
         ]
       },
       {
-        "score": 0.645,
+        "score": 0.642,
         "blocked": "time-window",
-        "hours_apart": 37.4,
+        "hours_apart": 34.9,
         "a": {
-          "id": "hn:50180079",
+          "id": "hn:50186037",
           "source": "hn-algolia",
-          "title": "OpenAI models are coming to Google Cloud",
-          "at": "2026-10-21T12:53:11Z"
+          "title": "Claude Duet",
+          "at": "2026-10-21T19:14:01Z"
         },
         "b": {
-          "id": "gnews:e3f37e8c1e6ffed4",
+          "id": "gnews:bea9f34395d89502",
           "source": "gnews-rss",
-          "title": "Google Cloud to offer OpenAI models through Model Garden - TNGlobal",
-          "at": "2026-10-23T02:19:14Z"
+          "title": "Anthropic Launches Claude Duet, a Background AI Agent for Claude Pro and Max Subscribers in the US - gHacks",
+          "at": "2026-10-23T06:09:29Z"
         },
         "shared": [
-          "openai",
-          "model",
-          "google",
-          "cloud"
+          "claude",
+          "duet"
         ]
       },
       {
-        "score": 0.645,
+        "score": 0.642,
         "blocked": "time-window",
-        "hours_apart": 38.3,
+        "hours_apart": 34.5,
         "a": {
-          "id": "rss:openai:95dedf578de78f3e",
-          "source": "rss-lab",
-          "title": "OpenAI models are coming to Google Cloud",
-          "at": "2026-10-21T12:00:00Z"
+          "id": "hn:50186455",
+          "source": "hn-algolia",
+          "title": "Claude Duet",
+          "at": "2026-10-21T19:40:18Z"
         },
         "b": {
-          "id": "gnews:e3f37e8c1e6ffed4",
+          "id": "gnews:bea9f34395d89502",
           "source": "gnews-rss",
-          "title": "Google Cloud to offer OpenAI models through Model Garden - TNGlobal",
-          "at": "2026-10-23T02:19:14Z"
+          "title": "Anthropic Launches Claude Duet, a Background AI Agent for Claude Pro and Max Subscribers in the US - gHacks",
+          "at": "2026-10-23T06:09:29Z"
         },
         "shared": [
-          "openai",
-          "model",
-          "google",
-          "cloud"
+          "claude",
+          "duet"
         ]
       },
       {
-        "score": 0.599,
-        "blocked": "below-threshold",
-        "hours_apart": 0.9,
+        "score": 0.632,
+        "blocked": "time-window",
+        "hours_apart": 35.5,
         "a": {
-          "id": "hn:50180079",
+          "id": "hn:50186037",
           "source": "hn-algolia",
-          "title": "OpenAI models are coming to Google Cloud",
-          "at": "2026-10-21T12:53:11Z"
+          "title": "Claude Duet",
+          "at": "2026-10-21T19:14:01Z"
         },
         "b": {
-          "id": "gnews:74c60de87b06e3eb",
+          "id": "gnews:ed43263d7378298a",
           "source": "gnews-rss",
-          "title": "OpenAI to sell its top models on Google Cloud in latest enterprise push - Reuters",
-          "at": "2026-10-21T12:02:09Z"
+          "title": "Claude Duet: Anthropic’s Riposte to Meta Muse, OpenAI Dots and Instinct - CXOToday.com",
+          "at": "2026-10-23T06:44:23Z"
         },
         "shared": [
-          "openai",
-          "model",
-          "google",
-          "cloud"
+          "claude",
+          "duet"
+        ]
+      },
+      {
+        "score": 0.632,
+        "blocked": "time-window",
+        "hours_apart": 35.1,
+        "a": {
+          "id": "hn:50186455",
+          "source": "hn-algolia",
+          "title": "Claude Duet",
+          "at": "2026-10-21T19:40:18Z"
+        },
+        "b": {
+          "id": "gnews:ed43263d7378298a",
+          "source": "gnews-rss",
+          "title": "Claude Duet: Anthropic’s Riposte to Meta Muse, OpenAI Dots and Instinct - CXOToday.com",
+          "at": "2026-10-23T06:44:23Z"
+        },
+        "shared": [
+          "claude",
+          "duet"
         ]
       }
     ],
@@ -1019,30 +1054,7 @@
         ]
       },
       {
-        "score": 0.809,
-        "blocked": "time-window",
-        "hours_apart": 35.6,
-        "a": {
-          "id": "hn:50181880",
-          "source": "hn-algolia",
-          "title": "OpenAI Models in Google Cloud",
-          "at": "2026-10-21T14:42:30Z"
-        },
-        "b": {
-          "id": "gnews:e3f37e8c1e6ffed4",
-          "source": "gnews-rss",
-          "title": "Google Cloud to offer OpenAI models through Model Garden - TNGlobal",
-          "at": "2026-10-23T02:19:14Z"
-        },
-        "shared": [
-          "openai",
-          "model",
-          "google",
-          "cloud"
-        ]
-      },
-      {
-        "score": 0.693,
+        "score": 0.686,
         "blocked": "short-title",
         "hours_apart": 18.1,
         "a": {
@@ -1063,7 +1075,7 @@
         ]
       },
       {
-        "score": 0.693,
+        "score": 0.686,
         "blocked": "short-title",
         "hours_apart": 17.7,
         "a": {
@@ -1084,7 +1096,7 @@
         ]
       },
       {
-        "score": 0.667,
+        "score": 0.669,
         "blocked": "time-window",
         "hours_apart": 369.1,
         "a": {
@@ -1105,9 +1117,9 @@
         ]
       },
       {
-        "score": 0.65,
+        "score": 0.646,
         "blocked": "time-window",
-        "hours_apart": 27.9,
+        "hours_apart": 35.3,
         "a": {
           "id": "hn:50186037",
           "source": "hn-algolia",
@@ -1115,10 +1127,10 @@
           "at": "2026-10-21T19:14:01Z"
         },
         "b": {
-          "id": "gnews:5dcc605178848a4b",
+          "id": "gnews:c205b36cb69c163b",
           "source": "gnews-rss",
-          "title": "Anthropic unveils Claude Duet, an AI agent for everyday work | ETIH EdTech News - EdTech Innovation Hub",
-          "at": "2026-10-22T23:07:35Z"
+          "title": "Anthropic launches Claude Duet research preview for Pro and Max users - Social Samosa",
+          "at": "2026-10-23T06:29:02Z"
         },
         "shared": [
           "claude",
@@ -1126,9 +1138,9 @@
         ]
       },
       {
-        "score": 0.65,
+        "score": 0.646,
         "blocked": "time-window",
-        "hours_apart": 27.5,
+        "hours_apart": 34.8,
         "a": {
           "id": "hn:50186455",
           "source": "hn-algolia",
@@ -1136,10 +1148,10 @@
           "at": "2026-10-21T19:40:18Z"
         },
         "b": {
-          "id": "gnews:5dcc605178848a4b",
+          "id": "gnews:c205b36cb69c163b",
           "source": "gnews-rss",
-          "title": "Anthropic unveils Claude Duet, an AI agent for everyday work | ETIH EdTech News - EdTech Innovation Hub",
-          "at": "2026-10-22T23:07:35Z"
+          "title": "Anthropic launches Claude Duet research preview for Pro and Max users - Social Samosa",
+          "at": "2026-10-23T06:29:02Z"
         },
         "shared": [
           "claude",
@@ -1147,26 +1159,45 @@
         ]
       },
       {
-        "score": 0.645,
+        "score": 0.642,
         "blocked": "time-window",
-        "hours_apart": 37.4,
+        "hours_apart": 34.9,
         "a": {
-          "id": "hn:50180079",
+          "id": "hn:50186037",
           "source": "hn-algolia",
-          "title": "OpenAI models are coming to Google Cloud",
-          "at": "2026-10-21T12:53:11Z"
+          "title": "Claude Duet",
+          "at": "2026-10-21T19:14:01Z"
         },
         "b": {
-          "id": "gnews:e3f37e8c1e6ffed4",
+          "id": "gnews:bea9f34395d89502",
           "source": "gnews-rss",
-          "title": "Google Cloud to offer OpenAI models through Model Garden - TNGlobal",
-          "at": "2026-10-23T02:19:14Z"
+          "title": "Anthropic Launches Claude Duet, a Background AI Agent for Claude Pro and Max Subscribers in the US - gHacks",
+          "at": "2026-10-23T06:09:29Z"
         },
         "shared": [
-          "openai",
-          "model",
-          "google",
-          "cloud"
+          "claude",
+          "duet"
+        ]
+      },
+      {
+        "score": 0.642,
+        "blocked": "time-window",
+        "hours_apart": 34.5,
+        "a": {
+          "id": "hn:50186455",
+          "source": "hn-algolia",
+          "title": "Claude Duet",
+          "at": "2026-10-21T19:40:18Z"
+        },
+        "b": {
+          "id": "gnews:bea9f34395d89502",
+          "source": "gnews-rss",
+          "title": "Anthropic Launches Claude Duet, a Background AI Agent for Claude Pro and Max Subscribers in the US - gHacks",
+          "at": "2026-10-23T06:09:29Z"
+        },
+        "shared": [
+          "claude",
+          "duet"
         ]
       }
     ]
@@ -1175,97 +1206,97 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 4,
+      "streak_ok": 5,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 161,
+      "streak_ok": 162,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 161,
+      "streak_ok": 162,
       "streak_fail": 0,
-      "items_last": 3
+      "items_last": 1
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 161,
+      "streak_ok": 162,
       "streak_fail": 0,
-      "items_last": 55
+      "items_last": 53
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 161,
+      "streak_ok": 162,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 161,
+      "streak_ok": 162,
       "streak_fail": 0,
-      "items_last": 70
+      "items_last": 69
     },
     {
       "id": "hn_title",
       "state": "ok",
-      "streak_ok": 15,
+      "streak_ok": 16,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 73,
+      "streak_ok": 74,
       "streak_fail": 0,
       "items_last": 4
     },
     {
       "id": "releases_atom",
       "state": "ok",
-      "streak_ok": 15,
+      "streak_ok": 16,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "rss_analyst",
       "state": "ok",
-      "streak_ok": 15,
+      "streak_ok": 16,
       "streak_fail": 0,
       "items_last": 6
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 65,
+      "streak_ok": 66,
       "streak_fail": 0,
-      "items_last": 95
+      "items_last": 105
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 161,
+      "streak_ok": 162,
       "streak_fail": 0,
       "items_last": 40
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 161,
+      "streak_ok": 162,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.004964444444444444,
+    "hours": 0.005408611111111111,
     "stale": false
   },
   "hf": {
@@ -1356,7 +1387,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 70,
+    "count": 69,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -1373,7 +1404,7 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 9,
+    "ai_dropped": 8,
     "url": "https://hn.algolia.com/api/v1/search",
     "title_queries": {
       "ok": true,
@@ -1393,10 +1424,10 @@
         "Qwen",
         "local model"
       ],
-      "hits": 17,
-      "candidates": 14,
+      "hits": 18,
+      "candidates": 15,
       "ai_dropped": 2,
-      "duplicates": 12,
+      "duplicates": 13,
       "added": 2,
       "cap": 20,
       "merged_into_live_hn": true
@@ -1405,28 +1436,28 @@
       {
         "id": "hn:50186037",
         "tag": "rest",
-        "score": 549,
+        "score": 550,
         "text": "Claude Duet"
+      },
+      {
+        "id": "hn:50198675",
+        "tag": "rest",
+        "score": 384,
+        "text": "OpenShell – A safe, private runtime for fleets of autonomous AI agents"
       },
       {
         "id": "hn:50186129",
         "tag": "rest",
-        "score": 323,
+        "score": 326,
         "text": "Mistral Large 4"
-      },
-      {
-        "id": "hn:50180079",
-        "tag": "rest",
-        "score": 322,
-        "text": "OpenAI models are coming to Google Cloud"
       }
     ]
   },
   "rss": {
     "ok": true,
-    "soft_fail": true,
-    "soft_fail_reason": "ms-research:HTTP 502",
-    "count": 95,
+    "soft_fail": false,
+    "soft_fail_reason": null,
+    "count": 105,
     "shelf": 0,
     "brief": false,
     "pulse_only": true,
@@ -1468,18 +1499,17 @@
         "count": 12
       },
       {
+        "lab": "ms-research",
+        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
+        "count": 10
+      },
+      {
         "lab": "google-research",
         "url": "https://research.google/blog/rss/",
         "count": 12
       }
     ],
-    "feeds_soft_fail": [
-      {
-        "lab": "ms-research",
-        "reason": "HTTP 502",
-        "soft_fail": true
-      }
-    ],
+    "feeds_soft_fail": [],
     "sample": [
       {
         "id": "rss:nvidia:693797d15c05b304",
@@ -1487,6 +1517,13 @@
         "tag": "rest",
         "title": "Kazakhstan Expands Compute for Its AI Future",
         "link": "https://blogs.nvidia.com/blog/kazakhstan-ai-compute-ecosystem/"
+      },
+      {
+        "id": "rss:openai:1a543055a02f9816",
+        "lab": "openai",
+        "tag": "rest",
+        "title": "OpenAI and Poland’s NASK partner to advance AI safety and security",
+        "link": "https://openai.com/index/openai-nask-ai-safety-security-partnership"
       },
       {
         "id": "rss:huggingface:51888f116f5b0837",
@@ -1501,13 +1538,6 @@
         "tag": "rest",
         "title": "Build more responsive apps with the Decisions API",
         "link": "https://openai.com/index/decisions-api"
-      },
-      {
-        "id": "rss:nvidia-dev:1335fc997bafd59f",
-        "lab": "nvidia-dev",
-        "tag": "rest",
-        "title": "How to Read Data into GPU Memory in Python with NVIDIA GPUDirect Storage",
-        "link": "https://developer.nvidia.com/blog/how-to-read-data-into-gpu-memory-in-python-with-nvidia-gpudirect-storage/"
       }
     ]
   },
@@ -1711,16 +1741,24 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 55,
-    "pool": 388,
+    "items": 53,
+    "pool": 390,
     "corroborators": [
       {
-        "id": "gnews:5dfdb5e38e3765d3",
-        "anchor_id": "rss:openai:891b7e0bbf66f86d",
+        "id": "gnews:c0a8aa82fb0adbb1",
+        "anchor_id": "rss:openai:1a543055a02f9816",
         "score": 1,
-        "title": "Build more responsive apps with the Decisions API - OpenAI",
+        "title": "OpenAI and Poland’s NASK partner to advance AI safety and security - OpenAI",
         "publisher": "OpenAI",
         "self_repost": true
+      },
+      {
+        "id": "gnews:6daf65e38d655505",
+        "anchor_id": "hn:50202402",
+        "score": 0.972,
+        "title": "OpenAI trims valuation target to $1.25tn after pitching higher price - Financial Times",
+        "publisher": "Financial Times",
+        "self_repost": false
       },
       {
         "id": "gnews:b2c146cbf1135202",
@@ -1739,14 +1777,6 @@
         "self_repost": true
       },
       {
-        "id": "gnews:398e9e22f7a09a07",
-        "anchor_id": "rss:openai:eda525050cea8fce",
-        "score": 0.646,
-        "title": "Uber puts all 30,000 employees on ChatGPT Work - TechCrunch",
-        "publisher": "TechCrunch",
-        "self_repost": false
-      },
-      {
         "id": "gnews:6f3a1e904572d757",
         "anchor_id": "rss:nvidia-dev:e60d9e12febedcf9",
         "score": 1,
@@ -1763,9 +1793,17 @@
         "self_repost": true
       },
       {
+        "id": "gnews:5e107589d005f271",
+        "anchor_id": "rss:openai:6400feb681472530",
+        "score": 1,
+        "title": "What FDE means at OpenAI - OpenAI",
+        "publisher": "OpenAI",
+        "self_repost": true
+      },
+      {
         "id": "gnews:7f5d8d453b127633",
         "anchor_id": "hn:50188944",
-        "score": 0.662,
+        "score": 0.665,
         "title": "Anthropic introduces Claude Duet, a proactive AI agent for professionals - SiliconANGLE",
         "publisher": "SiliconANGLE",
         "self_repost": false
@@ -1803,28 +1841,12 @@
         "self_repost": true
       },
       {
-        "id": "gnews:d75ec2c09739710a",
-        "anchor_id": "hn:50185273",
-        "score": 0.943,
-        "title": "Anthropic posts $80bn loss in first half of 2026: WSJ - Al Jazeera",
-        "publisher": "Al Jazeera",
-        "self_repost": false
-      },
-      {
         "id": "gnews:80ff1bea39361164",
         "anchor_id": "hn:50185273",
-        "score": 0.881,
+        "score": 0.89,
         "title": "Anthropic logged net loss of over $80 billion in first half of 2026 - Reuters",
         "publisher": "Reuters",
         "self_repost": false
-      },
-      {
-        "id": "gnews:08189c1beb067bc7",
-        "anchor_id": "rss:openai:ea92da5c121ecb45",
-        "score": 1,
-        "title": "How we built ChatGPT’s novel ad stack for user trust and relevance - OpenAI",
-        "publisher": "OpenAI",
-        "self_repost": true
       },
       {
         "id": "gnews:262e98696ae6b2d0",
@@ -1853,7 +1875,7 @@
       {
         "id": "gnews:c10c68d667c654a3",
         "anchor_id": "hn:50181880",
-        "score": 0.752,
+        "score": 0.75,
         "title": "Google Cloud expands model choice and flexibility, bringing OpenAI models to customers - Google Cloud",
         "publisher": "Google Cloud",
         "self_repost": false
@@ -1861,7 +1883,7 @@
       {
         "id": "gnews:74c60de87b06e3eb",
         "anchor_id": "hn:50181880",
-        "score": 0.745,
+        "score": 0.746,
         "title": "OpenAI to sell its top models on Google Cloud in latest enterprise push - Reuters",
         "publisher": "Reuters",
         "self_repost": false
@@ -1933,24 +1955,24 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:d341575c20299790",
-        "title": "Less admin, more heart: StonedMNL’s founder balances the hustle with Gemini - CoinGeek",
-        "publisher": "CoinGeek",
-        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxObzBkd0lNUEtsOTFWYlN1UWpLOU1QcTJHdGVrYmNTcWp1VGVhLWxGdTdIS0o4MEZiTndQdDQtVEZ5WC1ib25UdVAxWDlsRmc4V2JtU3BYMzRYaXFfQlNjbDVoUDEzU2xnRlhfamNzZ282LWV3Q2haTFZJdjFpUmVRV3lNVG5IMnBvdTFaay1oRVY2N3lSOF9SWA?oc=5",
+        "id": "gnews:a10916f40d6f40bb",
+        "title": "Sam Altman: OpenAI’s Internal Capabilities Unattainable for Current Public AI Models – Programmers Won’t Be Eliminated by AI and May Even Earn More Than Before - eu.36kr.com",
+        "publisher": "eu.36kr.com",
+        "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE82eXk2Y1ZnV1FVY0tUS1FSU2txcndYRTZSa3lFd3R0UWRsU2xJM2htWE5CbGl0ZUk2QktscUt0bVpQWkRBS0RNOVpVZDV4bFZ2eGFj?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:577b34c02aa5bd11",
-        "title": "Gemini can now use your emails and photos to answer questions in Android Auto - MIXED Reality News",
-        "publisher": "MIXED Reality News",
-        "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNU3JWcllvUWhKTHB1czJQelhQSENrQ1VyYjdCMkZqVDg0Q2hIa2lfaXN0cnoxd1pGUTNrMUltN2ljaF90VG82a3ZTcF9IVFdGMmVZaU5WeE9TdUUwWXZ2OFVDVnJDUlhFZFlWWDVCX3pQUHY0Q2ZSeVZjX1dTUjRwVG93?oc=5",
+        "id": "gnews:51a4a318f624701c",
+        "title": "Schneider Electric, NVIDIA, and HPE announce collaboration to accelerate Physical AI - Hydrocarbon Engineering",
+        "publisher": "Hydrocarbon Engineering",
+        "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxPbTNocmJYS20zenZzYTR3WU4tUWFkTWdYN3ZlU1hYRWcyU2phYWZVUnh0c0I2V1R1eUhUM2pJb3JSZnZ3RDUyc0drTFRhVEFsTV9Gb3NfS2pXblpKN2wxZ0pLd1ZETmVRckxUY0tuU0VyaVJBbWkwRGxsdVdUcExDYVFPVHBtdVhWb25teXVSSG9ZN2xIb1lVeUhuQzRpQ2JjUTVDR1pvRm5Gb1pxcEd1cHd6aVN2c2M4Vy0teURGYnlBOGZSMHQ5dThZTVlFZGh5alItclB4cw?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:b09116bb6630f773",
-        "title": "Anthropic security official warns of worsening cyber threats, risks to critical infrastructure - Anadolu Ajansı",
-        "publisher": "Anadolu Ajansı",
-        "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPZEpidTlJWm1sN1E4X3dnMnZUS2VPcGVYRG00c3R2ZnVuZ2w5eml6RDZUczZzN0d2Ykp1NDUzY0hTZHAyN1JjQlZxLUpmcGw0WGdJVWdyLWRINlVzcnNfWW00VnQ3dWFjZkVCT1l2c3VuQXFNWlU0VWY2TE5WeElmWXphYlE2R0R3LVdTTU1ZcWRkWmRTYThKWm42b1piQUJMX08tZmFYc3g0bWlSellvSkZBQjQ0TlI4M2FibGlfNVRyZjdlRXZ6RGxVdw?oc=5",
+        "id": "gnews:d8ae206c79f91546",
+        "title": "GTC Berlin: NVIDIA Expands AI Partnerships Across Healthcare - Healthcare Digital",
+        "publisher": "Healthcare Digital",
+        "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPSGdfeWZaWkkzOW1sajdrWGtucUVJWjRmQURLbzBTUHJMVnY1TjZjcW5ReWpkZk15ZDhfd1JCTnp3cHo4cWhDTFRPLVNBMDVxNC0tZk1kT2hsck5EdkJ3VW5XRVlvRDFSaU16ZnBvUGNydnVsVWVYMlJjZUs0QTF6VS1iWFo1bS1FazBkWU05dmpmcHp3NE9Cclgxaw?oc=5",
         "tag": "rest"
       }
     ]
@@ -1981,7 +2003,7 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "query": "OWASP LLM",
-    "shelf": 3,
+    "shelf": 1,
     "from_cache": false,
     "searches": 1,
     "rate_limit_remaining": 9,
@@ -1993,19 +2015,11 @@
       {
         "label": "heyvaldemar/kubernetes-air-gapped-ai-agent",
         "href": "https://github.com/heyvaldemar/kubernetes-air-gapped-ai-agent"
-      },
-      {
-        "label": "api-evangelist/agentcheck-care",
-        "href": "https://github.com/api-evangelist/agentcheck-care"
-      },
-      {
-        "label": "JesseLanceB/llm-chatbot-security",
-        "href": "https://github.com/JesseLanceB/llm-chatbot-security"
       }
     ]
   },
   "shelf": {
-    "count": 20,
+    "count": 18,
     "brief": false
   },
   "wikidata": {

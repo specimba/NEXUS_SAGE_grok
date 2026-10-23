@@ -195,7 +195,7 @@ const D: NonNullable<SageSetupView["limits"]>["defaults"] = {
 };
 
 export const SAGE_SETUP: SageSetupView = {
-  "stamped_at": "2026-10-23T03:20:26Z",
+  "stamped_at": "2026-10-23T08:26:11Z",
   "config_path": "desk/config/sage-sources.json",
   "config_hash": "e3e9003a7d92",
   "status": "ok",
@@ -208,7 +208,7 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "hn",
       "on": true,
       "caps": "cap 20",
-      "last_rows": 70,
+      "last_rows": 69,
       "state": "ok"
     },
     {
@@ -222,7 +222,7 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "lab_rss",
       "on": true,
       "caps": "cap_per_feed 12 · timeout_s 10 · feeds 9",
-      "last_rows": 95,
+      "last_rows": 105,
       "state": "ok"
     },
     {
@@ -236,14 +236,14 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "gnews",
       "on": true,
       "caps": "cap 32",
-      "last_rows": 55,
+      "last_rows": 53,
       "state": "ok"
     },
     {
       "id": "github",
       "on": true,
       "caps": "cap 5",
-      "last_rows": 3,
+      "last_rows": 1,
       "state": "ok"
     },
     {
