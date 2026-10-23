@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-22T18:20:39Z",
+  "stamped_at": "2026-10-23T03:20:26Z",
   "config_hash": "e3e9003a7d92",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,7 +11,7 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 122,
+      "duration_ms": 160,
       "paused_until": null,
       "reason": null
     },
@@ -20,7 +20,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 3218,
+      "duration_ms": 3395,
       "paused_until": null,
       "reason": null
     },
@@ -28,8 +28,8 @@
       "id": "openalex",
       "label": "OpenAlex",
       "status": "ok",
-      "rows": 3,
-      "duration_ms": 505,
+      "rows": 4,
+      "duration_ms": 620,
       "paused_until": null,
       "reason": null
     },
@@ -37,8 +37,8 @@
       "id": "crossref",
       "label": "Crossref",
       "status": "ok",
-      "rows": 0,
-      "duration_ms": 131,
+      "rows": 1,
+      "duration_ms": 209,
       "paused_until": null,
       "reason": null
     },
@@ -46,8 +46,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 75,
-      "duration_ms": 8322,
+      "rows": 70,
+      "duration_ms": 8238,
       "paused_until": null,
       "reason": null
     },
@@ -55,8 +55,8 @@
       "id": "hn_title",
       "label": "HN title",
       "status": "ok",
-      "rows": 11,
-      "duration_ms": 8264,
+      "rows": 2,
+      "duration_ms": 8181,
       "paused_until": null,
       "reason": null
     },
@@ -64,8 +64,8 @@
       "id": "rss_labs",
       "label": "lab RSS",
       "status": "ok",
-      "rows": 105,
-      "duration_ms": 16192,
+      "rows": 95,
+      "duration_ms": 16380,
       "paused_until": null,
       "reason": null
     },
@@ -74,7 +74,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 40,
-      "duration_ms": 6109,
+      "duration_ms": 6153,
       "paused_until": null,
       "reason": null
     },
@@ -82,8 +82,8 @@
       "id": "rss_analyst",
       "label": "analyst RSS",
       "status": "ok",
-      "rows": 7,
-      "duration_ms": 2191,
+      "rows": 6,
+      "duration_ms": 2166,
       "paused_until": null,
       "reason": null
     },
@@ -92,7 +92,7 @@
       "label": "releases",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 4897,
+      "duration_ms": 5241,
       "paused_until": null,
       "reason": null
     },
@@ -100,8 +100,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 60,
-      "duration_ms": 6522,
+      "rows": 55,
+      "duration_ms": 6625,
       "paused_until": null,
       "reason": null
     },
@@ -109,8 +109,8 @@
       "id": "github",
       "label": "GitHub",
       "status": "ok",
-      "rows": 1,
-      "duration_ms": 418,
+      "rows": 3,
+      "duration_ms": 358,
       "paused_until": null,
       "reason": null
     },
@@ -119,16 +119,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4395,
+      "duration_ms": 4385,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 61286,
-    "sources_wall_ms": 16193,
-    "papers_lane_ms": 3982,
-    "slowest_source_ms": 16192,
+    "sources_ms": 62111,
+    "sources_wall_ms": 16381,
+    "papers_lane_ms": 4390,
+    "slowest_source_ms": 16380,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -146,33 +146,33 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 16706,
-    "startup_ms": 54,
-    "main_ms": 16725
+    "wall_ms": 16940,
+    "startup_ms": 40,
+    "main_ms": 16962
   },
-  "multi_source_independent": 14,
+  "multi_source_independent": 10,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 14,
-    "multi_source_raw": 20,
-    "self_reposts": 9,
-    "items_in": 297,
-    "clusters_out": 246,
-    "collapsed": 51,
-    "multi_source": 14,
-    "multi_member": 28,
+    "multi_source_independent": 10,
+    "multi_source_raw": 23,
+    "self_reposts": 17,
+    "items_in": 276,
+    "clusters_out": 234,
+    "collapsed": 42,
+    "multi_source": 10,
+    "multi_member": 30,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 56,
+    "new_items": 62,
     "per_source": {
-      "hn-algolia": 75,
-      "rss-lab": 105,
+      "hn-algolia": 70,
+      "rss-lab": 95,
       "rss-security": 40,
-      "gnews-rss": 60,
+      "gnews-rss": 55,
       "gmail-news": 10,
-      "rss-analyst": 7
+      "rss-analyst": 6
     },
     "multi_source_clusters": [
       {
@@ -207,18 +207,12 @@
             "publisher": "openai"
           },
           {
-            "id": "gnews:98965ce4ddaf688e",
+            "id": "gnews:b2fa14a52139bb0d",
             "source": "gnews-rss",
-            "title": "OpenAI to make its most advanced AI models available in Google Cloud - SiliconANGLE",
-            "at": "2026-10-22T00:22:00Z",
-            "publisher": "SiliconANGLE"
-          },
-          {
-            "id": "gnews:ac0e148c9006cea7",
-            "source": "gnews-rss",
-            "title": "Google Cloud adds OpenAI models with unified billing and enterprise controls - Tech Edition",
-            "at": "2026-10-22T13:48:58Z",
-            "publisher": "Tech Edition"
+            "title": "OpenAI models are coming to Google Cloud - OpenAI",
+            "at": "2026-10-21T12:40:10Z",
+            "publisher": "OpenAI",
+            "self_repost": true
           },
           {
             "id": "gnews:c10c68d667c654a3",
@@ -228,12 +222,18 @@
             "publisher": "Google Cloud"
           },
           {
-            "id": "gnews:b2fa14a52139bb0d",
+            "id": "gnews:74c60de87b06e3eb",
             "source": "gnews-rss",
-            "title": "OpenAI models are coming to Google Cloud - OpenAI",
-            "at": "2026-10-21T12:40:10Z",
-            "publisher": "OpenAI",
-            "self_repost": true
+            "title": "OpenAI to sell its top models on Google Cloud in latest enterprise push - Reuters",
+            "at": "2026-10-21T12:02:09Z",
+            "publisher": "Reuters"
+          },
+          {
+            "id": "gnews:7164c49e2a90e80a",
+            "source": "gnews-rss",
+            "title": "OpenAI to bring AI models to Google's cloud, in further expansion beyond Microsoft - CNBC",
+            "at": "2026-10-21T12:00:02Z",
+            "publisher": "CNBC"
           }
         ]
       },
@@ -244,7 +244,7 @@
           "gnews-rss"
         ],
         "size": 3,
-        "score": 0.764,
+        "score": 1,
         "members": [
           {
             "id": "rss:openai:eda525050cea8fce",
@@ -254,11 +254,12 @@
             "publisher": "openai"
           },
           {
-            "id": "gnews:f4afaf788e52fb7c",
+            "id": "gnews:f13e7e4ad5baa75b",
             "source": "gnews-rss",
-            "title": "Uber to use ChatGPT Work for more than 30K employees (OPENAI:Private) - Seeking Alpha",
-            "at": "2026-10-22T16:19:31Z",
-            "publisher": "Seeking Alpha"
+            "title": "Uber brings ChatGPT Work to all employees with OpenAI - OpenAI",
+            "at": "2026-10-22T16:22:38Z",
+            "publisher": "OpenAI",
+            "self_repost": true
           },
           {
             "id": "gnews:398e9e22f7a09a07",
@@ -270,165 +271,27 @@
         ]
       },
       {
-        "title": "Why AI's Deepest Mind Believes the World Is About to Change Radically",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 4,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:50195420",
-            "source": "hn-algolia",
-            "title": "Why AI's Deepest Mind Believes the World Is About to Change Radically",
-            "at": "2026-10-22T13:58:47Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:50179413",
-            "source": "hn-algolia",
-            "title": "Demis Hassabi- AI's Deepest Mind Believes the World Is About to Change Radically",
-            "at": "2026-10-21T11:56:38Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:5f572e84633ed3f0",
-            "source": "gnews-rss",
-            "title": "Why AI’s Deepest Mind Believes the World Is About to Change Radically - WSJ",
-            "at": "2026-10-21T22:01:10Z",
-            "publisher": "WSJ"
-          },
-          {
-            "id": "gnews:d343c391aea730cd",
-            "source": "gnews-rss",
-            "title": "Why AI’s deepest mind believes the world is about to change radically - Livemint",
-            "at": "2026-10-21T12:49:42Z",
-            "publisher": "Livemint"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI models disabled their own safety monitoring and lied about it",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 8,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:50182465",
-            "source": "hn-algolia",
-            "title": "OpenAI models disabled their own safety monitoring and lied about it",
-            "at": "2026-10-21T15:16:49Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:50180734",
-            "source": "hn-algolia",
-            "title": "OpenAI's Agents Disabled Their Own Safety Monitoring Systems",
-            "at": "2026-10-21T13:36:07Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:50194932",
-            "source": "hn-algolia",
-            "title": "OpenAI says its AI agents disabled their own safety monitors",
-            "at": "2026-10-22T13:19:40Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:4f2fef4df805819d",
-            "source": "gnews-rss",
-            "title": "OpenAI says an AI agent lied about disabling its safety monitoring system - The Verge",
-            "at": "2026-10-21T13:57:43Z",
-            "publisher": "The Verge"
-          },
-          {
-            "id": "gnews:d9ff6fb38d80dd70",
-            "source": "gnews-rss",
-            "title": "Experts on OpenAI Agents That Disabled Monitoring Systems - AI Magazine",
-            "at": "2026-10-22T10:49:37Z",
-            "publisher": "AI Magazine"
-          },
-          {
-            "id": "gnews:8a0763b856beb9bd",
-            "source": "gnews-rss",
-            "title": "OpenAI says its AI agents disabled their own monitoring - Good Morning America",
-            "at": "2026-10-21T19:22:19Z",
-            "publisher": "Good Morning America"
-          },
-          {
-            "id": "gnews:c59c509ae8401031",
-            "source": "gnews-rss",
-            "title": "OpenAI says its AI agents disabled their own monitoring - ABC News - Breaking News, Latest News and Videos",
-            "at": "2026-10-21T18:39:35Z",
-            "publisher": "ABC News - Breaking News, Latest News and Videos"
-          },
-          {
-            "id": "gnews:74ddc092e26ae826",
-            "source": "gnews-rss",
-            "title": "OpenAI's most powerful AI models disabled their own safety monitoring — and one lied about it - CNBC",
-            "at": "2026-10-21T07:03:48Z",
-            "publisher": "CNBC"
-          }
-        ]
-      },
-      {
-        "title": "Hugging Face's New AI Biology Model Lets You Chat with DNA",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 3,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:50193951",
-            "source": "hn-algolia",
-            "title": "Hugging Face's New AI Biology Model Lets You Chat with DNA",
-            "at": "2026-10-22T11:33:40Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:50193672",
-            "source": "hn-algolia",
-            "title": "Hugging Face model lets you chat with your DNA",
-            "at": "2026-10-22T10:54:47Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:d44cd61a5112bad2",
-            "source": "gnews-rss",
-            "title": "Hugging Face’s New AI Biology Model Lets You Chat With DNA - WIRED",
-            "at": "2026-10-22T10:00:00Z",
-            "publisher": "WIRED"
-          }
-        ]
-      },
-      {
-        "title": "IBM releases granite speech 5.0 2B",
+        "title": "Anthropic opens research preview of Claude Duet, a agent for professionals",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.718,
+        "score": 0.662,
         "members": [
           {
-            "id": "hn:50193043",
+            "id": "hn:50188944",
             "source": "hn-algolia",
-            "title": "IBM releases granite speech 5.0 2B",
-            "at": "2026-10-22T09:09:35Z",
+            "title": "Anthropic opens research preview of Claude Duet, a agent for professionals",
+            "at": "2026-10-21T23:12:27Z",
             "publisher": null
           },
           {
-            "id": "gnews:c78caddf9d53a8c4",
+            "id": "gnews:7f5d8d453b127633",
             "source": "gnews-rss",
-            "title": "Granite Speech 5.0 2B: what IBM shipped on 7 October - OrcaRouter",
-            "at": "2026-10-21T16:56:11Z",
-            "publisher": "OrcaRouter"
+            "title": "Anthropic introduces Claude Duet, a proactive AI agent for professionals - SiliconANGLE",
+            "at": "2026-10-22T13:20:00Z",
+            "publisher": "SiliconANGLE"
           }
         ]
       },
@@ -458,38 +321,6 @@
         ]
       },
       {
-        "title": "Google staff resign in backlash over its AI contracts with military",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 3,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:50186043",
-            "source": "hn-algolia",
-            "title": "Google staff resign in backlash over its AI contracts with military",
-            "at": "2026-10-21T19:14:21Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:e0c74b7a220b62ce",
-            "source": "gnews-rss",
-            "title": "Google staff resign in backlash over its AI contracts with military - Kahawatungu",
-            "at": "2026-10-21T22:01:11Z",
-            "publisher": "Kahawatungu"
-          },
-          {
-            "id": "gnews:342226fe47b05151",
-            "source": "gnews-rss",
-            "title": "Google staff resign in backlash over its AI contracts with military - BBC",
-            "at": "2026-10-21T15:41:25Z",
-            "publisher": "BBC"
-          }
-        ]
-      },
-      {
         "title": "Introducing Mistral Large 4",
         "sources": [
           "rss-lab",
@@ -511,6 +342,45 @@
             "title": "Introducing Mistral Large 4",
             "at": "2026-10-06T12:00:27Z",
             "publisher": "mistral"
+          }
+        ]
+      },
+      {
+        "title": "Anthropic disclosed an $80.7B net loss for the first half of 2026",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 4,
+        "score": 0.949,
+        "members": [
+          {
+            "id": "hn:50177795",
+            "source": "hn-algolia",
+            "title": "Anthropic disclosed an $80.7B net loss for the first half of 2026",
+            "at": "2026-10-21T08:51:15Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:50185273",
+            "source": "hn-algolia",
+            "title": "Anthropic posts $80B loss in first half of 2026",
+            "at": "2026-10-21T18:18:17Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:d75ec2c09739710a",
+            "source": "gnews-rss",
+            "title": "Anthropic posts $80bn loss in first half of 2026: WSJ - Al Jazeera",
+            "at": "2026-10-21T05:52:53Z",
+            "publisher": "Al Jazeera"
+          },
+          {
+            "id": "gnews:80ff1bea39361164",
+            "source": "gnews-rss",
+            "title": "Anthropic logged net loss of over $80 billion in first half of 2026 - Reuters",
+            "at": "2026-10-21T15:42:23Z",
+            "publisher": "Reuters"
           }
         ]
       },
@@ -544,31 +414,6 @@
             "at": "2026-10-21T16:56:20Z",
             "publisher": "OpenAI",
             "self_repost": true
-          }
-        ]
-      },
-      {
-        "title": "OpenAI Says 2 Internal AI Coding Agents Turned Off Their Own Safeguards",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 0.817,
-        "members": [
-          {
-            "id": "hn:50183655",
-            "source": "hn-algolia",
-            "title": "OpenAI Says 2 Internal AI Coding Agents Turned Off Their Own Safeguards",
-            "at": "2026-10-21T16:30:11Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:b4fd67bdc7062286",
-            "source": "gnews-rss",
-            "title": "OpenAI says its agents turned off own safeguards - Al Jazeera",
-            "at": "2026-10-21T05:52:53Z",
-            "publisher": "Al Jazeera"
           }
         ]
       },
@@ -631,41 +476,27 @@
         ]
       },
       {
-        "title": "Google DeepMind says four AI agents beat Minecraft in 27 hours",
+        "title": "Anthropic to publicly file for IPO as early as Friday, sources say",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 4,
+        "size": 2,
         "score": 1,
         "members": [
           {
-            "id": "hn:50176872",
+            "id": "hn:50182171",
             "source": "hn-algolia",
-            "title": "Google DeepMind says four AI agents beat Minecraft in 27 hours",
-            "at": "2026-10-21T06:37:47Z",
+            "title": "Anthropic to publicly file for IPO as early as Friday, sources say",
+            "at": "2026-10-21T14:59:32Z",
             "publisher": null
           },
           {
-            "id": "gnews:5c6c54383ce2efed",
+            "id": "gnews:262e98696ae6b2d0",
             "source": "gnews-rss",
-            "title": "Google DeepMind AI agents beat Minecraft in 27 hours - TechGig",
-            "at": "2026-10-21T05:50:52Z",
-            "publisher": "TechGig"
-          },
-          {
-            "id": "gnews:80fca9a09168996a",
-            "source": "gnews-rss",
-            "title": "Google DeepMind’s AI Agents Beat Minecraft by Coding for 27 Hours - Spiel Times",
-            "at": "2026-10-21T09:36:11Z",
-            "publisher": "Spiel Times"
-          },
-          {
-            "id": "gnews:b82884f866fdae91",
-            "source": "gnews-rss",
-            "title": "Google DeepMind Agents Defeat Minecraft Dragon in 27 Hours - SuaraGarut.ID",
-            "at": "2026-10-20T20:43:00Z",
-            "publisher": "SuaraGarut.ID"
+            "title": "Anthropic to publicly file for IPO as early as Friday, sources say - Yahoo Finance",
+            "at": "2026-10-21T13:53:43Z",
+            "publisher": "Yahoo Finance"
           }
         ]
       }
@@ -688,6 +519,24 @@
             "id": "gnews:b2fa14a52139bb0d",
             "publisher": "OpenAI",
             "title": "OpenAI models are coming to Google Cloud - OpenAI"
+          }
+        ]
+      },
+      {
+        "title": "Uber brings ChatGPT Work to all employees with OpenAI",
+        "sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:f13e7e4ad5baa75b",
+            "publisher": "OpenAI",
+            "title": "Uber brings ChatGPT Work to all employees with OpenAI - OpenAI"
           }
         ]
       },
@@ -730,7 +579,7 @@
         ]
       },
       {
-        "title": "What FDE means at OpenAI",
+        "title": "Kazakhstan Expands Compute for Its AI Future",
         "sources": [
           "rss-lab"
         ],
@@ -740,14 +589,14 @@
         ],
         "self_reposts": [
           {
-            "id": "gnews:5e107589d005f271",
-            "publisher": "OpenAI",
-            "title": "What FDE means at OpenAI - OpenAI"
+            "id": "gnews:2b2b7d3d39252a7a",
+            "publisher": "NVIDIA Blog",
+            "title": "Kazakhstan Expands Compute for Its AI Future - NVIDIA Blog"
           }
         ]
       },
       {
-        "title": "Broad access through consistent standards",
+        "title": "Build more responsive apps with the Decisions API",
         "sources": [
           "rss-lab"
         ],
@@ -757,9 +606,60 @@
         ],
         "self_reposts": [
           {
-            "id": "gnews:c2d9307bac05c8a4",
+            "id": "gnews:5dfdb5e38e3765d3",
             "publisher": "OpenAI",
-            "title": "Broad access through consistent standards - OpenAI"
+            "title": "Build more responsive apps with the Decisions API - OpenAI"
+          }
+        ]
+      },
+      {
+        "title": "How to Read Data into GPU Memory in Python with NVIDIA GPUDirect Storage",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:b2c146cbf1135202",
+            "publisher": "NVIDIA Developer",
+            "title": "How to Read Data into GPU Memory in Python with NVIDIA GPUDirect Storage | NVIDIA Technical Blog - NVIDIA Developer"
+          }
+        ]
+      },
+      {
+        "title": "Running Frontier-Class AI Models Across 8 NVIDIA DGX Spark Nodes",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:6f3a1e904572d757",
+            "publisher": "NVIDIA Developer",
+            "title": "Running Frontier-Class AI Models Across 8 NVIDIA DGX Spark Nodes | NVIDIA Technical Blog - NVIDIA Developer"
+          }
+        ]
+      },
+      {
+        "title": "NVIDIA Unveils Minerva to Bring End-to-End Observability for AI Factories",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:9e5949c8aaf01502",
+            "publisher": "NVIDIA Blog",
+            "title": "NVIDIA Unveils Minerva to Bring End-to-End Observability for AI Factories - NVIDIA Blog"
           }
         ]
       },
@@ -781,7 +681,7 @@
         ]
       },
       {
-        "title": "How AT&T is rethinking in-house legal work with OpenAI",
+        "title": "Broad access through consistent standards",
         "sources": [
           "rss-lab"
         ],
@@ -791,9 +691,26 @@
         ],
         "self_reposts": [
           {
-            "id": "gnews:5aab45c8560ef906",
+            "id": "gnews:c2d9307bac05c8a4",
             "publisher": "OpenAI",
-            "title": "How AT&T is rethinking in-house legal work with OpenAI - OpenAI"
+            "title": "Broad access through consistent standards - OpenAI"
+          }
+        ]
+      },
+      {
+        "title": "How we built ChatGPT’s novel ad stack for user trust and relevance",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:08189c1beb067bc7",
+            "publisher": "OpenAI",
+            "title": "How we built ChatGPT’s novel ad stack for user trust and relevance - OpenAI"
           }
         ]
       },
@@ -815,7 +732,7 @@
         ]
       },
       {
-        "title": "Bringing the Spark to Europe: Local Intelligence Powers Next Wave of Agents",
+        "title": "Achieve Productive AI Capacity Faster and More Predictably with NVIDIA DSX POD",
         "sources": [
           "rss-lab"
         ],
@@ -825,9 +742,60 @@
         ],
         "self_reposts": [
           {
-            "id": "gnews:31357a975d8b054b",
-            "publisher": "NVIDIA Blog",
-            "title": "Bringing the Spark to Europe: Local Intelligence Powers Next Wave of Agents - NVIDIA Blog"
+            "id": "gnews:9b84db4c28e60e64",
+            "publisher": "NVIDIA Developer",
+            "title": "Achieve Productive AI Capacity Faster and More Predictably with NVIDIA DSX POD | NVIDIA Technical Blog - NVIDIA Developer"
+          }
+        ]
+      },
+      {
+        "title": "Inside NVIDIA Sentry: Secure AI Agents at Runtime",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:32173f9b8dd82a57",
+            "publisher": "NVIDIA Developer",
+            "title": "Inside NVIDIA Sentry: Secure AI Agents at Runtime | NVIDIA Technical Blog - NVIDIA Developer"
+          }
+        ]
+      },
+      {
+        "title": "How NVIDIA OpenShell Reference Architecture Secures and Governs AI Agent Workloads at Scale",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:50703c29049bb871",
+            "publisher": "NVIDIA Developer",
+            "title": "How NVIDIA OpenShell Reference Architecture Secures and Governs AI Agent Workloads at Scale - NVIDIA Developer"
+          }
+        ]
+      },
+      {
+        "title": "Developing an AI Factory Digital Twin with an Agent-Assisted Workflow",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:bda1a358e9972bb8",
+            "publisher": "NVIDIA Developer",
+            "title": "Developing an AI Factory Digital Twin with an Agent-Assisted Workflow - NVIDIA Developer"
           }
         ]
       }
@@ -842,42 +810,125 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "Bioengineer.org",
-          "title": "AlphaGenome Atlas Predicts Effects of Billions of DNA Changes - Bioengineer.org"
+          "publisher": "shattered.io",
+          "title": "NVIDIA OpenShell Reference Architecture: 4 Layers [2026] - shattered.io"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 10
+      "hn_dropped": 9
     },
     "gnews_near_misses": [
       {
-        "score": 0.707,
+        "score": 0.809,
         "blocked": "time-window",
-        "hours_apart": 30.3,
+        "hours_apart": 35.6,
         "a": {
-          "id": "hn:50194932",
+          "id": "hn:50181880",
           "source": "hn-algolia",
-          "title": "OpenAI says its AI agents disabled their own safety monitors",
-          "at": "2026-10-22T13:19:40Z"
+          "title": "OpenAI Models in Google Cloud",
+          "at": "2026-10-21T14:42:30Z"
         },
         "b": {
-          "id": "gnews:74ddc092e26ae826",
+          "id": "gnews:e3f37e8c1e6ffed4",
           "source": "gnews-rss",
-          "title": "OpenAI's most powerful AI models disabled their own safety monitoring — and one lied about it - CNBC",
-          "at": "2026-10-21T07:03:48Z"
+          "title": "Google Cloud to offer OpenAI models through Model Garden - TNGlobal",
+          "at": "2026-10-23T02:19:14Z"
         },
         "shared": [
           "openai",
-          "ai",
-          "disabl",
-          "safety",
-          "monitor"
+          "model",
+          "google",
+          "cloud"
         ]
       },
       {
-        "score": 0.592,
-        "blocked": "below-threshold",
-        "hours_apart": 0.6,
+        "score": 0.693,
+        "blocked": "short-title",
+        "hours_apart": 18.1,
+        "a": {
+          "id": "hn:50186037",
+          "source": "hn-algolia",
+          "title": "Claude Duet",
+          "at": "2026-10-21T19:14:01Z"
+        },
+        "b": {
+          "id": "gnews:7f5d8d453b127633",
+          "source": "gnews-rss",
+          "title": "Anthropic introduces Claude Duet, a proactive AI agent for professionals - SiliconANGLE",
+          "at": "2026-10-22T13:20:00Z"
+        },
+        "shared": [
+          "claude",
+          "duet"
+        ]
+      },
+      {
+        "score": 0.693,
+        "blocked": "short-title",
+        "hours_apart": 17.7,
+        "a": {
+          "id": "hn:50186455",
+          "source": "hn-algolia",
+          "title": "Claude Duet",
+          "at": "2026-10-21T19:40:18Z"
+        },
+        "b": {
+          "id": "gnews:7f5d8d453b127633",
+          "source": "gnews-rss",
+          "title": "Anthropic introduces Claude Duet, a proactive AI agent for professionals - SiliconANGLE",
+          "at": "2026-10-22T13:20:00Z"
+        },
+        "shared": [
+          "claude",
+          "duet"
+        ]
+      },
+      {
+        "score": 0.65,
+        "blocked": "time-window",
+        "hours_apart": 27.9,
+        "a": {
+          "id": "hn:50186037",
+          "source": "hn-algolia",
+          "title": "Claude Duet",
+          "at": "2026-10-21T19:14:01Z"
+        },
+        "b": {
+          "id": "gnews:5dcc605178848a4b",
+          "source": "gnews-rss",
+          "title": "Anthropic unveils Claude Duet, an AI agent for everyday work | ETIH EdTech News - EdTech Innovation Hub",
+          "at": "2026-10-22T23:07:35Z"
+        },
+        "shared": [
+          "claude",
+          "duet"
+        ]
+      },
+      {
+        "score": 0.65,
+        "blocked": "time-window",
+        "hours_apart": 27.5,
+        "a": {
+          "id": "hn:50186455",
+          "source": "hn-algolia",
+          "title": "Claude Duet",
+          "at": "2026-10-21T19:40:18Z"
+        },
+        "b": {
+          "id": "gnews:5dcc605178848a4b",
+          "source": "gnews-rss",
+          "title": "Anthropic unveils Claude Duet, an AI agent for everyday work | ETIH EdTech News - EdTech Innovation Hub",
+          "at": "2026-10-22T23:07:35Z"
+        },
+        "shared": [
+          "claude",
+          "duet"
+        ]
+      },
+      {
+        "score": 0.645,
+        "blocked": "time-window",
+        "hours_apart": 37.4,
         "a": {
           "id": "hn:50180079",
           "source": "hn-algolia",
@@ -885,10 +936,10 @@
           "at": "2026-10-21T12:53:11Z"
         },
         "b": {
-          "id": "gnews:c10c68d667c654a3",
+          "id": "gnews:e3f37e8c1e6ffed4",
           "source": "gnews-rss",
-          "title": "Google Cloud expands model choice and flexibility, bringing OpenAI models to customers - Google Cloud",
-          "at": "2026-10-21T12:18:37Z"
+          "title": "Google Cloud to offer OpenAI models through Model Garden - TNGlobal",
+          "at": "2026-10-23T02:19:14Z"
         },
         "shared": [
           "openai",
@@ -898,9 +949,9 @@
         ]
       },
       {
-        "score": 0.592,
-        "blocked": "below-threshold",
-        "hours_apart": 0.3,
+        "score": 0.645,
+        "blocked": "time-window",
+        "hours_apart": 38.3,
         "a": {
           "id": "rss:openai:95dedf578de78f3e",
           "source": "rss-lab",
@@ -908,10 +959,10 @@
           "at": "2026-10-21T12:00:00Z"
         },
         "b": {
-          "id": "gnews:c10c68d667c654a3",
+          "id": "gnews:e3f37e8c1e6ffed4",
           "source": "gnews-rss",
-          "title": "Google Cloud expands model choice and flexibility, bringing OpenAI models to customers - Google Cloud",
-          "at": "2026-10-21T12:18:37Z"
+          "title": "Google Cloud to offer OpenAI models through Model Garden - TNGlobal",
+          "at": "2026-10-23T02:19:14Z"
         },
         "shared": [
           "openai",
@@ -921,9 +972,9 @@
         ]
       },
       {
-        "score": 0.586,
-        "blocked": "time-window",
-        "hours_apart": 24.9,
+        "score": 0.599,
+        "blocked": "below-threshold",
+        "hours_apart": 0.9,
         "a": {
           "id": "hn:50180079",
           "source": "hn-algolia",
@@ -931,106 +982,16 @@
           "at": "2026-10-21T12:53:11Z"
         },
         "b": {
-          "id": "gnews:ac0e148c9006cea7",
+          "id": "gnews:74c60de87b06e3eb",
           "source": "gnews-rss",
-          "title": "Google Cloud adds OpenAI models with unified billing and enterprise controls - Tech Edition",
-          "at": "2026-10-22T13:48:58Z"
+          "title": "OpenAI to sell its top models on Google Cloud in latest enterprise push - Reuters",
+          "at": "2026-10-21T12:02:09Z"
         },
         "shared": [
           "openai",
           "model",
           "google",
           "cloud"
-        ]
-      },
-      {
-        "score": 0.586,
-        "blocked": "time-window",
-        "hours_apart": 25.8,
-        "a": {
-          "id": "rss:openai:95dedf578de78f3e",
-          "source": "rss-lab",
-          "title": "OpenAI models are coming to Google Cloud",
-          "at": "2026-10-21T12:00:00Z"
-        },
-        "b": {
-          "id": "gnews:ac0e148c9006cea7",
-          "source": "gnews-rss",
-          "title": "Google Cloud adds OpenAI models with unified billing and enterprise controls - Tech Edition",
-          "at": "2026-10-22T13:48:58Z"
-        },
-        "shared": [
-          "openai",
-          "model",
-          "google",
-          "cloud"
-        ]
-      },
-      {
-        "score": 0.58,
-        "blocked": "below-threshold",
-        "hours_apart": 6.5,
-        "a": {
-          "id": "hn:50180734",
-          "source": "hn-algolia",
-          "title": "OpenAI's Agents Disabled Their Own Safety Monitoring Systems",
-          "at": "2026-10-21T13:36:07Z"
-        },
-        "b": {
-          "id": "gnews:74ddc092e26ae826",
-          "source": "gnews-rss",
-          "title": "OpenAI's most powerful AI models disabled their own safety monitoring — and one lied about it - CNBC",
-          "at": "2026-10-21T07:03:48Z"
-        },
-        "shared": [
-          "openai",
-          "disabl",
-          "safety",
-          "monitor"
-        ]
-      },
-      {
-        "score": 0.553,
-        "blocked": "below-threshold",
-        "hours_apart": 4,
-        "a": {
-          "id": "hn:50182551",
-          "source": "hn-algolia",
-          "title": "OpenAI models disable misalignment monitoring and suppress alerts",
-          "at": "2026-10-21T15:21:58Z"
-        },
-        "b": {
-          "id": "gnews:8a0763b856beb9bd",
-          "source": "gnews-rss",
-          "title": "OpenAI says its AI agents disabled their own monitoring - Good Morning America",
-          "at": "2026-10-21T19:22:19Z"
-        },
-        "shared": [
-          "openai",
-          "disabl",
-          "monitor"
-        ]
-      },
-      {
-        "score": 0.553,
-        "blocked": "below-threshold",
-        "hours_apart": 3.3,
-        "a": {
-          "id": "hn:50182551",
-          "source": "hn-algolia",
-          "title": "OpenAI models disable misalignment monitoring and suppress alerts",
-          "at": "2026-10-21T15:21:58Z"
-        },
-        "b": {
-          "id": "gnews:c59c509ae8401031",
-          "source": "gnews-rss",
-          "title": "OpenAI says its AI agents disabled their own monitoring - ABC News - Breaking News, Latest News and Videos",
-          "at": "2026-10-21T18:39:35Z"
-        },
-        "shared": [
-          "openai",
-          "disabl",
-          "monitor"
         ]
       }
     ],
@@ -1058,31 +1019,72 @@
         ]
       },
       {
-        "score": 0.707,
+        "score": 0.809,
         "blocked": "time-window",
-        "hours_apart": 30.3,
+        "hours_apart": 35.6,
         "a": {
-          "id": "hn:50194932",
+          "id": "hn:50181880",
           "source": "hn-algolia",
-          "title": "OpenAI says its AI agents disabled their own safety monitors",
-          "at": "2026-10-22T13:19:40Z"
+          "title": "OpenAI Models in Google Cloud",
+          "at": "2026-10-21T14:42:30Z"
         },
         "b": {
-          "id": "gnews:74ddc092e26ae826",
+          "id": "gnews:e3f37e8c1e6ffed4",
           "source": "gnews-rss",
-          "title": "OpenAI's most powerful AI models disabled their own safety monitoring — and one lied about it - CNBC",
-          "at": "2026-10-21T07:03:48Z"
+          "title": "Google Cloud to offer OpenAI models through Model Garden - TNGlobal",
+          "at": "2026-10-23T02:19:14Z"
         },
         "shared": [
           "openai",
-          "ai",
-          "disabl",
-          "safety",
-          "monitor"
+          "model",
+          "google",
+          "cloud"
         ]
       },
       {
-        "score": 0.673,
+        "score": 0.693,
+        "blocked": "short-title",
+        "hours_apart": 18.1,
+        "a": {
+          "id": "hn:50186037",
+          "source": "hn-algolia",
+          "title": "Claude Duet",
+          "at": "2026-10-21T19:14:01Z"
+        },
+        "b": {
+          "id": "gnews:7f5d8d453b127633",
+          "source": "gnews-rss",
+          "title": "Anthropic introduces Claude Duet, a proactive AI agent for professionals - SiliconANGLE",
+          "at": "2026-10-22T13:20:00Z"
+        },
+        "shared": [
+          "claude",
+          "duet"
+        ]
+      },
+      {
+        "score": 0.693,
+        "blocked": "short-title",
+        "hours_apart": 17.7,
+        "a": {
+          "id": "hn:50186455",
+          "source": "hn-algolia",
+          "title": "Claude Duet",
+          "at": "2026-10-21T19:40:18Z"
+        },
+        "b": {
+          "id": "gnews:7f5d8d453b127633",
+          "source": "gnews-rss",
+          "title": "Anthropic introduces Claude Duet, a proactive AI agent for professionals - SiliconANGLE",
+          "at": "2026-10-22T13:20:00Z"
+        },
+        "shared": [
+          "claude",
+          "duet"
+        ]
+      },
+      {
+        "score": 0.667,
         "blocked": "time-window",
         "hours_apart": 369.1,
         "a": {
@@ -1103,9 +1105,51 @@
         ]
       },
       {
-        "score": 0.592,
-        "blocked": "below-threshold",
-        "hours_apart": 0.6,
+        "score": 0.65,
+        "blocked": "time-window",
+        "hours_apart": 27.9,
+        "a": {
+          "id": "hn:50186037",
+          "source": "hn-algolia",
+          "title": "Claude Duet",
+          "at": "2026-10-21T19:14:01Z"
+        },
+        "b": {
+          "id": "gnews:5dcc605178848a4b",
+          "source": "gnews-rss",
+          "title": "Anthropic unveils Claude Duet, an AI agent for everyday work | ETIH EdTech News - EdTech Innovation Hub",
+          "at": "2026-10-22T23:07:35Z"
+        },
+        "shared": [
+          "claude",
+          "duet"
+        ]
+      },
+      {
+        "score": 0.65,
+        "blocked": "time-window",
+        "hours_apart": 27.5,
+        "a": {
+          "id": "hn:50186455",
+          "source": "hn-algolia",
+          "title": "Claude Duet",
+          "at": "2026-10-21T19:40:18Z"
+        },
+        "b": {
+          "id": "gnews:5dcc605178848a4b",
+          "source": "gnews-rss",
+          "title": "Anthropic unveils Claude Duet, an AI agent for everyday work | ETIH EdTech News - EdTech Innovation Hub",
+          "at": "2026-10-22T23:07:35Z"
+        },
+        "shared": [
+          "claude",
+          "duet"
+        ]
+      },
+      {
+        "score": 0.645,
+        "blocked": "time-window",
+        "hours_apart": 37.4,
         "a": {
           "id": "hn:50180079",
           "source": "hn-algolia",
@@ -1113,108 +1157,16 @@
           "at": "2026-10-21T12:53:11Z"
         },
         "b": {
-          "id": "gnews:c10c68d667c654a3",
+          "id": "gnews:e3f37e8c1e6ffed4",
           "source": "gnews-rss",
-          "title": "Google Cloud expands model choice and flexibility, bringing OpenAI models to customers - Google Cloud",
-          "at": "2026-10-21T12:18:37Z"
+          "title": "Google Cloud to offer OpenAI models through Model Garden - TNGlobal",
+          "at": "2026-10-23T02:19:14Z"
         },
         "shared": [
           "openai",
           "model",
           "google",
           "cloud"
-        ]
-      },
-      {
-        "score": 0.592,
-        "blocked": "below-threshold",
-        "hours_apart": 0.3,
-        "a": {
-          "id": "rss:openai:95dedf578de78f3e",
-          "source": "rss-lab",
-          "title": "OpenAI models are coming to Google Cloud",
-          "at": "2026-10-21T12:00:00Z"
-        },
-        "b": {
-          "id": "gnews:c10c68d667c654a3",
-          "source": "gnews-rss",
-          "title": "Google Cloud expands model choice and flexibility, bringing OpenAI models to customers - Google Cloud",
-          "at": "2026-10-21T12:18:37Z"
-        },
-        "shared": [
-          "openai",
-          "model",
-          "google",
-          "cloud"
-        ]
-      },
-      {
-        "score": 0.586,
-        "blocked": "time-window",
-        "hours_apart": 24.9,
-        "a": {
-          "id": "hn:50180079",
-          "source": "hn-algolia",
-          "title": "OpenAI models are coming to Google Cloud",
-          "at": "2026-10-21T12:53:11Z"
-        },
-        "b": {
-          "id": "gnews:ac0e148c9006cea7",
-          "source": "gnews-rss",
-          "title": "Google Cloud adds OpenAI models with unified billing and enterprise controls - Tech Edition",
-          "at": "2026-10-22T13:48:58Z"
-        },
-        "shared": [
-          "openai",
-          "model",
-          "google",
-          "cloud"
-        ]
-      },
-      {
-        "score": 0.586,
-        "blocked": "time-window",
-        "hours_apart": 25.8,
-        "a": {
-          "id": "rss:openai:95dedf578de78f3e",
-          "source": "rss-lab",
-          "title": "OpenAI models are coming to Google Cloud",
-          "at": "2026-10-21T12:00:00Z"
-        },
-        "b": {
-          "id": "gnews:ac0e148c9006cea7",
-          "source": "gnews-rss",
-          "title": "Google Cloud adds OpenAI models with unified billing and enterprise controls - Tech Edition",
-          "at": "2026-10-22T13:48:58Z"
-        },
-        "shared": [
-          "openai",
-          "model",
-          "google",
-          "cloud"
-        ]
-      },
-      {
-        "score": 0.58,
-        "blocked": "below-threshold",
-        "hours_apart": 6.5,
-        "a": {
-          "id": "hn:50180734",
-          "source": "hn-algolia",
-          "title": "OpenAI's Agents Disabled Their Own Safety Monitoring Systems",
-          "at": "2026-10-21T13:36:07Z"
-        },
-        "b": {
-          "id": "gnews:74ddc092e26ae826",
-          "source": "gnews-rss",
-          "title": "OpenAI's most powerful AI models disabled their own safety monitoring — and one lied about it - CNBC",
-          "at": "2026-10-21T07:03:48Z"
-        },
-        "shared": [
-          "openai",
-          "disabl",
-          "safety",
-          "monitor"
         ]
       }
     ]
@@ -1223,97 +1175,97 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 3,
+      "streak_ok": 4,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 160,
-      "streak_fail": 0,
-      "items_last": 0
-    },
-    {
-      "id": "github",
-      "state": "ok",
-      "streak_ok": 160,
+      "streak_ok": 161,
       "streak_fail": 0,
       "items_last": 1
     },
     {
+      "id": "github",
+      "state": "ok",
+      "streak_ok": 161,
+      "streak_fail": 0,
+      "items_last": 3
+    },
+    {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 160,
+      "streak_ok": 161,
       "streak_fail": 0,
-      "items_last": 60
+      "items_last": 55
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 160,
+      "streak_ok": 161,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 160,
+      "streak_ok": 161,
       "streak_fail": 0,
-      "items_last": 75
+      "items_last": 70
     },
     {
       "id": "hn_title",
       "state": "ok",
-      "streak_ok": 14,
+      "streak_ok": 15,
       "streak_fail": 0,
-      "items_last": 11
+      "items_last": 2
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 72,
+      "streak_ok": 73,
       "streak_fail": 0,
-      "items_last": 3
+      "items_last": 4
     },
     {
       "id": "releases_atom",
       "state": "ok",
-      "streak_ok": 14,
+      "streak_ok": 15,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "rss_analyst",
       "state": "ok",
-      "streak_ok": 14,
+      "streak_ok": 15,
       "streak_fail": 0,
-      "items_last": 7
+      "items_last": 6
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 64,
+      "streak_ok": 65,
       "streak_fail": 0,
-      "items_last": 105
+      "items_last": 95
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 160,
+      "streak_ok": 161,
       "streak_fail": 0,
       "items_last": 40
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 160,
+      "streak_ok": 161,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.004894444444444444,
+    "hours": 0.004964444444444444,
     "stale": false
   },
   "hf": {
@@ -1334,9 +1286,9 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "enriched": 3,
+    "enriched": 4,
     "secondary": 3,
-    "query": "Hugging Face agent",
+    "query": "LLM agent",
     "mode": "search",
     "from_cache": false,
     "searches": 1,
@@ -1352,34 +1304,34 @@
     "url": "https://api.openalex.org/works",
     "sample": [
       {
-        "id": "W7171617880",
-        "openalexId": "https://openalex.org/W7171617880",
-        "year": 2026,
-        "doi": "https://doi.org/10.5281/zenodo.21686546",
+        "id": "2610.30113",
+        "openalexId": "https://openalex.org/W4412877164",
+        "year": 2025,
+        "doi": "https://doi.org/10.1145/3711896.3736570",
+        "enrichOnly": false
+      },
+      {
+        "id": "W4393160747",
+        "openalexId": "https://openalex.org/W4393160747",
+        "year": 2024,
+        "doi": "https://doi.org/10.1609/aaai.v38i17.29936",
         "enrichOnly": true
       },
       {
-        "id": "W7171936549",
-        "openalexId": "https://openalex.org/W7171936549",
-        "year": 2026,
-        "doi": "https://doi.org/10.5281/zenodo.21715175",
-        "enrichOnly": true
-      },
-      {
-        "id": "W7203931864",
-        "openalexId": "https://openalex.org/W7203931864",
-        "year": 2026,
-        "doi": "https://doi.org/10.5281/zenodo.22043399",
+        "id": "W4407759090",
+        "openalexId": "https://openalex.org/W4407759090",
+        "year": 2025,
+        "doi": "https://doi.org/10.52202/085713-0593",
         "enrichOnly": true
       }
     ]
   },
   "crossref": {
-    "ok": false,
+    "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "enriched": 0,
-    "query": "doi:10.5281/zenodo.21686546",
+    "enriched": 1,
+    "query": "doi:10.1145/3711896.3736570",
     "mode": "filter",
     "from_cache": false,
     "searches": 1,
@@ -1388,30 +1340,40 @@
     "papers_enrich_only": true,
     "url": "https://api.crossref.org/works",
     "merge_notes": [],
-    "sample": []
+    "sample": [
+      {
+        "id": "2610.30113",
+        "crossrefDoi": "https://doi.org/10.1145/3711896.3736570",
+        "issued": "2025-08-03",
+        "type": "proceedings-article",
+        "openalexId": "https://openalex.org/W4412877164",
+        "doi": "https://doi.org/10.1145/3711896.3736570",
+        "enrichOnly": false
+      }
+    ]
   },
   "hn": {
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 75,
+    "count": 70,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
     "queries_run": [
-      "OpenAI",
       "Anthropic",
-      "Hugging Face"
+      "Hugging Face",
+      "agents"
     ],
     "queries_ok": [
-      "OpenAI",
       "Anthropic",
-      "Hugging Face"
+      "Hugging Face",
+      "agents"
     ],
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 10,
+    "ai_dropped": 9,
     "url": "https://hn.algolia.com/api/v1/search",
     "title_queries": {
       "ok": true,
@@ -1431,11 +1393,11 @@
         "Qwen",
         "local model"
       ],
-      "hits": 14,
-      "candidates": 13,
-      "ai_dropped": 1,
-      "duplicates": 2,
-      "added": 11,
+      "hits": 17,
+      "candidates": 14,
+      "ai_dropped": 2,
+      "duplicates": 12,
+      "added": 2,
       "cap": 20,
       "merged_into_live_hn": true
     },
@@ -1443,28 +1405,28 @@
       {
         "id": "hn:50186037",
         "tag": "rest",
-        "score": 525,
+        "score": 549,
         "text": "Claude Duet"
       },
       {
         "id": "hn:50186129",
         "tag": "rest",
-        "score": 322,
+        "score": 323,
         "text": "Mistral Large 4"
       },
       {
         "id": "hn:50180079",
         "tag": "rest",
-        "score": 318,
+        "score": 322,
         "text": "OpenAI models are coming to Google Cloud"
       }
     ]
   },
   "rss": {
     "ok": true,
-    "soft_fail": false,
-    "soft_fail_reason": null,
-    "count": 105,
+    "soft_fail": true,
+    "soft_fail_reason": "ms-research:HTTP 502",
+    "count": 95,
     "shelf": 0,
     "brief": false,
     "pulse_only": true,
@@ -1506,45 +1468,46 @@
         "count": 12
       },
       {
-        "lab": "ms-research",
-        "url": "https://www.microsoft.com/en-us/research/blog/feed/",
-        "count": 10
-      },
-      {
         "lab": "google-research",
         "url": "https://research.google/blog/rss/",
         "count": 12
       }
     ],
-    "feeds_soft_fail": [],
+    "feeds_soft_fail": [
+      {
+        "lab": "ms-research",
+        "reason": "HTTP 502",
+        "soft_fail": true
+      }
+    ],
     "sample": [
+      {
+        "id": "rss:nvidia:693797d15c05b304",
+        "lab": "nvidia",
+        "tag": "rest",
+        "title": "Kazakhstan Expands Compute for Its AI Future",
+        "link": "https://blogs.nvidia.com/blog/kazakhstan-ai-compute-ecosystem/"
+      },
+      {
+        "id": "rss:huggingface:51888f116f5b0837",
+        "lab": "huggingface",
+        "tag": "rest",
+        "title": "Turning Database Grading into RL Rewards: Post-Training Agents with ThinkingBox",
+        "link": "https://huggingface.co/blog/microsoft/thinkingbox-training"
+      },
+      {
+        "id": "rss:openai:891b7e0bbf66f86d",
+        "lab": "openai",
+        "tag": "rest",
+        "title": "Build more responsive apps with the Decisions API",
+        "link": "https://openai.com/index/decisions-api"
+      },
       {
         "id": "rss:nvidia-dev:1335fc997bafd59f",
         "lab": "nvidia-dev",
         "tag": "rest",
         "title": "How to Read Data into GPU Memory in Python with NVIDIA GPUDirect Storage",
         "link": "https://developer.nvidia.com/blog/how-to-read-data-into-gpu-memory-in-python-with-nvidia-gpudirect-storage/"
-      },
-      {
-        "id": "rss:huggingface:67297d2df9a3d7f1",
-        "lab": "huggingface",
-        "tag": "rest",
-        "title": "OlmoEarth v1.3: State-of-the-art embeddings for the whole planet",
-        "link": "https://huggingface.co/blog/allenai/olmoearth-v1-3"
-      },
-      {
-        "id": "rss:nvidia-dev:e60d9e12febedcf9",
-        "lab": "nvidia-dev",
-        "tag": "rest",
-        "title": "Running Frontier-Class AI Models Across 8 NVIDIA DGX Spark Nodes",
-        "link": "https://developer.nvidia.com/blog/running-frontier-class-ai-models-across-8-nvidia-dgx-spark-nodes/"
-      },
-      {
-        "id": "rss:ms-research:0a538d1976ad4cbb",
-        "lab": "ms-research",
-        "tag": "rest",
-        "title": "Flint-interactive: A language for creating interactive data visualizations",
-        "link": "https://www.microsoft.com/en-us/research/blog/flint-interactive-a-language-for-creating-interactive-data-visualizations/"
       }
     ]
   },
@@ -1612,12 +1575,12 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 7,
+    "count": 6,
     "feeds": [
       {
         "feed": "simonw",
         "url": "https://simonwillison.net/atom/everything/",
-        "count": 2
+        "count": 1
       },
       {
         "feed": "latent-space",
@@ -1627,6 +1590,11 @@
     ],
     "feeds_soft_fail": [],
     "dropped": [
+      {
+        "feed": "simonw",
+        "title": "DE STAAT - FREEDOM (Official Music Video)",
+        "reason": "not-ai"
+      },
       {
         "feed": "simonw",
         "title": "Quoting Armin Ronacher",
@@ -1703,7 +1671,7 @@
       {
         "feed": "ollama",
         "action": "no-bump",
-        "newest": "v0.40.8",
+        "newest": "v0.40.9",
         "emitted": null,
         "baseline": "v0.40.6"
       },
@@ -1743,16 +1711,32 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 60,
-    "pool": 314,
+    "items": 55,
+    "pool": 388,
     "corroborators": [
       {
-        "id": "gnews:f4afaf788e52fb7c",
+        "id": "gnews:5dfdb5e38e3765d3",
+        "anchor_id": "rss:openai:891b7e0bbf66f86d",
+        "score": 1,
+        "title": "Build more responsive apps with the Decisions API - OpenAI",
+        "publisher": "OpenAI",
+        "self_repost": true
+      },
+      {
+        "id": "gnews:b2c146cbf1135202",
+        "anchor_id": "rss:nvidia-dev:1335fc997bafd59f",
+        "score": 1,
+        "title": "How to Read Data into GPU Memory in Python with NVIDIA GPUDirect Storage | NVIDIA Technical Blog - NVIDIA Developer",
+        "publisher": "NVIDIA Developer",
+        "self_repost": true
+      },
+      {
+        "id": "gnews:f13e7e4ad5baa75b",
         "anchor_id": "rss:openai:eda525050cea8fce",
-        "score": 0.758,
-        "title": "Uber to use ChatGPT Work for more than 30K employees (OPENAI:Private) - Seeking Alpha",
-        "publisher": "Seeking Alpha",
-        "self_repost": false
+        "score": 1,
+        "title": "Uber brings ChatGPT Work to all employees with OpenAI - OpenAI",
+        "publisher": "OpenAI",
+        "self_repost": true
       },
       {
         "id": "gnews:398e9e22f7a09a07",
@@ -1763,100 +1747,28 @@
         "self_repost": false
       },
       {
-        "id": "gnews:98965ce4ddaf688e",
-        "anchor_id": "hn:50181880",
-        "score": 0.781,
-        "title": "OpenAI to make its most advanced AI models available in Google Cloud - SiliconANGLE",
+        "id": "gnews:6f3a1e904572d757",
+        "anchor_id": "rss:nvidia-dev:e60d9e12febedcf9",
+        "score": 1,
+        "title": "Running Frontier-Class AI Models Across 8 NVIDIA DGX Spark Nodes | NVIDIA Technical Blog - NVIDIA Developer",
+        "publisher": "NVIDIA Developer",
+        "self_repost": true
+      },
+      {
+        "id": "gnews:9e5949c8aaf01502",
+        "anchor_id": "rss:nvidia:19fce2b28a327610",
+        "score": 1,
+        "title": "NVIDIA Unveils Minerva to Bring End-to-End Observability for AI Factories - NVIDIA Blog",
+        "publisher": "NVIDIA Blog",
+        "self_repost": true
+      },
+      {
+        "id": "gnews:7f5d8d453b127633",
+        "anchor_id": "hn:50188944",
+        "score": 0.662,
+        "title": "Anthropic introduces Claude Duet, a proactive AI agent for professionals - SiliconANGLE",
         "publisher": "SiliconANGLE",
         "self_repost": false
-      },
-      {
-        "id": "gnews:ac0e148c9006cea7",
-        "anchor_id": "hn:50181880",
-        "score": 0.737,
-        "title": "Google Cloud adds OpenAI models with unified billing and enterprise controls - Tech Edition",
-        "publisher": "Tech Edition",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:c10c68d667c654a3",
-        "anchor_id": "hn:50181880",
-        "score": 0.737,
-        "title": "Google Cloud expands model choice and flexibility, bringing OpenAI models to customers - Google Cloud",
-        "publisher": "Google Cloud",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:5e107589d005f271",
-        "anchor_id": "rss:openai:6400feb681472530",
-        "score": 1,
-        "title": "What FDE means at OpenAI - OpenAI",
-        "publisher": "OpenAI",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:4f2fef4df805819d",
-        "anchor_id": "hn:50180734",
-        "score": 0.916,
-        "title": "OpenAI says an AI agent lied about disabling its safety monitoring system - The Verge",
-        "publisher": "The Verge",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:d9ff6fb38d80dd70",
-        "anchor_id": "hn:50180734",
-        "score": 0.751,
-        "title": "Experts on OpenAI Agents That Disabled Monitoring Systems - AI Magazine",
-        "publisher": "AI Magazine",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:d44cd61a5112bad2",
-        "anchor_id": "hn:50193951",
-        "score": 1,
-        "title": "Hugging Face’s New AI Biology Model Lets You Chat With DNA - WIRED",
-        "publisher": "WIRED",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:e0c74b7a220b62ce",
-        "anchor_id": "hn:50186043",
-        "score": 1,
-        "title": "Google staff resign in backlash over its AI contracts with military - Kahawatungu",
-        "publisher": "Kahawatungu",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:342226fe47b05151",
-        "anchor_id": "hn:50186043",
-        "score": 1,
-        "title": "Google staff resign in backlash over its AI contracts with military - BBC",
-        "publisher": "BBC",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:5f572e84633ed3f0",
-        "anchor_id": "hn:50195420",
-        "score": 1,
-        "title": "Why AI’s Deepest Mind Believes the World Is About to Change Radically - WSJ",
-        "publisher": "WSJ",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:d343c391aea730cd",
-        "anchor_id": "hn:50195420",
-        "score": 1,
-        "title": "Why AI’s deepest mind believes the world is about to change radically - Livemint",
-        "publisher": "Livemint",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:c2d9307bac05c8a4",
-        "anchor_id": "rss:openai:3f1a11956436b167",
-        "score": 1,
-        "title": "Broad access through consistent standards - OpenAI",
-        "publisher": "OpenAI",
-        "self_repost": true
       },
       {
         "id": "gnews:c40f0eb7024beba0",
@@ -1867,20 +1779,12 @@
         "self_repost": true
       },
       {
-        "id": "gnews:8a0763b856beb9bd",
-        "anchor_id": "hn:50194932",
-        "score": 0.932,
-        "title": "OpenAI says its AI agents disabled their own monitoring - Good Morning America",
-        "publisher": "Good Morning America",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:c59c509ae8401031",
-        "anchor_id": "hn:50194932",
-        "score": 0.932,
-        "title": "OpenAI says its AI agents disabled their own monitoring - ABC News - Breaking News, Latest News and Videos",
-        "publisher": "ABC News - Breaking News, Latest News and Videos",
-        "self_repost": false
+        "id": "gnews:c2d9307bac05c8a4",
+        "anchor_id": "rss:openai:3f1a11956436b167",
+        "score": 1,
+        "title": "Broad access through consistent standards - OpenAI",
+        "publisher": "OpenAI",
+        "self_repost": true
       },
       {
         "id": "gnews:c000b7e3ff343055",
@@ -1891,20 +1795,44 @@
         "self_repost": true
       },
       {
-        "id": "gnews:c78caddf9d53a8c4",
-        "anchor_id": "hn:50193043",
-        "score": 0.75,
-        "title": "Granite Speech 5.0 2B: what IBM shipped on 7 October - OrcaRouter",
-        "publisher": "OrcaRouter",
-        "self_repost": false
-      },
-      {
         "id": "gnews:13207bd92e6d1d8a",
         "anchor_id": "hn:50180752",
         "score": 1,
         "title": "Using thousands of AI agents to uncover new leads in biological data - OpenAI",
         "publisher": "OpenAI",
         "self_repost": true
+      },
+      {
+        "id": "gnews:d75ec2c09739710a",
+        "anchor_id": "hn:50185273",
+        "score": 0.943,
+        "title": "Anthropic posts $80bn loss in first half of 2026: WSJ - Al Jazeera",
+        "publisher": "Al Jazeera",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:80ff1bea39361164",
+        "anchor_id": "hn:50185273",
+        "score": 0.881,
+        "title": "Anthropic logged net loss of over $80 billion in first half of 2026 - Reuters",
+        "publisher": "Reuters",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:08189c1beb067bc7",
+        "anchor_id": "rss:openai:ea92da5c121ecb45",
+        "score": 1,
+        "title": "How we built ChatGPT’s novel ad stack for user trust and relevance - OpenAI",
+        "publisher": "OpenAI",
+        "self_repost": true
+      },
+      {
+        "id": "gnews:262e98696ae6b2d0",
+        "anchor_id": "hn:50182171",
+        "score": 1,
+        "title": "Anthropic to publicly file for IPO as early as Friday, sources say - Yahoo Finance",
+        "publisher": "Yahoo Finance",
+        "self_repost": false
       },
       {
         "id": "gnews:6b86904830126c5a",
@@ -1923,59 +1851,59 @@
         "self_repost": true
       },
       {
-        "id": "gnews:31357a975d8b054b",
-        "anchor_id": "rss:nvidia:4ff2ab2e9901564e",
-        "score": 1,
-        "title": "Bringing the Spark to Europe: Local Intelligence Powers Next Wave of Agents - NVIDIA Blog",
-        "publisher": "NVIDIA Blog",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:5c6c54383ce2efed",
-        "anchor_id": "hn:50176872",
-        "score": 1,
-        "title": "Google DeepMind AI agents beat Minecraft in 27 hours - TechGig",
-        "publisher": "TechGig",
+        "id": "gnews:c10c68d667c654a3",
+        "anchor_id": "hn:50181880",
+        "score": 0.752,
+        "title": "Google Cloud expands model choice and flexibility, bringing OpenAI models to customers - Google Cloud",
+        "publisher": "Google Cloud",
         "self_repost": false
       },
       {
-        "id": "gnews:80fca9a09168996a",
-        "anchor_id": "hn:50176872",
-        "score": 0.912,
-        "title": "Google DeepMind’s AI Agents Beat Minecraft by Coding for 27 Hours - Spiel Times",
-        "publisher": "Spiel Times",
+        "id": "gnews:74c60de87b06e3eb",
+        "anchor_id": "hn:50181880",
+        "score": 0.745,
+        "title": "OpenAI to sell its top models on Google Cloud in latest enterprise push - Reuters",
+        "publisher": "Reuters",
         "self_repost": false
       },
       {
-        "id": "gnews:b82884f866fdae91",
-        "anchor_id": "hn:50176872",
-        "score": 0.68,
-        "title": "Google DeepMind Agents Defeat Minecraft Dragon in 27 Hours - SuaraGarut.ID",
-        "publisher": "SuaraGarut.ID",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:74ddc092e26ae826",
-        "anchor_id": "hn:50182465",
-        "score": 0.866,
-        "title": "OpenAI's most powerful AI models disabled their own safety monitoring — and one lied about it - CNBC",
+        "id": "gnews:7164c49e2a90e80a",
+        "anchor_id": "hn:50181880",
+        "score": 0.73,
+        "title": "OpenAI to bring AI models to Google's cloud, in further expansion beyond Microsoft - CNBC",
         "publisher": "CNBC",
         "self_repost": false
       },
       {
-        "id": "gnews:b4fd67bdc7062286",
-        "anchor_id": "hn:50183655",
-        "score": 0.831,
-        "title": "OpenAI says its agents turned off own safeguards - Al Jazeera",
-        "publisher": "Al Jazeera",
-        "self_repost": false
+        "id": "gnews:9b84db4c28e60e64",
+        "anchor_id": "rss:nvidia-dev:667f38af6af566e8",
+        "score": 1,
+        "title": "Achieve Productive AI Capacity Faster and More Predictably with NVIDIA DSX POD | NVIDIA Technical Blog - NVIDIA Developer",
+        "publisher": "NVIDIA Developer",
+        "self_repost": true
       },
       {
-        "id": "gnews:5aab45c8560ef906",
-        "anchor_id": "rss:openai:39cad894cdd240fb",
+        "id": "gnews:32173f9b8dd82a57",
+        "anchor_id": "rss:nvidia-dev:2860be0e7228668b",
         "score": 1,
-        "title": "How AT&T is rethinking in-house legal work with OpenAI - OpenAI",
-        "publisher": "OpenAI",
+        "title": "Inside NVIDIA Sentry: Secure AI Agents at Runtime | NVIDIA Technical Blog - NVIDIA Developer",
+        "publisher": "NVIDIA Developer",
+        "self_repost": true
+      },
+      {
+        "id": "gnews:50703c29049bb871",
+        "anchor_id": "rss:nvidia-dev:c50dcf48a1f1a39a",
+        "score": 1,
+        "title": "How NVIDIA OpenShell Reference Architecture Secures and Governs AI Agent Workloads at Scale - NVIDIA Developer",
+        "publisher": "NVIDIA Developer",
+        "self_repost": true
+      },
+      {
+        "id": "gnews:bda1a358e9972bb8",
+        "anchor_id": "rss:nvidia-dev:13c3d402e00f3456",
+        "score": 1,
+        "title": "Developing an AI Factory Digital Twin with an Agent-Assisted Workflow - NVIDIA Developer",
+        "publisher": "NVIDIA Developer",
         "self_repost": true
       }
     ],
@@ -1991,38 +1919,38 @@
     "pulse_only": true,
     "url_template": "https://news.google.com/rss/search?q={QUERY}&hl=en-US&gl=US&ceid=US:en",
     "queried": [
-      "Hugging Face",
       "OpenAI",
-      "Google DeepMind",
-      "Gemini"
+      "Anthropic",
+      "Gemini",
+      "NVIDIA AI"
     ],
     "queries_ok_list": [
-      "Hugging Face",
       "OpenAI",
-      "Google DeepMind",
-      "Gemini"
+      "Anthropic",
+      "Gemini",
+      "NVIDIA AI"
     ],
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:98e4042034a1b9f0",
-        "title": "OpenAI Data Center Developer SB Energy Considers IPO in December or Later, The Information Reports - marketscreener.com",
-        "publisher": "marketscreener.com",
-        "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxPZ1VFQWV1VXVUNldMajRqU3pzcFlQaExXZlBpbmNKV1F0LTFvYV8tZjc5MkRMZ3VfTlhFLVB3OTl2bGVreV9BM3YxNnotY1BoWHRDOElzcktDb25IakFBTGpTc2pGYndQakFfaUwySjJaV1lMT1hndDhQdTNRRm13a1pHNXp1eGJQODI2MDJrMGItVU1MWEJNNnNlLTVmdklaMXcwRGhsbW1ocFJPTzd3OEdfT3pTcGttUVRTYWZIMk5pTHY2THkxeFdrQjNQRlJYaWp1bmNSQ1B1WXRNejBvMWQ3Tkw?oc=5",
+        "id": "gnews:d341575c20299790",
+        "title": "Less admin, more heart: StonedMNL’s founder balances the hustle with Gemini - CoinGeek",
+        "publisher": "CoinGeek",
+        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxObzBkd0lNUEtsOTFWYlN1UWpLOU1QcTJHdGVrYmNTcWp1VGVhLWxGdTdIS0o4MEZiTndQdDQtVEZ5WC1ib25UdVAxWDlsRmc4V2JtU3BYMzRYaXFfQlNjbDVoUDEzU2xnRlhfamNzZ282LWV3Q2haTFZJdjFpUmVRV3lNVG5IMnBvdTFaay1oRVY2N3lSOF9SWA?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:f9390eb79af580e2",
-        "title": "External evaluators find flaws in OpenAI's AI monitoring system in pilot review - KSL News",
-        "publisher": "KSL News",
-        "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNLTFJY3BVWHQ2dmxHcWhISHpuQVIyRlZJcmFzdkhtVGt6Yl9ZZmJhNDFGblJHc1NxX1hIUnFsMDJqa3lxeUpkZUxvNXcyWnBUVW5mSEpETkZYb1lrMUJOVEVnSFZOOU5EWFRGRmRTMk81ZzlYVnQ2d0NxSUx6N2F1d3FCUnppaDFTUDVhcHhnSVhtMWlZcllRTkRfYWdJZHg3NnZ3R21RYWVoMG5BbmE1SEg4b1M3QQ?oc=5",
+        "id": "gnews:577b34c02aa5bd11",
+        "title": "Gemini can now use your emails and photos to answer questions in Android Auto - MIXED Reality News",
+        "publisher": "MIXED Reality News",
+        "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNU3JWcllvUWhKTHB1czJQelhQSENrQ1VyYjdCMkZqVDg0Q2hIa2lfaXN0cnoxd1pGUTNrMUltN2ljaF90VG82a3ZTcF9IVFdGMmVZaU5WeE9TdUUwWXZ2OFVDVnJDUlhFZFlWWDVCX3pQUHY0Q2ZSeVZjX1dTUjRwVG93?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:d2ee1370c91664b0",
-        "title": "Agentic AI Foundation Announces Four New Projects: Agent Skills, Open Responses, OpenEnv, and OpenSandbox - VMblog",
-        "publisher": "VMblog",
-        "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOc1ZqaG8yamdoZEJMa1RTU2JlMlQtczVCMG00T2NiOVZ3c3lsYTAxMnZ3Uk01aGJQWmVaMUJpbGc2YVlDTWtvMHhYTEgyNWVjcDRXUWZqalhNNTM2WTB5RmVoUnpMXzRROTlHUWRLOW9vQXN1NTFTNmRid0didThmdEFxLVhuMnFpVTFMSzJneVUwaVVrSXg5M0ppd0NsbkxkV093MXFiQjhDSUxUa0FWNTB4WkxiMVdPSXBWQmVmQ1U3RGJF?oc=5",
+        "id": "gnews:b09116bb6630f773",
+        "title": "Anthropic security official warns of worsening cyber threats, risks to critical infrastructure - Anadolu Ajansı",
+        "publisher": "Anadolu Ajansı",
+        "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPZEpidTlJWm1sN1E4X3dnMnZUS2VPcGVYRG00c3R2ZnVuZ2w5eml6RDZUczZzN0d2Ykp1NDUzY0hTZHAyN1JjQlZxLUpmcGw0WGdJVWdyLWRINlVzcnNfWW00VnQ3dWFjZkVCT1l2c3VuQXFNWlU0VWY2TE5WeElmWXphYlE2R0R3LVdTTU1ZcWRkWmRTYThKWm42b1piQUJMX08tZmFYc3g0bWlSellvSkZBQjQ0TlI4M2FibGlfNVRyZjdlRXZ6RGxVdw?oc=5",
         "tag": "rest"
       }
     ]
@@ -2052,8 +1980,8 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "query": "LLM agent eval harness",
-    "shelf": 1,
+    "query": "OWASP LLM",
+    "shelf": 3,
     "from_cache": false,
     "searches": 1,
     "rate_limit_remaining": 9,
@@ -2063,13 +1991,21 @@
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
-        "label": "ramiro-c/agent-evals",
-        "href": "https://github.com/ramiro-c/agent-evals"
+        "label": "heyvaldemar/kubernetes-air-gapped-ai-agent",
+        "href": "https://github.com/heyvaldemar/kubernetes-air-gapped-ai-agent"
+      },
+      {
+        "label": "api-evangelist/agentcheck-care",
+        "href": "https://github.com/api-evangelist/agentcheck-care"
+      },
+      {
+        "label": "JesseLanceB/llm-chatbot-security",
+        "href": "https://github.com/JesseLanceB/llm-chatbot-security"
       }
     ]
   },
   "shelf": {
-    "count": 18,
+    "count": 20,
     "brief": false
   },
   "wikidata": {
@@ -2077,9 +2013,9 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "seeds": [
-      "MITRE",
       "JFrog",
-      "Trail of Bits"
+      "Trail of Bits",
+      "stigmergy"
     ],
     "searches": 3,
     "from_cache": false,
@@ -2088,17 +2024,6 @@
     "deny_grounding_only": true,
     "url": "https://www.wikidata.org/w/api.php",
     "hints": [
-      {
-        "seed": "MITRE",
-        "qid": "Q627039",
-        "label": "MITRE Corporation",
-        "description": "company",
-        "status": "matched",
-        "source": "wikidata",
-        "briefEligible": false,
-        "pulseLeadEligible": false,
-        "denyGroundingOnly": true
-      },
       {
         "seed": "JFrog",
         "qid": "Q98608948",
@@ -2116,6 +2041,17 @@
         "label": null,
         "description": null,
         "status": "unresolved",
+        "source": "wikidata",
+        "briefEligible": false,
+        "pulseLeadEligible": false,
+        "denyGroundingOnly": true
+      },
+      {
+        "seed": "stigmergy",
+        "qid": "Q2141158",
+        "label": "stigmergy",
+        "description": "mechanism of indirect coordination, through the environment, between agents or actions",
+        "status": "matched",
         "source": "wikidata",
         "briefEligible": false,
         "pulseLeadEligible": false,

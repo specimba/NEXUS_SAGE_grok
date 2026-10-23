@@ -7,64 +7,53 @@ import type { DigestUnlockSnapshot } from "@/lib/digest-unlock";
 export const DIGEST_UNLOCK: DigestUnlockSnapshot = {
   "schema": 1,
   "cycleId": "003",
-  "pickDate": "2026-10-22",
-  "frozenAt": "2026-10-22T03:21:13.304Z",
-  "leadId": "cl:hn:50182465",
+  "pickDate": "2026-10-23",
+  "frozenAt": "2026-10-23T03:20:43.922Z",
+  "leadId": "cl:hn:50188944",
   "lead": {
-    "id": "cl:hn:50182465",
+    "id": "cl:hn:50188944",
     "kind": "lead",
-    "title": "OpenAI models disabled their own safety monitoring and lied about it",
-    "take": "8 SRC · sig 3 · pick 2026-10-22",
+    "title": "Anthropic opens research preview of Claude Duet, a agent for professionals",
+    "take": "2 SRC · sig 2 · pick 2026-10-23",
     "why": "LEAD_TODAY · picked · frozen at daily pick",
     "move": "Digest/Voice follow Brief lead · cycle label 003",
-    "url": "https://www.cnbc.com/2026/10/21/openai-ai-models-safety-monitoring.html",
-    "sources": 8,
-    "sig": 3
+    "url": "https://www.reuters.com/technology/anthropic-unveils-claude-duet-ai-agent-app-2026-10-21/",
+    "sources": 2,
+    "sig": 2
   },
   "rows": [
     {
       "id": "cl:rss:openai:95dedf578de78f3e",
       "kind": "companion",
       "title": "OpenAI models are coming to Google Cloud",
-      "take": "7 SRC · sig 250",
+      "take": "5 SRC · sig 322",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
       "url": "https://openai.com/index/openai-models-google-cloud",
-      "sources": 7,
-      "sig": 250
+      "sources": 5,
+      "sig": 322
     },
     {
-      "id": "cl:hn:50183655",
+      "id": "cl:hn:50177795",
       "kind": "rest",
-      "title": "OpenAI Says 2 Internal AI Coding Agents Turned Off Their Own Safeguards",
-      "take": "4 SRC · sig 2",
+      "title": "Anthropic disclosed an $80.7B net loss for the first half of 2026",
+      "take": "3 SRC · sig 17",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
-      "url": "https://www.pcmag.com/news/openai-says-2-internal-ai-coding-agents-turned-off-their-own-safeguards",
-      "sources": 4,
-      "sig": 2
-    },
-    {
-      "id": "cl:hn:50176872",
-      "kind": "rest",
-      "title": "Google DeepMind says four AI agents beat Minecraft in 27 hours",
-      "take": "4 SRC · sig 3",
-      "why": "Top corroborated Wire cluster · same pack as lead pick",
-      "move": "Digest row · never displaces Brief lead",
-      "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/google-deepmind-claims-four-gemini-4-agents-beat-minecraft-in-27-hours-by-writing-2-783-programs-of-their-own-the-ai-team-died-605-times-on-easy-difficulty-and-ran-up-an-estimated-usd520-in-tokens",
-      "sources": 4,
-      "sig": 3
-    },
-    {
-      "id": "cl:hn:50186043",
-      "kind": "rest",
-      "title": "Google staff resign in backlash over its AI contracts with military",
-      "take": "3 SRC · sig 115",
-      "why": "Top corroborated Wire cluster · same pack as lead pick",
-      "move": "Digest row · never displaces Brief lead",
-      "url": "https://www.bbc.com/news/articles/cmreyvepnv0po",
+      "url": "https://www.wsj.com/tech/ai/anthropic-revenue-growth-ipo-accaf0f1",
       "sources": 3,
-      "sig": 115
+      "sig": 17
+    },
+    {
+      "id": "cl:rss:huggingface:94a5f6526eada9bc",
+      "kind": "rest",
+      "title": "NVIDIA Kumo Relational Outperforms Supervised Machine Learning on Relational Data, No Training Required",
+      "take": "2 SRC · sig 1",
+      "why": "Top corroborated Wire cluster · same pack as lead pick",
+      "move": "Digest row · never displaces Brief lead",
+      "url": "https://huggingface.co/blog/nvidia/kumo-relational",
+      "sources": 2,
+      "sig": 1
     }
   ]
 } as const;

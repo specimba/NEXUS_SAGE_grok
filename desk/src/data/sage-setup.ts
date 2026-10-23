@@ -195,7 +195,7 @@ const D: NonNullable<SageSetupView["limits"]>["defaults"] = {
 };
 
 export const SAGE_SETUP: SageSetupView = {
-  "stamped_at": "2026-10-22T18:20:39Z",
+  "stamped_at": "2026-10-23T03:20:26Z",
   "config_path": "desk/config/sage-sources.json",
   "config_hash": "e3e9003a7d92",
   "status": "ok",
@@ -208,7 +208,7 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "hn",
       "on": true,
       "caps": "cap 20",
-      "last_rows": 75,
+      "last_rows": 70,
       "state": "ok"
     },
     {
@@ -222,7 +222,7 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "lab_rss",
       "on": true,
       "caps": "cap_per_feed 12 · timeout_s 10 · feeds 9",
-      "last_rows": 105,
+      "last_rows": 95,
       "state": "ok"
     },
     {
@@ -236,28 +236,28 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "gnews",
       "on": true,
       "caps": "cap 32",
-      "last_rows": 60,
+      "last_rows": 55,
       "state": "ok"
     },
     {
       "id": "github",
       "on": true,
       "caps": "cap 5",
-      "last_rows": 1,
+      "last_rows": 3,
       "state": "ok"
     },
     {
       "id": "openalex",
       "on": true,
       "caps": "—",
-      "last_rows": 3,
+      "last_rows": 4,
       "state": "ok"
     },
     {
       "id": "crossref",
       "on": true,
       "caps": "—",
-      "last_rows": 0,
+      "last_rows": 1,
       "state": "ok"
     },
     {
@@ -292,7 +292,7 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "analyst_rss",
       "on": true,
       "caps": "cap_per_feed 6 · timeout_s 10 · feeds 2",
-      "last_rows": 7,
+      "last_rows": 6,
       "state": "ok"
     },
     {
