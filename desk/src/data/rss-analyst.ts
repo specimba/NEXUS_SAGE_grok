@@ -17,7 +17,7 @@ export type RssAnalystRow = {
   cluster_id?: string;
 };
 
-export const RSS_ANALYST_AT: string | null = "2026-10-23T08:26:11Z";
+export const RSS_ANALYST_AT: string | null = "2026-10-23T08:54:22Z";
 
 export const RSS_ANALYST: RssAnalystRow[] = [
   { id: "anl:simonw:2f38489938aada9c", feed: "simonw" as const, title: "Donating Agent Skills to the Agentic AI Foundation", link: "https://simonwillison.net/2026/Oct/22/donating-agent-skills/", published: "2026-10-22T18:09:56Z", summary: "Donating Agent Skills to the Agentic AI Foundation News today from Anthropic: We’re committed to keeping Agent Skills open, community-driven, and vendor-neutral. Today, we are donating the standard to the Agentic AI Foundation (AAIF) under the Linux Foundation, which we co-founded with Block and OpenAI last year, and to which we donated the Model Context Protocol (MCP). I'm pleased to note I call…", source: "rss-analyst" as const, recap: false, tag: "rest" as const, first_seen: "2026-10-22T18:20:39Z", is_new: false, cluster_id: "cl:anl:simonw:2f38489938aada9c" },

@@ -2,8 +2,8 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-23T08:26:11Z",
-  "config_hash": "e3e9003a7d92",
+  "stamped_at": "2026-10-23T08:54:22Z",
+  "config_hash": "6dd1c3db6716",
   "config_status": "ok",
   "crawl_sources": [
     {
@@ -11,7 +11,7 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 140,
+      "duration_ms": 123,
       "paused_until": null,
       "reason": null
     },
@@ -20,7 +20,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 3186,
+      "duration_ms": 3019,
       "paused_until": null,
       "reason": null
     },
@@ -29,7 +29,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 4,
-      "duration_ms": 423,
+      "duration_ms": 390,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 181,
+      "duration_ms": 488,
       "paused_until": null,
       "reason": null
     },
@@ -46,8 +46,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 69,
-      "duration_ms": 8251,
+      "rows": 70,
+      "duration_ms": 8284,
       "paused_until": null,
       "reason": null
     },
@@ -56,7 +56,7 @@
       "label": "HN title",
       "status": "ok",
       "rows": 2,
-      "duration_ms": 8201,
+      "duration_ms": 8236,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 105,
-      "duration_ms": 18027,
+      "duration_ms": 17730,
       "paused_until": null,
       "reason": null
     },
@@ -83,7 +83,7 @@
       "label": "analyst RSS",
       "status": "ok",
       "rows": 6,
-      "duration_ms": 2161,
+      "duration_ms": 2176,
       "paused_until": null,
       "reason": null
     },
@@ -92,7 +92,7 @@
       "label": "releases",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 4977,
+      "duration_ms": 5104,
       "paused_until": null,
       "reason": null
     },
@@ -100,8 +100,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 53,
-      "duration_ms": 6460,
+      "rows": 56,
+      "duration_ms": 6442,
       "paused_until": null,
       "reason": null
     },
@@ -110,7 +110,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 360,
+      "duration_ms": 350,
       "paused_until": null,
       "reason": null
     },
@@ -119,16 +119,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4419,
+      "duration_ms": 4406,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 62908,
-    "sources_wall_ms": 18028,
-    "papers_lane_ms": 3937,
-    "slowest_source_ms": 18027,
+    "sources_ms": 62870,
+    "sources_wall_ms": 17731,
+    "papers_lane_ms": 4027,
+    "slowest_source_ms": 17730,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -146,31 +146,31 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 18599,
-    "startup_ms": 54,
-    "main_ms": 18620
+    "wall_ms": 18353,
+    "startup_ms": 57,
+    "main_ms": 18373
   },
   "multi_source_independent": 11,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
     "multi_source_independent": 11,
-    "multi_source_raw": 24,
-    "self_reposts": 17,
-    "items_in": 283,
-    "clusters_out": 241,
-    "collapsed": 42,
+    "multi_source_raw": 25,
+    "self_reposts": 18,
+    "items_in": 287,
+    "clusters_out": 246,
+    "collapsed": 41,
     "multi_source": 11,
-    "multi_member": 30,
+    "multi_member": 31,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 36,
+    "new_items": 12,
     "per_source": {
-      "hn-algolia": 69,
+      "hn-algolia": 70,
       "rss-lab": 105,
       "rss-security": 40,
-      "gnews-rss": 53,
+      "gnews-rss": 56,
       "gmail-news": 10,
       "rss-analyst": 6
     },
@@ -243,7 +243,7 @@
           "rss-lab",
           "gnews-rss"
         ],
-        "size": 6,
+        "size": 5,
         "score": 1,
         "members": [
           {
@@ -254,32 +254,25 @@
             "publisher": "openai"
           },
           {
+            "id": "gnews:8fb1bdff5490f9b4",
+            "source": "gnews-rss",
+            "title": "OpenAI, Poland's NASK to Collaborate on AI Safety, Security - marketscreener.com",
+            "at": "2026-10-23T08:34:53Z",
+            "publisher": "marketscreener.com"
+          },
+          {
+            "id": "gnews:1951dbea4f4e9ee0",
+            "source": "gnews-rss",
+            "title": "OpenAI and Poland’s NASK to cooperate on AI safety — Channel NewsAsia - UA.NEWS",
+            "at": "2026-10-23T07:24:08Z",
+            "publisher": "UA.NEWS"
+          },
+          {
             "id": "gnews:5c33ac10cf3202fa",
             "source": "gnews-rss",
             "title": "OpenAI, Poland's NASK partner on AI safety - Breakingthenews.net",
             "at": "2026-10-23T07:20:00Z",
             "publisher": "Breakingthenews.net"
-          },
-          {
-            "id": "gnews:62a38abee58ca721",
-            "source": "gnews-rss",
-            "title": "OpenAI and Poland’s NASK collaborate on AI safety research By Reuters - Investing.com",
-            "at": "2026-10-23T06:45:00Z",
-            "publisher": "Investing.com"
-          },
-          {
-            "id": "gnews:c85ffaf4698fcb02",
-            "source": "gnews-rss",
-            "title": "OpenAI and Poland's NASK collaborate on AI safety research - marketscreener.com",
-            "at": "2026-10-23T06:25:46Z",
-            "publisher": "marketscreener.com"
-          },
-          {
-            "id": "gnews:2f694cfb3e92587c",
-            "source": "gnews-rss",
-            "title": "OpenAI and Poland’s NASK collaborate on AI safety research - Reuters",
-            "at": "2026-10-23T06:25:00Z",
-            "publisher": "Reuters"
           },
           {
             "id": "gnews:c0a8aa82fb0adbb1",
@@ -298,7 +291,7 @@
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.972,
+        "score": 0.97,
         "members": [
           {
             "id": "hn:50202402",
@@ -323,7 +316,7 @@
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.671,
+        "score": 0.67,
         "members": [
           {
             "id": "hn:50188944",
@@ -392,21 +385,14 @@
         ]
       },
       {
-        "title": "Anthropic disclosed an $80.7B net loss for the first half of 2026",
+        "title": "Anthropic posts $80B loss in first half of 2026",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 3,
-        "score": 0.895,
+        "size": 2,
+        "score": 0.894,
         "members": [
-          {
-            "id": "hn:50177795",
-            "source": "hn-algolia",
-            "title": "Anthropic disclosed an $80.7B net loss for the first half of 2026",
-            "at": "2026-10-21T08:51:15Z",
-            "publisher": null
-          },
           {
             "id": "hn:50185273",
             "source": "hn-algolia",
@@ -635,6 +621,23 @@
         ]
       },
       {
+        "title": "LLMs are making formal software verification feasible at a much larger scale",
+        "sources": [
+          "hn-algolia"
+        ],
+        "all_sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:4ae0e32a4655e09a",
+            "publisher": "Anthropic",
+            "title": "LLMs are making formal software verification feasible at a much larger scale - Anthropic"
+          }
+        ]
+      },
+      {
         "title": "How to Read Data into GPU Memory in Python with NVIDIA GPUDirect Storage",
         "sources": [
           "rss-lab"
@@ -849,10 +852,6 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "AiThority",
-          "title": "Qblox Advances Hybrid Quantum Computing with Integration of NVIDIA DGX Spark leveraging NVIDIA NVQLink - AiThority"
-        },
-        {
           "publisher": "SFGATE",
           "title": "Horoscope for Friday, 10/23/26 by Christopher Renstrom - SFGATE"
         }
@@ -862,7 +861,7 @@
     },
     "gnews_near_misses": [
       {
-        "score": 0.686,
+        "score": 0.687,
         "blocked": "short-title",
         "hours_apart": 18.1,
         "a": {
@@ -883,7 +882,7 @@
         ]
       },
       {
-        "score": 0.686,
+        "score": 0.687,
         "blocked": "short-title",
         "hours_apart": 17.7,
         "a": {
@@ -946,7 +945,7 @@
         ]
       },
       {
-        "score": 0.642,
+        "score": 0.643,
         "blocked": "time-window",
         "hours_apart": 34.9,
         "a": {
@@ -967,7 +966,7 @@
         ]
       },
       {
-        "score": 0.642,
+        "score": 0.643,
         "blocked": "time-window",
         "hours_apart": 34.5,
         "a": {
@@ -988,7 +987,7 @@
         ]
       },
       {
-        "score": 0.632,
+        "score": 0.633,
         "blocked": "time-window",
         "hours_apart": 35.5,
         "a": {
@@ -1009,7 +1008,7 @@
         ]
       },
       {
-        "score": 0.632,
+        "score": 0.633,
         "blocked": "time-window",
         "hours_apart": 35.1,
         "a": {
@@ -1054,7 +1053,7 @@
         ]
       },
       {
-        "score": 0.686,
+        "score": 0.687,
         "blocked": "short-title",
         "hours_apart": 18.1,
         "a": {
@@ -1075,7 +1074,7 @@
         ]
       },
       {
-        "score": 0.686,
+        "score": 0.687,
         "blocked": "short-title",
         "hours_apart": 17.7,
         "a": {
@@ -1096,7 +1095,7 @@
         ]
       },
       {
-        "score": 0.669,
+        "score": 0.665,
         "blocked": "time-window",
         "hours_apart": 369.1,
         "a": {
@@ -1159,7 +1158,7 @@
         ]
       },
       {
-        "score": 0.642,
+        "score": 0.643,
         "blocked": "time-window",
         "hours_apart": 34.9,
         "a": {
@@ -1180,7 +1179,7 @@
         ]
       },
       {
-        "score": 0.642,
+        "score": 0.643,
         "blocked": "time-window",
         "hours_apart": 34.5,
         "a": {
@@ -1206,97 +1205,97 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 5,
+      "streak_ok": 6,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 162,
+      "streak_ok": 163,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 162,
+      "streak_ok": 163,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 162,
+      "streak_ok": 163,
       "streak_fail": 0,
-      "items_last": 53
+      "items_last": 56
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 162,
+      "streak_ok": 163,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 162,
+      "streak_ok": 163,
       "streak_fail": 0,
-      "items_last": 69
+      "items_last": 70
     },
     {
       "id": "hn_title",
       "state": "ok",
-      "streak_ok": 16,
+      "streak_ok": 17,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 74,
+      "streak_ok": 75,
       "streak_fail": 0,
       "items_last": 4
     },
     {
       "id": "releases_atom",
       "state": "ok",
-      "streak_ok": 16,
+      "streak_ok": 17,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "rss_analyst",
       "state": "ok",
-      "streak_ok": 16,
+      "streak_ok": 17,
       "streak_fail": 0,
       "items_last": 6
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 66,
+      "streak_ok": 67,
       "streak_fail": 0,
       "items_last": 105
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 162,
+      "streak_ok": 163,
       "streak_fail": 0,
       "items_last": 40
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 162,
+      "streak_ok": 163,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.005408611111111111,
+    "hours": 0.005229166666666667,
     "stale": false
   },
   "hf": {
@@ -1387,7 +1386,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 69,
+    "count": 70,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -1442,14 +1441,14 @@
       {
         "id": "hn:50198675",
         "tag": "rest",
-        "score": 384,
+        "score": 389,
         "text": "OpenShell – A safe, private runtime for fleets of autonomous AI agents"
       },
       {
-        "id": "hn:50186129",
+        "id": "hn:50202217",
         "tag": "rest",
-        "score": 326,
-        "text": "Mistral Large 4"
+        "score": 341,
+        "text": "LLMs are making formal software verification feasible at a much larger scale"
       }
     ]
   },
@@ -1741,9 +1740,17 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 53,
-    "pool": 390,
+    "items": 56,
+    "pool": 389,
     "corroborators": [
+      {
+        "id": "gnews:2b2b7d3d39252a7a",
+        "anchor_id": "rss:nvidia:693797d15c05b304",
+        "score": 1,
+        "title": "Kazakhstan Expands Compute for Its AI Future - NVIDIA Blog",
+        "publisher": "NVIDIA Blog",
+        "self_repost": true
+      },
       {
         "id": "gnews:c0a8aa82fb0adbb1",
         "anchor_id": "rss:openai:1a543055a02f9816",
@@ -1753,9 +1760,17 @@
         "self_repost": true
       },
       {
+        "id": "gnews:4ae0e32a4655e09a",
+        "anchor_id": "hn:50202217",
+        "score": 1,
+        "title": "LLMs are making formal software verification feasible at a much larger scale - Anthropic",
+        "publisher": "Anthropic",
+        "self_repost": true
+      },
+      {
         "id": "gnews:6daf65e38d655505",
         "anchor_id": "hn:50202402",
-        "score": 0.972,
+        "score": 0.964,
         "title": "OpenAI trims valuation target to $1.25tn after pitching higher price - Financial Times",
         "publisher": "Financial Times",
         "self_repost": false
@@ -1875,7 +1890,7 @@
       {
         "id": "gnews:c10c68d667c654a3",
         "anchor_id": "hn:50181880",
-        "score": 0.75,
+        "score": 0.751,
         "title": "Google Cloud expands model choice and flexibility, bringing OpenAI models to customers - Google Cloud",
         "publisher": "Google Cloud",
         "self_repost": false
@@ -1883,7 +1898,7 @@
       {
         "id": "gnews:74c60de87b06e3eb",
         "anchor_id": "hn:50181880",
-        "score": 0.746,
+        "score": 0.747,
         "title": "OpenAI to sell its top models on Google Cloud in latest enterprise push - Reuters",
         "publisher": "Reuters",
         "self_repost": false
@@ -1955,24 +1970,24 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:a10916f40d6f40bb",
-        "title": "Sam Altman: OpenAI’s Internal Capabilities Unattainable for Current Public AI Models – Programmers Won’t Be Eliminated by AI and May Even Earn More Than Before - eu.36kr.com",
-        "publisher": "eu.36kr.com",
-        "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE82eXk2Y1ZnV1FVY0tUS1FSU2txcndYRTZSa3lFd3R0UWRsU2xJM2htWE5CbGl0ZUk2QktscUt0bVpQWkRBS0RNOVpVZDV4bFZ2eGFj?oc=5",
+        "id": "gnews:56185972bd13ed70",
+        "title": "Orion Telekom boosts sovereign AI infrastructure with Nvidia - Telecompaper",
+        "publisher": "Telecompaper",
+        "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNeWt4TGtpVXluakdhQXYwYUF0N0ZlU29SZ1dSRzZvWjlpckJtOXNKbTI0ZFdhNE9hUG82UkxNdTdsNWtBcHczZGhlODlwaUliUG5KX1ZYVTl1bzl1VUhNSWU1Tm9hVThKV29QaHgwdzlnd2s4bXJ2MWlKM0RhZFlua0pTX3BhU0lTVGphSXlCclExd04zMWFlc0lyMUczd2kySEdHazBB?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:51a4a318f624701c",
-        "title": "Schneider Electric, NVIDIA, and HPE announce collaboration to accelerate Physical AI - Hydrocarbon Engineering",
-        "publisher": "Hydrocarbon Engineering",
-        "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxPbTNocmJYS20zenZzYTR3WU4tUWFkTWdYN3ZlU1hYRWcyU2phYWZVUnh0c0I2V1R1eUhUM2pJb3JSZnZ3RDUyc0drTFRhVEFsTV9Gb3NfS2pXblpKN2wxZ0pLd1ZETmVRckxUY0tuU0VyaVJBbWkwRGxsdVdUcExDYVFPVHBtdVhWb25teXVSSG9ZN2xIb1lVeUhuQzRpQ2JjUTVDR1pvRm5Gb1pxcEd1cHd6aVN2c2M4Vy0teURGYnlBOGZSMHQ5dThZTVlFZGh5alItclB4cw?oc=5",
+        "id": "gnews:e5da239613772282",
+        "title": "NVIDIA's AI hardware market faces the threat of massive oversupply. - GameGPU",
+        "publisher": "GameGPU",
+        "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQZ0VsWFQ0NUd4LXNWcVk5RDRSbVM0UzVoVUlIcjBBVHA3MlVNWmlqd3lVSVFyaEI2UGU5TENOWnVPNmk5dXhNV0lyT0c0UGl1UnZLa1JXNTdwaUdKOXV0VHc4QVhqTUREVkpNVkJxSjZNYnMwZlpwRFJpY1FPZzE3cEdvbzhBRXVGbDdUOVlQZjhtWnVqc2luTEh2SmVCY1U4MkRzMG5EcWRHZlNzMHBLclpfMlNXem56?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:d8ae206c79f91546",
-        "title": "GTC Berlin: NVIDIA Expands AI Partnerships Across Healthcare - Healthcare Digital",
-        "publisher": "Healthcare Digital",
-        "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPSGdfeWZaWkkzOW1sajdrWGtucUVJWjRmQURLbzBTUHJMVnY1TjZjcW5ReWpkZk15ZDhfd1JCTnp3cHo4cWhDTFRPLVNBMDVxNC0tZk1kT2hsck5EdkJ3VW5XRVlvRDFSaU16ZnBvUGNydnVsVWVYMlJjZUs0QTF6VS1iWFo1bS1FazBkWU05dmpmcHp3NE9Cclgxaw?oc=5",
+        "id": "gnews:8fb1bdff5490f9b4",
+        "title": "OpenAI, Poland's NASK to Collaborate on AI Safety, Security - marketscreener.com",
+        "publisher": "marketscreener.com",
+        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNSXc5cVZPTDJGV0VPalcxQU1BblJZclhQLUhheXBjM21EdDdQZHU2Y25NbDNqQllERnNjS2c4VXdSMDZXdU9kQjBRNWg3RFZRSXRycmkwLVR5WUFjU0RGYUh0S0N3Y2lweDZKaHVLWXR3TEpuS0xUbHRQbjlpY0Zvb2JVek5mUUtUN0wwaWhsTmVUWXN3Z1JzZ3ZLeVlSNlA2V1hYTzFib2l2SF9Ra0NN?oc=5",
         "tag": "rest"
       }
     ]
@@ -2013,8 +2028,8 @@
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
-        "label": "heyvaldemar/kubernetes-air-gapped-ai-agent",
-        "href": "https://github.com/heyvaldemar/kubernetes-air-gapped-ai-agent"
+        "label": "dahchenoor-cmd/ai-red-teaming-portfolio",
+        "href": "https://github.com/dahchenoor-cmd/ai-red-teaming-portfolio"
       }
     ]
   },
