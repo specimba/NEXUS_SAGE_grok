@@ -17,7 +17,7 @@ export type RssAnalystRow = {
   cluster_id?: string;
 };
 
-export const RSS_ANALYST_AT: string | null = "2026-10-23T21:46:59Z";
+export const RSS_ANALYST_AT: string | null = "2026-10-23T22:36:04Z";
 
 export const RSS_ANALYST: RssAnalystRow[] = [
   { id: "anl:latent-space:d5a942e6d14cf1e0", feed: "latent-space" as const, title: "AI Is Getting Good at Math. Here’s Why.", link: "https://latent.space/p/ai-is-getting-good-at-math/", published: "2026-10-23T15:19:48Z", summary: "AI models are solving more mathematical problems. A pattern is emerging in their successes that could help us predict which problems they’ll solve next.", source: "rss-analyst" as const, recap: false, tag: "rest" as const, first_seen: "2026-10-23T18:20:31Z", is_new: false, cluster_id: "cl:anl:latent-space:d5a942e6d14cf1e0" },

@@ -16,7 +16,7 @@ export type RssLabRow = {
   cluster_id?: string;
 };
 
-export const RSS_LABS_AT = "2026-10-23T21:46:59Z";
+export const RSS_LABS_AT = "2026-10-23T22:36:04Z";
 
 export const RSS_LABS: RssLabRow[] = [
   { id: "rss:google-research:32ef7801f5802984", lab: "google-research" as const, title: "Bringing foundational models to the front lines of TB screening", link: "https://research.google/blog/bringing-foundational-models-to-the-front-lines-of-tb-screening/", published: "2026-10-23T18:51:33Z", summary: "Generative AI", source: "rss-lab" as const, tag: "rest" as const, first_seen: "2026-10-23T21:36:15Z", is_new: false, cluster_id: "cl:rss:google-research:32ef7801f5802984" },
