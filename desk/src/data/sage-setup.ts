@@ -196,7 +196,7 @@ const D: NonNullable<SageSetupView["limits"]>["defaults"] = {
 };
 
 export const SAGE_SETUP: SageSetupView = {
-  "stamped_at": "2026-10-23T21:36:15Z",
+  "stamped_at": "2026-10-23T21:46:59Z",
   "config_path": "desk/config/sage-sources.json",
   "config_hash": "898c7ea45214",
   "status": "ok",
