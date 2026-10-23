@@ -21,5 +21,39 @@ export const DIGEST_UNLOCK: DigestUnlockSnapshot = {
     "sources": 2,
     "sig": 24
   },
-  "rows": []
+  "rows": [
+    {
+      "id": "cl:hn:50202402",
+      "kind": "companion",
+      "title": "OpenAI trims valuation target after pitching higher price",
+      "take": "2 SRC · sig 6",
+      "why": "Top corroborated Wire cluster · same pack as lead pick",
+      "move": "Digest row · never displaces Brief lead",
+      "url": "https://www.ft.com/content/bb564eb1-79d4-4694-aa24-1155202a9abc",
+      "sources": 2,
+      "sig": 6
+    },
+    {
+      "id": "cl:hn:50208444",
+      "kind": "rest",
+      "title": "Anthropic strikes deal to launch European consultancy",
+      "take": "2 SRC · sig 1",
+      "why": "Top corroborated Wire cluster · same pack as lead pick",
+      "move": "Digest row · never displaces Brief lead",
+      "url": "https://www.ft.com/content/df70bf20-e809-48d0-8485-f8f514a7fbc4",
+      "sources": 2,
+      "sig": 1
+    },
+    {
+      "id": "cl:hn:50208084",
+      "kind": "rest",
+      "title": "MiniMax-M3.1-Flash",
+      "take": "2 SRC · sig 2",
+      "why": "Top corroborated Wire cluster · same pack as lead pick",
+      "move": "Digest row · never displaces Brief lead",
+      "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash",
+      "sources": 2,
+      "sig": 2
+    }
+  ]
 } as const;

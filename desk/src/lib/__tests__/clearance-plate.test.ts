@@ -6,6 +6,8 @@
 import { describe, expect, test } from "bun:test";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
+import { PULSE_CLUSTERS as PULSE_CLUSTERS_FOR_PUB } from "@/data/pulse-clusters";
+import { ownPublisherLabel } from "@/lib/lead-pick";
 import { fileURLToPath } from "node:url";
 import {
   applyPick,
@@ -220,8 +222,12 @@ describe("UX-1 fixtures from real crawl data (HELD)", () => {
       expect(LEAD_TODAY?.pub).toBeUndefined();
       expect(LEAD_CLOSEST).toEqual(leadClosest(RAW_TODAY));
     } else {
-      expect(LEAD_TODAY?.pub).toBe("HN");
-      expect(withPub(RAW_TODAY)?.pub).toBe("HN");
+      // Expected publisher comes from the lead's own cluster in the committed crawl, not a fixed outlet.
+      const leadCl = PULSE_CLUSTERS_FOR_PUB.find((c) => c.id === RAW_TODAY!.cluster_id);
+      const want = leadCl ? ownPublisherLabel(leadCl) : null;
+      expect(want).toBeTruthy();
+      expect(LEAD_TODAY?.pub).toBe(want!);
+      expect(withPub(RAW_TODAY)?.pub).toBe(want!);
       expect(LEAD_CLOSEST).toBeNull();
       expect(LEAD_LAST_PICK).toBe(RAW_TODAY!.date);
     }

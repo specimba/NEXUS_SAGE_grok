@@ -258,9 +258,11 @@ function readUnlock(p: string): DigestUnlockSnapshot | null {
 const unlockPrev = readUnlock(unlockPath);
 const shouldFreezeUnlock =
   (decision.action === "picked" && leadNow && leadNow.reason === "picked" && leadNow.headline) ||
-  (leadNow && leadNow.reason === "picked" && leadNow.headline && (!unlockPrev || unlockPrev.pickDate !== leadNow.date));
+  (leadNow && leadNow.reason === "picked" && leadNow.headline && (!unlockPrev || unlockPrev.pickDate !== leadNow.date || (unlockPrev.leadId === leadNow.cluster_id && unlockPrev.rows.length === 0)));
 if (shouldFreezeUnlock && leadNow) {
-  const snap = buildLiveSnapshot({ lead: leadNow, wire: wire.rows, frozenAt: leadNow.at });
+  // Digest/Voice freeze from the ranked Wire, never the F2.1a 6h backfill (a gnews-only backfill left Voice empty on 21:46:59Z).
+  const ranked = buildWire(PULSE_CLUSTERS, wirePrev, { at: wire.at, crawlAt: PULSE_CLUSTERS_AT, scores, publishers, members, tasteIds: X_TASTE.items.map((t) => t.id), excludeIds: leadNow.cluster_id ? [leadNow.cluster_id] : [], backfillH: 0 });
+  const snap = buildLiveSnapshot({ lead: leadNow, wire: ranked.rows, frozenAt: leadNow.at });
   writeFileSync(unlockPath, JSON.stringify(snap, null, 2) + "\n");
   writeFileSync(unlockDataPath, renderUnlockModule(snap));
   console.log(`digest-unlock FREEZE pick=${snap.pickDate} lead=${snap.leadId} rows=${snap.rows.length} · ${snap.lead.title.slice(0, 60)}`);

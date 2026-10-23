@@ -105,3 +105,11 @@ describe("F2.1c — lead refresh within 12h", () => {
     expect(d.refresh?.kind).toBe("held");
   });
 });
+
+describe("F2.1 fix — Digest/Voice never freeze from the backfill", () => {
+  test("rank-snapshot freezes the unlock from a backfillH:0 Wire, and re-freezes an empty same-lead snapshot", () => {
+    const src = readFileSync(join(import.meta.dir, "../../../scripts/rank-snapshot.ts"), "utf8");
+    expect(src).toMatch(/backfillH: 0 \}\);\n\s*const snap = buildLiveSnapshot\(\{ lead: leadNow, wire: ranked\.rows/);
+    expect(src).toMatch(/unlockPrev\.leadId === leadNow\.cluster_id && unlockPrev\.rows\.length === 0/);
+  });
+});
