@@ -49,3 +49,13 @@ describe("PASS-A2 analyst names vs company words", () => {
     expect(Object.isFrozen(ANALYST_AI_NAMES) && Object.isFrozen(ANALYST_COMPANY_WORDS)).toBe(true);
   });
 });
+
+import { baseDeskUrl } from "../../../scripts/lib/desk-url";
+describe("PASS-A2 (a) overflow-390 base url", () => {
+  test("?view=setup[&edit=1] and #hash reduce to the base page; other params kept", () => {
+    expect(baseDeskUrl("http://127.0.0.1:3000/NEXUS_SAGE_grok/?view=setup&edit=1#brief")).toBe("http://127.0.0.1:3000/NEXUS_SAGE_grok/");
+    expect(baseDeskUrl("http://127.0.0.1:3000/?view=setup")).toBe("http://127.0.0.1:3000/");
+    expect(baseDeskUrl("http://127.0.0.1:3000/?x=1&view=setup")).toBe("http://127.0.0.1:3000/?x=1");
+    expect(baseDeskUrl("http://127.0.0.1:3000/")).toBe("http://127.0.0.1:3000/");
+  });
+});

@@ -1,7 +1,7 @@
 #!/usr/bin/env bun
 /**
  * 390 gate (UX catch on 5026544): headless Chrome over CDP, no npm deps.
- *   bun scripts/overflow-390-check.ts [url] [--now <ISO>]   (--now fakes the page clock, e.g. the stale-lead SIGNAL HOLD card)
+ *   bun scripts/overflow-390-check.ts [url] [--now <ISO>]   (url = the base page; ?view= / &edit= are stripped)   (--now fakes the page clock, e.g. the stale-lead SIGNAL HOLD card)
  * On every lane (#brief … #governance) at a 390×844 mobile viewport, fails (exit 1) if any visible text
  * run's right edge (Range client rects over text nodes — so text clipped inside overflow-hidden boxes
  * still counts; text-overflow: ellipsis is exempt only when its own box ends ≤390) extends past x=390,
@@ -10,6 +10,7 @@
  */
 import { spawn } from "node:child_process";
 import { rmSync } from "node:fs";
+import { baseDeskUrl } from "./lib/desk-url";
 
 const EXEMPT_CLASSES = ["desk-ticker-item"];
 const HEADLINE_SEL = ".sage-take-title, [data-unlock-lead], .sage-headline";
@@ -17,7 +18,9 @@ const HEADLINE_SEL = ".sage-take-title, [data-unlock-lead], .sage-headline";
 const ROW_ALLOW = "[data-row-clamp], .pulse-v5-taste-text, .pulse-v5-taste-skip";
 const LANES = ["brief", "pulse", "digest", "papers", "voice", "governance"];
 const W = 390;
-const base = (process.argv.slice(2).find((a) => /^https?:\/\//.test(a)) ?? process.env.SAGE_DESK_URL ?? "http://127.0.0.1:3000/").replace(/#.*$/, "");
+// PASS-A2 (a): the url is the BASE page. A ?view=setup[&edit=1] url used to fail the lane pass ("voice: archive fold
+// header missing" — the setup view has no lanes); view/edit are dropped here, the setup bay + editor are checked below anyway.
+const base = baseDeskUrl(process.argv.slice(2).find((a) => /^https?:\/\//.test(a)) ?? process.env.SAGE_DESK_URL ?? "http://127.0.0.1:3000/");
 const PORT = 9800 + Math.floor(Math.random() * 150);
 const profile = `/tmp/overflow-390-${PORT}`;
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
