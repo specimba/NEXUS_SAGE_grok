@@ -32,3 +32,10 @@ Option 2 from the Oct 23 shortlist. One Coder pass. Page change, so the full pag
 10. overflow-390 clean with 20 ticked rows; Chrome check passes.
 11. First Load within ±200 B of base; record before/after bytes in the PR note and `publish-proof.json`.
 12. Accessible text present on each tick.
+
+## N4 Rulings (Oct 23, after Coder's pre-build questions) — these override N1–N3 where they differ
+1. **Reuse Beat 10.** No new `sage.lastVisit.v1` key. Beat 10's stored last-seen time is the baseline (`seen_at`). Its record gains an optional `keys` array (same cap 400, same row key as PASS-W), read-compatible: an old record without `keys` = "no ticks this visit, write keys". The amber divider stays as-is; ticks sit alongside it.
+2. **Label/style:** a small amber dot (the Beat 10 divider's colour token, no new CSS) before the title, with visually-hidden text "new since your last visit". No text label, so it can't be confused with the existing NEW (latest-crawl) chip. A row can show both.
+3. **Papers:** qualify on key-not-in-`keys` alone (no first-seen check, no data change). Rows that have first-seen times keep both conditions.
+4. **Scope:** every Wire and Pulse row (incl. HN, RSS, ANL, REL) plus papers. Never the Brief lead, never Gmail or X rows.
+5. **Test 11:** the PR note with before/after First Load bytes is enough; no publish-proof change. Base is now 180,247 B.
