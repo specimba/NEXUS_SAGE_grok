@@ -45,6 +45,10 @@ describe("PASS-A2 analyst names vs company words", () => {
     for (const w of ai) expect(co.has(w)).toBe(false);
     expect(ai.has("google")).toBe(false);
     expect(co.has("google")).toBe(true);
+    // A2.4 rulings: mimo + cuda are company words; hugging face stays an AI name.
+    expect([co.has("mimo"), co.has("cuda"), ai.has("hugging ?face")]).toEqual([true, true, true]);
+    expect(reason("MIMO antenna arrays for 6G")).toBe("not-ai:company-only");
+    expect(reason("Xiaomi MiMo LLM release notes")).toBeNull();
     expect(ANALYST_AI_NAMES.test("Google AI blog: new release")).toBe(true); // google-ai lab id stays an AI name
     expect(Object.isFrozen(ANALYST_AI_NAMES) && Object.isFrozen(ANALYST_COMPANY_WORDS)).toBe(true);
   });

@@ -86,13 +86,15 @@ export const ANALYST_AI_NAME_WORDS: readonly GateWord[] = Object.freeze([
   w("hugging ?face"),
   w("xai"), w("grok"),
   w("llama", "\\bllama\\b(?!\\.cpp)"),
-  w("mistral"), w("deepseek"), w("qwen"), w("mimo"),
+  w("mistral"), w("deepseek"), w("qwen"),
 ]);
 export const ANALYST_COMPANY_WORD_LIST: readonly GateWord[] = Object.freeze([
   w("google"), w("alphabet"),
   w("nvidia"), w("cuda"), w("geforce"),
   w("meta", "\\bmeta\\b(?!-)"),
   w("alibaba"), w("xiaomi"),
+  // A2.4 ruling 2: MIMO is also a wireless/antenna term ⇒ needs an AI term beside it.
+  w("mimo"),
   // Named in the spec; not heat words, so they never passed the gate — listed for classification only.
   w("microsoft"), w("apple"), w("amazon"), w("samsung"),
 ]);
