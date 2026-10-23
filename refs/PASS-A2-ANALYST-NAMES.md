@@ -46,3 +46,9 @@ Script `bun desk/scripts/analyst-gate-diff.ts` (one-off check, not a CI step):
 - desk-view parity fixtures (ANL items) updated only where a fixture title is company-only, with the change listed.
 - First Load unchanged, overflow-390 clean, no `.gitlab-ci.yml`/`ci/` or page-component diff.
 - config_hash unchanged (no config key added).
+
+## A2.4 Rulings (Oct 23, after build 919edac)
+1. **Cache source:** `rss-analyst-cache/` is gitignored, so A2.3's "committed crawl" input is replaced with a fresh fetch at build time plus any box cache available. Record the fetch time (TRT) and the cache dates in the PR note. No CI artifact, because that would be a CI config change. Future gate changes repeat this one-off on a fresh fetch.
+2. **Split accepted**, with one change: `mimo` moves to company words, because MIMO is also a common wireless/antenna term and needs an AI term beside it. `cuda` stays a company word and `hugging face` stays an AI name. Microsoft, Apple, Amazon and Samsung stay listed even though they have no effect, so the coverage test documents them.
+3. **Don't add new AI names** (moonshot, minimax, phi…). A2.1's names were examples; `newly_kept = 0` is the binding rule. Adding a name later needs its own diff run.
+Atom MIME note (Pages serves feed.xml as non-Atom): FYI only, no change. Readers sniff the content, and the URL stays stable.
