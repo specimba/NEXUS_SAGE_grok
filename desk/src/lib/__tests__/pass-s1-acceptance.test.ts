@@ -30,12 +30,19 @@ const mut = (f: (c: Cfg) => void) => {
   return c;
 };
 
+/** watch-on: keywords.watch_terms is freely editable data (PASS-W W1), so the committed file = code defaults EXCEPT that list. */
+const sansWatch = <T,>(c: T): T => {
+  const o = JSON.parse(JSON.stringify(c));
+  if (o?.keywords) delete o.keywords.watch_terms;
+  return o;
+};
+
 describe("S1.7 #1 — validator: new config accepted, every bad edit rejected", () => {
   test("committed sage-sources.json (with the new blocks + lists) is accepted and canonical", () => {
     const committed = JSON.parse(readFileSync(join(DESK, "config/sage-sources.json"), "utf8"));
     const v = validateSageConfig(committed);
     expect(v.ok).toBe(true);
-    expect(committed).toEqual(defaultSageConfig());
+    expect(sansWatch(committed)).toEqual(sansWatch(defaultSageConfig()));
     expect(committed.sources.analyst_rss).toBeDefined();
     expect(committed.sources.releases_atom).toBeDefined();
     expect(committed.keywords.hn_title_queries).toBeDefined();

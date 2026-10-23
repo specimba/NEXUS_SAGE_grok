@@ -198,12 +198,12 @@ const D: NonNullable<SageSetupView["limits"]>["defaults"] = {
 export const SAGE_SETUP: SageSetupView = {
   "stamped_at": "2026-10-23T18:20:31Z",
   "config_path": "desk/config/sage-sources.json",
-  "config_hash": "6dd1c3db6716",
+  "config_hash": "51f61811180e",
   "status": "ok",
   "used": "committed",
   "errors": [],
-  "since_commit": "8dbb554",
-  "since_at": "2026-10-20T07:13:37Z",
+  "since_commit": "266aaf3",
+  "since_at": "2026-10-23T17:01:49Z",
   "sources": [
     {
       "id": "hn",
@@ -331,7 +331,24 @@ export const SAGE_SETUP: SageSetupView = {
     },
     {
       "id": "watch_terms",
-      "terms": []
+      "terms": [
+        "Grok",
+        "xAI",
+        "OpenAI",
+        "Anthropic",
+        "Claude",
+        "Gemini",
+        "DeepSeek",
+        "Qwen",
+        "Llama",
+        "open-weights",
+        "agent",
+        "MCP",
+        "CVE",
+        "zero-day",
+        "jailbreak",
+        "prompt injection"
+      ]
     }
   ],
   "taste": {
@@ -478,6 +495,39 @@ export const SAGE_SETUP: SageSetupView = {
       }
     }
   },
-  "config": D,
-  "file_hash": "255b324d2ab0cc5fe506bc309d983da4be914f6a12cdbaf0a021980821f452be"
+  "config": {
+    "schema": 1,
+    "sources": D.sources,
+    "keywords": {
+      "ai_terms": D.keywords.ai_terms,
+      "hn_sweep": D.keywords.hn_sweep,
+      "gmail_seed": D.keywords.gmail_seed,
+      "politics_deny": D.keywords.politics_deny,
+      "hn_title_queries": D.keywords.hn_title_queries,
+      "gmail_senders": D.keywords.gmail_senders,
+      "watch_terms": [
+        "Grok",
+        "xAI",
+        "OpenAI",
+        "Anthropic",
+        "Claude",
+        "Gemini",
+        "DeepSeek",
+        "Qwen",
+        "Llama",
+        "open-weights",
+        "agent",
+        "MCP",
+        "CVE",
+        "zero-day",
+        "jailbreak",
+        "prompt injection"
+      ]
+    },
+    "taste": {
+      "weight": 0,
+      "max": 0.3
+    }
+  },
+  "file_hash": "cd38121c2b7e23f6bb278be30263ab8eb5aa28782138cadf33718fb2f741bbed"
 };

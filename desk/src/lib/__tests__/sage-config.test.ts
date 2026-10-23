@@ -40,11 +40,18 @@ const withCfg = (patch: (c: SageConfig) => void) => {
   return c;
 };
 
+/** watch-on: keywords.watch_terms is freely editable data (PASS-W W1), so the committed file = code defaults EXCEPT that list. */
+const sansWatch = <T,>(c: T): T => {
+  const o = JSON.parse(JSON.stringify(c));
+  if (o?.keywords) delete o.keywords.watch_terms;
+  return o;
+};
+
 describe("PASS-C2 seed — first land = no behaviour change", () => {
   test("committed desk/config/sage-sources.json validates and equals today's code values", () => {
     const v = validateSageConfig(committed());
     expect(v.ok).toBe(true);
-    expect(v.ok && v.config).toEqual(defaultSageConfig());
+    expect(v.ok && sansWatch(v.config)).toEqual(sansWatch(defaultSageConfig()));
   });
   test("AI_TERMS rebuilt from the default list is the exact pre-C2 regex", () => {
     expect(AI_TERMS.source).toBe(PRE_C2_AI_TERMS);
@@ -63,7 +70,7 @@ describe("PASS-C2 seed — first land = no behaviour change", () => {
     const l = loadSageConfig(desk, { write: false });
     expect(l.status).toBe("ok");
     expect(SAGE_SETUP.config_hash).toBe(l.config_hash);
-    expect(SAGE_SETUP.config_hash).toBe(configHash(defaultSageConfig()));
+    expect(SAGE_SETUP.config_hash).toBe(configHash({ ...defaultSageConfig(), keywords: { ...defaultSageConfig().keywords, watch_terms: l.config.keywords.watch_terms } }));
     expect(SAGE_SETUP.sources.map((s) => s.id)).toEqual(Object.keys(l.config.sources));
     expect(SAGE_SETUP.keywords.find((k) => k.id === "ai_terms")?.terms).toEqual(l.config.keywords.ai_terms);
     expect(SAGE_DESK_CONFIG).toEqual({ taste_on: true, taste_visible_cap: 6, taste_weight: 0, taste_idx: null });
