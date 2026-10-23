@@ -25,7 +25,7 @@ Committed ANL rows (`desk/src/data/rss-analyst.ts`, 6 titles): all still kept �
 
 ## Gates
 - Tests: 975 pass, 0 fail (fixtures 1–14 + A2.4 checks for mimo/cuda/hugging face).
-- First Load: 180,246 B on base and branch (±0 B). config_hash unchanged `6dd1c3db6716`. desk-view --check in sync.
+- First Load: 180,246 B on base and branch (±0 B) — both from the local non-Pages build (`bun run build` → `.next`, `node scripts/first-load.cjs .next`) in this worktree, base = origin/main 2ab7d01. Reviewer's base build measured 180,324 B (different build; compare like with like). config_hash unchanged `6dd1c3db6716`. desk-view --check in sync.
 - overflow-390: OK (6 lanes + setup bay + setup editor). No page component, `ci/` or config diff.
 - Also on this branch: overflow-390-check.ts accepts `?view=setup[&edit=1]` URLs (strips view/edit to the base page).
 - Atom MIME: FYI only (A2.4) — Pages serves feed.xml as application/xml; no change.
