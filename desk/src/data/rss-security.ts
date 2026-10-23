@@ -1,7 +1,8 @@
 /** Security lab RSS Pulse — generated/refreshed by bun run ingest. Pulse/shelf/Digest-ref only; never Brief. */
+import type { SecurityLabId } from "@/lib/rss-security";
 export type RssSecurityRow = {
   id: string;
-  lab: "trailofbits" | "fox-it" | "ncc" | "projectzero" | "embracethered" | "google-sec";
+  lab: SecurityLabId;
   title: string;
   link: string;
   published: string;

@@ -1,7 +1,8 @@
 /** Lab blog RSS Pulse — generated/refreshed by bun run ingest. Pulse/shelf only; never Brief. */
+import type { LabId } from "@/lib/rss-labs";
 export type RssLabRow = {
   id: string;
-  lab: "openai" | "deepmind" | "google-ai" | "huggingface" | "mistral" | "nvidia" | "nvidia-dev" | "ms-research" | "google-research";
+  lab: LabId;
   title: string;
   link: string;
   published: string;

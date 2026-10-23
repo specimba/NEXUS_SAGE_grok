@@ -265,9 +265,10 @@ function renderRssLabsTs(rows: LabRssItem[], stamp: string, meta?: MetaMap): str
     })
     .join(",\n");
   return `/** Lab blog RSS Pulse — generated/refreshed by bun run ingest. Pulse/shelf only; never Brief. */
+import type { LabId } from "@/lib/rss-labs";
 export type RssLabRow = {
   id: string;
-  lab: "openai" | "deepmind" | "google-ai" | "huggingface" | "mistral" | "nvidia" | "nvidia-dev" | "ms-research" | "google-research";
+  lab: LabId;
   title: string;
   link: string;
   published: string;
@@ -290,9 +291,10 @@ function renderRssSecurityTs(rows: SecurityRssItem[], stamp: string, meta?: Meta
     })
     .join(",\n");
   return `/** Security lab RSS Pulse — generated/refreshed by bun run ingest. Pulse/shelf/Digest-ref only; never Brief. */
+import type { SecurityLabId } from "@/lib/rss-security";
 export type RssSecurityRow = {
   id: string;
-  lab: "trailofbits" | "fox-it" | "ncc" | "projectzero" | "embracethered" | "google-sec";
+  lab: SecurityLabId;
   title: string;
   link: string;
   published: string;
@@ -344,9 +346,10 @@ function renderReleasesAtomTs(rows: ReleaseItem[], stamp: string, meta?: MetaMap
     )
     .join("");
   return `/** PASS-S1.3 release feeds Pulse (llama.cpp · Ollama · vLLM · Claude Code) — generated/refreshed by bun run ingest. Pulse only (REL); semver minor/major bumps only; never Wire/Brief; never a lead. */
+import type { ReleaseFeedId } from "@/lib/releases-atom";
 export type ReleaseAtomRow = {
   id: string;
-  feed: "llama.cpp" | "ollama" | "vllm" | "claude-code" | "codex" | "hf-trending" | "hf-moonshotai" | "hf-nvidia" | "hf-tencent";
+  feed: ReleaseFeedId;
   title: string;
   link: string;
   published: string;

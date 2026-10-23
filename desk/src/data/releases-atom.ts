@@ -1,7 +1,8 @@
 /** PASS-S1.3 release feeds Pulse (llama.cpp · Ollama · vLLM · Claude Code) — generated/refreshed by bun run ingest. Pulse only (REL); semver minor/major bumps only; never Wire/Brief; never a lead. */
+import type { ReleaseFeedId } from "@/lib/releases-atom";
 export type ReleaseAtomRow = {
   id: string;
-  feed: "llama.cpp" | "ollama" | "vllm" | "claude-code";
+  feed: ReleaseFeedId;
   title: string;
   link: string;
   published: string;
