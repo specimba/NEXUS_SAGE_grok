@@ -39,3 +39,9 @@ Option 2 from the Oct 23 shortlist. One Coder pass. Page change, so the full pag
 3. **Papers:** qualify on key-not-in-`keys` alone (no first-seen check, no data change). Rows that have first-seen times keep both conditions.
 4. **Scope:** every Wire and Pulse row (incl. HN, RSS, ANL, REL) plus papers. Never the Brief lead, never Gmail or X rows.
 5. **Test 11:** the PR note with before/after First Load bytes is enough; no publish-proof change. Base is now 180,247 B.
+
+## N5 Rulings (Oct 23, after build ff2432e)
+1. **First Load waiver:** the ±200 B rule is waived for PASS-N to a hard cap of **180,950 B** First Load (live/CI build). This is the same kind of recorded waiver as the C2 Mark 5 waiver. The waiver covers the page-side context, key hook, dot and old-record fallback only; tick logic and URL canonicalisation stay in the lazy chunk. Over 180,950 B means cut scope: drop the old-record fallback first (an old record then simply resets), then the papers lane.
+2. **Base:** measure the delta against a local build of the branch base on the same machine (180,325 B, so +611 B). Report both the delta and the absolute number; the absolute cap above is what binds.
+3. **Buffer through globalThis:** accepted. Every target browser has `atob`, so the Buffer path only runs in Node/tests. Add a one-line comment saying so; no polyfill on the page.
+4. **Papers keys:** written add-only when the papers lane first opens. Accepted. Never remove keys on view changes; the 400 cap trims oldest.
