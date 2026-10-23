@@ -10,7 +10,9 @@ describe("Beat 10 since-you-were-here", () => {
   });
   test("session baseline wins over the (tab-leave-updated) stored visit; junk ignored", () => {
     expect(sinceBase("2026-09-24T20:00:00Z", "2026-09-24T23:00:00Z")).toBe("2026-09-24T20:00:00Z");
-    expect(sinceBase(null, "2026-09-24T23:00:00Z")).toBe("2026-09-24T23:00:00Z");
+    expect(sinceBase(null, JSON.stringify({ seen_at: "2026-09-24T23:00:00Z", keys: [] }))).toBe("2026-09-24T23:00:00Z");
+    // §N5.1 cut: an old plain-ISO record is no longer read — it resets (no baseline this visit).
+    expect(sinceBase(null, "2026-09-24T23:00:00Z")).toBeNull();
     expect(sinceBase("nope", null)).toBeNull();
     // a tab that began as a first-ever visit stays marker-free even after pagehide wrote lastSeenAt on reload
     expect(sinceBase(FIRST_VISIT, "2026-09-24T23:00:00Z")).toBeNull();
@@ -34,8 +36,9 @@ describe("Beat 10 since-you-were-here", () => {
     const block = tsx.slice(tsx.indexOf("function useSinceBase"), tsx.indexOf("// end useSinceBase"));
     expect(block.length).toBeGreaterThan(50);
     // PASS-N: the record is written through openVisit; only `leave` moves seen_at (flush keeps it — new-ticks test 1/4/8).
-    expect(block.match(/localStorage\.setItem/g)?.length).toBe(1); // fallback when the lazy chunk never loaded
-    expect(block.indexOf("localStorage.setItem")).toBeGreaterThan(block.indexOf("const leave"));
-    expect(block).toContain("if (v) v.leave();");
+    // §N5.1 cut: no plain-ISO fallback write — the page never calls localStorage.setItem itself.
+    expect(block.match(/localStorage\.setItem/g)).toBeNull();
+    expect(block).toContain("v?.leave();");
+    expect(block.indexOf("v?.leave();")).toBeGreaterThan(block.indexOf("const leave"));
   });
 });

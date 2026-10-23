@@ -15,10 +15,10 @@ export const TICK_SR = "new since your last visit";
 export function sinceBase(session: string | null, local: string | null): string | null {
   if (session === FIRST_VISIT) return null;
   const ok = (v: string | null) => (v && Number.isFinite(Date.parse(v)) ? v : null);
-  // PASS-N: the stored record may be JSON { seen_at, keys } (legacy = plain ISO).
-  let at = local;
+  // PASS-N: the stored record is JSON { seen_at, keys }. §N5.1 cut: no legacy plain-ISO fallback — an old record resets.
+  let at: unknown = null;
   try {
-    at = JSON.parse(local!).seen_at ?? null;
+    at = JSON.parse(local!).seen_at;
   } catch {}
   return ok(session) ?? ok(typeof at === "string" ? at : null);
 }

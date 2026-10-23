@@ -1,7 +1,7 @@
 /**
  * PASS-N — "new since your last visit" ticks (refs/PASS-N-NEW-TICKS.md §N4). Pure helpers.
- * Reuses Beat 10's localStorage record (LAST_SEEN_KEY): legacy plain ISO, or JSON { seen_at, keys }.
- * No `keys` (first visit, legacy, corrupt, future seen_at, storage throws) ⇒ no ticks this visit.
+ * Reuses Beat 10's localStorage record (LAST_SEEN_KEY) as JSON { seen_at, keys }. §N5.1: no legacy plain-ISO fallback.
+ * No `keys` (first visit, old plain-ISO record = reset, corrupt, future seen_at, storage throws) ⇒ no ticks this visit.
  */
 import { canonicalizeUrl } from "@/lib/canon-url";
 import { LAST_SEEN_KEY, TICK_SR, isSince } from "@/lib/since";
@@ -15,7 +15,6 @@ const iso = (v: unknown): v is string => typeof v === "string" && Number.isFinit
 export type SeenRecord = { seen_at: string | null; keys: string[] | null };
 
 export function readSeen(raw: string | null): SeenRecord {
-  if (iso(raw)) return { seen_at: raw, keys: null };
   try {
     const o = JSON.parse(raw!);
     if (o && !Array.isArray(o) && Array.isArray(o.keys) && o.keys.every((k: unknown) => typeof k === "string"))

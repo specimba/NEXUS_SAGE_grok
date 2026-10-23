@@ -266,11 +266,7 @@ function useSinceBase(): [string | null, Visit | null] {
     setBase(b);
     // PASS-N: Beat 10's record now carries the on-screen row keys too (same key; still written on leave).
     const leave = () => {
-      if (v) v.leave();
-      else
-        try {
-          window.localStorage.setItem(LAST_SEEN_KEY, new Date().toISOString());
-        } catch {}
+      v?.leave(); // §N5.1: no plain-ISO fallback write; lazy chunk not loaded ⇒ nothing written (next visit resets)
     };
     const onVis = () => {
       if (document.visibilityState === "hidden") leave();

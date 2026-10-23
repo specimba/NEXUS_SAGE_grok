@@ -54,16 +54,15 @@ describe("PASS-N new-since-last-visit ticks", () => {
       v.flush();
       expect(stored(s).keys).toEqual(["k"]);
     }
-    // Legacy Beat 10 record (plain ISO, no keys) → no ticks this visit, keys written, seen_at kept.
+    // §N5.1 cut: an old Beat 10 record (plain ISO, no keys) simply resets → no ticks, no baseline, replaced cleanly.
     const s = mem({ [LAST_SEEN_KEY]: BASE });
     const v = openVisit(s, NOW);
     expect(v.seen).toBeNull();
-    expect(readSeen(BASE).seen_at).toBe(BASE);
+    expect(readSeen(BASE)).toEqual({ seen_at: null, keys: null });
     v.note(["k"]);
     v.flush();
-    expect(stored(s)).toEqual({ seen_at: BASE, keys: ["k"] });
-    // Beat 10 baseline reads both shapes.
-    expect(sinceBase(null, BASE)).toBe(BASE);
+    expect(stored(s)).toEqual({ seen_at: null, keys: ["k"] });
+    expect(sinceBase(null, BASE)).toBeNull();
     expect(sinceBase(null, JSON.stringify({ seen_at: BASE, keys: [] }))).toBe(BASE);
   });
 
