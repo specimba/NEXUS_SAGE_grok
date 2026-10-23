@@ -17,7 +17,7 @@ export type ReleaseAtomRow = {
   cluster_id?: string;
 };
 
-export const RELEASES_ATOM_AT: string | null = "2026-10-23T22:36:04Z";
+export const RELEASES_ATOM_AT: string | null = "2026-10-23T22:52:03Z";
 
 export const RELEASES_ATOM: ReleaseAtomRow[] = [
 ];

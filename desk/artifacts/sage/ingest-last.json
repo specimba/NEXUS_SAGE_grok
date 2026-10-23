@@ -2,8 +2,8 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-23T22:36:04Z",
-  "config_hash": "898c7ea45214",
+  "stamped_at": "2026-10-23T22:52:03Z",
+  "config_hash": "a116c3b25ffb",
   "config_status": "ok",
   "crawl_sources": [
     {
@@ -11,7 +11,7 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 124,
+      "duration_ms": 160,
       "paused_until": null,
       "reason": null
     },
@@ -20,7 +20,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 3038,
+      "duration_ms": 3017,
       "paused_until": null,
       "reason": null
     },
@@ -29,7 +29,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 508,
+      "duration_ms": 340,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 116,
+      "duration_ms": 192,
       "paused_until": null,
       "reason": null
     },
@@ -47,7 +47,7 @@
       "label": "HN",
       "status": "ok",
       "rows": 74,
-      "duration_ms": 8303,
+      "duration_ms": 8453,
       "paused_until": null,
       "reason": null
     },
@@ -56,7 +56,7 @@
       "label": "HN title",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 8205,
+      "duration_ms": 8436,
       "paused_until": null,
       "reason": null
     },
@@ -64,8 +64,8 @@
       "id": "rss_labs",
       "label": "lab RSS",
       "status": "ok",
-      "rows": 105,
-      "duration_ms": 16179,
+      "rows": 115,
+      "duration_ms": 19118,
       "paused_until": null,
       "reason": null
     },
@@ -73,8 +73,8 @@
       "id": "rss_security",
       "label": "security RSS",
       "status": "ok",
-      "rows": 40,
-      "duration_ms": 6120,
+      "rows": 74,
+      "duration_ms": 12101,
       "paused_until": null,
       "reason": null
     },
@@ -83,7 +83,7 @@
       "label": "analyst RSS",
       "status": "ok",
       "rows": 6,
-      "duration_ms": 2740,
+      "duration_ms": 3161,
       "paused_until": null,
       "reason": null
     },
@@ -92,7 +92,7 @@
       "label": "releases",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 4853,
+      "duration_ms": 6840,
       "paused_until": null,
       "reason": null
     },
@@ -100,8 +100,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 48,
-      "duration_ms": 6517,
+      "rows": 54,
+      "duration_ms": 6504,
       "paused_until": null,
       "reason": null
     },
@@ -109,8 +109,8 @@
       "id": "github",
       "label": "GitHub",
       "status": "ok",
-      "rows": 2,
-      "duration_ms": 341,
+      "rows": 0,
+      "duration_ms": 311,
       "paused_until": null,
       "reason": null
     },
@@ -119,16 +119,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4355,
+      "duration_ms": 4316,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 61399,
-    "sources_wall_ms": 16180,
-    "papers_lane_ms": 3791,
-    "slowest_source_ms": 16179,
+    "sources_ms": 72949,
+    "sources_wall_ms": 19119,
+    "papers_lane_ms": 3714,
+    "slowest_source_ms": 19118,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -146,31 +146,31 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 16775,
-    "startup_ms": 55,
-    "main_ms": 16796
+    "wall_ms": 19838,
+    "startup_ms": 53,
+    "main_ms": 19861
   },
-  "multi_source_independent": 10,
+  "multi_source_independent": 16,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 10,
-    "multi_source_raw": 19,
+    "multi_source_independent": 16,
+    "multi_source_raw": 25,
     "self_reposts": 10,
-    "items_in": 283,
-    "clusters_out": 255,
-    "collapsed": 28,
-    "multi_source": 10,
-    "multi_member": 23,
+    "items_in": 333,
+    "clusters_out": 293,
+    "collapsed": 40,
+    "multi_source": 16,
+    "multi_member": 32,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 12,
+    "new_items": 49,
     "per_source": {
       "hn-algolia": 74,
-      "rss-lab": 105,
-      "rss-security": 40,
-      "gnews-rss": 48,
+      "rss-lab": 115,
+      "rss-security": 74,
+      "gnews-rss": 54,
       "gmail-news": 10,
       "rss-analyst": 6
     },
@@ -205,6 +205,106 @@
             "at": "2026-10-23T18:36:34Z",
             "publisher": "OpenAI",
             "self_repost": true
+          }
+        ]
+      },
+      {
+        "title": "Chinese AI model Kimi K3.1 Pro is closing in on Anthropic's Claude Opus 5.5",
+        "sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "rss:the-decoder:3cec67123ef466bd",
+            "source": "rss-lab",
+            "title": "Chinese AI model Kimi K3.1 Pro is closing in on Anthropic's Claude Opus 5.5",
+            "at": "2026-10-23T19:00:07Z",
+            "publisher": "the-decoder"
+          },
+          {
+            "id": "gnews:5548290eafd4601f",
+            "source": "gnews-rss",
+            "title": "Chinese AI model Kimi K3.1 Pro is closing in on Anthropic's Claude Opus 5.5 - The Decoder",
+            "at": "2026-10-23T19:03:11Z",
+            "publisher": "The Decoder"
+          }
+        ]
+      },
+      {
+        "title": "Three-week on-site audit at OpenAI reveals major gaps in AI safety monitoring",
+        "sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "rss:the-decoder:67e4d8f6bd7818ee",
+            "source": "rss-lab",
+            "title": "Three-week on-site audit at OpenAI reveals major gaps in AI safety monitoring",
+            "at": "2026-10-23T18:00:32Z",
+            "publisher": "the-decoder"
+          },
+          {
+            "id": "gnews:021c9d5f1cfef530",
+            "source": "gnews-rss",
+            "title": "Three-week on-site audit at OpenAI reveals major gaps in AI safety monitoring - The Decoder",
+            "at": "2026-10-23T18:03:11Z",
+            "publisher": "The Decoder"
+          }
+        ]
+      },
+      {
+        "title": "Anthropic says its unreleased model is both more capable and better aligned than Mythos 5.1",
+        "sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "rss:the-decoder:80ae7e1961efb8d4",
+            "source": "rss-lab",
+            "title": "Anthropic says its unreleased model is both more capable and better aligned than Mythos 5.1",
+            "at": "2026-10-23T17:19:49Z",
+            "publisher": "the-decoder"
+          },
+          {
+            "id": "gnews:f6ef2ef0f30674e3",
+            "source": "gnews-rss",
+            "title": "Anthropic says its unreleased model is both more capable and better aligned than Mythos 5.1 - The Decoder",
+            "at": "2026-10-23T17:23:11Z",
+            "publisher": "The Decoder"
+          }
+        ]
+      },
+      {
+        "title": "OpenAI CEO Sam Altman says advanced AI will inevitably escape its sandbox, and only alignment can save us",
+        "sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "rss:the-decoder:22b83797b9a56942",
+            "source": "rss-lab",
+            "title": "OpenAI CEO Sam Altman says advanced AI will inevitably escape its sandbox, and only alignment can save us",
+            "at": "2026-10-23T15:42:18Z",
+            "publisher": "the-decoder"
+          },
+          {
+            "id": "gnews:26ed63e3fad59bef",
+            "source": "gnews-rss",
+            "title": "OpenAI CEO Sam Altman says advanced AI will inevitably escape its sandbox, and only alignment can save us - The Decoder",
+            "at": "2026-10-23T15:48:07Z",
+            "publisher": "The Decoder"
           }
         ]
       },
@@ -247,7 +347,7 @@
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.743,
+        "score": 0.759,
         "members": [
           {
             "id": "rss:nvidia:19fce2b28a327610",
@@ -329,7 +429,7 @@
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.676,
+        "score": 0.678,
         "members": [
           {
             "id": "hn:50207936",
@@ -344,6 +444,31 @@
             "title": "Anthropic publishes Public Benefit Report, detailing AI progress and gaps in measuring impact - EdTech Innovation Hub",
             "at": "2026-10-23T00:15:16Z",
             "publisher": "EdTech Innovation Hub"
+          }
+        ]
+      },
+      {
+        "title": "Anthropic's Claude now writes code and proves it safe automatically",
+        "sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "rss:the-decoder:b4651d991e2efd2e",
+            "source": "rss-lab",
+            "title": "Anthropic's Claude now writes code and proves it safe automatically",
+            "at": "2026-10-23T11:32:19Z",
+            "publisher": "the-decoder"
+          },
+          {
+            "id": "gnews:187e1dd777d62f39",
+            "source": "gnews-rss",
+            "title": "Anthropic's Claude now writes code and proves it safe automatically - The Decoder",
+            "at": "2026-10-23T11:38:06Z",
+            "publisher": "The Decoder"
           }
         ]
       },
@@ -412,13 +537,38 @@
         ]
       },
       {
+        "title": "Google's Agent Compute Engine gives every Gemini agent its own hardware-isolated micro virtual machine",
+        "sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "rss:the-decoder:8abf641301b119fb",
+            "source": "rss-lab",
+            "title": "Google's Agent Compute Engine gives every Gemini agent its own hardware-isolated micro virtual machine",
+            "at": "2026-10-22T17:50:09Z",
+            "publisher": "the-decoder"
+          },
+          {
+            "id": "gnews:577f52308d3b44e5",
+            "source": "gnews-rss",
+            "title": "Google's Agent Compute Engine gives every Gemini agent its own hardware-isolated micro virtual machine - The Decoder",
+            "at": "2026-10-22T17:54:54Z",
+            "publisher": "The Decoder"
+          }
+        ]
+      },
+      {
         "title": "Anthropic opens research preview of Claude Duet, a agent for professionals",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.678,
+        "score": 0.674,
         "members": [
           {
             "id": "hn:50188944",
@@ -663,7 +813,7 @@
     },
     "gnews_near_misses": [
       {
-        "score": 0.534,
+        "score": 0.538,
         "blocked": "below-threshold",
         "hours_apart": 4.5,
         "a": {
@@ -685,7 +835,30 @@
         ]
       },
       {
-        "score": 0.478,
+        "score": 0.487,
+        "blocked": "below-threshold",
+        "hours_apart": 2.8,
+        "a": {
+          "id": "hn:50214416",
+          "source": "hn-algolia",
+          "title": "OpenAI: Securing our frontier model training environment",
+          "at": "2026-10-23T19:50:56Z"
+        },
+        "b": {
+          "id": "gnews:225a7c5f514bd50f",
+          "source": "gnews-rss",
+          "title": "OpenAI Says It's Cutting Off Internet Access For Frontier Model Training - Engadget",
+          "at": "2026-10-23T22:37:02Z"
+        },
+        "shared": [
+          "openai",
+          "frontier",
+          "model",
+          "train"
+        ]
+      },
+      {
+        "score": 0.479,
         "blocked": "thin-overlap",
         "hours_apart": 244.2,
         "a": {
@@ -707,7 +880,7 @@
         ]
       },
       {
-        "score": 0.469,
+        "score": 0.47,
         "blocked": "thin-overlap",
         "hours_apart": 244.5,
         "a": {
@@ -729,7 +902,29 @@
         ]
       },
       {
-        "score": 0.432,
+        "score": 0.443,
+        "blocked": "below-threshold",
+        "hours_apart": 4.3,
+        "a": {
+          "id": "rss:the-decoder:67e4d8f6bd7818ee",
+          "source": "rss-lab",
+          "title": "Three-week on-site audit at OpenAI reveals major gaps in AI safety monitoring",
+          "at": "2026-10-23T18:00:32Z"
+        },
+        "b": {
+          "id": "gnews:95d76ff10332a635",
+          "source": "gnews-rss",
+          "title": "OpenAI Agents Disable Their Own Safety Monitoring - BankInfoSecurity",
+          "at": "2026-10-23T22:15:53Z"
+        },
+        "shared": [
+          "openai",
+          "safety",
+          "monitor"
+        ]
+      },
+      {
+        "score": 0.431,
         "blocked": "time-window",
         "hours_apart": 46.3,
         "a": {
@@ -773,7 +968,7 @@
         ]
       },
       {
-        "score": 0.392,
+        "score": 0.386,
         "blocked": "thin-overlap",
         "hours_apart": 0.5,
         "a": {
@@ -787,50 +982,6 @@
           "source": "gnews-rss",
           "title": "Anthropic introduces Claude Duet, a proactive AI agent for professionals - SiliconANGLE",
           "at": "2026-10-22T13:20:00Z"
-        },
-        "shared": [
-          "claude",
-          "duet",
-          "anthropic"
-        ]
-      },
-      {
-        "score": 0.384,
-        "blocked": "below-threshold",
-        "hours_apart": 1.8,
-        "a": {
-          "id": "hn:50214416",
-          "source": "hn-algolia",
-          "title": "OpenAI: Securing our frontier model training environment",
-          "at": "2026-10-23T19:50:56Z"
-        },
-        "b": {
-          "id": "gnews:a23e974e428489b5",
-          "source": "gnews-rss",
-          "title": "OpenAI resumes frontier AI training with enhanced security, no internet access - SRN News",
-          "at": "2026-10-23T21:40:07Z"
-        },
-        "shared": [
-          "openai",
-          "frontier",
-          "train"
-        ]
-      },
-      {
-        "score": 0.351,
-        "blocked": "thin-overlap",
-        "hours_apart": 31.7,
-        "a": {
-          "id": "hn:50195309",
-          "source": "hn-algolia",
-          "title": "I built a \"Claude Duet\" by hand a year ago. Here's what Anthropic got right",
-          "at": "2026-10-22T13:48:52Z"
-        },
-        "b": {
-          "id": "gnews:15e40db1b00e5f3c",
-          "source": "gnews-rss",
-          "title": "Anthropic targets Muse and Dots with new AI agent, Claude Duet - Computerworld",
-          "at": "2026-10-23T21:29:26Z"
         },
         "shared": [
           "claude",
@@ -841,7 +992,7 @@
     ],
     "near_misses": [
       {
-        "score": 0.534,
+        "score": 0.538,
         "blocked": "below-threshold",
         "hours_apart": 4.5,
         "a": {
@@ -863,7 +1014,30 @@
         ]
       },
       {
-        "score": 0.478,
+        "score": 0.487,
+        "blocked": "below-threshold",
+        "hours_apart": 2.8,
+        "a": {
+          "id": "hn:50214416",
+          "source": "hn-algolia",
+          "title": "OpenAI: Securing our frontier model training environment",
+          "at": "2026-10-23T19:50:56Z"
+        },
+        "b": {
+          "id": "gnews:225a7c5f514bd50f",
+          "source": "gnews-rss",
+          "title": "OpenAI Says It's Cutting Off Internet Access For Frontier Model Training - Engadget",
+          "at": "2026-10-23T22:37:02Z"
+        },
+        "shared": [
+          "openai",
+          "frontier",
+          "model",
+          "train"
+        ]
+      },
+      {
+        "score": 0.479,
         "blocked": "thin-overlap",
         "hours_apart": 244.2,
         "a": {
@@ -885,7 +1059,7 @@
         ]
       },
       {
-        "score": 0.469,
+        "score": 0.47,
         "blocked": "thin-overlap",
         "hours_apart": 244.5,
         "a": {
@@ -907,7 +1081,29 @@
         ]
       },
       {
-        "score": 0.432,
+        "score": 0.443,
+        "blocked": "below-threshold",
+        "hours_apart": 4.3,
+        "a": {
+          "id": "rss:the-decoder:67e4d8f6bd7818ee",
+          "source": "rss-lab",
+          "title": "Three-week on-site audit at OpenAI reveals major gaps in AI safety monitoring",
+          "at": "2026-10-23T18:00:32Z"
+        },
+        "b": {
+          "id": "gnews:95d76ff10332a635",
+          "source": "gnews-rss",
+          "title": "OpenAI Agents Disable Their Own Safety Monitoring - BankInfoSecurity",
+          "at": "2026-10-23T22:15:53Z"
+        },
+        "shared": [
+          "openai",
+          "safety",
+          "monitor"
+        ]
+      },
+      {
+        "score": 0.431,
         "blocked": "time-window",
         "hours_apart": 46.3,
         "a": {
@@ -951,7 +1147,7 @@
         ]
       },
       {
-        "score": 0.392,
+        "score": 0.386,
         "blocked": "thin-overlap",
         "hours_apart": 0.5,
         "a": {
@@ -971,50 +1167,6 @@
           "duet",
           "anthropic"
         ]
-      },
-      {
-        "score": 0.384,
-        "blocked": "below-threshold",
-        "hours_apart": 1.8,
-        "a": {
-          "id": "hn:50214416",
-          "source": "hn-algolia",
-          "title": "OpenAI: Securing our frontier model training environment",
-          "at": "2026-10-23T19:50:56Z"
-        },
-        "b": {
-          "id": "gnews:a23e974e428489b5",
-          "source": "gnews-rss",
-          "title": "OpenAI resumes frontier AI training with enhanced security, no internet access - SRN News",
-          "at": "2026-10-23T21:40:07Z"
-        },
-        "shared": [
-          "openai",
-          "frontier",
-          "train"
-        ]
-      },
-      {
-        "score": 0.371,
-        "blocked": "below-threshold",
-        "hours_apart": 18.2,
-        "a": {
-          "id": "hn:50193043",
-          "source": "hn-algolia",
-          "title": "IBM releases granite speech 5.0 2B",
-          "at": "2026-10-22T09:09:35Z"
-        },
-        "b": {
-          "id": "rss:huggingface:c2ed162a157709f5",
-          "source": "rss-lab",
-          "title": "Granite Speech 5.0: Transcribe, Translate, and Attribute more Accurately and Faster",
-          "at": "2026-10-21T14:58:18Z"
-        },
-        "shared": [
-          "granit",
-          "speech",
-          "5.0"
-        ]
       }
     ]
   },
@@ -1022,97 +1174,97 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 11,
+      "streak_ok": 12,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 168,
+      "streak_ok": 169,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 168,
+      "streak_ok": 169,
       "streak_fail": 0,
-      "items_last": 2
+      "items_last": 0
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 168,
+      "streak_ok": 169,
       "streak_fail": 0,
-      "items_last": 48
+      "items_last": 54
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 168,
+      "streak_ok": 169,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 168,
+      "streak_ok": 169,
       "streak_fail": 0,
       "items_last": 74
     },
     {
       "id": "hn_title",
       "state": "ok",
-      "streak_ok": 22,
+      "streak_ok": 23,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 80,
+      "streak_ok": 81,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "releases_atom",
       "state": "ok",
-      "streak_ok": 22,
+      "streak_ok": 23,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "rss_analyst",
       "state": "ok",
-      "streak_ok": 22,
+      "streak_ok": 23,
       "streak_fail": 0,
       "items_last": 6
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 72,
+      "streak_ok": 73,
       "streak_fail": 0,
-      "items_last": 105
+      "items_last": 115
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 168,
+      "streak_ok": 169,
       "streak_fail": 0,
-      "items_last": 40
+      "items_last": 74
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 168,
+      "streak_ok": 169,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.0047777777777777775,
+    "hours": 0.005551944444444444,
     "stale": false
   },
   "hf": {
@@ -1252,13 +1404,13 @@
       {
         "id": "hn:50200997",
         "tag": "rest",
-        "score": 577,
+        "score": 583,
         "text": "Ask HN: If the models are so good, why doesn't OpenAI just start 100 companies?"
       },
       {
         "id": "hn:50198675",
         "tag": "rest",
-        "score": 487,
+        "score": 488,
         "text": "OpenShell – A safe, private runtime for fleets of autonomous AI agents"
       },
       {
@@ -1273,7 +1425,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 105,
+    "count": 115,
     "shelf": 0,
     "brief": false,
     "pulse_only": true,
@@ -1323,10 +1475,22 @@
         "lab": "google-research",
         "url": "https://research.google/blog/rss/",
         "count": 12
+      },
+      {
+        "lab": "the-decoder",
+        "url": "https://the-decoder.com/feed/",
+        "count": 10
       }
     ],
     "feeds_soft_fail": [],
     "sample": [
+      {
+        "id": "rss:the-decoder:3cec67123ef466bd",
+        "lab": "the-decoder",
+        "tag": "rest",
+        "title": "Chinese AI model Kimi K3.1 Pro is closing in on Anthropic's Claude Opus 5.5",
+        "link": "https://the-decoder.com/chinese-ai-model-kimi-k3-1-pro-is-closing-in-on-anthropics-claude-opus-5-5/"
+      },
       {
         "id": "rss:google-research:32ef7801f5802984",
         "lab": "google-research",
@@ -1335,31 +1499,24 @@
         "link": "https://research.google/blog/bringing-foundational-models-to-the-front-lines-of-tb-screening/"
       },
       {
+        "id": "rss:the-decoder:67e4d8f6bd7818ee",
+        "lab": "the-decoder",
+        "tag": "rest",
+        "title": "Three-week on-site audit at OpenAI reveals major gaps in AI safety monitoring",
+        "link": "https://the-decoder.com/three-week-on-site-audit-at-openai-reveals-major-gaps-in-ai-safety-monitoring/"
+      },
+      {
         "id": "rss:nvidia-dev:273647658eb97da9",
         "lab": "nvidia-dev",
         "tag": "rest",
         "title": "Scaling NVIDIA TensorRT Performance Optimization Beyond a Single Build Route with the Global Performance Tuner, Part 2",
         "link": "https://developer.nvidia.com/blog/scaling-nvidia-tensorrt-performance-optimization-beyond-a-single-build-route-with-the-global-performance-tuner-part-2/"
-      },
-      {
-        "id": "rss:nvidia-dev:a57112b0e367d105",
-        "lab": "nvidia-dev",
-        "tag": "rest",
-        "title": "Scaling NVIDIA TensorRT Performance Optimization Beyond a Single Build Route with the Global Performance Tuner, Part 1",
-        "link": "https://developer.nvidia.com/blog/scaling-nvidia-tensorrt-performance-optimization-beyond-a-single-build-route-with-the-global-performance-tuner-part-1/"
-      },
-      {
-        "id": "rss:openai:ee4c22366ef7e7ab",
-        "lab": "openai",
-        "tag": "rest",
-        "title": "Rapidly scaling online storage to serve over 1 billion ChatGPT users (Part II)",
-        "link": "https://openai.com/index/scaling-storage-one-billion-users-part-two"
       }
     ]
   },
   "rss_security": {
     "ok": true,
-    "count": 40,
+    "count": 74,
     "shelf": 0,
     "brief": false,
     "pulse_only": true,
@@ -1384,36 +1541,51 @@
         "lab": "embracethered",
         "url": "https://embracethered.com/blog/index.xml",
         "count": 12
+      },
+      {
+        "lab": "unit42",
+        "url": "https://unit42.paloaltonetworks.com/feed/",
+        "count": 12
+      },
+      {
+        "lab": "securityweek",
+        "url": "https://www.securityweek.com/feed/",
+        "count": 10
+      },
+      {
+        "lab": "railway",
+        "url": "https://blog.railway.com/rss.xml",
+        "count": 12
       }
     ],
     "sample": [
       {
-        "id": "rss-sec:trailofbits:4fe37299ce183363",
-        "lab": "trailofbits",
+        "id": "rss-sec:unit42:7336ba1f20a5b928",
+        "lab": "unit42",
         "tag": "rest",
-        "title": "Your AI agent fixed the bug, but what else did it change?",
-        "link": "https://blog.trailofbits.com/2026/10/21/your-ai-agent-fixed-the-bug-but-what-else-did-it-change/"
+        "title": "Threat Brief: Critical Vulnerabilities in PHP: CVE-2026-109618, CVE-2026-109619 (Updated October 23)",
+        "link": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/"
       },
       {
-        "id": "rss-sec:trailofbits:664a99950228d053",
-        "lab": "trailofbits",
+        "id": "rss-sec:railway:0c1972d685146032",
+        "lab": "railway",
         "tag": "rest",
-        "title": "Package managers have an integrity problem",
-        "link": "https://blog.trailofbits.com/2026/10/14/package-managers-have-an-integrity-problem/"
+        "title": "Security Disclosure Recommendation: Resolving Login Issues",
+        "link": "https://blog.railway.com/p/security-disclosure-recommendation-recover-account-access"
       },
       {
-        "id": "rss-sec:embracethered:4c2e71e50d02ddf9",
-        "lab": "embracethered",
+        "id": "rss-sec:railway:f907ff3d2081a996",
+        "lab": "railway",
         "tag": "rest",
-        "title": "Visual Studio Copilot and SSMS Remote Code Execution (CVE-2026-103572)",
-        "link": "https://embracethered.com/blog/posts/2026/visual-studio-copilot-remote-code-execution/"
+        "title": "Security Disclosure Recommendation: Recover Failing Deploys",
+        "link": "https://blog.railway.com/p/security-disclosure-recommendation-recover-failing-deploys"
       },
       {
-        "id": "rss-sec:fox-it:53fb98f2d458276a",
-        "lab": "fox-it",
+        "id": "rss-sec:securityweek:2d51468e29bca90a",
+        "lab": "securityweek",
         "tag": "rest",
-        "title": "Releasing the Cobalt Strike Beacon Corpus",
-        "link": "https://blog.fox-it.com/2026/10/13/releasing-the-cobalt-strike-beacon-corpus/"
+        "title": "In Other News: Tor Exit Relays Hijacked, Banks Spot Rogue AI Agents, Self-Rebuilding macOS Ransomware",
+        "link": "https://www.securityweek.com/in-other-news-tor-exit-relays-hijacked-banks-spot-rogue-ai-agents-self-rebuilding-macos-ransomware/"
       }
     ]
   },
@@ -1527,6 +1699,13 @@
         "newest": "v0.32.0",
         "emitted": null,
         "baseline": "v0.32.0"
+      },
+      {
+        "feed": "codex",
+        "action": "seed",
+        "newest": "rust-v0.164.0",
+        "emitted": null,
+        "baseline": "(none)"
       }
     ],
     "feeds": [
@@ -1544,6 +1723,11 @@
         "feed": "vllm",
         "url": "https://github.com/vllm-project/vllm/releases.atom",
         "entries": 10
+      },
+      {
+        "feed": "codex",
+        "url": "https://github.com/openai/codex/releases.atom",
+        "entries": 10
       }
     ],
     "feeds_soft_fail": [],
@@ -1557,9 +1741,17 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 48,
-    "pool": 393,
+    "items": 54,
+    "pool": 394,
     "corroborators": [
+      {
+        "id": "gnews:5548290eafd4601f",
+        "anchor_id": "rss:the-decoder:3cec67123ef466bd",
+        "score": 1,
+        "title": "Chinese AI model Kimi K3.1 Pro is closing in on Anthropic's Claude Opus 5.5 - The Decoder",
+        "publisher": "The Decoder",
+        "self_repost": false
+      },
       {
         "id": "gnews:5e303f3770a3dc4b",
         "anchor_id": "rss:openai:f8c156dba7886826",
@@ -1569,12 +1761,36 @@
         "self_repost": true
       },
       {
+        "id": "gnews:021c9d5f1cfef530",
+        "anchor_id": "rss:the-decoder:67e4d8f6bd7818ee",
+        "score": 1,
+        "title": "Three-week on-site audit at OpenAI reveals major gaps in AI safety monitoring - The Decoder",
+        "publisher": "The Decoder",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:f6ef2ef0f30674e3",
+        "anchor_id": "rss:the-decoder:80ae7e1961efb8d4",
+        "score": 1,
+        "title": "Anthropic says its unreleased model is both more capable and better aligned than Mythos 5.1 - The Decoder",
+        "publisher": "The Decoder",
+        "self_repost": false
+      },
+      {
         "id": "gnews:51713ce90c3b3877",
         "anchor_id": "rss:openai:ee4c22366ef7e7ab",
         "score": 1,
         "title": "Rapidly scaling online storage to serve over 1 billion ChatGPT users (Part II) - OpenAI",
         "publisher": "OpenAI",
         "self_repost": true
+      },
+      {
+        "id": "gnews:26ed63e3fad59bef",
+        "anchor_id": "rss:the-decoder:22b83797b9a56942",
+        "score": 1,
+        "title": "OpenAI CEO Sam Altman says advanced AI will inevitably escape its sandbox, and only alignment can save us - The Decoder",
+        "publisher": "The Decoder",
+        "self_repost": false
       },
       {
         "id": "gnews:9bccf12fcd306883",
@@ -1595,9 +1811,17 @@
       {
         "id": "gnews:4d951b3ab51e0f9b",
         "anchor_id": "rss:nvidia:19fce2b28a327610",
-        "score": 0.731,
+        "score": 0.736,
         "title": "NVIDIA Minerva targets AI factory observability - Developer Tech News",
         "publisher": "Developer Tech News",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:187e1dd777d62f39",
+        "anchor_id": "rss:the-decoder:b4651d991e2efd2e",
+        "score": 1,
+        "title": "Anthropic's Claude now writes code and proves it safe automatically - The Decoder",
+        "publisher": "The Decoder",
         "self_repost": false
       },
       {
@@ -1643,7 +1867,7 @@
       {
         "id": "gnews:19dd6acc3268c772",
         "anchor_id": "hn:50208084",
-        "score": 0.729,
+        "score": 0.73,
         "title": "MiniMax M3.1 Flash vs Gemini 3.8 Flash: A Gap That Doubles - OrcaRouter",
         "publisher": "OrcaRouter",
         "self_repost": false
@@ -1659,7 +1883,7 @@
       {
         "id": "gnews:8c7cc8468a424522",
         "anchor_id": "hn:50207936",
-        "score": 0.671,
+        "score": 0.672,
         "title": "Anthropic publishes Public Benefit Report, detailing AI progress and gaps in measuring impact - EdTech Innovation Hub",
         "publisher": "EdTech Innovation Hub",
         "self_repost": false
@@ -1689,6 +1913,14 @@
         "self_repost": true
       },
       {
+        "id": "gnews:577f52308d3b44e5",
+        "anchor_id": "rss:the-decoder:8abf641301b119fb",
+        "score": 1,
+        "title": "Google's Agent Compute Engine gives every Gemini agent its own hardware-isolated micro virtual machine - The Decoder",
+        "publisher": "The Decoder",
+        "self_repost": false
+      },
+      {
         "id": "gnews:f13e7e4ad5baa75b",
         "anchor_id": "rss:openai:eda525050cea8fce",
         "score": 1,
@@ -1707,7 +1939,7 @@
       {
         "id": "gnews:7f5d8d453b127633",
         "anchor_id": "hn:50188944",
-        "score": 0.679,
+        "score": 0.678,
         "title": "Anthropic introduces Claude Duet, a proactive AI agent for professionals - SiliconANGLE",
         "publisher": "SiliconANGLE",
         "self_repost": false
@@ -1739,24 +1971,24 @@
     "queries_soft_fail": [],
     "sample": [
       {
+        "id": "gnews:ce234ac6b37709b8",
+        "title": "AG Paxton sues OpenAI and its CEO for allegedly deceiving and harming Texans - KVUE",
+        "publisher": "KVUE",
+        "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNemZuZjRaby1uemF0ajc3U3VhbGlaajBaZUZ3YU5tRWpWSmRrMU1yU3NiSTZPbVlsTmVJYllyRS1IRlhVVFFvYXpDYl9QdVJjam12TElUYWF5OGtXMFFTdXQwZVcyU1RRZWJNS0xDckZJSVNmSjMzV2JLY0xmbkc1VmNrYmx1ZFpzYmQwMzlBWVpZWERlR012UDRiMHpiNjNFenJBbQ?oc=5",
+        "tag": "rest"
+      },
+      {
+        "id": "gnews:225a7c5f514bd50f",
+        "title": "OpenAI Says It's Cutting Off Internet Access For Frontier Model Training - Engadget",
+        "publisher": "Engadget",
+        "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOZVlVU2N1R05Jc0YxRjVGMFlBeTlGQVhUWnFzWXRWWVBneXl1YWl6YXFHdVlzUGNHcFdnMDJ3UFpJal9rcElReU15TkR2Q0RTT3dxNjBDeG9hazczZ18xeWgyRzM4ZlpWaTBvWENad2l1ZEZaOEpaNUQyY0kxMUF0V21BYkxLckVOaU5YU3JwNmxrNkM3UFFzaFBDT3BxejVCTktXNEd4eW4?oc=5",
+        "tag": "rest"
+      },
+      {
         "id": "gnews:8ec60e673c05ef58",
         "title": "Texas attorney general accuses OpenAI of lying about ChatGPT safety and safeguards - Courthouse News",
         "publisher": "Courthouse News",
         "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxObXNWNG44YUkyTGJaZGlFeTh5ekpzb3lxTWljUTh0R1B6bVpDQW9iRzctSHFEajhqTVlHWVV5UlZoYkZZdkJ4N0VaN3JzME9fUjFnU3B5T3BYU1ZYOHBIRnBPcEpMZy14dkU3NThBLVJoRlRxa0dLOG10cmNJODZRb24wNUEwclQtV1hpNG4wY1A2M3VreWppT19HNEdEY1FBRVVGRFZhZlpQS3BHdGlmbjNEOUk?oc=5",
-        "tag": "rest"
-      },
-      {
-        "id": "gnews:95d76ff10332a635",
-        "title": "OpenAI Agents Disable Their Own Safety Monitoring - BankInfoSecurity",
-        "publisher": "BankInfoSecurity",
-        "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOOHM0ejBRdXhzcWl0RFJrMVp4MU9xRmNsVWlFZGpTa0JCT05KWXJIOWpBWmpQY25Kd19kNTBoWGc4czFKeVkzZ3JBQVlqa0JJc3E1WXhHZVl5ZG5FUjIyekVxODZDRUFVaWVKYWlCZjhvVmtoY3JuUVN4RmlWVG1tb09kZ1FuQnUyMm5UaFBySTdzNDh4?oc=5",
-        "tag": "rest"
-      },
-      {
-        "id": "gnews:7bf759527ca4bfd6",
-        "title": "News Orgs Fight OpenAI, Microsoft's Fair Use Arguments - Law360",
-        "publisher": "Law360",
-        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQd3g0SGZPbjZNY0dQcFFYakN5SHFWcnZaUkRDd0FxMGN0QkNacm1lSkxIbnpwbG1vLU5pMU1WTGRDejNuYWhXRU1YZnB6M005TTRUSm9yQWhtbzhld0liT0RKeVVhTDhkdjRwOE4tNlJzQzJ0R3V5SFZweENhSHJDUWNoUW5rTnJJbGg3TmtaemUybVpZd3R3dtIBVkFVX3lxTE14UG5iczI0Q2FCc01uSVotWXZCWEwySFVOMnF5YVNjSldpMnV2MUpNbEZUNmtjdVV4V0tIRDd2emRCUVdiYjZCY2x1am9LbnROeDRjdEFB?oc=5",
         "tag": "rest"
       }
     ]
@@ -1787,7 +2019,7 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "query": "OWASP LLM",
-    "shelf": 2,
+    "shelf": 0,
     "from_cache": false,
     "searches": 1,
     "rate_limit_remaining": 9,
@@ -1795,19 +2027,10 @@
     "pulse_lead": false,
     "shelf_only": true,
     "url": "https://api.github.com/search/repositories",
-    "sample": [
-      {
-        "label": "OWASP/www-project-llm-verification-standard",
-        "href": "https://github.com/OWASP/www-project-llm-verification-standard"
-      },
-      {
-        "label": "owasp.org",
-        "href": "https://owasp.org/www-project-llm-verification-standard/"
-      }
-    ]
+    "sample": []
   },
   "shelf": {
-    "count": 19,
+    "count": 17,
     "brief": false
   },
   "wikidata": {

@@ -23,6 +23,4 @@ export const SHELF: ShelfItem[] = [
   { href: "https://arxiv.org/abs/2610.31663", label: "arxiv.org/abs/2610.31663", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.31662", label: "arxiv.org/abs/2610.31662", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.31659", label: "arxiv.org/abs/2610.31659", reason: "arxiv-shelf" as const },
-  { href: "https://github.com/OWASP/www-project-llm-verification-standard", label: "OWASP/www-project-llm-verification-standard", reason: "github-search-shelf" as const },
-  { href: "https://owasp.org/www-project-llm-verification-standard/", label: "owasp.org", reason: "github-search-shelf" as const },
 ];

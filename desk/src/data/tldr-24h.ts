@@ -3,21 +3,35 @@ import type { Tldr } from "@/lib/tldr-24h";
 
 export const TLDR_24H: Tldr = {
   "schema": 1,
-  "crawl_at": "2026-10-23T21:36:15Z",
+  "crawl_at": "2026-10-23T22:52:03Z",
   "date": "2026-10-24",
   "bullets": [
-    {
-      "id": "cl:gnews:68174e007cd6fea5",
-      "title": "OpenAI now trains its frontier AI models with no internet access",
-      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQdGVJZzZWMlVxSEpXSS1WTHFmMHlsVTBpVHdsNE1Ecm5DcklqS2FmY21DS2laOFRuUmxYbENzYmdSeGhUUUlTMldJeFQ0dU9VVkJGclJPWV9BUnNYVThzYnVfU21VSV9zczRmdG4tdmtYUk5iRUhRUEVKb3YwcDBseWlKYWZWSWhWczNPSXBjYVdNS2l0cmNVY25IdWlFc0lDY2Nv?oc=5",
-      "at": "2026-10-23T21:11:07Z",
-      "sources": 2
-    },
     {
       "id": "cl:rss:openai:f8c156dba7886826",
       "title": "Securing our frontier model training environment",
       "url": "https://openai.com/index/securing-our-frontier-model-training-environment",
       "at": "2026-10-23T19:50:56Z",
+      "sources": 2
+    },
+    {
+      "id": "cl:rss:the-decoder:3cec67123ef466bd",
+      "title": "Chinese AI model Kimi K3.1 Pro is closing in on Anthropic's Claude Opus 5.5",
+      "url": "https://the-decoder.com/chinese-ai-model-kimi-k3-1-pro-is-closing-in-on-anthropics-claude-opus-5-5/",
+      "at": "2026-10-23T19:03:11Z",
+      "sources": 2
+    },
+    {
+      "id": "cl:rss:the-decoder:67e4d8f6bd7818ee",
+      "title": "Three-week on-site audit at OpenAI reveals major gaps in AI safety monitoring",
+      "url": "https://the-decoder.com/three-week-on-site-audit-at-openai-reveals-major-gaps-in-ai-safety-monitoring/",
+      "at": "2026-10-23T18:03:11Z",
+      "sources": 2
+    },
+    {
+      "id": "cl:rss:the-decoder:80ae7e1961efb8d4",
+      "title": "Anthropic says its unreleased model is both more capable and better aligned than Mythos 5.1",
+      "url": "https://the-decoder.com/anthropic-says-its-unreleased-model-is-both-more-capable-and-better-aligned-than-mythos-5-1/",
+      "at": "2026-10-23T17:23:11Z",
       "sources": 2
     },
     {
@@ -28,24 +42,10 @@ export const TLDR_24H: Tldr = {
       "sources": 2
     },
     {
-      "id": "cl:hn:50208444",
-      "title": "Anthropic strikes deal to launch European consultancy",
-      "url": "https://www.ft.com/content/df70bf20-e809-48d0-8485-f8f514a7fbc4",
-      "at": "2026-10-23T13:11:19Z",
-      "sources": 2
-    },
-    {
       "id": "cl:hn:50208084",
       "title": "MiniMax-M3.1-Flash",
       "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash",
       "at": "2026-10-23T12:41:37Z",
-      "sources": 2
-    },
-    {
-      "id": "cl:hn:50207936",
-      "title": "Anthropic Public Benefit Report",
-      "url": "https://www.anthropic.com/public-benefit-report",
-      "at": "2026-10-23T12:30:32Z",
       "sources": 2
     }
   ],
