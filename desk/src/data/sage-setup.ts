@@ -198,12 +198,12 @@ const D: NonNullable<SageSetupView["limits"]>["defaults"] = {
 export const SAGE_SETUP: SageSetupView = {
   "stamped_at": "2026-10-23T18:20:31Z",
   "config_path": "desk/config/sage-sources.json",
-  "config_hash": "51f61811180e",
+  "config_hash": "898c7ea45214",
   "status": "ok",
   "used": "committed",
   "errors": [],
-  "since_commit": "e04d86a",
-  "since_at": "2026-10-23T17:02:20Z",
+  "since_commit": "f2ab4ff",
+  "since_at": "2026-10-23T18:05:24Z",
   "sources": [
     {
       "id": "hn",
@@ -342,7 +342,6 @@ export const SAGE_SETUP: SageSetupView = {
         "Qwen",
         "Llama",
         "open-weights",
-        "agent",
         "MCP",
         "CVE",
         "zero-day",
@@ -516,7 +515,6 @@ export const SAGE_SETUP: SageSetupView = {
         "Qwen",
         "Llama",
         "open-weights",
-        "agent",
         "MCP",
         "CVE",
         "zero-day",
@@ -529,5 +527,5 @@ export const SAGE_SETUP: SageSetupView = {
       "max": 0.3
     }
   },
-  "file_hash": "cd38121c2b7e23f6bb278be30263ab8eb5aa28782138cadf33718fb2f741bbed"
+  "file_hash": "ac0864960b0ad626e47959cb7f3a665417f3b6b914935b620506903334a6266c"
 };
