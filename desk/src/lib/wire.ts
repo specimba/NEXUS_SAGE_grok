@@ -6,11 +6,13 @@
  * The Wire never displaces the lead (hf-incident) or the Take — it renders under them.
  */
 import { isAiRelevant } from "@/lib/ai-relevance";
-import { buildRows, type ClusterInput, type PulseMemberInfo } from "@/lib/pulse-v5";
+import { buildRows, compactAge, type ClusterInput, type PulseMemberInfo } from "@/lib/pulse-v5";
 
 export const WIRE_MIN = 3;
 export const WIRE_MAX = 5;
 export const WIRE_MIN_SOURCES = 2;
+/** PASS-F2.1a: a crawl with 0 new Wire rows backfills from gated stories of the last 6 h (publisher time). */
+export const WIRE_BACKFILL_H = 6;
 
 export type WireCluster = ClusterInput & {
   /** Cluster-level gate; false ⇒ never on the Wire. */
@@ -151,13 +153,28 @@ export function wireStatus(rank: number, prevRank: number | null, hasPrev: boole
 export function buildWire(
   clusters: WireCluster[],
   prev: WireSnapshot | null,
-  opts: WireOpts & { at: string; crawlAt: string; max?: number },
+  opts: WireOpts & { at: string; crawlAt: string; max?: number; /** PASS-F2.1a window in hours; 0 = off (pre-F2 golden). */ backfillH?: number },
 ): WireSnapshot {
   const cands = wireCandidates(clusters, opts);
   // Rank vs prev on the same footing: drop excluded ids (e.g. today's lead) from prev order too.
   const skip = new Set(opts.excludeIds ?? []);
   if (prev && skip.size) prev = { ...prev, order: prev.order.filter((o) => !skip.has(o.id)) };
-  const rows = cands.slice(0, opts.max ?? WIRE_MAX).map((c, i): WireRow => {
+  const max = opts.max ?? WIRE_MAX;
+  let picked = cands.slice(0, max);
+  // PASS-F2.1a: no NEW row this crawl ⇒ newest gated stories from the last 6 h, newest first (empty ⇒ today's path).
+  const crawlMs = Date.parse(opts.crawlAt);
+  const ranked = (list: WireCandidate[]) => list.map((c, i) => ({ c, rank: i + 1, prev_rank: prevRankOf(prev, c) }));
+  const backH = opts.backfillH ?? WIRE_BACKFILL_H;
+  if (backH > 0 && Number.isFinite(crawlMs) && !ranked(picked).some((x) => wireStatus(x.rank, x.prev_rank, prev != null, x.c.is_new) === "new")) {
+    const recent = cands
+      .filter((c) => {
+        const t = Date.parse(c.at);
+        return Number.isFinite(t) && t <= crawlMs && crawlMs - t <= backH * 3_600_000;
+      })
+      .sort((a, b) => Date.parse(b.at) - Date.parse(a.at) || a.id.localeCompare(b.id));
+    if (recent.length) picked = recent.slice(0, max);
+  }
+  const rows = picked.map((c, i): WireRow => {
     const rank = i + 1;
     const prev_rank = prevRankOf(prev, c);
     return { ...c, rank, prev_rank, status: wireStatus(rank, prev_rank, prev != null, c.is_new) };
@@ -195,9 +212,18 @@ export function istanbulHHMM(iso: string): string {
   return HHMM_FMT.format(t);
 }
 
-export function wireHeader(crawlAt: string, rows: Pick<WireRow, "status">[]): string {
+/**
+ * Wire header. N new ⇒ `N new · M moved`; 0 new ⇒ never a bare "0 new" (PASS-F2.1a): newest row ≤ 6 h before the
+ * crawl ⇒ `no new stories this crawl · newest 2h ago`, else `quiet · newest 11h ago`. Age vs the crawl time (deterministic).
+ */
+export function wireHeader(crawlAt: string, rows: (Pick<WireRow, "status"> & { at?: string })[]): string {
   const { fresh, moved } = wireCounts(rows);
-  return `WIRE · crawl ${istanbulHHMM(crawlAt)} UTC+3 · ${fresh} new · ${moved} moved`;
+  const head = `WIRE · crawl ${istanbulHHMM(crawlAt)} UTC+3 · `;
+  if (fresh) return `${head}${fresh} new · ${moved} moved`;
+  const c = Date.parse(crawlAt);
+  const t = Math.max(...rows.map((r) => Date.parse(r.at ?? "") || 0));
+  if (!t) return `${head}quiet`;
+  return `${head}${c - t > WIRE_BACKFILL_H * 3_600_000 ? "quiet" : "no new stories this crawl"} · newest ${compactAge(new Date(t).toISOString(), c)} ago`;
 }
 
 export function readWireSnapshot(raw: unknown): WireSnapshot | null {

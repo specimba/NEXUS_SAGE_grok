@@ -25,8 +25,12 @@ import { HEAT_COMPANIES, OTHER_LABS } from "@/lib/topic-heat";
 export const LEAD_PICK_HOUR = 6; // first crawl starting at/after 06:00 Europe/Istanbul picks
 /** PASS-L L1: candidates qualify under 36h old (earliest item). */
 export const LEAD_MAX_AGE_H = 36;
-/** PASS-L L1: tier split — under 24h ranks ahead of 24–36h. */
-export const LEAD_FRESH_AGE_H = 24;
+/** PASS-L L1: tier split — under 24h ranks ahead of 24–36h (fallback tier kept). */
+export const LEAD_TIER_AGE_H = 24;
+/** PASS-F2.1c: a frozen lead picked more than 12 h ago is re-picked at any crawl… */
+export const LEAD_REPICK_AFTER_H = 12;
+/** …when a qualifying candidate under 12 h old exists (Wire gate, ≥2 independent publishers, usual exclusions). */
+export const LEAD_FRESH_AGE_H = 12;
 /** PASS-L L2: a picked lead renders HELD only once its story is older than 48h (safety net). */
 export const LEAD_STALE_AGE_H = 48;
 /** PASS-L L3: HELD retries only for crawls starting before 21:00 Istanbul (16:11 = last planned chance; 21:11 never retries). */
@@ -124,7 +128,7 @@ export function leadIsStale(firstAt: string | null | undefined, now: number): bo
 /** PASS-L L5: `<24h` / `24–36h` band for an age in hours (null when unknown). */
 export function leadAgeBand(ageH: number | null | undefined): LeadAgeBand | null {
   if (ageH == null || !Number.isFinite(ageH)) return null;
-  return ageH < LEAD_FRESH_AGE_H ? "<24h" : "24–36h";
+  return ageH < LEAD_TIER_AGE_H ? "<24h" : "24–36h";
 }
 
 export function istanbulHHMM(iso: string): string {
@@ -308,7 +312,7 @@ export function leadExcludeReason(c: WireCluster, now: number, opts: LeadOpts = 
 /** Ranked qualifying stories: Wire gate + earliest-item age < 36h + ≥2 independent sources + ≥1 non-GNews publisher; tier (<24h, then 24–36h) → sources → SIG → newer. */
 export function leadCandidates(clusters: WireCluster[], now: number, opts: LeadOpts = {}) {
   const byId = new Map(clusters.map((c) => [c.id, c]));
-  const tier = (id: string) => (now - groupFirstAt(byId.get(id)!, opts.memberAt) < LEAD_FRESH_AGE_H * 3_600_000 ? 0 : 1);
+  const tier = (id: string) => (now - groupFirstAt(byId.get(id)!, opts.memberAt) < LEAD_TIER_AGE_H * 3_600_000 ? 0 : 1);
   return wireCandidates(clusters, opts)
     .filter((c) => c.sources >= LEAD_MIN_SOURCES)
     .filter((c) => leadExcludeReason(byId.get(c.id)!, now, opts) === null)
@@ -366,17 +370,79 @@ export function leadClosest(e: LeadEntry | null): LeadClosest | null {
   };
 }
 
-export type PickDecision =
-  | { action: "none"; why: "already-picked" | "outside-window" | "retry-closed" }
-  | { action: "picked"; entry: LeadEntry }
-  /** `replace` = update the date's existing HELD entry in place (retry that still found nothing). */
-  | { action: "held"; entry: LeadEntry; replace?: true };
+/** PASS-F2.1c refresh verdict for the frozen lead (log: `lead: kept|repicked|held age_h=<n> since_pick_h=<n>`). */
+export type LeadRefresh = { kind: "kept" | "repicked" | "held"; age_h: number | null; since_pick_h: number | null };
 
-export function decidePick(
-  h: LeadHistory,
-  clusters: WireCluster[],
-  opts: LeadOpts & { crawlAt: string; at: string; force?: boolean; repick?: boolean; crawlStartedAt?: string },
-): PickDecision {
+export function leadRefreshLine(r: LeadRefresh): string {
+  const n = (x: number | null) => (x == null ? "?" : String(Math.floor(x)));
+  return `lead: ${r.kind} age_h=${n(r.age_h)} since_pick_h=${n(r.since_pick_h)}`;
+}
+
+export type PickDecision =
+  | { action: "none"; why: "already-picked" | "outside-window" | "retry-closed"; refresh?: LeadRefresh }
+  | { action: "picked"; entry: LeadEntry; refresh?: LeadRefresh }
+  /** `replace` = update the date's existing HELD entry in place (retry that still found nothing). */
+  | { action: "held"; entry: LeadEntry; replace?: true; refresh?: LeadRefresh };
+
+type PickOpts = LeadOpts & { crawlAt: string; at: string; force?: boolean; repick?: boolean; crawlStartedAt?: string };
+
+/**
+ * PASS-F2.1c — run at EVERY crawl (scripts/rank-snapshot.ts). The daily pick rules first (unchanged); when they do nothing, the frozen lead is
+ * re-picked if it was picked > LEAD_REPICK_AFTER_H ago AND a candidate under LEAD_FRESH_AGE_H exists that passes the
+ * Wire gate with ≥2 independent publishers (analyst-only / GNews-only exclusions unchanged). No candidate ⇒ the
+ * frozen lead stays, or HELD once its story is over LEAD_MAX_AGE_H. Never invented: only real rows are picked.
+ */
+export function decideLeadRefresh(h: LeadHistory, clusters: WireCluster[], opts: PickOpts, d: PickDecision = decidePick(h, clusters, opts)): PickDecision {
+  if (d.action !== "none" || opts.force || opts.repick) return d;
+  const cur = currentLead(h);
+  if (!cur || (cur.reason !== "picked" && cur.reason !== "seed")) return d;
+  const now = Date.parse(opts.crawlAt);
+  const sincePick = leadAgeHours(cur.at, now);
+  const byId = new Map(clusters.map((c) => [c.id, c]));
+  const curCluster = cur.cluster_id ? byId.get(cur.cluster_id) : undefined;
+  const firstMs = cur.first_at ? Date.parse(cur.first_at) : curCluster ? groupFirstAt(curCluster, opts.memberAt) : NaN;
+  const ageH = Number.isFinite(firstMs) ? (now - firstMs) / 3_600_000 : null;
+  const keep = (): PickDecision => ({ ...d, refresh: { kind: "kept", age_h: ageH, since_pick_h: sincePick } });
+  if (sincePick == null || sincePick <= LEAD_REPICK_AFTER_H) return keep();
+  const fresh = leadCandidates(clusters, now, opts).find(
+    (c) => c.id !== cur.cluster_id && now - groupFirstAt(byId.get(c.id)!, opts.memberAt) < LEAD_FRESH_AGE_H * 3_600_000,
+  );
+  if (fresh) {
+    const freshOnly = clusters.filter((c) => c.id !== cur.cluster_id && now - groupFirstAt(c, opts.memberAt) < LEAD_FRESH_AGE_H * 3_600_000);
+    const r = decidePick(h, freshOnly, { ...opts, repick: true });
+    if (r.action === "picked") {
+      const { forced: _f, ...entry } = r.entry;
+      void _f;
+      return { action: "picked", entry: { ...entry, supersedes: cur.cluster_id, note: "repick: lead older than 12h since pick" }, refresh: { kind: "repicked", age_h: ageH, since_pick_h: sincePick } };
+    }
+  }
+  if (ageH != null && ageH > LEAD_MAX_AGE_H) {
+    const startAt = opts.crawlStartedAt && Number.isFinite(Date.parse(opts.crawlStartedAt)) ? opts.crawlStartedAt : opts.crawlAt;
+    return {
+      action: "held",
+      entry: {
+        date: istanbulDate(startAt),
+        at: opts.at,
+        crawl_at: opts.crawlAt,
+        pick_slot: istanbulHHMM(startAt),
+        cluster_id: cur.cluster_id,
+        headline: cur.headline,
+        url: cur.url,
+        sources: cur.sources,
+        sig: cur.sig,
+        ...(cur.first_at ? { first_at: cur.first_at } : {}),
+        reason: "held",
+        note: "no qualifying story",
+        attempts: [{ at: opts.at, crawl_at: opts.crawlAt, excluded: [] }],
+      },
+      refresh: { kind: "held", age_h: ageH, since_pick_h: sincePick },
+    };
+  }
+  return keep();
+}
+
+/** The daily pick rules (Beat 7 / PASS-L), unchanged. The crawl calls decideLeadRefresh, which wraps this. */
+export function decidePick(h: LeadHistory, clusters: WireCluster[], opts: PickOpts): PickDecision {
   const startAt = opts.crawlStartedAt && Number.isFinite(Date.parse(opts.crawlStartedAt)) ? opts.crawlStartedAt : opts.crawlAt;
   const date = istanbulDate(startAt);
   const existing = entryFor(h, date);

@@ -29,8 +29,9 @@ export function oldSourcesPipeline(f: S1Fixture) {
   }
   const now = Date.parse(f.stamp);
   const opts = { scores, memberAt, members: f.members };
-  const wire = buildWire(ci, null, { at: f.stamp, crawlAt: f.stamp, ...opts });
-  const all = buildWire(ci, null, { at: f.stamp, crawlAt: f.stamp, ...opts, max: 99 });
+  // PASS-F2.1a 6h backfill is a later, deliberate Wire change: off here so the pre-S1 golden stays byte-identical.
+  const wire = buildWire(ci, null, { at: f.stamp, crawlAt: f.stamp, ...opts, backfillH: 0 });
+  const all = buildWire(ci, null, { at: f.stamp, crawlAt: f.stamp, ...opts, max: 99, backfillH: 0 });
   const leadCands = all.rows.map((r) => {
     const c = ci.find((x) => x.id === r.id)!;
     return { id: r.id, sources: r.sources, first: groupFirstAt(c, memberAt), reason: leadExcludeReason(c, now, opts) };

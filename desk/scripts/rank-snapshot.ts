@@ -30,7 +30,7 @@ import { X_TASTE } from "@/data/x-taste";
 import { diffSnapshots, rankBelowLead, toSnapshot, type RankSnapshot } from "@/lib/corroboration";
 import { CYCLE } from "@/data/cycle";
 import { buildLiveSnapshot, renderUnlockModule, type DigestUnlockSnapshot } from "@/lib/digest-unlock";
-import { applyPick, currentLead, groupFirstAt, leadExcludeReason, decidePick, istanbulDate, lastPickDate, readLeadHistory, yesterdayLead, type LeadHistory } from "@/lib/lead-pick";
+import { applyPick, decideLeadRefresh, leadRefreshLine, currentLead, groupFirstAt, leadExcludeReason, istanbulDate, lastPickDate, readLeadHistory, yesterdayLead, type LeadHistory } from "@/lib/lead-pick";
 import { bucketWindows, countCompanies, countOtherLabs, heatCells, heatLabel, upsertCrawl, type HeatFile } from "@/lib/topic-heat";
 import { applySageConfig, loadSageConfig } from "@/lib/sage-config-disk";
 import { buildWire, readWireSnapshot, wireCounts, wireHeader, wireMark, type WireSnapshot } from "@/lib/wire";
@@ -150,7 +150,7 @@ for (const r of RELEASES_ATOM) memberAt[r.id] = r.published;
 const pickNow = Date.parse(PULSE_CLUSTERS_AT);
 for (const c of leadCandidatesAll(PULSE_CLUSTERS, pickNow, { scores, memberAt, publishers, members, tasteIds: X_TASTE.items.map((t) => t.id) }))
   console.log(`  lead-cand ${c.id.padEnd(28)} ${c.sources} SRC sig ${c.score ?? "—"} first ${c.first} age ${c.ageH}h ${c.reason ?? "ELIGIBLE"} · ${c.title.slice(0, 60)}`);
-const decision = decidePick(history, PULSE_CLUSTERS, {
+const decision = decideLeadRefresh(history, PULSE_CLUSTERS, {
   memberAt,
   publishers,
   members,
@@ -164,6 +164,8 @@ const decision = decidePick(history, PULSE_CLUSTERS, {
   tasteIds: X_TASTE.items.map((t) => t.id),
 });
 history = applyPick(history, decision);
+if (decision.refresh) console.log(leadRefreshLine(decision.refresh));
+
 writeFileSync(historyPath, JSON.stringify(history, null, 2) + "\n");
 const leadNow = currentLead(history);
 const leadYday = yesterdayLead(history);
@@ -291,7 +293,7 @@ function leadCandidatesAll(
   now: number,
   opts: { scores: Record<string, number>; memberAt: Record<string, string>; publishers: Record<string, string>; members: typeof members; tasteIds: string[] },
 ) {
-  const wc = buildWire(clusters, null, { at: "", crawlAt: "", scores: opts.scores, publishers: opts.publishers, members: opts.members, tasteIds: opts.tasteIds, max: 99 });
+  const wc = buildWire(clusters, null, { at: "", crawlAt: "", scores: opts.scores, publishers: opts.publishers, members: opts.members, tasteIds: opts.tasteIds, max: 99, backfillH: 0 });
   return wc.rows.map((r) => {
     const c = clusters.find((x) => x.id === r.id)!;
     const first = groupFirstAt(c, opts.memberAt);

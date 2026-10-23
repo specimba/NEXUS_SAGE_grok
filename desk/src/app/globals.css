@@ -1523,6 +1523,7 @@ body {
 .pulse-v5-age {
   color: var(--phosphor-dim);
   font-size: 0.75rem;
+  min-width: 5ch; /* PASS-F2.1b fixed slot: SSR HH:MM → relative age swaps without layout shift */
 }
 .pulse-v5-headline {
   overflow: hidden;
