@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-23T08:54:22Z",
+  "stamped_at": "2026-10-23T13:21:39Z",
   "config_hash": "6dd1c3db6716",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,7 +11,7 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 123,
+      "duration_ms": 299,
       "paused_until": null,
       "reason": null
     },
@@ -20,7 +20,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 3019,
+      "duration_ms": 3166,
       "paused_until": null,
       "reason": null
     },
@@ -29,7 +29,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 4,
-      "duration_ms": 390,
+      "duration_ms": 451,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 488,
+      "duration_ms": 197,
       "paused_until": null,
       "reason": null
     },
@@ -47,7 +47,7 @@
       "label": "HN",
       "status": "ok",
       "rows": 70,
-      "duration_ms": 8284,
+      "duration_ms": 8384,
       "paused_until": null,
       "reason": null
     },
@@ -56,7 +56,7 @@
       "label": "HN title",
       "status": "ok",
       "rows": 2,
-      "duration_ms": 8236,
+      "duration_ms": 8321,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 105,
-      "duration_ms": 17730,
+      "duration_ms": 16755,
       "paused_until": null,
       "reason": null
     },
@@ -74,7 +74,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 40,
-      "duration_ms": 6122,
+      "duration_ms": 6154,
       "paused_until": null,
       "reason": null
     },
@@ -83,7 +83,7 @@
       "label": "analyst RSS",
       "status": "ok",
       "rows": 6,
-      "duration_ms": 2176,
+      "duration_ms": 2915,
       "paused_until": null,
       "reason": null
     },
@@ -92,7 +92,7 @@
       "label": "releases",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 5104,
+      "duration_ms": 4959,
       "paused_until": null,
       "reason": null
     },
@@ -100,8 +100,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 56,
-      "duration_ms": 6442,
+      "rows": 53,
+      "duration_ms": 6461,
       "paused_until": null,
       "reason": null
     },
@@ -110,7 +110,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 350,
+      "duration_ms": 358,
       "paused_until": null,
       "reason": null
     },
@@ -119,16 +119,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4406,
+      "duration_ms": 4325,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 62870,
-    "sources_wall_ms": 17731,
-    "papers_lane_ms": 4027,
-    "slowest_source_ms": 17730,
+    "sources_ms": 62745,
+    "sources_wall_ms": 16756,
+    "papers_lane_ms": 4119,
+    "slowest_source_ms": 16755,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -146,94 +146,218 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 18353,
-    "startup_ms": 57,
-    "main_ms": 18373
+    "wall_ms": 17385,
+    "startup_ms": 55,
+    "main_ms": 17408
   },
-  "multi_source_independent": 11,
+  "multi_source_independent": 16,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 11,
-    "multi_source_raw": 25,
-    "self_reposts": 18,
-    "items_in": 287,
-    "clusters_out": 246,
-    "collapsed": 41,
-    "multi_source": 11,
-    "multi_member": 31,
+    "multi_source_independent": 16,
+    "multi_source_raw": 24,
+    "self_reposts": 12,
+    "items_in": 284,
+    "clusters_out": 245,
+    "collapsed": 39,
+    "multi_source": 16,
+    "multi_member": 30,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 12,
+    "new_items": 43,
     "per_source": {
       "hn-algolia": 70,
       "rss-lab": 105,
       "rss-security": 40,
-      "gnews-rss": 56,
+      "gnews-rss": 53,
       "gmail-news": 10,
       "rss-analyst": 6
     },
     "multi_source_clusters": [
       {
-        "title": "OpenAI models are coming to Google Cloud",
+        "title": "NVIDIA Unveils Minerva to Bring End-to-End Observability for AI Factories",
         "sources": [
           "rss-lab",
-          "hn-algolia",
           "gnews-rss"
         ],
-        "size": 7,
+        "size": 3,
         "score": 1,
         "members": [
           {
-            "id": "hn:50180079",
-            "source": "hn-algolia",
-            "title": "OpenAI models are coming to Google Cloud",
-            "at": "2026-10-21T12:53:11Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:50181880",
-            "source": "hn-algolia",
-            "title": "OpenAI Models in Google Cloud",
-            "at": "2026-10-21T14:42:30Z",
-            "publisher": null
-          },
-          {
-            "id": "rss:openai:95dedf578de78f3e",
+            "id": "rss:nvidia:19fce2b28a327610",
             "source": "rss-lab",
-            "title": "OpenAI models are coming to Google Cloud",
-            "at": "2026-10-21T12:00:00Z",
-            "publisher": "openai"
+            "title": "NVIDIA Unveils Minerva to Bring End-to-End Observability for AI Factories",
+            "at": "2026-10-22T15:00:02Z",
+            "publisher": "nvidia"
           },
           {
-            "id": "gnews:b2fa14a52139bb0d",
+            "id": "gnews:4d951b3ab51e0f9b",
             "source": "gnews-rss",
-            "title": "OpenAI models are coming to Google Cloud - OpenAI",
-            "at": "2026-10-21T12:40:10Z",
-            "publisher": "OpenAI",
+            "title": "NVIDIA Minerva targets AI factory observability - Developer Tech News",
+            "at": "2026-10-23T13:13:15Z",
+            "publisher": "Developer Tech News"
+          },
+          {
+            "id": "gnews:9e5949c8aaf01502",
+            "source": "gnews-rss",
+            "title": "NVIDIA Unveils Minerva to Bring End-to-End Observability for AI Factories - NVIDIA Blog",
+            "at": "2026-10-22T15:24:27Z",
+            "publisher": "NVIDIA Blog",
             "self_repost": true
+          }
+        ]
+      },
+      {
+        "title": "Anthropic strikes deal to launch European consultancy",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:50208444",
+            "source": "hn-algolia",
+            "title": "Anthropic strikes deal to launch European consultancy",
+            "at": "2026-10-23T13:11:19Z",
+            "publisher": null
           },
           {
-            "id": "gnews:c10c68d667c654a3",
+            "id": "gnews:1cdd1006ed3e4bb1",
             "source": "gnews-rss",
-            "title": "Google Cloud expands model choice and flexibility, bringing OpenAI models to customers - Google Cloud",
-            "at": "2026-10-21T12:18:37Z",
-            "publisher": "Google Cloud"
+            "title": "Anthropic strikes deal to launch European consultancy - Financial Times",
+            "at": "2026-10-23T09:04:09Z",
+            "publisher": "Financial Times"
+          }
+        ]
+      },
+      {
+        "title": "MiniMax-M3.1-Flash",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 3,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:50208084",
+            "source": "hn-algolia",
+            "title": "MiniMax-M3.1-Flash",
+            "at": "2026-10-23T12:41:37Z",
+            "publisher": null
           },
           {
-            "id": "gnews:74c60de87b06e3eb",
-            "source": "gnews-rss",
-            "title": "OpenAI to sell its top models on Google Cloud in latest enterprise push - Reuters",
-            "at": "2026-10-21T12:02:09Z",
-            "publisher": "Reuters"
+            "id": "hn:50203279",
+            "source": "hn-algolia",
+            "title": "MiniMaxAI/MiniMax-M3.1-Flash",
+            "at": "2026-10-23T01:09:50Z",
+            "publisher": null
           },
           {
-            "id": "gnews:7164c49e2a90e80a",
+            "id": "gnews:19dd6acc3268c772",
             "source": "gnews-rss",
-            "title": "OpenAI to bring AI models to Google's cloud, in further expansion beyond Microsoft - CNBC",
-            "at": "2026-10-21T12:00:02Z",
-            "publisher": "CNBC"
+            "title": "MiniMax M3.1 Flash vs Gemini 3.8 Flash: A Gap That Doubles - OrcaRouter",
+            "at": "2026-10-23T05:37:27Z",
+            "publisher": "OrcaRouter"
+          }
+        ]
+      },
+      {
+        "title": "Anthropic Public Benefit Report",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 0.666,
+        "members": [
+          {
+            "id": "hn:50207936",
+            "source": "hn-algolia",
+            "title": "Anthropic Public Benefit Report",
+            "at": "2026-10-23T12:30:32Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:8c7cc8468a424522",
+            "source": "gnews-rss",
+            "title": "Anthropic publishes Public Benefit Report, detailing AI progress and gaps in measuring impact - EdTech Innovation Hub",
+            "at": "2026-10-23T00:15:16Z",
+            "publisher": "EdTech Innovation Hub"
+          }
+        ]
+      },
+      {
+        "title": "Anthropic opens research preview of Claude Duet, a agent for professionals",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 4,
+        "score": 0.769,
+        "members": [
+          {
+            "id": "hn:50188944",
+            "source": "hn-algolia",
+            "title": "Anthropic opens research preview of Claude Duet, a agent for professionals",
+            "at": "2026-10-21T23:12:27Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:c1020143bf381fb7",
+            "source": "gnews-rss",
+            "title": "Claude Duet: Anthropic opens proactive AI agent preview - BetaNews",
+            "at": "2026-10-23T12:14:53Z",
+            "publisher": "BetaNews"
+          },
+          {
+            "id": "gnews:ee0e82523b24cb84",
+            "source": "gnews-rss",
+            "title": "Claude Duet: What Anthropic’s Proactive Agent Does, Who Can Get It, and What It Costs - Fello AI",
+            "at": "2026-10-23T11:32:01Z",
+            "publisher": "Fello AI"
+          },
+          {
+            "id": "gnews:7f5d8d453b127633",
+            "source": "gnews-rss",
+            "title": "Anthropic introduces Claude Duet, a proactive AI agent for professionals - SiliconANGLE",
+            "at": "2026-10-22T13:20:00Z",
+            "publisher": "SiliconANGLE"
+          }
+        ]
+      },
+      {
+        "title": "The Signal Chats That Cost OpenAI Researchers Their Jobs",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 3,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:50204095",
+            "source": "hn-algolia",
+            "title": "The Signal Chats That Cost OpenAI Researchers Their Jobs",
+            "at": "2026-10-23T03:14:32Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:32694099a58f2dab",
+            "source": "gnews-rss",
+            "title": "The Signal Chats That Cost OpenAI Researchers Their Jobs - WSJ",
+            "at": "2026-10-23T01:00:00Z",
+            "publisher": "WSJ"
+          },
+          {
+            "id": "gnews:92a08b7adf930f57",
+            "source": "gnews-rss",
+            "title": "The Morning Risk Report: The Signal Chats That Cost OpenAI Researchers Their Jobs - WSJ",
+            "at": "2026-10-23T10:56:00Z",
+            "publisher": "WSJ"
           }
         ]
       },
@@ -243,7 +367,7 @@
           "rss-lab",
           "gnews-rss"
         ],
-        "size": 5,
+        "size": 4,
         "score": 1,
         "members": [
           {
@@ -254,18 +378,12 @@
             "publisher": "openai"
           },
           {
-            "id": "gnews:8fb1bdff5490f9b4",
+            "id": "gnews:c0a8aa82fb0adbb1",
             "source": "gnews-rss",
-            "title": "OpenAI, Poland's NASK to Collaborate on AI Safety, Security - marketscreener.com",
-            "at": "2026-10-23T08:34:53Z",
-            "publisher": "marketscreener.com"
-          },
-          {
-            "id": "gnews:1951dbea4f4e9ee0",
-            "source": "gnews-rss",
-            "title": "OpenAI and Poland’s NASK to cooperate on AI safety — Channel NewsAsia - UA.NEWS",
-            "at": "2026-10-23T07:24:08Z",
-            "publisher": "UA.NEWS"
+            "title": "OpenAI and Poland’s NASK partner to advance AI safety and security - OpenAI",
+            "at": "2026-10-23T05:11:03Z",
+            "publisher": "OpenAI",
+            "self_repost": true
           },
           {
             "id": "gnews:5c33ac10cf3202fa",
@@ -275,12 +393,11 @@
             "publisher": "Breakingthenews.net"
           },
           {
-            "id": "gnews:c0a8aa82fb0adbb1",
+            "id": "gnews:b525a83d090286a6",
             "source": "gnews-rss",
-            "title": "OpenAI and Poland’s NASK partner to advance AI safety and security - OpenAI",
-            "at": "2026-10-23T05:11:03Z",
-            "publisher": "OpenAI",
-            "self_repost": true
+            "title": "OpenAI partners with Poland’s NASK to strengthen AI safety - The News International",
+            "at": "2026-10-23T08:39:00Z",
+            "publisher": "The News International"
           }
         ]
       },
@@ -291,7 +408,7 @@
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.97,
+        "score": 0.971,
         "members": [
           {
             "id": "hn:50202402",
@@ -306,31 +423,6 @@
             "title": "OpenAI trims valuation target to $1.25tn after pitching higher price - Financial Times",
             "at": "2026-10-22T21:50:16Z",
             "publisher": "Financial Times"
-          }
-        ]
-      },
-      {
-        "title": "Anthropic opens research preview of Claude Duet, a agent for professionals",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 0.67,
-        "members": [
-          {
-            "id": "hn:50188944",
-            "source": "hn-algolia",
-            "title": "Anthropic opens research preview of Claude Duet, a agent for professionals",
-            "at": "2026-10-21T23:12:27Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:7f5d8d453b127633",
-            "source": "gnews-rss",
-            "title": "Anthropic introduces Claude Duet, a proactive AI agent for professionals - SiliconANGLE",
-            "at": "2026-10-22T13:20:00Z",
-            "publisher": "SiliconANGLE"
           }
         ]
       },
@@ -524,26 +616,49 @@
             "publisher": "Yahoo Finance"
           }
         ]
-      }
-    ],
-    "self_repost_clusters": [
+      },
       {
         "title": "OpenAI models are coming to Google Cloud",
         "sources": [
           "rss-lab",
-          "hn-algolia",
+          "hn-algolia"
+        ],
+        "size": 2,
+        "score": 0.964,
+        "members": [
+          {
+            "id": "hn:50181880",
+            "source": "hn-algolia",
+            "title": "OpenAI Models in Google Cloud",
+            "at": "2026-10-21T14:42:30Z",
+            "publisher": null
+          },
+          {
+            "id": "rss:openai:95dedf578de78f3e",
+            "source": "rss-lab",
+            "title": "OpenAI models are coming to Google Cloud",
+            "at": "2026-10-21T12:00:00Z",
+            "publisher": "openai"
+          }
+        ]
+      }
+    ],
+    "self_repost_clusters": [
+      {
+        "title": "NVIDIA Unveils Minerva to Bring End-to-End Observability for AI Factories",
+        "sources": [
+          "rss-lab",
           "gnews-rss"
         ],
         "all_sources": [
           "rss-lab",
-          "hn-algolia",
           "gnews-rss"
         ],
         "self_reposts": [
           {
-            "id": "gnews:b2fa14a52139bb0d",
-            "publisher": "OpenAI",
-            "title": "OpenAI models are coming to Google Cloud - OpenAI"
+            "id": "gnews:9e5949c8aaf01502",
+            "publisher": "NVIDIA Blog",
+            "title": "NVIDIA Unveils Minerva to Bring End-to-End Observability for AI Factories - NVIDIA Blog"
           }
         ]
       },
@@ -621,19 +736,19 @@
         ]
       },
       {
-        "title": "LLMs are making formal software verification feasible at a much larger scale",
+        "title": "Build more responsive apps with the Decisions API",
         "sources": [
-          "hn-algolia"
+          "rss-lab"
         ],
         "all_sources": [
-          "hn-algolia",
+          "rss-lab",
           "gnews-rss"
         ],
         "self_reposts": [
           {
-            "id": "gnews:4ae0e32a4655e09a",
-            "publisher": "Anthropic",
-            "title": "LLMs are making formal software verification feasible at a much larger scale - Anthropic"
+            "id": "gnews:5dfdb5e38e3765d3",
+            "publisher": "OpenAI",
+            "title": "Build more responsive apps with the Decisions API - OpenAI"
           }
         ]
       },
@@ -689,23 +804,6 @@
         ]
       },
       {
-        "title": "NVIDIA Unveils Minerva to Bring End-to-End Observability for AI Factories",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:9e5949c8aaf01502",
-            "publisher": "NVIDIA Blog",
-            "title": "NVIDIA Unveils Minerva to Bring End-to-End Observability for AI Factories - NVIDIA Blog"
-          }
-        ]
-      },
-      {
         "title": "What FDE means at OpenAI",
         "sources": [
           "rss-lab"
@@ -755,91 +853,6 @@
             "title": "Broad access through consistent standards - OpenAI"
           }
         ]
-      },
-      {
-        "title": "ChatGPT Ads expands to 26 new countries as over 100,000 advertisers have used the platform",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:6b86904830126c5a",
-            "publisher": "OpenAI",
-            "title": "ChatGPT Ads expands to 26 new countries as over 100,000 advertisers have used the platform - OpenAI"
-          }
-        ]
-      },
-      {
-        "title": "Achieve Productive AI Capacity Faster and More Predictably with NVIDIA DSX POD",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:9b84db4c28e60e64",
-            "publisher": "NVIDIA Developer",
-            "title": "Achieve Productive AI Capacity Faster and More Predictably with NVIDIA DSX POD | NVIDIA Technical Blog - NVIDIA Developer"
-          }
-        ]
-      },
-      {
-        "title": "Inside NVIDIA Sentry: Secure AI Agents at Runtime",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:32173f9b8dd82a57",
-            "publisher": "NVIDIA Developer",
-            "title": "Inside NVIDIA Sentry: Secure AI Agents at Runtime | NVIDIA Technical Blog - NVIDIA Developer"
-          }
-        ]
-      },
-      {
-        "title": "How NVIDIA OpenShell Reference Architecture Secures and Governs AI Agent Workloads at Scale",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:50703c29049bb871",
-            "publisher": "NVIDIA Developer",
-            "title": "How NVIDIA OpenShell Reference Architecture Secures and Governs AI Agent Workloads at Scale - NVIDIA Developer"
-          }
-        ]
-      },
-      {
-        "title": "Developing an AI Factory Digital Twin with an Agent-Assisted Workflow",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:bda1a358e9972bb8",
-            "publisher": "NVIDIA Developer",
-            "title": "Developing an AI Factory Digital Twin with an Agent-Assisted Workflow - NVIDIA Developer"
-          }
-        ]
       }
     ],
     "ai_relevance": {
@@ -852,16 +865,45 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "SFGATE",
-          "title": "Horoscope for Friday, 10/23/26 by Christopher Renstrom - SFGATE"
+          "publisher": "Yahoo Finance Singapore",
+          "title": "Newegg Now Offers NVIDIA RTX Spark Laptops in the U.S. and Canada - Yahoo Finance Singapore"
+        },
+        {
+          "publisher": "FlowingData",
+          "title": "What happens to math going forward - FlowingData"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 8
+      "hn_dropped": 9
     },
     "gnews_near_misses": [
       {
-        "score": 0.687,
+        "score": 0.753,
+        "blocked": "time-window",
+        "hours_apart": 37,
+        "a": {
+          "id": "hn:50188944",
+          "source": "hn-algolia",
+          "title": "Anthropic opens research preview of Claude Duet, a agent for professionals",
+          "at": "2026-10-21T23:12:27Z"
+        },
+        "b": {
+          "id": "gnews:c1020143bf381fb7",
+          "source": "gnews-rss",
+          "title": "Claude Duet: Anthropic opens proactive AI agent preview - BetaNews",
+          "at": "2026-10-23T12:14:53Z"
+        },
+        "shared": [
+          "anthropic",
+          "open",
+          "preview",
+          "claude",
+          "duet",
+          "agent"
+        ]
+      },
+      {
+        "score": 0.697,
         "blocked": "short-title",
         "hours_apart": 18.1,
         "a": {
@@ -882,7 +924,7 @@
         ]
       },
       {
-        "score": 0.687,
+        "score": 0.697,
         "blocked": "short-title",
         "hours_apart": 17.7,
         "a": {
@@ -903,9 +945,9 @@
         ]
       },
       {
-        "score": 0.646,
+        "score": 0.679,
         "blocked": "time-window",
-        "hours_apart": 35.3,
+        "hours_apart": 41,
         "a": {
           "id": "hn:50186037",
           "source": "hn-algolia",
@@ -913,10 +955,10 @@
           "at": "2026-10-21T19:14:01Z"
         },
         "b": {
-          "id": "gnews:c205b36cb69c163b",
+          "id": "gnews:c1020143bf381fb7",
           "source": "gnews-rss",
-          "title": "Anthropic launches Claude Duet research preview for Pro and Max users - Social Samosa",
-          "at": "2026-10-23T06:29:02Z"
+          "title": "Claude Duet: Anthropic opens proactive AI agent preview - BetaNews",
+          "at": "2026-10-23T12:14:53Z"
         },
         "shared": [
           "claude",
@@ -924,9 +966,9 @@
         ]
       },
       {
-        "score": 0.646,
+        "score": 0.679,
         "blocked": "time-window",
-        "hours_apart": 34.8,
+        "hours_apart": 40.6,
         "a": {
           "id": "hn:50186455",
           "source": "hn-algolia",
@@ -934,10 +976,10 @@
           "at": "2026-10-21T19:40:18Z"
         },
         "b": {
-          "id": "gnews:c205b36cb69c163b",
+          "id": "gnews:c1020143bf381fb7",
           "source": "gnews-rss",
-          "title": "Anthropic launches Claude Duet research preview for Pro and Max users - Social Samosa",
-          "at": "2026-10-23T06:29:02Z"
+          "title": "Claude Duet: Anthropic opens proactive AI agent preview - BetaNews",
+          "at": "2026-10-23T12:14:53Z"
         },
         "shared": [
           "claude",
@@ -945,9 +987,9 @@
         ]
       },
       {
-        "score": 0.643,
+        "score": 0.662,
         "blocked": "time-window",
-        "hours_apart": 34.9,
+        "hours_apart": 40.3,
         "a": {
           "id": "hn:50186037",
           "source": "hn-algolia",
@@ -955,10 +997,10 @@
           "at": "2026-10-21T19:14:01Z"
         },
         "b": {
-          "id": "gnews:bea9f34395d89502",
+          "id": "gnews:ee0e82523b24cb84",
           "source": "gnews-rss",
-          "title": "Anthropic Launches Claude Duet, a Background AI Agent for Claude Pro and Max Subscribers in the US - gHacks",
-          "at": "2026-10-23T06:09:29Z"
+          "title": "Claude Duet: What Anthropic’s Proactive Agent Does, Who Can Get It, and What It Costs - Fello AI",
+          "at": "2026-10-23T11:32:01Z"
         },
         "shared": [
           "claude",
@@ -966,9 +1008,9 @@
         ]
       },
       {
-        "score": 0.643,
+        "score": 0.662,
         "blocked": "time-window",
-        "hours_apart": 34.5,
+        "hours_apart": 39.9,
         "a": {
           "id": "hn:50186455",
           "source": "hn-algolia",
@@ -976,10 +1018,10 @@
           "at": "2026-10-21T19:40:18Z"
         },
         "b": {
-          "id": "gnews:bea9f34395d89502",
+          "id": "gnews:ee0e82523b24cb84",
           "source": "gnews-rss",
-          "title": "Anthropic Launches Claude Duet, a Background AI Agent for Claude Pro and Max Subscribers in the US - gHacks",
-          "at": "2026-10-23T06:09:29Z"
+          "title": "Claude Duet: What Anthropic’s Proactive Agent Does, Who Can Get It, and What It Costs - Fello AI",
+          "at": "2026-10-23T11:32:01Z"
         },
         "shared": [
           "claude",
@@ -987,45 +1029,24 @@
         ]
       },
       {
-        "score": 0.633,
+        "score": 0.572,
         "blocked": "time-window",
-        "hours_apart": 35.5,
+        "hours_apart": 413.9,
         "a": {
-          "id": "hn:50186037",
-          "source": "hn-algolia",
-          "title": "Claude Duet",
-          "at": "2026-10-21T19:14:01Z"
+          "id": "rss-sec:projectzero:c26302aa2cbe872f",
+          "source": "rss-security",
+          "title": "How to fix a bug in a fix",
+          "at": "2026-10-06T07:00:00Z"
         },
         "b": {
-          "id": "gnews:ed43263d7378298a",
+          "id": "gnews:317751ccdce01c30",
           "source": "gnews-rss",
-          "title": "Claude Duet: Anthropic’s Riposte to Meta Muse, OpenAI Dots and Instinct - CXOToday.com",
-          "at": "2026-10-23T06:44:23Z"
+          "title": "Anthropic's Mythos Found the Bugs. Bank of America Hired 1,000 Contractors to Fix Them. - AIM Media House",
+          "at": "2026-10-23T12:51:38Z"
         },
         "shared": [
-          "claude",
-          "duet"
-        ]
-      },
-      {
-        "score": 0.633,
-        "blocked": "time-window",
-        "hours_apart": 35.1,
-        "a": {
-          "id": "hn:50186455",
-          "source": "hn-algolia",
-          "title": "Claude Duet",
-          "at": "2026-10-21T19:40:18Z"
-        },
-        "b": {
-          "id": "gnews:ed43263d7378298a",
-          "source": "gnews-rss",
-          "title": "Claude Duet: Anthropic’s Riposte to Meta Muse, OpenAI Dots and Instinct - CXOToday.com",
-          "at": "2026-10-23T06:44:23Z"
-        },
-        "shared": [
-          "claude",
-          "duet"
+          "fix",
+          "bug"
         ]
       }
     ],
@@ -1053,7 +1074,32 @@
         ]
       },
       {
-        "score": 0.687,
+        "score": 0.753,
+        "blocked": "time-window",
+        "hours_apart": 37,
+        "a": {
+          "id": "hn:50188944",
+          "source": "hn-algolia",
+          "title": "Anthropic opens research preview of Claude Duet, a agent for professionals",
+          "at": "2026-10-21T23:12:27Z"
+        },
+        "b": {
+          "id": "gnews:c1020143bf381fb7",
+          "source": "gnews-rss",
+          "title": "Claude Duet: Anthropic opens proactive AI agent preview - BetaNews",
+          "at": "2026-10-23T12:14:53Z"
+        },
+        "shared": [
+          "anthropic",
+          "open",
+          "preview",
+          "claude",
+          "duet",
+          "agent"
+        ]
+      },
+      {
+        "score": 0.697,
         "blocked": "short-title",
         "hours_apart": 18.1,
         "a": {
@@ -1074,7 +1120,7 @@
         ]
       },
       {
-        "score": 0.687,
+        "score": 0.697,
         "blocked": "short-title",
         "hours_apart": 17.7,
         "a": {
@@ -1095,30 +1141,9 @@
         ]
       },
       {
-        "score": 0.665,
+        "score": 0.679,
         "blocked": "time-window",
-        "hours_apart": 369.1,
-        "a": {
-          "id": "hn:50183253",
-          "source": "hn-algolia",
-          "title": "AI agent fixed the bug, but what else did it change?",
-          "at": "2026-10-21T16:03:32Z"
-        },
-        "b": {
-          "id": "rss-sec:projectzero:c26302aa2cbe872f",
-          "source": "rss-security",
-          "title": "How to fix a bug in a fix",
-          "at": "2026-10-06T07:00:00Z"
-        },
-        "shared": [
-          "fix",
-          "bug"
-        ]
-      },
-      {
-        "score": 0.646,
-        "blocked": "time-window",
-        "hours_apart": 35.3,
+        "hours_apart": 41,
         "a": {
           "id": "hn:50186037",
           "source": "hn-algolia",
@@ -1126,10 +1151,10 @@
           "at": "2026-10-21T19:14:01Z"
         },
         "b": {
-          "id": "gnews:c205b36cb69c163b",
+          "id": "gnews:c1020143bf381fb7",
           "source": "gnews-rss",
-          "title": "Anthropic launches Claude Duet research preview for Pro and Max users - Social Samosa",
-          "at": "2026-10-23T06:29:02Z"
+          "title": "Claude Duet: Anthropic opens proactive AI agent preview - BetaNews",
+          "at": "2026-10-23T12:14:53Z"
         },
         "shared": [
           "claude",
@@ -1137,9 +1162,9 @@
         ]
       },
       {
-        "score": 0.646,
+        "score": 0.679,
         "blocked": "time-window",
-        "hours_apart": 34.8,
+        "hours_apart": 40.6,
         "a": {
           "id": "hn:50186455",
           "source": "hn-algolia",
@@ -1147,10 +1172,10 @@
           "at": "2026-10-21T19:40:18Z"
         },
         "b": {
-          "id": "gnews:c205b36cb69c163b",
+          "id": "gnews:c1020143bf381fb7",
           "source": "gnews-rss",
-          "title": "Anthropic launches Claude Duet research preview for Pro and Max users - Social Samosa",
-          "at": "2026-10-23T06:29:02Z"
+          "title": "Claude Duet: Anthropic opens proactive AI agent preview - BetaNews",
+          "at": "2026-10-23T12:14:53Z"
         },
         "shared": [
           "claude",
@@ -1158,9 +1183,9 @@
         ]
       },
       {
-        "score": 0.643,
+        "score": 0.662,
         "blocked": "time-window",
-        "hours_apart": 34.9,
+        "hours_apart": 40.3,
         "a": {
           "id": "hn:50186037",
           "source": "hn-algolia",
@@ -1168,10 +1193,10 @@
           "at": "2026-10-21T19:14:01Z"
         },
         "b": {
-          "id": "gnews:bea9f34395d89502",
+          "id": "gnews:ee0e82523b24cb84",
           "source": "gnews-rss",
-          "title": "Anthropic Launches Claude Duet, a Background AI Agent for Claude Pro and Max Subscribers in the US - gHacks",
-          "at": "2026-10-23T06:09:29Z"
+          "title": "Claude Duet: What Anthropic’s Proactive Agent Does, Who Can Get It, and What It Costs - Fello AI",
+          "at": "2026-10-23T11:32:01Z"
         },
         "shared": [
           "claude",
@@ -1179,9 +1204,9 @@
         ]
       },
       {
-        "score": 0.643,
+        "score": 0.662,
         "blocked": "time-window",
-        "hours_apart": 34.5,
+        "hours_apart": 39.9,
         "a": {
           "id": "hn:50186455",
           "source": "hn-algolia",
@@ -1189,10 +1214,10 @@
           "at": "2026-10-21T19:40:18Z"
         },
         "b": {
-          "id": "gnews:bea9f34395d89502",
+          "id": "gnews:ee0e82523b24cb84",
           "source": "gnews-rss",
-          "title": "Anthropic Launches Claude Duet, a Background AI Agent for Claude Pro and Max Subscribers in the US - gHacks",
-          "at": "2026-10-23T06:09:29Z"
+          "title": "Claude Duet: What Anthropic’s Proactive Agent Does, Who Can Get It, and What It Costs - Fello AI",
+          "at": "2026-10-23T11:32:01Z"
         },
         "shared": [
           "claude",
@@ -1205,97 +1230,97 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 6,
+      "streak_ok": 7,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 163,
+      "streak_ok": 164,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 163,
+      "streak_ok": 164,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 163,
+      "streak_ok": 164,
       "streak_fail": 0,
-      "items_last": 56
+      "items_last": 53
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 163,
+      "streak_ok": 164,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 163,
+      "streak_ok": 164,
       "streak_fail": 0,
       "items_last": 70
     },
     {
       "id": "hn_title",
       "state": "ok",
-      "streak_ok": 17,
+      "streak_ok": 18,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 75,
+      "streak_ok": 76,
       "streak_fail": 0,
       "items_last": 4
     },
     {
       "id": "releases_atom",
       "state": "ok",
-      "streak_ok": 17,
+      "streak_ok": 18,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "rss_analyst",
       "state": "ok",
-      "streak_ok": 17,
+      "streak_ok": 18,
       "streak_fail": 0,
       "items_last": 6
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 67,
+      "streak_ok": 68,
       "streak_fail": 0,
       "items_last": 105
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 163,
+      "streak_ok": 164,
       "streak_fail": 0,
       "items_last": 40
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 163,
+      "streak_ok": 164,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.005229166666666667,
+    "hours": 0.0050283333333333334,
     "stale": false
   },
   "hf": {
@@ -1334,7 +1359,7 @@
     "url": "https://api.openalex.org/works",
     "sample": [
       {
-        "id": "2610.30113",
+        "id": "2610.28679",
         "openalexId": "https://openalex.org/W4412877164",
         "year": 2025,
         "doi": "https://doi.org/10.1145/3711896.3736570",
@@ -1372,7 +1397,7 @@
     "merge_notes": [],
     "sample": [
       {
-        "id": "2610.30113",
+        "id": "2610.28679",
         "crossrefDoi": "https://doi.org/10.1145/3711896.3736570",
         "issued": "2025-08-03",
         "type": "proceedings-article",
@@ -1403,7 +1428,7 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 8,
+    "ai_dropped": 9,
     "url": "https://hn.algolia.com/api/v1/search",
     "title_queries": {
       "ok": true,
@@ -1423,10 +1448,10 @@
         "Qwen",
         "local model"
       ],
-      "hits": 18,
-      "candidates": 15,
-      "ai_dropped": 2,
-      "duplicates": 13,
+      "hits": 16,
+      "candidates": 14,
+      "ai_dropped": 1,
+      "duplicates": 12,
       "added": 2,
       "cap": 20,
       "merged_into_live_hn": true
@@ -1435,20 +1460,20 @@
       {
         "id": "hn:50186037",
         "tag": "rest",
-        "score": 550,
+        "score": 551,
         "text": "Claude Duet"
       },
       {
         "id": "hn:50198675",
         "tag": "rest",
-        "score": 389,
+        "score": 433,
         "text": "OpenShell – A safe, private runtime for fleets of autonomous AI agents"
       },
       {
-        "id": "hn:50202217",
+        "id": "hn:50186129",
         "tag": "rest",
-        "score": 341,
-        "text": "LLMs are making formal software verification feasible at a much larger scale"
+        "score": 326,
+        "text": "Mistral Large 4"
       }
     ]
   },
@@ -1525,18 +1550,18 @@
         "link": "https://openai.com/index/openai-nask-ai-safety-security-partnership"
       },
       {
+        "id": "rss:huggingface:2b3f616d26d343fe",
+        "lab": "huggingface",
+        "tag": "rest",
+        "title": "Does Your Model Run on AWS Trainium? Look It Up",
+        "link": "https://huggingface.co/blog/torch-neuronx-model-support"
+      },
+      {
         "id": "rss:huggingface:51888f116f5b0837",
         "lab": "huggingface",
         "tag": "rest",
         "title": "Turning Database Grading into RL Rewards: Post-Training Agents with ThinkingBox",
         "link": "https://huggingface.co/blog/microsoft/thinkingbox-training"
-      },
-      {
-        "id": "rss:openai:891b7e0bbf66f86d",
-        "lab": "openai",
-        "tag": "rest",
-        "title": "Build more responsive apps with the Decisions API",
-        "link": "https://openai.com/index/decisions-api"
       }
     ]
   },
@@ -1655,6 +1680,13 @@
     "lead_rule": "analyst-only groups excluded",
     "sample": [
       {
+        "id": "anl:latent-space:9a6fbe4911070551",
+        "feed": "latent-space",
+        "recap": true,
+        "title": "[AINews] Black October",
+        "link": "https://latent.space/p/ainews-black-october/"
+      },
+      {
         "id": "anl:simonw:2f38489938aada9c",
         "feed": "simonw",
         "recap": false,
@@ -1666,21 +1698,14 @@
         "feed": "latent-space",
         "recap": false,
         "title": "Why AI Compute Comes in Rectangles — Erik Bernhardsson, Modal CEO",
-        "link": "https://www.latent.space/p/modal-d"
+        "link": "https://latent.space/p/modal-d/"
       },
       {
         "id": "anl:latent-space:4c49390f8994fee2",
         "feed": "latent-space",
         "recap": true,
         "title": "[AINews] OpenAI’s Patch the Planet program is 1 of 2 parties to discover PHP2Shell vulnerabilities in core PHP affecting 70% of the web, using GPT-5.6 Sol; coordinated response over 2 months",
-        "link": "https://www.latent.space/p/ainews-openais-patch-the-planet-program"
-      },
-      {
-        "id": "anl:latent-space:1cd487805b8193f0",
-        "feed": "latent-space",
-        "recap": false,
-        "title": "Claude Mods: Flipping the Harness Inside Out",
-        "link": "https://www.latent.space/p/claude-mods"
+        "link": "https://latent.space/p/ainews-openais-patch-the-planet-program/"
       }
     ]
   },
@@ -1740,16 +1765,32 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 56,
-    "pool": 389,
+    "items": 53,
+    "pool": 392,
     "corroborators": [
       {
-        "id": "gnews:2b2b7d3d39252a7a",
-        "anchor_id": "rss:nvidia:693797d15c05b304",
+        "id": "gnews:32694099a58f2dab",
+        "anchor_id": "hn:50204095",
         "score": 1,
-        "title": "Kazakhstan Expands Compute for Its AI Future - NVIDIA Blog",
-        "publisher": "NVIDIA Blog",
-        "self_repost": true
+        "title": "The Signal Chats That Cost OpenAI Researchers Their Jobs - WSJ",
+        "publisher": "WSJ",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:92a08b7adf930f57",
+        "anchor_id": "hn:50204095",
+        "score": 0.899,
+        "title": "The Morning Risk Report: The Signal Chats That Cost OpenAI Researchers Their Jobs - WSJ",
+        "publisher": "WSJ",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:1cdd1006ed3e4bb1",
+        "anchor_id": "hn:50208444",
+        "score": 1,
+        "title": "Anthropic strikes deal to launch European consultancy - Financial Times",
+        "publisher": "Financial Times",
+        "self_repost": false
       },
       {
         "id": "gnews:c0a8aa82fb0adbb1",
@@ -1760,20 +1801,60 @@
         "self_repost": true
       },
       {
-        "id": "gnews:4ae0e32a4655e09a",
-        "anchor_id": "hn:50202217",
+        "id": "gnews:5c33ac10cf3202fa",
+        "anchor_id": "rss:openai:1a543055a02f9816",
+        "score": 0.907,
+        "title": "OpenAI, Poland's NASK partner on AI safety - Breakingthenews.net",
+        "publisher": "Breakingthenews.net",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:b525a83d090286a6",
+        "anchor_id": "rss:openai:1a543055a02f9816",
+        "score": 0.737,
+        "title": "OpenAI partners with Poland’s NASK to strengthen AI safety - The News International",
+        "publisher": "The News International",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:2b2b7d3d39252a7a",
+        "anchor_id": "rss:nvidia:693797d15c05b304",
         "score": 1,
-        "title": "LLMs are making formal software verification feasible at a much larger scale - Anthropic",
-        "publisher": "Anthropic",
+        "title": "Kazakhstan Expands Compute for Its AI Future - NVIDIA Blog",
+        "publisher": "NVIDIA Blog",
         "self_repost": true
+      },
+      {
+        "id": "gnews:19dd6acc3268c772",
+        "anchor_id": "hn:50208084",
+        "score": 0.723,
+        "title": "MiniMax M3.1 Flash vs Gemini 3.8 Flash: A Gap That Doubles - OrcaRouter",
+        "publisher": "OrcaRouter",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:8c7cc8468a424522",
+        "anchor_id": "hn:50207936",
+        "score": 0.665,
+        "title": "Anthropic publishes Public Benefit Report, detailing AI progress and gaps in measuring impact - EdTech Innovation Hub",
+        "publisher": "EdTech Innovation Hub",
+        "self_repost": false
       },
       {
         "id": "gnews:6daf65e38d655505",
         "anchor_id": "hn:50202402",
-        "score": 0.964,
+        "score": 0.961,
         "title": "OpenAI trims valuation target to $1.25tn after pitching higher price - Financial Times",
         "publisher": "Financial Times",
         "self_repost": false
+      },
+      {
+        "id": "gnews:5dfdb5e38e3765d3",
+        "anchor_id": "rss:openai:891b7e0bbf66f86d",
+        "score": 1,
+        "title": "Build more responsive apps with the Decisions API - OpenAI",
+        "publisher": "OpenAI",
+        "self_repost": true
       },
       {
         "id": "gnews:b2c146cbf1135202",
@@ -1818,7 +1899,7 @@
       {
         "id": "gnews:7f5d8d453b127633",
         "anchor_id": "hn:50188944",
-        "score": 0.665,
+        "score": 0.681,
         "title": "Anthropic introduces Claude Duet, a proactive AI agent for professionals - SiliconANGLE",
         "publisher": "SiliconANGLE",
         "self_repost": false
@@ -1858,7 +1939,7 @@
       {
         "id": "gnews:80ff1bea39361164",
         "anchor_id": "hn:50185273",
-        "score": 0.89,
+        "score": 0.893,
         "title": "Anthropic logged net loss of over $80 billion in first half of 2026 - Reuters",
         "publisher": "Reuters",
         "self_repost": false
@@ -1870,78 +1951,6 @@
         "title": "Anthropic to publicly file for IPO as early as Friday, sources say - Yahoo Finance",
         "publisher": "Yahoo Finance",
         "self_repost": false
-      },
-      {
-        "id": "gnews:6b86904830126c5a",
-        "anchor_id": "rss:openai:b1215e1aefc04c61",
-        "score": 1,
-        "title": "ChatGPT Ads expands to 26 new countries as over 100,000 advertisers have used the platform - OpenAI",
-        "publisher": "OpenAI",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:b2fa14a52139bb0d",
-        "anchor_id": "hn:50180079",
-        "score": 1,
-        "title": "OpenAI models are coming to Google Cloud - OpenAI",
-        "publisher": "OpenAI",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:c10c68d667c654a3",
-        "anchor_id": "hn:50181880",
-        "score": 0.751,
-        "title": "Google Cloud expands model choice and flexibility, bringing OpenAI models to customers - Google Cloud",
-        "publisher": "Google Cloud",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:74c60de87b06e3eb",
-        "anchor_id": "hn:50181880",
-        "score": 0.747,
-        "title": "OpenAI to sell its top models on Google Cloud in latest enterprise push - Reuters",
-        "publisher": "Reuters",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:7164c49e2a90e80a",
-        "anchor_id": "hn:50181880",
-        "score": 0.73,
-        "title": "OpenAI to bring AI models to Google's cloud, in further expansion beyond Microsoft - CNBC",
-        "publisher": "CNBC",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:9b84db4c28e60e64",
-        "anchor_id": "rss:nvidia-dev:667f38af6af566e8",
-        "score": 1,
-        "title": "Achieve Productive AI Capacity Faster and More Predictably with NVIDIA DSX POD | NVIDIA Technical Blog - NVIDIA Developer",
-        "publisher": "NVIDIA Developer",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:32173f9b8dd82a57",
-        "anchor_id": "rss:nvidia-dev:2860be0e7228668b",
-        "score": 1,
-        "title": "Inside NVIDIA Sentry: Secure AI Agents at Runtime | NVIDIA Technical Blog - NVIDIA Developer",
-        "publisher": "NVIDIA Developer",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:50703c29049bb871",
-        "anchor_id": "rss:nvidia-dev:c50dcf48a1f1a39a",
-        "score": 1,
-        "title": "How NVIDIA OpenShell Reference Architecture Secures and Governs AI Agent Workloads at Scale - NVIDIA Developer",
-        "publisher": "NVIDIA Developer",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:bda1a358e9972bb8",
-        "anchor_id": "rss:nvidia-dev:13c3d402e00f3456",
-        "score": 1,
-        "title": "Developing an AI Factory Digital Twin with an Agent-Assisted Workflow - NVIDIA Developer",
-        "publisher": "NVIDIA Developer",
-        "self_repost": true
       }
     ],
     "http_status": 200,
@@ -1970,24 +1979,24 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:56185972bd13ed70",
-        "title": "Orion Telekom boosts sovereign AI infrastructure with Nvidia - Telecompaper",
-        "publisher": "Telecompaper",
-        "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNeWt4TGtpVXluakdhQXYwYUF0N0ZlU29SZ1dSRzZvWjlpckJtOXNKbTI0ZFdhNE9hUG82UkxNdTdsNWtBcHczZGhlODlwaUliUG5KX1ZYVTl1bzl1VUhNSWU1Tm9hVThKV29QaHgwdzlnd2s4bXJ2MWlKM0RhZFlua0pTX3BhU0lTVGphSXlCclExd04zMWFlc0lyMUczd2kySEdHazBB?oc=5",
+        "id": "gnews:69a26f9d8b2baf88",
+        "title": "BBVA and NVIDIA explore AI agent security - The Paypers",
+        "publisher": "The Paypers",
+        "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOaXJYU1hob090MHdzMFJSaTVvaWlQYzd1S3JaeTIwZWtrSTB0d1RKenpFaWJEZjBfcENzQldqSG9BbzU1NFNISkhEYTAtQ2dtSW1MTVMtS2VjVlllUzBCRXhiMmNUNDFLMFh4clhTU3dFMjJ1eWc0S2FWTFBaTmhZakZNUGdVeV9XUDJaMXpCck5sZklsbHNfSWVIbWptS3N3MVQxcnExZ200Rk5iUEZHV05WMDM?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:e5da239613772282",
-        "title": "NVIDIA's AI hardware market faces the threat of massive oversupply. - GameGPU",
-        "publisher": "GameGPU",
-        "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQZ0VsWFQ0NUd4LXNWcVk5RDRSbVM0UzVoVUlIcjBBVHA3MlVNWmlqd3lVSVFyaEI2UGU5TENOWnVPNmk5dXhNV0lyT0c0UGl1UnZLa1JXNTdwaUdKOXV0VHc4QVhqTUREVkpNVkJxSjZNYnMwZlpwRFJpY1FPZzE3cEdvbzhBRXVGbDdUOVlQZjhtWnVqc2luTEh2SmVCY1U4MkRzMG5EcWRHZlNzMHBLclpfMlNXem56?oc=5",
+        "id": "gnews:4d951b3ab51e0f9b",
+        "title": "NVIDIA Minerva targets AI factory observability - Developer Tech News",
+        "publisher": "Developer Tech News",
+        "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQVVV3RTlGMkNWRkZENTlkOTJIZWs0dHluUHN2eE1vallvS0JJdktKcWRKbGZkcW5VZkxIOHR1MVNUVld5YXQwVGV4cFdtVVdBckZvdXpUWGMtS3R3Nk1XUEdDUkFiLS04ZkhFMmVUeHRDMFVaMzdsbkhxb1dlMWpET0ZfaUtwMkVnWGNnRQ?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:8fb1bdff5490f9b4",
-        "title": "OpenAI, Poland's NASK to Collaborate on AI Safety, Security - marketscreener.com",
-        "publisher": "marketscreener.com",
-        "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNSXc5cVZPTDJGV0VPalcxQU1BblJZclhQLUhheXBjM21EdDdQZHU2Y25NbDNqQllERnNjS2c4VXdSMDZXdU9kQjBRNWg3RFZRSXRycmkwLVR5WUFjU0RGYUh0S0N3Y2lweDZKaHVLWXR3TEpuS0xUbHRQbjlpY0Zvb2JVek5mUUtUN0wwaWhsTmVUWXN3Z1JzZ3ZLeVlSNlA2V1hYTzFib2l2SF9Ra0NN?oc=5",
+        "id": "gnews:e900b4d85aa3cb2b",
+        "title": "AI News for the Week of October 23; Updates from BMC, SUSE, Vultr & More - Solutions Review",
+        "publisher": "Solutions Review",
+        "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQdlRBTnptY2dUQ295QlViWXNyZDJFdWRqR1Qxb3I5UUNlTlB1UFFhdmN4QWVMenZzSzBxMUR2OTdUT3VKeWdKNnlqYURWdnRUNERZdlpZUG9UbnUwQV9YN1ZBQTI2U3dZQU80RFViQ0lqWXVLc0FyNUNYQU9STkZXcVI3ZmFoeUtUQVJsOHJLRm9XWWZvcm9mTDAzUjg?oc=5",
         "tag": "rest"
       }
     ]
