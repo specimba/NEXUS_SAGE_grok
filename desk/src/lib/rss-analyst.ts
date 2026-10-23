@@ -68,22 +68,49 @@ function clip(s: string, max = 400): string {
 const escapeRe = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 /**
- * PASS-S1.8 — the ONLY lab/model names that let an analyst title through without an `ai_terms` match. Fixed code
- * lists, built once at module load: the lab RSS ids (LAB_FEEDS, `google-ai` → /google[- ]ai/) plus the topic-heat
- * company/lab regexes (HEAT_COMPANIES + OTHER_LABS). Never config, never free text — applySageConfig does not touch
- * it (it only rebuilds AI_TERMS from `keywords.ai_terms`). The broad AI_NAMES list is NOT used here.
+ * PASS-A2 (refs/PASS-A2-ANALYST-NAMES.md) — the topic-heat words (HEAT_COMPANIES + OTHER_LABS) split in two fixed code
+ * lists (never config; applySageConfig only rebuilds AI_TERMS):
+ *   ANALYST_AI_NAME_WORDS   AI by themselves (labs, model families) — pass an analyst title alone, plus the lab RSS ids
+ *                           (LAB_FEEDS, `google-ai` → /google[- ]?ai/).
+ *   ANALYST_COMPANY_WORD_LIST general companies/products — add nothing on their own; a title with only these and no
+ *                           ai_terms match is dropped `not-ai:company-only`.
+ * `word` = the heat-regex alternative (rss-analyst.test.ts #14 checks every heat word is in exactly one list);
+ * `re` keeps the heat regex's own boundaries/lookaheads, so the AI list is never looser than the pre-A2 gate.
  */
-export const ANALYST_KNOWN_NAMES: RegExp = (() => {
-  const labIds = [...new Set(LAB_FEEDS.map((f) => f.lab))].map((id) => escapeRe(id).replace(/-/g, "[- ]?"));
-  const heat = [...HEAT_COMPANIES.filter((c) => c.id !== "other").map((c) => c.re.source), ...Object.values(OTHER_LABS).map((l) => l.re.source)];
-  return new RegExp([`\\b(${labIds.join("|")})\\b`, ...heat.map((h) => `(?:${h})`)].join("|"), "i");
-})();
-Object.freeze(ANALYST_KNOWN_NAMES);
+type GateWord = { word: string; re: string };
+const w = (word: string, re = `\\b${word}\\b`): GateWord => ({ word, re });
+export const ANALYST_AI_NAME_WORDS: readonly GateWord[] = Object.freeze([
+  w("anthropic"), w("claude"),
+  w("openai"), w("chatgpt"), w("sora"), w("codex"), w("gpt-", "\\bgpt-"),
+  w("deepmind"), w("gemini"), w("gemma"),
+  w("hugging ?face"),
+  w("xai"), w("grok"),
+  w("llama", "\\bllama\\b(?!\\.cpp)"),
+  w("mistral"), w("deepseek"), w("qwen"), w("mimo"),
+]);
+export const ANALYST_COMPANY_WORD_LIST: readonly GateWord[] = Object.freeze([
+  w("google"), w("alphabet"),
+  w("nvidia"), w("cuda"), w("geforce"),
+  w("meta", "\\bmeta\\b(?!-)"),
+  w("alibaba"), w("xiaomi"),
+  // Named in the spec; not heat words, so they never passed the gate — listed for classification only.
+  w("microsoft"), w("apple"), w("amazon"), w("samsung"),
+]);
 
-/** Analyst AI gate: an `ai_terms` match (config, validated) OR a fixed-code lab/model name. */
+export const ANALYST_AI_NAMES: RegExp = (() => {
+  const labIds = [...new Set(LAB_FEEDS.map((f) => f.lab))].map((id) => escapeRe(id).replace(/-/g, "[- ]?"));
+  return new RegExp([`\\b(${labIds.join("|")})\\b`, ...ANALYST_AI_NAME_WORDS.map((x) => `(?:${x.re})`)].join("|"), "i");
+})();
+Object.freeze(ANALYST_AI_NAMES);
+export const ANALYST_COMPANY_WORDS: RegExp = new RegExp(ANALYST_COMPANY_WORD_LIST.map((x) => `(?:${x.re})`).join("|"), "i");
+Object.freeze(ANALYST_COMPANY_WORDS);
+/** Pre-A2 name: kept as an alias of the AI-name list (company words no longer pass alone). */
+export const ANALYST_KNOWN_NAMES: RegExp = ANALYST_AI_NAMES;
+
+/** Analyst AI gate: an `ai_terms` match (config, validated) OR a fixed-code AI lab/model name. */
 export function analystAiTitle(title: string): boolean {
   const t = String(title ?? "");
-  return AI_TERMS.test(t) || ANALYST_KNOWN_NAMES.test(t);
+  return AI_TERMS.test(t) || ANALYST_AI_NAMES.test(t);
 }
 
 /** Why an analyst entry is not a Pulse row (null = kept): DENY/flatten, or not AI (recaps are always AI). */
@@ -91,7 +118,8 @@ export function analystDropReason(title: string, summary: string, feed: AnalystI
   const c = classifyPost({ text: `${title} ${summary}`, handle: feed });
   if (c.flatten || c.class === "flatten" || c.class === "drop") return `deny:${c.class}`;
   if (AINEWS_RECAP_RE.test(title)) return null;
-  return analystAiTitle(title) ? null : "not-ai";
+  if (analystAiTitle(title)) return null;
+  return ANALYST_COMPANY_WORDS.test(title) ? "not-ai:company-only" : "not-ai";
 }
 
 /** Parsed entries → analyst items (one per entry; an AINews recap stays ONE item). Newest first. */
