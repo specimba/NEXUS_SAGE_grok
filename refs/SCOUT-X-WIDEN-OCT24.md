@@ -11,7 +11,7 @@
 | Cursor Computer Use | ✅ | [Cursor AI Agents Now Control Your Computer…](https://x.com/i/trending/2113674904033714393) | Launched Oct 23; agents click/type across any desktop app (macOS/Linux), e.g. iOS Simulator; `@Computer Use` in prompt. |
 | Kimi K3.1 (Pro) | ✅ | [Moonshot AI Unveils Kimi K3.1 Pro…](https://x.com/i/trending/2113194116553257028) | Oct 23; 2.8T total / 104B active MoE, 1M ctx, open weights promised by Nov 4; follow-up card on undisclosed paid-promo backlash ([2113989025094582704](https://x.com/i/trending/2113989025094582704)). |
 
-## 1. Account watchlist (29 verified via `get_users_by_usernames`)
+## 1. Account watchlist (31 verified via `get_users_by_usernames`)
 
 | # | Handle | Followers | Lane | Why |
 |---|---|--:|---|---|
@@ -47,7 +47,7 @@
 | 30 | @AISecurityInst | 23,091 | safety/policy | UK AISI evals. |
 | 31 | @TheHackersNews | 2,453,824 | sec | Broad security news; filter for AI/supply-chain. |
 
-Not found: `@Teknium1` (Not Found Error) — dropped. (31 rows listed; 29 are distinct-signal picks, the two notes above are flagged.)
+Not found: `@Teknium1` (Not Found Error) — dropped. All 31 rows above returned a live user object.
 
 Suggested watch query (one call per run, ≤25 results):
 `(from:OpenAI OR from:OpenAIDevs OR from:AnthropicAI OR from:claudeai OR from:cursor_ai OR from:Kimi_Moonshot OR from:deepseek_ai OR from:Alibaba_Qwen OR from:GoogleDeepMind OR from:MistralAI) -is:retweet -is:reply` *(not live-tested as a combined OR; per-handle `from:` tested below).*
