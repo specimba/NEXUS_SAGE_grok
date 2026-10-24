@@ -205,7 +205,7 @@ const D: NonNullable<SageSetupView["limits"]>["defaults"] = {
 };
 
 export const SAGE_SETUP: SageSetupView = {
-  "stamped_at": "2026-10-23T22:56:59Z",
+  "stamped_at": "2026-10-24T03:25:36Z",
   "config_path": "desk/config/sage-sources.json",
   "config_hash": "a116c3b25ffb",
   "status": "ok",
@@ -218,7 +218,7 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "hn",
       "on": true,
       "caps": "cap 20",
-      "last_rows": 73,
+      "last_rows": 70,
       "state": "ok"
     },
     {
@@ -232,7 +232,7 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "lab_rss",
       "on": true,
       "caps": "cap_per_feed 12 · timeout_s 10 · feeds 10",
-      "last_rows": 105,
+      "last_rows": 115,
       "state": "ok"
     },
     {
@@ -246,14 +246,14 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "gnews",
       "on": true,
       "caps": "cap 32",
-      "last_rows": 54,
+      "last_rows": 40,
       "state": "ok"
     },
     {
       "id": "github",
       "on": true,
       "caps": "cap 5",
-      "last_rows": 0,
+      "last_rows": 3,
       "state": "ok"
     },
     {
@@ -274,8 +274,8 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "arxiv",
       "on": true,
       "caps": "—",
-      "last_rows": 29,
-      "state": "ok"
+      "last_rows": 5,
+      "state": "soft-fail"
     },
     {
       "id": "wikidata",

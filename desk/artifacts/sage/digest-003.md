@@ -1,36 +1,36 @@
 # SAGE digest pack
-compiled 2026-10-23T18:20:48.957Z
-source free-ingest digest refresh 2026-10-23T18:20:48.957Z · cycle 003 · lead hf-incident · unlock:live
+compiled 2026-10-24T03:25:58.528Z
+source free-ingest digest refresh 2026-10-24T03:25:58.528Z · cycle 003 · lead hf-incident · unlock:live
 lead_policy unlock — no new HF primary 03 Sep
 
 ## Lead
-Anthropic opens research preview of Claude Duet, a agent for professionals [high]
-2 SRC · sig 2 · pick 2026-10-23
+Securing our frontier model training environment [high]
+2 SRC · sig 24 · pick 2026-10-24
 MOVE Digest/Voice follow Brief lead · cycle label 003
 UNLOCK IF Next 06:11 Istanbul pick
 
 ## Files
-### [lead / other / high] Anthropic opens research preview of Claude Duet, a agent for professionals
-2 SRC · sig 2 · pick 2026-10-23
+### [lead / other / high] Securing our frontier model training environment
+2 SRC · sig 24 · pick 2026-10-24
 - stamp live
-- frozen 2026-10-23T03:20:43.922Z
-- pick 2026-10-23
+- frozen 2026-10-23T21:47:18.329Z
+- pick 2026-10-24
 1. Follow LEAD_TODAY · never invent
 2. Cycle label stays 003
 Done when: Digest lead equals Brief LEAD_TODAY title
 
-### [companion / other / medium] OpenAI models are coming to Google Cloud
-5 SRC · sig 322
-- 5 SRC
+### [companion / other / medium] OpenAI trims valuation target after pitching higher price
+2 SRC · sig 6
+- 2 SRC
 Done when: Listed under Digest lead
 
-### [rest / other / medium] Anthropic disclosed an $80.7B net loss for the first half of 2026
-3 SRC · sig 17
-- 3 SRC
-Done when: Listed under Digest lead
-
-### [rest / other / medium] NVIDIA Kumo Relational Outperforms Supervised Machine Learning on Relational Data, No Training Required
+### [rest / other / medium] Anthropic strikes deal to launch European consultancy
 2 SRC · sig 1
+- 2 SRC
+Done when: Listed under Digest lead
+
+### [rest / other / medium] MiniMax-M3.1-Flash
+2 SRC · sig 2
 - 2 SRC
 Done when: Listed under Digest lead
 
