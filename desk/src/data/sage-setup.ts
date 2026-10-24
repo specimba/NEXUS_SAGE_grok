@@ -27,7 +27,10 @@ const D: NonNullable<SageSetupView["limits"]>["defaults"] = {
         "nvidia-dev",
         "ms-research",
         "google-research",
-        "the-decoder"
+        "the-decoder",
+        "testingcatalog",
+        "cursor",
+        "huggingnews"
       ]
     },
     "sec_rss": {
@@ -207,12 +210,12 @@ const D: NonNullable<SageSetupView["limits"]>["defaults"] = {
 export const SAGE_SETUP: SageSetupView = {
   "stamped_at": "2026-10-25T13:20:25Z",
   "config_path": "desk/config/sage-sources.json",
-  "config_hash": "a116c3b25ffb",
+  "config_hash": "7ad1371c9b68",
   "status": "ok",
   "used": "committed",
   "errors": [],
-  "since_commit": "412f6f2",
-  "since_at": "2026-10-23T22:52:03Z",
+  "since_commit": "1e0cbd2",
+  "since_at": "2026-10-24T19:02:23Z",
   "sources": [
     {
       "id": "hn",
@@ -231,7 +234,7 @@ export const SAGE_SETUP: SageSetupView = {
     {
       "id": "lab_rss",
       "on": true,
-      "caps": "cap_per_feed 12 · timeout_s 10 · feeds 10",
+      "caps": "cap_per_feed 12 · timeout_s 10 · feeds 13",
       "last_rows": 115,
       "state": "ok"
     },
@@ -541,5 +544,5 @@ export const SAGE_SETUP: SageSetupView = {
       "max": 0.3
     }
   },
-  "file_hash": "e17f3e00c0d18d3982870a11dd157d8c070b43caf2550bc4c171b29f1c0893f6"
+  "file_hash": "7dce86c8a381a3c5344bc8d02e6b0f9f12b58b0a45f46ffd488c7a226f1e29a9"
 };

@@ -380,7 +380,7 @@ describe("P2b first-party Phase B soft_fail", () => {
       "google-research": "",
     };
     // PASS-F2.2d the-decoder has no fixture here — keep this offline test to the P2b feed set.
-    const r = await fetchRssLabs({ ...fast(), fixtures, feeds: LAB_FEEDS.filter((f) => f.lab !== "the-decoder") });
+    const r = await fetchRssLabs({ ...fast(), fixtures, feeds: LAB_FEEDS.filter((f) => f.lab !== "the-decoder" && !("outlet" in f)) }); // intel-plan outlets: offline too
     expect(r.ok).toBe(true);
     expect(r.soft_fail).toBe(true);
     expect(r.brief).toBe(false);

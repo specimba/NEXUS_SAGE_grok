@@ -31,6 +31,9 @@ export type LabId =
   | "ms-research"
   | "google-research"
   | "the-decoder"
+  | "testingcatalog"
+  | "cursor"
+  | "huggingnews"
   | "anthropic"
   | "meta";
 
@@ -56,6 +59,10 @@ export type LabFeedDef = {
   lab: Exclude<LabId, "anthropic" | "meta">;
   /** First-party URLs tried in order (404 → next). */
   urls: readonly string[];
+  /** Reference-only aggregator: headline + short excerpt + link back, credited "via <via>"; nothing else kept. */
+  reference?: { via: string; excerptMax: number };
+  /** Outlet / product feed, not a lab: its id never joins the analyst AI-name list ("cursor" is a common word). */
+  outlet?: true;
 };
 
 /** Approved first-party feeds only — Anthropic/Meta intentionally absent. */
@@ -108,9 +115,32 @@ export const LAB_FEEDS: readonly LabFeedDef[] = [
     lab: "the-decoder",
     urls: ["https://the-decoder.com/feed/"],
   },
+  // Intel plan (Oct 24): TestingCatalog (Ghost RSS, verified 200 text/xml) + Cursor changelog (verified 200 rss+xml).
+  {
+    lab: "testingcatalog",
+    urls: ["https://www.testingcatalog.com/rss/"],
+    outlet: true,
+  },
+  {
+    lab: "cursor",
+    urls: ["https://cursor.com/changelog/rss.xml"],
+    outlet: true,
+  },
+  // HuggingNews: reference use only (verified Atom 200). Headline, ≤160-char excerpt, link back, "via HuggingNews".
+  {
+    lab: "huggingnews",
+    urls: ["https://huggingnews.com/feed.xml"],
+    reference: { via: "HuggingNews", excerptMax: 160 },
+    outlet: true,
+  },
 ] as const;
 
-const LAB_HANDLE: Record<Exclude<LabId, "anthropic" | "meta">, string> = {
+/** Reference-only feed rule for a lab id (null = normal first-party feed). */
+export function labReference(lab: LabId): { via: string; excerptMax: number } | null {
+  return LAB_FEEDS.find((f) => f.lab === lab)?.reference ?? null;
+}
+
+const LAB_HANDLE: Partial<Record<Exclude<LabId, "anthropic" | "meta">, string>> = {
   openai: "openai",
   deepmind: "deepmind",
   "google-ai": "googleai",
@@ -284,7 +314,8 @@ export function toLabItems(
   const handle =
     lab === "anthropic" || lab === "meta"
       ? lab
-      : LAB_HANDLE[lab as Exclude<LabId, "anthropic" | "meta">];
+      : (LAB_HANDLE[lab as Exclude<LabId, "anthropic" | "meta">] ?? lab);
+  const ref = labReference(lab);
 
   for (const e of entries) {
     const title = String(e.title ?? "").trim();
@@ -318,7 +349,7 @@ export function toLabItems(
       title,
       link,
       published: e.published,
-      summary: clipSummary(e.summary ?? ""),
+      summary: ref ? `${clipSummary(String(e.summary ?? "").replace(/\s+/g, " ").trim(), ref.excerptMax)} · via ${ref.via}`.replace(/^ · /, "") : clipSummary(e.summary ?? ""),
       source,
       shelfOnly: toolkitShelf,
       pulseEligible,
@@ -326,7 +357,7 @@ export function toLabItems(
       class: classified.class,
       tag,
       reasons: classified.reasons,
-      ...(e.categories?.length ? { categories: e.categories } : {}),
+      ...(!ref && e.categories?.length ? { categories: e.categories } : {}),
     });
   }
 

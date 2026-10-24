@@ -100,7 +100,7 @@ export const ANALYST_COMPANY_WORD_LIST: readonly GateWord[] = Object.freeze([
 ]);
 
 export const ANALYST_AI_NAMES: RegExp = (() => {
-  const labIds = [...new Set(LAB_FEEDS.map((f) => f.lab))].map((id) => escapeRe(id).replace(/-/g, "[- ]?"));
+  const labIds = [...new Set(LAB_FEEDS.filter((f) => !("outlet" in f && f.outlet)).map((f) => f.lab))].map((id) => escapeRe(id).replace(/-/g, "[- ]?"));
   return new RegExp([`\\b(${labIds.join("|")})\\b`, ...ANALYST_AI_NAME_WORDS.map((x) => `(?:${x.re})`)].join("|"), "i");
 })();
 Object.freeze(ANALYST_AI_NAMES);

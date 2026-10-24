@@ -72,6 +72,9 @@ describe("F2 gates", () => {
   test("20 · config_hash moves only for the new source keys (lab_rss / sec_rss / releases_atom feed lists)", () => {
     const c = structuredClone(SAGE_SETUP.config) as ReturnType<typeof defaultSageConfig>;
     expect(SAGE_SETUP.config_hash).toBe(configHash(c));
+    // Intel plan (Oct 24) appended three lab feeds after F2; strip them to compare against the F2 hash.
+    const INTEL = new Set(["testingcatalog", "cursor", "huggingnews"]);
+    c.sources.lab_rss.feeds = c.sources.lab_rss.feeds.filter((f) => !INTEL.has(f));
     expect(configHash(c)).toBe("a116c3b25ffb");
     const F2 = new Set(["the-decoder", "unit42", "securityweek", "railway", "codex", "hf-trending", "hf-moonshotai", "hf-nvidia", "hf-tencent"]);
     for (const k of ["lab_rss", "sec_rss", "releases_atom"] as const) c.sources[k].feeds = c.sources[k].feeds.filter((f) => !F2.has(f));
