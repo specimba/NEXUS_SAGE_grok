@@ -17,7 +17,7 @@ export type RssLabRow = {
   cluster_id?: string;
 };
 
-export const RSS_LABS_AT = "2026-10-24T03:25:36Z";
+export const RSS_LABS_AT = "2026-10-24T08:20:26Z";
 
 export const RSS_LABS: RssLabRow[] = [
   { id: "rss:the-decoder:3cec67123ef466bd", lab: "the-decoder" as const, title: "Chinese AI model Kimi K3.1 Pro is closing in on Anthropic's Claude Opus 5.5", link: "https://the-decoder.com/chinese-ai-model-kimi-k3-1-pro-is-closing-in-on-anthropics-claude-opus-5-5/", published: "2026-10-23T19:00:07Z", summary: "Moonshot AI's Kimi K3.1 Pro scores 55 points on the Artificial Analysis Intelligence Index, an 11-point jump over its predecessor that puts it in fourth place. Only three Anthropic and Meta models rank higher. If Moonshot releases the weights as planned, the gap between open and proprietary models shrinks to just three points. The article Chinese AI model Kimi K3.1 Pro is closing in on Anthropic'…", source: "rss-lab" as const, tag: "rest" as const, first_seen: "2026-10-23T22:52:03Z", is_new: false, cluster_id: "cl:rss:the-decoder:3cec67123ef466bd" },

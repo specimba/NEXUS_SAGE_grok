@@ -25,5 +25,4 @@ export const SHELF: ShelfItem[] = [
   { href: "https://arxiv.org/abs/2610.31659", label: "arxiv.org/abs/2610.31659", reason: "arxiv-shelf" as const },
   { href: "https://github.com/hyperlight-dev/hyperagent", label: "hyperlight-dev/hyperagent", reason: "github-search-shelf" as const },
   { href: "https://github.com/roerbakei/sandboxai", label: "roerbakei/sandboxai", reason: "github-search-shelf" as const },
-  { href: "https://github.com/agentfront/enclave", label: "agentfront/enclave", reason: "github-search-shelf" as const },
 ];

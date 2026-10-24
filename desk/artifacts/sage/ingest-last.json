@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-24T03:25:36Z",
+  "stamped_at": "2026-10-24T08:20:26Z",
   "config_hash": "a116c3b25ffb",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,25 +11,25 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 137,
+      "duration_ms": 128,
       "paused_until": null,
       "reason": null
     },
     {
       "id": "arxiv",
       "label": "arXiv",
-      "status": "timeout",
-      "rows": 5,
-      "duration_ms": 20000,
+      "status": "ok",
+      "rows": 29,
+      "duration_ms": 3206,
       "paused_until": null,
-      "reason": "timeout after 20000ms budget · last good: 0 cached enrich + 5 kept shelf"
+      "reason": null
     },
     {
       "id": "openalex",
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 432,
+      "duration_ms": 346,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 98,
+      "duration_ms": 152,
       "paused_until": null,
       "reason": null
     },
@@ -46,8 +46,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 70,
-      "duration_ms": 8315,
+      "rows": 67,
+      "duration_ms": 8303,
       "paused_until": null,
       "reason": null
     },
@@ -55,8 +55,8 @@
       "id": "hn_title",
       "label": "HN title",
       "status": "ok",
-      "rows": 1,
-      "duration_ms": 8205,
+      "rows": 0,
+      "duration_ms": 8236,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 115,
-      "duration_ms": 20754,
+      "duration_ms": 19643,
       "paused_until": null,
       "reason": null
     },
@@ -74,7 +74,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 74,
-      "duration_ms": 12095,
+      "duration_ms": 12093,
       "paused_until": null,
       "reason": null
     },
@@ -83,7 +83,7 @@
       "label": "analyst RSS",
       "status": "ok",
       "rows": 6,
-      "duration_ms": 2271,
+      "duration_ms": 2551,
       "paused_until": null,
       "reason": null
     },
@@ -91,8 +91,8 @@
       "id": "releases_atom",
       "label": "releases",
       "status": "ok",
-      "rows": 0,
-      "duration_ms": 6638,
+      "rows": 1,
+      "duration_ms": 6643,
       "paused_until": null,
       "reason": null
     },
@@ -100,8 +100,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 40,
-      "duration_ms": 6259,
+      "rows": 36,
+      "duration_ms": 6337,
       "paused_until": null,
       "reason": null
     },
@@ -109,8 +109,8 @@
       "id": "github",
       "label": "GitHub",
       "status": "ok",
-      "rows": 3,
-      "duration_ms": 339,
+      "rows": 2,
+      "duration_ms": 316,
       "paused_until": null,
       "reason": null
     },
@@ -119,16 +119,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4352,
+      "duration_ms": 4323,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 89895,
-    "sources_wall_ms": 20755,
-    "papers_lane_ms": 20679,
-    "slowest_source_ms": 20754,
+    "sources_ms": 72277,
+    "sources_wall_ms": 19644,
+    "papers_lane_ms": 3839,
+    "slowest_source_ms": 19643,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -145,36 +145,35 @@
       "github": 25000,
       "wikidata": 25000
     },
-    "timed_out": [
-      "arxiv"
-    ],
-    "wall_ms": 21357,
-    "startup_ms": 57,
-    "main_ms": 21378
+    "timed_out": [],
+    "wall_ms": 20280,
+    "startup_ms": 56,
+    "main_ms": 20303
   },
   "multi_source_independent": 7,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
     "multi_source_independent": 7,
-    "multi_source_raw": 11,
+    "multi_source_raw": 10,
     "self_reposts": 4,
-    "items_in": 315,
-    "clusters_out": 289,
+    "items_in": 309,
+    "clusters_out": 283,
     "collapsed": 26,
     "multi_source": 7,
-    "multi_member": 23,
+    "multi_member": 20,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 43,
+    "new_items": 26,
     "per_source": {
-      "hn-algolia": 70,
+      "hn-algolia": 67,
       "rss-lab": 115,
       "rss-security": 74,
-      "gnews-rss": 40,
+      "gnews-rss": 36,
       "gmail-news": 10,
-      "rss-analyst": 6
+      "rss-analyst": 6,
+      "releases-atom": 1
     },
     "multi_source_clusters": [
       {
@@ -228,13 +227,45 @@
         ]
       },
       {
+        "title": "MiniMax-M3.1-Flash",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 3,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:50208084",
+            "source": "hn-algolia",
+            "title": "MiniMax-M3.1-Flash",
+            "at": "2026-10-23T12:41:37Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:50203279",
+            "source": "hn-algolia",
+            "title": "MiniMaxAI/MiniMax-M3.1-Flash",
+            "at": "2026-10-23T01:09:50Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:3a4a898f27a19a0a",
+            "source": "gnews-rss",
+            "title": "MiniMax releases M3.1 Flash weights on Hugging Face, 428B parameters - Pasquale Pillitteri",
+            "at": "2026-10-23T14:08:17Z",
+            "publisher": "Pasquale Pillitteri"
+          }
+        ]
+      },
+      {
         "title": "NVIDIA Unveils Minerva to Bring End-to-End Observability for AI Factories",
         "sources": [
           "rss-lab",
           "gnews-rss"
         ],
-        "size": 2,
-        "score": 0.744,
+        "size": 3,
+        "score": 1,
         "members": [
           {
             "id": "rss:nvidia:19fce2b28a327610",
@@ -242,6 +273,14 @@
             "title": "NVIDIA Unveils Minerva to Bring End-to-End Observability for AI Factories",
             "at": "2026-10-22T15:00:02Z",
             "publisher": "nvidia"
+          },
+          {
+            "id": "gnews:9e5949c8aaf01502",
+            "source": "gnews-rss",
+            "title": "NVIDIA Unveils Minerva to Bring End-to-End Observability for AI Factories - NVIDIA Blog",
+            "at": "2026-10-22T15:24:27Z",
+            "publisher": "NVIDIA Blog",
+            "self_repost": true
           },
           {
             "id": "gnews:4d951b3ab51e0f9b",
@@ -278,6 +317,38 @@
         ]
       },
       {
+        "title": "Major US banks are locking out AI agents that log in with customer credentials",
+        "sources": [
+          "rss-lab",
+          "hn-algolia"
+        ],
+        "size": 3,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:50201469",
+            "source": "hn-algolia",
+            "title": "US banks are blocking third-party AI agents access to customer accounts",
+            "at": "2026-10-22T21:43:46Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:50199840",
+            "source": "hn-algolia",
+            "title": "US Banks Blocking AI Agents in Accounts",
+            "at": "2026-10-22T19:22:23Z",
+            "publisher": null
+          },
+          {
+            "id": "rss:the-decoder:039d4e9e023dd99e",
+            "source": "rss-lab",
+            "title": "Major US banks are locking out AI agents that log in with customer credentials",
+            "at": "2026-10-22T18:26:02Z",
+            "publisher": "the-decoder"
+          }
+        ]
+      },
+      {
         "title": "Donating Agent Skills to the Agentic AI Foundation",
         "sources": [
           "hn-algolia",
@@ -301,59 +372,27 @@
             "publisher": "simonw"
           }
         ]
-      },
-      {
-        "title": "IBM releases granite speech 5.0 2B",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 0.854,
-        "members": [
-          {
-            "id": "hn:50193043",
-            "source": "hn-algolia",
-            "title": "IBM releases granite speech 5.0 2B",
-            "at": "2026-10-22T09:09:35Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:0d45c536626c5c9d",
-            "source": "gnews-rss",
-            "title": "IBM AI Releases Granite Speech 5.0 2B for Multilingual Transcription and Translation - MarkTechPost",
-            "at": "2026-10-22T07:00:56Z",
-            "publisher": "MarkTechPost"
-          }
-        ]
-      },
-      {
-        "title": "NVIDIA Kumo Relational Outperforms Supervised Machine Learning on Relational Data, No Training Required",
-        "sources": [
-          "rss-lab",
-          "hn-algolia"
-        ],
-        "size": 2,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:50191858",
-            "source": "hn-algolia",
-            "title": "Nvidia Kumo Relational",
-            "at": "2026-10-22T06:21:37Z",
-            "publisher": null
-          },
-          {
-            "id": "rss:huggingface:94a5f6526eada9bc",
-            "source": "rss-lab",
-            "title": "NVIDIA Kumo Relational Outperforms Supervised Machine Learning on Relational Data, No Training Required",
-            "at": "2026-10-21T18:26:30Z",
-            "publisher": "huggingface"
-          }
-        ]
       }
     ],
     "self_repost_clusters": [
+      {
+        "title": "NVIDIA Unveils Minerva to Bring End-to-End Observability for AI Factories",
+        "sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:9e5949c8aaf01502",
+            "publisher": "NVIDIA Blog",
+            "title": "NVIDIA Unveils Minerva to Bring End-to-End Observability for AI Factories - NVIDIA Blog"
+          }
+        ]
+      },
       {
         "title": "Using AI Agents to Teach Robots Like Microduck to Walk in Simulation",
         "sources": [
@@ -389,23 +428,6 @@
         ]
       },
       {
-        "title": "How to Read Data into GPU Memory in Python with NVIDIA GPUDirect Storage",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:b2c146cbf1135202",
-            "publisher": "NVIDIA Developer",
-            "title": "How to Read Data into GPU Memory in Python with NVIDIA GPUDirect Storage | NVIDIA Technical Blog - NVIDIA Developer"
-          }
-        ]
-      },
-      {
         "title": "Running Frontier-Class AI Models Across 8 NVIDIA DGX Spark Nodes",
         "sources": [
           "rss-lab"
@@ -433,58 +455,77 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "PiunikaWeb",
-          "title": "No billionaires, full-power ad blockers: Firefox makes its pitch against Big Tech - PiunikaWeb"
+          "publisher": "Healthcare Digital",
+          "title": "Danaher, NVIDIA, FedEx, Sanofi: This Week in Healthcare - Healthcare Digital"
+        },
+        {
+          "publisher": "The Motley Fool",
+          "title": "TSMC or Nvidia: If I Could Only Own 1 for the Next 5 Years, It Would Be This 1. - The Motley Fool"
+        },
+        {
+          "publisher": "https://tech-insider.org/",
+          "title": "NVIDIA B300 China Telecom: 32 GPUs Spotted [2026] - https://tech-insider.org/"
+        },
+        {
+          "publisher": "WSJ",
+          "title": "Nvidia, Meta and Apple Unveil New Open Models The Morning Download for Oct. 16 - WSJ"
+        },
+        {
+          "publisher": "www.dakota.com",
+          "title": "Top 10 Information Technology Transactions: September 2026 - www.dakota.com"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 18
+      "hn_dropped": 20
     },
     "gnews_near_misses": [
       {
-        "score": 0.586,
-        "blocked": "time-window",
-        "hours_apart": 195.5,
-        "a": {
-          "id": "rss:mistral:51edf4c643816e6f",
-          "source": "rss-lab",
-          "title": "Introducing Timestral",
-          "at": "2026-10-15T12:00:00Z"
-        },
-        "b": {
-          "id": "gnews:306e5d2826b738aa",
-          "source": "gnews-rss",
-          "title": "Mistral launches Timestral, an AI that forecasts numbers without a GPU - Pasquale Pillitteri",
-          "at": "2026-10-23T15:29:47Z"
-        },
-        "shared": [
-          "timestral"
-        ]
-      },
-      {
-        "score": 0.395,
+        "score": 0.563,
         "blocked": "below-threshold",
-        "hours_apart": 23.4,
+        "hours_apart": 19.8,
         "a": {
-          "id": "rss:nvidia:693797d15c05b304",
-          "source": "rss-lab",
-          "title": "Kazakhstan Expands Compute for Its AI Future",
-          "at": "2026-10-23T02:00:13Z"
+          "id": "hn:50207405",
+          "source": "hn-algolia",
+          "title": "Swedish government offices to ban ChatGPT and Claude",
+          "at": "2026-10-23T11:39:54Z"
         },
         "b": {
-          "id": "gnews:d41cefcf0662f722",
+          "id": "gnews:9075b6f271d42064",
           "source": "gnews-rss",
-          "title": "Huang Backs Kazakhstan’s AI Plans as NVIDIA Expands Partnerships - The Times Of Central Asia",
-          "at": "2026-10-24T01:24:45Z"
+          "title": "Sweden Blocks ChatGPT and Claude in Government Offices, Copilot Stays - Pasquale Pillitteri",
+          "at": "2026-10-24T07:27:30Z"
         },
         "shared": [
-          "kazakhstan",
-          "expand",
-          "ai"
+          "government",
+          "offic",
+          "chatgpt",
+          "claude"
         ]
       },
       {
-        "score": 0.335,
+        "score": 0.505,
+        "blocked": "below-threshold",
+        "hours_apart": 13,
+        "a": {
+          "id": "hn:50203279",
+          "source": "hn-algolia",
+          "title": "MiniMaxAI/MiniMax-M3.1-Flash",
+          "at": "2026-10-23T01:09:50Z"
+        },
+        "b": {
+          "id": "gnews:3a4a898f27a19a0a",
+          "source": "gnews-rss",
+          "title": "MiniMax releases M3.1 Flash weights on Hugging Face, 428B parameters - Pasquale Pillitteri",
+          "at": "2026-10-23T14:08:17Z"
+        },
+        "shared": [
+          "minimax",
+          "m3.1",
+          "flash"
+        ]
+      },
+      {
+        "score": 0.337,
         "blocked": "below-threshold",
         "hours_apart": 13.3,
         "a": {
@@ -507,24 +548,47 @@
         ]
       },
       {
-        "score": 0.309,
-        "blocked": "time-window",
-        "hours_apart": 29.9,
+        "score": 0.33,
+        "blocked": "thin-overlap",
+        "hours_apart": 19.9,
         "a": {
-          "id": "hn:50192223",
-          "source": "hn-algolia",
-          "title": "AI Agent Observability with OpenTelemetry",
-          "at": "2026-10-22T07:17:06Z"
+          "id": "rss:the-decoder:b4651d991e2efd2e",
+          "source": "rss-lab",
+          "title": "Anthropic's Claude now writes code and proves it safe automatically",
+          "at": "2026-10-23T11:32:19Z"
         },
         "b": {
-          "id": "gnews:4d951b3ab51e0f9b",
+          "id": "gnews:2fd76d9f2d5830c1",
           "source": "gnews-rss",
-          "title": "NVIDIA Minerva targets AI factory observability - Developer Tech News",
-          "at": "2026-10-23T13:13:15Z"
+          "title": "Anthropic's Claude Mythos 5 AI Agent Tried to Inject Malicious Code and Trick Real Developers - CyberSecurityNews",
+          "at": "2026-10-24T07:26:19Z"
         },
         "shared": [
-          "ai",
-          "observability"
+          "anthropic",
+          "claude",
+          "code"
+        ]
+      },
+      {
+        "score": 0.325,
+        "blocked": "time-window",
+        "hours_apart": 180,
+        "a": {
+          "id": "rss:nvidia-dev:3a44cf0b79fe9cae",
+          "source": "rss-lab",
+          "title": "Code, Test, and Deploy on One Machine with NVIDIA RTX Spark",
+          "at": "2026-10-16T17:00:00Z"
+        },
+        "b": {
+          "id": "gnews:f0f46d05f1adf7d4",
+          "source": "gnews-rss",
+          "title": "What Is Nvidia RTX Spark? Everything You Need to Know About the New AI Laptops - PCMag Middle East",
+          "at": "2026-10-24T05:02:19Z"
+        },
+        "shared": [
+          "nvidia",
+          "rtx",
+          "spark"
         ]
       },
       {
@@ -548,92 +612,99 @@
         ]
       },
       {
-        "score": 0.284,
-        "blocked": "time-window",
-        "hours_apart": 45,
+        "score": 0.302,
+        "blocked": "thin-overlap",
+        "hours_apart": 1395.4,
         "a": {
-          "id": "rss:nvidia:a093903039a75a48",
-          "source": "rss-lab",
-          "title": "NVIDIA Cosmos Opens New Tools to Train, Evaluate and Deploy World Models",
-          "at": "2026-10-22T05:00:27Z"
+          "id": "rss-sec:embracethered:ec3f36b4902a2296",
+          "source": "rss-security",
+          "title": "Breaking Claude Code Opus 5 Auto Mode",
+          "at": "2026-08-27T04:00:00Z"
         },
         "b": {
-          "id": "gnews:a304d2b8cfb06be6",
+          "id": "gnews:2fd76d9f2d5830c1",
           "source": "gnews-rss",
-          "title": "NVIDIA Expands Isaac Tools for Robot Training, Simulation and Deployment - HPCwire",
-          "at": "2026-10-24T01:59:05Z"
+          "title": "Anthropic's Claude Mythos 5 AI Agent Tried to Inject Malicious Code and Trick Real Developers - CyberSecurityNews",
+          "at": "2026-10-24T07:26:19Z"
         },
         "shared": [
-          "nvidia",
-          "tool",
-          "train"
+          "claude",
+          "code",
+          "5"
         ]
       },
       {
-        "score": 0.276,
-        "blocked": "thin-overlap",
-        "hours_apart": 48.9,
+        "score": 0.281,
+        "blocked": "below-threshold",
+        "hours_apart": 12.3,
         "a": {
-          "id": "rss:mistral:6bf82841932d223c",
-          "source": "rss-lab",
-          "title": "Mistral Advances AI for Engineering with NVIDIA",
-          "at": "2026-10-21T12:00:20Z"
+          "id": "anl:latent-space:a3c9d59a888e90f8",
+          "source": "rss-analyst",
+          "title": "[AINews] Kimi 3.1 Pro 104BA-2.8T: Fable-5.1-Class Open Weights narrows Closed-AI lead to 1 month... and Pro Highspeed API with 2-3× speed",
+          "at": "2026-10-24T07:18:29Z"
         },
         "b": {
-          "id": "gnews:09c7b8054774ea21",
+          "id": "gnews:5548290eafd4601f",
           "source": "gnews-rss",
-          "title": "Mistral Shows the Promise and the Limits of Europe’s AI Ambitions - World Politics Review",
-          "at": "2026-10-23T12:55:08Z"
+          "title": "Chinese AI model Kimi K3.1 Pro is closing in on Anthropic's Claude Opus 5.5 - The Decoder",
+          "at": "2026-10-23T19:03:11Z"
         },
         "shared": [
-          "mistral",
+          "kimi",
+          "pro",
+          "clos",
           "ai"
-        ]
-      },
-      {
-        "score": 0.274,
-        "blocked": "thin-overlap",
-        "hours_apart": 72.2,
-        "a": {
-          "id": "rss:mistral:cb0bf0e1617ea810",
-          "source": "rss-lab",
-          "title": "Voxtral 3",
-          "at": "2026-10-20T12:00:22Z"
-        },
-        "b": {
-          "id": "gnews:0d4df9023b3c2de1",
-          "source": "gnews-rss",
-          "title": "Best Local LLM [2026]: DeepSeek Wins 3-Way Test - https://tech-insider.org/",
-          "at": "2026-10-23T12:10:58Z"
-        },
-        "shared": [
-          "3"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.586,
-        "blocked": "time-window",
-        "hours_apart": 195.5,
+        "score": 0.563,
+        "blocked": "below-threshold",
+        "hours_apart": 19.8,
         "a": {
-          "id": "rss:mistral:51edf4c643816e6f",
-          "source": "rss-lab",
-          "title": "Introducing Timestral",
-          "at": "2026-10-15T12:00:00Z"
+          "id": "hn:50207405",
+          "source": "hn-algolia",
+          "title": "Swedish government offices to ban ChatGPT and Claude",
+          "at": "2026-10-23T11:39:54Z"
         },
         "b": {
-          "id": "gnews:306e5d2826b738aa",
+          "id": "gnews:9075b6f271d42064",
           "source": "gnews-rss",
-          "title": "Mistral launches Timestral, an AI that forecasts numbers without a GPU - Pasquale Pillitteri",
-          "at": "2026-10-23T15:29:47Z"
+          "title": "Sweden Blocks ChatGPT and Claude in Government Offices, Copilot Stays - Pasquale Pillitteri",
+          "at": "2026-10-24T07:27:30Z"
         },
         "shared": [
-          "timestral"
+          "government",
+          "offic",
+          "chatgpt",
+          "claude"
         ]
       },
       {
-        "score": 0.408,
+        "score": 0.505,
+        "blocked": "below-threshold",
+        "hours_apart": 13,
+        "a": {
+          "id": "hn:50203279",
+          "source": "hn-algolia",
+          "title": "MiniMaxAI/MiniMax-M3.1-Flash",
+          "at": "2026-10-23T01:09:50Z"
+        },
+        "b": {
+          "id": "gnews:3a4a898f27a19a0a",
+          "source": "gnews-rss",
+          "title": "MiniMax releases M3.1 Flash weights on Hugging Face, 428B parameters - Pasquale Pillitteri",
+          "at": "2026-10-23T14:08:17Z"
+        },
+        "shared": [
+          "minimax",
+          "m3.1",
+          "flash"
+        ]
+      },
+      {
+        "score": 0.405,
         "blocked": "time-window",
         "hours_apart": 34.4,
         "a": {
@@ -655,29 +726,29 @@
         ]
       },
       {
-        "score": 0.395,
+        "score": 0.38,
         "blocked": "below-threshold",
-        "hours_apart": 23.4,
+        "hours_apart": 10.6,
         "a": {
-          "id": "rss:nvidia:693797d15c05b304",
-          "source": "rss-lab",
-          "title": "Kazakhstan Expands Compute for Its AI Future",
-          "at": "2026-10-23T02:00:13Z"
+          "id": "hn:50202402",
+          "source": "hn-algolia",
+          "title": "OpenAI trims valuation target after pitching higher price",
+          "at": "2026-10-22T23:15:44Z"
         },
         "b": {
-          "id": "gnews:d41cefcf0662f722",
-          "source": "gnews-rss",
-          "title": "Huang Backs Kazakhstan’s AI Plans as NVIDIA Expands Partnerships - The Times Of Central Asia",
-          "at": "2026-10-24T01:24:45Z"
+          "id": "rss:the-decoder:e06a796aab469919",
+          "source": "rss-lab",
+          "title": "OpenAI lowers valuation target, raises up to $30 billion",
+          "at": "2026-10-23T09:49:38Z"
         },
         "shared": [
-          "kazakhstan",
-          "expand",
-          "ai"
+          "openai",
+          "valuation",
+          "target"
         ]
       },
       {
-        "score": 0.383,
+        "score": 0.376,
         "blocked": "below-threshold",
         "hours_apart": 1,
         "a": {
@@ -700,29 +771,7 @@
         ]
       },
       {
-        "score": 0.377,
-        "blocked": "below-threshold",
-        "hours_apart": 10.6,
-        "a": {
-          "id": "hn:50202402",
-          "source": "hn-algolia",
-          "title": "OpenAI trims valuation target after pitching higher price",
-          "at": "2026-10-22T23:15:44Z"
-        },
-        "b": {
-          "id": "rss:the-decoder:e06a796aab469919",
-          "source": "rss-lab",
-          "title": "OpenAI lowers valuation target, raises up to $30 billion",
-          "at": "2026-10-23T09:49:38Z"
-        },
-        "shared": [
-          "openai",
-          "valuation",
-          "target"
-        ]
-      },
-      {
-        "score": 0.369,
+        "score": 0.371,
         "blocked": "below-threshold",
         "hours_apart": 18.2,
         "a": {
@@ -744,29 +793,7 @@
         ]
       },
       {
-        "score": 0.368,
-        "blocked": "time-window",
-        "hours_apart": 34.4,
-        "a": {
-          "id": "hn:50200396",
-          "source": "hn-algolia",
-          "title": "Show HN: Secure your AI agents on Mac",
-          "at": "2026-10-22T20:15:37Z"
-        },
-        "b": {
-          "id": "rss:nvidia-dev:c50dcf48a1f1a39a",
-          "source": "rss-lab",
-          "title": "How NVIDIA OpenShell Reference Architecture Secures and Governs AI Agent Workloads at Scale",
-          "at": "2026-10-21T09:50:14Z"
-        },
-        "shared": [
-          "secur",
-          "ai",
-          "agent"
-        ]
-      },
-      {
-        "score": 0.364,
+        "score": 0.367,
         "blocked": "below-threshold",
         "hours_apart": 4.5,
         "a": {
@@ -786,6 +813,28 @@
           "valuation",
           "target"
         ]
+      },
+      {
+        "score": 0.367,
+        "blocked": "time-window",
+        "hours_apart": 34.4,
+        "a": {
+          "id": "hn:50200396",
+          "source": "hn-algolia",
+          "title": "Show HN: Secure your AI agents on Mac",
+          "at": "2026-10-22T20:15:37Z"
+        },
+        "b": {
+          "id": "rss:nvidia-dev:c50dcf48a1f1a39a",
+          "source": "rss-lab",
+          "title": "How NVIDIA OpenShell Reference Architecture Secures and Governs AI Agent Workloads at Scale",
+          "at": "2026-10-21T09:50:14Z"
+        },
+        "shared": [
+          "secur",
+          "ai",
+          "agent"
+        ]
       }
     ]
   },
@@ -793,97 +842,97 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 0,
-      "streak_fail": 1,
-      "items_last": 5
+      "streak_ok": 1,
+      "streak_fail": 0,
+      "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 171,
+      "streak_ok": 172,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 171,
+      "streak_ok": 172,
       "streak_fail": 0,
-      "items_last": 3
+      "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 171,
+      "streak_ok": 172,
       "streak_fail": 0,
-      "items_last": 40
+      "items_last": 36
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 171,
+      "streak_ok": 172,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 171,
+      "streak_ok": 172,
       "streak_fail": 0,
-      "items_last": 70
+      "items_last": 67
     },
     {
       "id": "hn_title",
       "state": "ok",
-      "streak_ok": 25,
+      "streak_ok": 26,
       "streak_fail": 0,
-      "items_last": 1
+      "items_last": 0
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 83,
+      "streak_ok": 84,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "releases_atom",
       "state": "ok",
-      "streak_ok": 25,
+      "streak_ok": 26,
       "streak_fail": 0,
-      "items_last": 0
+      "items_last": 1
     },
     {
       "id": "rss_analyst",
       "state": "ok",
-      "streak_ok": 25,
+      "streak_ok": 26,
       "streak_fail": 0,
       "items_last": 6
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 75,
+      "streak_ok": 76,
       "streak_fail": 0,
       "items_last": 115
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 171,
+      "streak_ok": 172,
       "streak_fail": 0,
       "items_last": 74
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 171,
+      "streak_ok": 172,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.0061894444444444445,
+    "hours": 0.0057686111111111115,
     "stale": false
   },
   "hf": {
@@ -892,10 +941,10 @@
     "url": "https://huggingface.co/api/daily_papers"
   },
   "arxiv": {
-    "ok": false,
-    "enriched": 0,
+    "ok": true,
+    "enriched": 24,
     "shelf": 5,
-    "timed_out": true,
+    "timed_out": false,
     "budget_ms": 20000,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
@@ -976,7 +1025,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 70,
+    "count": 67,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -993,7 +1042,7 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 18,
+    "ai_dropped": 20,
     "url": "https://hn.algolia.com/api/v1/search",
     "title_queries": {
       "ok": true,
@@ -1013,11 +1062,11 @@
         "Qwen",
         "local model"
       ],
-      "hits": 11,
-      "candidates": 9,
-      "ai_dropped": 1,
-      "duplicates": 8,
-      "added": 1,
+      "hits": 10,
+      "candidates": 7,
+      "ai_dropped": 2,
+      "duplicates": 7,
+      "added": 0,
       "cap": 20,
       "merged_into_live_hn": true
     },
@@ -1025,19 +1074,19 @@
       {
         "id": "hn:50200997",
         "tag": "rest",
-        "score": 599,
+        "score": 614,
         "text": "Ask HN: If the models are so good, why doesn't OpenAI just start 100 companies?"
       },
       {
         "id": "hn:50198675",
         "tag": "rest",
-        "score": 490,
+        "score": 494,
         "text": "OpenShell – A safe, private runtime for fleets of autonomous AI agents"
       },
       {
         "id": "hn:50207405",
         "tag": "rest",
-        "score": 315,
+        "score": 317,
         "text": "Swedish government offices to ban ChatGPT and Claude"
       }
     ]
@@ -1265,6 +1314,13 @@
     "lead_rule": "analyst-only groups excluded",
     "sample": [
       {
+        "id": "anl:latent-space:a3c9d59a888e90f8",
+        "feed": "latent-space",
+        "recap": true,
+        "title": "[AINews] Kimi 3.1 Pro 104BA-2.8T: Fable-5.1-Class Open Weights narrows Closed-AI lead to 1 month... and Pro Highspeed API with 2-3× speed",
+        "link": "https://latent.space/p/ainews-kimi-31/"
+      },
+      {
         "id": "anl:latent-space:d5a942e6d14cf1e0",
         "feed": "latent-space",
         "recap": false,
@@ -1284,13 +1340,6 @@
         "recap": false,
         "title": "Donating Agent Skills to the Agentic AI Foundation",
         "link": "https://simonwillison.net/2026/Oct/22/donating-agent-skills/"
-      },
-      {
-        "id": "anl:latent-space:c5258c7ef6406bc0",
-        "feed": "latent-space",
-        "recap": false,
-        "title": "Why AI Compute Comes in Rectangles — Erik Bernhardsson, Modal CEO",
-        "link": "https://latent.space/p/modal-d/"
       }
     ]
   },
@@ -1298,7 +1347,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 0,
+    "count": 1,
     "decisions": [
       {
         "feed": "llama.cpp",
@@ -1362,8 +1411,8 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 40,
-    "pool": 305,
+    "items": 36,
+    "pool": 323,
     "corroborators": [
       {
         "id": "gnews:5548290eafd4601f",
@@ -1390,9 +1439,25 @@
         "self_repost": true
       },
       {
+        "id": "gnews:3a4a898f27a19a0a",
+        "anchor_id": "hn:50208084",
+        "score": 0.676,
+        "title": "MiniMax releases M3.1 Flash weights on Hugging Face, 428B parameters - Pasquale Pillitteri",
+        "publisher": "Pasquale Pillitteri",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:9e5949c8aaf01502",
+        "anchor_id": "rss:nvidia:19fce2b28a327610",
+        "score": 1,
+        "title": "NVIDIA Unveils Minerva to Bring End-to-End Observability for AI Factories - NVIDIA Blog",
+        "publisher": "NVIDIA Blog",
+        "self_repost": true
+      },
+      {
         "id": "gnews:4d951b3ab51e0f9b",
         "anchor_id": "rss:nvidia:19fce2b28a327610",
-        "score": 0.713,
+        "score": 0.72,
         "title": "NVIDIA Minerva targets AI factory observability - Developer Tech News",
         "publisher": "Developer Tech News",
         "self_repost": false
@@ -1414,28 +1479,12 @@
         "self_repost": true
       },
       {
-        "id": "gnews:b2c146cbf1135202",
-        "anchor_id": "rss:nvidia-dev:1335fc997bafd59f",
-        "score": 1,
-        "title": "How to Read Data into GPU Memory in Python with NVIDIA GPUDirect Storage | NVIDIA Technical Blog - NVIDIA Developer",
-        "publisher": "NVIDIA Developer",
-        "self_repost": true
-      },
-      {
         "id": "gnews:6f3a1e904572d757",
         "anchor_id": "rss:nvidia-dev:e60d9e12febedcf9",
         "score": 1,
         "title": "Running Frontier-Class AI Models Across 8 NVIDIA DGX Spark Nodes | NVIDIA Technical Blog - NVIDIA Developer",
         "publisher": "NVIDIA Developer",
         "self_repost": true
-      },
-      {
-        "id": "gnews:0d45c536626c5c9d",
-        "anchor_id": "hn:50193043",
-        "score": 0.857,
-        "title": "IBM AI Releases Granite Speech 5.0 2B for Multilingual Transcription and Translation - MarkTechPost",
-        "publisher": "MarkTechPost",
-        "self_repost": false
       }
     ],
     "http_status": 200,
@@ -1464,24 +1513,24 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:0b062de43fba4179",
-        "title": "Nvidia, TCV Back Higgsfield in AI Video Push - Briefs Finance",
-        "publisher": "Briefs Finance",
-        "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNcWI0VXRHY1VxWTRiajlHZHkwRkxFcnVFS1BMYXBwck5mdWxQR0lxcHliTUk3aElSYnRlRVBKMGkzUEJzQVo3SC0yd2hCMktSZWJWc2lRemhYR1pSbHVJQlBtQ3VLYXdkd0xDblNvMVJVallka2ppVUsyN3k2WUU5M203bUVscHpMb3JGbUsxblFnUQ?oc=5",
+        "id": "gnews:8efbc2c0b6b4ca9c",
+        "title": "This Week's Top Five Stories in AI - AI Magazine",
+        "publisher": "AI Magazine",
+        "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPLWY0cjNwV3R3UHg4a09WLWlHbVdhV2pkQlNLOExFYTR4ZjVvUHVlQzBILXdJWURsWmZMM2NQUHlsOUEteUlNbk1QYkJsXzJ2MXNBd2tfdVo3MlRsNEd4c1dlM3BQS3lMc1lnUXdDNmN1LUxZYlhvQ0xPcmdQaVVHWEFn?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:a304d2b8cfb06be6",
-        "title": "NVIDIA Expands Isaac Tools for Robot Training, Simulation and Deployment - HPCwire",
-        "publisher": "HPCwire",
-        "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPMXQyTjZ5Z1VBZVByXzlpdE9JTWQ0M0FRd1RXNTZrZ1BkbGNYNk1RdkF3QjVBRVRfVmRRbnFZaVNUTzBBOTBIY3pfdGllQzBrR0k1bXVjdks0VG5Ka1FPMGdjVlFUeWd3Ukx3WFlxZmR2X2dpanlmVWdocmpiN2xfRHlMWElpMGk0Vm1hUEZRNTlTaURDMTdFcW5LYW9BUWFPMS1BT1ROb2V0d0h1V0lhTHJobks?oc=5",
+        "id": "gnews:8533e3f687d90dd9",
+        "title": "Claude Duet runs on its own virtual machine so it keeps working when your laptop is off, and Anthropic has opened a waitlist for US Pro and Max subscribers. - Make Tech Easier",
+        "publisher": "Make Tech Easier",
+        "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9tZkM5YnJDUlg0WHFEaDBQYUl5MkJiZUc0ZmxTQmYxelhaMWdMRHR2TnJQa1BwSlFTY21tdXd0TkJXazVvSml0Y1hnUWF2LXo3VzZhRmc5SWduc1Nqd0dEaTBkQ2FFNXc?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:0b80ef754ebbb444",
-        "title": "OpenAI and Anthropic Disclose AI Model Boundary Breaches on Same Day; Altman Says Flaws Can No Longer Be Fully Patched - BigGo Finance",
-        "publisher": "BigGo Finance",
-        "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9hbjZXMG8tamhHaFVMT3lCbV9fODZ5YVZKb1pJLVJxLVFDWmhqYzBMaWI3WmIyRXI4cXNSVUZvWnRKSEhNN1QwX0lrRjBoOHU5VHo0cWRYMFZrQ1ZlUk5GSklLZEFtZGZpTVZ1LW5CZWdOSDJnN0E?oc=5",
+        "id": "gnews:9075b6f271d42064",
+        "title": "Sweden Blocks ChatGPT and Claude in Government Offices, Copilot Stays - Pasquale Pillitteri",
+        "publisher": "Pasquale Pillitteri",
+        "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOSHJpMFBMYy1uWmM3Unc3TW1rTGNqUjFvTW1RQTR2X2JmdHFBUnBjTm45OW1ZUno4ZFdKaGh2X0NHRWRCZlRaZFE4MF80cnBLZmM1clRaU05tbUFOTnFrUkpnWkpSNVFHRmNMbkNIRU5tVUEyUldqRTUzX1MtQVJnQl9yYk44clhJTmo3eUU4ajYxcDNmS0E?oc=5",
         "tag": "rest"
       }
     ]
@@ -1512,7 +1561,7 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "query": "agent sandbox escape",
-    "shelf": 3,
+    "shelf": 2,
     "from_cache": false,
     "searches": 1,
     "rate_limit_remaining": 9,
@@ -1528,15 +1577,11 @@
       {
         "label": "roerbakei/sandboxai",
         "href": "https://github.com/roerbakei/sandboxai"
-      },
-      {
-        "label": "agentfront/enclave",
-        "href": "https://github.com/agentfront/enclave"
       }
     ]
   },
   "shelf": {
-    "count": 20,
+    "count": 19,
     "brief": false
   },
   "wikidata": {

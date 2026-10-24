@@ -3,28 +3,28 @@ import type { Tldr } from "@/lib/tldr-24h";
 
 export const TLDR_24H: Tldr = {
   "schema": 1,
-  "crawl_at": "2026-10-24T03:25:36Z",
+  "crawl_at": "2026-10-24T08:20:26Z",
   "date": "2026-10-24",
   "bullets": [
-    {
-      "id": "cl:gnews:92994a464620bca6",
-      "title": "UK Establishes AI Biosecurity Lab Backed by OpenAI and Anthropic",
-      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOQjB0by04NkV3bjZUanBpc3dMdWhBOVhpaFFFdUZIZFlTc0NLRHFhbzF5bGVpclgza1FQM1MtLVhRaU80TzduQW1SVldGME1NU2sxN1Rja2NhZDlIcU5sVUc4SXNuNkFnOTJoUDdadDRIUmp4azdnR2o0bExVNTQwekFvUWk1S2VyRkE1WlB5dw?oc=5",
-      "at": "2026-10-24T01:37:09Z",
-      "sources": 2
-    },
-    {
-      "id": "cl:gnews:d41cefcf0662f722",
-      "title": "Huang Backs Kazakhstan’s AI Plans as NVIDIA Expands Partnerships",
-      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNSGJ1SlZ4NHN6MjkwSjRsbDQ4Rk1IZjdoNEY0bEZHZ0xkLTczZUJQaUFuRkpiR2wxeTY4aWxFYS1DS3c5VUY1ZklaVHNUay1Ic2ZZOHFMR3o5MkFObldNNTZHQy1ROTAteWl0QmhmdFdTNTFkNDU0cnh0Z0l6SHpyTktLcjZHRURSQVMyZg?oc=5",
-      "at": "2026-10-24T01:24:45Z",
-      "sources": 2
-    },
     {
       "id": "cl:rss:the-decoder:3cec67123ef466bd",
       "title": "Chinese AI model Kimi K3.1 Pro is closing in on Anthropic's Claude Opus 5.5",
       "url": "https://the-decoder.com/chinese-ai-model-kimi-k3-1-pro-is-closing-in-on-anthropics-claude-opus-5-5/",
       "at": "2026-10-23T19:03:11Z",
+      "sources": 2
+    },
+    {
+      "id": "cl:rss:the-decoder:80ae7e1961efb8d4",
+      "title": "Anthropic says its unreleased model is both more capable and better aligned than Mythos 5.1",
+      "url": "https://the-decoder.com/anthropic-says-its-unreleased-model-is-both-more-capable-and-better-aligned-than-mythos-5-1/",
+      "at": "2026-10-23T17:23:11Z",
+      "sources": 2
+    },
+    {
+      "id": "cl:hn:50208084",
+      "title": "MiniMax-M3.1-Flash",
+      "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash",
+      "at": "2026-10-23T14:08:17Z",
       "sources": 2
     },
     {
