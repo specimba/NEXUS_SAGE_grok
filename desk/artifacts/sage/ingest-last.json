@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-24T11:43:00Z",
+  "stamped_at": "2026-10-24T13:20:25Z",
   "config_hash": "a116c3b25ffb",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,7 +11,7 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 160,
+      "duration_ms": 141,
       "paused_until": null,
       "reason": null
     },
@@ -20,7 +20,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 3167,
+      "duration_ms": 3190,
       "paused_until": null,
       "reason": null
     },
@@ -29,7 +29,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 381,
+      "duration_ms": 407,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 112,
+      "duration_ms": 113,
       "paused_until": null,
       "reason": null
     },
@@ -46,8 +46,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 63,
-      "duration_ms": 8317,
+      "rows": 65,
+      "duration_ms": 8241,
       "paused_until": null,
       "reason": null
     },
@@ -56,7 +56,7 @@
       "label": "HN title",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 8223,
+      "duration_ms": 8183,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 115,
-      "duration_ms": 20842,
+      "duration_ms": 20854,
       "paused_until": null,
       "reason": null
     },
@@ -74,7 +74,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 74,
-      "duration_ms": 12101,
+      "duration_ms": 12105,
       "paused_until": null,
       "reason": null
     },
@@ -83,7 +83,7 @@
       "label": "analyst RSS",
       "status": "ok",
       "rows": 6,
-      "duration_ms": 2653,
+      "duration_ms": 2325,
       "paused_until": null,
       "reason": null
     },
@@ -92,7 +92,7 @@
       "label": "releases",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 6658,
+      "duration_ms": 6803,
       "paused_until": null,
       "reason": null
     },
@@ -100,8 +100,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 39,
-      "duration_ms": 6340,
+      "rows": 36,
+      "duration_ms": 6316,
       "paused_until": null,
       "reason": null
     },
@@ -110,7 +110,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 2,
-      "duration_ms": 309,
+      "duration_ms": 300,
       "paused_until": null,
       "reason": null
     },
@@ -119,16 +119,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4451,
+      "duration_ms": 4325,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 73714,
-    "sources_wall_ms": 20843,
-    "papers_lane_ms": 3826,
-    "slowest_source_ms": 20842,
+    "sources_ms": 73303,
+    "sources_wall_ms": 20855,
+    "papers_lane_ms": 3856,
+    "slowest_source_ms": 20854,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -146,36 +146,61 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 21420,
+    "wall_ms": 21471,
     "startup_ms": 52,
-    "main_ms": 21440
+    "main_ms": 21493
   },
-  "multi_source_independent": 8,
+  "multi_source_independent": 9,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 8,
-    "multi_source_raw": 11,
+    "multi_source_independent": 9,
+    "multi_source_raw": 12,
     "self_reposts": 4,
-    "items_in": 308,
-    "clusters_out": 282,
+    "items_in": 307,
+    "clusters_out": 281,
     "collapsed": 26,
-    "multi_source": 8,
+    "multi_source": 9,
     "multi_member": 20,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 27,
+    "new_items": 14,
     "per_source": {
-      "hn-algolia": 63,
+      "hn-algolia": 65,
       "rss-lab": 115,
       "rss-security": 74,
-      "gnews-rss": 39,
+      "gnews-rss": 36,
       "gmail-news": 10,
       "rss-analyst": 6,
       "releases-atom": 1
     },
     "multi_source_clusters": [
+      {
+        "title": "Sweden's Government Offices will block ChatGPT and Claude on staff computers",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 0.719,
+        "members": [
+          {
+            "id": "hn:50219364",
+            "source": "hn-algolia",
+            "title": "Sweden's Government Offices will block ChatGPT and Claude on staff computers",
+            "at": "2026-10-24T08:51:06Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:9075b6f271d42064",
+            "source": "gnews-rss",
+            "title": "Sweden Blocks ChatGPT and Claude in Government Offices, Copilot Stays - Pasquale Pillitteri",
+            "at": "2026-10-24T07:27:30Z",
+            "publisher": "Pasquale Pillitteri"
+          }
+        ]
+      },
       {
         "title": "Canva launches Craft, its first in-house image model",
         "sources": [
@@ -183,7 +208,7 @@
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.688,
+        "score": 0.689,
         "members": [
           {
             "id": "rss:the-decoder:6366c91429804481",
@@ -480,12 +505,28 @@
       ],
       "gnews_shown_dropped": [
         {
+          "publisher": "AOL.com",
+          "title": "Prediction: $200 a Month Invested in Nvidia Will Be Worth This Much by 2035 - AOL.com"
+        },
+        {
+          "publisher": "Yahoo Finance",
+          "title": "Jensen Huang Says Nvidia GPUs Could Last Over 8 Years, Not 4, Carry ‘Really High’ Residual Value: ‘Lowest Risk’ Assets for Lenders - Yahoo Finance"
+        },
+        {
           "publisher": "The Motley Fool",
           "title": "Prediction: $200 a Month Invested in Nvidia Will Be Worth This Much by 2035 - The Motley Fool"
         },
         {
           "publisher": "Pasquale Pillitteri",
-          "title": "Broken iPhone Duo inner displays surface along the hinge on launch day - Pasquale Pillitteri"
+          "title": "Researcher claims Samsung TV microphone is always on - Pasquale Pillitteri"
+        },
+        {
+          "publisher": "Pasquale Pillitteri",
+          "title": "php2shell on PHP 7.4, the patch is in Ubuntu 20.04 Pro and web hosting - Pasquale Pillitteri"
+        },
+        {
+          "publisher": "Pasquale Pillitteri",
+          "title": "iPhone Duo as a MacBook hits 51,000 likes, and two apps already do it - Pasquale Pillitteri"
         },
         {
           "publisher": "Bioengineer.org",
@@ -493,11 +534,11 @@
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 21
+      "hn_dropped": 19
     },
     "gnews_near_misses": [
       {
-        "score": 0.557,
+        "score": 0.55,
         "blocked": "below-threshold",
         "hours_apart": 19.8,
         "a": {
@@ -520,7 +561,7 @@
         ]
       },
       {
-        "score": 0.503,
+        "score": 0.5,
         "blocked": "below-threshold",
         "hours_apart": 13,
         "a": {
@@ -542,30 +583,7 @@
         ]
       },
       {
-        "score": 0.464,
-        "blocked": "time-window",
-        "hours_apart": 73.6,
-        "a": {
-          "id": "rss:nvidia-dev:667f38af6af566e8",
-          "source": "rss-lab",
-          "title": "Achieve Productive AI Capacity Faster and More Predictably with NVIDIA DSX POD",
-          "at": "2026-10-21T09:35:32Z"
-        },
-        "b": {
-          "id": "gnews:0faf2f2acf5aae3c",
-          "source": "gnews-rss",
-          "title": "Will NVIDIA’s DSX Pods Shift the AI Landscape? - Data Center Richness | Substack",
-          "at": "2026-10-24T11:10:36Z"
-        },
-        "shared": [
-          "ai",
-          "nvidia",
-          "dsx",
-          "pod"
-        ]
-      },
-      {
-        "score": 0.34,
+        "score": 0.341,
         "blocked": "below-threshold",
         "hours_apart": 13.3,
         "a": {
@@ -589,24 +607,48 @@
       },
       {
         "score": 0.33,
-        "blocked": "thin-overlap",
-        "hours_apart": 19.9,
+        "blocked": "time-window",
+        "hours_apart": 74.8,
         "a": {
-          "id": "rss:the-decoder:b4651d991e2efd2e",
+          "id": "rss:nvidia-dev:13c3d402e00f3456",
           "source": "rss-lab",
-          "title": "Anthropic's Claude now writes code and proves it safe automatically",
-          "at": "2026-10-23T11:32:19Z"
+          "title": "Developing an AI Factory Digital Twin with an Agent-Assisted Workflow",
+          "at": "2026-10-21T09:38:49Z"
         },
         "b": {
-          "id": "gnews:2fd76d9f2d5830c1",
+          "id": "gnews:5168a91c3abb6452",
           "source": "gnews-rss",
-          "title": "Anthropic's Claude Mythos 5 AI Agent Tried to Inject Malicious Code and Trick Real Developers - CyberSecurityNews",
-          "at": "2026-10-24T07:26:19Z"
+          "title": "Allsides 3D Digital Twin Factory gets underway, in partnership with Nvidia for Physical AI on an industrial scale - Il Sole 24 ORE",
+          "at": "2026-10-24T12:27:57Z"
         },
         "shared": [
-          "anthropic",
-          "claude",
-          "code"
+          "ai",
+          "factory",
+          "digital",
+          "twin"
+        ]
+      },
+      {
+        "score": 0.315,
+        "blocked": "below-threshold",
+        "hours_apart": 9.5,
+        "a": {
+          "id": "rss:the-decoder:3cec67123ef466bd",
+          "source": "rss-lab",
+          "title": "Chinese AI model Kimi K3.1 Pro is closing in on Anthropic's Claude Opus 5.5",
+          "at": "2026-10-23T19:00:07Z"
+        },
+        "b": {
+          "id": "gnews:af96ecb029782256",
+          "source": "gnews-rss",
+          "title": "Moonshot AI launches new LLM Kimi K3.1 Pro, highlights 3D modelling and finance analysis performance - 디지털투데이",
+          "at": "2026-10-24T04:32:27Z"
+        },
+        "shared": [
+          "ai",
+          "kimi",
+          "k3.1",
+          "pro"
         ]
       },
       {
@@ -630,54 +672,52 @@
         ]
       },
       {
-        "score": 0.307,
-        "blocked": "below-threshold",
-        "hours_apart": 9.5,
+        "score": 0.305,
+        "blocked": "time-window",
+        "hours_apart": 424.3,
         "a": {
-          "id": "rss:the-decoder:3cec67123ef466bd",
-          "source": "rss-lab",
-          "title": "Chinese AI model Kimi K3.1 Pro is closing in on Anthropic's Claude Opus 5.5",
-          "at": "2026-10-23T19:00:07Z"
+          "id": "gnews:7405d116ecaf2040",
+          "source": "gnews-rss",
+          "title": "Jensen Huang Says AI Demand Is \"Off the Charts.\" The Money to Pay for It Isn't - The Motley Fool",
+          "at": "2026-10-24T11:14:12Z"
         },
         "b": {
-          "id": "gnews:af96ecb029782256",
-          "source": "gnews-rss",
-          "title": "Moonshot AI launches new LLM Kimi K3.1 Pro, highlights 3D modelling and finance analysis performance - 디지털투데이",
-          "at": "2026-10-24T04:32:27Z"
+          "id": "gmail:1a112914bb745ca0",
+          "source": "gmail-news",
+          "title": "This AI that can't write",
+          "at": "2026-10-06T18:54:34Z"
         },
         "shared": [
           "ai",
-          "kimi",
-          "k3.1",
-          "pro"
+          "t"
         ]
       },
       {
-        "score": 0.307,
-        "blocked": "thin-overlap",
-        "hours_apart": 1395.4,
+        "score": 0.284,
+        "blocked": "time-window",
+        "hours_apart": 186.5,
         "a": {
-          "id": "rss-sec:embracethered:ec3f36b4902a2296",
-          "source": "rss-security",
-          "title": "Breaking Claude Code Opus 5 Auto Mode",
-          "at": "2026-08-27T04:00:00Z"
+          "id": "rss:nvidia-dev:3a44cf0b79fe9cae",
+          "source": "rss-lab",
+          "title": "Code, Test, and Deploy on One Machine with NVIDIA RTX Spark",
+          "at": "2026-10-16T17:00:00Z"
         },
         "b": {
-          "id": "gnews:2fd76d9f2d5830c1",
+          "id": "gnews:5931877af6b50f01",
           "source": "gnews-rss",
-          "title": "Anthropic's Claude Mythos 5 AI Agent Tried to Inject Malicious Code and Trick Real Developers - CyberSecurityNews",
-          "at": "2026-10-24T07:26:19Z"
+          "title": "inDrive taps Pony.ai and Nvidia to test robotaxis in one of the world's coldest capitals - The Economic Times",
+          "at": "2026-10-24T11:30:37Z"
         },
         "shared": [
-          "claude",
-          "code",
-          "5"
+          "test",
+          "one",
+          "nvidia"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.557,
+        "score": 0.55,
         "blocked": "below-threshold",
         "hours_apart": 19.8,
         "a": {
@@ -700,7 +740,7 @@
         ]
       },
       {
-        "score": 0.503,
+        "score": 0.5,
         "blocked": "below-threshold",
         "hours_apart": 13,
         "a": {
@@ -719,29 +759,6 @@
           "minimax",
           "m3.1",
           "flash"
-        ]
-      },
-      {
-        "score": 0.464,
-        "blocked": "time-window",
-        "hours_apart": 73.6,
-        "a": {
-          "id": "rss:nvidia-dev:667f38af6af566e8",
-          "source": "rss-lab",
-          "title": "Achieve Productive AI Capacity Faster and More Predictably with NVIDIA DSX POD",
-          "at": "2026-10-21T09:35:32Z"
-        },
-        "b": {
-          "id": "gnews:0faf2f2acf5aae3c",
-          "source": "gnews-rss",
-          "title": "Will NVIDIA’s DSX Pods Shift the AI Landscape? - Data Center Richness | Substack",
-          "at": "2026-10-24T11:10:36Z"
-        },
-        "shared": [
-          "ai",
-          "nvidia",
-          "dsx",
-          "pod"
         ]
       },
       {
@@ -767,7 +784,7 @@
         ]
       },
       {
-        "score": 0.377,
+        "score": 0.379,
         "blocked": "below-threshold",
         "hours_apart": 10.6,
         "a": {
@@ -812,7 +829,7 @@
         ]
       },
       {
-        "score": 0.366,
+        "score": 0.367,
         "blocked": "time-window",
         "hours_apart": 34.4,
         "a": {
@@ -834,7 +851,7 @@
         ]
       },
       {
-        "score": 0.364,
+        "score": 0.366,
         "blocked": "below-threshold",
         "hours_apart": 4.5,
         "a": {
@@ -854,6 +871,27 @@
           "valuation",
           "target"
         ]
+      },
+      {
+        "score": 0.352,
+        "blocked": "time-window",
+        "hours_apart": 399.6,
+        "a": {
+          "id": "hn:50204889",
+          "source": "hn-algolia",
+          "title": "The Latest Anthropic Claude Models Contain AI Text Watermarks",
+          "at": "2026-10-23T05:43:38Z"
+        },
+        "b": {
+          "id": "gmail:1a1118c601f1cb6a",
+          "source": "gmail-news",
+          "title": "OpenAI Starts Watermarking ChatGPT Text",
+          "at": "2026-10-06T14:09:34Z"
+        },
+        "shared": [
+          "text",
+          "watermark"
+        ]
       }
     ]
   },
@@ -861,97 +899,97 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 2,
+      "streak_ok": 3,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 173,
+      "streak_ok": 174,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 173,
+      "streak_ok": 174,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 173,
+      "streak_ok": 174,
       "streak_fail": 0,
-      "items_last": 39
+      "items_last": 36
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 173,
+      "streak_ok": 174,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 173,
+      "streak_ok": 174,
       "streak_fail": 0,
-      "items_last": 63
+      "items_last": 65
     },
     {
       "id": "hn_title",
       "state": "ok",
-      "streak_ok": 27,
+      "streak_ok": 28,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 85,
+      "streak_ok": 86,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "releases_atom",
       "state": "ok",
-      "streak_ok": 27,
+      "streak_ok": 28,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "rss_analyst",
       "state": "ok",
-      "streak_ok": 27,
+      "streak_ok": 28,
       "streak_fail": 0,
       "items_last": 6
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 77,
+      "streak_ok": 78,
       "streak_fail": 0,
       "items_last": 115
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 173,
+      "streak_ok": 174,
       "streak_fail": 0,
       "items_last": 74
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 173,
+      "streak_ok": 174,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.006180277777777778,
+    "hours": 0.006161111111111111,
     "stale": false
   },
   "hf": {
@@ -1044,7 +1082,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 63,
+    "count": 65,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -1061,7 +1099,7 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 21,
+    "ai_dropped": 19,
     "url": "https://hn.algolia.com/api/v1/search",
     "title_queries": {
       "ok": true,
@@ -1081,10 +1119,10 @@
         "Qwen",
         "local model"
       ],
-      "hits": 10,
-      "candidates": 7,
+      "hits": 9,
+      "candidates": 6,
       "ai_dropped": 2,
-      "duplicates": 7,
+      "duplicates": 6,
       "added": 0,
       "cap": 20,
       "merged_into_live_hn": true
@@ -1093,7 +1131,7 @@
       {
         "id": "hn:50200997",
         "tag": "rest",
-        "score": 621,
+        "score": 625,
         "text": "Ask HN: If the models are so good, why doesn't OpenAI just start 100 companies?"
       },
       {
@@ -1105,7 +1143,7 @@
       {
         "id": "hn:50207405",
         "tag": "rest",
-        "score": 320,
+        "score": 321,
         "text": "Swedish government offices to ban ChatGPT and Claude"
       }
     ]
@@ -1430,13 +1468,21 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 39,
-    "pool": 325,
+    "items": 36,
+    "pool": 324,
     "corroborators": [
+      {
+        "id": "gnews:9075b6f271d42064",
+        "anchor_id": "hn:50219364",
+        "score": 0.718,
+        "title": "Sweden Blocks ChatGPT and Claude in Government Offices, Copilot Stays - Pasquale Pillitteri",
+        "publisher": "Pasquale Pillitteri",
+        "self_repost": false
+      },
       {
         "id": "gnews:1ac283cab892d155",
         "anchor_id": "rss:the-decoder:6366c91429804481",
-        "score": 0.69,
+        "score": 0.691,
         "title": "Canva Craft launches in Dream Lab, Canva's first image model - Pasquale Pillitteri",
         "publisher": "Pasquale Pillitteri",
         "self_repost": false
@@ -1468,7 +1514,7 @@
       {
         "id": "gnews:3a4a898f27a19a0a",
         "anchor_id": "hn:50208084",
-        "score": 0.674,
+        "score": 0.673,
         "title": "MiniMax releases M3.1 Flash weights on Hugging Face, 428B parameters - Pasquale Pillitteri",
         "publisher": "Pasquale Pillitteri",
         "self_repost": false
@@ -1540,24 +1586,24 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:5931877af6b50f01",
-        "title": "inDrive taps Pony.ai and Nvidia to test robotaxis in one of the world's coldest capitals - The Economic Times",
-        "publisher": "The Economic Times",
-        "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxPUW44ZW5nZWlNTE1sS0YwYnQzVWFlcEIzbmxOYmxZUTNlRm9Cc3p6emVUTl9STnZoYml3SzIwUWhqeExzUUtrWENXNWpudklSRlpVY2FDVVN6MW5BOURZUU45X0t1MFBub3czVEp1ZnRoYURUdHlXTXVXZFJacEEtRkxIa0pjV2lxQWhvMlByRDNRSkZOejhaQ21hMXJQamV3bXJwbjRkeUV5M0tDN1lpMWtmUTVfelhlYmFWWHZyVGRIOURNc3ZjbkJkUDJzelJCUl9nMDJKOHh5Y3hDeEJqWkFySnJUNnFaX0N6VdIB8gFBVV95cUxNcjRkZE5FdU4waFVTb2VLNlNHaVh5ejMtb2RJN2FXNVhWZUl6OWdQRW55aHphUnZ0b0ZPWTRXTWxuRXljOFpENER3SlZKT2loZllmdXVMMjF4REZjRUhWLWNubkZ4d1MwcmFjcGs3Tlc2UEFQYTBzcHlYOG5LUzdVdEZfQVFSZWxaUElwNVBZMF9rRmNCSWUxTE5fbjhpaUtudXByX1VkVkxKOE1Lck13Rml5OFpVYWViaHdPdGxmV09QRWlqZk8wRkNGSUhZRkNHTlFadWJ6dUxCRTlnM2ZzYWlMa3FWSW5IQ2UwaUo0RWgwZw?oc=5",
+        "id": "gnews:68ba1e6ffc4697c6",
+        "title": "Is the best mathematician in the world an AI model? - mronline.org",
+        "publisher": "mronline.org",
+        "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNREtLaXlJXzg5TzFHRktTNUlBU0dUeUVCVTlQMVY2YnlFS1pjY28wRHlKbHpFenB3dE9xN1pDUnFXLXRmcFYydHdRb3h5RkJGRDFOd3FWYXZwU3JMd29qSjlMOTJtVElOVVpyN0dSR2pabURROWtNT1BEVWVlUzFGemg4SXg0czJpZS00?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:7405d116ecaf2040",
-        "title": "Jensen Huang Says AI Demand Is \"Off the Charts.\" The Money to Pay for It Isn't - The Motley Fool",
-        "publisher": "The Motley Fool",
-        "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNMUtHRXhOX3Bua2ZZVEpVajRXM18zSGVUTFV6RkpWU1R4bnA1NVVORklTa1U4WE8tOHlGalc1dUdNNHZkdVUyVTlJamd2dmdaQnZhaWY0amJXZWVRaEE1VHh6Ry1hVkJmaE1nNXp5TTIwb3htcndoSVRXek1GenUtbUI3andzX0tacGtuVVpURFl6V1VWX2tMR0lNNXdtU1RXelVKenNic25YTTcwS2o5QWZLMlZlRW9RQmc?oc=5",
+        "id": "gnews:b0611cd2c987c1bb",
+        "title": "Why the ideology of AI looks so much like religion - Aleteia EN",
+        "publisher": "Aleteia EN",
+        "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQRndNaHFZUGhqRlI2MVdKT1FxcC1KbldNalRYbXBZTlFVV1hDUXFDR1lOc3oxblRpYmhMTTJtU3BPVkljUXJfODlWeXFMSGlUeHlGbEhuVDd5SEJoRGlRdVZ6d3hpaXVHZWxLa3dRQmppczVFT0R2MUNMSi1OQkdqWU55SFFhaTdWdFE?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:169afeddcc1684b9",
-        "title": "UK funds £100m AI biosecurity lab with OpenAI and Anthropic - The Next Web",
-        "publisher": "The Next Web",
-        "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPNlNlWWdNdU5Iei03OXdmVFdMb3VfS0Q1ZDZqSHRvY1pNcGppNnNadlhjdFM1Nnpta3djVjliOHltdjZwVkh0RlNhNTdSS0tlMzhJMjFFcDhPeWU1TlFWWmxuRW10SkxLdklLRnVzVll1RTZYMzZIZVR0TElFMks1UnRIcURRd3lNeElFNnlJRQ?oc=5",
+        "id": "gnews:2ac89d3539058f10",
+        "title": "Goa Launches Konkani Large Language Model; BHASHINI Demonstrates Real-Time Speech Translation - www.nationpathindia.com",
+        "publisher": "www.nationpathindia.com",
+        "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQUW5jSW5QWHdUb2hidnlUeHN6dlIwaFJQSm1mWjRlN18zNXJURks4UHFxM2dNbkhmXzhmWW5fUTBBMEJYN1JYUG9IQ0FsRV91OWVyZWktMkFqblZnY1oxNGtSb2dIOFRXcWVwXzBUSG84N19UUkxXTU1KVzFtdmhtTzgzUDBRWkVFQWtUQ191bFRadnps?oc=5",
         "tag": "rest"
       }
     ]

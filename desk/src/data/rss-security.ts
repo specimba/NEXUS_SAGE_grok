@@ -17,7 +17,7 @@ export type RssSecurityRow = {
   cluster_id?: string;
 };
 
-export const RSS_SECURITY_AT = "2026-10-24T11:43:00Z";
+export const RSS_SECURITY_AT = "2026-10-24T13:20:25Z";
 
 export const RSS_SECURITY: RssSecurityRow[] = [
   { id: "rss-sec:unit42:7336ba1f20a5b928", lab: "unit42" as const, title: "Threat Brief: Critical Vulnerabilities in PHP: CVE-2026-109618, CVE-2026-109619 (Updated October 23)", link: "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/", published: "2026-10-23T19:00:34Z", summary: "CVE-2026-109618 and CVE-2026-109619 are Critical vulnerabilities in PHP, a scripting language used globally for web servers and CMS systems. The post Threat Brief: Critical Vulnerabilities in PHP: CVE-2026-109618, CVE-2026-109619 (Updated October 23) appeared first on Unit 42 .", source: "rss-security" as const, tag: "rest" as const, first_seen: "2026-10-23T22:52:03Z", is_new: false, cluster_id: "cl:rss-sec:unit42:7336ba1f20a5b928" },

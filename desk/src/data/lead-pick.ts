@@ -3,28 +3,19 @@ import type { LeadEntry } from "@/lib/lead-pick";
 
 export const LEAD_TODAY: LeadEntry | null = {
   "date": "2026-10-24",
-  "at": "2026-10-23T21:47:18.329Z",
-  "crawl_at": "2026-10-23T21:46:59Z",
-  "pick_slot": "00:46",
-  "excluded": [
-    {
-      "cluster_id": "cl:gnews:68174e007cd6fea5",
-      "headline": "OpenAI now trains its frontier AI models with no internet access",
-      "reason": "GNW_ONLY",
-      "sources": 2,
-      "age_h": 1
-    }
-  ],
-  "cluster_id": "cl:rss:openai:f8c156dba7886826",
-  "headline": "Securing our frontier model training environment",
-  "url": "https://openai.com/index/securing-our-frontier-model-training-environment",
+  "at": "2026-10-24T13:20:47.233Z",
+  "crawl_at": "2026-10-24T13:20:25Z",
+  "pick_slot": "16:20",
+  "supersedes": "cl:rss:openai:f8c156dba7886826",
+  "cluster_id": "cl:hn:50219364",
+  "headline": "Sweden's Government Offices will block ChatGPT and Claude on staff computers",
+  "url": "https://twitter.com/intcyberdigest/status/2113815992984080865",
   "sources": 2,
-  "sig": 24,
+  "sig": 4,
   "reason": "picked",
-  "pub": "OAI",
-  "first_at": "2026-10-23T10:00:00.000Z",
+  "pub": "HN",
+  "first_at": "2026-10-24T07:27:30.000Z",
   "age_band": "<24h",
-  "supersedes": "cl:hn:50188944",
   "note": "repick: lead older than 12h since pick"
 };
 
@@ -120,7 +111,7 @@ export const LEAD_YESTERDAY: LeadEntry | null = {
 export const LEAD_HELD = false;
 
 /** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is >48h old (PASS-L). */
-export const LEAD_FIRST_AT: string | null = "2026-10-23T10:00:00.000Z";
+export const LEAD_FIRST_AT: string | null = "2026-10-24T07:27:30.000Z";
 
 /** Date of the latest real pick (never a HELD entry) — the HELD card's "last pick" (UX-1). */
 export const LEAD_LAST_PICK: string | null = "2026-10-24";

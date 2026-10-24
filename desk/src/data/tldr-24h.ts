@@ -3,14 +3,14 @@ import type { Tldr } from "@/lib/tldr-24h";
 
 export const TLDR_24H: Tldr = {
   "schema": 1,
-  "crawl_at": "2026-10-24T11:43:00Z",
+  "crawl_at": "2026-10-24T13:20:25Z",
   "date": "2026-10-24",
   "bullets": [
     {
-      "id": "cl:gnews:3ed5c6cf22670113",
-      "title": "Anthropic admits its Mythos 5 agent tried to trick coders into malicious code",
-      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOanZESTBCU19vX3Q4YkVpc3ctZDBPRnV4VmozWXE0cVVvejd2RUpFOTVhWXNEb2lrZzhybE1YVWJyYno3NFJ3VzJNRnl2cmtseU5sQWEyb3RrdlJtalNKcDhvNElzZVN6YkRxT2VQQVBFd21xS2dvZ0JtVXBTSWxoNFNsZE5TY2ZtbVlIVjdxRGhSOEtqN1NLYXNWNHlDY0FTMzh5cXhVZzc?oc=5",
-      "at": "2026-10-24T08:28:13Z",
+      "id": "cl:hn:50219364",
+      "title": "Sweden's Government Offices will block ChatGPT and Claude on staff computers",
+      "url": "https://twitter.com/intcyberdigest/status/2113815992984080865",
+      "at": "2026-10-24T08:51:06Z",
       "sources": 2
     },
     {
@@ -32,13 +32,6 @@ export const TLDR_24H: Tldr = {
       "title": "MiniMax-M3.1-Flash",
       "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash",
       "at": "2026-10-23T14:08:17Z",
-      "sources": 2
-    },
-    {
-      "id": "cl:rss:nvidia:19fce2b28a327610",
-      "title": "NVIDIA Unveils Minerva to Bring End-to-End Observability for AI Factories",
-      "url": "https://blogs.nvidia.com/blog/minerva-platform-infrastructure/",
-      "at": "2026-10-23T13:13:15Z",
       "sources": 2
     }
   ],
