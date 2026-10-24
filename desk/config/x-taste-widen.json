@@ -1,0 +1,215 @@
+{
+  "schema": 1,
+  "source": "refs/SCOUT-X-WIDEN-OCT24.md (scout/x-widen-oct24 e1c653f), probed 2026-10-24 16:50–17:05 TRT",
+  "box_only": true,
+  "reads": "free built-in x connector only: get_users_by_usernames, search_posts_all, search_news; no API keys, no credentials, never in CI",
+  "budget_calls_per_run": 15,
+  "order": [
+    "search_news",
+    "watch",
+    "story_queries"
+  ],
+  "accounts": [
+    {
+      "handle": "OpenAI",
+      "lane": "labs"
+    },
+    {
+      "handle": "OpenAINewsroom",
+      "lane": "labs/policy"
+    },
+    {
+      "handle": "OpenAIDevs",
+      "lane": "tooling"
+    },
+    {
+      "handle": "thsottiaux",
+      "lane": "tooling"
+    },
+    {
+      "handle": "AnthropicAI",
+      "lane": "labs"
+    },
+    {
+      "handle": "claudeai",
+      "lane": "labs/tooling"
+    },
+    {
+      "handle": "bcherny",
+      "lane": "tooling"
+    },
+    {
+      "handle": "GoogleDeepMind",
+      "lane": "labs"
+    },
+    {
+      "handle": "GoogleAI",
+      "lane": "labs"
+    },
+    {
+      "handle": "MistralAI",
+      "lane": "labs/OSS"
+    },
+    {
+      "handle": "Kimi_Moonshot",
+      "lane": "labs/OSS"
+    },
+    {
+      "handle": "deepseek_ai",
+      "lane": "labs/OSS"
+    },
+    {
+      "handle": "Alibaba_Qwen",
+      "lane": "labs/OSS"
+    },
+    {
+      "handle": "cursor_ai",
+      "lane": "tooling"
+    },
+    {
+      "handle": "ollama",
+      "lane": "tooling/OSS"
+    },
+    {
+      "handle": "vllm_project",
+      "lane": "tooling/OSS"
+    },
+    {
+      "handle": "huggingface",
+      "lane": "OSS"
+    },
+    {
+      "handle": "_akhaliq",
+      "lane": "papers/OSS"
+    },
+    {
+      "handle": "karpathy",
+      "lane": "research"
+    },
+    {
+      "handle": "simonw",
+      "lane": "tooling/sec"
+    },
+    {
+      "handle": "swyx",
+      "lane": "tooling"
+    },
+    {
+      "handle": "natolambert",
+      "lane": "OSS research"
+    },
+    {
+      "handle": "eliebakouch",
+      "lane": "OSS research"
+    },
+    {
+      "handle": "ArtificialAnlys",
+      "lane": "evals"
+    },
+    {
+      "handle": "arena",
+      "lane": "evals"
+    },
+    {
+      "handle": "testingcatalog",
+      "lane": "leaks/news"
+    },
+    {
+      "handle": "wunderwuzzi23",
+      "lane": "sec"
+    },
+    {
+      "handle": "taviso",
+      "lane": "sec"
+    },
+    {
+      "handle": "thezdi",
+      "lane": "sec"
+    },
+    {
+      "handle": "AISecurityInst",
+      "lane": "safety/policy"
+    },
+    {
+      "handle": "TheHackersNews",
+      "lane": "sec"
+    }
+  ],
+  "watch_query": {
+    "q": "(from:OpenAI OR from:OpenAIDevs OR from:AnthropicAI OR from:claudeai OR from:cursor_ai OR from:Kimi_Moonshot OR from:deepseek_ai OR from:Alibaba_Qwen OR from:GoogleDeepMind OR from:MistralAI) -is:retweet -is:reply",
+    "max_results": 25,
+    "tested": false
+  },
+  "story_queries": [
+    {
+      "id": "Q1",
+      "tool": "search_posts_all",
+      "q": "from:OpenAI (training OR pause OR resume) -is:retweet",
+      "precision": "high",
+      "tested": true
+    },
+    {
+      "id": "Q2",
+      "tool": "search_posts_all",
+      "q": "OpenAI (\"paused training\" OR \"pause training\" OR \"resumed training\" OR \"resume training\") -is:retweet",
+      "precision": "medium",
+      "tested": true
+    },
+    {
+      "id": "Q3",
+      "tool": "search_posts_all",
+      "q": "from:cursor_ai \"computer use\" -is:retweet",
+      "precision": "high",
+      "tested": true
+    },
+    {
+      "id": "Q4",
+      "tool": "search_posts_all",
+      "q": "cursor \"computer use\" -is:retweet",
+      "precision": "noisy",
+      "tested": true
+    },
+    {
+      "id": "Q5",
+      "tool": "search_posts_all",
+      "q": "from:Kimi_Moonshot K3.1 -is:retweet",
+      "precision": "high",
+      "tested": true
+    },
+    {
+      "id": "Q6",
+      "tool": "search_posts_all",
+      "q": "(\"Kimi K3.1\" OR \"K3.1 Pro\") -is:retweet",
+      "precision": "noisy",
+      "tested": true
+    }
+  ],
+  "news_queries": [
+    {
+      "id": "Q7a",
+      "tool": "search_news",
+      "q": "OpenAI training pause",
+      "max_age_hours": 48,
+      "tested": true
+    },
+    {
+      "id": "Q7b",
+      "tool": "search_news",
+      "q": "Cursor Computer Use",
+      "max_age_hours": 48,
+      "tested": true
+    },
+    {
+      "id": "Q7c",
+      "tool": "search_news",
+      "q": "Kimi K3.1",
+      "max_age_hours": 48,
+      "tested": true
+    }
+  ],
+  "rules": [
+    "news cards are summaries: facts stay unconfirmed until a primary post or link is found",
+    "from:<official> + 1-2 keywords = high precision; bare keyword = confirmation only",
+    "untested queries (tested=false) are never run until tested"
+  ]
+}

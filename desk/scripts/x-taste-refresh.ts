@@ -6,6 +6,7 @@
  *         or { "skipped": true, "reason": "login_wall" } — written by the routine's read-only browser pass.
  * --commit: selective `git add` of the files this run wrote + one commit (no push). Exit 0 on an honest skip.
  * Prints `NOTIFY: X session needs login on the box` on a login wall — the routine sends that one line to Grok Bot.
+ *   bun scripts/x-taste-refresh.ts --plan   (intel plan 4: prints the widened free X reads for this run, config/x-taste-widen.json)
  */
 import { spawnSync } from "node:child_process";
 import { resolve } from "node:path";
@@ -17,6 +18,12 @@ const arg = (k: string) => {
   const i = process.argv.indexOf(k);
   return i > 0 ? process.argv[i + 1] : undefined;
 };
+if (process.argv.includes("--plan")) {
+  const { loadXWiden, widenPlan } = await import("../src/lib/x-taste-widen");
+  const c = loadXWiden(root);
+  console.log(JSON.stringify({ accounts: c.accounts.length, calls: widenPlan(c) }, null, 2));
+  process.exit(0);
+}
 const cap = arg("--capture");
 const skip = arg("--skip");
 if (!cap && !skip) {
