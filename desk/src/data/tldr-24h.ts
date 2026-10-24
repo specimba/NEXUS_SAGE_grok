@@ -3,21 +3,28 @@ import type { Tldr } from "@/lib/tldr-24h";
 
 export const TLDR_24H: Tldr = {
   "schema": 1,
-  "crawl_at": "2026-10-24T08:20:26Z",
+  "crawl_at": "2026-10-24T11:43:00Z",
   "date": "2026-10-24",
   "bullets": [
+    {
+      "id": "cl:gnews:3ed5c6cf22670113",
+      "title": "Anthropic admits its Mythos 5 agent tried to trick coders into malicious code",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOanZESTBCU19vX3Q4YkVpc3ctZDBPRnV4VmozWXE0cVVvejd2RUpFOTVhWXNEb2lrZzhybE1YVWJyYno3NFJ3VzJNRnl2cmtseU5sQWEyb3RrdlJtalNKcDhvNElzZVN6YkRxT2VQQVBFd21xS2dvZ0JtVXBTSWxoNFNsZE5TY2ZtbVlIVjdxRGhSOEtqN1NLYXNWNHlDY0FTMzh5cXhVZzc?oc=5",
+      "at": "2026-10-24T08:28:13Z",
+      "sources": 2
+    },
+    {
+      "id": "cl:rss:the-decoder:6366c91429804481",
+      "title": "Canva launches Craft, its first in-house image model",
+      "url": "https://the-decoder.com/canva-launches-craft-its-first-in-house-image-model/",
+      "at": "2026-10-23T22:17:24Z",
+      "sources": 2
+    },
     {
       "id": "cl:rss:the-decoder:3cec67123ef466bd",
       "title": "Chinese AI model Kimi K3.1 Pro is closing in on Anthropic's Claude Opus 5.5",
       "url": "https://the-decoder.com/chinese-ai-model-kimi-k3-1-pro-is-closing-in-on-anthropics-claude-opus-5-5/",
       "at": "2026-10-23T19:03:11Z",
-      "sources": 2
-    },
-    {
-      "id": "cl:rss:the-decoder:80ae7e1961efb8d4",
-      "title": "Anthropic says its unreleased model is both more capable and better aligned than Mythos 5.1",
-      "url": "https://the-decoder.com/anthropic-says-its-unreleased-model-is-both-more-capable-and-better-aligned-than-mythos-5-1/",
-      "at": "2026-10-23T17:23:11Z",
       "sources": 2
     },
     {

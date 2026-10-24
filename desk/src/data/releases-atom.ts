@@ -17,8 +17,8 @@ export type ReleaseAtomRow = {
   cluster_id?: string;
 };
 
-export const RELEASES_ATOM_AT: string | null = "2026-10-24T08:20:26Z";
+export const RELEASES_ATOM_AT: string | null = "2026-10-24T11:43:00Z";
 
 export const RELEASES_ATOM: ReleaseAtomRow[] = [
-  { id: "rel:hf-tencent:tencent/Hy-Nomas-Diffusers", feed: "hf-tencent" as const, title: "tencent/Hy-Nomas-Diffusers", link: "https://huggingface.co/tencent/Hy-Nomas-Diffusers", published: "2026-10-24T05:45:20Z", tag: "Hy-Nomas-Diffusers", emitted_at: "2026-10-24T08:20:32Z", source: "releases-atom" as const, first_seen: "2026-10-24T08:20:26Z", is_new: true, cluster_id: "cl:rel:hf-tencent:tencent/Hy-Nomas-Diffusers" },
+  { id: "rel:hf-tencent:tencent/Hy-Nomas-Diffusers", feed: "hf-tencent" as const, title: "tencent/Hy-Nomas-Diffusers", link: "https://huggingface.co/tencent/Hy-Nomas-Diffusers", published: "2026-10-24T05:45:20Z", tag: "Hy-Nomas-Diffusers", emitted_at: "2026-10-24T08:20:32Z", source: "releases-atom" as const, first_seen: "2026-10-24T08:20:26Z", is_new: false, cluster_id: "cl:rel:hf-tencent:tencent/Hy-Nomas-Diffusers" },
 ];

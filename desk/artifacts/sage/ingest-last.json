@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-24T08:20:26Z",
+  "stamped_at": "2026-10-24T11:43:00Z",
   "config_hash": "a116c3b25ffb",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,7 +11,7 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 128,
+      "duration_ms": 160,
       "paused_until": null,
       "reason": null
     },
@@ -20,7 +20,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 3206,
+      "duration_ms": 3167,
       "paused_until": null,
       "reason": null
     },
@@ -29,7 +29,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 346,
+      "duration_ms": 381,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 152,
+      "duration_ms": 112,
       "paused_until": null,
       "reason": null
     },
@@ -46,8 +46,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 67,
-      "duration_ms": 8303,
+      "rows": 63,
+      "duration_ms": 8317,
       "paused_until": null,
       "reason": null
     },
@@ -56,7 +56,7 @@
       "label": "HN title",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 8236,
+      "duration_ms": 8223,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 115,
-      "duration_ms": 19643,
+      "duration_ms": 20842,
       "paused_until": null,
       "reason": null
     },
@@ -74,7 +74,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 74,
-      "duration_ms": 12093,
+      "duration_ms": 12101,
       "paused_until": null,
       "reason": null
     },
@@ -83,7 +83,7 @@
       "label": "analyst RSS",
       "status": "ok",
       "rows": 6,
-      "duration_ms": 2551,
+      "duration_ms": 2653,
       "paused_until": null,
       "reason": null
     },
@@ -92,7 +92,7 @@
       "label": "releases",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 6643,
+      "duration_ms": 6658,
       "paused_until": null,
       "reason": null
     },
@@ -100,8 +100,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 36,
-      "duration_ms": 6337,
+      "rows": 39,
+      "duration_ms": 6340,
       "paused_until": null,
       "reason": null
     },
@@ -110,7 +110,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 2,
-      "duration_ms": 316,
+      "duration_ms": 309,
       "paused_until": null,
       "reason": null
     },
@@ -119,16 +119,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4323,
+      "duration_ms": 4451,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 72277,
-    "sources_wall_ms": 19644,
-    "papers_lane_ms": 3839,
-    "slowest_source_ms": 19643,
+    "sources_ms": 73714,
+    "sources_wall_ms": 20843,
+    "papers_lane_ms": 3826,
+    "slowest_source_ms": 20842,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -146,36 +146,61 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 20280,
-    "startup_ms": 56,
-    "main_ms": 20303
+    "wall_ms": 21420,
+    "startup_ms": 52,
+    "main_ms": 21440
   },
-  "multi_source_independent": 7,
+  "multi_source_independent": 8,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 7,
-    "multi_source_raw": 10,
+    "multi_source_independent": 8,
+    "multi_source_raw": 11,
     "self_reposts": 4,
-    "items_in": 309,
-    "clusters_out": 283,
+    "items_in": 308,
+    "clusters_out": 282,
     "collapsed": 26,
-    "multi_source": 7,
+    "multi_source": 8,
     "multi_member": 20,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 26,
+    "new_items": 27,
     "per_source": {
-      "hn-algolia": 67,
+      "hn-algolia": 63,
       "rss-lab": 115,
       "rss-security": 74,
-      "gnews-rss": 36,
+      "gnews-rss": 39,
       "gmail-news": 10,
       "rss-analyst": 6,
       "releases-atom": 1
     },
     "multi_source_clusters": [
+      {
+        "title": "Canva launches Craft, its first in-house image model",
+        "sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 0.688,
+        "members": [
+          {
+            "id": "rss:the-decoder:6366c91429804481",
+            "source": "rss-lab",
+            "title": "Canva launches Craft, its first in-house image model",
+            "at": "2026-10-23T11:36:30Z",
+            "publisher": "the-decoder"
+          },
+          {
+            "id": "gnews:1ac283cab892d155",
+            "source": "gnews-rss",
+            "title": "Canva Craft launches in Dream Lab, Canva's first image model - Pasquale Pillitteri",
+            "at": "2026-10-23T22:17:24Z",
+            "publisher": "Pasquale Pillitteri"
+          }
+        ]
+      },
       {
         "title": "Chinese AI model Kimi K3.1 Pro is closing in on Anthropic's Claude Opus 5.5",
         "sources": [
@@ -455,32 +480,24 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "Healthcare Digital",
-          "title": "Danaher, NVIDIA, FedEx, Sanofi: This Week in Healthcare - Healthcare Digital"
-        },
-        {
           "publisher": "The Motley Fool",
-          "title": "TSMC or Nvidia: If I Could Only Own 1 for the Next 5 Years, It Would Be This 1. - The Motley Fool"
+          "title": "Prediction: $200 a Month Invested in Nvidia Will Be Worth This Much by 2035 - The Motley Fool"
         },
         {
-          "publisher": "https://tech-insider.org/",
-          "title": "NVIDIA B300 China Telecom: 32 GPUs Spotted [2026] - https://tech-insider.org/"
+          "publisher": "Pasquale Pillitteri",
+          "title": "Broken iPhone Duo inner displays surface along the hinge on launch day - Pasquale Pillitteri"
         },
         {
-          "publisher": "WSJ",
-          "title": "Nvidia, Meta and Apple Unveil New Open Models The Morning Download for Oct. 16 - WSJ"
-        },
-        {
-          "publisher": "www.dakota.com",
-          "title": "Top 10 Information Technology Transactions: September 2026 - www.dakota.com"
+          "publisher": "Bioengineer.org",
+          "title": "Hybrid Optimizer Lifts AraBERT Accuracy in Arabic Sentiment Analysis - Bioengineer.org"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 20
+      "hn_dropped": 21
     },
     "gnews_near_misses": [
       {
-        "score": 0.563,
+        "score": 0.557,
         "blocked": "below-threshold",
         "hours_apart": 19.8,
         "a": {
@@ -503,7 +520,7 @@
         ]
       },
       {
-        "score": 0.505,
+        "score": 0.503,
         "blocked": "below-threshold",
         "hours_apart": 13,
         "a": {
@@ -525,7 +542,30 @@
         ]
       },
       {
-        "score": 0.337,
+        "score": 0.464,
+        "blocked": "time-window",
+        "hours_apart": 73.6,
+        "a": {
+          "id": "rss:nvidia-dev:667f38af6af566e8",
+          "source": "rss-lab",
+          "title": "Achieve Productive AI Capacity Faster and More Predictably with NVIDIA DSX POD",
+          "at": "2026-10-21T09:35:32Z"
+        },
+        "b": {
+          "id": "gnews:0faf2f2acf5aae3c",
+          "source": "gnews-rss",
+          "title": "Will NVIDIA’s DSX Pods Shift the AI Landscape? - Data Center Richness | Substack",
+          "at": "2026-10-24T11:10:36Z"
+        },
+        "shared": [
+          "ai",
+          "nvidia",
+          "dsx",
+          "pod"
+        ]
+      },
+      {
+        "score": 0.34,
         "blocked": "below-threshold",
         "hours_apart": 13.3,
         "a": {
@@ -570,29 +610,7 @@
         ]
       },
       {
-        "score": 0.325,
-        "blocked": "time-window",
-        "hours_apart": 180,
-        "a": {
-          "id": "rss:nvidia-dev:3a44cf0b79fe9cae",
-          "source": "rss-lab",
-          "title": "Code, Test, and Deploy on One Machine with NVIDIA RTX Spark",
-          "at": "2026-10-16T17:00:00Z"
-        },
-        "b": {
-          "id": "gnews:f0f46d05f1adf7d4",
-          "source": "gnews-rss",
-          "title": "What Is Nvidia RTX Spark? Everything You Need to Know About the New AI Laptops - PCMag Middle East",
-          "at": "2026-10-24T05:02:19Z"
-        },
-        "shared": [
-          "nvidia",
-          "rtx",
-          "spark"
-        ]
-      },
-      {
-        "score": 0.308,
+        "score": 0.311,
         "blocked": "thin-overlap",
         "hours_apart": 400.7,
         "a": {
@@ -612,7 +630,30 @@
         ]
       },
       {
-        "score": 0.302,
+        "score": 0.307,
+        "blocked": "below-threshold",
+        "hours_apart": 9.5,
+        "a": {
+          "id": "rss:the-decoder:3cec67123ef466bd",
+          "source": "rss-lab",
+          "title": "Chinese AI model Kimi K3.1 Pro is closing in on Anthropic's Claude Opus 5.5",
+          "at": "2026-10-23T19:00:07Z"
+        },
+        "b": {
+          "id": "gnews:af96ecb029782256",
+          "source": "gnews-rss",
+          "title": "Moonshot AI launches new LLM Kimi K3.1 Pro, highlights 3D modelling and finance analysis performance - 디지털투데이",
+          "at": "2026-10-24T04:32:27Z"
+        },
+        "shared": [
+          "ai",
+          "kimi",
+          "k3.1",
+          "pro"
+        ]
+      },
+      {
+        "score": 0.307,
         "blocked": "thin-overlap",
         "hours_apart": 1395.4,
         "a": {
@@ -632,34 +673,11 @@
           "code",
           "5"
         ]
-      },
-      {
-        "score": 0.281,
-        "blocked": "below-threshold",
-        "hours_apart": 12.3,
-        "a": {
-          "id": "anl:latent-space:a3c9d59a888e90f8",
-          "source": "rss-analyst",
-          "title": "[AINews] Kimi 3.1 Pro 104BA-2.8T: Fable-5.1-Class Open Weights narrows Closed-AI lead to 1 month... and Pro Highspeed API with 2-3× speed",
-          "at": "2026-10-24T07:18:29Z"
-        },
-        "b": {
-          "id": "gnews:5548290eafd4601f",
-          "source": "gnews-rss",
-          "title": "Chinese AI model Kimi K3.1 Pro is closing in on Anthropic's Claude Opus 5.5 - The Decoder",
-          "at": "2026-10-23T19:03:11Z"
-        },
-        "shared": [
-          "kimi",
-          "pro",
-          "clos",
-          "ai"
-        ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.563,
+        "score": 0.557,
         "blocked": "below-threshold",
         "hours_apart": 19.8,
         "a": {
@@ -682,7 +700,7 @@
         ]
       },
       {
-        "score": 0.505,
+        "score": 0.503,
         "blocked": "below-threshold",
         "hours_apart": 13,
         "a": {
@@ -704,7 +722,30 @@
         ]
       },
       {
-        "score": 0.405,
+        "score": 0.464,
+        "blocked": "time-window",
+        "hours_apart": 73.6,
+        "a": {
+          "id": "rss:nvidia-dev:667f38af6af566e8",
+          "source": "rss-lab",
+          "title": "Achieve Productive AI Capacity Faster and More Predictably with NVIDIA DSX POD",
+          "at": "2026-10-21T09:35:32Z"
+        },
+        "b": {
+          "id": "gnews:0faf2f2acf5aae3c",
+          "source": "gnews-rss",
+          "title": "Will NVIDIA’s DSX Pods Shift the AI Landscape? - Data Center Richness | Substack",
+          "at": "2026-10-24T11:10:36Z"
+        },
+        "shared": [
+          "ai",
+          "nvidia",
+          "dsx",
+          "pod"
+        ]
+      },
+      {
+        "score": 0.406,
         "blocked": "time-window",
         "hours_apart": 34.4,
         "a": {
@@ -726,7 +767,7 @@
         ]
       },
       {
-        "score": 0.38,
+        "score": 0.377,
         "blocked": "below-threshold",
         "hours_apart": 10.6,
         "a": {
@@ -748,7 +789,7 @@
         ]
       },
       {
-        "score": 0.376,
+        "score": 0.377,
         "blocked": "below-threshold",
         "hours_apart": 1,
         "a": {
@@ -771,51 +812,7 @@
         ]
       },
       {
-        "score": 0.371,
-        "blocked": "below-threshold",
-        "hours_apart": 18.2,
-        "a": {
-          "id": "hn:50193043",
-          "source": "hn-algolia",
-          "title": "IBM releases granite speech 5.0 2B",
-          "at": "2026-10-22T09:09:35Z"
-        },
-        "b": {
-          "id": "rss:huggingface:c2ed162a157709f5",
-          "source": "rss-lab",
-          "title": "Granite Speech 5.0: Transcribe, Translate, and Attribute more Accurately and Faster",
-          "at": "2026-10-21T14:58:18Z"
-        },
-        "shared": [
-          "granit",
-          "speech",
-          "5.0"
-        ]
-      },
-      {
-        "score": 0.367,
-        "blocked": "below-threshold",
-        "hours_apart": 4.5,
-        "a": {
-          "id": "hn:50209513",
-          "source": "hn-algolia",
-          "title": "OpenAI trims valuation target to $1.25T after pitching higher price",
-          "at": "2026-10-23T14:19:20Z"
-        },
-        "b": {
-          "id": "rss:the-decoder:e06a796aab469919",
-          "source": "rss-lab",
-          "title": "OpenAI lowers valuation target, raises up to $30 billion",
-          "at": "2026-10-23T09:49:38Z"
-        },
-        "shared": [
-          "openai",
-          "valuation",
-          "target"
-        ]
-      },
-      {
-        "score": 0.367,
+        "score": 0.366,
         "blocked": "time-window",
         "hours_apart": 34.4,
         "a": {
@@ -835,6 +832,28 @@
           "ai",
           "agent"
         ]
+      },
+      {
+        "score": 0.364,
+        "blocked": "below-threshold",
+        "hours_apart": 4.5,
+        "a": {
+          "id": "hn:50209513",
+          "source": "hn-algolia",
+          "title": "OpenAI trims valuation target to $1.25T after pitching higher price",
+          "at": "2026-10-23T14:19:20Z"
+        },
+        "b": {
+          "id": "rss:the-decoder:e06a796aab469919",
+          "source": "rss-lab",
+          "title": "OpenAI lowers valuation target, raises up to $30 billion",
+          "at": "2026-10-23T09:49:38Z"
+        },
+        "shared": [
+          "openai",
+          "valuation",
+          "target"
+        ]
       }
     ]
   },
@@ -842,97 +861,97 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 1,
+      "streak_ok": 2,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 172,
+      "streak_ok": 173,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 172,
+      "streak_ok": 173,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 172,
+      "streak_ok": 173,
       "streak_fail": 0,
-      "items_last": 36
+      "items_last": 39
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 172,
+      "streak_ok": 173,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 172,
+      "streak_ok": 173,
       "streak_fail": 0,
-      "items_last": 67
+      "items_last": 63
     },
     {
       "id": "hn_title",
       "state": "ok",
-      "streak_ok": 26,
+      "streak_ok": 27,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 84,
+      "streak_ok": 85,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "releases_atom",
       "state": "ok",
-      "streak_ok": 26,
+      "streak_ok": 27,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "rss_analyst",
       "state": "ok",
-      "streak_ok": 26,
+      "streak_ok": 27,
       "streak_fail": 0,
       "items_last": 6
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 76,
+      "streak_ok": 77,
       "streak_fail": 0,
       "items_last": 115
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 172,
+      "streak_ok": 173,
       "streak_fail": 0,
       "items_last": 74
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 172,
+      "streak_ok": 173,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.0057686111111111115,
+    "hours": 0.006180277777777778,
     "stale": false
   },
   "hf": {
@@ -1025,7 +1044,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 67,
+    "count": 63,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -1042,7 +1061,7 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 20,
+    "ai_dropped": 21,
     "url": "https://hn.algolia.com/api/v1/search",
     "title_queries": {
       "ok": true,
@@ -1074,19 +1093,19 @@
       {
         "id": "hn:50200997",
         "tag": "rest",
-        "score": 614,
+        "score": 621,
         "text": "Ask HN: If the models are so good, why doesn't OpenAI just start 100 companies?"
       },
       {
         "id": "hn:50198675",
         "tag": "rest",
-        "score": 494,
+        "score": 495,
         "text": "OpenShell – A safe, private runtime for fleets of autonomous AI agents"
       },
       {
         "id": "hn:50207405",
         "tag": "rest",
-        "score": 317,
+        "score": 320,
         "text": "Swedish government offices to ban ChatGPT and Claude"
       }
     ]
@@ -1155,6 +1174,20 @@
     "feeds_soft_fail": [],
     "sample": [
       {
+        "id": "rss:the-decoder:c708c54a38c204c3",
+        "lab": "the-decoder",
+        "tag": "rest",
+        "title": "OpenAI's isolated AI agents found ways to talk to each other through CPU cache",
+        "link": "https://the-decoder.com/openais-isolated-ai-agents-found-ways-to-talk-to-each-other-through-cpu-cache/"
+      },
+      {
+        "id": "rss:the-decoder:71d5c4d63b25213a",
+        "lab": "the-decoder",
+        "tag": "rest",
+        "title": "Fancy harnesses make coding agents more expensive but not better, study finds",
+        "link": "https://the-decoder.com/fancy-harnesses-make-coding-agents-more-expensive-but-not-better-study-finds/"
+      },
+      {
         "id": "rss:the-decoder:3cec67123ef466bd",
         "lab": "the-decoder",
         "tag": "rest",
@@ -1167,20 +1200,6 @@
         "tag": "rest",
         "title": "Bringing foundational models to the front lines of TB screening",
         "link": "https://research.google/blog/bringing-foundational-models-to-the-front-lines-of-tb-screening/"
-      },
-      {
-        "id": "rss:the-decoder:67e4d8f6bd7818ee",
-        "lab": "the-decoder",
-        "tag": "rest",
-        "title": "Three-week on-site audit at OpenAI reveals major gaps in AI safety monitoring",
-        "link": "https://the-decoder.com/three-week-on-site-audit-at-openai-reveals-major-gaps-in-ai-safety-monitoring/"
-      },
-      {
-        "id": "rss:nvidia-dev:273647658eb97da9",
-        "lab": "nvidia-dev",
-        "tag": "rest",
-        "title": "Scaling NVIDIA TensorRT Performance Optimization Beyond a Single Build Route with the Global Performance Tuner, Part 2",
-        "link": "https://developer.nvidia.com/blog/scaling-nvidia-tensorrt-performance-optimization-beyond-a-single-build-route-with-the-global-performance-tuner-part-2/"
       }
     ]
   },
@@ -1411,9 +1430,17 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 36,
-    "pool": 323,
+    "items": 39,
+    "pool": 325,
     "corroborators": [
+      {
+        "id": "gnews:1ac283cab892d155",
+        "anchor_id": "rss:the-decoder:6366c91429804481",
+        "score": 0.69,
+        "title": "Canva Craft launches in Dream Lab, Canva's first image model - Pasquale Pillitteri",
+        "publisher": "Pasquale Pillitteri",
+        "self_repost": false
+      },
       {
         "id": "gnews:5548290eafd4601f",
         "anchor_id": "rss:the-decoder:3cec67123ef466bd",
@@ -1441,7 +1468,7 @@
       {
         "id": "gnews:3a4a898f27a19a0a",
         "anchor_id": "hn:50208084",
-        "score": 0.676,
+        "score": 0.674,
         "title": "MiniMax releases M3.1 Flash weights on Hugging Face, 428B parameters - Pasquale Pillitteri",
         "publisher": "Pasquale Pillitteri",
         "self_repost": false
@@ -1457,7 +1484,7 @@
       {
         "id": "gnews:4d951b3ab51e0f9b",
         "anchor_id": "rss:nvidia:19fce2b28a327610",
-        "score": 0.72,
+        "score": 0.716,
         "title": "NVIDIA Minerva targets AI factory observability - Developer Tech News",
         "publisher": "Developer Tech News",
         "self_repost": false
@@ -1513,24 +1540,24 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:8efbc2c0b6b4ca9c",
-        "title": "This Week's Top Five Stories in AI - AI Magazine",
-        "publisher": "AI Magazine",
-        "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxPLWY0cjNwV3R3UHg4a09WLWlHbVdhV2pkQlNLOExFYTR4ZjVvUHVlQzBILXdJWURsWmZMM2NQUHlsOUEteUlNbk1QYkJsXzJ2MXNBd2tfdVo3MlRsNEd4c1dlM3BQS3lMc1lnUXdDNmN1LUxZYlhvQ0xPcmdQaVVHWEFn?oc=5",
+        "id": "gnews:5931877af6b50f01",
+        "title": "inDrive taps Pony.ai and Nvidia to test robotaxis in one of the world's coldest capitals - The Economic Times",
+        "publisher": "The Economic Times",
+        "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxPUW44ZW5nZWlNTE1sS0YwYnQzVWFlcEIzbmxOYmxZUTNlRm9Cc3p6emVUTl9STnZoYml3SzIwUWhqeExzUUtrWENXNWpudklSRlpVY2FDVVN6MW5BOURZUU45X0t1MFBub3czVEp1ZnRoYURUdHlXTXVXZFJacEEtRkxIa0pjV2lxQWhvMlByRDNRSkZOejhaQ21hMXJQamV3bXJwbjRkeUV5M0tDN1lpMWtmUTVfelhlYmFWWHZyVGRIOURNc3ZjbkJkUDJzelJCUl9nMDJKOHh5Y3hDeEJqWkFySnJUNnFaX0N6VdIB8gFBVV95cUxNcjRkZE5FdU4waFVTb2VLNlNHaVh5ejMtb2RJN2FXNVhWZUl6OWdQRW55aHphUnZ0b0ZPWTRXTWxuRXljOFpENER3SlZKT2loZllmdXVMMjF4REZjRUhWLWNubkZ4d1MwcmFjcGs3Tlc2UEFQYTBzcHlYOG5LUzdVdEZfQVFSZWxaUElwNVBZMF9rRmNCSWUxTE5fbjhpaUtudXByX1VkVkxKOE1Lck13Rml5OFpVYWViaHdPdGxmV09QRWlqZk8wRkNGSUhZRkNHTlFadWJ6dUxCRTlnM2ZzYWlMa3FWSW5IQ2UwaUo0RWgwZw?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:8533e3f687d90dd9",
-        "title": "Claude Duet runs on its own virtual machine so it keeps working when your laptop is off, and Anthropic has opened a waitlist for US Pro and Max subscribers. - Make Tech Easier",
-        "publisher": "Make Tech Easier",
-        "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9tZkM5YnJDUlg0WHFEaDBQYUl5MkJiZUc0ZmxTQmYxelhaMWdMRHR2TnJQa1BwSlFTY21tdXd0TkJXazVvSml0Y1hnUWF2LXo3VzZhRmc5SWduc1Nqd0dEaTBkQ2FFNXc?oc=5",
+        "id": "gnews:7405d116ecaf2040",
+        "title": "Jensen Huang Says AI Demand Is \"Off the Charts.\" The Money to Pay for It Isn't - The Motley Fool",
+        "publisher": "The Motley Fool",
+        "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNMUtHRXhOX3Bua2ZZVEpVajRXM18zSGVUTFV6RkpWU1R4bnA1NVVORklTa1U4WE8tOHlGalc1dUdNNHZkdVUyVTlJamd2dmdaQnZhaWY0amJXZWVRaEE1VHh6Ry1hVkJmaE1nNXp5TTIwb3htcndoSVRXek1GenUtbUI3andzX0tacGtuVVpURFl6V1VWX2tMR0lNNXdtU1RXelVKenNic25YTTcwS2o5QWZLMlZlRW9RQmc?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:9075b6f271d42064",
-        "title": "Sweden Blocks ChatGPT and Claude in Government Offices, Copilot Stays - Pasquale Pillitteri",
-        "publisher": "Pasquale Pillitteri",
-        "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOSHJpMFBMYy1uWmM3Unc3TW1rTGNqUjFvTW1RQTR2X2JmdHFBUnBjTm45OW1ZUno4ZFdKaGh2X0NHRWRCZlRaZFE4MF80cnBLZmM1clRaU05tbUFOTnFrUkpnWkpSNVFHRmNMbkNIRU5tVUEyUldqRTUzX1MtQVJnQl9yYk44clhJTmo3eUU4ajYxcDNmS0E?oc=5",
+        "id": "gnews:169afeddcc1684b9",
+        "title": "UK funds £100m AI biosecurity lab with OpenAI and Anthropic - The Next Web",
+        "publisher": "The Next Web",
+        "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPNlNlWWdNdU5Iei03OXdmVFdMb3VfS0Q1ZDZqSHRvY1pNcGppNnNadlhjdFM1Nnpta3djVjliOHltdjZwVkh0RlNhNTdSS0tlMzhJMjFFcDhPeWU1TlFWWmxuRW10SkxLdklLRnVzVll1RTZYMzZIZVR0TElFMks1UnRIcURRd3lNeElFNnlJRQ?oc=5",
         "tag": "rest"
       }
     ]
