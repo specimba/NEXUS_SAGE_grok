@@ -46,5 +46,6 @@ Option 2 from the Oct 23 shortlist. One Coder pass. Page change, so the full pag
 3. **Buffer through globalThis:** accepted. Every target browser has `atob`, so the Buffer path only runs in Node/tests. Add a one-line comment saying so; no polyfill on the page.
 4. **Papers keys:** written add-only when the papers lane first opens. Accepted. Never remove keys on view changes; the 400 cap trims oldest.
 
-## N6 Cap change (Oct 24 2026, 14:37 TRT)
-Canberk raised the PASS-N First Load hard cap from 180,950 B to **181,050 B** (Pages/CI build). Old-record fallback cut per §N5.1; papers lane kept. Measured at push: Pages build 180,889 B.
+## N6 Cap change
+- Oct 24 2026, 14:37 TRT: Canberk raised the PASS-N First Load hard cap from 180,950 B to 181,050 B (Pages/CI build). Old-record fallback cut per §N5.1; papers lane kept. Measured at push: local Pages build 180,889 B.
+- Oct 24 2026, 16:46 TRT: Canberk set the cap to **182,000 B** (Pages/CI build; supersedes 180,950 B in §N5.1 and 181,050 B above). Reason: the first CI publish of PASS-N (main@08c7683, pipeline 2984457232, gh-pages 8b3d318) measured **181,086 B**, over the 181,050 B cap; the local Pages build had measured 180,889 B (crawl data differs between builds).
