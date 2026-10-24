@@ -91,7 +91,7 @@ describe("PASS-N new-since-last-visit ticks", () => {
     expect(tickable("x:sama:1")).toBe(false);
     for (const id of ["hn:1", "rss:openai:a", "rss-sec:x", "gnews:a", "anl:a", "rel:a"]) expect(tickable(id)).toBe(true);
     // The Brief lead never renders a tick: ticks live only in Wire / Pulse / Papers rows.
-    const at = desk.indexOf("function Brief()");
+    const at = desk.indexOf("function Brief(");
     const lead = desk.slice(at, desk.indexOf("\nfunction ", at + 1));
     expect(lead.length).toBeGreaterThan(100);
     expect(lead.includes("NewTick")).toBe(false);
