@@ -3,7 +3,7 @@ import type { Tldr } from "@/lib/tldr-24h";
 
 export const TLDR_24H: Tldr = {
   "schema": 1,
-  "crawl_at": "2026-10-24T13:20:25Z",
+  "crawl_at": "2026-10-24T18:20:30Z",
   "date": "2026-10-24",
   "bullets": [
     {
@@ -25,13 +25,6 @@ export const TLDR_24H: Tldr = {
       "title": "Chinese AI model Kimi K3.1 Pro is closing in on Anthropic's Claude Opus 5.5",
       "url": "https://the-decoder.com/chinese-ai-model-kimi-k3-1-pro-is-closing-in-on-anthropics-claude-opus-5-5/",
       "at": "2026-10-23T19:03:11Z",
-      "sources": 2
-    },
-    {
-      "id": "cl:hn:50208084",
-      "title": "MiniMax-M3.1-Flash",
-      "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash",
-      "at": "2026-10-23T14:08:17Z",
       "sources": 2
     }
   ],
