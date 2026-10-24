@@ -7,6 +7,8 @@
 import type { SageConfig, SourceId } from "./sage-config-types";
 import { orderTasteShelf } from "./x-taste-meter";
 import type { SageLimits } from "./sage-config-rules";
+import { GMAIL_NEWS, GMAIL_NEWS_AT } from "@/data/gmail-news";
+import { X_TASTE } from "@/data/x-taste";
 
 /** Config source id → A4 soft-fail meter chip id. */
 export function softMeterSourceId(id: SourceId): string {
@@ -48,7 +50,19 @@ export type SetupSourceRow = {
   caps: string;
   last_rows: number | null;
   state: string;
+  /** Intel plan 6: box-only sources show their committed snapshot (rows + stamp) instead of "never on page". */
+  snapshot?: { rows: number; at: string | null };
 };
+
+/** Box-only snapshots as committed (Gmail export / X taste refresh). */
+export function boxSnapshots(): Partial<Record<SourceId, { rows: number; at: string | null }>> {
+  return {
+    gmail: { rows: GMAIL_NEWS.length, at: GMAIL_NEWS_AT || null },
+    x_taste: { rows: X_TASTE.items?.length ?? 0, at: X_TASTE.captured_at || null },
+  };
+}
+
+export { SNAPSHOT_STALE_H, snapshotLabel } from "./snapshot-label";
 
 export type SageSetupView = {
   stamped_at: string;
@@ -89,13 +103,15 @@ function capsText(id: SourceId, c: SageConfig): string {
 export function buildSetupView(
   l: SetupLoaded,
   crawl: { stamp: string; rows: { id: string; rows: number; status: string; reason: string | null }[] },
+  snaps: Partial<Record<SourceId, { rows: number; at: string | null }>> = boxSnapshots(),
 ): SageSetupView {
   const sources = (Object.keys(l.config.sources) as SourceId[]).map((id): SetupSourceRow => {
     const on = l.config.sources[id].on;
     const rid = CRAWL_ROW_ID[id];
     const row = rid ? crawl.rows.find((r) => r.id === rid) : undefined;
     const state = !on ? "off" : row ? (row.status === "ok" ? "ok" : row.status === "paused" ? "paused" : "soft-fail") : id === "gmail" || id === "x_taste" ? "box-only" : "—";
-    return { id, on, caps: capsText(id, l.config), last_rows: on && row ? row.rows : null, state };
+    const snap = state === "box-only" ? snaps[id] : undefined;
+    return { id, on, caps: capsText(id, l.config), last_rows: on && row ? row.rows : null, state, ...(snap ? { snapshot: snap } : {}) };
   });
   return {
     stamped_at: crawl.stamp,

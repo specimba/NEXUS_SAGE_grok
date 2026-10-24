@@ -116,6 +116,7 @@ export function SetupEditor({ s }: { s: SageSetupView }) {
               row={box ? { ...r, state: "box-only" } : r}
               max={max}
               on={on}
+              now={s.stamped_at}
               changed={changed(id + ".")}
               errs={errsFor("sources." + id)}
               sw={

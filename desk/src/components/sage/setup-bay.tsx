@@ -5,6 +5,7 @@
  */
 import { useState, type ReactNode } from "react";
 import type { SageSetupView, SetupSourceRow } from "@/lib/sage-setup";
+import { snapshotLabel } from "@/lib/snapshot-label";
 
 /** 12-segment log meter: round(12·log1p(n)/log1p(max)). */
 export function meterSegs(n: number | null, max: number): number {
@@ -27,6 +28,17 @@ export function bayCounts(rows: readonly SetupSourceRow[]) {
   };
 }
 
+function SnapshotRows({ row, now }: { row: SetupSourceRow; now?: string }) {
+  if (!row.snapshot || !now) return <div className="bay-rows bay-snap"><b>snapshot</b><span>· none committed</span></div>;
+  const l = snapshotLabel(row.snapshot, now);
+  return (
+    <div className="bay-rows bay-snap" data-snapshot-stale={l.stale ? "" : undefined} title={l.stale ? "box snapshot older than 24 h" : undefined}>
+      <b>{l.text}</b>
+      {l.stale ? <span className="bay-stale"> · stale</span> : null}
+    </div>
+  );
+}
+
 export function BayModule(p: {
   row: SetupSourceRow;
   max: number;
@@ -36,6 +48,8 @@ export function BayModule(p: {
   extra?: ReactNode;
   changed?: boolean;
   errs?: string[];
+  /** Crawl stamp the snapshot age is measured against. */
+  now?: string;
 }) {
   const { row } = p;
   const box = row.state === "box-only";
@@ -50,10 +64,7 @@ export function BayModule(p: {
         {p.sw}
       </div>
       {box ? (
-        <div className="bay-rows">
-          <b>box-only</b>
-          <span>· never on page</span>
-        </div>
+        <SnapshotRows row={row} now={p.now} />
       ) : (
         <div className="bay-rows">
           <b>{row.last_rows == null ? "—" : row.last_rows}</b>
@@ -158,7 +169,7 @@ export function ReadOnlyBay({ s }: { s: SageSetupView }) {
     <>
       <ul className="bay-grid" aria-label="Sources">
         {s.sources.map((r) => (
-          <BayModule key={r.id} row={r} max={max} on={r.on} sw={<BaySw on={r.on} />} caps={r.caps === "—" ? "no cap" : r.caps} />
+          <BayModule key={r.id} row={r} max={max} on={r.on} now={s.stamped_at} sw={<BaySw on={r.on} />} caps={r.caps === "—" ? "no cap" : r.caps} />
         ))}
       </ul>
       <p className="bay-sec">keyword cartridges</p>

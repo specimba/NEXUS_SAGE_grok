@@ -289,14 +289,22 @@ export const SAGE_SETUP: SageSetupView = {
       "on": true,
       "caps": "fetch_cap 48 · emit_cap 16 · window_days 3",
       "last_rows": null,
-      "state": "box-only"
+      "state": "box-only",
+      "snapshot": {
+        "rows": 10,
+        "at": "2026-10-20T15:16:01Z"
+      }
     },
     {
       "id": "x_taste",
       "on": true,
       "caps": "visible_cap 6",
       "last_rows": null,
-      "state": "box-only"
+      "state": "box-only",
+      "snapshot": {
+        "rows": 8,
+        "at": "2026-09-11T09:32:00Z"
+      }
     },
     {
       "id": "analyst_rss",
@@ -386,6 +394,9 @@ export const SAGE_SETUP: SageSetupView = {
   "taste": {
     "weight": 0,
     "max": 0.3
+  },
+  "redacted": {
+    "gmail_senders": 14
   },
   "limits": {
     "schema": 1,
@@ -627,8 +638,5 @@ export const SAGE_SETUP: SageSetupView = {
       "max": 0.3
     }
   },
-  "file_hash": "08df63b37bf7f15611fe5432596b139a7603e414dd6eb0add2ed641f2ca60f0d",
-  "redacted": {
-    "gmail_senders": 14
-  }
+  "file_hash": "08df63b37bf7f15611fe5432596b139a7603e414dd6eb0add2ed641f2ca60f0d"
 };
