@@ -81,6 +81,13 @@ export function BayModule(p: {
   );
 }
 
+/** Box-only list on the page: a count, never the addresses. */
+export const RedactedNote = ({ id, n }: { id: string; n: number }) => (
+  <p className="bay-redacted" data-redacted={id}>
+    {n} {id === "gmail_senders" ? (n === 1 ? "sender" : "senders") : "terms"} · box-only · edit by commit
+  </p>
+);
+
 /** Read-only `on` glyph. */
 export const BaySw = ({ on }: { on: boolean }) => <span className="bay-sw" data-off={on ? undefined : ""}>{on ? "on" : "off"}</span>;
 
@@ -92,7 +99,7 @@ export function BayCart(p: { id: string; count: number; children: ReactNode; cha
         {cartLabel(p.id)}
         {p.changed ? <span className="bay-delta">Δ</span> : null}
         <span>
-          {p.count} {deny ? "blocked" : "terms"}
+          {p.count} {deny ? "blocked" : p.id === "gmail_senders" ? "senders" : "terms"}
         </span>
       </div>
       {p.children}
@@ -157,8 +164,8 @@ export function ReadOnlyBay({ s }: { s: SageSetupView }) {
       <p className="bay-sec">keyword cartridges</p>
       <div className="bay-carts">
         {s.keywords.map((k) => (
-          <BayCart key={k.id} id={k.id} count={k.terms.length}>
-            <ReadChips id={k.id} terms={k.terms} />
+          <BayCart key={k.id} id={k.id} count={k.count ?? k.terms.length}>
+            {k.count != null ? <RedactedNote id={k.id} n={k.count} /> : <ReadChips id={k.id} terms={k.terms} />}
           </BayCart>
         ))}
       </div>

@@ -10,7 +10,7 @@ import { useEffect, useMemo, useState, type ButtonHTMLAttributes, type KeyboardE
 import type { SageSetupView, SetupSourceRow } from "@/lib/sage-setup";
 import { fileJson, type SageLimits } from "@/lib/sage-config-rules";
 import * as S from "@/lib/setup-draft";
-import { BayCart, BayModule, BayTaste } from "./setup-bay";
+import { BayCart, BayModule, BayTaste, RedactedNote } from "./setup-bay";
 
 const STEPS = "1 copy JSON · 2 select all in GitHub's editor and paste · 3 Commit changes → Create a new branch… and start a pull request · 4 merge";
 const store = (f: (ls: Storage) => void) => {
@@ -173,7 +173,7 @@ export function SetupEditor({ s }: { s: SageSetupView }) {
       </ul>
       <p className="bay-sec">keyword cartridges</p>
       <div className="bay-carts">
-        {L.keyword_lists.map((k) => {
+        {L.keyword_lists.filter((k) => !(k in (s.redacted ?? {}))).map((k) => {
           const terms = S.listVal(draft, k, L);
           const was = S.listVal(base, k, L);
           const kErrs = errsFor("keywords." + k);
@@ -196,6 +196,13 @@ export function SetupEditor({ s }: { s: SageSetupView }) {
           );
         })}
       </div>
+      {Object.entries(s.redacted ?? {}).map(([k, n]) => (
+        <div className="bay-carts" key={k}>
+          <BayCart id={k} count={n}>
+            <RedactedNote id={k} n={n} />
+          </BayCart>
+        </div>
+      ))}
       <p className="bay-sec">x taste dial</p>
       <BayTaste
         weight={S.tasteVal(draft, L)}
@@ -221,6 +228,7 @@ export function SetupEditor({ s }: { s: SageSetupView }) {
         <Btn onClick={reset} disabled={!diff.length && !stale}>
           reset
         </Btn>
+        {s.redacted?.gmail_senders ? <span className="bay-redacted">gmail_senders ({s.redacted.gmail_senders}) is not in this copy — keep the committed list when pasting</span> : null}
         <Btn disabled={!out} onClick={() => out && copy(out, "JSON")}>
           copy JSON
         </Btn>

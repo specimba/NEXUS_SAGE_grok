@@ -10,6 +10,7 @@ import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, readdirSync, unlinkSync, writeFileSync, statSync } from "node:fs";
 import { resolve, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { politicsLeadReason } from "./lead-pick";
 
 export const GMAIL_NEWS_SOURCE = "gmail-news" as const;
 export const GMAIL_FETCH_CAP = 24;
@@ -189,6 +190,8 @@ export function isNoise(msg: Pick<GmailRawMessage, "subject" | "sender" | "snipp
   if (PROMO_SUBJECT.test(sub)) return true;
   // PASS-S1.5: sponsored / webinar mail — any sender (trusted senders too).
   if (SPONSORED_SUBJECT.test(sub)) return true;
+  // Intel plan 2: keywords.politics_deny (configured via configurePoliticsTerms) drops political mail.
+  if (politicsLeadReason(sub)) return true;
   // Pure account / OAuth share notices
   if (/google account data|allowed .+ access to some of your google/i.test(String(msg.snippet ?? ""))) return true;
   return false;

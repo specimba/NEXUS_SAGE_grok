@@ -195,10 +195,7 @@ const D: NonNullable<SageSetupView["limits"]>["defaults"] = {
       "Qwen",
       "local model"
     ],
-    "gmail_senders": [
-      "hello@newsletters.venturebeat.com",
-      "takaramono@tldr.takara.ai"
-    ],
+    "gmail_senders": [],
     "watch_terms": []
   },
   "taste": {
@@ -210,12 +207,12 @@ const D: NonNullable<SageSetupView["limits"]>["defaults"] = {
 export const SAGE_SETUP: SageSetupView = {
   "stamped_at": "2026-10-25T14:49:22Z",
   "config_path": "desk/config/sage-sources.json",
-  "config_hash": "7ad1371c9b68",
+  "config_hash": "1ba30989ff76",
   "status": "ok",
   "used": "committed",
   "errors": [],
-  "since_commit": "d5dcb37",
-  "since_at": "2026-10-25T14:49:22Z",
+  "since_commit": "136d4e8",
+  "since_at": "2026-10-25T14:52:54Z",
   "sources": [
     {
       "id": "hn",
@@ -290,7 +287,7 @@ export const SAGE_SETUP: SageSetupView = {
     {
       "id": "gmail",
       "on": true,
-      "caps": "fetch_cap 24 · emit_cap 12 · window_days 14",
+      "caps": "fetch_cap 48 · emit_cap 16 · window_days 3",
       "last_rows": null,
       "state": "box-only"
     },
@@ -327,7 +324,30 @@ export const SAGE_SETUP: SageSetupView = {
     },
     {
       "id": "gmail_seed",
-      "terms": D.keywords.gmail_seed
+      "terms": [
+        "AI",
+        "LLM",
+        "model",
+        "open weights",
+        "agent",
+        "MCP",
+        "OpenAI",
+        "Anthropic",
+        "Claude",
+        "Gemini",
+        "Grok",
+        "DeepSeek",
+        "Qwen",
+        "CVE",
+        "RCE",
+        "zero-day",
+        "vulnerability",
+        "prompt injection",
+        "paper",
+        "benchmark",
+        "release",
+        "API"
+      ]
     },
     {
       "id": "politics_deny",
@@ -339,7 +359,8 @@ export const SAGE_SETUP: SageSetupView = {
     },
     {
       "id": "gmail_senders",
-      "terms": D.keywords.gmail_senders
+      "terms": [],
+      "count": 14
     },
     {
       "id": "watch_terms",
@@ -365,6 +386,9 @@ export const SAGE_SETUP: SageSetupView = {
   "taste": {
     "weight": 0,
     "max": 0.3
+  },
+  "redacted": {
+    "gmail_senders": 14
   },
   "limits": {
     "schema": 1,
@@ -513,14 +537,76 @@ export const SAGE_SETUP: SageSetupView = {
   },
   "config": {
     "schema": 1,
-    "sources": D.sources,
+    "sources": {
+      "hn": {
+        "on": true,
+        "cap": 20
+      },
+      "hf_papers": {
+        "on": true,
+        "cap": 24
+      },
+      "lab_rss": D.sources.lab_rss,
+      "sec_rss": D.sources.sec_rss,
+      "gnews": {
+        "on": true,
+        "cap": 32
+      },
+      "github": {
+        "on": true,
+        "cap": 5
+      },
+      "openalex": {
+        "on": true
+      },
+      "crossref": {
+        "on": true
+      },
+      "arxiv": {
+        "on": true
+      },
+      "wikidata": {
+        "on": true
+      },
+      "gmail": {
+        "on": true,
+        "fetch_cap": 48,
+        "emit_cap": 16,
+        "window_days": 3
+      },
+      "x_taste": D.sources.x_taste,
+      "analyst_rss": D.sources.analyst_rss,
+      "releases_atom": D.sources.releases_atom
+    },
     "keywords": {
       "ai_terms": D.keywords.ai_terms,
       "hn_sweep": D.keywords.hn_sweep,
-      "gmail_seed": D.keywords.gmail_seed,
+      "gmail_seed": [
+        "AI",
+        "LLM",
+        "model",
+        "open weights",
+        "agent",
+        "MCP",
+        "OpenAI",
+        "Anthropic",
+        "Claude",
+        "Gemini",
+        "Grok",
+        "DeepSeek",
+        "Qwen",
+        "CVE",
+        "RCE",
+        "zero-day",
+        "vulnerability",
+        "prompt injection",
+        "paper",
+        "benchmark",
+        "release",
+        "API"
+      ],
       "politics_deny": D.keywords.politics_deny,
       "hn_title_queries": D.keywords.hn_title_queries,
-      "gmail_senders": D.keywords.gmail_senders,
       "watch_terms": [
         "Grok",
         "xAI",
@@ -544,5 +630,5 @@ export const SAGE_SETUP: SageSetupView = {
       "max": 0.3
     }
   },
-  "file_hash": "7dce86c8a381a3c5344bc8d02e6b0f9f12b58b0a45f46ffd488c7a226f1e29a9"
+  "file_hash": "08df63b37bf7f15611fe5432596b139a7603e414dd6eb0add2ed641f2ca60f0d"
 };

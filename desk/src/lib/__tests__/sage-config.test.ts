@@ -44,6 +44,10 @@ const withCfg = (patch: (c: SageConfig) => void) => {
 const sansWatch = <T,>(c: T): T => {
   const o = JSON.parse(JSON.stringify(c));
   if (o?.keywords) delete o.keywords.watch_terms;
+  // Intel plan 2 (Oct 24): the Gmail block + gmail_senders / gmail_seed are config data on top of the code
+  // defaults; their exact committed values are pinned in intel-gmail.test.ts.
+  if (o?.keywords) { delete o.keywords.gmail_senders; delete o.keywords.gmail_seed; }
+  if (o?.sources) delete o.sources.gmail;
   return o;
 };
 
@@ -70,7 +74,7 @@ describe("PASS-C2 seed — first land = no behaviour change", () => {
     const l = loadSageConfig(desk, { write: false });
     expect(l.status).toBe("ok");
     expect(SAGE_SETUP.config_hash).toBe(l.config_hash);
-    expect(SAGE_SETUP.config_hash).toBe(configHash({ ...defaultSageConfig(), keywords: { ...defaultSageConfig().keywords, watch_terms: l.config.keywords.watch_terms } }));
+    expect(SAGE_SETUP.config_hash).toBe(configHash({ ...defaultSageConfig(), sources: { ...defaultSageConfig().sources, gmail: l.config.sources.gmail }, keywords: { ...defaultSageConfig().keywords, watch_terms: l.config.keywords.watch_terms, gmail_senders: l.config.keywords.gmail_senders, gmail_seed: l.config.keywords.gmail_seed } }));
     expect(SAGE_SETUP.sources.map((s) => s.id)).toEqual(Object.keys(l.config.sources));
     expect(SAGE_SETUP.keywords.find((k) => k.id === "ai_terms")?.terms).toEqual(l.config.keywords.ai_terms);
     expect(SAGE_DESK_CONFIG).toEqual({ taste_on: true, taste_visible_cap: 6, taste_weight: 0, taste_idx: null });

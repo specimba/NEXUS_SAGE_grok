@@ -60,7 +60,9 @@ export type SageSetupView = {
   since_commit: string | null;
   since_at: string | null;
   sources: SetupSourceRow[];
-  keywords: { id: string; terms: string[] }[];
+  keywords: { id: string; terms: string[]; count?: number }[];
+  /** Lists kept off the published page (box-only addresses): list id → term count. */
+  redacted?: Record<string, number>;
   taste: { weight: number; max: number };
   /** PASS-C3.1 (scripts/desk-view.ts + ingest): the rule inputs from code, for the browser editor. */
   limits?: SageLimits;
@@ -115,7 +117,36 @@ export function buildSetupView(
  * baseline lists, the committed config, the C2 keyword lists), so every repeat of a defaults sub-tree is emitted as a
  * reference to one `D` const — same values, ~half the lazy-chunk bytes. Deterministic (same input ⇒ same text).
  */
-export function renderSageSetupModule(v: SageSetupView): string {
+/** Lists whose terms never reach Pages (Gmail sender addresses stay in desk/config for box use only). */
+export const SETUP_REDACTED_LISTS = ["gmail_senders"] as const;
+
+/** Publish boundary: the setup payload shows only a count for redacted lists — no address anywhere in the module. */
+export function redactSetupForPage(v: SageSetupView): SageSetupView {
+  const out: SageSetupView = JSON.parse(JSON.stringify(v));
+  const red: Record<string, number> = { ...(out.redacted ?? {}) };
+  for (const id of SETUP_REDACTED_LISTS) {
+    const kw = out.keywords.find((k) => k.id === id);
+    if (kw) {
+      red[id] = kw.count ?? kw.terms.length;
+      kw.count = red[id];
+      kw.terms = [];
+    }
+    const cfg = out.config as { keywords?: Record<string, unknown> } | undefined;
+    if (cfg?.keywords && id in cfg.keywords) {
+      if (!(id in red)) red[id] = Array.isArray(cfg.keywords[id]) ? (cfg.keywords[id] as unknown[]).length : 0;
+      delete cfg.keywords[id];
+    }
+    if (out.limits) {
+      const d = out.limits.defaults.keywords as unknown as Record<string, string[]>;
+      if (d && id in d) d[id] = [];
+    }
+  }
+  if (Object.keys(red).length) out.redacted = red;
+  return out;
+}
+
+export function renderSageSetupModule(view: SageSetupView): string {
+  const v = redactSetupForPage(view);
   const D = v.limits?.defaults;
   const refs = new Map<string, string>();
   const walk = (x: unknown, path: string) => {

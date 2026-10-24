@@ -28,7 +28,14 @@ import { SAGE_SETUP } from "@/data/sage-setup";
 
 const desk = resolve(import.meta.dir, "../../..");
 const L = SAGE_SETUP.limits as SageLimits;
-const FILE = readFileSync(resolve(desk, SAGE_CONFIG_PATH), "utf8");
+const FILE_RAW = readFileSync(resolve(desk, SAGE_CONFIG_PATH), "utf8");
+/** Intel privacy: the page payload never carries keywords.gmail_senders (count only), so the editor's copy is the
+ * committed file minus that list — the editor says so next to copy JSON. */
+const FILE = (() => {
+  const j = JSON.parse(FILE_RAW);
+  delete j.keywords.gmail_senders;
+  return JSON.stringify(j, null, 2) + "\n";
+})();
 const base = () => committedBase(SAGE_SETUP.config, L);
 const HASH = SAGE_SETUP.file_hash as string;
 const changedLines = (a: string, b: string) => {

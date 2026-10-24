@@ -34,6 +34,10 @@ const mut = (f: (c: Cfg) => void) => {
 const sansWatch = <T,>(c: T): T => {
   const o = JSON.parse(JSON.stringify(c));
   if (o?.keywords) delete o.keywords.watch_terms;
+  // Intel plan 2 (Oct 24): the Gmail block + gmail_senders / gmail_seed are config data on top of the code
+  // defaults; their exact committed values are pinned in intel-gmail.test.ts.
+  if (o?.keywords) { delete o.keywords.gmail_senders; delete o.keywords.gmail_seed; }
+  if (o?.sources) delete o.sources.gmail;
   return o;
 };
 

@@ -111,13 +111,19 @@ describe("PASS-S1 × C3: S1 checks live in validateWithRules (browser = CI = the
 
 describe("PASS-C3.1 shared rules — browser path = CI path", () => {
   test("SAGE_SETUP.limits is exactly limitsFromCode() (same numbers + both baseline lists)", () => {
-    expect(BROWSER).toEqual(JSON.parse(JSON.stringify(limitsFromCode())));
+    // Intel privacy: the published limits carry no sender address (code-default gmail_senders → []).
+    const code = JSON.parse(JSON.stringify(limitsFromCode()));
+    code.defaults.keywords.gmail_senders = [];
+    expect(BROWSER).toEqual(code);
     expect(BROWSER.baseline.politics_deny).toEqual([...POLITICS_LEAD_TERMS]);
     expect(BROWSER.baseline.ai_terms).toEqual(aiTermsDefault());
   });
   test("SAGE_SETUP.config / file_hash are the committed file (desk-view --check keeps them in sync)", () => {
     const f = setupEditFields(desk);
-    expect(SAGE_SETUP.config).toEqual(f.config as object);
+    const fc = JSON.parse(JSON.stringify(f.config));
+    delete fc.keywords.gmail_senders; // count only on the page (SAGE_SETUP.redacted)
+    expect(SAGE_SETUP.config).toEqual(fc);
+    expect(SAGE_SETUP.redacted).toEqual({ gmail_senders: (f.config as { keywords: { gmail_senders: string[] } }).keywords.gmail_senders.length });
     expect(SAGE_SETUP.file_hash).toBe(f.file_hash);
     expect(readFileSync(resolve(desk, "src/data/sage-setup.ts"), "utf8")).toBe(renderSageSetupModule({ ...SAGE_SETUP, ...f }));
   });
