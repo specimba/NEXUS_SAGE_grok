@@ -3,15 +3,22 @@ import type { Tldr } from "@/lib/tldr-24h";
 
 export const TLDR_24H: Tldr = {
   "schema": 1,
-  "crawl_at": "2026-10-25T15:44:24Z",
+  "crawl_at": "2026-10-25T18:20:41Z",
   "date": "2026-10-25",
   "bullets": [
+    {
+      "id": "cl:gmail:1a173dc7e47d2563",
+      "title": "🥇Top AI Papers of the Week",
+      "url": "https://mail.google.com/mail/#all/1a173dc7e47d2563",
+      "at": "2026-10-25T16:14:31Z",
+      "sources": 10
+    },
     {
       "id": "cl:rss:huggingnews:c05cc98130140c50",
       "title": "Sweden Blocks ChatGPT and Claude on Government Staff Computers",
       "url": "https://huggingnews.com/ai/sweden-blocks-chatgpt-and-claude-on-government-staff-computers-046d7527",
       "at": "2026-10-25T12:53:21Z",
-      "sources": 3
+      "sources": 4
     },
     {
       "id": "cl:rss:the-decoder:c708c54a38c204c3",
@@ -35,10 +42,17 @@ export const TLDR_24H: Tldr = {
       "sources": 2
     },
     {
-      "id": "cl:rss:the-decoder:906aea2a3fca0a79",
-      "title": "Anthropic says one AI agent beats many subagents now that models can handle complexity alone",
-      "url": "https://the-decoder.com/anthropic-says-one-ai-agent-beats-many-subagents-now-that-models-can-handle-complexity-alone/",
-      "at": "2026-10-25T09:18:25Z",
+      "id": "cl:rss:the-decoder:f1807e982f1d4824",
+      "title": "Anthropic co-founder Jack Clark moves his prediction for self-improving AI forward to 2027",
+      "url": "https://the-decoder.com/anthropic-co-founder-jack-clark-moves-his-prediction-for-self-improving-ai-forward-to-2027/",
+      "at": "2026-10-25T09:43:25Z",
+      "sources": 2
+    },
+    {
+      "id": "cl:rss:the-decoder:ecfe95db9f5a039c",
+      "title": "OpenMobile-2 proves open-source smartphone agents can rival proprietary models",
+      "url": "https://the-decoder.com/openmobile-2-proves-open-source-smartphone-agents-can-rival-proprietary-models/",
+      "at": "2026-10-25T08:13:25Z",
       "sources": 2
     }
   ],

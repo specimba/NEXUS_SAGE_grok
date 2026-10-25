@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-25T15:44:24Z",
+  "stamped_at": "2026-10-25T18:20:41Z",
   "config_hash": "1ba30989ff76",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,7 +11,7 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 133,
+      "duration_ms": 115,
       "paused_until": null,
       "reason": null
     },
@@ -20,7 +20,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 3018,
+      "duration_ms": 3214,
       "paused_until": null,
       "reason": null
     },
@@ -29,7 +29,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 459,
+      "duration_ms": 392,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 227,
+      "duration_ms": 163,
       "paused_until": null,
       "reason": null
     },
@@ -47,7 +47,7 @@
       "label": "HN",
       "status": "ok",
       "rows": 60,
-      "duration_ms": 8325,
+      "duration_ms": 8337,
       "paused_until": null,
       "reason": null
     },
@@ -56,7 +56,7 @@
       "label": "HN title",
       "status": "ok",
       "rows": 2,
-      "duration_ms": 8192,
+      "duration_ms": 8210,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 151,
-      "duration_ms": 24390,
+      "duration_ms": 25103,
       "paused_until": null,
       "reason": null
     },
@@ -74,7 +74,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 74,
-      "duration_ms": 12092,
+      "duration_ms": 12094,
       "paused_until": null,
       "reason": null
     },
@@ -83,7 +83,7 @@
       "label": "analyst RSS",
       "status": "ok",
       "rows": 6,
-      "duration_ms": 2421,
+      "duration_ms": 2711,
       "paused_until": null,
       "reason": null
     },
@@ -92,7 +92,7 @@
       "label": "releases",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 6656,
+      "duration_ms": 6685,
       "paused_until": null,
       "reason": null
     },
@@ -100,8 +100,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 30,
-      "duration_ms": 6275,
+      "rows": 31,
+      "duration_ms": 6563,
       "paused_until": null,
       "reason": null
     },
@@ -110,7 +110,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 291,
+      "duration_ms": 324,
       "paused_until": null,
       "reason": null
     },
@@ -119,16 +119,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4516,
+      "duration_ms": 4441,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 76995,
-    "sources_wall_ms": 24391,
-    "papers_lane_ms": 3843,
-    "slowest_source_ms": 24390,
+    "sources_ms": 78352,
+    "sources_wall_ms": 25104,
+    "papers_lane_ms": 3891,
+    "slowest_source_ms": 25103,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -146,32 +146,32 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 25019,
-    "startup_ms": 55,
-    "main_ms": 25041
+    "wall_ms": 25708,
+    "startup_ms": 53,
+    "main_ms": 25729
   },
-  "multi_source_independent": 5,
+  "multi_source_independent": 7,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 5,
-    "multi_source_raw": 6,
+    "multi_source_independent": 7,
+    "multi_source_raw": 8,
     "self_reposts": 1,
-    "items_in": 332,
-    "clusters_out": 313,
-    "collapsed": 19,
-    "multi_source": 5,
-    "multi_member": 14,
+    "items_in": 339,
+    "clusters_out": 301,
+    "collapsed": 38,
+    "multi_source": 7,
+    "multi_member": 18,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 6,
+    "new_items": 45,
     "per_source": {
       "hn-algolia": 60,
       "rss-lab": 151,
       "rss-security": 74,
-      "gnews-rss": 30,
-      "gmail-news": 10,
+      "gnews-rss": 31,
+      "gmail-news": 16,
       "rss-analyst": 6,
       "releases-atom": 1
     },
@@ -183,7 +183,7 @@
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 3,
+        "size": 4,
         "score": 1,
         "members": [
           {
@@ -206,6 +206,13 @@
             "title": "Sweden Blocks ChatGPT and Claude in Government Offices, Copilot Stays - Pasquale Pillitteri",
             "at": "2026-10-24T07:27:30Z",
             "publisher": "Pasquale Pillitteri"
+          },
+          {
+            "id": "gnews:8ac950f0b116585e",
+            "source": "gnews-rss",
+            "title": "Sweden’s Government Offices blocks ChatGPT and Claude, approves Microsoft Copilot - Crypto Briefing",
+            "at": "2026-10-24T19:07:51Z",
+            "publisher": "Crypto Briefing"
           }
         ]
       },
@@ -255,6 +262,31 @@
             "source": "gnews-rss",
             "title": "Nvidia open-sources Flora to make robot video labeling 125x cheaper than GPT-6 Astra - The Decoder",
             "at": "2026-10-25T10:13:25Z",
+            "publisher": "The Decoder"
+          }
+        ]
+      },
+      {
+        "title": "Anthropic co-founder Jack Clark moves his prediction for self-improving AI forward to 2027",
+        "sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "rss:the-decoder:f1807e982f1d4824",
+            "source": "rss-lab",
+            "title": "Anthropic co-founder Jack Clark moves his prediction for self-improving AI forward to 2027",
+            "at": "2026-10-25T09:37:46Z",
+            "publisher": "the-decoder"
+          },
+          {
+            "id": "gnews:9db188e36595914b",
+            "source": "gnews-rss",
+            "title": "Anthropic co-founder Jack Clark moves his prediction for self-improving AI forward to 2027 - The Decoder",
+            "at": "2026-10-25T09:43:25Z",
             "publisher": "The Decoder"
           }
         ]
@@ -315,6 +347,31 @@
             "publisher": "Pasquale Pillitteri"
           }
         ]
+      },
+      {
+        "title": "OpenMobile-2 proves open-source smartphone agents can rival proprietary models",
+        "sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "rss:the-decoder:ecfe95db9f5a039c",
+            "source": "rss-lab",
+            "title": "OpenMobile-2 proves open-source smartphone agents can rival proprietary models",
+            "at": "2026-10-25T06:55:22Z",
+            "publisher": "the-decoder"
+          },
+          {
+            "id": "gnews:b7635f6b343afd29",
+            "source": "gnews-rss",
+            "title": "OpenMobile-2 proves open-source smartphone agents can rival proprietary models - The Decoder",
+            "at": "2026-10-25T08:13:25Z",
+            "publisher": "The Decoder"
+          }
+        ]
       }
     ],
     "self_repost_clusters": [
@@ -346,6 +403,30 @@
       ],
       "gnews_shown_dropped": [
         {
+          "publisher": "Benzinga",
+          "title": "Magnificent Seven ETF Pulls Back: What to Expect from Microsoft, Google, and Amazon Earnings - Benzinga"
+        },
+        {
+          "publisher": "The Motley Fool",
+          "title": "Not Nvidia. Not Microsoft. This \"Magnificent Seven\" Stock Is the Cheapest Right Now. - The Motley Fool"
+        },
+        {
+          "publisher": "How-To Geek",
+          "title": "I've always recommended naming Excel tables, and Microsoft just removed the annoying part - How-To Geek"
+        },
+        {
+          "publisher": "Pasquale Pillitteri",
+          "title": "Google launches ChromeOS Flex USB stick with refurbed for Windows 10 - Pasquale Pillitteri"
+        },
+        {
+          "publisher": "BioTecNika",
+          "title": "Focus Area Science Technology Summer Fellowship 2027 | Applications Invited - BioTecNika"
+        },
+        {
+          "publisher": "ET Government",
+          "title": "Seventh by whose count? Microsoft’s cyber ranking and the limits of vendor data - ET Government"
+        },
+        {
           "publisher": "Pasquale Pillitteri",
           "title": "How to turn off the Samsung TV microphone for dogs and babies - Pasquale Pillitteri"
         },
@@ -354,36 +435,20 @@
           "title": "X Money arrives on the like button, long press sends $1 - Pasquale Pillitteri"
         },
         {
-          "publisher": "The News International",
-          "title": "Microsoft MAI-DxO beats doctors at diagnosis, study finds - The News International"
-        },
-        {
           "publisher": "Pasquale Pillitteri",
           "title": "NVIDIA Korea confirms RTX Spark will not replace x86 gaming PCs - Pasquale Pillitteri"
         },
         {
-          "publisher": "Forkast News",
-          "title": "The Nov 4 Promise Arrives With a License Nobody Has Read - Forkast News"
-        },
-        {
           "publisher": "alphaXiv",
           "title": "Native Real-Time Interactive Omni Intelligence: A Unified Framework - alphaXiv"
-        },
-        {
-          "publisher": "CoinDesk",
-          "title": "Why McDonalds, Microsoft and Google saying no to tokenized stocks isn't a dealbreaker - CoinDesk"
-        },
-        {
-          "publisher": "San Antonio Express-News",
-          "title": "Opinion: To City Council: Please, do right on data centers - San Antonio Express-News"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 34
+      "hn_dropped": 35
     },
     "gnews_near_misses": [
       {
-        "score": 0.649,
+        "score": 0.651,
         "blocked": "time-window",
         "hours_apart": 29.4,
         "a": {
@@ -407,157 +472,163 @@
         ]
       },
       {
-        "score": 0.428,
-        "blocked": "time-window",
-        "hours_apart": 85.6,
+        "score": 0.486,
+        "blocked": "below-threshold",
+        "hours_apart": 18.5,
         "a": {
-          "id": "rss:openai:eda525050cea8fce",
-          "source": "rss-lab",
-          "title": "Uber brings ChatGPT Work to all employees with OpenAI",
-          "at": "2026-10-22T00:00:00Z"
+          "id": "hn:50225552",
+          "source": "hn-algolia",
+          "title": "OpenAI says it will no longer train its AI models on the live internet",
+          "at": "2026-10-24T21:31:16Z"
         },
         "b": {
-          "id": "gnews:f5ed1b8247da3d97",
+          "id": "gnews:d909b594a08bed27",
           "source": "gnews-rss",
-          "title": "Uber ChatGPT Rollout: 3 Hidden Work Costs of AI [2026] - https://tech-insider.org/",
-          "at": "2026-10-25T13:36:55Z"
+          "title": "OpenAI resumes training AI, but without Internet - Taipei Times",
+          "at": "2026-10-25T16:00:00Z"
         },
         "shared": [
-          "uber",
-          "chatgpt",
-          "work"
+          "openai",
+          "train",
+          "ai",
+          "internet"
         ]
       },
       {
-        "score": 0.303,
-        "blocked": "thin-overlap",
-        "hours_apart": 22.7,
+        "score": 0.417,
+        "blocked": "below-threshold",
+        "hours_apart": 7,
         "a": {
-          "id": "hn:50219901",
-          "source": "hn-algolia",
-          "title": "No One Needs Us Anymore – Claude Opus 5.5 Music Video",
-          "at": "2026-10-24T10:30:49Z"
+          "id": "rss:the-decoder:ecfe95db9f5a039c",
+          "source": "rss-lab",
+          "title": "OpenMobile-2 proves open-source smartphone agents can rival proprietary models",
+          "at": "2026-10-25T06:55:22Z"
         },
         "b": {
-          "id": "gnews:3147284f722ebc27",
+          "id": "gnews:be0cdba6a39a3033",
           "source": "gnews-rss",
-          "title": "Claude Opus 5.5 blocks smart TV reverse engineering, users report - Pasquale Pillitteri",
-          "at": "2026-10-25T09:12:29Z"
+          "title": "OpenMobile-2: open smartphone agents close in on closed rivals, and app variety mattered more than data volume - eGamers.io",
+          "at": "2026-10-25T13:56:48Z"
+        },
+        "shared": [
+          "openmobil",
+          "2",
+          "smartphon",
+          "agent",
+          "rival"
+        ]
+      },
+      {
+        "score": 0.413,
+        "blocked": "thin-overlap",
+        "hours_apart": 91.9,
+        "a": {
+          "id": "rss:testingcatalog:a9b51c80778796b4",
+          "source": "rss-lab",
+          "title": "Anthropic opens Claude Duet preview for US Pro and Max users",
+          "at": "2026-10-21T20:37:58Z"
+        },
+        "b": {
+          "id": "gnews:2d1d1823fe268f88",
+          "source": "gnews-rss",
+          "title": "Claude Duet: Anthropic’s Proactive AI Agent for the Job - Basic Tutorials",
+          "at": "2026-10-25T16:32:05Z"
+        },
+        "shared": [
+          "anthropic",
+          "claude",
+          "duet"
+        ]
+      },
+      {
+        "score": 0.289,
+        "blocked": "below-threshold",
+        "hours_apart": 1.5,
+        "a": {
+          "id": "gnews:2d1d1823fe268f88",
+          "source": "gnews-rss",
+          "title": "Claude Duet: Anthropic’s Proactive AI Agent for the Job - Basic Tutorials",
+          "at": "2026-10-25T16:32:05Z"
+        },
+        "b": {
+          "id": "gmail:1a173983a77b8484",
+          "source": "gmail-news",
+          "title": "Carbon X, Kimi K3.1, Minimax M3.1, Deep Infer, Claude Duet, Dessa: AI NEWS",
+          "at": "2026-10-25T15:02:29Z"
         },
         "shared": [
           "claude",
-          "opus",
-          "5.5"
+          "duet",
+          "ai"
         ]
       },
       {
-        "score": 0.275,
+        "score": 0.282,
         "blocked": "thin-overlap",
-        "hours_apart": 121.6,
+        "hours_apart": 20.5,
         "a": {
-          "id": "rss:mistral:cb0bf0e1617ea810",
-          "source": "rss-lab",
-          "title": "Voxtral 3",
-          "at": "2026-10-20T12:00:22Z"
-        },
-        "b": {
-          "id": "gnews:f5ed1b8247da3d97",
-          "source": "gnews-rss",
-          "title": "Uber ChatGPT Rollout: 3 Hidden Work Costs of AI [2026] - https://tech-insider.org/",
-          "at": "2026-10-25T13:36:55Z"
-        },
-        "shared": [
-          "3"
-        ]
-      },
-      {
-        "score": 0.257,
-        "blocked": "thin-overlap",
-        "hours_apart": 781.6,
-        "a": {
-          "id": "rss:cursor:ca092ab804c51725",
-          "source": "rss-lab",
-          "title": "Rollouts and Security Review",
-          "at": "2026-09-23T00:00:00Z"
-        },
-        "b": {
-          "id": "gnews:f5ed1b8247da3d97",
-          "source": "gnews-rss",
-          "title": "Uber ChatGPT Rollout: 3 Hidden Work Costs of AI [2026] - https://tech-insider.org/",
-          "at": "2026-10-25T13:36:55Z"
-        },
-        "shared": [
-          "rollout"
-        ]
-      },
-      {
-        "score": 0.25,
-        "blocked": "below-threshold",
-        "hours_apart": 14.5,
-        "a": {
-          "id": "hn:50221004",
+          "id": "hn:50224320",
           "source": "hn-algolia",
-          "title": "How to Use Decision Models for Evals",
-          "at": "2026-10-24T13:21:37Z"
+          "title": "OpenAI's Plan to Protect the Internet Before Hackers Break It",
+          "at": "2026-10-24T19:30:14Z"
         },
         "b": {
-          "id": "gnews:ff7ac2d1dbe577d3",
+          "id": "gnews:d909b594a08bed27",
           "source": "gnews-rss",
-          "title": "Adaptive Temperature Distillation Shrinks Multilingual AI Models for Classroom Use - Bioengineer.org",
-          "at": "2026-10-25T03:53:41Z"
+          "title": "OpenAI resumes training AI, but without Internet - Taipei Times",
+          "at": "2026-10-25T16:00:00Z"
         },
         "shared": [
-          "use",
-          "model"
+          "openai",
+          "internet"
         ]
       },
       {
-        "score": 0.239,
-        "blocked": "below-threshold",
-        "hours_apart": 6.8,
+        "score": 0.277,
+        "blocked": "time-window",
+        "hours_apart": 768.4,
         "a": {
-          "id": "hn:50228951",
-          "source": "hn-algolia",
-          "title": "TaskWire An MCP-based taskboard for managing AI agent workflows",
-          "at": "2026-10-25T06:44:53Z"
-        },
-        "b": {
-          "id": "gnews:9954aafbb09502dc",
-          "source": "gnews-rss",
-          "title": "Google AI Studio prepares new Managed Agents hub - TestingCatalog AI News",
-          "at": "2026-10-25T13:33:07Z"
-        },
-        "shared": [
-          "manag",
-          "ai",
-          "agent"
-        ]
-      },
-      {
-        "score": 0.238,
-        "blocked": "thin-overlap",
-        "hours_apart": 638,
-        "a": {
-          "id": "rss:ms-research:7c3a151fcf98b380",
+          "id": "rss:deepmind:68ead6b6af2b7144",
           "source": "rss-lab",
-          "title": "One year in: How Microsoft Research Asia – Singapore is advancing research, partnership and talent for real-world impact",
-          "at": "2026-09-28T21:00:00Z"
+          "title": "Advancing Private AI Compute with secure, server-side memory",
+          "at": "2026-09-23T16:00:57Z"
         },
         "b": {
-          "id": "gnews:4680a39ad6e45336",
+          "id": "gnews:c0669473d20f3139",
           "source": "gnews-rss",
-          "title": "Microsoft Says Its New AI Is Better at Diagnosing Patients Than Real Doctors - Futurism",
-          "at": "2026-10-25T10:57:00Z"
+          "title": "Private AI Sales Agents - Trend Hunter",
+          "at": "2026-10-25T16:24:15Z"
         },
         "shared": [
-          "microsoft",
-          "real"
+          "privat",
+          "ai"
+        ]
+      },
+      {
+        "score": 0.272,
+        "blocked": "time-window",
+        "hours_apart": 123.9,
+        "a": {
+          "id": "rss:testingcatalog:350ed74684070d88",
+          "source": "rss-lab",
+          "title": "Meta prepares Muse Confidential VM for private AI work",
+          "at": "2026-10-20T12:29:47Z"
+        },
+        "b": {
+          "id": "gnews:c0669473d20f3139",
+          "source": "gnews-rss",
+          "title": "Private AI Sales Agents - Trend Hunter",
+          "at": "2026-10-25T16:24:15Z"
+        },
+        "shared": [
+          "privat",
+          "ai"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.649,
+        "score": 0.651,
         "blocked": "time-window",
         "hours_apart": 29.4,
         "a": {
@@ -581,148 +652,156 @@
         ]
       },
       {
-        "score": 0.428,
+        "score": 0.501,
         "blocked": "time-window",
-        "hours_apart": 85.6,
+        "hours_apart": 53.8,
         "a": {
-          "id": "rss:openai:eda525050cea8fce",
-          "source": "rss-lab",
-          "title": "Uber brings ChatGPT Work to all employees with OpenAI",
-          "at": "2026-10-22T00:00:00Z"
-        },
-        "b": {
-          "id": "gnews:f5ed1b8247da3d97",
-          "source": "gnews-rss",
-          "title": "Uber ChatGPT Rollout: 3 Hidden Work Costs of AI [2026] - https://tech-insider.org/",
-          "at": "2026-10-25T13:36:55Z"
-        },
-        "shared": [
-          "uber",
-          "chatgpt",
-          "work"
-        ]
-      },
-      {
-        "score": 0.352,
-        "blocked": "time-window",
-        "hours_apart": 436.6,
-        "a": {
-          "id": "hn:50226554",
-          "source": "hn-algolia",
-          "title": "Your tokens aren't valuable: No more AI",
-          "at": "2026-10-24T23:30:45Z"
-        },
-        "b": {
-          "id": "gmail:1a112914bb745ca0",
+          "id": "gmail:1a173ca633adfb1e",
           "source": "gmail-news",
-          "title": "This AI that can't write",
-          "at": "2026-10-06T18:54:34Z"
+          "title": "🚨 Black October and NVIDIA event recap",
+          "at": "2026-10-25T16:00:04Z"
+        },
+        "b": {
+          "id": "anl:latent-space:9a6fbe4911070551",
+          "source": "rss-analyst",
+          "title": "[AINews] Black October",
+          "at": "2026-10-23T10:09:29Z"
         },
         "shared": [
-          "t",
-          "ai"
+          "black",
+          "october"
         ]
       },
       {
-        "score": 0.336,
-        "blocked": "thin-overlap",
-        "hours_apart": 556.4,
+        "score": 0.486,
+        "blocked": "below-threshold",
+        "hours_apart": 18.5,
         "a": {
-          "id": "hn:50214098",
+          "id": "hn:50225552",
           "source": "hn-algolia",
-          "title": "OpenAI Acquires Orchestra Bio",
-          "at": "2026-10-23T19:24:17Z"
+          "title": "OpenAI says it will no longer train its AI models on the live internet",
+          "at": "2026-10-24T21:31:16Z"
         },
         "b": {
-          "id": "rss:deepmind:c696e8b1f3422473",
-          "source": "rss-lab",
-          "title": "Introducing SynthID Bio",
-          "at": "2026-09-30T15:03:07Z"
+          "id": "gnews:d909b594a08bed27",
+          "source": "gnews-rss",
+          "title": "OpenAI resumes training AI, but without Internet - Taipei Times",
+          "at": "2026-10-25T16:00:00Z"
         },
         "shared": [
-          "bio"
+          "openai",
+          "train",
+          "ai",
+          "internet"
         ]
       },
       {
-        "score": 0.328,
+        "score": 0.422,
         "blocked": "thin-overlap",
-        "hours_apart": 338.8,
+        "hours_apart": 14.6,
         "a": {
-          "id": "rss:google-ai:6a7bb4e3e69d69f5",
-          "source": "rss-lab",
-          "title": "The latest AI news we announced in September 2026",
-          "at": "2026-10-02T15:00:00Z"
-        },
-        "b": {
-          "id": "rss-sec:unit42:5af4576ccaef43e6",
-          "source": "rss-security",
-          "title": "Top 5 Initial Access Threat Vectors Observed by Unit 42 in September 2026",
-          "at": "2026-10-16T17:47:54Z"
-        },
-        "shared": [
-          "september",
-          "2026"
-        ]
-      },
-      {
-        "score": 0.316,
-        "blocked": "thin-overlap",
-        "hours_apart": 43,
-        "a": {
-          "id": "rss:google-ai:6a7bb4e3e69d69f5",
-          "source": "rss-lab",
-          "title": "The latest AI news we announced in September 2026",
-          "at": "2026-10-02T15:00:00Z"
-        },
-        "b": {
-          "id": "rss-sec:unit42:aed0ac5e3cb73138",
-          "source": "rss-security",
-          "title": "Threat Brief: NetScaler Zero Days CVE-2026-88771 and CVE-2026-88772 Exploited in the Wild (Updated September 30)",
-          "at": "2026-09-30T20:00:04Z"
-        },
-        "shared": [
-          "september",
-          "2026"
-        ]
-      },
-      {
-        "score": 0.313,
-        "blocked": "thin-overlap",
-        "hours_apart": 376.6,
-        "a": {
-          "id": "rss:testingcatalog:4f95489601308370",
-          "source": "rss-lab",
-          "title": "Claude Security gets continuous scans and fix tracking",
-          "at": "2026-10-21T23:34:20Z"
-        },
-        "b": {
-          "id": "rss-sec:projectzero:c26302aa2cbe872f",
-          "source": "rss-security",
-          "title": "How to fix a bug in a fix",
-          "at": "2026-10-06T07:00:00Z"
-        },
-        "shared": [
-          "fix"
-        ]
-      },
-      {
-        "score": 0.312,
-        "blocked": "thin-overlap",
-        "hours_apart": 1094.1,
-        "a": {
-          "id": "hn:50231722",
+          "id": "hn:50225165",
           "source": "hn-algolia",
-          "title": "R/open source bans all solo projects and projects using LLMs",
-          "at": "2026-10-25T14:05:03Z"
+          "title": "Show HN: Claude Code(and others) embedded in your app",
+          "at": "2026-10-24T20:54:27Z"
         },
         "b": {
-          "id": "rss:cursor:78cba249b897c5d8",
-          "source": "rss-lab",
-          "title": "Cursor Projects",
-          "at": "2026-09-10T00:00:00Z"
+          "id": "gmail:1a172d348d2adf95",
+          "source": "gmail-news",
+          "title": "Claude Code Extensions",
+          "at": "2026-10-25T11:28:36Z"
         },
         "shared": [
-          "project"
+          "claude",
+          "code"
+        ]
+      },
+      {
+        "score": 0.417,
+        "blocked": "below-threshold",
+        "hours_apart": 7,
+        "a": {
+          "id": "rss:the-decoder:ecfe95db9f5a039c",
+          "source": "rss-lab",
+          "title": "OpenMobile-2 proves open-source smartphone agents can rival proprietary models",
+          "at": "2026-10-25T06:55:22Z"
+        },
+        "b": {
+          "id": "gnews:be0cdba6a39a3033",
+          "source": "gnews-rss",
+          "title": "OpenMobile-2: open smartphone agents close in on closed rivals, and app variety mattered more than data volume - eGamers.io",
+          "at": "2026-10-25T13:56:48Z"
+        },
+        "shared": [
+          "openmobil",
+          "2",
+          "smartphon",
+          "agent",
+          "rival"
+        ]
+      },
+      {
+        "score": 0.413,
+        "blocked": "thin-overlap",
+        "hours_apart": 91.9,
+        "a": {
+          "id": "rss:testingcatalog:a9b51c80778796b4",
+          "source": "rss-lab",
+          "title": "Anthropic opens Claude Duet preview for US Pro and Max users",
+          "at": "2026-10-21T20:37:58Z"
+        },
+        "b": {
+          "id": "gnews:2d1d1823fe268f88",
+          "source": "gnews-rss",
+          "title": "Claude Duet: Anthropic’s Proactive AI Agent for the Job - Basic Tutorials",
+          "at": "2026-10-25T16:32:05Z"
+        },
+        "shared": [
+          "anthropic",
+          "claude",
+          "duet"
+        ]
+      },
+      {
+        "score": 0.388,
+        "blocked": "thin-overlap",
+        "hours_apart": 1423.5,
+        "a": {
+          "id": "rss-sec:embracethered:ec3f36b4902a2296",
+          "source": "rss-security",
+          "title": "Breaking Claude Code Opus 5 Auto Mode",
+          "at": "2026-08-27T04:00:00Z"
+        },
+        "b": {
+          "id": "gmail:1a172d348d2adf95",
+          "source": "gmail-news",
+          "title": "Claude Code Extensions",
+          "at": "2026-10-25T11:28:36Z"
+        },
+        "shared": [
+          "claude",
+          "code"
+        ]
+      },
+      {
+        "score": 0.387,
+        "blocked": "thin-overlap",
+        "hours_apart": 35.9,
+        "a": {
+          "id": "hn:50216816",
+          "source": "hn-algolia",
+          "title": "Claude Code will refuse to fill in passwords or use a password manager",
+          "at": "2026-10-23T23:33:23Z"
+        },
+        "b": {
+          "id": "gmail:1a172d348d2adf95",
+          "source": "gmail-news",
+          "title": "Claude Code Extensions",
+          "at": "2026-10-25T11:28:36Z"
+        },
+        "shared": [
+          "claude",
+          "code"
         ]
       }
     ]
@@ -731,97 +810,97 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 8,
+      "streak_ok": 9,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 184,
+      "streak_ok": 185,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 184,
+      "streak_ok": 185,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 184,
+      "streak_ok": 185,
       "streak_fail": 0,
-      "items_last": 30
+      "items_last": 31
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 184,
+      "streak_ok": 185,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 184,
+      "streak_ok": 185,
       "streak_fail": 0,
       "items_last": 60
     },
     {
       "id": "hn_title",
       "state": "ok",
-      "streak_ok": 38,
+      "streak_ok": 39,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 96,
+      "streak_ok": 97,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "releases_atom",
       "state": "ok",
-      "streak_ok": 38,
+      "streak_ok": 39,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "rss_analyst",
       "state": "ok",
-      "streak_ok": 38,
+      "streak_ok": 39,
       "streak_fail": 0,
       "items_last": 6
     },
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 3,
+      "streak_ok": 4,
       "streak_fail": 0,
       "items_last": 151
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 184,
+      "streak_ok": 185,
       "streak_fail": 0,
       "items_last": 74
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 184,
+      "streak_ok": 185,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.007211388888888889,
+    "hours": 0.007224166666666667,
     "stale": false
   },
   "hf": {
@@ -919,7 +998,7 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 34,
+    "ai_dropped": 35,
     "url": "https://hn.algolia.com/api/v1/search",
     "title_queries": {
       "ok": true,
@@ -939,10 +1018,10 @@
         "Qwen",
         "local model"
       ],
-      "hits": 11,
-      "candidates": 8,
-      "ai_dropped": 3,
-      "duplicates": 6,
+      "hits": 9,
+      "candidates": 7,
+      "ai_dropped": 2,
+      "duplicates": 5,
       "added": 2,
       "cap": 20,
       "merged_into_live_hn": true
@@ -955,16 +1034,16 @@
         "text": "Show HN: Corgi, a helpful {agent, terminal} multiplexer"
       },
       {
-        "id": "hn:50231722",
+        "id": "hn:50233779",
         "tag": "rest",
-        "score": 57,
-        "text": "R/open source bans all solo projects and projects using LLMs"
+        "score": 91,
+        "text": "A 10-year-old CNN outperforms frontier LLMs for skin cancer diagnosis"
       },
       {
-        "id": "hn:50222283",
+        "id": "hn:50231722",
         "tag": "rest",
-        "score": 49,
-        "text": "Oai-math-revised: a community hub for revising OpenAI's math write-ups"
+        "score": 70,
+        "text": "R/open source bans all solo projects and projects using LLMs"
       }
     ]
   },
@@ -1047,32 +1126,32 @@
     "feeds_soft_fail": [],
     "sample": [
       {
-        "id": "rss:huggingnews:05b4e19a74bc51c9",
+        "id": "rss:huggingnews:b85e3a7d7f80049f",
         "lab": "huggingnews",
         "tag": "rest",
-        "title": "Nvidia RTX 3090 AI Performance Jumps 80% via Firmware Unlock",
-        "link": "https://huggingnews.com/tech/nvidia-rtx-3090-ai-performance-jumps-80percent-via-firmware-unlock-5a00dc77"
+        "title": "Anthropic Token Volume on OpenRouter Jumps 3.6x After Opus 5.5 Launch",
+        "link": "https://huggingnews.com/ai/anthropic-token-volume-on-openrouter-jumps-36x-after-opus-55-launch-7a69b364"
       },
       {
-        "id": "rss:testingcatalog:63c5a01fffc342f8",
-        "lab": "testingcatalog",
-        "tag": "rest",
-        "title": "Meta is working on avatar sharing for Muse assistant",
-        "link": "https://www.testingcatalog.com/meta-is-working-on-avatar-sharing-for-muse-assistant/"
-      },
-      {
-        "id": "rss:testingcatalog:61a7fb23a0268e60",
-        "lab": "testingcatalog",
-        "tag": "rest",
-        "title": "Google AI Studio prepares new Managed Agents hub",
-        "link": "https://www.testingcatalog.com/google-ai-studio-prepares-new-managed-agents-hub/"
-      },
-      {
-        "id": "rss:huggingnews:c05cc98130140c50",
+        "id": "rss:huggingnews:1c63f74d489f691c",
         "lab": "huggingnews",
         "tag": "rest",
-        "title": "Sweden Blocks ChatGPT and Claude on Government Staff Computers",
-        "link": "https://huggingnews.com/ai/sweden-blocks-chatgpt-and-claude-on-government-staff-computers-046d7527"
+        "title": "Open-Source Projects Unlock AI Performance on Nvidia RTX 20, 30, and 40 GPUs",
+        "link": "https://huggingnews.com/tech/open-source-projects-unlock-ai-performance-on-nvidia-rtx-20-30-and-40-gp-505eae13"
+      },
+      {
+        "id": "rss:huggingnews:adcf6aae8a38c875",
+        "lab": "huggingnews",
+        "tag": "rest",
+        "title": "GMO Internet CEO Blames Autonomous AI Tool for Brokerage Cyberattack",
+        "link": "https://huggingnews.com/cybersecurity/gmo-internet-ceo-blames-autonomous-ai-tool-for-brokerage-cyberattack-54af5a83"
+      },
+      {
+        "id": "rss:huggingnews:172ea688b25f777b",
+        "lab": "huggingnews",
+        "tag": "rest",
+        "title": "Anthropic Begins Work on Custom AI Chips to Rival OpenAI",
+        "link": "https://huggingnews.com/ai/anthropic-begins-work-on-custom-ai-chips-to-rival-openai-fa9982c4"
       }
     ]
   },
@@ -1303,8 +1382,8 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 30,
-    "pool": 236,
+    "items": 31,
+    "pool": 266,
     "corroborators": [
       {
         "id": "gnews:9954aafbb09502dc",
@@ -1312,6 +1391,14 @@
         "score": 1,
         "title": "Google AI Studio prepares new Managed Agents hub - TestingCatalog AI News",
         "publisher": "TestingCatalog AI News",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:9db188e36595914b",
+        "anchor_id": "rss:the-decoder:f1807e982f1d4824",
+        "score": 1,
+        "title": "Anthropic co-founder Jack Clark moves his prediction for self-improving AI forward to 2027 - The Decoder",
+        "publisher": "The Decoder",
         "self_repost": false
       },
       {
@@ -1333,17 +1420,33 @@
       {
         "id": "gnews:adabb126e4825122",
         "anchor_id": "rss:the-decoder:c708c54a38c204c3",
-        "score": 0.74,
+        "score": 0.744,
         "title": "OpenAI reveals isolated AI agents that talk through the CPU cache - Pasquale Pillitteri",
         "publisher": "Pasquale Pillitteri",
         "self_repost": false
       },
       {
+        "id": "gnews:b7635f6b343afd29",
+        "anchor_id": "rss:the-decoder:ecfe95db9f5a039c",
+        "score": 1,
+        "title": "OpenMobile-2 proves open-source smartphone agents can rival proprietary models - The Decoder",
+        "publisher": "The Decoder",
+        "self_repost": false
+      },
+      {
         "id": "gnews:9075b6f271d42064",
         "anchor_id": "hn:50219364",
-        "score": 0.733,
+        "score": 0.729,
         "title": "Sweden Blocks ChatGPT and Claude in Government Offices, Copilot Stays - Pasquale Pillitteri",
         "publisher": "Pasquale Pillitteri",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:8ac950f0b116585e",
+        "anchor_id": "hn:50219364",
+        "score": 0.709,
+        "title": "Sweden’s Government Offices blocks ChatGPT and Claude, approves Microsoft Copilot - Crypto Briefing",
+        "publisher": "Crypto Briefing",
         "self_repost": false
       },
       {
@@ -1381,24 +1484,24 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:d0f0e8d987f986ea",
-        "title": "Anthropic’s AI Agents Outwork Humans By 6x. So Why Are You Needed? - Forbes",
-        "publisher": "Forbes",
-        "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNQ0FCOGIzakpUMVpPd0ExOThTRHBtaGpTeWhRQ21NeWZuNXNtRlFCaVVPclNZa0FWY2RoN0VFTWxtYm5HcENvLTJiYTVVa2RidnZrY2xXdkUzMzBVb09PbGdmZ1UyUUt0aFhUdDR6T2hiY0o1bWxjTXNBUTdhQ21sZVJ3TWdwQzJnN29aeEN6WU5DT2JWT1ZjV29Zay14c240WmZxcW9JczhuQUNoTWVKVU1MMU5qZUk?oc=5",
+        "id": "gnews:fd17a26a672e9cd9",
+        "title": "New IDC research reveals the real AI readiness gap: It's not models, it's data - iTnews",
+        "publisher": "iTnews",
+        "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNcFUybklZLVh0TVVBaHZVY19EY0x2YVZXWGJSbkxqNU92RG1xNWpBdF9Qa0NjVWJWOHVScHFCejYxdDhXWThzemduUl9ZMmdhZzl3MFZ0ajBmWHBCZ1lYS3I2Q0JYNFlzSm9DbW96UzVOT0NJSzd0TmpJVzNST0hXY3JyRkwzSk16UnI5YU9VOHV3aW9SVEpXX0N4a3ozS29kaE5SZ0l1ZmJVRWp0WkQ2SkxZcV9Bdw?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:04137a3c02d99816",
-        "title": "AI Agents Weakened Monitoring Mechanisms During Internal Coding Tasks - Israel Defense",
-        "publisher": "Israel Defense",
-        "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9WMW5lZVptRDFBbElOVHllNGdEd09icnVQazJCdG1mSUNCWk5CM08xdzR4Zjg1dDFmbHBqTktVMS1YRnl0RE1xZV9SMFAtbjctV2RNUnFwMm4?oc=5",
+        "id": "gnews:ee35abde2dafbd45",
+        "title": "AI needs to earn Australia’s trust - Capital Brief",
+        "publisher": "Capital Brief",
+        "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNMmprMEhZMDI5X2RCY3BEaWYtNGJNMWpfMmhjcmJyV1dkNFpBbjAzUlBtXzVpcGVpcC1LN2R2U2ZzODR2NE1BQUFUa0hOdm1PODRPQnBqTkoyd0RmSFl6amRHekR2ZFpUaFVDMlNYOEg0NzB4WnBvNXhqYXJBZGlHcTJsaDBQMlY3cW5kVHc4TVB5SHRSb29La0JZekxScGdNbXE0ZXhGNjRoWEJq?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:bc3427dbd5fadb97",
-        "title": "AI calling: Ensuring reliability when a voice agent calls - The Times of India",
-        "publisher": "The Times of India",
-        "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxQYmNRdVpEWUxValo1ZXUzdUZCVlFBRmlkRG8xemVsUW9UR3ZHMjB2U1pFdEFIVDZRVk9rYjV0OFh3anV4dlJmekQ4LWdoMEhheU54VEJMVmZIRzBpZ2tyZlBfTkVUNHNTYlpvSHVTUWtHYWd0Vm5RRmoxTjhBTTJtNFlEX0tPZV9VZnRGTUM3VUVZZGtBSVUtcllCbzRyVGlhaElMeGZhc0Q5U242d3lxa0w4b2JxU1k5dXZuWlBFaXI4WEdRbjFCeXFpOHZJT0Rf0gHWAUFVX3lxTE10NEpEaTZYTlNiYTk2azlfWE5LZ29XQjk1aFZXbFZUN0pnWWF2MVEwcWl1YU9KVUt1NGlPZWJnZHBYNmNGbEJFM09uUmRqclZUeXBfLTBwam9lU3hZcnQwVHkteGJqX0lBVl9pcjZxazc3QTJVNUstU2duNnRaWnZyM1NxcDJGaVNEVFJjRDhxZTVITUVZeElrV2hPV3M2c1BidG5BbEdWdW45VHc4Z282amVia3Y5QThBMUFmcEVsOUgxUWc4Ql9yWUpDTDZwdi1FcHJfY2c?oc=5",
+        "id": "gnews:ff61c2b7bfd7ea2d",
+        "title": "Expert analysis of LLM hantavirus outbreak responses finds 11.1% potentially misleading - Bioengineer.org",
+        "publisher": "Bioengineer.org",
+        "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNTEFZMFZFYUZIZzVMLWp2OWFmRGN5OXdfeVphOHRyekNLTmcySUR5aE4xRy15RE1iVWRrWHh0X3ZWREF0Mm1uZkNlaktYZWpXaTVNbEFVTFhGcktGR3c5a0Z2dl9kaUpvYms3X3ZrbWJuWkxRSlVBUVppQ3hwNFlsVWxaRUVfbk9ZaHc4OWdTNXhUMkF0VWlkUDREbWlKYzFEVndJNkFBam9JWkdpeGVHZw?oc=5",
         "tag": "rest"
       }
     ]
