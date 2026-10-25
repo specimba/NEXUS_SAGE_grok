@@ -3212,3 +3212,43 @@ button.bay-sw:not(:disabled){cursor:pointer}
 .take-hold-last:hover span:first-child{text-decoration:underline}
 .take-hold-last .take-hold-last-head{display:block;margin-top:.15rem;font-family:inherit;font-size:.875rem;letter-spacing:0;text-transform:none;color:var(--muted-foreground);overflow-wrap:anywhere}
 
+
+/* UX-NEXT-4 pass 1 — lane counter rail: one sticky six-cell row (Skin V2 tokens only). */
+.lane-rail {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  background: var(--bg-deep);
+}
+.lane-rail .desk-lane {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  width: 100%;
+  overflow: visible;
+}
+.lane-rail .desk-lane-btn {
+  display: flex;
+  height: auto;
+  min-width: 0;
+  padding: 0.4rem 0.2rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+}
+.lane-rail .desk-lane-btn:not([aria-current="page"]) { color: var(--muted-foreground); }
+.lane-rail-name { font-size: 0.625rem; line-height: 1; }
+.lane-rail-count {
+  font-size: var(--text-kicker);
+  line-height: 1.1;
+  color: var(--phosphor-bright);
+  letter-spacing: 0.04em;
+}
+.lane-rail .desk-lane-btn[aria-current="page"] .lane-rail-count { color: var(--primary-foreground); }
+@media (min-width: 768px) {
+  .lane-rail-name { font-size: var(--text-kicker); }
+  .lane-rail-count { font-size: 0.95rem; }
+}

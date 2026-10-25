@@ -514,6 +514,24 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
   const packStamp = DIGEST_CADENCE.last_at;
   const cycleWindowLabel = unlockLive ? `unlock · pick ${unlockChrome.pickDate ?? "—"}` : CYCLE.window;
   const cycChipAt = unlockLive && unlockChrome.frozenAt ? unlockChrome.frozenAt : CYCLE.compiledAt;
+  // UX-NEXT-4 pass 1 rail counts — all from data already on the page (Papers count from its lazy chunk, after mount).
+  const [papersN, setPapersN] = useState<number | null>(null);
+  useEffect(() => {
+    let live = true;
+    import("@/data/desk-view-papers").then((m) => live && setPapersN(m.PAPERS.length), () => {});
+    return () => {
+      live = false;
+    };
+  }, []);
+  const plus = (n: number) => (now == null ? "—" : `+${n}`);
+  const railCount: Record<Lane, string> = {
+    brief: plus(partitionSince(WIRE_ROWS, (r) => FIRST_SEEN.get(r.id), since).since.length),
+    pulse: plus(partitionSince(PULSE_CLUSTERS, (c) => c.first_seen, since).since.length),
+    digest: now != null && now >= Date.parse(DIGEST_CADENCE.next_at) ? "DUE" : "HOLD",
+    papers: papersN == null ? "—" : String(papersN),
+    voice: leadV.held ? "HOLD" : "READY",
+    governance: String(CYCLE.trust.deny.length),
+  };
 
   return (
     <PausesCtx.Provider value={pauses}>
@@ -591,25 +609,35 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
               </span>
             </div>
           </div>
-          <nav className="desk-lane" aria-label="Lanes">
-            {laneTabs(lane, laneReady).map(({ active, ...t }) => ({ ...t, active: active && !Setup })).map((t) => (
-              <button
-                key={t.id}
-                type="button"
-                onClick={() => go(t.id)}
-                aria-current={t.active ? "page" : undefined}
-                data-active={t.active ? "1" : "0"}
-                className={cn("desk-lane-btn focus-phosphor", t.active && "block-cursor")}
-              >
-                <span className="lane-prefix" aria-hidden>
-                  {t.prefix}
-                </span>
-                {t.id}
-              </button>
-            ))}
-          </nav>
         </div>
       </header>
+      {/* UX-NEXT-4 pass 1: lane counter rail — one sticky six-cell row, each lane with its live count. */}
+      <div className="lane-rail px-4 md:px-6">
+        <nav className="desk-lane" aria-label="Lanes">
+          {laneTabs(lane, laneReady).map(({ active, ...t }) => ({ ...t, active: active && !Setup })).map((t) => (
+            <button
+              key={t.id}
+              type="button"
+              onClick={() => go(t.id)}
+              aria-current={t.active ? "page" : undefined}
+              data-active={t.active ? "1" : "0"}
+              className="desk-lane-btn focus-phosphor"
+            >
+              <span className="lane-rail-name">
+                {t.id === "governance" ? (
+                  <>
+                    <span className="md:hidden">gov</span>
+                    <span className="hidden md:inline">governance</span>
+                  </>
+                ) : (
+                  t.id
+                )}
+              </span>
+              <span className="lane-rail-count tabular-nums">{railCount[t.id]}</span>
+            </button>
+          ))}
+        </nav>
+      </div>
       <main className="relative z-10 mx-auto max-w-7xl px-4 py-3 md:px-6">
         <div className="desk-stage sage-ticks relative overflow-hidden">
           <div className="crt-rain" aria-hidden />
