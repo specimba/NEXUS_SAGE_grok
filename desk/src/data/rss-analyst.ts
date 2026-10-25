@@ -17,7 +17,7 @@ export type RssAnalystRow = {
   cluster_id?: string;
 };
 
-export const RSS_ANALYST_AT: string | null = "2026-10-25T08:30:51Z";
+export const RSS_ANALYST_AT: string | null = "2026-10-25T13:20:25Z";
 
 export const RSS_ANALYST: RssAnalystRow[] = [
   { id: "anl:latent-space:a3c9d59a888e90f8", feed: "latent-space" as const, title: "[AINews] Kimi 3.1 Pro 104BA-2.8T: Fable-5.1-Class Open Weights narrows Closed-AI lead to 1 month... and Pro Highspeed API with 2-3× speed", link: "https://latent.space/p/ainews-kimi-31/", published: "2026-10-24T07:18:29Z", summary: "We have Fable at home... or so we are being told by paid shills", source: "rss-analyst" as const, recap: true, tag: "rest" as const, first_seen: "2026-10-24T08:20:26Z", is_new: false, cluster_id: "cl:anl:latent-space:a3c9d59a888e90f8" },

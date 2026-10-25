@@ -3,28 +3,42 @@ import type { Tldr } from "@/lib/tldr-24h";
 
 export const TLDR_24H: Tldr = {
   "schema": 1,
-  "crawl_at": "2026-10-25T08:30:51Z",
+  "crawl_at": "2026-10-25T13:20:25Z",
   "date": "2026-10-25",
   "bullets": [
-    {
-      "id": "cl:rss:the-decoder:ecfe95db9f5a039c",
-      "title": "OpenMobile-2 proves open-source smartphone agents can rival proprietary models",
-      "url": "https://the-decoder.com/openmobile-2-proves-open-source-smartphone-agents-can-rival-proprietary-models/",
-      "at": "2026-10-25T06:58:29Z",
-      "sources": 2
-    },
     {
       "id": "cl:rss:the-decoder:c708c54a38c204c3",
       "title": "OpenAI's isolated AI agents found ways to talk to each other through CPU cache",
       "url": "https://the-decoder.com/openais-isolated-ai-agents-found-ways-to-talk-to-each-other-through-cpu-cache/",
-      "at": "2026-10-24T11:18:17Z",
-      "sources": 2
+      "at": "2026-10-25T08:53:03Z",
+      "sources": 3
     },
     {
       "id": "cl:hn:50219364",
       "title": "Sweden's Government Offices will block ChatGPT and Claude on staff computers",
       "url": "https://twitter.com/intcyberdigest/status/2113815992984080865",
-      "at": "2026-10-24T08:51:06Z",
+      "at": "2026-10-24T19:07:51Z",
+      "sources": 3
+    },
+    {
+      "id": "cl:rss:the-decoder:f3ab1007804ab0aa",
+      "title": "Nvidia open-sources Flora to make robot video labeling 125x cheaper than GPT-6 Astra",
+      "url": "https://the-decoder.com/nvidia-open-sources-flora-to-make-robot-video-labeling-125x-cheaper-than-gpt-6-astra/",
+      "at": "2026-10-25T10:13:25Z",
+      "sources": 2
+    },
+    {
+      "id": "cl:rss:the-decoder:f1807e982f1d4824",
+      "title": "Anthropic co-founder Jack Clark moves his prediction for self-improving AI forward to 2027",
+      "url": "https://the-decoder.com/anthropic-co-founder-jack-clark-moves-his-prediction-for-self-improving-ai-forward-to-2027/",
+      "at": "2026-10-25T09:43:25Z",
+      "sources": 2
+    },
+    {
+      "id": "cl:rss:the-decoder:ecfe95db9f5a039c",
+      "title": "OpenMobile-2 proves open-source smartphone agents can rival proprietary models",
+      "url": "https://the-decoder.com/openmobile-2-proves-open-source-smartphone-agents-can-rival-proprietary-models/",
+      "at": "2026-10-25T08:13:25Z",
       "sources": 2
     }
   ],
