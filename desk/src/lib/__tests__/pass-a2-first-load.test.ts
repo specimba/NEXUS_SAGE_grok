@@ -18,7 +18,8 @@ const deskSrc = read("src/components/sage/desk.tsx");
 const staticImports = [...deskSrc.matchAll(/^import [^;]*? from "([^"]+)";/gms)].map((m) => m[1]);
 
 const CAP = 185_000;
-const REVIEWER_MAX = 182_000;
+/** Oct 26 2026 00:08 TRT: Canberk raised the budget 182 000 → 185 000 B (main CI was already 184 059 B from crawl data). */
+const REVIEWER_MAX = 185_000;
 /** First Load minus gzip -9(desk-view.ts), measured at this pass (177 789 − 35 439). */
 const CODE_BASELINE = 142_350;
 const GROWTH_FIXTURE = 2_048;
@@ -36,7 +37,7 @@ describe("Pass A2 · First Load headroom", () => {
     expect(read("src/data/desk-view-papers.ts")).toContain("export const PAPERS");
   });
 
-  test("full budget + 2 kB crawl growth stays ≤ 182 000 B (and under the 185 kB cap)", () => {
+  test("full budget + 2 kB crawl growth stays ≤ 185 000 B budget (and under the 185 kB cap)", () => {
     expect(DESK_VIEW_CAPS.gzBytes).toBeLessThanOrEqual(35_500);
     const live = gzBytes(read("src/data/desk-view.ts"));
     expect(live).toBeLessThanOrEqual(DESK_VIEW_CAPS.gzBytes);
