@@ -3,7 +3,7 @@ import type { Tldr } from "@/lib/tldr-24h";
 
 export const TLDR_24H: Tldr = {
   "schema": 1,
-  "crawl_at": "2026-10-25T21:40:18Z",
+  "crawl_at": "2026-10-25T21:44:48Z",
   "date": "2026-10-26",
   "bullets": [
     {
@@ -25,7 +25,7 @@ export const TLDR_24H: Tldr = {
       "title": "Sweden Blocks ChatGPT and Claude on Government Staff Computers",
       "url": "https://huggingnews.com/ai/sweden-blocks-chatgpt-and-claude-on-government-staff-computers-046d7527",
       "at": "2026-10-25T12:53:21Z",
-      "sources": 3
+      "sources": 4
     },
     {
       "id": "cl:rss:testingcatalog:61a7fb23a0268e60",

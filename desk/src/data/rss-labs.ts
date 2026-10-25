@@ -17,7 +17,7 @@ export type RssLabRow = {
   cluster_id?: string;
 };
 
-export const RSS_LABS_AT = "2026-10-25T21:40:18Z";
+export const RSS_LABS_AT = "2026-10-25T21:44:48Z";
 
 export const RSS_LABS: RssLabRow[] = [
   { id: "rss:huggingnews:a479ab3a56a6b73d", lab: "huggingnews" as const, title: "SpaceX Closes $40B Debt Raise to Fund AI Compute Buildout", link: "https://huggingnews.com/ai/spacex-closes-40b-debt-raise-to-fund-ai-compute-buildout-3ece57a5", published: "2026-10-25T19:53:04Z", summary: "SpaceX has secured $40 billion in financing to pay for GPU purchases and its artificial intelligence infrastructure, Elon Musk confirmed. The debt raise, which… · via HuggingNews", source: "rss-lab" as const, tag: "rest" as const, first_seen: "2026-10-25T21:36:33Z", is_new: false, cluster_id: "cl:rss:huggingnews:a479ab3a56a6b73d" },
