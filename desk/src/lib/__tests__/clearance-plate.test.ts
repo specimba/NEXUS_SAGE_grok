@@ -224,7 +224,9 @@ describe("UX-1 fixtures from real crawl data (HELD)", () => {
     } else {
       // Expected publisher comes from the lead's own cluster in the committed crawl, not a fixed outlet.
       const leadCl = PULSE_CLUSTERS_FOR_PUB.find((c) => c.id === RAW_TODAY!.cluster_id);
-      const want = leadCl ? ownPublisherLabel(leadCl) : null;
+      // A held-over lead can age out of the Pulse window: then the label comes from the lead id itself (withPub's fallback).
+      const leadId = RAW_TODAY!.cluster_id!.replace(/^cl:/, "");
+      const want = leadCl ? ownPublisherLabel(leadCl) : /^(?:gnews|anl|rel):/.test(leadId) ? null : pubLabel(leadId);
       expect(want).toBeTruthy();
       expect(LEAD_TODAY?.pub).toBe(want!);
       expect(withPub(RAW_TODAY)?.pub).toBe(want!);
