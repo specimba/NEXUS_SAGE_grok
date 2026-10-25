@@ -260,6 +260,13 @@ export function buildDeskView(i: DeskViewInput, opts: DeskViewOpts = {}): DeskVi
   const live = new Set<string>([...clusters.flatMap(({ c }) => [c.lead_id, ...c.member_ids]), ...xPosts.map((p) => `x:${p.id}`)]);
   const leads = new Set<string>([...clusters.map(({ c }) => c.lead_id), ...xPosts.map((p) => `x:${p.id}`)]);
   const gnews = new Map(i.gnews.map((g) => [g.id, g]));
+  // Desk bug B: a lead with no summary (HN / GNews / release) borrows the first cluster mate's real summary.
+  const mateSummary = new Map<string, string>();
+  for (const { c } of clusters) {
+    if (i.members[c.lead_id]?.summary) continue;
+    const donor = c.member_ids.find((id) => id !== c.lead_id && !/^(?:gmail|x|taste):/.test(id) && i.members[id]?.summary);
+    if (donor) mateSummary.set(c.lead_id, i.members[donor]!.summary!);
+  }
   const rows = new Map<string, MemberRow>();
   for (const [id, m0] of Object.entries(i.members)) {
     if (!live.has(id)) continue;
@@ -271,7 +278,8 @@ export function buildDeskView(i: DeskViewInput, opts: DeskViewOpts = {}): DeskVi
     if (m.at !== undefined) r.a = m.at;
     if (m.url !== undefined) r.u = m.url;
     if (m.score != null) r.s = m.score;
-    if (m.summary && leads.has(id)) r.m = m.summary.slice(0, SUMMARY_CHARS);
+    const sum = m.summary || mateSummary.get(id);
+    if (sum && leads.has(id)) r.m = sum.slice(0, SUMMARY_CHARS);
     if (m.security) r.sec = true;
     const g = gnews.get(id);
     const dt = g ? clip(stripPublisher(g.title, g.publisher), C.drawerTitle) : null;

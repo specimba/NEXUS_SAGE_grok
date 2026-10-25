@@ -18,7 +18,7 @@ let cache: Record<string, PulseMemberInfo> | null = null;
 export function memberInfo(): Record<string, PulseMemberInfo> {
   if (cache) return cache;
   const m: Record<string, PulseMemberInfo> = {};
-  for (const h of HN_PULSE) m[h.id] = { badge: "HN", publisher: `hn/${h.author}`, score: h.score, url: h.url, title: h.text, at: h.at };
+  for (const h of HN_PULSE) m[h.id] = { badge: "HN", publisher: `hn/${h.author}`, score: h.score, summary: h.summary || undefined, url: h.url, title: h.text, at: h.at };
   for (const g of GNEWS_RSS) m[g.id] = { badge: "GNW", publisher: g.publisher || "google news", url: g.link, title: g.title, at: g.published };
   for (const r of RSS_LABS)
     m[r.id] = { badge: labBadge(r.lab), publisher: r.lab, summary: r.summary || undefined, url: r.link, title: r.title, at: r.published };

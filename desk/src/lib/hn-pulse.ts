@@ -157,6 +157,8 @@ export type HnPulseCandidate = {
   score: number;
   at: string;
   author: string;
+  /** Desk bug B: linked article's own og:description (top N by score, crawl time). */
+  summary?: string;
   class: PostClass;
   tag: "rest" | "rumor" | "companion" | "incident";
   reasons: string[];

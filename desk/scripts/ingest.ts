@@ -13,6 +13,7 @@
  *   - Crawl stamp always updates when the job completes (clears STALE)
  */
 
+import { fetchOgSummaries, OG_SUMMARY_TOP_N } from "@/lib/og-summary";
 import { tasteUrls } from "@/lib/taste-input";
 import { X_TASTE } from "@/data/x-taste";
 import { tasteSoftMeter } from "@/lib/x-taste-meter";
@@ -236,7 +237,7 @@ function renderShelfTs(
 function renderHnPulseTs(rows: HnPulseCandidate[], stamp: string, meta?: MetaMap): string {
   const body = rows
     .map((r) => {
-      return `  { id: ${JSON.stringify(r.id)}, text: ${JSON.stringify(r.text)}, url: ${JSON.stringify(r.url)}, source: "hn-algolia" as const, score: ${r.score}, at: ${JSON.stringify(r.at)}, author: ${JSON.stringify(r.author)}, tag: ${JSON.stringify(r.tag)} as const${metaTail(meta, r.id)} }`;
+      return `  { id: ${JSON.stringify(r.id)}, text: ${JSON.stringify(r.text)}, url: ${JSON.stringify(r.url)}, source: "hn-algolia" as const, score: ${r.score}, at: ${JSON.stringify(r.at)}, author: ${JSON.stringify(r.author)}, tag: ${JSON.stringify(r.tag)} as const${r.summary ? `, summary: ${JSON.stringify(r.summary)}` : ""}${metaTail(meta, r.id)} }`;
     })
     .join(",\n");
   return `/** HN Algolia Pulse chatter — generated/refreshed by bun run ingest. Pulse only; never Brief. */
@@ -249,6 +250,8 @@ export type HnPulseRow = {
   at: string;
   author: string;
   tag: "rest" | "rumor" | "companion" | "incident";
+  /** Linked article's og:description (top N, crawl time). */
+  summary?: string;
 ${META_TYPE_FIELDS}};
 
 export const HN_PULSE_AT = ${JSON.stringify(stamp)};
@@ -1713,6 +1716,12 @@ async function main() {
   }
   if (shelfDirty) {
     writeText(resolve(root, "src/data/shelf.ts"), renderShelfTs(shelfItems));
+  }
+  if (hnOk && hnRows.length) {
+    // Desk bug B: top-N HN links get their article's own og:description (soft-fail per URL, ≤4s each, parallel).
+    const og = await fetchOgSummaries(hnRows);
+    hnRows = hnRows.map((r) => (og.has(r.id) ? { ...r, summary: og.get(r.id)! } : r));
+    console.log(`HN og:description: ${og.size}/${Math.min(hnRows.length, OG_SUMMARY_TOP_N)} top links`);
   }
   if (hnOk) {
     writeText(resolve(root, "src/data/hn-pulse.ts"), renderHnPulseTs(hnRows, stamp, rowMeta));

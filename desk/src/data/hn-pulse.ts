@@ -8,6 +8,8 @@ export type HnPulseRow = {
   at: string;
   author: string;
   tag: "rest" | "rumor" | "companion" | "incident";
+  /** Linked article's og:description (top N, crawl time). */
+  summary?: string;
   /** Beat 2 seen-index: first crawl stamp this canonical URL appeared. */
   first_seen?: string;
   /** Beat 2: first seen in the current crawl. */
