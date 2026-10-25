@@ -2,8 +2,8 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-25T14:49:22Z",
-  "config_hash": "7ad1371c9b68",
+  "stamped_at": "2026-10-25T14:55:16Z",
+  "config_hash": "1ba30989ff76",
   "config_status": "ok",
   "crawl_sources": [
     {
@@ -11,7 +11,7 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 117,
+      "duration_ms": 132,
       "paused_until": null,
       "reason": null
     },
@@ -20,7 +20,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 3226,
+      "duration_ms": 3020,
       "paused_until": null,
       "reason": null
     },
@@ -29,7 +29,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 505,
+      "duration_ms": 538,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 128,
+      "duration_ms": 247,
       "paused_until": null,
       "reason": null
     },
@@ -46,8 +46,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 63,
-      "duration_ms": 8256,
+      "rows": 62,
+      "duration_ms": 8282,
       "paused_until": null,
       "reason": null
     },
@@ -56,7 +56,7 @@
       "label": "HN title",
       "status": "ok",
       "rows": 2,
-      "duration_ms": 8191,
+      "duration_ms": 8229,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 151,
-      "duration_ms": 26329,
+      "duration_ms": 25832,
       "paused_until": null,
       "reason": null
     },
@@ -74,7 +74,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 74,
-      "duration_ms": 15190,
+      "duration_ms": 12111,
       "paused_until": null,
       "reason": null
     },
@@ -83,7 +83,7 @@
       "label": "analyst RSS",
       "status": "ok",
       "rows": 6,
-      "duration_ms": 2342,
+      "duration_ms": 2327,
       "paused_until": null,
       "reason": null
     },
@@ -92,7 +92,7 @@
       "label": "releases",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 6708,
+      "duration_ms": 6817,
       "paused_until": null,
       "reason": null
     },
@@ -100,8 +100,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 31,
-      "duration_ms": 6353,
+      "rows": 32,
+      "duration_ms": 6375,
       "paused_until": null,
       "reason": null
     },
@@ -110,7 +110,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 281,
+      "duration_ms": 334,
       "paused_until": null,
       "reason": null
     },
@@ -119,16 +119,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4430,
+      "duration_ms": 4526,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 82056,
-    "sources_wall_ms": 26330,
-    "papers_lane_ms": 3981,
-    "slowest_source_ms": 26329,
+    "sources_ms": 78770,
+    "sources_wall_ms": 25833,
+    "papers_lane_ms": 3942,
+    "slowest_source_ms": 25832,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -146,9 +146,9 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 27013,
+    "wall_ms": 26458,
     "startup_ms": 56,
-    "main_ms": 27034
+    "main_ms": 26478
   },
   "multi_source_independent": 7,
   "stale_hours": 6,
@@ -165,12 +165,12 @@
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 52,
+    "new_items": 3,
     "per_source": {
-      "hn-algolia": 63,
+      "hn-algolia": 62,
       "rss-lab": 151,
       "rss-security": 74,
-      "gnews-rss": 31,
+      "gnews-rss": 32,
       "gmail-news": 10,
       "rss-analyst": 6,
       "releases-atom": 1
@@ -333,18 +333,18 @@
             "publisher": "the-decoder"
           },
           {
-            "id": "gnews:adabb126e4825122",
-            "source": "gnews-rss",
-            "title": "OpenAI reveals isolated AI agents that talk through the CPU cache - Pasquale Pillitteri",
-            "at": "2026-10-25T08:53:03Z",
-            "publisher": "Pasquale Pillitteri"
-          },
-          {
             "id": "gnews:98c48b167469f2f6",
             "source": "gnews-rss",
             "title": "OpenAI's isolated AI agents found ways to talk to each other through CPU cache - The Decoder",
             "at": "2026-10-24T11:18:17Z",
             "publisher": "The Decoder"
+          },
+          {
+            "id": "gnews:adabb126e4825122",
+            "source": "gnews-rss",
+            "title": "OpenAI reveals isolated AI agents that talk through the CPU cache - Pasquale Pillitteri",
+            "at": "2026-10-25T08:53:03Z",
+            "publisher": "Pasquale Pillitteri"
           }
         ]
       },
@@ -457,11 +457,11 @@
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 33
+      "hn_dropped": 34
     },
     "gnews_near_misses": [
       {
-        "score": 0.647,
+        "score": 0.646,
         "blocked": "time-window",
         "hours_apart": 29.4,
         "a": {
@@ -553,7 +553,7 @@
         ]
       },
       {
-        "score": 0.295,
+        "score": 0.294,
         "blocked": "below-threshold",
         "hours_apart": 16.4,
         "a": {
@@ -639,7 +639,7 @@
     ],
     "near_misses": [
       {
-        "score": 0.647,
+        "score": 0.646,
         "blocked": "time-window",
         "hours_apart": 29.4,
         "a": {
@@ -750,7 +750,7 @@
         ]
       },
       {
-        "score": 0.328,
+        "score": 0.329,
         "blocked": "thin-overlap",
         "hours_apart": 338.8,
         "a": {
@@ -771,7 +771,7 @@
         ]
       },
       {
-        "score": 0.315,
+        "score": 0.317,
         "blocked": "thin-overlap",
         "hours_apart": 43,
         "a": {
@@ -817,97 +817,97 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 3,
+      "streak_ok": 4,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 179,
+      "streak_ok": 180,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 179,
+      "streak_ok": 180,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 179,
+      "streak_ok": 180,
       "streak_fail": 0,
-      "items_last": 31
+      "items_last": 32
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 179,
+      "streak_ok": 180,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 179,
+      "streak_ok": 180,
       "streak_fail": 0,
-      "items_last": 63
+      "items_last": 62
     },
     {
       "id": "hn_title",
       "state": "ok",
-      "streak_ok": 33,
+      "streak_ok": 34,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 91,
+      "streak_ok": 92,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "releases_atom",
       "state": "ok",
-      "streak_ok": 33,
+      "streak_ok": 34,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "rss_analyst",
       "state": "ok",
-      "streak_ok": 33,
+      "streak_ok": 34,
       "streak_fail": 0,
       "items_last": 6
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 83,
+      "streak_ok": 84,
       "streak_fail": 0,
       "items_last": 151
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 179,
+      "streak_ok": 180,
       "streak_fail": 0,
       "items_last": 74
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 179,
+      "streak_ok": 180,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.007604166666666667,
+    "hours": 0.007451944444444444,
     "stale": false
   },
   "hf": {
@@ -988,7 +988,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 63,
+    "count": 62,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -1005,7 +1005,7 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 33,
+    "ai_dropped": 34,
     "url": "https://hn.algolia.com/api/v1/search",
     "title_queries": {
       "ok": true,
@@ -1047,10 +1047,10 @@
         "text": "Oai-math-revised: a community hub for revising OpenAI's math write-ups"
       },
       {
-        "id": "hn:50225443",
+        "id": "hn:50231722",
         "tag": "rest",
-        "score": 24,
-        "text": "Making My Blog Readable by AI Agents"
+        "score": 29,
+        "text": "R/open source bans all solo projects and projects using LLMs"
       }
     ]
   },
@@ -1389,7 +1389,7 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 31,
+    "items": 32,
     "pool": 272,
     "corroborators": [
       {
@@ -1409,6 +1409,22 @@
         "self_repost": false
       },
       {
+        "id": "gnews:98c48b167469f2f6",
+        "anchor_id": "rss:the-decoder:c708c54a38c204c3",
+        "score": 1,
+        "title": "OpenAI's isolated AI agents found ways to talk to each other through CPU cache - The Decoder",
+        "publisher": "The Decoder",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:adabb126e4825122",
+        "anchor_id": "rss:the-decoder:c708c54a38c204c3",
+        "score": 0.744,
+        "title": "OpenAI reveals isolated AI agents that talk through the CPU cache - Pasquale Pillitteri",
+        "publisher": "Pasquale Pillitteri",
+        "self_repost": false
+      },
+      {
         "id": "gnews:b7635f6b343afd29",
         "anchor_id": "rss:the-decoder:ecfe95db9f5a039c",
         "score": 1,
@@ -1419,7 +1435,7 @@
       {
         "id": "gnews:9075b6f271d42064",
         "anchor_id": "hn:50219364",
-        "score": 0.731,
+        "score": 0.73,
         "title": "Sweden Blocks ChatGPT and Claude in Government Offices, Copilot Stays - Pasquale Pillitteri",
         "publisher": "Pasquale Pillitteri",
         "self_repost": false
@@ -1427,17 +1443,9 @@
       {
         "id": "gnews:8ac950f0b116585e",
         "anchor_id": "hn:50219364",
-        "score": 0.714,
+        "score": 0.715,
         "title": "Sweden’s Government Offices blocks ChatGPT and Claude, approves Microsoft Copilot - Crypto Briefing",
         "publisher": "Crypto Briefing",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:98c48b167469f2f6",
-        "anchor_id": "rss:the-decoder:c708c54a38c204c3",
-        "score": 1,
-        "title": "OpenAI's isolated AI agents found ways to talk to each other through CPU cache - The Decoder",
-        "publisher": "The Decoder",
         "self_repost": false
       },
       {

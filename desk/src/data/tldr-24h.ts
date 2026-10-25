@@ -3,7 +3,7 @@ import type { Tldr } from "@/lib/tldr-24h";
 
 export const TLDR_24H: Tldr = {
   "schema": 1,
-  "crawl_at": "2026-10-25T14:49:22Z",
+  "crawl_at": "2026-10-25T14:55:16Z",
   "date": "2026-10-25",
   "bullets": [
     {
