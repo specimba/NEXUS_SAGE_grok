@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-25T21:36:33Z",
+  "stamped_at": "2026-10-25T21:40:18Z",
   "config_hash": "1ba30989ff76",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,7 +11,7 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 186,
+      "duration_ms": 127,
       "paused_until": null,
       "reason": null
     },
@@ -20,7 +20,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 3195,
+      "duration_ms": 3020,
       "paused_until": null,
       "reason": null
     },
@@ -29,7 +29,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 330,
+      "duration_ms": 478,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 134,
+      "duration_ms": 100,
       "paused_until": null,
       "reason": null
     },
@@ -46,8 +46,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 59,
-      "duration_ms": 8288,
+      "rows": 60,
+      "duration_ms": 8295,
       "paused_until": null,
       "reason": null
     },
@@ -56,7 +56,7 @@
       "label": "HN title",
       "status": "ok",
       "rows": 2,
-      "duration_ms": 8185,
+      "duration_ms": 8330,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 151,
-      "duration_ms": 24426,
+      "duration_ms": 25772,
       "paused_until": null,
       "reason": null
     },
@@ -74,7 +74,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 74,
-      "duration_ms": 12110,
+      "duration_ms": 12095,
       "paused_until": null,
       "reason": null
     },
@@ -83,7 +83,7 @@
       "label": "analyst RSS",
       "status": "ok",
       "rows": 6,
-      "duration_ms": 2659,
+      "duration_ms": 2810,
       "paused_until": null,
       "reason": null
     },
@@ -92,7 +92,7 @@
       "label": "releases",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 6681,
+      "duration_ms": 6652,
       "paused_until": null,
       "reason": null
     },
@@ -100,8 +100,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 32,
-      "duration_ms": 6365,
+      "rows": 33,
+      "duration_ms": 6280,
       "paused_until": null,
       "reason": null
     },
@@ -110,7 +110,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 295,
+      "duration_ms": 311,
       "paused_until": null,
       "reason": null
     },
@@ -119,16 +119,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4547,
+      "duration_ms": 4425,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 77401,
-    "sources_wall_ms": 24427,
-    "papers_lane_ms": 3849,
-    "slowest_source_ms": 24426,
+    "sources_ms": 78695,
+    "sources_wall_ms": 25773,
+    "papers_lane_ms": 3730,
+    "slowest_source_ms": 25772,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -146,9 +146,9 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 25092,
+    "wall_ms": 26457,
     "startup_ms": 56,
-    "main_ms": 25112
+    "main_ms": 26478
   },
   "multi_source_independent": 7,
   "stale_hours": 6,
@@ -157,20 +157,20 @@
     "multi_source_independent": 7,
     "multi_source_raw": 7,
     "self_reposts": 0,
-    "items_in": 339,
-    "clusters_out": 301,
-    "collapsed": 38,
+    "items_in": 341,
+    "clusters_out": 304,
+    "collapsed": 37,
     "multi_source": 7,
     "multi_member": 17,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 22,
+    "new_items": 4,
     "per_source": {
-      "hn-algolia": 59,
+      "hn-algolia": 60,
       "rss-lab": 151,
       "rss-security": 74,
-      "gnews-rss": 32,
+      "gnews-rss": 33,
       "gmail-news": 16,
       "rss-analyst": 6,
       "releases-atom": 1
@@ -223,7 +223,7 @@
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 4,
+        "size": 3,
         "score": 1,
         "members": [
           {
@@ -246,13 +246,6 @@
             "title": "Sweden Blocks ChatGPT and Claude in Government Offices, Copilot Stays - Pasquale Pillitteri",
             "at": "2026-10-24T07:27:30Z",
             "publisher": "Pasquale Pillitteri"
-          },
-          {
-            "id": "gnews:8ac950f0b116585e",
-            "source": "gnews-rss",
-            "title": "Sweden’s Government Offices blocks ChatGPT and Claude, approves Microsoft Copilot - Crypto Briefing",
-            "at": "2026-10-24T19:07:51Z",
-            "publisher": "Crypto Briefing"
           }
         ]
       },
@@ -397,24 +390,8 @@
           "title": "When do the clocks go back in 2026? UK 25 Oct, US 1 Nov - Pasquale Pillitteri"
         },
         {
-          "publisher": "Substack",
-          "title": "Make money doing the work you believe in - Substack"
-        },
-        {
-          "publisher": "Psychology Today",
-          "title": "Pay Attention to Your Attention - Psychology Today"
-        },
-        {
-          "publisher": "The Motley Fool",
-          "title": "Not Nvidia. Not Microsoft. This \"Magnificent Seven\" Stock Is the Cheapest Right Now. - The Motley Fool"
-        },
-        {
           "publisher": "Benzinga",
           "title": "Magnificent Seven ETF Pulls Back: What to Expect from Microsoft, Google, and Amazon Earnings - Benzinga"
-        },
-        {
-          "publisher": "How-To Geek",
-          "title": "I've always recommended naming Excel tables, and Microsoft just removed the annoying part - How-To Geek"
         },
         {
           "publisher": "Pasquale Pillitteri",
@@ -425,8 +402,12 @@
           "title": "Google launches ChromeOS Flex USB stick with refurbed for Windows 10 - Pasquale Pillitteri"
         },
         {
-          "publisher": "BioTecNika",
-          "title": "Focus Area Science Technology Summer Fellowship 2027 | Applications Invited - BioTecNika"
+          "publisher": "Poosh",
+          "title": "How to Build a Workday That Actually Works for You - Poosh"
+        },
+        {
+          "publisher": "The News International",
+          "title": "Microsoft MAI-DxO beats doctors at diagnosis, study finds - The News International"
         }
       ],
       "gnews_pool_dropped": 0,
@@ -434,7 +415,7 @@
     },
     "gnews_near_misses": [
       {
-        "score": 0.652,
+        "score": 0.658,
         "blocked": "time-window",
         "hours_apart": 29.4,
         "a": {
@@ -458,30 +439,7 @@
         ]
       },
       {
-        "score": 0.42,
-        "blocked": "time-window",
-        "hours_apart": 53.9,
-        "a": {
-          "id": "rss:testingcatalog:e1c2f0e8ac548ef0",
-          "source": "rss-lab",
-          "title": "Canva launches Craft image model with 2K output and API",
-          "at": "2026-10-23T08:25:51Z"
-        },
-        "b": {
-          "id": "gnews:e374c1bfd6e95b26",
-          "source": "gnews-rss",
-          "title": "Canva Enters AI Image Generation Race With In-House Canva Craft Model - AI Insider",
-          "at": "2026-10-25T14:20:59Z"
-        },
-        "shared": [
-          "canva",
-          "craft",
-          "imag",
-          "model"
-        ]
-      },
-      {
-        "score": 0.369,
+        "score": 0.371,
         "blocked": "thin-overlap",
         "hours_apart": 5.7,
         "a": {
@@ -502,7 +460,7 @@
         ]
       },
       {
-        "score": 0.338,
+        "score": 0.336,
         "blocked": "below-threshold",
         "hours_apart": 1,
         "a": {
@@ -525,7 +483,7 @@
         ]
       },
       {
-        "score": 0.273,
+        "score": 0.272,
         "blocked": "below-threshold",
         "hours_apart": 13.4,
         "a": {
@@ -568,7 +526,7 @@
         ]
       },
       {
-        "score": 0.255,
+        "score": 0.256,
         "blocked": "thin-overlap",
         "hours_apart": 20.2,
         "a": {
@@ -590,30 +548,51 @@
       },
       {
         "score": 0.246,
-        "blocked": "time-window",
-        "hours_apart": 619.7,
+        "blocked": "thin-overlap",
+        "hours_apart": 473.5,
         "a": {
-          "id": "rss:google-research:5cc8f180d7d24936",
+          "id": "rss:cursor:320c088cf61127c8",
           "source": "rss-lab",
-          "title": "How Diffusion Controller unifies and simplifies AI image generation",
-          "at": "2026-09-29T18:38:27Z"
+          "title": "Remote control for local agents",
+          "at": "2026-10-06T00:00:00Z"
         },
         "b": {
-          "id": "gnews:e374c1bfd6e95b26",
+          "id": "gnews:166c706fdbb8ad4a",
           "source": "gnews-rss",
-          "title": "Canva Enters AI Image Generation Race With In-House Canva Craft Model - AI Insider",
-          "at": "2026-10-25T14:20:59Z"
+          "title": "😺 Walmart announces AI shopping controls - The Neuron",
+          "at": "2026-10-25T17:32:45Z"
         },
         "shared": [
+          "control"
+        ]
+      },
+      {
+        "score": 0.243,
+        "blocked": "time-window",
+        "hours_apart": 106.4,
+        "a": {
+          "id": "rss:nvidia-dev:c50dcf48a1f1a39a",
+          "source": "rss-lab",
+          "title": "How NVIDIA OpenShell Reference Architecture Secures and Governs AI Agent Workloads at Scale",
+          "at": "2026-10-21T09:50:14Z"
+        },
+        "b": {
+          "id": "gnews:2e4d3e3306b8936c",
+          "source": "gnews-rss",
+          "title": "Nvidia wraps OpenShell around full-stack silicon to stop AI agents going rogue - SDxCentral",
+          "at": "2026-10-25T20:12:58Z"
+        },
+        "shared": [
+          "nvidia",
+          "openshell",
           "ai",
-          "imag",
-          "generation"
+          "agent"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.652,
+        "score": 0.658,
         "blocked": "time-window",
         "hours_apart": 29.4,
         "a": {
@@ -637,7 +616,7 @@
         ]
       },
       {
-        "score": 0.502,
+        "score": 0.492,
         "blocked": "time-window",
         "hours_apart": 53.8,
         "a": {
@@ -658,7 +637,7 @@
         ]
       },
       {
-        "score": 0.421,
+        "score": 0.423,
         "blocked": "thin-overlap",
         "hours_apart": 14.6,
         "a": {
@@ -679,30 +658,7 @@
         ]
       },
       {
-        "score": 0.42,
-        "blocked": "time-window",
-        "hours_apart": 53.9,
-        "a": {
-          "id": "rss:testingcatalog:e1c2f0e8ac548ef0",
-          "source": "rss-lab",
-          "title": "Canva launches Craft image model with 2K output and API",
-          "at": "2026-10-23T08:25:51Z"
-        },
-        "b": {
-          "id": "gnews:e374c1bfd6e95b26",
-          "source": "gnews-rss",
-          "title": "Canva Enters AI Image Generation Race With In-House Canva Craft Model - AI Insider",
-          "at": "2026-10-25T14:20:59Z"
-        },
-        "shared": [
-          "canva",
-          "craft",
-          "imag",
-          "model"
-        ]
-      },
-      {
-        "score": 0.388,
+        "score": 0.389,
         "blocked": "thin-overlap",
         "hours_apart": 1423.5,
         "a": {
@@ -723,7 +679,7 @@
         ]
       },
       {
-        "score": 0.383,
+        "score": 0.385,
         "blocked": "thin-overlap",
         "hours_apart": 35.9,
         "a": {
@@ -744,7 +700,7 @@
         ]
       },
       {
-        "score": 0.373,
+        "score": 0.375,
         "blocked": "thin-overlap",
         "hours_apart": 25,
         "a": {
@@ -765,7 +721,28 @@
         ]
       },
       {
-        "score": 0.369,
+        "score": 0.371,
+        "blocked": "thin-overlap",
+        "hours_apart": 5.7,
+        "a": {
+          "id": "gnews:283b1eeae3d705ee",
+          "source": "gnews-rss",
+          "title": "Claude Code jailbreaks a Kindle over USB, Amazon bloatware vanishes - Pasquale Pillitteri",
+          "at": "2026-10-25T17:09:19Z"
+        },
+        "b": {
+          "id": "gmail:1a172d348d2adf95",
+          "source": "gmail-news",
+          "title": "Claude Code Extensions",
+          "at": "2026-10-25T11:28:36Z"
+        },
+        "shared": [
+          "claude",
+          "code"
+        ]
+      },
+      {
+        "score": 0.37,
         "blocked": "thin-overlap",
         "hours_apart": 25.7,
         "a": {
@@ -791,97 +768,97 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 10,
+      "streak_ok": 11,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 186,
+      "streak_ok": 187,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 186,
+      "streak_ok": 187,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 186,
+      "streak_ok": 187,
       "streak_fail": 0,
-      "items_last": 32
+      "items_last": 33
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 186,
+      "streak_ok": 187,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 186,
+      "streak_ok": 187,
       "streak_fail": 0,
-      "items_last": 59
+      "items_last": 60
     },
     {
       "id": "hn_title",
       "state": "ok",
-      "streak_ok": 40,
+      "streak_ok": 41,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 98,
+      "streak_ok": 99,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "releases_atom",
       "state": "ok",
-      "streak_ok": 40,
+      "streak_ok": 41,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "rss_analyst",
       "state": "ok",
-      "streak_ok": 40,
+      "streak_ok": 41,
       "streak_fail": 0,
       "items_last": 6
     },
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 5,
+      "streak_ok": 6,
       "streak_fail": 0,
       "items_last": 151
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 186,
+      "streak_ok": 187,
       "streak_fail": 0,
       "items_last": 74
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 186,
+      "streak_ok": 187,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.007020555555555556,
+    "hours": 0.0074219444444444446,
     "stale": false
   },
   "hf": {
@@ -962,7 +939,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 59,
+    "count": 60,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -1011,7 +988,7 @@
       {
         "id": "hn:50233779",
         "tag": "rest",
-        "score": 310,
+        "score": 311,
         "text": "A 10-year-old CNN outperforms frontier LLMs for skin cancer diagnosis"
       },
       {
@@ -1363,8 +1340,8 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 32,
-    "pool": 268,
+    "items": 33,
+    "pool": 234,
     "corroborators": [
       {
         "id": "gnews:9954aafbb09502dc",
@@ -1379,14 +1356,6 @@
         "anchor_id": "rss:the-decoder:f3ab1007804ab0aa",
         "score": 1,
         "title": "Nvidia open-sources Flora to make robot video labeling 125x cheaper than GPT-6 Astra - The Decoder",
-        "publisher": "The Decoder",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:9db188e36595914b",
-        "anchor_id": "rss:the-decoder:f1807e982f1d4824",
-        "score": 1,
-        "title": "Anthropic co-founder Jack Clark moves his prediction for self-improving AI forward to 2027 - The Decoder",
         "publisher": "The Decoder",
         "self_repost": false
       },
@@ -1409,7 +1378,7 @@
       {
         "id": "gnews:adabb126e4825122",
         "anchor_id": "hn:50234725",
-        "score": 0.752,
+        "score": 0.75,
         "title": "OpenAI reveals isolated AI agents that talk through the CPU cache - Pasquale Pillitteri",
         "publisher": "Pasquale Pillitteri",
         "self_repost": false
@@ -1425,17 +1394,9 @@
       {
         "id": "gnews:9075b6f271d42064",
         "anchor_id": "hn:50219364",
-        "score": 0.73,
+        "score": 0.734,
         "title": "Sweden Blocks ChatGPT and Claude in Government Offices, Copilot Stays - Pasquale Pillitteri",
         "publisher": "Pasquale Pillitteri",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:8ac950f0b116585e",
-        "anchor_id": "hn:50219364",
-        "score": 0.709,
-        "title": "Sweden’s Government Offices blocks ChatGPT and Claude, approves Microsoft Copilot - Crypto Briefing",
-        "publisher": "Crypto Briefing",
         "self_repost": false
       }
     ],
@@ -1479,10 +1440,10 @@
         "tag": "rest"
       },
       {
-        "id": "gnews:1220c2263d018837",
-        "title": "AI platform identifies synergistic drug combination for resistant prostate cancer - Bioengineer.org",
-        "publisher": "Bioengineer.org",
-        "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQQzNoM2VHTmdpOU1NWGlGeVpPOGttdGVrQjFRWW9kZi00dDJ4Sm1IVS1aVDd4cDJnN2xsNml5Mm5BRzNpUGd5TW9TU0ZqRVI1cUVLWFk4NFJ0MUp3RGE1Zi1NQW1aeXVTV1g3MWF3eE1HZ3d2dzRzdDJBR2ZBQ0dIX2ppWXg5X1BaSDFQOEZpYXhnTTlrTmFrT29sNG9yQzRTWks0eWVnSV82UQ?oc=5",
+        "id": "gnews:2e4d3e3306b8936c",
+        "title": "Nvidia wraps OpenShell around full-stack silicon to stop AI agents going rogue - SDxCentral",
+        "publisher": "SDxCentral",
+        "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNMVhkUFVGZkxlUFhvOWM1a3Ywai1teFQ2T21UdHBWWGdYR0pzbEN5V2hWY1MwQk9xT21sb21TTHB3WW5qTVRrYW9lbVpQOG95XzVtQTlkT2R4enpTU1drM0JVNHFLRGphdzNpY1hFVEt3UGxzNWlwNVJ4SWI3UDhlWi1uVlVkLWNKQXB5bGhyQzZrQ3NUZDZTRWJIYkx2TTI4QjdIdXU5Nkc2ZkpfRnItUQ?oc=5",
         "tag": "rest"
       }
     ]

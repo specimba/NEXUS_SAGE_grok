@@ -17,7 +17,7 @@ export type RssSecurityRow = {
   cluster_id?: string;
 };
 
-export const RSS_SECURITY_AT = "2026-10-25T21:36:33Z";
+export const RSS_SECURITY_AT = "2026-10-25T21:40:18Z";
 
 export const RSS_SECURITY: RssSecurityRow[] = [
   { id: "rss-sec:securityweek:22cb0fea9668ebd0", lab: "securityweek" as const, title: "Former Unit 8200 Officers Raise $34 Million for Agentic SecOps Startup Mave", link: "https://www.securityweek.com/former-unit-8200-officers-raise-34-million-for-agentic-secops-startup-mave/", published: "2026-10-25T11:00:00Z", summary: "Founded in 2025 by Unit 8200 alumni, Tel Aviv-based Mave uses AI agents to investigate alerts across existing security stacks. The post Former Unit 8200 Officers Raise $34 Million for Agentic SecOps Startup Mave appeared first on SecurityWeek .", source: "rss-security" as const, tag: "rest" as const, first_seen: "2026-10-25T13:20:25Z", is_new: false, cluster_id: "cl:rss-sec:securityweek:22cb0fea9668ebd0" },
