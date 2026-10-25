@@ -23,6 +23,7 @@ export const SHELF: ShelfItem[] = [
   { href: "https://arxiv.org/abs/2610.31663", label: "arxiv.org/abs/2610.31663", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.31662", label: "arxiv.org/abs/2610.31662", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.31659", label: "arxiv.org/abs/2610.31659", reason: "arxiv-shelf" as const },
-  { href: "https://github.com/hyperlight-dev/hyperagent", label: "hyperlight-dev/hyperagent", reason: "github-search-shelf" as const },
-  { href: "https://github.com/roerbakei/sandboxai", label: "roerbakei/sandboxai", reason: "github-search-shelf" as const },
+  { href: "https://github.com/md-fazle-rabbi/fazle-ai-red-team-toolkit", label: "md-fazle-rabbi/fazle-ai-red-team-toolkit", reason: "github-search-shelf" as const },
+  { href: "https://github.com/seikaikyo/ai-red-team", label: "seikaikyo/ai-red-team", reason: "github-search-shelf" as const },
+  { href: "https://github.com/K11-Software-Solutions/k11techlab-llm-assurance-toolkit", label: "K11-Software-Solutions/k11techlab-llm-assurance-toolkit", reason: "github-search-shelf" as const },
 ];

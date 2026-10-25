@@ -2,6 +2,48 @@
 import type { LeadEntry } from "@/lib/lead-pick";
 
 export const LEAD_TODAY: LeadEntry | null = {
+  "date": "2026-10-25",
+  "at": "2026-10-25T03:20:48.698Z",
+  "crawl_at": "2026-10-25T03:20:27Z",
+  "pick_slot": "06:20",
+  "excluded": [
+    {
+      "cluster_id": "cl:hn:50205590",
+      "headline": "Unauthorized AI agents are reportedly accessing US bank accounts",
+      "reason": "age>=36h",
+      "sources": 3,
+      "age_h": 44,
+      "pub": "HN"
+    },
+    {
+      "cluster_id": "cl:rss:the-decoder:6366c91429804481",
+      "headline": "Canva launches Craft, its first in-house image model",
+      "reason": "age>=36h",
+      "sources": 2,
+      "age_h": 39,
+      "pub": "THE"
+    },
+    {
+      "cluster_id": "cl:rss:deepmind:851107eacfc8ba0f",
+      "headline": "Gemini 4 Argon: Built to solve your hardest problems",
+      "reason": "age>=36h",
+      "sources": 2,
+      "age_h": 275,
+      "pub": "DMD"
+    }
+  ],
+  "cluster_id": "cl:hn:50219364",
+  "headline": "Sweden's Government Offices will block ChatGPT and Claude on staff computers",
+  "url": "https://twitter.com/intcyberdigest/status/2113815992984080865",
+  "sources": 2,
+  "sig": 4,
+  "reason": "picked",
+  "pub": "HN",
+  "first_at": "2026-10-24T07:27:30.000Z",
+  "age_band": "<24h"
+};
+
+export const LEAD_YESTERDAY: LeadEntry | null = {
   "date": "2026-10-24",
   "at": "2026-10-24T13:20:47.233Z",
   "crawl_at": "2026-10-24T13:20:25Z",
@@ -19,99 +61,10 @@ export const LEAD_TODAY: LeadEntry | null = {
   "note": "repick: lead older than 12h since pick"
 };
 
-export const LEAD_YESTERDAY: LeadEntry | null = {
-  "date": "2026-10-23",
-  "at": "2026-10-23T03:20:43.922Z",
-  "crawl_at": "2026-10-23T03:20:26Z",
-  "pick_slot": "06:20",
-  "excluded": [
-    {
-      "cluster_id": "cl:rss:openai:95dedf578de78f3e",
-      "headline": "OpenAI models are coming to Google Cloud",
-      "reason": "age>=36h",
-      "sources": 5,
-      "age_h": 39,
-      "pub": "OAI"
-    },
-    {
-      "cluster_id": "cl:hn:50177795",
-      "headline": "Anthropic disclosed an $80.7B net loss for the first half of 2026",
-      "reason": "age>=36h",
-      "sources": 3,
-      "age_h": 45,
-      "pub": "HN"
-    },
-    {
-      "cluster_id": "cl:gnews:43084c4abbca1864",
-      "headline": "Gemini Tarot Horoscope Today, October 23, 2026: Confidence will increase today, business will be profitable",
-      "reason": "GNW_ONLY",
-      "sources": 2,
-      "age_h": 3
-    },
-    {
-      "cluster_id": "cl:rss:mistral:1ef243007176e85c",
-      "headline": "Introducing Mistral Large 4",
-      "reason": "age>=36h",
-      "sources": 2,
-      "age_h": 399,
-      "pub": "MIS"
-    },
-    {
-      "cluster_id": "cl:rss:openai:de9db6f384cbc788",
-      "headline": "Patch the Planet: global response coordination as agents uncover critical vulnerabilities",
-      "reason": "age>=36h",
-      "sources": 2,
-      "age_h": 44,
-      "pub": "OAI"
-    },
-    {
-      "cluster_id": "cl:rss:openai:64ddfb139fec8a1c",
-      "headline": "Using thousands of AI agents to uncover new leads in biological data",
-      "reason": "age>=36h",
-      "sources": 2,
-      "age_h": 46,
-      "pub": "OAI"
-    },
-    {
-      "cluster_id": "cl:hn:50183253",
-      "headline": "AI agent fixed the bug, but what else did it change?",
-      "reason": "age>=36h",
-      "sources": 2,
-      "age_h": 36,
-      "pub": "HN"
-    },
-    {
-      "cluster_id": "cl:hn:50182171",
-      "headline": "Anthropic to publicly file for IPO as early as Friday, sources say",
-      "reason": "age>=36h",
-      "sources": 2,
-      "age_h": 37,
-      "pub": "HN"
-    },
-    {
-      "cluster_id": "cl:rss:deepmind:851107eacfc8ba0f",
-      "headline": "Gemini 4 Argon: Built to solve your hardest problems",
-      "reason": "age>=36h",
-      "sources": 2,
-      "age_h": 227,
-      "pub": "DMD"
-    }
-  ],
-  "cluster_id": "cl:hn:50188944",
-  "headline": "Anthropic opens research preview of Claude Duet, a agent for professionals",
-  "url": "https://www.reuters.com/technology/anthropic-unveils-claude-duet-ai-agent-app-2026-10-21/",
-  "sources": 2,
-  "sig": 2,
-  "reason": "picked",
-  "pub": "HN",
-  "first_at": "2026-10-21T23:12:27.000Z",
-  "age_band": "24–36h"
-};
-
 export const LEAD_HELD = false;
 
 /** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is >48h old (PASS-L). */
 export const LEAD_FIRST_AT: string | null = "2026-10-24T07:27:30.000Z";
 
 /** Date of the latest real pick (never a HELD entry) — the HELD card's "last pick" (UX-1). */
-export const LEAD_LAST_PICK: string | null = "2026-10-24";
+export const LEAD_LAST_PICK: string | null = "2026-10-25";

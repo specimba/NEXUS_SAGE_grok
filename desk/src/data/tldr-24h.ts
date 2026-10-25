@@ -3,30 +3,23 @@ import type { Tldr } from "@/lib/tldr-24h";
 
 export const TLDR_24H: Tldr = {
   "schema": 1,
-  "crawl_at": "2026-10-24T18:20:30Z",
-  "date": "2026-10-24",
+  "crawl_at": "2026-10-25T03:20:27Z",
+  "date": "2026-10-25",
   "bullets": [
+    {
+      "id": "cl:rss:the-decoder:c708c54a38c204c3",
+      "title": "OpenAI's isolated AI agents found ways to talk to each other through CPU cache",
+      "url": "https://the-decoder.com/openais-isolated-ai-agents-found-ways-to-talk-to-each-other-through-cpu-cache/",
+      "at": "2026-10-24T11:18:17Z",
+      "sources": 2
+    },
     {
       "id": "cl:hn:50219364",
       "title": "Sweden's Government Offices will block ChatGPT and Claude on staff computers",
       "url": "https://twitter.com/intcyberdigest/status/2113815992984080865",
       "at": "2026-10-24T08:51:06Z",
       "sources": 2
-    },
-    {
-      "id": "cl:rss:the-decoder:6366c91429804481",
-      "title": "Canva launches Craft, its first in-house image model",
-      "url": "https://the-decoder.com/canva-launches-craft-its-first-in-house-image-model/",
-      "at": "2026-10-23T22:17:24Z",
-      "sources": 2
-    },
-    {
-      "id": "cl:rss:the-decoder:3cec67123ef466bd",
-      "title": "Chinese AI model Kimi K3.1 Pro is closing in on Anthropic's Claude Opus 5.5",
-      "url": "https://the-decoder.com/chinese-ai-model-kimi-k3-1-pro-is-closing-in-on-anthropics-claude-opus-5-5/",
-      "at": "2026-10-23T19:03:11Z",
-      "sources": 2
     }
   ],
-  "quiet": false
+  "quiet": true
 };

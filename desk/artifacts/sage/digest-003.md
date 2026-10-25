@@ -1,27 +1,27 @@
 # SAGE digest pack
-compiled 2026-10-24T18:20:52.120Z
-source free-ingest digest refresh 2026-10-24T18:20:52.120Z · cycle 003 · lead hf-incident · unlock:live
+compiled 2026-10-25T03:20:48.879Z
+source free-ingest digest refresh 2026-10-25T03:20:48.879Z · cycle 003 · lead hf-incident · unlock:live
 lead_policy unlock — no new HF primary 03 Sep
 
 ## Lead
 Sweden's Government Offices will block ChatGPT and Claude on staff computers [high]
-2 SRC · sig 4 · pick 2026-10-24
+2 SRC · sig 4 · pick 2026-10-25
 MOVE Digest/Voice follow Brief lead · cycle label 003
 UNLOCK IF Next 06:11 Istanbul pick
 
 ## Files
 ### [lead / other / high] Sweden's Government Offices will block ChatGPT and Claude on staff computers
-2 SRC · sig 4 · pick 2026-10-24
+2 SRC · sig 4 · pick 2026-10-25
 - stamp live
-- frozen 2026-10-24T13:20:47.233Z
-- pick 2026-10-24
+- frozen 2026-10-25T03:20:48.698Z
+- pick 2026-10-25
 1. Follow LEAD_TODAY · never invent
 2. Cycle label stays 003
 Done when: Digest lead equals Brief LEAD_TODAY title
 
-### [companion / other / medium] MiniMax-M3.1-Flash
-2 SRC · sig 2
-- 2 SRC
+### [companion / other / medium] Unauthorized AI agents are reportedly accessing US bank accounts
+3 SRC · sig 2
+- 3 SRC
 Done when: Listed under Digest lead
 
 ## Dropped

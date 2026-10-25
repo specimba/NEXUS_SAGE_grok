@@ -7,15 +7,15 @@ import type { DigestUnlockSnapshot } from "@/lib/digest-unlock";
 export const DIGEST_UNLOCK: DigestUnlockSnapshot = {
   "schema": 1,
   "cycleId": "003",
-  "pickDate": "2026-10-24",
-  "frozenAt": "2026-10-24T13:20:47.233Z",
+  "pickDate": "2026-10-25",
+  "frozenAt": "2026-10-25T03:20:48.698Z",
   "leadId": "cl:hn:50219364",
   "lead": {
     "id": "cl:hn:50219364",
     "kind": "lead",
     "title": "Sweden's Government Offices will block ChatGPT and Claude on staff computers",
-    "take": "2 SRC · sig 4 · pick 2026-10-24",
-    "why": "repick: lead older than 12h since pick",
+    "take": "2 SRC · sig 4 · pick 2026-10-25",
+    "why": "LEAD_TODAY · picked · frozen at daily pick",
     "move": "Digest/Voice follow Brief lead · cycle label 003",
     "url": "https://twitter.com/intcyberdigest/status/2113815992984080865",
     "sources": 2,
@@ -23,14 +23,14 @@ export const DIGEST_UNLOCK: DigestUnlockSnapshot = {
   },
   "rows": [
     {
-      "id": "cl:hn:50208084",
+      "id": "cl:hn:50205590",
       "kind": "companion",
-      "title": "MiniMax-M3.1-Flash",
-      "take": "2 SRC · sig 2",
+      "title": "Unauthorized AI agents are reportedly accessing US bank accounts",
+      "take": "3 SRC · sig 2",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
-      "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash",
-      "sources": 2,
+      "url": "https://www.msn.com/en-us/news/other/unauthorized-ai-agents-are-reportedly-already-accessing-us-bank-accounts/ar-AA2fQDti",
+      "sources": 3,
       "sig": 2
     }
   ]
