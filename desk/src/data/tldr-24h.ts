@@ -3,9 +3,16 @@ import type { Tldr } from "@/lib/tldr-24h";
 
 export const TLDR_24H: Tldr = {
   "schema": 1,
-  "crawl_at": "2026-10-25T13:20:25Z",
+  "crawl_at": "2026-10-25T14:49:22Z",
   "date": "2026-10-25",
   "bullets": [
+    {
+      "id": "cl:rss:huggingnews:c05cc98130140c50",
+      "title": "Sweden Blocks ChatGPT and Claude on Government Staff Computers",
+      "url": "https://huggingnews.com/ai/sweden-blocks-chatgpt-and-claude-on-government-staff-computers-046d7527",
+      "at": "2026-10-25T12:53:21Z",
+      "sources": 4
+    },
     {
       "id": "cl:rss:the-decoder:c708c54a38c204c3",
       "title": "OpenAI's isolated AI agents found ways to talk to each other through CPU cache",
@@ -14,11 +21,11 @@ export const TLDR_24H: Tldr = {
       "sources": 3
     },
     {
-      "id": "cl:hn:50219364",
-      "title": "Sweden's Government Offices will block ChatGPT and Claude on staff computers",
-      "url": "https://twitter.com/intcyberdigest/status/2113815992984080865",
-      "at": "2026-10-24T19:07:51Z",
-      "sources": 3
+      "id": "cl:rss:testingcatalog:61a7fb23a0268e60",
+      "title": "Google AI Studio prepares new Managed Agents hub",
+      "url": "https://www.testingcatalog.com/google-ai-studio-prepares-new-managed-agents-hub/",
+      "at": "2026-10-25T13:33:07Z",
+      "sources": 2
     },
     {
       "id": "cl:rss:the-decoder:f3ab1007804ab0aa",
