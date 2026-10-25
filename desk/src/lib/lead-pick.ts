@@ -485,10 +485,14 @@ export function decidePick(h: LeadHistory, clusters: WireCluster[], opts: PickOp
   };
   if (top) {
     const first = groupFirstAt(byId.get(top.id)!, opts.memberAt);
+    // Re-crowning the incumbent keeps its original pick time, so the 12h refresh clock (decideLeadRefresh) is not reset.
+    const cur = currentLead(h);
+    const incumbent = cur && cur.reason !== "held" && cur.cluster_id === top.id ? cur : null;
     return {
       action: "picked",
       entry: {
         ...base,
+        ...(incumbent ? { at: incumbent.at } : {}),
         cluster_id: top.id,
         headline: top.title,
         url: top.url,
