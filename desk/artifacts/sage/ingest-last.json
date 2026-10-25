@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-25T18:20:41Z",
+  "stamped_at": "2026-10-25T21:36:33Z",
   "config_hash": "1ba30989ff76",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,7 +11,7 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 115,
+      "duration_ms": 186,
       "paused_until": null,
       "reason": null
     },
@@ -20,7 +20,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 3214,
+      "duration_ms": 3195,
       "paused_until": null,
       "reason": null
     },
@@ -29,7 +29,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 392,
+      "duration_ms": 330,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 163,
+      "duration_ms": 134,
       "paused_until": null,
       "reason": null
     },
@@ -46,8 +46,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 60,
-      "duration_ms": 8337,
+      "rows": 59,
+      "duration_ms": 8288,
       "paused_until": null,
       "reason": null
     },
@@ -56,7 +56,7 @@
       "label": "HN title",
       "status": "ok",
       "rows": 2,
-      "duration_ms": 8210,
+      "duration_ms": 8185,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 151,
-      "duration_ms": 25103,
+      "duration_ms": 24426,
       "paused_until": null,
       "reason": null
     },
@@ -74,7 +74,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 74,
-      "duration_ms": 12094,
+      "duration_ms": 12110,
       "paused_until": null,
       "reason": null
     },
@@ -83,7 +83,7 @@
       "label": "analyst RSS",
       "status": "ok",
       "rows": 6,
-      "duration_ms": 2711,
+      "duration_ms": 2659,
       "paused_until": null,
       "reason": null
     },
@@ -92,7 +92,7 @@
       "label": "releases",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 6685,
+      "duration_ms": 6681,
       "paused_until": null,
       "reason": null
     },
@@ -100,8 +100,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 31,
-      "duration_ms": 6563,
+      "rows": 32,
+      "duration_ms": 6365,
       "paused_until": null,
       "reason": null
     },
@@ -110,7 +110,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 324,
+      "duration_ms": 295,
       "paused_until": null,
       "reason": null
     },
@@ -119,16 +119,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4441,
+      "duration_ms": 4547,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 78352,
-    "sources_wall_ms": 25104,
-    "papers_lane_ms": 3891,
-    "slowest_source_ms": 25103,
+    "sources_ms": 77401,
+    "sources_wall_ms": 24427,
+    "papers_lane_ms": 3849,
+    "slowest_source_ms": 24426,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -146,36 +146,76 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 25708,
-    "startup_ms": 53,
-    "main_ms": 25729
+    "wall_ms": 25092,
+    "startup_ms": 56,
+    "main_ms": 25112
   },
   "multi_source_independent": 7,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
     "multi_source_independent": 7,
-    "multi_source_raw": 8,
-    "self_reposts": 1,
+    "multi_source_raw": 7,
+    "self_reposts": 0,
     "items_in": 339,
     "clusters_out": 301,
     "collapsed": 38,
     "multi_source": 7,
-    "multi_member": 18,
+    "multi_member": 17,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 45,
+    "new_items": 22,
     "per_source": {
-      "hn-algolia": 60,
+      "hn-algolia": 59,
       "rss-lab": 151,
       "rss-security": 74,
-      "gnews-rss": 31,
+      "gnews-rss": 32,
       "gmail-news": 16,
       "rss-analyst": 6,
       "releases-atom": 1
     },
     "multi_source_clusters": [
+      {
+        "title": "OpenAI's isolated AI agents found ways to talk to each other through CPU cache",
+        "sources": [
+          "rss-lab",
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 4,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:50234725",
+            "source": "hn-algolia",
+            "title": "OpenAI's isolated AI agents found ways to talk to each other through CPU cache",
+            "at": "2026-10-25T18:44:11Z",
+            "publisher": null
+          },
+          {
+            "id": "rss:the-decoder:c708c54a38c204c3",
+            "source": "rss-lab",
+            "title": "OpenAI's isolated AI agents found ways to talk to each other through CPU cache",
+            "at": "2026-10-24T11:12:36Z",
+            "publisher": "the-decoder"
+          },
+          {
+            "id": "gnews:98c48b167469f2f6",
+            "source": "gnews-rss",
+            "title": "OpenAI's isolated AI agents found ways to talk to each other through CPU cache - The Decoder",
+            "at": "2026-10-24T11:18:17Z",
+            "publisher": "The Decoder"
+          },
+          {
+            "id": "gnews:adabb126e4825122",
+            "source": "gnews-rss",
+            "title": "OpenAI reveals isolated AI agents that talk through the CPU cache - Pasquale Pillitteri",
+            "at": "2026-10-25T08:53:03Z",
+            "publisher": "Pasquale Pillitteri"
+          }
+        ]
+      },
       {
         "title": "Sweden Blocks ChatGPT and Claude on Government Staff Computers",
         "sources": [
@@ -317,38 +357,6 @@
         ]
       },
       {
-        "title": "OpenAI's isolated AI agents found ways to talk to each other through CPU cache",
-        "sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "size": 3,
-        "score": 1,
-        "members": [
-          {
-            "id": "rss:the-decoder:c708c54a38c204c3",
-            "source": "rss-lab",
-            "title": "OpenAI's isolated AI agents found ways to talk to each other through CPU cache",
-            "at": "2026-10-24T11:12:36Z",
-            "publisher": "the-decoder"
-          },
-          {
-            "id": "gnews:98c48b167469f2f6",
-            "source": "gnews-rss",
-            "title": "OpenAI's isolated AI agents found ways to talk to each other through CPU cache - The Decoder",
-            "at": "2026-10-24T11:18:17Z",
-            "publisher": "The Decoder"
-          },
-          {
-            "id": "gnews:adabb126e4825122",
-            "source": "gnews-rss",
-            "title": "OpenAI reveals isolated AI agents that talk through the CPU cache - Pasquale Pillitteri",
-            "at": "2026-10-25T08:53:03Z",
-            "publisher": "Pasquale Pillitteri"
-          }
-        ]
-      },
-      {
         "title": "OpenMobile-2 proves open-source smartphone agents can rival proprietary models",
         "sources": [
           "rss-lab",
@@ -374,25 +382,7 @@
         ]
       }
     ],
-    "self_repost_clusters": [
-      {
-        "title": "Securing our frontier model training environment",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:5e303f3770a3dc4b",
-            "publisher": "OpenAI",
-            "title": "Securing our frontier model training environment - OpenAI"
-          }
-        ]
-      }
-    ],
+    "self_repost_clusters": [],
     "ai_relevance": {
       "rss_lab_dropped": [
         {
@@ -403,16 +393,32 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "Benzinga",
-          "title": "Magnificent Seven ETF Pulls Back: What to Expect from Microsoft, Google, and Amazon Earnings - Benzinga"
+          "publisher": "Pasquale Pillitteri",
+          "title": "When do the clocks go back in 2026? UK 25 Oct, US 1 Nov - Pasquale Pillitteri"
+        },
+        {
+          "publisher": "Substack",
+          "title": "Make money doing the work you believe in - Substack"
+        },
+        {
+          "publisher": "Psychology Today",
+          "title": "Pay Attention to Your Attention - Psychology Today"
         },
         {
           "publisher": "The Motley Fool",
           "title": "Not Nvidia. Not Microsoft. This \"Magnificent Seven\" Stock Is the Cheapest Right Now. - The Motley Fool"
         },
         {
+          "publisher": "Benzinga",
+          "title": "Magnificent Seven ETF Pulls Back: What to Expect from Microsoft, Google, and Amazon Earnings - Benzinga"
+        },
+        {
           "publisher": "How-To Geek",
           "title": "I've always recommended naming Excel tables, and Microsoft just removed the annoying part - How-To Geek"
+        },
+        {
+          "publisher": "Pasquale Pillitteri",
+          "title": "Nanbeige4.3-33B arrives open source and takes on Qwen3.8-27B in coding - Pasquale Pillitteri"
         },
         {
           "publisher": "Pasquale Pillitteri",
@@ -421,34 +427,14 @@
         {
           "publisher": "BioTecNika",
           "title": "Focus Area Science Technology Summer Fellowship 2027 | Applications Invited - BioTecNika"
-        },
-        {
-          "publisher": "ET Government",
-          "title": "Seventh by whose count? Microsoft’s cyber ranking and the limits of vendor data - ET Government"
-        },
-        {
-          "publisher": "Pasquale Pillitteri",
-          "title": "How to turn off the Samsung TV microphone for dogs and babies - Pasquale Pillitteri"
-        },
-        {
-          "publisher": "Pasquale Pillitteri",
-          "title": "X Money arrives on the like button, long press sends $1 - Pasquale Pillitteri"
-        },
-        {
-          "publisher": "Pasquale Pillitteri",
-          "title": "NVIDIA Korea confirms RTX Spark will not replace x86 gaming PCs - Pasquale Pillitteri"
-        },
-        {
-          "publisher": "alphaXiv",
-          "title": "Native Real-Time Interactive Omni Intelligence: A Unified Framework - alphaXiv"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 35
+      "hn_dropped": 36
     },
     "gnews_near_misses": [
       {
-        "score": 0.651,
+        "score": 0.652,
         "blocked": "time-window",
         "hours_apart": 29.4,
         "a": {
@@ -472,163 +458,162 @@
         ]
       },
       {
-        "score": 0.486,
-        "blocked": "below-threshold",
-        "hours_apart": 18.5,
+        "score": 0.42,
+        "blocked": "time-window",
+        "hours_apart": 53.9,
         "a": {
-          "id": "hn:50225552",
-          "source": "hn-algolia",
-          "title": "OpenAI says it will no longer train its AI models on the live internet",
-          "at": "2026-10-24T21:31:16Z"
-        },
-        "b": {
-          "id": "gnews:d909b594a08bed27",
-          "source": "gnews-rss",
-          "title": "OpenAI resumes training AI, but without Internet - Taipei Times",
-          "at": "2026-10-25T16:00:00Z"
-        },
-        "shared": [
-          "openai",
-          "train",
-          "ai",
-          "internet"
-        ]
-      },
-      {
-        "score": 0.417,
-        "blocked": "below-threshold",
-        "hours_apart": 7,
-        "a": {
-          "id": "rss:the-decoder:ecfe95db9f5a039c",
+          "id": "rss:testingcatalog:e1c2f0e8ac548ef0",
           "source": "rss-lab",
-          "title": "OpenMobile-2 proves open-source smartphone agents can rival proprietary models",
-          "at": "2026-10-25T06:55:22Z"
+          "title": "Canva launches Craft image model with 2K output and API",
+          "at": "2026-10-23T08:25:51Z"
         },
         "b": {
-          "id": "gnews:be0cdba6a39a3033",
+          "id": "gnews:e374c1bfd6e95b26",
           "source": "gnews-rss",
-          "title": "OpenMobile-2: open smartphone agents close in on closed rivals, and app variety mattered more than data volume - eGamers.io",
-          "at": "2026-10-25T13:56:48Z"
+          "title": "Canva Enters AI Image Generation Race With In-House Canva Craft Model - AI Insider",
+          "at": "2026-10-25T14:20:59Z"
         },
         "shared": [
-          "openmobil",
-          "2",
-          "smartphon",
-          "agent",
-          "rival"
+          "canva",
+          "craft",
+          "imag",
+          "model"
         ]
       },
       {
-        "score": 0.413,
+        "score": 0.369,
         "blocked": "thin-overlap",
-        "hours_apart": 91.9,
+        "hours_apart": 5.7,
         "a": {
-          "id": "rss:testingcatalog:a9b51c80778796b4",
-          "source": "rss-lab",
-          "title": "Anthropic opens Claude Duet preview for US Pro and Max users",
-          "at": "2026-10-21T20:37:58Z"
+          "id": "gnews:283b1eeae3d705ee",
+          "source": "gnews-rss",
+          "title": "Claude Code jailbreaks a Kindle over USB, Amazon bloatware vanishes - Pasquale Pillitteri",
+          "at": "2026-10-25T17:09:19Z"
         },
         "b": {
-          "id": "gnews:2d1d1823fe268f88",
-          "source": "gnews-rss",
-          "title": "Claude Duet: Anthropic’s Proactive AI Agent for the Job - Basic Tutorials",
-          "at": "2026-10-25T16:32:05Z"
-        },
-        "shared": [
-          "anthropic",
-          "claude",
-          "duet"
-        ]
-      },
-      {
-        "score": 0.289,
-        "blocked": "below-threshold",
-        "hours_apart": 1.5,
-        "a": {
-          "id": "gnews:2d1d1823fe268f88",
-          "source": "gnews-rss",
-          "title": "Claude Duet: Anthropic’s Proactive AI Agent for the Job - Basic Tutorials",
-          "at": "2026-10-25T16:32:05Z"
-        },
-        "b": {
-          "id": "gmail:1a173983a77b8484",
+          "id": "gmail:1a172d348d2adf95",
           "source": "gmail-news",
-          "title": "Carbon X, Kimi K3.1, Minimax M3.1, Deep Infer, Claude Duet, Dessa: AI NEWS",
-          "at": "2026-10-25T15:02:29Z"
+          "title": "Claude Code Extensions",
+          "at": "2026-10-25T11:28:36Z"
         },
         "shared": [
           "claude",
-          "duet",
-          "ai"
+          "code"
         ]
       },
       {
-        "score": 0.282,
+        "score": 0.338,
+        "blocked": "below-threshold",
+        "hours_apart": 1,
+        "a": {
+          "id": "rss:huggingnews:1c63f74d489f691c",
+          "source": "rss-lab",
+          "title": "Open-Source Projects Unlock AI Performance on Nvidia RTX 20, 30, and 40 GPUs",
+          "at": "2026-10-25T17:23:44Z"
+        },
+        "b": {
+          "id": "gnews:ab6116911ce61e99",
+          "source": "gnews-rss",
+          "title": "GPU-Unlock launches, unlocking FP16 and BF16 on RTX 30 for local AI - Pasquale Pillitteri",
+          "at": "2026-10-25T18:22:35Z"
+        },
+        "shared": [
+          "unlock",
+          "ai",
+          "rtx",
+          "30"
+        ]
+      },
+      {
+        "score": 0.273,
+        "blocked": "below-threshold",
+        "hours_apart": 13.4,
+        "a": {
+          "id": "rss:huggingnews:77005e6ef3f0e56c",
+          "source": "rss-lab",
+          "title": "Nvidia CEO Jensen Huang Says Memory Chip Glut Unlikely by 2029",
+          "at": "2026-10-25T06:24:15Z"
+        },
+        "b": {
+          "id": "gnews:5bb1c95e2ce46286",
+          "source": "gnews-rss",
+          "title": "Jensen Huang puts a $2,000-per-GPU yearly price on NVIDIA's AI Agent software - TweakTown",
+          "at": "2026-10-25T19:50:11Z"
+        },
+        "shared": [
+          "nvidia",
+          "jensen",
+          "huang"
+        ]
+      },
+      {
+        "score": 0.26,
         "blocked": "thin-overlap",
-        "hours_apart": 20.5,
+        "hours_apart": 100.6,
         "a": {
-          "id": "hn:50224320",
+          "id": "rss:mistral:6bf82841932d223c",
+          "source": "rss-lab",
+          "title": "Mistral Advances AI for Engineering with NVIDIA",
+          "at": "2026-10-21T12:00:20Z"
+        },
+        "b": {
+          "id": "gnews:c4beecb047382d81",
+          "source": "gnews-rss",
+          "title": "Mistral turns itself into a full AI stack to take on OpenAI and Google - Startup Fortune",
+          "at": "2026-10-25T16:38:31Z"
+        },
+        "shared": [
+          "mistral",
+          "ai"
+        ]
+      },
+      {
+        "score": 0.255,
+        "blocked": "thin-overlap",
+        "hours_apart": 20.2,
+        "a": {
+          "id": "hn:50225165",
           "source": "hn-algolia",
-          "title": "OpenAI's Plan to Protect the Internet Before Hackers Break It",
-          "at": "2026-10-24T19:30:14Z"
+          "title": "Show HN: Claude Code(and others) embedded in your app",
+          "at": "2026-10-24T20:54:27Z"
         },
         "b": {
-          "id": "gnews:d909b594a08bed27",
+          "id": "gnews:283b1eeae3d705ee",
           "source": "gnews-rss",
-          "title": "OpenAI resumes training AI, but without Internet - Taipei Times",
-          "at": "2026-10-25T16:00:00Z"
+          "title": "Claude Code jailbreaks a Kindle over USB, Amazon bloatware vanishes - Pasquale Pillitteri",
+          "at": "2026-10-25T17:09:19Z"
         },
         "shared": [
-          "openai",
-          "internet"
+          "claude",
+          "code"
         ]
       },
       {
-        "score": 0.277,
+        "score": 0.246,
         "blocked": "time-window",
-        "hours_apart": 768.4,
+        "hours_apart": 619.7,
         "a": {
-          "id": "rss:deepmind:68ead6b6af2b7144",
+          "id": "rss:google-research:5cc8f180d7d24936",
           "source": "rss-lab",
-          "title": "Advancing Private AI Compute with secure, server-side memory",
-          "at": "2026-09-23T16:00:57Z"
+          "title": "How Diffusion Controller unifies and simplifies AI image generation",
+          "at": "2026-09-29T18:38:27Z"
         },
         "b": {
-          "id": "gnews:c0669473d20f3139",
+          "id": "gnews:e374c1bfd6e95b26",
           "source": "gnews-rss",
-          "title": "Private AI Sales Agents - Trend Hunter",
-          "at": "2026-10-25T16:24:15Z"
+          "title": "Canva Enters AI Image Generation Race With In-House Canva Craft Model - AI Insider",
+          "at": "2026-10-25T14:20:59Z"
         },
         "shared": [
-          "privat",
-          "ai"
-        ]
-      },
-      {
-        "score": 0.272,
-        "blocked": "time-window",
-        "hours_apart": 123.9,
-        "a": {
-          "id": "rss:testingcatalog:350ed74684070d88",
-          "source": "rss-lab",
-          "title": "Meta prepares Muse Confidential VM for private AI work",
-          "at": "2026-10-20T12:29:47Z"
-        },
-        "b": {
-          "id": "gnews:c0669473d20f3139",
-          "source": "gnews-rss",
-          "title": "Private AI Sales Agents - Trend Hunter",
-          "at": "2026-10-25T16:24:15Z"
-        },
-        "shared": [
-          "privat",
-          "ai"
+          "ai",
+          "imag",
+          "generation"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.651,
+        "score": 0.652,
         "blocked": "time-window",
         "hours_apart": 29.4,
         "a": {
@@ -652,7 +637,7 @@
         ]
       },
       {
-        "score": 0.501,
+        "score": 0.502,
         "blocked": "time-window",
         "hours_apart": 53.8,
         "a": {
@@ -673,30 +658,7 @@
         ]
       },
       {
-        "score": 0.486,
-        "blocked": "below-threshold",
-        "hours_apart": 18.5,
-        "a": {
-          "id": "hn:50225552",
-          "source": "hn-algolia",
-          "title": "OpenAI says it will no longer train its AI models on the live internet",
-          "at": "2026-10-24T21:31:16Z"
-        },
-        "b": {
-          "id": "gnews:d909b594a08bed27",
-          "source": "gnews-rss",
-          "title": "OpenAI resumes training AI, but without Internet - Taipei Times",
-          "at": "2026-10-25T16:00:00Z"
-        },
-        "shared": [
-          "openai",
-          "train",
-          "ai",
-          "internet"
-        ]
-      },
-      {
-        "score": 0.422,
+        "score": 0.421,
         "blocked": "thin-overlap",
         "hours_apart": 14.6,
         "a": {
@@ -717,49 +679,26 @@
         ]
       },
       {
-        "score": 0.417,
-        "blocked": "below-threshold",
-        "hours_apart": 7,
+        "score": 0.42,
+        "blocked": "time-window",
+        "hours_apart": 53.9,
         "a": {
-          "id": "rss:the-decoder:ecfe95db9f5a039c",
+          "id": "rss:testingcatalog:e1c2f0e8ac548ef0",
           "source": "rss-lab",
-          "title": "OpenMobile-2 proves open-source smartphone agents can rival proprietary models",
-          "at": "2026-10-25T06:55:22Z"
+          "title": "Canva launches Craft image model with 2K output and API",
+          "at": "2026-10-23T08:25:51Z"
         },
         "b": {
-          "id": "gnews:be0cdba6a39a3033",
+          "id": "gnews:e374c1bfd6e95b26",
           "source": "gnews-rss",
-          "title": "OpenMobile-2: open smartphone agents close in on closed rivals, and app variety mattered more than data volume - eGamers.io",
-          "at": "2026-10-25T13:56:48Z"
+          "title": "Canva Enters AI Image Generation Race With In-House Canva Craft Model - AI Insider",
+          "at": "2026-10-25T14:20:59Z"
         },
         "shared": [
-          "openmobil",
-          "2",
-          "smartphon",
-          "agent",
-          "rival"
-        ]
-      },
-      {
-        "score": 0.413,
-        "blocked": "thin-overlap",
-        "hours_apart": 91.9,
-        "a": {
-          "id": "rss:testingcatalog:a9b51c80778796b4",
-          "source": "rss-lab",
-          "title": "Anthropic opens Claude Duet preview for US Pro and Max users",
-          "at": "2026-10-21T20:37:58Z"
-        },
-        "b": {
-          "id": "gnews:2d1d1823fe268f88",
-          "source": "gnews-rss",
-          "title": "Claude Duet: Anthropic’s Proactive AI Agent for the Job - Basic Tutorials",
-          "at": "2026-10-25T16:32:05Z"
-        },
-        "shared": [
-          "anthropic",
-          "claude",
-          "duet"
+          "canva",
+          "craft",
+          "imag",
+          "model"
         ]
       },
       {
@@ -784,7 +723,7 @@
         ]
       },
       {
-        "score": 0.387,
+        "score": 0.383,
         "blocked": "thin-overlap",
         "hours_apart": 35.9,
         "a": {
@@ -803,6 +742,48 @@
           "claude",
           "code"
         ]
+      },
+      {
+        "score": 0.373,
+        "blocked": "thin-overlap",
+        "hours_apart": 25,
+        "a": {
+          "id": "hn:50219875",
+          "source": "hn-algolia",
+          "title": "Claude Code slyly adding users' emails to outbound HTTP",
+          "at": "2026-10-24T10:26:30Z"
+        },
+        "b": {
+          "id": "gmail:1a172d348d2adf95",
+          "source": "gmail-news",
+          "title": "Claude Code Extensions",
+          "at": "2026-10-25T11:28:36Z"
+        },
+        "shared": [
+          "claude",
+          "code"
+        ]
+      },
+      {
+        "score": 0.369,
+        "blocked": "thin-overlap",
+        "hours_apart": 25.7,
+        "a": {
+          "id": "hn:50219641",
+          "source": "hn-algolia",
+          "title": "Took apart Claude Code, then turned it into a free course on harness engineering",
+          "at": "2026-10-24T09:48:38Z"
+        },
+        "b": {
+          "id": "gmail:1a172d348d2adf95",
+          "source": "gmail-news",
+          "title": "Claude Code Extensions",
+          "at": "2026-10-25T11:28:36Z"
+        },
+        "shared": [
+          "claude",
+          "code"
+        ]
       }
     ]
   },
@@ -810,97 +791,97 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 9,
+      "streak_ok": 10,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 185,
+      "streak_ok": 186,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 185,
+      "streak_ok": 186,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 185,
+      "streak_ok": 186,
       "streak_fail": 0,
-      "items_last": 31
+      "items_last": 32
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 185,
+      "streak_ok": 186,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 185,
+      "streak_ok": 186,
       "streak_fail": 0,
-      "items_last": 60
+      "items_last": 59
     },
     {
       "id": "hn_title",
       "state": "ok",
-      "streak_ok": 39,
+      "streak_ok": 40,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 97,
+      "streak_ok": 98,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "releases_atom",
       "state": "ok",
-      "streak_ok": 39,
+      "streak_ok": 40,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "rss_analyst",
       "state": "ok",
-      "streak_ok": 39,
+      "streak_ok": 40,
       "streak_fail": 0,
       "items_last": 6
     },
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 4,
+      "streak_ok": 5,
       "streak_fail": 0,
       "items_last": 151
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 185,
+      "streak_ok": 186,
       "streak_fail": 0,
       "items_last": 74
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 185,
+      "streak_ok": 186,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.007224166666666667,
+    "hours": 0.007020555555555556,
     "stale": false
   },
   "hf": {
@@ -981,7 +962,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 60,
+    "count": 59,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -998,7 +979,7 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 35,
+    "ai_dropped": 36,
     "url": "https://hn.algolia.com/api/v1/search",
     "title_queries": {
       "ok": true,
@@ -1028,22 +1009,22 @@
     },
     "sample": [
       {
-        "id": "hn:50214373",
-        "tag": "rest",
-        "score": 134,
-        "text": "Show HN: Corgi, a helpful {agent, terminal} multiplexer"
-      },
-      {
         "id": "hn:50233779",
         "tag": "rest",
-        "score": 91,
+        "score": 310,
         "text": "A 10-year-old CNN outperforms frontier LLMs for skin cancer diagnosis"
       },
       {
         "id": "hn:50231722",
         "tag": "rest",
-        "score": 70,
+        "score": 75,
         "text": "R/open source bans all solo projects and projects using LLMs"
+      },
+      {
+        "id": "hn:50222283",
+        "tag": "rest",
+        "score": 51,
+        "text": "Oai-math-revised: a community hub for revising OpenAI's math write-ups"
       }
     ]
   },
@@ -1126,6 +1107,20 @@
     "feeds_soft_fail": [],
     "sample": [
       {
+        "id": "rss:huggingnews:a479ab3a56a6b73d",
+        "lab": "huggingnews",
+        "tag": "rest",
+        "title": "SpaceX Closes $40B Debt Raise to Fund AI Compute Buildout",
+        "link": "https://huggingnews.com/ai/spacex-closes-40b-debt-raise-to-fund-ai-compute-buildout-3ece57a5"
+      },
+      {
+        "id": "rss:huggingnews:74ca9672139accea",
+        "lab": "huggingnews",
+        "tag": "rest",
+        "title": "AI Data Center Tenants Demand More Than $5 Million Daily Penalties for Construction Delays",
+        "link": "https://huggingnews.com/ai/ai-data-center-tenants-demand-more-than-5-million-daily-penalties-for-co-3cdeb80e"
+      },
+      {
         "id": "rss:huggingnews:b85e3a7d7f80049f",
         "lab": "huggingnews",
         "tag": "rest",
@@ -1138,20 +1133,6 @@
         "tag": "rest",
         "title": "Open-Source Projects Unlock AI Performance on Nvidia RTX 20, 30, and 40 GPUs",
         "link": "https://huggingnews.com/tech/open-source-projects-unlock-ai-performance-on-nvidia-rtx-20-30-and-40-gp-505eae13"
-      },
-      {
-        "id": "rss:huggingnews:adcf6aae8a38c875",
-        "lab": "huggingnews",
-        "tag": "rest",
-        "title": "GMO Internet CEO Blames Autonomous AI Tool for Brokerage Cyberattack",
-        "link": "https://huggingnews.com/cybersecurity/gmo-internet-ceo-blames-autonomous-ai-tool-for-brokerage-cyberattack-54af5a83"
-      },
-      {
-        "id": "rss:huggingnews:172ea688b25f777b",
-        "lab": "huggingnews",
-        "tag": "rest",
-        "title": "Anthropic Begins Work on Custom AI Chips to Rival OpenAI",
-        "link": "https://huggingnews.com/ai/anthropic-begins-work-on-custom-ai-chips-to-rival-openai-fa9982c4"
       }
     ]
   },
@@ -1382,8 +1363,8 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 31,
-    "pool": 266,
+    "items": 32,
+    "pool": 268,
     "corroborators": [
       {
         "id": "gnews:9954aafbb09502dc",
@@ -1391,6 +1372,14 @@
         "score": 1,
         "title": "Google AI Studio prepares new Managed Agents hub - TestingCatalog AI News",
         "publisher": "TestingCatalog AI News",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:c31f13db7afd8143",
+        "anchor_id": "rss:the-decoder:f3ab1007804ab0aa",
+        "score": 1,
+        "title": "Nvidia open-sources Flora to make robot video labeling 125x cheaper than GPT-6 Astra - The Decoder",
+        "publisher": "The Decoder",
         "self_repost": false
       },
       {
@@ -1411,7 +1400,7 @@
       },
       {
         "id": "gnews:98c48b167469f2f6",
-        "anchor_id": "rss:the-decoder:c708c54a38c204c3",
+        "anchor_id": "hn:50234725",
         "score": 1,
         "title": "OpenAI's isolated AI agents found ways to talk to each other through CPU cache - The Decoder",
         "publisher": "The Decoder",
@@ -1419,8 +1408,8 @@
       },
       {
         "id": "gnews:adabb126e4825122",
-        "anchor_id": "rss:the-decoder:c708c54a38c204c3",
-        "score": 0.744,
+        "anchor_id": "hn:50234725",
+        "score": 0.752,
         "title": "OpenAI reveals isolated AI agents that talk through the CPU cache - Pasquale Pillitteri",
         "publisher": "Pasquale Pillitteri",
         "self_repost": false
@@ -1436,7 +1425,7 @@
       {
         "id": "gnews:9075b6f271d42064",
         "anchor_id": "hn:50219364",
-        "score": 0.729,
+        "score": 0.73,
         "title": "Sweden Blocks ChatGPT and Claude in Government Offices, Copilot Stays - Pasquale Pillitteri",
         "publisher": "Pasquale Pillitteri",
         "self_repost": false
@@ -1448,14 +1437,6 @@
         "title": "Sweden’s Government Offices blocks ChatGPT and Claude, approves Microsoft Copilot - Crypto Briefing",
         "publisher": "Crypto Briefing",
         "self_repost": false
-      },
-      {
-        "id": "gnews:5e303f3770a3dc4b",
-        "anchor_id": "rss:openai:f8c156dba7886826",
-        "score": 1,
-        "title": "Securing our frontier model training environment - OpenAI",
-        "publisher": "OpenAI",
-        "self_repost": true
       }
     ],
     "http_status": 200,
@@ -1484,24 +1465,24 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:fd17a26a672e9cd9",
-        "title": "New IDC research reveals the real AI readiness gap: It's not models, it's data - iTnews",
-        "publisher": "iTnews",
-        "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNcFUybklZLVh0TVVBaHZVY19EY0x2YVZXWGJSbkxqNU92RG1xNWpBdF9Qa0NjVWJWOHVScHFCejYxdDhXWThzemduUl9ZMmdhZzl3MFZ0ajBmWHBCZ1lYS3I2Q0JYNFlzSm9DbW96UzVOT0NJSzd0TmpJVzNST0hXY3JyRkwzSk16UnI5YU9VOHV3aW9SVEpXX0N4a3ozS29kaE5SZ0l1ZmJVRWp0WkQ2SkxZcV9Bdw?oc=5",
+        "id": "gnews:40fd0b8f9ab6fad1",
+        "title": "Free AI Chatbot Ireland: $0 to $200 Tiers [2026] - tech-insider.org",
+        "publisher": "tech-insider.org",
+        "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTFBEaFgyMUdBblExTTg2cTZJNHdSQXB1d2JWalhPOHFFVGdaNUVKSGFiWmdtLWd6NnN2T1BOUjU0cnRXUUtfNElpQXBjbVRad1ZqSTJZM3hFUXY0enRMY0lUZEpfSU4wbjJnempPS3JyU0hoVk51bzdMMlB4U3Y?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:ee35abde2dafbd45",
-        "title": "AI needs to earn Australia’s trust - Capital Brief",
-        "publisher": "Capital Brief",
-        "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNMmprMEhZMDI5X2RCY3BEaWYtNGJNMWpfMmhjcmJyV1dkNFpBbjAzUlBtXzVpcGVpcC1LN2R2U2ZzODR2NE1BQUFUa0hOdm1PODRPQnBqTkoyd0RmSFl6amRHekR2ZFpUaFVDMlNYOEg0NzB4WnBvNXhqYXJBZGlHcTJsaDBQMlY3cW5kVHc4TVB5SHRSb29La0JZekxScGdNbXE0ZXhGNjRoWEJq?oc=5",
+        "id": "gnews:75c900a3f414c2b6",
+        "title": "Harmony Launches Voice AI Platform to Turn Customer Conversations into Revenue - The Times Australia",
+        "publisher": "The Times Australia",
+        "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOaTBFcS02dGlCZnNUZzA4cHVKUkNjUTdEZ0djX0tGSmNwSDdsemE1ZlVRX1J6LWJkcFRJSENZMEpWYTRvN2pfMmszek5paEJKOExhaDlOWjNhZFUteGVRLU9ZRUFvLUhqcXh5a2ZSWW1UMkoyZ2tER2xrNWpBM19iRE5adjJfZjFJTmpod0ZtcWZuWFF2OVc5b2NDVWN6X3ViTWNFT09UelIxY3pQTEpqTndhN2dSUUhsZUFPRnBXY3ZnUQ?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:ff61c2b7bfd7ea2d",
-        "title": "Expert analysis of LLM hantavirus outbreak responses finds 11.1% potentially misleading - Bioengineer.org",
+        "id": "gnews:1220c2263d018837",
+        "title": "AI platform identifies synergistic drug combination for resistant prostate cancer - Bioengineer.org",
         "publisher": "Bioengineer.org",
-        "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNTEFZMFZFYUZIZzVMLWp2OWFmRGN5OXdfeVphOHRyekNLTmcySUR5aE4xRy15RE1iVWRrWHh0X3ZWREF0Mm1uZkNlaktYZWpXaTVNbEFVTFhGcktGR3c5a0Z2dl9kaUpvYms3X3ZrbWJuWkxRSlVBUVppQ3hwNFlsVWxaRUVfbk9ZaHc4OWdTNXhUMkF0VWlkUDREbWlKYzFEVndJNkFBam9JWkdpeGVHZw?oc=5",
+        "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQQzNoM2VHTmdpOU1NWGlGeVpPOGttdGVrQjFRWW9kZi00dDJ4Sm1IVS1aVDd4cDJnN2xsNml5Mm5BRzNpUGd5TW9TU0ZqRVI1cUVLWFk4NFJ0MUp3RGE1Zi1NQW1aeXVTV1g3MWF3eE1HZ3d2dzRzdDJBR2ZBQ0dIX2ppWXg5X1BaSDFQOEZpYXhnTTlrTmFrT29sNG9yQzRTWks0eWVnSV82UQ?oc=5",
         "tag": "rest"
       }
     ]

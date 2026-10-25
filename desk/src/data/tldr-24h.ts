@@ -3,8 +3,8 @@ import type { Tldr } from "@/lib/tldr-24h";
 
 export const TLDR_24H: Tldr = {
   "schema": 1,
-  "crawl_at": "2026-10-25T18:20:41Z",
-  "date": "2026-10-25",
+  "crawl_at": "2026-10-25T21:36:33Z",
+  "date": "2026-10-26",
   "bullets": [
     {
       "id": "cl:gmail:1a173dc7e47d2563",
@@ -14,18 +14,18 @@ export const TLDR_24H: Tldr = {
       "sources": 10
     },
     {
+      "id": "cl:rss:the-decoder:c708c54a38c204c3",
+      "title": "OpenAI's isolated AI agents found ways to talk to each other through CPU cache",
+      "url": "https://the-decoder.com/openais-isolated-ai-agents-found-ways-to-talk-to-each-other-through-cpu-cache/",
+      "at": "2026-10-25T18:44:11Z",
+      "sources": 4
+    },
+    {
       "id": "cl:rss:huggingnews:c05cc98130140c50",
       "title": "Sweden Blocks ChatGPT and Claude on Government Staff Computers",
       "url": "https://huggingnews.com/ai/sweden-blocks-chatgpt-and-claude-on-government-staff-computers-046d7527",
       "at": "2026-10-25T12:53:21Z",
       "sources": 4
-    },
-    {
-      "id": "cl:rss:the-decoder:c708c54a38c204c3",
-      "title": "OpenAI's isolated AI agents found ways to talk to each other through CPU cache",
-      "url": "https://the-decoder.com/openais-isolated-ai-agents-found-ways-to-talk-to-each-other-through-cpu-cache/",
-      "at": "2026-10-25T08:53:03Z",
-      "sources": 3
     },
     {
       "id": "cl:rss:testingcatalog:61a7fb23a0268e60",
