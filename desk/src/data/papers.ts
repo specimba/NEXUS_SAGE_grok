@@ -24,7 +24,7 @@ export const PAPERS = [
     primaryCategory: "cs.IR",
     authors: ["Xiaomin Yu","Hongliang Chen","Zhe Huang","Shilin Yan","Shao-Rong Su","Xuqiao Ma","Feiyang Wang","Jiayu Chen"],
     published: "2026-10-19T00:00:00Z" },
-  { id: "2610.30949", title: "IQuest-Q1: Advancing Foundation Capabilities for Agentic CLI Systems", up: 96, href: "https://arxiv.org/abs/2610.30949",
+  { id: "2610.30949", title: "IQuest-Q1: Advancing Foundation Capabilities for Agentic CLI Systems", up: 97, href: "https://arxiv.org/abs/2610.30949",
     abstract: "We present IQuest-Q1, a sparse Mixture-of-Experts (MoE) agentic foundation model with 320B total parameters (15B activated). IQuest-Q1 is developed through a three-stage process: (1) stable and efficient pre-training, combining Stable SplitNorm, Muon, and muP with a two-stage curriculum whose second stage increases the coding-data mixture, preserving a wide stability margin between safe and optimal learning rates; (2) fine-grained mid-training, expanding the data mixture across domains and formats and progressively extending the context; and (3) multi-scaffold with multi-version post-training, combining SFT, domain-specialized RL, and MOPD across various scaffolds to integrate complementary training signals and strengthen agentic coding capabilities. Furthermore, model merging combines dif",
     pdfUrl: "https://arxiv.org/pdf/2610.30949",
     primaryCategory: "cs.CL",

@@ -205,7 +205,7 @@ const D: NonNullable<SageSetupView["limits"]>["defaults"] = {
 };
 
 export const SAGE_SETUP: SageSetupView = {
-  "stamped_at": "2026-10-25T15:40:31Z",
+  "stamped_at": "2026-10-25T15:44:24Z",
   "config_path": "desk/config/sage-sources.json",
   "config_hash": "1ba30989ff76",
   "status": "ok",
@@ -218,7 +218,7 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "hn",
       "on": true,
       "caps": "cap 20",
-      "last_rows": 59,
+      "last_rows": 60,
       "state": "ok"
     },
     {
@@ -246,7 +246,7 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "gnews",
       "on": true,
       "caps": "cap 32",
-      "last_rows": 31,
+      "last_rows": 30,
       "state": "ok"
     },
     {
@@ -394,9 +394,6 @@ export const SAGE_SETUP: SageSetupView = {
   "taste": {
     "weight": 0,
     "max": 0.3
-  },
-  "redacted": {
-    "gmail_senders": 14
   },
   "limits": {
     "schema": 1,
@@ -638,5 +635,8 @@ export const SAGE_SETUP: SageSetupView = {
       "max": 0.3
     }
   },
-  "file_hash": "08df63b37bf7f15611fe5432596b139a7603e414dd6eb0add2ed641f2ca60f0d"
+  "file_hash": "08df63b37bf7f15611fe5432596b139a7603e414dd6eb0add2ed641f2ca60f0d",
+  "redacted": {
+    "gmail_senders": 14
+  }
 };

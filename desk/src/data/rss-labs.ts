@@ -17,7 +17,7 @@ export type RssLabRow = {
   cluster_id?: string;
 };
 
-export const RSS_LABS_AT = "2026-10-25T15:40:31Z";
+export const RSS_LABS_AT = "2026-10-25T15:44:24Z";
 
 export const RSS_LABS: RssLabRow[] = [
   { id: "rss:huggingnews:05b4e19a74bc51c9", lab: "huggingnews" as const, title: "Nvidia RTX 3090 AI Performance Jumps 80% via Firmware Unlock", link: "https://huggingnews.com/tech/nvidia-rtx-3090-ai-performance-jumps-80percent-via-firmware-unlock-5a00dc77", published: "2026-10-25T15:09:00Z", summary: "Developers have released a tool that bypasses Nvidia's internal hardware limits on RTX 3090 GPUs by exploiting a vulnerability in the boot firmware. The unlock… · via HuggingNews", source: "rss-lab" as const, tag: "rest" as const, first_seen: "2026-10-25T15:36:21Z", is_new: false, cluster_id: "cl:rss:huggingnews:05b4e19a74bc51c9" },
