@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-25T03:20:27Z",
+  "stamped_at": "2026-10-25T08:30:51Z",
   "config_hash": "a116c3b25ffb",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,25 +11,25 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 128,
+      "duration_ms": 126,
       "paused_until": null,
       "reason": null
     },
     {
       "id": "arxiv",
       "label": "arXiv",
-      "status": "timeout",
-      "rows": 5,
-      "duration_ms": 20000,
+      "status": "ok",
+      "rows": 29,
+      "duration_ms": 3203,
       "paused_until": null,
-      "reason": "timeout after 20000ms budget · last good: 0 cached enrich + 5 kept shelf"
+      "reason": null
     },
     {
       "id": "openalex",
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 594,
+      "duration_ms": 532,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 110,
+      "duration_ms": 124,
       "paused_until": null,
       "reason": null
     },
@@ -46,8 +46,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 67,
-      "duration_ms": 8266,
+      "rows": 65,
+      "duration_ms": 8366,
       "paused_until": null,
       "reason": null
     },
@@ -56,7 +56,7 @@
       "label": "HN title",
       "status": "ok",
       "rows": 2,
-      "duration_ms": 8245,
+      "duration_ms": 8238,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 115,
-      "duration_ms": 19161,
+      "duration_ms": 19063,
       "paused_until": null,
       "reason": null
     },
@@ -74,7 +74,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 74,
-      "duration_ms": 12091,
+      "duration_ms": 12097,
       "paused_until": null,
       "reason": null
     },
@@ -83,7 +83,7 @@
       "label": "analyst RSS",
       "status": "ok",
       "rows": 6,
-      "duration_ms": 2332,
+      "duration_ms": 2314,
       "paused_until": null,
       "reason": null
     },
@@ -92,7 +92,7 @@
       "label": "releases",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 6594,
+      "duration_ms": 6641,
       "paused_until": null,
       "reason": null
     },
@@ -100,8 +100,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 32,
-      "duration_ms": 6392,
+      "rows": 31,
+      "duration_ms": 6346,
       "paused_until": null,
       "reason": null
     },
@@ -110,7 +110,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 288,
+      "duration_ms": 327,
       "paused_until": null,
       "reason": null
     },
@@ -119,16 +119,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4449,
+      "duration_ms": 4439,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 88650,
-    "sources_wall_ms": 20842,
-    "papers_lane_ms": 20841,
-    "slowest_source_ms": 20000,
+    "sources_ms": 71816,
+    "sources_wall_ms": 19064,
+    "papers_lane_ms": 3990,
+    "slowest_source_ms": 19063,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -145,39 +145,62 @@
       "github": 25000,
       "wikidata": 25000
     },
-    "timed_out": [
-      "arxiv"
-    ],
-    "wall_ms": 21328,
-    "startup_ms": 51,
-    "main_ms": 21347
+    "timed_out": [],
+    "wall_ms": 19643,
+    "startup_ms": 56,
+    "main_ms": 19664
   },
-  "multi_source_independent": 4,
+  "multi_source_independent": 3,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 4,
-    "multi_source_raw": 6,
+    "multi_source_independent": 3,
+    "multi_source_raw": 5,
     "self_reposts": 2,
-    "items_in": 305,
-    "clusters_out": 290,
-    "collapsed": 15,
-    "multi_source": 4,
-    "multi_member": 11,
+    "items_in": 302,
+    "clusters_out": 289,
+    "collapsed": 13,
+    "multi_source": 3,
+    "multi_member": 10,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 45,
+    "new_items": 30,
     "per_source": {
-      "hn-algolia": 67,
+      "hn-algolia": 65,
       "rss-lab": 115,
       "rss-security": 74,
-      "gnews-rss": 32,
+      "gnews-rss": 31,
       "gmail-news": 10,
       "rss-analyst": 6,
       "releases-atom": 1
     },
     "multi_source_clusters": [
+      {
+        "title": "OpenMobile-2 proves open-source smartphone agents can rival proprietary models",
+        "sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "rss:the-decoder:ecfe95db9f5a039c",
+            "source": "rss-lab",
+            "title": "OpenMobile-2 proves open-source smartphone agents can rival proprietary models",
+            "at": "2026-10-25T06:55:22Z",
+            "publisher": "the-decoder"
+          },
+          {
+            "id": "gnews:b7635f6b343afd29",
+            "source": "gnews-rss",
+            "title": "OpenMobile-2 proves open-source smartphone agents can rival proprietary models - The Decoder",
+            "at": "2026-10-25T06:58:29Z",
+            "publisher": "The Decoder"
+          }
+        ]
+      },
       {
         "title": "OpenAI's isolated AI agents found ways to talk to each other through CPU cache",
         "sources": [
@@ -210,7 +233,7 @@
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.722,
+        "score": 0.721,
         "members": [
           {
             "id": "hn:50219364",
@@ -225,63 +248,6 @@
             "title": "Sweden Blocks ChatGPT and Claude in Government Offices, Copilot Stays - Pasquale Pillitteri",
             "at": "2026-10-24T07:27:30Z",
             "publisher": "Pasquale Pillitteri"
-          }
-        ]
-      },
-      {
-        "title": "Canva launches Craft, its first in-house image model",
-        "sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 0.692,
-        "members": [
-          {
-            "id": "rss:the-decoder:6366c91429804481",
-            "source": "rss-lab",
-            "title": "Canva launches Craft, its first in-house image model",
-            "at": "2026-10-23T11:36:30Z",
-            "publisher": "the-decoder"
-          },
-          {
-            "id": "gnews:1ac283cab892d155",
-            "source": "gnews-rss",
-            "title": "Canva Craft launches in Dream Lab, Canva's first image model - Pasquale Pillitteri",
-            "at": "2026-10-23T22:17:24Z",
-            "publisher": "Pasquale Pillitteri"
-          }
-        ]
-      },
-      {
-        "title": "Unauthorized AI agents are reportedly accessing US bank accounts",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 3,
-        "score": 0.704,
-        "members": [
-          {
-            "id": "hn:50205590",
-            "source": "hn-algolia",
-            "title": "Unauthorized AI agents are reportedly accessing US bank accounts",
-            "at": "2026-10-23T07:31:28Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:743e9206ff6f0fcc",
-            "source": "gnews-rss",
-            "title": "Rogue AI Agents Are Accessing US Bank Accounts - Technology Org",
-            "at": "2026-10-23T07:05:20Z",
-            "publisher": "Technology Org"
-          },
-          {
-            "id": "gnews:d1872e0776f35538",
-            "source": "gnews-rss",
-            "title": "Unauthorized AI agents detected inside accounts at major banks - CBS News",
-            "at": "2026-10-23T11:13:00Z",
-            "publisher": "CBS News"
           }
         ]
       }
@@ -332,40 +298,32 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "shattered.io",
-          "title": "AWS vs Azure: Up to 72% vs 65% Savings [2026] - shattered.io"
+          "publisher": "Opening Bell Daily",
+          "title": "Alphabet, Microsoft and Amazon lead 10 major earnings reports next week - Opening Bell Daily"
+        },
+        {
+          "publisher": "www.lvivherald.com",
+          "title": "When the Machines Start Talking Amongst Themselves - www.lvivherald.com"
         },
         {
           "publisher": "mcpmag.com",
           "title": "What every IT team should know about managing Microsoft environments - mcpmag.com"
         },
         {
-          "publisher": "TechCrunch",
-          "title": "Block’s new voice model sounds eerily human - TechCrunch"
-        },
-        {
-          "publisher": "CoinDesk",
-          "title": "Why McDonalds, Microsoft and Google saying no to tokenized stocks isn't a dealbreaker - CoinDesk"
+          "publisher": "shattered.io",
+          "title": "ConnectWise Cloud Backup Breach: 2,250 Tenants [2026] - shattered.io"
         },
         {
           "publisher": "Pasquale Pillitteri",
           "title": "Fashion Weak reveals the fake-shop scam of the declined payment - Pasquale Pillitteri"
-        },
-        {
-          "publisher": "Pasquale Pillitteri",
-          "title": "Researcher claims Samsung TV microphone is always on - Pasquale Pillitteri"
-        },
-        {
-          "publisher": "San Antonio Express-News",
-          "title": "Opinion: To City Council: Please, do right on data centers - San Antonio Express-News"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 29
+      "hn_dropped": 31
     },
     "gnews_near_misses": [
       {
-        "score": 0.548,
+        "score": 0.546,
         "blocked": "below-threshold",
         "hours_apart": 19.8,
         "a": {
@@ -388,61 +346,35 @@
         ]
       },
       {
-        "score": 0.386,
-        "blocked": "below-threshold",
-        "hours_apart": 7.3,
+        "score": 0.402,
+        "blocked": "thin-overlap",
+        "hours_apart": 63.4,
         "a": {
-          "id": "rss-sec:securityweek:2d51468e29bca90a",
-          "source": "rss-security",
-          "title": "In Other News: Tor Exit Relays Hijacked, Banks Spot Rogue AI Agents, Self-Rebuilding macOS Ransomware",
-          "at": "2026-10-23T14:23:37Z"
-        },
-        "b": {
-          "id": "gnews:743e9206ff6f0fcc",
-          "source": "gnews-rss",
-          "title": "Rogue AI Agents Are Accessing US Bank Accounts - Technology Org",
-          "at": "2026-10-23T07:05:20Z"
-        },
-        "shared": [
-          "bank",
-          "rogu",
-          "ai",
-          "agent"
-        ]
-      },
-      {
-        "score": 0.336,
-        "blocked": "below-threshold",
-        "hours_apart": 3,
-        "a": {
-          "id": "rss:the-decoder:9c48ec31bde318a5",
+          "id": "rss:openai:6400feb681472530",
           "source": "rss-lab",
-          "title": "Block's new AI model Dessa was trained entirely on human speech to catch emotions text-based models miss",
-          "at": "2026-10-24T14:09:46Z"
+          "title": "What FDE means at OpenAI",
+          "at": "2026-10-22T06:00:00Z"
         },
         "b": {
-          "id": "gnews:0c90375edb53c2b7",
+          "id": "gnews:4f95f0ad019b3929",
           "source": "gnews-rss",
-          "title": "Jack Dorsey's Block unveils Dessa, a voice AI trained without text - Pasquale Pillitteri",
-          "at": "2026-10-24T11:06:57Z"
+          "title": "An OpenAI Model Spent Ethereum Without Permission. Here's What That Means For Crypto Investors. - AOL.com",
+          "at": "2026-10-24T21:26:00Z"
         },
         "shared": [
-          "block",
-          "ai",
-          "dessa",
-          "train",
-          "text"
+          "mean",
+          "openai"
         ]
       },
       {
-        "score": 0.308,
+        "score": 0.378,
         "blocked": "time-window",
-        "hours_apart": 438.4,
+        "hours_apart": 444.2,
         "a": {
-          "id": "gnews:a12767dd390484ff",
+          "id": "gnews:f410eef8ddc5297f",
           "source": "gnews-rss",
-          "title": "JPMorgan And Citi’s AI Agent Limits Show Why Efficiency Isn’t Enough - Yahoo Finance Singapore",
-          "at": "2026-10-25T01:19:00Z"
+          "title": "How to Write an AI Agent Data Residency Clause Before Europe Signs - Startup Fortune",
+          "at": "2026-10-25T07:08:08Z"
         },
         "b": {
           "id": "gmail:1a112914bb745ca0",
@@ -451,77 +383,14 @@
           "at": "2026-10-06T18:54:34Z"
         },
         "shared": [
-          "ai",
-          "t"
+          "writ",
+          "ai"
         ]
       },
       {
-        "score": 0.241,
+        "score": 0.338,
         "blocked": "time-window",
-        "hours_apart": 55.9,
-        "a": {
-          "id": "gnews:2141d31cdc5cd062",
-          "source": "gnews-rss",
-          "title": "China Mobile Opens an Auto-Industry AI Foundation With 112.7 EFLOPS and Six Agents for Carmakers - Pandaily",
-          "at": "2026-10-25T02:01:40Z"
-        },
-        "b": {
-          "id": "anl:simonw:2f38489938aada9c",
-          "source": "rss-analyst",
-          "title": "Donating Agent Skills to the Agentic AI Foundation",
-          "at": "2026-10-22T18:09:56Z"
-        },
-        "shared": [
-          "ai",
-          "foundation",
-          "agent"
-        ]
-      },
-      {
-        "score": 0.239,
-        "blocked": "thin-overlap",
-        "hours_apart": 432.5,
-        "a": {
-          "id": "rss:mistral:1ef243007176e85c",
-          "source": "rss-lab",
-          "title": "Introducing Mistral Large 4",
-          "at": "2026-10-06T12:00:27Z"
-        },
-        "b": {
-          "id": "gnews:2ac89d3539058f10",
-          "source": "gnews-rss",
-          "title": "Goa Launches Konkani Large Language Model; BHASHINI Demonstrates Real-Time Speech Translation - www.nationpathindia.com",
-          "at": "2026-10-24T12:33:21Z"
-        },
-        "shared": [
-          "larg"
-        ]
-      },
-      {
-        "score": 0.239,
-        "blocked": "time-window",
-        "hours_apart": 31.7,
-        "a": {
-          "id": "gnews:34874a0da63e7317",
-          "source": "gnews-rss",
-          "title": "AI agents are only as good as the personal information you share. That raises privacy concerns - Texarkana Gazette",
-          "at": "2026-10-24T23:00:00Z"
-        },
-        "b": {
-          "id": "anl:latent-space:d5a942e6d14cf1e0",
-          "source": "rss-analyst",
-          "title": "AI Is Getting Good at Math. Here’s Why.",
-          "at": "2026-10-23T15:19:48Z"
-        },
-        "shared": [
-          "ai",
-          "good"
-        ]
-      },
-      {
-        "score": 0.238,
-        "blocked": "time-window",
-        "hours_apart": 66.3,
+        "hours_apart": 74.8,
         "a": {
           "id": "rss:nvidia-dev:13c3d402e00f3456",
           "source": "rss-lab",
@@ -529,21 +398,109 @@
           "at": "2026-10-21T09:38:49Z"
         },
         "b": {
-          "id": "gnews:2e549ae1688cf8bf",
+          "id": "gnews:5168a91c3abb6452",
           "source": "gnews-rss",
-          "title": "Boehringer Ingelheim & Microsoft join forces to explore AI-powered digital patient twins - Indian Pharma Post",
-          "at": "2026-10-24T03:59:06Z"
+          "title": "Allsides 3D Digital Twin Factory gets underway, in partnership with Nvidia for Physical AI on an industrial scale - Il Sole 24 ORE",
+          "at": "2026-10-24T12:27:57Z"
         },
         "shared": [
           "ai",
+          "factory",
           "digital",
           "twin"
+        ]
+      },
+      {
+        "score": 0.316,
+        "blocked": "time-window",
+        "hours_apart": 39.9,
+        "a": {
+          "id": "hn:50209346",
+          "source": "hn-algolia",
+          "title": "Popular AI Agent Skills Every Developer Should Know",
+          "at": "2026-10-23T14:11:03Z"
+        },
+        "b": {
+          "id": "gnews:7386c535c05be213",
+          "source": "gnews-rss",
+          "title": "Should Aggregators block AI Agents? - Investing.com",
+          "at": "2026-10-25T06:02:46Z"
+        },
+        "shared": [
+          "ai",
+          "agent",
+          "should"
+        ]
+      },
+      {
+        "score": 0.309,
+        "blocked": "below-threshold",
+        "hours_apart": 5.4,
+        "a": {
+          "id": "hn:50221004",
+          "source": "hn-algolia",
+          "title": "How to Use Decision Models for Evals",
+          "at": "2026-10-24T13:21:37Z"
+        },
+        "b": {
+          "id": "gnews:d4afa8fd925cb399",
+          "source": "gnews-rss",
+          "title": "Perplexity launches Decider for Mac, a free local decision model - Pasquale Pillitteri",
+          "at": "2026-10-24T18:47:31Z"
+        },
+        "shared": [
+          "decision",
+          "model"
+        ]
+      },
+      {
+        "score": 0.286,
+        "blocked": "thin-overlap",
+        "hours_apart": 32.5,
+        "a": {
+          "id": "rss:the-decoder:3cec67123ef466bd",
+          "source": "rss-lab",
+          "title": "Chinese AI model Kimi K3.1 Pro is closing in on Anthropic's Claude Opus 5.5",
+          "at": "2026-10-23T19:00:07Z"
+        },
+        "b": {
+          "id": "gnews:b27dfe52b0007765",
+          "source": "gnews-rss",
+          "title": "Moonshot's Kimi K3.1 Pro flirts with open weights leadership amid paid influencer scandal allegations - VentureBeat",
+          "at": "2026-10-25T03:32:18Z"
+        },
+        "shared": [
+          "kimi",
+          "k3.1",
+          "pro"
+        ]
+      },
+      {
+        "score": 0.279,
+        "blocked": "time-window",
+        "hours_apart": 55.5,
+        "a": {
+          "id": "rss:nvidia:d3c39c012c7cd3a7",
+          "source": "rss-lab",
+          "title": "NVIDIA Transforms European Retail, From Digital Discovery to Physical Operations",
+          "at": "2026-10-22T05:00:23Z"
+        },
+        "b": {
+          "id": "gnews:5168a91c3abb6452",
+          "source": "gnews-rss",
+          "title": "Allsides 3D Digital Twin Factory gets underway, in partnership with Nvidia for Physical AI on an industrial scale - Il Sole 24 ORE",
+          "at": "2026-10-24T12:27:57Z"
+        },
+        "shared": [
+          "nvidia",
+          "digital",
+          "physical"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.548,
+        "score": 0.546,
         "blocked": "below-threshold",
         "hours_apart": 19.8,
         "a": {
@@ -566,94 +523,68 @@
         ]
       },
       {
-        "score": 0.386,
-        "blocked": "below-threshold",
-        "hours_apart": 7.3,
+        "score": 0.402,
+        "blocked": "thin-overlap",
+        "hours_apart": 63.4,
         "a": {
-          "id": "rss-sec:securityweek:2d51468e29bca90a",
-          "source": "rss-security",
-          "title": "In Other News: Tor Exit Relays Hijacked, Banks Spot Rogue AI Agents, Self-Rebuilding macOS Ransomware",
-          "at": "2026-10-23T14:23:37Z"
+          "id": "rss:openai:6400feb681472530",
+          "source": "rss-lab",
+          "title": "What FDE means at OpenAI",
+          "at": "2026-10-22T06:00:00Z"
         },
         "b": {
-          "id": "gnews:743e9206ff6f0fcc",
+          "id": "gnews:4f95f0ad019b3929",
           "source": "gnews-rss",
-          "title": "Rogue AI Agents Are Accessing US Bank Accounts - Technology Org",
-          "at": "2026-10-23T07:05:20Z"
+          "title": "An OpenAI Model Spent Ethereum Without Permission. Here's What That Means For Crypto Investors. - AOL.com",
+          "at": "2026-10-24T21:26:00Z"
         },
         "shared": [
-          "bank",
-          "rogu",
-          "ai",
-          "agent"
+          "mean",
+          "openai"
         ]
       },
       {
-        "score": 0.364,
-        "blocked": "below-threshold",
-        "hours_apart": 13.3,
+        "score": 0.378,
+        "blocked": "time-window",
+        "hours_apart": 444.2,
         "a": {
-          "id": "hn:50204889",
-          "source": "hn-algolia",
-          "title": "The Latest Anthropic Claude Models Contain AI Text Watermarks",
-          "at": "2026-10-23T05:43:38Z"
+          "id": "gnews:f410eef8ddc5297f",
+          "source": "gnews-rss",
+          "title": "How to Write an AI Agent Data Residency Clause Before Europe Signs - Startup Fortune",
+          "at": "2026-10-25T07:08:08Z"
         },
         "b": {
-          "id": "rss:the-decoder:3cec67123ef466bd",
-          "source": "rss-lab",
-          "title": "Chinese AI model Kimi K3.1 Pro is closing in on Anthropic's Claude Opus 5.5",
-          "at": "2026-10-23T19:00:07Z"
+          "id": "gmail:1a112914bb745ca0",
+          "source": "gmail-news",
+          "title": "This AI that can't write",
+          "at": "2026-10-06T18:54:34Z"
         },
         "shared": [
-          "anthropic",
-          "claude",
-          "model",
+          "writ",
           "ai"
         ]
       },
       {
         "score": 0.338,
-        "blocked": "thin-overlap",
-        "hours_apart": 338.8,
+        "blocked": "time-window",
+        "hours_apart": 74.8,
         "a": {
-          "id": "rss:google-ai:6a7bb4e3e69d69f5",
+          "id": "rss:nvidia-dev:13c3d402e00f3456",
           "source": "rss-lab",
-          "title": "The latest AI news we announced in September 2026",
-          "at": "2026-10-02T15:00:00Z"
+          "title": "Developing an AI Factory Digital Twin with an Agent-Assisted Workflow",
+          "at": "2026-10-21T09:38:49Z"
         },
         "b": {
-          "id": "rss-sec:unit42:5af4576ccaef43e6",
-          "source": "rss-security",
-          "title": "Top 5 Initial Access Threat Vectors Observed by Unit 42 in September 2026",
-          "at": "2026-10-16T17:47:54Z"
-        },
-        "shared": [
-          "september",
-          "2026"
-        ]
-      },
-      {
-        "score": 0.336,
-        "blocked": "below-threshold",
-        "hours_apart": 3,
-        "a": {
-          "id": "rss:the-decoder:9c48ec31bde318a5",
-          "source": "rss-lab",
-          "title": "Block's new AI model Dessa was trained entirely on human speech to catch emotions text-based models miss",
-          "at": "2026-10-24T14:09:46Z"
-        },
-        "b": {
-          "id": "gnews:0c90375edb53c2b7",
+          "id": "gnews:5168a91c3abb6452",
           "source": "gnews-rss",
-          "title": "Jack Dorsey's Block unveils Dessa, a voice AI trained without text - Pasquale Pillitteri",
-          "at": "2026-10-24T11:06:57Z"
+          "title": "Allsides 3D Digital Twin Factory gets underway, in partnership with Nvidia for Physical AI on an industrial scale - Il Sole 24 ORE",
+          "at": "2026-10-24T12:27:57Z"
         },
         "shared": [
-          "block",
           "ai",
-          "dessa",
-          "train",
-          "text"
+          "factory",
+          "digital",
+          "twin"
         ]
       },
       {
@@ -677,28 +608,28 @@
         ]
       },
       {
-        "score": 0.328,
-        "blocked": "time-window",
-        "hours_apart": 399.6,
+        "score": 0.33,
+        "blocked": "thin-overlap",
+        "hours_apart": 338.8,
         "a": {
-          "id": "hn:50204889",
-          "source": "hn-algolia",
-          "title": "The Latest Anthropic Claude Models Contain AI Text Watermarks",
-          "at": "2026-10-23T05:43:38Z"
+          "id": "rss:google-ai:6a7bb4e3e69d69f5",
+          "source": "rss-lab",
+          "title": "The latest AI news we announced in September 2026",
+          "at": "2026-10-02T15:00:00Z"
         },
         "b": {
-          "id": "gmail:1a1118c601f1cb6a",
-          "source": "gmail-news",
-          "title": "OpenAI Starts Watermarking ChatGPT Text",
-          "at": "2026-10-06T14:09:34Z"
+          "id": "rss-sec:unit42:5af4576ccaef43e6",
+          "source": "rss-security",
+          "title": "Top 5 Initial Access Threat Vectors Observed by Unit 42 in September 2026",
+          "at": "2026-10-16T17:47:54Z"
         },
         "shared": [
-          "text",
-          "watermark"
+          "september",
+          "2026"
         ]
       },
       {
-        "score": 0.326,
+        "score": 0.317,
         "blocked": "thin-overlap",
         "hours_apart": 43,
         "a": {
@@ -717,6 +648,28 @@
           "september",
           "2026"
         ]
+      },
+      {
+        "score": 0.316,
+        "blocked": "time-window",
+        "hours_apart": 39.9,
+        "a": {
+          "id": "hn:50209346",
+          "source": "hn-algolia",
+          "title": "Popular AI Agent Skills Every Developer Should Know",
+          "at": "2026-10-23T14:11:03Z"
+        },
+        "b": {
+          "id": "gnews:7386c535c05be213",
+          "source": "gnews-rss",
+          "title": "Should Aggregators block AI Agents? - Investing.com",
+          "at": "2026-10-25T06:02:46Z"
+        },
+        "shared": [
+          "ai",
+          "agent",
+          "should"
+        ]
       }
     ]
   },
@@ -724,97 +677,97 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 0,
-      "streak_fail": 1,
-      "items_last": 5
+      "streak_ok": 1,
+      "streak_fail": 0,
+      "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 176,
+      "streak_ok": 177,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 176,
+      "streak_ok": 177,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 176,
+      "streak_ok": 177,
       "streak_fail": 0,
-      "items_last": 32
+      "items_last": 31
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 176,
+      "streak_ok": 177,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 176,
+      "streak_ok": 177,
       "streak_fail": 0,
-      "items_last": 67
+      "items_last": 65
     },
     {
       "id": "hn_title",
       "state": "ok",
-      "streak_ok": 30,
+      "streak_ok": 31,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 88,
+      "streak_ok": 89,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "releases_atom",
       "state": "ok",
-      "streak_ok": 30,
+      "streak_ok": 31,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "rss_analyst",
       "state": "ok",
-      "streak_ok": 30,
+      "streak_ok": 31,
       "streak_fail": 0,
       "items_last": 6
     },
     {
       "id": "rss_labs",
       "state": "ok",
-      "streak_ok": 80,
+      "streak_ok": 81,
       "streak_fail": 0,
       "items_last": 115
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 176,
+      "streak_ok": 177,
       "streak_fail": 0,
       "items_last": 74
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 176,
+      "streak_ok": 177,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.006013611111111111,
+    "hours": 0.005640833333333334,
     "stale": false
   },
   "hf": {
@@ -823,10 +776,10 @@
     "url": "https://huggingface.co/api/daily_papers"
   },
   "arxiv": {
-    "ok": false,
-    "enriched": 0,
+    "ok": true,
+    "enriched": 24,
     "shelf": 5,
-    "timed_out": true,
+    "timed_out": false,
     "budget_ms": 20000,
     "brief": false,
     "url": "https://export.arxiv.org/api/query"
@@ -895,7 +848,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 67,
+    "count": 65,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -912,7 +865,7 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 29,
+    "ai_dropped": 31,
     "url": "https://hn.algolia.com/api/v1/search",
     "title_queries": {
       "ok": true,
@@ -932,10 +885,10 @@
         "Qwen",
         "local model"
       ],
-      "hits": 8,
-      "candidates": 6,
-      "ai_dropped": 2,
-      "duplicates": 4,
+      "hits": 11,
+      "candidates": 8,
+      "ai_dropped": 3,
+      "duplicates": 6,
       "added": 2,
       "cap": 20,
       "merged_into_live_hn": true
@@ -950,7 +903,7 @@
       {
         "id": "hn:50214373",
         "tag": "rest",
-        "score": 126,
+        "score": 131,
         "text": "Show HN: Corgi, a helpful {agent, terminal} multiplexer"
       },
       {
@@ -1025,32 +978,32 @@
     "feeds_soft_fail": [],
     "sample": [
       {
+        "id": "rss:the-decoder:e5590b5ff6c06814",
+        "lab": "the-decoder",
+        "tag": "rest",
+        "title": "Ex-Google CEO Eric Schmidt calls OpenAI and Anthropic modern colonial trading companies",
+        "link": "https://the-decoder.com/ex-google-ceo-eric-schmidt-calls-openai-and-anthropic-modern-colonial-trading-companies/"
+      },
+      {
+        "id": "rss:the-decoder:8c937abf8c518e28",
+        "lab": "the-decoder",
+        "tag": "rest",
+        "title": "OpenAI offers discounts up to 90 percent to poach Anthropic's biggest customers",
+        "link": "https://the-decoder.com/openai-offers-discounts-up-to-90-percent-to-poach-anthropics-biggest-customers/"
+      },
+      {
+        "id": "rss:the-decoder:ecfe95db9f5a039c",
+        "lab": "the-decoder",
+        "tag": "rest",
+        "title": "OpenMobile-2 proves open-source smartphone agents can rival proprietary models",
+        "link": "https://the-decoder.com/openmobile-2-proves-open-source-smartphone-agents-can-rival-proprietary-models/"
+      },
+      {
         "id": "rss:the-decoder:f25a0e408c34c4f6",
         "lab": "the-decoder",
         "tag": "rest",
         "title": "Three fired OpenAI safety researchers say they were never told what they actually leaked",
         "link": "https://the-decoder.com/three-fired-openai-safety-researchers-say-they-were-never-told-what-they-actually-leaked/"
-      },
-      {
-        "id": "rss:the-decoder:5131d0e923af0d74",
-        "lab": "the-decoder",
-        "tag": "rest",
-        "title": "AI makes junior patent attorneys instantly better but may quietly stunt their professional growth",
-        "link": "https://the-decoder.com/ai-makes-junior-patent-attorneys-instantly-better-but-may-quietly-stunt-their-professional-growth/"
-      },
-      {
-        "id": "rss:the-decoder:9c48ec31bde318a5",
-        "lab": "the-decoder",
-        "tag": "rest",
-        "title": "Block's new AI model Dessa was trained entirely on human speech to catch emotions text-based models miss",
-        "link": "https://the-decoder.com/blocks-new-ai-model-dessa-was-trained-entirely-on-human-speech-to-catch-emotions-text-based-models-miss/"
-      },
-      {
-        "id": "rss:the-decoder:c708c54a38c204c3",
-        "lab": "the-decoder",
-        "tag": "rest",
-        "title": "OpenAI's isolated AI agents found ways to talk to each other through CPU cache",
-        "link": "https://the-decoder.com/openais-isolated-ai-agents-found-ways-to-talk-to-each-other-through-cpu-cache/"
       }
     ]
   },
@@ -1281,8 +1234,8 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 32,
-    "pool": 230,
+    "items": 31,
+    "pool": 272,
     "corroborators": [
       {
         "id": "gnews:98c48b167469f2f6",
@@ -1295,16 +1248,8 @@
       {
         "id": "gnews:9075b6f271d42064",
         "anchor_id": "hn:50219364",
-        "score": 0.724,
+        "score": 0.721,
         "title": "Sweden Blocks ChatGPT and Claude in Government Offices, Copilot Stays - Pasquale Pillitteri",
-        "publisher": "Pasquale Pillitteri",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:1ac283cab892d155",
-        "anchor_id": "rss:the-decoder:6366c91429804481",
-        "score": 0.686,
-        "title": "Canva Craft launches in Dream Lab, Canva's first image model - Pasquale Pillitteri",
         "publisher": "Pasquale Pillitteri",
         "self_repost": false
       },
@@ -1323,22 +1268,6 @@
         "title": "Using AI Agents to Teach Robots Like Microduck to Walk in Simulation | NVIDIA Technical Blog - NVIDIA Developer",
         "publisher": "NVIDIA Developer",
         "self_repost": true
-      },
-      {
-        "id": "gnews:743e9206ff6f0fcc",
-        "anchor_id": "hn:50205590",
-        "score": 0.65,
-        "title": "Rogue AI Agents Are Accessing US Bank Accounts - Technology Org",
-        "publisher": "Technology Org",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:d1872e0776f35538",
-        "anchor_id": "hn:50205590",
-        "score": 0.628,
-        "title": "Unauthorized AI agents detected inside accounts at major banks - CBS News",
-        "publisher": "CBS News",
-        "self_repost": false
       }
     ],
     "http_status": 200,
@@ -1367,24 +1296,24 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:16f12fde25116f9b",
-        "title": "Alipay AI Pay Launches PAYATHON 2026, a Hackathon Judged on Whether AI Products Get Paying Users - Pandaily",
-        "publisher": "Pandaily",
-        "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNaDc3bmVZaV9GUDRMMWktLVBBblJQb1djT3hvMF9tbWJvaEswRmxpbjNKVklxeldETnMtNlpPX2p3cncxU1REVFQ2cENySkhOOUlwUDA3MVpKRW9lQ2MtNEVDam1ZXzV1b0JLbUJZcnB5OG1JaHFVX0xFWEFNY1FXRDVLMFA0MzRJWlI3b2ItbHAtTlk4Y21EWA?oc=5",
+        "id": "gnews:a1500b0070b8126c",
+        "title": "Smart TV annoying you? You could use AI to make it dumber. But should you? | CBC News - CBC",
+        "publisher": "CBC",
+        "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE1DQkRGQl90aDJNS2ltSTZEdUx1ZlBHWms2aXBBMzl4VWU1NEFycEk5bGNleXBGeW1FU3BobmpacUpVRVhTcGJvbDhUaGcxSjhITElsOGhzYk5yNXBYRmhnd2h2UmNkeHhRZjBqb3VoTW10QQ?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:2141d31cdc5cd062",
-        "title": "China Mobile Opens an Auto-Industry AI Foundation With 112.7 EFLOPS and Six Agents for Carmakers - Pandaily",
-        "publisher": "Pandaily",
-        "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOYjR5clcxcFhuang1U1hGWlFLU1gzdmYxZGdQcUNnVExncDZNdjJnMlUtcFdTalc1TjFISFRNTkR2ekNIbU84ODVjQlpGRXpPZ3RhUGdIbDFhaW9RejY2aDI3X20xdHp1UFItZlExZW1wS1ZFME9jQ0J2OTg3cmNqSkNJc2pXZThCMDJwLUMydlU2WF9KZDVoOE9BbnlEamo0SWkw?oc=5",
+        "id": "gnews:8f3749dcccc58b43",
+        "title": "Morocco and AI: Who Is Accountable When the Model Enters Government? - Atalayar",
+        "publisher": "Atalayar",
+        "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPdnktX1h6UzNERTdHbGJNWUJHdzJ0V1QzOXVaX0pzYjBXU3pRWmQybnd4WGJIQ0JfOVBhSkE2YmJDVS1FMVN6NElqSGcyZTdQTHUwOVdMaEVSSGxrNlJDbU9xbHluSWRuZlpYMzQwQ3J2aUhRX1Q3V1JPMDRKcVpWV2dWb2c5RnpVN3JpWHJvckxZLVlWSlZnekhzTHVNY0MxT2ZVMVVaRXVkcGV4MW5XZmY5b09QQ2szdHZWN214U1hUb2o3NmhPdW5IYlQtNlRHbkE?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:c632e9b40fd4dbfc",
-        "title": "Hugging Face AI Attack Timeline: 4 Key Dates [2026] - tech-insider.org",
-        "publisher": "tech-insider.org",
-        "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9FZlNocTFZRldPbGRZcjdvaXNXdmNPZjU5d0tlVDJPVDJBSzZSNThwUWZHbzA0a2hKOXVFcm40eENqdHZKSURPZHMwR3Bzd1pfVWhMX2YydmdMc2lsVl9UZnVWRDNNUm9GVDlyLWdPd2JKVFptTjJkOFAxTmw?oc=5",
+        "id": "gnews:f410eef8ddc5297f",
+        "title": "How to Write an AI Agent Data Residency Clause Before Europe Signs - Startup Fortune",
+        "publisher": "Startup Fortune",
+        "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQWlZuLUpTTURJUDl6YU9qZ01OQkxiM3ZnY1pRU2hHd200VE56TmhtQkwxTWZyVEZxZ01nMzl5VHJ6eV94cDl3bzVXTDNBZ3RkX2NMc3E5OF9lUTR3RnhCSUlpQzc2RFlKTEdCMllQR0hvdXpxaDAxOG52U0YwZUZxNDVIS19BVEFINkNSOVhtRXg1bXgxR3BZTlFn?oc=5",
         "tag": "rest"
       }
     ]

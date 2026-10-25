@@ -3,9 +3,16 @@ import type { Tldr } from "@/lib/tldr-24h";
 
 export const TLDR_24H: Tldr = {
   "schema": 1,
-  "crawl_at": "2026-10-25T03:20:27Z",
+  "crawl_at": "2026-10-25T08:30:51Z",
   "date": "2026-10-25",
   "bullets": [
+    {
+      "id": "cl:rss:the-decoder:ecfe95db9f5a039c",
+      "title": "OpenMobile-2 proves open-source smartphone agents can rival proprietary models",
+      "url": "https://the-decoder.com/openmobile-2-proves-open-source-smartphone-agents-can-rival-proprietary-models/",
+      "at": "2026-10-25T06:58:29Z",
+      "sources": 2
+    },
     {
       "id": "cl:rss:the-decoder:c708c54a38c204c3",
       "title": "OpenAI's isolated AI agents found ways to talk to each other through CPU cache",
@@ -21,5 +28,5 @@ export const TLDR_24H: Tldr = {
       "sources": 2
     }
   ],
-  "quiet": true
+  "quiet": false
 };
