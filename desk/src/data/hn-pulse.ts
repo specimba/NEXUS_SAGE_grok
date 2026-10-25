@@ -16,12 +16,12 @@ export type HnPulseRow = {
   cluster_id?: string;
 };
 
-export const HN_PULSE_AT = "2026-10-25T14:55:16Z";
+export const HN_PULSE_AT = "2026-10-25T14:59:47Z";
 
 export const HN_PULSE: HnPulseRow[] = [
   { id: "hn:50214373", text: "Show HN: Corgi, a helpful {agent, terminal} multiplexer", url: "https://corgi.computer/", source: "hn-algolia" as const, score: 133, at: "2026-10-23T19:46:38Z", author: "eiopa", tag: "rest" as const, first_seen: "2026-10-24T03:25:36Z", is_new: false, cluster_id: "cl:hn:50214373" },
   { id: "hn:50222283", text: "Oai-math-revised: a community hub for revising OpenAI's math write-ups", url: "https://terrytao.wordpress.com/2026/10/24/oai-math-revised-a-community-hub-for-revising-openais-math-write-ups/", source: "hn-algolia" as const, score: 48, at: "2026-10-24T15:35:17Z", author: "tokepi", tag: "rest" as const, first_seen: "2026-10-24T18:20:30Z", is_new: false, cluster_id: "cl:hn:50222283" },
-  { id: "hn:50231722", text: "R/open source bans all solo projects and projects using LLMs", url: "https://www.reddit.com/r/opensource/comments/1xelcuf/your_tokens_arent_valuable_no_more_ai", source: "hn-algolia" as const, score: 29, at: "2026-10-25T14:05:03Z", author: "schleck8", tag: "rest" as const, first_seen: "2026-10-25T14:49:22Z", is_new: false, cluster_id: "cl:hn:50231722" },
+  { id: "hn:50231722", text: "R/open source bans all solo projects and projects using LLMs", url: "https://www.reddit.com/r/opensource/comments/1xelcuf/your_tokens_arent_valuable_no_more_ai", source: "hn-algolia" as const, score: 38, at: "2026-10-25T14:05:03Z", author: "schleck8", tag: "rest" as const, first_seen: "2026-10-25T14:49:22Z", is_new: false, cluster_id: "cl:hn:50231722" },
   { id: "hn:50225443", text: "Making My Blog Readable by AI Agents", url: "https://deallocatedobjects.com/posts/making-my-blog-readable-by-ai-agents", source: "hn-algolia" as const, score: 24, at: "2026-10-24T21:21:33Z", author: "ingve", tag: "rest" as const, first_seen: "2026-10-25T03:20:27Z", is_new: false, cluster_id: "cl:hn:50225443" },
   { id: "hn:50219875", text: "Claude Code slyly adding users' emails to outbound HTTP", url: "https://twitter.com/chrislakin/status/2113358733548081528", source: "hn-algolia" as const, score: 21, at: "2026-10-24T10:26:30Z", author: "gojomo", tag: "rest" as const, first_seen: "2026-10-24T13:20:25Z", is_new: false, cluster_id: "cl:hn:50219875" },
   { id: "hn:50221066", text: "Show HN: Enzyme – a programming language that compiles wikis for agents", url: "https://github.com/byenzyme/enzyme", source: "hn-algolia" as const, score: 20, at: "2026-10-24T13:30:18Z", author: "earllee", tag: "rest" as const, first_seen: "2026-10-24T18:20:30Z", is_new: false, cluster_id: "cl:hn:50221066" },
