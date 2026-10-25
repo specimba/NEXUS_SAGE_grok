@@ -3,44 +3,20 @@ import type { LeadEntry } from "@/lib/lead-pick";
 
 export const LEAD_TODAY: LeadEntry | null = {
   "date": "2026-10-25",
-  "at": "2026-10-25T03:20:48.698Z",
-  "crawl_at": "2026-10-25T03:20:27Z",
-  "pick_slot": "06:20",
-  "excluded": [
-    {
-      "cluster_id": "cl:hn:50205590",
-      "headline": "Unauthorized AI agents are reportedly accessing US bank accounts",
-      "reason": "age>=36h",
-      "sources": 3,
-      "age_h": 44,
-      "pub": "HN"
-    },
-    {
-      "cluster_id": "cl:rss:the-decoder:6366c91429804481",
-      "headline": "Canva launches Craft, its first in-house image model",
-      "reason": "age>=36h",
-      "sources": 2,
-      "age_h": 39,
-      "pub": "THE"
-    },
-    {
-      "cluster_id": "cl:rss:deepmind:851107eacfc8ba0f",
-      "headline": "Gemini 4 Argon: Built to solve your hardest problems",
-      "reason": "age>=36h",
-      "sources": 2,
-      "age_h": 275,
-      "pub": "DMD"
-    }
-  ],
-  "cluster_id": "cl:hn:50219364",
-  "headline": "Sweden's Government Offices will block ChatGPT and Claude on staff computers",
-  "url": "https://twitter.com/intcyberdigest/status/2113815992984080865",
+  "at": "2026-10-25T15:36:48.267Z",
+  "crawl_at": "2026-10-25T15:36:21Z",
+  "pick_slot": "18:36",
+  "supersedes": "cl:hn:50219364",
+  "cluster_id": "cl:rss:testingcatalog:61a7fb23a0268e60",
+  "headline": "Google AI Studio prepares new Managed Agents hub",
+  "url": "https://www.testingcatalog.com/google-ai-studio-prepares-new-managed-agents-hub/",
   "sources": 2,
-  "sig": 4,
+  "sig": null,
   "reason": "picked",
-  "pub": "HN",
-  "first_at": "2026-10-24T07:27:30.000Z",
-  "age_band": "<24h"
+  "pub": "TES",
+  "first_at": "2026-10-25T13:30:58.000Z",
+  "age_band": "<24h",
+  "note": "repick: lead older than 12h since pick"
 };
 
 export const LEAD_YESTERDAY: LeadEntry | null = {
@@ -64,7 +40,7 @@ export const LEAD_YESTERDAY: LeadEntry | null = {
 export const LEAD_HELD = false;
 
 /** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is >48h old (PASS-L). */
-export const LEAD_FIRST_AT: string | null = "2026-10-24T07:27:30.000Z";
+export const LEAD_FIRST_AT: string | null = "2026-10-25T13:30:58.000Z";
 
 /** Date of the latest real pick (never a HELD entry) — the HELD card's "last pick" (UX-1). */
 export const LEAD_LAST_PICK: string | null = "2026-10-25";
