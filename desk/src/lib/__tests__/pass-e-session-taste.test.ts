@@ -128,7 +128,7 @@ describe("Pass E session taste", () => {
     expect(rows[0]!.score).toBe(42);
     expect(sigCell(rows[0]!)).toEqual({ text: "42", dim: false });
     // Committed taste may include like surfaces — still never feed Brief/UP.
-    expect(X_TASTE.items.some((i) => i.surface === "like")).toBe(true);
+    // (Data-independent: the crawl-refreshed snapshot may hold zero likes on a given day.)
     expect(X_TASTE.briefEligible).toBe(false);
     expect(X_TASTE.pulseLeadEligible).toBe(false);
   });
