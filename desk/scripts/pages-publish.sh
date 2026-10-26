@@ -106,7 +106,9 @@ grep -qE 'localhost:3000|127\.0\.0\.1' -r "$OUT" --include='*.html' --include='*
 # 2b. local paths.
 lp="$(grep -rIlE '/home/box|/workspace/' "$OUT" || true)"; [ -z "$lp" ] || fails+=("local paths in: $(echo "$lp" | head -5 | tr '\n' ' ')")
 # 2c. token-like strings (patterns only, matches never printed).
-tok="$(grep -rIlE 'gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{30,}|AKIA[0-9A-Z]{16}|xox[abprs]-[A-Za-z0-9-]{10,}|hf_[A-Za-z0-9]{30,}|sk-[A-Za-z0-9_-]{32,}|-----BEGIN [A-Z ]*PRIVATE KEY|Bearer [A-Za-z0-9._~+/-]{24,}' "$OUT" || true)"
+#     sk-: must start at a token boundary (not inside musk/task-…) and carry a 20+ char unbroken secret run,
+#     so hyphenated URL slugs like /sk-hynix-to-mass-produce-… don't trip it; real sk-/sk-proj-/sk-ant- keys still do.
+tok="$(grep -rIlE 'gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{30,}|AKIA[0-9A-Z]{16}|xox[abprs]-[A-Za-z0-9-]{10,}|hf_[A-Za-z0-9]{30,}|(^|[^A-Za-z0-9_-])sk-[A-Za-z0-9_-]*[A-Za-z0-9_]{20,}|-----BEGIN [A-Z ]*PRIVATE KEY|Bearer [A-Za-z0-9._~+/-]{24,}' "$OUT" || true)"
 [ -z "$tok" ] || fails+=("token-like string in: $(echo "$tok" | head -5 | tr '\n' ' ')")
 # 2d. secret VALUES from the env and the gitignored .env (grep -F, values never printed).
 secret_hits="$(
