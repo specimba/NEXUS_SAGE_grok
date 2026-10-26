@@ -81,6 +81,7 @@ import { isLane, laneTabs, type Lane } from "@/lib/lanes";
 import {
   buildCoverage,
   drawerKicker,
+  drawerSummary,
   opensDrawer,
   readStoryParam,
   scoreContribution,
@@ -1364,6 +1365,7 @@ function StoryDrawer({
           <p className="story-drawer-kicker tabular-nums">
             {drawerKicker({ sources: row.sourceCount, firstSeen, age: now == null ? istHHMM(firstAtIso(cluster)) : compactAge(firstAtIso(cluster), now), mark })}
           </p>
+          {drawerSummary(row) ? <p className="pulse-v5-summary story-drawer-summary">{drawerSummary(row)}</p> : null}
           <p className="story-drawer-chips" data-src-n={row.sourceCount}>
             <SrcChips chips={row.chips} multi={row.multiSource} max={9} />
           </p>
@@ -1680,7 +1682,7 @@ export function Pulse() {
                           also covered by · {r.alsoPublishers.join(" · ")}
                         </p>
                       ) : null}
-                      {r.summary ? <p className="pulse-v5-summary">{r.summary.slice(0, 280)}</p> : null}
+                      {drawerSummary(r) ? <p className="pulse-v5-summary">{drawerSummary(r)}</p> : null}
                       <p className="pulse-v5-meta tabular-nums">
                         {lead?.publisher ?? r.leadBadge} · {r.at} · {r.size} member{r.size === 1 ? "" : "s"}
                         {" · "}

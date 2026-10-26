@@ -6,6 +6,7 @@ import { buildRows } from "@/lib/pulse-v5";
 import {
   buildCoverage,
   drawerKicker,
+  drawerSummary,
   opensDrawer,
   readStoryParam,
   scoreContribution,
@@ -106,5 +107,25 @@ describe("Beat 8 story drawer — Beat 9 key surface + URL", () => {
     expect(block).toContain("prefers-reduced-motion");
     expect(block).toContain("160ms ease-out");
     expect(/#[0-9a-f]{3,8}\b/i.test(block)).toBe(false);
+  });
+});
+
+describe("Bug B — drawer / inline summary", () => {
+  test("drawerSummary returns trimmed clipped summary or null", () => {
+    expect(drawerSummary({})).toBeNull();
+    expect(drawerSummary({ summary: "   " })).toBeNull();
+    expect(drawerSummary({ summary: " hello " })).toBe("hello");
+    expect(drawerSummary({ summary: "x".repeat(500) })!.length).toBe(280);
+  });
+  test("StoryDrawer renders the summary block under the kicker; inline expand uses the same helper", () => {
+    const src = readFileSync(resolve(import.meta.dir, "../../components/sage/desk.tsx"), "utf8");
+    const drawer = src.slice(src.indexOf("function StoryDrawer("), src.indexOf("story-drawer-list"));
+    const k = drawer.indexOf("story-drawer-kicker");
+    const s = drawer.indexOf("story-drawer-summary");
+    const c = drawer.indexOf("story-drawer-chips");
+    expect(k).toBeGreaterThan(0);
+    expect(s).toBeGreaterThan(k);
+    expect(c).toBeGreaterThan(s);
+    expect(src).toContain('{drawerSummary(r) ? <p className="pulse-v5-summary">{drawerSummary(r)}</p> : null}');
   });
 });

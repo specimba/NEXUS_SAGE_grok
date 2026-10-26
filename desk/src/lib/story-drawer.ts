@@ -53,6 +53,12 @@ export function buildCoverage(c: ClusterInput, items: Record<string, MemberItem>
   return rows.sort((a, b) => Number(a.self) - Number(b.self) || t(a) - t(b) || a.id.localeCompare(b.id));
 }
 
+/** Bug B: the lead's real summary (own or borrowed from a cluster mate), clipped; null when none. */
+export function drawerSummary(r: { summary?: string }, max = 280): string | null {
+  const s = r.summary?.trim();
+  return s ? s.slice(0, max) : null;
+}
+
 /** Drawer is for clusters with 2+ independent sources; single-source rows keep inline expand. */
 export function opensDrawer(r: { multiSource: boolean }): boolean {
   return r.multiSource;
