@@ -1448,6 +1448,12 @@ body {
   margin-left: auto;
   padding: 0 0.45rem;
 }
+/* 390: the end plate (BASELINE · FRESH/STALE/CRAWL) wraps to its own row instead of riding past the
+   right edge of the scroll strip (fresh-crawl BASELINE + FRESH = ~270px). Skin V2 tokens unchanged. */
+@media (max-width: 480px) {
+  .pulse-v5-health { flex-wrap: wrap; }
+  .pulse-v5-health-end { flex-wrap: wrap; min-height: 28px; max-width: 100%; }
+}
 .pulse-v5-baseline {
   color: var(--phosphor-dim);
   border: 1px dashed var(--border);

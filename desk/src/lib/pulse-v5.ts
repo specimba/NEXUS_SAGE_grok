@@ -378,6 +378,15 @@ export function sigCell(row: Pick<PulseV5Row, "score">): SigCell {
 
 export type HealthCellState = "ok" | "soft" | "fail";
 
+/** Health-strip cell text for a non-OK source: a short chip (≤ 10 chars) so a long crawl error
+ *  ("timeout after 30000ms budget") never pushes the strip's FRESH / CRAWL plate past 390px. Full reason stays in the title. */
+export function healthReasonShort(reason: string | null | undefined, state: string): string {
+  const r = (reason ?? "").replace(/^HTTP\s*/i, "").trim();
+  if (!r) return state.toUpperCase();
+  if (/time(d\s*)?out/i.test(r)) return "TIMEOUT";
+  return r.length <= 10 ? r : r.split(/[\s:·,]+/)[0].slice(0, 10);
+}
+
 export function healthCellState(state: string): HealthCellState {
   if (state === "ok") return "ok";
   if (state === "flaky" || state === "soft") return "soft";

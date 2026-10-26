@@ -64,6 +64,7 @@ import {
   buildRows,
   compactAge,
   healthCellState,
+  healthReasonShort,
   healthTicks,
   HEALTH_TICKS,
   PULSE_V5_MAX_ROWS,
@@ -1572,7 +1573,7 @@ export function Pulse() {
                 {Array.from({ length: HEALTH_TICKS }, (_, i) => (i < ticks ? "▮" : "▯")).join("")}
               </span>
               <span className="tabular-nums">
-                {state === "ok" ? s.items_last : s.fail_reason?.replace(/^HTTP\s*/, "") || s.state.toUpperCase()}
+                {state === "ok" ? s.items_last : healthReasonShort(s.fail_reason, s.state)}
               </span>
             </span>
           );
