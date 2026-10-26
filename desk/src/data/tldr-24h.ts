@@ -3,58 +3,23 @@ import type { Tldr } from "@/lib/tldr-24h";
 
 export const TLDR_24H: Tldr = {
   "schema": 1,
-  "crawl_at": "2026-10-25T21:44:48Z",
+  "crawl_at": "2026-10-26T20:46:09Z",
   "date": "2026-10-26",
   "bullets": [
     {
-      "id": "cl:gmail:1a173dc7e47d2563",
-      "title": "🥇Top AI Papers of the Week",
-      "url": "https://mail.google.com/mail/#all/1a173dc7e47d2563",
-      "at": "2026-10-25T16:14:31Z",
-      "sources": 10
-    },
-    {
-      "id": "cl:rss:the-decoder:c708c54a38c204c3",
-      "title": "OpenAI's isolated AI agents found ways to talk to each other through CPU cache",
-      "url": "https://the-decoder.com/openais-isolated-ai-agents-found-ways-to-talk-to-each-other-through-cpu-cache/",
-      "at": "2026-10-25T18:44:11Z",
+      "id": "cl:rss:the-decoder:814cbd4d71346f4e",
+      "title": "GPT-6.1 Terra halves OpenAI's API prices and still gains ground on its larger models",
+      "url": "https://the-decoder.com/gpt-6-1-terra-halves-openais-api-prices-and-still-gains-ground-on-its-larger-models/",
+      "at": "2026-10-26T20:30:55Z",
       "sources": 4
     },
     {
-      "id": "cl:rss:huggingnews:c05cc98130140c50",
-      "title": "Sweden Blocks ChatGPT and Claude on Government Staff Computers",
-      "url": "https://huggingnews.com/ai/sweden-blocks-chatgpt-and-claude-on-government-staff-computers-046d7527",
-      "at": "2026-10-25T12:53:21Z",
-      "sources": 4
-    },
-    {
-      "id": "cl:rss:testingcatalog:61a7fb23a0268e60",
-      "title": "Google AI Studio prepares new Managed Agents hub",
-      "url": "https://www.testingcatalog.com/google-ai-studio-prepares-new-managed-agents-hub/",
-      "at": "2026-10-25T13:33:07Z",
-      "sources": 2
-    },
-    {
-      "id": "cl:rss:the-decoder:f3ab1007804ab0aa",
-      "title": "Nvidia open-sources Flora to make robot video labeling 125x cheaper than GPT-6 Astra",
-      "url": "https://the-decoder.com/nvidia-open-sources-flora-to-make-robot-video-labeling-125x-cheaper-than-gpt-6-astra/",
-      "at": "2026-10-25T10:13:25Z",
-      "sources": 2
-    },
-    {
-      "id": "cl:rss:the-decoder:f1807e982f1d4824",
-      "title": "Anthropic co-founder Jack Clark moves his prediction for self-improving AI forward to 2027",
-      "url": "https://the-decoder.com/anthropic-co-founder-jack-clark-moves-his-prediction-for-self-improving-ai-forward-to-2027/",
-      "at": "2026-10-25T09:43:25Z",
-      "sources": 2
-    },
-    {
-      "id": "cl:rss:the-decoder:ecfe95db9f5a039c",
-      "title": "OpenMobile-2 proves open-source smartphone agents can rival proprietary models",
-      "url": "https://the-decoder.com/openmobile-2-proves-open-source-smartphone-agents-can-rival-proprietary-models/",
-      "at": "2026-10-25T08:13:25Z",
-      "sources": 2
+      "id": "cl:hn:50231099",
+      "title": "Nanbeige/Nanbeige4.3-33B",
+      "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B",
+      "at": "2026-10-26T06:52:57Z",
+      "sources": 3
     }
   ],
-  "quiet": false
+  "quiet": true
 };

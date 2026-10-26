@@ -7,31 +7,31 @@ import type { DigestUnlockSnapshot } from "@/lib/digest-unlock";
 export const DIGEST_UNLOCK: DigestUnlockSnapshot = {
   "schema": 1,
   "cycleId": "003",
-  "pickDate": "2026-10-25",
-  "frozenAt": "2026-10-25T15:36:48.267Z",
-  "leadId": "cl:rss:testingcatalog:61a7fb23a0268e60",
+  "pickDate": "2026-10-26",
+  "frozenAt": "2026-10-26T20:46:35.689Z",
+  "leadId": "cl:rss:the-decoder:814cbd4d71346f4e",
   "lead": {
-    "id": "cl:rss:testingcatalog:61a7fb23a0268e60",
+    "id": "cl:rss:the-decoder:814cbd4d71346f4e",
     "kind": "lead",
-    "title": "Google AI Studio prepares new Managed Agents hub",
-    "take": "2 SRC · pick 2026-10-25",
-    "why": "repick: lead older than 12h since pick",
+    "title": "GPT-6.1 Terra halves OpenAI's API prices and still gains ground on its larger models",
+    "take": "4 SRC · sig 337 · pick 2026-10-26",
+    "why": "LEAD_TODAY · picked · frozen at daily pick",
     "move": "Digest/Voice follow Brief lead · cycle label 003",
-    "url": "https://www.testingcatalog.com/google-ai-studio-prepares-new-managed-agents-hub/",
-    "sources": 2,
-    "sig": null
+    "url": "https://the-decoder.com/gpt-6-1-terra-halves-openais-api-prices-and-still-gains-ground-on-its-larger-models/",
+    "sources": 4,
+    "sig": 337
   },
   "rows": [
     {
-      "id": "cl:rss:huggingnews:c05cc98130140c50",
+      "id": "cl:hn:50231099",
       "kind": "companion",
-      "title": "Sweden Blocks ChatGPT and Claude on Government Staff Computers",
-      "take": "4 SRC · sig 4",
+      "title": "Nanbeige/Nanbeige4.3-33B",
+      "take": "3 SRC · sig 3",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
-      "url": "https://huggingnews.com/ai/sweden-blocks-chatgpt-and-claude-on-government-staff-computers-046d7527",
-      "sources": 4,
-      "sig": 4
+      "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B",
+      "sources": 3,
+      "sig": 3
     }
   ]
 } as const;

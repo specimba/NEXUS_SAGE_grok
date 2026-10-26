@@ -205,7 +205,7 @@ const D: NonNullable<SageSetupView["limits"]>["defaults"] = {
 };
 
 export const SAGE_SETUP: SageSetupView = {
-  "stamped_at": "2026-10-25T21:44:48Z",
+  "stamped_at": "2026-10-26T20:46:09Z",
   "config_path": "desk/config/sage-sources.json",
   "config_hash": "1ba30989ff76",
   "status": "ok",
@@ -218,7 +218,7 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "hn",
       "on": true,
       "caps": "cap 20",
-      "last_rows": 60,
+      "last_rows": 72,
       "state": "ok"
     },
     {
@@ -246,28 +246,28 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "gnews",
       "on": true,
       "caps": "cap 32",
-      "last_rows": 32,
+      "last_rows": 26,
       "state": "ok"
     },
     {
       "id": "github",
       "on": true,
       "caps": "cap 5",
-      "last_rows": 3,
+      "last_rows": 5,
       "state": "ok"
     },
     {
       "id": "openalex",
       "on": true,
       "caps": "—",
-      "last_rows": 3,
+      "last_rows": 4,
       "state": "ok"
     },
     {
       "id": "crossref",
       "on": true,
       "caps": "—",
-      "last_rows": 0,
+      "last_rows": 1,
       "state": "ok"
     },
     {
@@ -291,8 +291,8 @@ export const SAGE_SETUP: SageSetupView = {
       "last_rows": null,
       "state": "box-only",
       "snapshot": {
-        "rows": 16,
-        "at": "2026-10-25T17:54:07Z"
+        "rows": 12,
+        "at": "2026-10-26T17:47:08Z"
       }
     },
     {
@@ -303,21 +303,21 @@ export const SAGE_SETUP: SageSetupView = {
       "state": "box-only",
       "snapshot": {
         "rows": 24,
-        "at": "2026-10-25T17:54:07Z"
+        "at": "2026-10-26T17:47:08Z"
       }
     },
     {
       "id": "analyst_rss",
       "on": true,
       "caps": "cap_per_feed 6 · timeout_s 10 · feeds 2",
-      "last_rows": 6,
+      "last_rows": 5,
       "state": "ok"
     },
     {
       "id": "releases_atom",
       "on": true,
       "caps": "cap_per_feed 2 · feeds 8",
-      "last_rows": 1,
+      "last_rows": 7,
       "state": "ok"
     }
   ],

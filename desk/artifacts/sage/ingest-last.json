@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-25T21:44:48Z",
+  "stamped_at": "2026-10-26T20:46:09Z",
   "config_hash": "1ba30989ff76",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,7 +11,7 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 178,
+      "duration_ms": 165,
       "paused_until": null,
       "reason": null
     },
@@ -20,7 +20,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 29,
-      "duration_ms": 3019,
+      "duration_ms": 3188,
       "paused_until": null,
       "reason": null
     },
@@ -28,8 +28,8 @@
       "id": "openalex",
       "label": "OpenAlex",
       "status": "ok",
-      "rows": 3,
-      "duration_ms": 589,
+      "rows": 4,
+      "duration_ms": 637,
       "paused_until": null,
       "reason": null
     },
@@ -37,8 +37,8 @@
       "id": "crossref",
       "label": "Crossref",
       "status": "ok",
-      "rows": 0,
-      "duration_ms": 203,
+      "rows": 1,
+      "duration_ms": 444,
       "paused_until": null,
       "reason": null
     },
@@ -46,8 +46,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 60,
-      "duration_ms": 8260,
+      "rows": 72,
+      "duration_ms": 8245,
       "paused_until": null,
       "reason": null
     },
@@ -55,8 +55,8 @@
       "id": "hn_title",
       "label": "HN title",
       "status": "ok",
-      "rows": 2,
-      "duration_ms": 8243,
+      "rows": 11,
+      "duration_ms": 8192,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 151,
-      "duration_ms": 25965,
+      "duration_ms": 25113,
       "paused_until": null,
       "reason": null
     },
@@ -74,7 +74,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 74,
-      "duration_ms": 12093,
+      "duration_ms": 12098,
       "paused_until": null,
       "reason": null
     },
@@ -82,8 +82,8 @@
       "id": "rss_analyst",
       "label": "analyst RSS",
       "status": "ok",
-      "rows": 6,
-      "duration_ms": 2345,
+      "rows": 5,
+      "duration_ms": 2479,
       "paused_until": null,
       "reason": null
     },
@@ -91,8 +91,8 @@
       "id": "releases_atom",
       "label": "releases",
       "status": "ok",
-      "rows": 1,
-      "duration_ms": 6865,
+      "rows": 7,
+      "duration_ms": 6719,
       "paused_until": null,
       "reason": null
     },
@@ -100,8 +100,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 32,
-      "duration_ms": 6404,
+      "rows": 26,
+      "duration_ms": 6479,
       "paused_until": null,
       "reason": null
     },
@@ -109,8 +109,8 @@
       "id": "github",
       "label": "GitHub",
       "status": "ok",
-      "rows": 3,
-      "duration_ms": 355,
+      "rows": 5,
+      "duration_ms": 308,
       "paused_until": null,
       "reason": null
     },
@@ -119,16 +119,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4646,
+      "duration_ms": 4820,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 79165,
-    "sources_wall_ms": 25965,
-    "papers_lane_ms": 3996,
-    "slowest_source_ms": 25965,
+    "sources_ms": 78887,
+    "sources_wall_ms": 25114,
+    "papers_lane_ms": 4439,
+    "slowest_source_ms": 25113,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -146,163 +146,118 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 26732,
-    "startup_ms": 60,
-    "main_ms": 27513
+    "wall_ms": 25746,
+    "startup_ms": 49,
+    "main_ms": 26251
   },
-  "multi_source_independent": 7,
+  "multi_source_independent": 3,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 7,
-    "multi_source_raw": 7,
-    "self_reposts": 0,
-    "items_in": 340,
-    "clusters_out": 302,
-    "collapsed": 38,
-    "multi_source": 7,
-    "multi_member": 17,
+    "multi_source_independent": 3,
+    "multi_source_raw": 4,
+    "self_reposts": 1,
+    "items_in": 347,
+    "clusters_out": 308,
+    "collapsed": 39,
+    "multi_source": 3,
+    "multi_member": 15,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 1,
+    "new_items": 120,
     "per_source": {
-      "hn-algolia": 60,
+      "hn-algolia": 72,
       "rss-lab": 151,
       "rss-security": 74,
-      "gnews-rss": 32,
-      "gmail-news": 16,
-      "rss-analyst": 6,
-      "releases-atom": 1
+      "gnews-rss": 26,
+      "gmail-news": 12,
+      "rss-analyst": 5,
+      "releases-atom": 7
     },
     "multi_source_clusters": [
       {
-        "title": "OpenAI's isolated AI agents found ways to talk to each other through CPU cache",
+        "title": "GPT-6.1 Terra halves OpenAI's API prices and still gains ground on its larger models",
         "sources": [
           "rss-lab",
-          "hn-algolia",
-          "gnews-rss"
+          "hn-algolia"
         ],
-        "size": 4,
+        "size": 6,
         "score": 1,
         "members": [
           {
-            "id": "hn:50234725",
+            "id": "hn:50248124",
             "source": "hn-algolia",
-            "title": "OpenAI's isolated AI agents found ways to talk to each other through CPU cache",
-            "at": "2026-10-25T18:44:11Z",
+            "title": "GPT-6.1 Terra",
+            "at": "2026-10-26T18:01:17Z",
             "publisher": null
           },
           {
-            "id": "rss:the-decoder:c708c54a38c204c3",
+            "id": "hn:50248075",
+            "source": "hn-algolia",
+            "title": "GPT 6.1 Terra",
+            "at": "2026-10-26T17:58:24Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:50249076",
+            "source": "hn-algolia",
+            "title": "GPT-6.1 Terra (Max) Scores 48 on Artificial Analysis",
+            "at": "2026-10-26T18:54:00Z",
+            "publisher": null
+          },
+          {
+            "id": "rss:the-decoder:814cbd4d71346f4e",
             "source": "rss-lab",
-            "title": "OpenAI's isolated AI agents found ways to talk to each other through CPU cache",
-            "at": "2026-10-24T11:12:36Z",
+            "title": "GPT-6.1 Terra halves OpenAI's API prices and still gains ground on its larger models",
+            "at": "2026-10-26T20:30:55Z",
             "publisher": "the-decoder"
           },
           {
-            "id": "gnews:98c48b167469f2f6",
-            "source": "gnews-rss",
-            "title": "OpenAI's isolated AI agents found ways to talk to each other through CPU cache - The Decoder",
-            "at": "2026-10-24T11:18:17Z",
-            "publisher": "The Decoder"
-          },
-          {
-            "id": "gnews:adabb126e4825122",
-            "source": "gnews-rss",
-            "title": "OpenAI reveals isolated AI agents that talk through the CPU cache - Pasquale Pillitteri",
-            "at": "2026-10-25T08:53:03Z",
-            "publisher": "Pasquale Pillitteri"
-          }
-        ]
-      },
-      {
-        "title": "Sweden Blocks ChatGPT and Claude on Government Staff Computers",
-        "sources": [
-          "rss-lab",
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 4,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:50219364",
-            "source": "hn-algolia",
-            "title": "Sweden's Government Offices will block ChatGPT and Claude on staff computers",
-            "at": "2026-10-24T08:51:06Z",
-            "publisher": null
-          },
-          {
-            "id": "rss:huggingnews:c05cc98130140c50",
+            "id": "rss:huggingnews:bd4623aac9e441ac",
             "source": "rss-lab",
-            "title": "Sweden Blocks ChatGPT and Claude on Government Staff Computers",
-            "at": "2026-10-25T12:53:21Z",
+            "title": "OpenAI Integrates GPT-6.1 Terra into GitHub Copilot to Enable Lower Cost AI Agents",
+            "at": "2026-10-26T19:55:42Z",
             "publisher": "huggingnews"
           },
           {
-            "id": "gnews:9075b6f271d42064",
-            "source": "gnews-rss",
-            "title": "Sweden Blocks ChatGPT and Claude in Government Offices, Copilot Stays - Pasquale Pillitteri",
-            "at": "2026-10-24T07:27:30Z",
-            "publisher": "Pasquale Pillitteri"
-          },
-          {
-            "id": "gnews:8ac950f0b116585e",
-            "source": "gnews-rss",
-            "title": "Sweden’s Government Offices blocks ChatGPT and Claude, approves Microsoft Copilot - Crypto Briefing",
-            "at": "2026-10-24T16:04:47Z",
-            "publisher": "Crypto Briefing"
+            "id": "rss:openai:35e334c198740f74",
+            "source": "rss-lab",
+            "title": "Introducing GPT-6.1 Terra",
+            "at": "2026-10-26T00:00:00Z",
+            "publisher": "openai"
           }
         ]
       },
       {
-        "title": "Google AI Studio prepares new Managed Agents hub",
+        "title": "Nanbeige/Nanbeige4.3-33B",
         "sources": [
-          "rss-lab",
+          "hn-algolia",
           "gnews-rss"
         ],
-        "size": 2,
-        "score": 1,
+        "size": 3,
+        "score": 0.725,
         "members": [
           {
-            "id": "rss:testingcatalog:61a7fb23a0268e60",
-            "source": "rss-lab",
-            "title": "Google AI Studio prepares new Managed Agents hub",
-            "at": "2026-10-25T13:30:58Z",
-            "publisher": "testingcatalog"
+            "id": "hn:50231099",
+            "source": "hn-algolia",
+            "title": "Nanbeige/Nanbeige4.3-33B",
+            "at": "2026-10-25T13:01:30Z",
+            "publisher": null
           },
           {
-            "id": "gnews:9954aafbb09502dc",
+            "id": "gnews:7d3d638705c2db2e",
             "source": "gnews-rss",
-            "title": "Google AI Studio prepares new Managed Agents hub - TestingCatalog AI News",
-            "at": "2026-10-25T13:33:07Z",
-            "publisher": "TestingCatalog AI News"
-          }
-        ]
-      },
-      {
-        "title": "Nvidia open-sources Flora to make robot video labeling 125x cheaper than GPT-6 Astra",
-        "sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 1,
-        "members": [
-          {
-            "id": "rss:the-decoder:f3ab1007804ab0aa",
-            "source": "rss-lab",
-            "title": "Nvidia open-sources Flora to make robot video labeling 125x cheaper than GPT-6 Astra",
-            "at": "2026-10-25T10:08:49Z",
-            "publisher": "the-decoder"
+            "title": "Nanbeige Releases Nanbeige4.3-33B, a 33B Open Agentic Coding Model - MarkTechPost",
+            "at": "2026-10-25T21:15:21Z",
+            "publisher": "MarkTechPost"
           },
           {
-            "id": "gnews:c31f13db7afd8143",
+            "id": "gnews:0d141277ad347e37",
             "source": "gnews-rss",
-            "title": "Nvidia open-sources Flora to make robot video labeling 125x cheaper than GPT-6 Astra - The Decoder",
-            "at": "2026-10-25T10:13:25Z",
-            "publisher": "The Decoder"
+            "title": "BOSS Zhipin's Nanbeige Team Open-Sources Nanbeige4.3-33B, a 512K-Context Agentic Coding Model - Pandaily",
+            "at": "2026-10-26T06:52:57Z",
+            "publisher": "Pandaily"
           }
         ]
       },
@@ -330,59 +285,27 @@
             "publisher": "The Decoder"
           }
         ]
-      },
+      }
+    ],
+    "self_repost_clusters": [
       {
-        "title": "Anthropic says one AI agent beats many subagents now that models can handle complexity alone",
+        "title": "Our newest AI Quest: Mapping the human brain",
         "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
           "rss-lab",
           "gnews-rss"
         ],
-        "size": 2,
-        "score": 1,
-        "members": [
+        "self_reposts": [
           {
-            "id": "rss:the-decoder:906aea2a3fca0a79",
-            "source": "rss-lab",
-            "title": "Anthropic says one AI agent beats many subagents now that models can handle complexity alone",
-            "at": "2026-10-25T09:12:10Z",
-            "publisher": "the-decoder"
-          },
-          {
-            "id": "gnews:0d0f9d3b76593e56",
-            "source": "gnews-rss",
-            "title": "Anthropic says one AI agent beats many subagents now that models can handle complexity alone - The Decoder",
-            "at": "2026-10-25T09:18:25Z",
-            "publisher": "The Decoder"
-          }
-        ]
-      },
-      {
-        "title": "OpenMobile-2 proves open-source smartphone agents can rival proprietary models",
-        "sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 1,
-        "members": [
-          {
-            "id": "rss:the-decoder:ecfe95db9f5a039c",
-            "source": "rss-lab",
-            "title": "OpenMobile-2 proves open-source smartphone agents can rival proprietary models",
-            "at": "2026-10-25T06:55:22Z",
-            "publisher": "the-decoder"
-          },
-          {
-            "id": "gnews:b7635f6b343afd29",
-            "source": "gnews-rss",
-            "title": "OpenMobile-2 proves open-source smartphone agents can rival proprietary models - The Decoder",
-            "at": "2026-10-25T08:13:25Z",
-            "publisher": "The Decoder"
+            "id": "gnews:476af819988442a3",
+            "publisher": "blog.google",
+            "title": "Our newest AI Quest: Mapping the human brain - blog.google"
           }
         ]
       }
     ],
-    "self_repost_clusters": [],
     "ai_relevance": {
       "rss_lab_dropped": [
         {
@@ -393,396 +316,405 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "Pasquale Pillitteri",
-          "title": "When do the clocks go back in 2026? UK 25 Oct, US 1 Nov - Pasquale Pillitteri"
+          "publisher": "The University of Utah",
+          "title": "Important cybersecurity advisory: PHP vulnerabilities - The University of Utah"
         },
         {
-          "publisher": "Substack",
-          "title": "Make money doing the work you believe in - Substack"
+          "publisher": "PYMNTS.com",
+          "title": "CPI | Google Challenges US Order to Share Search Data With Competitors - PYMNTS.com"
         },
         {
-          "publisher": "Psychology Today",
-          "title": "Pay Attention to Your Attention - Psychology Today"
+          "publisher": "Search Engine Land",
+          "title": "Google Search says you should block indexing of link-shared content - Search Engine Land"
         },
         {
-          "publisher": "The Motley Fool",
-          "title": "Not Nvidia. Not Microsoft. This \"Magnificent Seven\" Stock Is the Cheapest Right Now. - The Motley Fool"
+          "publisher": "OrcaRouter",
+          "title": "Qwen3.8-Flash-Next vs Qwen3.8-Flash: Same Weights, Two Products - OrcaRouter"
         },
         {
-          "publisher": "Benzinga",
-          "title": "Magnificent Seven ETF Pulls Back: What to Expect from Microsoft, Google, and Amazon Earnings - Benzinga"
+          "publisher": "Search Engine Land",
+          "title": "Google Ads introduces centralized dashboard for tracking policy issues - Search Engine Land"
         },
         {
-          "publisher": "How-To Geek",
-          "title": "I've always recommended naming Excel tables, and Microsoft just removed the annoying part - How-To Geek"
+          "publisher": "RealMoney Pro",
+          "title": "Chart of the Day: Can Microsoft Save the Magnificent Seven? - RealMoney Pro"
         },
         {
-          "publisher": "Pasquale Pillitteri",
-          "title": "Nanbeige4.3-33B arrives open source and takes on Qwen3.8-27B in coding - Pasquale Pillitteri"
+          "publisher": "TIKR.com",
+          "title": "Google Cloud Has “a Meaningful Shot” at Lapping Microsoft, and Nobody Is Pricing It - TIKR.com"
         },
         {
-          "publisher": "Pasquale Pillitteri",
-          "title": "Google launches ChromeOS Flex USB stick with refurbed for Windows 10 - Pasquale Pillitteri"
+          "publisher": "Firstpost",
+          "title": "Microsoft releases emergency .NET update to fix critical Brotli security flaw - Firstpost"
         },
         {
-          "publisher": "BioTecNika",
-          "title": "Focus Area Science Technology Summer Fellowship 2027 | Applications Invited - BioTecNika"
+          "publisher": "MSSP Alert",
+          "title": "Malicious google search ads distribute weaponized putty installers - MSSP Alert"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 36
+      "hn_dropped": 34
     },
     "gnews_near_misses": [
       {
-        "score": 0.654,
+        "score": 0.758,
         "blocked": "time-window",
-        "hours_apart": 29.4,
+        "hours_apart": 483.6,
         "a": {
-          "id": "rss:huggingnews:c05cc98130140c50",
+          "id": "rss:mistral:1ef243007176e85c",
           "source": "rss-lab",
-          "title": "Sweden Blocks ChatGPT and Claude on Government Staff Computers",
-          "at": "2026-10-25T12:53:21Z"
+          "title": "Introducing Mistral Large 4",
+          "at": "2026-10-06T12:00:27Z"
         },
         "b": {
-          "id": "gnews:9075b6f271d42064",
+          "id": "gnews:45c724433898d006",
           "source": "gnews-rss",
-          "title": "Sweden Blocks ChatGPT and Claude in Government Offices, Copilot Stays - Pasquale Pillitteri",
-          "at": "2026-10-24T07:27:30Z"
-        },
-        "shared": [
-          "sweden",
-          "block",
-          "chatgpt",
-          "claude",
-          "government"
-        ]
-      },
-      {
-        "score": 0.42,
-        "blocked": "time-window",
-        "hours_apart": 53.9,
-        "a": {
-          "id": "rss:testingcatalog:e1c2f0e8ac548ef0",
-          "source": "rss-lab",
-          "title": "Canva launches Craft image model with 2K output and API",
-          "at": "2026-10-23T08:25:51Z"
-        },
-        "b": {
-          "id": "gnews:e374c1bfd6e95b26",
-          "source": "gnews-rss",
-          "title": "Canva Enters AI Image Generation Race With In-House Canva Craft Model - AI Insider",
-          "at": "2026-10-25T14:20:59Z"
-        },
-        "shared": [
-          "canva",
-          "craft",
-          "imag",
-          "model"
-        ]
-      },
-      {
-        "score": 0.369,
-        "blocked": "thin-overlap",
-        "hours_apart": 5.7,
-        "a": {
-          "id": "gnews:283b1eeae3d705ee",
-          "source": "gnews-rss",
-          "title": "Claude Code jailbreaks a Kindle over USB, Amazon bloatware vanishes - Pasquale Pillitteri",
-          "at": "2026-10-25T17:09:19Z"
-        },
-        "b": {
-          "id": "gmail:1a172d348d2adf95",
-          "source": "gmail-news",
-          "title": "Claude Code Extensions",
-          "at": "2026-10-25T11:28:36Z"
-        },
-        "shared": [
-          "claude",
-          "code"
-        ]
-      },
-      {
-        "score": 0.338,
-        "blocked": "below-threshold",
-        "hours_apart": 1,
-        "a": {
-          "id": "rss:huggingnews:1c63f74d489f691c",
-          "source": "rss-lab",
-          "title": "Open-Source Projects Unlock AI Performance on Nvidia RTX 20, 30, and 40 GPUs",
-          "at": "2026-10-25T17:23:44Z"
-        },
-        "b": {
-          "id": "gnews:ab6116911ce61e99",
-          "source": "gnews-rss",
-          "title": "GPU-Unlock launches, unlocking FP16 and BF16 on RTX 30 for local AI - Pasquale Pillitteri",
-          "at": "2026-10-25T18:22:35Z"
-        },
-        "shared": [
-          "unlock",
-          "ai",
-          "rtx",
-          "30"
-        ]
-      },
-      {
-        "score": 0.273,
-        "blocked": "below-threshold",
-        "hours_apart": 13.4,
-        "a": {
-          "id": "rss:huggingnews:77005e6ef3f0e56c",
-          "source": "rss-lab",
-          "title": "Nvidia CEO Jensen Huang Says Memory Chip Glut Unlikely by 2029",
-          "at": "2026-10-25T06:24:15Z"
-        },
-        "b": {
-          "id": "gnews:5bb1c95e2ce46286",
-          "source": "gnews-rss",
-          "title": "Jensen Huang puts a $2,000-per-GPU yearly price on NVIDIA's AI Agent software - TweakTown",
-          "at": "2026-10-25T19:50:11Z"
-        },
-        "shared": [
-          "nvidia",
-          "jensen",
-          "huang"
-        ]
-      },
-      {
-        "score": 0.261,
-        "blocked": "thin-overlap",
-        "hours_apart": 100.6,
-        "a": {
-          "id": "rss:mistral:6bf82841932d223c",
-          "source": "rss-lab",
-          "title": "Mistral Advances AI for Engineering with NVIDIA",
-          "at": "2026-10-21T12:00:20Z"
-        },
-        "b": {
-          "id": "gnews:c4beecb047382d81",
-          "source": "gnews-rss",
-          "title": "Mistral turns itself into a full AI stack to take on OpenAI and Google - Startup Fortune",
-          "at": "2026-10-25T16:38:31Z"
+          "title": "Mistral Large 4 Weights: The Final Week - Forkast News",
+          "at": "2026-10-26T15:38:51Z"
         },
         "shared": [
           "mistral",
+          "larg",
+          "4"
+        ]
+      },
+      {
+        "score": 0.549,
+        "blocked": "below-threshold",
+        "hours_apart": 4.8,
+        "a": {
+          "id": "rss:huggingnews:3bf0a3b47d9127df",
+          "source": "rss-lab",
+          "title": "Microsoft Offers Buyouts to 60,000 Workers to Redirect Spending Toward AI",
+          "at": "2026-10-26T15:52:46Z"
+        },
+        "b": {
+          "id": "gnews:332389b29f30af13",
+          "source": "gnews-rss",
+          "title": "Microsoft offers 60,000 buyouts as AI capex hits US$175b - B2B News",
+          "at": "2026-10-26T20:43:27Z"
+        },
+        "shared": [
+          "microsoft",
+          "offer",
+          "buyout",
+          "60",
+          "000",
           "ai"
         ]
       },
       {
-        "score": 0.255,
+        "score": 0.37,
         "blocked": "thin-overlap",
-        "hours_apart": 20.2,
+        "hours_apart": 1.7,
         "a": {
-          "id": "hn:50225165",
-          "source": "hn-algolia",
-          "title": "Show HN: Claude Code(and others) embedded in your app",
-          "at": "2026-10-24T20:54:27Z"
+          "id": "gnews:b31cfe302ad31068",
+          "source": "gnews-rss",
+          "title": "Moonshot Refunds 25% of Monthly Quota After Kimi K3.1 Pro Launch Glitches - BigGo Finance",
+          "at": "2026-10-26T18:15:00Z"
         },
         "b": {
-          "id": "gnews:283b1eeae3d705ee",
-          "source": "gnews-rss",
-          "title": "Claude Code jailbreaks a Kindle over USB, Amazon bloatware vanishes - Pasquale Pillitteri",
-          "at": "2026-10-25T17:09:19Z"
+          "id": "gmail:1a17910e6d416e98",
+          "source": "gmail-news",
+          "title": "Latest Updates: ServiceNow and NVIDIA move to govern AI agents, Moonshot debuts Kimi K3.1 Pro, the UK funds an AI biosecurity lab",
+          "at": "2026-10-26T16:35:13Z"
         },
         "shared": [
-          "claude",
-          "code"
+          "moonshot",
+          "kimi",
+          "k3.1",
+          "pro"
         ]
       },
       {
-        "score": 0.247,
-        "blocked": "time-window",
-        "hours_apart": 619.7,
+        "score": 0.326,
+        "blocked": "below-threshold",
+        "hours_apart": 19.3,
         "a": {
-          "id": "rss:google-research:5cc8f180d7d24936",
-          "source": "rss-lab",
-          "title": "How Diffusion Controller unifies and simplifies AI image generation",
-          "at": "2026-09-29T18:38:27Z"
+          "id": "hn:50237360",
+          "source": "hn-algolia",
+          "title": "Claude model bypassed paywall to access voter info without human authorization",
+          "at": "2026-10-26T00:12:00Z"
         },
         "b": {
-          "id": "gnews:e374c1bfd6e95b26",
+          "id": "gnews:13c45be295ec8179",
           "source": "gnews-rss",
-          "title": "Canva Enters AI Image Generation Race With In-House Canva Craft Model - AI Insider",
-          "at": "2026-10-25T14:20:59Z"
+          "title": "Claude Bypasses Georgia Paywall, Experts Debate Security Implications - Security Info Watch",
+          "at": "2026-10-26T19:32:06Z"
         },
         "shared": [
-          "ai",
-          "imag",
-          "generation"
+          "claude",
+          "bypass",
+          "paywall"
+        ]
+      },
+      {
+        "score": 0.289,
+        "blocked": "thin-overlap",
+        "hours_apart": 2,
+        "a": {
+          "id": "gnews:ea0dba5ba690b54d",
+          "source": "gnews-rss",
+          "title": "Kimi K3.1 Pro: 1M Tokens, Big Gains - IntraMind LLC",
+          "at": "2026-10-26T18:32:19Z"
+        },
+        "b": {
+          "id": "gmail:1a17910e6d416e98",
+          "source": "gmail-news",
+          "title": "Latest Updates: ServiceNow and NVIDIA move to govern AI agents, Moonshot debuts Kimi K3.1 Pro, the UK funds an AI biosecurity lab",
+          "at": "2026-10-26T16:35:13Z"
+        },
+        "shared": [
+          "kimi",
+          "k3.1",
+          "pro"
+        ]
+      },
+      {
+        "score": 0.284,
+        "blocked": "time-window",
+        "hours_apart": 464.4,
+        "a": {
+          "id": "rss:google-ai:b6aec8c05cfc3e2f",
+          "source": "rss-lab",
+          "title": "Introducing Playground: Create and play custom games",
+          "at": "2026-10-07T12:00:00Z"
+        },
+        "b": {
+          "id": "gnews:573afe3bb72978e7",
+          "source": "gnews-rss",
+          "title": "How to create custom AI agents for your business in Wix Symphony - TechRadar",
+          "at": "2026-10-26T20:22:08Z"
+        },
+        "shared": [
+          "creat",
+          "custom"
+        ]
+      },
+      {
+        "score": 0.283,
+        "blocked": "thin-overlap",
+        "hours_apart": 7.7,
+        "a": {
+          "id": "hn:50242152",
+          "source": "hn-algolia",
+          "title": "Anthropic's Claude AI model accessed Georgia voter data in US",
+          "at": "2026-10-26T11:48:22Z"
+        },
+        "b": {
+          "id": "gnews:13c45be295ec8179",
+          "source": "gnews-rss",
+          "title": "Claude Bypasses Georgia Paywall, Experts Debate Security Implications - Security Info Watch",
+          "at": "2026-10-26T19:32:06Z"
+        },
+        "shared": [
+          "claude",
+          "georgia"
+        ]
+      },
+      {
+        "score": 0.268,
+        "blocked": "time-window",
+        "hours_apart": 93.8,
+        "a": {
+          "id": "rss:testingcatalog:9f88e07d4091b4c1",
+          "source": "rss-lab",
+          "title": "Recursive releases Flint, 40B model for local coding",
+          "at": "2026-10-21T23:26:46Z"
+        },
+        "b": {
+          "id": "gnews:7d3d638705c2db2e",
+          "source": "gnews-rss",
+          "title": "Nanbeige Releases Nanbeige4.3-33B, a 33B Open Agentic Coding Model - MarkTechPost",
+          "at": "2026-10-25T21:15:21Z"
+        },
+        "shared": [
+          "releas",
+          "model",
+          "cod"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.654,
+        "score": 0.758,
         "blocked": "time-window",
-        "hours_apart": 29.4,
+        "hours_apart": 483.6,
         "a": {
-          "id": "rss:huggingnews:c05cc98130140c50",
+          "id": "rss:mistral:1ef243007176e85c",
           "source": "rss-lab",
-          "title": "Sweden Blocks ChatGPT and Claude on Government Staff Computers",
-          "at": "2026-10-25T12:53:21Z"
+          "title": "Introducing Mistral Large 4",
+          "at": "2026-10-06T12:00:27Z"
         },
         "b": {
-          "id": "gnews:9075b6f271d42064",
+          "id": "gnews:45c724433898d006",
           "source": "gnews-rss",
-          "title": "Sweden Blocks ChatGPT and Claude in Government Offices, Copilot Stays - Pasquale Pillitteri",
-          "at": "2026-10-24T07:27:30Z"
+          "title": "Mistral Large 4 Weights: The Final Week - Forkast News",
+          "at": "2026-10-26T15:38:51Z"
         },
         "shared": [
-          "sweden",
-          "block",
-          "chatgpt",
-          "claude",
-          "government"
+          "mistral",
+          "larg",
+          "4"
         ]
       },
       {
-        "score": 0.502,
-        "blocked": "time-window",
-        "hours_apart": 53.8,
+        "score": 0.549,
+        "blocked": "below-threshold",
+        "hours_apart": 4.8,
         "a": {
-          "id": "gmail:1a173ca633adfb1e",
-          "source": "gmail-news",
-          "title": "🚨 Black October and NVIDIA event recap",
-          "at": "2026-10-25T16:00:04Z"
+          "id": "rss:huggingnews:3bf0a3b47d9127df",
+          "source": "rss-lab",
+          "title": "Microsoft Offers Buyouts to 60,000 Workers to Redirect Spending Toward AI",
+          "at": "2026-10-26T15:52:46Z"
         },
         "b": {
-          "id": "anl:latent-space:9a6fbe4911070551",
-          "source": "rss-analyst",
-          "title": "[AINews] Black October",
-          "at": "2026-10-23T10:09:29Z"
+          "id": "gnews:332389b29f30af13",
+          "source": "gnews-rss",
+          "title": "Microsoft offers 60,000 buyouts as AI capex hits US$175b - B2B News",
+          "at": "2026-10-26T20:43:27Z"
         },
         "shared": [
-          "black",
-          "october"
+          "microsoft",
+          "offer",
+          "buyout",
+          "60",
+          "000",
+          "ai"
         ]
       },
       {
-        "score": 0.421,
-        "blocked": "thin-overlap",
-        "hours_apart": 14.6,
+        "score": 0.51,
+        "blocked": "below-threshold",
+        "hours_apart": 2.3,
         "a": {
-          "id": "hn:50225165",
+          "id": "hn:50242278",
           "source": "hn-algolia",
-          "title": "Show HN: Claude Code(and others) embedded in your app",
-          "at": "2026-10-24T20:54:27Z"
+          "title": "Meta Plans to Raise Up to $95B for AI Push",
+          "at": "2026-10-26T12:01:59Z"
         },
         "b": {
-          "id": "gmail:1a172d348d2adf95",
-          "source": "gmail-news",
-          "title": "Claude Code Extensions",
-          "at": "2026-10-25T11:28:36Z"
-        },
-        "shared": [
-          "claude",
-          "code"
-        ]
-      },
-      {
-        "score": 0.42,
-        "blocked": "time-window",
-        "hours_apart": 53.9,
-        "a": {
-          "id": "rss:testingcatalog:e1c2f0e8ac548ef0",
+          "id": "rss:the-decoder:4d19c3be46525a96",
           "source": "rss-lab",
-          "title": "Canva launches Craft image model with 2K output and API",
-          "at": "2026-10-23T08:25:51Z"
-        },
-        "b": {
-          "id": "gnews:e374c1bfd6e95b26",
-          "source": "gnews-rss",
-          "title": "Canva Enters AI Image Generation Race With In-House Canva Craft Model - AI Insider",
-          "at": "2026-10-25T14:20:59Z"
+          "title": "Meta plans up to $95 billion in stock sales to fund its AI buildout",
+          "at": "2026-10-26T14:21:23Z"
         },
         "shared": [
-          "canva",
-          "craft",
-          "imag",
-          "model"
+          "meta",
+          "plan",
+          "95b",
+          "ai"
         ]
       },
       {
-        "score": 0.388,
-        "blocked": "thin-overlap",
-        "hours_apart": 1423.5,
+        "score": 0.436,
+        "blocked": "time-window",
+        "hours_apart": 27.2,
         "a": {
-          "id": "rss-sec:embracethered:ec3f36b4902a2296",
+          "id": "hn:50231722",
+          "source": "hn-algolia",
+          "title": "R/open source bans all solo projects and projects using LLMs",
+          "at": "2026-10-25T14:05:03Z"
+        },
+        "b": {
+          "id": "rss:the-decoder:8c54443ef41ab597",
+          "source": "rss-lab",
+          "title": "Reddit's r/opensource bans all AI-related projects, sparking backlash and a rival subreddit",
+          "at": "2026-10-26T17:19:40Z"
+        },
+        "shared": [
+          "r",
+          "opensourc",
+          "ban",
+          "project"
+        ]
+      },
+      {
+        "score": 0.37,
+        "blocked": "thin-overlap",
+        "hours_apart": 1.7,
+        "a": {
+          "id": "gnews:b31cfe302ad31068",
+          "source": "gnews-rss",
+          "title": "Moonshot Refunds 25% of Monthly Quota After Kimi K3.1 Pro Launch Glitches - BigGo Finance",
+          "at": "2026-10-26T18:15:00Z"
+        },
+        "b": {
+          "id": "gmail:1a17910e6d416e98",
+          "source": "gmail-news",
+          "title": "Latest Updates: ServiceNow and NVIDIA move to govern AI agents, Moonshot debuts Kimi K3.1 Pro, the UK funds an AI biosecurity lab",
+          "at": "2026-10-26T16:35:13Z"
+        },
+        "shared": [
+          "moonshot",
+          "kimi",
+          "k3.1",
+          "pro"
+        ]
+      },
+      {
+        "score": 0.359,
+        "blocked": "below-threshold",
+        "hours_apart": 4.1,
+        "a": {
+          "id": "hn:50246323",
+          "source": "hn-algolia",
+          "title": "Anthropic Files for IPO That Could Value AI Firm at Up to $2T",
+          "at": "2026-10-26T16:17:00Z"
+        },
+        "b": {
+          "id": "rss-sec:securityweek:dfe95ba302f26160",
           "source": "rss-security",
-          "title": "Breaking Claude Code Opus 5 Auto Mode",
-          "at": "2026-08-27T04:00:00Z"
-        },
-        "b": {
-          "id": "gmail:1a172d348d2adf95",
-          "source": "gmail-news",
-          "title": "Claude Code Extensions",
-          "at": "2026-10-25T11:28:36Z"
+          "title": "Anthropic Files for Potentially the Biggest IPO Ever as CEO Warns of Risk to Humanity From AI",
+          "at": "2026-10-26T20:20:56Z"
         },
         "shared": [
-          "claude",
-          "code"
+          "anthropic",
+          "file",
+          "ipo",
+          "ai"
         ]
       },
       {
-        "score": 0.383,
+        "score": 0.344,
         "blocked": "thin-overlap",
-        "hours_apart": 35.9,
+        "hours_apart": 338.8,
         "a": {
-          "id": "hn:50216816",
-          "source": "hn-algolia",
-          "title": "Claude Code will refuse to fill in passwords or use a password manager",
-          "at": "2026-10-23T23:33:23Z"
+          "id": "rss:google-ai:6a7bb4e3e69d69f5",
+          "source": "rss-lab",
+          "title": "The latest AI news we announced in September 2026",
+          "at": "2026-10-02T15:00:00Z"
         },
         "b": {
-          "id": "gmail:1a172d348d2adf95",
-          "source": "gmail-news",
-          "title": "Claude Code Extensions",
-          "at": "2026-10-25T11:28:36Z"
+          "id": "rss-sec:unit42:5af4576ccaef43e6",
+          "source": "rss-security",
+          "title": "Top 5 Initial Access Threat Vectors Observed by Unit 42 in September 2026",
+          "at": "2026-10-16T17:47:54Z"
         },
         "shared": [
-          "claude",
-          "code"
+          "september",
+          "2026"
         ]
       },
       {
-        "score": 0.373,
+        "score": 0.328,
         "blocked": "thin-overlap",
-        "hours_apart": 25,
+        "hours_apart": 43,
         "a": {
-          "id": "hn:50219875",
-          "source": "hn-algolia",
-          "title": "Claude Code slyly adding users' emails to outbound HTTP",
-          "at": "2026-10-24T10:26:30Z"
+          "id": "rss:google-ai:6a7bb4e3e69d69f5",
+          "source": "rss-lab",
+          "title": "The latest AI news we announced in September 2026",
+          "at": "2026-10-02T15:00:00Z"
         },
         "b": {
-          "id": "gmail:1a172d348d2adf95",
-          "source": "gmail-news",
-          "title": "Claude Code Extensions",
-          "at": "2026-10-25T11:28:36Z"
+          "id": "rss-sec:unit42:aed0ac5e3cb73138",
+          "source": "rss-security",
+          "title": "Threat Brief: NetScaler Zero Days CVE-2026-88771 and CVE-2026-88772 Exploited in the Wild (Updated September 30)",
+          "at": "2026-09-30T20:00:04Z"
         },
         "shared": [
-          "claude",
-          "code"
-        ]
-      },
-      {
-        "score": 0.369,
-        "blocked": "thin-overlap",
-        "hours_apart": 25.7,
-        "a": {
-          "id": "hn:50219641",
-          "source": "hn-algolia",
-          "title": "Took apart Claude Code, then turned it into a free course on harness engineering",
-          "at": "2026-10-24T09:48:38Z"
-        },
-        "b": {
-          "id": "gmail:1a172d348d2adf95",
-          "source": "gmail-news",
-          "title": "Claude Code Extensions",
-          "at": "2026-10-25T11:28:36Z"
-        },
-        "shared": [
-          "claude",
-          "code"
+          "september",
+          "2026"
         ]
       }
     ]
@@ -791,97 +723,97 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 12,
+      "streak_ok": 13,
       "streak_fail": 0,
       "items_last": 29
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 188,
+      "streak_ok": 189,
       "streak_fail": 0,
-      "items_last": 0
+      "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 188,
+      "streak_ok": 189,
       "streak_fail": 0,
-      "items_last": 3
+      "items_last": 5
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 188,
+      "streak_ok": 189,
       "streak_fail": 0,
-      "items_last": 32
+      "items_last": 26
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 188,
+      "streak_ok": 189,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 188,
+      "streak_ok": 189,
       "streak_fail": 0,
-      "items_last": 60
+      "items_last": 72
     },
     {
       "id": "hn_title",
       "state": "ok",
-      "streak_ok": 42,
+      "streak_ok": 43,
       "streak_fail": 0,
-      "items_last": 2
+      "items_last": 11
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 100,
+      "streak_ok": 101,
       "streak_fail": 0,
-      "items_last": 3
+      "items_last": 4
     },
     {
       "id": "releases_atom",
       "state": "ok",
-      "streak_ok": 42,
+      "streak_ok": 43,
       "streak_fail": 0,
-      "items_last": 1
+      "items_last": 7
     },
     {
       "id": "rss_analyst",
       "state": "ok",
-      "streak_ok": 42,
+      "streak_ok": 43,
       "streak_fail": 0,
-      "items_last": 6
+      "items_last": 5
     },
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 7,
+      "streak_ok": 8,
       "streak_fail": 0,
       "items_last": 151
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 188,
+      "streak_ok": 189,
       "streak_fail": 0,
       "items_last": 74
     },
     {
       "id": "wikidata",
       "state": "ok",
-      "streak_ok": 188,
+      "streak_ok": 189,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.007819722222222223,
+    "hours": 0.007400277777777778,
     "stale": false
   },
   "hf": {
@@ -902,9 +834,9 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "enriched": 3,
+    "enriched": 4,
     "secondary": 3,
-    "query": "Hugging Face agent",
+    "query": "LLM agent",
     "mode": "search",
     "from_cache": false,
     "searches": 1,
@@ -920,34 +852,34 @@
     "url": "https://api.openalex.org/works",
     "sample": [
       {
-        "id": "W7171617880",
-        "openalexId": "https://openalex.org/W7171617880",
-        "year": 2026,
-        "doi": "https://doi.org/10.5281/zenodo.21686546",
+        "id": "2610.22722",
+        "openalexId": "https://openalex.org/W4412877164",
+        "year": 2025,
+        "doi": "https://doi.org/10.1145/3711896.3736570",
+        "enrichOnly": false
+      },
+      {
+        "id": "W4393160747",
+        "openalexId": "https://openalex.org/W4393160747",
+        "year": 2024,
+        "doi": "https://doi.org/10.1609/aaai.v38i17.29936",
         "enrichOnly": true
       },
       {
-        "id": "W7171936549",
-        "openalexId": "https://openalex.org/W7171936549",
-        "year": 2026,
-        "doi": "https://doi.org/10.5281/zenodo.21715175",
-        "enrichOnly": true
-      },
-      {
-        "id": "W7203931864",
-        "openalexId": "https://openalex.org/W7203931864",
-        "year": 2026,
-        "doi": "https://doi.org/10.5281/zenodo.22043399",
+        "id": "W4407759090",
+        "openalexId": "https://openalex.org/W4407759090",
+        "year": 2025,
+        "doi": "https://doi.org/10.52202/085713-0593",
         "enrichOnly": true
       }
     ]
   },
   "crossref": {
-    "ok": false,
+    "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "enriched": 0,
-    "query": "doi:10.5281/zenodo.21686546",
+    "enriched": 1,
+    "query": "doi:10.1145/3711896.3736570",
     "mode": "filter",
     "from_cache": false,
     "searches": 1,
@@ -956,30 +888,40 @@
     "papers_enrich_only": true,
     "url": "https://api.crossref.org/works",
     "merge_notes": [],
-    "sample": []
+    "sample": [
+      {
+        "id": "2610.22722",
+        "crossrefDoi": "https://doi.org/10.1145/3711896.3736570",
+        "issued": "2025-08-03",
+        "type": "proceedings-article",
+        "openalexId": "https://openalex.org/W4412877164",
+        "doi": "https://doi.org/10.1145/3711896.3736570",
+        "enrichOnly": false
+      }
+    ]
   },
   "hn": {
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 60,
+    "count": 72,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
     "queries_run": [
-      "agents",
       "eval",
-      "LLM"
+      "LLM",
+      "METR"
     ],
     "queries_ok": [
-      "agents",
       "eval",
-      "LLM"
+      "LLM",
+      "METR"
     ],
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 36,
+    "ai_dropped": 34,
     "url": "https://hn.algolia.com/api/v1/search",
     "title_queries": {
       "ok": true,
@@ -999,32 +941,32 @@
         "Qwen",
         "local model"
       ],
-      "hits": 9,
-      "candidates": 7,
-      "ai_dropped": 2,
-      "duplicates": 5,
-      "added": 2,
+      "hits": 13,
+      "candidates": 11,
+      "ai_dropped": 1,
+      "duplicates": 0,
+      "added": 11,
       "cap": 20,
       "merged_into_live_hn": true
     },
     "sample": [
       {
+        "id": "hn:50242939",
+        "tag": "rest",
+        "score": 1305,
+        "text": "Anthropic S-1"
+      },
+      {
         "id": "hn:50233779",
         "tag": "rest",
-        "score": 311,
+        "score": 649,
         "text": "A 10-year-old CNN outperforms frontier LLMs for skin cancer diagnosis"
       },
       {
-        "id": "hn:50231722",
+        "id": "hn:50236102",
         "tag": "rest",
-        "score": 75,
-        "text": "R/open source bans all solo projects and projects using LLMs"
-      },
-      {
-        "id": "hn:50222283",
-        "tag": "rest",
-        "score": 51,
-        "text": "Oai-math-revised: a community hub for revising OpenAI's math write-ups"
+        "score": 404,
+        "text": "OpenAI and Anthropic cut their LLM prices by up to 80% within a few months. Why?"
       }
     ]
   },
@@ -1107,32 +1049,32 @@
     "feeds_soft_fail": [],
     "sample": [
       {
-        "id": "rss:huggingnews:a479ab3a56a6b73d",
-        "lab": "huggingnews",
+        "id": "rss:the-decoder:814cbd4d71346f4e",
+        "lab": "the-decoder",
         "tag": "rest",
-        "title": "SpaceX Closes $40B Debt Raise to Fund AI Compute Buildout",
-        "link": "https://huggingnews.com/ai/spacex-closes-40b-debt-raise-to-fund-ai-compute-buildout-3ece57a5"
+        "title": "GPT-6.1 Terra halves OpenAI's API prices and still gains ground on its larger models",
+        "link": "https://the-decoder.com/gpt-6-1-terra-halves-openais-api-prices-and-still-gains-ground-on-its-larger-models/"
       },
       {
-        "id": "rss:huggingnews:74ca9672139accea",
+        "id": "rss:huggingnews:dfb299b7721275ba",
         "lab": "huggingnews",
         "tag": "rest",
-        "title": "AI Data Center Tenants Demand More Than $5 Million Daily Penalties for Construction Delays",
-        "link": "https://huggingnews.com/ai/ai-data-center-tenants-demand-more-than-5-million-daily-penalties-for-co-3cdeb80e"
+        "title": "Cadence Lifts Full-Year 2026 Guidance After Beating Q3 Estimates",
+        "link": "https://huggingnews.com/earnings/cadence-lifts-full-year-2026-guidance-after-beating-q3-estimates-fce192f5"
       },
       {
-        "id": "rss:huggingnews:b85e3a7d7f80049f",
+        "id": "rss:huggingnews:c2987019f8c95f62",
         "lab": "huggingnews",
         "tag": "rest",
-        "title": "Anthropic Token Volume on OpenRouter Jumps 3.6x After Opus 5.5 Launch",
-        "link": "https://huggingnews.com/ai/anthropic-token-volume-on-openrouter-jumps-36x-after-opus-55-launch-7a69b364"
+        "title": "Railway Restores Services for 5 Million Users After Security Breach",
+        "link": "https://huggingnews.com/cybersecurity/railway-restores-services-for-5-million-users-after-security-breach-40108ee1"
       },
       {
-        "id": "rss:huggingnews:1c63f74d489f691c",
+        "id": "rss:huggingnews:bd4623aac9e441ac",
         "lab": "huggingnews",
         "tag": "rest",
-        "title": "Open-Source Projects Unlock AI Performance on Nvidia RTX 20, 30, and 40 GPUs",
-        "link": "https://huggingnews.com/tech/open-source-projects-unlock-ai-performance-on-nvidia-rtx-20-30-and-40-gp-505eae13"
+        "title": "OpenAI Integrates GPT-6.1 Terra into GitHub Copilot to Enable Lower Cost AI Agents",
+        "link": "https://huggingnews.com/ai/openai-integrates-gpt-61-terra-into-github-copilot-to-enable-lower-cost-f3902975"
       }
     ]
   },
@@ -1182,32 +1124,32 @@
     ],
     "sample": [
       {
-        "id": "rss-sec:securityweek:22cb0fea9668ebd0",
+        "id": "rss-sec:securityweek:dfe95ba302f26160",
         "lab": "securityweek",
         "tag": "rest",
-        "title": "Former Unit 8200 Officers Raise $34 Million for Agentic SecOps Startup Mave",
-        "link": "https://www.securityweek.com/former-unit-8200-officers-raise-34-million-for-agentic-secops-startup-mave/"
+        "title": "Anthropic Files for Potentially the Biggest IPO Ever as CEO Warns of Risk to Humanity From AI",
+        "link": "https://www.securityweek.com/anthropic-files-for-potentially-the-biggest-ipo-ever-as-ceo-warns-of-risk-to-humanity-from-ai/"
       },
       {
-        "id": "rss-sec:unit42:7336ba1f20a5b928",
-        "lab": "unit42",
+        "id": "rss-sec:securityweek:68ef62d78025ac37",
+        "lab": "securityweek",
         "tag": "rest",
-        "title": "Threat Brief: Critical Vulnerabilities in PHP: CVE-2026-109618, CVE-2026-109619 (Updated October 23)",
-        "link": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/"
+        "title": "Industrial Vendors Check Products for PHP2Shell Vulnerabilities",
+        "link": "https://www.securityweek.com/industrial-vendors-check-products-for-php2shell-vulnerabilities/"
       },
       {
-        "id": "rss-sec:railway:0c1972d685146032",
-        "lab": "railway",
+        "id": "rss-sec:securityweek:40961fc392e57a84",
+        "lab": "securityweek",
         "tag": "rest",
-        "title": "Security Disclosure Recommendation: Resolving Login Issues",
-        "link": "https://blog.railway.com/p/security-disclosure-recommendation-recover-account-access"
+        "title": "Genesys Hack Exposes Customer Data From Internal Systems",
+        "link": "https://www.securityweek.com/genesys-hack-exposes-customer-data-from-internal-systems/"
       },
       {
-        "id": "rss-sec:railway:f907ff3d2081a996",
-        "lab": "railway",
+        "id": "rss-sec:securityweek:9a152008b7ae76ef",
+        "lab": "securityweek",
         "tag": "rest",
-        "title": "Security Disclosure Recommendation: Recover Failing Deploys",
-        "link": "https://blog.railway.com/p/security-disclosure-recommendation-recover-failing-deploys"
+        "title": "Stolen AI Reasoning Could Help China Build Cheaper Rivals",
+        "link": "https://www.securityweek.com/stolen-ai-reasoning-could-help-china-build-cheaper-rivals/"
       }
     ]
   },
@@ -1215,12 +1157,12 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 6,
+    "count": 5,
     "feeds": [
       {
         "feed": "simonw",
         "url": "https://simonwillison.net/atom/everything/",
-        "count": 1
+        "count": 0
       },
       {
         "feed": "latent-space",
@@ -1230,6 +1172,16 @@
     ],
     "feeds_soft_fail": [],
     "dropped": [
+      {
+        "feed": "simonw",
+        "title": "Quoting Jason Koebler",
+        "reason": "not-ai"
+      },
+      {
+        "feed": "simonw",
+        "title": "Seam Cutter",
+        "reason": "not-ai"
+      },
       {
         "feed": "simonw",
         "title": "battledrones v14: Compass Rose, a four player map",
@@ -1248,11 +1200,6 @@
       {
         "feed": "simonw",
         "title": "DE STAAT - FREEDOM (Official Music Video)",
-        "reason": "not-ai"
-      },
-      {
-        "feed": "simonw",
-        "title": "Quoting Armin Ronacher",
         "reason": "not-ai"
       },
       {
@@ -1287,11 +1234,11 @@
         "link": "https://latent.space/p/ainews-black-october/"
       },
       {
-        "id": "anl:simonw:2f38489938aada9c",
-        "feed": "simonw",
+        "id": "anl:latent-space:c5258c7ef6406bc0",
+        "feed": "latent-space",
         "recap": false,
-        "title": "Donating Agent Skills to the Agentic AI Foundation",
-        "link": "https://simonwillison.net/2026/Oct/22/donating-agent-skills/"
+        "title": "Why AI Compute Comes in Rectangles — Erik Bernhardsson, Modal CEO",
+        "link": "https://latent.space/p/modal-d/"
       }
     ]
   },
@@ -1299,7 +1246,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 1,
+    "count": 7,
     "decisions": [
       {
         "feed": "llama.cpp",
@@ -1363,23 +1310,23 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 32,
-    "pool": 267,
+    "items": 26,
+    "pool": 274,
     "corroborators": [
       {
-        "id": "gnews:9954aafbb09502dc",
-        "anchor_id": "rss:testingcatalog:61a7fb23a0268e60",
-        "score": 1,
-        "title": "Google AI Studio prepares new Managed Agents hub - TestingCatalog AI News",
-        "publisher": "TestingCatalog AI News",
+        "id": "gnews:7d3d638705c2db2e",
+        "anchor_id": "hn:50231099",
+        "score": 0.734,
+        "title": "Nanbeige Releases Nanbeige4.3-33B, a 33B Open Agentic Coding Model - MarkTechPost",
+        "publisher": "MarkTechPost",
         "self_repost": false
       },
       {
-        "id": "gnews:c31f13db7afd8143",
-        "anchor_id": "rss:the-decoder:f3ab1007804ab0aa",
-        "score": 1,
-        "title": "Nvidia open-sources Flora to make robot video labeling 125x cheaper than GPT-6 Astra - The Decoder",
-        "publisher": "The Decoder",
+        "id": "gnews:0d141277ad347e37",
+        "anchor_id": "hn:50231099",
+        "score": 0.635,
+        "title": "BOSS Zhipin's Nanbeige Team Open-Sources Nanbeige4.3-33B, a 512K-Context Agentic Coding Model - Pandaily",
+        "publisher": "Pandaily",
         "self_repost": false
       },
       {
@@ -1388,54 +1335,6 @@
         "score": 1,
         "title": "Anthropic co-founder Jack Clark moves his prediction for self-improving AI forward to 2027 - The Decoder",
         "publisher": "The Decoder",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:0d0f9d3b76593e56",
-        "anchor_id": "rss:the-decoder:906aea2a3fca0a79",
-        "score": 1,
-        "title": "Anthropic says one AI agent beats many subagents now that models can handle complexity alone - The Decoder",
-        "publisher": "The Decoder",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:98c48b167469f2f6",
-        "anchor_id": "hn:50234725",
-        "score": 1,
-        "title": "OpenAI's isolated AI agents found ways to talk to each other through CPU cache - The Decoder",
-        "publisher": "The Decoder",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:adabb126e4825122",
-        "anchor_id": "hn:50234725",
-        "score": 0.751,
-        "title": "OpenAI reveals isolated AI agents that talk through the CPU cache - Pasquale Pillitteri",
-        "publisher": "Pasquale Pillitteri",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:b7635f6b343afd29",
-        "anchor_id": "rss:the-decoder:ecfe95db9f5a039c",
-        "score": 1,
-        "title": "OpenMobile-2 proves open-source smartphone agents can rival proprietary models - The Decoder",
-        "publisher": "The Decoder",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:9075b6f271d42064",
-        "anchor_id": "hn:50219364",
-        "score": 0.73,
-        "title": "Sweden Blocks ChatGPT and Claude in Government Offices, Copilot Stays - Pasquale Pillitteri",
-        "publisher": "Pasquale Pillitteri",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:8ac950f0b116585e",
-        "anchor_id": "hn:50219364",
-        "score": 0.709,
-        "title": "Sweden’s Government Offices blocks ChatGPT and Claude, approves Microsoft Copilot - Crypto Briefing",
-        "publisher": "Crypto Briefing",
         "self_repost": false
       }
     ],
@@ -1451,38 +1350,38 @@
     "pulse_only": true,
     "url_template": "https://news.google.com/rss/search?q={QUERY}&hl=en-US&gl=US&ceid=US:en",
     "queried": [
-      "large language model",
       "AI agent",
-      "Mistral AI",
-      "Microsoft Research"
+      "open weights",
+      "Microsoft Research",
+      "Google Research"
     ],
     "queries_ok_list": [
-      "large language model",
       "AI agent",
-      "Mistral AI",
-      "Microsoft Research"
+      "open weights",
+      "Microsoft Research",
+      "Google Research"
     ],
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:40fd0b8f9ab6fad1",
-        "title": "Free AI Chatbot Ireland: $0 to $200 Tiers [2026] - tech-insider.org",
-        "publisher": "tech-insider.org",
-        "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTFBEaFgyMUdBblExTTg2cTZJNHdSQXB1d2JWalhPOHFFVGdaNUVKSGFiWmdtLWd6NnN2T1BOUjU0cnRXUUtfNElpQXBjbVRad1ZqSTJZM3hFUXY0enRMY0lUZEpfSU4wbjJnempPS3JyU0hoVk51bzdMMlB4U3Y?oc=5",
+        "id": "gnews:332389b29f30af13",
+        "title": "Microsoft offers 60,000 buyouts as AI capex hits US$175b - B2B News",
+        "publisher": "B2B News",
+        "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNVTU2aElaMmRtOHZBbkw2cjBqS3o1ajJFdHVVbmo1N1dRSmozRUFLU05iYnVQRWxkZjFSRElMYndjSFF1YUJhZDMxWWFSV1R4aTRIWkJ4dkx4eGotbThKLTk1M2NRRWxYTUZMSXRKckQ0R0dweE1XYjZNNXpqdS1wUW54QUNEUE9SQnc?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:75c900a3f414c2b6",
-        "title": "Harmony Launches Voice AI Platform to Turn Customer Conversations into Revenue - The Times Australia",
-        "publisher": "The Times Australia",
-        "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOaTBFcS02dGlCZnNUZzA4cHVKUkNjUTdEZ0djX0tGSmNwSDdsemE1ZlVRX1J6LWJkcFRJSENZMEpWYTRvN2pfMmszek5paEJKOExhaDlOWjNhZFUteGVRLU9ZRUFvLUhqcXh5a2ZSWW1UMkoyZ2tER2xrNWpBM19iRE5adjJfZjFJTmpod0ZtcWZuWFF2OVc5b2NDVWN6X3ViTWNFT09UelIxY3pQTEpqTndhN2dSUUhsZUFPRnBXY3ZnUQ?oc=5",
+        "id": "gnews:e253147946e94f30",
+        "title": "Agent AI taps top shareholder again for $5.28M placement - Dealroom",
+        "publisher": "Dealroom",
+        "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNMm5SdllhX0g0UVFIdEVPdEdVYXpmT2Nndjk5bkx6d2d2RFZRTHpDQXZ4LUFDbXRYSURya3dHZW1UUGQzNUl4TUVrbnZ4amJCRDBRQ3VKMVhUblRiRVpfRnkyRk5BeDBtNE4xWmh0RGNLWEdoVnR5Yl94cHkwWXFDbjBReHNZZWxWRzJ0MS1qTWVFWkU?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:1220c2263d018837",
-        "title": "AI platform identifies synergistic drug combination for resistant prostate cancer - Bioengineer.org",
-        "publisher": "Bioengineer.org",
-        "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQQzNoM2VHTmdpOU1NWGlGeVpPOGttdGVrQjFRWW9kZi00dDJ4Sm1IVS1aVDd4cDJnN2xsNml5Mm5BRzNpUGd5TW9TU0ZqRVI1cUVLWFk4NFJ0MUp3RGE1Zi1NQW1aeXVTV1g3MWF3eE1HZ3d2dzRzdDJBR2ZBQ0dIX2ppWXg5X1BaSDFQOEZpYXhnTTlrTmFrT29sNG9yQzRTWks0eWVnSV82UQ?oc=5",
+        "id": "gnews:573afe3bb72978e7",
+        "title": "How to create custom AI agents for your business in Wix Symphony - TechRadar",
+        "publisher": "TechRadar",
+        "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPNTNEcjY5VzVaYU90Uk1MMnpwVmFWdHVhOVdaRWVzdW5LOGs4aU1YZjZ6S1dtd2lMZ2I1QTAwMTJnUk5YX3dsc01NUTlNT29wdEMxcVFEZHgxWUF1b3hmTF9JcllpdENhM1ZsTnRrZHNsT0t2WEJwNVJfcWF1bFJlckplR3lNeDI5X3dPVkFicFhudzIzVFd2SWJR?oc=5",
         "tag": "rest"
       }
     ]
@@ -1512,8 +1411,8 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "query": "LLM red team toolkit",
-    "shelf": 3,
+    "query": "LLM agent eval harness",
+    "shelf": 5,
     "from_cache": false,
     "searches": 1,
     "rate_limit_remaining": 9,
@@ -1523,21 +1422,21 @@
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
-        "label": "md-fazle-rabbi/fazle-ai-red-team-toolkit",
-        "href": "https://github.com/md-fazle-rabbi/fazle-ai-red-team-toolkit"
+        "label": "Shashank-VK/agent-harness-eval",
+        "href": "https://github.com/Shashank-VK/agent-harness-eval"
       },
       {
-        "label": "seikaikyo/ai-red-team",
-        "href": "https://github.com/seikaikyo/ai-red-team"
+        "label": "RitikPatill/agent-eval-lab-1792425379",
+        "href": "https://github.com/RitikPatill/agent-eval-lab-1792425379"
       },
       {
-        "label": "K11-Software-Solutions/k11techlab-llm-assurance-toolkit",
-        "href": "https://github.com/K11-Software-Solutions/k11techlab-llm-assurance-toolkit"
+        "label": "becominggiant/agent-eval-harness",
+        "href": "https://github.com/becominggiant/agent-eval-harness"
       }
     ]
   },
   "shelf": {
-    "count": 20,
+    "count": 22,
     "brief": false
   },
   "wikidata": {
@@ -1545,9 +1444,9 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "seeds": [
-      "stigmergy",
       "Sol",
-      "Astra"
+      "Astra",
+      "Hugging Face"
     ],
     "searches": 3,
     "from_cache": false,
@@ -1557,21 +1456,10 @@
     "url": "https://www.wikidata.org/w/api.php",
     "hints": [
       {
-        "seed": "stigmergy",
-        "qid": "Q2141158",
-        "label": "stigmergy",
-        "description": "mechanism of indirect coordination, through the environment, between agents or actions",
-        "status": "matched",
-        "source": "wikidata",
-        "briefEligible": false,
-        "pulseLeadEligible": false,
-        "denyGroundingOnly": true
-      },
-      {
         "seed": "Sol",
-        "qid": "Q10673071",
-        "label": "Sol",
-        "description": "unisex given name",
+        "qid": "Q34104679",
+        "label": "Persistent solar influence on North Atlantic climate during the Holocene.",
+        "description": "scientific article published on 15 November 2001",
         "status": "rejected_false_friend",
         "source": "wikidata",
         "briefEligible": false,
@@ -1584,6 +1472,17 @@
         "label": "AstraZeneca",
         "description": "British-Swedish pharmaceutical company",
         "status": "rejected_false_friend",
+        "source": "wikidata",
+        "briefEligible": false,
+        "pulseLeadEligible": false,
+        "denyGroundingOnly": true
+      },
+      {
+        "seed": "Hugging Face",
+        "qid": "Q108943604",
+        "label": "Hugging Face",
+        "description": "American company",
+        "status": "matched",
         "source": "wikidata",
         "briefEligible": false,
         "pulseLeadEligible": false,

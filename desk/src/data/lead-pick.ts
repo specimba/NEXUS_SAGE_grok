@@ -2,6 +2,33 @@
 import type { LeadEntry } from "@/lib/lead-pick";
 
 export const LEAD_TODAY: LeadEntry | null = {
+  "date": "2026-10-26",
+  "at": "2026-10-26T20:46:35.689Z",
+  "crawl_at": "2026-10-26T20:46:09Z",
+  "catch_up": true,
+  "pick_slot": "23:46",
+  "excluded": [
+    {
+      "cluster_id": "cl:rss:deepmind:851107eacfc8ba0f",
+      "headline": "Gemini 4 Argon: Built to solve your hardest problems",
+      "reason": "age>=36h",
+      "sources": 2,
+      "age_h": 316,
+      "pub": "DMD"
+    }
+  ],
+  "cluster_id": "cl:rss:the-decoder:814cbd4d71346f4e",
+  "headline": "GPT-6.1 Terra halves OpenAI's API prices and still gains ground on its larger models",
+  "url": "https://the-decoder.com/gpt-6-1-terra-halves-openais-api-prices-and-still-gains-ground-on-its-larger-models/",
+  "sources": 4,
+  "sig": 337,
+  "reason": "picked",
+  "pub": "THE",
+  "first_at": "2026-10-26T00:00:00.000Z",
+  "age_band": "<24h"
+};
+
+export const LEAD_YESTERDAY: LeadEntry | null = {
   "date": "2026-10-25",
   "at": "2026-10-25T15:36:48.267Z",
   "crawl_at": "2026-10-25T15:36:21Z",
@@ -19,28 +46,10 @@ export const LEAD_TODAY: LeadEntry | null = {
   "note": "repick: lead older than 12h since pick"
 };
 
-export const LEAD_YESTERDAY: LeadEntry | null = {
-  "date": "2026-10-24",
-  "at": "2026-10-24T13:20:47.233Z",
-  "crawl_at": "2026-10-24T13:20:25Z",
-  "pick_slot": "16:20",
-  "supersedes": "cl:rss:openai:f8c156dba7886826",
-  "cluster_id": "cl:hn:50219364",
-  "headline": "Sweden's Government Offices will block ChatGPT and Claude on staff computers",
-  "url": "https://twitter.com/intcyberdigest/status/2113815992984080865",
-  "sources": 2,
-  "sig": 4,
-  "reason": "picked",
-  "pub": "HN",
-  "first_at": "2026-10-24T07:27:30.000Z",
-  "age_band": "<24h",
-  "note": "repick: lead older than 12h since pick"
-};
-
 export const LEAD_HELD = false;
 
 /** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is >48h old (PASS-L). */
-export const LEAD_FIRST_AT: string | null = "2026-10-25T13:30:58.000Z";
+export const LEAD_FIRST_AT: string | null = "2026-10-26T00:00:00.000Z";
 
 /** Date of the latest real pick (never a HELD entry) — the HELD card's "last pick" (UX-1). */
-export const LEAD_LAST_PICK: string | null = "2026-10-25";
+export const LEAD_LAST_PICK: string | null = "2026-10-26";
