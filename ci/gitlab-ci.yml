@@ -117,7 +117,7 @@ crawl:
       for i in 1 2 3 4 5 6; do bun scripts/watchdog.ts >/dev/null 2>&1 && { ok=1; break; }; sleep 20; done
       [ "$ok" = 1 ] || bun scripts/watchdog.ts
     - echo "PACK_ID=$(bun -e 'console.log(JSON.parse(require("fs").readFileSync("artifacts/sage/digest-last.json","utf8")).pack_id ?? "none")')"
-    # missed slot: --pre exited 2. The crawl + publish above already ran; now go red so GitLab emails.
+    # missed slot: --pre exited 2. WARN only if this run's crawl healed checked_at for its own slot; red if still unhealed.
     - bun scripts/watchdog.ts --missed-slot
   # A failed run never reaches the commit step: still leave a crawl.log line in the job artifact (not pushed).
   after_script:

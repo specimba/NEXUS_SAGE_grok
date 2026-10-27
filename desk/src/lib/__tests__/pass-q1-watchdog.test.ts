@@ -77,23 +77,32 @@ describe("PASS-Q1 watchdog", () => {
   describe("slot-based missed-slot rule (Q1G §2 amend): --pre exits 2 + marker, the last step fails the job", () => {
     // Slots 06:11 · 11:11 · 16:11 · 21:11 TRT = 03:11 · 08:11 · 13:11 · 18:11 UTC (TRT = UTC+3).
     const lcAt = (checked_at: string) => ({ checked_at, last_run: "skipped", soft_history: [], gate_error: null });
-    const runM = (args: string[], now: string, lc: object | null, missed: string) => {
+    const runM = (args: string[], now: string, lc: object | null, missed: string, extra: Record<string, string> = {}) => {
       const dir = mkdtempSync(resolve(tmpdir(), "wd-"));
       const p = resolve(dir, "last-checked.json");
       if (lc) writeFileSync(p, JSON.stringify(lc));
-      return spawnSync("bun", [script, ...args], { encoding: "utf8", env: { ...process.env, WATCHDOG_CHECKED: p, WATCHDOG_NOW: now, WATCHDOG_LIVE_URL: "off", GITHUB_OUTPUT: "", WATCHDOG_MISSED: missed } });
+      return spawnSync("bun", [script, ...args], { encoding: "utf8", env: { ...process.env, WATCHDOG_CHECKED: p, WATCHDOG_NOW: now, WATCHDOG_LIVE_URL: "off", GITHUB_OUTPUT: "", WATCHDOG_MISSED: missed, ...extra } });
     };
     const marker = () => resolve(mkdtempSync(resolve(tmpdir(), "wd-m-")), "watchdog-missed.txt");
-    test("a missed 11:11 fails at 16:11 (daytime, 06:12 → 16:11 is under 10h)", () => {
+    test("a missed 11:11 is flagged at 16:11; green once this run heals it, red if not (daytime)", () => {
       const m = marker();
       const pre = runM(["--pre"], "2026-10-14T13:11:40Z", lcAt("2026-10-14T03:12:30Z"), m);
       expect(pre.status).toBe(2);
       expect(pre.stderr).toContain("watchdog FAIL (pre): missed slot 2026-10-14 11:11 TRT: last checked_at 2026-10-14T03:12:30Z is before 2026-10-14 11:01 TRT");
       expect(readFileSync(m, "utf8")).toContain("pre-crawl missed slot 2026-10-14 11:11 TRT");
-      // the crawl then refreshes checked_at; only the marker fails the job at the last step
+      // Oct 28 heal: the crawl refreshed checked_at for THIS slot ⇒ the historical miss is a WARN, job stays green
       const last = runM(["--missed-slot"], "2026-10-14T13:13:00Z", lcAt("2026-10-14T13:12:50Z"), m);
-      expect(last.status).toBe(1);
-      expect(last.stderr).toContain("watchdog FAIL: pre-crawl missed slot 2026-10-14 11:11 TRT");
+      expect(last.status).toBe(0);
+      expect(last.stderr).toContain("watchdog WARN: pre-crawl missed slot 2026-10-14 11:11 TRT");
+      expect(last.stderr).toContain("recovered");
+      // WATCHDOG_STRICT_MISSED=1 keeps the old always-fail behaviour
+      const strict = runM(["--missed-slot"], "2026-10-14T13:13:00Z", lcAt("2026-10-14T13:12:50Z"), m, { WATCHDOG_STRICT_MISSED: "1" });
+      expect(strict.status).toBe(1);
+      expect(strict.stderr).toContain("watchdog FAIL: pre-crawl missed slot 2026-10-14 11:11 TRT");
+      // not healed (checked_at still before this slot − 10 min) ⇒ still red
+      const stale = runM(["--missed-slot"], "2026-10-14T13:13:00Z", lcAt("2026-10-14T03:12:30Z"), m);
+      expect(stale.status).toBe(1);
+      expect(stale.stderr).toContain("watchdog FAIL: pre-crawl missed slot 2026-10-14 11:11 TRT");
     });
     test("a missed 21:11 fails at 06:11 (crossing midnight)", () => {
       const m = marker();

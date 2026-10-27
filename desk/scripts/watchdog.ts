@@ -14,7 +14,9 @@
  *     advance and every later slot would fail too (the desk would stay stale until someone intervened). The yml runs
  *     `watchdog.ts --pre || [ $? = 2 ]` (only exit 2 is tolerated), the crawl + publish heal the desk, and the job's LAST
  *     step `watchdog.ts --missed-slot` exits 1 on a non-empty WATCHDOG_MISSED ⇒ red job ⇒ GitLab's failure email.
- *   bun scripts/watchdog.ts --missed-slot → reads only WATCHDOG_MISSED (no live fetch, no retries).
+ *   bun scripts/watchdog.ts --missed-slot → reads WATCHDOG_MISSED + last-checked (no live fetch, no retries). Healed (Oct 28):
+ *     if this run refreshed checked_at for its OWN slot, the historical miss prints a WARN and exits 0 (recovery run stays
+ *     green); only a miss not healed by this run exits 1. WATCHDOG_STRICT_MISSED=1 = old always-fail.
  *   Without --pre (post-crawl) a missing file still FAILs. Live mismatch post-crawl → FAIL unless live is NEWER than this run's crawl.
  * Env: WATCHDOG_MISSED (path; unset = no marker) · WATCHDOG_NOW (ISO, fixtures) · WATCHDOG_LIVE_URL (default the Pages URL; "off" skips the live compare).
  */
@@ -55,8 +57,20 @@ const MISSED = process.env.WATCHDOG_MISSED ?? "";
 if (process.argv.includes("--missed-slot")) {
   const why = MISSED && existsSync(MISSED) ? readFileSync(MISSED, "utf8").trim() : "";
   if (why) {
-    for (const l of why.split("\n")) console.error(`watchdog FAIL: ${l} (this run still crawled; failing now so GitLab emails)`);
-    process.exit(1);
+    // Heal: a historical miss is not a reason to keep the job red once THIS run's crawl refreshed checked_at for its own
+    // slot (the crawl + publish steps before this one already succeeded, or the job would have stopped there). The miss is
+    // still reported loudly (WARN line in the job log). WATCHDOG_STRICT_MISSED=1 restores the old always-fail behaviour.
+    let healed = false;
+    try {
+      const at = Date.parse(JSON.parse(readFileSync(checkedPath, "utf8")).checked_at);
+      healed = Number.isFinite(at) && at >= ownSlot - GRACE_MS;
+    } catch {}
+    const strict = process.env.WATCHDOG_STRICT_MISSED === "1";
+    for (const l of why.split("\n")) {
+      if (healed && !strict) console.error(`watchdog WARN: ${l} (recovered — this run crawled for ${fmtTrt(ownSlot)}; job stays green)`);
+      else console.error(`watchdog FAIL: ${l} (${healed ? "strict mode" : `checked_at still before ${fmtTrt(ownSlot - GRACE_MS)} after this run`}; failing so GitLab emails)`);
+    }
+    process.exit(healed && !strict ? 0 : 1);
   }
   process.exit(0);
 }
