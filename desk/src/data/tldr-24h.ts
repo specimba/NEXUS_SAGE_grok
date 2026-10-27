@@ -3,23 +3,51 @@ import type { Tldr } from "@/lib/tldr-24h";
 
 export const TLDR_24H: Tldr = {
   "schema": 1,
-  "crawl_at": "2026-10-26T20:46:09Z",
-  "date": "2026-10-26",
+  "crawl_at": "2026-10-27T18:20:49Z",
+  "date": "2026-10-27",
   "bullets": [
     {
-      "id": "cl:rss:the-decoder:814cbd4d71346f4e",
-      "title": "GPT-6.1 Terra halves OpenAI's API prices and still gains ground on its larger models",
-      "url": "https://the-decoder.com/gpt-6-1-terra-halves-openais-api-prices-and-still-gains-ground-on-its-larger-models/",
-      "at": "2026-10-26T20:30:55Z",
-      "sources": 4
+      "id": "cl:gmail:1a17e66e21c4898e",
+      "title": "Nvidia says AI agents can understand your data without a migration",
+      "url": "https://mail.google.com/mail/#all/1a17e66e21c4898e",
+      "at": "2026-10-27T17:27:13Z",
+      "sources": 9
     },
     {
-      "id": "cl:hn:50231099",
-      "title": "Nanbeige/Nanbeige4.3-33B",
-      "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B",
-      "at": "2026-10-26T06:52:57Z",
+      "id": "cl:rss:huggingnews:7856547454313183",
+      "title": "Google DeepMind Launches Genie 4 World Model for Interactive Simulations",
+      "url": "https://huggingnews.com/ai/google-deepmind-launches-genie-4-world-model-for-interactive-simulations-bc72ee11",
+      "at": "2026-10-27T17:42:44Z",
+      "sources": 6
+    },
+    {
+      "id": "cl:rss:testingcatalog:8684eb48fa1590f3",
+      "title": "OpenAI launches GPT-6.1 Terra for precise computer use",
+      "url": "https://www.testingcatalog.com/openai-launches-gpt-6-1-terra-for-precise-computer-use/",
+      "at": "2026-10-27T10:35:29Z",
+      "sources": 5
+    },
+    {
+      "id": "cl:rss:deepmind:393575ee7d83ff0a",
+      "title": "Genie 4: A new generation of world simulation",
+      "url": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/",
+      "at": "2026-10-27T16:06:33Z",
       "sources": 3
+    },
+    {
+      "id": "cl:hn:50259228",
+      "title": "Unlimited-OCR-2: Baidu open-sources an OCR model for unlimited-horizon parsing",
+      "url": "https://huggingface.co/baidu/Unlimited-OCR-2",
+      "at": "2026-10-27T13:44:44Z",
+      "sources": 3
+    },
+    {
+      "id": "cl:gnews:cc0809426a353d09",
+      "title": "Calix releases communications language model on Hugging Face",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQWkZrZ2ZPcEEzcnBQWjIxdDBQN05mQ3JIQ1hQZnZuM19JRGQ1THk3TUN3N2N4QVFjaFVmREdpSDlpTm5DWUVBMEN3cUNnTE55cnY5VWlXdk5YTWZGbzNlc2tPSU92RGFKeWUwbVlDOHNHMlhGY01lNWdYd2RNazFQZGxRbTVsbHFNaUN0OHVUeVIzNnBGNGZHcWU0STgyYkRzamd1VV90WTlOajJ2cUE?oc=5",
+      "at": "2026-10-27T13:18:46Z",
+      "sources": 2
     }
   ],
-  "quiet": true
+  "quiet": false
 };

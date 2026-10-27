@@ -205,7 +205,7 @@ const D: NonNullable<SageSetupView["limits"]>["defaults"] = {
 };
 
 export const SAGE_SETUP: SageSetupView = {
-  "stamped_at": "2026-10-26T20:46:09Z",
+  "stamped_at": "2026-10-27T18:20:49Z",
   "config_path": "desk/config/sage-sources.json",
   "config_hash": "1ba30989ff76",
   "status": "ok",
@@ -218,7 +218,7 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "hn",
       "on": true,
       "caps": "cap 20",
-      "last_rows": 72,
+      "last_rows": 70,
       "state": "ok"
     },
     {
@@ -239,21 +239,21 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "sec_rss",
       "on": true,
       "caps": "cap_per_feed 12 · feeds 7",
-      "last_rows": 74,
+      "last_rows": 75,
       "state": "ok"
     },
     {
       "id": "gnews",
       "on": true,
       "caps": "cap 32",
-      "last_rows": 26,
+      "last_rows": 27,
       "state": "ok"
     },
     {
       "id": "github",
       "on": true,
       "caps": "cap 5",
-      "last_rows": 5,
+      "last_rows": 1,
       "state": "ok"
     },
     {
@@ -291,8 +291,8 @@ export const SAGE_SETUP: SageSetupView = {
       "last_rows": null,
       "state": "box-only",
       "snapshot": {
-        "rows": 12,
-        "at": "2026-10-26T17:47:08Z"
+        "rows": 13,
+        "at": "2026-10-27T17:49:36Z"
       }
     },
     {
@@ -303,21 +303,21 @@ export const SAGE_SETUP: SageSetupView = {
       "state": "box-only",
       "snapshot": {
         "rows": 24,
-        "at": "2026-10-26T17:47:08Z"
+        "at": "2026-10-27T17:49:36Z"
       }
     },
     {
       "id": "analyst_rss",
       "on": true,
       "caps": "cap_per_feed 6 · timeout_s 10 · feeds 2",
-      "last_rows": 5,
+      "last_rows": 7,
       "state": "ok"
     },
     {
       "id": "releases_atom",
       "on": true,
       "caps": "cap_per_feed 2 · feeds 8",
-      "last_rows": 7,
+      "last_rows": 9,
       "state": "ok"
     }
   ],

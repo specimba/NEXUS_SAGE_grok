@@ -7,31 +7,53 @@ import type { DigestUnlockSnapshot } from "@/lib/digest-unlock";
 export const DIGEST_UNLOCK: DigestUnlockSnapshot = {
   "schema": 1,
   "cycleId": "003",
-  "pickDate": "2026-10-26",
-  "frozenAt": "2026-10-26T20:46:35.689Z",
-  "leadId": "cl:rss:the-decoder:814cbd4d71346f4e",
+  "pickDate": "2026-10-27",
+  "frozenAt": "2026-10-27T18:21:15.341Z",
+  "leadId": "cl:gmail:1a17e66e21c4898e",
   "lead": {
-    "id": "cl:rss:the-decoder:814cbd4d71346f4e",
+    "id": "cl:gmail:1a17e66e21c4898e",
     "kind": "lead",
-    "title": "GPT-6.1 Terra halves OpenAI's API prices and still gains ground on its larger models",
-    "take": "4 SRC · sig 337 · pick 2026-10-26",
+    "title": "Nvidia says AI agents can understand your data without a migration",
+    "take": "9 SRC · pick 2026-10-27",
     "why": "LEAD_TODAY · picked · frozen at daily pick",
     "move": "Digest/Voice follow Brief lead · cycle label 003",
-    "url": "https://the-decoder.com/gpt-6-1-terra-halves-openais-api-prices-and-still-gains-ground-on-its-larger-models/",
-    "sources": 4,
-    "sig": 337
+    "url": "https://mail.google.com/mail/#all/1a17e66e21c4898e",
+    "sources": 9,
+    "sig": null
   },
   "rows": [
     {
-      "id": "cl:hn:50231099",
+      "id": "cl:rss:testingcatalog:8684eb48fa1590f3",
       "kind": "companion",
-      "title": "Nanbeige/Nanbeige4.3-33B",
-      "take": "3 SRC · sig 3",
+      "title": "OpenAI launches GPT-6.1 Terra for precise computer use",
+      "take": "5 SRC · sig 615",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
-      "url": "https://huggingface.co/Nanbeige/Nanbeige4.3-33B",
+      "url": "https://www.testingcatalog.com/openai-launches-gpt-6-1-terra-for-precise-computer-use/",
+      "sources": 5,
+      "sig": 615
+    },
+    {
+      "id": "cl:rss:deepmind:393575ee7d83ff0a",
+      "kind": "rest",
+      "title": "Genie 4: A new generation of world simulation",
+      "take": "3 SRC · sig 316",
+      "why": "Top corroborated Wire cluster · same pack as lead pick",
+      "move": "Digest row · never displaces Brief lead",
+      "url": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/",
       "sources": 3,
-      "sig": 3
+      "sig": 316
+    },
+    {
+      "id": "cl:hn:50259228",
+      "kind": "rest",
+      "title": "Unlimited-OCR-2: Baidu open-sources an OCR model for unlimited-horizon parsing",
+      "take": "3 SRC · sig 7",
+      "why": "Top corroborated Wire cluster · same pack as lead pick",
+      "move": "Digest row · never displaces Brief lead",
+      "url": "https://huggingface.co/baidu/Unlimited-OCR-2",
+      "sources": 3,
+      "sig": 7
     }
   ]
 } as const;
