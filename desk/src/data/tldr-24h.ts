@@ -3,8 +3,8 @@ import type { Tldr } from "@/lib/tldr-24h";
 
 export const TLDR_24H: Tldr = {
   "schema": 1,
-  "crawl_at": "2026-10-27T18:20:49Z",
-  "date": "2026-10-27",
+  "crawl_at": "2026-10-27T23:33:38Z",
+  "date": "2026-10-28",
   "bullets": [
     {
       "id": "cl:gmail:1a17e66e21c4898e",
@@ -17,8 +17,8 @@ export const TLDR_24H: Tldr = {
       "id": "cl:rss:huggingnews:7856547454313183",
       "title": "Google DeepMind Launches Genie 4 World Model for Interactive Simulations",
       "url": "https://huggingnews.com/ai/google-deepmind-launches-genie-4-world-model-for-interactive-simulations-bc72ee11",
-      "at": "2026-10-27T17:42:44Z",
-      "sources": 6
+      "at": "2026-10-27T20:15:27Z",
+      "sources": 8
     },
     {
       "id": "cl:rss:testingcatalog:8684eb48fa1590f3",
@@ -28,18 +28,18 @@ export const TLDR_24H: Tldr = {
       "sources": 5
     },
     {
-      "id": "cl:rss:deepmind:393575ee7d83ff0a",
-      "title": "Genie 4: A new generation of world simulation",
-      "url": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/",
-      "at": "2026-10-27T16:06:33Z",
-      "sources": 3
-    },
-    {
       "id": "cl:hn:50259228",
       "title": "Unlimited-OCR-2: Baidu open-sources an OCR model for unlimited-horizon parsing",
       "url": "https://huggingface.co/baidu/Unlimited-OCR-2",
       "at": "2026-10-27T13:44:44Z",
       "sources": 3
+    },
+    {
+      "id": "cl:rss:the-decoder:65b75ce62c3e32d5",
+      "title": "Google Deepmind's Genie 4 puts a modern spin on agent designs that predate LLMs",
+      "url": "https://the-decoder.com/google-deepminds-genie-4-puts-a-modern-spin-on-agent-designs-that-predate-llms/",
+      "at": "2026-10-27T17:30:25Z",
+      "sources": 2
     },
     {
       "id": "cl:gnews:cc0809426a353d09",

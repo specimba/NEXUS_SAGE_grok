@@ -23,5 +23,4 @@ export const SHELF: ShelfItem[] = [
   { href: "https://arxiv.org/abs/2610.35866", label: "arxiv.org/abs/2610.35866", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.35862", label: "arxiv.org/abs/2610.35862", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.35856", label: "arxiv.org/abs/2610.35856", reason: "arxiv-shelf" as const },
-  { href: "https://github.com/heyvaldemar/kubernetes-air-gapped-ai-agent", label: "heyvaldemar/kubernetes-air-gapped-ai-agent", reason: "github-search-shelf" as const },
 ];
