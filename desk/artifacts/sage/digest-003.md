@@ -1,27 +1,27 @@
 # SAGE digest pack
-compiled 2026-10-26T20:46:35.880Z
-source free-ingest digest refresh 2026-10-26T20:46:35.880Z · cycle 003 · lead hf-incident · unlock:live
+compiled 2026-10-27T06:08:41.356Z
+source free-ingest digest refresh 2026-10-27T06:08:41.356Z · cycle 003 · lead hf-incident · unlock:live
 lead_policy unlock — no new HF primary 03 Sep
 
 ## Lead
-GPT-6.1 Terra halves OpenAI's API prices and still gains ground on its larger models [high]
-4 SRC · sig 337 · pick 2026-10-26
+Google AI Studio prepares new Managed Agents hub [high]
+2 SRC · pick 2026-10-25
 MOVE Digest/Voice follow Brief lead · cycle label 003
 UNLOCK IF Next 06:11 Istanbul pick
 
 ## Files
-### [lead / other / high] GPT-6.1 Terra halves OpenAI's API prices and still gains ground on its larger models
-4 SRC · sig 337 · pick 2026-10-26
+### [lead / other / high] Google AI Studio prepares new Managed Agents hub
+2 SRC · pick 2026-10-25
 - stamp live
-- frozen 2026-10-26T20:46:35.689Z
-- pick 2026-10-26
+- frozen 2026-10-25T15:36:48.267Z
+- pick 2026-10-25
 1. Follow LEAD_TODAY · never invent
 2. Cycle label stays 003
 Done when: Digest lead equals Brief LEAD_TODAY title
 
-### [companion / other / medium] Nanbeige/Nanbeige4.3-33B
-3 SRC · sig 3
-- 3 SRC
+### [companion / other / medium] Sweden Blocks ChatGPT and Claude on Government Staff Computers
+4 SRC · sig 4
+- 4 SRC
 Done when: Listed under Digest lead
 
 ## Dropped
