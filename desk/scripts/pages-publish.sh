@@ -27,6 +27,14 @@ export GIT_AUTHOR_EMAIL="${GIT_AUTHOR_EMAIL:-specimba@users.noreply.github.com}"
 t0=$(date +%s)
 log() { echo "pages-publish: $*"; }
 die() { echo "pages-publish FAIL: $*" >&2; exit 1; }
+# failure snippet for a check log: from the first FAIL line on (header + bullets, up to 6 lines), not the head of the log — a passing first line
+# (e.g. overflow-390 "fold closed → open") used to hide the real failure. Falls back to the last 4 lines, then names the log.
+fail_lines() {
+  local f="$1" hits
+  hits="$(awk '/FAIL/{f=1} f' "$f" 2>/dev/null | head -6 | tr '\n' ' ')"   # FAIL header + its " - …" bullets
+  [ -n "$hits" ] || hits="$(tail -4 "$f" 2>/dev/null | tr '\n' ' ')"
+  printf '%s(log %s)' "$hits" "$f"
+}
 
 # ── 0. one build at a time: the shared build lock (scripts/locked-build.sh = package.json "build" waits on it) ──
 LOCK="${NEXUS_BUILD_LOCK_FILE:-$DESK/.build.lock}"; LOCK_WAIT="${NEXUS_BUILD_LOCK_WAIT:-900}"
@@ -153,12 +161,12 @@ stop_out() { kill "$spid" 2>/dev/null || true; wait "$spid" 2>/dev/null || true;
 if [ "${#fails[@]}" -eq 0 ] && [ "${PAGES_SKIP_LOCAL_FONTCHECK:-0}" != "1" ]; then
   if [ "${SAGE_FONT_CHECK:-browser}" = "static" ]; then
     ( cd "$DESK" && bun scripts/font-static-check.ts "$OUT" "$BASE" ) > /tmp/pages-font-check-local.log 2>&1 \
-      || fails+=("static font-check on $OUT under $BASE failed: $(head -4 /tmp/pages-font-check-local.log | tr '\n' ' ')")
+      || fails+=("static font-check on $OUT under $BASE failed: $(fail_lines /tmp/pages-font-check-local.log)")
     log "$(tail -1 /tmp/pages-font-check-local.log)"
   else
     serve_out
     ( cd "$DESK" && bun scripts/font-check.ts "http://127.0.0.1:$sport$BASE/" ) > /tmp/pages-font-check-local.log 2>&1 \
-      || fails+=("local font-check on $OUT under $BASE failed: $(head -4 /tmp/pages-font-check-local.log | tr '\n' ' ')")
+      || fails+=("local font-check on $OUT under $BASE failed: $(fail_lines /tmp/pages-font-check-local.log)")
     stop_out
   fi
 fi
@@ -220,12 +228,12 @@ if [ "${#fails[@]}" -eq 0 ] && [ "${SAGE_OVERFLOW_390:-off}" = "auto" ]; then
       serve_out
       ov390="ran-pass"
       ( cd "$DESK" && bun scripts/overflow-390-check.ts "http://127.0.0.1:$sport$BASE/" ) > /tmp/pages-overflow-390.log 2>&1 \
-        || { ov390="ran-fail"; fails+=("overflow-390 failed: $(head -4 /tmp/pages-overflow-390.log | tr '\n' ' ')"); }
+        || { ov390="ran-fail"; fails+=("overflow-390 failed: $(fail_lines /tmp/pages-overflow-390.log)"); }
       # Chrome is here anyway (code-changed run): add the real-browser font gate on top of the static one (2g still gated).
       if [ "$font_gate" = "static" ]; then
         font_gate="static+browser"
         ( cd "$DESK" && bun scripts/font-check.ts "http://127.0.0.1:$sport$BASE/" ) > /tmp/pages-font-check-browser.log 2>&1 \
-          || fails+=("browser font-check on $OUT under $BASE failed: $(head -4 /tmp/pages-font-check-browser.log | tr '\n' ' ')")
+          || fails+=("browser font-check on $OUT under $BASE failed: $(fail_lines /tmp/pages-font-check-browser.log)")
         log "$(tail -1 /tmp/pages-font-check-browser.log)"
       fi
       stop_out
