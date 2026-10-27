@@ -24,7 +24,7 @@ export type XTasteSnap = {
 };
 
 export const X_TASTE: XTasteSnap = {
-  "captured_at": "2026-10-27T02:49:01Z",
+  "captured_at": "2026-10-27T07:44:54Z",
   "briefEligible": false,
   "pulseLeadEligible": false,
   "paidApi": false,
@@ -42,6 +42,13 @@ export const X_TASTE: XTasteSnap = {
       "surface": "feed",
       "url": "https://x.com/OpenAI/status/2105373267171438779",
       "handle": "OpenAI",
+    },
+    {
+      "id": "2114967842680385768",
+      "text": "2/ OpenAI paused training of its most powerful models for 11 days. Now they train without the live internet, behind 4 layers: sandbox → micro-VM → monitoring with auto-shutdown → network perimeter.\n\n(Research environments, not the ChatGPT on your phone.)",
+      "surface": "feed",
+      "url": "https://x.com/akishlaru/status/2114967842680385768",
+      "handle": "akishlaru",
     },
     {
       "id": "2114860430451413175",
@@ -100,13 +107,6 @@ export const X_TASTE: XTasteSnap = {
       "handle": "Ai25Satisfied",
     },
     {
-      "id": "2114726376422928687",
-      "text": "OpenAI frontier agents breached containment: Internal models found ways around training/evaluation environments. One exploited a DNS resolver misconfiguration to reach the live internet. OpenAI paused the most capable workloads, hardened systems, and resumed training with no live",
-      "surface": "feed",
-      "url": "https://x.com/ShiftIntel/status/2114726376422928687",
-      "handle": "ShiftIntel",
-    },
-    {
       "id": "2113661518780998003",
       "text": "Computer Use lets agents click and type across any app on your computer, not just the browser.\n\nCursor uses it on its own when a task needs it. You can also ask for it by @-mentioning Computer Use in your prompt.\n\nUpdate Cursor to try it: https://t.co/vwTPMUSnyd",
       "surface": "feed",
@@ -114,11 +114,67 @@ export const X_TASTE: XTasteSnap = {
       "handle": "cursor_ai",
     },
     {
-      "id": "2114909706103955555",
-      "text": "Claude Code 和 Codex 各自为政的日子，到头了！！！\n\n作为重度用户说句掏心窝的——\n\n这俩工具单独用都很强，但拼到一起就是拼不上：\n\nClaude Code 碰不了电脑（确实不好用）\nCodex 控不了手机\n\n做个产品验证光调试就吃掉半天，效率砍一半都不止 https://t.co/DC6PLLpz5J",
+      "id": "2114981829111394652",
+      "text": "Mehr in Syntaxlabor #6: DeepSeek V4.1 Flash in Cursor für unter 1 $ pro Aufgabe, GPT-6.1 Terra für Computer-Use und Cursors Agent SDK mit eingebauten Evals.\n\nKostenloser Newsletter für Vibe Coder, Di/Do/Sa:\nhttps://t.co/0SOut5RLxk",
       "surface": "feed",
-      "url": "https://x.com/yaohui12138/status/2114909706103955555",
-      "handle": "yaohui12138",
+      "url": "https://x.com/syntaxlabor_de/status/2114981829111394652",
+      "handle": "syntaxlabor_de",
+    },
+    {
+      "id": "2114979137941291072",
+      "text": "昨天午休一觉醒来，要验收Claude的工作成果，结果发现账号被封了，第一反应天塌了，所有的工作计划都被打乱。虽然早有耳闻，Max风控比较严格，想着自己的账号开通很多年了，Pro也稳定用了半年了，应该通过考核了，就先开Max 5试一下，结果只用了2天就被封了。 https://t.co/Xvo7aCfrXv",
+      "surface": "feed",
+      "url": "https://x.com/aimarketinglift/status/2114979137941291072",
+      "handle": "aimarketinglift",
+    },
+    {
+      "id": "2114946771415937239",
+      "text": "in case you didn't want to listen to this whole thing and instead prefer reading:\n\nChatGPT ChatGPT agent Claude GPT-4 Gemini Claude Code Cursor GitHub Copilot GPT-4o OpenAI Codex Gemini 2.5 Pro Grok 4 DeepSeek R1 GPT-5 Claude Sonnet 4 Siri Midjourney V7 Sora 2 Microsoft Copilot h",
+      "surface": "feed",
+      "url": "https://x.com/creatine_cycle/status/2114946771415937239",
+      "handle": "creatine_cycle",
+    },
+    {
+      "id": "2114944755968922075",
+      "text": "@chetaslua Computer use needs this badly. Watching an agent click around today feels like watching someone else's screen share. A visible cursor with intent would build way more trust",
+      "surface": "feed",
+      "url": "https://x.com/dezign_ash/status/2114944755968922075",
+      "handle": "dezign_ash",
+    },
+    {
+      "id": "2114943170568200506",
+      "text": "Four different teams shipped the same idea this month: stop building against an app's API and just hand the agent the real screen.\n\nGhosthand plugs a physical iPhone into your Mac over USB and lets an agent see and tap it like a person would. iphone-use does the same thing with h",
+      "surface": "feed",
+      "url": "https://x.com/stretchcloud/status/2114943170568200506",
+      "handle": "stretchcloud",
+    },
+    {
+      "id": "2114924057225306435",
+      "text": "Lot's to catch up with today! Mention @bot and ask it to provide you a roundup of what's relevant to you, or share this with your own AI agent.\n\nIf you're like me, then sit back, relax, and read along.. we have a lot of exciting stuff to unpack here! ☕️ 📰 https://t.co/ETyCdSIeiU",
+      "surface": "feed",
+      "url": "https://x.com/solimancf/status/2114924057225306435",
+      "handle": "solimancf",
+    },
+    {
+      "id": "2114920880015044949",
+      "text": "Computer use and browser use is the new coding.\n\nWho would be the cursor, Devin etc of this era? https://t.co/qOUyWYRCgu",
+      "surface": "feed",
+      "url": "https://x.com/samuelekpe/status/2114920880015044949",
+      "handle": "samuelekpe",
+    },
+    {
+      "id": "2114917245998571860",
+      "text": "Cursor 现在能自己点桌面 App 了，@Computer Use 触发，它能拉起 iOS 模拟器测刚写的功能。我第一反应是爽，第二反应是：手滑点错了谁负责？你敢让它碰你桌面吗？#Cursor https://t.co/8Ld6Od6xrN",
+      "surface": "feed",
+      "url": "https://x.com/Ke971225Bill/status/2114917245998571860",
+      "handle": "Ke971225Bill",
+    },
+    {
+      "id": "2114914272908390647",
+      "text": "CursorにComputer Use機能が追加された。ローカルのIDEエージェントがデスクトップアプリを操作でき、iOSシミュレーターで自分が作った機能をテストさせることもできる。プロンプトに記述するか、必要に応じてCursorが自動で選ぶ。",
+      "surface": "feed",
+      "url": "https://x.com/cbnikode/status/2114914272908390647",
+      "handle": "cbnikode",
     },
     {
       "id": "2114905425514811857",
@@ -126,55 +182,6 @@ export const X_TASTE: XTasteSnap = {
       "surface": "feed",
       "url": "https://x.com/colinchen4/status/2114905425514811857",
       "handle": "colinchen4",
-    },
-    {
-      "id": "2114885070410440898",
-      "text": "补几句落地细节（还是 Cursor Agent SDK）：\n\n① 起步命令：npx @cursor/agent-sdk init ./my-bot，再 agent-sdk dev 开本地 playground。\n② 目录很干净：instructions.md 是总提示；tools/ 里每个文件是一个可调动作；skills/ 按需加载流程；mcp-connections/ 接外部工具；channels/",
-      "surface": "feed",
-      "url": "https://x.com/HunZhijie/status/2114885070410440898",
-      "handle": "HunZhijie",
-    },
-    {
-      "id": "2114884898993668373",
-      "text": "@OpenAI As a Blender user I don’t see it actually doing mouse operations. It’s just moving the cursor and calling the Python API. How is that computer use?",
-      "surface": "feed",
-      "url": "https://x.com/aidannewsome/status/2114884898993668373",
-      "handle": "aidannewsome",
-    },
-    {
-      "id": "2114884880756609472",
-      "text": "以前做个「审 PR 的机器人」，要么买别人的产品，要么从零硬写。\nCursor 刚把自家那套开出来了——叫 Agent SDK。\n\n它是什么：用代码定义 Agent。提示词写在 Markdown，工具用 TypeScript 写；能接 GitHub / GitLab / Bitbucket 的 PR、Slack、Webhook、定时任务。本地用 agent-sdk eval https://t.co/MNGvxiAtjO https://t.co/EsFdZNmOds",
-      "surface": "feed",
-      "url": "https://x.com/HunZhijie/status/2114884880756609472",
-      "handle": "HunZhijie",
-    },
-    {
-      "id": "2114878678643642714",
-      "text": "我用 CastMind 收听并转录了 Matt Palmer（@mattyp）和 Eric （@ericzakariasson） 这场 Grok Bot Q&amp;A Space。\n\n下面是我整理的 15个Q&amp;A（附视频解说）：\n1. 「问」最近上了哪些 Apple 相关能力？Vault 是干什么的？\n「答」刚上了一批 Apple 服务连接器，包括日历、提醒、闹钟、定位等。Vault https://t.co/wHQBfQ02pH https://t.co/peJEZTVCW1",
-      "surface": "feed",
-      "url": "https://x.com/MaiYangAI/status/2114878678643642714",
-      "handle": "MaiYangAI",
-    },
-    {
-      "id": "2114868562875834472",
-      "text": "@sama computer use being the headline is the right call, the day it fills in forms without me babysitting the cursor is the day I stop doing admin lmao",
-      "surface": "feed",
-      "url": "https://x.com/ghost_szy/status/2114868562875834472",
-      "handle": "ghost_szy",
-    },
-    {
-      "id": "2114868427756290117",
-      "text": "a visible cursor is not a benchmark method.\n\nwhen comparing computer-use agents, record whether each run used screen clicks or accessibility controls. use the same task, starting state and timing rule. a recording from one route should not stand in for a measurement from another.",
-      "surface": "feed",
-      "url": "https://x.com/farukguney_ai/status/2114868427756290117",
-      "handle": "farukguney_ai",
-    },
-    {
-      "id": "2114867653793980504",
-      "text": "BestBlogs Daily · 10-27\n\n# Computer use / Reddit Proto / AI governance / GPT-6.1 Terra / Code review\n\n[1] ★ Deep Dive · Why OpenAI Is Racing to Make Computer Use Superhuman [Video]\nOpenAI’s computer-use builders explain why universal interfaces need explicit application https://t",
-      "surface": "feed",
-      "url": "https://x.com/BestBlogsDev/status/2114867653793980504",
-      "handle": "BestBlogsDev",
     },
     {
       "id": "2113681863109939271",
@@ -189,13 +196,6 @@ export const X_TASTE: XTasteSnap = {
       "surface": "feed",
       "url": "https://x.com/Kimi_Moonshot/status/2113680710150357279",
       "handle": "Kimi_Moonshot",
-    },
-    {
-      "id": "2113680705855373791",
-      "text": "On Terminal-Bench 4.0, which evaluates coding agents on realistic, resource-constrained terminal tasks using strict task-specific tests, K3.1 Pro scores 65.7%, ahead of GPT-6 Astra (58.2%) and narrowly behind Claude Opus 5.5 (66.4%). https://t.co/qh5wU1qAX4",
-      "surface": "feed",
-      "url": "https://x.com/Kimi_Moonshot/status/2113680705855373791",
-      "handle": "Kimi_Moonshot",
     }
   ],
   "skipped": false,
@@ -206,5 +206,5 @@ export const X_TASTE: XTasteSnap = {
     "seen": 41,
     "kept": 24
   },
-  "stamped_at": "2026-10-27T02:49:01Z"
+  "stamped_at": "2026-10-27T07:44:54Z"
 } as const;
