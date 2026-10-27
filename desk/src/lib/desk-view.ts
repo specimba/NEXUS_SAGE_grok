@@ -63,8 +63,10 @@ export const DESK_VIEW_CAPS = {
    * Hard budget: gzip -9 bytes of the generated src/data/desk-view.ts. Pass A2 (2026-10-10): PAPERS moved to the lazy
    * desk-view-papers.ts chunk (≈7.8 kB gz out of First Load), so the budget drops 41 900 → 35 500 B: First Load at a
    * full budget stays ≥ 3 kB under the 185 kB gate (see pass-a2-first-load.test.ts).
+   * Oct 28 2026: 35 500 → 33 500 B — desk code grew ≈ 6.4 kB since A2 and Oct 27 crawls hit 185 034–185 195 B; measured
+   * 182 072 B at gz 33 318 B (≈ 2.6 kB headroom at a full budget). Oldest unpinned stories drop first.
    */
-  gzBytes: 35_500,
+  gzBytes: 33_500,
 } as const;
 
 /** Cut to `n` chars with an ellipsis (only past the cap — never touches text under it). */

@@ -20,8 +20,10 @@ const staticImports = [...deskSrc.matchAll(/^import [^;]*? from "([^"]+)";/gms)]
 const CAP = 185_000;
 /** Oct 26 2026 00:08 TRT: Canberk raised the budget 182 000 → 185 000 B (main CI was already 184 059 B from crawl data). */
 const REVIEWER_MAX = 185_000;
-/** First Load minus gzip -9(desk-view.ts), measured at this pass (177 789 − 35 439). */
-const CODE_BASELINE = 142_350;
+/** First Load minus gzip -9(desk-view.ts). Oct 28 2026 re-measure (crawl 2026-10-27T18:20:49Z, budget 33 500):
+ *  182 072 − 33 318 = 148 754 (was 142 350 at Pass A2; desk code grew ≈ 6.4 kB since, so the 35 500 budget left only
+ *  ≈ 600 B and Oct 27 06:11/11:11/16:11 crawls tripped the gate at 185 195 / 185 034 / 185 165 B). */
+const CODE_BASELINE = 148_754;
 const GROWTH_FIXTURE = 2_048;
 
 describe("Pass A2 · First Load headroom", () => {
@@ -38,7 +40,7 @@ describe("Pass A2 · First Load headroom", () => {
   });
 
   test("full budget + 2 kB crawl growth stays ≤ 185 000 B budget (and under the 185 kB cap)", () => {
-    expect(DESK_VIEW_CAPS.gzBytes).toBeLessThanOrEqual(35_500);
+    expect(DESK_VIEW_CAPS.gzBytes).toBeLessThanOrEqual(33_500);
     const live = gzBytes(read("src/data/desk-view.ts"));
     expect(live).toBeLessThanOrEqual(DESK_VIEW_CAPS.gzBytes);
     expect(CODE_BASELINE + live).toBeLessThanOrEqual(REVIEWER_MAX);
