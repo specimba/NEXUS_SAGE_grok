@@ -6,6 +6,7 @@
  * AINews daily recaps (title starts `[AINews]`) are one item each — never split into sub-stories.
  * Spec: refs/PASS-S1-SCOUT-SOURCES.md §S1.1.
  */
+import { isLifestyleNoise, LIFESTYLE_NOISE_REASON } from "./lifestyle-noise";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { AI_TERMS } from "./ai-relevance";
@@ -117,6 +118,7 @@ export function analystAiTitle(title: string): boolean {
 
 /** Why an analyst entry is not a Pulse row (null = kept): DENY/flatten, or not AI (recaps are always AI). */
 export function analystDropReason(title: string, summary: string, feed: AnalystId): string | null {
+  if (isLifestyleNoise(title, summary)) return LIFESTYLE_NOISE_REASON;
   const c = classifyPost({ text: `${title} ${summary}`, handle: feed });
   if (c.flatten || c.class === "flatten" || c.class === "drop") return `deny:${c.class}`;
   if (AINEWS_RECAP_RE.test(title)) return null;

@@ -5,6 +5,7 @@
  * FREE-PULSE P3: watchlist ≤12 · rotate ≤3/tick · soft_fail merge · no Sol/Astra standing.
  */
 
+import { isLifestyleNoise } from "./lifestyle-noise";
 import { isAiRelevant } from "./ai-relevance";
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -361,6 +362,8 @@ export function toPulseCandidates(hits: HnAlgoliaHit[]): HnPulseCandidate[] {
       // Toolkit / arXiv shelf links — off Pulse Brief path (never toolkit Brief pins)
       continue;
     }
+
+    if (isLifestyleNoise(title)) continue; // noise:lifestyle
 
     const classified = classifyPost({
       text: title,

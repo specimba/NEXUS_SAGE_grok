@@ -4,6 +4,7 @@
  * Cycle stays 003 · lead hf-incident. Spec: refs/WIRE-SECURITY-RSS.md (Fox-IT extend APPROVED).
  */
 
+import { isLifestyleNoise } from "./lifestyle-noise";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -249,6 +250,7 @@ export function toSecurityItems(
     if (seen.has(id)) continue;
     seen.add(id);
 
+    if (isLifestyleNoise(title, e.summary)) continue; // noise:lifestyle
     const blob = `${title} ${e.summary ?? ""}`;
     const classified = classifyPost({ text: blob, handle });
 

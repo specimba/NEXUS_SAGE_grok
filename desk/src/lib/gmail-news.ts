@@ -8,6 +8,7 @@
 
 import { publicHref } from "@/lib/truth";
 import { gmailDupKey, isVendorPitch } from "@/lib/gmail-trust";
+import { isLifestyleNoise } from "./lifestyle-noise";
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, readdirSync, unlinkSync, writeFileSync, statSync } from "node:fs";
 import { resolve, join } from "node:path";
@@ -192,6 +193,8 @@ export function isNoise(msg: Pick<GmailRawMessage, "subject" | "sender" | "snipp
   if (PROMO_SUBJECT.test(sub)) return true;
   // PASS-U U0: vendor-pitch / marketing mail ("See … in action", demos, trials) — soft-dropped from SRC pools.
   if (isVendorPitch(sub)) return true;
+  // PASS-NOISE: noise:lifestyle (subject only — digest snippets mix many stories).
+  if (isLifestyleNoise(sub)) return true;
   // PASS-S1.5: sponsored / webinar mail — any sender (trusted senders too).
   if (SPONSORED_SUBJECT.test(sub)) return true;
   // Intel plan 2: keywords.politics_deny (configured via configurePoliticsTerms) drops political mail.

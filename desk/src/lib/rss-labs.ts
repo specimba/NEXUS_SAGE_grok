@@ -5,6 +5,7 @@
  * Zero credentials. No Anthropic/Meta/Cohere/xAI HTML scrape. No Reddit.
  */
 
+import { isLifestyleNoise } from "./lifestyle-noise";
 import { RSS_FEED_TIMEOUT_MS, rssTimeoutSignal } from "./rss-timeout";
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -325,6 +326,8 @@ export function toLabItems(
     const id = `rss:${lab}:${itemId(idKey)}`;
     if (seen.has(id)) continue;
     seen.add(id);
+
+    if (isLifestyleNoise(title, e.summary)) continue; // noise:lifestyle
 
     const classified = classifyPost({
       text: `${title} ${e.summary ?? ""}`,

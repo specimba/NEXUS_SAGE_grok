@@ -6,6 +6,7 @@
  * DENY: paid X · Bluesky · Reddit · scrape farms · Sol/Astra/incident standing · topic-ID invent.
  */
 
+import { isBareZodiacQuery, isLifestyleNoise, LIFESTYLE_NOISE_REASON } from "./lifestyle-noise";
 import { rssTimeoutSignal } from "./rss-timeout";
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -41,7 +42,8 @@ export const GNEWS_POOL_CAP = 32;
  */
 export const GNEWS_LAB_QUERIES = [
   "Google DeepMind",
-  "Gemini",
+  // PASS-NOISE L1: bare "Gemini" pulled TOI horoscopes; AI-disambiguated form.
+  "Gemini AI",
   "NVIDIA AI",
   "Mistral AI",
   "Microsoft Research",
@@ -284,6 +286,9 @@ export function gnewsStandingQueries(
     const trimmed = String(q ?? "").trim();
     if (!trimmed) continue;
     assertGnewsStandingSafe(trimmed);
+    if (isBareZodiacQuery(trimmed)) {
+      throw new Error(`GNews standing search must not be a bare zodiac sign: ${trimmed}`);
+    }
     const key = trimmed.toLowerCase();
     if (seen.has(key)) continue;
     seen.add(key);
@@ -374,6 +379,11 @@ export function toGnewsItems(
     const id = `gnews:${itemId(idKey)}`;
     if (seen.has(id)) continue;
     seen.add(id);
+
+    if (isLifestyleNoise(title, e.summary)) {
+      console.log(`GNews: drop ${LIFESTYLE_NOISE_REASON} query="${query}" title="${title.slice(0, 80)}"`);
+      continue;
+    }
 
     const classified = classifyPost({
       text: `${title} ${e.summary ?? ""}`,
