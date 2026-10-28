@@ -3,22 +3,22 @@ import type { Tldr } from "@/lib/tldr-24h";
 
 export const TLDR_24H: Tldr = {
   "schema": 1,
-  "crawl_at": "2026-10-28T08:20:41Z",
+  "crawl_at": "2026-10-28T13:21:05Z",
   "date": "2026-10-28",
   "bullets": [
     {
       "id": "cl:rss:deepmind:393575ee7d83ff0a",
       "title": "Genie 4: A new generation of world simulation",
       "url": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/",
-      "at": "2026-10-28T08:01:02Z",
-      "sources": 15
+      "at": "2026-10-28T12:41:02Z",
+      "sources": 24
     },
     {
       "id": "cl:rss:testingcatalog:8684eb48fa1590f3",
       "title": "OpenAI launches GPT-6.1 Terra for precise computer use",
       "url": "https://www.testingcatalog.com/openai-launches-gpt-6-1-terra-for-precise-computer-use/",
       "at": "2026-10-27T23:14:05Z",
-      "sources": 8
+      "sources": 5
     },
     {
       "id": "cl:hn:50259228",
@@ -32,13 +32,6 @@ export const TLDR_24H: Tldr = {
       "title": "Google Deepmind's Genie 4 puts a modern spin on agent designs that predate LLMs",
       "url": "https://the-decoder.com/google-deepminds-genie-4-puts-a-modern-spin-on-agent-designs-that-predate-llms/",
       "at": "2026-10-27T17:30:25Z",
-      "sources": 2
-    },
-    {
-      "id": "cl:hn:50242152",
-      "title": "Anthropic's Claude AI model accessed Georgia voter data in US",
-      "url": "https://www.theguardian.com/technology/2026/oct/26/anthropics-claude-ai-model-accessed-georgia-voter-data-in-us",
-      "at": "2026-10-27T14:24:33Z",
       "sources": 2
     }
   ],
