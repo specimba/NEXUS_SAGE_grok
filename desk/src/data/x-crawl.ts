@@ -12,7 +12,7 @@ export type CrawlPost = {
   tag: "lead-bond" | "companion" | "rest" | "rumor";
 };
 
-export const CRAWL_AT = "2026-10-27T23:33:38Z";
+export const CRAWL_AT = "2026-10-28T03:20:31Z";
 
 export const CRAWL: CrawlPost[] = [
   {

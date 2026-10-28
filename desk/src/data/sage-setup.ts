@@ -205,7 +205,7 @@ const D: NonNullable<SageSetupView["limits"]>["defaults"] = {
 };
 
 export const SAGE_SETUP: SageSetupView = {
-  "stamped_at": "2026-10-27T23:33:38Z",
+  "stamped_at": "2026-10-28T03:20:31Z",
   "config_path": "desk/config/sage-sources.json",
   "config_hash": "1ba30989ff76",
   "status": "ok",
@@ -218,7 +218,7 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "hn",
       "on": true,
       "caps": "cap 20",
-      "last_rows": 70,
+      "last_rows": 56,
       "state": "ok"
     },
     {
@@ -246,14 +246,14 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "gnews",
       "on": true,
       "caps": "cap 32",
-      "last_rows": 28,
+      "last_rows": 50,
       "state": "ok"
     },
     {
       "id": "github",
       "on": true,
       "caps": "cap 5",
-      "last_rows": 0,
+      "last_rows": 2,
       "state": "ok"
     },
     {
@@ -267,22 +267,22 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "crossref",
       "on": true,
       "caps": "—",
-      "last_rows": 1,
+      "last_rows": 0,
       "state": "ok"
     },
     {
       "id": "arxiv",
       "on": true,
       "caps": "—",
-      "last_rows": 29,
-      "state": "ok"
+      "last_rows": 5,
+      "state": "soft-fail"
     },
     {
       "id": "wikidata",
       "on": true,
       "caps": "—",
       "last_rows": 3,
-      "state": "ok"
+      "state": "soft-fail"
     },
     {
       "id": "gmail",
@@ -292,7 +292,7 @@ export const SAGE_SETUP: SageSetupView = {
       "state": "box-only",
       "snapshot": {
         "rows": 13,
-        "at": "2026-10-27T17:49:36Z"
+        "at": "2026-10-28T02:45:35Z"
       }
     },
     {
@@ -303,7 +303,7 @@ export const SAGE_SETUP: SageSetupView = {
       "state": "box-only",
       "snapshot": {
         "rows": 24,
-        "at": "2026-10-27T17:49:36Z"
+        "at": "2026-10-28T02:45:35Z"
       }
     },
     {

@@ -3,49 +3,49 @@ import type { Tldr } from "@/lib/tldr-24h";
 
 export const TLDR_24H: Tldr = {
   "schema": 1,
-  "crawl_at": "2026-10-27T23:33:38Z",
+  "crawl_at": "2026-10-28T03:20:31Z",
   "date": "2026-10-28",
   "bullets": [
     {
-      "id": "cl:gmail:1a17e66e21c4898e",
-      "title": "Nvidia says AI agents can understand your data without a migration",
-      "url": "https://mail.google.com/mail/#all/1a17e66e21c4898e",
-      "at": "2026-10-27T17:27:13Z",
-      "sources": 9
-    },
-    {
-      "id": "cl:rss:huggingnews:7856547454313183",
-      "title": "Google DeepMind Launches Genie 4 World Model for Interactive Simulations",
-      "url": "https://huggingnews.com/ai/google-deepmind-launches-genie-4-world-model-for-interactive-simulations-bc72ee11",
-      "at": "2026-10-27T20:15:27Z",
-      "sources": 8
+      "id": "cl:rss:huggingnews:ef92c9479c1ad91e",
+      "title": "OpenAI Plans to Purchase AI Chips From Google to Cut Reliance on Nvidia",
+      "url": "https://huggingnews.com/ai/openai-plans-to-purchase-ai-chips-from-google-to-cut-reliance-on-nvidia-804ac15e",
+      "at": "2026-10-28T03:00:46Z",
+      "sources": 16
     },
     {
       "id": "cl:rss:testingcatalog:8684eb48fa1590f3",
       "title": "OpenAI launches GPT-6.1 Terra for precise computer use",
       "url": "https://www.testingcatalog.com/openai-launches-gpt-6-1-terra-for-precise-computer-use/",
-      "at": "2026-10-27T10:35:29Z",
-      "sources": 5
+      "at": "2026-10-27T22:43:27Z",
+      "sources": 8
     },
     {
       "id": "cl:hn:50259228",
       "title": "Unlimited-OCR-2: Baidu open-sources an OCR model for unlimited-horizon parsing",
       "url": "https://huggingface.co/baidu/Unlimited-OCR-2",
-      "at": "2026-10-27T13:44:44Z",
+      "at": "2026-10-28T01:54:13Z",
       "sources": 3
     },
     {
-      "id": "cl:rss:the-decoder:65b75ce62c3e32d5",
-      "title": "Google Deepmind's Genie 4 puts a modern spin on agent designs that predate LLMs",
-      "url": "https://the-decoder.com/google-deepminds-genie-4-puts-a-modern-spin-on-agent-designs-that-predate-llms/",
-      "at": "2026-10-27T17:30:25Z",
+      "id": "cl:rss:deepmind:393575ee7d83ff0a",
+      "title": "Genie 4: A new generation of world simulation",
+      "url": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/",
+      "at": "2026-10-27T19:45:35Z",
+      "sources": 3
+    },
+    {
+      "id": "cl:gnews:172b013ace4039c2",
+      "title": "Gemini Tarot Horoscope Today, October 28, 2026: Move forward in a balanced way, there will be efforts to perform better in business",
+      "url": "https://news.google.com/rss/articles/CBMi0wJBVV95cUxOem53NFNtRE8wdWE5Y0JJYlJtbXIyVkI1Mzk2NE1PcFAwOGk3WTh6YnJjeWN3VDR6QlVjekVUZUFZRWhoLTl1eTc5Y2dTTnhZWXZ1VndKamRPdlRPQXAzaUozQ3luVzVlODEyV2tjdnRSRlFTRjBWejFWWEhWejlDZndMMGd6cmxqQ0E5V1FGeDVhY1NDTmRJR2FaV1lwd1JfWjNsNmI3MGV6Zm43X2NuWEswSGFFcmY3Skpta3puRF9KN0x1anpZcmFZS3Back1ZV0U3SDdkRDd1cmlxX2ZFX1hpZVQ4Rzlic0tra2k0RVBvUzh1OEZfZy1oX3Qtc1hZTEZKc0taamtJdzdoQ1ZMTEdfdHltdFUtNFZNV0I4SnRRalg1aXh6QWtybDBmV2RudDFRR0k2ZUp1UkFaOUcxTUczdzc1SkFyemhrNW9lc2hqZkXSAdgCQVVfeXFMT0NFLVpsVkxjckE1Z2FIeGhlUFlvaVYwMEw0WENLb3JBZ2wwVUdYOVVna1RyZUZLdks0WlRYQW93aHZzR3pLOXdJNFFQRTZxSE0xUVRUMHlxNFY4MFJ3Z2c0Z3Z3OFl2STBKdGlVVUhmNFBTNXh3azBSMkxLd3BhS2swMUotZlJ5RkxWVmtrRXBfOUt0V3VEZkh0bXQ4MnFINEhuUUpkdTVjSlFzN2FTMkwzVWRVV0Frd3k2MW10aU5aUFVSSWxZUDJ6dWp6MlJkLXdrckJ5U1ZhQzk5aVNHUGlkVjhXb09OOXZjV0VvYU84eEJzX1dTU3IzNm0ydjVHYzFOV1V5REtQVWNBLWZJc2dYMUp5RkhPUDY4MVI5aHZDNkcxaHBsSXVTZVhEcWcta2swN01nU01YUVcwYVRIVWxvZzhFbHpJWGVsclBiWVltc01kZmpfLUM?oc=5",
+      "at": "2026-10-28T01:48:00Z",
       "sources": 2
     },
     {
-      "id": "cl:gnews:cc0809426a353d09",
-      "title": "Calix releases communications language model on Hugging Face",
-      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQWkZrZ2ZPcEEzcnBQWjIxdDBQN05mQ3JIQ1hQZnZuM19JRGQ1THk3TUN3N2N4QVFjaFVmREdpSDlpTm5DWUVBMEN3cUNnTE55cnY5VWlXdk5YTWZGbzNlc2tPSU92RGFKeWUwbVlDOHNHMlhGY01lNWdYd2RNazFQZGxRbTVsbHFNaUN0OHVUeVIzNnBGNGZHcWU0STgyYkRzamd1VV90WTlOajJ2cUE?oc=5",
-      "at": "2026-10-27T13:18:46Z",
+      "id": "cl:hn:50242152",
+      "title": "Anthropic's Claude AI model accessed Georgia voter data in US",
+      "url": "https://www.theguardian.com/technology/2026/oct/26/anthropics-claude-ai-model-accessed-georgia-voter-data-in-us",
+      "at": "2026-10-27T14:24:33Z",
       "sources": 2
     }
   ],

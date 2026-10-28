@@ -2,6 +2,63 @@
 import type { LeadEntry } from "@/lib/lead-pick";
 
 export const LEAD_TODAY: LeadEntry | null = {
+  "date": "2026-10-28",
+  "at": "2026-10-28T03:20:59.004Z",
+  "crawl_at": "2026-10-28T03:20:31Z",
+  "pick_slot": "06:20",
+  "excluded": [
+    {
+      "cluster_id": "cl:rss:testingcatalog:8684eb48fa1590f3",
+      "headline": "OpenAI launches GPT-6.1 Terra for precise computer use",
+      "reason": "age>=36h",
+      "sources": 8,
+      "age_h": 51,
+      "pub": "TES"
+    },
+    {
+      "cluster_id": "cl:hn:50259228",
+      "headline": "Unlimited-OCR-2: Baidu open-sources an OCR model for unlimited-horizon parsing",
+      "reason": "age>=36h",
+      "sources": 3,
+      "age_h": 47,
+      "pub": "HN"
+    },
+    {
+      "cluster_id": "cl:gnews:172b013ace4039c2",
+      "headline": "Gemini Tarot Horoscope Today, October 28, 2026: Move forward in a balanced way, there will be efforts to perform better in business",
+      "reason": "GNW_ONLY",
+      "sources": 2,
+      "age_h": 3
+    },
+    {
+      "cluster_id": "cl:hn:50242152",
+      "headline": "Anthropic's Claude AI model accessed Georgia voter data in US",
+      "reason": "age>=36h",
+      "sources": 2,
+      "age_h": 40,
+      "pub": "HN"
+    },
+    {
+      "cluster_id": "cl:rss:deepmind:851107eacfc8ba0f",
+      "headline": "Gemini 4 Argon: Built to solve your hardest problems",
+      "reason": "age>=36h",
+      "sources": 2,
+      "age_h": 347,
+      "pub": "DMD"
+    }
+  ],
+  "cluster_id": "cl:rss:huggingnews:ef92c9479c1ad91e",
+  "headline": "OpenAI Plans to Purchase AI Chips From Google to Cut Reliance on Nvidia",
+  "url": "https://huggingnews.com/ai/openai-plans-to-purchase-ai-chips-from-google-to-cut-reliance-on-nvidia-804ac15e",
+  "sources": 16,
+  "sig": null,
+  "reason": "picked",
+  "pub": "HUG",
+  "first_at": "2026-10-27T21:43:16.000Z",
+  "age_band": "<24h"
+};
+
+export const LEAD_YESTERDAY: LeadEntry | null = {
   "date": "2026-10-27",
   "at": "2026-10-27T18:21:15.341Z",
   "crawl_at": "2026-10-27T18:20:49Z",
@@ -51,37 +108,10 @@ export const LEAD_TODAY: LeadEntry | null = {
   "age_band": "<24h"
 };
 
-export const LEAD_YESTERDAY: LeadEntry | null = {
-  "date": "2026-10-26",
-  "at": "2026-10-26T20:46:35.689Z",
-  "crawl_at": "2026-10-26T20:46:09Z",
-  "catch_up": true,
-  "pick_slot": "23:46",
-  "excluded": [
-    {
-      "cluster_id": "cl:rss:deepmind:851107eacfc8ba0f",
-      "headline": "Gemini 4 Argon: Built to solve your hardest problems",
-      "reason": "age>=36h",
-      "sources": 2,
-      "age_h": 316,
-      "pub": "DMD"
-    }
-  ],
-  "cluster_id": "cl:rss:the-decoder:814cbd4d71346f4e",
-  "headline": "GPT-6.1 Terra halves OpenAI's API prices and still gains ground on its larger models",
-  "url": "https://the-decoder.com/gpt-6-1-terra-halves-openais-api-prices-and-still-gains-ground-on-its-larger-models/",
-  "sources": 4,
-  "sig": 337,
-  "reason": "picked",
-  "pub": "THE",
-  "first_at": "2026-10-26T00:00:00.000Z",
-  "age_band": "<24h"
-};
-
 export const LEAD_HELD = false;
 
 /** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is >48h old (PASS-L). */
-export const LEAD_FIRST_AT: string | null = "2026-10-27T17:27:13.000Z";
+export const LEAD_FIRST_AT: string | null = "2026-10-27T21:43:16.000Z";
 
 /** Date of the latest real pick (never a HELD entry) — the HELD card's "last pick" (UX-1). */
-export const LEAD_LAST_PICK: string | null = "2026-10-27";
+export const LEAD_LAST_PICK: string | null = "2026-10-28";
