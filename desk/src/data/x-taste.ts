@@ -24,7 +24,7 @@ export type XTasteSnap = {
 };
 
 export const X_TASTE: XTasteSnap = {
-  "captured_at": "2026-10-28T07:46:13Z",
+  "captured_at": "2026-10-28T12:43:38Z",
   "briefEligible": false,
   "pulseLeadEligible": false,
   "paidApi": false,
@@ -42,6 +42,20 @@ export const X_TASTE: XTasteSnap = {
       "surface": "feed",
       "url": "https://x.com/OpenAI/status/2105373267171438779",
       "handle": "OpenAI",
+    },
+    {
+      "id": "2115413984690250097",
+      "text": "OpenAI just published something most labs would keep quiet.\n\nOn September 20, one of their internal research models found a DNS resolver misconfiguration mid-training and reached the live internet. Limited access, contained quickly, but it happened.\n\nWhat they did next is the htt",
+      "surface": "feed",
+      "url": "https://x.com/RuralBytesTamil/status/2115413984690250097",
+      "handle": "RuralBytesTamil",
+    },
+    {
+      "id": "2115380177962180827",
+      "text": "OpenAI now trains frontier models with zero live internet access. After a Sept 20 DNS incident and an 11-day pause, training runs in an \"offline world\" of cached web content. #OpenAI\nSource: https://t.co/OVV8D2ety3 https://t.co/7eUoHyEUK0",
+      "surface": "feed",
+      "url": "https://x.com/AzAutomatixdt/status/2115380177962180827",
+      "handle": "AzAutomatixdt",
     },
     {
       "id": "2115279064542101623",
@@ -93,18 +107,46 @@ export const X_TASTE: XTasteSnap = {
       "handle": "StartupHakk",
     },
     {
-      "id": "2115025287889203626",
-      "text": "𝗙𝗥𝗢𝗡𝗧𝗜𝗘𝗥 𝗕𝗥𝗜𝗘𝗙 𝗡𝗼. 𝟬𝟬𝟰\nSunday, 25 October 2026 · Covers 17 to 24 October\n𝗢𝗽𝗲𝗻𝗔𝗜 𝗰𝘂𝘁𝘀 𝗳𝗿𝗼𝗻𝘁𝗶𝗲𝗿 𝘁𝗿𝗮𝗶𝗻𝗶𝗻𝗴 𝗼𝗳𝗳 𝗳𝗿𝗼𝗺 𝘁𝗵𝗲 𝗹𝗶𝘃𝗲 𝗶𝗻𝘁𝗲𝗿𝗻𝗲𝘁\n\n𝗧𝗛𝗘 𝗦𝗛𝗢𝗥𝗧 𝗩𝗘𝗥𝗦𝗜𝗢𝗡\n• Mathematicians now largely accept OpenAI's",
-      "surface": "feed",
-      "url": "https://x.com/Cooo2nw4/status/2115025287889203626",
-      "handle": "Cooo2nw4",
-    },
-    {
       "id": "2113661518780998003",
       "text": "Computer Use lets agents click and type across any app on your computer, not just the browser.\n\nCursor uses it on its own when a task needs it. You can also ask for it by @-mentioning Computer Use in your prompt.\n\nUpdate Cursor to try it: https://t.co/vwTPMUSnyd",
       "surface": "feed",
       "url": "https://x.com/cursor_ai/status/2113661518780998003",
       "handle": "cursor_ai",
+    },
+    {
+      "id": "2115416733498716481",
+      "text": "Tu agente de IA ya no solo escribe código: con Computer Use, Cursor hace clic, escribe y toma capturas en cualquier app de tu computador. Abre el iOS Simulator y prueba lo que programó. Lo pides mencionándolo en tu prompt. Así lo pruebas sin riesgos 👇 https://t.co/GgKYGAHaS1",
+      "surface": "feed",
+      "url": "https://x.com/MDALatam/status/2115416733498716481",
+      "handle": "MDALatam",
+    },
+    {
+      "id": "2115390541999362197",
+      "text": "if claude changes this weird ugly ass cursor i might trust their computer use more https://t.co/1B4i42RMe5",
+      "surface": "feed",
+      "url": "https://x.com/0nabilbk/status/2115390541999362197",
+      "handle": "0nabilbk",
+    },
+    {
+      "id": "2115368082092986538",
+      "text": "【TechFeedまとめ】2026-10-28\n\n■ Zenn\n1. AIに「片付けて」と丸投げしたら、フォルダの外が消えたのは12回中0回。許可フラグを外しても rm -r は通った\nhttps://t.co/29AQ5qlOtZ\n\n2. 同じトレード戦略をAIでAlpacaとQuantConnect向けコードに変換して比較してみる\nhttps://t.co/OsMweQGYwv\n\n3.",
+      "surface": "feed",
+      "url": "https://x.com/Masato1864646/status/2115368082092986538",
+      "handle": "Masato1864646",
+    },
+    {
+      "id": "2115368049964675371",
+      "text": "@illyism @dominikSnowRise @pranjalsoni_ @marclou Okay so no Google sub. Using Google inside cursor. \n\nSame setup here except $100 OpenAI but mostly use that for computer use I’m sure $20 be fine",
+      "surface": "feed",
+      "url": "https://x.com/awpthorp/status/2115368049964675371",
+      "handle": "awpthorp",
+    },
+    {
+      "id": "2115354522768089253",
+      "text": "هالأسبوع شحن كثير للوكلاء: Duet، Computer Use في Cursor، موصلات نشر من الشات، وCLI للوسائط.\nأنا ما ألحق كل إطلاق — أختار واحد أجرّبه على مشكلة حقيقية هذا الأسبوع.\nاللي ما يدخل في عمل فعلي يبقى ضجيج تايملاين.\n#Ship",
+      "surface": "feed",
+      "url": "https://x.com/NoorErgsous/status/2115354522768089253",
+      "handle": "NoorErgsous",
     },
     {
       "id": "2115333085877379279",
@@ -135,41 +177,6 @@ export const X_TASTE: XTasteSnap = {
       "handle": "AiAdventurerx",
     },
     {
-      "id": "2115313736965877826",
-      "text": "Introducing Caret: an open-source, Cursor-class AI code editor.\n\nNo bundled Chromium. No Node at run time. One Rust process plus the WebView your OS already ships. MIT licensed. Bring your own keys.\n\nOr bring no keys at all: point it at Ollama for chat, Tab and embeddings and it",
-      "surface": "feed",
-      "url": "https://x.com/LynkrDev/status/2115313736965877826",
-      "handle": "LynkrDev",
-    },
-    {
-      "id": "2115303983673741768",
-      "text": "OpenAI announced GPT-6.1 Terra, a lower-priced model that can use your computer for you. Plus 5 more AI updates from the last two days:\n\nModels\n• Google DeepMind Genie 4: a world model where you explore live scenes that react, make sound and move in real time. No public access ht",
-      "surface": "feed",
-      "url": "https://x.com/ZaRRaX21/status/2115303983673741768",
-      "handle": "ZaRRaX21",
-    },
-    {
-      "id": "2115300756320645616",
-      "text": "Every coding agent starts as ten lines of while True. Getting it to keep running for months takes four distinct steps: across windows, across turns, beyond the client, always on. Part 1 of 2 on long-running agents. https://t.co/m6y9t1Ari3",
-      "surface": "feed",
-      "url": "https://x.com/phaidrosliang/status/2115300756320645616",
-      "handle": "phaidrosliang",
-    },
-    {
-      "id": "2115288903511052771",
-      "text": "Claude Code 和 Grok Bot 现在能互相派活了\n\n这周最火的 9 个 skill 、插件和开源工具\n我按\"打通两端、管好 Claude Code、管好 bot 团队\"整理好了👇\n\n【打通两端】\n\n1/ @moritzkremb 的 Bridge Bot 模板 加上之后给你一个 webhook、密钥和一段提示词，贴进 Claude Code 就装好 https://t.co/El5XYtiU3G",
-      "surface": "feed",
-      "url": "https://x.com/27huff/status/2115288903511052771",
-      "handle": "27huff",
-    },
-    {
-      "id": "2115282804246204535",
-      "text": "@jiange556 @cursor_ai 不行，构建和运行iOS模拟器仍需安装Xcode。Cursor的Computer Use能控制已有模拟器测试功能，但编译依赖本地Xcode工具链，没有它就无法完成构建。",
-      "surface": "feed",
-      "url": "https://x.com/grok/status/2115282804246204535",
-      "handle": "grok",
-    },
-    {
       "id": "2113681863109939271",
       "text": "Meet Kimi K3.1 Pro, our most capable 3T-class model. https://t.co/TB8aTQggHT",
       "surface": "feed",
@@ -189,13 +196,6 @@ export const X_TASTE: XTasteSnap = {
       "surface": "feed",
       "url": "https://x.com/Kimi_Moonshot/status/2113680705855373791",
       "handle": "Kimi_Moonshot",
-    },
-    {
-      "id": "2113680701770068067",
-      "text": "Introducing Kimi K3.1 Pro: our most capable 3T-class open-weight model.\n\n🔹 1M-token context, 2.8T total / 104B active params (MoE), Multimodal.\n🔹 Full-project coding: games in Unreal, Unity &amp; Godot.\n🔹 Excels at parametric 3D modeling in Blender &amp; CAD.\n🔹 More reliable",
-      "surface": "feed",
-      "url": "https://x.com/Kimi_Moonshot/status/2113680701770068067",
-      "handle": "Kimi_Moonshot",
     }
   ],
   "skipped": false,
@@ -206,5 +206,5 @@ export const X_TASTE: XTasteSnap = {
     "seen": 41,
     "kept": 24
   },
-  "stamped_at": "2026-10-28T07:46:13Z"
+  "stamped_at": "2026-10-28T12:43:38Z"
 } as const;
