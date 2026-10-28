@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-28T03:20:31Z",
+  "stamped_at": "2026-10-28T08:20:41Z",
   "config_hash": "1ba30989ff76",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,7 +11,7 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 148,
+      "duration_ms": 126,
       "paused_until": null,
       "reason": null
     },
@@ -29,7 +29,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 577,
+      "duration_ms": 493,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 198,
+      "duration_ms": 1328,
       "paused_until": null,
       "reason": null
     },
@@ -46,8 +46,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 56,
-      "duration_ms": 8278,
+      "rows": 57,
+      "duration_ms": 8656,
       "paused_until": null,
       "reason": null
     },
@@ -56,7 +56,7 @@
       "label": "HN title",
       "status": "ok",
       "rows": 9,
-      "duration_ms": 8222,
+      "duration_ms": 8440,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 151,
-      "duration_ms": 25659,
+      "duration_ms": 26332,
       "paused_until": null,
       "reason": null
     },
@@ -74,7 +74,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 75,
-      "duration_ms": 12110,
+      "duration_ms": 12101,
       "paused_until": null,
       "reason": null
     },
@@ -83,7 +83,7 @@
       "label": "analyst RSS",
       "status": "ok",
       "rows": 7,
-      "duration_ms": 2370,
+      "duration_ms": 2415,
       "paused_until": null,
       "reason": null
     },
@@ -92,7 +92,7 @@
       "label": "releases",
       "status": "ok",
       "rows": 9,
-      "duration_ms": 6568,
+      "duration_ms": 6580,
       "paused_until": null,
       "reason": null
     },
@@ -100,8 +100,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 50,
-      "duration_ms": 6454,
+      "rows": 52,
+      "duration_ms": 6425,
       "paused_until": null,
       "reason": null
     },
@@ -110,25 +110,25 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 2,
-      "duration_ms": 343,
+      "duration_ms": 355,
       "paused_until": null,
       "reason": null
     },
     {
       "id": "wikidata",
       "label": "Wikidata",
-      "status": "fail",
+      "status": "ok",
       "rows": 3,
-      "duration_ms": 7948,
+      "duration_ms": 4572,
       "paused_until": null,
-      "reason": "HTTP 503"
+      "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 98875,
-    "sources_wall_ms": 25659,
-    "papers_lane_ms": 20935,
-    "slowest_source_ms": 25659,
+    "sources_ms": 97823,
+    "sources_wall_ms": 26332,
+    "papers_lane_ms": 21957,
+    "slowest_source_ms": 26332,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -148,196 +148,36 @@
     "timed_out": [
       "arxiv"
     ],
-    "wall_ms": 26422,
-    "startup_ms": 60,
-    "main_ms": 27057
+    "wall_ms": 27073,
+    "startup_ms": 58,
+    "main_ms": 27793
   },
-  "multi_source_independent": 10,
+  "multi_source_independent": 6,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 10,
-    "multi_source_raw": 17,
-    "self_reposts": 9,
-    "items_in": 361,
-    "clusters_out": 288,
-    "collapsed": 73,
-    "multi_source": 10,
-    "multi_member": 27,
+    "multi_source_independent": 6,
+    "multi_source_raw": 14,
+    "self_reposts": 10,
+    "items_in": 363,
+    "clusters_out": 289,
+    "collapsed": 74,
+    "multi_source": 6,
+    "multi_member": 25,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 53,
+    "new_items": 44,
     "per_source": {
-      "hn-algolia": 56,
+      "hn-algolia": 57,
       "rss-lab": 151,
       "rss-security": 75,
-      "gnews-rss": 50,
-      "gmail-news": 13,
+      "gnews-rss": 52,
+      "gmail-news": 12,
       "rss-analyst": 7,
       "releases-atom": 9
     },
     "multi_source_clusters": [
-      {
-        "title": "OpenAI Plans to Purchase AI Chips From Google to Cut Reliance on Nvidia",
-        "sources": [
-          "rss-lab",
-          "gnews-rss",
-          "gmail-news",
-          "releases-atom"
-        ],
-        "size": 21,
-        "score": 1,
-        "members": [
-          {
-            "id": "rss:huggingnews:ef92c9479c1ad91e",
-            "source": "rss-lab",
-            "title": "OpenAI Plans to Purchase AI Chips From Google to Cut Reliance on Nvidia",
-            "at": "2026-10-28T00:08:19Z",
-            "publisher": "huggingnews"
-          },
-          {
-            "id": "gnews:4102a0310b440938",
-            "source": "gnews-rss",
-            "title": "OpenAI, a Big Nvidia Buyer, Plans to Buy Google’s AI Chips - FourWeekMBA",
-            "at": "2026-10-28T03:00:46Z",
-            "publisher": "FourWeekMBA"
-          },
-          {
-            "id": "gnews:24237a3213b4cb42",
-            "source": "gnews-rss",
-            "title": "OpenAI plans to buy Google AI chips to expand computing capacity - The Information - Yahoo Finance",
-            "at": "2026-10-28T02:52:00Z",
-            "publisher": "Yahoo Finance"
-          },
-          {
-            "id": "gnews:3c1ec54714794a2f",
-            "source": "gnews-rss",
-            "title": "OpenAI plans to buy Google AI chips — Channel NewsAsia - UA.NEWS",
-            "at": "2026-10-28T01:55:34Z",
-            "publisher": "UA.NEWS"
-          },
-          {
-            "id": "gmail:1a18006480a56760",
-            "source": "gmail-news",
-            "title": "Daily papers of 27 Oct 2026",
-            "at": "2026-10-28T01:00:57Z",
-            "publisher": "huggingface.co"
-          },
-          {
-            "id": "gmail:1a17ffd157fdf43b",
-            "source": "gmail-news",
-            "title": "Exclusive: OpenAI, a Longtime Nvidia Customer, Plans to Buy Google’s AI Chips",
-            "at": "2026-10-28T00:50:54Z",
-            "publisher": "theinformation.com"
-          },
-          {
-            "id": "gmail:1a17f2ac5beeb9a1",
-            "source": "gmail-news",
-            "title": "AI agents used stolen app credentials to target more than 2,250 Microsoft 365 tenants",
-            "at": "2026-10-27T21:01:09Z",
-            "publisher": "venturebeat.com"
-          },
-          {
-            "id": "gmail:1a1802805d3af20c",
-            "source": "gmail-news",
-            "title": "Exclusive: Onsemi in Talks to Buy Startup Ferric for About $1 Billion",
-            "at": "2026-10-28T01:37:47Z",
-            "publisher": "theinformation.com"
-          },
-          {
-            "id": "gmail:1a17fe3de498b684",
-            "source": "gmail-news",
-            "title": "New AI model: metatron-v1, nvidia/metatron-v1",
-            "at": "2026-10-28T00:23:22Z",
-            "publisher": "ssh.codes"
-          },
-          {
-            "id": "gmail:1a17fe3bf1719ff8",
-            "source": "gmail-news",
-            "title": "New AI model: liquidai/d1-2b, liquidai/d1-omni-2b",
-            "at": "2026-10-28T00:23:14Z",
-            "publisher": "ssh.codes"
-          },
-          {
-            "id": "gmail:1a17fe36f6fdee8d",
-            "source": "gmail-news",
-            "title": "New AI model: liquidai/lfm3-1.7b-base",
-            "at": "2026-10-28T00:22:53Z",
-            "publisher": "ssh.codes"
-          },
-          {
-            "id": "gmail:1a17fe34be6851d4",
-            "source": "gmail-news",
-            "title": "New AI model: lfm3, lfm3-1.7b +2",
-            "at": "2026-10-28T00:22:44Z",
-            "publisher": "ssh.codes"
-          },
-          {
-            "id": "gmail:1a17fe330c553598",
-            "source": "gmail-news",
-            "title": "The Briefing: It’s TPU Time at Google",
-            "at": "2026-10-28T00:22:37Z",
-            "publisher": "theinformation.com"
-          },
-          {
-            "id": "gmail:1a17fd7e94cc04e8",
-            "source": "gmail-news",
-            "title": "Monitor changes detected: Agentic and AI Security News",
-            "at": "2026-10-28T00:10:18Z",
-            "publisher": "firecrawl.dev"
-          },
-          {
-            "id": "gmail:1a17f372519a9d76",
-            "source": "gmail-news",
-            "title": "Building a Speaker Arena With Kilo, Jev, and Enkrypt",
-            "at": "2026-10-27T21:14:23Z",
-            "publisher": "substack.com"
-          },
-          {
-            "id": "gmail:1a17ed3aa324aaa3",
-            "source": "gmail-news",
-            "title": "Drop your pin: Where does your invoice lifecycle stand on AI?",
-            "at": "2026-10-27T19:26:02Z",
-            "publisher": "divenewsletter.com"
-          },
-          {
-            "id": "gmail:1a1802a523d5de17",
-            "source": "gmail-news",
-            "title": "New device signed in to your Higgsfield AI account",
-            "at": "2026-10-28T01:40:19Z",
-            "publisher": "higgsfield.ai"
-          },
-          {
-            "id": "rel:hf-nvidia:nvidia/Metatron-v1",
-            "source": "releases-atom",
-            "title": "nvidia/Metatron-v1",
-            "at": "2026-10-27T21:43:16Z",
-            "publisher": "github.com"
-          },
-          {
-            "id": "gnews:b9ad88c6e4690d74",
-            "source": "gnews-rss",
-            "title": "OpenAI, a Longtime Nvidia Customer, Plans to Buy Google’s AI Chips - The Information",
-            "at": "2026-10-27T23:59:00Z",
-            "publisher": "The Information"
-          },
-          {
-            "id": "gnews:adce00963fe7e00f",
-            "source": "gnews-rss",
-            "title": "OpenAI said to plan to buy Google's AI chips - Breakingthenews.net",
-            "at": "2026-10-28T00:56:00Z",
-            "publisher": "Breakingthenews.net"
-          },
-          {
-            "id": "gnews:699c7c5bfb9dafdf",
-            "source": "gnews-rss",
-            "title": "OpenAI plans to buy Google's AI chips, The Information reports - Charlotte Observer",
-            "at": "2026-10-28T01:49:06Z",
-            "publisher": "Charlotte Observer"
-          }
-        ]
-      },
       {
         "title": "OpenAI launches GPT-6.1 Terra for precise computer use",
         "sources": [
@@ -346,7 +186,7 @@
           "rss-analyst",
           "gnews-rss"
         ],
-        "size": 12,
+        "size": 13,
         "score": 1,
         "members": [
           {
@@ -406,6 +246,13 @@
             "publisher": "simonw"
           },
           {
+            "id": "gnews:0a7f6da04d5d951c",
+            "source": "gnews-rss",
+            "title": "OpenAI’s GPT-6.1 Terra is safer overall, but tests flag more destructive actions - Mezha.net",
+            "at": "2026-10-27T23:14:05Z",
+            "publisher": "Mezha.net"
+          },
+          {
             "id": "gnews:0fe4e3480a3b9b48",
             "source": "gnews-rss",
             "title": "OpenAI's GPT-6.1 Terra is safer overall, but shows more destructive-action flags in tests - BleepingComputer",
@@ -428,11 +275,143 @@
             "publisher": "Quartz"
           },
           {
-            "id": "gnews:ccedb1f8cd6ebe25",
+            "id": "gnews:c6a5146fb30ade13",
             "source": "gnews-rss",
-            "title": "GPT-6.1 Terra vs Opus 5.5 vs Argon: 3 Tested [2026] - shattered.io",
-            "at": "2026-10-27T12:23:49Z",
-            "publisher": "shattered.io"
+            "title": "OpenAI’s GPT-6.1 Terra Enters Orbit with 50% Cheaper Tokens - AI Magazine",
+            "at": "2026-10-27T16:44:12Z",
+            "publisher": "AI Magazine"
+          }
+        ]
+      },
+      {
+        "title": "Genie 4: A new generation of world simulation",
+        "sources": [
+          "rss-lab",
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 17,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:50261319",
+            "source": "hn-algolia",
+            "title": "Genie 4",
+            "at": "2026-10-27T16:06:01Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:50261676",
+            "source": "hn-algolia",
+            "title": "DeepMind unveils Genie 4 world model promising more realistic physics and humans",
+            "at": "2026-10-27T16:31:22Z",
+            "publisher": null
+          },
+          {
+            "id": "rss:deepmind:393575ee7d83ff0a",
+            "source": "rss-lab",
+            "title": "Genie 4: A new generation of world simulation",
+            "at": "2026-10-27T16:01:38Z",
+            "publisher": "deepmind"
+          },
+          {
+            "id": "gnews:16fa3feedac668cd",
+            "source": "gnews-rss",
+            "title": "Google DeepMind Debuts Genie 4 World Model: More Realistic Humans, Physics in Generated Videos - Tech Times",
+            "at": "2026-10-28T08:01:02Z",
+            "publisher": "Tech Times"
+          },
+          {
+            "id": "gnews:45493229a28cab55",
+            "source": "gnews-rss",
+            "title": "Google’s Genie 4 Interactive AI World Model Adds Sound - WinBuzzer",
+            "at": "2026-10-28T07:48:02Z",
+            "publisher": "WinBuzzer"
+          },
+          {
+            "id": "gnews:7551a18575b6a18f",
+            "source": "gnews-rss",
+            "title": "Google Genie 4 vs Genie 3: What’s new in DeepMind’s latest AI world model? - News9live",
+            "at": "2026-10-28T07:29:04Z",
+            "publisher": "News9live"
+          },
+          {
+            "id": "gnews:ffa099ebaa5d688c",
+            "source": "gnews-rss",
+            "title": "Google DeepMind Introduces Genie 4 With Real-Time Simulation, Native Audio Generation - Gadgets 360",
+            "at": "2026-10-28T07:17:52Z",
+            "publisher": "Gadgets 360"
+          },
+          {
+            "id": "gnews:a5d0a1a4f4e1ef83",
+            "source": "gnews-rss",
+            "title": "Google DeepMind’s Genie 4 brings real-time simulation to AI testing - DQ",
+            "at": "2026-10-28T06:51:47Z",
+            "publisher": "DQ"
+          },
+          {
+            "id": "gnews:82dd5dfbd21bfcb9",
+            "source": "gnews-rss",
+            "title": "Google unveils Genie 4 world model powered by Gemini AI models - The Hindu",
+            "at": "2026-10-28T06:46:26Z",
+            "publisher": "The Hindu"
+          },
+          {
+            "id": "gnews:9d2be181b344daec",
+            "source": "gnews-rss",
+            "title": "Google DeepMind unveils Genie 4 real-time interactive world model, and 11 more stories - Howl.Link",
+            "at": "2026-10-28T05:12:30Z",
+            "publisher": "Howl.Link"
+          },
+          {
+            "id": "gnews:6e7cb3c349ef8902",
+            "source": "gnews-rss",
+            "title": "Google DeepMind unveils Genie 4 AI world model - TechGig",
+            "at": "2026-10-28T05:05:46Z",
+            "publisher": "TechGig"
+          },
+          {
+            "id": "gnews:b6c09f31ba2a43ec",
+            "source": "gnews-rss",
+            "title": "Google Unveils Genie 4 AI World Model With Real-Time Audio and Interactive Environments - News18",
+            "at": "2026-10-28T05:00:43Z",
+            "publisher": "News18"
+          },
+          {
+            "id": "gnews:07d5eab4aaa1039a",
+            "source": "gnews-rss",
+            "title": "Google DeepMind Introduces Genie 4 for Real-Time Interactive Worlds - CXO Digitalpulse",
+            "at": "2026-10-28T04:59:40Z",
+            "publisher": "CXO Digitalpulse"
+          },
+          {
+            "id": "gnews:f00aa79fcd1258d1",
+            "source": "gnews-rss",
+            "title": "Genie 4: A new generation of world simulation - Google DeepMind",
+            "at": "2026-10-27T16:06:33Z",
+            "publisher": "Google DeepMind",
+            "self_repost": true
+          },
+          {
+            "id": "gnews:a126f19348fabed3",
+            "source": "gnews-rss",
+            "title": "Genie 4: A new generation of world simulation - YouTube",
+            "at": "2026-10-27T16:00:41Z",
+            "publisher": "YouTube"
+          },
+          {
+            "id": "gnews:43e2701968d7c497",
+            "source": "gnews-rss",
+            "title": "Google Announces World Simulation AI Model “Genie 4” - jetstream.blog",
+            "at": "2026-10-27T19:45:35Z",
+            "publisher": "jetstream.blog"
+          },
+          {
+            "id": "gnews:92d79c054450340a",
+            "source": "gnews-rss",
+            "title": "DeepMind unveils Genie 4 world model promising more realistic physics and humans - Ars Technica",
+            "at": "2026-10-27T16:00:22Z",
+            "publisher": "Ars Technica"
           }
         ]
       },
@@ -470,47 +449,6 @@
         ]
       },
       {
-        "title": "Genie 4: A new generation of world simulation",
-        "sources": [
-          "rss-lab",
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 4,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:50261319",
-            "source": "hn-algolia",
-            "title": "Genie 4",
-            "at": "2026-10-27T16:06:01Z",
-            "publisher": null
-          },
-          {
-            "id": "rss:deepmind:393575ee7d83ff0a",
-            "source": "rss-lab",
-            "title": "Genie 4: A new generation of world simulation",
-            "at": "2026-10-27T16:01:38Z",
-            "publisher": "deepmind"
-          },
-          {
-            "id": "gnews:f00aa79fcd1258d1",
-            "source": "gnews-rss",
-            "title": "Genie 4: A new generation of world simulation - Google DeepMind",
-            "at": "2026-10-27T16:06:33Z",
-            "publisher": "Google DeepMind",
-            "self_repost": true
-          },
-          {
-            "id": "gnews:43e2701968d7c497",
-            "source": "gnews-rss",
-            "title": "Google Announces World Simulation AI Model “Genie 4” - jetstream.blog",
-            "at": "2026-10-27T19:45:35Z",
-            "publisher": "jetstream.blog"
-          }
-        ]
-      },
-      {
         "title": "Google Deepmind's Genie 4 puts a modern spin on agent designs that predate LLMs",
         "sources": [
           "rss-lab",
@@ -532,31 +470,6 @@
             "title": "Google Deepmind's Genie 4 puts a modern spin on agent designs that predate LLMs - The Decoder",
             "at": "2026-10-27T17:30:25Z",
             "publisher": "The Decoder"
-          }
-        ]
-      },
-      {
-        "title": "DeepMind unveils Genie 4 world model promising more realistic physics and humans",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:50261676",
-            "source": "hn-algolia",
-            "title": "DeepMind unveils Genie 4 world model promising more realistic physics and humans",
-            "at": "2026-10-27T16:31:22Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:92d79c054450340a",
-            "source": "gnews-rss",
-            "title": "DeepMind unveils Genie 4 world model promising more realistic physics and humans - Ars Technica",
-            "at": "2026-10-27T16:00:22Z",
-            "publisher": "Ars Technica"
           }
         ]
       },
@@ -627,56 +540,6 @@
             "source": "gnews-rss",
             "title": "Former Deepmind researcher thinks AlphaGo's playbook can cure AI hallucinations - The Decoder",
             "at": "2026-10-27T14:00:25Z",
-            "publisher": "The Decoder"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI asks outside experts, including a Nobel laureate, to check proofs its AI produced in math, computer science, and physics",
-        "sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 1,
-        "members": [
-          {
-            "id": "rss:the-decoder:1f26bca98dcb962a",
-            "source": "rss-lab",
-            "title": "OpenAI asks outside experts, including a Nobel laureate, to check proofs its AI produced in math, computer science, and physics",
-            "at": "2026-10-27T12:37:24Z",
-            "publisher": "the-decoder"
-          },
-          {
-            "id": "gnews:115a2a6e98ae863d",
-            "source": "gnews-rss",
-            "title": "OpenAI asks outside experts, including a Nobel laureate, to check proofs its AI produced in math, computer science, and physics - The Decoder",
-            "at": "2026-10-27T12:40:25Z",
-            "publisher": "The Decoder"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI's partner content arrives in ChatGPT pre-summarized while the rest of the web gets raw scraps",
-        "sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 1,
-        "members": [
-          {
-            "id": "rss:the-decoder:1b3cc6e4f2e3444e",
-            "source": "rss-lab",
-            "title": "OpenAI's partner content arrives in ChatGPT pre-summarized while the rest of the web gets raw scraps",
-            "at": "2026-10-27T11:39:24Z",
-            "publisher": "the-decoder"
-          },
-          {
-            "id": "gnews:bbbf5ba7f7831bc4",
-            "source": "gnews-rss",
-            "title": "OpenAI's partner content arrives in ChatGPT pre-summarized while the rest of the web gets raw scraps - The Decoder",
-            "at": "2026-10-27T11:50:25Z",
             "publisher": "The Decoder"
           }
         ]
@@ -828,6 +691,23 @@
         ]
       },
       {
+        "title": "How Ultrafast cut incident investigation from hours to minutes at OpenAI",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:c41699edd3cfc903",
+            "publisher": "OpenAI",
+            "title": "How Ultrafast cut incident investigation from hours to minutes at OpenAI - OpenAI"
+          }
+        ]
+      },
+      {
         "title": "How Fanatics and OpenAI streamline the fan experience",
         "sources": [
           "rss-lab"
@@ -859,24 +739,12 @@
           "title": "Baidu Open-Sources Unlimited OCR 2, Parsing Documents of Any Length in One Pass - Pandaily"
         },
         {
-          "publisher": "NewsBytes",
-          "title": "Google's Genie 4 creates realistic worlds and allows real-time changes - NewsBytes"
-        },
-        {
-          "publisher": "TechEBlog -",
-          "title": "Google Genie 4 Builds Living Worlds With Sound Physics and Real Time Control - TechEBlog -"
-        },
-        {
           "publisher": "Tennessee Tech Oracle",
           "title": "Pearson sues over city council ban - Tennessee Tech Oracle"
-        },
-        {
-          "publisher": "Forkast News",
-          "title": "The Reported Date Arrived and the Weights Did Not - Forkast News"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 19
+      "hn_dropped": 18
     },
     "gnews_near_misses": [
       {
@@ -903,29 +771,7 @@
         ]
       },
       {
-        "score": 0.684,
-        "blocked": "time-window",
-        "hours_apart": 36.4,
-        "a": {
-          "id": "rss:openai:35e334c198740f74",
-          "source": "rss-lab",
-          "title": "Introducing GPT-6.1 Terra",
-          "at": "2026-10-26T00:00:00Z"
-        },
-        "b": {
-          "id": "gnews:ccedb1f8cd6ebe25",
-          "source": "gnews-rss",
-          "title": "GPT-6.1 Terra vs Opus 5.5 vs Argon: 3 Tested [2026] - shattered.io",
-          "at": "2026-10-27T12:23:49Z"
-        },
-        "shared": [
-          "gpt",
-          "6.1",
-          "terra"
-        ]
-      },
-      {
-        "score": 0.68,
+        "score": 0.682,
         "blocked": "time-window",
         "hours_apart": 37,
         "a": {
@@ -947,53 +793,9 @@
         ]
       },
       {
-        "score": 0.674,
+        "score": 0.67,
         "blocked": "time-window",
-        "hours_apart": 33.1,
-        "a": {
-          "id": "hn:50248124",
-          "source": "hn-algolia",
-          "title": "GPT-6.1 Terra",
-          "at": "2026-10-26T18:01:17Z"
-        },
-        "b": {
-          "id": "gnews:7ad3f43503d28076",
-          "source": "gnews-rss",
-          "title": "OpenAI launches GPT-6.1 Terra with near-Astra performance at a fraction of the cost - Tech Edition",
-          "at": "2026-10-28T03:09:34Z"
-        },
-        "shared": [
-          "gpt",
-          "6.1",
-          "terra"
-        ]
-      },
-      {
-        "score": 0.674,
-        "blocked": "time-window",
-        "hours_apart": 33.2,
-        "a": {
-          "id": "hn:50248075",
-          "source": "hn-algolia",
-          "title": "GPT 6.1 Terra",
-          "at": "2026-10-26T17:58:24Z"
-        },
-        "b": {
-          "id": "gnews:7ad3f43503d28076",
-          "source": "gnews-rss",
-          "title": "OpenAI launches GPT-6.1 Terra with near-Astra performance at a fraction of the cost - Tech Edition",
-          "at": "2026-10-28T03:09:34Z"
-        },
-        "shared": [
-          "gpt",
-          "6.1",
-          "terra"
-        ]
-      },
-      {
-        "score": 0.674,
-        "blocked": "time-window",
-        "hours_apart": 51.2,
+        "hours_apart": 40.7,
         "a": {
           "id": "rss:openai:35e334c198740f74",
           "source": "rss-lab",
@@ -1001,10 +803,10 @@
           "at": "2026-10-26T00:00:00Z"
         },
         "b": {
-          "id": "gnews:7ad3f43503d28076",
+          "id": "gnews:c6a5146fb30ade13",
           "source": "gnews-rss",
-          "title": "OpenAI launches GPT-6.1 Terra with near-Astra performance at a fraction of the cost - Tech Edition",
-          "at": "2026-10-28T03:09:34Z"
+          "title": "OpenAI’s GPT-6.1 Terra Enters Orbit with 50% Cheaper Tokens - AI Magazine",
+          "at": "2026-10-27T16:44:12Z"
         },
         "shared": [
           "gpt",
@@ -1013,29 +815,7 @@
         ]
       },
       {
-        "score": 0.674,
-        "blocked": "time-window",
-        "hours_apart": 27.3,
-        "a": {
-          "id": "gnews:7ad3f43503d28076",
-          "source": "gnews-rss",
-          "title": "OpenAI launches GPT-6.1 Terra with near-Astra performance at a fraction of the cost - Tech Edition",
-          "at": "2026-10-28T03:09:34Z"
-        },
-        "b": {
-          "id": "anl:simonw:c15b1e3c66d84564",
-          "source": "rss-analyst",
-          "title": "GPT-6.1 Terra",
-          "at": "2026-10-26T23:53:07Z"
-        },
-        "shared": [
-          "gpt",
-          "6.1",
-          "terra"
-        ]
-      },
-      {
-        "score": 0.673,
+        "score": 0.668,
         "blocked": "short-title",
         "hours_apart": 0,
         "a": {
@@ -1054,11 +834,98 @@
           "geni",
           "4"
         ]
+      },
+      {
+        "score": 0.668,
+        "blocked": "short-title",
+        "hours_apart": 0.1,
+        "a": {
+          "id": "hn:50261319",
+          "source": "hn-algolia",
+          "title": "Genie 4",
+          "at": "2026-10-27T16:06:01Z"
+        },
+        "b": {
+          "id": "gnews:a126f19348fabed3",
+          "source": "gnews-rss",
+          "title": "Genie 4: A new generation of world simulation - YouTube",
+          "at": "2026-10-27T16:00:41Z"
+        },
+        "shared": [
+          "geni",
+          "4"
+        ]
+      },
+      {
+        "score": 0.666,
+        "blocked": "time-window",
+        "hours_apart": 29.2,
+        "a": {
+          "id": "hn:50248124",
+          "source": "hn-algolia",
+          "title": "GPT-6.1 Terra",
+          "at": "2026-10-26T18:01:17Z"
+        },
+        "b": {
+          "id": "gnews:0a7f6da04d5d951c",
+          "source": "gnews-rss",
+          "title": "OpenAI’s GPT-6.1 Terra is safer overall, but tests flag more destructive actions - Mezha.net",
+          "at": "2026-10-27T23:14:05Z"
+        },
+        "shared": [
+          "gpt",
+          "6.1",
+          "terra"
+        ]
+      },
+      {
+        "score": 0.666,
+        "blocked": "time-window",
+        "hours_apart": 28.7,
+        "a": {
+          "id": "hn:50248124",
+          "source": "hn-algolia",
+          "title": "GPT-6.1 Terra",
+          "at": "2026-10-26T18:01:17Z"
+        },
+        "b": {
+          "id": "gnews:0fe4e3480a3b9b48",
+          "source": "gnews-rss",
+          "title": "OpenAI's GPT-6.1 Terra is safer overall, but shows more destructive-action flags in tests - BleepingComputer",
+          "at": "2026-10-27T22:43:27Z"
+        },
+        "shared": [
+          "gpt",
+          "6.1",
+          "terra"
+        ]
+      },
+      {
+        "score": 0.666,
+        "blocked": "time-window",
+        "hours_apart": 29.3,
+        "a": {
+          "id": "hn:50248075",
+          "source": "hn-algolia",
+          "title": "GPT 6.1 Terra",
+          "at": "2026-10-26T17:58:24Z"
+        },
+        "b": {
+          "id": "gnews:0a7f6da04d5d951c",
+          "source": "gnews-rss",
+          "title": "OpenAI’s GPT-6.1 Terra is safer overall, but tests flag more destructive actions - Mezha.net",
+          "at": "2026-10-27T23:14:05Z"
+        },
+        "shared": [
+          "gpt",
+          "6.1",
+          "terra"
+        ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.802,
+        "score": 0.809,
         "blocked": "time-window",
         "hours_apart": 33.8,
         "a": {
@@ -1104,29 +971,7 @@
         ]
       },
       {
-        "score": 0.684,
-        "blocked": "time-window",
-        "hours_apart": 36.4,
-        "a": {
-          "id": "rss:openai:35e334c198740f74",
-          "source": "rss-lab",
-          "title": "Introducing GPT-6.1 Terra",
-          "at": "2026-10-26T00:00:00Z"
-        },
-        "b": {
-          "id": "gnews:ccedb1f8cd6ebe25",
-          "source": "gnews-rss",
-          "title": "GPT-6.1 Terra vs Opus 5.5 vs Argon: 3 Tested [2026] - shattered.io",
-          "at": "2026-10-27T12:23:49Z"
-        },
-        "shared": [
-          "gpt",
-          "6.1",
-          "terra"
-        ]
-      },
-      {
-        "score": 0.68,
+        "score": 0.682,
         "blocked": "time-window",
         "hours_apart": 37,
         "a": {
@@ -1148,53 +993,9 @@
         ]
       },
       {
-        "score": 0.674,
+        "score": 0.67,
         "blocked": "time-window",
-        "hours_apart": 33.1,
-        "a": {
-          "id": "hn:50248124",
-          "source": "hn-algolia",
-          "title": "GPT-6.1 Terra",
-          "at": "2026-10-26T18:01:17Z"
-        },
-        "b": {
-          "id": "gnews:7ad3f43503d28076",
-          "source": "gnews-rss",
-          "title": "OpenAI launches GPT-6.1 Terra with near-Astra performance at a fraction of the cost - Tech Edition",
-          "at": "2026-10-28T03:09:34Z"
-        },
-        "shared": [
-          "gpt",
-          "6.1",
-          "terra"
-        ]
-      },
-      {
-        "score": 0.674,
-        "blocked": "time-window",
-        "hours_apart": 33.2,
-        "a": {
-          "id": "hn:50248075",
-          "source": "hn-algolia",
-          "title": "GPT 6.1 Terra",
-          "at": "2026-10-26T17:58:24Z"
-        },
-        "b": {
-          "id": "gnews:7ad3f43503d28076",
-          "source": "gnews-rss",
-          "title": "OpenAI launches GPT-6.1 Terra with near-Astra performance at a fraction of the cost - Tech Edition",
-          "at": "2026-10-28T03:09:34Z"
-        },
-        "shared": [
-          "gpt",
-          "6.1",
-          "terra"
-        ]
-      },
-      {
-        "score": 0.674,
-        "blocked": "time-window",
-        "hours_apart": 51.2,
+        "hours_apart": 40.7,
         "a": {
           "id": "rss:openai:35e334c198740f74",
           "source": "rss-lab",
@@ -1202,10 +1003,10 @@
           "at": "2026-10-26T00:00:00Z"
         },
         "b": {
-          "id": "gnews:7ad3f43503d28076",
+          "id": "gnews:c6a5146fb30ade13",
           "source": "gnews-rss",
-          "title": "OpenAI launches GPT-6.1 Terra with near-Astra performance at a fraction of the cost - Tech Edition",
-          "at": "2026-10-28T03:09:34Z"
+          "title": "OpenAI’s GPT-6.1 Terra Enters Orbit with 50% Cheaper Tokens - AI Magazine",
+          "at": "2026-10-27T16:44:12Z"
         },
         "shared": [
           "gpt",
@@ -1214,20 +1015,83 @@
         ]
       },
       {
-        "score": 0.674,
-        "blocked": "time-window",
-        "hours_apart": 27.3,
+        "score": 0.668,
+        "blocked": "short-title",
+        "hours_apart": 0.1,
         "a": {
-          "id": "gnews:7ad3f43503d28076",
-          "source": "gnews-rss",
-          "title": "OpenAI launches GPT-6.1 Terra with near-Astra performance at a fraction of the cost - Tech Edition",
-          "at": "2026-10-28T03:09:34Z"
+          "id": "hn:50261319",
+          "source": "hn-algolia",
+          "title": "Genie 4",
+          "at": "2026-10-27T16:06:01Z"
         },
         "b": {
-          "id": "anl:simonw:c15b1e3c66d84564",
-          "source": "rss-analyst",
+          "id": "rss:deepmind:393575ee7d83ff0a",
+          "source": "rss-lab",
+          "title": "Genie 4: A new generation of world simulation",
+          "at": "2026-10-27T16:01:38Z"
+        },
+        "shared": [
+          "geni",
+          "4"
+        ]
+      },
+      {
+        "score": 0.668,
+        "blocked": "short-title",
+        "hours_apart": 0,
+        "a": {
+          "id": "hn:50261319",
+          "source": "hn-algolia",
+          "title": "Genie 4",
+          "at": "2026-10-27T16:06:01Z"
+        },
+        "b": {
+          "id": "gnews:f00aa79fcd1258d1",
+          "source": "gnews-rss",
+          "title": "Genie 4: A new generation of world simulation - Google DeepMind",
+          "at": "2026-10-27T16:06:33Z"
+        },
+        "shared": [
+          "geni",
+          "4"
+        ]
+      },
+      {
+        "score": 0.668,
+        "blocked": "short-title",
+        "hours_apart": 0.1,
+        "a": {
+          "id": "hn:50261319",
+          "source": "hn-algolia",
+          "title": "Genie 4",
+          "at": "2026-10-27T16:06:01Z"
+        },
+        "b": {
+          "id": "gnews:a126f19348fabed3",
+          "source": "gnews-rss",
+          "title": "Genie 4: A new generation of world simulation - YouTube",
+          "at": "2026-10-27T16:00:41Z"
+        },
+        "shared": [
+          "geni",
+          "4"
+        ]
+      },
+      {
+        "score": 0.666,
+        "blocked": "time-window",
+        "hours_apart": 29.2,
+        "a": {
+          "id": "hn:50248124",
+          "source": "hn-algolia",
           "title": "GPT-6.1 Terra",
-          "at": "2026-10-26T23:53:07Z"
+          "at": "2026-10-26T18:01:17Z"
+        },
+        "b": {
+          "id": "gnews:0a7f6da04d5d951c",
+          "source": "gnews-rss",
+          "title": "OpenAI’s GPT-6.1 Terra is safer overall, but tests flag more destructive actions - Mezha.net",
+          "at": "2026-10-27T23:14:05Z"
         },
         "shared": [
           "gpt",
@@ -1240,98 +1104,98 @@
   "source_health": [
     {
       "id": "arxiv",
-      "state": "flaky",
+      "state": "fail",
       "streak_ok": 0,
-      "streak_fail": 1,
+      "streak_fail": 2,
       "items_last": 5
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 192,
+      "streak_ok": 193,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 192,
+      "streak_ok": 193,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 192,
+      "streak_ok": 193,
       "streak_fail": 0,
-      "items_last": 50
+      "items_last": 52
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 192,
+      "streak_ok": 193,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 192,
+      "streak_ok": 193,
       "streak_fail": 0,
-      "items_last": 56
+      "items_last": 57
     },
     {
       "id": "hn_title",
       "state": "ok",
-      "streak_ok": 46,
+      "streak_ok": 47,
       "streak_fail": 0,
       "items_last": 9
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 104,
+      "streak_ok": 105,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "releases_atom",
       "state": "ok",
-      "streak_ok": 46,
+      "streak_ok": 47,
       "streak_fail": 0,
       "items_last": 9
     },
     {
       "id": "rss_analyst",
       "state": "ok",
-      "streak_ok": 46,
+      "streak_ok": 47,
       "streak_fail": 0,
       "items_last": 7
     },
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 11,
+      "streak_ok": 12,
       "streak_fail": 0,
       "items_last": 151
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 192,
+      "streak_ok": 193,
       "streak_fail": 0,
       "items_last": 75
     },
     {
       "id": "wikidata",
       "state": "flaky",
-      "streak_ok": 0,
-      "streak_fail": 1,
+      "streak_ok": 1,
+      "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.007763333333333333,
+    "hours": 0.00786111111111111,
     "stale": false
   },
   "hf": {
@@ -1412,7 +1276,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 56,
+    "count": 57,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -1429,7 +1293,7 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 19,
+    "ai_dropped": 18,
     "url": "https://hn.algolia.com/api/v1/search",
     "title_queries": {
       "ok": true,
@@ -1461,19 +1325,19 @@
       {
         "id": "hn:50242939",
         "tag": "rest",
-        "score": 1691,
+        "score": 1695,
         "text": "Anthropic S-1"
       },
       {
         "id": "hn:50261319",
         "tag": "rest",
-        "score": 773,
+        "score": 862,
         "text": "Genie 4"
       },
       {
         "id": "hn:50248124",
         "tag": "rest",
-        "score": 626,
+        "score": 628,
         "text": "GPT-6.1 Terra"
       }
     ]
@@ -1557,32 +1421,32 @@
     "feeds_soft_fail": [],
     "sample": [
       {
-        "id": "rss:huggingnews:2cfc724b2897a048",
+        "id": "rss:huggingnews:405d213de11d3e10",
         "lab": "huggingnews",
         "tag": "rest",
-        "title": "Meta's $25B Stock Sale Draws Five Times Demand in $97.5B AI Push",
-        "link": "https://huggingnews.com/us-markets/metas-25b-stock-sale-draws-five-times-demand-in-975b-ai-push-7465b9f6"
+        "title": "xAI Adds Text and Voicemail Support to Stable Release of Grok Bot 0.77",
+        "link": "https://huggingnews.com/ai/xai-adds-text-and-voicemail-support-to-stable-release-of-grok-bot-077-e530f352"
       },
       {
-        "id": "rss:huggingnews:2e35b80d39ddcda7",
+        "id": "rss:huggingnews:1525ee7077e9329c",
         "lab": "huggingnews",
         "tag": "rest",
-        "title": "SK Hynix Says Memory Chip Demand Now Exceeds Current Supply by Twofold",
-        "link": "https://huggingnews.com/earnings/sk-hynix-says-memory-chip-demand-now-exceeds-current-supply-by-twofold-87945cfa"
+        "title": "Hidden 'Obsidian 3' Model Tops Claude on Cognition's FrontierCode 2.0 Coding Benchmark",
+        "link": "https://huggingnews.com/ai/hidden-obsidian-3-model-tops-claude-on-cognitions-frontiercode-20-coding-2b423e23"
       },
       {
-        "id": "rss:huggingnews:1dd57449e4a6338e",
+        "id": "rss:huggingnews:0c460a58282256ad",
         "lab": "huggingnews",
         "tag": "rest",
-        "title": "Yang-Mills Physics Panel Issues Statement After Math Council Demands Withheld OpenAI Proofs",
-        "link": "https://huggingnews.com/ai/yang-mills-physics-panel-issues-statement-after-math-council-demands-wit-7c7c5b0c"
+        "title": "GMO Internet Offers $1M Reward for Tips on Cyberattackers After FX Cloud Breach",
+        "link": "https://huggingnews.com/cybersecurity/gmo-internet-offers-1m-reward-for-tips-on-cyberattackers-after-fx-cloud-fe9c2ee0"
       },
       {
-        "id": "rss:huggingnews:ef92c9479c1ad91e",
+        "id": "rss:huggingnews:ea6830402efee1a2",
         "lab": "huggingnews",
         "tag": "rest",
-        "title": "OpenAI Plans to Purchase AI Chips From Google to Cut Reliance on Nvidia",
-        "link": "https://huggingnews.com/ai/openai-plans-to-purchase-ai-chips-from-google-to-cut-reliance-on-nvidia-804ac15e"
+        "title": "Russia-Linked AI Videos Target Democratic Senate Candidates in Midterm Elections",
+        "link": "https://huggingnews.com/us-politics/russia-linked-ai-videos-target-democratic-senate-candidates-in-midterm-e-eceee138"
       }
     ]
   },
@@ -1808,45 +1672,29 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 50,
-    "pool": 321,
+    "items": 52,
+    "pool": 338,
     "corroborators": [
       {
         "id": "gnews:c8bee51df97bcfec",
         "anchor_id": "hn:50259228",
-        "score": 0.661,
+        "score": 0.673,
         "title": "Baidu Open-Sources Unlimited OCR 2, Parsing Documents of Any Length in One Pass - Pandaily",
         "publisher": "Pandaily",
         "self_repost": false
       },
       {
-        "id": "gnews:b9ad88c6e4690d74",
-        "anchor_id": "gmail:1a17ffd157fdf43b",
-        "score": 1,
-        "title": "OpenAI, a Longtime Nvidia Customer, Plans to Buy Google’s AI Chips - The Information",
-        "publisher": "The Information",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:adce00963fe7e00f",
-        "anchor_id": "gmail:1a17ffd157fdf43b",
-        "score": 0.871,
-        "title": "OpenAI said to plan to buy Google's AI chips - Breakingthenews.net",
-        "publisher": "Breakingthenews.net",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:699c7c5bfb9dafdf",
-        "anchor_id": "gmail:1a17ffd157fdf43b",
-        "score": 0.718,
-        "title": "OpenAI plans to buy Google's AI chips, The Information reports - Charlotte Observer",
-        "publisher": "Charlotte Observer",
+        "id": "gnews:0a7f6da04d5d951c",
+        "anchor_id": "anl:simonw:c15b1e3c66d84564",
+        "score": 0.673,
+        "title": "OpenAI’s GPT-6.1 Terra is safer overall, but tests flag more destructive actions - Mezha.net",
+        "publisher": "Mezha.net",
         "self_repost": false
       },
       {
         "id": "gnews:0fe4e3480a3b9b48",
         "anchor_id": "anl:simonw:c15b1e3c66d84564",
-        "score": 0.664,
+        "score": 0.673,
         "title": "OpenAI's GPT-6.1 Terra is safer overall, but shows more destructive-action flags in tests - BleepingComputer",
         "publisher": "BleepingComputer",
         "self_repost": false
@@ -1860,9 +1708,17 @@
         "self_repost": true
       },
       {
+        "id": "gnews:a126f19348fabed3",
+        "anchor_id": "rss:deepmind:393575ee7d83ff0a",
+        "score": 1,
+        "title": "Genie 4: A new generation of world simulation - YouTube",
+        "publisher": "YouTube",
+        "self_repost": false
+      },
+      {
         "id": "gnews:43e2701968d7c497",
         "anchor_id": "rss:deepmind:393575ee7d83ff0a",
-        "score": 0.623,
+        "score": 0.62,
         "title": "Google Announces World Simulation AI Model “Genie 4” - jetstream.blog",
         "publisher": "jetstream.blog",
         "self_repost": false
@@ -1894,17 +1750,17 @@
       {
         "id": "gnews:a19c868e38cef895",
         "anchor_id": "hn:50248124",
-        "score": 0.693,
+        "score": 0.694,
         "title": "OpenAI is launching cheaper mid-tier GPT-6.1 Terra for computer work - Quartz",
         "publisher": "Quartz",
         "self_repost": false
       },
       {
-        "id": "gnews:ccedb1f8cd6ebe25",
+        "id": "gnews:c6a5146fb30ade13",
         "anchor_id": "hn:50248124",
-        "score": 0.692,
-        "title": "GPT-6.1 Terra vs Opus 5.5 vs Argon: 3 Tested [2026] - shattered.io",
-        "publisher": "shattered.io",
+        "score": 0.675,
+        "title": "OpenAI’s GPT-6.1 Terra Enters Orbit with 50% Cheaper Tokens - AI Magazine",
+        "publisher": "AI Magazine",
         "self_repost": false
       },
       {
@@ -1913,6 +1769,14 @@
         "score": 1,
         "title": "OpenAI expands partnership with Oracle to bring its apps to ChatGPT - OpenAI",
         "publisher": "OpenAI",
+        "self_repost": true
+      },
+      {
+        "id": "gnews:79a379a72dc402f9",
+        "anchor_id": "rss:nvidia-dev:8449d7efa12a3bec",
+        "score": 1,
+        "title": "Fine-Tuning NVIDIA Nemotron to Know Local Rules, Not Just Local Languages | NVIDIA Technical Blog - NVIDIA Developer",
+        "publisher": "NVIDIA Developer",
         "self_repost": true
       },
       {
@@ -1928,22 +1792,6 @@
         "anchor_id": "rss:the-decoder:79b45378ff506fff",
         "score": 1,
         "title": "Former Deepmind researcher thinks AlphaGo's playbook can cure AI hallucinations - The Decoder",
-        "publisher": "The Decoder",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:115a2a6e98ae863d",
-        "anchor_id": "rss:the-decoder:1f26bca98dcb962a",
-        "score": 1,
-        "title": "OpenAI asks outside experts, including a Nobel laureate, to check proofs its AI produced in math, computer science, and physics - The Decoder",
-        "publisher": "The Decoder",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:bbbf5ba7f7831bc4",
-        "anchor_id": "rss:the-decoder:1b3cc6e4f2e3444e",
-        "score": 1,
-        "title": "OpenAI's partner content arrives in ChatGPT pre-summarized while the rest of the web gets raw scraps - The Decoder",
         "publisher": "The Decoder",
         "self_repost": false
       },
@@ -1968,6 +1816,14 @@
         "anchor_id": "rss:openai:8eb6001a836a6e50",
         "score": 1,
         "title": "Working with academic communities to build scientific understanding - OpenAI",
+        "publisher": "OpenAI",
+        "self_repost": true
+      },
+      {
+        "id": "gnews:c41699edd3cfc903",
+        "anchor_id": "rss:openai:742d30efdc4090c1",
+        "score": 1,
+        "title": "How Ultrafast cut incident investigation from hours to minutes at OpenAI - OpenAI",
         "publisher": "OpenAI",
         "self_repost": true
       },
@@ -2022,24 +1878,24 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:0fa7398af906959b",
-        "title": "British Columbia privacy watchdog investigates OpenAI use of Tumbler Ridge shooter’s personal information - Courthouse News",
-        "publisher": "Courthouse News",
-        "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQVGV4QUF6OUNnUHpvdVo5RHdoNmY1aWRXOXNQZk13UGpJa0V4dE9LQTFPbVRrYWFTdC1MRnQxcUZ0Tzk2WVc1ck9vYXMtb25ja1BZVFRaTlJjQnVlaUx5aVpwelA5c2pQU3AzZHJJRXJBOFZfYkVGNkJtaFE0blVjcHR0Ym41Z3N6Ri16MjRWZXBlU0o2WDBXaGtreUpyWE80RS1OalpEUXAtZllqY0FnU3pLWmxtdEFtOExvNVRHekwwRFRqb2lvNHlLcEdpRzZkcWc?oc=5",
+        "id": "gnews:45d6f929352e45cc",
+        "title": "Firefox 159 fixes 167 flaws, and OpenAI's Codex found 41 of them - Notebookcheck",
+        "publisher": "Notebookcheck",
+        "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxONXhYRzV5LUNhZkpHOVhHVjEwbkVxUHREOTRSVnBuM1hfNkdjaGZpbTZ4TGIyX0kxZTlDbXBlY1BUdlZEVGFjXzV0QkxZc0lkY0ZvQXhDXzNhLTNfdUxmQ0dzTVpsUXVDbE1OUWtKeEJMWkxwN25mNldRcXhoSUVwaFBxTjJWckdIeUt2T1NpMktlOENpYjJUaWJ2T0tGc2xnOVRjSkZNbFZwSlVm?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:7ad3f43503d28076",
-        "title": "OpenAI launches GPT-6.1 Terra with near-Astra performance at a fraction of the cost - Tech Edition",
-        "publisher": "Tech Edition",
-        "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPa1RGOUhDbU56dzJNanNHMTgtU2ZleWRpUVBhT3llbTJZT3ZUMHBROXNPYjcxOUZFSjViRWNab3l1c082eGR4dGIyd2JGWlZuc2FDRVpmNVlMLUJMczFtcXdabVFvSF9mVi02LV9wX3N4NGtkdTZGczBZV2JwVUJxdnNsNjhpVEV2b1dqekx3WnFQNVpmT1NSYkQ2OXhMYVpvUzJPNE51U2pZbVU?oc=5",
-        "tag": "companion"
+        "id": "gnews:e285e10c390f0c62",
+        "title": "Gemini Notebook gets voice recorder, but it's a mess compared to Pixel Recorder - Android Authority",
+        "publisher": "Android Authority",
+        "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9rTEx0dkJULUlOVEhkWVduQ1BCUVljSUpLRU9iOUI0cldCVG9zSTBLcnFXV2w0Yk1kbmFreGlMUTB4ZTZOOGR1RS0wNDdJSmFYQ3B4LTJZa1ByQU5MeTluMWY2NXF1UTdnMmVVRkZDeVQ3YnVKR3dwY1VxUUg?oc=5",
+        "tag": "rest"
       },
       {
-        "id": "gnews:4102a0310b440938",
-        "title": "OpenAI, a Big Nvidia Buyer, Plans to Buy Google’s AI Chips - FourWeekMBA",
-        "publisher": "FourWeekMBA",
-        "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNY0NrYXhsZm5QUG5zNDFnYjQxeU1rTkxSS0hSWmw2LXlVVWpZRVcxQm1YaTFUMEppblJ4dmVIM1dZb012cV9HT2xRZXViVnAxdEw0bHMwRTlJWnpSanRpVnA1YjZNTFc3RnRpNmJ6V2ZhazJYTGFaYVNDOFB2aDdoTG5iTzh2R0NpNFFR?oc=5",
+        "id": "gnews:16fa3feedac668cd",
+        "title": "Google DeepMind Debuts Genie 4 World Model: More Realistic Humans, Physics in Generated Videos - Tech Times",
+        "publisher": "Tech Times",
+        "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxOVk9objRpSjNrQkhJc2k3dHl2WjJWZzRZVElIdk1tSGhuVkJqeVNVb2cyTmhJT2ozdFNzWS1BclRUdHlxZ2gybzU5bnlESl9ReDYxOUdUN1hCSFB1ZWF2QWl1T3E3dHZzQjlCQkQ2STgyejdHeG1kUDZhNFJmNmdTTEJsSmc2NDlzYmNGZ0FMS0N4dnV5NVdvYm9nY3FnUE9oM1ZORUdYd2Ntb0ZrdFZfZ09wZ05lNEhmTWIwcDluMkc0Mi1IZGRhbm1ZTlgxdWg3TWpYOFpwTXU2Qmxh?oc=5",
         "tag": "rest"
       }
     ]
@@ -2073,7 +1929,7 @@
     "shelf": 2,
     "from_cache": false,
     "searches": 1,
-    "rate_limit_remaining": 8,
+    "rate_limit_remaining": 9,
     "brief": false,
     "pulse_lead": false,
     "shelf_only": true,
@@ -2095,8 +1951,8 @@
   },
   "wikidata": {
     "ok": true,
-    "soft_fail": true,
-    "soft_fail_reason": "HTTP 503",
+    "soft_fail": false,
+    "soft_fail_reason": null,
     "seeds": [
       "Hugging Face",
       "METR",
@@ -2111,10 +1967,10 @@
     "hints": [
       {
         "seed": "Hugging Face",
-        "qid": null,
-        "label": null,
-        "description": null,
-        "status": "soft_fail",
+        "qid": "Q108943604",
+        "label": "Hugging Face",
+        "description": "American company",
+        "status": "matched",
         "source": "wikidata",
         "briefEligible": false,
         "pulseLeadEligible": false,
@@ -2122,10 +1978,10 @@
       },
       {
         "seed": "METR",
-        "qid": null,
-        "label": null,
-        "description": null,
-        "status": "soft_fail",
+        "qid": "Q135185153",
+        "label": "Model Evaluation and Threat Research",
+        "description": "AI model evaluation nonprofit",
+        "status": "matched",
         "source": "wikidata",
         "briefEligible": false,
         "pulseLeadEligible": false,

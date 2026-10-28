@@ -17,7 +17,7 @@ export type RssAnalystRow = {
   cluster_id?: string;
 };
 
-export const RSS_ANALYST_AT: string | null = "2026-10-28T03:20:31Z";
+export const RSS_ANALYST_AT: string | null = "2026-10-28T08:20:41Z";
 
 export const RSS_ANALYST: RssAnalystRow[] = [
   { id: "anl:latent-space:9de126e482b03ac1", feed: "latent-space" as const, title: "How Anthropic ships Claude with Claude: Separating the Brain from the Hands", link: "https://latent.space/p/opus55/", published: "2026-10-27T18:53:10Z", summary: "Katelyn Lesse and Angela Jiang on Opus 5.5, the Claude Platform, and the engineering behind AI agents.", source: "rss-analyst" as const, recap: false, tag: "rest" as const, first_seen: "2026-10-27T23:33:38Z", is_new: false, cluster_id: "cl:anl:latent-space:9de126e482b03ac1" },

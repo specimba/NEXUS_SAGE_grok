@@ -3,21 +3,21 @@ import type { Tldr } from "@/lib/tldr-24h";
 
 export const TLDR_24H: Tldr = {
   "schema": 1,
-  "crawl_at": "2026-10-28T03:20:31Z",
+  "crawl_at": "2026-10-28T08:20:41Z",
   "date": "2026-10-28",
   "bullets": [
     {
-      "id": "cl:rss:huggingnews:ef92c9479c1ad91e",
-      "title": "OpenAI Plans to Purchase AI Chips From Google to Cut Reliance on Nvidia",
-      "url": "https://huggingnews.com/ai/openai-plans-to-purchase-ai-chips-from-google-to-cut-reliance-on-nvidia-804ac15e",
-      "at": "2026-10-28T03:00:46Z",
-      "sources": 16
+      "id": "cl:rss:deepmind:393575ee7d83ff0a",
+      "title": "Genie 4: A new generation of world simulation",
+      "url": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/",
+      "at": "2026-10-28T08:01:02Z",
+      "sources": 15
     },
     {
       "id": "cl:rss:testingcatalog:8684eb48fa1590f3",
       "title": "OpenAI launches GPT-6.1 Terra for precise computer use",
       "url": "https://www.testingcatalog.com/openai-launches-gpt-6-1-terra-for-precise-computer-use/",
-      "at": "2026-10-27T22:43:27Z",
+      "at": "2026-10-27T23:14:05Z",
       "sources": 8
     },
     {
@@ -28,17 +28,10 @@ export const TLDR_24H: Tldr = {
       "sources": 3
     },
     {
-      "id": "cl:rss:deepmind:393575ee7d83ff0a",
-      "title": "Genie 4: A new generation of world simulation",
-      "url": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/",
-      "at": "2026-10-27T19:45:35Z",
-      "sources": 3
-    },
-    {
-      "id": "cl:gnews:172b013ace4039c2",
-      "title": "Gemini Tarot Horoscope Today, October 28, 2026: Move forward in a balanced way, there will be efforts to perform better in business",
-      "url": "https://news.google.com/rss/articles/CBMi0wJBVV95cUxOem53NFNtRE8wdWE5Y0JJYlJtbXIyVkI1Mzk2NE1PcFAwOGk3WTh6YnJjeWN3VDR6QlVjekVUZUFZRWhoLTl1eTc5Y2dTTnhZWXZ1VndKamRPdlRPQXAzaUozQ3luVzVlODEyV2tjdnRSRlFTRjBWejFWWEhWejlDZndMMGd6cmxqQ0E5V1FGeDVhY1NDTmRJR2FaV1lwd1JfWjNsNmI3MGV6Zm43X2NuWEswSGFFcmY3Skpta3puRF9KN0x1anpZcmFZS3Back1ZV0U3SDdkRDd1cmlxX2ZFX1hpZVQ4Rzlic0tra2k0RVBvUzh1OEZfZy1oX3Qtc1hZTEZKc0taamtJdzdoQ1ZMTEdfdHltdFUtNFZNV0I4SnRRalg1aXh6QWtybDBmV2RudDFRR0k2ZUp1UkFaOUcxTUczdzc1SkFyemhrNW9lc2hqZkXSAdgCQVVfeXFMT0NFLVpsVkxjckE1Z2FIeGhlUFlvaVYwMEw0WENLb3JBZ2wwVUdYOVVna1RyZUZLdks0WlRYQW93aHZzR3pLOXdJNFFQRTZxSE0xUVRUMHlxNFY4MFJ3Z2c0Z3Z3OFl2STBKdGlVVUhmNFBTNXh3azBSMkxLd3BhS2swMUotZlJ5RkxWVmtrRXBfOUt0V3VEZkh0bXQ4MnFINEhuUUpkdTVjSlFzN2FTMkwzVWRVV0Frd3k2MW10aU5aUFVSSWxZUDJ6dWp6MlJkLXdrckJ5U1ZhQzk5aVNHUGlkVjhXb09OOXZjV0VvYU84eEJzX1dTU3IzNm0ydjVHYzFOV1V5REtQVWNBLWZJc2dYMUp5RkhPUDY4MVI5aHZDNkcxaHBsSXVTZVhEcWcta2swN01nU01YUVcwYVRIVWxvZzhFbHpJWGVsclBiWVltc01kZmpfLUM?oc=5",
-      "at": "2026-10-28T01:48:00Z",
+      "id": "cl:rss:the-decoder:65b75ce62c3e32d5",
+      "title": "Google Deepmind's Genie 4 puts a modern spin on agent designs that predate LLMs",
+      "url": "https://the-decoder.com/google-deepminds-genie-4-puts-a-modern-spin-on-agent-designs-that-predate-llms/",
+      "at": "2026-10-27T17:30:25Z",
       "sources": 2
     },
     {

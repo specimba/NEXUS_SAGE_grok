@@ -17,7 +17,7 @@ export type RssSecurityRow = {
   cluster_id?: string;
 };
 
-export const RSS_SECURITY_AT = "2026-10-28T03:20:31Z";
+export const RSS_SECURITY_AT = "2026-10-28T08:20:41Z";
 
 export const RSS_SECURITY: RssSecurityRow[] = [
   { id: "rss-sec:securityweek:52481f1330f671c1", lab: "securityweek" as const, title: "Tailscale Rushes Patches After Uncoordinated Disclosure of ‘Tailworm’ Flaws", link: "https://www.securityweek.com/tailscale-rushes-patches-after-uncoordinated-disclosure-of-tailworm-flaws/", published: "2026-10-27T15:26:12Z", summary: "Tailscale is preparing a patch for Tailscale SSH flaws whose details went public over the weekend, before any fixes had been released. The post Tailscale Rushes Patches After Uncoordinated Disclosure of ‘Tailworm’ Flaws appeared first on SecurityWeek .", source: "rss-security" as const, tag: "rest" as const, first_seen: "2026-10-27T18:20:49Z", is_new: false, cluster_id: "cl:rss-sec:securityweek:52481f1330f671c1" },
