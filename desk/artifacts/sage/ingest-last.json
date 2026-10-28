@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-28T13:21:05Z",
+  "stamped_at": "2026-10-28T18:28:32Z",
   "config_hash": "1ba30989ff76",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,7 +11,7 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 130,
+      "duration_ms": 294,
       "paused_until": null,
       "reason": null
     },
@@ -20,7 +20,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 3742,
+      "duration_ms": 3231,
       "paused_until": null,
       "reason": null
     },
@@ -29,7 +29,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 1538,
+      "duration_ms": 646,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 409,
+      "duration_ms": 255,
       "paused_until": null,
       "reason": null
     },
@@ -46,8 +46,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 56,
-      "duration_ms": 8383,
+      "rows": 61,
+      "duration_ms": 8295,
       "paused_until": null,
       "reason": null
     },
@@ -55,8 +55,8 @@
       "id": "hn_title",
       "label": "HN title",
       "status": "ok",
-      "rows": 9,
-      "duration_ms": 8376,
+      "rows": 10,
+      "duration_ms": 8210,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 151,
-      "duration_ms": 26129,
+      "duration_ms": 24739,
       "paused_until": null,
       "reason": null
     },
@@ -74,7 +74,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 75,
-      "duration_ms": 12108,
+      "duration_ms": 12096,
       "paused_until": null,
       "reason": null
     },
@@ -83,7 +83,7 @@
       "label": "analyst RSS",
       "status": "ok",
       "rows": 7,
-      "duration_ms": 2280,
+      "duration_ms": 2790,
       "paused_until": null,
       "reason": null
     },
@@ -92,7 +92,7 @@
       "label": "releases",
       "status": "ok",
       "rows": 9,
-      "duration_ms": 6537,
+      "duration_ms": 6730,
       "paused_until": null,
       "reason": null
     },
@@ -100,8 +100,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 50,
-      "duration_ms": 6513,
+      "rows": 53,
+      "duration_ms": 6616,
       "paused_until": null,
       "reason": null
     },
@@ -110,7 +110,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 2,
-      "duration_ms": 432,
+      "duration_ms": 373,
       "paused_until": null,
       "reason": null
     },
@@ -119,16 +119,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4643,
+      "duration_ms": 4540,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 81220,
-    "sources_wall_ms": 26130,
-    "papers_lane_ms": 5825,
-    "slowest_source_ms": 26129,
+    "sources_ms": 78815,
+    "sources_wall_ms": 24740,
+    "papers_lane_ms": 4431,
+    "slowest_source_ms": 24739,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -146,54 +146,172 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 26938,
-    "startup_ms": 59,
-    "main_ms": 28104
+    "wall_ms": 25474,
+    "startup_ms": 57,
+    "main_ms": 27164
   },
-  "multi_source_independent": 5,
+  "multi_source_independent": 10,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 5,
-    "multi_source_raw": 12,
-    "self_reposts": 9,
-    "items_in": 363,
-    "clusters_out": 299,
-    "collapsed": 64,
-    "multi_source": 5,
-    "multi_member": 22,
+    "multi_source_independent": 10,
+    "multi_source_raw": 15,
+    "self_reposts": 8,
+    "items_in": 366,
+    "clusters_out": 297,
+    "collapsed": 69,
+    "multi_source": 10,
+    "multi_member": 25,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 54,
+    "new_items": 79,
     "per_source": {
-      "hn-algolia": 56,
+      "hn-algolia": 61,
       "rss-lab": 151,
       "rss-security": 75,
-      "gnews-rss": 50,
-      "gmail-news": 15,
+      "gnews-rss": 53,
+      "gmail-news": 10,
       "rss-analyst": 7,
       "releases-atom": 9
     },
     "multi_source_clusters": [
       {
-        "title": "Genie 4: A new generation of world simulation",
+        "title": "Google Launches Gemini 4 Carbon Frontier AI Two Weeks After Argon Debut",
         "sources": [
           "rss-lab",
           "hn-algolia",
-          "gnews-rss",
-          "gmail-news"
+          "gnews-rss"
         ],
-        "size": 28,
+        "size": 16,
         "score": 1,
         "members": [
           {
-            "id": "hn:50261319",
+            "id": "hn:50276792",
             "source": "hn-algolia",
-            "title": "Genie 4",
-            "at": "2026-10-27T16:06:01Z",
+            "title": "Gemini 4 Carbon",
+            "at": "2026-10-28T17:01:23Z",
             "publisher": null
           },
+          {
+            "id": "rss:huggingnews:bdaadea5f9714aee",
+            "source": "rss-lab",
+            "title": "Google Launches Gemini 4 Carbon Frontier AI Two Weeks After Argon Debut",
+            "at": "2026-10-28T17:09:31Z",
+            "publisher": "huggingnews"
+          },
+          {
+            "id": "rss:deepmind:e8e0cb1d0e685ced",
+            "source": "rss-lab",
+            "title": "Gemini 4 Carbon: Our next frontier model",
+            "at": "2026-10-28T17:00:58Z",
+            "publisher": "deepmind"
+          },
+          {
+            "id": "gnews:713d71537ed51bb4",
+            "source": "gnews-rss",
+            "title": "Google unveils Gemini 4 Carbon, retaking the world's no. 1 spot on updated, harder benchmarks — but access is limited - VentureBeat",
+            "at": "2026-10-28T18:25:49Z",
+            "publisher": "VentureBeat"
+          },
+          {
+            "id": "gnews:c696bfb957eefcd6",
+            "source": "gnews-rss",
+            "title": "Google launches Gemini 4 Carbon AI model with cybersecurity focus By Reuters - Investing.com",
+            "at": "2026-10-28T18:23:44Z",
+            "publisher": "Investing.com"
+          },
+          {
+            "id": "gnews:15485173968e47fe",
+            "source": "gnews-rss",
+            "title": "Google launches Gemini 4 Carbon AI model with cybersecurity focus - Reuters",
+            "at": "2026-10-28T18:12:49Z",
+            "publisher": "Reuters"
+          },
+          {
+            "id": "gnews:331048fa0b2e6e6b",
+            "source": "gnews-rss",
+            "title": "Google launches Gemini 4 Carbon AI model with cybersecurity focus - TradingView",
+            "at": "2026-10-28T18:05:43Z",
+            "publisher": "TradingView"
+          },
+          {
+            "id": "gnews:1fca9bd7caa94673",
+            "source": "gnews-rss",
+            "title": "Gemini 4 Carbon Ranks No. 1 on Artificial Analysis Index, Ahead of Claude Opus 5.5 - trendingtopics.eu",
+            "at": "2026-10-28T18:04:17Z",
+            "publisher": "trendingtopics.eu"
+          },
+          {
+            "id": "gnews:cb290f833f184091",
+            "source": "gnews-rss",
+            "title": "Gemini 4 Carbon Tops Text Arena, Places 2nd On Agent Arena - OfficeChai",
+            "at": "2026-10-28T17:56:30Z",
+            "publisher": "OfficeChai"
+          },
+          {
+            "id": "gnews:eb84ae7009aab20d",
+            "source": "gnews-rss",
+            "title": "Gemini 4 Carbon secures top spots in AI arenas, showcases potential - Crypto Briefing",
+            "at": "2026-10-28T17:37:44Z",
+            "publisher": "Crypto Briefing"
+          },
+          {
+            "id": "gnews:43eb05b6a70ff9fe",
+            "source": "gnews-rss",
+            "title": "Google DeepMind announces Gemini 4 Carbon with cybersecurity focus - Crypto Briefing",
+            "at": "2026-10-28T17:05:14Z",
+            "publisher": "Crypto Briefing"
+          },
+          {
+            "id": "gnews:8dccafe1d0c53bdb",
+            "source": "gnews-rss",
+            "title": "Gemini 4 Carbon: our next frontier model - Google DeepMind",
+            "at": "2026-10-28T17:03:33Z",
+            "publisher": "Google DeepMind",
+            "self_repost": true
+          },
+          {
+            "id": "gnews:422e0c59d430b7cd",
+            "source": "gnews-rss",
+            "title": "Google unveils Gemini 4 Carbon with advanced cybersecurity features - Investing.com",
+            "at": "2026-10-28T17:14:12Z",
+            "publisher": "Investing.com"
+          },
+          {
+            "id": "gnews:cf0cc092039382cf",
+            "source": "gnews-rss",
+            "title": "Google edges up after introducing its latest frontier model: Gemini 4 Carbon - Seeking Alpha",
+            "at": "2026-10-28T17:23:19Z",
+            "publisher": "Seeking Alpha"
+          },
+          {
+            "id": "gnews:bf7d191dd9997763",
+            "source": "gnews-rss",
+            "title": "Google: Gemini 4 Carbon Priced at $2 per Mln - Moomoo",
+            "at": "2026-10-28T17:32:56Z",
+            "publisher": "Moomoo"
+          },
+          {
+            "id": "gnews:0ff0928bc1cd97e6",
+            "source": "gnews-rss",
+            "title": "Gemini 4 Carbon: our next frontier model - blog.google",
+            "at": "2026-10-28T17:04:56Z",
+            "publisher": "blog.google",
+            "self_repost": true
+          }
+        ]
+      },
+      {
+        "title": "ICYMI: Google DeepMind previews Genie 4 with native audio",
+        "sources": [
+          "rss-lab",
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 13,
+        "score": 1,
+        "members": [
           {
             "id": "hn:50261676",
             "source": "hn-algolia",
@@ -202,11 +320,32 @@
             "publisher": null
           },
           {
-            "id": "rss:deepmind:393575ee7d83ff0a",
+            "id": "rss:testingcatalog:52787ee918d23bcb",
             "source": "rss-lab",
-            "title": "Genie 4: A new generation of world simulation",
-            "at": "2026-10-27T16:01:38Z",
-            "publisher": "deepmind"
+            "title": "ICYMI: Google DeepMind previews Genie 4 with native audio",
+            "at": "2026-10-28T18:13:04Z",
+            "publisher": "testingcatalog"
+          },
+          {
+            "id": "gnews:61576ddd4ceaa97b",
+            "source": "gnews-rss",
+            "title": "ICYMI: Google DeepMind previews Genie 4 with native audio - TestingCatalog AI News",
+            "at": "2026-10-28T18:13:42Z",
+            "publisher": "TestingCatalog AI News"
+          },
+          {
+            "id": "gnews:c11914a3952c533f",
+            "source": "gnews-rss",
+            "title": "Google DeepMind Unveils Genie 4: All About Real-Time World Building With Built-In Sound - NDTV",
+            "at": "2026-10-28T16:59:12Z",
+            "publisher": "NDTV"
+          },
+          {
+            "id": "gnews:e4aa77f32575c167",
+            "source": "gnews-rss",
+            "title": "Google DeepMind’s Genie 4 world model adds sound and live steering - The Next Web",
+            "at": "2026-10-28T16:00:30Z",
+            "publisher": "The Next Web"
           },
           {
             "id": "gnews:772fbf0f7da17512",
@@ -216,130 +355,32 @@
             "publisher": "Mashable India"
           },
           {
-            "id": "gnews:2dcc45b1f7b5e4f2",
+            "id": "gnews:ffa099ebaa5d688c",
             "source": "gnews-rss",
-            "title": "Google DeepMind Unveils Genie 4 With Real-Time Interactive Simulations - NewsBricks",
-            "at": "2026-10-28T12:02:39Z",
-            "publisher": "NewsBricks"
+            "title": "Google DeepMind Introduces Genie 4 With Real-Time Simulation, Native Audio Generation - Gadgets 360",
+            "at": "2026-10-28T07:17:52Z",
+            "publisher": "Gadgets 360"
           },
           {
-            "id": "gnews:9d2be181b344daec",
+            "id": "gnews:0fdb4f97bc81ab43",
             "source": "gnews-rss",
-            "title": "Google DeepMind unveils Genie 4 real-time interactive world model, and 11 more stories - Howl.Link",
-            "at": "2026-10-28T05:12:30Z",
-            "publisher": "Howl.Link"
+            "title": "Google DeepMind Previews Genie 4 World Model - Dataconomy",
+            "at": "2026-10-28T10:23:35Z",
+            "publisher": "Dataconomy"
           },
           {
-            "id": "gmail:1a18273234ef63df",
-            "source": "gmail-news",
-            "title": "Critical UEFI Flaw, Oracle's Triple Threat, GMO's $1M Hacker Hunt, Tailscale SSH Fixes and More",
-            "at": "2026-10-28T12:04:09Z",
-            "publisher": "nl00.net"
-          },
-          {
-            "id": "gmail:1a18262e16b05072",
-            "source": "gmail-news",
-            "title": "Oct. 28 - Tech advisors test outcome-based pricing | GoTo expands MSP platform",
-            "at": "2026-10-28T12:01:18Z",
-            "publisher": "divenewsletter.com"
-          },
-          {
-            "id": "gmail:1a182678d324eca7",
-            "source": "gmail-news",
-            "title": "Monitor changes detected: Agentic and AI Security News",
-            "at": "2026-10-28T12:06:26Z",
-            "publisher": "firecrawl.dev"
-          },
-          {
-            "id": "gmail:1a18238a10345b94",
-            "source": "gmail-news",
-            "title": "OpenAI, Anthropic Claim Cryptography Breakthrough on Same Day",
-            "at": "2026-10-28T11:15:09Z",
-            "publisher": "theinformation.com"
-          },
-          {
-            "id": "gmail:1a181ff9d79e0a92",
-            "source": "gmail-news",
-            "title": "Takara TLDR: October 28, 2026",
-            "at": "2026-10-28T10:12:54Z",
-            "publisher": "takara.ai"
-          },
-          {
-            "id": "gmail:1a18287a8ec12339",
-            "source": "gmail-news",
-            "title": "How We Built a Custom AI SOC in 23 Minutes, And How You Can Too",
-            "at": "2026-10-28T12:41:02Z",
-            "publisher": "thehackernews.com"
-          },
-          {
-            "id": "gmail:1a181e99b909b5da",
-            "source": "gmail-news",
-            "title": "Applied Research - Scientific AI job at Prime Intellect",
-            "at": "2026-10-28T09:48:52Z",
-            "publisher": "linkedin.com"
-          },
-          {
-            "id": "gmail:1a181d9643488cfa",
-            "source": "gmail-news",
-            "title": "😺 Google launches Genie 4 with sound",
-            "at": "2026-10-28T09:31:08Z",
-            "publisher": "theneurondaily.com"
-          },
-          {
-            "id": "gmail:1a1827af3655407e",
-            "source": "gmail-news",
-            "title": "Building Trust in Autonomous AI Agents",
-            "at": "2026-10-28T12:27:38Z",
-            "publisher": "devops.com"
-          },
-          {
-            "id": "gmail:1a181edee9b060c9",
-            "source": "gmail-news",
-            "title": "10 new citations to articles by Canfer Akbulut",
-            "at": "2026-10-28T09:53:36Z",
-            "publisher": "google.com"
-          },
-          {
-            "id": "gmail:1a1818ad2b3d3881",
-            "source": "gmail-news",
-            "title": "Fireside chat with Omdia on why AI coding speed stalls at the MR",
-            "at": "2026-10-28T08:05:20Z",
-            "publisher": "gitlab.com"
-          },
-          {
-            "id": "gmail:1a1825780adff41b",
-            "source": "gmail-news",
-            "title": "ML Engineer II (Remote) at Torentify",
-            "at": "2026-10-28T11:48:55Z",
-            "publisher": "linkedin.com"
-          },
-          {
-            "id": "gmail:1a181fe09c2157ba",
-            "source": "gmail-news",
-            "title": "Register Now: Data Streaming World Tour Istanbul | 18 Nov",
-            "at": "2026-10-28T10:11:08Z",
-            "publisher": "confluent.io"
-          },
-          {
-            "id": "gnews:9b9f15f18eb9df4c",
+            "id": "gnews:2f7dc9850676a047",
             "source": "gnews-rss",
-            "title": "Google DeepMind unveils Genie 4 with sound and world editing — TechCrunch - UA.NEWS",
-            "at": "2026-10-27T16:56:57Z",
-            "publisher": "UA.NEWS"
+            "title": "Google DeepMind Unveils Genie 4 With Native Audio and World Editing - Techiexpert.com",
+            "at": "2026-10-28T09:36:57Z",
+            "publisher": "Techiexpert.com"
           },
           {
-            "id": "gnews:45493229a28cab55",
+            "id": "gnews:2c55e96cebd5259b",
             "source": "gnews-rss",
-            "title": "Google’s Genie 4 Interactive AI World Model Adds Sound - WinBuzzer",
-            "at": "2026-10-28T07:48:02Z",
-            "publisher": "WinBuzzer"
-          },
-          {
-            "id": "gnews:bce64909230b7e4e",
-            "source": "gnews-rss",
-            "title": "Genie 4 Is Google’s First Real-Time World Model With Sound - FourWeekMBA",
-            "at": "2026-10-27T17:38:02Z",
-            "publisher": "FourWeekMBA"
+            "title": "Google DeepMind Adds Native Audio to Its Genie 4 World Model - TOKENPOST",
+            "at": "2026-10-28T02:51:00Z",
+            "publisher": "TOKENPOST"
           },
           {
             "id": "gnews:92d79c054450340a",
@@ -361,28 +402,6 @@
             "title": "Google DeepMind unveils Genie 4 AI world model - TechGig",
             "at": "2026-10-28T05:05:46Z",
             "publisher": "TechGig"
-          },
-          {
-            "id": "gnews:f00aa79fcd1258d1",
-            "source": "gnews-rss",
-            "title": "Genie 4: A new generation of world simulation - Google DeepMind",
-            "at": "2026-10-27T16:06:33Z",
-            "publisher": "Google DeepMind",
-            "self_repost": true
-          },
-          {
-            "id": "gnews:ffa099ebaa5d688c",
-            "source": "gnews-rss",
-            "title": "Google DeepMind Introduces Genie 4 With Real-Time Simulation, Native Audio Generation - Gadgets 360",
-            "at": "2026-10-28T07:17:52Z",
-            "publisher": "Gadgets 360"
-          },
-          {
-            "id": "gnews:43e2701968d7c497",
-            "source": "gnews-rss",
-            "title": "Google Announces World Simulation AI Model “Genie 4” - jetstream.blog",
-            "at": "2026-10-27T19:45:35Z",
-            "publisher": "jetstream.blog"
           }
         ]
       },
@@ -391,26 +410,11 @@
         "sources": [
           "rss-lab",
           "hn-algolia",
-          "rss-analyst",
-          "gnews-rss"
+          "rss-analyst"
         ],
-        "size": 10,
-        "score": 1,
+        "size": 4,
+        "score": 0.752,
         "members": [
-          {
-            "id": "hn:50248124",
-            "source": "hn-algolia",
-            "title": "GPT-6.1 Terra",
-            "at": "2026-10-26T18:01:17Z",
-            "publisher": null
-          },
-          {
-            "id": "hn:50248075",
-            "source": "hn-algolia",
-            "title": "GPT 6.1 Terra",
-            "at": "2026-10-26T17:58:24Z",
-            "publisher": null
-          },
           {
             "id": "hn:50249076",
             "source": "hn-algolia",
@@ -433,73 +437,86 @@
             "publisher": "testingcatalog"
           },
           {
-            "id": "rss:openai:35e334c198740f74",
-            "source": "rss-lab",
-            "title": "Introducing GPT-6.1 Terra",
-            "at": "2026-10-26T00:00:00Z",
-            "publisher": "openai"
-          },
-          {
             "id": "anl:simonw:c15b1e3c66d84564",
             "source": "rss-analyst",
             "title": "GPT-6.1 Terra",
             "at": "2026-10-26T23:53:07Z",
             "publisher": "simonw"
-          },
-          {
-            "id": "gnews:0a7f6da04d5d951c",
-            "source": "gnews-rss",
-            "title": "OpenAI’s GPT-6.1 Terra is safer overall, but tests flag more destructive actions - Mezha.net",
-            "at": "2026-10-27T23:14:05Z",
-            "publisher": "Mezha.net"
-          },
-          {
-            "id": "gnews:0fe4e3480a3b9b48",
-            "source": "gnews-rss",
-            "title": "OpenAI's GPT-6.1 Terra is safer overall, but shows more destructive-action flags in tests - BleepingComputer",
-            "at": "2026-10-27T22:43:27Z",
-            "publisher": "BleepingComputer"
-          },
-          {
-            "id": "gnews:bb1e3c8059e7e5a2",
-            "source": "gnews-rss",
-            "title": "Introducing GPT-6.1 Terra - OpenAI",
-            "at": "2026-10-26T18:05:36Z",
-            "publisher": "OpenAI",
-            "self_repost": true
           }
         ]
       },
       {
-        "title": "Unlimited-OCR-2: Baidu open-sources an OCR model for unlimited-horizon parsing",
+        "title": "Google opens Android development to third-party AI agents and unveils new Gemini APIs",
         "sources": [
-          "hn-algolia",
-          "gnews-rss",
-          "releases-atom"
+          "rss-lab",
+          "gnews-rss"
         ],
-        "size": 3,
+        "size": 2,
         "score": 1,
         "members": [
           {
-            "id": "hn:50259228",
+            "id": "rss:the-decoder:d71ef95524572956",
+            "source": "rss-lab",
+            "title": "Google opens Android development to third-party AI agents and unveils new Gemini APIs",
+            "at": "2026-10-28T16:59:59Z",
+            "publisher": "the-decoder"
+          },
+          {
+            "id": "gnews:530eb57a5a97df4b",
+            "source": "gnews-rss",
+            "title": "Google opens Android development to third-party AI agents and unveils new Gemini APIs - The Decoder",
+            "at": "2026-10-28T17:01:14Z",
+            "publisher": "The Decoder"
+          }
+        ]
+      },
+      {
+        "title": "OpenAI teases Dots for Europe, but its Berlin DevDay was really about building a platform",
+        "sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "rss:the-decoder:33641d78dbbd8a82",
+            "source": "rss-lab",
+            "title": "OpenAI teases Dots for Europe, but its Berlin DevDay was really about building a platform",
+            "at": "2026-10-28T16:25:02Z",
+            "publisher": "the-decoder"
+          },
+          {
+            "id": "gnews:d73b49143a372987",
+            "source": "gnews-rss",
+            "title": "OpenAI teases Dots for Europe, but its Berlin DevDay was really about building a platform - The Decoder",
+            "at": "2026-10-28T16:26:40Z",
+            "publisher": "The Decoder"
+          }
+        ]
+      },
+      {
+        "title": "NVIDIA Nemotron 3.5 Transcribe and Granary v2: Intelligent Multilingual Transcription You Can Prompt and Adapt",
+        "sources": [
+          "rss-lab",
+          "hn-algolia"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:50275128",
             "source": "hn-algolia",
-            "title": "Unlimited-OCR-2: Baidu open-sources an OCR model for unlimited-horizon parsing",
-            "at": "2026-10-27T13:44:44Z",
+            "title": "Nvidia Nemotron 3.5 Transcribe: open ASR for 40 languages",
+            "at": "2026-10-28T15:17:53Z",
             "publisher": null
           },
           {
-            "id": "rel:hf-trending:baidu/Unlimited-OCR-2",
-            "source": "releases-atom",
-            "title": "baidu/Unlimited-OCR-2",
-            "at": "2026-10-26T03:57:46Z",
-            "publisher": "github.com"
-          },
-          {
-            "id": "gnews:c8bee51df97bcfec",
-            "source": "gnews-rss",
-            "title": "Baidu Open-Sources Unlimited OCR 2, Parsing Documents of Any Length in One Pass - Pandaily",
-            "at": "2026-10-28T01:54:13Z",
-            "publisher": "Pandaily"
+            "id": "rss:huggingface:ec733f799e1aaee3",
+            "source": "rss-lab",
+            "title": "NVIDIA Nemotron 3.5 Transcribe and Granary v2: Intelligent Multilingual Transcription You Can Prompt and Adapt",
+            "at": "2026-10-28T14:58:17Z",
+            "publisher": "huggingface"
           }
         ]
       },
@@ -529,6 +546,39 @@
         ]
       },
       {
+        "title": "Genie 4: A new generation of world simulation",
+        "sources": [
+          "rss-lab",
+          "hn-algolia"
+        ],
+        "size": 3,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:50261319",
+            "source": "hn-algolia",
+            "title": "Genie 4",
+            "at": "2026-10-27T16:06:01Z",
+            "publisher": null
+          },
+          {
+            "id": "rss:deepmind:393575ee7d83ff0a",
+            "source": "rss-lab",
+            "title": "Genie 4: A new generation of world simulation",
+            "at": "2026-10-27T16:01:38Z",
+            "publisher": "deepmind"
+          },
+          {
+            "id": "gnews:f00aa79fcd1258d1",
+            "source": "gnews-rss",
+            "title": "Genie 4: A new generation of world simulation - Google DeepMind",
+            "at": "2026-10-27T16:06:33Z",
+            "publisher": "Google DeepMind",
+            "self_repost": true
+          }
+        ]
+      },
+      {
         "title": "Former Deepmind researcher thinks AlphaGo's playbook can cure AI hallucinations",
         "sources": [
           "rss-lab",
@@ -552,50 +602,75 @@
             "publisher": "The Decoder"
           }
         ]
+      },
+      {
+        "title": "Unlimited-OCR-2: Baidu open-sources an OCR model for unlimited-horizon parsing",
+        "sources": [
+          "hn-algolia",
+          "releases-atom"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:50259228",
+            "source": "hn-algolia",
+            "title": "Unlimited-OCR-2: Baidu open-sources an OCR model for unlimited-horizon parsing",
+            "at": "2026-10-27T13:44:44Z",
+            "publisher": null
+          },
+          {
+            "id": "rel:hf-trending:baidu/Unlimited-OCR-2",
+            "source": "releases-atom",
+            "title": "baidu/Unlimited-OCR-2",
+            "at": "2026-10-26T03:57:46Z",
+            "publisher": "github.com"
+          }
+        ]
       }
     ],
     "self_repost_clusters": [
       {
-        "title": "Genie 4: A new generation of world simulation",
+        "title": "Google Launches Gemini 4 Carbon Frontier AI Two Weeks After Argon Debut",
         "sources": [
           "rss-lab",
           "hn-algolia",
-          "gnews-rss",
-          "gmail-news"
+          "gnews-rss"
         ],
         "all_sources": [
           "rss-lab",
           "hn-algolia",
-          "gnews-rss",
-          "gmail-news"
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:8dccafe1d0c53bdb",
+            "publisher": "Google DeepMind",
+            "title": "Gemini 4 Carbon: our next frontier model - Google DeepMind"
+          },
+          {
+            "id": "gnews:0ff0928bc1cd97e6",
+            "publisher": "blog.google",
+            "title": "Gemini 4 Carbon: our next frontier model - blog.google"
+          }
+        ]
+      },
+      {
+        "title": "Genie 4: A new generation of world simulation",
+        "sources": [
+          "rss-lab",
+          "hn-algolia"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "hn-algolia",
+          "gnews-rss"
         ],
         "self_reposts": [
           {
             "id": "gnews:f00aa79fcd1258d1",
             "publisher": "Google DeepMind",
             "title": "Genie 4: A new generation of world simulation - Google DeepMind"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI launches GPT-6.1 Terra for precise computer use",
-        "sources": [
-          "rss-lab",
-          "hn-algolia",
-          "rss-analyst",
-          "gnews-rss"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "hn-algolia",
-          "rss-analyst",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:bb1e3c8059e7e5a2",
-            "publisher": "OpenAI",
-            "title": "Introducing GPT-6.1 Terra - OpenAI"
           }
         ]
       },
@@ -651,23 +726,6 @@
         ]
       },
       {
-        "title": "Greptile takes bug detection beyond code review with GPT-6 Astra",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:74539c5620555266",
-            "publisher": "OpenAI",
-            "title": "Greptile takes bug detection beyond code review with GPT-6 Astra - OpenAI"
-          }
-        ]
-      },
-      {
         "title": "Working with academic communities to build scientific understanding",
         "sources": [
           "rss-lab"
@@ -700,23 +758,6 @@
             "title": "How Ultrafast cut incident investigation from hours to minutes at OpenAI - OpenAI"
           }
         ]
-      },
-      {
-        "title": "How Fanatics and OpenAI streamline the fan experience",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:8a260d4ae3a63140",
-            "publisher": "OpenAI",
-            "title": "How Fanatics and OpenAI streamline the fan experience - OpenAI"
-          }
-        ]
       }
     ],
     "ai_relevance": {
@@ -729,139 +770,16 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "International Business Times, Singapore Edition",
-          "title": "Google's Genie 4 Could Change Hollywood's Workflow: Filmmakers Can Alter Scenes in Real Time - International Business Times, Singapore Edition"
-        },
-        {
-          "publisher": "The Hans India",
-          "title": "Google Genie 4 Turns Text Into Interactive Worlds - The Hans India"
-        },
-        {
-          "publisher": "The Indian Express",
-          "title": "What is Genie 4, Google’s new world model that can simulate humans, physics, and sound? - The Indian Express"
-        },
-        {
-          "publisher": "Pandaily",
-          "title": "Baidu Open-Sources Unlimited OCR 2, Parsing Documents of Any Length in One Pass - Pandaily"
+          "publisher": "OpenTools",
+          "title": "Trusted testers get first Genie 4 access; Ultra and API rollout is still to come - OpenTools"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 19
+      "hn_dropped": 18
     },
     "gnews_near_misses": [
       {
-        "score": 0.739,
-        "blocked": "time-window",
-        "hours_apart": 43.1,
-        "a": {
-          "id": "hn:50248124",
-          "source": "hn-algolia",
-          "title": "GPT-6.1 Terra",
-          "at": "2026-10-26T18:01:17Z"
-        },
-        "b": {
-          "id": "gnews:c5dd8cd31d56fecd",
-          "source": "gnews-rss",
-          "title": "OpenAI safety evaluation of GPT-6.1 Terra model - SC Media",
-          "at": "2026-10-28T13:06:55Z"
-        },
-        "shared": [
-          "gpt",
-          "6.1",
-          "terra"
-        ]
-      },
-      {
-        "score": 0.739,
-        "blocked": "time-window",
-        "hours_apart": 43.1,
-        "a": {
-          "id": "hn:50248075",
-          "source": "hn-algolia",
-          "title": "GPT 6.1 Terra",
-          "at": "2026-10-26T17:58:24Z"
-        },
-        "b": {
-          "id": "gnews:c5dd8cd31d56fecd",
-          "source": "gnews-rss",
-          "title": "OpenAI safety evaluation of GPT-6.1 Terra model - SC Media",
-          "at": "2026-10-28T13:06:55Z"
-        },
-        "shared": [
-          "gpt",
-          "6.1",
-          "terra"
-        ]
-      },
-      {
-        "score": 0.739,
-        "blocked": "time-window",
-        "hours_apart": 61.1,
-        "a": {
-          "id": "rss:openai:35e334c198740f74",
-          "source": "rss-lab",
-          "title": "Introducing GPT-6.1 Terra",
-          "at": "2026-10-26T00:00:00Z"
-        },
-        "b": {
-          "id": "gnews:c5dd8cd31d56fecd",
-          "source": "gnews-rss",
-          "title": "OpenAI safety evaluation of GPT-6.1 Terra model - SC Media",
-          "at": "2026-10-28T13:06:55Z"
-        },
-        "shared": [
-          "gpt",
-          "6.1",
-          "terra"
-        ]
-      },
-      {
-        "score": 0.739,
-        "blocked": "time-window",
-        "hours_apart": 37.2,
-        "a": {
-          "id": "gnews:c5dd8cd31d56fecd",
-          "source": "gnews-rss",
-          "title": "OpenAI safety evaluation of GPT-6.1 Terra model - SC Media",
-          "at": "2026-10-28T13:06:55Z"
-        },
-        "b": {
-          "id": "anl:simonw:c15b1e3c66d84564",
-          "source": "rss-analyst",
-          "title": "GPT-6.1 Terra",
-          "at": "2026-10-26T23:53:07Z"
-        },
-        "shared": [
-          "gpt",
-          "6.1",
-          "terra"
-        ]
-      },
-      {
-        "score": 0.717,
-        "blocked": "time-window",
-        "hours_apart": 45.9,
-        "a": {
-          "id": "rel:hf-trending:baidu/Unlimited-OCR-2",
-          "source": "releases-atom",
-          "title": "baidu/Unlimited-OCR-2",
-          "at": "2026-10-26T03:57:46Z"
-        },
-        "b": {
-          "id": "gnews:c8bee51df97bcfec",
-          "source": "gnews-rss",
-          "title": "Baidu Open-Sources Unlimited OCR 2, Parsing Documents of Any Length in One Pass - Pandaily",
-          "at": "2026-10-28T01:54:13Z"
-        },
-        "shared": [
-          "baidu",
-          "unlimit",
-          "ocr",
-          "2"
-        ]
-      },
-      {
-        "score": 0.671,
+        "score": 0.659,
         "blocked": "short-title",
         "hours_apart": 0,
         "a": {
@@ -882,53 +800,185 @@
         ]
       },
       {
-        "score": 0.669,
-        "blocked": "time-window",
-        "hours_apart": 29.2,
+        "score": 0.651,
+        "blocked": "short-title",
+        "hours_apart": 13,
         "a": {
-          "id": "hn:50248124",
+          "id": "hn:50261319",
           "source": "hn-algolia",
-          "title": "GPT-6.1 Terra",
-          "at": "2026-10-26T18:01:17Z"
+          "title": "Genie 4",
+          "at": "2026-10-27T16:06:01Z"
         },
         "b": {
-          "id": "gnews:0a7f6da04d5d951c",
+          "id": "gnews:6e7cb3c349ef8902",
           "source": "gnews-rss",
-          "title": "OpenAI’s GPT-6.1 Terra is safer overall, but tests flag more destructive actions - Mezha.net",
-          "at": "2026-10-27T23:14:05Z"
+          "title": "Google DeepMind unveils Genie 4 AI world model - TechGig",
+          "at": "2026-10-28T05:05:46Z"
         },
         "shared": [
-          "gpt",
-          "6.1",
-          "terra"
+          "geni",
+          "4"
         ]
       },
       {
-        "score": 0.669,
-        "blocked": "time-window",
-        "hours_apart": 28.7,
+        "score": 0.631,
+        "blocked": "short-title",
+        "hours_apart": 18.3,
         "a": {
-          "id": "hn:50248124",
+          "id": "hn:50261319",
           "source": "hn-algolia",
-          "title": "GPT-6.1 Terra",
-          "at": "2026-10-26T18:01:17Z"
+          "title": "Genie 4",
+          "at": "2026-10-27T16:06:01Z"
         },
         "b": {
-          "id": "gnews:0fe4e3480a3b9b48",
+          "id": "gnews:0fdb4f97bc81ab43",
           "source": "gnews-rss",
-          "title": "OpenAI's GPT-6.1 Terra is safer overall, but shows more destructive-action flags in tests - BleepingComputer",
-          "at": "2026-10-27T22:43:27Z"
+          "title": "Google DeepMind Previews Genie 4 World Model - Dataconomy",
+          "at": "2026-10-28T10:23:35Z"
         },
         "shared": [
-          "gpt",
-          "6.1",
-          "terra"
+          "geni",
+          "4"
+        ]
+      },
+      {
+        "score": 0.616,
+        "blocked": "time-window",
+        "hours_apart": 27.1,
+        "a": {
+          "id": "rss:openai:1e3ebf94e41ebe19",
+          "source": "rss-lab",
+          "title": "Retell uses OpenAI models to help power 100M monthly calls",
+          "at": "2026-10-27T15:00:00Z"
+        },
+        "b": {
+          "id": "gnews:2d91e2d6d3312063",
+          "source": "gnews-rss",
+          "title": "OpenAI Says Retell Runs 80% of Calls on Its Models, Tops 100 Million Monthly - BigGo Finance",
+          "at": "2026-10-28T18:06:00Z"
+        },
+        "shared": [
+          "retell",
+          "openai",
+          "model",
+          "100m",
+          "monthly",
+          "call"
+        ]
+      },
+      {
+        "score": 0.6,
+        "blocked": "time-window",
+        "hours_apart": 669,
+        "a": {
+          "id": "rss:deepmind:ce56aa83d0064ef1",
+          "source": "rss-lab",
+          "title": "Gemini 4 Argon: our next era of frontier intelligence",
+          "at": "2026-09-30T20:01:45Z"
+        },
+        "b": {
+          "id": "gnews:8dccafe1d0c53bdb",
+          "source": "gnews-rss",
+          "title": "Gemini 4 Carbon: our next frontier model - Google DeepMind",
+          "at": "2026-10-28T17:03:33Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "next",
+          "frontier"
+        ]
+      },
+      {
+        "score": 0.6,
+        "blocked": "time-window",
+        "hours_apart": 669.1,
+        "a": {
+          "id": "rss:deepmind:ce56aa83d0064ef1",
+          "source": "rss-lab",
+          "title": "Gemini 4 Argon: our next era of frontier intelligence",
+          "at": "2026-09-30T20:01:45Z"
+        },
+        "b": {
+          "id": "gnews:0ff0928bc1cd97e6",
+          "source": "gnews-rss",
+          "title": "Gemini 4 Carbon: our next frontier model - blog.google",
+          "at": "2026-10-28T17:04:56Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "next",
+          "frontier"
+        ]
+      },
+      {
+        "score": 0.595,
+        "blocked": "short-title",
+        "hours_apart": 17.5,
+        "a": {
+          "id": "hn:50261319",
+          "source": "hn-algolia",
+          "title": "Genie 4",
+          "at": "2026-10-27T16:06:01Z"
+        },
+        "b": {
+          "id": "gnews:2f7dc9850676a047",
+          "source": "gnews-rss",
+          "title": "Google DeepMind Unveils Genie 4 With Native Audio and World Editing - Techiexpert.com",
+          "at": "2026-10-28T09:36:57Z"
+        },
+        "shared": [
+          "geni",
+          "4"
+        ]
+      },
+      {
+        "score": 0.593,
+        "blocked": "time-window",
+        "hours_apart": 26.1,
+        "a": {
+          "id": "hn:50261319",
+          "source": "hn-algolia",
+          "title": "Genie 4",
+          "at": "2026-10-27T16:06:01Z"
+        },
+        "b": {
+          "id": "gnews:61576ddd4ceaa97b",
+          "source": "gnews-rss",
+          "title": "ICYMI: Google DeepMind previews Genie 4 with native audio - TestingCatalog AI News",
+          "at": "2026-10-28T18:13:42Z"
+        },
+        "shared": [
+          "geni",
+          "4"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.807,
+        "score": 1,
+        "blocked": "time-window",
+        "hours_apart": 206,
+        "a": {
+          "id": "hn:50273731",
+          "source": "hn-algolia",
+          "title": "The Agent SDK",
+          "at": "2026-10-28T14:02:20Z"
+        },
+        "b": {
+          "id": "rss:cursor:8f2420b1bbf4446c",
+          "source": "rss-lab",
+          "title": "Agent SDK",
+          "at": "2026-10-20T00:00:00Z"
+        },
+        "shared": [
+          "agent",
+          "sdk"
+        ]
+      },
+      {
+        "score": 0.808,
         "blocked": "time-window",
         "hours_apart": 33.8,
         "a": {
@@ -951,139 +1001,29 @@
         ]
       },
       {
-        "score": 0.739,
+        "score": 0.66,
         "blocked": "time-window",
-        "hours_apart": 43.1,
+        "hours_apart": 127.9,
         "a": {
-          "id": "hn:50248124",
+          "id": "hn:50276792",
           "source": "hn-algolia",
-          "title": "GPT-6.1 Terra",
-          "at": "2026-10-26T18:01:17Z"
+          "title": "Gemini 4 Carbon",
+          "at": "2026-10-28T17:01:23Z"
         },
         "b": {
-          "id": "gnews:c5dd8cd31d56fecd",
-          "source": "gnews-rss",
-          "title": "OpenAI safety evaluation of GPT-6.1 Terra model - SC Media",
-          "at": "2026-10-28T13:06:55Z"
-        },
-        "shared": [
-          "gpt",
-          "6.1",
-          "terra"
-        ]
-      },
-      {
-        "score": 0.739,
-        "blocked": "time-window",
-        "hours_apart": 43.1,
-        "a": {
-          "id": "hn:50248075",
-          "source": "hn-algolia",
-          "title": "GPT 6.1 Terra",
-          "at": "2026-10-26T17:58:24Z"
-        },
-        "b": {
-          "id": "gnews:c5dd8cd31d56fecd",
-          "source": "gnews-rss",
-          "title": "OpenAI safety evaluation of GPT-6.1 Terra model - SC Media",
-          "at": "2026-10-28T13:06:55Z"
-        },
-        "shared": [
-          "gpt",
-          "6.1",
-          "terra"
-        ]
-      },
-      {
-        "score": 0.739,
-        "blocked": "time-window",
-        "hours_apart": 61.1,
-        "a": {
-          "id": "rss:openai:35e334c198740f74",
+          "id": "rss:testingcatalog:492ae2514d0065d1",
           "source": "rss-lab",
-          "title": "Introducing GPT-6.1 Terra",
-          "at": "2026-10-26T00:00:00Z"
-        },
-        "b": {
-          "id": "gnews:c5dd8cd31d56fecd",
-          "source": "gnews-rss",
-          "title": "OpenAI safety evaluation of GPT-6.1 Terra model - SC Media",
-          "at": "2026-10-28T13:06:55Z"
+          "title": "Gemini 4 Carbon early test results are in ahead of public release",
+          "at": "2026-10-23T09:06:03Z"
         },
         "shared": [
-          "gpt",
-          "6.1",
-          "terra"
+          "gemini",
+          "4",
+          "carbon"
         ]
       },
       {
-        "score": 0.739,
-        "blocked": "time-window",
-        "hours_apart": 37.2,
-        "a": {
-          "id": "gnews:c5dd8cd31d56fecd",
-          "source": "gnews-rss",
-          "title": "OpenAI safety evaluation of GPT-6.1 Terra model - SC Media",
-          "at": "2026-10-28T13:06:55Z"
-        },
-        "b": {
-          "id": "anl:simonw:c15b1e3c66d84564",
-          "source": "rss-analyst",
-          "title": "GPT-6.1 Terra",
-          "at": "2026-10-26T23:53:07Z"
-        },
-        "shared": [
-          "gpt",
-          "6.1",
-          "terra"
-        ]
-      },
-      {
-        "score": 0.722,
-        "blocked": "short-title",
-        "hours_apart": 17.4,
-        "a": {
-          "id": "hn:50261319",
-          "source": "hn-algolia",
-          "title": "Genie 4",
-          "at": "2026-10-27T16:06:01Z"
-        },
-        "b": {
-          "id": "gmail:1a181d9643488cfa",
-          "source": "gmail-news",
-          "title": "😺 Google launches Genie 4 with sound",
-          "at": "2026-10-28T09:31:08Z"
-        },
-        "shared": [
-          "geni",
-          "4"
-        ]
-      },
-      {
-        "score": 0.717,
-        "blocked": "time-window",
-        "hours_apart": 45.9,
-        "a": {
-          "id": "rel:hf-trending:baidu/Unlimited-OCR-2",
-          "source": "releases-atom",
-          "title": "baidu/Unlimited-OCR-2",
-          "at": "2026-10-26T03:57:46Z"
-        },
-        "b": {
-          "id": "gnews:c8bee51df97bcfec",
-          "source": "gnews-rss",
-          "title": "Baidu Open-Sources Unlimited OCR 2, Parsing Documents of Any Length in One Pass - Pandaily",
-          "at": "2026-10-28T01:54:13Z"
-        },
-        "shared": [
-          "baidu",
-          "unlimit",
-          "ocr",
-          "2"
-        ]
-      },
-      {
-        "score": 0.671,
+        "score": 0.659,
         "blocked": "short-title",
         "hours_apart": 0.1,
         "a": {
@@ -1102,6 +1042,94 @@
           "geni",
           "4"
         ]
+      },
+      {
+        "score": 0.659,
+        "blocked": "short-title",
+        "hours_apart": 0,
+        "a": {
+          "id": "hn:50261319",
+          "source": "hn-algolia",
+          "title": "Genie 4",
+          "at": "2026-10-27T16:06:01Z"
+        },
+        "b": {
+          "id": "gnews:f00aa79fcd1258d1",
+          "source": "gnews-rss",
+          "title": "Genie 4: A new generation of world simulation - Google DeepMind",
+          "at": "2026-10-27T16:06:33Z"
+        },
+        "shared": [
+          "geni",
+          "4"
+        ]
+      },
+      {
+        "score": 0.651,
+        "blocked": "short-title",
+        "hours_apart": 13,
+        "a": {
+          "id": "hn:50261319",
+          "source": "hn-algolia",
+          "title": "Genie 4",
+          "at": "2026-10-27T16:06:01Z"
+        },
+        "b": {
+          "id": "gnews:6e7cb3c349ef8902",
+          "source": "gnews-rss",
+          "title": "Google DeepMind unveils Genie 4 AI world model - TechGig",
+          "at": "2026-10-28T05:05:46Z"
+        },
+        "shared": [
+          "geni",
+          "4"
+        ]
+      },
+      {
+        "score": 0.631,
+        "blocked": "short-title",
+        "hours_apart": 18.3,
+        "a": {
+          "id": "hn:50261319",
+          "source": "hn-algolia",
+          "title": "Genie 4",
+          "at": "2026-10-27T16:06:01Z"
+        },
+        "b": {
+          "id": "gnews:0fdb4f97bc81ab43",
+          "source": "gnews-rss",
+          "title": "Google DeepMind Previews Genie 4 World Model - Dataconomy",
+          "at": "2026-10-28T10:23:35Z"
+        },
+        "shared": [
+          "geni",
+          "4"
+        ]
+      },
+      {
+        "score": 0.616,
+        "blocked": "time-window",
+        "hours_apart": 27.1,
+        "a": {
+          "id": "rss:openai:1e3ebf94e41ebe19",
+          "source": "rss-lab",
+          "title": "Retell uses OpenAI models to help power 100M monthly calls",
+          "at": "2026-10-27T15:00:00Z"
+        },
+        "b": {
+          "id": "gnews:2d91e2d6d3312063",
+          "source": "gnews-rss",
+          "title": "OpenAI Says Retell Runs 80% of Calls on Its Models, Tops 100 Million Monthly - BigGo Finance",
+          "at": "2026-10-28T18:06:00Z"
+        },
+        "shared": [
+          "retell",
+          "openai",
+          "model",
+          "100m",
+          "monthly",
+          "call"
+        ]
       }
     ]
   },
@@ -1109,97 +1137,97 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 1,
+      "streak_ok": 2,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 194,
+      "streak_ok": 195,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 194,
+      "streak_ok": 195,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 194,
+      "streak_ok": 195,
       "streak_fail": 0,
-      "items_last": 50
+      "items_last": 53
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 194,
+      "streak_ok": 195,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 194,
+      "streak_ok": 195,
       "streak_fail": 0,
-      "items_last": 56
+      "items_last": 61
     },
     {
       "id": "hn_title",
       "state": "ok",
-      "streak_ok": 48,
+      "streak_ok": 49,
       "streak_fail": 0,
-      "items_last": 9
+      "items_last": 10
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 106,
+      "streak_ok": 107,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "releases_atom",
       "state": "ok",
-      "streak_ok": 48,
+      "streak_ok": 49,
       "streak_fail": 0,
       "items_last": 9
     },
     {
       "id": "rss_analyst",
       "state": "ok",
-      "streak_ok": 48,
+      "streak_ok": 49,
       "streak_fail": 0,
       "items_last": 7
     },
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 13,
+      "streak_ok": 14,
       "streak_fail": 0,
       "items_last": 151
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 194,
+      "streak_ok": 195,
       "streak_fail": 0,
       "items_last": 75
     },
     {
       "id": "wikidata",
       "state": "flaky",
-      "streak_ok": 2,
+      "streak_ok": 3,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.008,
+    "hours": 0.007800833333333333,
     "stale": false
   },
   "hf": {
@@ -1280,7 +1308,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 56,
+    "count": 61,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -1297,7 +1325,7 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 19,
+    "ai_dropped": 18,
     "url": "https://hn.algolia.com/api/v1/search",
     "title_queries": {
       "ok": true,
@@ -1319,9 +1347,9 @@
       ],
       "hits": 14,
       "candidates": 11,
-      "ai_dropped": 2,
-      "duplicates": 2,
-      "added": 9,
+      "ai_dropped": 3,
+      "duplicates": 1,
+      "added": 10,
       "cap": 20,
       "merged_into_live_hn": true
     },
@@ -1329,20 +1357,20 @@
       {
         "id": "hn:50261319",
         "tag": "rest",
-        "score": 941,
+        "score": 1006,
         "text": "Genie 4"
-      },
-      {
-        "id": "hn:50248124",
-        "tag": "rest",
-        "score": 629,
-        "text": "GPT-6.1 Terra"
       },
       {
         "id": "hn:50260814",
         "tag": "rest",
-        "score": 538,
+        "score": 559,
         "text": "Anthropic trained Claude on illegally obtained Stanford professors' books"
+      },
+      {
+        "id": "hn:50276792",
+        "tag": "rest",
+        "score": 360,
+        "text": "Gemini 4 Carbon"
       }
     ]
   },
@@ -1425,32 +1453,32 @@
     "feeds_soft_fail": [],
     "sample": [
       {
-        "id": "rss:huggingnews:b1f2f874ee2f6908",
+        "id": "rss:huggingnews:b198c0f27636c0f7",
         "lab": "huggingnews",
         "tag": "rest",
-        "title": "Anthropic Reveals $131.7B Cash Pile in IPO Filing, Topping All Non-Bank US Peers Except Berkshire and Alphabet",
-        "link": "https://huggingnews.com/earnings/anthropic-reveals-1317b-cash-pile-in-ipo-filing-topping-all-non-bank-us-be518c58"
+        "title": "US Expands DeepSeek AI Ban to Cover All Third-Party Software Built Using Chinese Models",
+        "link": "https://huggingnews.com/ai/update-us-expands-deepseek-ai-ban-to-cover-all-third-party-software-buil-b48b02e8"
       },
       {
-        "id": "rss:huggingnews:591845c4846c3cb1",
+        "id": "rss:huggingnews:f0e70acaef7f96e3",
         "lab": "huggingnews",
         "tag": "rest",
-        "title": "Wall Street's Weekly AI Credit Hedges Top $9B as Debt Stress Hits Big Tech Bonds",
-        "link": "https://huggingnews.com/us-markets/wall-streets-weekly-ai-credit-hedges-top-9b-as-debt-stress-hits-big-tech-7eb771ea"
+        "title": "Foundry Raises $100M to Expand AI Driven Robotics Production",
+        "link": "https://huggingnews.com/startups/foundry-raises-100m-to-expand-ai-driven-robotics-production-c3421590"
       },
       {
-        "id": "rss:huggingnews:6d9ab50d914e5855",
-        "lab": "huggingnews",
+        "id": "rss:testingcatalog:52787ee918d23bcb",
+        "lab": "testingcatalog",
         "tag": "rest",
-        "title": "Upwind Security Raises $400M to Reach $3.8B Valuation",
-        "link": "https://huggingnews.com/startups/upwind-security-raises-400m-to-reach-38b-valuation-0aabb286"
+        "title": "ICYMI: Google DeepMind previews Genie 4 with native audio",
+        "link": "https://www.testingcatalog.com/icymi-google-deepmind-previews-genie-4-with-native-audio/"
       },
       {
-        "id": "rss:huggingnews:2dc8ace6d4fb485b",
+        "id": "rss:huggingnews:876279c5090c9f62",
         "lab": "huggingnews",
         "tag": "rest",
-        "title": "Chinese AI Providers Now Hold All Top 5 Usage Spots on OpenRouter",
-        "link": "https://huggingnews.com/ai/update-chinese-ai-providers-now-hold-all-top-5-usage-spots-on-openrouter-694739e6"
+        "title": "Apple Launches Mac Studio M5 Ultra With 512GB Memory Starting at $22,299",
+        "link": "https://huggingnews.com/tech/apple-launches-mac-studio-m5-ultra-with-512gb-memory-starting-at-22299-698a2de5"
       }
     ]
   },
@@ -1500,32 +1528,32 @@
     ],
     "sample": [
       {
-        "id": "rss-sec:securityweek:4eddf28424678f1f",
-        "lab": "securityweek",
+        "id": "rss-sec:unit42:f2604b355886bf06",
+        "lab": "unit42",
         "tag": "rest",
-        "title": "TLS Flaws Found in GoAhead Web Server Used in Hundreds of Millions of Devices",
-        "link": "https://www.securityweek.com/tls-flaws-found-in-goahead-web-server-used-in-hundreds-of-millions-of-devices/"
+        "title": "Unwrapping Retail Peak Season Cyber Threats",
+        "link": "https://unit42.paloaltonetworks.com/unwrapping-retail-cyber-threats/"
       },
       {
-        "id": "rss-sec:securityweek:e6937debf7f1ca2b",
+        "id": "rss-sec:securityweek:46abc5c97c26960d",
         "lab": "securityweek",
         "tag": "rest",
-        "title": "China-Linked Hackers Exploit PHP2Shell to Root Firewalls",
-        "link": "https://www.securityweek.com/china-linked-hackers-exploit-php2shell-to-root-firewalls/"
+        "title": "Ukrainian Hive and Nefilim Ransomware Affiliate Gets 70 Months in US Prison",
+        "link": "https://www.securityweek.com/ukrainian-hive-and-nefilim-ransomware-affiliate-gets-70-months-in-us-prison/"
       },
       {
-        "id": "rss-sec:securityweek:f3734f22aa335050",
+        "id": "rss-sec:securityweek:5520cafb1593e7ee",
         "lab": "securityweek",
         "tag": "rest",
-        "title": "Long-Hidden Flaws Patched in EPICS Research Facility Control Software",
-        "link": "https://www.securityweek.com/long-hidden-flaws-patched-in-epics-research-facility-control-software/"
+        "title": "Upwind Security Raises $400 Million at $3.8 Billion Valuation",
+        "link": "https://www.securityweek.com/upwind-security-raises-400-million-at-3-8-billion-valuation/"
       },
       {
-        "id": "rss-sec:securityweek:ace54f83b9c9e843",
+        "id": "rss-sec:securityweek:bb040573a45a0744",
         "lab": "securityweek",
         "tag": "rest",
-        "title": "Nobody Trusts the Security Questionnaire. We Rely on It Anyway.",
-        "link": "https://www.securityweek.com/nobody-trusts-the-security-questionnaire-we-rely-on-it-anyway/"
+        "title": "Chrome and Firefox Updates Patch Over 200 Vulnerabilities",
+        "link": "https://www.securityweek.com/chrome-and-firefox-updates-patch-over-200-vulnerabilities/"
       }
     ]
   },
@@ -1550,6 +1578,16 @@
     "dropped": [
       {
         "feed": "simonw",
+        "title": "GitHub Octoverse 2026",
+        "reason": "not-ai"
+      },
+      {
+        "feed": "simonw",
+        "title": "The October inflection point for vibe game development",
+        "reason": "not-ai"
+      },
+      {
+        "feed": "simonw",
         "title": "Quoting Terk Terkowitz",
         "reason": "not-ai"
       },
@@ -1561,16 +1599,6 @@
       {
         "feed": "simonw",
         "title": "Quoting Jason Koebler",
-        "reason": "not-ai"
-      },
-      {
-        "feed": "simonw",
-        "title": "webframe: evaluated as a scraper and a sandbox",
-        "reason": "not-ai"
-      },
-      {
-        "feed": "simonw",
-        "title": "Seam Cutter",
         "reason": "not-ai"
       }
     ],
@@ -1616,10 +1644,10 @@
     "decisions": [
       {
         "feed": "llama.cpp",
-        "action": "seed",
+        "action": "no-bump",
         "newest": "v0.8.0",
         "emitted": null,
-        "baseline": ""
+        "baseline": "v0.8.0"
       },
       {
         "feed": "ollama",
@@ -1676,31 +1704,103 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 50,
-    "pool": 315,
+    "items": 53,
+    "pool": 324,
     "corroborators": [
       {
-        "id": "gnews:9b9f15f18eb9df4c",
-        "anchor_id": "gmail:1a181d9643488cfa",
-        "score": 0.804,
-        "title": "Google DeepMind unveils Genie 4 with sound and world editing — TechCrunch - UA.NEWS",
-        "publisher": "UA.NEWS",
+        "id": "gnews:422e0c59d430b7cd",
+        "anchor_id": "hn:50276792",
+        "score": 0.697,
+        "title": "Google unveils Gemini 4 Carbon with advanced cybersecurity features - Investing.com",
+        "publisher": "Investing.com",
         "self_repost": false
       },
       {
-        "id": "gnews:45493229a28cab55",
-        "anchor_id": "gmail:1a181d9643488cfa",
-        "score": 0.763,
-        "title": "Google’s Genie 4 Interactive AI World Model Adds Sound - WinBuzzer",
-        "publisher": "WinBuzzer",
+        "id": "gnews:cf0cc092039382cf",
+        "anchor_id": "hn:50276792",
+        "score": 0.688,
+        "title": "Google edges up after introducing its latest frontier model: Gemini 4 Carbon - Seeking Alpha",
+        "publisher": "Seeking Alpha",
         "self_repost": false
       },
       {
-        "id": "gnews:bce64909230b7e4e",
-        "anchor_id": "gmail:1a181d9643488cfa",
-        "score": 0.748,
-        "title": "Genie 4 Is Google’s First Real-Time World Model With Sound - FourWeekMBA",
-        "publisher": "FourWeekMBA",
+        "id": "gnews:bf7d191dd9997763",
+        "anchor_id": "hn:50276792",
+        "score": 0.672,
+        "title": "Google: Gemini 4 Carbon Priced at $2 per Mln - Moomoo",
+        "publisher": "Moomoo",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:0ff0928bc1cd97e6",
+        "anchor_id": "rss:deepmind:e8e0cb1d0e685ced",
+        "score": 1,
+        "title": "Gemini 4 Carbon: our next frontier model - blog.google",
+        "publisher": "blog.google",
+        "self_repost": true
+      },
+      {
+        "id": "gnews:530eb57a5a97df4b",
+        "anchor_id": "rss:the-decoder:d71ef95524572956",
+        "score": 1,
+        "title": "Google opens Android development to third-party AI agents and unveils new Gemini APIs - The Decoder",
+        "publisher": "The Decoder",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:d73b49143a372987",
+        "anchor_id": "rss:the-decoder:33641d78dbbd8a82",
+        "score": 1,
+        "title": "OpenAI teases Dots for Europe, but its Berlin DevDay was really about building a platform - The Decoder",
+        "publisher": "The Decoder",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:f00aa79fcd1258d1",
+        "anchor_id": "rss:deepmind:393575ee7d83ff0a",
+        "score": 1,
+        "title": "Genie 4: A new generation of world simulation - Google DeepMind",
+        "publisher": "Google DeepMind",
+        "self_repost": true
+      },
+      {
+        "id": "gnews:772fbf0f7da17512",
+        "anchor_id": "rss:deepmind:393575ee7d83ff0a",
+        "score": 0.62,
+        "title": "Google DeepMind Unveils Genie 4 With Real-Time Simulations And Native Audio Generation - Mashable India",
+        "publisher": "Mashable India",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:ffa099ebaa5d688c",
+        "anchor_id": "rss:deepmind:393575ee7d83ff0a",
+        "score": 0.62,
+        "title": "Google DeepMind Introduces Genie 4 With Real-Time Simulation, Native Audio Generation - Gadgets 360",
+        "publisher": "Gadgets 360",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:0fdb4f97bc81ab43",
+        "anchor_id": "rss:testingcatalog:52787ee918d23bcb",
+        "score": 0.68,
+        "title": "Google DeepMind Previews Genie 4 World Model - Dataconomy",
+        "publisher": "Dataconomy",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:2f7dc9850676a047",
+        "anchor_id": "rss:testingcatalog:52787ee918d23bcb",
+        "score": 0.677,
+        "title": "Google DeepMind Unveils Genie 4 With Native Audio and World Editing - Techiexpert.com",
+        "publisher": "Techiexpert.com",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:2c55e96cebd5259b",
+        "anchor_id": "rss:testingcatalog:52787ee918d23bcb",
+        "score": 0.651,
+        "title": "Google DeepMind Adds Native Audio to Its Genie 4 World Model - TOKENPOST",
+        "publisher": "TOKENPOST",
         "self_repost": false
       },
       {
@@ -1722,7 +1822,7 @@
       {
         "id": "gnews:16fa3feedac668cd",
         "anchor_id": "hn:50261676",
-        "score": 0.733,
+        "score": 0.742,
         "title": "Google DeepMind Debuts Genie 4 World Model: More Realistic Humans, Physics in Generated Videos - Tech Times",
         "publisher": "Tech Times",
         "self_repost": false
@@ -1730,57 +1830,9 @@
       {
         "id": "gnews:6e7cb3c349ef8902",
         "anchor_id": "hn:50261676",
-        "score": 0.606,
+        "score": 0.601,
         "title": "Google DeepMind unveils Genie 4 AI world model - TechGig",
         "publisher": "TechGig",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:f00aa79fcd1258d1",
-        "anchor_id": "rss:deepmind:393575ee7d83ff0a",
-        "score": 1,
-        "title": "Genie 4: A new generation of world simulation - Google DeepMind",
-        "publisher": "Google DeepMind",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:ffa099ebaa5d688c",
-        "anchor_id": "rss:deepmind:393575ee7d83ff0a",
-        "score": 0.614,
-        "title": "Google DeepMind Introduces Genie 4 With Real-Time Simulation, Native Audio Generation - Gadgets 360",
-        "publisher": "Gadgets 360",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:43e2701968d7c497",
-        "anchor_id": "rss:deepmind:393575ee7d83ff0a",
-        "score": 0.603,
-        "title": "Google Announces World Simulation AI Model “Genie 4” - jetstream.blog",
-        "publisher": "jetstream.blog",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:c8bee51df97bcfec",
-        "anchor_id": "hn:50259228",
-        "score": 0.663,
-        "title": "Baidu Open-Sources Unlimited OCR 2, Parsing Documents of Any Length in One Pass - Pandaily",
-        "publisher": "Pandaily",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:0a7f6da04d5d951c",
-        "anchor_id": "anl:simonw:c15b1e3c66d84564",
-        "score": 0.675,
-        "title": "OpenAI’s GPT-6.1 Terra is safer overall, but tests flag more destructive actions - Mezha.net",
-        "publisher": "Mezha.net",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:0fe4e3480a3b9b48",
-        "anchor_id": "anl:simonw:c15b1e3c66d84564",
-        "score": 0.675,
-        "title": "OpenAI's GPT-6.1 Terra is safer overall, but shows more destructive-action flags in tests - BleepingComputer",
-        "publisher": "BleepingComputer",
         "self_repost": false
       },
       {
@@ -1816,14 +1868,6 @@
         "self_repost": false
       },
       {
-        "id": "gnews:74539c5620555266",
-        "anchor_id": "rss:openai:a9c488820a62ac4a",
-        "score": 1,
-        "title": "Greptile takes bug detection beyond code review with GPT-6 Astra - OpenAI",
-        "publisher": "OpenAI",
-        "self_repost": true
-      },
-      {
         "id": "gnews:820fb1f7ba8ee158",
         "anchor_id": "rss:openai:8eb6001a836a6e50",
         "score": 1,
@@ -1836,22 +1880,6 @@
         "anchor_id": "rss:openai:742d30efdc4090c1",
         "score": 1,
         "title": "How Ultrafast cut incident investigation from hours to minutes at OpenAI - OpenAI",
-        "publisher": "OpenAI",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:bb1e3c8059e7e5a2",
-        "anchor_id": "hn:50248124",
-        "score": 1,
-        "title": "Introducing GPT-6.1 Terra - OpenAI",
-        "publisher": "OpenAI",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:8a260d4ae3a63140",
-        "anchor_id": "rss:openai:7e73eebe3e909303",
-        "score": 1,
-        "title": "How Fanatics and OpenAI streamline the fan experience - OpenAI",
         "publisher": "OpenAI",
         "self_repost": true
       }
@@ -1882,24 +1910,24 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:80294564ea0509e2",
-        "title": "Did OpenAI Bots Disprove The Exponential Time Hypothesis? Experts Are Checking - StudyFinds",
-        "publisher": "StudyFinds",
-        "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1RZGg1a0tYVVRGdXUzbGN5bXU0RmhaLXh5Q1RzZThWVEJzZUNBRm9fLUl3TDlhQkh1Qy1obTNmd0xZenZvRXdOR1p1Z1FGeTlJdzZfdFR3ZUlBQXc1VUxhVzRsVzVKemdlNXVfanhmRVQ0ckYyRVVtMjI1dw?oc=5",
+        "id": "gnews:9ea2dace8308c0b6",
+        "title": "Texas sues OpenAI, Sam Altman over ChatGPT safety and age verification - Biometric Update",
+        "publisher": "Biometric Update",
+        "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQVkZfLTV6Mm41Y09LNUxlN3NqeWc1R1NNVVpYTS1XSnBRRDNsWk9vdzRVTWVlalJuemZIVE96WmU1MDg2b0NVVDNCUllfWDBHaXluZ01td0wtY01aM2JzY3NQZ2dDT0k0aGdTalJ0ZEdZWTFvdnRkbWFmbXp6WE4wU2JvWHROZ3ZERG1OSFpIQnUtT0dWLVpkeEpuOW16RGdJajEydGZvSmwteGZG?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:df9e3241f588d4a8",
-        "title": "Alphabet stock rises as OpenAI plans to buy Google’s TPUs - Investing.com",
-        "publisher": "Investing.com",
-        "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOQk14NXZ0bTY0Yk9sR0FOWTJIMzJnUmJUOGFYR05MZ21Janc1bnJmdnNvWjJSMVZaNU9IQlVIZkYyamw2WlpZcmZzYVdLVGYtSjhaWVJaM3NIWm1IMmdFVlF3cnJkY3JXM1phczA5OUR2c29Id2ZFRndlSFMwa2w5cGk5anpMUFc3b3NHbHFBQ1FpcG5WTERqZXRvRG1GenpNR1JGRy1IWk41VTJaRUNyRHdDYw?oc=5",
+        "id": "gnews:713d71537ed51bb4",
+        "title": "Google unveils Gemini 4 Carbon, retaking the world's no. 1 spot on updated, harder benchmarks — but access is limited - VentureBeat",
+        "publisher": "VentureBeat",
+        "link": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxNS1BfSV9DNVl1aW5HV3A3SVc1bDFqZEhFT3VpekhjVDIwaVNKOTc2Z0c2WEJaaWtiNmFfc3BWWXBKWEtqUWpvaGRTOWMwNHBwYlRmbGIyX1FVN1M0Y0xWVGYzMnFWV2NYaFBlZ0JIZzlfR2p1Y2szTDIybXFTQ3FFOUtkazNVbzNoRUJQZV9GNXZLN3V1MWdOVmpCLS1IS2ZIQmRXbE01ZWNHVTNyLTZRWDV5YmFTbjJNZ1Y2VmoycFBnYlFpd1JuY3pRYUlWREMxSmE2b2FEYThGTVJhODA4?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:c5dd8cd31d56fecd",
-        "title": "OpenAI safety evaluation of GPT-6.1 Terra model - SC Media",
-        "publisher": "SC Media",
-        "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPXzUxSEJtSm53bGt2WHR6Zm5yUU1rbmNScUdTVjZkV1RCTE9MajhNdllJLXZJaTQtV1BJTkdEb2IxWUNsZVU0LWFMWTJVWFNBak5OUVpIMG5ONHZ6Ml9NWW1jTUlWQTczZDJCX3B4ZDlVVjBJV1MyMlR5cXFrTVROS0RnYw?oc=5",
+        "id": "gnews:f289476ff9566be9",
+        "title": "OpenAI expanding ChatGPT dot access to iMessage and RCS - 9to5Mac",
+        "publisher": "9to5Mac",
+        "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQX1FYLTNTOW52Szhuc1pfa2lsZHNScHB5OUh3cFhKOFQtLVRubnBUZGVUYzJFTm5YN1hUOV9Mb01IN3Nmb1B5Y04wVzFEN1dxdzQxT0JVMGRSUGdITFJaTnc1Rkl3Nm1STzFkM2Myc2FwY09NblhlZGV6OExBQ1NQU1Joem1fSmZDM3JMMXFzWFU?oc=5",
         "tag": "rest"
       }
     ]

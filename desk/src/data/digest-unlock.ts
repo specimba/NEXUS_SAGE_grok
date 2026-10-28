@@ -8,52 +8,41 @@ export const DIGEST_UNLOCK: DigestUnlockSnapshot = {
   "schema": 1,
   "cycleId": "003",
   "pickDate": "2026-10-28",
-  "frozenAt": "2026-10-28T03:20:59.004Z",
-  "leadId": "cl:rss:huggingnews:ef92c9479c1ad91e",
+  "frozenAt": "2026-10-28T18:29:00.140Z",
+  "leadId": "cl:rss:huggingnews:bdaadea5f9714aee",
   "lead": {
-    "id": "cl:rss:huggingnews:ef92c9479c1ad91e",
+    "id": "cl:rss:huggingnews:bdaadea5f9714aee",
     "kind": "lead",
-    "title": "OpenAI Plans to Purchase AI Chips From Google to Cut Reliance on Nvidia",
-    "take": "16 SRC · pick 2026-10-28",
-    "why": "LEAD_TODAY · picked · frozen at daily pick",
+    "title": "Google Launches Gemini 4 Carbon Frontier AI Two Weeks After Argon Debut",
+    "take": "10 SRC · sig 360 · pick 2026-10-28",
+    "why": "repick: lead older than 12h since pick",
     "move": "Digest/Voice follow Brief lead · cycle label 003",
-    "url": "https://huggingnews.com/ai/openai-plans-to-purchase-ai-chips-from-google-to-cut-reliance-on-nvidia-804ac15e",
-    "sources": 16,
-    "sig": null
+    "url": "https://huggingnews.com/ai/google-launches-gemini-4-carbon-frontier-ai-two-weeks-after-argon-debut-1ddc5a8c",
+    "sources": 10,
+    "sig": 360
   },
   "rows": [
     {
-      "id": "cl:rss:testingcatalog:8684eb48fa1590f3",
+      "id": "cl:rss:testingcatalog:52787ee918d23bcb",
       "kind": "companion",
+      "title": "ICYMI: Google DeepMind previews Genie 4 with native audio",
+      "take": "13 SRC · sig 5",
+      "why": "Top corroborated Wire cluster · same pack as lead pick",
+      "move": "Digest row · never displaces Brief lead",
+      "url": "https://www.testingcatalog.com/icymi-google-deepmind-previews-genie-4-with-native-audio/",
+      "sources": 13,
+      "sig": 5
+    },
+    {
+      "id": "cl:rss:testingcatalog:8684eb48fa1590f3",
+      "kind": "rest",
       "title": "OpenAI launches GPT-6.1 Terra for precise computer use",
-      "take": "8 SRC · sig 626",
+      "take": "3 SRC · sig 24",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
       "url": "https://www.testingcatalog.com/openai-launches-gpt-6-1-terra-for-precise-computer-use/",
-      "sources": 8,
-      "sig": 626
-    },
-    {
-      "id": "cl:hn:50259228",
-      "kind": "rest",
-      "title": "Unlimited-OCR-2: Baidu open-sources an OCR model for unlimited-horizon parsing",
-      "take": "3 SRC · sig 10",
-      "why": "Top corroborated Wire cluster · same pack as lead pick",
-      "move": "Digest row · never displaces Brief lead",
-      "url": "https://huggingface.co/baidu/Unlimited-OCR-2",
       "sources": 3,
-      "sig": 10
-    },
-    {
-      "id": "cl:rss:deepmind:393575ee7d83ff0a",
-      "kind": "rest",
-      "title": "Genie 4: A new generation of world simulation",
-      "take": "3 SRC · sig 773",
-      "why": "Top corroborated Wire cluster · same pack as lead pick",
-      "move": "Digest row · never displaces Brief lead",
-      "url": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/",
-      "sources": 3,
-      "sig": 773
+      "sig": 24
     }
   ]
 } as const;

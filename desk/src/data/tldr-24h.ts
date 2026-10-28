@@ -3,35 +3,42 @@ import type { Tldr } from "@/lib/tldr-24h";
 
 export const TLDR_24H: Tldr = {
   "schema": 1,
-  "crawl_at": "2026-10-28T13:21:05Z",
+  "crawl_at": "2026-10-28T18:28:32Z",
   "date": "2026-10-28",
   "bullets": [
     {
-      "id": "cl:rss:deepmind:393575ee7d83ff0a",
-      "title": "Genie 4: A new generation of world simulation",
-      "url": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/",
-      "at": "2026-10-28T12:41:02Z",
-      "sources": 24
+      "id": "cl:rss:testingcatalog:52787ee918d23bcb",
+      "title": "ICYMI: Google DeepMind previews Genie 4 with native audio",
+      "url": "https://www.testingcatalog.com/icymi-google-deepmind-previews-genie-4-with-native-audio/",
+      "at": "2026-10-28T18:13:42Z",
+      "sources": 13
     },
     {
-      "id": "cl:rss:testingcatalog:8684eb48fa1590f3",
-      "title": "OpenAI launches GPT-6.1 Terra for precise computer use",
-      "url": "https://www.testingcatalog.com/openai-launches-gpt-6-1-terra-for-precise-computer-use/",
-      "at": "2026-10-27T23:14:05Z",
-      "sources": 5
+      "id": "cl:rss:huggingnews:bdaadea5f9714aee",
+      "title": "Google Launches Gemini 4 Carbon Frontier AI Two Weeks After Argon Debut",
+      "url": "https://huggingnews.com/ai/google-launches-gemini-4-carbon-frontier-ai-two-weeks-after-argon-debut-1ddc5a8c",
+      "at": "2026-10-28T18:25:49Z",
+      "sources": 10
     },
     {
-      "id": "cl:hn:50259228",
-      "title": "Unlimited-OCR-2: Baidu open-sources an OCR model for unlimited-horizon parsing",
-      "url": "https://huggingface.co/baidu/Unlimited-OCR-2",
-      "at": "2026-10-28T01:54:13Z",
-      "sources": 3
+      "id": "cl:gmail:1a1839eb125b5b98",
+      "title": "See new AI control from ThreatLocker in action",
+      "url": "https://mail.google.com/mail/#all/1a1839eb125b5b98",
+      "at": "2026-10-28T17:46:14Z",
+      "sources": 10
     },
     {
-      "id": "cl:rss:the-decoder:65b75ce62c3e32d5",
-      "title": "Google Deepmind's Genie 4 puts a modern spin on agent designs that predate LLMs",
-      "url": "https://the-decoder.com/google-deepminds-genie-4-puts-a-modern-spin-on-agent-designs-that-predate-llms/",
-      "at": "2026-10-27T17:30:25Z",
+      "id": "cl:rss:the-decoder:33641d78dbbd8a82",
+      "title": "OpenAI teases Dots for Europe, but its Berlin DevDay was really about building a platform",
+      "url": "https://the-decoder.com/openai-teases-dots-for-europe-but-its-berlin-devday-was-really-about-building-a-platform/",
+      "at": "2026-10-28T16:26:40Z",
+      "sources": 2
+    },
+    {
+      "id": "cl:rss:huggingface:ec733f799e1aaee3",
+      "title": "NVIDIA Nemotron 3.5 Transcribe and Granary v2: Intelligent Multilingual Transcription You Can Prompt and Adapt",
+      "url": "https://huggingface.co/blog/nvidia/nemotron-transcribe-granary",
+      "at": "2026-10-28T15:17:53Z",
       "sources": 2
     }
   ],
