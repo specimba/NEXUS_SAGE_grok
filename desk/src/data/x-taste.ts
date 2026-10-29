@@ -24,7 +24,7 @@ export type XTasteSnap = {
 };
 
 export const X_TASTE: XTasteSnap = {
-  "captured_at": "2026-10-29T12:46:38Z",
+  "captured_at": "2026-10-29T17:46:15Z",
   "briefEligible": false,
   "pulseLeadEligible": false,
   "paidApi": false,
@@ -42,6 +42,13 @@ export const X_TASTE: XTasteSnap = {
       "surface": "feed",
       "url": "https://x.com/OpenAI/status/2105373267171438779",
       "handle": "OpenAI",
+    },
+    {
+      "id": "2115812732872151265",
+      "text": "An OpenAI model found a path to the internet through a DNS misconfiguration. OpenAI paused training of its most powerful models.\n\nA capable agent will probe its limits. Scope its access before, never after.",
+      "surface": "feed",
+      "url": "https://x.com/Abbas_Mistrah/status/2115812732872151265",
+      "handle": "Abbas_Mistrah",
     },
     {
       "id": "2115777420020056157",
@@ -107,13 +114,6 @@ export const X_TASTE: XTasteSnap = {
       "handle": "AzAutomatixdt",
     },
     {
-      "id": "2115279064542101623",
-      "text": "AI Talk of the Town (28 Oct 2026)\nOpenAI's new model, GPT-6.1 Terra: OpenAI launched a model built to understand what's on a computer screen, operate apps and finish workplace tasks faster and more cheaply. Its API prices are 50% lower than the previous model's. It's available to",
-      "surface": "feed",
-      "url": "https://x.com/waheedsheikh101/status/2115279064542101623",
-      "handle": "waheedsheikh101",
-    },
-    {
       "id": "2113661518780998003",
       "text": "Computer Use lets agents click and type across any app on your computer, not just the browser.\n\nCursor uses it on its own when a task needs it. You can also ask for it by @-mentioning Computer Use in your prompt.\n\nUpdate Cursor to try it: https://t.co/vwTPMUSnyd",
       "surface": "feed",
@@ -121,46 +121,46 @@ export const X_TASTE: XTasteSnap = {
       "handle": "cursor_ai",
     },
     {
+      "id": "2115833974983393330",
+      "text": "Is your GrokBot training Grok with your data❓\n\nThe underlying grokbot AI models benefit from user data by default, but it depends heavily on how the data is used and whether you choose to opt out.\nThe data \"benefits\" the LLMs in two distinct ways: through immediate short-term",
+      "surface": "feed",
+      "url": "https://x.com/C0sM1ke/status/2115833974983393330",
+      "handle": "C0sM1ke",
+    },
+    {
+      "id": "2115826807832486381",
+      "text": "Everyone keeps saying Claude looks at screenshots and Codex controls the Mac kernel.\nHalf right. Then wrong.\nClaude's loop is mostly eyes. Screenshot goes in. The model counts pixels. Click (x, y) comes out. Anthropic literally wrote that teaching Claude to count pixels was a big",
+      "surface": "feed",
+      "url": "https://x.com/ai_binbin/status/2115826807832486381",
+      "handle": "ai_binbin",
+    },
+    {
+      "id": "2115801733540827491",
+      "text": "How to let Claude use your Mac while you keep working?\n\nYou need:\n\n• A Mac with the Claude app\n• A Pro or Max plan\n• A task in Claude Cowork or Claude Code\n\nSteps:\n\n1. Open Settings, then General. Turn on \"Computer use.\"\n\n2. Hand a task to Claude Cowork or Claude Code.\n\n3.",
+      "surface": "feed",
+      "url": "https://x.com/Alijafry92/status/2115801733540827491",
+      "handle": "Alijafry92",
+    },
+    {
+      "id": "2115799834649096413",
+      "text": "I tried this with every AI tool for the past couple of years. Grok Bot is the first one that pulled it off. https://t.co/KINRhq2P1L",
+      "surface": "feed",
+      "url": "https://x.com/dariacupareanu/status/2115799834649096413",
+      "handle": "dariacupareanu",
+    },
+    {
+      "id": "2115792890332872755",
+      "text": "@AdamSimecka @HodlMasterChief Grok Bot: named always-on teammates with a shared persistent cloud computer (browser/files/terminal). They sign into your apps, finish multi-step jobs 24/7 even when your laptop is closed, learn routines from demos, and coordinate. Included from Curs",
+      "surface": "feed",
+      "url": "https://x.com/grok/status/2115792890332872755",
+      "handle": "grok",
+    },
+    {
       "id": "2115764672905236527",
       "text": "The last 24 hours in AI, for builders:\n\n• Claude Code background agents can eat 16-26% of spend\n• Cursor Agent SDK goes GA: agents as code\n• Best agent passes 10.8% of real tax work\n• Amazon: where AI fails is \"a finding, not a failing\"\n\n👇 https://t.co/g4ULUTXdjr",
       "surface": "feed",
       "url": "https://x.com/Austen/status/2115764672905236527",
       "handle": "Austen",
-    },
-    {
-      "id": "2115748343435399674",
-      "text": "@zzurcz to c claude 20x e codex 20x, creio q seja o melhor combo, principalmente pq computer use do codex faz mt coisa, enquanto claude tem frescura \n\ngrok bot/cursor junto tem limite lixo se for pra codar. ao meu ver so serve pra deixar as rotinas e tarefas pra eles irem fazendo",
-      "surface": "feed",
-      "url": "https://x.com/darlan3s/status/2115748343435399674",
-      "handle": "darlan3s",
-    },
-    {
-      "id": "2115721297749811668",
-      "text": "Cursor デザインモードにアノテーション機能が追加された！！\n\n- ページ上の要素を直接編集\n- ページの上に手描きで印や線を入れるなどして、エージェントに指示を与えられる\n- 画面サイズを切り替えて、デザインの見え方を確認する\n\nこれらができるので、Cursor https://t.co/fZmOeQIXZy",
-      "surface": "feed",
-      "url": "https://x.com/cu30rry_/status/2115721297749811668",
-      "handle": "cu30rry_",
-    },
-    {
-      "id": "2115718050389610891",
-      "text": "Grok Bot 额度机制天机泄露😱\n\n1. Grok Bot 的额度不按消息条数扣，按 Bot 实际干的活扣：模型调用、上下文体积、工具调用全都算。每走一步都要把整段历史重读一遍，最忙的 Bot 每步要重读 8-9 万 token。\n\n2. 搜 X 走 Bot 自带的免费额度（每分钟 30 次、每天 1000",
-      "surface": "feed",
-      "url": "https://x.com/leaf_sanren/status/2115718050389610891",
-      "handle": "leaf_sanren",
-    },
-    {
-      "id": "2115699262616924257",
-      "text": "当AI Agent操作浏览器时，你只能干等着？ego lite用「Space隔离」给出了新答案：人和Agent共用一个浏览器、共享登录状态，但干活的地方分开。本文深度体验这款GitHub超2万星的AI浏览器，拆解它如何让Agent写代码而非敲命令，以及五类Agent浏览器产品的真实差异。 https://t.co/hx18Zh63Js",
-      "surface": "feed",
-      "url": "https://x.com/Xxgiaogiao/status/2115699262616924257",
-      "handle": "Xxgiaogiao",
-    },
-    {
-      "id": "2115656118412181704",
-      "text": "Cursor 现在的价格页改了\n\n$8 的 Plus 只能用 Grok 模型，$30 的 Premium 是 Plus 的 4 倍用量，Claude 和 GPT 这些第三方模型要按 API 原价另外付\n\n我上周测 Cursor 的 Computer Use 用的就是 Grok 4.7，同一个 iOS 任务跑了 8 分多钟，Codex 两分钟出头\n\n所以主要用 Claude 或者 GPT 的话，在 Cursor",
-      "surface": "feed",
-      "url": "https://x.com/qi9098/status/2115656118412181704",
-      "handle": "qi9098",
     },
     {
       "id": "2113681863109939271",
@@ -191,11 +191,11 @@ export const X_TASTE: XTasteSnap = {
       "handle": "Kimi_Moonshot",
     },
     {
-      "id": "2115786910157431091",
-      "text": "@cryozerolabs 你用 Claude Opus 5.5 和 Kimi K3.1 Pro 各搞一版 ZenMux 小章鱼网页动画这个对照实验也很有意思：\n 同一套需求、同一个参考页面、都是「直接给我能打开的 HTML」，最后产出的前端代码质量、动效细节、还原度，其实就是两家旗舰在「真干活」场景下的直观差距展示，比看 benchmark 图表有意思多了。",
+      "id": "2115862134504784177",
+      "text": "this tb4 story keeps getting wilder.\n\nboth vals ai and aa use mini-swe-agent harness, but the ranking is completely different:\n\nvals ai:\nopus 5.5 &gt; sonnet 5.5 &gt; kimi k3.1 pro &gt; gemini 4 carbon\n\naa:\nkimi k3.1 pro &gt; gemini 4 carbon&gt; sonnet 5.5 &gt; opus 5.5\n\nyou can'",
       "surface": "feed",
-      "url": "https://x.com/Cander_zhu/status/2115786910157431091",
-      "handle": "Cander_zhu",
+      "url": "https://x.com/paradite_/status/2115862134504784177",
+      "handle": "paradite_",
     }
   ],
   "skipped": false,
@@ -206,5 +206,5 @@ export const X_TASTE: XTasteSnap = {
     "seen": 41,
     "kept": 24
   },
-  "stamped_at": "2026-10-29T12:46:38Z"
+  "stamped_at": "2026-10-29T17:46:15Z"
 } as const;
