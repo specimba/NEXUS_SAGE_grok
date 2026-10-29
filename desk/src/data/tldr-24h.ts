@@ -3,7 +3,7 @@ import type { Tldr } from "@/lib/tldr-24h";
 
 export const TLDR_24H: Tldr = {
   "schema": 1,
-  "crawl_at": "2026-10-29T08:20:41Z",
+  "crawl_at": "2026-10-29T13:20:48Z",
   "date": "2026-10-29",
   "bullets": [
     {
@@ -11,28 +11,28 @@ export const TLDR_24H: Tldr = {
       "title": "Google unveils Gemini 4 Carbon for cyber defenders",
       "url": "https://www.testingcatalog.com/google-unveils-gemini-4-carbon-for-cyber-defenders/",
       "at": "2026-10-28T17:00:58Z",
-      "sources": 18
-    },
-    {
-      "id": "cl:rss:huggingnews:39a39397c397d729",
-      "title": "OpenAI Gives ChatGPT Pro and Business Subscribers Up to $500 in Monthly API Credits",
-      "url": "https://huggingnews.com/ai/openai-gives-chatgpt-pro-and-business-subscribers-up-to-500-in-monthly-a-26f2e6bc",
-      "at": "2026-10-28T23:36:46Z",
-      "sources": 3
+      "sources": 19
     },
     {
       "id": "cl:hn:50280732",
       "title": "DOJ is inquiring about Nvidia's purchase of Hugging Face",
       "url": "https://www.reuters.com/world/us-doj-is-inquiring-about-nvidias-purchase-hugging-face-sources-say-2026-10-28/",
-      "at": "2026-10-28T19:31:03Z",
-      "sources": 3
+      "at": "2026-10-28T18:34:42Z",
+      "sources": 4
     },
     {
-      "id": "cl:rss:openai:a395c7da350b5086",
-      "title": "OpenAI and ServiceNow expand partnership across enterprise workflows",
-      "url": "https://openai.com/index/openai-servicenow-partnership-expansion",
-      "at": "2026-10-28T13:15:00Z",
-      "sources": 3
+      "id": "cl:hn:50285539",
+      "title": "Claude's new smart reports tell bosses when workers are 'off-topic'",
+      "url": "https://mashable.com/tech/claude-smart-reports-anthropic-ai-worker-overview",
+      "at": "2026-10-29T07:26:30Z",
+      "sources": 2
+    },
+    {
+      "id": "cl:hn:50286844",
+      "title": "Anthropic engineer declares the coding interview dead",
+      "url": "https://www.theregister.com/ai-and-ml/2026/10/28/anthropic-engineer-declares-the-coding-interview-dead/5306115",
+      "at": "2026-10-28T20:22:56Z",
+      "sources": 2
     },
     {
       "id": "cl:rss:the-decoder:d71ef95524572956",
