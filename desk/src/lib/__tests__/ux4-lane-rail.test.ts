@@ -15,11 +15,12 @@ test("six cells on one sticky row, Skin V2 tokens only, inactive muted, no amber
   expect(rail).not.toMatch(/amber/i);
 });
 
-test("each lane's count comes from data on the page (never invented); GOV short name under md", () => {
+test("each lane's count comes from data on the page (never invented); governance off the reader rail", () => {
   for (const k of ["brief:", "pulse:", "digest:", "papers:", "voice:", "governance:"]) expect(tsx).toContain(`    ${k} `);
   expect(tsx).toContain("CYCLE.trust.deny.length");
   expect(tsx).toContain("m.PAPERS.length");
   expect(tsx).toContain("DIGEST_CADENCE.next_at");
-  expect(tsx).toMatch(/<span className="md:hidden">gov<\/span>/);
+  // PASS-U U1: governance left the reader rail (footer link / key 6); its count key stays for that view.
+  expect(tsx).toContain('.filter((t) => t.id !== "governance")');
   expect(tsx).toContain('<span className="lane-rail-count tabular-nums">{railCount[t.id]}</span>');
 });

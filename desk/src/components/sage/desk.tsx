@@ -45,6 +45,9 @@ import { footerStamp } from "@/lib/build-footer";
 import { isPausedAt, type PauseMap } from "@/lib/source-pause";
 import { istanbulHHMM, wireHeader, wireMark } from "@/lib/wire";
 import { WIKIDATA_DENY_LAST } from "@/data/wikidata-deny-last";
+import { offtopicNoiseReason } from "@/lib/pulse-offtopic";
+import type { ToolkitRow } from "@/lib/toolkit-shelf";
+import type { MovedRow } from "@/lib/corroboration";
 import { SOFT_FAIL_METERS } from "@/data/soft-fail-meters";
 import { isDigestDue, nextDue, PACK_KEY } from "@/lib/digest-cadence-gate";
 import type { UnlockRow as ArchiveRow } from "@/lib/digest-unlock";
@@ -65,7 +68,7 @@ import {
   compactAge,
   isBaseline,
   healthCellState,
-  healthReasonShort,
+  calmMeterLine,
   healthTicks,
   HEALTH_TICKS,
   PULSE_V5_MAX_ROWS,
@@ -204,7 +207,8 @@ function AgeCell({ iso, now, className }: { iso: string | null | undefined; now:
 /** Crawl items (HN / GNews / lab / security — not X posts) and the per-member info memberInfo() builds at ingest. */
 const CRAWL_ITEM_IDS = crawlItemIds(MEMBER_ROWS);
 const MEMBERS = inflateMembers(MEMBER_ROWS);
-const PULSE_CLUSTERS = inflateClusters(MEMBER_ROWS, ORPHAN_CLUSTERS);
+// PASS-U U6: crypto-price clickbait off Pulse (noise:offtopic).
+const PULSE_CLUSTERS = inflateClusters(MEMBER_ROWS, ORPHAN_CLUSTERS).filter((c) => !offtopicNoiseReason(c.title));
 /** Every member item's own time (HN created_at, GNews / lab / security published). */
 const MEMBER_AT: Record<string, string> = memberAt(MEMBER_ROWS, CRAWL_ITEM_IDS);
 /** Story age = its EARLIEST member item (same rule as the lead pick) — late reposts never make it look fresh. */
@@ -593,6 +597,9 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
           >
             ingest · snap {istDateTime(CRAWL_AT)} · pack {istDateTime(packStamp)} {IST_LABEL}
           </p>
+          {/* PASS-U U1: ops ticker folds closed — reader chrome stays quiet. */}
+          <details className="desk-details desk-ops-fold text-sm text-muted">
+          <summary>ops · what changed</summary>
           <div className="desk-ticker" aria-label="What changed">
             <span className="desk-ticker-label">Δ LIVE</span>
             <div className="desk-ticker-track">
@@ -606,20 +613,15 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
                 lead{" "}
                 <LeadInline view={leadV} />
               </span>
-              <span className="desk-ticker-item">
-                wikidata {WIKIDATA_DENY_LAST.hints.filter((h) => h.status === "rejected_false_friend").length} reject · {WIKIDATA_DENY_LAST.hints.filter((h) => h.status === "matched").length} match · brief=false
-              </span>
-              <span className="desk-ticker-item">
-                visual phosphor · [01] lanes · no frontpage
-              </span>
             </div>
           </div>
+          </details>
         </div>
       </header>
       {/* UX-NEXT-4 pass 1: lane counter rail — one sticky six-cell row, each lane with its live count. */}
       <div className="lane-rail px-4 md:px-6">
         <nav className="desk-lane" aria-label="Lanes">
-          {laneTabs(lane, laneReady).map(({ active, ...t }) => ({ ...t, active: active && !Setup })).map((t) => (
+          {laneTabs(lane, laneReady).filter((t) => t.id !== "governance").map(({ active, ...t }) => ({ ...t, active: active && !Setup })).map((t) => (
             <button
               key={t.id}
               type="button"
@@ -628,16 +630,7 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
               data-active={t.active ? "1" : "0"}
               className="desk-lane-btn focus-phosphor"
             >
-              <span className="lane-rail-name">
-                {t.id === "governance" ? (
-                  <>
-                    <span className="md:hidden">gov</span>
-                    <span className="hidden md:inline">governance</span>
-                  </>
-                ) : (
-                  t.id
-                )}
-              </span>
+              <span className="lane-rail-name">{t.id}</span>
               <span className="lane-rail-count tabular-nums">{railCount[t.id]}</span>
             </button>
           ))}
@@ -744,6 +737,10 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
           <span className="desk-keys-hint">? keys</span>
           <a className="desk-keys-hint desk-setup-link" href="?view=setup">
             setup
+          </a>
+          {/* PASS-U U1: Governance is ops, not a reader lane peer — reached here (or key 6). */}
+          <a className="desk-keys-hint desk-setup-link" href="#governance">
+            governance
           </a>
           <span
             className="desk-build-stamp-text"
@@ -1223,11 +1220,11 @@ function Brief({ tldr }: { tldr?: ReactNode }) {
       </div>
 
       {/* Under mid · denser wave strip */}
-      <section
+      <details
         className="sage-panel sage-ticks sage-wave-dense overflow-hidden lg:col-span-6 lg:col-start-3"
         aria-label="Three waves"
       >
-        <div className="sage-panel-header">board · three waves</div>
+        <summary className="sage-panel-header">board · three waves</summary>
         <div className="p-2">
           <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">
             METR 1–2 · OpenAI 3 · not civilization chart
@@ -1260,7 +1257,7 @@ function Brief({ tldr }: { tldr?: ReactNode }) {
             })}
           </ul>
         </div>
-      </section>
+      </details>
     </div>
     </>
   );
@@ -1527,6 +1524,7 @@ export function Pulse() {
     (a, b) => HEALTH_ORDER.indexOf(a.id) - HEALTH_ORDER.indexOf(b.id),
   );
   const tasteMeter = tasteSoftMeter(X_TASTE);
+  const calmLine = calmMeterLine(health, (id) => HEALTH_LABEL[id] ?? id);
   const tasteShown = TASTE_SHOWN;
   const tasteItems = tasteAll ? tasteShown : tasteShown.slice(0, TASTE_CAP);
 
@@ -1579,7 +1577,7 @@ export function Pulse() {
                 {Array.from({ length: HEALTH_TICKS }, (_, i) => (i < ticks ? "▮" : "▯")).join("")}
               </span>
               <span className="tabular-nums">
-                {state === "ok" ? s.items_last : healthReasonShort(s.fail_reason, s.state)}
+                {state === "ok" || s.status === "ok" ? s.items_last : "last good"}
               </span>
             </span>
           );
@@ -1608,6 +1606,8 @@ export function Pulse() {
           )}
         </span>
       </div>
+
+      {calmLine ? <p className="pulse-v5-foot tabular-nums" data-meter-calm>{calmLine}</p> : null}
 
       {/* 1b · Beat 10 topic heat — 4h routine windows, click a cell = filter to that company */}
       <HeatStrip />
@@ -1910,6 +1910,7 @@ function Digest() {
   // Pass A1: when unlock live, Moved pin follows DIGEST_UNLOCK lead — never hf-swarm (archive only).
   const movedUnlock = unlock.stamp !== "archive" && !!unlock.leadId;
   const movedLeadId = movedUnlock ? unlock.leadId : RANK_CURRENT.lead_id;
+  const movedReal = movedRows(movedUnlock ? RANK_MOVED.filter((m) => !ARCHIVE_LEAD_IDS.has(m.id)) : RANK_MOVED);
   const liveRows = useMemo(() => [unlock.lead, ...unlock.rows], [unlock]);
   const [openId, setOpenId] = useState(unlock.lead.id);
   const [last, setLast] = useState<string | null>(DIGEST_CADENCE.last_at);
@@ -2126,74 +2127,56 @@ function Digest() {
           className="sage-panel sage-ticks sage-moved overflow-hidden lg:col-span-12"
           aria-label="Moved since last crawl"
         >
-          <div className="sage-panel-header">Moved since last crawl · corroboration rank below lead</div>
+          <div className="sage-panel-header">Moved since last crawl</div>
           <div className="px-2.5 py-2">
             <p className="font-mono text-kicker uppercase tracking-kicker text-subtle tabular-nums" data-moved-lead={movedLeadId}>
-              crawl {RANK_PREV?.crawl_at ? istDateTime(RANK_PREV.crawl_at) : "—"} → {istDateTime(RANK_CURRENT.crawl_at)} {IST_LABEL} · lead {movedLeadId} pinned · ×
-              {"≤"}1.45 · curated items only
+              {RANK_PREV?.crawl_at ? istDateTime(RANK_PREV.crawl_at) : "—"} → {istDateTime(RANK_CURRENT.crawl_at)} {IST_LABEL}
             </p>
-            <ol className="sage-moved-table mt-1.5">
-              <li className="sage-moved-head" aria-hidden>
-                <span>Δ</span>
-                <span>item</span>
-                <span>rank</span>
-                <span>base</span>
-                <span>SRC</span>
-                <span>×</span>
-              </li>
-              {movedUnlock ? (
-                <li className="sage-moved-row" data-status="same" data-unlock-lead="1" data-row-clamp="moved">
-                  <span className="sage-moved-delta">=</span>
-                  <span className="sage-moved-item truncate">{movedLeadId} · lead · pick {unlock.pickDate}</span>
-                  <span className="tabular-nums" data-label="rank">1</span>
-                  <span className="tabular-nums" data-label="base">—</span>
-                  <span className="tabular-nums" data-label="SRC">{unlock.lead.sources}</span>
-                  <span className="tabular-nums" data-label="×">pin</span>
-                </li>
-              ) : null}
-              {(movedUnlock ? RANK_MOVED.filter((m) => !ARCHIVE_LEAD_IDS.has(m.id)) : RANK_MOVED).map((m) => {
-                const r = RANK_CURRENT.rows.find((x) => x.id === m.id);
-                const glyph =
-                  m.status === "up" ? "▲" : m.status === "down" ? "▼" : m.status === "new" ? "NEW" : m.status === "gone" ? "OUT" : "=";
-                return (
-                  <li key={m.id} className="sage-moved-row" data-status={m.status} data-corroboration={m.by_corroboration ? "1" : undefined}>
-                    <span className="sage-moved-delta">{glyph}</span>
-                    <span className="sage-moved-item truncate">
-                      {m.id}
-                      {r?.lead ? " · lead" : ""}
-                      {m.by_corroboration ? " · moved by SRC" : ""}
-                    </span>
-                    <span className="tabular-nums" data-label="rank">
-                      {m.prev_rank ?? "—"}→{m.rank ?? "—"}
-                    </span>
-                    <span className="tabular-nums" data-label="base">{r?.base_rank ?? "—"}</span>
-                    <span className="tabular-nums" data-label="SRC">
-                      {m.prev_sources ?? "—"}→{m.sources ?? "—"}
-                    </span>
-                    <span className="tabular-nums" data-label="×">{r?.lead ? "pin" : r?.mult ?? "—"}</span>
-                  </li>
-                );
-              })}
-            </ol>
-            <p className="mt-1.5 font-mono text-kicker uppercase tracking-kicker text-subtle">
-              {RANK_MOVED.some((m) => m.status === "up" || m.status === "down" || m.by_corroboration)
-                ? "reorder present"
-                : "no reorder — corroboration agrees with base order this crawl"}
-              {" · "}Taste / Pulse / shelf never ranked here (briefEligible=false)
-            </p>
+            {/* PASS-U U2: only real moves; headline first, ids + × math under a closed Rank detail. */}
+            {movedReal.length ? (
+              <>
+                <ol className="mt-1.5">
+                  {movedReal.map((m) => (
+                    <li key={m.id} className="sage-moved-row" data-status={m.status} data-corroboration={m.by_corroboration ? "1" : undefined}>
+                      <span className="sage-moved-delta">{movedGlyph(m.status)}</span> <span className="sage-moved-item">{movedTitle(m.id)}</span>
+                    </li>
+                  ))}
+                </ol>
+                <details className="desk-details mt-1.5 text-sm text-muted">
+                  <summary>Rank detail</summary>
+                  <ol className="sage-moved-table mt-1.5">
+                    {movedReal.map((m) => {
+                      const r = RANK_CURRENT.rows.find((x) => x.id === m.id);
+                      return (
+                        <li key={m.id} className="sage-moved-row" data-status={m.status}>
+                          <span className="sage-moved-delta">{movedGlyph(m.status)}</span>
+                          <span className="sage-moved-item truncate">{m.id}</span>
+                          <span className="tabular-nums" data-label="rank">{m.prev_rank ?? "—"}→{m.rank ?? "—"}</span>
+                          <span className="tabular-nums" data-label="base">{r?.base_rank ?? "—"}</span>
+                          <span className="tabular-nums" data-label="SRC">{m.prev_sources ?? "—"}→{m.sources ?? "—"}</span>
+                          <span className="tabular-nums" data-label="×">{r?.lead ? "pin" : r?.mult ?? "—"}</span>
+                        </li>
+                      );
+                    })}
+                  </ol>
+                  <p className="mt-1">× {"≤"}1.45 · curated items only</p>
+                </details>
+              </>
+            ) : (
+              <p className="mt-1.5 text-sm" data-moved-idle>No rank change this crawl</p>
+            )}
           </div>
         </section>
       </div>
 
       {/* Quiet ops chrome — preview browser-only */}
       <div className="sage-panel sage-ticks lane-craft-digest-panel mt-3 overflow-hidden">
-        <div className="sage-panel-header">Ops · preview browser-only · downloads</div>
+        <div className="sage-panel-header" title={`durable · bun run digest:tick · artifacts/sage/packs/${DIGEST_CADENCE.pack_id}.md|json`}>Ops · preview · downloads</div>
         <div className="flex flex-wrap items-center gap-2 p-2">
           <button
             type="button"
             className="focus-phosphor h-9 bg-accent px-3 font-mono text-kicker uppercase tracking-kicker text-accent-fg"
             onClick={runPreview}
-            title="preview only · bun run digest:tick"
           >
             Preview report
           </button>
@@ -2215,7 +2198,6 @@ function Digest() {
           <button
             type="button"
             className="term focus-phosphor h-9 px-3 font-mono text-kicker uppercase tracking-kicker"
-            title="UI twin JSON · bun run pack:export"
             onClick={() =>
               void loadArchive().then((a) => download(
                 `sage-pack-twin-${CYCLE.id}.json`,
@@ -2246,41 +2228,59 @@ function Digest() {
             Download pack twin
           </button>
         </div>
-        <p className="border-t border-line px-3 py-2 font-mono text-kicker uppercase tracking-kicker text-subtle">
-          durable · bun run digest:tick · artifacts/sage/packs/{DIGEST_CADENCE.pack_id}.md|json
-          {previewNote ? " · preview is localStorage only" : ""}
-          {cadence.due !== due ? " · browser mirror may differ from disk" : ""}
-        </p>
+        {previewNote || cadence.due !== due ? (
+          <p className="border-t border-line px-3 py-2 font-mono text-kicker uppercase tracking-kicker text-subtle">
+            {previewNote ? "preview is localStorage only" : ""}
+            {cadence.due !== due ? " · browser mirror may differ from disk" : ""}
+          </p>
+        ) : null}
       </div>
 
-      {/* Toolkit shelf — quiet companion, never Brief */}
-      <div className="sage-panel sage-ticks mt-3 overflow-hidden">
-        <div className="sage-panel-header">Toolkit shelf · classifyUrl · never Brief</div>
-        <p className="border-b border-line px-3 py-1.5 font-mono text-kicker uppercase tracking-kicker text-subtle">
-          {SHELF.length} links · github-search off Pulse lead
-        </p>
-        <ul className="max-h-36 overflow-auto divide-y divide-line">
-          {SHELF.slice(0, 12).map((s) => (
-            <li key={s.href} className="flex flex-wrap items-baseline justify-between gap-2 px-3 py-1.5">
-              <a
-                href={s.href}
-                target="_blank"
-                rel="noreferrer"
-                className="focus-phosphor truncate text-sm sage-signal"
-              >
-                {s.label}
-              </a>
-              <span className="font-mono text-kicker uppercase tracking-kicker text-subtle shrink-0">
-                {s.reason}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <ToolkitShelf />
     </div>
   );
 }
 
+
+/** PASS-U U4 — Toolkit shelf: lazy chunk (static name map), header count = rows shown. */
+function ToolkitShelf() {
+  const [rows, setRows] = useState<ToolkitRow[] | null>(null);
+  useEffect(() => {
+    let live = true;
+    import("@/lib/toolkit-shelf").then((m) => live && setRows(m.toolkitRows(SHELF)), () => {});
+    return () => {
+      live = false;
+    };
+  }, []);
+  if (!rows) return null;
+  return (
+    <div className="sage-panel sage-ticks mt-3 overflow-hidden" data-toolkit-n={rows.length}>
+      <div className="sage-panel-header">Toolkit · {rows.length}</div>
+      <ul className="max-h-48 overflow-auto divide-y divide-line">
+        {rows.map((r, i) => (
+          <li key={r.href} className="px-3 py-1.5" data-bucket={r.bucket}>
+            {i === 0 || rows[i - 1]!.bucket !== r.bucket ? <p className="font-mono text-kicker uppercase tracking-kicker text-subtle">{r.bucket}</p> : null}
+            <a href={r.href} target="_blank" rel="noreferrer" className="focus-phosphor text-sm sage-signal">
+              {r.name}
+            </a>{" "}
+            <span className="desk-chip desk-chip-quiet">{r.chip}</span>
+            <span className="block truncate text-xs text-muted">
+              {r.path}
+              {r.purpose ? ` · ${r.purpose}` : ""}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+/** PASS-U U2 — real moves only, plain headline (pin title / crawl title), slug never primary. */
+const movedRows = (rows: readonly MovedRow[]) => rows.filter((m) => m.status !== "same" || m.by_corroboration);
+const movedGlyph = (s: MovedRow["status"]) => (s === "up" ? "▲" : s === "down" ? "▼" : s === "new" ? "NEW" : s === "gone" ? "OUT" : "=");
+function movedTitle(id: string): string {
+  return CYCLE.pins.find((p) => p.id === id)?.title ?? MEMBER_ROWS[id]?.t ?? WIRE_BY_ID.get(id)?.title ?? id.replace(/^cl:[a-z-]+:/, "").replace(/[-_:]+/g, " ");
+}
 
 function Papers() {
   const [openId, setOpenId] = useState<string | null>(null);

@@ -389,6 +389,14 @@ export function healthReasonShort(reason: string | null | undefined, state: stri
   return r.length <= 10 ? r : r.split(/[\s:·,]+/)[0].slice(0, 10);
 }
 
+/** PASS-U U5: one calm line for the open meter strip — no raw TIMEOUT / 503 codes (full reason stays in the cell title).
+ *  Only sources whose LAST run failed are named; a flaky-but-now-ok source reads as ok. */
+export function calmMeterLine(rows: readonly { id: string; status?: string; state: string; fail_reason?: string | null }[], label: (id: string) => string): string | null {
+  const bad = rows.filter((r) => (r.status ?? r.state) !== "ok" && r.state !== "ok");
+  if (!bad.length) return null;
+  return `${bad.map((r) => `${label(r.id)} ${/time(d\s*)?out/i.test(r.fail_reason ?? "") ? "timed out" : "unavailable"}`).join(" · ")} · using last good`;
+}
+
 export function healthCellState(state: string): HealthCellState {
   if (state === "ok") return "ok";
   if (state === "flaky" || state === "soft") return "soft";

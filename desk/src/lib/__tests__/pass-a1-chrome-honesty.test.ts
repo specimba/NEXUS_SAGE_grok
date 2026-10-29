@@ -96,7 +96,7 @@ describe("Pass A1 chrome honesty", () => {
     expect(deskSrc).toContain('ARCHIVE_LEAD_IDS = new Set(["hf-swarm", "hf-incident"])');
     expect(deskSrc).toContain("data-moved-lead={movedLeadId}");
     expect(deskSrc).toContain("(movedUnlock ? RANK_MOVED.filter((m) => !ARCHIVE_LEAD_IDS.has(m.id)) : RANK_MOVED)");
-    expect(deskSrc).toContain(`data-unlock-lead="1"`);
+    // PASS-U U2: the "=" unlock-lead pin row is gone — Moved lists real moves only.
     expect(DIGEST_UNLOCK.leadId).not.toMatch(/^hf-/);
     expect(deskSrc).toContain('"archive · cycle 003 context"');
   });

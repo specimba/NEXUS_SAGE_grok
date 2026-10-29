@@ -5,6 +5,7 @@
  * previous crawl's wire snapshot (artifacts/sage/wire-prev.json, rotated by scripts/rank-snapshot.ts).
  * The Wire never displaces the lead (hf-incident) or the Take — it renders under them.
  */
+import { offtopicNoiseReason } from "./pulse-offtopic";
 import { isAiRelevant } from "@/lib/ai-relevance";
 import { buildRows, compactAge, type ClusterInput, type PulseMemberInfo } from "@/lib/pulse-v5";
 
@@ -87,7 +88,7 @@ export function investingNoiseReason(title: string): string | null {
 export function wireExcludeReason(c: WireCluster, tasteIds: Set<string> = new Set(), keepNoise = false): string | null {
   if (c.briefEligible === false) return "briefEligible:false";
   if (!keepNoise) {
-    const noise = investingNoiseReason(c.title);
+    const noise = investingNoiseReason(c.title) ?? offtopicNoiseReason(c.title);
     if (noise) return noise;
   }
   const ids = [c.id, c.lead_id, ...c.member_ids];
