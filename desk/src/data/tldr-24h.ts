@@ -3,28 +3,42 @@ import type { Tldr } from "@/lib/tldr-24h";
 
 export const TLDR_24H: Tldr = {
   "schema": 1,
-  "crawl_at": "2026-10-28T18:28:32Z",
-  "date": "2026-10-28",
+  "crawl_at": "2026-10-29T08:20:41Z",
+  "date": "2026-10-29",
   "bullets": [
     {
-      "id": "cl:rss:huggingnews:bdaadea5f9714aee",
-      "title": "Google Launches Gemini 4 Carbon Frontier AI Two Weeks After Argon Debut",
-      "url": "https://huggingnews.com/ai/google-launches-gemini-4-carbon-frontier-ai-two-weeks-after-argon-debut-1ddc5a8c",
+      "id": "cl:rss:testingcatalog:90bb3e441c768369",
+      "title": "Google unveils Gemini 4 Carbon for cyber defenders",
+      "url": "https://www.testingcatalog.com/google-unveils-gemini-4-carbon-for-cyber-defenders/",
       "at": "2026-10-28T17:00:58Z",
-      "sources": 10
+      "sources": 18
+    },
+    {
+      "id": "cl:rss:huggingnews:39a39397c397d729",
+      "title": "OpenAI Gives ChatGPT Pro and Business Subscribers Up to $500 in Monthly API Credits",
+      "url": "https://huggingnews.com/ai/openai-gives-chatgpt-pro-and-business-subscribers-up-to-500-in-monthly-a-26f2e6bc",
+      "at": "2026-10-28T23:36:46Z",
+      "sources": 3
+    },
+    {
+      "id": "cl:hn:50280732",
+      "title": "DOJ is inquiring about Nvidia's purchase of Hugging Face",
+      "url": "https://www.reuters.com/world/us-doj-is-inquiring-about-nvidias-purchase-hugging-face-sources-say-2026-10-28/",
+      "at": "2026-10-28T19:31:03Z",
+      "sources": 3
+    },
+    {
+      "id": "cl:rss:openai:a395c7da350b5086",
+      "title": "OpenAI and ServiceNow expand partnership across enterprise workflows",
+      "url": "https://openai.com/index/openai-servicenow-partnership-expansion",
+      "at": "2026-10-28T13:15:00Z",
+      "sources": 3
     },
     {
       "id": "cl:rss:the-decoder:d71ef95524572956",
       "title": "Google opens Android development to third-party AI agents and unveils new Gemini APIs",
       "url": "https://the-decoder.com/google-opens-android-development-to-third-party-ai-agents-and-unveils-new-gemini-apis/",
       "at": "2026-10-28T16:59:59Z",
-      "sources": 2
-    },
-    {
-      "id": "cl:rss:the-decoder:33641d78dbbd8a82",
-      "title": "OpenAI teases Dots for Europe, but its Berlin DevDay was really about building a platform",
-      "url": "https://the-decoder.com/openai-teases-dots-for-europe-but-its-berlin-devday-was-really-about-building-a-platform/",
-      "at": "2026-10-28T16:25:02Z",
       "sources": 2
     },
     {

@@ -22,6 +22,6 @@ export const SHELF: ShelfItem[] = [
   { href: "https://arxiv.org/abs/2610.37658", label: "arxiv.org/abs/2610.37658", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.37657", label: "arxiv.org/abs/2610.37657", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.37656", label: "arxiv.org/abs/2610.37656", reason: "arxiv-shelf" as const },
-  { href: "https://github.com/hyperlight-dev/hyperagent", label: "hyperlight-dev/hyperagent", reason: "github-search-shelf" as const },
-  { href: "https://github.com/controlplaneio/sandbox-probe", label: "controlplaneio/sandbox-probe", reason: "github-search-shelf" as const },
+  { href: "https://github.com/kourtispanos/agentshield", label: "kourtispanos/agentshield", reason: "github-search-shelf" as const },
+  { href: "https://github.com/md-fazle-rabbi/fazle-ai-red-team-toolkit", label: "md-fazle-rabbi/fazle-ai-red-team-toolkit", reason: "github-search-shelf" as const },
 ];

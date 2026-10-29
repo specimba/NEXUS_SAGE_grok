@@ -2,6 +2,57 @@
 import type { LeadEntry } from "@/lib/lead-pick";
 
 export const LEAD_TODAY: LeadEntry | null = {
+  "date": "2026-10-29",
+  "at": "2026-10-29T08:21:07.105Z",
+  "crawl_at": "2026-10-29T08:20:41Z",
+  "catch_up": true,
+  "pick_slot": "11:20",
+  "excluded": [
+    {
+      "cluster_id": "cl:rss:testingcatalog:8684eb48fa1590f3",
+      "headline": "OpenAI launches GPT-6.1 Terra for precise computer use",
+      "reason": "age>=36h",
+      "sources": 3,
+      "age_h": 56,
+      "pub": "TES"
+    },
+    {
+      "cluster_id": "cl:hn:50260485",
+      "headline": "Broadcom CEO Intervened to Seal $63B Anthropic Debt Deal",
+      "reason": "age>=36h",
+      "sources": 2,
+      "age_h": 41,
+      "pub": "HN"
+    },
+    {
+      "cluster_id": "cl:rss:deepmind:393575ee7d83ff0a",
+      "headline": "Genie 4: A new generation of world simulation",
+      "reason": "age>=36h",
+      "sources": 2,
+      "age_h": 40,
+      "pub": "DMD"
+    },
+    {
+      "cluster_id": "cl:rss:deepmind:851107eacfc8ba0f",
+      "headline": "Gemini 4 Argon: Built to solve your hardest problems",
+      "reason": "age>=36h",
+      "sources": 2,
+      "age_h": 376,
+      "pub": "DMD"
+    }
+  ],
+  "cluster_id": "cl:rss:testingcatalog:90bb3e441c768369",
+  "headline": "Google unveils Gemini 4 Carbon for cyber defenders",
+  "url": "https://www.testingcatalog.com/google-unveils-gemini-4-carbon-for-cyber-defenders/",
+  "sources": 18,
+  "sig": 906,
+  "reason": "picked",
+  "pub": "TES",
+  "first_at": "2026-10-28T17:00:58.000Z",
+  "age_band": "<24h"
+};
+
+export const LEAD_YESTERDAY: LeadEntry | null = {
   "date": "2026-10-28",
   "at": "2026-10-28T18:29:00.140Z",
   "crawl_at": "2026-10-28T18:28:32Z",
@@ -19,60 +70,10 @@ export const LEAD_TODAY: LeadEntry | null = {
   "note": "repick: lead older than 12h since pick"
 };
 
-export const LEAD_YESTERDAY: LeadEntry | null = {
-  "date": "2026-10-27",
-  "at": "2026-10-27T18:21:15.341Z",
-  "crawl_at": "2026-10-27T18:20:49Z",
-  "catch_up": true,
-  "pick_slot": "21:20",
-  "excluded": [
-    {
-      "cluster_id": "cl:rss:testingcatalog:8684eb48fa1590f3",
-      "headline": "OpenAI launches GPT-6.1 Terra for precise computer use",
-      "reason": "age>=36h",
-      "sources": 5,
-      "age_h": 42,
-      "pub": "TES"
-    },
-    {
-      "cluster_id": "cl:hn:50259228",
-      "headline": "Unlimited-OCR-2: Baidu open-sources an OCR model for unlimited-horizon parsing",
-      "reason": "age>=36h",
-      "sources": 3,
-      "age_h": 38,
-      "pub": "HN"
-    },
-    {
-      "cluster_id": "cl:gnews:cc0809426a353d09",
-      "headline": "Calix releases communications language model on Hugging Face",
-      "reason": "GNW_ONLY",
-      "sources": 2,
-      "age_h": 5
-    },
-    {
-      "cluster_id": "cl:rss:deepmind:851107eacfc8ba0f",
-      "headline": "Gemini 4 Argon: Built to solve your hardest problems",
-      "reason": "age>=36h",
-      "sources": 2,
-      "age_h": 338,
-      "pub": "DMD"
-    }
-  ],
-  "cluster_id": "cl:gmail:1a17e66e21c4898e",
-  "headline": "Nvidia says AI agents can understand your data without a migration",
-  "url": "https://mail.google.com/mail/#all/1a17e66e21c4898e",
-  "sources": 9,
-  "sig": null,
-  "reason": "picked",
-  "pub": "GML",
-  "first_at": "2026-10-27T17:27:13.000Z",
-  "age_band": "<24h"
-};
-
 export const LEAD_HELD = false;
 
 /** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is >48h old (PASS-L). */
 export const LEAD_FIRST_AT: string | null = "2026-10-28T17:00:58.000Z";
 
 /** Date of the latest real pick (never a HELD entry) — the HELD card's "last pick" (UX-1). */
-export const LEAD_LAST_PICK: string | null = "2026-10-28";
+export const LEAD_LAST_PICK: string | null = "2026-10-29";
