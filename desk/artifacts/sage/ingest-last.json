@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-29T13:20:48Z",
+  "stamped_at": "2026-10-29T18:20:43Z",
   "config_hash": "1ba30989ff76",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,7 +11,7 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 141,
+      "duration_ms": 125,
       "paused_until": null,
       "reason": null
     },
@@ -20,7 +20,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 3205,
+      "duration_ms": 3419,
       "paused_until": null,
       "reason": null
     },
@@ -29,7 +29,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 539,
+      "duration_ms": 652,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 125,
+      "duration_ms": 275,
       "paused_until": null,
       "reason": null
     },
@@ -46,8 +46,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 55,
-      "duration_ms": 8286,
+      "rows": 48,
+      "duration_ms": 8398,
       "paused_until": null,
       "reason": null
     },
@@ -56,7 +56,7 @@
       "label": "HN title",
       "status": "ok",
       "rows": 10,
-      "duration_ms": 8277,
+      "duration_ms": 8270,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 150,
-      "duration_ms": 25922,
+      "duration_ms": 25988,
       "paused_until": null,
       "reason": null
     },
@@ -82,8 +82,8 @@
       "id": "rss_analyst",
       "label": "analyst RSS",
       "status": "ok",
-      "rows": 7,
-      "duration_ms": 2486,
+      "rows": 6,
+      "duration_ms": 2789,
       "paused_until": null,
       "reason": null
     },
@@ -91,8 +91,8 @@
       "id": "releases_atom",
       "label": "releases",
       "status": "ok",
-      "rows": 8,
-      "duration_ms": 6530,
+      "rows": 9,
+      "duration_ms": 6631,
       "paused_until": null,
       "reason": null
     },
@@ -100,8 +100,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 56,
-      "duration_ms": 6412,
+      "rows": 52,
+      "duration_ms": 6496,
       "paused_until": null,
       "reason": null
     },
@@ -110,7 +110,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 2,
-      "duration_ms": 407,
+      "duration_ms": 364,
       "paused_until": null,
       "reason": null
     },
@@ -119,16 +119,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4517,
+      "duration_ms": 4481,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 78951,
-    "sources_wall_ms": 25923,
-    "papers_lane_ms": 4016,
-    "slowest_source_ms": 25922,
+    "sources_ms": 79992,
+    "sources_wall_ms": 25989,
+    "papers_lane_ms": 4478,
+    "slowest_source_ms": 25988,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -146,46 +146,46 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 26729,
-    "startup_ms": 57,
-    "main_ms": 27369
+    "wall_ms": 26748,
+    "startup_ms": 59,
+    "main_ms": 27185
   },
-  "multi_source_independent": 9,
+  "multi_source_independent": 11,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 9,
+    "multi_source_independent": 11,
     "multi_source_raw": 16,
-    "self_reposts": 9,
-    "items_in": 365,
-    "clusters_out": 307,
-    "collapsed": 58,
-    "multi_source": 9,
-    "multi_member": 26,
+    "self_reposts": 8,
+    "items_in": 357,
+    "clusters_out": 300,
+    "collapsed": 57,
+    "multi_source": 11,
+    "multi_member": 25,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 70,
+    "new_items": 93,
     "per_source": {
-      "hn-algolia": 55,
+      "hn-algolia": 48,
       "rss-lab": 150,
       "rss-security": 77,
-      "gnews-rss": 56,
-      "gmail-news": 12,
-      "rss-analyst": 7,
-      "releases-atom": 8
+      "gnews-rss": 52,
+      "gmail-news": 15,
+      "rss-analyst": 6,
+      "releases-atom": 9
     },
     "multi_source_clusters": [
       {
-        "title": "Google unveils Gemini 4 Carbon for cyber defenders",
+        "title": "Google Unveils Gemini 4 Carbon, Topping Cyber Benchmarks and AI Index in Gated Rollout",
         "sources": [
           "rss-lab",
           "hn-algolia",
+          "rss-security",
           "rss-analyst",
-          "gnews-rss",
-          "gmail-news"
+          "gnews-rss"
         ],
-        "size": 22,
+        "size": 20,
         "score": 1,
         "members": [
           {
@@ -201,6 +201,13 @@
             "title": "Gemini 4 Carbon is the new #1 on the Artificial Analysis Intelligence Index v5",
             "at": "2026-10-29T12:41:56Z",
             "publisher": null
+          },
+          {
+            "id": "rss:huggingnews:40a91b77aa206d6b",
+            "source": "rss-lab",
+            "title": "Google Unveils Gemini 4 Carbon, Topping Cyber Benchmarks and AI Index in Gated Rollout",
+            "at": "2026-10-29T18:07:54Z",
+            "publisher": "huggingnews"
           },
           {
             "id": "rss:testingcatalog:90bb3e441c768369",
@@ -224,39 +231,25 @@
             "publisher": "deepmind"
           },
           {
-            "id": "gnews:b1adf322c364acdf",
-            "source": "gnews-rss",
-            "title": "Google says Gemini 4 Carbon beats its predecessors at finding and fixing security flaws - Help Net Security",
-            "at": "2026-10-29T12:44:15Z",
-            "publisher": "Help Net Security"
+            "id": "rss-sec:securityweek:20af6b12d5575579",
+            "source": "rss-security",
+            "title": "Google Touts Powerful Cybersecurity Capabilities in Gemini 4 Carbon Model",
+            "at": "2026-10-29T15:01:00Z",
+            "publisher": "securityweek"
           },
           {
-            "id": "gnews:b58379a0b3a10fe4",
+            "id": "gnews:ab3d1392e11da6c5",
             "source": "gnews-rss",
-            "title": "Gemini 4 Carbon vs Gemini 4 Argon: 9 Points, No Endpoint - OrcaRouter",
-            "at": "2026-10-29T12:34:03Z",
+            "title": "Google Launches Gemini 4 Carbon and Genie 4 AI Models With Native Audio and Photorealistic Simulations - Brave New Coin",
+            "at": "2026-10-29T17:40:16Z",
+            "publisher": "Brave New Coin"
+          },
+          {
+            "id": "gnews:c667b4d089d0ba43",
+            "source": "gnews-rss",
+            "title": "Gemini 4 Carbon Successor: What the Leak Doesn't Say - OrcaRouter",
+            "at": "2026-10-29T16:38:34Z",
             "publisher": "OrcaRouter"
-          },
-          {
-            "id": "gnews:03289b420152573d",
-            "source": "gnews-rss",
-            "title": "Gemini 4 Carbon vs Gemini 4: Model or Generation Name? - OrcaRouter",
-            "at": "2026-10-29T12:27:59Z",
-            "publisher": "OrcaRouter"
-          },
-          {
-            "id": "gnews:1860cfb244add6df",
-            "source": "gnews-rss",
-            "title": "Google’s Gemini 4 Carbon tops the charts (for now) - The Rundown AI",
-            "at": "2026-10-29T12:00:34Z",
-            "publisher": "The Rundown AI"
-          },
-          {
-            "id": "gmail:1a1875ef81a22871",
-            "source": "gmail-news",
-            "title": "Google Launches Gemini 4 Carbon, Its Second Major AI Model in a Month",
-            "at": "2026-10-29T11:15:08Z",
-            "publisher": "gmail"
           },
           {
             "id": "anl:latent-space:ca1531157f04f09e",
@@ -266,40 +259,32 @@
             "publisher": "latent-space"
           },
           {
-            "id": "gnews:961845a7a1049997",
+            "id": "gnews:74935f1254c04fb9",
             "source": "gnews-rss",
-            "title": "Google Deepmind releases Gemini 4 Carbon just two weeks after Argon with gains across the board - The Decoder",
-            "at": "2026-10-28T19:21:14Z",
-            "publisher": "The Decoder"
+            "title": "Staged Rollout Sends Google’s Gemini 4 Carbon To Cyber Defenders First - Unite.AI",
+            "at": "2026-10-28T19:07:02Z",
+            "publisher": "Unite.AI"
           },
           {
-            "id": "gnews:54eaa9a9398fc66e",
+            "id": "gnews:d8dd7b9f1eef33c1",
             "source": "gnews-rss",
-            "title": "Google unveils Gemini 4 Carbon just two weeks after Argon: Here’s what’s new - WION",
-            "at": "2026-10-29T11:11:00Z",
-            "publisher": "WION"
+            "title": "Google’s Gemini 4 Carbon tops AI rankings, but only cyber defenders get it - The Next Web",
+            "at": "2026-10-29T16:07:05Z",
+            "publisher": "The Next Web"
           },
           {
-            "id": "gnews:ab56209da69d224d",
+            "id": "gnews:20a55dc5d584e306",
             "source": "gnews-rss",
-            "title": "Gemini 4 Carbon: our next frontier model - blog.google",
-            "at": "2026-10-28T17:08:56Z",
-            "publisher": "blog.google",
-            "self_repost": true
+            "title": "Gemini 4 Carbon tops AI index; cyber defenders get it first - R&D World",
+            "at": "2026-10-28T23:20:46Z",
+            "publisher": "R&D World"
           },
           {
-            "id": "gnews:bd525948b0d4f31f",
+            "id": "gnews:11d68bec57f8bb98",
             "source": "gnews-rss",
-            "title": "Google announces Gemini 4 Carbon, its new frontier AI model - Mashable",
-            "at": "2026-10-29T10:49:54Z",
-            "publisher": "Mashable"
-          },
-          {
-            "id": "gnews:3a4816ac61877998",
-            "source": "gnews-rss",
-            "title": "Google has released Gemini 4 Carbon - LinkedIn",
-            "at": "2026-10-28T17:32:52Z",
-            "publisher": "LinkedIn"
+            "title": "Google unveils new Gemini 4 Carbon AI model - Deccan Herald",
+            "at": "2026-10-29T14:55:38Z",
+            "publisher": "Deccan Herald"
           },
           {
             "id": "gnews:fea589a8d1f13b6d",
@@ -309,72 +294,126 @@
             "publisher": "Constellation Research"
           },
           {
-            "id": "gnews:15485173968e47fe",
+            "id": "gnews:bd525948b0d4f31f",
             "source": "gnews-rss",
-            "title": "Google launches Gemini 4 Carbon AI model with cybersecurity focus - Reuters",
-            "at": "2026-10-28T18:12:49Z",
-            "publisher": "Reuters"
+            "title": "Google announces Gemini 4 Carbon, its new frontier AI model - Mashable",
+            "at": "2026-10-29T10:49:54Z",
+            "publisher": "Mashable"
           },
           {
-            "id": "gnews:a542ff213e2d3390",
+            "id": "gnews:dd509e1ca7f0fc98",
             "source": "gnews-rss",
-            "title": "Google unveils Gemini 4 Carbon for cyber defenders - TestingCatalog AI News",
-            "at": "2026-10-28T20:53:13Z",
-            "publisher": "TestingCatalog AI News"
+            "title": "With Gemini 4 Carbon, Google Touts Big Leap in Cybersecurity Capabilities - PCMag",
+            "at": "2026-10-29T13:39:46Z",
+            "publisher": "PCMag"
           },
           {
-            "id": "gnews:74935f1254c04fb9",
+            "id": "gnews:54eaa9a9398fc66e",
             "source": "gnews-rss",
-            "title": "Staged Rollout Sends Google’s Gemini 4 Carbon To Cyber Defenders First - Unite.AI",
-            "at": "2026-10-28T19:07:02Z",
-            "publisher": "Unite.AI"
+            "title": "Google unveils Gemini 4 Carbon just two weeks after Argon: Here’s what’s new - WION",
+            "at": "2026-10-29T11:11:00Z",
+            "publisher": "WION"
           },
           {
-            "id": "gnews:c6dcfa00f7c88fd5",
+            "id": "gnews:1fca9bd7caa94673",
             "source": "gnews-rss",
-            "title": "Gemini 4 Carbon AI Model Puts Google Back on Top, But Only Cyber Defenders Can Use It For Now - WinBuzzer",
-            "at": "2026-10-28T21:13:04Z",
-            "publisher": "WinBuzzer"
+            "title": "Gemini 4 Carbon Ranks No. 1 on Artificial Analysis Index, Ahead of Claude Opus 5.5 - trendingtopics.eu",
+            "at": "2026-10-28T18:04:17Z",
+            "publisher": "trendingtopics.eu"
           },
           {
-            "id": "gnews:370beae627b836ff",
+            "id": "gnews:ab56209da69d224d",
             "source": "gnews-rss",
-            "title": "Gemini 4 Carbon is Google's second new frontier model this month - Android Authority",
-            "at": "2026-10-28T21:53:00Z",
-            "publisher": "Android Authority"
+            "title": "Gemini 4 Carbon: our next frontier model - blog.google",
+            "at": "2026-10-28T17:08:56Z",
+            "publisher": "blog.google",
+            "self_repost": true
           }
         ]
       },
       {
-        "title": "OpenAI launches GPT-6.1 Terra for precise computer use",
+        "title": "Chinese spies targeted Nvidia CEO Jensen Huang, according to The New York Times",
         "sources": [
           "rss-lab",
-          "hn-algolia",
-          "rss-analyst"
+          "gnews-rss"
         ],
-        "size": 3,
-        "score": 0.762,
+        "size": 5,
+        "score": 0.925,
         "members": [
           {
-            "id": "hn:50261070",
-            "source": "hn-algolia",
-            "title": "GPT-6.1 Terra's price cut, recomputed for a cache-heavy agent session",
-            "at": "2026-10-27T15:47:38Z",
-            "publisher": null
-          },
-          {
-            "id": "rss:testingcatalog:8684eb48fa1590f3",
+            "id": "rss:the-decoder:53dd8daeb0ed2692",
             "source": "rss-lab",
-            "title": "OpenAI launches GPT-6.1 Terra for precise computer use",
-            "at": "2026-10-27T10:35:29Z",
-            "publisher": "testingcatalog"
+            "title": "Chinese spies targeted Nvidia CEO Jensen Huang, according to The New York Times",
+            "at": "2026-10-29T13:42:38Z",
+            "publisher": "the-decoder"
           },
           {
-            "id": "anl:simonw:c15b1e3c66d84564",
-            "source": "rss-analyst",
-            "title": "GPT-6.1 Terra",
-            "at": "2026-10-26T23:53:07Z",
-            "publisher": "simonw"
+            "id": "gnews:cfa95485eed948b5",
+            "source": "gnews-rss",
+            "title": "Nvidia CEO reportedly targeted by Chinese spy previously under suspicion for AI chip smuggling - PC Gamer",
+            "at": "2026-10-29T17:30:39Z",
+            "publisher": "PC Gamer"
+          },
+          {
+            "id": "gnews:0bbc0f257c302be7",
+            "source": "gnews-rss",
+            "title": "Nvidia CEO Jensen Huang reportedly targeted by Chinese spy - Gizmodo",
+            "at": "2026-10-29T16:20:17Z",
+            "publisher": "Gizmodo"
+          },
+          {
+            "id": "gnews:f077198ea8f65a89",
+            "source": "gnews-rss",
+            "title": "Nvidia CEO reportedly targeted by Chinese spy - The Guardian",
+            "at": "2026-10-29T17:40:00Z",
+            "publisher": "The Guardian"
+          },
+          {
+            "id": "gnews:91267d4ce2af8126",
+            "source": "gnews-rss",
+            "title": "Nvidia CEO Jensen Huang reportedly targeted by suspected Chinese spy — here's what we know - Tom's Guide",
+            "at": "2026-10-29T17:48:35Z",
+            "publisher": "Tom's Guide"
+          }
+        ]
+      },
+      {
+        "title": "OpenAI Extends AI Misalignment Monitoring to All Frontier Models",
+        "sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "size": 4,
+        "score": 1,
+        "members": [
+          {
+            "id": "rss:huggingnews:da10437b6b355af6",
+            "source": "rss-lab",
+            "title": "OpenAI Extends AI Misalignment Monitoring to All Frontier Models",
+            "at": "2026-10-29T16:23:45Z",
+            "publisher": "huggingnews"
+          },
+          {
+            "id": "rss:openai:0f01adb2acab0a67",
+            "source": "rss-lab",
+            "title": "How we detect frontier model misalignment",
+            "at": "2026-10-29T09:00:00Z",
+            "publisher": "openai"
+          },
+          {
+            "id": "gnews:5ec64d248941674d",
+            "source": "gnews-rss",
+            "title": "OpenAI Expands Monitoring to Detect Frontier Model Misalignment - Unite.AI",
+            "at": "2026-10-29T17:11:03Z",
+            "publisher": "Unite.AI"
+          },
+          {
+            "id": "gnews:9f04741a2ea5374e",
+            "source": "gnews-rss",
+            "title": "How we detect frontier model misalignment - OpenAI",
+            "at": "2026-10-29T16:15:43Z",
+            "publisher": "OpenAI",
+            "self_repost": true
           }
         ]
       },
@@ -398,8 +437,83 @@
             "id": "gnews:9e24d55a35305f8f",
             "source": "gnews-rss",
             "title": "Claude's new smart reports tell bosses when workers are 'off-topic' - Mashable",
-            "at": "2026-10-29T11:46:40Z",
+            "at": "2026-10-29T14:41:40Z",
             "publisher": "Mashable"
+          }
+        ]
+      },
+      {
+        "title": "Le Chonk: Built for Coders, Trusted by Defenders.",
+        "sources": [
+          "rss-lab",
+          "hn-algolia"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:50289418",
+            "source": "hn-algolia",
+            "title": "We're releasing the weights of Mistral Large 4",
+            "at": "2026-10-29T14:13:21Z",
+            "publisher": null
+          },
+          {
+            "id": "rss:mistral:bd03e4a483646b85",
+            "source": "rss-lab",
+            "title": "Le Chonk: Built for Coders, Trusted by Defenders.",
+            "at": "2026-10-29T12:00:07Z",
+            "publisher": "mistral"
+          }
+        ]
+      },
+      {
+        "title": "DeepSeek, Moonshot used OpenAI's GPT-6 Astra to train latest models",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:50289310",
+            "source": "hn-algolia",
+            "title": "DeepSeek, Moonshot used OpenAI's GPT-6 Astra to train latest models",
+            "at": "2026-10-29T14:07:47Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:93aa51a078c1a477",
+            "source": "gnews-rss",
+            "title": "DeepSeek, Moonshot used OpenAI's GPT-6 Astra to train latest models, The Information reports - Reuters",
+            "at": "2026-10-29T02:11:00Z",
+            "publisher": "Reuters"
+          }
+        ]
+      },
+      {
+        "title": "OpenAI's Astra becomes the main target for Chinese AI labs after Anthropic tightens its defenses",
+        "sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "rss:the-decoder:c7111c14d1057eea",
+            "source": "rss-lab",
+            "title": "OpenAI's Astra becomes the main target for Chinese AI labs after Anthropic tightens its defenses",
+            "at": "2026-10-29T13:20:14Z",
+            "publisher": "the-decoder"
+          },
+          {
+            "id": "gnews:fa950572cb3b524c",
+            "source": "gnews-rss",
+            "title": "OpenAI's Astra becomes the main target for Chinese AI labs after Anthropic tightens its defenses - The Decoder",
+            "at": "2026-10-29T13:24:29Z",
+            "publisher": "The Decoder"
           }
         ]
       },
@@ -429,52 +543,12 @@
         ]
       },
       {
-        "title": "OpenAI and ServiceNow expand partnership across enterprise workflows",
-        "sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "size": 4,
-        "score": 1,
-        "members": [
-          {
-            "id": "rss:openai:a395c7da350b5086",
-            "source": "rss-lab",
-            "title": "OpenAI and ServiceNow expand partnership across enterprise workflows",
-            "at": "2026-10-28T13:15:00Z",
-            "publisher": "openai"
-          },
-          {
-            "id": "gnews:e7875fc1420e563a",
-            "source": "gnews-rss",
-            "title": "OpenAI and ServiceNow Expand Partnership Across Enterprise Workflows - TOKENPOST",
-            "at": "2026-10-29T07:34:04Z",
-            "publisher": "TOKENPOST"
-          },
-          {
-            "id": "gnews:e8a439ca00ec96d2",
-            "source": "gnews-rss",
-            "title": "OpenAI and ServiceNow expand partnership across enterprise workflows - OpenAI",
-            "at": "2026-10-28T17:18:00Z",
-            "publisher": "OpenAI",
-            "self_repost": true
-          },
-          {
-            "id": "gnews:e8122cc70a6b4367",
-            "source": "gnews-rss",
-            "title": "OpenAI and ServiceNow Expand Partnership With ChatGPT Workflow Plugin - Unite.AI",
-            "at": "2026-10-28T20:45:02Z",
-            "publisher": "Unite.AI"
-          }
-        ]
-      },
-      {
         "title": "DOJ is inquiring about Nvidia's purchase of Hugging Face",
         "sources": [
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 4,
+        "size": 2,
         "score": 1,
         "members": [
           {
@@ -490,45 +564,39 @@
             "title": "EXCLUSIVE: US DOJ is inquiring about Nvidia's purchase of Hugging Face, sources say - Reuters",
             "at": "2026-10-28T20:41:13Z",
             "publisher": "Reuters"
-          },
-          {
-            "id": "gnews:b40b6123b9850027",
-            "source": "gnews-rss",
-            "title": "Exclusive-US DOJ is inquiring about Nvidia's purchase of Hugging Face, sources say - Yahoo! Finance Canada",
-            "at": "2026-10-28T18:34:42Z",
-            "publisher": "Yahoo! Finance Canada"
-          },
-          {
-            "id": "gnews:2f3a513cfca1c26b",
-            "source": "gnews-rss",
-            "title": "DOJ Inquires About Nvidia’s Hugging Face Deal, Reuters Says - Bloomberg",
-            "at": "2026-10-28T19:31:03Z",
-            "publisher": "Bloomberg"
           }
         ]
       },
       {
-        "title": "Google opens Android development to third-party AI agents and unveils new Gemini APIs",
+        "title": "OpenAI and ServiceNow expand partnership across enterprise workflows",
         "sources": [
           "rss-lab",
           "gnews-rss"
         ],
-        "size": 2,
+        "size": 3,
         "score": 1,
         "members": [
           {
-            "id": "rss:the-decoder:d71ef95524572956",
+            "id": "rss:openai:a395c7da350b5086",
             "source": "rss-lab",
-            "title": "Google opens Android development to third-party AI agents and unveils new Gemini APIs",
-            "at": "2026-10-28T16:59:59Z",
-            "publisher": "the-decoder"
+            "title": "OpenAI and ServiceNow expand partnership across enterprise workflows",
+            "at": "2026-10-28T13:15:00Z",
+            "publisher": "openai"
           },
           {
-            "id": "gnews:530eb57a5a97df4b",
+            "id": "gnews:e8a439ca00ec96d2",
             "source": "gnews-rss",
-            "title": "Google opens Android development to third-party AI agents and unveils new Gemini APIs - The Decoder",
-            "at": "2026-10-28T17:01:14Z",
-            "publisher": "The Decoder"
+            "title": "OpenAI and ServiceNow expand partnership across enterprise workflows - OpenAI",
+            "at": "2026-10-28T17:18:00Z",
+            "publisher": "OpenAI",
+            "self_repost": true
+          },
+          {
+            "id": "gnews:e8122cc70a6b4367",
+            "source": "gnews-rss",
+            "title": "OpenAI and ServiceNow Expand Partnership With ChatGPT Workflow Plugin - Unite.AI",
+            "at": "2026-10-28T20:45:02Z",
+            "publisher": "Unite.AI"
           }
         ]
       },
@@ -556,55 +624,48 @@
             "publisher": "huggingface"
           }
         ]
-      },
-      {
-        "title": "Genie 4: A new generation of world simulation",
-        "sources": [
-          "rss-lab",
-          "hn-algolia"
-        ],
-        "size": 2,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:50261319",
-            "source": "hn-algolia",
-            "title": "Genie 4",
-            "at": "2026-10-27T16:06:01Z",
-            "publisher": null
-          },
-          {
-            "id": "rss:deepmind:393575ee7d83ff0a",
-            "source": "rss-lab",
-            "title": "Genie 4: A new generation of world simulation",
-            "at": "2026-10-27T16:01:38Z",
-            "publisher": "deepmind"
-          }
-        ]
       }
     ],
     "self_repost_clusters": [
       {
-        "title": "Google unveils Gemini 4 Carbon for cyber defenders",
+        "title": "Google Unveils Gemini 4 Carbon, Topping Cyber Benchmarks and AI Index in Gated Rollout",
         "sources": [
           "rss-lab",
           "hn-algolia",
+          "rss-security",
           "rss-analyst",
-          "gnews-rss",
-          "gmail-news"
+          "gnews-rss"
         ],
         "all_sources": [
           "rss-lab",
           "hn-algolia",
+          "rss-security",
           "rss-analyst",
-          "gnews-rss",
-          "gmail-news"
+          "gnews-rss"
         ],
         "self_reposts": [
           {
             "id": "gnews:ab56209da69d224d",
             "publisher": "blog.google",
             "title": "Gemini 4 Carbon: our next frontier model - blog.google"
+          }
+        ]
+      },
+      {
+        "title": "OpenAI Extends AI Misalignment Monitoring to All Frontier Models",
+        "sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:9f04741a2ea5374e",
+            "publisher": "OpenAI",
+            "title": "How we detect frontier model misalignment - OpenAI"
           }
         ]
       },
@@ -627,7 +688,7 @@
         ]
       },
       {
-        "title": "Thin, Light and Built for Everything: NVIDIA RTX Spark Windows Laptops Gain New Models, Agent Tools and Games",
+        "title": "How Ropes & Gray is developing AI for transactional diligence",
         "sources": [
           "rss-lab"
         ],
@@ -637,9 +698,26 @@
         ],
         "self_reposts": [
           {
-            "id": "gnews:3c9c1967342dbcea",
-            "publisher": "NVIDIA Blog",
-            "title": "Thin, Light and Built for Everything: NVIDIA RTX Spark Windows Laptops Gain New Models, Agent Tools and Games - NVIDIA Blog"
+            "id": "gnews:b5549ebf5a397c11",
+            "publisher": "OpenAI",
+            "title": "How Ropes & Gray is developing AI for transactional diligence - OpenAI"
+          }
+        ]
+      },
+      {
+        "title": "An updated Model Spec for more capable and beneficial AI",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:b647d07cc2a18302",
+            "publisher": "OpenAI",
+            "title": "An updated Model Spec for more capable and beneficial AI - OpenAI"
           }
         ]
       },
@@ -693,57 +771,6 @@
             "title": "How Check Point accelerates vulnerability research with Daybreak - OpenAI"
           }
         ]
-      },
-      {
-        "title": "NVIDIA RTX Spark Powers Neural Rendering and AI Characters in Games",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:07e9755303551f11",
-            "publisher": "NVIDIA Developer",
-            "title": "NVIDIA RTX Spark Powers Neural Rendering and AI Characters in Games | NVIDIA Technical Blog - NVIDIA Developer"
-          }
-        ]
-      },
-      {
-        "title": "OpenAI expands partnership with Oracle to bring its apps to ChatGPT",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:a49b03ec62352ea4",
-            "publisher": "OpenAI",
-            "title": "OpenAI expands partnership with Oracle to bring its apps to ChatGPT - OpenAI"
-          }
-        ]
-      },
-      {
-        "title": "Fine-Tuning NVIDIA Nemotron to Know Local Rules, Not Just Local Languages",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:79a379a72dc402f9",
-            "publisher": "NVIDIA Developer",
-            "title": "Fine-Tuning NVIDIA Nemotron to Know Local Rules, Not Just Local Languages | NVIDIA Technical Blog - NVIDIA Developer"
-          }
-        ]
       }
     ],
     "ai_relevance": {
@@ -761,22 +788,30 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "FourWeekMBA",
-          "title": "Nvidia Recount: Singapore Gone, US +$16.2B, China +$7.9B - FourWeekMBA"
+          "publisher": "Fox Business",
+          "title": "Suspected Chinese intelligence asset gained access to Nvidia CEO Jensen Huang: report - Fox Business"
         },
         {
-          "publisher": "The Globe and Mail",
-          "title": "Why Munro Partners’ Nick Griffin is bullish on Nvidia - The Globe and Mail"
+          "publisher": "Tom's Guide",
+          "title": "Nvidia CEO Jensen Huang reportedly targeted by suspected Chinese spy — here's what we know - Tom's Guide"
+        },
+        {
+          "publisher": "The Guardian",
+          "title": "Nvidia CEO reportedly targeted by Chinese spy - The Guardian"
+        },
+        {
+          "publisher": "BeBeez International",
+          "title": "GTC Berlin: Nvidia wants you to know it cares – just don’t ask too many questions - BeBeez International"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 16
+      "hn_dropped": 12
     },
     "gnews_near_misses": [
       {
-        "score": 0.683,
+        "score": 0.699,
         "blocked": "thin-overlap",
-        "hours_apart": 3.3,
+        "hours_apart": 18.1,
         "a": {
           "id": "rss:testingcatalog:90bb3e441c768369",
           "source": "rss-lab",
@@ -784,10 +819,10 @@
           "at": "2026-10-28T20:48:38Z"
         },
         "b": {
-          "id": "gnews:3a4816ac61877998",
+          "id": "gnews:11d68bec57f8bb98",
           "source": "gnews-rss",
-          "title": "Google has released Gemini 4 Carbon - LinkedIn",
-          "at": "2026-10-28T17:32:52Z"
+          "title": "Google unveils new Gemini 4 Carbon AI model - Deccan Herald",
+          "at": "2026-10-29T14:55:38Z"
         },
         "shared": [
           "google",
@@ -797,7 +832,29 @@
         ]
       },
       {
-        "score": 0.627,
+        "score": 0.648,
+        "blocked": "time-window",
+        "hours_apart": 24.6,
+        "a": {
+          "id": "hn:50276792",
+          "source": "hn-algolia",
+          "title": "Gemini 4 Carbon",
+          "at": "2026-10-28T17:01:23Z"
+        },
+        "b": {
+          "id": "gnews:ab3d1392e11da6c5",
+          "source": "gnews-rss",
+          "title": "Google Launches Gemini 4 Carbon and Genie 4 AI Models With Native Audio and Photorealistic Simulations - Brave New Coin",
+          "at": "2026-10-29T17:40:16Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "carbon"
+        ]
+      },
+      {
+        "score": 0.632,
         "blocked": "thin-overlap",
         "hours_apart": 0.4,
         "a": {
@@ -820,53 +877,7 @@
         ]
       },
       {
-        "score": 0.617,
-        "blocked": "thin-overlap",
-        "hours_apart": 2.8,
-        "a": {
-          "id": "rss:huggingnews:9cadbeadf5ea582f",
-          "source": "rss-lab",
-          "title": "Microsoft Shares Rise as Azure Revenue Jumps 48% to $33.2B and OpenAI Accounts for 11% of Sales",
-          "at": "2026-10-29T09:36:14Z"
-        },
-        "b": {
-          "id": "gnews:0d4c86079a6626f2",
-          "source": "gnews-rss",
-          "title": "OpenAI Now Makes Up 11% of Microsoft’s Revenue - 24/7 Wall St.",
-          "at": "2026-10-29T12:24:19Z"
-        },
-        "shared": [
-          "microsoft",
-          "revenu",
-          "openai",
-          "11"
-        ]
-      },
-      {
-        "score": 0.617,
-        "blocked": "time-window",
-        "hours_apart": 128.4,
-        "a": {
-          "id": "rss:testingcatalog:492ae2514d0065d1",
-          "source": "rss-lab",
-          "title": "Gemini 4 Carbon early test results are in ahead of public release",
-          "at": "2026-10-23T09:06:03Z"
-        },
-        "b": {
-          "id": "gnews:3a4816ac61877998",
-          "source": "gnews-rss",
-          "title": "Google has released Gemini 4 Carbon - LinkedIn",
-          "at": "2026-10-28T17:32:52Z"
-        },
-        "shared": [
-          "gemini",
-          "4",
-          "carbon",
-          "releas"
-        ]
-      },
-      {
-        "score": 0.613,
+        "score": 0.603,
         "blocked": "time-window",
         "hours_apart": 669.1,
         "a": {
@@ -889,30 +900,7 @@
         ]
       },
       {
-        "score": 0.605,
-        "blocked": "thin-overlap",
-        "hours_apart": 17.7,
-        "a": {
-          "id": "gmail:1a1875ef81a22871",
-          "source": "gmail-news",
-          "title": "Google Launches Gemini 4 Carbon, Its Second Major AI Model in a Month",
-          "at": "2026-10-29T11:15:08Z"
-        },
-        "b": {
-          "id": "gnews:3a4816ac61877998",
-          "source": "gnews-rss",
-          "title": "Google has released Gemini 4 Carbon - LinkedIn",
-          "at": "2026-10-28T17:32:52Z"
-        },
-        "shared": [
-          "google",
-          "gemini",
-          "4",
-          "carbon"
-        ]
-      },
-      {
-        "score": 0.574,
+        "score": 0.596,
         "blocked": "thin-overlap",
         "hours_apart": 14,
         "a": {
@@ -935,28 +923,75 @@
         ]
       },
       {
-        "score": 0.572,
+        "score": 0.582,
         "blocked": "below-threshold",
-        "hours_apart": 17,
+        "hours_apart": 6.6,
         "a": {
-          "id": "gmail:1a1875ef81a22871",
-          "source": "gmail-news",
-          "title": "Google Launches Gemini 4 Carbon, Its Second Major AI Model in a Month",
-          "at": "2026-10-29T11:15:08Z"
+          "id": "anl:latent-space:ca1531157f04f09e",
+          "source": "rss-analyst",
+          "title": "[AINews] Gemini 4 Carbon tops leaderboards, launches for cyber defenders",
+          "at": "2026-10-29T05:55:19Z"
         },
         "b": {
-          "id": "gnews:15485173968e47fe",
+          "id": "gnews:20a55dc5d584e306",
           "source": "gnews-rss",
-          "title": "Google launches Gemini 4 Carbon AI model with cybersecurity focus - Reuters",
-          "at": "2026-10-28T18:12:49Z"
+          "title": "Gemini 4 Carbon tops AI index; cyber defenders get it first - R&D World",
+          "at": "2026-10-28T23:20:46Z"
+        },
+        "shared": [
+          "gemini",
+          "4",
+          "carbon",
+          "top",
+          "cyber",
+          "defender"
+        ]
+      },
+      {
+        "score": 0.564,
+        "blocked": "below-threshold",
+        "hours_apart": 7.3,
+        "a": {
+          "id": "rss:huggingnews:40a91b77aa206d6b",
+          "source": "rss-lab",
+          "title": "Google Unveils Gemini 4 Carbon, Topping Cyber Benchmarks and AI Index in Gated Rollout",
+          "at": "2026-10-29T18:07:54Z"
+        },
+        "b": {
+          "id": "gnews:bd525948b0d4f31f",
+          "source": "gnews-rss",
+          "title": "Google announces Gemini 4 Carbon, its new frontier AI model - Mashable",
+          "at": "2026-10-29T10:49:54Z"
         },
         "shared": [
           "google",
           "gemini",
           "4",
           "carbon",
-          "ai",
-          "model"
+          "ai"
+        ]
+      },
+      {
+        "score": 0.564,
+        "blocked": "thin-overlap",
+        "hours_apart": 19.6,
+        "a": {
+          "id": "rss:the-decoder:f3ddd0452845327f",
+          "source": "rss-lab",
+          "title": "Google Deepmind releases Gemini 4 Carbon just two weeks after Argon with gains across the board",
+          "at": "2026-10-28T19:17:58Z"
+        },
+        "b": {
+          "id": "gnews:11d68bec57f8bb98",
+          "source": "gnews-rss",
+          "title": "Google unveils new Gemini 4 Carbon AI model - Deccan Herald",
+          "at": "2026-10-29T14:55:38Z"
+        },
+        "shared": [
+          "google",
+          "gemini",
+          "4",
+          "carbon"
         ]
       }
     ],
@@ -983,9 +1018,75 @@
         ]
       },
       {
-        "score": 0.683,
+        "score": 0.774,
+        "blocked": "time-window",
+        "hours_apart": 554.5,
+        "a": {
+          "id": "rss:mistral:1ef243007176e85c",
+          "source": "rss-lab",
+          "title": "Introducing Mistral Large 4",
+          "at": "2026-10-06T12:00:27Z"
+        },
+        "b": {
+          "id": "gmail:1a18813c64c733f4",
+          "source": "gmail-news",
+          "title": "Mistral Large 4 1t A52b is out",
+          "at": "2026-10-29T14:32:38Z"
+        },
+        "shared": [
+          "mistral",
+          "larg",
+          "4"
+        ]
+      },
+      {
+        "score": 0.75,
+        "blocked": "time-window",
+        "hours_apart": 554.2,
+        "a": {
+          "id": "hn:50289418",
+          "source": "hn-algolia",
+          "title": "We're releasing the weights of Mistral Large 4",
+          "at": "2026-10-29T14:13:21Z"
+        },
+        "b": {
+          "id": "rss:mistral:1ef243007176e85c",
+          "source": "rss-lab",
+          "title": "Introducing Mistral Large 4",
+          "at": "2026-10-06T12:00:27Z"
+        },
+        "shared": [
+          "mistral",
+          "larg",
+          "4"
+        ]
+      },
+      {
+        "score": 0.711,
+        "blocked": "time-window",
+        "hours_apart": 554.8,
+        "a": {
+          "id": "rss:mistral:1ef243007176e85c",
+          "source": "rss-lab",
+          "title": "Introducing Mistral Large 4",
+          "at": "2026-10-06T12:00:27Z"
+        },
+        "b": {
+          "id": "gmail:1a18822d002cc69f",
+          "source": "gmail-news",
+          "title": "New AI model: mistral-large-4-0-8, mistral-large-4-0-8-fp4",
+          "at": "2026-10-29T14:49:04Z"
+        },
+        "shared": [
+          "mistral",
+          "larg",
+          "4"
+        ]
+      },
+      {
+        "score": 0.699,
         "blocked": "thin-overlap",
-        "hours_apart": 3.3,
+        "hours_apart": 18.1,
         "a": {
           "id": "rss:testingcatalog:90bb3e441c768369",
           "source": "rss-lab",
@@ -993,10 +1094,10 @@
           "at": "2026-10-28T20:48:38Z"
         },
         "b": {
-          "id": "gnews:3a4816ac61877998",
+          "id": "gnews:11d68bec57f8bb98",
           "source": "gnews-rss",
-          "title": "Google has released Gemini 4 Carbon - LinkedIn",
-          "at": "2026-10-28T17:32:52Z"
+          "title": "Google unveils new Gemini 4 Carbon AI model - Deccan Herald",
+          "at": "2026-10-29T14:55:38Z"
         },
         "shared": [
           "google",
@@ -1006,28 +1107,7 @@
         ]
       },
       {
-        "score": 0.671,
-        "blocked": "short-title",
-        "hours_apart": 0.1,
-        "a": {
-          "id": "hn:50261319",
-          "source": "hn-algolia",
-          "title": "Genie 4",
-          "at": "2026-10-27T16:06:01Z"
-        },
-        "b": {
-          "id": "rss:deepmind:393575ee7d83ff0a",
-          "source": "rss-lab",
-          "title": "Genie 4: A new generation of world simulation",
-          "at": "2026-10-27T16:01:38Z"
-        },
-        "shared": [
-          "geni",
-          "4"
-        ]
-      },
-      {
-        "score": 0.656,
+        "score": 0.658,
         "blocked": "time-window",
         "hours_apart": 127.9,
         "a": {
@@ -1049,95 +1129,47 @@
         ]
       },
       {
-        "score": 0.627,
-        "blocked": "thin-overlap",
-        "hours_apart": 0.4,
+        "score": 0.648,
+        "blocked": "time-window",
+        "hours_apart": 24.6,
         "a": {
-          "id": "rss:testingcatalog:90bb3e441c768369",
-          "source": "rss-lab",
-          "title": "Google unveils Gemini 4 Carbon for cyber defenders",
-          "at": "2026-10-28T20:48:38Z"
+          "id": "hn:50276792",
+          "source": "hn-algolia",
+          "title": "Gemini 4 Carbon",
+          "at": "2026-10-28T17:01:23Z"
         },
         "b": {
-          "id": "gnews:fea589a8d1f13b6d",
+          "id": "gnews:ab3d1392e11da6c5",
           "source": "gnews-rss",
-          "title": "Google rolls out Gemini 4 Carbon - Constellation Research",
-          "at": "2026-10-28T21:13:53Z"
+          "title": "Google Launches Gemini 4 Carbon and Genie 4 AI Models With Native Audio and Photorealistic Simulations - Brave New Coin",
+          "at": "2026-10-29T17:40:16Z"
         },
         "shared": [
-          "google",
           "gemini",
           "4",
           "carbon"
         ]
       },
       {
-        "score": 0.617,
-        "blocked": "thin-overlap",
-        "hours_apart": 2.8,
-        "a": {
-          "id": "rss:huggingnews:9cadbeadf5ea582f",
-          "source": "rss-lab",
-          "title": "Microsoft Shares Rise as Azure Revenue Jumps 48% to $33.2B and OpenAI Accounts for 11% of Sales",
-          "at": "2026-10-29T09:36:14Z"
-        },
-        "b": {
-          "id": "gnews:0d4c86079a6626f2",
-          "source": "gnews-rss",
-          "title": "OpenAI Now Makes Up 11% of Microsoft’s Revenue - 24/7 Wall St.",
-          "at": "2026-10-29T12:24:19Z"
-        },
-        "shared": [
-          "microsoft",
-          "revenu",
-          "openai",
-          "11"
-        ]
-      },
-      {
-        "score": 0.617,
+        "score": 0.642,
         "blocked": "time-window",
-        "hours_apart": 128.4,
+        "hours_apart": 25.1,
         "a": {
-          "id": "rss:testingcatalog:492ae2514d0065d1",
-          "source": "rss-lab",
-          "title": "Gemini 4 Carbon early test results are in ahead of public release",
-          "at": "2026-10-23T09:06:03Z"
+          "id": "hn:50276792",
+          "source": "hn-algolia",
+          "title": "Gemini 4 Carbon",
+          "at": "2026-10-28T17:01:23Z"
         },
         "b": {
-          "id": "gnews:3a4816ac61877998",
-          "source": "gnews-rss",
-          "title": "Google has released Gemini 4 Carbon - LinkedIn",
-          "at": "2026-10-28T17:32:52Z"
+          "id": "rss:huggingnews:40a91b77aa206d6b",
+          "source": "rss-lab",
+          "title": "Google Unveils Gemini 4 Carbon, Topping Cyber Benchmarks and AI Index in Gated Rollout",
+          "at": "2026-10-29T18:07:54Z"
         },
         "shared": [
           "gemini",
           "4",
-          "carbon",
-          "releas"
-        ]
-      },
-      {
-        "score": 0.613,
-        "blocked": "time-window",
-        "hours_apart": 669.1,
-        "a": {
-          "id": "rss:deepmind:ce56aa83d0064ef1",
-          "source": "rss-lab",
-          "title": "Gemini 4 Argon: our next era of frontier intelligence",
-          "at": "2026-09-30T20:01:45Z"
-        },
-        "b": {
-          "id": "gnews:ab56209da69d224d",
-          "source": "gnews-rss",
-          "title": "Gemini 4 Carbon: our next frontier model - blog.google",
-          "at": "2026-10-28T17:08:56Z"
-        },
-        "shared": [
-          "gemini",
-          "4",
-          "next",
-          "frontier"
+          "carbon"
         ]
       }
     ]
@@ -1146,97 +1178,97 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 4,
+      "streak_ok": 5,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 197,
+      "streak_ok": 198,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 197,
+      "streak_ok": 198,
       "streak_fail": 0,
       "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 197,
+      "streak_ok": 198,
       "streak_fail": 0,
-      "items_last": 56
+      "items_last": 52
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 197,
+      "streak_ok": 198,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 197,
+      "streak_ok": 198,
       "streak_fail": 0,
-      "items_last": 55
+      "items_last": 48
     },
     {
       "id": "hn_title",
       "state": "ok",
-      "streak_ok": 51,
+      "streak_ok": 52,
       "streak_fail": 0,
       "items_last": 10
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 109,
+      "streak_ok": 110,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "releases_atom",
       "state": "ok",
-      "streak_ok": 51,
+      "streak_ok": 52,
       "streak_fail": 0,
-      "items_last": 8
+      "items_last": 9
     },
     {
       "id": "rss_analyst",
       "state": "ok",
-      "streak_ok": 51,
+      "streak_ok": 52,
       "streak_fail": 0,
-      "items_last": 7
+      "items_last": 6
     },
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 16,
+      "streak_ok": 17,
       "streak_fail": 0,
       "items_last": 150
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 197,
+      "streak_ok": 198,
       "streak_fail": 0,
       "items_last": 77
     },
     {
       "id": "wikidata",
       "state": "flaky",
-      "streak_ok": 5,
+      "streak_ok": 6,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.007693333333333333,
+    "hours": 0.007627777777777778,
     "stale": false
   },
   "hf": {
@@ -1327,7 +1359,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 55,
+    "count": 48,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -1344,7 +1376,7 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 16,
+    "ai_dropped": 12,
     "url": "https://hn.algolia.com/api/v1/search",
     "title_queries": {
       "ok": true,
@@ -1364,9 +1396,9 @@
         "Qwen",
         "local model"
       ],
-      "hits": 13,
+      "hits": 14,
       "candidates": 11,
-      "ai_dropped": 2,
+      "ai_dropped": 3,
       "duplicates": 1,
       "added": 10,
       "cap": 20,
@@ -1374,22 +1406,22 @@
     },
     "sample": [
       {
-        "id": "hn:50261319",
-        "tag": "rest",
-        "score": 1031,
-        "text": "Genie 4"
-      },
-      {
         "id": "hn:50276792",
         "tag": "rest",
-        "score": 963,
+        "score": 990,
         "text": "Gemini 4 Carbon"
       },
       {
-        "id": "hn:50260814",
+        "id": "hn:50289418",
         "tag": "rest",
-        "score": 587,
-        "text": "Anthropic trained Claude on illegally obtained Stanford professors' books"
+        "score": 731,
+        "text": "We're releasing the weights of Mistral Large 4"
+      },
+      {
+        "id": "hn:50284255",
+        "tag": "rest",
+        "score": 538,
+        "text": "Claude Code regularly sends each background agent’s transcript to its model"
       }
     ]
   },
@@ -1472,32 +1504,32 @@
     "feeds_soft_fail": [],
     "sample": [
       {
-        "id": "rss:the-decoder:c7111c14d1057eea",
-        "lab": "the-decoder",
-        "tag": "companion",
-        "title": "OpenAI's Astra becomes the main target for Chinese AI labs after Anthropic tightens its defenses",
-        "link": "https://the-decoder.com/openais-astra-becomes-the-main-target-for-chinese-ai-labs-after-anthropic-tightens-its-defenses/"
-      },
-      {
-        "id": "rss:huggingnews:2f34ac06289a1a7f",
+        "id": "rss:huggingnews:40a91b77aa206d6b",
         "lab": "huggingnews",
         "tag": "rest",
-        "title": "Cybersecurity Firms Report Response Backlogs Following Surge in AI-Powered Cyberattacks",
-        "link": "https://huggingnews.com/cybersecurity/cybersecurity-firms-report-response-backlogs-following-surge-in-ai-power-8c5a317c"
+        "title": "Google Unveils Gemini 4 Carbon, Topping Cyber Benchmarks and AI Index in Gated Rollout",
+        "link": "https://huggingnews.com/ai/google-unveils-gemini-4-carbon-topping-cyber-benchmarks-and-ai-index-in-2ead03e6"
       },
       {
-        "id": "rss:huggingnews:bb0a32a119d72d67",
+        "id": "rss:huggingnews:e00afd39ec4ec4ed",
         "lab": "huggingnews",
         "tag": "rest",
-        "title": "US Economy Grows 3.4% in Q3 as AI Spending Boosts Business Investment",
-        "link": "https://huggingnews.com/us-markets/us-economy-grows-34percent-in-q3-as-ai-spending-boosts-business-investme-ac247136"
+        "title": "Cohere Targets CAD $35.7B Valuation in Latest Series E Financing Round",
+        "link": "https://huggingnews.com/startups/cohere-targets-cad-357b-valuation-in-latest-series-e-financing-round-4735f909"
       },
       {
-        "id": "rss:huggingnews:7f35230128628a1e",
+        "id": "rss:huggingnews:e25e9bec38d95208",
         "lab": "huggingnews",
         "tag": "rest",
-        "title": "Italy Backs EU-Wide Rollout of Tesla's Assisted-Driving Software",
-        "link": "https://huggingnews.com/tech/italy-backs-eu-wide-rollout-of-teslas-assisted-driving-software-4f6f5a78"
+        "title": "OpenAI Doubles Usage Limits for All Pro Tiers and Business Premium",
+        "link": "https://huggingnews.com/ai/openai-doubles-usage-limits-for-all-pro-tiers-and-business-premium-20938b35"
+      },
+      {
+        "id": "rss:huggingnews:334bbf9ac8c3ae32",
+        "lab": "huggingnews",
+        "tag": "rest",
+        "title": "Open Weight AI Models Lag Proprietary Capability by 4 Month Median",
+        "link": "https://huggingnews.com/ai/open-weight-ai-models-lag-proprietary-capability-by-4-month-median-3eebfe53"
       }
     ]
   },
@@ -1547,32 +1579,32 @@
     ],
     "sample": [
       {
-        "id": "rss-sec:securityweek:28121383e42a0336",
-        "lab": "securityweek",
+        "id": "rss-sec:unit42:7336ba1f20a5b928",
+        "lab": "unit42",
         "tag": "rest",
-        "title": "Over 41,000 DHS Employee Records Leaked Online",
-        "link": "https://www.securityweek.com/over-41000-dhs-employee-records-leaked-online/"
+        "title": "Threat Brief: Critical Vulnerabilities in PHP: CVE-2026-109618, CVE-2026-109619 (Updated October 29)",
+        "link": "https://unit42.paloaltonetworks.com/cve-2026-109618-cve-2026-109619/"
       },
       {
-        "id": "rss-sec:securityweek:e5f9855561ac8281",
+        "id": "rss-sec:securityweek:afe9e1986f13025d",
         "lab": "securityweek",
         "tag": "rest",
-        "title": "Hackers Steal 2.6 Million Records From Sony’s Japanese ISP So-net",
-        "link": "https://www.securityweek.com/hackers-steal-2-6-million-records-from-sonys-japanese-isp-so-net/"
+        "title": "When Risk Becomes Personal: What Security Leaders Can Learn From a Cancer Diagnosis",
+        "link": "https://www.securityweek.com/when-risk-becomes-personal-what-security-leaders-can-learn-from-a-cancer-diagnosis/"
       },
       {
-        "id": "rss-sec:securityweek:950a6f20d11e2fc0",
+        "id": "rss-sec:securityweek:20af6b12d5575579",
         "lab": "securityweek",
         "tag": "rest",
-        "title": "Cisco SD-WAN Zero-Day Exploitation Tied to Volt Typhoon’s ‘Silent Train’ Network",
-        "link": "https://www.securityweek.com/cisco-sd-wan-zero-day-exploitation-tied-to-volt-typhoons-silent-train-network/"
+        "title": "Google Touts Powerful Cybersecurity Capabilities in Gemini 4 Carbon Model",
+        "link": "https://www.securityweek.com/google-says-gemini-4-carbon-leads-in-finding-exploiting-and-fixing-vulnerabilities/"
       },
       {
-        "id": "rss-sec:securityweek:b76edaaae2b7ccb5",
+        "id": "rss-sec:securityweek:d83975038d4c8555",
         "lab": "securityweek",
         "tag": "rest",
-        "title": "Attackers Exploit Second Cisco Firewall VPN Zero-Day Since August",
-        "link": "https://www.securityweek.com/attackers-exploit-second-cisco-firewall-vpn-zero-day-since-august/"
+        "title": "How Secure Are US Elections? Voting Machine Risks and the Growing Threat of AI",
+        "link": "https://www.securityweek.com/how-secure-are-us-elections-voting-machine-risks-and-the-growing-threat-of-ai/"
       }
     ]
   },
@@ -1580,12 +1612,12 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 7,
+    "count": 6,
     "feeds": [
       {
         "feed": "simonw",
         "url": "https://simonwillison.net/atom/everything/",
-        "count": 1
+        "count": 0
       },
       {
         "feed": "latent-space",
@@ -1595,6 +1627,16 @@
     ],
     "feeds_soft_fail": [],
     "dropped": [
+      {
+        "feed": "simonw",
+        "title": "Building a multiplayer game world with autonomous Fable-class models",
+        "reason": "not-ai"
+      },
+      {
+        "feed": "simonw",
+        "title": "Quoting Ben Hylak",
+        "reason": "not-ai"
+      },
       {
         "feed": "simonw",
         "title": "Quoting Ted Sanders",
@@ -1614,17 +1656,19 @@
         "feed": "simonw",
         "title": "Quoting Terk Terkowitz",
         "reason": "not-ai"
-      },
-      {
-        "feed": "simonw",
-        "title": "Game Boy Color on My Conference Badge",
-        "reason": "not-ai"
       }
     ],
     "brief": false,
     "pulse_only": true,
     "lead_rule": "analyst-only groups excluded",
     "sample": [
+      {
+        "id": "anl:latent-space:ecd2bf04730917de",
+        "feed": "latent-space",
+        "recap": false,
+        "title": "Can Frontier Models See Past a Decoy? Elorian Tests Visual Reasoning",
+        "link": "https://latent.space/p/elorian/"
+      },
       {
         "id": "anl:latent-space:ca1531157f04f09e",
         "feed": "latent-space",
@@ -1645,13 +1689,6 @@
         "recap": true,
         "title": "[AINews] Anthropic ends Coding Interviews: \"Hunger beats tenure\"",
         "link": "https://latent.space/p/ainews-anthropic-ends-coding-interviews-hunger-beats-tenure/"
-      },
-      {
-        "id": "anl:latent-space:9de126e482b03ac1",
-        "feed": "latent-space",
-        "recap": false,
-        "title": "How Anthropic ships Claude with Claude: Separating the Brain from the Hands",
-        "link": "https://latent.space/p/opus55/"
       }
     ]
   },
@@ -1659,12 +1696,12 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 8,
+    "count": 9,
     "decisions": [
       {
         "feed": "llama.cpp",
         "action": "no-bump",
-        "newest": "v0.8.0",
+        "newest": null,
         "emitted": null,
         "baseline": "v0.8.0"
       },
@@ -1684,9 +1721,9 @@
       },
       {
         "feed": "codex",
-        "action": "no-bump",
-        "newest": "rust-v0.165.0",
-        "emitted": null,
+        "action": "bump",
+        "newest": "rust-v0.166.0",
+        "emitted": "rust-v0.166.0",
         "baseline": "rust-v0.165.0"
       }
     ],
@@ -1723,95 +1760,127 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 56,
-    "pool": 392,
+    "items": 52,
+    "pool": 391,
     "corroborators": [
       {
-        "id": "gnews:961845a7a1049997",
-        "anchor_id": "rss:the-decoder:f3ddd0452845327f",
-        "score": 1,
-        "title": "Google Deepmind releases Gemini 4 Carbon just two weeks after Argon with gains across the board - The Decoder",
-        "publisher": "The Decoder",
+        "id": "gnews:0bbc0f257c302be7",
+        "anchor_id": "rss:the-decoder:53dd8daeb0ed2692",
+        "score": 0.906,
+        "title": "Nvidia CEO Jensen Huang reportedly targeted by Chinese spy - Gizmodo",
+        "publisher": "Gizmodo",
         "self_repost": false
       },
       {
-        "id": "gnews:54eaa9a9398fc66e",
-        "anchor_id": "rss:the-decoder:f3ddd0452845327f",
-        "score": 0.845,
-        "title": "Google unveils Gemini 4 Carbon just two weeks after Argon: Here’s what’s new - WION",
-        "publisher": "WION",
+        "id": "gnews:f077198ea8f65a89",
+        "anchor_id": "rss:the-decoder:53dd8daeb0ed2692",
+        "score": 0.793,
+        "title": "Nvidia CEO reportedly targeted by Chinese spy - The Guardian",
+        "publisher": "The Guardian",
         "self_repost": false
       },
       {
-        "id": "gnews:ab56209da69d224d",
-        "anchor_id": "rss:deepmind:e8e0cb1d0e685ced",
+        "id": "gnews:91267d4ce2af8126",
+        "anchor_id": "rss:the-decoder:53dd8daeb0ed2692",
+        "score": 0.678,
+        "title": "Nvidia CEO Jensen Huang reportedly targeted by suspected Chinese spy — here's what we know - Tom's Guide",
+        "publisher": "Tom's Guide",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:9f04741a2ea5374e",
+        "anchor_id": "rss:openai:0f01adb2acab0a67",
         "score": 1,
-        "title": "Gemini 4 Carbon: our next frontier model - blog.google",
-        "publisher": "blog.google",
+        "title": "How we detect frontier model misalignment - OpenAI",
+        "publisher": "OpenAI",
         "self_repost": true
       },
       {
+        "id": "gnews:74935f1254c04fb9",
+        "anchor_id": "rss:testingcatalog:90bb3e441c768369",
+        "score": 0.821,
+        "title": "Staged Rollout Sends Google’s Gemini 4 Carbon To Cyber Defenders First - Unite.AI",
+        "publisher": "Unite.AI",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:d8dd7b9f1eef33c1",
+        "anchor_id": "rss:testingcatalog:90bb3e441c768369",
+        "score": 0.82,
+        "title": "Google’s Gemini 4 Carbon tops AI rankings, but only cyber defenders get it - The Next Web",
+        "publisher": "The Next Web",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:20a55dc5d584e306",
+        "anchor_id": "rss:testingcatalog:90bb3e441c768369",
+        "score": 0.697,
+        "title": "Gemini 4 Carbon tops AI index; cyber defenders get it first - R&D World",
+        "publisher": "R&D World",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:11d68bec57f8bb98",
+        "anchor_id": "hn:50276792",
+        "score": 0.819,
+        "title": "Google unveils new Gemini 4 Carbon AI model - Deccan Herald",
+        "publisher": "Deccan Herald",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:fea589a8d1f13b6d",
+        "anchor_id": "hn:50276792",
+        "score": 0.791,
+        "title": "Google rolls out Gemini 4 Carbon - Constellation Research",
+        "publisher": "Constellation Research",
+        "self_repost": false
+      },
+      {
         "id": "gnews:bd525948b0d4f31f",
-        "anchor_id": "rss:deepmind:e8e0cb1d0e685ced",
+        "anchor_id": "hn:50276792",
         "score": 0.758,
         "title": "Google announces Gemini 4 Carbon, its new frontier AI model - Mashable",
         "publisher": "Mashable",
         "self_repost": false
       },
       {
-        "id": "gnews:3a4816ac61877998",
-        "anchor_id": "hn:50276792",
-        "score": 0.811,
-        "title": "Google has released Gemini 4 Carbon - LinkedIn",
-        "publisher": "LinkedIn",
+        "id": "gnews:9e24d55a35305f8f",
+        "anchor_id": "hn:50285539",
+        "score": 1,
+        "title": "Claude's new smart reports tell bosses when workers are 'off-topic' - Mashable",
+        "publisher": "Mashable",
         "self_repost": false
       },
       {
-        "id": "gnews:fea589a8d1f13b6d",
-        "anchor_id": "hn:50276792",
-        "score": 0.789,
-        "title": "Google rolls out Gemini 4 Carbon - Constellation Research",
-        "publisher": "Constellation Research",
+        "id": "gnews:dd509e1ca7f0fc98",
+        "anchor_id": "rss-sec:securityweek:20af6b12d5575579",
+        "score": 0.751,
+        "title": "With Gemini 4 Carbon, Google Touts Big Leap in Cybersecurity Capabilities - PCMag",
+        "publisher": "PCMag",
         "self_repost": false
       },
       {
-        "id": "gnews:15485173968e47fe",
-        "anchor_id": "hn:50276792",
-        "score": 0.71,
-        "title": "Google launches Gemini 4 Carbon AI model with cybersecurity focus - Reuters",
+        "id": "gnews:fa950572cb3b524c",
+        "anchor_id": "rss:the-decoder:c7111c14d1057eea",
+        "score": 1,
+        "title": "OpenAI's Astra becomes the main target for Chinese AI labs after Anthropic tightens its defenses - The Decoder",
+        "publisher": "The Decoder",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:54eaa9a9398fc66e",
+        "anchor_id": "rss:the-decoder:f3ddd0452845327f",
+        "score": 0.843,
+        "title": "Google unveils Gemini 4 Carbon just two weeks after Argon: Here’s what’s new - WION",
+        "publisher": "WION",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:93aa51a078c1a477",
+        "anchor_id": "hn:50289310",
+        "score": 1,
+        "title": "DeepSeek, Moonshot used OpenAI's GPT-6 Astra to train latest models, The Information reports - Reuters",
         "publisher": "Reuters",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:a542ff213e2d3390",
-        "anchor_id": "rss:testingcatalog:90bb3e441c768369",
-        "score": 1,
-        "title": "Google unveils Gemini 4 Carbon for cyber defenders - TestingCatalog AI News",
-        "publisher": "TestingCatalog AI News",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:74935f1254c04fb9",
-        "anchor_id": "rss:testingcatalog:90bb3e441c768369",
-        "score": 0.82,
-        "title": "Staged Rollout Sends Google’s Gemini 4 Carbon To Cyber Defenders First - Unite.AI",
-        "publisher": "Unite.AI",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:c6dcfa00f7c88fd5",
-        "anchor_id": "rss:testingcatalog:90bb3e441c768369",
-        "score": 0.787,
-        "title": "Gemini 4 Carbon AI Model Puts Google Back on Top, But Only Cyber Defenders Can Use It For Now - WinBuzzer",
-        "publisher": "WinBuzzer",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:e7875fc1420e563a",
-        "anchor_id": "rss:openai:a395c7da350b5086",
-        "score": 1,
-        "title": "OpenAI and ServiceNow Expand Partnership Across Enterprise Workflows - TOKENPOST",
-        "publisher": "TOKENPOST",
         "self_repost": false
       },
       {
@@ -1831,35 +1900,11 @@
         "self_repost": false
       },
       {
-        "id": "gnews:370beae627b836ff",
-        "anchor_id": "gmail:1a1875ef81a22871",
-        "score": 0.853,
-        "title": "Gemini 4 Carbon is Google's second new frontier model this month - Android Authority",
-        "publisher": "Android Authority",
-        "self_repost": false
-      },
-      {
         "id": "gnews:01a1bfc202edfccf",
         "anchor_id": "hn:50280732",
-        "score": 0.995,
+        "score": 0.997,
         "title": "EXCLUSIVE: US DOJ is inquiring about Nvidia's purchase of Hugging Face, sources say - Reuters",
         "publisher": "Reuters",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:b40b6123b9850027",
-        "anchor_id": "hn:50280732",
-        "score": 0.995,
-        "title": "Exclusive-US DOJ is inquiring about Nvidia's purchase of Hugging Face, sources say - Yahoo! Finance Canada",
-        "publisher": "Yahoo! Finance Canada",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:2f3a513cfca1c26b",
-        "anchor_id": "hn:50280732",
-        "score": 0.724,
-        "title": "DOJ Inquires About Nvidia’s Hugging Face Deal, Reuters Says - Bloomberg",
-        "publisher": "Bloomberg",
         "self_repost": false
       },
       {
@@ -1871,19 +1916,19 @@
         "self_repost": false
       },
       {
-        "id": "gnews:530eb57a5a97df4b",
-        "anchor_id": "rss:the-decoder:d71ef95524572956",
-        "score": 1,
-        "title": "Google opens Android development to third-party AI agents and unveils new Gemini APIs - The Decoder",
-        "publisher": "The Decoder",
+        "id": "gnews:1fca9bd7caa94673",
+        "anchor_id": "hn:50288019",
+        "score": 0.628,
+        "title": "Gemini 4 Carbon Ranks No. 1 on Artificial Analysis Index, Ahead of Claude Opus 5.5 - trendingtopics.eu",
+        "publisher": "trendingtopics.eu",
         "self_repost": false
       },
       {
-        "id": "gnews:3c9c1967342dbcea",
-        "anchor_id": "rss:nvidia:f3cc8708d0fd4372",
+        "id": "gnews:ab56209da69d224d",
+        "anchor_id": "rss:deepmind:e8e0cb1d0e685ced",
         "score": 1,
-        "title": "Thin, Light and Built for Everything: NVIDIA RTX Spark Windows Laptops Gain New Models, Agent Tools and Games - NVIDIA Blog",
-        "publisher": "NVIDIA Blog",
+        "title": "Gemini 4 Carbon: our next frontier model - blog.google",
+        "publisher": "blog.google",
         "self_repost": true
       },
       {
@@ -1908,30 +1953,6 @@
         "score": 1,
         "title": "How Check Point accelerates vulnerability research with Daybreak - OpenAI",
         "publisher": "OpenAI",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:07e9755303551f11",
-        "anchor_id": "rss:nvidia-dev:4e9ce681230ce9c6",
-        "score": 1,
-        "title": "NVIDIA RTX Spark Powers Neural Rendering and AI Characters in Games | NVIDIA Technical Blog - NVIDIA Developer",
-        "publisher": "NVIDIA Developer",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:a49b03ec62352ea4",
-        "anchor_id": "rss:openai:c417f8e3d39d0b89",
-        "score": 1,
-        "title": "OpenAI expands partnership with Oracle to bring its apps to ChatGPT - OpenAI",
-        "publisher": "OpenAI",
-        "self_repost": true
-      },
-      {
-        "id": "gnews:79a379a72dc402f9",
-        "anchor_id": "rss:nvidia-dev:8449d7efa12a3bec",
-        "score": 1,
-        "title": "Fine-Tuning NVIDIA Nemotron to Know Local Rules, Not Just Local Languages | NVIDIA Technical Blog - NVIDIA Developer",
-        "publisher": "NVIDIA Developer",
         "self_repost": true
       }
     ],
@@ -1961,24 +1982,24 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:7b6514e2c9bb20d9",
-        "title": "Eightco sells OpenAI stake at 40% gain, accelerates buybacks - Investing.com",
-        "publisher": "Investing.com",
-        "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQQTMtMUFUdGFkajNtMFR6UTZqWTkxWF9aTU9jcVpOc0lOd1BBM2prWUxZMXR3RVFqeXJfVlBjYzIxMnZvUlQ3aGpQejY1U2FQaTktY0RZSDAwWTF1T1Y4Mjd2ME52dFliTlB2d1FCUE1sbEhlV042bXNkMzI0SUpZVGljMmMtLTFiRGszRGtfVG9jOHBQMlFPS29WLWZhT1pMVnI5ZGEtNjI3VDdTTEE3Mkg5STZIUQ?oc=5",
+        "id": "gnews:3fe153b94ead9d20",
+        "title": "Early Anthropic member recalls burnout and big ambitions in the AI lab's early days - Business Insider",
+        "publisher": "Business Insider",
+        "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQS2FSRzRNSXEwMi12VlQxVV9sRVA1RW5nRl9ta3hLNFhjbVRoNmE1Nl9xZlpfNGpnU2tzemxMTjZFNWtQUTdtc1haRkktLUN0YzVGY0hIYzJfZ09lSVBwT1paR0VqY1BOeEhtQTRxc2JHTE5QaGdMOUM3WVExRHk5ZXNldXI?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:e2318599bbe24ce9",
-        "title": "SentinelOne adds Anthropic’s Claude to security service - Investing.com",
-        "publisher": "Investing.com",
-        "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPQTR2dmd2LWRVcEx3UGRZcUZuajF0Nk5CS1RmajJqNmhrY29MZHVobXVEdUpzaGhEZDQwcUFLZV8xQ0ZWWllkaDdCZGRvdDl0WHd2M3pycGhxX0JoTnFkXzJVWnNsYnhkRlFyN3lZd3JoRFotU0x1SWtpbDhiTEUyT2Z5SzRUNkljaUZQZ0hOUndUTXlOODVKYkFsNGk3YUVpX0xFT2JhOS0yVkRGRkUzQQ?oc=5",
+        "id": "gnews:0856b4cec90d3328",
+        "title": "Google brings richer document editing to Gemini on mobile and the web - Android Authority",
+        "publisher": "Android Authority",
+        "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBYZ0xFcVd2ZFlvSGhIa0RGTVA0d2hrZW1fZm4zTEZqVHdxRlBXYXB4S1hLRlF6V2VTWkV3M1padjB1LS1CZXY0eFdPYzBlWjlGZzZtcG5qM3BJWjkxeUZSZkM0SnJXLWxJSXRfc01CS29qRUU?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:5e0891054eba611f",
-        "title": "Family sues OpenAI, says ChatGPT is partly responsible for daughter’s death - Baltimore Sun",
-        "publisher": "Baltimore Sun",
-        "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOOUpCWmNLRl9MdjlrYnBxQ21zdkJoQ01URUFCNjdBeUdqQ3A4eVBHeWFmYVRhckZQOWVQbndrTElLYVM5N001TlpzSTRTbUFxdnBuNFRZdURHa0UyRUFHbmVOcG8yQjV4OW1tOFJVbXpHUkRsdFR5Z3YtRGhpM0lmcllmSWJTYUVtV3dGOVh4VTBGdzR3a3QtYVJtR0RSS2ZiemZ1eXFmWVNFTS1EVzJsc2lrUE4?oc=5",
+        "id": "gnews:daffe7bf550fd1a5",
+        "title": "DOE releases 35 Genesis Mission skills for AI coding agents - R&D World",
+        "publisher": "R&D World",
+        "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPT3U2d2VTc2tCXzhuZmVraXJ2SDd5X1pCcE9tckRNdnk0MGdpcHlfU0ZHSGFqWTNaZ3dUbjhTeURrdUVFb0paeE16S2JSTnNyalQ2MHFkNzJ2RU9oc2FXa0hpd2d1d3RmdHRwV0ppZjdRT3ZXX25oeDc2eGlpNnl2QXM5enNYVjVrSXlYbk1DNWZ6eGQ5QVZNdmkwRzJIaG1lZnAzTEU3RGh5UzY1dmw5Z05nYw?oc=5",
         "tag": "rest"
       }
     ]
@@ -2050,10 +2071,10 @@
     "hints": [
       {
         "seed": "METR",
-        "qid": null,
-        "label": null,
-        "description": null,
-        "status": "unresolved",
+        "qid": "Q11573",
+        "label": "metre",
+        "description": "SI unit of length",
+        "status": "rejected_false_friend",
         "source": "wikidata",
         "briefEligible": false,
         "pulseLeadEligible": false,

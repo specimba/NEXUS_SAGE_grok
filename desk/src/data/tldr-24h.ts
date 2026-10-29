@@ -3,22 +3,36 @@ import type { Tldr } from "@/lib/tldr-24h";
 
 export const TLDR_24H: Tldr = {
   "schema": 1,
-  "crawl_at": "2026-10-29T13:20:48Z",
+  "crawl_at": "2026-10-29T18:20:43Z",
   "date": "2026-10-29",
   "bullets": [
     {
-      "id": "cl:rss:testingcatalog:90bb3e441c768369",
-      "title": "Google unveils Gemini 4 Carbon for cyber defenders",
-      "url": "https://www.testingcatalog.com/google-unveils-gemini-4-carbon-for-cyber-defenders/",
-      "at": "2026-10-28T17:00:58Z",
-      "sources": 19
+      "id": "cl:rss:the-decoder:53dd8daeb0ed2692",
+      "title": "Chinese spies targeted Nvidia CEO Jensen Huang, according to The New York Times",
+      "url": "https://the-decoder.com/chinese-spies-targeted-nvidia-ceo-jensen-huang-according-to-the-new-york-times/",
+      "at": "2026-10-29T13:42:38Z",
+      "sources": 4
     },
     {
-      "id": "cl:hn:50280732",
-      "title": "DOJ is inquiring about Nvidia's purchase of Hugging Face",
-      "url": "https://www.reuters.com/world/us-doj-is-inquiring-about-nvidias-purchase-hugging-face-sources-say-2026-10-28/",
-      "at": "2026-10-28T18:34:42Z",
-      "sources": 4
+      "id": "cl:rss:huggingnews:da10437b6b355af6",
+      "title": "OpenAI Extends AI Misalignment Monitoring to All Frontier Models",
+      "url": "https://huggingnews.com/ai/update-openai-extends-ai-misalignment-monitoring-to-all-frontier-models-ab7693ed",
+      "at": "2026-10-29T09:00:00Z",
+      "sources": 3
+    },
+    {
+      "id": "cl:rss:the-decoder:c7111c14d1057eea",
+      "title": "OpenAI's Astra becomes the main target for Chinese AI labs after Anthropic tightens its defenses",
+      "url": "https://the-decoder.com/openais-astra-becomes-the-main-target-for-chinese-ai-labs-after-anthropic-tightens-its-defenses/",
+      "at": "2026-10-29T13:20:14Z",
+      "sources": 2
+    },
+    {
+      "id": "cl:rss:mistral:bd03e4a483646b85",
+      "title": "Le Chonk: Built for Coders, Trusted by Defenders.",
+      "url": "https://mistral.ai/news/mistral-large-4-oss/",
+      "at": "2026-10-29T12:00:07Z",
+      "sources": 2
     },
     {
       "id": "cl:hn:50285539",
@@ -28,24 +42,17 @@ export const TLDR_24H: Tldr = {
       "sources": 2
     },
     {
-      "id": "cl:hn:50286844",
-      "title": "Anthropic engineer declares the coding interview dead",
-      "url": "https://www.theregister.com/ai-and-ml/2026/10/28/anthropic-engineer-declares-the-coding-interview-dead/5306115",
-      "at": "2026-10-28T20:22:56Z",
+      "id": "cl:hn:50289310",
+      "title": "DeepSeek, Moonshot used OpenAI's GPT-6 Astra to train latest models",
+      "url": "https://www.reuters.com/technology/deepseek-moonshot-used-openais-gpt-6-astra-train-latest-models-information-2026-10-29/",
+      "at": "2026-10-29T02:11:00Z",
       "sources": 2
     },
     {
-      "id": "cl:rss:the-decoder:d71ef95524572956",
-      "title": "Google opens Android development to third-party AI agents and unveils new Gemini APIs",
-      "url": "https://the-decoder.com/google-opens-android-development-to-third-party-ai-agents-and-unveils-new-gemini-apis/",
-      "at": "2026-10-28T16:59:59Z",
-      "sources": 2
-    },
-    {
-      "id": "cl:rss:huggingface:ec733f799e1aaee3",
-      "title": "NVIDIA Nemotron 3.5 Transcribe and Granary v2: Intelligent Multilingual Transcription You Can Prompt and Adapt",
-      "url": "https://huggingface.co/blog/nvidia/nemotron-transcribe-granary",
-      "at": "2026-10-28T14:58:17Z",
+      "id": "cl:hn:50280732",
+      "title": "DOJ is inquiring about Nvidia's purchase of Hugging Face",
+      "url": "https://www.reuters.com/world/us-doj-is-inquiring-about-nvidias-purchase-hugging-face-sources-say-2026-10-28/",
+      "at": "2026-10-28T20:41:13Z",
       "sources": 2
     }
   ],
