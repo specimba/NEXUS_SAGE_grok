@@ -4,7 +4,7 @@ import type { WireRow } from "@/lib/wire";
 export const WIRE_CRAWL_AT = "2026-10-28T18:28:32Z";
 export const WIRE_PREV_CRAWL_AT: string | null = "2026-10-28T13:21:05Z";
 export const WIRE_NEW = 3;
-export const WIRE_MOVED = 1;
+export const WIRE_MOVED = 0;
 
 export const WIRE_ROWS: WireRow[] = [
   {
@@ -35,30 +35,6 @@ export const WIRE_ROWS: WireRow[] = [
     "status": "same"
   },
   {
-    "id": "cl:gmail:1a1839eb125b5b98",
-    "title": "See new AI control from ThreatLocker in action",
-    "url": "https://mail.google.com/mail/#all/1a1839eb125b5b98",
-    "at": "2026-10-28T17:46:14Z",
-    "sources": 10,
-    "score": null,
-    "member_ids": [
-      "gmail:1a18370a4fc3a225",
-      "gmail:1a18375f26bc1905",
-      "gmail:1a18344702353fb3",
-      "gmail:1a183741c635e892",
-      "gmail:1a1835b027459309",
-      "gmail:1a18331755af1a4c",
-      "gmail:1a1839eb125b5b98",
-      "gmail:1a1839bcfb0d45ed",
-      "gmail:1a1836c59c34ed3d",
-      "gmail:1a18369ba047a81b"
-    ],
-    "is_new": false,
-    "rank": 2,
-    "prev_rank": null,
-    "status": "new"
-  },
-  {
     "id": "cl:rss:testingcatalog:8684eb48fa1590f3",
     "title": "OpenAI launches GPT-6.1 Terra for precise computer use",
     "url": "https://www.testingcatalog.com/openai-launches-gpt-6-1-terra-for-precise-computer-use/",
@@ -72,9 +48,9 @@ export const WIRE_ROWS: WireRow[] = [
       "anl:simonw:c15b1e3c66d84564"
     ],
     "is_new": false,
-    "rank": 3,
+    "rank": 2,
     "prev_rank": 2,
-    "status": "down"
+    "status": "same"
   },
   {
     "id": "cl:rss:the-decoder:d71ef95524572956",
@@ -88,7 +64,7 @@ export const WIRE_ROWS: WireRow[] = [
       "gnews:530eb57a5a97df4b"
     ],
     "is_new": true,
-    "rank": 4,
+    "rank": 3,
     "prev_rank": null,
     "status": "new"
   },
@@ -102,6 +78,22 @@ export const WIRE_ROWS: WireRow[] = [
     "member_ids": [
       "rss:the-decoder:33641d78dbbd8a82",
       "gnews:d73b49143a372987"
+    ],
+    "is_new": true,
+    "rank": 4,
+    "prev_rank": null,
+    "status": "new"
+  },
+  {
+    "id": "cl:rss:huggingface:ec733f799e1aaee3",
+    "title": "NVIDIA Nemotron 3.5 Transcribe and Granary v2: Intelligent Multilingual Transcription You Can Prompt and Adapt",
+    "url": "https://huggingface.co/blog/nvidia/nemotron-transcribe-granary",
+    "at": "2026-10-28T15:17:53Z",
+    "sources": 2,
+    "score": 44,
+    "member_ids": [
+      "hn:50275128",
+      "rss:huggingface:ec733f799e1aaee3"
     ],
     "is_new": true,
     "rank": 5,

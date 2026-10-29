@@ -13,6 +13,7 @@
  * failed regen fails postingest (pages-coherence would refuse a stale view anyway).
  * No HTTP. Exits 1 if the lead is not hf-* (cycle 003 lock).
  */
+import { truthUnlock } from "@/lib/truth-gen";
 import { spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
@@ -271,7 +272,7 @@ if (shouldFreezeUnlock && leadNow) {
   const ranked = buildWire(PULSE_CLUSTERS, wirePrev, { at: wire.at, crawlAt: PULSE_CLUSTERS_AT, scores, publishers, members, tasteIds: X_TASTE.items.map((t) => t.id), excludeIds: leadNow.cluster_id ? [leadNow.cluster_id] : [], backfillH: 0 });
   const snap = buildLiveSnapshot({ lead: leadNow, wire: ranked.rows, frozenAt: leadNow.at });
   writeFileSync(unlockPath, JSON.stringify(snap, null, 2) + "\n");
-  writeFileSync(unlockDataPath, renderUnlockModule(snap));
+  writeFileSync(unlockDataPath, renderUnlockModule(truthUnlock(snap, leadNow.crawl_at ?? leadNow.at)));
   console.log(`digest-unlock FREEZE pick=${snap.pickDate} lead=${snap.leadId} rows=${snap.rows.length} · ${snap.lead.title.slice(0, 60)}`);
 } else if (decision.action === "held") {
   console.log(`digest-unlock HOLD keep last-good pick=${unlockPrev?.pickDate ?? "(none)"} · HELD stamp at UI`);

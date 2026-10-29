@@ -7,6 +7,8 @@
  */
 import { wireCandidates, type WireCluster, type WireOpts } from "@/lib/wire";
 import { clusterCompanies, clusterOtherLabs } from "@/lib/topic-heat";
+import { groupFirstAt } from "@/lib/lead-pick";
+import { publicHref } from "@/lib/truth";
 
 export const TLDR_WINDOW_H = 24;
 export const TLDR_MAX = 7;
@@ -28,7 +30,14 @@ export function buildTldr(
 ): Tldr {
   const now = Date.parse(opts.crawlAt);
   const byId = new Map(clusters.map((c) => [c.id, c]));
+  // PASS-U U3: story time = its EARLIEST member (publisher time, else first_seen) — the same clock Wire / Pulse ages
+  // use (groupFirstAt). A late repost never makes a ~30h-old story read "14m" or slip into Past 24 hours.
+  const firstIso = (c: { at: string; member_ids: readonly string[] }) => {
+    const t = groupFirstAt({ at: c.at, member_ids: [...c.member_ids] }, opts.memberAt ?? {});
+    return Number.isFinite(t) ? new Date(t).toISOString().replace(/\.\d{3}Z$/, "Z") : c.at;
+  };
   const recent = wireCandidates(clusters, opts)
+    .map((c) => ({ ...c, at: firstIso(c) }))
     .filter((c) => {
       const t = Date.parse(c.at);
       return Number.isFinite(t) && t <= now && now - t <= TLDR_WINDOW_H * 3_600_000;
@@ -41,7 +50,7 @@ export function buildTldr(
     const co = storyCompany(byId.get(c.id)!);
     if (co && (perCo.get(co) ?? 0) >= TLDR_PER_COMPANY) continue;
     if (co) perCo.set(co, (perCo.get(co) ?? 0) + 1);
-    bullets.push({ id: c.id, title: c.title, url: c.url, at: c.at, sources: c.sources });
+    bullets.push({ id: c.id, title: c.title, url: publicHref(c.url) ?? "", at: c.at, sources: c.sources });
   }
   return { schema: 1, crawl_at: opts.crawlAt, date: opts.date, bullets, quiet: bullets.length < TLDR_MIN };
 }

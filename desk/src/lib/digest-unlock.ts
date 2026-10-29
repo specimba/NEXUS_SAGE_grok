@@ -174,7 +174,7 @@ export function leadToUnlockRow(lead: LeadEntry): UnlockRow {
     why: lead.note
       ? lead.note
       : `LEAD_TODAY · ${lead.reason} · frozen at daily pick`,
-    move: "Digest/Voice follow Brief lead · cycle label 003",
+    move: "Digest/Voice follow Brief lead",
     url: lead.url,
     sources: lead.sources,
     sig: lead.sig,

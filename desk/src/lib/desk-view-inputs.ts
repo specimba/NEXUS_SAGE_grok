@@ -2,6 +2,7 @@
  * The raw crawl modules → desk-view inputs (scripts/desk-view.ts + tests). Imports every raw data module, so it is
  * scripts/tests only — the desk client never imports this file.
  */
+import { truthSlimLead } from "@/lib/truth-gen";
 import { CRAWL, CRAWL_AT } from "@/data/x-crawl";
 import { GNEWS_RSS } from "@/data/gnews-rss";
 import { HN_PULSE } from "@/data/hn-pulse";
@@ -79,7 +80,7 @@ export function rawDeskViewInputs(tape: CrawlTapeLog = readCrawlTape()): { input
       LEAD_HELD,
       LEAD_FIRST_AT,
       LEAD_TODAY: withPub(LEAD_TODAY),
-      LEAD_YESTERDAY: slimLead(LEAD_YESTERDAY),
+      LEAD_YESTERDAY: truthSlimLead(slimLead(LEAD_YESTERDAY)),
       LEAD_CLOSEST: leadClosest(LEAD_TODAY),
       LEAD_LAST_PICK,
       RANK_CURRENT: noAt(RANK_CURRENT)!,

@@ -6,6 +6,8 @@
  * Spec: refs/PASS-F-GMAIL-NEWS.md. DENY: paid X · Bluesky · pasted Atom URL lists · inventing Brief pins.
  */
 
+import { publicHref } from "@/lib/truth";
+import { gmailDupKey, isVendorPitch } from "@/lib/gmail-trust";
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, readdirSync, unlinkSync, writeFileSync, statSync } from "node:fs";
 import { resolve, join } from "node:path";
@@ -188,6 +190,8 @@ export function isNoise(msg: Pick<GmailRawMessage, "subject" | "sender" | "snipp
   if (NOISE_FROM.test(from)) return true;
   if (NOISE_SUBJECT.test(sub)) return true;
   if (PROMO_SUBJECT.test(sub)) return true;
+  // PASS-U U0: vendor-pitch / marketing mail ("See … in action", demos, trials) — soft-dropped from SRC pools.
+  if (isVendorPitch(sub)) return true;
   // PASS-S1.5: sponsored / webinar mail — any sender (trusted senders too).
   if (SPONSORED_SUBJECT.test(sub)) return true;
   // Intel plan 2: keywords.politics_deny (configured via configurePoliticsTerms) drops political mail.
@@ -268,8 +272,8 @@ export function toHit(msg: GmailRawMessage, now?: number): GmailNewsHit | null {
   if (isNoise(msg)) return null;
   const title = String(msg.subject ?? "").trim() || "(no subject)";
   const snippet = String(msg.snippet ?? "");
-  const link = extractLink(snippet, msg.viewUrl);
-  if (!link) return null;
+  // PASS-U U0: inbox URLs never ship — publisher URL from the mail, else no href at all (row kept, unlinked).
+  const link = publicHref(extractLink(snippet, msg.viewUrl)) ?? "";
   const from = String(msg.sender ?? "");
   const published = msg.date && Number.isFinite(Date.parse(msg.date)) ? new Date(msg.date).toISOString().replace(/\.\d{3}Z$/, "Z") : new Date().toISOString().replace(/\.\d{3}Z$/, "Z");
   const hasArticleUrl = /^https?:\/\//i.test(link) && !/mail\.google\.com/i.test(link);
@@ -307,12 +311,14 @@ function densityZero(subject: string, snippet: string) {
   return topicHitDensity(subject, snippet) === 0;
 }
 
-/** Dedupe by message-id; keep highest qi. Cap emit at GMAIL_EMIT_CAP, sorted qi then freshness. */
+/** Dedupe by thread / message-id (fallback: sender + normalized subject + day); keep highest qi. Cap emit at GMAIL_EMIT_CAP, sorted qi then freshness. */
 export function rankAndEmit(hits: GmailNewsHit[], cap = gmailCfg.emitCap): GmailNewsHit[] {
   const byId = new Map<string, GmailNewsHit>();
   for (const h of hits) {
-    const prev = byId.get(h.messageId);
-    if (!prev || h.qi > prev.qi) byId.set(h.messageId, h);
+    // PASS-U U0: a 10-copy flood of the same mail (same thread, or same sender+subject+day) is ONE row.
+    const k = h.threadId && h.threadId !== h.messageId ? `t:${h.threadId}` : gmailDupKey({ from: h.from, subject: h.title, at: h.published });
+    const prev = byId.get(k);
+    if (!prev || h.qi > prev.qi) byId.set(k, h);
   }
   return [...byId.values()]
     .sort((a, b) => b.qi - a.qi || Date.parse(b.published) - Date.parse(a.published) || a.id.localeCompare(b.id))
@@ -381,7 +387,7 @@ export function cacheHits(dir: string, now = Date.now()): GmailNewsHit[] {
           snippet: j.snippet,
           sender: j.from,
           date: j.published,
-          viewUrl: j.viewUrl || j.link,
+          viewUrl: publicHref(j.link) ?? j.viewUrl,
         },
         now,
       );

@@ -130,6 +130,8 @@ export function publisherKey(id: string, publisher?: string | null): string {
     return lab ? `lab:${lab}` : pub || id;
   }
   if (id.startsWith("gnews:")) return pub ? `pub:${pub}` : id;
+  // PASS-U U0: Gmail never inflates SRC — one unit per sender (repeats / threads / unknown senders count once).
+  if (id.startsWith("gmail:")) return `gml:${pub || "?"}`;
   // PASS-S1.1: one publisher per analyst feed (anl:<feed>:…).
   if (id.startsWith("anl:")) return `anl:${id.split(":")[1] ?? pub}`;
   // PASS-S1.3: every release feed is ONE publisher (github.com) — releases never corroborate each other.

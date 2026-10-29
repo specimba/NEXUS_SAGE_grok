@@ -3261,3 +3261,29 @@ button.bay-sw:not(:disabled){cursor:pointer}
   .lane-rail-name { font-size: var(--text-kicker); }
   .lane-rail-count { font-size: 0.95rem; }
 }
+
+/* PASS-U U3: Brief Wire / Past-24h rows below desktop — a real headline (≤2 lines, ellipsis; full text in title=),
+   not a ~10-char clip behind a 12ch age column. */
+@media (max-width: 1023.98px) {
+  .brief-wire-row {
+    grid-template-columns: auto auto minmax(0, 1fr) auto;
+    height: auto;
+    min-height: 26px;
+    padding-block: 0.25rem;
+    column-gap: 0.4rem;
+  }
+  .brief-wire-row > .pulse-v5-age { white-space: nowrap; }
+  .brief-wire-headline,
+  .brief-wire-headline.sage-headline {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    overflow-wrap: anywhere;
+    line-height: 1.25;
+  }
+  .brief-wire-src > :not(:last-child) { display: none; }
+}

@@ -35,6 +35,8 @@ export function computeTldr(): Tldr {
     publishers,
     members: memberInfo(),
     scores,
+    // PASS-U U3: every member's own time, so bullets carry the story's first-publish time.
+    memberAt: Object.fromEntries(Object.entries(memberInfo()).flatMap(([id, m]) => (m.at ? [[id, m.at]] : []))),
     tasteIds: X_TASTE.items.map((t) => t.id),
   });
   // PASS-F2.3a: plain publisher headline (cleaned, never reworded).

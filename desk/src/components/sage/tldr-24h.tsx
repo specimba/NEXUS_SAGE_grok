@@ -6,6 +6,7 @@
 import { TLDR_24H } from "@/data/tldr-24h";
 import { compactAge } from "@/lib/pulse-v5";
 import { plainHeadline } from "@/lib/plain-headline";
+import { publicHref } from "@/lib/truth";
 
 export function Tldr24() {
   const t = TLDR_24H;
@@ -21,7 +22,7 @@ export function Tldr24() {
           <li key={b.id} className="brief-wire-row" data-tldr-row>
             <span className="brief-wire-mark">·</span>
             <span className="pulse-v5-age tabular-nums" data-age-at={b.at}>{compactAge(b.at, crawl)}</span>
-            <a className="brief-wire-headline focus-phosphor" data-row-clamp="wire" href={b.url} target="_blank" rel="noreferrer">
+            <a className="brief-wire-headline focus-phosphor" data-row-clamp="wire" href={publicHref(b.url)} title={plainHeadline(b.title)} target="_blank" rel="noreferrer">
               {plainHeadline(b.title)}
             </a>
             <span className="brief-wire-src">

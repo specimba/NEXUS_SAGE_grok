@@ -7,38 +7,31 @@ export const TLDR_24H: Tldr = {
   "date": "2026-10-28",
   "bullets": [
     {
-      "id": "cl:rss:testingcatalog:52787ee918d23bcb",
-      "title": "ICYMI: Google DeepMind previews Genie 4 with native audio",
-      "url": "https://www.testingcatalog.com/icymi-google-deepmind-previews-genie-4-with-native-audio/",
-      "at": "2026-10-28T18:13:42Z",
-      "sources": 13
-    },
-    {
       "id": "cl:rss:huggingnews:bdaadea5f9714aee",
       "title": "Google Launches Gemini 4 Carbon Frontier AI Two Weeks After Argon Debut",
       "url": "https://huggingnews.com/ai/google-launches-gemini-4-carbon-frontier-ai-two-weeks-after-argon-debut-1ddc5a8c",
-      "at": "2026-10-28T18:25:49Z",
+      "at": "2026-10-28T17:00:58Z",
       "sources": 10
     },
     {
-      "id": "cl:gmail:1a1839eb125b5b98",
-      "title": "See new AI control from ThreatLocker in action",
-      "url": "https://mail.google.com/mail/#all/1a1839eb125b5b98",
-      "at": "2026-10-28T17:46:14Z",
-      "sources": 10
+      "id": "cl:rss:the-decoder:d71ef95524572956",
+      "title": "Google opens Android development to third-party AI agents and unveils new Gemini APIs",
+      "url": "https://the-decoder.com/google-opens-android-development-to-third-party-ai-agents-and-unveils-new-gemini-apis/",
+      "at": "2026-10-28T16:59:59Z",
+      "sources": 2
     },
     {
       "id": "cl:rss:the-decoder:33641d78dbbd8a82",
       "title": "OpenAI teases Dots for Europe, but its Berlin DevDay was really about building a platform",
       "url": "https://the-decoder.com/openai-teases-dots-for-europe-but-its-berlin-devday-was-really-about-building-a-platform/",
-      "at": "2026-10-28T16:26:40Z",
+      "at": "2026-10-28T16:25:02Z",
       "sources": 2
     },
     {
       "id": "cl:rss:huggingface:ec733f799e1aaee3",
       "title": "NVIDIA Nemotron 3.5 Transcribe and Granary v2: Intelligent Multilingual Transcription You Can Prompt and Adapt",
       "url": "https://huggingface.co/blog/nvidia/nemotron-transcribe-granary",
-      "at": "2026-10-28T15:17:53Z",
+      "at": "2026-10-28T14:58:17Z",
       "sources": 2
     }
   ],

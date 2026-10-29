@@ -96,6 +96,8 @@ export function resolveGoogleNewsUrl(url: string): string | null {
 export function canonicalizeUrl(input: string): string {
   const raw = (input || "").trim();
   if (!raw) return "";
+  // PASS-U U0: an inbox URL is not a story URL — never a canonical key (it merged every Gmail row into one cluster).
+  if (/^(?:https?:\/\/)?mail\.google\.com\b/i.test(raw)) return "";
   const resolved = resolveGoogleNewsUrl(raw) ?? raw;
   let u: URL;
   try {

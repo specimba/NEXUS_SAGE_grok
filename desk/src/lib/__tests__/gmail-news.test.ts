@@ -45,7 +45,9 @@ describe("Pass F gmail-news", () => {
       expect(it.pulseEligible).toBe(true);
       expect(it.pulse_only).toBe(true);
       expect(it.id.startsWith("gmail:")).toBe(true);
-      expect(it.link).toMatch(/^https?:\/\//);
+      // PASS-U U0: publisher URL or no href — never an inbox URL.
+      expect(it.link === "" || /^https?:\/\//.test(it.link)).toBe(true);
+      expect(it.link).not.toContain("mail.google.com");
     }
   });
 
@@ -53,7 +55,9 @@ describe("Pass F gmail-news", () => {
     expect(isNoise({ subject: "Security alert", sender: "no-reply@accounts.google.com", snippet: "You allowed Mistral" })).toBe(true);
     expect(isNoise({ subject: "Spare jetzt 20% auf alle Tischwasserfilter!", sender: "News_DE@service.brita.net" })).toBe(true);
     const r = ingestSearchPayload(sample, { now: Date.parse("2026-10-06T20:00:00Z") });
-    expect(r.items.every((i) => !/Security alert|Tischwasserfilter|no link news/i.test(i.title))).toBe(true);
+    expect(r.items.every((i) => !/Security alert|Tischwasserfilter/i.test(i.title))).toBe(true);
+    // PASS-U U0: a news mail without a publisher URL stays as an unlinked row (never an inbox href).
+    for (const i of r.items.filter((x) => /no link news/i.test(x.title))) expect(i.link).toBe("");
     const qis = r.items.map((i) => i.qi);
     expect(qis).toEqual([...qis].sort((a, b) => b - a));
   });
@@ -69,7 +73,7 @@ describe("Pass F gmail-news", () => {
     })!;
     const low = { ...base, qi: 1, priority: "P3" as const };
     const high = { ...base, qi: 50, priority: "P1" as const };
-    const many: GmailNewsHit[] = [low, high, ...Array.from({ length: 20 }, (_, i) => ({ ...base, id: `gmail:x${i}`, messageId: `x${i}`, qi: 10 + i, title: `AI news ${i}`, link: `https://ex.test/${i}` }))];
+    const many: GmailNewsHit[] = [low, high, ...Array.from({ length: 20 }, (_, i) => ({ ...base, id: `gmail:x${i}`, messageId: `x${i}`, threadId: `x${i}`, qi: 10 + i, title: `AI news ${i}`, link: `https://ex.test/${i}` }))];
     const out = rankAndEmit(many, 12);
     expect(out).toHaveLength(12);
     expect(out.find((x) => x.messageId === "dup")?.qi).toBe(50);

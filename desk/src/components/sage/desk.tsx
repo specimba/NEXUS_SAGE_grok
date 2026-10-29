@@ -63,6 +63,7 @@ import { crawlFreshness, STALE_GUARD_HOURS } from "@/lib/crawl-staleness";
 import {
   buildRows,
   compactAge,
+  isBaseline,
   healthCellState,
   healthReasonShort,
   healthTicks,
@@ -89,7 +90,8 @@ import {
   type MemberItem,
 } from "@/lib/story-drawer";
 import { useStoryDrawer } from "@/lib/use-story-drawer";
-import { FIRST_VISIT, LAST_SEEN_KEY, SESSION_BASE_KEY, partitionSince, sinceBase } from "@/lib/since";
+import { FIRST_VISIT, LAST_SEEN_KEY, SESSION_BASE_KEY, isSince, partitionSince, sinceBase } from "@/lib/since";
+import { publicHref } from "@/lib/truth";
 import { TICK_SR } from "@/lib/since";
 // PASS-N: the tick logic + canonical-URL key live in a lazy chunk (import("@/lib/new-ticks")), never in First Load.
 type Visit = import("@/lib/new-ticks").Visit;
@@ -525,10 +527,11 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
       live = false;
     };
   }, []);
-  const plus = (n: number) => (now == null ? "—" : `+${n}`);
+  // PASS-U U3: N = rows the reader counts as new on that lane (NEW chip and/or since-visit); never `+0`.
+  const plus = (n: number) => (now == null ? "—" : n ? `+${n}` : "");
   const railCount: Record<Lane, string> = {
-    brief: plus(partitionSince(WIRE_ROWS, (r) => FIRST_SEEN.get(r.id), since).since.length),
-    pulse: plus(partitionSince(PULSE_CLUSTERS, (c) => c.first_seen, since).since.length),
+    brief: plus(WIRE_ROWS.filter((r) => r.status === "new" || isSince(FIRST_SEEN.get(r.id), since)).length),
+    pulse: plus(PULSE_LANE_ROWS.filter((c) => (c.is_new && !PULSE_BASELINE) || isSince(c.first_seen, since)).length),
     digest: now != null && now >= Date.parse(DIGEST_CADENCE.next_at) ? "DUE" : "HOLD",
     papers: papersN == null ? "—" : String(papersN),
     voice: leadV.held ? "HOLD" : "READY",
@@ -844,7 +847,7 @@ function BriefWire() {
               data-status={r.status}
               data-since={isNewSince ? "1" : undefined}
               data-nav-row
-              data-href={r.url}
+              data-href={publicHref(r.url)}
               tabIndex={-1}
               onClick={(e) => {
                 // Enter (via the desk key handler) or a click on the row body opens the story drawer on Pulse.
@@ -862,7 +865,7 @@ function BriefWire() {
                 {r.status === "new" ? <span className="pulse-v5-new">NEW</span> : mark}
               </span>
               <AgeCell iso={firstAtIso(r)} now={now} />
-              <a className="brief-wire-headline focus-phosphor" data-row-clamp="wire" href={r.url} target="_blank" rel="noreferrer">
+              <a className="brief-wire-headline focus-phosphor" data-row-clamp="wire" href={publicHref(r.url)} title={r.title} target="_blank" rel="noreferrer">
                 {tick ? <NewTick /> : null}
                 {r.title}
               </a>
@@ -1086,7 +1089,7 @@ function Brief({ tldr }: { tldr?: ReactNode }) {
         <div className="sage-take-plate">
           <h2 className="sage-take-title font-display text-2xl font-bold normal-case tracking-normal md:text-3xl">
             {lead?.url ? (
-              <a href={lead.url} target="_blank" rel="noreferrer" className="sage-take-link">
+              <a href={publicHref(lead.url)} target="_blank" rel="noreferrer" className="sage-take-link">
                 {lead.headline}
               </a>
             ) : (
@@ -1399,7 +1402,7 @@ function StoryDrawer({
                   </>
                 );
                 return c.url ? (
-                  <a className="story-drawer-rowlink focus-phosphor" href={c.url} target="_blank" rel="noreferrer">
+                  <a className="story-drawer-rowlink focus-phosphor" href={publicHref(c.url)} target="_blank" rel="noreferrer">
                     {body}
                   </a>
                 ) : (
@@ -1429,6 +1432,9 @@ function StoryDrawer({
 
 /** Pulse V5 (Beat 3) — spec refs/UX-PULSE-V5.md. Operator X crawl posts join the one table as single-source X rows (not clusters). */
 const X_ROWS: ClusterInput[] = xRows(X_POSTS, MEMBER_ROWS);
+/** PASS-U U3: the Pulse lane's rows + its NEW-baseline flag (same rule as buildRows' showNew) for the rail badge. */
+const PULSE_LANE_ROWS: readonly ClusterInput[] = [...PULSE_CLUSTERS, ...X_ROWS];
+const PULSE_BASELINE = isBaseline(PULSE_LANE_ROWS.map((c) => c.is_new));
 
 /** Beat 10 — topic heat strip (refs/UX-BEAT10-SINCE-HEAT.md). Bars = 4h routine windows; null = honest gap. */
 function HeatStrip() {
@@ -1635,7 +1641,7 @@ export function Pulse() {
                     aria-haspopup={inDrawer ? "dialog" : undefined}
                     data-story-row={inDrawer ? r.id : undefined}
                     data-nav-row
-                    data-href={r.url}
+                    data-href={publicHref(r.url)}
                     className="pulse-v5-line focus-phosphor"
                     onClick={(e) =>
                       inDrawer
@@ -1687,7 +1693,7 @@ export function Pulse() {
                       <p className="pulse-v5-meta tabular-nums">
                         {lead?.publisher ?? r.leadBadge} · {r.at} · {r.size} member{r.size === 1 ? "" : "s"}
                         {" · "}
-                        <a href={r.url} target="_blank" rel="noreferrer" className="sage-signal focus-phosphor">
+                        <a href={publicHref(r.url)} target="_blank" rel="noreferrer" className="sage-signal focus-phosphor">
                           open ↗
                         </a>
                       </p>
@@ -1740,7 +1746,7 @@ export function Pulse() {
                     {it.handle ? <> · @{it.handle}</> : null}
                   </p>
                   {it.url ? (
-                    <a href={it.url} target="_blank" rel="noreferrer" className="pulse-v5-taste-text focus-phosphor">
+                    <a href={publicHref(it.url)} target="_blank" rel="noreferrer" className="pulse-v5-taste-text focus-phosphor">
                       {it.text}
                     </a>
                   ) : (
@@ -1847,7 +1853,7 @@ function UnlockLeadTitle({
       data-unlock-lead="1"
     >
       {row.url ? (
-        <a href={row.url} target="_blank" rel="noreferrer" className="sage-take-link">
+        <a href={publicHref(row.url)} target="_blank" rel="noreferrer" className="sage-take-link">
           {row.title}
         </a>
       ) : (

@@ -15,8 +15,8 @@ export const DIGEST_UNLOCK: DigestUnlockSnapshot = {
     "kind": "lead",
     "title": "Google Launches Gemini 4 Carbon Frontier AI Two Weeks After Argon Debut",
     "take": "10 SRC · sig 360 · pick 2026-10-28",
-    "why": "repick: lead older than 12h since pick",
-    "move": "Digest/Voice follow Brief lead · cycle label 003",
+    "why": "fresh pick · picked 21:28 UTC+3",
+    "move": "Digest/Voice follow Brief lead",
     "url": "https://huggingnews.com/ai/google-launches-gemini-4-carbon-frontier-ai-two-weeks-after-argon-debut-1ddc5a8c",
     "sources": 10,
     "sig": 360

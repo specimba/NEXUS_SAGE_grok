@@ -3,6 +3,7 @@
  * story whole (ties by id), output is deterministic, no rendered id ever dangles, and the synthetic worst case (every
  * lane at its cap, every field at max) stays inside the gzip budget whose build was measured under 185 kB.
  */
+import { truthLeadLog } from "@/lib/truth-gen";
 import { describe, expect, test } from "bun:test";
 import * as VP from "@/data/desk-view-papers";
 import { readFileSync } from "node:fs";
@@ -164,9 +165,10 @@ describe("desk-view caps — fixed size, oldest dropped first", () => {
 describe("lead-log view — capped holotape (LEAD_LOG_CAPS), lead-history.json untouched", () => {
   const history = JSON.parse(readFileSync(join(DESK, "artifacts/sage/lead-history.json"), "utf8"));
 
-  test("generated lead-log-view.ts is exactly slimLeadLog(buildLeadLog(lead-history.json))", () => {
+  test("generated lead-log-view.ts is exactly truthLeadLog(slimLeadLog(buildLeadLog(lead-history.json)))", () => {
     expect(readFileSync(join(DESK, "src/data/lead-log-view.ts"), "utf8")).toBe(renderLeadLogModule(history));
-    expect(LEAD_LOG).toEqual(JSON.parse(JSON.stringify(slimLeadLog(buildLeadLog(history)))));
+    // PASS-U U0: + truthLeadLog (no inbox URL / mail.google.com publisher ships).
+    expect(LEAD_LOG).toEqual(JSON.parse(JSON.stringify(truthLeadLog(slimLeadLog(buildLeadLog(history))))));
   });
 
   test("past the caps: newest days, newest passes, first ✗ lines; text cut with …; only rendered fields kept", () => {
