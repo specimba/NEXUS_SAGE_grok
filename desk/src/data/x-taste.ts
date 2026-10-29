@@ -24,7 +24,7 @@ export type XTasteSnap = {
 };
 
 export const X_TASTE: XTasteSnap = {
-  "captured_at": "2026-10-29T02:47:53Z",
+  "captured_at": "2026-10-29T07:47:34Z",
   "briefEligible": false,
   "pulseLeadEligible": false,
   "paidApi": false,
@@ -42,6 +42,13 @@ export const X_TASTE: XTasteSnap = {
       "surface": "feed",
       "url": "https://x.com/OpenAI/status/2105373267171438779",
       "handle": "OpenAI",
+    },
+    {
+      "id": "2115676754253910102",
+      "text": "Per TechCrunch, on September 20 one of its frontier models exploited a misconfiguration to access the internet. OpenAI paused training work for the rest of that month.",
+      "surface": "feed",
+      "url": "https://x.com/SagarGiri1707/status/2115676754253910102",
+      "handle": "SagarGiri1707",
     },
     {
       "id": "2115632248661651774",
@@ -107,18 +114,46 @@ export const X_TASTE: XTasteSnap = {
       "handle": "OpenMatter_",
     },
     {
-      "id": "2115179141490176099",
-      "text": "Hey Snackers,\n \nHappy Monday!\n \nAn OpenAI model broke out of its sandbox and reached the live internet. OpenAI then paused training for 11 days.\n \nMeanwhile, Claude bypassed a paywall to grab Georgia voter data, and Anthropic's security chief is warning of a \"vulnerability",
-      "surface": "feed",
-      "url": "https://x.com/timescapenews/status/2115179141490176099",
-      "handle": "timescapenews",
-    },
-    {
       "id": "2113661518780998003",
       "text": "Computer Use lets agents click and type across any app on your computer, not just the browser.\n\nCursor uses it on its own when a task needs it. You can also ask for it by @-mentioning Computer Use in your prompt.\n\nUpdate Cursor to try it: https://t.co/vwTPMUSnyd",
       "surface": "feed",
       "url": "https://x.com/cursor_ai/status/2113661518780998003",
       "handle": "cursor_ai",
+    },
+    {
+      "id": "2115699262616924257",
+      "text": "当AI Agent操作浏览器时，你只能干等着？ego lite用「Space隔离」给出了新答案：人和Agent共用一个浏览器、共享登录状态，但干活的地方分开。本文深度体验这款GitHub超2万星的AI浏览器，拆解它如何让Agent写代码而非敲命令，以及五类Agent浏览器产品的真实差异。 https://t.co/hx18Zh63Js",
+      "surface": "feed",
+      "url": "https://x.com/Xxgiaogiao/status/2115699262616924257",
+      "handle": "Xxgiaogiao",
+    },
+    {
+      "id": "2115656118412181704",
+      "text": "Cursor 现在的价格页改了\n\n$8 的 Plus 只能用 Grok 模型，$30 的 Premium 是 Plus 的 4 倍用量，Claude 和 GPT 这些第三方模型要按 API 原价另外付\n\n我上周测 Cursor 的 Computer Use 用的就是 Grok 4.7，同一个 iOS 任务跑了 8 分多钟，Codex 两分钟出头\n\n所以主要用 Claude 或者 GPT 的话，在 Cursor",
+      "surface": "feed",
+      "url": "https://x.com/qi9098/status/2115656118412181704",
+      "handle": "qi9098",
+    },
+    {
+      "id": "2115656075773182150",
+      "text": "APIのないサイトでも、AIエージェントが呼べる道具に変える。Y Combinatorの今期の支援先Pomeradoが、その仕組みをMITライセンスで公開している。",
+      "surface": "feed",
+      "url": "https://x.com/LaboNft/status/2115656075773182150",
+      "handle": "LaboNft",
+    },
+    {
+      "id": "2115655483994644841",
+      "text": "goat computer use\nnow chasing codex\n(scripted but cursor makes \nhuman interaction ux great) https://t.co/q94c7hhsAR",
+      "surface": "feed",
+      "url": "https://x.com/claudeebum/status/2115655483994644841",
+      "handle": "claudeebum",
+    },
+    {
+      "id": "2115639768205943256",
+      "text": "【海外で話題】\nCursorのエージェントが、作ったアプリを\n自分で開いて、触って確かめるようになりました😳\n\nhttps://t.co/vYuHHzg5T7\n\n新しく入った「Computer Use」という機能です↓↓\n・パソコンのアプリを、クリックや入力で動かせる\n・iPhoneの画面を再現するツールも操作できる https://t.co/MeDPj4E3q5 https://t.co/CqUtLk8sjn",
+      "surface": "feed",
+      "url": "https://x.com/nabetaro_agent/status/2115639768205943256",
+      "handle": "nabetaro_agent",
     },
     {
       "id": "2115634643424936164",
@@ -142,48 +177,6 @@ export const X_TASTE: XTasteSnap = {
       "handle": "HaydenShelton23",
     },
     {
-      "id": "2115607433490121027",
-      "text": "@adnaannasir_ Qwen - leader in OSS small local models. Basically, it's your go-to if you need to run a local model on fairly standard hardware.\nGitHub Copilot - basically dead. \nLlama - do you mean the model (it's obsolete) or the engine (it's one of the best, if not the best)?\nC",
-      "surface": "feed",
-      "url": "https://x.com/pjozolin/status/2115607433490121027",
-      "handle": "pjozolin",
-    },
-    {
-      "id": "2115569873745301883",
-      "text": "Top AI  Stories of the day\n1. Google DeepMind launches Genie 4, its first world model with native audio.\n\n2. OpenAI and Anthropic both claim their models refuted the Exponential Time Hypothesis\n\n3. Anthropic files S-1 for a Nasdaq IPO\n\n4. OpenAI ships GPT-6.1 Terra — cheap, fast",
-      "surface": "feed",
-      "url": "https://x.com/SarangMahatwo/status/2115569873745301883",
-      "handle": "SarangMahatwo",
-    },
-    {
-      "id": "2115566644244422793",
-      "text": "Top AU Stories\n1. Google DeepMind launches Genie 4, its first world model with native audio.\n\n2. OpenAI and Anthropic both claim their models refuted the Exponential Time Hypothesis\n\n3. Anthropic files S-1 for a Nasdaq IPO\n\n4. OpenAI ships GPT-6.1 Terra — cheap, fast computer use",
-      "surface": "feed",
-      "url": "https://x.com/SarangMahatwo/status/2115566644244422793",
-      "handle": "SarangMahatwo",
-    },
-    {
-      "id": "2115529428432302098",
-      "text": "@claudeai when you gonna fix this? @ClaudeDevs Can you use the PC while claude is controlling desktop? Mostly yes, but not while I’m controlling the desktop.\n\nWeb pages (most of my work): yes. The built-in browser and the Chrome tools run in the background without your mouse or",
-      "surface": "feed",
-      "url": "https://x.com/litecoinjsd/status/2115529428432302098",
-      "handle": "litecoinjsd",
-    },
-    {
-      "id": "2115527079848722842",
-      "text": "@grok, does this title make cents? https://t.co/1ESBHB2KMk",
-      "surface": "feed",
-      "url": "https://x.com/toninobologny/status/2115527079848722842",
-      "handle": "toninobologny",
-    },
-    {
-      "id": "2115513446506598777",
-      "text": "Cursor adiciona funcionalidade Computer Use para controlar aplicações no desktop\nhttps://t.co/2WbEnTcZ1C\n\n#artificial #controlo #desktop #ferramenta #funcionalidade",
-      "surface": "feed",
-      "url": "https://x.com/TugaTech/status/2115513446506598777",
-      "handle": "TugaTech",
-    },
-    {
       "id": "2113681863109939271",
       "text": "Meet Kimi K3.1 Pro, our most capable 3T-class model. https://t.co/TB8aTQggHT",
       "surface": "feed",
@@ -196,6 +189,13 @@ export const X_TASTE: XTasteSnap = {
       "surface": "feed",
       "url": "https://x.com/Kimi_Moonshot/status/2113680710150357279",
       "handle": "Kimi_Moonshot",
+    },
+    {
+      "id": "2113680705855373791",
+      "text": "On Terminal-Bench 4.0, which evaluates coding agents on realistic, resource-constrained terminal tasks using strict task-specific tests, K3.1 Pro scores 65.7%, ahead of GPT-6 Astra (58.2%) and narrowly behind Claude Opus 5.5 (66.4%). https://t.co/qh5wU1qAX4",
+      "surface": "feed",
+      "url": "https://x.com/Kimi_Moonshot/status/2113680705855373791",
+      "handle": "Kimi_Moonshot",
     }
   ],
   "skipped": false,
@@ -206,5 +206,5 @@ export const X_TASTE: XTasteSnap = {
     "seen": 41,
     "kept": 24
   },
-  "stamped_at": "2026-10-29T02:47:53Z"
+  "stamped_at": "2026-10-29T07:47:34Z"
 } as const;
