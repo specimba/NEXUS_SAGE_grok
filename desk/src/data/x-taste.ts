@@ -24,7 +24,7 @@ export type XTasteSnap = {
 };
 
 export const X_TASTE: XTasteSnap = {
-  "captured_at": "2026-10-29T07:47:34Z",
+  "captured_at": "2026-10-29T12:46:38Z",
   "briefEligible": false,
   "pulseLeadEligible": false,
   "paidApi": false,
@@ -42,6 +42,20 @@ export const X_TASTE: XTasteSnap = {
       "surface": "feed",
       "url": "https://x.com/OpenAI/status/2105373267171438779",
       "handle": "OpenAI",
+    },
+    {
+      "id": "2115777420020056157",
+      "text": "Your agent's reasoning says \"no tool calls\" then it runs curl at a bucket in Beijing.\n\n5 real cases from this month of agents doing what nobody asked. If yours has terminal access, it's already one of them.\n\nWould you even know if it happened to you? https://t.co/Cd9qDNF4LQ",
+      "surface": "feed",
+      "url": "https://x.com/OmniFrontier/status/2115777420020056157",
+      "handle": "OmniFrontier",
+    },
+    {
+      "id": "2115765341800608228",
+      "text": "@Hesamation But anthropic and openai have slowed down, they put more compute into safety and both have periods where they paused training for safety reasons. So yes they have paced the frontier. BTW pacing != pausing.",
+      "surface": "feed",
+      "url": "https://x.com/MsShannon112/status/2115765341800608228",
+      "handle": "MsShannon112",
     },
     {
       "id": "2115676754253910102",
@@ -100,25 +114,39 @@ export const X_TASTE: XTasteSnap = {
       "handle": "waheedsheikh101",
     },
     {
-      "id": "2115217050738327655",
-      "text": "OpenAI fixed what the agents found, resumed training on Oct 1, and now trains its frontier models with no internet access.",
-      "surface": "feed",
-      "url": "https://x.com/OpenMatter_/status/2115217050738327655",
-      "handle": "OpenMatter_",
-    },
-    {
-      "id": "2115217026650382628",
-      "text": "Story 1: On Sept 20, an OpenAI research model reached the live internet through a misconfigured server.\n\nOpenAI paused training of its most capable models and set teams of agents to break its sandboxes on purpose, with the source code and notes on possible weak spots in hand.",
-      "surface": "feed",
-      "url": "https://x.com/OpenMatter_/status/2115217026650382628",
-      "handle": "OpenMatter_",
-    },
-    {
       "id": "2113661518780998003",
       "text": "Computer Use lets agents click and type across any app on your computer, not just the browser.\n\nCursor uses it on its own when a task needs it. You can also ask for it by @-mentioning Computer Use in your prompt.\n\nUpdate Cursor to try it: https://t.co/vwTPMUSnyd",
       "surface": "feed",
       "url": "https://x.com/cursor_ai/status/2113661518780998003",
       "handle": "cursor_ai",
+    },
+    {
+      "id": "2115764672905236527",
+      "text": "The last 24 hours in AI, for builders:\n\n• Claude Code background agents can eat 16-26% of spend\n• Cursor Agent SDK goes GA: agents as code\n• Best agent passes 10.8% of real tax work\n• Amazon: where AI fails is \"a finding, not a failing\"\n\n👇 https://t.co/g4ULUTXdjr",
+      "surface": "feed",
+      "url": "https://x.com/Austen/status/2115764672905236527",
+      "handle": "Austen",
+    },
+    {
+      "id": "2115748343435399674",
+      "text": "@zzurcz to c claude 20x e codex 20x, creio q seja o melhor combo, principalmente pq computer use do codex faz mt coisa, enquanto claude tem frescura \n\ngrok bot/cursor junto tem limite lixo se for pra codar. ao meu ver so serve pra deixar as rotinas e tarefas pra eles irem fazendo",
+      "surface": "feed",
+      "url": "https://x.com/darlan3s/status/2115748343435399674",
+      "handle": "darlan3s",
+    },
+    {
+      "id": "2115721297749811668",
+      "text": "Cursor デザインモードにアノテーション機能が追加された！！\n\n- ページ上の要素を直接編集\n- ページの上に手描きで印や線を入れるなどして、エージェントに指示を与えられる\n- 画面サイズを切り替えて、デザインの見え方を確認する\n\nこれらができるので、Cursor https://t.co/fZmOeQIXZy",
+      "surface": "feed",
+      "url": "https://x.com/cu30rry_/status/2115721297749811668",
+      "handle": "cu30rry_",
+    },
+    {
+      "id": "2115718050389610891",
+      "text": "Grok Bot 额度机制天机泄露😱\n\n1. Grok Bot 的额度不按消息条数扣，按 Bot 实际干的活扣：模型调用、上下文体积、工具调用全都算。每走一步都要把整段历史重读一遍，最忙的 Bot 每步要重读 8-9 万 token。\n\n2. 搜 X 走 Bot 自带的免费额度（每分钟 30 次、每天 1000",
+      "surface": "feed",
+      "url": "https://x.com/leaf_sanren/status/2115718050389610891",
+      "handle": "leaf_sanren",
     },
     {
       "id": "2115699262616924257",
@@ -133,48 +161,6 @@ export const X_TASTE: XTasteSnap = {
       "surface": "feed",
       "url": "https://x.com/qi9098/status/2115656118412181704",
       "handle": "qi9098",
-    },
-    {
-      "id": "2115656075773182150",
-      "text": "APIのないサイトでも、AIエージェントが呼べる道具に変える。Y Combinatorの今期の支援先Pomeradoが、その仕組みをMITライセンスで公開している。",
-      "surface": "feed",
-      "url": "https://x.com/LaboNft/status/2115656075773182150",
-      "handle": "LaboNft",
-    },
-    {
-      "id": "2115655483994644841",
-      "text": "goat computer use\nnow chasing codex\n(scripted but cursor makes \nhuman interaction ux great) https://t.co/q94c7hhsAR",
-      "surface": "feed",
-      "url": "https://x.com/claudeebum/status/2115655483994644841",
-      "handle": "claudeebum",
-    },
-    {
-      "id": "2115639768205943256",
-      "text": "【海外で話題】\nCursorのエージェントが、作ったアプリを\n自分で開いて、触って確かめるようになりました😳\n\nhttps://t.co/vYuHHzg5T7\n\n新しく入った「Computer Use」という機能です↓↓\n・パソコンのアプリを、クリックや入力で動かせる\n・iPhoneの画面を再現するツールも操作できる https://t.co/MeDPj4E3q5 https://t.co/CqUtLk8sjn",
-      "surface": "feed",
-      "url": "https://x.com/nabetaro_agent/status/2115639768205943256",
-      "handle": "nabetaro_agent",
-    },
-    {
-      "id": "2115634643424936164",
-      "text": "@HaydenShelton23 cursor shipped computer use and the bar stays the same — finish a real task without babysitting. demos are cheap, done criteria aren't",
-      "surface": "feed",
-      "url": "https://x.com/maomao000211/status/2115634643424936164",
-      "handle": "maomao000211",
-    },
-    {
-      "id": "2115610758797242503",
-      "text": "I made an Open Source AI powered web browser. Calling it Golem (because it feels like a magical automation). It can surf the web for you. It can re-write itself to add features. It has built in agentic coding powered by Claude Code / Codex / Cursor.\n\nIt has built in AI https://t.",
-      "surface": "feed",
-      "url": "https://x.com/oldgamesnob/status/2115610758797242503",
-      "handle": "oldgamesnob",
-    },
-    {
-      "id": "2115609978027266203",
-      "text": "Cursor shipped Computer Use — agents that can drive desktop apps and the iOS Simulator.\n\nInteresting. The bar is still the same though: can it finish a real task without babysitting? Demos are cheap. Done criteria aren't.",
-      "surface": "feed",
-      "url": "https://x.com/HaydenShelton23/status/2115609978027266203",
-      "handle": "HaydenShelton23",
     },
     {
       "id": "2113681863109939271",
@@ -196,6 +182,20 @@ export const X_TASTE: XTasteSnap = {
       "surface": "feed",
       "url": "https://x.com/Kimi_Moonshot/status/2113680705855373791",
       "handle": "Kimi_Moonshot",
+    },
+    {
+      "id": "2113680701770068067",
+      "text": "Introducing Kimi K3.1 Pro: our most capable 3T-class open-weight model.\n\n🔹 1M-token context, 2.8T total / 104B active params (MoE), Multimodal.\n🔹 Full-project coding: games in Unreal, Unity &amp; Godot.\n🔹 Excels at parametric 3D modeling in Blender &amp; CAD.\n🔹 More reliable",
+      "surface": "feed",
+      "url": "https://x.com/Kimi_Moonshot/status/2113680701770068067",
+      "handle": "Kimi_Moonshot",
+    },
+    {
+      "id": "2115786910157431091",
+      "text": "@cryozerolabs 你用 Claude Opus 5.5 和 Kimi K3.1 Pro 各搞一版 ZenMux 小章鱼网页动画这个对照实验也很有意思：\n 同一套需求、同一个参考页面、都是「直接给我能打开的 HTML」，最后产出的前端代码质量、动效细节、还原度，其实就是两家旗舰在「真干活」场景下的直观差距展示，比看 benchmark 图表有意思多了。",
+      "surface": "feed",
+      "url": "https://x.com/Cander_zhu/status/2115786910157431091",
+      "handle": "Cander_zhu",
     }
   ],
   "skipped": false,
@@ -206,5 +206,5 @@ export const X_TASTE: XTasteSnap = {
     "seen": 41,
     "kept": 24
   },
-  "stamped_at": "2026-10-29T07:47:34Z"
+  "stamped_at": "2026-10-29T12:46:38Z"
 } as const;
