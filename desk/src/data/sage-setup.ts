@@ -205,7 +205,7 @@ const D: NonNullable<SageSetupView["limits"]>["defaults"] = {
 };
 
 export const SAGE_SETUP: SageSetupView = {
-  "stamped_at": "2026-10-30T03:20:34Z",
+  "stamped_at": "2026-10-30T08:21:00Z",
   "config_path": "desk/config/sage-sources.json",
   "config_hash": "1ba30989ff76",
   "status": "ok",
@@ -218,7 +218,7 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "hn",
       "on": true,
       "caps": "cap 20",
-      "last_rows": 58,
+      "last_rows": 60,
       "state": "ok"
     },
     {
@@ -246,14 +246,14 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "gnews",
       "on": true,
       "caps": "cap 32",
-      "last_rows": 44,
+      "last_rows": 42,
       "state": "ok"
     },
     {
       "id": "github",
       "on": true,
       "caps": "cap 5",
-      "last_rows": 2,
+      "last_rows": 1,
       "state": "ok"
     },
     {
@@ -274,7 +274,7 @@ export const SAGE_SETUP: SageSetupView = {
       "id": "arxiv",
       "on": true,
       "caps": "—",
-      "last_rows": 29,
+      "last_rows": 28,
       "state": "ok"
     },
     {
@@ -292,7 +292,7 @@ export const SAGE_SETUP: SageSetupView = {
       "state": "box-only",
       "snapshot": {
         "rows": 12,
-        "at": "2026-10-30T02:48:15Z"
+        "at": "2026-10-30T07:46:18Z"
       }
     },
     {
@@ -303,7 +303,7 @@ export const SAGE_SETUP: SageSetupView = {
       "state": "box-only",
       "snapshot": {
         "rows": 24,
-        "at": "2026-10-30T02:48:15Z"
+        "at": "2026-10-30T07:46:18Z"
       }
     },
     {

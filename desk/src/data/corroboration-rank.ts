@@ -3,8 +3,8 @@ import type { MovedRow, RankSnapshot } from "@/lib/corroboration";
 
 export const RANK_CURRENT: RankSnapshot = {
   "schema": 1,
-  "at": "2026-10-30T03:21:02.135Z",
-  "crawl_at": "2026-10-30T03:20:34Z",
+  "at": "2026-10-30T08:21:27.076Z",
+  "crawl_at": "2026-10-30T08:21:00Z",
   "lead_id": "hf-incident",
   "rows": [
     {
@@ -68,8 +68,8 @@ export const RANK_CURRENT: RankSnapshot = {
 
 export const RANK_PREV: RankSnapshot | null = {
   "schema": 1,
-  "at": "2026-10-29T18:21:10.516Z",
-  "crawl_at": "2026-10-29T18:20:43Z",
+  "at": "2026-10-30T03:21:02.135Z",
+  "crawl_at": "2026-10-30T03:20:34Z",
   "lead_id": "hf-incident",
   "rows": [
     {
@@ -88,13 +88,11 @@ export const RANK_PREV: RankSnapshot | null = {
       "id": "astra-depth",
       "rank": 2,
       "base_rank": 2,
-      "sources": 7,
+      "sources": 5,
       "source_keys": [
         "crawl:hn",
         "crawl:lab:openai",
         "crawl:lab:the-decoder",
-        "crawl:pub:reuters",
-        "crawl:pub:the decoder",
         "x:@amir",
         "x:@steph_palazzolo"
       ],
@@ -148,7 +146,7 @@ export const RANK_MOVED: MovedRow[] = [
     "status": "same",
     "prev_rank": 2,
     "rank": 2,
-    "prev_sources": 7,
+    "prev_sources": 5,
     "sources": 5,
     "by_corroboration": false
   },

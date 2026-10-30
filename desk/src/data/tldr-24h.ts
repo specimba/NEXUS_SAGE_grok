@@ -3,16 +3,9 @@ import type { Tldr } from "@/lib/tldr-24h";
 
 export const TLDR_24H: Tldr = {
   "schema": 1,
-  "crawl_at": "2026-10-30T03:20:34Z",
+  "crawl_at": "2026-10-30T08:21:00Z",
   "date": "2026-10-30",
   "bullets": [
-    {
-      "id": "cl:rss:mistral:bd03e4a483646b85",
-      "title": "Le Chonk: Built for Coders, Trusted by Defenders.",
-      "url": "https://mistral.ai/news/mistral-large-4-oss/",
-      "at": "2026-10-29T12:00:07Z",
-      "sources": 7
-    },
     {
       "id": "cl:rss:the-decoder:53dd8daeb0ed2692",
       "title": "Chinese spies targeted Nvidia CEO Jensen Huang, according to The New York Times",
@@ -21,17 +14,17 @@ export const TLDR_24H: Tldr = {
       "sources": 4
     },
     {
-      "id": "cl:rss:testingcatalog:37bb4b28a392479c",
-      "title": "Mistral opens Large 4 weights for coding and security",
-      "url": "https://www.testingcatalog.com/mistral-opens-large-4-weights-for-coding-and-security/",
-      "at": "2026-10-29T15:47:04Z",
-      "sources": 3
+      "id": "cl:rss:mistral:bd03e4a483646b85",
+      "title": "Le Chonk: Built for Coders, Trusted by Defenders.",
+      "url": "https://mistral.ai/news/mistral-large-4-oss/",
+      "at": "2026-10-29T12:00:07Z",
+      "sources": 4
     },
     {
-      "id": "cl:gnews:0795ca58e5002345",
-      "title": "Nvidia Moves to Backstop a Cloud Provider’s $45 Billion Anthropic Project",
-      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOdmhuRzVaOG9xaEQ5U1VOcWNNLVN4YUZ0NUpfVnM3Qy1KakJVMWxDbW1heDFWNkxOR2dJbnR5NnJNb1dSb1RaTnUxTkZlQzU3b0l4SGFuR1RMVXY1dmlhTzJTVzd2VmstYWhyX0pyeGEwUTdKM1FtVGZQenBCdE5fSE9zZm8wOGNxUEQ3WmVrSi1ZSlZyX3A3cWRlTkRhMThMSjVEYnhuTGt6RE5janN1NkFUVjgxV3dVVklCcm1JUWlkRVpf?oc=5",
-      "at": "2026-10-29T22:40:00Z",
+      "id": "cl:gnews:76490650a1b5a84b",
+      "title": "phData Funding: 300+ Experts, Anthropic Joins [2026]",
+      "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOQTJCQlJVTnNzNGFVX09YWVJFS214eHJqeWtNZHFOMWJ2ODhoS252dTE3V21JWWZjdkFRcjkwTV96U3RSaV9qRHJVc09OX1l1cS1Gc2VtYmh5MjlVVDA2cGg1NEFXU0ZWeVB4TVd1WTcwblRpb2FWVkNSTUV2NkRWZ3BvcXlEamJRREE?oc=5",
+      "at": "2026-10-30T07:50:07Z",
       "sources": 2
     },
     {
@@ -39,6 +32,13 @@ export const TLDR_24H: Tldr = {
       "title": "OpenAI doubles usage limits on Pro plans as competition with Anthropic heats up",
       "url": "https://the-decoder.com/openai-doubles-usage-limits-on-pro-plans-as-competition-with-anthropic-heats-up/",
       "at": "2026-10-29T20:01:27Z",
+      "sources": 2
+    },
+    {
+      "id": "cl:rss:testingcatalog:37bb4b28a392479c",
+      "title": "Mistral opens Large 4 weights for coding and security",
+      "url": "https://www.testingcatalog.com/mistral-opens-large-4-weights-for-coding-and-security/",
+      "at": "2026-10-29T15:47:04Z",
       "sources": 2
     }
   ],
