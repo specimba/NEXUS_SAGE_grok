@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-30T19:51:04Z",
+  "stamped_at": "2026-10-30T23:40:04Z",
   "config_hash": "1ba30989ff76",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,7 +11,7 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 140,
+      "duration_ms": 128,
       "paused_until": null,
       "reason": null
     },
@@ -20,7 +20,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 3171,
+      "duration_ms": 3236,
       "paused_until": null,
       "reason": null
     },
@@ -29,7 +29,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 442,
+      "duration_ms": 381,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 215,
+      "duration_ms": 185,
       "paused_until": null,
       "reason": null
     },
@@ -46,8 +46,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 64,
-      "duration_ms": 8629,
+      "rows": 65,
+      "duration_ms": 8358,
       "paused_until": null,
       "reason": null
     },
@@ -55,8 +55,8 @@
       "id": "hn_title",
       "label": "HN title",
       "status": "ok",
-      "rows": 11,
-      "duration_ms": 8522,
+      "rows": 12,
+      "duration_ms": 8260,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 150,
-      "duration_ms": 24956,
+      "duration_ms": 26068,
       "paused_until": null,
       "reason": null
     },
@@ -74,7 +74,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 77,
-      "duration_ms": 12100,
+      "duration_ms": 12116,
       "paused_until": null,
       "reason": null
     },
@@ -83,7 +83,7 @@
       "label": "analyst RSS",
       "status": "ok",
       "rows": 7,
-      "duration_ms": 2300,
+      "duration_ms": 2757,
       "paused_until": null,
       "reason": null
     },
@@ -92,7 +92,7 @@
       "label": "releases",
       "status": "ok",
       "rows": 9,
-      "duration_ms": 6679,
+      "duration_ms": 6667,
       "paused_until": null,
       "reason": null
     },
@@ -100,8 +100,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 46,
-      "duration_ms": 6425,
+      "rows": 43,
+      "duration_ms": 6357,
       "paused_until": null,
       "reason": null
     },
@@ -109,8 +109,8 @@
       "id": "github",
       "label": "GitHub",
       "status": "ok",
-      "rows": 1,
-      "duration_ms": 355,
+      "rows": 2,
+      "duration_ms": 344,
       "paused_until": null,
       "reason": null
     },
@@ -119,16 +119,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4617,
+      "duration_ms": 4539,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 78551,
-    "sources_wall_ms": 24957,
-    "papers_lane_ms": 3974,
-    "slowest_source_ms": 24956,
+    "sources_ms": 79396,
+    "sources_wall_ms": 26068,
+    "papers_lane_ms": 3935,
+    "slowest_source_ms": 26068,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -146,31 +146,31 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 25726,
-    "startup_ms": 58,
-    "main_ms": 26594
+    "wall_ms": 26789,
+    "startup_ms": 55,
+    "main_ms": 27750
   },
-  "multi_source_independent": 14,
+  "multi_source_independent": 8,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 14,
-    "multi_source_raw": 16,
-    "self_reposts": 2,
-    "items_in": 362,
-    "clusters_out": 318,
-    "collapsed": 44,
-    "multi_source": 14,
-    "multi_member": 26,
+    "multi_source_independent": 8,
+    "multi_source_raw": 12,
+    "self_reposts": 4,
+    "items_in": 360,
+    "clusters_out": 308,
+    "collapsed": 52,
+    "multi_source": 8,
+    "multi_member": 20,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
     "new_items": 25,
     "per_source": {
-      "hn-algolia": 64,
+      "hn-algolia": 65,
       "rss-lab": 150,
       "rss-security": 77,
-      "gnews-rss": 46,
+      "gnews-rss": 43,
       "gmail-news": 9,
       "rss-analyst": 7,
       "releases-atom": 9
@@ -187,17 +187,17 @@
         "score": 1,
         "members": [
           {
-            "id": "hn:50302334",
-            "source": "hn-algolia",
-            "title": "Backdoors in official Claude Code extensions",
-            "at": "2026-10-30T11:05:53Z",
-            "publisher": null
-          },
-          {
             "id": "hn:50300683",
             "source": "hn-algolia",
             "title": "Backdoor in Claude Code for VS Code extension on the Cursor Marketplace",
             "at": "2026-10-30T07:09:12Z",
+            "publisher": null
+          },
+          {
+            "id": "hn:50302334",
+            "source": "hn-algolia",
+            "title": "Backdoors in official Claude Code extensions",
+            "at": "2026-10-30T11:05:53Z",
             "publisher": null
           },
           {
@@ -229,11 +229,11 @@
             "publisher": "the-decoder"
           },
           {
-            "id": "gnews:95e150b11dce68ce",
+            "id": "gnews:9a6ef14d1d271894",
             "source": "gnews-rss",
-            "title": "Cursor Confirms Anthropic Claude Code Extension Compromised - BankInfoSecurity",
-            "at": "2026-10-30T19:11:09Z",
-            "publisher": "BankInfoSecurity"
+            "title": "Cursor Marketplace Trojanized Anthropic Claude Code Extension 2.1.313 With Persistent SSH Backdoor - NewsCord",
+            "at": "2026-10-30T23:19:34Z",
+            "publisher": "NewsCord"
           },
           {
             "id": "gnews:e47f94e758bf2253",
@@ -252,13 +252,13 @@
         ]
       },
       {
-        "title": "Le Chonk: Built for Coders, Trusted by Defenders.",
+        "title": "Mistral opens Large 4 weights for coding and security",
         "sources": [
           "rss-lab",
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 4,
+        "size": 16,
         "score": 1,
         "members": [
           {
@@ -269,11 +269,74 @@
             "publisher": null
           },
           {
+            "id": "hn:50301537",
+            "source": "hn-algolia",
+            "title": "Mistral 4 had a release, makes it comparable to Chinese open-weight models",
+            "at": "2026-10-30T09:27:45Z",
+            "publisher": null
+          },
+          {
+            "id": "rss:testingcatalog:37bb4b28a392479c",
+            "source": "rss-lab",
+            "title": "Mistral opens Large 4 weights for coding and security",
+            "at": "2026-10-29T15:47:04Z",
+            "publisher": "testingcatalog"
+          },
+          {
+            "id": "rss:the-decoder:6982ff94f200009a",
+            "source": "rss-lab",
+            "title": "Paris-based Mistral releases \"Le Chonk,\" a strong coding model that still trails China overall",
+            "at": "2026-10-29T15:25:27Z",
+            "publisher": "the-decoder"
+          },
+          {
             "id": "rss:mistral:bd03e4a483646b85",
             "source": "rss-lab",
             "title": "Le Chonk: Built for Coders, Trusted by Defenders.",
             "at": "2026-10-29T12:00:07Z",
             "publisher": "mistral"
+          },
+          {
+            "id": "rss:huggingface:b6b30743068c2627",
+            "source": "rss-lab",
+            "title": "Welcome Le Chonk: Mistral Large 4 on Hugging Face",
+            "at": "2026-10-29T00:00:00Z",
+            "publisher": "huggingface"
+          },
+          {
+            "id": "gnews:e6469f0278fcc67a",
+            "source": "gnews-rss",
+            "title": "Mistral's Le Chonk is now a top open model for coding, ranking alongside Codex GPT-6.1 Terra - ZDNET",
+            "at": "2026-10-30T23:01:55Z",
+            "publisher": "ZDNET"
+          },
+          {
+            "id": "gnews:dcd523070e8d6b40",
+            "source": "gnews-rss",
+            "title": "Mistral Releases Large 4 Model to Help Organizations Find Cyber Vulnerabilities - Business Upturn",
+            "at": "2026-10-30T19:48:52Z",
+            "publisher": "Business Upturn"
+          },
+          {
+            "id": "gnews:ceed8ff6a8dbfa63",
+            "source": "gnews-rss",
+            "title": "Mistral releases the weights of Le Chonk, its trillion-parameter open model built for coders and cyber defenders - Dealroom",
+            "at": "2026-10-30T19:17:05Z",
+            "publisher": "Dealroom"
+          },
+          {
+            "id": "gnews:22337d5d530cdea4",
+            "source": "gnews-rss",
+            "title": "Mistral Releases 1-Trillion-Parameter AI Model for Cybersecurity - TechRepublic",
+            "at": "2026-10-30T16:20:41Z",
+            "publisher": "TechRepublic"
+          },
+          {
+            "id": "gnews:39c082fb0c5cc089",
+            "source": "gnews-rss",
+            "title": "Mistral Releases Trillion-Parameter Open-Weight Large 4 AI Model to Expand Sovereign Cybersecurity Capabilities - Tekedia",
+            "at": "2026-10-30T13:52:00Z",
+            "publisher": "Tekedia"
           },
           {
             "id": "gnews:cc20ae27e637265f",
@@ -288,6 +351,74 @@
             "title": "Mistral AI Releases Weights for the 1T-Parameter Mistral Large 4 Model - KuCoin",
             "at": "2026-10-30T02:47:04Z",
             "publisher": "KuCoin"
+          },
+          {
+            "id": "gnews:ee048c2ae79c9496",
+            "source": "gnews-rss",
+            "title": "Mistral opens Large 4 weights for coding and security - TestingCatalog AI News",
+            "at": "2026-10-29T15:48:13Z",
+            "publisher": "TestingCatalog AI News"
+          },
+          {
+            "id": "gnews:650cc5dae1de3528",
+            "source": "gnews-rss",
+            "title": "Paris-based Mistral releases \"Le Chonk,\" a strong coding model that still trails China overall - The Decoder",
+            "at": "2026-10-29T15:29:31Z",
+            "publisher": "The Decoder"
+          },
+          {
+            "id": "gnews:2a3ef32cc36f71cb",
+            "source": "gnews-rss",
+            "title": "Mistral releases Large 4 Le Chonk open weights on Hugging Face - Pasquale Pillitteri",
+            "at": "2026-10-29T15:18:51Z",
+            "publisher": "Pasquale Pillitteri"
+          }
+        ]
+      },
+      {
+        "title": "Blackstone Forecasts Junk Credit Rating for Anthropic Following IPO",
+        "sources": [
+          "rss-lab",
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 5,
+        "score": 0.915,
+        "members": [
+          {
+            "id": "hn:50307219",
+            "source": "hn-algolia",
+            "title": "Anthropic may not secure investment-grade rating after IPO, Blackstone says",
+            "at": "2026-10-30T17:27:25Z",
+            "publisher": null
+          },
+          {
+            "id": "rss:huggingnews:a0741789355f452e",
+            "source": "rss-lab",
+            "title": "Blackstone Forecasts Junk Credit Rating for Anthropic Following IPO",
+            "at": "2026-10-30T17:08:45Z",
+            "publisher": "huggingnews"
+          },
+          {
+            "id": "gnews:01a4580e1bce6f88",
+            "source": "gnews-rss",
+            "title": "Blackstone Warns Anthropic Could Receive High Junk Credit Rating Following IPO - Cryptonews.net",
+            "at": "2026-10-30T22:43:42Z",
+            "publisher": "Cryptonews.net"
+          },
+          {
+            "id": "gnews:19296ca63673dbaf",
+            "source": "gnews-rss",
+            "title": "Anthropic may get junk credit rating after its IPO, Blackstone says: report - TradingView",
+            "at": "2026-10-30T17:00:56Z",
+            "publisher": "TradingView"
+          },
+          {
+            "id": "gnews:9f39be944514ab7a",
+            "source": "gnews-rss",
+            "title": "Anthropic may not secure investment-grade rating after IPO, Blackstone tells investors - Financial Times",
+            "at": "2026-10-30T16:45:48Z",
+            "publisher": "Financial Times"
           }
         ]
       },
@@ -317,70 +448,13 @@
         ]
       },
       {
-        "title": "Anthropic may not secure investment-grade rating after IPO, Blackstone says",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 3,
-        "score": 1,
-        "members": [
-          {
-            "id": "hn:50307219",
-            "source": "hn-algolia",
-            "title": "Anthropic may not secure investment-grade rating after IPO, Blackstone says",
-            "at": "2026-10-30T17:27:25Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:5f33d3128071ae55",
-            "source": "gnews-rss",
-            "title": "Anthropic May Not Secure Investment-Grade Rating After IPO, Blackstone Tells Investors - FT - TradingView",
-            "at": "2026-10-30T16:48:35Z",
-            "publisher": "TradingView"
-          },
-          {
-            "id": "gnews:9f39be944514ab7a",
-            "source": "gnews-rss",
-            "title": "Anthropic may not secure investment-grade rating after IPO, Blackstone tells investors - Financial Times",
-            "at": "2026-10-30T16:45:48Z",
-            "publisher": "Financial Times"
-          }
-        ]
-      },
-      {
-        "title": "Blackstone Forecasts Junk Credit Rating for Anthropic Following IPO",
-        "sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 0.784,
-        "members": [
-          {
-            "id": "rss:huggingnews:a0741789355f452e",
-            "source": "rss-lab",
-            "title": "Blackstone Forecasts Junk Credit Rating for Anthropic Following IPO",
-            "at": "2026-10-30T17:08:45Z",
-            "publisher": "huggingnews"
-          },
-          {
-            "id": "gnews:19296ca63673dbaf",
-            "source": "gnews-rss",
-            "title": "Anthropic may get junk credit rating after its IPO, Blackstone says: report - TradingView",
-            "at": "2026-10-30T17:00:56Z",
-            "publisher": "TradingView"
-          }
-        ]
-      },
-      {
         "title": "Amazon Secures $80B Supplier Loan Facility to Fund AI Buildout",
         "sources": [
           "rss-lab",
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.737,
+        "score": 0.738,
         "members": [
           {
             "id": "rss:huggingnews:64b1bbe7b7a2e2d1",
@@ -424,38 +498,13 @@
         ]
       },
       {
-        "title": "In Other News: Anthropic Breach Dispute, UEFI Flaw Hits Most Servers, Cloudflare AI Data Leak",
-        "sources": [
-          "rss-security",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 1,
-        "members": [
-          {
-            "id": "rss-sec:securityweek:22c47585d26cf5b7",
-            "source": "rss-security",
-            "title": "In Other News: Anthropic Breach Dispute, UEFI Flaw Hits Most Servers, Cloudflare AI Data Leak",
-            "at": "2026-10-30T14:41:35Z",
-            "publisher": "securityweek"
-          },
-          {
-            "id": "gnews:d59b5e43b9735950",
-            "source": "gnews-rss",
-            "title": "In Other News: Anthropic Breach Dispute, UEFI Flaw Hits Most Servers, Cloudflare AI Data Leak - SecurityWeek",
-            "at": "2026-10-30T14:41:35Z",
-            "publisher": "SecurityWeek"
-          }
-        ]
-      },
-      {
         "title": "Chinese spies targeted Nvidia CEO Jensen Huang, according to The New York Times",
         "sources": [
           "rss-lab",
           "gnews-rss"
         ],
         "size": 3,
-        "score": 0.754,
+        "score": 0.744,
         "members": [
           {
             "id": "rss:the-decoder:53dd8daeb0ed2692",
@@ -481,88 +530,13 @@
         ]
       },
       {
-        "title": "Mistral opens Large 4 weights for coding and security",
-        "sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 1,
-        "members": [
-          {
-            "id": "rss:testingcatalog:37bb4b28a392479c",
-            "source": "rss-lab",
-            "title": "Mistral opens Large 4 weights for coding and security",
-            "at": "2026-10-29T15:47:04Z",
-            "publisher": "testingcatalog"
-          },
-          {
-            "id": "gnews:ee048c2ae79c9496",
-            "source": "gnews-rss",
-            "title": "Mistral opens Large 4 weights for coding and security - TestingCatalog AI News",
-            "at": "2026-10-29T15:48:13Z",
-            "publisher": "TestingCatalog AI News"
-          }
-        ]
-      },
-      {
-        "title": "Paris-based Mistral releases \"Le Chonk,\" a strong coding model that still trails China overall",
-        "sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 1,
-        "members": [
-          {
-            "id": "rss:the-decoder:6982ff94f200009a",
-            "source": "rss-lab",
-            "title": "Paris-based Mistral releases \"Le Chonk,\" a strong coding model that still trails China overall",
-            "at": "2026-10-29T15:25:27Z",
-            "publisher": "the-decoder"
-          },
-          {
-            "id": "gnews:650cc5dae1de3528",
-            "source": "gnews-rss",
-            "title": "Paris-based Mistral releases \"Le Chonk,\" a strong coding model that still trails China overall - The Decoder",
-            "at": "2026-10-29T15:29:31Z",
-            "publisher": "The Decoder"
-          }
-        ]
-      },
-      {
-        "title": "Welcome Le Chonk: Mistral Large 4 on Hugging Face",
-        "sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 0.799,
-        "members": [
-          {
-            "id": "rss:huggingface:b6b30743068c2627",
-            "source": "rss-lab",
-            "title": "Welcome Le Chonk: Mistral Large 4 on Hugging Face",
-            "at": "2026-10-29T00:00:00Z",
-            "publisher": "huggingface"
-          },
-          {
-            "id": "gnews:2a3ef32cc36f71cb",
-            "source": "gnews-rss",
-            "title": "Mistral releases Large 4 Le Chonk open weights on Hugging Face - Pasquale Pillitteri",
-            "at": "2026-10-29T15:18:51Z",
-            "publisher": "Pasquale Pillitteri"
-          }
-        ]
-      },
-      {
         "title": "Google unveils Gemini 4 Carbon for cyber defenders",
         "sources": [
           "rss-lab",
           "rss-analyst"
         ],
         "size": 2,
-        "score": 0.734,
+        "score": 0.736,
         "members": [
           {
             "id": "rss:testingcatalog:90bb3e441c768369",
@@ -579,34 +553,26 @@
             "publisher": "latent-space"
           }
         ]
-      },
-      {
-        "title": "DOJ is inquiring about Nvidia's purchase of Hugging Face",
-        "sources": [
-          "hn-algolia",
-          "gnews-rss"
-        ],
-        "size": 2,
-        "score": 0.994,
-        "members": [
-          {
-            "id": "hn:50280732",
-            "source": "hn-algolia",
-            "title": "DOJ is inquiring about Nvidia's purchase of Hugging Face",
-            "at": "2026-10-28T20:52:10Z",
-            "publisher": null
-          },
-          {
-            "id": "gnews:01a1bfc202edfccf",
-            "source": "gnews-rss",
-            "title": "EXCLUSIVE: US DOJ is inquiring about Nvidia's purchase of Hugging Face, sources say - Reuters",
-            "at": "2026-10-28T20:41:13Z",
-            "publisher": "Reuters"
-          }
-        ]
       }
     ],
     "self_repost_clusters": [
+      {
+        "title": "Run AI Models for Edge Application Development with Just a Few Commands",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:6673c18fda85fd65",
+            "publisher": "NVIDIA Developer",
+            "title": "Run AI Models for Edge Application Development with Just a Few Commands - NVIDIA Developer"
+          }
+        ]
+      },
       {
         "title": "Build Specialized Agents on a Stack You Control with NVIDIA NemoClaw",
         "sources": [
@@ -635,9 +601,26 @@
         ],
         "self_reposts": [
           {
-            "id": "gnews:dbe4c78070bbe0a0",
+            "id": "gnews:51a73d1fd5b420ca",
             "publisher": "NVIDIA Blog",
             "title": "Things That Go Beep in the Night: Agentic AI Joins the Search for Extraterrestrial Signals - NVIDIA Blog"
+          }
+        ]
+      },
+      {
+        "title": "Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents",
+        "sources": [
+          "rss-lab"
+        ],
+        "all_sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "self_reposts": [
+          {
+            "id": "gnews:ace7e5b0f31eff6d",
+            "publisher": "NVIDIA Blog",
+            "title": "Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents - NVIDIA Blog"
           }
         ]
       }
@@ -661,16 +644,24 @@
           "title": "Opinion | Cartoon by Matt Davies - The Washington Post"
         },
         {
-          "publisher": "The Motley Fool",
-          "title": "Why Nvidia Stock Took a Dive Today - The Motley Fool"
+          "publisher": "Yahoo Finance Australia",
+          "title": "Nvidia has a stake in SpaceX that came from an unexpected place - Yahoo Finance Australia"
         },
         {
-          "publisher": "24/7 Wall St.",
-          "title": "It’s Time to Revisit The Nvidia Vs. AMD Debate - 24/7 Wall St."
+          "publisher": "FourWeekMBA",
+          "title": "AMD Beat Nvidia on 4 of 10 Meta Training Models, Paper Shows - FourWeekMBA"
         },
         {
-          "publisher": "The Hindu",
-          "title": "China denies spying on Nvidia's Jensen Huang - The Hindu"
+          "publisher": "Yahoo Finance UK",
+          "title": "Apple overtakes Nvidia to become world’s most valuable company amid tech selloff - Yahoo Finance UK"
+        },
+        {
+          "publisher": "FourWeekMBA",
+          "title": "Apple Passes Nvidia at $5.03 Trillion as Chip Stocks Slide - FourWeekMBA"
+        },
+        {
+          "publisher": "Hackster.io",
+          "title": "GenAI on Arduino UNO Q spots and describes anomalies - Hackster.io"
         }
       ],
       "gnews_pool_dropped": 0,
@@ -722,7 +713,7 @@
         ]
       },
       {
-        "score": 0.712,
+        "score": 0.708,
         "blocked": "time-window",
         "hours_apart": 555.3,
         "a": {
@@ -788,7 +779,7 @@
         ]
       },
       {
-        "score": 0.643,
+        "score": 0.644,
         "blocked": "time-window",
         "hours_apart": 579.8,
         "a": {
@@ -858,7 +849,7 @@
     ],
     "near_misses": [
       {
-        "score": 0.768,
+        "score": 0.767,
         "blocked": "time-window",
         "hours_apart": 554.2,
         "a": {
@@ -924,7 +915,7 @@
         ]
       },
       {
-        "score": 0.712,
+        "score": 0.708,
         "blocked": "time-window",
         "hours_apart": 555.3,
         "a": {
@@ -990,7 +981,7 @@
         ]
       },
       {
-        "score": 0.643,
+        "score": 0.644,
         "blocked": "time-window",
         "hours_apart": 579.8,
         "a": {
@@ -1039,97 +1030,97 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 10,
+      "streak_ok": 11,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 203,
+      "streak_ok": 204,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 203,
+      "streak_ok": 204,
       "streak_fail": 0,
-      "items_last": 1
+      "items_last": 2
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 203,
+      "streak_ok": 204,
       "streak_fail": 0,
-      "items_last": 46
+      "items_last": 43
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 203,
+      "streak_ok": 204,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 203,
+      "streak_ok": 204,
       "streak_fail": 0,
-      "items_last": 64
+      "items_last": 65
     },
     {
       "id": "hn_title",
       "state": "ok",
-      "streak_ok": 57,
+      "streak_ok": 58,
       "streak_fail": 0,
-      "items_last": 11
+      "items_last": 12
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 115,
+      "streak_ok": 116,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "releases_atom",
       "state": "ok",
-      "streak_ok": 57,
+      "streak_ok": 58,
       "streak_fail": 0,
       "items_last": 9
     },
     {
       "id": "rss_analyst",
       "state": "ok",
-      "streak_ok": 57,
+      "streak_ok": 58,
       "streak_fail": 0,
       "items_last": 7
     },
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 22,
+      "streak_ok": 23,
       "streak_fail": 0,
       "items_last": 150
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 203,
+      "streak_ok": 204,
       "streak_fail": 0,
       "items_last": 77
     },
     {
       "id": "wikidata",
       "state": "flaky",
-      "streak_ok": 11,
+      "streak_ok": 12,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.007500277777777778,
+    "hours": 0.007783888888888889,
     "stale": false
   },
   "hf": {
@@ -1222,7 +1213,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 64,
+    "count": 65,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -1259,11 +1250,11 @@
         "Qwen",
         "local model"
       ],
-      "hits": 18,
-      "candidates": 13,
-      "ai_dropped": 5,
+      "hits": 21,
+      "candidates": 14,
+      "ai_dropped": 7,
       "duplicates": 2,
-      "added": 11,
+      "added": 12,
       "cap": 20,
       "merged_into_live_hn": true
     },
@@ -1271,20 +1262,20 @@
       {
         "id": "hn:50289418",
         "tag": "rest",
-        "score": 1660,
+        "score": 1675,
         "text": "We're releasing the weights of Mistral Large 4"
+      },
+      {
+        "id": "hn:50300683",
+        "tag": "rest",
+        "score": 722,
+        "text": "Backdoor in Claude Code for VS Code extension on the Cursor Marketplace"
       },
       {
         "id": "hn:50302334",
         "tag": "rest",
-        "score": 648,
+        "score": 652,
         "text": "Backdoors in official Claude Code extensions"
-      },
-      {
-        "id": "hn:50284255",
-        "tag": "rest",
-        "score": 574,
-        "text": "Claude Code regularly sends each background agent’s transcript to its model"
       }
     ]
   },
@@ -1367,32 +1358,32 @@
     "feeds_soft_fail": [],
     "sample": [
       {
-        "id": "rss:the-decoder:cc13d0c799f4c25d",
-        "lab": "the-decoder",
+        "id": "rss:testingcatalog:5aa6459d352968bd",
+        "lab": "testingcatalog",
         "tag": "rest",
-        "title": "A Claude model autonomously chose a gene therapy and operated on a mouse brain with no human decision-making",
-        "link": "https://the-decoder.com/a-claude-model-autonomously-chose-a-gene-therapy-and-operated-on-a-mouse-brain-with-no-human-decision-making/"
+        "title": "SpaceXSI prepares Texting and Tasks hub support for Grok Bot",
+        "link": "https://www.testingcatalog.com/spacexsi-prepares-texting-and-tasks-hub-support-for-grok-bot/"
       },
       {
-        "id": "rss:huggingnews:c4596e5b59811f2b",
+        "id": "rss:huggingnews:2a03d09564d14bb2",
         "lab": "huggingnews",
         "tag": "rest",
-        "title": "Nasdaq 100 Index Slips Into Technical Correction Following Rout in AI Shares",
-        "link": "https://huggingnews.com/us-markets/nasdaq-100-index-slips-into-technical-correction-following-rout-in-ai-sh-ae45feb9"
+        "title": "Alphabet Sheds $766B in Worst Month as Valuation Drops to 2012 Low",
+        "link": "https://huggingnews.com/earnings/alphabet-sheds-766b-in-worst-month-as-valuation-drops-to-2012-low-478b4afb"
       },
       {
-        "id": "rss:huggingnews:1ad45f1d2c5017d6",
-        "lab": "huggingnews",
+        "id": "rss:nvidia-dev:fa5f328373b8d5ed",
+        "lab": "nvidia-dev",
         "tag": "rest",
-        "title": "Microsoft Projects Fewer Than 3,000 Workers Will Accept Buyout Offer to 60,000 Staff",
-        "link": "https://huggingnews.com/earnings/microsoft-projects-fewer-than-3000-workers-will-accept-buyout-offer-to-6-905ffa59"
+        "title": "Build a Validated Kubernetes Runtime for NVIDIA Dynamo",
+        "link": "https://developer.nvidia.com/blog/build-a-validated-kubernetes-runtime-for-nvidia-dynamo/"
       },
       {
-        "id": "rss:huggingnews:4280c8f2a37965b7",
+        "id": "rss:huggingnews:ae3691c28bc4e5f3",
         "lab": "huggingnews",
         "tag": "rest",
-        "title": "Reddit Shares Crash Nearly 30% as AI Search Slump Prompts Login Wall",
-        "link": "https://huggingnews.com/earnings/reddit-shares-crash-nearly-30percent-as-ai-search-slump-prompts-login-wa-944c7624"
+        "title": "S&P Shifts Meta's Credit Outlook to Negative Over Rising AI Costs",
+        "link": "https://huggingnews.com/ai/sandp-shifts-metas-credit-outlook-to-negative-over-rising-ai-costs-eb78fb2a"
       }
     ]
   },
@@ -1492,6 +1483,11 @@
     "dropped": [
       {
         "feed": "simonw",
+        "title": "dbreunig/nesformer",
+        "reason": "not-ai"
+      },
+      {
+        "feed": "simonw",
         "title": "Building a multiplayer game world with autonomous Fable-class models",
         "reason": "not-ai"
       },
@@ -1508,11 +1504,6 @@
       {
         "feed": "simonw",
         "title": "GitHub Octoverse 2026",
-        "reason": "not-ai"
-      },
-      {
-        "feed": "simonw",
-        "title": "The October inflection point for vibe game development",
         "reason": "not-ai"
       }
     ],
@@ -1618,29 +1609,29 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 46,
-    "pool": 375,
+    "items": 43,
+    "pool": 369,
     "corroborators": [
+      {
+        "id": "gnews:6673c18fda85fd65",
+        "anchor_id": "rss:nvidia-dev:898981b520875253",
+        "score": 1,
+        "title": "Run AI Models for Edge Application Development with Just a Few Commands - NVIDIA Developer",
+        "publisher": "NVIDIA Developer",
+        "self_repost": true
+      },
       {
         "id": "gnews:19296ca63673dbaf",
         "anchor_id": "rss:huggingnews:a0741789355f452e",
-        "score": 0.783,
+        "score": 0.779,
         "title": "Anthropic may get junk credit rating after its IPO, Blackstone says: report - TradingView",
-        "publisher": "TradingView",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:5f33d3128071ae55",
-        "anchor_id": "hn:50307219",
-        "score": 0.93,
-        "title": "Anthropic May Not Secure Investment-Grade Rating After IPO, Blackstone Tells Investors - FT - TradingView",
         "publisher": "TradingView",
         "self_repost": false
       },
       {
         "id": "gnews:9f39be944514ab7a",
         "anchor_id": "hn:50307219",
-        "score": 0.93,
+        "score": 0.925,
         "title": "Anthropic may not secure investment-grade rating after IPO, Blackstone tells investors - Financial Times",
         "publisher": "Financial Times",
         "self_repost": false
@@ -1648,7 +1639,7 @@
       {
         "id": "gnews:8e4b12dd0650fde1",
         "anchor_id": "rss:huggingnews:64b1bbe7b7a2e2d1",
-        "score": 0.734,
+        "score": 0.733,
         "title": "Amazon Taps $80 Billion Supplier Loan Facility to Help Fund AI - Yahoo Finance UK",
         "publisher": "Yahoo Finance UK",
         "self_repost": false
@@ -1662,7 +1653,7 @@
         "self_repost": true
       },
       {
-        "id": "gnews:dbe4c78070bbe0a0",
+        "id": "gnews:51a73d1fd5b420ca",
         "anchor_id": "rss:nvidia:5510e3f9d3cc16bf",
         "score": 1,
         "title": "Things That Go Beep in the Night: Agentic AI Joins the Search for Extraterrestrial Signals - NVIDIA Blog",
@@ -1670,17 +1661,9 @@
         "self_repost": true
       },
       {
-        "id": "gnews:d59b5e43b9735950",
-        "anchor_id": "rss-sec:securityweek:22c47585d26cf5b7",
-        "score": 1,
-        "title": "In Other News: Anthropic Breach Dispute, UEFI Flaw Hits Most Servers, Cloudflare AI Data Leak - SecurityWeek",
-        "publisher": "SecurityWeek",
-        "self_repost": false
-      },
-      {
         "id": "gnews:c76907f8cf59d1bb",
         "anchor_id": "rss:the-decoder:53dd8daeb0ed2692",
-        "score": 0.717,
+        "score": 0.714,
         "title": "Chinese Spy Linked to Nvidia CEO Jensen Huang - 조선일보",
         "publisher": "조선일보",
         "self_repost": false
@@ -1688,7 +1671,7 @@
       {
         "id": "gnews:f077198ea8f65a89",
         "anchor_id": "rss:the-decoder:53dd8daeb0ed2692",
-        "score": 0.613,
+        "score": 0.614,
         "title": "Nvidia CEO reportedly targeted by an alleged Chinese spy - The Guardian",
         "publisher": "The Guardian",
         "self_repost": false
@@ -1704,7 +1687,7 @@
       {
         "id": "gnews:e47f94e758bf2253",
         "anchor_id": "hn:50300112",
-        "score": 0.714,
+        "score": 0.709,
         "title": "Trojanized Claude Code Extension Delivered Persistent SSH Backdoor to Developer Machines - Step Security",
         "publisher": "Step Security",
         "self_repost": false
@@ -1712,7 +1695,7 @@
       {
         "id": "gnews:d4976bdf4a72ca2e",
         "anchor_id": "hn:50300683",
-        "score": 0.86,
+        "score": 0.861,
         "title": "Official Claude Code Extension on Cursor Marketplace Trojanized with Persistent SSH Backdoor - The Hacker News",
         "publisher": "The Hacker News",
         "self_repost": false
@@ -1728,7 +1711,7 @@
       {
         "id": "gnews:47a65b6d74f9961e",
         "anchor_id": "hn:50289418",
-        "score": 0.636,
+        "score": 0.637,
         "title": "Mistral AI Releases Weights for the 1T-Parameter Mistral Large 4 Model - KuCoin",
         "publisher": "KuCoin",
         "self_repost": false
@@ -1752,18 +1735,18 @@
       {
         "id": "gnews:2a3ef32cc36f71cb",
         "anchor_id": "rss:huggingface:b6b30743068c2627",
-        "score": 0.772,
+        "score": 0.776,
         "title": "Mistral releases Large 4 Le Chonk open weights on Hugging Face - Pasquale Pillitteri",
         "publisher": "Pasquale Pillitteri",
         "self_repost": false
       },
       {
-        "id": "gnews:01a1bfc202edfccf",
-        "anchor_id": "hn:50280732",
+        "id": "gnews:ace7e5b0f31eff6d",
+        "anchor_id": "rss:nvidia:dfd05486e53d5871",
         "score": 1,
-        "title": "EXCLUSIVE: US DOJ is inquiring about Nvidia's purchase of Hugging Face, sources say - Reuters",
-        "publisher": "Reuters",
-        "self_repost": false
+        "title": "Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents - NVIDIA Blog",
+        "publisher": "NVIDIA Blog",
+        "self_repost": true
       }
     ],
     "http_status": 200,
@@ -1792,24 +1775,24 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:dcd523070e8d6b40",
-        "title": "Mistral Releases Large 4 Model to Help Organizations Find Cyber Vulnerabilities - Business Upturn",
-        "publisher": "Business Upturn",
-        "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNalpFakYzLXpwYmhJMlN5TXhDdGJGbFk3X1BWTWdiRFVNa2xYQlRyTE9tNWRlTFEtWmFSdjRjUHZEYUx5SS05YkZTS3NxMEd0SVpJSFg4eW5xQUtuTUM5QWtDTzVSaGY2b2JMdGpJLWp5NUYtYl92bmp2UmdrUmtnYV9QVUdLTkdqaEwzOXQ0dUp1MkFzSklqS2Z4S19YblBfX19LeXY3MTRVdUlLRldEUUxZbDFRVHViNUE?oc=5",
+        "id": "gnews:9a6ef14d1d271894",
+        "title": "Cursor Marketplace Trojanized Anthropic Claude Code Extension 2.1.313 With Persistent SSH Backdoor - NewsCord",
+        "publisher": "NewsCord",
+        "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxNNUxRZnZLRkdjYWE1c2J0V19hazFSeVktMmpud0ltdWFGb0VBa3QxakNJMzduNF9iODdkMC1DN1RPWTRxU1lmM3Fhc3RocURNLXltNDlaUzkwMHdXdm9KdzE3U044Y2NOZ1ZLekc3Zk9seC1XR0h0YWJyTE5pckFyakI3Mk5nTkhJVWNxOWpKRnEwSl9ZQUZHUEJmZkVGNlViaGtfUlVwZ1NNU3ZoNVBTZnhQXzl0UDBRRWNrcVQxQWluaTFCSHE5WDJxQ2h2a0RVV1NSWDNhZE8zUkZUNHY3cWVGdDN2VmVtdmc?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:2e5bf86ede27c470",
-        "title": "Anthropic's Unbeatable Share - Stansberry Research",
-        "publisher": "Stansberry Research",
-        "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOTng0UC0tOUowRXo1enVMNXpfbDk0RVBGSDc2aVpKRG51Q1NETW5TRmpQZ1p6cHhNUENYVHFmcDRnSkxaQlB1Y0pMOEZOMllTeTdxM1VVaE4yY0VVQzlRT1F4a3llYW1kcjMxXzAwalB2MEZmNmV0QlRseXVmNjhYSHNvR2hTTm5N?oc=5",
+        "id": "gnews:e6469f0278fcc67a",
+        "title": "Mistral's Le Chonk is now a top open model for coding, ranking alongside Codex GPT-6.1 Terra - ZDNET",
+        "publisher": "ZDNET",
+        "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1oUDdGckVKYzJobVpZMk5HeFFpX1Z5U0FRQnRoQTJfeEZXaHRCRHVwLUluQWNJSDVKcHI5VFhPR3NvSDdvbUNhZ2JUbGN1SjVmeGltaVVDMTc2ODVnU1dGbXVUMGFCLWVKbVhIOExJZllTZnM?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:cfc67577ebb4d075",
-        "title": "Wall Street Just Cast a Big Doubt on Anthropic’s $800 Billion AI Bet - BeInCrypto",
-        "publisher": "BeInCrypto",
-        "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1ZQkNFOGV1RVhZSXF6aGoxV2c2TENoNnpGRUFNSG1lN3NuQ0xrMWgwb05YenJ1SmFVRGVJS1FTV0wyVGxtcDdkT1QwTE9HeVZXVHRScGgtMFdtN3BRdGtkUUVfMXRtWjd0eWxwaXhNckUzUDBF?oc=5",
+        "id": "gnews:ba009b527becdd42",
+        "title": "Video: Anthropic’s I.P.O.: Why the Stakes Are So High - The New York Times",
+        "publisher": "The New York Times",
+        "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPSlVUdXhGSzNqdzRMeE10ZU5mRzZialFlZWdjMlNIbkFmTklDUVRLcWg5SnAxVUg1T1FqMWZjaEdKeHpoQ1FRd3IwazJtTEZQMVZiV0ozSko4aGVwWERhRlFrUTRHX2tSYVVFdTdOUVlxNTVzSFp0ZThxME1ZeEdHeWV3eEdNMDRMLWZWLXdBeEV5ZFg2RkVFN0U2Smt0Y2NLMjVrdC13?oc=5",
         "tag": "rest"
       }
     ]
@@ -1840,7 +1823,7 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "query": "LLM agent eval harness",
-    "shelf": 1,
+    "shelf": 2,
     "from_cache": false,
     "searches": 1,
     "rate_limit_remaining": 9,
@@ -1850,13 +1833,17 @@
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
+        "label": "fatjon-kalemaj/alt-invest-agent-evals",
+        "href": "https://github.com/fatjon-kalemaj/alt-invest-agent-evals"
+      },
+      {
         "label": "Anilkumar7877/Voice-Agent",
         "href": "https://github.com/Anilkumar7877/Voice-Agent"
       }
     ]
   },
   "shelf": {
-    "count": 17,
+    "count": 18,
     "brief": false
   },
   "wikidata": {

@@ -3,8 +3,8 @@ import type { Tldr } from "@/lib/tldr-24h";
 
 export const TLDR_24H: Tldr = {
   "schema": 1,
-  "crawl_at": "2026-10-30T19:51:04Z",
-  "date": "2026-10-30",
+  "crawl_at": "2026-10-30T23:40:04Z",
+  "date": "2026-10-31",
   "bullets": [
     {
       "id": "cl:rss:the-decoder:c2e9d57651f8ceec",
@@ -14,13 +14,6 @@ export const TLDR_24H: Tldr = {
       "sources": 5
     },
     {
-      "id": "cl:rss:huggingnews:a0741789355f452e",
-      "title": "Blackstone Forecasts Junk Credit Rating for Anthropic Following IPO",
-      "url": "https://huggingnews.com/ai/blackstone-forecasts-junk-credit-rating-for-anthropic-following-ipo-8a17475a",
-      "at": "2026-10-30T17:00:56Z",
-      "sources": 2
-    },
-    {
       "id": "cl:rss:huggingnews:64b1bbe7b7a2e2d1",
       "title": "Amazon Secures $80B Supplier Loan Facility to Fund AI Buildout",
       "url": "https://huggingnews.com/ai/amazon-secures-80b-supplier-loan-facility-to-fund-ai-buildout-4d442b54",
@@ -28,10 +21,10 @@ export const TLDR_24H: Tldr = {
       "sources": 2
     },
     {
-      "id": "cl:gnews:22337d5d530cdea4",
-      "title": "Mistral Releases 1-Trillion-Parameter AI Model for Cybersecurity",
-      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNTGpzMXpHR1d5RE1oQ2c0NWRYWlVlTk9HM2dueEJaNldiLUtpOHJaWUdMeU14ZHJfNmFIRHg5U2REajU0eDQ5V0dpdGx2Sk9IYUhOamRTRVlUWGdMejJDbzUzbmwwdC1ZTWNxY1VvbExNN2RlVXpTbTBiX3RyLWFGUGRqbW8xWVNyZVBPTVF1YmRXZw?oc=5",
-      "at": "2026-10-30T13:52:00Z",
+      "id": "cl:hn:50307475",
+      "title": "Anthropic hacked to deliver remote access trojan to Claude developer laptops",
+      "url": "https://doublepulsar.com/anthropic-hacked-to-deliver-remote-access-trojan-to-claude-developer-laptops-worldwide-1148a92baae2?postPublishedType=initial",
+      "at": "2026-10-30T10:08:04Z",
       "sources": 2
     }
   ],
