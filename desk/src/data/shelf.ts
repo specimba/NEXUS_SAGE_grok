@@ -23,4 +23,6 @@ export const SHELF: ShelfItem[] = [
   { href: "https://arxiv.org/abs/2610.40649", label: "arxiv.org/abs/2610.40649", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.40644", label: "arxiv.org/abs/2610.40644", reason: "arxiv-shelf" as const },
   { href: "https://github.com/AyushBaware/evidence-first-research-agent", label: "AyushBaware/evidence-first-research-agent", reason: "github-search-shelf" as const },
+  { href: "https://github.com/Ramesh-codex/agent-bugfixer", label: "Ramesh-codex/agent-bugfixer", reason: "github-search-shelf" as const },
+  { href: "https://github.com/claw-eval/claw-eval", label: "claw-eval/claw-eval", reason: "github-search-shelf" as const },
 ];

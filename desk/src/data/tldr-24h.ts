@@ -3,35 +3,14 @@ import type { Tldr } from "@/lib/tldr-24h";
 
 export const TLDR_24H: Tldr = {
   "schema": 1,
-  "crawl_at": "2026-10-30T08:21:00Z",
+  "crawl_at": "2026-10-30T13:20:51Z",
   "date": "2026-10-30",
   "bullets": [
     {
-      "id": "cl:rss:the-decoder:53dd8daeb0ed2692",
-      "title": "Chinese spies targeted Nvidia CEO Jensen Huang, according to The New York Times",
-      "url": "https://the-decoder.com/chinese-spies-targeted-nvidia-ceo-jensen-huang-according-to-the-new-york-times/",
-      "at": "2026-10-29T13:42:38Z",
-      "sources": 4
-    },
-    {
-      "id": "cl:rss:mistral:bd03e4a483646b85",
-      "title": "Le Chonk: Built for Coders, Trusted by Defenders.",
-      "url": "https://mistral.ai/news/mistral-large-4-oss/",
-      "at": "2026-10-29T12:00:07Z",
-      "sources": 4
-    },
-    {
-      "id": "cl:gnews:76490650a1b5a84b",
-      "title": "phData Funding: 300+ Experts, Anthropic Joins [2026]",
-      "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOQTJCQlJVTnNzNGFVX09YWVJFS214eHJqeWtNZHFOMWJ2ODhoS252dTE3V21JWWZjdkFRcjkwTV96U3RSaV9qRHJVc09OX1l1cS1Gc2VtYmh5MjlVVDA2cGg1NEFXU0ZWeVB4TVd1WTcwblRpb2FWVkNSTUV2NkRWZ3BvcXlEamJRREE?oc=5",
-      "at": "2026-10-30T07:50:07Z",
-      "sources": 2
-    },
-    {
-      "id": "cl:rss:the-decoder:297fe18c05f20512",
-      "title": "OpenAI doubles usage limits on Pro plans as competition with Anthropic heats up",
-      "url": "https://the-decoder.com/openai-doubles-usage-limits-on-pro-plans-as-competition-with-anthropic-heats-up/",
-      "at": "2026-10-29T20:01:27Z",
+      "id": "cl:hn:50302334",
+      "title": "Backdoors in official Claude Code extensions",
+      "url": "https://cyberplace.social/@GossiTheDog/117528831681803563",
+      "at": "2026-10-30T05:20:20Z",
       "sources": 2
     },
     {
@@ -39,6 +18,20 @@ export const TLDR_24H: Tldr = {
       "title": "Mistral opens Large 4 weights for coding and security",
       "url": "https://www.testingcatalog.com/mistral-opens-large-4-weights-for-coding-and-security/",
       "at": "2026-10-29T15:47:04Z",
+      "sources": 2
+    },
+    {
+      "id": "cl:rss:the-decoder:6982ff94f200009a",
+      "title": "Paris-based Mistral releases \"Le Chonk,\" a strong coding model that still trails China overall",
+      "url": "https://the-decoder.com/paris-based-mistral-releases-le-chonk-a-strong-coding-model-that-still-trails-china-overall/",
+      "at": "2026-10-29T15:25:27Z",
+      "sources": 2
+    },
+    {
+      "id": "cl:rss:the-decoder:53dd8daeb0ed2692",
+      "title": "Chinese spies targeted Nvidia CEO Jensen Huang, according to The New York Times",
+      "url": "https://the-decoder.com/chinese-spies-targeted-nvidia-ceo-jensen-huang-according-to-the-new-york-times/",
+      "at": "2026-10-29T13:42:38Z",
       "sources": 2
     }
   ],
