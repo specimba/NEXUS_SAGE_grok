@@ -20,7 +20,7 @@ import { istanbulDate } from "@/lib/lead-pick";
 import { buildTldr, type Tldr } from "@/lib/tldr-24h";
 import { plainHeadline } from "@/lib/plain-headline";
 
-export function computeTldr(): Tldr {
+export function computeTldr(excludeIds: string[] = []): Tldr {
   const publishers: Record<string, string> = {};
   for (const g of GNEWS_RSS) if (g.publisher) publishers[g.id] = g.publisher;
   for (const r of RSS_LABS) publishers[r.id] = r.lab;
@@ -38,6 +38,8 @@ export function computeTldr(): Tldr {
     // PASS-U U3: every member's own time, so bullets carry the story's first-publish time.
     memberAt: Object.fromEntries(Object.entries(memberInfo()).flatMap(([id, m]) => (m.at ? [[id, m.at]] : []))),
     tasteIds: X_TASTE.items.map((t) => t.id),
+    // PASS-WIRE-CLUSTER (4): the lead plate's story never repeats as a Brief bullet.
+    excludeIds,
   });
   // PASS-F2.3a: plain publisher headline (cleaned, never reworded).
   return { ...t, bullets: t.bullets.map((b) => ({ ...b, title: plainHeadline(b.title) })) };
@@ -51,8 +53,8 @@ export const TLDR_24H: Tldr = ${JSON.stringify(t, null, 2)};
 `;
 }
 
-export function writeTldr(desk: string): string {
-  const t = computeTldr();
+export function writeTldr(desk: string, excludeIds: string[] = []): string {
+  const t = computeTldr(excludeIds);
   const p = resolve(desk, "src/data/tldr-24h.ts");
   const body = renderTldrModule(t);
   const same = existsSync(p) && readFileSync(p, "utf8") === body;

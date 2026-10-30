@@ -104,11 +104,23 @@ export function wireExcludeReason(c: WireCluster, tasteIds: Set<string> = new Se
   return null;
 }
 
+/**
+ * PASS-WIRE-CLUSTER: an excluded id (the lead) also hides the cluster it was merged into —
+ * a story-key merge can re-head the group, but "cl:<member>" still names the same story.
+ */
+export function isExcludedStory(c: Pick<WireCluster, "id" | "member_ids">, skip: ReadonlySet<string>): boolean {
+  if (!skip.size) return false;
+  return skip.has(c.id) || c.member_ids.some((m) => skip.has(`cl:${m}`));
+}
+
+/** PASS-WIRE-CLUSTER (5): a cluster whose newest item is ≥24h older than the freshest candidate ranks as if it had 1 SRC less. */
+export const WIRE_STALE_H = 24;
+
 /** Eligible candidates, ranked: most independent sources → freshest → highest signal → id. */
 export function wireCandidates(clusters: WireCluster[], opts: WireOpts = {}): WireCandidate[] {
   const taste = new Set(opts.tasteIds ?? []);
   const skip = new Set(opts.excludeIds ?? []);
-  const kept = clusters.filter((c) => !skip.has(c.id) && wireExcludeReason(c, taste, opts.keepNoise) === null);
+  const kept = clusters.filter((c) => !isExcludedStory(c, skip) && wireExcludeReason(c, taste, opts.keepNoise) === null);
   const byId = new Map(kept.map((c) => [c.id, c]));
   const info: Record<string, PulseMemberInfo> = opts.members ?? Object.fromEntries(Object.entries(opts.publishers ?? {}).map(([id, publisher]) => [id, { badge: "", publisher }]));
   const { rows } = buildRows(kept, info);
@@ -125,9 +137,11 @@ export function wireCandidates(clusters: WireCluster[], opts: WireOpts = {}): Wi
     }
     out.push({ id: c.id, title: c.title, url: c.url, at: c.at, sources: r.sourceCount, score, member_ids: [...c.member_ids], is_new: c.is_new });
   }
+  const newest = Math.max(0, ...out.map((o) => Date.parse(o.at) || 0));
+  const eff = (o: WireCandidate) => o.sources - (newest - (Date.parse(o.at) || 0) >= WIRE_STALE_H * 3_600_000 ? 1 : 0);
   out.sort(
     (a, b) =>
-      b.sources - a.sources ||
+      eff(b) - eff(a) ||
       (Date.parse(b.at) || 0) - (Date.parse(a.at) || 0) ||
       (b.score ?? -1) - (a.score ?? -1) ||
       a.id.localeCompare(b.id),

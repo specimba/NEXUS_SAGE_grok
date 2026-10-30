@@ -29,6 +29,8 @@ export type PulseInput = {
   publisher?: string;
   score?: number;
   first_seen?: string;
+  /** PASS-WIRE-CLUSTER: extra known URLs for the same item (guid / publisher landing) — any shared canonical merges. */
+  alt_urls?: string[];
 };
 
 export type PulseMember = PulseInput & {
@@ -459,6 +461,65 @@ export function pickCorroborators(
 }
 
 /**
+ * PASS-WIRE-CLUSTER — narrow, code-fixed story keys (NOT general NLP). Items whose headline
+ * maps to the same key and were published within STORY_KEY_WINDOW_HOURS merge into one cluster
+ * (lab-release aliases: "Le Chonk" = Mistral Large 4; twin-title variants: Blackstone/Anthropic
+ * IPO-rating). Roundups ("Daily AI Launch Radar: …") never key. Extend this one list.
+ */
+export const STORY_KEY_WINDOW_HOURS = 48;
+const ROUNDUP = /\b(radar|roundup|round-up|digest|newsletter|this week|weekly|daily ai)\b/i;
+export const STORY_KEYS: readonly { key: string; test: (t: string) => boolean }[] = [
+  {
+    key: "mistral-large-4",
+    test: (t) =>
+      /\ble\s*chonk\b/.test(t) ||
+      (/\bmistral\b/.test(t) &&
+        (/\blarge[\s-]?4\b/.test(t) || /\bmistral\s+4\b/.test(t) || /\b(1|one)[\s-]?(trillion|t)[\s-]?param/.test(t) || /\btrillion[\s-]param/.test(t))),
+  },
+  {
+    // Claude Code (Anthropic coding product): narrow to the compromised-extension incident — "Claude Code" alone is
+    // many different stories (email-in-prompt, transcripts, auto mode) and must NOT merge.
+    key: "claude-code-extension-compromise",
+    test: (t) => /\bclaude[\s-]?code\b/.test(t) && /\b(extensions?|marketplace|plugin)\b/.test(t) && /\b(malicious|compromis\w*|trojan|hack\w*|backdoor\w*|remote access|poison\w*)\b/.test(t),
+  },
+  {
+    key: "blackstone-anthropic-rating",
+    test: (t) => /\bblackstone\b/.test(t) && /\banthropic\b/.test(t) && /\b(rating|ipo|junk|credit|investment[\s-]grade)\b/.test(t),
+  },
+];
+
+/** Story key for a headline (null = no fixed alias applies). */
+export function storyKey(title: string): string | null {
+  const t = (title || "").toLowerCase().replace(/[\u2018\u2019\u201c\u201d"]/g, "");
+  if (ROUNDUP.test(t)) return null;
+  for (const k of STORY_KEYS) if (k.test(t)) return k.key;
+  return null;
+}
+
+const NEWS_VERB = /\b(releases?|released|opens?|opened|launch(es|ed)?|ships?|shipped|unveils?|unveiled|debuts?|open-sources?|rolls out|drops|publishes|says|forecasts?|warns?|may|could|ranks?|ranking|is now|beats?)\b/i;
+/** Slogan-alone headline: "Le Chonk: Built for Coders, Trusted by Defenders." (label + colon, no news verb). */
+export function isSloganTitle(title: string): boolean {
+  return /^[^:]{1,40}:\s/.test(title) && !NEWS_VERB.test(title);
+}
+
+/** Title pick: keep the lead headline unless it is slogan-alone; then the best product+verb member headline. */
+function pickNewsTitle(lead: PulseMember, group: PulseMember[]): string {
+  const leadTitle = stripPublisherSuffix(lead.title, lead.publisher);
+  if (!isSloganTitle(leadTitle)) return leadTitle;
+  const cands = group
+    .map((m) => ({ m, t: stripPublisherSuffix(m.title, m.publisher) }))
+    .filter(({ t }) => !isSloganTitle(t) && NEWS_VERB.test(t) && !ROUNDUP.test(t));
+  if (!cands.length) return leadTitle;
+  cands.sort(
+    (x, y) =>
+      LEAD_PRIORITY[x.m.source] - LEAD_PRIORITY[y.m.source] ||
+      (Date.parse(x.m.at) || 0) - (Date.parse(y.m.at) || 0) ||
+      x.t.length - y.t.length,
+  );
+  return cands[0].t;
+}
+
+/**
  * Cluster Pulse items across sources. Deterministic: input order breaks ties.
  * Union-find over pairs (same canonical URL, or scorePair().match).
  */
@@ -487,11 +548,26 @@ export function clusterItems(
   };
   const byUrl = new Map<string, number>();
   members.forEach((m, i) => {
-    if (!m.canonical_url) return;
-    const prev = byUrl.get(m.canonical_url);
-    if (prev === undefined) byUrl.set(m.canonical_url, i);
-    else union(prev, i, 1);
+    // PASS-WIRE-CLUSTER (1): every known URL for the item (link + guid/landing) is a canonical key.
+    const keys = new Set([m.canonical_url, ...(m.alt_urls ?? []).map(canonicalizeUrl)].filter(Boolean));
+    for (const k of keys) {
+      const prev = byUrl.get(k);
+      if (prev === undefined) byUrl.set(k, i);
+      else union(prev, i, 1);
+    }
   });
+  // PASS-WIRE-CLUSTER (2)+(3): fixed lab-release aliases / twin-title keys within 48h.
+  const keyOf = members.map((m) => storyKey(stripPublisherSuffix(m.title, m.publisher)));
+  for (let i = 0; i < members.length; i++) {
+    if (!keyOf[i]) continue;
+    for (let j = i + 1; j < members.length; j++) {
+      if (keyOf[j] !== keyOf[i]) continue;
+      const ta = parseAt(members[i].at);
+      const tb = parseAt(members[j].at);
+      if (ta === null || tb === null || Math.abs(ta - tb) > STORY_KEY_WINDOW_HOURS * 3_600_000) continue;
+      union(i, j, DEDUPE_THRESHOLD);
+    }
+  }
   for (let i = 0; i < members.length; i++) {
     if (tokens[i].length < MIN_TITLE_TOKENS) continue;
     for (let j = i + 1; j < members.length; j++) {
@@ -525,7 +601,7 @@ export function clusterItems(
     const first_seen = minIso(group.map((g) => g.first_seen));
     clusters.push({
       id: `cl:${lead.id}`,
-      title: stripPublisherSuffix(lead.title, lead.publisher),
+      title: pickNewsTitle(lead, group),
       url: lead.url,
       canonical_url: lead.canonical_url,
       lead_id: lead.id,

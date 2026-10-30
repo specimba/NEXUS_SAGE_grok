@@ -34,7 +34,7 @@ import { buildLiveSnapshot, renderUnlockModule, type DigestUnlockSnapshot } from
 import { applyPick, decideLeadRefresh, leadRefreshLine, currentLead, groupFirstAt, leadExcludeReason, istanbulDate, lastPickDate, readLeadHistory, yesterdayLead, type LeadHistory } from "@/lib/lead-pick";
 import { bucketWindows, countCompanies, countOtherLabs, heatCells, heatLabel, upsertCrawl, type HeatFile } from "@/lib/topic-heat";
 import { applySageConfig, loadSageConfig } from "@/lib/sage-config-disk";
-import { writeTldr } from "./tldr-24h";
+import { computeTldr, writeTldr } from "./tldr-24h";
 import { plainHeadline } from "@/lib/plain-headline";
 // PASS-F2.3a: the page shows the cleaned publisher headline; lead-history.json keeps the raw one.
 const plainLead = <T extends { headline: string } | null>(e: T): T => (e ? { ...e, headline: plainHeadline(e.headline) } : e);
@@ -175,7 +175,7 @@ writeFileSync(historyPath, JSON.stringify(history, null, 2) + "\n");
 const leadNow = currentLead(history);
 const leadYday = yesterdayLead(history);
 // Story age for the Brief's 48h safety-net HELD rule (PASS-L): the entry's first_at, else the live group's earliest item.
-const leadCluster = leadNow?.cluster_id ? PULSE_CLUSTERS.find((c) => c.id === leadNow.cluster_id) : undefined;
+const leadCluster = leadNow?.cluster_id ? PULSE_CLUSTERS.find((c) => c.id === leadNow.cluster_id || c.member_ids.includes(leadNow.cluster_id!.replace(/^cl:/, ""))) : undefined;
 const leadFirstMs = leadCluster ? groupFirstAt(leadCluster, memberAt) : NaN;
 const leadFirstAt = leadNow?.first_at ?? (Number.isFinite(leadFirstMs) ? new Date(leadFirstMs).toISOString() : null);
 writeFileSync(
@@ -218,6 +218,10 @@ if (wireOldLast && wireOldLast.crawl_at !== PULSE_CLUSTERS_AT) {
   wirePrev = wireOldLast;
   writeFileSync(wirePrevPath, JSON.stringify(wireOldLast, null, 2) + "\n");
 }
+// PASS-WIRE-CLUSTER (4)+(6): one row per story across Brief + Wire. The Brief "Past 24 hours" list keeps the story
+// (lead excluded there too); the Wire never repeats a Brief bullet and backfills to 5 instead.
+const leadIds = leadNow?.cluster_id ? [leadNow.cluster_id] : [];
+const briefIds = computeTldr(leadIds).bullets.map((b) => b.id);
 const wire = buildWire(PULSE_CLUSTERS, wirePrev, {
   at: cur.at,
   crawlAt: PULSE_CLUSTERS_AT,
@@ -225,8 +229,8 @@ const wire = buildWire(PULSE_CLUSTERS, wirePrev, {
   publishers,
   members,
   tasteIds: X_TASTE.items.map((t) => t.id),
-  // The current daily lead is on the Take — never repeated on the Wire (backfills to 5).
-  excludeIds: leadNow?.cluster_id ? [leadNow.cluster_id] : [],
+  // The current daily lead is on the Take and Brief bullets are in the Brief — never repeated on the Wire (backfills to 5).
+  excludeIds: [...leadIds, ...briefIds],
 });
 writeFileSync(wireLastPath, JSON.stringify(wire, null, 2) + "\n");
 const wc = wireCounts(wire.rows);
@@ -249,7 +253,7 @@ for (const r of wire.rows)
 
 
 // ── PASS-F2.2 · Past-24h TL;DR (Wire-gated rows of the last 24h; deterministic) ──
-console.log(writeTldr(desk));
+console.log(writeTldr(desk, leadIds));
 
 // ── Pass A · Digest/Voice unlock freeze (only on pick / first write for pick date) ──
 const unlockPath = resolve(dir, "digest-unlock.json");

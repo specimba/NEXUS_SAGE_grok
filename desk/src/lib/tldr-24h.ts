@@ -3,6 +3,7 @@
  * every bullet is one gated Wire candidate (same gate as the Wire: AI filter, DENY, analyst/release rules) whose
  * story time is within 24 h of the crawl. Order: most independent publishers → newest. Dedupe by story cluster
  * (one bullet per cluster), ≤ 2 bullets per lab/company. 5–7 bullets; fewer than 3 ⇒ `quiet` (never padded).
+ * PASS-WIRE-CLUSTER (4): `excludeIds` (the daily lead) applies here too, so the lead's story never twins in the Brief list.
  * Written by scripts/rank-snapshot.ts into src/data/tldr-24h.ts; no generated text, no LLM.
  */
 import { wireCandidates, type WireCluster, type WireOpts } from "@/lib/wire";

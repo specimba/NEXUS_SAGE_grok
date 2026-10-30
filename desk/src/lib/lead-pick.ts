@@ -399,16 +399,18 @@ export function decideLeadRefresh(h: LeadHistory, clusters: WireCluster[], opts:
   const now = Date.parse(opts.crawlAt);
   const sincePick = leadAgeHours(cur.at, now);
   const byId = new Map(clusters.map((c) => [c.id, c]));
-  const curCluster = cur.cluster_id ? byId.get(cur.cluster_id) : undefined;
+  // PASS-WIRE-CLUSTER: the lead's cluster may have been merged under a new head — find it by member.
+  const curCluster = cur.cluster_id ? byId.get(cur.cluster_id) ?? clusters.find((c) => c.member_ids.includes(cur.cluster_id!.replace(/^cl:/, ""))) : undefined;
+  const isCur = (id: string) => id === cur.cluster_id || (curCluster !== undefined && id === curCluster.id);
   const firstMs = cur.first_at ? Date.parse(cur.first_at) : curCluster ? groupFirstAt(curCluster, opts.memberAt) : NaN;
   const ageH = Number.isFinite(firstMs) ? (now - firstMs) / 3_600_000 : null;
   const keep = (): PickDecision => ({ ...d, refresh: { kind: "kept", age_h: ageH, since_pick_h: sincePick } });
   if (sincePick == null || sincePick <= LEAD_REPICK_AFTER_H) return keep();
   const fresh = leadCandidates(clusters, now, opts).find(
-    (c) => c.id !== cur.cluster_id && now - groupFirstAt(byId.get(c.id)!, opts.memberAt) < LEAD_FRESH_AGE_H * 3_600_000,
+    (c) => !isCur(c.id) && now - groupFirstAt(byId.get(c.id)!, opts.memberAt) < LEAD_FRESH_AGE_H * 3_600_000,
   );
   if (fresh) {
-    const freshOnly = clusters.filter((c) => c.id !== cur.cluster_id && now - groupFirstAt(c, opts.memberAt) < LEAD_FRESH_AGE_H * 3_600_000);
+    const freshOnly = clusters.filter((c) => !isCur(c.id) && now - groupFirstAt(c, opts.memberAt) < LEAD_FRESH_AGE_H * 3_600_000);
     const r = decidePick(h, freshOnly, { ...opts, repick: true });
     if (r.action === "picked") {
       const { forced: _f, ...entry } = r.entry;
