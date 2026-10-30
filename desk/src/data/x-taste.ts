@@ -24,7 +24,7 @@ export type XTasteSnap = {
 };
 
 export const X_TASTE: XTasteSnap = {
-  "captured_at": "2026-10-30T07:46:18Z",
+  "captured_at": "2026-10-30T12:45:16Z",
   "briefEligible": false,
   "pulseLeadEligible": false,
   "paidApi": false,
@@ -49,6 +49,13 @@ export const X_TASTE: XTasteSnap = {
       "surface": "feed",
       "url": "https://x.com/OpenAI/status/2105373267171438779",
       "handle": "OpenAI",
+    },
+    {
+      "id": "2116134336634224649",
+      "text": "@OpenAI Related policy from OpenAI's Oct 23 post: frontier model training now runs with no internet access until safeguards improve. After the Sept 20 DNS escape, they paused training and evals of their most capable models to harden the setup.",
+      "surface": "feed",
+      "url": "https://x.com/promptshortcut/status/2116134336634224649",
+      "handle": "promptshortcut",
     },
     {
       "id": "2115966319057416220",
@@ -100,25 +107,46 @@ export const X_TASTE: XTasteSnap = {
       "handle": "SeismicWhales",
     },
     {
-      "id": "2115542546571239733",
-      "text": "@haider1 Wait for other models from OpenAI n Anthropic. \n\nThey had to pause training for security reasons.",
-      "surface": "feed",
-      "url": "https://x.com/davinder0110v/status/2115542546571239733",
-      "handle": "davinder0110v",
-    },
-    {
-      "id": "2115469237791650021",
-      "text": "OpenAI has resumed training its most advanced AI models after fixing a security flaw that let a model connect to the internet without authorization.\n\nhttps://t.co/eI1gmLrK1q",
-      "surface": "feed",
-      "url": "https://x.com/natunnews/status/2115469237791650021",
-      "handle": "natunnews",
-    },
-    {
       "id": "2113661518780998003",
       "text": "Computer Use lets agents click and type across any app on your computer, not just the browser.\n\nCursor uses it on its own when a task needs it. You can also ask for it by @-mentioning Computer Use in your prompt.\n\nUpdate Cursor to try it: https://t.co/vwTPMUSnyd",
       "surface": "feed",
       "url": "https://x.com/cursor_ai/status/2113661518780998003",
       "handle": "cursor_ai",
+    },
+    {
+      "id": "2116132752634638820",
+      "text": "OpenAI published the monitor stack that would have flagged its escaped agents 30 minutes in, CrowdStrike counted more than 200 organizations hit by a single agent-run intrusion campaign, Mistral opened the weights of its 1-trillion-parameter model. https://t.co/vhZgOkWx3K",
+      "surface": "feed",
+      "url": "https://x.com/AnotherCodingX/status/2116132752634638820",
+      "handle": "AnotherCodingX",
+    },
+    {
+      "id": "2116112103257858286",
+      "text": "我开了Ultra所以在这个月巨量的使用了Grok 4.7。\n优点：\n量巨大，无比的大。\n速度非常快，首字延迟几乎没有。我常常会想他是怎么做到的。\n不会雷霆大思考，体感很爽。\n\n我干脆把它设成Pi的默认主控模型和默认worker，接下来就是缺点了。 https://t.co/LUAdoCWr9h",
+      "surface": "feed",
+      "url": "https://x.com/HMLGGGG/status/2116112103257858286",
+      "handle": "HMLGGGG",
+    },
+    {
+      "id": "2116084399854985241",
+      "text": "they need to make computer use cursor bright red so i don't fuck up it's testing (but i have noticed it responds to 'user did some stuff so we work around it'), wild stuff",
+      "surface": "feed",
+      "url": "https://x.com/137ry/status/2116084399854985241",
+      "handle": "137ry",
+    },
+    {
+      "id": "2116077817280499886",
+      "text": "L'EDI Cursor intègre la fonction « Computer Use ». Ses agents IA de codage ne se limitent plus au navigateur : ils peuvent désormais cliquer, saisir du texte et faire des captures d'écran dans n'importe quelle application GUI installée en local. #DevTools #IA #Cursor",
+      "surface": "feed",
+      "url": "https://x.com/keysmarp/status/2116077817280499886",
+      "handle": "keysmarp",
+    },
+    {
+      "id": "2116075439105937843",
+      "text": "有个叫 BAMA 的开源项目，名字就是 Build Any Mac App 的缩写，干的事是让 Agent 从想法一路做到你 Dock 栏里的原生 Mac 应用。\n\n它不是一个工具，而是一套 21 个 Agent skill，从起步、规划、写代码、做设计到最后交付，每个阶段都有对应的 skill，Agent 自己知道下一步该叫谁。",
+      "surface": "feed",
+      "url": "https://x.com/wlzh/status/2116075439105937843",
+      "handle": "wlzh",
     },
     {
       "id": "2116059263982555291",
@@ -149,52 +177,24 @@ export const X_TASTE: XTasteSnap = {
       "handle": "shao__meng",
     },
     {
-      "id": "2115985982151705087",
-      "text": "@realnatecar Computer use in Cursor is the feature that changes daily work if the approval prompts stay strict. I'd want a folder sandbox before letting it click around. Tried it on Simulator yet?",
-      "surface": "feed",
-      "url": "https://x.com/HunZhijie/status/2115985982151705087",
-      "handle": "HunZhijie",
-    },
-    {
-      "id": "2115961274110562454",
-      "text": "Mucha gente se queja de que la cuota semanal vuela, pero el problema es que usan a Grok Bot como si fuera un chat normal. \n\nAquí no pagas por prompt, pagas por el estado del contexto y llamadas a herramientas. Un bot cargado relee 8k-9k tokens en cada paso que da.\n\nAsí es como se",
-      "surface": "feed",
-      "url": "https://x.com/Mrglgrgl/status/2115961274110562454",
-      "handle": "Mrglgrgl",
-    },
-    {
-      "id": "2115961166556188724",
-      "text": "@grok **Row-Bot is the local-first, open-source alternative** when you care about owning your AI, data, and rules instead of renting a cloud agent.[](&lt;https://t.co/lsAcFDklnf&gt;)\n\nGrok Bot (xAI/Cursor), Muse (Meta), and Dots (OpenAI) are managed cloud personal agents. Each ge",
-      "surface": "feed",
-      "url": "https://x.com/sydsachar/status/2115961166556188724",
-      "handle": "sydsachar",
-    },
-    {
-      "id": "2115942679498432778",
-      "text": "Cursor found a way to make worse computer use than Claude wow",
-      "surface": "feed",
-      "url": "https://x.com/penguinspecz/status/2115942679498432778",
-      "handle": "penguinspecz",
-    },
-    {
-      "id": "2115941463679021470",
-      "text": "@ericzakariasson @bot @poteto ・200ドルのUltraより上位のプランを出していただきたいです。すべての仕事をgrokbot×Cursorで完結させるには、週間使用量の上限が少ないです。本当に素晴らしいプロダクトなので、容量を気にせずに使いたいと思っています。",
-      "surface": "feed",
-      "url": "https://x.com/AI_writing_mono/status/2115941463679021470",
-      "handle": "AI_writing_mono",
-    },
-    {
-      "id": "2115912819971678661",
-      "text": "Most \"AI teammate\" apps keep the model, the computer, and your files on their side of the line.\n\nNightly Labs' OpenBot is a local-first desktop workspace for persistent agents. Each teammate gets its own workspace and conversation, then runs Codex, Claude Code, Grok, OpenCode, ht",
-      "surface": "feed",
-      "url": "https://x.com/FReza1984/status/2115912819971678661",
-      "handle": "FReza1984",
-    },
-    {
       "id": "2113681863109939271",
       "text": "Meet Kimi K3.1 Pro, our most capable 3T-class model. https://t.co/TB8aTQggHT",
       "surface": "feed",
       "url": "https://x.com/Kimi_Moonshot/status/2113681863109939271",
+      "handle": "Kimi_Moonshot",
+    },
+    {
+      "id": "2113680710150357279",
+      "text": "K3.1 Pro works directly in the tools used by the 3D modeling and game industries - Blender, Unreal Engine, Godot, and CAD. \nOn BenchCAD, which tests 3D reconstruction from multi-view renderings through CAD code generation, it scores 92.7% with tools, approaching Claude Opus 5.5 h",
+      "surface": "feed",
+      "url": "https://x.com/Kimi_Moonshot/status/2113680710150357279",
+      "handle": "Kimi_Moonshot",
+    },
+    {
+      "id": "2113680705855373791",
+      "text": "On Terminal-Bench 4.0, which evaluates coding agents on realistic, resource-constrained terminal tasks using strict task-specific tests, K3.1 Pro scores 65.7%, ahead of GPT-6 Astra (58.2%) and narrowly behind Claude Opus 5.5 (66.4%). https://t.co/qh5wU1qAX4",
+      "surface": "feed",
+      "url": "https://x.com/Kimi_Moonshot/status/2113680705855373791",
       "handle": "Kimi_Moonshot",
     }
   ],
@@ -206,5 +206,5 @@ export const X_TASTE: XTasteSnap = {
     "seen": 41,
     "kept": 24
   },
-  "stamped_at": "2026-10-30T07:46:18Z"
+  "stamped_at": "2026-10-30T12:45:16Z"
 } as const;
