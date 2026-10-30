@@ -3,35 +3,28 @@ import type { Tldr } from "@/lib/tldr-24h";
 
 export const TLDR_24H: Tldr = {
   "schema": 1,
-  "crawl_at": "2026-10-30T13:20:51Z",
+  "crawl_at": "2026-10-30T18:20:34Z",
   "date": "2026-10-30",
   "bullets": [
     {
-      "id": "cl:hn:50302334",
-      "title": "Backdoors in official Claude Code extensions",
-      "url": "https://cyberplace.social/@GossiTheDog/117528831681803563",
+      "id": "cl:rss:the-decoder:c2e9d57651f8ceec",
+      "title": "Malicious Claude Code extension in Cursor's marketplace attempted remote access and data theft",
+      "url": "https://the-decoder.com/malicious-claude-code-extension-in-cursors-marketplace-attempted-remote-access-and-data-theft/",
       "at": "2026-10-30T05:20:20Z",
+      "sources": 4
+    },
+    {
+      "id": "cl:rss:huggingnews:a0741789355f452e",
+      "title": "Blackstone Forecasts Junk Credit Rating for Anthropic Following IPO",
+      "url": "https://huggingnews.com/ai/blackstone-forecasts-junk-credit-rating-for-anthropic-following-ipo-8a17475a",
+      "at": "2026-10-30T17:00:56Z",
       "sources": 2
     },
     {
-      "id": "cl:rss:testingcatalog:37bb4b28a392479c",
-      "title": "Mistral opens Large 4 weights for coding and security",
-      "url": "https://www.testingcatalog.com/mistral-opens-large-4-weights-for-coding-and-security/",
-      "at": "2026-10-29T15:47:04Z",
-      "sources": 2
-    },
-    {
-      "id": "cl:rss:the-decoder:6982ff94f200009a",
-      "title": "Paris-based Mistral releases \"Le Chonk,\" a strong coding model that still trails China overall",
-      "url": "https://the-decoder.com/paris-based-mistral-releases-le-chonk-a-strong-coding-model-that-still-trails-china-overall/",
-      "at": "2026-10-29T15:25:27Z",
-      "sources": 2
-    },
-    {
-      "id": "cl:rss:the-decoder:53dd8daeb0ed2692",
-      "title": "Chinese spies targeted Nvidia CEO Jensen Huang, according to The New York Times",
-      "url": "https://the-decoder.com/chinese-spies-targeted-nvidia-ceo-jensen-huang-according-to-the-new-york-times/",
-      "at": "2026-10-29T13:42:38Z",
+      "id": "cl:gnews:39c082fb0c5cc089",
+      "title": "Mistral Releases Trillion-Parameter Open-Weight Large 4 AI Model to Expand Sovereign Cybersecurity Capabilities",
+      "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPbXNhVEJUQ0pCUWxNVXJ3dWtvRnh3VHpnSWoxZV82eDhUb3FBU18tNy1sWGVmdmRxVjRDV1dldHd2eFpBT0FtbE54eFpHcWJ6YVM3SWlKb2Z4dE53ZnlEUW45V0FzRHVrdEpEZ2hsbkYtalZveVVhb1E2UjVnLXFRUHRyMTF6bjA5RFVoR3VNWjVkX05qMXNoQUgwMkN0VlctYjNoOVVENHo4UEVwQWFUZVlnQ0ZkTDVyS084S2FBcWp3bGM3NzJrdTJiMEJiemZjamc?oc=5",
+      "at": "2026-10-30T12:41:40Z",
       "sources": 2
     }
   ],

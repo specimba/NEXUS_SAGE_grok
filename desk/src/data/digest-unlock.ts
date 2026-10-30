@@ -8,41 +8,41 @@ export const DIGEST_UNLOCK: DigestUnlockSnapshot = {
   "schema": 1,
   "cycleId": "003",
   "pickDate": "2026-10-30",
-  "frozenAt": "2026-10-30T03:21:02.135Z",
-  "leadId": "cl:rss:mistral:bd03e4a483646b85",
+  "frozenAt": "2026-10-30T18:21:00.399Z",
+  "leadId": "cl:hn:50307219",
   "lead": {
-    "id": "cl:rss:mistral:bd03e4a483646b85",
+    "id": "cl:hn:50307219",
     "kind": "lead",
-    "title": "Le Chonk: Built for Coders, Trusted by Defenders.",
-    "take": "7 SRC · sig 1246 · pick 2026-10-30",
-    "why": "LEAD_TODAY · picked · frozen at daily pick",
+    "title": "Anthropic may not secure investment-grade rating after IPO, Blackstone says",
+    "take": "2 SRC · sig 28 · pick 2026-10-30",
+    "why": "fresh pick · picked 21:20 UTC+3",
     "move": "Digest/Voice follow Brief lead",
-    "url": "https://mistral.ai/news/mistral-large-4-oss/",
-    "sources": 7,
-    "sig": 1246
+    "url": "https://www.ft.com/content/59383c7f-8d82-493f-bf01-d2e862a1018f",
+    "sources": 2,
+    "sig": 28
   },
   "rows": [
     {
-      "id": "cl:rss:testingcatalog:90bb3e441c768369",
+      "id": "cl:rss:mistral:bd03e4a483646b85",
       "kind": "companion",
-      "title": "Google unveils Gemini 4 Carbon for cyber defenders",
-      "take": "7 SRC · sig 1002",
+      "title": "Le Chonk: Built for Coders, Trusted by Defenders.",
+      "take": "5 SRC · sig 1656",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
-      "url": "https://www.testingcatalog.com/google-unveils-gemini-4-carbon-for-cyber-defenders/",
-      "sources": 7,
-      "sig": 1002
+      "url": "https://mistral.ai/news/mistral-large-4-oss/",
+      "sources": 5,
+      "sig": 1656
     },
     {
-      "id": "cl:rss:huggingface:ec733f799e1aaee3",
+      "id": "cl:rss:the-decoder:c2e9d57651f8ceec",
       "kind": "rest",
-      "title": "NVIDIA Nemotron 3.5 Transcribe and Granary v2: Intelligent Multilingual Transcription You Can Prompt and Adapt",
-      "take": "3 SRC · sig 130",
+      "title": "Malicious Claude Code extension in Cursor's marketplace attempted remote access and data theft",
+      "take": "4 SRC · sig 646",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
-      "url": "https://huggingface.co/blog/nvidia/nemotron-transcribe-granary",
-      "sources": 3,
-      "sig": 130
+      "url": "https://the-decoder.com/malicious-claude-code-extension-in-cursors-marketplace-attempted-remote-access-and-data-theft/",
+      "sources": 4,
+      "sig": 646
     }
   ]
 } as const;

@@ -22,7 +22,6 @@ export const SHELF: ShelfItem[] = [
   { href: "https://arxiv.org/abs/2610.40654", label: "arxiv.org/abs/2610.40654", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.40649", label: "arxiv.org/abs/2610.40649", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.40644", label: "arxiv.org/abs/2610.40644", reason: "arxiv-shelf" as const },
-  { href: "https://github.com/AyushBaware/evidence-first-research-agent", label: "AyushBaware/evidence-first-research-agent", reason: "github-search-shelf" as const },
-  { href: "https://github.com/Ramesh-codex/agent-bugfixer", label: "Ramesh-codex/agent-bugfixer", reason: "github-search-shelf" as const },
-  { href: "https://github.com/claw-eval/claw-eval", label: "claw-eval/claw-eval", reason: "github-search-shelf" as const },
+  { href: "https://github.com/Anilkumar7877/Voice-Agent", label: "Anilkumar7877/Voice-Agent", reason: "github-search-shelf" as const },
+  { href: "https://github.com/arrrrny/zuraffa_agent", label: "arrrrny/zuraffa_agent", reason: "github-search-shelf" as const },
 ];

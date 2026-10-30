@@ -3,44 +3,29 @@ import type { LeadEntry } from "@/lib/lead-pick";
 
 export const LEAD_TODAY: LeadEntry | null = {
   "date": "2026-10-30",
-  "at": "2026-10-30T03:21:02.135Z",
-  "crawl_at": "2026-10-30T03:20:34Z",
-  "pick_slot": "06:20",
+  "at": "2026-10-30T18:21:00.399Z",
+  "crawl_at": "2026-10-30T18:20:34Z",
+  "pick_slot": "21:20",
+  "supersedes": "cl:rss:mistral:bd03e4a483646b85",
   "excluded": [
     {
-      "cluster_id": "cl:rss:huggingface:ec733f799e1aaee3",
-      "headline": "NVIDIA Nemotron 3.5 Transcribe and Granary v2: Intelligent Multilingual Transcription You Can Prompt and Adapt",
-      "reason": "age>=36h",
-      "sources": 3,
-      "age_h": 36,
-      "pub": "HF"
-    },
-    {
-      "cluster_id": "cl:rss:testingcatalog:52787ee918d23bcb",
-      "headline": "ICYMI: Google DeepMind previews Genie 4 with native audio",
-      "reason": "age>=36h",
+      "cluster_id": "cl:gnews:39c082fb0c5cc089",
+      "headline": "Mistral Releases Trillion-Parameter Open-Weight Large 4 AI Model to Expand Sovereign Cybersecurity Capabilities",
+      "reason": "GNW_ONLY",
       "sources": 2,
-      "age_h": 43,
-      "pub": "TES"
-    },
-    {
-      "cluster_id": "cl:rss:deepmind:851107eacfc8ba0f",
-      "headline": "Gemini 4 Argon: Built to solve your hardest problems",
-      "reason": "age>=36h",
-      "sources": 2,
-      "age_h": 395,
-      "pub": "DMD"
+      "age_h": 5
     }
   ],
-  "cluster_id": "cl:rss:mistral:bd03e4a483646b85",
-  "headline": "Le Chonk: Built for Coders, Trusted by Defenders.",
-  "url": "https://mistral.ai/news/mistral-large-4-oss/",
-  "sources": 7,
-  "sig": 1246,
+  "cluster_id": "cl:hn:50307219",
+  "headline": "Anthropic may not secure investment-grade rating after IPO, Blackstone says",
+  "url": "https://www.ft.com/content/59383c7f-8d82-493f-bf01-d2e862a1018f",
+  "sources": 2,
+  "sig": 28,
   "reason": "picked",
-  "pub": "MIS",
-  "first_at": "2026-10-29T12:00:07.000Z",
-  "age_band": "<24h"
+  "pub": "HN",
+  "first_at": "2026-10-30T16:45:48.000Z",
+  "age_band": "<24h",
+  "note": "repick: lead older than 12h since pick"
 };
 
 export const LEAD_YESTERDAY: LeadEntry | null = {
@@ -97,7 +82,7 @@ export const LEAD_YESTERDAY: LeadEntry | null = {
 export const LEAD_HELD = false;
 
 /** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is >48h old (PASS-L). */
-export const LEAD_FIRST_AT: string | null = "2026-10-29T12:00:07.000Z";
+export const LEAD_FIRST_AT: string | null = "2026-10-30T16:45:48.000Z";
 
 /** Date of the latest real pick (never a HELD entry) — the HELD card's "last pick" (UX-1). */
 export const LEAD_LAST_PICK: string | null = "2026-10-30";
