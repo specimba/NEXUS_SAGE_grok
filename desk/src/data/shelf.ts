@@ -23,5 +23,4 @@ export const SHELF: ShelfItem[] = [
   { href: "https://arxiv.org/abs/2610.40649", label: "arxiv.org/abs/2610.40649", reason: "arxiv-shelf" as const },
   { href: "https://arxiv.org/abs/2610.40644", label: "arxiv.org/abs/2610.40644", reason: "arxiv-shelf" as const },
   { href: "https://github.com/Anilkumar7877/Voice-Agent", label: "Anilkumar7877/Voice-Agent", reason: "github-search-shelf" as const },
-  { href: "https://github.com/arrrrny/zuraffa_agent", label: "arrrrny/zuraffa_agent", reason: "github-search-shelf" as const },
 ];

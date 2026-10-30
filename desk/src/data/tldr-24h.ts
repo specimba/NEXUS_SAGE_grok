@@ -3,7 +3,7 @@ import type { Tldr } from "@/lib/tldr-24h";
 
 export const TLDR_24H: Tldr = {
   "schema": 1,
-  "crawl_at": "2026-10-30T18:20:34Z",
+  "crawl_at": "2026-10-30T19:51:04Z",
   "date": "2026-10-30",
   "bullets": [
     {
@@ -11,7 +11,7 @@ export const TLDR_24H: Tldr = {
       "title": "Malicious Claude Code extension in Cursor's marketplace attempted remote access and data theft",
       "url": "https://the-decoder.com/malicious-claude-code-extension-in-cursors-marketplace-attempted-remote-access-and-data-theft/",
       "at": "2026-10-30T05:20:20Z",
-      "sources": 4
+      "sources": 5
     },
     {
       "id": "cl:rss:huggingnews:a0741789355f452e",
@@ -21,10 +21,17 @@ export const TLDR_24H: Tldr = {
       "sources": 2
     },
     {
-      "id": "cl:gnews:39c082fb0c5cc089",
-      "title": "Mistral Releases Trillion-Parameter Open-Weight Large 4 AI Model to Expand Sovereign Cybersecurity Capabilities",
-      "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPbXNhVEJUQ0pCUWxNVXJ3dWtvRnh3VHpnSWoxZV82eDhUb3FBU18tNy1sWGVmdmRxVjRDV1dldHd2eFpBT0FtbE54eFpHcWJ6YVM3SWlKb2Z4dE53ZnlEUW45V0FzRHVrdEpEZ2hsbkYtalZveVVhb1E2UjVnLXFRUHRyMTF6bjA5RFVoR3VNWjVkX05qMXNoQUgwMkN0VlctYjNoOVVENHo4UEVwQWFUZVlnQ0ZkTDVyS084S2FBcWp3bGM3NzJrdTJiMEJiemZjamc?oc=5",
-      "at": "2026-10-30T12:41:40Z",
+      "id": "cl:rss:huggingnews:64b1bbe7b7a2e2d1",
+      "title": "Amazon Secures $80B Supplier Loan Facility to Fund AI Buildout",
+      "url": "https://huggingnews.com/ai/amazon-secures-80b-supplier-loan-facility-to-fund-ai-buildout-4d442b54",
+      "at": "2026-10-30T16:36:14Z",
+      "sources": 2
+    },
+    {
+      "id": "cl:gnews:22337d5d530cdea4",
+      "title": "Mistral Releases 1-Trillion-Parameter AI Model for Cybersecurity",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNTGpzMXpHR1d5RE1oQ2c0NWRYWlVlTk9HM2dueEJaNldiLUtpOHJaWUdMeU14ZHJfNmFIRHg5U2REajU0eDQ5V0dpdGx2Sk9IYUhOamRTRVlUWGdMejJDbzUzbmwwdC1ZTWNxY1VvbExNN2RlVXpTbTBiX3RyLWFGUGRqbW8xWVNyZVBPTVF1YmRXZw?oc=5",
+      "at": "2026-10-30T13:52:00Z",
       "sources": 2
     }
   ],

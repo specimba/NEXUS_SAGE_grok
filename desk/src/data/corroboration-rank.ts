@@ -3,6 +3,68 @@ import type { MovedRow, RankSnapshot } from "@/lib/corroboration";
 
 export const RANK_CURRENT: RankSnapshot = {
   "schema": 1,
+  "at": "2026-10-30T19:51:31.059Z",
+  "crawl_at": "2026-10-30T19:51:04Z",
+  "lead_id": "hf-incident",
+  "rows": [
+    {
+      "id": "hf-swarm",
+      "rank": 1,
+      "base_rank": 1,
+      "sources": 1,
+      "source_keys": [
+        "x:@dwarkesh_sp"
+      ],
+      "crawl_hits": [],
+      "mult": 1,
+      "lead": true
+    },
+    {
+      "id": "astra-depth",
+      "rank": 2,
+      "base_rank": 2,
+      "sources": 3,
+      "source_keys": [
+        "crawl:hn",
+        "x:@amir",
+        "x:@steph_palazzolo"
+      ],
+      "crawl_hits": [
+        "cl:hn:50305279",
+        "cl:hn:50289310"
+      ],
+      "mult": 1.3,
+      "lead": false
+    },
+    {
+      "id": "aisle-curl",
+      "rank": 3,
+      "base_rank": 3,
+      "sources": 1,
+      "source_keys": [
+        "co:aisle"
+      ],
+      "crawl_hits": [],
+      "mult": 1,
+      "lead": false
+    },
+    {
+      "id": "harness-papers",
+      "rank": 4,
+      "base_rank": 4,
+      "sources": 1,
+      "source_keys": [
+        "x:@dair_ai"
+      ],
+      "crawl_hits": [],
+      "mult": 1,
+      "lead": false
+    }
+  ]
+};
+
+export const RANK_PREV: RankSnapshot | null = {
+  "schema": 1,
   "at": "2026-10-30T18:21:00.399Z",
   "crawl_at": "2026-10-30T18:20:34Z",
   "lead_id": "hf-incident",
@@ -65,71 +127,6 @@ export const RANK_CURRENT: RankSnapshot = {
   ]
 };
 
-export const RANK_PREV: RankSnapshot | null = {
-  "schema": 1,
-  "at": "2026-10-30T13:21:17.338Z",
-  "crawl_at": "2026-10-30T13:20:51Z",
-  "lead_id": "hf-incident",
-  "rows": [
-    {
-      "id": "hf-swarm",
-      "rank": 1,
-      "base_rank": 1,
-      "sources": 1,
-      "source_keys": [
-        "x:@dwarkesh_sp"
-      ],
-      "crawl_hits": [],
-      "mult": 1,
-      "lead": true
-    },
-    {
-      "id": "astra-depth",
-      "rank": 2,
-      "base_rank": 2,
-      "sources": 5,
-      "source_keys": [
-        "crawl:hn",
-        "crawl:lab:openai",
-        "crawl:lab:the-decoder",
-        "x:@amir",
-        "x:@steph_palazzolo"
-      ],
-      "crawl_hits": [
-        "cl:hn:50289310",
-        "cl:rss:the-decoder:c7111c14d1057eea",
-        "cl:rss:openai:a9c488820a62ac4a"
-      ],
-      "mult": 1.45,
-      "lead": false
-    },
-    {
-      "id": "aisle-curl",
-      "rank": 3,
-      "base_rank": 3,
-      "sources": 1,
-      "source_keys": [
-        "co:aisle"
-      ],
-      "crawl_hits": [],
-      "mult": 1,
-      "lead": false
-    },
-    {
-      "id": "harness-papers",
-      "rank": 4,
-      "base_rank": 4,
-      "sources": 1,
-      "source_keys": [
-        "x:@dair_ai"
-      ],
-      "crawl_hits": [],
-      "mult": 1,
-      "lead": false
-    }
-  ]
-};
-
 export const RANK_MOVED: MovedRow[] = [
   {
     "id": "hf-swarm",
@@ -145,8 +142,8 @@ export const RANK_MOVED: MovedRow[] = [
     "status": "same",
     "prev_rank": 2,
     "rank": 2,
-    "prev_sources": 5,
-    "sources": 4,
+    "prev_sources": 4,
+    "sources": 3,
     "by_corroboration": false
   },
   {

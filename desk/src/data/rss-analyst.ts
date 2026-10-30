@@ -17,7 +17,7 @@ export type RssAnalystRow = {
   cluster_id?: string;
 };
 
-export const RSS_ANALYST_AT: string | null = "2026-10-30T18:20:34Z";
+export const RSS_ANALYST_AT: string | null = "2026-10-30T19:51:04Z";
 
 export const RSS_ANALYST: RssAnalystRow[] = [
   { id: "anl:latent-space:0eb61608480b19cd", feed: "latent-space" as const, title: "[AINews] Building AIE CODE: The top Coding Agent Conference", link: "https://latent.space/p/ainews-building-aie-code-the-top-coding-agent-conference/", published: "2026-10-30T08:24:29Z", summary: "Mistral’s open-weight release, frontier monitoring, and the day’s AI Twitter and Reddit recaps.", source: "rss-analyst" as const, recap: true, tag: "rest" as const, first_seen: "2026-10-30T13:20:51Z", is_new: false, cluster_id: "cl:anl:latent-space:0eb61608480b19cd" },

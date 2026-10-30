@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-30T18:20:34Z",
+  "stamped_at": "2026-10-30T19:51:04Z",
   "config_hash": "1ba30989ff76",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,7 +11,7 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 139,
+      "duration_ms": 140,
       "paused_until": null,
       "reason": null
     },
@@ -20,7 +20,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 3741,
+      "duration_ms": 3171,
       "paused_until": null,
       "reason": null
     },
@@ -29,7 +29,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 723,
+      "duration_ms": 442,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 322,
+      "duration_ms": 215,
       "paused_until": null,
       "reason": null
     },
@@ -46,8 +46,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 63,
-      "duration_ms": 8346,
+      "rows": 64,
+      "duration_ms": 8629,
       "paused_until": null,
       "reason": null
     },
@@ -56,7 +56,7 @@
       "label": "HN title",
       "status": "ok",
       "rows": 11,
-      "duration_ms": 8214,
+      "duration_ms": 8522,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 150,
-      "duration_ms": 24499,
+      "duration_ms": 24956,
       "paused_until": null,
       "reason": null
     },
@@ -74,7 +74,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 77,
-      "duration_ms": 12095,
+      "duration_ms": 12100,
       "paused_until": null,
       "reason": null
     },
@@ -83,7 +83,7 @@
       "label": "analyst RSS",
       "status": "ok",
       "rows": 7,
-      "duration_ms": 2366,
+      "duration_ms": 2300,
       "paused_until": null,
       "reason": null
     },
@@ -92,7 +92,7 @@
       "label": "releases",
       "status": "ok",
       "rows": 9,
-      "duration_ms": 6830,
+      "duration_ms": 6679,
       "paused_until": null,
       "reason": null
     },
@@ -100,8 +100,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 45,
-      "duration_ms": 6393,
+      "rows": 46,
+      "duration_ms": 6425,
       "paused_until": null,
       "reason": null
     },
@@ -109,8 +109,8 @@
       "id": "github",
       "label": "GitHub",
       "status": "ok",
-      "rows": 2,
-      "duration_ms": 413,
+      "rows": 1,
+      "duration_ms": 355,
       "paused_until": null,
       "reason": null
     },
@@ -119,16 +119,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4651,
+      "duration_ms": 4617,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 78732,
-    "sources_wall_ms": 24500,
-    "papers_lane_ms": 4930,
-    "slowest_source_ms": 24499,
+    "sources_ms": 78551,
+    "sources_wall_ms": 24957,
+    "papers_lane_ms": 3974,
+    "slowest_source_ms": 24956,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -146,31 +146,31 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 25154,
-    "startup_ms": 48,
-    "main_ms": 26102
+    "wall_ms": 25726,
+    "startup_ms": 58,
+    "main_ms": 26594
   },
-  "multi_source_independent": 12,
+  "multi_source_independent": 14,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 12,
-    "multi_source_raw": 15,
-    "self_reposts": 3,
-    "items_in": 360,
-    "clusters_out": 317,
-    "collapsed": 43,
-    "multi_source": 12,
-    "multi_member": 25,
+    "multi_source_independent": 14,
+    "multi_source_raw": 16,
+    "self_reposts": 2,
+    "items_in": 362,
+    "clusters_out": 318,
+    "collapsed": 44,
+    "multi_source": 14,
+    "multi_member": 26,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 73,
+    "new_items": 25,
     "per_source": {
-      "hn-algolia": 63,
+      "hn-algolia": 64,
       "rss-lab": 150,
       "rss-security": 77,
-      "gnews-rss": 45,
+      "gnews-rss": 46,
       "gmail-news": 9,
       "rss-analyst": 7,
       "releases-atom": 9
@@ -183,7 +183,7 @@
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 8,
+        "size": 9,
         "score": 1,
         "members": [
           {
@@ -229,6 +229,13 @@
             "publisher": "the-decoder"
           },
           {
+            "id": "gnews:95e150b11dce68ce",
+            "source": "gnews-rss",
+            "title": "Cursor Confirms Anthropic Claude Code Extension Compromised - BankInfoSecurity",
+            "at": "2026-10-30T19:11:09Z",
+            "publisher": "BankInfoSecurity"
+          },
+          {
             "id": "gnews:e47f94e758bf2253",
             "source": "gnews-rss",
             "title": "Trojanized Claude Code Extension Delivered Persistent SSH Backdoor to Developer Machines - Step Security",
@@ -251,7 +258,7 @@
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 5,
+        "size": 4,
         "score": 1,
         "members": [
           {
@@ -269,13 +276,6 @@
             "publisher": "mistral"
           },
           {
-            "id": "gnews:947b8ef7170c9a69",
-            "source": "gnews-rss",
-            "title": "Mistral releases Large 4 weights for internal use in cybersecurity - portalcripto.com.br",
-            "at": "2026-10-30T12:00:18Z",
-            "publisher": "portalcripto.com.br"
-          },
-          {
             "id": "gnews:cc20ae27e637265f",
             "source": "gnews-rss",
             "title": "Mistral Releases Large 4 Weights for Self-Hosted AI - FindArticles",
@@ -288,6 +288,31 @@
             "title": "Mistral AI Releases Weights for the 1T-Parameter Mistral Large 4 Model - KuCoin",
             "at": "2026-10-30T02:47:04Z",
             "publisher": "KuCoin"
+          }
+        ]
+      },
+      {
+        "title": "Anthropic hacked to deliver remote access trojan to Claude developer laptops",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "hn:50307475",
+            "source": "hn-algolia",
+            "title": "Anthropic hacked to deliver remote access trojan to Claude developer laptops",
+            "at": "2026-10-30T17:43:30Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:d73ff4f696421ac7",
+            "source": "gnews-rss",
+            "title": "Anthropic hacked to deliver remote access trojan to Claude developer laptops worldwide - DoublePulsar",
+            "at": "2026-10-30T10:08:04Z",
+            "publisher": "DoublePulsar"
           }
         ]
       },
@@ -330,7 +355,7 @@
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.776,
+        "score": 0.784,
         "members": [
           {
             "id": "rss:huggingnews:a0741789355f452e",
@@ -345,6 +370,31 @@
             "title": "Anthropic may get junk credit rating after its IPO, Blackstone says: report - TradingView",
             "at": "2026-10-30T17:00:56Z",
             "publisher": "TradingView"
+          }
+        ]
+      },
+      {
+        "title": "Amazon Secures $80B Supplier Loan Facility to Fund AI Buildout",
+        "sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 0.737,
+        "members": [
+          {
+            "id": "rss:huggingnews:64b1bbe7b7a2e2d1",
+            "source": "rss-lab",
+            "title": "Amazon Secures $80B Supplier Loan Facility to Fund AI Buildout",
+            "at": "2026-10-30T17:08:07Z",
+            "publisher": "huggingnews"
+          },
+          {
+            "id": "gnews:8e4b12dd0650fde1",
+            "source": "gnews-rss",
+            "title": "Amazon Taps $80 Billion Supplier Loan Facility to Help Fund AI - Yahoo Finance UK",
+            "at": "2026-10-30T16:36:14Z",
+            "publisher": "Yahoo Finance UK"
           }
         ]
       },
@@ -405,7 +455,7 @@
           "gnews-rss"
         ],
         "size": 3,
-        "score": 0.74,
+        "score": 0.754,
         "members": [
           {
             "id": "rss:the-decoder:53dd8daeb0ed2692",
@@ -487,7 +537,7 @@
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.801,
+        "score": 0.799,
         "members": [
           {
             "id": "rss:huggingface:b6b30743068c2627",
@@ -512,7 +562,7 @@
           "rss-analyst"
         ],
         "size": 2,
-        "score": 0.743,
+        "score": 0.734,
         "members": [
           {
             "id": "rss:testingcatalog:90bb3e441c768369",
@@ -537,7 +587,7 @@
           "gnews-rss"
         ],
         "size": 2,
-        "score": 0.995,
+        "score": 0.994,
         "members": [
           {
             "id": "hn:50280732",
@@ -590,23 +640,6 @@
             "title": "Things That Go Beep in the Night: Agentic AI Joins the Search for Extraterrestrial Signals - NVIDIA Blog"
           }
         ]
-      },
-      {
-        "title": "Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents",
-        "sources": [
-          "rss-lab"
-        ],
-        "all_sources": [
-          "rss-lab",
-          "gnews-rss"
-        ],
-        "self_reposts": [
-          {
-            "id": "gnews:ace7e5b0f31eff6d",
-            "publisher": "NVIDIA Blog",
-            "title": "Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents - NVIDIA Blog"
-          }
-        ]
       }
     ],
     "ai_relevance": {
@@ -628,12 +661,16 @@
           "title": "Opinion | Cartoon by Matt Davies - The Washington Post"
         },
         {
-          "publisher": "Stratechery by Ben Thompson",
-          "title": "2026.44: At Long Last… - Stratechery by Ben Thompson"
+          "publisher": "The Motley Fool",
+          "title": "Why Nvidia Stock Took a Dive Today - The Motley Fool"
         },
         {
-          "publisher": "ABC News - Breaking News, Latest News and Videos",
-          "title": "Nvidia denies report that its CEO was allegedly targeted in Chinese spy plot - ABC News - Breaking News, Latest News and Videos"
+          "publisher": "24/7 Wall St.",
+          "title": "It’s Time to Revisit The Nvidia Vs. AMD Debate - 24/7 Wall St."
+        },
+        {
+          "publisher": "The Hindu",
+          "title": "China denies spying on Nvidia's Jensen Huang - The Hindu"
         }
       ],
       "gnews_pool_dropped": 0,
@@ -663,7 +700,7 @@
         ]
       },
       {
-        "score": 0.716,
+        "score": 0.717,
         "blocked": "time-window",
         "hours_apart": 564.4,
         "a": {
@@ -685,7 +722,7 @@
         ]
       },
       {
-        "score": 0.707,
+        "score": 0.712,
         "blocked": "time-window",
         "hours_apart": 555.3,
         "a": {
@@ -707,29 +744,7 @@
         ]
       },
       {
-        "score": 0.697,
-        "blocked": "time-window",
-        "hours_apart": 576,
-        "a": {
-          "id": "rss:mistral:1ef243007176e85c",
-          "source": "rss-lab",
-          "title": "Introducing Mistral Large 4",
-          "at": "2026-10-06T12:00:27Z"
-        },
-        "b": {
-          "id": "gnews:947b8ef7170c9a69",
-          "source": "gnews-rss",
-          "title": "Mistral releases Large 4 weights for internal use in cybersecurity - portalcripto.com.br",
-          "at": "2026-10-30T12:00:18Z"
-        },
-        "shared": [
-          "mistral",
-          "larg",
-          "4"
-        ]
-      },
-      {
-        "score": 0.697,
+        "score": 0.699,
         "blocked": "time-window",
         "hours_apart": 566.8,
         "a": {
@@ -743,6 +758,28 @@
           "source": "gnews-rss",
           "title": "Mistral AI Releases Weights for the 1T-Parameter Mistral Large 4 Model - KuCoin",
           "at": "2026-10-30T02:47:04Z"
+        },
+        "shared": [
+          "mistral",
+          "larg",
+          "4"
+        ]
+      },
+      {
+        "score": 0.672,
+        "blocked": "time-window",
+        "hours_apart": 583.8,
+        "a": {
+          "id": "rss:mistral:1ef243007176e85c",
+          "source": "rss-lab",
+          "title": "Introducing Mistral Large 4",
+          "at": "2026-10-06T12:00:27Z"
+        },
+        "b": {
+          "id": "gnews:dcd523070e8d6b40",
+          "source": "gnews-rss",
+          "title": "Mistral Releases Large 4 Model to Help Organizations Find Cyber Vulnerabilities - Business Upturn",
+          "at": "2026-10-30T19:48:52Z"
         },
         "shared": [
           "mistral",
@@ -773,7 +810,7 @@
         ]
       },
       {
-        "score": 0.641,
+        "score": 0.642,
         "blocked": "time-window",
         "hours_apart": 577.9,
         "a": {
@@ -795,33 +832,33 @@
         ]
       },
       {
-        "score": 0.582,
-        "blocked": "below-threshold",
-        "hours_apart": 0.8,
+        "score": 0.596,
+        "blocked": "time-window",
+        "hours_apart": 31.3,
         "a": {
-          "id": "hn:50301004",
-          "source": "hn-algolia",
-          "title": "Malicious Claude Code Extension Found in Cursor Marketplace",
-          "at": "2026-10-30T08:04:26Z"
+          "id": "rss:mistral:bd03e4a483646b85",
+          "source": "rss-lab",
+          "title": "Le Chonk: Built for Coders, Trusted by Defenders.",
+          "at": "2026-10-29T12:00:07Z"
         },
         "b": {
-          "id": "gnews:d4976bdf4a72ca2e",
+          "id": "gnews:ceed8ff6a8dbfa63",
           "source": "gnews-rss",
-          "title": "Official Claude Code Extension on Cursor Marketplace Trojanized with Persistent SSH Backdoor - The Hacker News",
-          "at": "2026-10-30T08:55:00Z"
+          "title": "Mistral releases the weights of Le Chonk, its trillion-parameter open model built for coders and cyber defenders - Dealroom",
+          "at": "2026-10-30T19:17:05Z"
         },
         "shared": [
-          "claude",
-          "code",
-          "extension",
-          "cursor",
-          "marketplac"
+          "le",
+          "chonk",
+          "built",
+          "coder",
+          "defender"
         ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.766,
+        "score": 0.768,
         "blocked": "time-window",
         "hours_apart": 554.2,
         "a": {
@@ -865,7 +902,7 @@
         ]
       },
       {
-        "score": 0.716,
+        "score": 0.717,
         "blocked": "time-window",
         "hours_apart": 564.4,
         "a": {
@@ -887,7 +924,7 @@
         ]
       },
       {
-        "score": 0.707,
+        "score": 0.712,
         "blocked": "time-window",
         "hours_apart": 555.3,
         "a": {
@@ -909,29 +946,7 @@
         ]
       },
       {
-        "score": 0.697,
-        "blocked": "time-window",
-        "hours_apart": 576,
-        "a": {
-          "id": "rss:mistral:1ef243007176e85c",
-          "source": "rss-lab",
-          "title": "Introducing Mistral Large 4",
-          "at": "2026-10-06T12:00:27Z"
-        },
-        "b": {
-          "id": "gnews:947b8ef7170c9a69",
-          "source": "gnews-rss",
-          "title": "Mistral releases Large 4 weights for internal use in cybersecurity - portalcripto.com.br",
-          "at": "2026-10-30T12:00:18Z"
-        },
-        "shared": [
-          "mistral",
-          "larg",
-          "4"
-        ]
-      },
-      {
-        "score": 0.697,
+        "score": 0.699,
         "blocked": "time-window",
         "hours_apart": 566.8,
         "a": {
@@ -945,6 +960,28 @@
           "source": "gnews-rss",
           "title": "Mistral AI Releases Weights for the 1T-Parameter Mistral Large 4 Model - KuCoin",
           "at": "2026-10-30T02:47:04Z"
+        },
+        "shared": [
+          "mistral",
+          "larg",
+          "4"
+        ]
+      },
+      {
+        "score": 0.672,
+        "blocked": "time-window",
+        "hours_apart": 583.8,
+        "a": {
+          "id": "rss:mistral:1ef243007176e85c",
+          "source": "rss-lab",
+          "title": "Introducing Mistral Large 4",
+          "at": "2026-10-06T12:00:27Z"
+        },
+        "b": {
+          "id": "gnews:dcd523070e8d6b40",
+          "source": "gnews-rss",
+          "title": "Mistral Releases Large 4 Model to Help Organizations Find Cyber Vulnerabilities - Business Upturn",
+          "at": "2026-10-30T19:48:52Z"
         },
         "shared": [
           "mistral",
@@ -975,7 +1012,7 @@
         ]
       },
       {
-        "score": 0.641,
+        "score": 0.642,
         "blocked": "time-window",
         "hours_apart": 577.9,
         "a": {
@@ -1002,97 +1039,97 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 9,
+      "streak_ok": 10,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 202,
+      "streak_ok": 203,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 202,
+      "streak_ok": 203,
       "streak_fail": 0,
-      "items_last": 2
+      "items_last": 1
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 202,
+      "streak_ok": 203,
       "streak_fail": 0,
-      "items_last": 45
+      "items_last": 46
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 202,
+      "streak_ok": 203,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 202,
+      "streak_ok": 203,
       "streak_fail": 0,
-      "items_last": 63
+      "items_last": 64
     },
     {
       "id": "hn_title",
       "state": "ok",
-      "streak_ok": 56,
+      "streak_ok": 57,
       "streak_fail": 0,
       "items_last": 11
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 114,
+      "streak_ok": 115,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "releases_atom",
       "state": "ok",
-      "streak_ok": 56,
+      "streak_ok": 57,
       "streak_fail": 0,
       "items_last": 9
     },
     {
       "id": "rss_analyst",
       "state": "ok",
-      "streak_ok": 56,
+      "streak_ok": 57,
       "streak_fail": 0,
       "items_last": 7
     },
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 21,
+      "streak_ok": 22,
       "streak_fail": 0,
       "items_last": 150
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 202,
+      "streak_ok": 203,
       "streak_fail": 0,
       "items_last": 77
     },
     {
       "id": "wikidata",
       "state": "flaky",
-      "streak_ok": 10,
+      "streak_ok": 11,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.007320555555555556,
+    "hours": 0.007500277777777778,
     "stale": false
   },
   "hf": {
@@ -1185,7 +1222,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 63,
+    "count": 64,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -1234,19 +1271,19 @@
       {
         "id": "hn:50289418",
         "tag": "rest",
-        "score": 1656,
+        "score": 1660,
         "text": "We're releasing the weights of Mistral Large 4"
       },
       {
         "id": "hn:50302334",
         "tag": "rest",
-        "score": 646,
+        "score": 648,
         "text": "Backdoors in official Claude Code extensions"
       },
       {
         "id": "hn:50284255",
         "tag": "rest",
-        "score": 573,
+        "score": 574,
         "text": "Claude Code regularly sends each background agent’s transcript to its model"
       }
     ]
@@ -1330,32 +1367,32 @@
     "feeds_soft_fail": [],
     "sample": [
       {
-        "id": "rss:the-decoder:c2e9d57651f8ceec",
+        "id": "rss:the-decoder:cc13d0c799f4c25d",
         "lab": "the-decoder",
         "tag": "rest",
-        "title": "Malicious Claude Code extension in Cursor's marketplace attempted remote access and data theft",
-        "link": "https://the-decoder.com/malicious-claude-code-extension-in-cursors-marketplace-attempted-remote-access-and-data-theft/"
+        "title": "A Claude model autonomously chose a gene therapy and operated on a mouse brain with no human decision-making",
+        "link": "https://the-decoder.com/a-claude-model-autonomously-chose-a-gene-therapy-and-operated-on-a-mouse-brain-with-no-human-decision-making/"
       },
       {
-        "id": "rss:huggingface:037154e824aaff25",
-        "lab": "huggingface",
-        "tag": "rest",
-        "title": "nemotron-halloween",
-        "link": "https://huggingface.co/blog/nvidia/nemotron-halloween"
-      },
-      {
-        "id": "rss:huggingnews:87830757e0a4489e",
+        "id": "rss:huggingnews:c4596e5b59811f2b",
         "lab": "huggingnews",
         "tag": "rest",
-        "title": "Anthropic Removes 5 Hour Usage Limit for New $200 Claude Ultra Plan",
-        "link": "https://huggingnews.com/ai/anthropic-removes-5-hour-usage-limit-for-new-200-claude-ultra-plan-205d0876"
+        "title": "Nasdaq 100 Index Slips Into Technical Correction Following Rout in AI Shares",
+        "link": "https://huggingnews.com/us-markets/nasdaq-100-index-slips-into-technical-correction-following-rout-in-ai-sh-ae45feb9"
       },
       {
-        "id": "rss:the-decoder:f0c355056fe01e7a",
-        "lab": "the-decoder",
+        "id": "rss:huggingnews:1ad45f1d2c5017d6",
+        "lab": "huggingnews",
         "tag": "rest",
-        "title": "OpenAI sets new behavioral guidelines for AI models that have already proven hard to control",
-        "link": "https://the-decoder.com/openai-sets-new-behavioral-guidelines-for-ai-models-that-have-already-proven-hard-to-control/"
+        "title": "Microsoft Projects Fewer Than 3,000 Workers Will Accept Buyout Offer to 60,000 Staff",
+        "link": "https://huggingnews.com/earnings/microsoft-projects-fewer-than-3000-workers-will-accept-buyout-offer-to-6-905ffa59"
+      },
+      {
+        "id": "rss:huggingnews:4280c8f2a37965b7",
+        "lab": "huggingnews",
+        "tag": "rest",
+        "title": "Reddit Shares Crash Nearly 30% as AI Search Slump Prompts Login Wall",
+        "link": "https://huggingnews.com/earnings/reddit-shares-crash-nearly-30percent-as-ai-search-slump-prompts-login-wa-944c7624"
       }
     ]
   },
@@ -1581,13 +1618,13 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 45,
-    "pool": 396,
+    "items": 46,
+    "pool": 375,
     "corroborators": [
       {
         "id": "gnews:19296ca63673dbaf",
         "anchor_id": "rss:huggingnews:a0741789355f452e",
-        "score": 0.776,
+        "score": 0.783,
         "title": "Anthropic may get junk credit rating after its IPO, Blackstone says: report - TradingView",
         "publisher": "TradingView",
         "self_repost": false
@@ -1595,7 +1632,7 @@
       {
         "id": "gnews:5f33d3128071ae55",
         "anchor_id": "hn:50307219",
-        "score": 0.927,
+        "score": 0.93,
         "title": "Anthropic May Not Secure Investment-Grade Rating After IPO, Blackstone Tells Investors - FT - TradingView",
         "publisher": "TradingView",
         "self_repost": false
@@ -1603,10 +1640,26 @@
       {
         "id": "gnews:9f39be944514ab7a",
         "anchor_id": "hn:50307219",
-        "score": 0.927,
+        "score": 0.93,
         "title": "Anthropic may not secure investment-grade rating after IPO, Blackstone tells investors - Financial Times",
         "publisher": "Financial Times",
         "self_repost": false
+      },
+      {
+        "id": "gnews:8e4b12dd0650fde1",
+        "anchor_id": "rss:huggingnews:64b1bbe7b7a2e2d1",
+        "score": 0.734,
+        "title": "Amazon Taps $80 Billion Supplier Loan Facility to Help Fund AI - Yahoo Finance UK",
+        "publisher": "Yahoo Finance UK",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:fface5a01f6c275e",
+        "anchor_id": "rss:nvidia-dev:100466b9c2db58e6",
+        "score": 1,
+        "title": "Build Specialized Agents on a Stack You Control with NVIDIA NemoClaw | NVIDIA Technical Blog - NVIDIA Developer",
+        "publisher": "NVIDIA Developer",
+        "self_repost": true
       },
       {
         "id": "gnews:dbe4c78070bbe0a0",
@@ -1627,7 +1680,7 @@
       {
         "id": "gnews:c76907f8cf59d1bb",
         "anchor_id": "rss:the-decoder:53dd8daeb0ed2692",
-        "score": 0.715,
+        "score": 0.717,
         "title": "Chinese Spy Linked to Nvidia CEO Jensen Huang - 조선일보",
         "publisher": "조선일보",
         "self_repost": false
@@ -1635,15 +1688,23 @@
       {
         "id": "gnews:f077198ea8f65a89",
         "anchor_id": "rss:the-decoder:53dd8daeb0ed2692",
-        "score": 0.609,
+        "score": 0.613,
         "title": "Nvidia CEO reportedly targeted by an alleged Chinese spy - The Guardian",
         "publisher": "The Guardian",
         "self_repost": false
       },
       {
+        "id": "gnews:d73ff4f696421ac7",
+        "anchor_id": "hn:50307475",
+        "score": 1,
+        "title": "Anthropic hacked to deliver remote access trojan to Claude developer laptops worldwide - DoublePulsar",
+        "publisher": "DoublePulsar",
+        "self_repost": false
+      },
+      {
         "id": "gnews:e47f94e758bf2253",
         "anchor_id": "hn:50300112",
-        "score": 0.717,
+        "score": 0.714,
         "title": "Trojanized Claude Code Extension Delivered Persistent SSH Backdoor to Developer Machines - Step Security",
         "publisher": "Step Security",
         "self_repost": false
@@ -1651,7 +1712,7 @@
       {
         "id": "gnews:d4976bdf4a72ca2e",
         "anchor_id": "hn:50300683",
-        "score": 0.862,
+        "score": 0.86,
         "title": "Official Claude Code Extension on Cursor Marketplace Trojanized with Persistent SSH Backdoor - The Hacker News",
         "publisher": "The Hacker News",
         "self_repost": false
@@ -1659,7 +1720,7 @@
       {
         "id": "gnews:cc20ae27e637265f",
         "anchor_id": "hn:50289418",
-        "score": 0.633,
+        "score": 0.645,
         "title": "Mistral Releases Large 4 Weights for Self-Hosted AI - FindArticles",
         "publisher": "FindArticles",
         "self_repost": false
@@ -1667,7 +1728,7 @@
       {
         "id": "gnews:47a65b6d74f9961e",
         "anchor_id": "hn:50289418",
-        "score": 0.62,
+        "score": 0.636,
         "title": "Mistral AI Releases Weights for the 1T-Parameter Mistral Large 4 Model - KuCoin",
         "publisher": "KuCoin",
         "self_repost": false
@@ -1691,18 +1752,10 @@
       {
         "id": "gnews:2a3ef32cc36f71cb",
         "anchor_id": "rss:huggingface:b6b30743068c2627",
-        "score": 0.765,
+        "score": 0.772,
         "title": "Mistral releases Large 4 Le Chonk open weights on Hugging Face - Pasquale Pillitteri",
         "publisher": "Pasquale Pillitteri",
         "self_repost": false
-      },
-      {
-        "id": "gnews:ace7e5b0f31eff6d",
-        "anchor_id": "rss:nvidia:dfd05486e53d5871",
-        "score": 1,
-        "title": "Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents - NVIDIA Blog",
-        "publisher": "NVIDIA Blog",
-        "self_repost": true
       },
       {
         "id": "gnews:01a1bfc202edfccf",
@@ -1739,24 +1792,24 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:0b453dea07a81368",
-        "title": "Anthropic S-1: $80.7B Loss, 5 Big Questions [2026] - shattered.io",
-        "publisher": "shattered.io",
-        "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE93MWFFQ0djTGU2MEZybkd1ekpfNTJvQW1DdFdfajVJWFl1alp5WlJ1Z1RuZ1d0aEdweW8tYWJfX0JDeXVET191SURWMFUxSmhIcmwzeVBOTWt1amZ5UkMwLTY4elFiMVIzd2lXTVB1XzhSdnVsN01iZ1NPejFhXzQ?oc=5",
+        "id": "gnews:dcd523070e8d6b40",
+        "title": "Mistral Releases Large 4 Model to Help Organizations Find Cyber Vulnerabilities - Business Upturn",
+        "publisher": "Business Upturn",
+        "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNalpFakYzLXpwYmhJMlN5TXhDdGJGbFk3X1BWTWdiRFVNa2xYQlRyTE9tNWRlTFEtWmFSdjRjUHZEYUx5SS05YkZTS3NxMEd0SVpJSFg4eW5xQUtuTUM5QWtDTzVSaGY2b2JMdGpJLWp5NUYtYl92bmp2UmdrUmtnYV9QVUdLTkdqaEwzOXQ0dUp1MkFzSklqS2Z4S19YblBfX19LeXY3MTRVdUlLRldEUUxZbDFRVHViNUE?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:50cd89e1170d7c34",
-        "title": "'A good marriage': Analysts react to Anthropic becoming SpaceX's top customer - Yahoo Finance",
-        "publisher": "Yahoo Finance",
-        "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOSzFCMkItamQzZmpBUDB1SnE3N0NEYlNsYzVnZmhaM2JoS3M5OUxRaU5vNzg1NnN0ZWNrR09OaVhHTTFLRV9KN041ZWpPbS1LaERFRnh5R0hxWGZfTDJLVzVyRkV6cUN6UDlBYmxsNzFKek1adThOR0s0ZXZ1aW1MeVNydVRiQ3FmVlNZVjJyQkczUXl0SnU4eDBqTFV3NGxSaDJhOTU3X1dNd3Ezc3JQSUVGcGM1S1JJckxPSg?oc=5",
+        "id": "gnews:2e5bf86ede27c470",
+        "title": "Anthropic's Unbeatable Share - Stansberry Research",
+        "publisher": "Stansberry Research",
+        "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOTng0UC0tOUowRXo1enVMNXpfbDk0RVBGSDc2aVpKRG51Q1NETW5TRmpQZ1p6cHhNUENYVHFmcDRnSkxaQlB1Y0pMOEZOMllTeTdxM1VVaE4yY0VVQzlRT1F4a3llYW1kcjMxXzAwalB2MEZmNmV0QlRseXVmNjhYSHNvR2hTTm5N?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:ce86d00e064e5196",
-        "title": "What if Anthropic is right about its doomsday machine? - AFR",
-        "publisher": "AFR",
-        "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNX2JIMmpFc1pxNEc0QVdGM3QzWGlqVEpIczVlU2dRWU85dllYVkhQcUhKUDNrcmtIUW1nTUNCN2k0Mlk1V2ZDcDFNcTl2Y2FLbzVqSEM1OVg3TFYxWEFqVnlVRE5yNDdhSlV0VmF3Q3A4cC1YS3VmZlEtbmQxRnB3WWprTDZMc0lqR0RPeUtwY01wWDFSckJxRzBUdVd2aWg4RUE?oc=5",
+        "id": "gnews:cfc67577ebb4d075",
+        "title": "Wall Street Just Cast a Big Doubt on Anthropic’s $800 Billion AI Bet - BeInCrypto",
+        "publisher": "BeInCrypto",
+        "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1ZQkNFOGV1RVhZSXF6aGoxV2c2TENoNnpGRUFNSG1lN3NuQ0xrMWgwb05YenJ1SmFVRGVJS1FTV0wyVGxtcDdkT1QwTE9HeVZXVHRScGgtMFdtN3BRdGtkUUVfMXRtWjd0eWxwaXhNckUzUDBF?oc=5",
         "tag": "rest"
       }
     ]
@@ -1787,7 +1840,7 @@
     "soft_fail": false,
     "soft_fail_reason": null,
     "query": "LLM agent eval harness",
-    "shelf": 2,
+    "shelf": 1,
     "from_cache": false,
     "searches": 1,
     "rate_limit_remaining": 9,
@@ -1799,15 +1852,11 @@
       {
         "label": "Anilkumar7877/Voice-Agent",
         "href": "https://github.com/Anilkumar7877/Voice-Agent"
-      },
-      {
-        "label": "arrrrny/zuraffa_agent",
-        "href": "https://github.com/arrrrny/zuraffa_agent"
       }
     ]
   },
   "shelf": {
-    "count": 18,
+    "count": 17,
     "brief": false
   },
   "wikidata": {
