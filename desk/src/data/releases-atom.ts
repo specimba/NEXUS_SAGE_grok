@@ -17,10 +17,10 @@ export type ReleaseAtomRow = {
   cluster_id?: string;
 };
 
-export const RELEASES_ATOM_AT: string | null = "2026-10-29T18:20:43Z";
+export const RELEASES_ATOM_AT: string | null = "2026-10-30T03:20:34Z";
 
 export const RELEASES_ATOM: ReleaseAtomRow[] = [
-  { id: "rel:codex:rust-v0.166.0", feed: "codex" as const, title: "Codex rust-v0.166.0", link: "https://github.com/openai/codex/releases/tag/rust-v0.166.0", published: "2026-10-29T17:44:31Z", tag: "rust-v0.166.0", emitted_at: "2026-10-29T18:20:43Z", source: "releases-atom" as const, first_seen: "2026-10-29T18:20:43Z", is_new: true, cluster_id: "cl:rel:codex:rust-v0.166.0" },
+  { id: "rel:codex:rust-v0.166.0", feed: "codex" as const, title: "Codex rust-v0.166.0", link: "https://github.com/openai/codex/releases/tag/rust-v0.166.0", published: "2026-10-29T17:44:31Z", tag: "rust-v0.166.0", emitted_at: "2026-10-29T18:20:43Z", source: "releases-atom" as const, first_seen: "2026-10-29T18:20:43Z", is_new: false, cluster_id: "cl:rel:codex:rust-v0.166.0" },
   { id: "rel:codex:rust-v0.165.0", feed: "codex" as const, title: "Codex rust-v0.165.0", link: "https://github.com/openai/codex/releases/tag/rust-v0.165.0", published: "2026-10-27T18:19:20Z", tag: "rust-v0.165.0", emitted_at: "2026-10-27T18:20:49Z", source: "releases-atom" as const, first_seen: "2026-10-27T18:20:49Z", is_new: false, cluster_id: "cl:rel:codex:rust-v0.165.0" },
   { id: "rel:hf-nvidia:nvidia/Metatron-v1", feed: "hf-nvidia" as const, title: "nvidia/Metatron-v1", link: "https://huggingface.co/nvidia/Metatron-v1", published: "2026-10-27T21:43:16Z", tag: "Metatron-v1", emitted_at: "2026-10-27T23:33:45Z", source: "releases-atom" as const, first_seen: "2026-10-27T23:33:38Z", is_new: false, cluster_id: "cl:rel:hf-nvidia:nvidia/Metatron-v1" },
   { id: "rel:hf-tencent:tencent/Hy-SimulMT-30B-A3B-Interleave-GGUF", feed: "hf-tencent" as const, title: "tencent/Hy-SimulMT-30B-A3B-Interleave-GGUF", link: "https://huggingface.co/tencent/Hy-SimulMT-30B-A3B-Interleave-GGUF", published: "2026-10-22T07:44:57Z", tag: "Hy-SimulMT-30B-A3B-Interleave-GGUF", emitted_at: "2026-10-26T20:46:15Z", source: "releases-atom" as const, first_seen: "2026-10-26T20:46:09Z", is_new: false, cluster_id: "cl:rel:hf-tencent:tencent/Hy-SimulMT-30B-A3B-Interleave-GGUF" },

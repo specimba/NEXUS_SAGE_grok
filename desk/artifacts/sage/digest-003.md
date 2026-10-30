@@ -1,31 +1,31 @@
 # SAGE digest pack
-compiled 2026-10-29T18:21:10.713Z
-source free-ingest digest refresh 2026-10-29T18:21:10.713Z · cycle 003 · lead hf-incident · unlock:live
+compiled 2026-10-30T03:21:02.320Z
+source free-ingest digest refresh 2026-10-30T03:21:02.320Z · cycle 003 · lead hf-incident · unlock:live
 lead_policy unlock — no new HF primary 03 Sep
 
 ## Lead
-Google unveils Gemini 4 Carbon for cyber defenders [high]
-18 SRC · sig 906 · pick 2026-10-29
+Le Chonk: Built for Coders, Trusted by Defenders. [high]
+7 SRC · sig 1246 · pick 2026-10-30
 MOVE Digest/Voice follow Brief lead
 UNLOCK IF Next 06:11 Istanbul pick
 
 ## Files
-### [lead / other / high] Google unveils Gemini 4 Carbon for cyber defenders
-18 SRC · sig 906 · pick 2026-10-29
+### [lead / other / high] Le Chonk: Built for Coders, Trusted by Defenders.
+7 SRC · sig 1246 · pick 2026-10-30
 - stamp live
-- frozen 2026-10-29T08:21:07.105Z
-- pick 2026-10-29
+- frozen 2026-10-30T03:21:02.135Z
+- pick 2026-10-30
 1. Follow LEAD_TODAY · never invent
 2. Cycle label stays 003
 Done when: Digest lead equals Brief LEAD_TODAY title
 
-### [companion / other / medium] DOJ is inquiring about Nvidia's purchase of Hugging Face
-3 SRC · sig 5
-- 3 SRC
+### [companion / other / medium] Google unveils Gemini 4 Carbon for cyber defenders
+7 SRC · sig 1002
+- 7 SRC
 Done when: Listed under Digest lead
 
-### [rest / other / medium] OpenAI launches GPT-6.1 Terra for precise computer use
-3 SRC · sig 5
+### [rest / other / medium] NVIDIA Nemotron 3.5 Transcribe and Granary v2: Intelligent Multilingual Transcription You Can Prompt and Adapt
+3 SRC · sig 130
 - 3 SRC
 Done when: Listed under Digest lead
 

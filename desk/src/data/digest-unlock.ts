@@ -7,42 +7,42 @@ import type { DigestUnlockSnapshot } from "@/lib/digest-unlock";
 export const DIGEST_UNLOCK: DigestUnlockSnapshot = {
   "schema": 1,
   "cycleId": "003",
-  "pickDate": "2026-10-29",
-  "frozenAt": "2026-10-29T08:21:07.105Z",
-  "leadId": "cl:rss:testingcatalog:90bb3e441c768369",
+  "pickDate": "2026-10-30",
+  "frozenAt": "2026-10-30T03:21:02.135Z",
+  "leadId": "cl:rss:mistral:bd03e4a483646b85",
   "lead": {
-    "id": "cl:rss:testingcatalog:90bb3e441c768369",
+    "id": "cl:rss:mistral:bd03e4a483646b85",
     "kind": "lead",
-    "title": "Google unveils Gemini 4 Carbon for cyber defenders",
-    "take": "18 SRC · sig 906 · pick 2026-10-29",
+    "title": "Le Chonk: Built for Coders, Trusted by Defenders.",
+    "take": "7 SRC · sig 1246 · pick 2026-10-30",
     "why": "LEAD_TODAY · picked · frozen at daily pick",
     "move": "Digest/Voice follow Brief lead",
-    "url": "https://www.testingcatalog.com/google-unveils-gemini-4-carbon-for-cyber-defenders/",
-    "sources": 18,
-    "sig": 906
+    "url": "https://mistral.ai/news/mistral-large-4-oss/",
+    "sources": 7,
+    "sig": 1246
   },
   "rows": [
     {
-      "id": "cl:hn:50280732",
+      "id": "cl:rss:testingcatalog:90bb3e441c768369",
       "kind": "companion",
-      "title": "DOJ is inquiring about Nvidia's purchase of Hugging Face",
-      "take": "3 SRC · sig 5",
+      "title": "Google unveils Gemini 4 Carbon for cyber defenders",
+      "take": "7 SRC · sig 1002",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
-      "url": "https://www.reuters.com/world/us-doj-is-inquiring-about-nvidias-purchase-hugging-face-sources-say-2026-10-28/",
-      "sources": 3,
-      "sig": 5
+      "url": "https://www.testingcatalog.com/google-unveils-gemini-4-carbon-for-cyber-defenders/",
+      "sources": 7,
+      "sig": 1002
     },
     {
-      "id": "cl:rss:testingcatalog:8684eb48fa1590f3",
+      "id": "cl:rss:huggingface:ec733f799e1aaee3",
       "kind": "rest",
-      "title": "OpenAI launches GPT-6.1 Terra for precise computer use",
-      "take": "3 SRC · sig 5",
+      "title": "NVIDIA Nemotron 3.5 Transcribe and Granary v2: Intelligent Multilingual Transcription You Can Prompt and Adapt",
+      "take": "3 SRC · sig 130",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
-      "url": "https://www.testingcatalog.com/openai-launches-gpt-6-1-terra-for-precise-computer-use/",
+      "url": "https://huggingface.co/blog/nvidia/nemotron-transcribe-granary",
       "sources": 3,
-      "sig": 5
+      "sig": 130
     }
   ]
 } as const;

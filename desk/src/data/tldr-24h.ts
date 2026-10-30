@@ -3,9 +3,16 @@ import type { Tldr } from "@/lib/tldr-24h";
 
 export const TLDR_24H: Tldr = {
   "schema": 1,
-  "crawl_at": "2026-10-29T18:20:43Z",
-  "date": "2026-10-29",
+  "crawl_at": "2026-10-30T03:20:34Z",
+  "date": "2026-10-30",
   "bullets": [
+    {
+      "id": "cl:rss:mistral:bd03e4a483646b85",
+      "title": "Le Chonk: Built for Coders, Trusted by Defenders.",
+      "url": "https://mistral.ai/news/mistral-large-4-oss/",
+      "at": "2026-10-29T12:00:07Z",
+      "sources": 7
+    },
     {
       "id": "cl:rss:the-decoder:53dd8daeb0ed2692",
       "title": "Chinese spies targeted Nvidia CEO Jensen Huang, according to The New York Times",
@@ -14,45 +21,24 @@ export const TLDR_24H: Tldr = {
       "sources": 4
     },
     {
-      "id": "cl:rss:huggingnews:da10437b6b355af6",
-      "title": "OpenAI Extends AI Misalignment Monitoring to All Frontier Models",
-      "url": "https://huggingnews.com/ai/update-openai-extends-ai-misalignment-monitoring-to-all-frontier-models-ab7693ed",
-      "at": "2026-10-29T09:00:00Z",
+      "id": "cl:rss:testingcatalog:37bb4b28a392479c",
+      "title": "Mistral opens Large 4 weights for coding and security",
+      "url": "https://www.testingcatalog.com/mistral-opens-large-4-weights-for-coding-and-security/",
+      "at": "2026-10-29T15:47:04Z",
       "sources": 3
     },
     {
-      "id": "cl:rss:the-decoder:c7111c14d1057eea",
-      "title": "OpenAI's Astra becomes the main target for Chinese AI labs after Anthropic tightens its defenses",
-      "url": "https://the-decoder.com/openais-astra-becomes-the-main-target-for-chinese-ai-labs-after-anthropic-tightens-its-defenses/",
-      "at": "2026-10-29T13:20:14Z",
+      "id": "cl:gnews:0795ca58e5002345",
+      "title": "Nvidia Moves to Backstop a Cloud Provider’s $45 Billion Anthropic Project",
+      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOdmhuRzVaOG9xaEQ5U1VOcWNNLVN4YUZ0NUpfVnM3Qy1KakJVMWxDbW1heDFWNkxOR2dJbnR5NnJNb1dSb1RaTnUxTkZlQzU3b0l4SGFuR1RMVXY1dmlhTzJTVzd2VmstYWhyX0pyeGEwUTdKM1FtVGZQenBCdE5fSE9zZm8wOGNxUEQ3WmVrSi1ZSlZyX3A3cWRlTkRhMThMSjVEYnhuTGt6RE5janN1NkFUVjgxV3dVVklCcm1JUWlkRVpf?oc=5",
+      "at": "2026-10-29T22:40:00Z",
       "sources": 2
     },
     {
-      "id": "cl:rss:mistral:bd03e4a483646b85",
-      "title": "Le Chonk: Built for Coders, Trusted by Defenders.",
-      "url": "https://mistral.ai/news/mistral-large-4-oss/",
-      "at": "2026-10-29T12:00:07Z",
-      "sources": 2
-    },
-    {
-      "id": "cl:hn:50285539",
-      "title": "Claude's new smart reports tell bosses when workers are 'off-topic'",
-      "url": "https://mashable.com/tech/claude-smart-reports-anthropic-ai-worker-overview",
-      "at": "2026-10-29T07:26:30Z",
-      "sources": 2
-    },
-    {
-      "id": "cl:hn:50289310",
-      "title": "DeepSeek, Moonshot used OpenAI's GPT-6 Astra to train latest models",
-      "url": "https://www.reuters.com/technology/deepseek-moonshot-used-openais-gpt-6-astra-train-latest-models-information-2026-10-29/",
-      "at": "2026-10-29T02:11:00Z",
-      "sources": 2
-    },
-    {
-      "id": "cl:hn:50280732",
-      "title": "DOJ is inquiring about Nvidia's purchase of Hugging Face",
-      "url": "https://www.reuters.com/world/us-doj-is-inquiring-about-nvidias-purchase-hugging-face-sources-say-2026-10-28/",
-      "at": "2026-10-28T20:41:13Z",
+      "id": "cl:rss:the-decoder:297fe18c05f20512",
+      "title": "OpenAI doubles usage limits on Pro plans as competition with Anthropic heats up",
+      "url": "https://the-decoder.com/openai-doubles-usage-limits-on-pro-plans-as-competition-with-anthropic-heats-up/",
+      "at": "2026-10-29T20:01:27Z",
       "sources": 2
     }
   ],
