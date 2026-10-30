@@ -43,7 +43,7 @@ import { useCheckedAt, useNow } from "@/lib/use-now";
 import { archiveFoldLabel } from "@/lib/archive-fold";
 import { footerStamp } from "@/lib/build-footer";
 import { isPausedAt, type PauseMap } from "@/lib/source-pause";
-import { istanbulHHMM, wireHeader, wireMark } from "@/lib/wire";
+import { istanbulHHMM, newWithinAge, wireHeader, wireMark } from "@/lib/wire";
 import { WIKIDATA_DENY_LAST } from "@/data/wikidata-deny-last";
 import { offtopicNoiseReason } from "@/lib/pulse-offtopic";
 import type { ToolkitRow } from "@/lib/toolkit-shelf";
@@ -216,6 +216,8 @@ function firstAtIso(c: { at: string; member_ids: readonly string[] }): string {
   const t = groupFirstAt({ at: c.at, member_ids: [...c.member_ids] }, MEMBER_AT);
   return Number.isFinite(t) ? new Date(t).toISOString() : c.at;
 }
+/** PASS-NEW-AGE: Wire status with crawl-delta NEW dropped to "same" once the row clock is ≥ 24 h (no prev rank ⇒ no ▲/▼). */
+const wireSt = (r: (typeof WIRE_ROWS)[number]) => (r.status == "new" && !newWithinAge(firstAtIso(r), WIRE_CRAWL_AT) ? "same" : r.status);
 
 /** Beat 9 — filter + story hand-off shared with lane tables (one global key handler lives in Desk). Beat 10 adds setFilter (heat cells) + since baseline. */
 type DeskKeys = {
@@ -534,7 +536,7 @@ export function Desk({ buildId = "dev", builtAt = "", pauses = {}, commit = "", 
   // PASS-U U3: N = rows the reader counts as new on that lane (NEW chip and/or since-visit); never `+0`.
   const plus = (n: number) => (now == null ? "—" : n ? `+${n}` : "");
   const railCount: Record<Lane, string> = {
-    brief: plus(WIRE_ROWS.filter((r) => r.status === "new" || isSince(FIRST_SEEN.get(r.id), since)).length),
+    brief: plus(WIRE_ROWS.filter((r) => wireSt(r) === "new" || isSince(FIRST_SEEN.get(r.id), since)).length),
     pulse: plus(PULSE_LANE_ROWS.filter((c) => (c.is_new && !PULSE_BASELINE) || isSince(c.first_seen, since)).length),
     digest: now != null && now >= Date.parse(DIGEST_CADENCE.next_at) ? "DUE" : "HOLD",
     papers: papersN == null ? "—" : String(papersN),
@@ -824,7 +826,7 @@ function BriefWire() {
   return (
     <section className="brief-wire sage-panel sage-ticks lg:col-span-6" aria-label="Wire — live multi-source clusters">
       <div className="brief-wire-head">
-        <span>{wireHeader(WIRE_CRAWL_AT, WIRE_ROWS)}</span>
+        <span>{wireHeader(WIRE_CRAWL_AT, WIRE_ROWS.map((r) => ({ at: r.at, status: wireSt(r) })))}</span>
         <span className="brief-wire-prev tabular-nums">
           {WIRE_PREV_CRAWL_AT ? `vs ${istanbulHHMM(WIRE_PREV_CRAWL_AT)}` : "first crawl"}
         </span>
@@ -834,14 +836,15 @@ function BriefWire() {
       ) : null}
       <ol className="brief-wire-list" hidden={WIRE_ROWS.length === 0}>
         {rows.map((r, i) => {
-          const mark = wireMark(r);
+          const st = wireSt(r);
+          const mark = wireMark({ ...r, status: st });
           const isNewSince = i < part.since.length;
           const tick = visit?.tick(r, FIRST_SEEN.get(r.id), since, wireRowById.get(r.id)?.leadId);
           return (
             <Fragment key={r.id}>
             <li
               className="brief-wire-row"
-              data-status={r.status}
+              data-status={st}
               data-since={isNewSince ? "1" : undefined}
               data-nav-row
               data-href={publicHref(r.url)}
@@ -859,7 +862,7 @@ function BriefWire() {
               }}
             >
               <span className="brief-wire-mark tabular-nums">
-                {r.status === "new" ? <span className="pulse-v5-new">NEW</span> : mark}
+                {st === "new" ? <span className="pulse-v5-new">NEW</span> : mark}
               </span>
               <AgeCell iso={firstAtIso(r)} now={now} />
               <a className="brief-wire-headline focus-phosphor" data-row-clamp="wire" href={publicHref(r.url)} title={r.title} target="_blank" rel="noreferrer">
@@ -1661,7 +1664,7 @@ export function Pulse() {
                     }}
                   >
                     <span className="pulse-v5-idx tabular-nums">{String(i + 1).padStart(2, "0")}</span>
-                    <span>{r.showNew ? <span className="pulse-v5-new">NEW</span> : null}</span>
+                    <span>{r.showNew && newWithinAge(clusterById.get(r.id) ? firstAtIso(clusterById.get(r.id)!) : r.at, CRAWL_AT) ? <span className="pulse-v5-new">NEW</span> : null}</span>
                     <AgeCell iso={clusterById.get(r.id) ? firstAtIso(clusterById.get(r.id)!) : r.at} now={now} />
                     <span className="pulse-v5-headline">
                       {visit?.tick(r, FIRST_SEEN.get(r.id), since, r.leadId) ? <NewTick /> : null}

@@ -85,7 +85,7 @@ describe("U3 — truth pack", () => {
     const src = readFileSync(resolve(import.meta.dir, "../../components/sage/desk.tsx"), "utf8");
     // bare label when nothing is new — the `+0` path is gone
     expect(src).toContain('n ? `+${n}` : ""');
-    expect(src).toContain('WIRE_ROWS.filter((r) => r.status === "new" || isSince(');
+    expect(src).toContain('WIRE_ROWS.filter((r) => wireSt(r) === "new" || isSince(');
     expect(src).toContain("PULSE_LANE_ROWS.filter((c) => (c.is_new && !PULSE_BASELINE) || isSince(");
     // the reviewed state: Wire listed NEW rows with no since-visit baseline → old badge read "+0"; now +N with N = NEW rows
     const n = WIRE_ROWS.filter((r) => r.status === "new").length;

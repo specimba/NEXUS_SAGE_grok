@@ -206,6 +206,10 @@ export function buildWire(
   };
 }
 
+/** PASS-NEW-AGE: NEW (chip + `N new`) only while the age clock is strictly < 24 h at ref time; no clock ⇒ keep crawl-delta verdict. */
+export const newWithinAge = (ageIso: string | null | undefined, refIso: string): boolean =>
+  !(Date.parse(refIso) - Date.parse(ageIso ?? "") >= 864e5);
+
 export function wireCounts(rows: Pick<WireRow, "status">[]): { fresh: number; moved: number } {
   return {
     fresh: rows.filter((r) => r.status === "new").length,
