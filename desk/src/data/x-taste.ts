@@ -24,7 +24,7 @@ export type XTasteSnap = {
 };
 
 export const X_TASTE: XTasteSnap = {
-  "captured_at": "2026-10-30T02:48:15Z",
+  "captured_at": "2026-10-30T07:46:18Z",
   "briefEligible": false,
   "pulseLeadEligible": false,
   "paidApi": false,
@@ -114,18 +114,32 @@ export const X_TASTE: XTasteSnap = {
       "handle": "natunnews",
     },
     {
-      "id": "2115464295320559856",
-      "text": "OpenAI spent hundreds of billions of tokens trying to break its own agent sandboxes. It patched a Kata Containers CVE, a gVisor bug, and three kernel CVEs, found a CPU cache covert channel between sandboxed agents, and still resumed training in 11 days.",
-      "surface": "feed",
-      "url": "https://x.com/themsquared/status/2115464295320559856",
-      "handle": "themsquared",
-    },
-    {
       "id": "2113661518780998003",
       "text": "Computer Use lets agents click and type across any app on your computer, not just the browser.\n\nCursor uses it on its own when a task needs it. You can also ask for it by @-mentioning Computer Use in your prompt.\n\nUpdate Cursor to try it: https://t.co/vwTPMUSnyd",
       "surface": "feed",
       "url": "https://x.com/cursor_ai/status/2113661518780998003",
       "handle": "cursor_ai",
+    },
+    {
+      "id": "2116059263982555291",
+      "text": "@reet_batra 最吓人的不是模型本身，是 Cursor、Codex 内置浏览器把三道隔离给拆了。本地文件能被网页摸到的话，谁还敢开 computer use？",
+      "surface": "feed",
+      "url": "https://x.com/KalinJunYAI/status/2116059263982555291",
+      "handle": "KalinJunYAI",
+    },
+    {
+      "id": "2116018157697855764",
+      "text": "ANTHROPIC 🔥:\n\n- In an Anthropic study, researchers told Claude Code to favor randomly chosen approaches to a data analysis task. The 50 analysts using it weren't told. 86% picked Claude's approach, 77% later repeated its arguments, and only 15% said those arguments came from AI.",
+      "surface": "feed",
+      "url": "https://x.com/growxlabsoffici/status/2116018157697855764",
+      "handle": "growxlabsoffici",
+    },
+    {
+      "id": "2115999275817873832",
+      "text": "我给一个 AI 客户端写了 5 个插件，最后发现：能自己进化的客户端真的存在～ https://t.co/w3hZxNmQAZ",
+      "surface": "feed",
+      "url": "https://x.com/XinyeLiu5637/status/2115999275817873832",
+      "handle": "XinyeLiu5637",
     },
     {
       "id": "2115991611306086574",
@@ -177,20 +191,6 @@ export const X_TASTE: XTasteSnap = {
       "handle": "FReza1984",
     },
     {
-      "id": "2115897196528673118",
-      "text": "@ericzakariasson @bot @poteto Cursor integration should be better, dots is currently better for managing code work. I also would love to have computer use with Grok Bot, not only Cursor",
-      "surface": "feed",
-      "url": "https://x.com/EliotGevers/status/2115897196528673118",
-      "handle": "EliotGevers",
-    },
-    {
-      "id": "2115885436036071835",
-      "text": "让 agent 操作网站，用浏览器自动化一步步点，慢，也容易出岔子。Pomerado 换了个思路：先把网站做成一个 MCP 工具，agent 之后直接调用。\n\n用法是用一句话描述要做的事，它自己去探索网站、跑通一遍你给的例子，再整理成可以重复调用的工具。官方称不用录屏或 HAR",
-      "surface": "feed",
-      "url": "https://x.com/Raydong001/status/2115885436036071835",
-      "handle": "Raydong001",
-    },
-    {
       "id": "2113681863109939271",
       "text": "Meet Kimi K3.1 Pro, our most capable 3T-class model. https://t.co/TB8aTQggHT",
       "surface": "feed",
@@ -206,5 +206,5 @@ export const X_TASTE: XTasteSnap = {
     "seen": 41,
     "kept": 24
   },
-  "stamped_at": "2026-10-30T02:48:15Z"
+  "stamped_at": "2026-10-30T07:46:18Z"
 } as const;
