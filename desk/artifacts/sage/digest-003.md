@@ -1,32 +1,42 @@
 # SAGE digest pack
-compiled 2026-10-31T02:04:07.602Z
-source free-ingest digest refresh 2026-10-31T02:04:07.602Z · cycle 003 · lead hf-incident · unlock:live
+compiled 2026-10-31T08:20:54.748Z
+source free-ingest digest refresh 2026-10-31T08:20:54.748Z · cycle 003 · lead hf-incident · unlock:live
 lead_policy unlock — no new HF primary 03 Sep
 
 ## Lead
-Anthropic may not secure investment-grade rating after IPO, Blackstone says [high]
-2 SRC · sig 28 · pick 2026-10-30
+Malicious Claude Code extension in Cursor's marketplace attempted remote access and data theft [high]
+3 SRC · sig 805 · pick 2026-10-31
 MOVE Digest/Voice follow Brief lead
 UNLOCK IF Next 06:11 Istanbul pick
 
 ## Files
-### [lead / other / high] Anthropic may not secure investment-grade rating after IPO, Blackstone says
-2 SRC · sig 28 · pick 2026-10-30
+### [lead / other / high] Malicious Claude Code extension in Cursor's marketplace attempted remote access and data theft
+3 SRC · sig 805 · pick 2026-10-31
 - stamp live
-- frozen 2026-10-30T18:21:00.399Z
-- pick 2026-10-30
+- frozen 2026-10-31T03:21:02.108Z
+- pick 2026-10-31
 1. Follow LEAD_TODAY · never invent
 2. Cycle label stays 003
 Done when: Digest lead equals Brief LEAD_TODAY title
 
-### [companion / other / medium] Le Chonk: Built for Coders, Trusted by Defenders.
-5 SRC · sig 1656
-- 5 SRC
+### [companion / other / medium] Mistral opens Large 4 weights for coding and security
+16 SRC · sig 1682
+- 16 SRC
 Done when: Listed under Digest lead
 
-### [rest / other / medium] Malicious Claude Code extension in Cursor's marketplace attempted remote access and data theft
-4 SRC · sig 646
-- 4 SRC
+### [rest / other / medium] A Defense Contractor Gave Their AI Agent Access to a Secure Pentagon System
+3 SRC · sig 21
+- 3 SRC
+Done when: Listed under Digest lead
+
+### [rest / other / medium] Blackstone Forecasts Junk Credit Rating for Anthropic Following IPO
+2 SRC · sig 287
+- 2 SRC
+Done when: Listed under Digest lead
+
+### [rest / other / medium] Local Inference with LLMs
+2 SRC · sig 1
+- 2 SRC
 Done when: Listed under Digest lead
 
 ## Dropped
