@@ -3,28 +3,28 @@ import type { Tldr } from "@/lib/tldr-24h";
 
 export const TLDR_24H: Tldr = {
   "schema": 1,
-  "crawl_at": "2026-10-30T23:40:04Z",
+  "crawl_at": "2026-10-31T02:03:40Z",
   "date": "2026-10-31",
   "bullets": [
+    {
+      "id": "cl:rss:the-decoder:cc13d0c799f4c25d",
+      "title": "A Claude model autonomously chose a gene therapy and operated on a mouse brain with no human decision-making",
+      "url": "https://the-decoder.com/a-claude-model-autonomously-chose-a-gene-therapy-and-operated-on-a-mouse-brain-with-no-human-decision-making/",
+      "at": "2026-10-30T19:42:59Z",
+      "sources": 2
+    },
+    {
+      "id": "cl:hn:50302895",
+      "title": "Local Inference with LLMs",
+      "url": "https://jacquesmattheij.com/local-inference-with-large-language-models/",
+      "at": "2026-10-30T12:16:34Z",
+      "sources": 2
+    },
     {
       "id": "cl:rss:the-decoder:c2e9d57651f8ceec",
       "title": "Malicious Claude Code extension in Cursor's marketplace attempted remote access and data theft",
       "url": "https://the-decoder.com/malicious-claude-code-extension-in-cursors-marketplace-attempted-remote-access-and-data-theft/",
       "at": "2026-10-30T05:20:20Z",
-      "sources": 5
-    },
-    {
-      "id": "cl:rss:huggingnews:64b1bbe7b7a2e2d1",
-      "title": "Amazon Secures $80B Supplier Loan Facility to Fund AI Buildout",
-      "url": "https://huggingnews.com/ai/amazon-secures-80b-supplier-loan-facility-to-fund-ai-buildout-4d442b54",
-      "at": "2026-10-30T16:36:14Z",
-      "sources": 2
-    },
-    {
-      "id": "cl:hn:50307475",
-      "title": "Anthropic hacked to deliver remote access trojan to Claude developer laptops",
-      "url": "https://doublepulsar.com/anthropic-hacked-to-deliver-remote-access-trojan-to-claude-developer-laptops-worldwide-1148a92baae2?postPublishedType=initial",
-      "at": "2026-10-30T10:08:04Z",
       "sources": 2
     }
   ],

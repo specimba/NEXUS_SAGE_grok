@@ -17,7 +17,7 @@ export type RssSecurityRow = {
   cluster_id?: string;
 };
 
-export const RSS_SECURITY_AT = "2026-10-30T23:40:04Z";
+export const RSS_SECURITY_AT = "2026-10-31T02:03:40Z";
 
 export const RSS_SECURITY: RssSecurityRow[] = [
   { id: "rss-sec:securityweek:54fec06500bc1f31", lab: "securityweek" as const, title: "PHP2Shell Attacks Root Palo Alto Firewalls but Fail Against WordPress", link: "https://www.securityweek.com/php2shell-attacks-root-palo-alto-firewalls-but-fail-against-wordpress/", published: "2026-10-30T15:09:25Z", summary: "Over 22.6 million exposed instances are potentially affected by the critical PHP flaws that have been targeted for over a week. The post PHP2Shell Attacks Root Palo Alto Firewalls but Fail Against WordPress appeared first on SecurityWeek .", source: "rss-security" as const, tag: "rest" as const, first_seen: "2026-10-30T18:20:34Z", is_new: false, cluster_id: "cl:rss-sec:securityweek:54fec06500bc1f31" },
