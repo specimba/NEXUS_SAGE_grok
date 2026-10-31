@@ -2,7 +2,7 @@
   "schema": 1,
   "cycle": "003",
   "lead_id": "hf-incident",
-  "stamped_at": "2026-10-31T08:20:28Z",
+  "stamped_at": "2026-10-31T13:20:26Z",
   "config_hash": "1ba30989ff76",
   "config_status": "ok",
   "crawl_sources": [
@@ -11,7 +11,7 @@
       "label": "HF papers",
       "status": "ok",
       "rows": 50,
-      "duration_ms": 340,
+      "duration_ms": 127,
       "paused_until": null,
       "reason": null
     },
@@ -20,7 +20,7 @@
       "label": "arXiv",
       "status": "ok",
       "rows": 28,
-      "duration_ms": 3189,
+      "duration_ms": 3169,
       "paused_until": null,
       "reason": null
     },
@@ -29,7 +29,7 @@
       "label": "OpenAlex",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 417,
+      "duration_ms": 524,
       "paused_until": null,
       "reason": null
     },
@@ -38,7 +38,7 @@
       "label": "Crossref",
       "status": "ok",
       "rows": 0,
-      "duration_ms": 580,
+      "duration_ms": 299,
       "paused_until": null,
       "reason": null
     },
@@ -46,8 +46,8 @@
       "id": "hn",
       "label": "HN",
       "status": "ok",
-      "rows": 60,
-      "duration_ms": 8280,
+      "rows": 63,
+      "duration_ms": 8578,
       "paused_until": null,
       "reason": null
     },
@@ -55,8 +55,8 @@
       "id": "hn_title",
       "label": "HN title",
       "status": "ok",
-      "rows": 9,
-      "duration_ms": 8224,
+      "rows": 8,
+      "duration_ms": 8410,
       "paused_until": null,
       "reason": null
     },
@@ -65,7 +65,7 @@
       "label": "lab RSS",
       "status": "ok",
       "rows": 150,
-      "duration_ms": 24356,
+      "duration_ms": 26096,
       "paused_until": null,
       "reason": null
     },
@@ -74,7 +74,7 @@
       "label": "security RSS",
       "status": "ok",
       "rows": 77,
-      "duration_ms": 12121,
+      "duration_ms": 12115,
       "paused_until": null,
       "reason": null
     },
@@ -83,7 +83,7 @@
       "label": "analyst RSS",
       "status": "ok",
       "rows": 7,
-      "duration_ms": 2432,
+      "duration_ms": 2305,
       "paused_until": null,
       "reason": null
     },
@@ -92,7 +92,7 @@
       "label": "releases",
       "status": "ok",
       "rows": 9,
-      "duration_ms": 7018,
+      "duration_ms": 6915,
       "paused_until": null,
       "reason": null
     },
@@ -100,8 +100,8 @@
       "id": "gnews",
       "label": "Google News",
       "status": "ok",
-      "rows": 38,
-      "duration_ms": 6267,
+      "rows": 39,
+      "duration_ms": 6384,
       "paused_until": null,
       "reason": null
     },
@@ -110,7 +110,7 @@
       "label": "GitHub",
       "status": "ok",
       "rows": 1,
-      "duration_ms": 344,
+      "duration_ms": 354,
       "paused_until": null,
       "reason": null
     },
@@ -119,16 +119,16 @@
       "label": "Wikidata",
       "status": "ok",
       "rows": 3,
-      "duration_ms": 4516,
+      "duration_ms": 4563,
       "paused_until": null,
       "reason": null
     }
   ],
   "crawl_timing": {
-    "sources_ms": 78084,
-    "sources_wall_ms": 24357,
-    "papers_lane_ms": 4532,
-    "slowest_source_ms": 24356,
+    "sources_ms": 79839,
+    "sources_wall_ms": 26096,
+    "papers_lane_ms": 4124,
+    "slowest_source_ms": 26096,
     "concurrent": true,
     "budget_ms": {
       "hf": 25000,
@@ -146,32 +146,32 @@
       "wikidata": 25000
     },
     "timed_out": [],
-    "wall_ms": 25037,
+    "wall_ms": 26900,
     "startup_ms": 58,
-    "main_ms": 25936
+    "main_ms": 27674
   },
-  "multi_source_independent": 5,
+  "multi_source_independent": 7,
   "stale_hours": 6,
   "stale_guard_hours": 6,
   "dedupe": {
-    "multi_source_independent": 5,
-    "multi_source_raw": 7,
+    "multi_source_independent": 7,
+    "multi_source_raw": 9,
     "self_reposts": 2,
-    "items_in": 353,
-    "clusters_out": 310,
+    "items_in": 356,
+    "clusters_out": 313,
     "collapsed": 43,
-    "multi_source": 5,
-    "multi_member": 14,
+    "multi_source": 7,
+    "multi_member": 17,
     "version": 2,
     "threshold": 0.6,
     "window_hours": 24,
-    "new_items": 29,
+    "new_items": 32,
     "per_source": {
-      "hn-algolia": 60,
+      "hn-algolia": 63,
       "rss-lab": 150,
       "rss-security": 77,
-      "gnews-rss": 38,
-      "gmail-news": 12,
+      "gnews-rss": 39,
+      "gmail-news": 11,
       "rss-analyst": 7,
       "releases-atom": 9
     },
@@ -183,7 +183,7 @@
           "hn-algolia",
           "gnews-rss"
         ],
-        "size": 17,
+        "size": 14,
         "score": 1,
         "members": [
           {
@@ -199,13 +199,6 @@
             "title": "Mistral opens Large 4 weights for coding and security",
             "at": "2026-10-29T15:47:04Z",
             "publisher": "testingcatalog"
-          },
-          {
-            "id": "rss:the-decoder:6982ff94f200009a",
-            "source": "rss-lab",
-            "title": "Paris-based Mistral releases \"Le Chonk,\" a strong coding model that still trails China overall",
-            "at": "2026-10-29T15:25:27Z",
-            "publisher": "the-decoder"
           },
           {
             "id": "rss:mistral:bd03e4a483646b85",
@@ -229,25 +222,18 @@
             "publisher": "Intelligent Living"
           },
           {
-            "id": "gnews:dafe556247e9d9a2",
-            "source": "gnews-rss",
-            "title": "Mistral AI publicly releases Large 4, targets cybersecurity users - The Economic Times",
-            "at": "2026-10-31T06:13:40Z",
-            "publisher": "The Economic Times"
-          },
-          {
-            "id": "gnews:8b55ca7aaab1a85d",
-            "source": "gnews-rss",
-            "title": "Mistral AI publicly releases Large 4, targets cybersecurity users - The Economic Times",
-            "at": "2026-10-31T06:13:00Z",
-            "publisher": "The Economic Times"
-          },
-          {
             "id": "gnews:6cfce16e31396886",
             "source": "gnews-rss",
             "title": "Mistral Le Chonk Coding Score 48 Ties Terra [2026] - shattered.io",
             "at": "2026-10-31T05:11:12Z",
             "publisher": "shattered.io"
+          },
+          {
+            "id": "gnews:dcd523070e8d6b40",
+            "source": "gnews-rss",
+            "title": "Mistral Releases Large 4 Model to Help Organizations Find Cyber Vulnerabilities - Business Upturn",
+            "at": "2026-10-30T19:48:52Z",
+            "publisher": "Business Upturn"
           },
           {
             "id": "gnews:ceed8ff6a8dbfa63",
@@ -264,7 +250,14 @@
             "publisher": "TechRepublic"
           },
           {
-            "id": "gnews:7a9fe846304402cc",
+            "id": "gnews:39c082fb0c5cc089",
+            "source": "gnews-rss",
+            "title": "Mistral Releases Trillion-Parameter Open-Weight Large 4 AI Model to Expand Sovereign Cybersecurity Capabilities - Tekedia",
+            "at": "2026-10-30T13:52:00Z",
+            "publisher": "Tekedia"
+          },
+          {
+            "id": "gnews:cc20ae27e637265f",
             "source": "gnews-rss",
             "title": "Mistral Releases Large 4 Weights for Self-Hosted AI - FindArticles",
             "at": "2026-10-30T00:24:21Z",
@@ -278,25 +271,11 @@
             "publisher": "KuCoin"
           },
           {
-            "id": "gnews:184cc0f20ef3e8fa",
-            "source": "gnews-rss",
-            "title": "Mistral Releases Large 4 Weights, but Hosts Need a Licence - FourWeekMBA",
-            "at": "2026-10-29T14:42:55Z",
-            "publisher": "FourWeekMBA"
-          },
-          {
             "id": "gnews:ee048c2ae79c9496",
             "source": "gnews-rss",
             "title": "Mistral opens Large 4 weights for coding and security - TestingCatalog AI News",
             "at": "2026-10-29T15:48:13Z",
             "publisher": "TestingCatalog AI News"
-          },
-          {
-            "id": "gnews:650cc5dae1de3528",
-            "source": "gnews-rss",
-            "title": "Paris-based Mistral releases \"Le Chonk,\" a strong coding model that still trails China overall - The Decoder",
-            "at": "2026-10-29T15:29:31Z",
-            "publisher": "The Decoder"
           },
           {
             "id": "gnews:2a3ef32cc36f71cb",
@@ -433,13 +412,63 @@
         ]
       },
       {
+        "title": "Local Inference with LLMs",
+        "sources": [
+          "hn-algolia",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 0.627,
+        "members": [
+          {
+            "id": "hn:50302895",
+            "source": "hn-algolia",
+            "title": "Local Inference with LLMs",
+            "at": "2026-10-30T12:16:34Z",
+            "publisher": null
+          },
+          {
+            "id": "gnews:58f4428601e9c30a",
+            "source": "gnews-rss",
+            "title": "Inside AI inference: weights, quantization, and the hardware pushing local LLMs forward - news.lavx.hu",
+            "at": "2026-10-30T16:27:53Z",
+            "publisher": "news.lavx.hu"
+          }
+        ]
+      },
+      {
+        "title": "Experts adopt AI agent's random opinions and think they're their own, Anthropic study finds",
+        "sources": [
+          "rss-lab",
+          "gnews-rss"
+        ],
+        "size": 2,
+        "score": 1,
+        "members": [
+          {
+            "id": "rss:the-decoder:aedbcc37989b4006",
+            "source": "rss-lab",
+            "title": "Experts adopt AI agent's random opinions and think they're their own, Anthropic study finds",
+            "at": "2026-10-29T19:33:37Z",
+            "publisher": "the-decoder"
+          },
+          {
+            "id": "gnews:fab9f8dbfa72ec99",
+            "source": "gnews-rss",
+            "title": "Experts adopt AI agent's random opinions and think they're their own, Anthropic study finds - The Decoder",
+            "at": "2026-10-29T19:39:36Z",
+            "publisher": "The Decoder"
+          }
+        ]
+      },
+      {
         "title": "Google unveils Gemini 4 Carbon for cyber defenders",
         "sources": [
           "rss-lab",
           "rss-analyst"
         ],
         "size": 2,
-        "score": 0.741,
+        "score": 0.749,
         "members": [
           {
             "id": "rss:testingcatalog:90bb3e441c768369",
@@ -509,32 +538,28 @@
       ],
       "gnews_shown_dropped": [
         {
-          "publisher": "https://tech-insider.org/",
-          "title": "Infisical Raises $40M at $600M Valuation [2026] - https://tech-insider.org/"
+          "publisher": "Healthcare Digital",
+          "title": "Boehringer, Microsoft, NVIDIA, GSK: This Week in Healthcare - Healthcare Digital"
         },
         {
-          "publisher": "shattered.io",
-          "title": "Infisical Raises $40M Series B at $600M Valuation [2026] - shattered.io"
+          "publisher": "Express Computer",
+          "title": "Microsoft Teams is the new front door for attackers, and they’re posing as your help desk - Express Computer"
+        },
+        {
+          "publisher": "Seeking Alpha",
+          "title": "Microsoft: 48% Azure Growth And Still Not Enough Capacity (NASDAQ:MSFT) - Seeking Alpha"
         },
         {
           "publisher": "Livemint",
           "title": "Microsoft, BMW introduce voluntary exit offers: How paying employees to quit could help firms retain committed workers - Livemint"
-        },
-        {
-          "publisher": "Microsoft",
-          "title": "From help desk impersonation to AD CS abuse: Investigating ESC1 and ESC8 intrusion paths - Microsoft"
-        },
-        {
-          "publisher": "TradingView",
-          "title": "Argus Research maintains Microsoft at Buy - TradingView"
         }
       ],
       "gnews_pool_dropped": 0,
-      "hn_dropped": 25
+      "hn_dropped": 22
     },
     "gnews_near_misses": [
       {
-        "score": 0.743,
+        "score": 0.744,
         "blocked": "time-window",
         "hours_apart": 555.8,
         "a": {
@@ -556,7 +581,7 @@
         ]
       },
       {
-        "score": 0.716,
+        "score": 0.717,
         "blocked": "time-window",
         "hours_apart": 564.4,
         "a": {
@@ -566,7 +591,7 @@
           "at": "2026-10-06T12:00:27Z"
         },
         "b": {
-          "id": "gnews:7a9fe846304402cc",
+          "id": "gnews:cc20ae27e637265f",
           "source": "gnews-rss",
           "title": "Mistral Releases Large 4 Weights for Self-Hosted AI - FindArticles",
           "at": "2026-10-30T00:24:21Z"
@@ -578,7 +603,7 @@
         ]
       },
       {
-        "score": 0.706,
+        "score": 0.703,
         "blocked": "time-window",
         "hours_apart": 555.3,
         "a": {
@@ -600,29 +625,7 @@
         ]
       },
       {
-        "score": 0.697,
-        "blocked": "time-window",
-        "hours_apart": 554.7,
-        "a": {
-          "id": "rss:mistral:1ef243007176e85c",
-          "source": "rss-lab",
-          "title": "Introducing Mistral Large 4",
-          "at": "2026-10-06T12:00:27Z"
-        },
-        "b": {
-          "id": "gnews:184cc0f20ef3e8fa",
-          "source": "gnews-rss",
-          "title": "Mistral Releases Large 4 Weights, but Hosts Need a Licence - FourWeekMBA",
-          "at": "2026-10-29T14:42:55Z"
-        },
-        "shared": [
-          "mistral",
-          "larg",
-          "4"
-        ]
-      },
-      {
-        "score": 0.695,
+        "score": 0.699,
         "blocked": "time-window",
         "hours_apart": 566.8,
         "a": {
@@ -644,9 +647,9 @@
         ]
       },
       {
-        "score": 0.691,
+        "score": 0.671,
         "blocked": "time-window",
-        "hours_apart": 594.2,
+        "hours_apart": 583.8,
         "a": {
           "id": "rss:mistral:1ef243007176e85c",
           "source": "rss-lab",
@@ -654,32 +657,10 @@
           "at": "2026-10-06T12:00:27Z"
         },
         "b": {
-          "id": "gnews:dafe556247e9d9a2",
+          "id": "gnews:dcd523070e8d6b40",
           "source": "gnews-rss",
-          "title": "Mistral AI publicly releases Large 4, targets cybersecurity users - The Economic Times",
-          "at": "2026-10-31T06:13:40Z"
-        },
-        "shared": [
-          "mistral",
-          "larg",
-          "4"
-        ]
-      },
-      {
-        "score": 0.691,
-        "blocked": "time-window",
-        "hours_apart": 594.2,
-        "a": {
-          "id": "rss:mistral:1ef243007176e85c",
-          "source": "rss-lab",
-          "title": "Introducing Mistral Large 4",
-          "at": "2026-10-06T12:00:27Z"
-        },
-        "b": {
-          "id": "gnews:8b55ca7aaab1a85d",
-          "source": "gnews-rss",
-          "title": "Mistral AI publicly releases Large 4, targets cybersecurity users - The Economic Times",
-          "at": "2026-10-31T06:13:00Z"
+          "title": "Mistral Releases Large 4 Model to Help Organizations Find Cyber Vulnerabilities - Business Upturn",
+          "at": "2026-10-30T19:48:52Z"
         },
         "shared": [
           "mistral",
@@ -708,11 +689,55 @@
           "larg",
           "4"
         ]
+      },
+      {
+        "score": 0.645,
+        "blocked": "time-window",
+        "hours_apart": 579.8,
+        "a": {
+          "id": "rss:mistral:1ef243007176e85c",
+          "source": "rss-lab",
+          "title": "Introducing Mistral Large 4",
+          "at": "2026-10-06T12:00:27Z"
+        },
+        "b": {
+          "id": "gnews:79a642027e401438",
+          "source": "gnews-rss",
+          "title": "Daily AI Launch Radar: Mistral Large 4 weights, Copilot Fusion and Replit Cloud Agents - Kingy AI",
+          "at": "2026-10-30T15:47:05Z"
+        },
+        "shared": [
+          "mistral",
+          "larg",
+          "4"
+        ]
+      },
+      {
+        "score": 0.642,
+        "blocked": "time-window",
+        "hours_apart": 577.9,
+        "a": {
+          "id": "rss:mistral:1ef243007176e85c",
+          "source": "rss-lab",
+          "title": "Introducing Mistral Large 4",
+          "at": "2026-10-06T12:00:27Z"
+        },
+        "b": {
+          "id": "gnews:39c082fb0c5cc089",
+          "source": "gnews-rss",
+          "title": "Mistral Releases Trillion-Parameter Open-Weight Large 4 AI Model to Expand Sovereign Cybersecurity Capabilities - Tekedia",
+          "at": "2026-10-30T13:52:00Z"
+        },
+        "shared": [
+          "mistral",
+          "larg",
+          "4"
+        ]
       }
     ],
     "near_misses": [
       {
-        "score": 0.767,
+        "score": 0.768,
         "blocked": "time-window",
         "hours_apart": 554.2,
         "a": {
@@ -734,7 +759,7 @@
         ]
       },
       {
-        "score": 0.743,
+        "score": 0.744,
         "blocked": "time-window",
         "hours_apart": 555.8,
         "a": {
@@ -756,7 +781,7 @@
         ]
       },
       {
-        "score": 0.716,
+        "score": 0.717,
         "blocked": "time-window",
         "hours_apart": 564.4,
         "a": {
@@ -766,7 +791,7 @@
           "at": "2026-10-06T12:00:27Z"
         },
         "b": {
-          "id": "gnews:7a9fe846304402cc",
+          "id": "gnews:cc20ae27e637265f",
           "source": "gnews-rss",
           "title": "Mistral Releases Large 4 Weights for Self-Hosted AI - FindArticles",
           "at": "2026-10-30T00:24:21Z"
@@ -778,7 +803,7 @@
         ]
       },
       {
-        "score": 0.706,
+        "score": 0.703,
         "blocked": "time-window",
         "hours_apart": 555.3,
         "a": {
@@ -800,29 +825,7 @@
         ]
       },
       {
-        "score": 0.697,
-        "blocked": "time-window",
-        "hours_apart": 554.7,
-        "a": {
-          "id": "rss:mistral:1ef243007176e85c",
-          "source": "rss-lab",
-          "title": "Introducing Mistral Large 4",
-          "at": "2026-10-06T12:00:27Z"
-        },
-        "b": {
-          "id": "gnews:184cc0f20ef3e8fa",
-          "source": "gnews-rss",
-          "title": "Mistral Releases Large 4 Weights, but Hosts Need a Licence - FourWeekMBA",
-          "at": "2026-10-29T14:42:55Z"
-        },
-        "shared": [
-          "mistral",
-          "larg",
-          "4"
-        ]
-      },
-      {
-        "score": 0.695,
+        "score": 0.699,
         "blocked": "time-window",
         "hours_apart": 566.8,
         "a": {
@@ -844,9 +847,9 @@
         ]
       },
       {
-        "score": 0.691,
+        "score": 0.671,
         "blocked": "time-window",
-        "hours_apart": 594.2,
+        "hours_apart": 583.8,
         "a": {
           "id": "rss:mistral:1ef243007176e85c",
           "source": "rss-lab",
@@ -854,10 +857,10 @@
           "at": "2026-10-06T12:00:27Z"
         },
         "b": {
-          "id": "gnews:dafe556247e9d9a2",
+          "id": "gnews:dcd523070e8d6b40",
           "source": "gnews-rss",
-          "title": "Mistral AI publicly releases Large 4, targets cybersecurity users - The Economic Times",
-          "at": "2026-10-31T06:13:40Z"
+          "title": "Mistral Releases Large 4 Model to Help Organizations Find Cyber Vulnerabilities - Business Upturn",
+          "at": "2026-10-30T19:48:52Z"
         },
         "shared": [
           "mistral",
@@ -866,9 +869,9 @@
         ]
       },
       {
-        "score": 0.691,
+        "score": 0.652,
         "blocked": "time-window",
-        "hours_apart": 594.2,
+        "hours_apart": 594.7,
         "a": {
           "id": "rss:mistral:1ef243007176e85c",
           "source": "rss-lab",
@@ -876,10 +879,32 @@
           "at": "2026-10-06T12:00:27Z"
         },
         "b": {
-          "id": "gnews:8b55ca7aaab1a85d",
+          "id": "gnews:55784e7791eec682",
           "source": "gnews-rss",
-          "title": "Mistral AI publicly releases Large 4, targets cybersecurity users - The Economic Times",
-          "at": "2026-10-31T06:13:00Z"
+          "title": "Mistral Large 4 “Le Chonk” Claims the Open-Weight Lead in Coding and Cyber Defense - Intelligent Living",
+          "at": "2026-10-31T06:41:32Z"
+        },
+        "shared": [
+          "mistral",
+          "larg",
+          "4"
+        ]
+      },
+      {
+        "score": 0.645,
+        "blocked": "time-window",
+        "hours_apart": 579.8,
+        "a": {
+          "id": "rss:mistral:1ef243007176e85c",
+          "source": "rss-lab",
+          "title": "Introducing Mistral Large 4",
+          "at": "2026-10-06T12:00:27Z"
+        },
+        "b": {
+          "id": "gnews:79a642027e401438",
+          "source": "gnews-rss",
+          "title": "Daily AI Launch Radar: Mistral Large 4 weights, Copilot Fusion and Replit Cloud Agents - Kingy AI",
+          "at": "2026-10-30T15:47:05Z"
         },
         "shared": [
           "mistral",
@@ -893,97 +918,97 @@
     {
       "id": "arxiv",
       "state": "flaky",
-      "streak_ok": 14,
+      "streak_ok": 15,
       "streak_fail": 0,
       "items_last": 28
     },
     {
       "id": "crossref",
       "state": "ok",
-      "streak_ok": 207,
+      "streak_ok": 208,
       "streak_fail": 0,
       "items_last": 0
     },
     {
       "id": "github",
       "state": "ok",
-      "streak_ok": 207,
+      "streak_ok": 208,
       "streak_fail": 0,
       "items_last": 1
     },
     {
       "id": "gnews",
       "state": "ok",
-      "streak_ok": 207,
+      "streak_ok": 208,
       "streak_fail": 0,
-      "items_last": 38
+      "items_last": 39
     },
     {
       "id": "hf",
       "state": "ok",
-      "streak_ok": 207,
+      "streak_ok": 208,
       "streak_fail": 0,
       "items_last": 50
     },
     {
       "id": "hn",
       "state": "ok",
-      "streak_ok": 207,
+      "streak_ok": 208,
       "streak_fail": 0,
-      "items_last": 60
+      "items_last": 63
     },
     {
       "id": "hn_title",
       "state": "ok",
-      "streak_ok": 61,
+      "streak_ok": 62,
       "streak_fail": 0,
-      "items_last": 9
+      "items_last": 8
     },
     {
       "id": "openalex",
       "state": "ok",
-      "streak_ok": 119,
+      "streak_ok": 120,
       "streak_fail": 0,
       "items_last": 3
     },
     {
       "id": "releases_atom",
       "state": "ok",
-      "streak_ok": 61,
+      "streak_ok": 62,
       "streak_fail": 0,
       "items_last": 9
     },
     {
       "id": "rss_analyst",
       "state": "ok",
-      "streak_ok": 61,
+      "streak_ok": 62,
       "streak_fail": 0,
       "items_last": 7
     },
     {
       "id": "rss_labs",
       "state": "flaky",
-      "streak_ok": 26,
+      "streak_ok": 27,
       "streak_fail": 0,
       "items_last": 150
     },
     {
       "id": "rss_security",
       "state": "ok",
-      "streak_ok": 207,
+      "streak_ok": 208,
       "streak_fail": 0,
       "items_last": 77
     },
     {
       "id": "wikidata",
       "state": "flaky",
-      "streak_ok": 15,
+      "streak_ok": 16,
       "streak_fail": 0,
       "items_last": 3
     }
   ],
   "age_check": {
-    "hours": 0.007356111111111111,
+    "hours": 0.007906944444444444,
     "stale": false
   },
   "hf": {
@@ -1064,7 +1089,7 @@
     "ok": true,
     "soft_fail": false,
     "soft_fail_reason": null,
-    "count": 60,
+    "count": 63,
     "brief": false,
     "pulse_only": true,
     "never_displace_hf": true,
@@ -1081,7 +1106,7 @@
     "queries_soft_fail": [],
     "recent_hours": 48,
     "ai_only": true,
-    "ai_dropped": 25,
+    "ai_dropped": 22,
     "url": "https://hn.algolia.com/api/v1/search",
     "title_queries": {
       "ok": true,
@@ -1101,11 +1126,11 @@
         "Qwen",
         "local model"
       ],
-      "hits": 18,
-      "candidates": 12,
+      "hits": 17,
+      "candidates": 11,
       "ai_dropped": 6,
       "duplicates": 3,
-      "added": 9,
+      "added": 8,
       "cap": 20,
       "merged_into_live_hn": true
     },
@@ -1113,13 +1138,13 @@
       {
         "id": "hn:50289418",
         "tag": "rest",
-        "score": 1692,
+        "score": 1696,
         "text": "We're releasing the weights of Mistral Large 4"
       },
       {
         "id": "hn:50300683",
         "tag": "rest",
-        "score": 879,
+        "score": 921,
         "text": "Backdoor in Claude Code for VS Code extension on the Cursor Marketplace"
       },
       {
@@ -1209,32 +1234,32 @@
     "feeds_soft_fail": [],
     "sample": [
       {
-        "id": "rss:huggingnews:2b1c33b18c8d0250",
-        "lab": "huggingnews",
+        "id": "rss:testingcatalog:0d18e79ba4c849cf",
+        "lab": "testingcatalog",
         "tag": "rest",
-        "title": "OpenAI CEO Sam Altman Meets With Samsung and SK Hynix to Expand AI Chip Supply",
-        "link": "https://huggingnews.com/ai/openai-ceo-sam-altman-meets-with-samsung-and-sk-hynix-to-expand-ai-chip-fbdacfe0"
+        "title": "Cloud execution is coming to Antigravity soon",
+        "link": "https://www.testingcatalog.com/cloud-execution-is-coming-to-antigravity-soon/"
       },
       {
-        "id": "rss:huggingnews:3ce5d051be5bdfe9",
+        "id": "rss:huggingnews:aa3587bee5e6a346",
         "lab": "huggingnews",
         "tag": "rest",
-        "title": "Proton CEO Andy Yen Vows to Maintain AI Integration Despite Ending Mandatory Staff Reviews",
-        "link": "https://huggingnews.com/ai/proton-ceo-andy-yen-vows-to-maintain-ai-integration-despite-ending-manda-ac393e03"
+        "title": "Nasdaq 100 Enters Correction as AI Rout Sends Intel and Reddit Down 29%",
+        "link": "https://huggingnews.com/us-markets/nasdaq-100-enters-correction-as-ai-rout-sends-intel-and-reddit-down-29pe-a4dd5758"
       },
       {
-        "id": "rss:huggingnews:f9f17f4ffc0cd2e1",
-        "lab": "huggingnews",
+        "id": "rss:the-decoder:0dd87c9e93157d0d",
+        "lab": "the-decoder",
         "tag": "rest",
-        "title": "Anthropic's IPO Filing Reveals Over $800B in Future Compute Commitments as It Warns Growth Will Slow",
-        "link": "https://huggingnews.com/ai/anthropics-ipo-filing-reveals-over-800b-in-future-compute-commitments-as-ec7920af"
+        "title": "Microsoft offers a quarter of its workforce voluntary severance while shielding AI-critical teams",
+        "link": "https://the-decoder.com/microsoft-offers-a-quarter-of-its-workforce-voluntary-severance-while-shielding-ai-critical-teams/"
       },
       {
-        "id": "rss:huggingnews:f339a28961b09eaf",
-        "lab": "huggingnews",
+        "id": "rss:the-decoder:d6d493efc50e13d5",
+        "lab": "the-decoder",
         "tag": "rest",
-        "title": "CoreWeave and Nebius Shut Out of Bond Market as Lenders Tighten AI Credit",
-        "link": "https://huggingnews.com/ai/coreweave-and-nebius-shut-out-of-bond-market-as-lenders-tighten-ai-credi-5f45e413"
+        "title": "Google Deepmind creates a global map of forests with satellite data and AI",
+        "link": "https://the-decoder.com/google-deepmind-creates-a-global-map-of-forests-with-satellite-data-and-ai/"
       }
     ]
   },
@@ -1284,6 +1309,13 @@
     ],
     "sample": [
       {
+        "id": "rss-sec:securityweek:314fc2b68b6bdcf6",
+        "lab": "securityweek",
+        "tag": "rest",
+        "title": "Syrian Hacker Gets Prison Time in US After Over a Decade on the Run",
+        "link": "https://www.securityweek.com/syrian-hacker-gets-prison-time-in-us-after-over-a-decade-on-the-run/"
+      },
+      {
         "id": "rss-sec:securityweek:54fec06500bc1f31",
         "lab": "securityweek",
         "tag": "rest",
@@ -1303,13 +1335,6 @@
         "tag": "rest",
         "title": "Passkeys Are Better Than Passwords. But They Are Not Enough.",
         "link": "https://www.securityweek.com/passkeys-are-better-than-passwords-but-they-are-not-enough/"
-      },
-      {
-        "id": "rss-sec:securityweek:d2cd936ea7597e4d",
-        "lab": "securityweek",
-        "tag": "rest",
-        "title": "Bulletproof Host Virtualine Loses Its Domain to FBI Seizure",
-        "link": "https://www.securityweek.com/bulletproof-host-virtualine-loses-its-domain-to-fbi-seizure/"
       }
     ]
   },
@@ -1460,8 +1485,8 @@
     "soft_fail_reason": null,
     "queries_attempted": 4,
     "queries_ok": 4,
-    "items": 38,
-    "pool": 272,
+    "items": 39,
+    "pool": 307,
     "corroborators": [
       {
         "id": "gnews:d5dac8b458ba6201",
@@ -1469,6 +1494,14 @@
         "score": 1,
         "title": "A Claude model autonomously chose a gene therapy and operated on a mouse brain with no human decision-making - The Decoder",
         "publisher": "The Decoder",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:58f4428601e9c30a",
+        "anchor_id": "hn:50302895",
+        "score": 0.634,
+        "title": "Inside AI inference: weights, quantization, and the hardware pushing local LLMs forward - news.lavx.hu",
+        "publisher": "news.lavx.hu",
         "self_repost": false
       },
       {
@@ -1480,9 +1513,17 @@
         "self_repost": true
       },
       {
-        "id": "gnews:7a9fe846304402cc",
+        "id": "gnews:a4c140f2f234cf7a",
+        "anchor_id": "rss:ms-research:d62b4959572c0d5a",
+        "score": 1,
+        "title": "From synthetic enterprise data evaluations to real Microsoft Copilot AI confidence - Microsoft",
+        "publisher": "Microsoft",
+        "self_repost": true
+      },
+      {
+        "id": "gnews:cc20ae27e637265f",
         "anchor_id": "hn:50289418",
-        "score": 0.636,
+        "score": 0.658,
         "title": "Mistral Releases Large 4 Weights for Self-Hosted AI - FindArticles",
         "publisher": "FindArticles",
         "self_repost": false
@@ -1490,26 +1531,10 @@
       {
         "id": "gnews:47a65b6d74f9961e",
         "anchor_id": "hn:50289418",
-        "score": 0.631,
+        "score": 0.646,
         "title": "Mistral AI Releases Weights for the 1T-Parameter Mistral Large 4 Model - KuCoin",
         "publisher": "KuCoin",
         "self_repost": false
-      },
-      {
-        "id": "gnews:184cc0f20ef3e8fa",
-        "anchor_id": "hn:50289418",
-        "score": 0.612,
-        "title": "Mistral Releases Large 4 Weights, but Hosts Need a Licence - FourWeekMBA",
-        "publisher": "FourWeekMBA",
-        "self_repost": false
-      },
-      {
-        "id": "gnews:a4c140f2f234cf7a",
-        "anchor_id": "rss:ms-research:d62b4959572c0d5a",
-        "score": 1,
-        "title": "From synthetic enterprise data evaluations to real Microsoft Copilot AI confidence - Microsoft",
-        "publisher": "Microsoft",
-        "self_repost": true
       },
       {
         "id": "gnews:549464c82deb64e6",
@@ -1522,9 +1547,17 @@
       {
         "id": "gnews:34b050d5f520baa4",
         "anchor_id": "hn:50309730",
-        "score": 0.943,
+        "score": 0.942,
         "title": "Defense Contractor Gave Personal AI Agent Access to Pentagon System - CDO Magazine",
         "publisher": "CDO Magazine",
+        "self_repost": false
+      },
+      {
+        "id": "gnews:fab9f8dbfa72ec99",
+        "anchor_id": "rss:the-decoder:aedbcc37989b4006",
+        "score": 1,
+        "title": "Experts adopt AI agent's random opinions and think they're their own, Anthropic study finds - The Decoder",
+        "publisher": "The Decoder",
         "self_repost": false
       },
       {
@@ -1536,17 +1569,9 @@
         "self_repost": false
       },
       {
-        "id": "gnews:650cc5dae1de3528",
-        "anchor_id": "rss:the-decoder:6982ff94f200009a",
-        "score": 1,
-        "title": "Paris-based Mistral releases \"Le Chonk,\" a strong coding model that still trails China overall - The Decoder",
-        "publisher": "The Decoder",
-        "self_repost": false
-      },
-      {
         "id": "gnews:2a3ef32cc36f71cb",
         "anchor_id": "rss:huggingface:b6b30743068c2627",
-        "score": 0.78,
+        "score": 0.773,
         "title": "Mistral releases Large 4 Le Chonk open weights on Hugging Face - Pasquale Pillitteri",
         "publisher": "Pasquale Pillitteri",
         "self_repost": false
@@ -1578,24 +1603,24 @@
     "queries_soft_fail": [],
     "sample": [
       {
-        "id": "gnews:e549cb92f0425fe4",
-        "title": "Walmart's AI agent Sparky turns photos of handwritten lists into carts - PPC Land",
-        "publisher": "PPC Land",
-        "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOMWU2cjRndVpwUk9tcG12ZGVBaUxMcGI3d1N2NmVqSFFBUVZRTlBycEJPeXd2Ty1LQ1hWbGQwTWJkU1lqRHQ2M2I3QU40RTlkZW9peVlpRkw5a1ZJeG9weV9YRTVhZ2pUMXktMXNTZ3ZON1FlSXYtYWRQNnJEYXBsZXNNMFMtT3JfWFdvWmNkRE4?oc=5",
+        "id": "gnews:9de01e8602002f54",
+        "title": "AI Agents Are Boosting Chip Demand While Putting Google’s Search Business at Risk - Investing.com",
+        "publisher": "Investing.com",
+        "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQSXlHbm1zalBGS0ZDN3V4czJIRW1oRU1aUDZUNGJtVnkySlRaRTBRZU5TNWRKZWZFZjVvQUhfVHI5QXV1VU9uS2hsdnFQekFsMWlaOU1BeTFtT0NTSGtEbHBsbUlXXzByRnVhZkQ2YnUycE5CYV9lc3dTaTZhVEh4RDJyQlhHTkpQNGFvX21jTGRDN0tiVElsMnVhTXg3RjZoN0tLdktVNkFuRGpMVGZVWHo4MTY0a0ZGekJsWF9XS3JzOW8?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:2c2d259dbdd4a368",
-        "title": "Microsoft Tops Brand Phishing, and Now Claude Is a Target - ProductNation Malaysia",
-        "publisher": "ProductNation Malaysia",
-        "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTFB2OENsbzdKaVdYdllaTnZyNmNRY245a1cwTmJsc1JKdGluMFZ1QnJibDFnUUo2X3R3d0ZFOExJei1meUJsclRHSXBDUkNZR0VhZ0JabDhuT05NcVBwd2xZSGk2TlNITjRFZEFyUzlhVVllM0dBWkxocHk1blM?oc=5",
+        "id": "gnews:49630a05ed97de8f",
+        "title": "EqualAI CEO: Your AI assistant is acting in your name. Who signed off? - Fortune",
+        "publisher": "Fortune",
+        "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPYUZVaHJHenpPWXJ5WHZ0UkRIazNzVzN1YnlhUkducUVvOVdzejJOWklrUDZDcEQwZkNZclBCaHd2V0JZN3pMcGFJRFZraXA5VXJwTWJnbWQwcm5Qa0FDaFpXcE5fV1dlSHNya3hFY1RvZU1jUk5udUR0UkNvRUlicnRoZmI0cl9vNHUwemU1VDlYTFY5RGlN?oc=5",
         "tag": "rest"
       },
       {
-        "id": "gnews:55784e7791eec682",
-        "title": "Mistral Large 4 “Le Chonk” Claims the Open-Weight Lead in Coding and Cyber Defense - Intelligent Living",
-        "publisher": "Intelligent Living",
-        "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1BOGRHNWJJUk5SSXRvd1BzVnZ0UFl3WHduamctS3F4QTRzYlVidUQ2QzlCRFB1Q2pOeHVRbVExOUNUX1hTU0pEUFdFNmMyODBxQzY0cl9zTERucTlOQzJyeGVYemZaMHliNkE?oc=5",
+        "id": "gnews:57c5e669ba93d98f",
+        "title": "AI Agents Secretly Rely on Human Workers to Fill the Gaps - The Tech Buzz",
+        "publisher": "The Tech Buzz",
+        "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPcHJIa1I2UjVWVG5peHJtZFBqT0xWa1A5c2pqMzRGRi15WEVVVmF4TDliUmxuNjhxVFR2dnBtT2pDQmIxTl94cll4bmk5VWozSzNZbS1ERGpqWnhSY3c3WVExaW00THA4QUl2blVGZUY0aE15MzV0VHdZZlVjR2hjQ0t2RVJGR1g2VFVaUVNPN01GZnNU?oc=5",
         "tag": "rest"
       }
     ]
@@ -1636,8 +1661,8 @@
     "url": "https://api.github.com/search/repositories",
     "sample": [
       {
-        "label": "wqbcs/ai-prompt-toolkit",
-        "href": "https://github.com/wqbcs/ai-prompt-toolkit"
+        "label": "llordsop-art/kordef-owasp-llm-prompt-guard",
+        "href": "https://github.com/llordsop-art/kordef-owasp-llm-prompt-guard"
       }
     ]
   },
