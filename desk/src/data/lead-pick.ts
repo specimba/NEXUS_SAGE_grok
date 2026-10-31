@@ -2,6 +2,48 @@
 import type { LeadEntry } from "@/lib/lead-pick";
 
 export const LEAD_TODAY: LeadEntry | null = {
+  "date": "2026-10-31",
+  "at": "2026-10-31T03:21:02.108Z",
+  "crawl_at": "2026-10-31T03:20:34Z",
+  "pick_slot": "06:20",
+  "excluded": [
+    {
+      "cluster_id": "cl:rss:testingcatalog:37bb4b28a392479c",
+      "headline": "Mistral opens Large 4 weights for coding and security",
+      "reason": "age>=36h",
+      "sources": 16,
+      "age_h": 51,
+      "pub": "TES"
+    },
+    {
+      "cluster_id": "cl:rss:testingcatalog:90bb3e441c768369",
+      "headline": "Google unveils Gemini 4 Carbon for cyber defenders",
+      "reason": "age>=36h",
+      "sources": 2,
+      "age_h": 54,
+      "pub": "TES"
+    },
+    {
+      "cluster_id": "cl:rss:deepmind:851107eacfc8ba0f",
+      "headline": "Gemini 4 Argon: Built to solve your hardest problems",
+      "reason": "age>=36h",
+      "sources": 2,
+      "age_h": 419,
+      "pub": "DMD"
+    }
+  ],
+  "cluster_id": "cl:rss:the-decoder:c2e9d57651f8ceec",
+  "headline": "Malicious Claude Code extension in Cursor's marketplace attempted remote access and data theft",
+  "url": "https://the-decoder.com/malicious-claude-code-extension-in-cursors-marketplace-attempted-remote-access-and-data-theft/",
+  "sources": 3,
+  "sig": 805,
+  "reason": "picked",
+  "pub": "THE",
+  "first_at": "2026-10-30T05:20:20.000Z",
+  "age_band": "<24h"
+};
+
+export const LEAD_YESTERDAY: LeadEntry | null = {
   "date": "2026-10-30",
   "at": "2026-10-30T18:21:00.399Z",
   "crawl_at": "2026-10-30T18:20:34Z",
@@ -28,61 +70,10 @@ export const LEAD_TODAY: LeadEntry | null = {
   "note": "repick: lead older than 12h since pick"
 };
 
-export const LEAD_YESTERDAY: LeadEntry | null = {
-  "date": "2026-10-29",
-  "at": "2026-10-29T08:21:07.105Z",
-  "crawl_at": "2026-10-29T08:20:41Z",
-  "catch_up": true,
-  "pick_slot": "11:20",
-  "excluded": [
-    {
-      "cluster_id": "cl:rss:testingcatalog:8684eb48fa1590f3",
-      "headline": "OpenAI launches GPT-6.1 Terra for precise computer use",
-      "reason": "age>=36h",
-      "sources": 3,
-      "age_h": 56,
-      "pub": "TES"
-    },
-    {
-      "cluster_id": "cl:hn:50260485",
-      "headline": "Broadcom CEO Intervened to Seal $63B Anthropic Debt Deal",
-      "reason": "age>=36h",
-      "sources": 2,
-      "age_h": 41,
-      "pub": "HN"
-    },
-    {
-      "cluster_id": "cl:rss:deepmind:393575ee7d83ff0a",
-      "headline": "Genie 4: A new generation of world simulation",
-      "reason": "age>=36h",
-      "sources": 2,
-      "age_h": 40,
-      "pub": "DMD"
-    },
-    {
-      "cluster_id": "cl:rss:deepmind:851107eacfc8ba0f",
-      "headline": "Gemini 4 Argon: Built to solve your hardest problems",
-      "reason": "age>=36h",
-      "sources": 2,
-      "age_h": 376,
-      "pub": "DMD"
-    }
-  ],
-  "cluster_id": "cl:rss:testingcatalog:90bb3e441c768369",
-  "headline": "Google unveils Gemini 4 Carbon for cyber defenders",
-  "url": "https://www.testingcatalog.com/google-unveils-gemini-4-carbon-for-cyber-defenders/",
-  "sources": 18,
-  "sig": 906,
-  "reason": "picked",
-  "pub": "TES",
-  "first_at": "2026-10-28T17:00:58.000Z",
-  "age_band": "<24h"
-};
-
 export const LEAD_HELD = false;
 
 /** Earliest member item of the lead story (null = unknown). Brief shows HELD once this is >48h old (PASS-L). */
-export const LEAD_FIRST_AT: string | null = "2026-10-30T16:45:48.000Z";
+export const LEAD_FIRST_AT: string | null = "2026-10-30T05:20:20.000Z";
 
 /** Date of the latest real pick (never a HELD entry) — the HELD card's "last pick" (UX-1). */
-export const LEAD_LAST_PICK: string | null = "2026-10-30";
+export const LEAD_LAST_PICK: string | null = "2026-10-31";

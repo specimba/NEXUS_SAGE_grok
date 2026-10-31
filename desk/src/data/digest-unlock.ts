@@ -7,42 +7,64 @@ import type { DigestUnlockSnapshot } from "@/lib/digest-unlock";
 export const DIGEST_UNLOCK: DigestUnlockSnapshot = {
   "schema": 1,
   "cycleId": "003",
-  "pickDate": "2026-10-30",
-  "frozenAt": "2026-10-30T18:21:00.399Z",
-  "leadId": "cl:hn:50307219",
+  "pickDate": "2026-10-31",
+  "frozenAt": "2026-10-31T03:21:02.108Z",
+  "leadId": "cl:rss:the-decoder:c2e9d57651f8ceec",
   "lead": {
-    "id": "cl:hn:50307219",
+    "id": "cl:rss:the-decoder:c2e9d57651f8ceec",
     "kind": "lead",
-    "title": "Anthropic may not secure investment-grade rating after IPO, Blackstone says",
-    "take": "2 SRC · sig 28 · pick 2026-10-30",
-    "why": "fresh pick · picked 21:20 UTC+3",
+    "title": "Malicious Claude Code extension in Cursor's marketplace attempted remote access and data theft",
+    "take": "3 SRC · sig 805 · pick 2026-10-31",
+    "why": "LEAD_TODAY · picked · frozen at daily pick",
     "move": "Digest/Voice follow Brief lead",
-    "url": "https://www.ft.com/content/59383c7f-8d82-493f-bf01-d2e862a1018f",
-    "sources": 2,
-    "sig": 28
+    "url": "https://the-decoder.com/malicious-claude-code-extension-in-cursors-marketplace-attempted-remote-access-and-data-theft/",
+    "sources": 3,
+    "sig": 805
   },
   "rows": [
     {
-      "id": "cl:rss:mistral:bd03e4a483646b85",
+      "id": "cl:rss:testingcatalog:37bb4b28a392479c",
       "kind": "companion",
-      "title": "Le Chonk: Built for Coders, Trusted by Defenders.",
-      "take": "5 SRC · sig 1656",
+      "title": "Mistral opens Large 4 weights for coding and security",
+      "take": "16 SRC · sig 1682",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
-      "url": "https://mistral.ai/news/mistral-large-4-oss/",
-      "sources": 5,
-      "sig": 1656
+      "url": "https://www.testingcatalog.com/mistral-opens-large-4-weights-for-coding-and-security/",
+      "sources": 16,
+      "sig": 1682
     },
     {
-      "id": "cl:rss:the-decoder:c2e9d57651f8ceec",
+      "id": "cl:hn:50293979",
       "kind": "rest",
-      "title": "Malicious Claude Code extension in Cursor's marketplace attempted remote access and data theft",
-      "take": "4 SRC · sig 646",
+      "title": "A Defense Contractor Gave Their AI Agent Access to a Secure Pentagon System",
+      "take": "3 SRC · sig 21",
       "why": "Top corroborated Wire cluster · same pack as lead pick",
       "move": "Digest row · never displaces Brief lead",
-      "url": "https://the-decoder.com/malicious-claude-code-extension-in-cursors-marketplace-attempted-remote-access-and-data-theft/",
-      "sources": 4,
-      "sig": 646
+      "url": "https://www.wired.com/story/a-defense-contractor-gave-their-personal-ai-agent-access-to-a-secure-pentagon-system/",
+      "sources": 3,
+      "sig": 21
+    },
+    {
+      "id": "cl:rss:huggingnews:a0741789355f452e",
+      "kind": "rest",
+      "title": "Blackstone Forecasts Junk Credit Rating for Anthropic Following IPO",
+      "take": "2 SRC · sig 287",
+      "why": "Top corroborated Wire cluster · same pack as lead pick",
+      "move": "Digest row · never displaces Brief lead",
+      "url": "https://huggingnews.com/ai/blackstone-forecasts-junk-credit-rating-for-anthropic-following-ipo-8a17475a",
+      "sources": 2,
+      "sig": 287
+    },
+    {
+      "id": "cl:hn:50302895",
+      "kind": "rest",
+      "title": "Local Inference with LLMs",
+      "take": "2 SRC · sig 1",
+      "why": "Top corroborated Wire cluster · same pack as lead pick",
+      "move": "Digest row · never displaces Brief lead",
+      "url": "https://jacquesmattheij.com/local-inference-with-large-language-models/",
+      "sources": 2,
+      "sig": 1
     }
   ]
 } as const;

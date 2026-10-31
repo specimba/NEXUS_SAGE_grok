@@ -3,7 +3,7 @@ import type { Tldr } from "@/lib/tldr-24h";
 
 export const TLDR_24H: Tldr = {
   "schema": 1,
-  "crawl_at": "2026-10-31T02:03:40Z",
+  "crawl_at": "2026-10-31T03:20:34Z",
   "date": "2026-10-31",
   "bullets": [
     {
@@ -14,17 +14,17 @@ export const TLDR_24H: Tldr = {
       "sources": 2
     },
     {
+      "id": "cl:rss:huggingnews:a0741789355f452e",
+      "title": "Blackstone Forecasts Junk Credit Rating for Anthropic Following IPO",
+      "url": "https://huggingnews.com/ai/blackstone-forecasts-junk-credit-rating-for-anthropic-following-ipo-8a17475a",
+      "at": "2026-10-30T17:08:45Z",
+      "sources": 2
+    },
+    {
       "id": "cl:hn:50302895",
       "title": "Local Inference with LLMs",
       "url": "https://jacquesmattheij.com/local-inference-with-large-language-models/",
       "at": "2026-10-30T12:16:34Z",
-      "sources": 2
-    },
-    {
-      "id": "cl:rss:the-decoder:c2e9d57651f8ceec",
-      "title": "Malicious Claude Code extension in Cursor's marketplace attempted remote access and data theft",
-      "url": "https://the-decoder.com/malicious-claude-code-extension-in-cursors-marketplace-attempted-remote-access-and-data-theft/",
-      "at": "2026-10-30T05:20:20Z",
       "sources": 2
     }
   ],

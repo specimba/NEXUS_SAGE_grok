@@ -17,7 +17,7 @@ export type ReleaseAtomRow = {
   cluster_id?: string;
 };
 
-export const RELEASES_ATOM_AT: string | null = "2026-10-31T02:03:40Z";
+export const RELEASES_ATOM_AT: string | null = "2026-10-31T03:20:34Z";
 
 export const RELEASES_ATOM: ReleaseAtomRow[] = [
   { id: "rel:codex:rust-v0.166.0", feed: "codex" as const, title: "Codex rust-v0.166.0", link: "https://github.com/openai/codex/releases/tag/rust-v0.166.0", published: "2026-10-29T17:44:31Z", tag: "rust-v0.166.0", emitted_at: "2026-10-29T18:20:43Z", source: "releases-atom" as const, first_seen: "2026-10-29T18:20:43Z", is_new: false, cluster_id: "cl:rel:codex:rust-v0.166.0" },
